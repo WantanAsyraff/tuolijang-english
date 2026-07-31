@@ -1,0 +1,100 @@
+name: tuoluojiang
+
+services:
+  # PHP + LaravelS 服务
+  php:
+    image: tuoluojiang-php:latest
+    platform: ${PHP_PLATFORM:-linux/amd64}
+    build:
+      context: ..
+      dockerfile: docker/php/Dockerfile
+    container_name: tuoluojiang_php
+    restart: unless-stopped
+    ports:
+      - "20300:20200"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ..:/var/www:delegated
+      - ./php/config/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+      - ./php/entrypoint.sh:/usr/local/bin/entrypoint.sh
+    working_dir: /var/www
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "php -r 'exit(@fsockopen(\"127.0.0.1\",20200) ? 0 : 1);'"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 40s
+    networks:
+      - app_network
+
+  # MySQL 服务
+  mysql:
+    image: m.daocloud.io/docker.io/library/mysql:8.0
+    container_name: tuoluojiang_mysql
+    restart: unless-stopped
+    ports:
+      - "3376:3306"
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=tuoluojiang
+      - MYSQL_ROOT_HOST=%
+    volumes:
+      - ./mysql/config/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - mysql_data:/var/lib/mysql
+      - ./mysql/logs:/var/log/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d:ro
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --explicit_defaults_for_timestamp=true
+      - --lower_case_table_names=1
+      - --max_allowed_packet=128M
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 40s
+    networks:
+      - app_network
+
+  # Redis 服务
+  redis:
+    image: m.daocloud.io/docker.io/library/redis:7-alpine
+    container_name: tuoluojiang_redis
+    restart: unless-stopped
+    ports:
+      - "6389:6379"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./redis/config/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - ./redis/data:/data
+    command: redis-server /usr/local/etc/redis/redis.conf
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    name: tuoluojiang_mysql_data
+    driver: local
+  redis_data:
+    name: tuoluojiang_redis_data
+    driver: local

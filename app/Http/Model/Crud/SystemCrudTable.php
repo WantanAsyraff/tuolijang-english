@@ -1,0 +1,119 @@
+<?php
+
+declare(strict_types=1);
+
+
+namespace App\Http\Model\Crud;
+
+use App\Observers\SystemCrudTableObserver;
+use crmeb\basic\BaseModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class SystemCrudTable extends BaseModel
+{
+    use SoftDeletes;
+
+    /**
+     * 表明.
+     * @var string
+     */
+    protected $table = 'system_crud_table';
+
+    /**
+     * 主键.
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    protected $casts = [
+        'id'         => 'integer',
+        'crud_id'    => 'integer',
+        'version'    => 'integer',
+        'is_index'   => 'integer',
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+        'deleted_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
+    public static function boot()
+    {
+        parent::boot();
+        static::observe(SystemCrudTableObserver::class);
+    }
+
+    /**
+     * @email 136327134@qq.com
+     * @date 2024/2/24
+     */
+    public function setSeniorSearchAttribute($value)
+    {
+        $this->attributes['senior_search'] = json_encode($value);
+    }
+
+    /**
+     * @return mixed
+     * @email 136327134@qq.com
+     * @date 2024/2/24
+     */
+    public function getSeniorSearchAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    /**
+     * @email 136327134@qq.com
+     * @date 2024/2/24
+     */
+    public function setOptionsAttribute($value)
+    {
+        $this->attributes['options'] = json_encode($value);
+    }
+
+    /**
+     * @return mixed
+     * @email 136327134@qq.com
+     * @date 2024/2/24
+     */
+    public function getOptionsAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    /**
+     * @email 136327134@qq.com
+     * @date 2024/2/24
+     */
+    public function setViewSearchAttribute($value)
+    {
+        $this->attributes['view_search'] = json_encode($value);
+    }
+
+    /**
+     * @return mixed
+     * @email 136327134@qq.com
+     * @date 2024/2/24
+     */
+    public function getViewSearchAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    /**
+     * @email 136327134@qq.com
+     * @date 2024/2/24
+     */
+    public function setShowFieldAttribute($value)
+    {
+        $this->attributes['show_field'] = json_encode($value);
+    }
+
+    /**
+     * @return mixed
+     * @email 136327134@qq.com
+     * @date 2024/2/24
+     */
+    public function getShowFieldAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+}

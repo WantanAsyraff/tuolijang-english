@@ -1,0 +1,38 @@
+html,
+body,
+#app {
+  height: 100%;
+}
+
+* {
+  scrollbar-width: none;
+}
+
+:root {
+  --color-primary: #1890ff;
+  --color-text-primary: #303133;
+  --status-bar-height: 0px;
+}
+
+#app {
+  color: var(--color-text-primary);
+}
+
+.el-message-box.el-message-box {
+  --el-messagebox-font-size: 14px;
+  --el-messagebox-padding-primary: 20px;
+
+  .el-button {
+    --el-font-size-base: 13px;
+  }
+
+  .el-message-box__headerbtn {
+    right: 10px;
+    top: 14px;
+  }
+}
+
+
+.el-message.el-message-custom-offset {
+  margin-top: var(--status-bar-height);
+}

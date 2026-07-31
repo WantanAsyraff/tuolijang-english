@@ -1,0 +1,498 @@
+$--color-primary: #1890ff;
+
+.display-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.display-align {
+	display: flex;
+	align-items: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.pull-left {
+	float: left !important;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+.default-color {
+	color: $--color-primary;
+}
+
+.default-error {
+	color: #ED4014;
+}
+
+.default-warning {
+	color: #FF9900;
+}
+
+.default-text-color-one {
+	color: #303133;
+}
+
+.default-text-color-four {
+	color: #909399;
+}
+
+.default-text-color-five {
+	color: #C0C4CC;
+}
+
+.uni-navbar__header {
+	padding: 0 30rpx !important;
+}
+
+
+
+.pl-14 {
+	padding-left: 14rpx;
+}
+
+.pr-14 {
+	padding-right: 14rpx;
+}
+
+.plr12 {
+	padding: 0 24rpx;
+}
+
+.m10 {
+	margin: 20rpx;
+}
+
+.mb10 {
+	margin-bottom: 20rpx;
+}
+
+.p10 {
+	padding: 0 20rpx;
+}
+.mb60 {
+	margin-bottom: 60px;
+}
+.pt28 {
+	padding-top: 28rpx;
+}
+.pb60 {
+	padding-bottom: 70px;
+}
+.mb40 {
+	margin-bottom: 40px;
+}
+
+.width100 {
+	width: 100% !important;
+}
+
+.cr-position-header {
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	z-index: 99;
+
+	.default-search {
+		.uni-searchbar {
+			padding: 34rpx 30rpx 0 30rpx;
+
+			.uni-searchbar__box {
+				height: 64rpx;
+			}
+
+			.uni-input-placeholder {
+				font-size: 26rpx;
+				color: #cccccc;
+			}
+
+			.uni-input-input {
+				font-size: 30rpx;
+			}
+
+			.uni-searchbar__box-icon-clear {
+				line-height: 1;
+
+				.uni-icons {
+					color: #cccccc !important;
+				}
+			}
+
+			.uni-searchbar__cancel {
+				font-size: 30rpx;
+				color: $--color-primary;
+			}
+		}
+	}
+}
+
+.bgf {
+	background-color: #fff;
+}
+
+// 底部导航栏
+.cr-bottom-button {
+	position: fixed;
+	bottom: 0;
+	z-index: 98;
+	width: 100%;
+	height: 108rpx;
+	height: calc(108rpx + constant(safe-area-inset-bottom)); ///兼容 IOS<11.2/
+	height: calc(108rpx + env(safe-area-inset-bottom)); ///兼容 IOS>11.2/
+	box-sizing: border-box;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+
+	uni-button {
+		width: 100%;
+		height: 80rpx;
+		line-height: 80rpx;
+		font-size: 30rpx;
+	}
+}
+
+// 全局向上弹窗加上圆角
+.uni-picker-container .uni-picker-custom {
+	border-radius: 8px 8px 0 0;
+}
+
+// 全局日期选择弹窗取消确定按钮
+.xp-picker-action {
+	font-size: 15px;
+	font-weight: 400;
+}
+
+// 全局弹窗关闭图标颜色
+.dialog-close-plus {
+	background-color: #C0C4CC !important;
+}
+
+.uni-picker-container .uni-picker-item {
+	padding: 0 10px;
+
+}
+
+// 级联选择均分
+// .selected-list {
+// 	display: flex;
+// 	justify-content: space-between;
+// }
+.dialog-title {
+	font-size: 15px;
+}
+
+.uni-picker-container .uni-picker-action {
+	font-size: 14px !important;
+	font-weight: 400;
+}
+
+// 内容显示省略号
+.over-text {
+	// 一行
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.over-text3 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; //规定几行显示省略号
+	-webkit-box-orient: vertical;
+}
+.over-text2 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; //规定几行显示省略号
+	-webkit-box-orient: vertical;
+}
+
+.xp-picker-content {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+	.picker-label {
+		height: 35px !important;
+		color: $uni-text-color;
+		font-size: 30rpx !important;
+		justify-content: flex-end;
+
+		&.is-placeholder {
+			color: #C0C4CC;
+		}
+	}
+
+	.iconfont {
+		padding-right: 16rpx;
+		margin-top: 7rpx;
+		transform: rotate(180deg);
+		font-size: 24rpx !important;
+		color: #C0C4CC;
+	}
+
+}
+
+.cr-search-content {
+	display: flex;
+	height: 72rpx;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #F0F1F5;
+
+	.search-default-label {
+		width: 100%;
+		// flex: 1;
+		height: 72rpx;
+		font-family: PingFang SC, PingFang SC;
+		font-weight: 400;
+		font-size: 22rpx;
+		color: #606266;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.iconfont {
+			margin-top: 4rpx;
+			font-size: 24rpx;
+			transform: scale(0.63);
+			// margin-left: 10rpx;
+			color: #606266;
+			display: inline-block;
+		}
+	}
+
+	.uni-date {
+		// flex: auto !important;
+	}
+
+	.search-default-date {
+		margin-top: 4rpx;
+		display: flex;
+		font-size: 22rpx;
+		align-items: center;
+		justify-content: center;
+		// max-width: calc(100% - 28rpx);
+		word-break: break-all;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow: hidden
+	}
+
+	.date-open-icon {
+		color: #606266;
+		font-size: 22rpx;
+		line-height: 24rpx;
+		display: inline-block;
+		transform: scale(0.63);
+		margin-left: 0rpx;
+	}
+
+	::v-deep .uni-date-editor {
+		line-height: 72rpx;
+		font-size: 22rpx;
+		color: $nui-text-color-two;
+		text-align: center;
+		position: relative;
+
+
+
+
+		.date-open {
+			width: 0;
+			height: 0;
+			border-left: 9rpx solid transparent;
+			border-right: 9rpx solid transparent;
+			border-top: 9rpx solid #C0C4CC;
+			line-height: 1;
+			margin-top: 4rpx;
+			margin-left: 14rpx;
+		}
+
+		.date-clear {
+			position: absolute;
+			right: 15rpx;
+			top: 0;
+			z-index: 2;
+			font-size: 22rpx;
+			color: #606266;
+		}
+
+	}
+}
+
+.cr-examine-button {
+	background-color: #fff;
+	height: 126rpx;
+	line-height: 126rpx;
+	width: 100%;
+	padding: 0 20rpx;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	border: 1px solid #F0F1F5;
+
+	.button {
+		width: 100%;
+		height: 86rpx;
+		line-height: 86rpx;
+		font-size: $uni-font-size-default;
+		border-radius: 12rpx;
+		background-color: #F0F1F5;
+		margin-right: 32rpx;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		&.agree {
+			background-color: $uni-color-primary;
+			color: #fff;
+		}
+
+		&::after {
+			border-radius: 8rpx;
+			border: none;
+		}
+	}
+}
+
+.pointer-none {
+	pointer-events: none;
+	color: $uni-text-color-five !important;
+
+	.iconfont {
+		color: $uni-text-color-five !important;
+	}
+}
+
+.footer-text {
+	text-align: center;
+	font-size: 24rpx;
+	color: #909399;
+	margin-top: 30rpx;
+}
+.btnshou {
+	 cursor: pointer;
+}
+
+// 详情页面底部固定按钮-审批-合同-订单-发票
+.details-fixed-btn {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 28rpx;
+	height: 96rpx;
+	line-height: 96rpx;
+	    /* 新增：高斯模糊核心属性（毛玻璃效果） */
+    backdrop-filter: blur(5rpx);
+    /* 兼容微信小程序/移动端webkit内核 */
+	display: inline-flex; // 改为 inline-flex，宽度由内容撑开
+	align-items: center;
+	padding: 0 20rpx;
+	background: rgba(255, 255, 255, 0.9);
+	box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.08);
+	border-radius: 344rpx 344rpx 344rpx 344rpx;
+	border: 1rpx solid #FFFFFF;
+	font-family: PingFang SC, PingFang SC;
+	font-weight: 400;
+	font-size: 24rpx;
+	color: #333333;
+	z-index: 12;
+	.btn-line {
+		width: 1.5px !important;
+		height: 56rpx;
+		background: linear-gradient(to bottom, transparent 0%, #ddd 50%, transparent 100%) !important;
+		opacity: 1; // 有时候就不展示了，通过透明度控制显隐
+		flex-shrink: 0;
+	}
+	.box {
+		display: flex;
+		align-items: center;
+		height: 56rpx;
+		line-height: 56rpx;
+		padding: 0 24rpx;
+		white-space: nowrap;
+		flex-shrink: 0;
+		cursor: pointer;
+	}
+
+	.box:last-child {
+		border-right: none;
+	}
+
+	.iconfont {
+		font-size: 32rpx;
+		margin-right: 4rpx;
+	}
+}
+
+// 全局滚动样式优化
+ /* 滚动条样式 begin */
+::-webkit-scrollbar {
+  width:2px !important;
+  height: 2px !important;
+}
+
+::-webkit-scrollbar-track {
+  width: 2px !important;
+  background: rgba(#101F1C, 0.1);
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(#101F1C, 0.35);
+  background-clip: padding-box;
+  min-height: 28px;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(#101F1C, 0.85);
+}
+
+* {
+  //Firefox浏览器滚动条样式
+  scrollbar-color: #e5e5e5 #f7f7f9; //滚动条轨道颜色、滚动条滑块的颜色
+  scrollbar-width: thin; //thin模式下滚动条两端的三角按钮会消失
+}
+
+* {
+	-webkit-user-select: text !important;
+	user-select: text !important;
+	-webkit-touch-callout: default !important;
+  }
+  
+  /* 如果你的内容是特定容器，只给这个容器加也行 */
+  .reply-content, .message-content {
+	-webkit-user-select: text;
+	user-select: text;
+	-webkit-touch-callout: default;
+  }

@@ -1,0 +1,1 @@
+import{C as n}from"./chat-message-input-DaNrn3wo.js";import{_ as e}from"./chat-welcome-Cc9T9Eti.js";import{_ as a}from"./index-CdxDH7QB.js";import{I as r,x as c,J as _,L as s}from"./vue-DdCVazfU.js";import"./element-DdjEQdR3.js";const m={};function i(p,f){const o=e,t=n;return c(),r(t,null,{default:_(()=>[s(o)]),_:1})}const x=a(m,[["render",i]]);export{x as default};

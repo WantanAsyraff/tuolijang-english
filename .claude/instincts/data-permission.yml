@@ -1,0 +1,39 @@
+---
+id: tuoluojiang-data-permission
+trigger: "when implementing list queries or data access"
+confidence: 0.9
+domain: security
+source: local-repo-analysis
+---
+
+# 处理数据权限
+
+## Action
+在 Service 或 Dao 层应用数据权限过滤：
+
+```php
+// 获取当前用户可访问的用户ID列表
+$allowedUids = app(RolesService::class)->getDataUids(
+    $this->getCurrentUserId(),
+    $module,      // 模块名：client, contract, personnel 等
+    $dataRange    // 数据范围：0-4
+);
+
+// 在查询中应用权限
+$query->whereIn('user_id', $allowedUids);
+```
+
+## Data Range Constants
+| 值 | 含义 | 说明 |
+|----|------|------|
+| 0 | 全部数据 | 可访问所有数据 |
+| 1 | 仅本人数据 | 只能访问自己创建的数据 |
+| 2 | 本部门数据 | 可访问本部门所有成员数据 |
+| 3 | 指定部门数据 | 可访问指定部门的数据 |
+| 4 | 直属下级数据 | 可访问直属下级的数据 |
+
+## Rules
+1. 列表查询必须应用数据权限
+2. 详情查询必须验证数据归属
+3. 导出数据必须应用相同权限
+4. 权限判断在 Service/Dao 层，不在 Controller 层

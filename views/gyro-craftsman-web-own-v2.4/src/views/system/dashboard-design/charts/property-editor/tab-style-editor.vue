@@ -1,0 +1,25 @@
+<template>
+  <div class="tab-style-editor">
+    <el-radio-group v-model="optionModel.tabStyle" size="small">
+      <el-radio label="trapezoid">{{ $ts("梯形") }}</el-radio>
+      <el-radio label="rectangle">{{ $ts("矩形") }}</el-radio>
+      <el-radio label="linear">{{ $ts("线性") }}</el-radio>
+    </el-radio-group>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'tab-style-editor',
+  props: {
+    designer: Object,
+    selectedWidget: Object,
+    optionModel: Object
+  }
+}
+</script>
+<style lang="scss" scoped>
+.tab-style-editor {
+  padding-left: 2px;
+}
+</style>

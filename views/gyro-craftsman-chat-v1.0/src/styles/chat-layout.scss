@@ -1,0 +1,23 @@
+.chat-main-layout {
+  @apply w-796px mx-auto;
+
+  @media screen and (max-width: 1200px) {
+    @apply w-80%;
+  }
+
+  @media screen and (max-width: 990px) {
+    @apply w-90%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: calc(var(--vw) - 40px);
+  }
+}
+
+.chat-main-msg-layout {
+  @apply sticky bottom-0 pb-31px mt-auto z-1;
+
+  @media screen and (max-width: 768px) {
+    @apply pb-20px;
+  }
+}

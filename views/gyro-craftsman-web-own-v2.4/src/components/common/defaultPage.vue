@@ -1,0 +1,180 @@
+<!-- @FileDescription: 公共-缺省页 -->
+<template>
+  <div class="default-page">
+    <div v-if="showContent" class="content" :style="contentStyle">
+      <div class="content-list" :style="contentListStyle">
+        <img :src="currentContent.url" alt="" class="img" />
+        <p v-if="textShow">{{ displayText }}</p>
+        <slot></slot>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+// 静态图片导入
+import newdef1 from '@/assets/images/newdef1.png'
+import none008 from '@/assets/images/none-008.png'
+import newdef2 from '@/assets/images/newdef2.png'
+import viewImg from '@/assets/images/view.png'
+import def1 from '@/assets/images/none-009.png'
+import none012 from '@/assets/images/none-012.png'
+import dkSuccess from '@/assets/images/empty/dk-success.png'
+import { translateSystemText } from '@/utils/i18ns'
+
+// 动态图片导入 - 使用 webpack require.context
+const imageContext = require.context('@/assets/images/', false, /none-.*\.png$/)
+const imageModules = {}
+imageContext.keys().forEach((key) => {
+  const match = key.match(/none-(.+)\.png$/)
+  if (match) {
+    imageModules[match[1]] = imageContext(key)
+  }
+})
+
+function getImageUrl(type) {
+  return imageModules[type] || ''
+}
+
+// 静态内容配置
+const STATIC_CONTENTS = [
+  { url: newdef1, text: 'common.noForm' },
+  { url: none008, text: 'common.noComments' },
+  { url: newdef2, text: 'common.noData' },
+  { url: viewImg, text: 'common.noViews' },
+  { url: dkSuccess, text: 'common.questSuccess' },
+  { url: def1, text: 'common.noData' },
+  { url: newdef2, text: 'common.noData' },
+  { url: none012, text: 'common.noAssessmentRecord' }
+]
+
+export default {
+  name: 'DefaultPage',
+  props: {
+    index: {
+      type: Number,
+      default: -1,
+      validator: (value) => value >= -1
+    },
+    textShow: {
+      type: Boolean,
+      default: true
+    },
+    minHeight: {
+      type: [Number, String],
+      default: 520
+    },
+    top: {
+      type: String,
+      default: '0px'
+    },
+
+    height: {
+      type: String,
+      default: ''
+    },
+    imgWidth: {
+      type: String,
+      default: '200px'
+    }
+  },
+  computed: {
+    lang() {
+      return this.$store.getters.lang
+    },
+    showContent() {
+      return this.index > -1 && this.currentContent
+    },
+    currentContent() {
+      if (this.index < 0) return null
+      return this.contentList[this.index] || null
+    },
+    displayText() {
+      if (!this.currentContent?.text) return ''
+      return `${translateSystemText(this.currentContent.text, this)}~`
+    },
+    contentStyle() {
+      return {
+        minHeight: this.height || this.getMinHeight(),
+        '--imgWidth': this.imgWidth
+      }
+    },
+    contentListStyle() {
+      if (!this.top || this.top === '0' || this.top === '0px') return {}
+      const offset = String(this.top).endsWith('px') ? this.top : `${this.top}px`
+      return { transform: `translateY(-${offset})` }
+    },
+    // 动态生成国际化内容
+    i18nContents() {
+      return Array.from({ length: 18 }, (_, i) => ({
+        url: getImageUrl(this.getImageType(i)),
+        text: this.$t(`public.message${i.toString().padStart(2, '0')}`)
+      }))
+    },
+    contentList() {
+      return [...this.i18nContents, ...STATIC_CONTENTS]
+    }
+  },
+  methods: {
+    getMinHeight() {
+      return String(this.minHeight).endsWith('px') ? this.minHeight : this.minHeight + 'px'
+    },
+    getImageType(index) {
+      const types = [
+        'assess',
+        'statistics',
+        '001',
+        '002',
+        '003',
+        '004',
+        '005',
+        '006',
+        '007',
+        '007',
+        'statistics',
+        'statistics',
+        '003',
+        '003',
+        'assess',
+        '009',
+        '010',
+        '011'
+      ]
+      return types[index] || '003'
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.default-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 400px;
+    width: 100%;
+    text-align: center;
+
+    .content-list {
+      .img {
+        width: var(--imgWidth);
+      }
+
+      p {
+        margin: 0;
+        padding: 6px 0 0 0;
+        font-size: 13px;
+        color: #999999;
+      }
+    }
+  }
+}
+</style>

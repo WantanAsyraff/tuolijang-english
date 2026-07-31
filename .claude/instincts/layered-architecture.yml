@@ -1,0 +1,46 @@
+---
+id: tuoluojiang-layered-architecture
+trigger: "when creating or modifying PHP files in the OA system"
+confidence: 0.95
+domain: architecture
+source: local-repo-analysis
+---
+
+# 遵循分层架构
+
+## Action
+严格遵循 Controller → Service → Dao → Model 分层架构：
+
+- **Controller**: 只负责接收请求、调用 Service、返回响应
+- **Service**: 业务逻辑编排、事务控制、权限处理
+- **Dao**: 数据查询封装、复杂查询构建
+- **Model**: Eloquent 模型定义、关系定义、访问器
+
+## Rules
+1. 禁止 Controller 直接操作 Model 或 DB
+2. 禁止 Service 直接写原生 SQL（除非必要）
+3. 事务控制必须在 Service 层
+4. 数据权限过滤必须在 Service 或 Dao 层
+
+## Example
+
+```php
+// 正确
+class UserController extends BaseController
+{
+    public function list(UserRequest $request)
+    {
+        return $this->success($this->service->getList($request->validated()));
+    }
+}
+
+// 错误
+class UserController extends BaseController
+{
+    public function list(UserRequest $request)
+    {
+        $users = User::where('status', 1)->get(); // 禁止直接操作 Model
+        return $this->success($users);
+    }
+}
+```

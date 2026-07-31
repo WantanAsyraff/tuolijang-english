@@ -1,0 +1,38 @@
+---
+id: tuoluojiang-api-response
+trigger: "when returning API responses from controllers"
+confidence: 0.95
+domain: api
+source: local-repo-analysis
+---
+
+# 使用统一响应格式
+
+## Action
+使用 BaseController 提供的响应方法：
+
+```php
+// 成功响应
+return $this->success($data);           // 返回数据
+return $this->success('操作成功');      // 仅消息
+
+// 失败响应
+return $this->fail('错误信息');         // 返回错误
+return $this->fail('错误信息', $data);  // 带附加数据
+```
+
+## Rules
+1. 禁止使用 `response()->json()` 直接返回
+2. 禁止使用 `return ['code' => 200, ...]` 格式
+3. 成功响应使用 `success()`，失败响应使用 `fail()`
+4. 异常通过 `ApiException` 抛出，由全局异常处理器处理
+
+## Response Structure
+```json
+{
+    "status": 200,
+    "message": "ok",
+    "data": {},
+    "tips": 1
+}
+```

@@ -1,0 +1,445 @@
+<template>
+  <!--  <div class="sidebar-container" v-if="isShowMenu"></div>-->
+    
+  <div class="nav-bar" v-if="isShowMenu && currentMenu && currentMenu.children" :style="{ width: !isCollapse ? '204px !important' : '76px !important' }">
+    <div v-if="isShow" class="child-bar" :class="!isCollapse ? 'plr12' : ''">
+      <!-- <div
+        class="over-text1"
+        v-if="currentMenu"
+        :class="!isCollapse ? 'title-box-open' : 'title-box-close'"
+      >
+        {{ currentMenu.menu_name }}
+      </div> -->
+      <!-- <el-scrollbar style="height: 100%;" wrap-class="scrollbar-wrapper"> -->
+        <div class="scroll-box">
+    
+        <el-menu
+          :default-active="activeMenu"
+          :collapse="isCollapse"
+          :background-color="variables.menuBg"
+          :text-color="variables.menuText"
+          :unique-opened="false"
+          :active-text-color="variables.menuActiveText"
+          :collapse-transition="false"
+          :router="false"
+          mode="vertical"
+          @select="selectMenu"
+        >
+          <template v-if="currentMenu">
+            
+            <sidebar-item
+              v-for="route in currentMenu.children"
+              :key="'sidebar' + route.id"
+              :item="route"
+              :base-path="includeRouteOrNot(route.menu_path)"
+              @click.native="routerClick(route)"
+            />
+          </template>
+        </el-menu>
+        </div>
+      <!-- </el-scrollbar> -->
+    </div>
+    <div class="nav-open" @click="clickOutside">
+      <i class="el-icon-arrow-left" :class="isCollapse ? 'active' : ''"></i>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapMutations } from 'vuex'
+import variables from '@/styles/variables.scss'
+
+// 与 layout/mixin/ResizeHandler 保持一致
+const SIDEBAR_RESPONSIVE_WIDTH = 992
+
+export default {
+  components: { SidebarItem: () => import('./SidebarItem'), Logo: () => import('./Logo') },
+  data() {
+    return {
+      parentCur: 0,
+      childcur: 0,
+      isShow: false,
+      activePath: '',
+      menuName: '',
+      windowWidth: document.documentElement.clientWidth
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'permission_routes',
+      'sidebar',
+      'menuList',
+      'sidebarType',
+      'parentMenuId',
+      'defaultOpen',
+      'isClickTab',
+      'menuStatus'
+    ]),
+    sidebarParentCur: {
+      get() {
+        return this.$store.state.app.sidebarParentCur
+      },
+      set() {}
+    },
+    activeMenu() {
+      const route = this.$route
+      const { meta, path } = route
+
+      if (meta.activeMenu) {
+        return meta.activeMenu
+      }
+      return path
+    },
+    showLogo() {
+      return this.$store.state.settings.sidebarLogo
+    },
+    currentMenuIndex() {
+      const index = this.sidebarParentCur
+      if (typeof index === 'string' && index.length > 13) {
+        return index.slice(13)
+      }
+      return index
+    },
+    currentMenu() {
+      return this.menuList && this.menuList[this.currentMenuIndex]
+    },
+    isShowMenu() {
+      const children = Array.isArray(this.currentMenu && this.currentMenu.children)
+        ? this.currentMenu.children
+        : []
+      // 二级菜单只有一个，那就用is_show==1来判断显示隐藏
+      if (children.length > 1) {
+        return true
+      }
+
+      const firstChild = children[0]
+      return !!firstChild && firstChild.is_show !== 0
+    },
+    variables() {
+      return variables
+    },
+    isCollapse() {
+      // 窗口较小时强制收起二级侧边栏
+      if (this.windowWidth < SIDEBAR_RESPONSIVE_WIDTH) {
+        return true
+      }
+      return !this.sidebar.opened
+    },
+    includeRouteOrNot() {
+      return function (menuPath) {
+        const { path } = this.$route
+        if (this.activeMenu.startsWith(menuPath)) {
+          return path
+        }
+        return menuPath
+      }
+    }
+  },
+  watch: {
+    sidebarParentCur: {
+      handler(nVal, oVal) {
+        let nVals = nVal
+        if (typeof nVal === 'string' && nVal.length > 13) {
+          nVals = nVal.slice(13)
+        }
+        this.isShow = true
+        if (this.isClickTab) {
+          const currentMenu = this.menuList && this.menuList[nVals]
+          const children = Array.isArray(currentMenu && currentMenu.children) ? currentMenu.children : []
+          const firstChild = children[0]
+          if (
+            firstChild &&
+            firstChild.children !== undefined &&
+            firstChild.children.length
+          ) {
+            this.$store.commit('app/SET_CLICK_TAB', false)
+            this.$router.push({
+              path: firstChild.children[0].menu_path
+            })
+          } else {
+            this.$store.commit('app/SET_CLICK_TAB', false)
+            const menuPath = firstChild ? firstChild.menu_path : ''
+            if (menuPath) {
+              this.$router.push({
+                path: menuPath
+              })
+            }
+          }
+        }
+        this.sidebarParentCur = nVals
+      },
+      deep: true
+    }
+  },
+  created() {},
+  mounted() {
+    this.syncSidebarOnResize()
+    window.addEventListener('resize', this.syncSidebarOnResize)
+
+    this.$nextTick(() => {
+      if (this.sidebarParentCur >= 0) this.isShow = true
+      this.menuList.forEach((nav, i) => {
+        if (nav.id === this.parentMenuId) {
+          this.parentCur = i
+        }
+      })
+
+      if (this.menuList[this.parentCur] && this.menuList[this.parentCur].children) {
+        this.$store.commit('app/SET_BARTYPE', true)
+      } else {
+        this.$store.commit('app/SET_BARTYPE', false)
+      }
+    })
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.syncSidebarOnResize)
+  },
+  methods: {
+    ...mapMutations('user', ['SET_MENU_LIST']),
+    // 窗口缩小时自动收起二级侧边栏，同步主内容区布局
+    syncSidebarOnResize() {
+      this.windowWidth = document.documentElement.clientWidth
+      if (this.windowWidth < SIDEBAR_RESPONSIVE_WIDTH && this.sidebar.opened) {
+        this.$store.dispatch('app/closeSideBar', { withoutAnimation: true })
+      }
+    },
+    // 父级导航点击
+    handelParentClick(item, index) {
+      this.parentCur = index
+      this.$store.commit('app/SETPID', item.id)
+      const childUrl = ''
+      let chiidLink = ''
+      const children = Array.isArray(item.children) ? item.children : []
+      const firstChild = children[0]
+      if (firstChild) {
+        if (firstChild.children) {
+          var recursiveFunction = function () {
+            const getStr = function (list) {
+              list.children.forEach(function (row, index) {
+                if (row.children) {
+                  getStr(row)
+                } else {
+                  if (index == 0) {
+                    return (chiidLink = row.menu_path)
+                  }
+                }
+              })
+            }
+            getStr(firstChild)
+          }
+          recursiveFunction()
+        } else {
+          chiidLink = firstChild.menu_path
+        }
+
+        this.childcur = 0
+        if (chiidLink) {
+          this.$router.push({
+            path: chiidLink
+          })
+        }
+        this.$store.commit('app/SET_BARTYPE', true)
+      } else {
+        this.$router.push({
+          path: item.menu_path
+        })
+        this.$store.commit('app/SET_BARTYPE', false)
+      }
+    },
+    routerClick(item) {
+      if (item.children) {
+        item.children.forEach((el) => {
+          if (el.top_position && el.top_position.length > 0) {
+            if (this.activePath == el.menu_path) {
+              this.$store.commit('app/SETPID', el.pid)
+            }
+          }
+        })
+      } else {
+        this.$store.commit('app/SETPID', item.pid)
+      }
+    },
+    selectMenu(index) {
+      this.activePath = index
+    },
+    clickOutside() {
+      if (this.isCollapse) {
+        this.$store.dispatch('app/openSideBar')
+      } else {
+        this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+      }
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+.nav-bar {
+  width: 70px;
+  display: flex;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  // border: 1px solid #EEEEEE;
+
+  .nav-open {
+    width: 10px;
+    height: 35px;
+    background: #F3F5F9;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 9;
+    border-radius: 4px 0 0 4px;
+    display: flex;
+    align-items: center;
+    i {
+      color: #606266;
+      font-size: 13px;
+      transition: all 0.5s;
+      transform-origin: center;
+      &.active {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
+
+.scroll-box {
+  height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding-bottom: 20px;
+   scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.scroll-box::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+.parent-bar {
+  width: 100%;
+  height: 100%;
+  background: #001529;
+  .logo {
+    padding: 33px 0;
+    text-align: center;
+    img {
+      width: 41px;
+      height: 41px;
+      border-radius: 50%;
+    }
+  }
+  .parent-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    .icon {
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+    // &.on {
+    //   background: #1890ff;
+    // }
+  }
+}
+::v-deep .el-menu--popup {
+  min-width: 114px;
+}
+.child-bar {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  
+
+  ::v-deep .el-menu {
+    border-right: none;
+  }
+  ::v-deep .el-menu-item {
+    font-size: 13px !important;
+    display: flex;
+    align-items: center;
+    color: #303133 !important;
+  }
+  ::v-deep .el-scrollbar__wrap {
+    overflow-x: hidden;
+  }
+  ::v-deep .router-link-exact-active {
+    margin-bottom: 1px;
+  }
+
+  ::v-deep .el-submenu__title {
+    font-size: 13px;
+  }
+  ::v-deep .el-menu .el-submenu .el-submenu__title > i {
+    width: auto !important;
+  }
+
+
+
+  .title-box-open {
+    height: 64px;
+    line-height: 64px;
+    padding-left: 10px;
+    // padding: 15px 15px 15px 23px;
+  font-family: PingFang SC, PingFang SC;
+font-weight: 600;
+font-size: 18px;
+color: #303133;
+  }
+  .title-box-close {
+    padding: 15px 15px 15px 10px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .child-nav-item {
+    .txt {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 42px;
+      height: 36px;
+      font-size: 13px;
+      cursor: pointer;
+      &.on {
+        background: #f0f2f5;
+      }
+    }
+    .link {
+      position: relative;
+      height: 36px;
+      line-height: 36px;
+      color: #000 !important;
+      font-size: 14px;
+      padding-left: 42px;
+      // &:hover {
+      //   color: #2d8cf0 !important;
+      // }
+      &.router-link-active {
+        background: #f0f2f5;
+      }
+    }
+    .icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: 10px;
+      font-size: 16px;
+    }
+  }
+}
+.icon {
+  font-size: 18px;
+}
+</style>

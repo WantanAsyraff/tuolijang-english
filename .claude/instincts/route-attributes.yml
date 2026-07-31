@@ -1,0 +1,44 @@
+---
+id: tuoluojiang-route-attributes
+trigger: "when creating new controllers or API endpoints"
+confidence: 0.95
+domain: routing
+source: local-repo-analysis
+---
+
+# 使用路由属性定义路由
+
+## Action
+使用 PHP 8 属性在控制器中定义路由，而非在 routes/ 文件中定义：
+
+```php
+use Spatie\RouteAttributes\Attributes\Get;
+use Spatie\RouteAttributes\Attributes\Post;
+use Spatie\RouteAttributes\Attributes\Prefix;
+use Spatie\RouteAttributes\Attributes\Middleware;
+
+#[Prefix('api/admin/module')]
+#[Middleware('auth:api')]
+class ModuleController extends BaseController
+{
+    #[Get('/list')]
+    public function list() {}
+
+    #[Post('/create')]
+    public function create(ModuleRequest $request) {}
+
+    #[Get('/{id}/detail')]
+    public function detail(int $id) {}
+}
+```
+
+## Rules
+1. 所有 API 路由必须在控制器中使用属性定义
+2. 使用 `#[Prefix]` 定义控制器级别前缀
+3. 使用 `#[Middleware]` 应用中间件
+4. RESTful 风格：GET 查询、POST 创建、PUT 更新、DELETE 删除
+
+## Prefix Convention
+- 后台管理：`api/admin/{module}`
+- 移动端：`api/uni/{module}`
+- 开放平台：`api/open/{module}`

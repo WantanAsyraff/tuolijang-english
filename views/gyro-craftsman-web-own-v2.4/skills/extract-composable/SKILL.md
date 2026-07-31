@@ -1,0 +1,112 @@
+---
+name: extract-composable
+description: 从 Vue 2.7 页面中抽取可复用组合式逻辑到 composables/（useTable、usePage、useLoading 模式），供 Options API + setup() 页面复用。当用户说"抽 composable/组合式函数/逻辑复用/提取列表逻辑"时触发。
+---
+
+# extract-composable
+
+将页面内重复的列表、分页、loading、抽屉状态等逻辑抽到 `composables/`，供 **Options API + `setup()`** 页面复用（AGENTS.md 约定：新建页禁止 `<script setup>`）。
+
+## 项目参考
+
+| 文件 | 职责 |
+|---|---|
+| `src/views/inventory/composables/usePage.js` | 分页 state |
+| `src/views/inventory/composables/useLoading.js` | loading 开关 |
+| `src/views/inventory/composables/useTable.js` | 列表 + 分页 + 搜索组合 |
+| `src/views/inventory/composables/useDetailDrawer.js` | 详情抽屉开关与当前行 |
+| `src/views/user/calendar/composables/useCustomer.js` | 业务域专用逻辑 |
+
+**优先扩展已有 composable**，再新建文件。
+
+## 何时抽取
+
+| 信号 | 动作 |
+|---|---|
+| 两个以上列表页重复 `where.page/limit`、`getTableData`、`loading` | 用或扩展 `useTable` |
+| 单页超过 80 行纯数据逻辑 | 按职责拆 `useXxx` |
+| 仅一处使用 | **不抽**，保持内联 |
+
+## 文件约定
+
+```
+src/views/<scope>/<feature>/composables/useXxx.js   # 功能专用
+src/views/<scope>/composables/useXxx.js             # 域内共享
+```
+
+- 导出：`export const useXxx = (deps, options) => { ... }`
+- 使用 Vue 2.7 的 `ref` / `reactive` / `watch` / `computed` from `'vue'`
+- 返回对象属性用**顶层 ref**（模板自动解包）；若在 `setup()` 返回给模板，直接 `return { ...useTable() }`
+
+## 模板：列表逻辑
+
+```js
+import { ref, watch } from 'vue'
+import { usePage } from '@/views/inventory/composables/usePage'
+import { useLoading } from '@/views/inventory/composables/useLoading'
+
+/**
+ * <模块>--<功能>列表逻辑
+ * @param {Function} fetchApi 列表接口
+ */
+export const useFeatureList = (fetchApi) => {
+  const { page, pageSize, total, resetPage } = usePage()
+  const { isLoading, startLoading, stopLoading } = useLoading()
+  const tableData = ref([])
+  const where = ref({ page: 1, limit: 15 })
+
+  const fetchData = async () => {
+    startLoading()
+    try {
+      const res = await fetchApi({ ...where.value, page: page.value, limit: pageSize.value })
+      tableData.value = res.data.list || []
+      total.value = res.data.count || 0
+    } finally {
+      stopLoading()
+    }
+  }
+
+  watch([page, pageSize], fetchData)
+
+  return { tableData, where, isLoading, page, pageSize, total, resetPage, fetchData }
+}
+```
+
+## 在页面中使用（Options API + setup）
+
+```js
+import { onMounted } from 'vue'
+import { xxxListApi } from '@/api/<scope>'
+import { useFeatureList } from './composables/useFeatureList'
+
+export default {
+  name: 'FeatureList',
+  setup() {
+    const { tableData, where, isLoading, fetchData } = useFeatureList(xxxListApi)
+    onMounted(() => fetchData())
+    return { tableData, where, isLoading, fetchData }
+  }
+}
+```
+
+弹窗 `ref`、路由跳转等强耦合 UI 的逻辑**留在组件内**，不要塞进 composable。
+
+## 工作流程
+
+1. 标出重复块（分页、请求、选中行、抽屉状态）
+2. 查 `src/views/**/composables/` 是否已有可扩展项
+3. 新建或扩展 composable，补中文 JSDoc
+4. 原页面改为 `setup()` 调用并删除重复代码
+5. 若含纯函数分支，可选 [`write-unit-test`](../write-unit-test/SKILL.md) 补测
+
+## 不要做的事
+
+- 不要使用 `<script setup>` 语法糖
+- 不要在 composable 内直接 `import router` / `useStore`（通过参数注入）
+- 不要把 API URL 硬编码在 composable（通过 `fetchApi` 参数传入）
+- 不要为一次性脚本创建 composable
+
+## 与其他 skill 的配合
+
+- 新建 CRUD 页时若预判多页复用，可在 [`create-crud-page`](../create-crud-page/SKILL.md) 完成后调用本 skill 重构
+-  inventory 模块的 `useTable` 可作为新模块默认基线
