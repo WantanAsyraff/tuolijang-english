@@ -154,6 +154,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   saveHolidayTypeApi,
   approveHolidayTypeApi,
@@ -176,7 +177,7 @@ export default {
       },
       months: [],
       rules: {
-        name: [{ required: true, message: '请输入假期类型' }]
+        name: [{ required: true, message: i18n.t('ui.businessHolidayTypeIndexPleaseEnterLeaveTypes') }]
       },
       form: {
         name: '',

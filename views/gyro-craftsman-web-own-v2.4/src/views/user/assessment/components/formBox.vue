@@ -100,6 +100,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Common from '@/components/user/accessCommon'
 import { frameUserApi } from '@/api/setting'
 export default {
@@ -147,11 +148,11 @@ export default {
       frameUserArray: [],
       frameUserOption: [],
       dateArray: [
-        { value: 1, type: 'week', text: '选择周', format: 'yyyy 第 WW 周' },
-        { value: 2, type: 'month', text: '选择月份', format: 'yyyy-MM' },
+        { value: 1, type: 'week', text: i18n.t('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
+        { value: 2, type: 'month', text: i18n.t('legacyScript.selectMonth'), format: 'yyyy-MM' },
         { value: 4, type: '' },
         { value: 5, type: '' },
-        { value: 3, type: 'year', text: '选择年份', format: 'yyyy' }
+        { value: 3, type: 'year', text: i18n.t('legacyScript.selectYear'), format: 'yyyy' }
       ],
       quarterBtn: false,
       halfYearBtn: false

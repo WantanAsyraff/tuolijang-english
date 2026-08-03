@@ -172,6 +172,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getWorkConfigApi, saveWorkConfigApi, getWorkRsaApi } from '@/api/setting'
 export default {
   data() {
@@ -244,9 +245,9 @@ export default {
       this.form.wechat_work_session_public_key_version = res.data.rsa_public_key
     },
     copyFn(val) {
-      if (!val) return this.$message.error('请输入需要复制的内容')
+      if (!val) return this.$message.error(i18n.t('legacyScript.enterContentToCopy'))
       clipboard.writeText(val)
-      this.$message.success('复制成功')
+      this.$message.success(i18n.t('setting.copytitle'))
     }
   }
 }

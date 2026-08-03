@@ -144,6 +144,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import draggable from 'vuedraggable'
 import { getSalary, getSalaryContent, putSalaryContent, latelySalaryContent } from '@/api/enterprise'
 
@@ -167,47 +168,47 @@ export default {
       unmodifiedFormItem: [],
       dialogVisible: false,
       mark: '',
-      title: '定薪',
+      title: i18n.t('legacyScript.setSalary'),
       status: 'add',
       loading: false,
       take_date: '',
       fromItem: [
         {
-          label: '基本工资(元):',
+          label: i18n.t('legacyScript.baseSalaryCNY'),
           value: '0',
-          placeholder: '请输入基本工资',
+          placeholder: i18n.t('legacyScript.pleaseEnterBaseSalary'),
           sort: 1
         },
         {
-          label: '绩效工资(元):',
+          label: i18n.t('legacyScript.performancePayCNY'),
           value: 0,
-          placeholder: '请输入绩效工资',
+          placeholder: i18n.t('legacyScript.pleaseEnterPerformancePay'),
           sort: 2
         },
         {
-          label: '岗位工资(元):',
+          label: i18n.t('legacyScript.positionSalaryCNY'),
           value: 0,
-          placeholder: '请输入岗位工资',
+          placeholder: i18n.t('legacyScript.pleaseEnterPositionSalary'),
           sort: 3
         },
 
         {
-          label: '管理津贴(元):',
+          label: i18n.t('legacyScript.allowanceCNY'),
           value: 0,
-          placeholder: '请输入管理津贴',
+          placeholder: i18n.t('legacyScript.pleaseEnterManagementAllowance'),
           sort: 4
         },
         {
-          label: '技能补贴(元):',
+          label: i18n.t('legacyScript.skillSubsidyCNY'),
           value: 0,
-          placeholder: '请输入基本工资',
+          placeholder: i18n.t('legacyScript.pleaseEnterBaseSalary'),
           sort: 5
         },
 
         {
-          label: '其他补贴(元):',
+          label: i18n.t('legacyScript.otherSubsidiesYuan'),
           value: 0,
-          placeholder: '请输入餐饮，交通，话费，电脑等其他补贴',
+          placeholder: i18n.t('legacyScript.pleaseEnterOtherSubsidiesSuchAsDiningTransportationPhoneBills'),
           sort: 6
         }
       ],
@@ -237,7 +238,7 @@ export default {
     handleResetFn() {
       this.fromItem = JSON.parse(JSON.stringify(this.unmodifiedFormItem))
       if (this.nowtype == '调薪弹窗') {
-        this.title = '调薪弹窗'
+        this.title = i18n.t('legacyScript.salaryAdjustmentPopup')
         this.status = 'add'
         this.type = '调薪弹窗'
       } else {
@@ -297,7 +298,7 @@ export default {
     // 编辑
     editFn() {
       this.unmodifiedFormItem = JSON.parse(JSON.stringify(this.fromItem))
-      this.title = '编辑表单字段'
+      this.title = i18n.t('legacyScript.editFormFields')
       this.status = 'edit'
     },
 
@@ -327,7 +328,7 @@ export default {
             sort: '',
             value: 0,
             label: '',
-            placeholder: '请输入'
+            placeholder: i18n.t('finance.pleaseinput')
           })
         }
       } else {
@@ -335,7 +336,7 @@ export default {
           sort: '',
           value: 0,
           label: '',
-          placeholder: '请输入'
+          placeholder: i18n.t('finance.pleaseinput')
         })
       }
     },
@@ -406,7 +407,7 @@ export default {
           })
           this.status = 'add'
           if (this.type == '调薪弹窗') {
-            this.title = '调薪弹窗'
+            this.title = i18n.t('legacyScript.salaryAdjustmentPopup')
           }
         }
       }

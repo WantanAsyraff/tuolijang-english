@@ -213,6 +213,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { crudTestSendApi, crudAddCurlApi, crudGetCurlEditApi, crudPutCurlApi } from '@/api/develop'
 export default {
   name: '',
@@ -256,26 +257,26 @@ export default {
         }
       ],
       rules: {
-        title: [{ required: true, message: '请输入接口标题', trigger: 'blur' }],
-        is_pre: [{ required: true, message: '请选择请求类型', trigger: 'blur' }],
-        url: [{ required: true, message: '请输入链接地址', trigger: 'blur' }],
-        method: [{ required: true, message: '请选择请求方式', trigger: 'blur' }],
-        pre_method: [{ required: true, message: '请选择请求方式', trigger: 'blur' }],
-        pre_url: [{ required: true, message: '请输入地址', trigger: 'blur' }]
+        title: [{ required: true, message: i18n.t('ui.developDataManagementAddDataPleaseEnterAnApiTitle'), trigger: 'blur' }],
+        is_pre: [{ required: true, message: i18n.t('legacyScript.pleaseSelectARequestType'), trigger: 'blur' }],
+        url: [{ required: true, message: i18n.t('ui.developDataManagementAddDataPleaseEnterALinkUrl'), trigger: 'blur' }],
+        method: [{ required: true, message: i18n.t('legacyScript.pleaseSelectARequestMethod'), trigger: 'blur' }],
+        pre_method: [{ required: true, message: i18n.t('legacyScript.pleaseSelectARequestMethod'), trigger: 'blur' }],
+        pre_url: [{ required: true, message: i18n.t('legacyScript.pleaseEnterAddress'), trigger: 'blur' }]
       },
       fieldValue: [],
       options: [
         {
           value: '0',
-          label: '固定值'
+          label: i18n.t('legacyScript.fixedValue')
         },
         {
           value: '1',
-          label: '响应值'
+          label: i18n.t('legacyScript.responseValue')
         },
         {
           value: '2',
-          label: '自增值'
+          label: i18n.t('legacyScript.autoIncrementValue')
         }
       ]
     }

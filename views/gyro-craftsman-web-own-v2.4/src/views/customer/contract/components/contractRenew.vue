@@ -74,6 +74,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { clientBillListApi } from '@/api/enterprise'
 import { clientBillPutApi } from '@/api/client'
 export default {
@@ -171,7 +172,7 @@ export default {
     },
     handleRenewCensus() {
       this.configRenewCensus = {
-        title: '订单续费',
+        title: i18n.t('customer.orderRenewal'),
         width: '480px',
         data: this.renewCensusData
       }

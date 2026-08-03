@@ -104,6 +104,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { pinyin } from 'pinyin-pro'
 import Mobile from './mobile.vue'
 import { getDictListApi } from '@/api/form'
@@ -314,12 +315,12 @@ export default {
     handleConfirm() {
       for (const item of this.fields) {
         if (/^[\u4e00-\u9fa5a-zA-Z][\u4e00-\u9fa5a-zA-Z_]{0,15}$/.test(item.field_name) == false) {
-          this.$message.error('字段名称必须以中文，英文字母开头，中间可输入下划线，最多可输入16个字')
+          this.$message.error(i18n.t('legacyScript.theFieldNameMustStartWithAChineseCharacterOr'))
           return false
         }
 
         if (!item.value) {
-          this.$message.error('请选择字段类型')
+          this.$message.error(i18n.t('ui.developConditionGroupPleaseSelectFieldType'))
           return
         }
       }

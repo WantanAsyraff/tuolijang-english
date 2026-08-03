@@ -285,6 +285,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import popover from './popover'
 import databaseTable from './databaseTable'
 import jsonDialog from './jsonDialog'
@@ -311,7 +312,7 @@ export default {
   data() {
     return {
       fromData: {
-        title: '参数设置',
+        title: i18n.t('ui.chatModelFormParameterSettings'),
         width: '980px',
         type: 'slot',
         btnText: '确定'
@@ -338,7 +339,7 @@ export default {
       formRules: {
         models_id: {
           required: true,
-          message: '请选择模型',
+          message: i18n.t('legacyScript.selectModel'),
           trigger: 'change'
         }
       },
@@ -350,7 +351,7 @@ export default {
       show4: true,
       show5: true,
       show6: true,
-      placeholder: '请输入提示词'
+      placeholder: i18n.t('legacyScript.pleaseEnterAPrompt')
     }
   },
   computed: {
@@ -492,7 +493,7 @@ export default {
           } else if (obj.value === '' || obj.name === '' || obj.filed === '') {
             this.$message({
               type: 'error',
-              message: '请填写完整,参数设置不能为空'
+              message: i18n.t('legacyScript.pleaseCompleteAllFieldsParameterSettingsCannotBeEmpty')
             })
             return false
           }

@@ -101,6 +101,7 @@
 </el-dialog>
 </template>
 <script>
+import i18n from '@/lang'
 import { clientBillStatusApi, clientFileDeleteApi, clientInvoiceStatusApi, putInvalid, clientInvoiceStatus } from '@/api/client'
 import SettingMer from '@/libs/settingMer'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
@@ -185,12 +186,12 @@ export default {
       if (this.radio === 2 && !this.remarks) {
         this.$message.error(this.$t('customer.placeholder18'))
       } else if (this.config.type === 3 && this.radio === 1 && !this.num) {
-        this.$message.error('请输入发票编号')
+        this.$message.error(i18n.t('ui.fdExamineExamineDialogPleaseEnterInvoiceNumber'))
       } else if (this.config.type === 3 && this.radio === 1 && !this.invoice_address) {
         if (this.invoice_type === 'express') {
-          this.$message.error('请输入邮寄地址')
+          this.$message.error(i18n.t('ui.fdInvoiceInvoicingDialogPleaseEnterMailingAddress'))
         } else {
-          this.$message.error('请输入邮箱地址')
+          this.$message.error(i18n.t('customer.placeholder55'))
         }
       } else {
         let data = {
@@ -268,7 +269,7 @@ export default {
     // 上传前
     handleUpload(file) {
       if (!this.config.data || !this.config.data.eid) {
-        this.$message.error('缺少客户信息，无法上传开票凭证')
+        this.$message.error(i18n.t('legacyScript.missingCustomerInformationUnableToUploadInvoiceProof'))
         return false
       }
       const types = [

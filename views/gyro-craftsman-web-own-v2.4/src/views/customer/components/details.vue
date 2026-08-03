@@ -139,6 +139,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { contractDocDetailApi } from '@/api/contractSign'
 import { getCluesEditApi, oddsCreateEditApi } from '@/api/client'
 import { liaisonEditCreateApi } from '@/api/enterprise'
@@ -187,30 +188,30 @@ export default {
       const TAB_DATA = [
         {
           value: '1',
-          label: '基本信息'
+          label: i18n.t('setting.info.essentialinformation')
         },
         {
           value: '5',
-          label: '合同信息',
+          label: i18n.t('legacyScript.contractInformation'),
           includeType: ['odds'],
           moduleKey: CUSTOMER_MODULE_KEYS.CONTRACT
         },
         {
           value: '2',
-          label: '跟进记录',
+          label: i18n.t('customer.followrecord'),
           badgeKey: 'follow_count',
           excludeType: ['liaison']
         },
         {
           value: '4',
-          label: '订单',
+          label: i18n.t('customer.contract'),
           badgeKey: 'contract_count',
           excludeType: ['liaison', 'clue', 'clue_seas'],
           moduleKey: CUSTOMER_MODULE_KEYS.ORDER
         },
         {
           value: '3',
-          label: '动态记录',
+          label: i18n.t('ui.customerListDynamicRecordActivityRecords'),
           badgeKey: 'record_count'
         }
       ]
@@ -263,7 +264,7 @@ export default {
     },
     openContract() {
       if (!this.formData.data.eid) {
-        this.$message.error('无效的客户')
+        this.$message.error(i18n.t('legacyScript.invalidCustomer'))
         return false
       }
       this.formData.data.link_type = '5'

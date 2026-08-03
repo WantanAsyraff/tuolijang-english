@@ -7,12 +7,13 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 export default {
   name: 'UploadFroms',
   components: { UploadIndex: () => import('@/components/uploadPicture/index.vue') },
   data() {
     return {
-      title: "图片管理",
+      title: i18n.t('legacyScript.imageManagement'),
       visible: false,
       callback: function () {}
     }

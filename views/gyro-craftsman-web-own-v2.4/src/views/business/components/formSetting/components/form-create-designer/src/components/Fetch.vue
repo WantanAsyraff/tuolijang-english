@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import debounce from '@form-create/utils/lib/debounce'
 import is from '@form-create/utils/lib/type'
 
@@ -48,13 +49,13 @@ export default {
         {
           type: 'input',
           field: 'action',
-          title: '接口: ',
-          validate: [{ required: true, message: '请数据接口' }]
+          title: i18n.t('legacyScript.aPI'),
+          validate: [{ required: true, message: i18n.t('legacyScript.pleaseConfigureTheDataInterface') }]
         },
         {
           type: 'select',
           field: 'method',
-          title: '请求方式: ',
+          title: i18n.t('legacyScript.requestMethod'),
           value: 'GET',
           options: [
             { label: 'GET', value: 'GET' },
@@ -64,7 +65,7 @@ export default {
         {
           type: 'Struct',
           field: 'data',
-          title: '附带数据: ',
+          title: i18n.t('legacyScript.attachedData'),
           value: {},
           props: {
             defaultValue: {}
@@ -73,7 +74,7 @@ export default {
         {
           type: 'Struct',
           field: 'headers',
-          title: 'header信息: ',
+          title: i18n.t('legacyScript.headerInformation'),
           value: {},
           props: {
             defaultValue: {}
@@ -82,7 +83,7 @@ export default {
         {
           type: 'input',
           field: '_parse',
-          title: '解析函数',
+          title: i18n.t('legacyScript.parsingFunction'),
           info: '解析接口数据，返回组件所需的数据结构',
           value: 'function (res){\n   return res.data;\n}',
           props: {
@@ -100,7 +101,7 @@ export default {
                 }
                 cb()
               },
-              message: '请输入正确的解析函数'
+              message: i18n.t('legacyScript.pleaseEnterAValidParsingFunction')
             }
           ]
         }

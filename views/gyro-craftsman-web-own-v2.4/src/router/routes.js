@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import Layout from '@/layout'
 
@@ -11,7 +12,7 @@ const defaultRoutes = [
         path: `${roterPre}/user/work`,
         component: () => import('@/views/user/workbench/index'),
         name: 'dashboard-admin',
-        meta: { title: '工作台', icon: 'dashboard', affix: true }
+        meta: { title: i18n.t('systemText.workbench'), icon: 'dashboard', affix: true }
       }
     ]
   },
@@ -24,7 +25,7 @@ const defaultRoutes = [
         path: `${roterPre}/user/work`,
         component: () => import('@/views/user/workbench/index'),
         name: 'dashboard',
-        meta: { title: '工作台', icon: 'dashboard', affix: true }
+        meta: { title: i18n.t('systemText.workbench'), icon: 'dashboard', affix: true }
       },
       // {
       //   path: `${roterPre}/search`,
@@ -43,7 +44,7 @@ const defaultRoutes = [
         path: `${roterPre}/user/notice/index`,
         name: 'notice',
         component: () => import('@/views/user/notice/index'),
-        meta: { title: '企业动态' }
+        meta: { title: i18n.t('workbench.enterpriseNews') }
       }
     ]
   },
@@ -85,7 +86,7 @@ const defaultRoutes = [
     path: roterPre + '/openFile',
     component: () => import('@/components/openFile/index.vue'),
     name: 'previewPage',
-    meta: { title: '文件预览' }
+    meta: { title: i18n.t('legacyScript.filePreview') }
   },
 
   // {
@@ -104,7 +105,7 @@ const defaultRoutes = [
     path: roterPre + '/dashboard-design',
     component: () => import('@/views/system/dashboard-design/charts/index.vue'),
     name: 'dashboardDesign',
-    meta: { title: '图表设计' }
+    meta: { title: i18n.t('legacyScript.chartDesign') }
   },
   {
     path: roterPre + '/event',

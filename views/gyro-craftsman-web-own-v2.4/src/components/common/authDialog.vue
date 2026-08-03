@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import * as ww from '@wecom/jssdk'
 import { workBinding, workAuthLogin } from '@/api/user'
 import { getWorkCorpConfigApi } from '@/api/setting'
@@ -34,7 +35,7 @@ export default {
       const config = (await this.getData()) || getStorageJson('wxConfig', {})
       if (!config.corpid || !config.agentid) {
         this.loading = false
-        this.$message.error('企业微信配置获取失败，请稍后重试')
+        this.$message.error(i18n.t('legacyScript.failedToRetrieveWeComConfigurationPleaseTryAgainLater'))
         return
       }
       let that = this
@@ -67,7 +68,7 @@ export default {
           }
         },
         onLoginFail(err) {
-          console.error('企业微信登录失败:', err)
+          console.error(i18n.t('legacyScript.weComLoginFailed'), err)
         }
       })
       setTimeout(() => {

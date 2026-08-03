@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 /**
  * AI 悬浮入口控制器
  * 负责路由级别的悬浮球显隐控制和状态同步
@@ -36,7 +37,7 @@ class AiFloatEntryController {
       return client
     } catch (error) {
       // controller 不维护本地副本状态；失败后记录日志，后续路由进入时可再次重试
-      console.error('AI 悬浮球状态同步失败:', error)
+      console.error(i18n.t('legacyScript.failedToSynchronizeTheAIFloatingButtonState'), error)
       return null
     }
   }

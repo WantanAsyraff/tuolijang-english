@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 const label = '标签页';
 const name = 'tab';
 
@@ -17,7 +18,7 @@ export default {
       {
         type: 'select',
         field: 'type',
-        title: '风格类型',
+        title: i18n.t('legacyScript.styleType'),
         options: [
           { label: 'default', value: 'default' },
           {
@@ -27,11 +28,11 @@ export default {
           { label: 'border-card', value: 'border-card' },
         ],
       },
-      { type: 'switch', field: 'closable', title: '标签是否可关闭' },
+      { type: 'switch', field: 'closable', title: i18n.t('legacyScript.whetherTagsAreClosable') },
       {
         type: 'select',
         field: 'tabPosition',
-        title: '选项卡所在位置',
+        title: i18n.t('legacyScript.tabPosition'),
         options: [
           { label: 'top', value: 'top' },
           { label: 'right', value: 'right' },
@@ -41,7 +42,7 @@ export default {
           },
         ],
       },
-      { type: 'switch', field: 'stretch', title: '标签的宽度是否自撑开' },
+      { type: 'switch', field: 'stretch', title: i18n.t('legacyScript.whetherTheLabelWidthAutoExpands') },
     ];
   },
 };

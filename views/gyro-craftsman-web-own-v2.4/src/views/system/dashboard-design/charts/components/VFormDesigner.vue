@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import appI18n from '@/lang'
 import i18n, { changeLocale } from '@/utils/i18n'
 import { getLanguage } from '@/lang'
 import SvgIcon from '@/components/svg-icon-nc'
@@ -174,7 +175,7 @@ export default {
       scrollerHeight: 0,
       fromData: {
         width: '600px',
-        title: '编辑名称',
+        title: appI18n.t('legacyScript.editName'),
         btnText: '确定',
         labelWidth: '100px',
         type: ''
@@ -182,8 +183,8 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: '图表名称：',
-          placeholder: '请输入图表名称',
+          label: appI18n.t('legacyScript.chartName'),
+          placeholder: appI18n.t('legacyScript.pleaseEnterChartName'),
           key: 'name',
           options: []
         }
@@ -193,7 +194,7 @@ export default {
         name: [
           {
             required: true,
-            message: '请输入图表名称',
+            message: appI18n.t('legacyScript.pleaseEnterChartName'),
             trigger: 'blur'
           }
         ]

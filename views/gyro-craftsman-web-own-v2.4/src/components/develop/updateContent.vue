@@ -296,6 +296,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getDictTreeListApi } from '@/api/form'
 export default {
   props: {
@@ -355,7 +356,7 @@ export default {
     return {
       fromData: {
         width: '550px',
-        title: '计算公式',
+        title: i18n.t('legacyScript.formula'),
         btnText: '确定',
         labelWidth: '90px',
         type: 'slot'
@@ -405,7 +406,7 @@ export default {
     submit(data) {
       var reg = new RegExp('[\\u4E00-\\u9FFF]+', 'g')
       if (reg.test(this.value)) {
-        this.$message.error('请输入正确格式的计算公式')
+        this.$message.error(i18n.t('legacyScript.enterACalculationFormulaInTheCorrectFormat'))
         return false
       }
       this.updateList[this.activeIndex].value = this.value

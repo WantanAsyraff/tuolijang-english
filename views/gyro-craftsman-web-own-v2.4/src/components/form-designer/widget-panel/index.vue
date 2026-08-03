@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import appI18n from '@/lang'
 import Draggable from 'vuedraggable'
 import { containers, basicFields, advancedFields, customFields } from './widgetsConfig'
 import { addWindowResizeHandler } from '@/utils/formDesignerUtils'
@@ -217,7 +218,7 @@ export default {
     },
 
     loadFormTemplate(jsonUrl) {
-      this.$confirm(this.i18nt('designer.hint.loadFormTemplateHint'), '提示', {
+      this.$confirm(this.i18nt('designer.hint.loadFormTemplateHint'), appI18n.t('public.tips'), {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       })

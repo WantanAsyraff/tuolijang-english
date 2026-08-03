@@ -108,6 +108,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { storageRecordApi, storageRecordUsersApi } from '@/api/administration'
 
 export default {
@@ -154,19 +155,19 @@ export default {
       handler(nVal) {
         if (nVal.type === 0) {
           this.option = [
-            { value: '', label: '全部' },
-            { value: 0, label: '入库' },
-            { value: 1, label: '领用' }
+            { value: '', label: i18n.t('finance.all') },
+            { value: 0, label: i18n.t('ui.administrationMaterialFixedMaterialDialogStockIn') },
+            { value: 1, label: i18n.t('ui.administrationMaterialFixedConsumeIssue') }
           ]
         } else {
           this.option = [
-            { value: '', label: '全部' },
-            { value: 0, label: '入库' },
-            { value: 1, label: '领用' },
-            { value: 2, label: '归还' },
-            { value: 3, label: '维修' },
-            { value: 4, label: '报废' },
-            { value: 5, label: '维修处理' }
+            { value: '', label: i18n.t('finance.all') },
+            { value: 0, label: i18n.t('ui.administrationMaterialFixedMaterialDialogStockIn') },
+            { value: 1, label: i18n.t('ui.administrationMaterialFixedConsumeIssue') },
+            { value: 2, label: i18n.t('ui.administrationMaterialFixedFixedReturn') },
+            { value: 3, label: i18n.t('ui.administrationMaterialFixedFixedRepair') },
+            { value: 4, label: i18n.t('ui.administrationMaterialFixedFixedDisposal') },
+            { value: 5, label: i18n.t('ui.administrationMaterialFixedRecordRepairHandling') }
           ]
         }
       },

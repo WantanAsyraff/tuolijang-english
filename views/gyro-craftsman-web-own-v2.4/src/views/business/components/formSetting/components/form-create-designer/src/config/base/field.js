@@ -1,10 +1,11 @@
+import i18n from '@/lang'
 export default function field() {
   return [
     {
       type: 'input',
       field: 'field',
       value: '',
-      title: '字段 ID',
+      title: i18n.t('legacyScript.fieldID'),
       props: {
         disabled: true,
       },
@@ -13,13 +14,13 @@ export default function field() {
       type: 'input',
       field: 'title',
       value: '',
-      title: '标识名',
+      title: i18n.t('legacyScript.identifierName'),
     },
     {
       type: 'input',
       field: 'info',
       value: '',
-      title: '提示文字',
+      title: i18n.t('legacyScript.promptText'),
       props: {
         type: 'textarea',
       },

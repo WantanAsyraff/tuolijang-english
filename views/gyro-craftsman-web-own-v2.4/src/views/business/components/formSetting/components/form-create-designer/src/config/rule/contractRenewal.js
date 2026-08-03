@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 const label = '订单续费'
 const name = 'contractRenewal'
@@ -19,9 +20,9 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '订单名称',
+          title: i18n.t('customer.contractname'),
           symbol: 'contractList',
-          props: { disabled: false, readonly: true, placeholder:'请选择订单名称'},
+          props: { disabled: false, readonly: true, placeholder:i18n.t('legacyScript.pleaseSelectOrderName')},
           type: 'select',
           _fc_drag_tag: 'select',
           options: []
@@ -34,7 +35,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '财务收入科目', // here
+          title: i18n.t('setting.group.financialReviewTextInput'), // here
           symbol: 'incomeCategories',
           type: 'cascader',
           _fc_drag_tag: 'cascader',
@@ -52,7 +53,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '续费类型',
+          title: i18n.t('customer.renewaltype'),
           symbol: 'renewalType',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -62,7 +63,7 @@ export default {
           effect: { fetch: '', required: true },
           field: uniqueId(),
           props: { type: 'moneyFrom' },
-          title: '续费金额(元)',
+          title: i18n.t('customer.renewalamount'),
           symbol: 'renewalAmount',
           type: 'moneyFrom',
           _fc_drag_tag: 'moneyFrom'
@@ -74,8 +75,8 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          props: { type: 'datetime', placeholder: '请选择日期' },
-          title: '续费结束日期',
+          props: { type: 'datetime', placeholder: i18n.t('finance.accountselectdate') },
+          title: i18n.t('customer.renewaldate'),
           symbol: 'renewalEndTime',
           type: 'datePicker',
           _fc_drag_tag: 'datetimerange'
@@ -88,7 +89,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '支付方式',
+          title: i18n.t('customer.paymentMethod'),
           type: 'select',
           symbol: 'payType',
           _fc_drag_tag: 'select',
@@ -101,8 +102,8 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          props: { placeholder: '请选择日期' },
-          title: '付款时间',
+          props: { placeholder: i18n.t('finance.accountselectdate') },
+          title: i18n.t('customer.paymentTime'),
           symbol: 'payTime',
           type: 'datePicker',
           _fc_drag_tag: 'datePicker'
@@ -112,7 +113,7 @@ export default {
           effect: { fetch: '', required: false },
           field: uniqueId(),
           props: { type: 'uploadFrom' },
-          title: '付款凭证',
+          title: i18n.t('legacyScript.paymentProof'),
           symbol: 'paymentVoucher',
           type: 'uploadFrom',
           _fc_drag_tag: 'uploadFrom'
@@ -123,8 +124,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: '请输入' },
-          title: '备注',
+          props: { type: 'textarea', placeholder: i18n.t('finance.pleaseinput') },
+          title: i18n.t('customer.remark'),
           symbol: 'remark',
           _fc_drag_tag: 'textarea'
         }
@@ -202,7 +203,7 @@ export default {
         props: {
           value:
             '1. 回款是否需要审批流，在客户规格设置中配置<br>2.支持财务在付款记录中进行回款修改、管理<br>3. 订单回款根据财务收入科目，自动同步财务账目收入记录',
-          title: '回款规则'
+          title: i18n.t('legacyScript.paymentCollectionRules')
         },
         input: false,
         title: '',

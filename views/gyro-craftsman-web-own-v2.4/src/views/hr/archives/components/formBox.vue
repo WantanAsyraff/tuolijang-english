@@ -25,6 +25,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import 'element-ui/lib/theme-chalk/display.css'
 import { getTemp, importCardApi } from '@/api/enterprise'
 import exportExcel from '@/components/common/exportExcel'
@@ -67,15 +68,15 @@ export default {
       isViewSearch: true,
       dropdownList: [
         {
-          label: '导出',
+          label: i18n.t('customer.export'),
           value: 1
         },
         {
-          label: '导入',
+          label: i18n.t('finance.batchupload'),
           value: 2
         },
         {
-          label: '下载模板',
+          label: i18n.t('ui.developCrudEntityTableDownloadTemplate'),
           value: 3
         }
       ],
@@ -130,19 +131,19 @@ export default {
       viewSearch: [
         {
           field: 'sex',
-          title: '员工性别',
+          title: i18n.t('toptable.gender'),
           type: 'select',
           options: []
         },
         {
           field: 'education',
-          title: '学历',
+          title: i18n.t('hr.education'),
           type: 'select',
           options: this.educationOptions
         },
         {
           field: 'status',
-          title: '账号状态',
+          title: i18n.t('hr.accountstatus'),
           type: 'select',
           options: [
             {
@@ -165,7 +166,7 @@ export default {
         },
         {
           field: 'type',
-          title: '员工状态',
+          title: i18n.t('hr.employeestatus'),
           type: 'select',
           options: [
             {
@@ -199,15 +200,15 @@ export default {
       // 员工类型
       identityOptions: [
         {
-          label: '全部',
+          label: i18n.t('finance.all'),
           value: ''
         },
         {
-          label: '正式',
+          label: i18n.t('hr.formal'),
           value: 1
         },
         {
-          label: '试用',
+          label: i18n.t('hr.ontrial'),
           value: 2
         }
       ],
@@ -309,7 +310,7 @@ export default {
       let tabtypes = localStorage.getItem('tabTypes')
       const res = []
       if (value.length <= 0) {
-        this.$message.error('批量导入内容为空')
+        this.$message.error(i18n.t('legacyScript.batchImportContentIsEmpty'))
       } else {
         for (let i = 3; i <= value.length - 1; i++) {
           if (value[i][0] === '') {

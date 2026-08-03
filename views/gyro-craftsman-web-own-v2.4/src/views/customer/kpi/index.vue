@@ -105,6 +105,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { clientTargetsApi, clientTargetPutApi, clientTargetDelApi } from '@/api/client'
 export default {
   name: 'kpi',
@@ -122,75 +123,75 @@ export default {
       where: { year: '', frame_id: [], user_id: [], link_type: '1' },
       header: [
         {
-          label: '部门名称',
+          label: i18n.t('setting.edit.departmentname'),
           prop: 'user'
         },
         {
-          label: '全年',
+          label: i18n.t('ui.customerTargetStatisticsIndexFullYear'),
           prop: 'annual'
         },
         {
-          label: '第一季度',
+          label: i18n.t('ui.customerTargetStatisticsIndexQ1'),
           prop: 'q1'
         },
         {
-          label: '1月',
+          label: i18n.t('ui.customerTargetStatisticsIndexJanuary'),
           prop: 'month1'
         },
         {
-          label: '2月',
+          label: i18n.t('ui.customerTargetStatisticsIndexFebruary'),
           prop: 'month2'
         },
         {
-          label: '3月',
+          label: i18n.t('ui.customerTargetStatisticsIndexMarch'),
           prop: 'month3'
         },
         {
-          label: '第二季度',
+          label: i18n.t('ui.customerTargetStatisticsIndexQ2'),
           prop: 'q2'
         },
         {
-          label: '4月',
+          label: i18n.t('ui.customerTargetStatisticsIndexApril'),
           prop: 'month4'
         },
         {
-          label: '5月',
+          label: i18n.t('ui.customerTargetStatisticsIndexMay'),
           prop: 'month5'
         },
         {
-          label: '6月',
+          label: i18n.t('ui.customerTargetStatisticsIndexJune'),
           prop: 'month6'
         },
         {
-          label: '第三季度',
+          label: i18n.t('ui.customerTargetStatisticsIndexQ3'),
           prop: 'q3'
         },
         {
-          label: '7月',
+          label: i18n.t('ui.customerTargetStatisticsIndexJuly'),
           prop: 'month7'
         },
         {
-          label: '8月',
+          label: i18n.t('ui.customerTargetStatisticsIndexAugust'),
           prop: 'month8'
         },
         {
-          label: '9月',
+          label: i18n.t('ui.customerTargetStatisticsIndexSeptember'),
           prop: 'month9'
         },
         {
-          label: '第四季度',
+          label: i18n.t('ui.customerTargetStatisticsIndexQ4'),
           prop: 'q4'
         },
         {
-          label: '10月',
+          label: i18n.t('ui.customerTargetStatisticsIndexOctober'),
           prop: 'month10'
         },
         {
-          label: '11月',
+          label: i18n.t('ui.customerTargetStatisticsIndexNovember'),
           prop: 'month11'
         },
         {
-          label: '12月',
+          label: i18n.t('ui.customerTargetStatisticsIndexDecember'),
           prop: 'month12'
         }
       ],
@@ -257,7 +258,7 @@ export default {
         })
         this.loading = false
       } else {
-        this.$message.warning('未获取到有效数据')
+        this.$message.warning(i18n.t('legacyScript.noValidDataRetrieved'))
         this.tableData = []
       }
     },
@@ -372,9 +373,9 @@ export default {
     },
     tapClick(tab, event) {
       if (tab.name == 0) {
-        this.header[0].label = '业务员名称'
+        this.header[0].label = i18n.t('legacyScript.salespersonName')
       } else {
-        this.header[0].label = '部门名称'
+        this.header[0].label = i18n.t('setting.edit.departmentname')
       }
       this.editShow = false
       this.where.frame_id = []

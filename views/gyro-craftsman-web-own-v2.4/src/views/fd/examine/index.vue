@@ -162,6 +162,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { clientBillListApi, getbillCate, billCateApi, billDelFinanceApi } from '@/api/enterprise'
 import { clientBillStatusApi } from '@/api/client'
 
@@ -191,7 +192,7 @@ export default {
       tableData: [],
       dialogVisible: false,
       reason: '拒绝原因',
-      title: '审核未通过',
+      title: i18n.t('ui.settingAuthAuthIndexReviewRejected'),
       paymentType: '',
       form: {
         remarks: ''
@@ -213,7 +214,7 @@ export default {
       statusOptions: [],
       catePath: [],
       rules: {
-        remarks: [{ required: true, message: '请填写拒绝原因', trigger: 'blur' }]
+        remarks: [{ required: true, message: i18n.t('legacyScript.pleaseEnterRefuseReason'), trigger: 'blur' }]
       },
 
       where: {

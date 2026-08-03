@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import {
   promotionListApi,
   subPromotionApi,
@@ -67,7 +68,7 @@ export default {
       department: [],
       fromData: {
         with: '600px',
-        title: '新增晋升表',
+        title: i18n.t('legacyScript.addPromotionTable'),
         btnText: '保存',
         labelWidth: '90px',
         type: ''
@@ -75,14 +76,14 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: '名称：',
-          placeholder: '请输入晋升表名称',
+          label: i18n.t('legacyScript.name'),
+          placeholder: i18n.t('legacyScript.pleaseEnterPromotionTableName'),
           key: 'name'
         },
         {
           type: 'inputNumber',
-          label: '排序：',
-          placeholder: '请输入排序',
+          label: i18n.t('ui.businessHolidayTypeIndexSort'),
+          placeholder: i18n.t('customer.placeholder04'),
           key: 'sort'
         }
       ],
@@ -92,7 +93,7 @@ export default {
       },
       id: '',
       formRules: {
-        name: { required: true, message: '请输入晋升表名称', trigger: 'blur' }
+        name: { required: true, message: i18n.t('legacyScript.pleaseEnterPromotionTableName'), trigger: 'blur' }
       }
     }
   },
@@ -113,7 +114,7 @@ export default {
     addType() {
       this.formDataInit.name = ''
       this.formDataInit.sort = 1
-      this.fromData.title = '新增晋升表'
+      this.fromData.title = i18n.t('legacyScript.addPromotionTable')
       this.fromData.type = ''
       this.$refs.oaDialog.openBox()
     },
@@ -140,7 +141,7 @@ export default {
       this.formDataInit.name = item.name
       this.formDataInit.sort = item.sort
       this.id = item.id
-      this.fromData.title = '编辑晋升表'
+      this.fromData.title = i18n.t('legacyScript.editPromotionTable')
       this.fromData.type = 'edit'
       this.$refs.oaDialog.openBox()
     },

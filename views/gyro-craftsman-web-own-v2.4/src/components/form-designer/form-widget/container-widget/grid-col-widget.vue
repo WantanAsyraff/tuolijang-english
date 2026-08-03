@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import appI18n from '@/lang'
 import Draggable from 'vuedraggable'
 import i18n from '@/utils/i18n'
 import FieldComponents from '@/components/form-designer/form-widget/field-widget/index'
@@ -236,7 +237,7 @@ export default {
       const newIndex = evt.newIndex
       if (subList[newIndex].type === 'details') {
         this.widget.widgetList.splice(newIndex, 1)
-        this.$message.error('栅格列暂不支持添加明细表')
+        this.$message.error(appI18n.t('legacyScript.gridColumnsDoNotCurrentlySupportDetailTables'))
         return false
       }
       if (!!subList[newIndex]) {

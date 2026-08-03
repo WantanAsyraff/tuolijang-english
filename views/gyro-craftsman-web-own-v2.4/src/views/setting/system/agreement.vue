@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { agreementListApi, agreementInfoApi, agreementUpdateApi } from '@/api/setting'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 
@@ -106,7 +107,7 @@ export default {
     saveCurrent() {
       this.content = this.$refs.ueditorFrom.getValue()
       if (!this.content) {
-        this.$message.error('内容为空')
+        this.$message.error(i18n.t('legacyScript.contentIsEmpty'))
       } else {
         this.loadding = true
         const content = this.content

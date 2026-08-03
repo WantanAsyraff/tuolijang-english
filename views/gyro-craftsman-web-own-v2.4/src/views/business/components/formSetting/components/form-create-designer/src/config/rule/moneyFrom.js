@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeRequiredRule } from '../../utils';
 
@@ -19,9 +20,9 @@ export default {
   },
   props() {
     return [
-      { type: 'inputNumber', field: 'min', title: '设置数字最小值' },
-      { type: 'inputNumber', field: 'max', title: '设置数字最大值' },
-      { type: 'inputNumber', field: 'precision', title: '小数点位数', props: { min: 0, max: 2 } },
+      { type: 'inputNumber', field: 'min', title: i18n.t('legacyScript.setMinimumNumericValue') },
+      { type: 'inputNumber', field: 'max', title: i18n.t('legacyScript.setMaximumNumericValue') },
+      { type: 'inputNumber', field: 'precision', title: i18n.t('legacyScript.decimalPlaces'), props: { min: 0, max: 2 } },
       makeRequiredRule(),
     ];
   },

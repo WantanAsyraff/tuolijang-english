@@ -82,6 +82,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import {
   getDictDataListApi,
@@ -107,7 +108,7 @@ export default {
       ],
       dropdownList: [
         {
-          label: '批量删除',
+          label: i18n.t('ui.customerSetupDictionaryManagementBatchDelete'),
           value: 1
         }
       ],
@@ -161,7 +162,7 @@ export default {
     // 批量删除
     async batchDelete() {
       if (this.ids.length === 0) {
-        return this.$message.error('请先选择要删除的数据')
+        return this.$message.error(i18n.t('legacyScript.selectDataToDeleteFirst'))
       }
       let id = this.ids.join(',')
       await this.$modalSure('你确定要批量删除这条内容吗')

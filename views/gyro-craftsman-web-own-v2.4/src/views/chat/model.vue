@@ -86,6 +86,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import supplierDialog from './components/supplierDialog'
 import defaultPage from '@/components/common/defaultPage'
@@ -111,7 +112,7 @@ export default {
   data() {
     return {
       total: 0,
-      title: '全部',
+      title: i18n.t('finance.all'),
       loading: false,
       optionList: [],
       activeVal: '',
@@ -181,7 +182,7 @@ export default {
       })
     },
     handleAll() {
-      this.title = '全部'
+      this.title = i18n.t('finance.all')
       this.activeVal = ''
       this.where.provider = ''
       this.getList(1)

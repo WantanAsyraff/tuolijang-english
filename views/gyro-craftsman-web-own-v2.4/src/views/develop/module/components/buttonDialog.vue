@@ -39,6 +39,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   name: 'buttonDialog',
   components: {
@@ -54,7 +55,7 @@ export default {
     return {
       fromData: {
         width: '700px',
-        title: '按钮事件配置',
+        title: i18n.t('legacyScript.buttonEventSettings'),
         btnText: '确定',
         labelWidth: '90px',
         type: 'slot'
@@ -65,8 +66,8 @@ export default {
         title: ''
       },
       rules: {
-        form: [{ required: true, message: '请选择表单', trigger: 'blur' }],
-        title: [{ required: true, message: '请输入弹窗标题', trigger: 'blur' }]
+        form: [{ required: true, message: i18n.t('legacyScript.pleaseSelectAForm'), trigger: 'blur' }],
+        title: [{ required: true, message: i18n.t('ui.developModuleButtonDialogPleaseEnterADialogTitle'), trigger: 'blur' }]
       }
     }
   },

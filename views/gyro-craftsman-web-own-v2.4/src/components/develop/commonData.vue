@@ -1,4 +1,5 @@
 <script>
+import i18n from '@/lang'
 // 新建实体表单数配置
 const formDataInit = {
   table_name: '',
@@ -18,7 +19,7 @@ const formRules = {
   table_name: [
     {
       required: true,
-      message: '请输入显示名称',
+      message: i18n.t('legacyScript.pleaseEnterDisplayName'),
       trigger: 'blur'
     },
     {
@@ -35,7 +36,7 @@ const formRules = {
   table_name_en: [
     {
       required: true,
-      message: '请输入实体名称',
+      message: i18n.t('ui.settingEnterpriseAddAdminRolePleaseEnterEntityName'),
       trigger: 'blur'
     },
     {
@@ -55,20 +56,20 @@ const formRules = {
 const formConfig = [
   {
     type: 'input',
-    label: '显示名称：',
-    placeholder: '以中文，英文字母开头，中间可输入下划线，最多可输入16个字',
+    label: i18n.t('legacyScript.displayName'),
+    placeholder: i18n.t('legacyScript.startWithAChineseCharacterOrLetterUnderscoresAre'),
     key: 'table_name'
   },
   {
     type: 'inputEn',
-    label: '实体名称：',
-    placeholder: '英文小写字母开头，不可包含中文，数字，空格，中间可输下划线',
+    label: i18n.t('legacyScript.entityName'),
+    placeholder: i18n.t('legacyScript.startWithALowercaseEnglishLetterChineseCharactersNumbers'),
     key: 'table_name_en',
     refresh: 'table_name'
   },
   {
     type: 'radio',
-    label: '主体类型：',
+    label: i18n.t('legacyScript.entityType'),
     placeholder: '',
     key: 'crud_type',
     options: [
@@ -81,12 +82,12 @@ const formConfig = [
         value: '明细实体'
       }
     ],
-    tips: '明细实体为从表，无表单，审批流，触发器设置'
+    tips: i18n.t('legacyScript.aDetailEntityIsAChildTableAndHas')
   },
   {
     type: 'cascaderSelect',
-    label: '所属主实体：',
-    placeholder: '请搜索选择主实体',
+    label: i18n.t('legacyScript.parentEntity'),
+    placeholder: i18n.t('legacyScript.searchForAndSelectTheMainEntity'),
     key: 'crud_id',
     isShow: 'crud_type',
     props: { emitPath: false, label: 'label', value: 'value', children: 'children' },
@@ -94,7 +95,7 @@ const formConfig = [
   },
   {
     type: 'switch',
-    label: '操作日志：',
+    label: i18n.t('legacyScript.operationLogs'),
     key: 'show_log',
     activeValue: '1',
     inactiveValue: '0',
@@ -103,7 +104,7 @@ const formConfig = [
   },
   {
     type: 'switch',
-    label: '评论功能：',
+    label: i18n.t('legacyScript.comments'),
     key: 'show_comment',
     activeValue: 1,
     inactiveValue: 0,
@@ -112,46 +113,46 @@ const formConfig = [
   },
   {
     type: 'input',
-    label: '评论重命名：',
+    label: i18n.t('legacyScript.renameComments'),
     key: 'comment_title',
-    placeholder: '请输入评论模块名称',
+    placeholder: i18n.t('legacyScript.enterTheCommentModuleName'),
     maxlength: 5,
     isShow: 'show_comment'
   },
 
   {
       type: 'multipleSelect',
-    label: '关联应用：',
-    placeholder: '请搜索选择应用（可多选）',
+    label: i18n.t('legacyScript.linkedApplication'),
+    placeholder: i18n.t('legacyScript.searchForAndSelectApplicationsMultipleSelectionsAllowed'),
     key: 'cate_ids',
     options: []
   },
   {
     type: 'cascader',
-    label: '上级菜单：',
-    placeholder: '请选择上级菜单',
+    label: i18n.t('legacyScript.parentMenu'),
+    placeholder: i18n.t('legacyScript.selectTheParentMenu'),
     key: 'path',
     props: {label: 'menu_name', value: 'id', children: 'children' ,checkStrictly: true},
     options: [],
-    tips: '若不选择上级菜单，则不生成菜单'
+    tips: i18n.t('legacyScript.noMenuWillBeGeneratedUnlessAParentMenu')
   },
    {
     type: 'icon',
-    label: '菜单图标：',
-    placeholder: '请选择菜单图标',
+    label: i18n.t('legacyScript.menuIcon'),
+    placeholder: i18n.t('legacyScript.selectAMenuIcon'),
     key: 'icon',
   },
   {
     type: 'uni_img',
-    label: '移动端图标：',
-    placeholder: '请选择移动端图标',
+    label: i18n.t('legacyScript.mobileIcon'),
+    placeholder: i18n.t('legacyScript.selectAMobileIcon'),
     key: 'uni_img',
     options: []
   },
   {
     type: 'textarea',
-    label: '实体说明：',
-    placeholder: '请输入实体说明',
+    label: i18n.t('legacyScript.entityDescription'),
+    placeholder: i18n.t('legacyScript.enterTheEntityDescription'),
     key: 'info'
   }
 ]
@@ -182,7 +183,7 @@ const fieldRules = {
   field_name: [
     {
       required: true,
-      message: '请输入显示名称',
+      message: i18n.t('legacyScript.pleaseEnterDisplayName'),
       trigger: 'blur'
     },
     {
@@ -199,7 +200,7 @@ const fieldRules = {
   field_name_en: [
     {
       required: true,
-      message: '请输入字段名称',
+      message: i18n.t('legacyScript.enterTheFieldName'),
       trigger: 'blur'
     },
     {
@@ -216,7 +217,7 @@ const fieldRules = {
   data_dict_id: [
     {
       required: true,
-      message: '请选择关联字典',
+      message: i18n.t('ui.customerSetupCustomFormIndexSelectLinkedDictionary'),
       trigger: 'change'
     }
   ]
@@ -246,9 +247,9 @@ const optionsEdit = [
 const dictMax = [
   {
     type: 'radio',
-    label: '数据选项：',
+    label: i18n.t('legacyScript.dataOptions'),
     key: 'data_type',
-    tips: '请在表单设计中维护静态数据',
+    tips: i18n.t('legacyScript.maintainStaticDataInTheFormDesigner'),
 
     options: [
       {
@@ -263,8 +264,8 @@ const dictMax = [
   },
   {
     type: 'select',
-    label: '关联字典：',
-    placeholder: '请搜索选择数据字典',
+    label: i18n.t('legacyScript.linkedDictionary'),
+    placeholder: i18n.t('legacyScript.searchForAndSelectADataDictionary'),
     key: 'data_dict_id',
     sign: 'dict',
     isShow: 'data_type',
@@ -278,7 +279,7 @@ const keyValue = {
     // ...inputMax,
     {
       type: 'switch',
-      label: '字段唯一：',
+      label: i18n.t('legacyScript.uniqueField'),
       key: 'is_uniqid',
       activeValue: 1,
       inactiveValue: 0,
@@ -328,7 +329,7 @@ const keyValue = {
   cascader_address: [
     {
       type: 'radio',
-      label: '地区选择数据：',
+      label: i18n.t('legacyScript.regionSelectionData'),
       key: 'is_city_show',
       options: [
         {
@@ -350,7 +351,7 @@ const keyValue = {
   input_select: [
     {
       type: 'input_select',
-      label: '引用实体：',
+      label: i18n.t('legacyScript.referencedEntity'),
       key: 'association_field_names'
     }
   ],
@@ -364,15 +365,15 @@ const conditionConfig = {
   input: [
     {
       value: 'in',
-      label: '包含'
+      label: i18n.t('legacyScript.contains')
     },
     {
       value: 'not_in',
-      label: '不包含'
+      label: i18n.t('legacyScript.doesNotContain')
     },
     {
       value: 'eq',
-      label: '等于'
+      label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
     },
     // {
     //   value: 'regex',
@@ -380,46 +381,46 @@ const conditionConfig = {
     // },
     {
       value: 'not_eq',
-      label: '不等于'
+      label: i18n.t('legacyScript.notEqualTo')
     },
     {
       value: 'is_empty',
-      label: '为空'
+      label: i18n.t('legacyScript.isEmpty')
     },
     {
       value: 'not_empty',
-      label: '不为空'
+      label: i18n.t('legacyScript.isNotEmpty')
     }
   ],
   switch: [
     // 布尔
     {
       value: 'eq',
-      label: '等于'
+      label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
     },
 
     {
       value: 'is_empty',
-      label: '为空'
+      label: i18n.t('legacyScript.isEmpty')
     },
     {
       value: 'not_empty',
-      label: '不为空'
+      label: i18n.t('legacyScript.isNotEmpty')
     }
   ],
   number: [
     // 整数、精度小数、百分比、金额
     {
       value: 'eq',
-      label: '等于'
+      label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
     },
     {
       value: 'gt',
-      label: '大于'
+      label: i18n.t('legacyScript.greaterThan')
     },
     {
       value: 'lt',
-      label: '小于'
+      label: i18n.t('ui.workFlowDrawerConditionDrawerLessThan')
     },
     // {
     //   value: 'regex',
@@ -427,15 +428,15 @@ const conditionConfig = {
     // },
     {
       value: 'gt_eq',
-      label: '大于等于'
+      label: i18n.t('ui.workFlowDrawerConditionDrawerGreaterThanOrEqualTo')
     },
     {
       value: 'lt_eq',
-      label: '小于等于'
+      label: i18n.t('ui.workFlowDrawerConditionDrawerLessThanOrEqualTo')
     },
     {
       value: 'between',
-      label: '区间'
+      label: i18n.t('legacyScript.range')
     }
   ],
   select: [
@@ -443,91 +444,91 @@ const conditionConfig = {
 
     {
       value: 'in',
-      label: '包含'
+      label: i18n.t('legacyScript.contains')
     },
     {
       value: 'not_in',
-      label: '不包含'
+      label: i18n.t('legacyScript.doesNotContain')
     },
     {
       value: 'is_empty',
-      label: '为空'
+      label: i18n.t('legacyScript.isEmpty')
     },
     {
       value: 'not_empty',
-      label: '不为空'
+      label: i18n.t('legacyScript.isNotEmpty')
     }
   ],
   date: [
     {
       value: 'eq',
-      label: '等于'
+      label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
     },
     {
       value: 'gt',
-      label: '大于'
+      label: i18n.t('legacyScript.greaterThan')
     },
     {
       value: 'lt',
-      label: '小于'
+      label: i18n.t('ui.workFlowDrawerConditionDrawerLessThan')
     },
     {
       value: 'between',
-      label: '区间'
+      label: i18n.t('legacyScript.range')
     },
     {
       value: 'n_day',
-      label: 'N天前'
+      label: i18n.t('legacyScript.nDaysAgo')
     },
     {
       value: 'last_day',
-      label: '最近N天'
+      label: i18n.t('legacyScript.lastNDays')
     },
     {
       value: 'next_day',
-      label: '未来N天'
+      label: i18n.t('legacyScript.nextNDays')
     },
     {
       value: 'today',
-      label: '今天'
+      label: i18n.t('toptable.today')
     },
     {
       value: 'week',
-      label: '本周'
+      label: i18n.t('toptable.thisweek')
     },
     {
       value: 'month',
-      label: '本月'
+      label: i18n.t('hr.month')
     },
     {
       value: 'quarter',
-      label: '本季度'
+      label: i18n.t('legacyScript.thisQuarter')
     },
     {
       value: 'year',
-      label: '本年'
+      label: i18n.t('toptable.thisyear')
     },
     {
       value: 'last_year',
-      label: '去年'
+      label: i18n.t('legacyScript.lastYear')
     }
   ],
   input_select: [
     {
       value: 'in',
-      label: '包含'
+      label: i18n.t('legacyScript.contains')
     },
     {
       value: 'not_in',
-      label: '不包含'
+      label: i18n.t('legacyScript.doesNotContain')
     },
     {
       value: 'is_empty',
-      label: '为空'
+      label: i18n.t('legacyScript.isEmpty')
     },
     {
       value: 'not_empty',
-      label: '不为空'
+      label: i18n.t('legacyScript.isNotEmpty')
     }
   ]
 }
@@ -535,27 +536,27 @@ const conditionConfig = {
 const fieldConfig = [
   {
     type: 'input',
-    label: '显示名称：',
-    placeholder: '以中文，英文字母开头，中间可输入下划线，最多可输入16个字',
+    label: i18n.t('legacyScript.displayName'),
+    placeholder: i18n.t('legacyScript.startWithAChineseCharacterOrLetterUnderscoresAre'),
     key: 'field_name'
   },
   {
     type: 'inputEn',
-    label: '字段名称：',
-    placeholder: '英文小写字母开头，不可包含中文，空格，中间可输入下划线',
+    label: i18n.t('legacyScript.fieldName'),
+    placeholder: i18n.t('legacyScript.startWithALowercaseLetterChineseCharactersAndSpaces'),
     key: 'field_name_en',
     refresh: 'field_name'
   },
 
   {
     type: 'radio',
-    label: '新增时：',
+    label: i18n.t('legacyScript.whenAdding'),
     key: 'create_modify',
     options: optionsAdd
   },
   {
     type: 'radio',
-    label: '编辑时：',
+    label: i18n.t('legacyScript.whenEditing'),
     key: 'update_modify',
     options: optionsEdit
   }
@@ -566,23 +567,23 @@ const fieldConfig = [
 const searchTypeOptions = [
   {
     value: '0',
-    label: '我查看的'
+    label: i18n.t('legacyScript.recordsICanView')
   },
   {
     value: '1',
-    label: '我负责的'
+    label: i18n.t('legacyScript.ownedByMe')
   },
   {
     value: '2',
-    label: '我创建的'
+    label: i18n.t('legacyScript.createdByMe')
   },
   {
     value: '3',
-    label: '共享给我的'
+    label: i18n.t('legacyScript.sharedWithMe')
   },
   {
     value: '4',
-    label: '我共享的'
+    label: i18n.t('legacyScript.sharedByMe')
   }
 ]
 export default {

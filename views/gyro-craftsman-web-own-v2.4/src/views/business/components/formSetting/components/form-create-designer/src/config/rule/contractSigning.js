@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 const label = '合同签约'
 const name = 'contractSigning'
@@ -20,7 +21,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '客户名称',
+          title: i18n.t('customer.customerName'),
           symbol: 'eid',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -30,29 +31,29 @@ export default {
           effect: { fetch: '', required: true },
           field: uniqueId(),
           props: { type: 'radio' },
-          title: '签约方式',
+          title: i18n.t('ui.customerSigningIndexSigningMethod'),
           symbol: 'signType',
           value: '2',
           type: 'radio',
           _fc_drag_tag: 'radio',
           options: [
-            { value: '2', label: '电子签' },
-            { value: '1', label: '线下签约' }
+            { value: '2', label: i18n.t('ui.customerSigningInfoItemESign') },
+            { value: '1', label: i18n.t('ui.customerSigningInfoItemOfflineSigning') }
           ]
         },
         {
           effect: { fetch: '', required: true },
           field: uniqueId(),
           props: { type: 'radio' },
-          title: '合同期限',
+          title: i18n.t('legacyScript.contractTerm'),
           symbol: 'termType',
           value: '2',
           type: 'radio',
           _fc_drag_tag: 'radio',
           options: [
-            { value: '2', label: '签约日起算' },
-            { value: '1', label: '固定期限' },
-            { value: '0', label: '无期限' }
+            { value: '2', label: i18n.t('ui.customerSigningAddContractSignStartFromSigningDate') },
+            { value: '1', label: i18n.t('ui.customerSigningAddContractSignFixedTerm') },
+            { value: '0', label: i18n.t('ui.customerSigningAddContractSignNoFixedTerm') }
           ]
         },
         {
@@ -62,8 +63,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { placeholder: '请填写合同时长' },
-          title: '合同时长（天）',
+          props: { placeholder: i18n.t('legacyScript.pleaseEnterContractDuration') },
+          title: i18n.t('legacyScript.contractDurationDays'),
           symbol: 'dateCount',
           _fc_drag_tag: 'input'
         },
@@ -74,8 +75,8 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          props: { placeholder: '请选择合同开始日期' },
-          title: '合同开始日期',
+          props: { placeholder: i18n.t('legacyScript.pleaseSelectTheContractStartDate') },
+          title: i18n.t('legacyScript.contractStartDate'),
           symbol: 'startDate',
           type: 'datePicker',
           _fc_drag_tag: 'datePicker'
@@ -87,8 +88,8 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          props: { placeholder: '请选择合同结束日期' },
-          title: '合同结束日期',
+          props: { placeholder: i18n.t('legacyScript.pleaseSelectTheContractEndDate') },
+          title: i18n.t('legacyScript.contractEndDate'),
           symbol: 'endDate',
           type: 'datePicker',
           _fc_drag_tag: 'datePicker'
@@ -99,7 +100,7 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          title: '附件',
+          title: i18n.t('ui.userDailyAddBoxAttachment'),
           symbol: 'signFile', // 合同附件
           type: 'uploadFrom',
           _fc_drag_tag: 'uploadFrom'
@@ -111,8 +112,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: '请填写备注信息' },
-          title: '备注',
+          props: { type: 'textarea', placeholder: i18n.t('customer.placeholder18') },
+          title: i18n.t('customer.remark'),
           symbol: 'mark',
           _fc_drag_tag: 'textarea'
         },
@@ -120,8 +121,8 @@ export default {
           field: uniqueId(),
           display: true,
           hidden: false,
-          title: '签署方',
-          label: '签署方',
+          title: i18n.t('legacyScript.signer'),
+          label: i18n.t('legacyScript.signer'),
           props: { member: false },
           type: 'approvalBill',
           symbol: 'signatory',
@@ -133,8 +134,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: '请填写企业名称' },
-              title: '企业名称',
+              props: { placeholder: i18n.t('setting.info.title1') },
+              title: i18n.t('toptable.enterprisename'),
               symbol: 'companyName',
               _fc_drag_tag: 'input'
             },
@@ -144,7 +145,7 @@ export default {
               hidden: false,
               info: '',
               props: { member: true, range: ['oneself'], placeholder: '' },
-              title: '经办人',
+              title: i18n.t('ui.customerSigningIndexHandler'),
               symbol: 'name',
               type: 'departmentTree',
               _fc_drag_tag: 'memberTree'
@@ -155,8 +156,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: '请填写联系电话' },
-              title: '电话',
+              props: { placeholder: i18n.t('setting.info.title3') },
+              title: i18n.t('customer.tel'),
               symbol: 'phone',
               _fc_drag_tag: 'input'
             }
@@ -166,8 +167,8 @@ export default {
           field: uniqueId(),
           display: true,
           hidden: false,
-          title: '产品清单',
-          label: '产品清单',
+          title: i18n.t('ui.customerSigningAddContractSignProductList'),
+          label: i18n.t('ui.customerSigningAddContractSignProductList'),
           props: { member: false },
           type: 'approvalBill',
           symbol: 'productInfo',
@@ -179,8 +180,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: '请填写产品名称' },
-              title: '产品名称',
+              props: { placeholder: i18n.t('legacyScript.pleaseEnterProductName') },
+              title: i18n.t('legacyScript.productName'),
               symbol: 'product_name',
               _fc_drag_tag: 'input'
             },
@@ -190,8 +191,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: '请填写规格' },
-              title: '规格',
+              props: { placeholder: i18n.t('legacyScript.pleaseEnterSpec') },
+              title: i18n.t('customer.specification'),
               symbol: 'sku',
               _fc_drag_tag: 'input'
             },
@@ -202,8 +203,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: '请填写数量' },
-              title: '数量',
+              props: { placeholder: i18n.t('legacyScript.pleaseEnterQuantity') },
+              title: i18n.t('legacyScript.quantity'),
               symbol: 'count',
               _fc_drag_tag: 'input'
             },
@@ -214,8 +215,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: '请填写折扣' },
-              title: '折扣',
+              props: { placeholder: i18n.t('legacyScript.pleaseEnterDiscount') },
+              title: i18n.t('legacyScript.discount'),
               symbol: 'discount',
               _fc_drag_tag: 'input'
             },
@@ -225,8 +226,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: '请填写总价' },
-              title: '总价',
+              props: { placeholder: i18n.t('legacyScript.pleaseEnterTotalPrice') },
+              title: i18n.t('legacyScript.totalPrice'),
               symbol: 'total_price',
               _fc_drag_tag: 'input'
             },
@@ -236,8 +237,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: '请填写备注' },
-              title: '备注',
+              props: { placeholder: i18n.t('legacyScript.pleaseEnterRemarks') },
+              title: i18n.t('customer.remark'),
               symbol: 'remark',
               _fc_drag_tag: 'input'
             }
@@ -257,7 +258,7 @@ export default {
         info: '',
         props: {
           value: '1.开具发票是否需要审批流，在客户规格设置中配置<br>2.支持财务进行发票开具/拒绝开票',
-          title: '开具发票规则'
+          title: i18n.t('legacyScript.issueInvoiceRules')
         },
         input: false,
         title: '',

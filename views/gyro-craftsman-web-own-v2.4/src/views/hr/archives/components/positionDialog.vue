@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { endJobSaveApi } from '@/api/enterprise'
 import { rankCateListApi, rankListApi } from '@/api/setting'
 
@@ -56,8 +57,8 @@ export default {
       },
       rules: {
         name: [{ required: true, message: this.$t('hr.message'), trigger: 'blur' }],
-        cateId: [{ required: true, message: '请选择职级类别', trigger: 'change' }],
-        rankId: [{ required: true, message: '请选择职级', trigger: 'change' }]
+        cateId: [{ required: true, message: i18n.t('legacyScript.pleaseSelectRankCategory'), trigger: 'change' }],
+        rankId: [{ required: true, message: i18n.t('hr.message9'), trigger: 'change' }]
       },
       loading: false,
       propsPos: { value: 'id', label: 'name', multiple: false, checkStrictly: true },

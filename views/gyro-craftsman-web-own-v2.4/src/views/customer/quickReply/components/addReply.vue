@@ -211,6 +211,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   workReplySaveApi,
   workReplyDetailsApi,
@@ -266,11 +267,11 @@ export default {
       },
 
       rules: {
-        group_id: [{ required: true, message: '请选择分组', trigger: 'blur' }],
-        title: [{ required: true, message: '请输入标题', trigger: 'blur' }],
-        info: [{ required: true, message: '请输入摘要', trigger: 'blur' }],
-        link: [{ required: true, message: '请输入路径链接', trigger: 'change' }],
-        app_id: [{ required: true, message: '请输入应用id', trigger: 'change' }]
+        group_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectGroup'), trigger: 'blur' }],
+        title: [{ required: true, message: i18n.t('legacyScript.enterTitle'), trigger: 'blur' }],
+        info: [{ required: true, message: i18n.t('legacyScript.pleaseEnterSummary'), trigger: 'blur' }],
+        link: [{ required: true, message: i18n.t('legacyScript.pleaseEnterThePathLink'), trigger: 'change' }],
+        app_id: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheApplicationID'), trigger: 'change' }]
         // content: [{ required: true, message: '请输入内容', trigger: 'blur' }]
       }
     }
@@ -285,7 +286,7 @@ export default {
     beforeVideoUpload(file) {
       const isVideo = file.type.startsWith('video/')
       if (!isVideo) {
-        this.$message.error('请上传视频文件')
+        this.$message.error(i18n.t('legacyScript.pleaseUploadAVideoFile'))
         return false
       }
       this.form.video = file
@@ -340,7 +341,7 @@ export default {
           }
         }
       } catch (error) {
-        console.error('获取网页元数据失败:', error)
+        console.error(i18n.t('legacyScript.failedToFetchWebpageMetadata'), error)
       } finally {
         this.metaLoading = false
       }
@@ -360,7 +361,7 @@ export default {
         // 使用现有的上传方法
         await this.uploadServerLog({ file })
       } catch (error) {
-        console.error('封面图片上传失败:', error)
+        console.error(i18n.t('legacyScript.coverImageUploadFailed'), error)
       }
     },
 
@@ -369,7 +370,7 @@ export default {
       if (this.$refs.libraryRef) {
         this.$refs.libraryRef.openBox()
       } else {
-        this.$message.error('素材库组件加载失败')
+        this.$message.error(i18n.t('legacyScript.failedToLoadAssetLibraryComponent'))
       }
     },
     openBox(id) {
@@ -439,19 +440,19 @@ export default {
             this.form.file_id = this.file.id
           }
           if (this.activeType == 'text' && !this.form.content) {
-            return this.$message.error('请输入内容')
+            return this.$message.error(i18n.t('access.placeholder16'))
           }
           if (this.activeType == 'image' && !this.form.file_id) {
-            return this.$message.error('请上传图片')
+            return this.$message.error(i18n.t('legacyScript.pleaseUploadAnImage'))
           }
           if (this.activeType == 'video' && !this.form.file_id) {
-            return this.$message.error('请上传视频')
+            return this.$message.error(i18n.t('legacyScript.pleaseUploadAVideo'))
           }
           if (this.activeType == 'file' && !this.form.file_id) {
-            return this.$message.error('请上传附件')
+            return this.$message.error(i18n.t('legacyScript.pleaseUploadTheAttachment'))
           }
           if ((this.activeType == 'mini_program' || this.activeType == 'link') && !this.form.file_id) {
-            return this.$message.error('请上传封面图片')
+            return this.$message.error(i18n.t('legacyScript.pleaseUploadACoverImage'))
           }
           if (this.id) {
             workReplyPutApi(this.id, this.form).then(() => {
@@ -500,13 +501,13 @@ export default {
         const file = params?.file
         if (!file) {
           this.isUploading = false
-          this.$message.error('未获取到上传文件，请重新选择')
+          this.$message.error(i18n.t('legacyScript.noUploadedFileDetectedPleaseSelectAFileAgain'))
           return
         }
 
         if (['mini_program', 'image', 'link'].includes(this.activeType)) {
           if (file.size / 1024 / 1024 > 10) {
-            this.$message.error('图片最大不能超过10M')
+            this.$message.error(i18n.t('legacyScript.imageSizeMustNotExceed10MB'))
             this.isUploading = false
             return false
           }
@@ -519,14 +520,14 @@ export default {
 
           if (!isAllowed) {
             this.isUploading = false
-            this.$message.error('请上传 PNG 或 JPG 格式的图片')
+            this.$message.error(i18n.t('legacyScript.pleaseUploadAnImageInPNGOrJPGFormat'))
             return false
           }
         }
         if (this.activeType === 'video') {
           if (file.size / 1024 / 1024 > 10) {
             this.isUploading = false
-            this.$message.error('视频最大不能超过10M')
+            this.$message.error(i18n.t('legacyScript.videoSizeMustNotExceed10MB'))
             return false
           }
           const fileName = file.name.toLowerCase()
@@ -536,7 +537,7 @@ export default {
           // 双重校验：后缀或 MIME 类型任一不符合则拒绝
           if (!isMP4ByExtension || !isMP4ByType) {
             this.isUploading = false
-            this.$message.error('请上传 MP4 格式的视频')
+            this.$message.error(i18n.t('legacyScript.pleaseUploadAVideoInMP4Format'))
             return false
           }
         }
@@ -544,7 +545,7 @@ export default {
         if (this.activeType === 'file') {
           if (file.size / 1024 / 1024 > 200) {
             this.isUploading = false
-            this.$message.error('文件最大不能超过200M')
+            this.$message.error(i18n.t('legacyScript.fileSizeMustNotExceed200MB'))
             return false
           }
         }
@@ -558,7 +559,7 @@ export default {
 
         if (!uploadKeysRes?.data) {
           this.isUploading = false
-          this.$message.error('获取上传配置失败，返回格式异常')
+          this.$message.error(i18n.t('legacyScript.failedToRetrieveUploadConfigurationInvalidResponseFormat'))
         }
 
         const isLocalUpload = uploadKeysRes.data.type === 'local'

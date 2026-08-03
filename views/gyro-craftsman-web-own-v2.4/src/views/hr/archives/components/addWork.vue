@@ -52,6 +52,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   name: 'addWork',
   components: {},
@@ -114,7 +115,7 @@ export default {
     }
     return {
       dialogFormVisible: false,
-      title: '添加工作经历',
+      title: i18n.t('legacyScript.addWorkExperience'),
       workForm: {
         start_time: '',
         end_time: '',
@@ -127,39 +128,39 @@ export default {
       workList: [
         {
           type: 'date',
-          label: '开始时间：',
+          label: i18n.t('ui.userCalendarAddTodoStartTime'),
           value: 'start_time',
-          placeholder: '请选择开始时间'
+          placeholder: i18n.t('customer.placeholder29')
         },
         {
           type: 'date',
-          label: '结束时间：',
+          label: i18n.t('ui.userCalendarAddTodoEndTime'),
           value: 'end_time',
-          placeholder: '请选择结束时间'
+          placeholder: i18n.t('customer.placeholder30')
         },
         {
           type: 'input',
-          label: '所在公司：',
+          label: i18n.t('legacyScript.company'),
           value: 'company',
-          placeholder: '请输入所在公司名称'
+          placeholder: i18n.t('legacyScript.pleaseEnterYourCompanyName')
         },
         {
           type: 'input',
-          label: '职位：',
+          label: i18n.t('ui.userTrainingPromotionPosition'),
           value: 'position',
-          placeholder: '请输入职位'
+          placeholder: i18n.t('legacyScript.pleaseEnterPosition')
         },
         {
           type: 'textarea',
-          label: '工作描述：',
+          label: i18n.t('legacyScript.jobDescription'),
           value: 'describe',
-          placeholder: '请输入工作描述'
+          placeholder: i18n.t('legacyScript.pleaseEnterJobDescription')
         },
         {
           type: 'textarea',
-          label: '离职原因：',
+          label: i18n.t('legacyScript.reasonsForLeaving'),
           value: 'quit_reason',
-          placeholder: '请输入离职原因...'
+          placeholder: i18n.t('legacyScript.pleaseEnterTheReasonForResignation')
         }
       ],
       educationForm: {
@@ -174,60 +175,60 @@ export default {
       educationList: [
         {
           type: 'date',
-          label: '入学时间：',
+          label: i18n.t('legacyScript.admissionTime'),
           value: 'start_time',
-          placeholder: '请选择开始时间'
+          placeholder: i18n.t('customer.placeholder29')
         },
         {
           type: 'date',
-          label: '毕业时间：',
+          label: i18n.t('legacyScript.graduationDate'),
           value: 'end_time',
-          placeholder: '请选择结束时间'
+          placeholder: i18n.t('customer.placeholder30')
         },
         {
           type: 'input',
-          label: '学校名称：',
+          label: i18n.t('legacyScript.schoolName'),
           value: 'school_name',
-          placeholder: '请输入学校名称'
+          placeholder: i18n.t('legacyScript.pleaseEnterSchoolName')
         },
         {
           type: 'input',
-          label: '所学专业：',
+          label: i18n.t('legacyScript.major'),
           value: 'major',
-          placeholder: '请输入所学专业'
+          placeholder: i18n.t('legacyScript.pleaseEnterYourMajor')
         },
         {
           type: 'input',
-          label: '学历：',
+          label: i18n.t('legacyScript.education'),
           value: 'education',
-          placeholder: '请输入学历'
+          placeholder: i18n.t('legacyScript.pleaseEnterEducation')
         },
         {
           type: 'input',
-          label: '学位：',
+          label: i18n.t('legacyScript.gegree'),
           value: 'academic',
-          placeholder: '请输入学位'
+          placeholder: i18n.t('legacyScript.pleaseEnterGegree')
         },
         {
           type: 'textarea',
-          label: '备注：',
+          label: i18n.t('ui.fdEnterpriseListViewDetailsRemarks'),
           value: 'remark',
-          placeholder: '请输入备注...'
+          placeholder: i18n.t('legacyScript.pleaseEnterANote')
         }
       ],
       workRules: {
         start_time: [{ required: true, validator: startTime, trigger: 'blur' }],
         end_time: [{ required: true, validator: endTime, trigger: 'blur' }],
-        company: [{ required: true, message: '公司名称不能为空', trigger: 'blur' }],
-        position: [{ required: true, message: '职位不能为空', trigger: 'blur' }],
-        describe: [{ required: true, message: '工作描述不能为空', trigger: 'blur' }]
+        company: [{ required: true, message: i18n.t('legacyScript.companyNameIsRequired'), trigger: 'blur' }],
+        position: [{ required: true, message: i18n.t('legacyScript.positionIsRequired'), trigger: 'blur' }],
+        describe: [{ required: true, message: i18n.t('legacyScript.jobDescriptionIsRequired'), trigger: 'blur' }]
       },
       educationRules: {
         start_time: [{ required: true, validator: start_Time, trigger: 'blur' }],
         end_time: [{ required: true, validator: end_Time, trigger: 'blur' }],
-        school_name: [{ required: true, message: '学校名称不能为空', trigger: 'blur' }],
-        major: [{ required: true, message: '专业不能为空', trigger: 'blur' }],
-        education: [{ required: true, message: '学历不能为空', trigger: 'blur' }]
+        school_name: [{ required: true, message: i18n.t('legacyScript.schoolNameIsRequired'), trigger: 'blur' }],
+        major: [{ required: true, message: i18n.t('legacyScript.majorIsRequired'), trigger: 'blur' }],
+        education: [{ required: true, message: i18n.t('legacyScript.educationIsRequired'), trigger: 'blur' }]
       }
     }
   },
@@ -235,7 +236,7 @@ export default {
   methods: {
     submitFn() {
       if (+this.workForm.end_time < +this.workForm.start_time) {
-        this.$message.warning('结束日期需大于开始日期')
+        this.$message.warning(i18n.t('legacyScript.endDateMustBeGreaterThanStartDate'))
         return
       }
       if (this.add == 'work') {

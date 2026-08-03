@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { configFrameCreateApi, configFrameUpdataApi, configFrameEditApi, frameUpdataApi } from '@/api/setting'
 import { systemRoleListApi } from '@/api/config'
 export default {
@@ -144,8 +145,8 @@ export default {
         }
       },
       rules: {
-        role_id: [{ required: true, message: '请选择默认角色', trigger: 'change' }],
-        name: [{ required: true, message: '请填写部门名称', trigger: 'blur' }]
+        role_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectADefaultRole'), trigger: 'change' }],
+        name: [{ required: true, message: i18n.t('legacyScript.pleaseEnterDepartmentName'), trigger: 'blur' }]
       },
       treeList: [],
       treeRoleData: null, // 权限数据

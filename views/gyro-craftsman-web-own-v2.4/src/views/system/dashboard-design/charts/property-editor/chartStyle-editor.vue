@@ -21,6 +21,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import SvgIcon from '@/components/svg-icon-nc'
 
 export default {
@@ -42,17 +43,17 @@ export default {
           list: [
             {
               type: 1,
-              label: '普通柱状图',
+              label: i18n.t('legacyScript.standardBarChart'),
               icon: 'icona-zu10206'
             },
             {
               type: 2,
-              label: '堆积状态图',
+              label: i18n.t('legacyScript.accumulationStatusChart'),
               icon: 'icona-zu10212'
             },
             {
               type: 3,
-              label: '百分比堆积状态图',
+              label: i18n.t('legacyScript.percentageStackedStatusChart'),
               icon: 'icona-zu10210'
             }
           ]
@@ -62,17 +63,17 @@ export default {
           list: [
             {
               type: 1,
-              label: '普通条形图',
+              label: i18n.t('legacyScript.standardBarChart2'),
               icon: 'icona-zu10218'
             },
             {
               type: 2,
-              label: '堆积条形图',
+              label: i18n.t('legacyScript.stackedBarChart'),
               icon: 'icona-zu10220'
             },
             {
               type: 3,
-              label: '百分比堆积条形图',
+              label: i18n.t('legacyScript.percentStackedBarChart'),
               icon: 'icona-zu10222'
             }
           ]
@@ -82,12 +83,12 @@ export default {
           list: [
             {
               type: 1,
-              label: '折线图',
+              label: i18n.t('legacyScript.lineChart'),
               icon: 'icona-zu10205'
             },
             {
               type: 2,
-              label: '曲线图',
+              label: i18n.t('legacyScript.lineChart2'),
               icon: 'icona-zu10202'
             }
           ]
@@ -97,12 +98,12 @@ export default {
           list: [
             {
               type: 1,
-              label: '实心',
+              label: i18n.t('legacyScript.solid'),
               icon: 'icona-zu10087'
             },
             {
               type: 2,
-              label: '环形',
+              label: i18n.t('legacyScript.ring'),
               icon: 'icona-zu10083'
             }
           ]
@@ -112,17 +113,17 @@ export default {
           list: [
             {
               type: 1,
-              label: '环形',
+              label: i18n.t('legacyScript.ring'),
               icon: 'icona-zu10087'
             },
             {
               type: 2,
-              label: '进度条',
+              label: i18n.t('legacyScript.progressBar'),
               icon: 'icona-zu10216-01'
             },
             {
               type: 3,
-              label: '水波图',
+              label: i18n.t('legacyScript.waveChart'),
               icon: 'icona-zu10086-2'
             }
           ]

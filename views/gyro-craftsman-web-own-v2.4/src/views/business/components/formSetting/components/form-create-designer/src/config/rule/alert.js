@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 const label = '提示';
 const name = 'el-alert';
 
@@ -9,7 +10,7 @@ export default {
     return {
       type: name,
       props: {
-        title: '提示',
+        title: i18n.t('public.tips'),
         description: 'form-create',
         type: 'success',
         effect: 'dark',
@@ -19,11 +20,11 @@ export default {
   },
   props() {
     return [
-      { type: 'input', field: 'title', title: '标题' },
+      { type: 'input', field: 'title', title: i18n.t('ui.settingSystemQuickIndexTitle') },
       {
         type: 'select',
         field: 'type',
-        title: '主题',
+        title: i18n.t('legacyScript.theme'),
         options: [
           { label: 'success', value: 'success' },
           { label: 'warning', value: 'warning' },
@@ -34,24 +35,24 @@ export default {
           { label: 'error', value: 'error' },
         ],
       },
-      { type: 'input', field: 'description', title: '辅助性文字' },
+      { type: 'input', field: 'description', title: i18n.t('legacyScript.helperText') },
       {
         type: 'switch',
         field: 'closable',
-        title: '是否可关闭',
+        title: i18n.t('legacyScript.isClosable'),
         value: true,
       },
-      { type: 'switch', field: 'center', title: '文字是否居中', value: true },
+      { type: 'switch', field: 'center', title: i18n.t('legacyScript.isTextCentered'), value: true },
       {
         type: 'input',
         field: 'closeText',
-        title: '关闭按钮自定义文本',
+        title: i18n.t('legacyScript.customCloseButtonText'),
       },
-      { type: 'switch', field: 'showIcon', title: '是否显示图标' },
+      { type: 'switch', field: 'showIcon', title: i18n.t('legacyScript.showIcon') },
       {
         type: 'select',
         field: 'effect',
-        title: '选择提供的主题',
+        title: i18n.t('legacyScript.selectAProvidedTheme'),
         options: [
           { label: 'light', value: 'light' },
           { label: 'dark', value: 'dark' },

@@ -40,6 +40,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { enterpriseLogApi } from '@/api/enterprise'
 import oaFromBox from '@/components/common/oaFromBox'
 export default {
@@ -66,23 +67,23 @@ export default {
       methodOpts: [
         {
           value: '选项1',
-          label: '黄金糕'
+          label: i18n.t('legacyScript.goldenCake')
         },
         {
           value: '选项2',
-          label: '双皮奶'
+          label: i18n.t('legacyScript.doubleSkinMilk')
         },
         {
           value: '选项3',
-          label: '蚵仔煎'
+          label: i18n.t('legacyScript.oysterOmelette')
         },
         {
           value: '选项4',
-          label: '龙须面'
+          label: i18n.t('legacyScript.dragonBeardNoodles')
         },
         {
           value: '选项5',
-          label: '北京烤鸭'
+          label: i18n.t('legacyScript.beijingRoastDuck')
         }
       ],
       tableData: [],

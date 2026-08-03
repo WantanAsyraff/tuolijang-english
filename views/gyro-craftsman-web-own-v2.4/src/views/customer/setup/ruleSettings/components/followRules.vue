@@ -92,6 +92,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   name: 'FollowRules',
   props: {
@@ -117,8 +118,8 @@ export default {
         xs: 24
       },
       rules: {
-        follow_up_unsettled: [{ required: true, message: '请输入客户跟进提醒周期' }],
-        follow_up_traded: [{ required: true, message: '请输入客户跟进提醒周期' }]
+        follow_up_unsettled: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheCustomerFollowUpReminderCycle') }],
+        follow_up_traded: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheCustomerFollowUpReminderCycle') }]
       }
     }
   },

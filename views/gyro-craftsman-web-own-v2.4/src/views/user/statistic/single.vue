@@ -175,6 +175,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { attendanceStatistics, individualStatistics } from '@/api/user'
 
 // 预加载图片资源，避免在渲染时多次加载
@@ -243,18 +244,18 @@ export default {
         { id: 6, name: '地点异常' }
       ],
       clockInList: [
-        { num: 0, img: clockImages.clock1, title: '迟到(次)' },
-        { num: 0, img: clockImages.clock2, title: '早退(次)' },
-        { num: 0, img: clockImages.clock3, title: '缺卡(次)' },
-        { num: 0, img: clockImages.clock5, title: '地点异常(次)' },
-        { num: 0, img: clockImages.clock4, title: '旷工(天)' }
+        { num: 0, img: clockImages.clock1, title: i18n.t('legacyScript.lateTimes') },
+        { num: 0, img: clockImages.clock2, title: i18n.t('legacyScript.earlyLeaveTimes') },
+        { num: 0, img: clockImages.clock3, title: i18n.t('legacyScript.missingClockInTimes') },
+        { num: 0, img: clockImages.clock5, title: i18n.t('legacyScript.locationExceptionsTimes') },
+        { num: 0, img: clockImages.clock4, title: i18n.t('legacyScript.absenceDays') }
       ],
       attendanceList: [
-        { num: 0, img: clockImages.single1, title: '请假(小时)' },
-        { num: 0, img: clockImages.single2, title: '出差(天)' },
-        { num: 0, img: clockImages.single3, title: '外出(小时)' },
-        { num: 0, img: clockImages.single4, title: '加班(小时)' },
-        { num: 0, img: clockImages.single5, title: '补卡(次)' }
+        { num: 0, img: clockImages.single1, title: i18n.t('legacyScript.leaveHours') },
+        { num: 0, img: clockImages.single2, title: i18n.t('legacyScript.businessTripDays') },
+        { num: 0, img: clockImages.single3, title: i18n.t('legacyScript.outOfOfficeHours') },
+        { num: 0, img: clockImages.single4, title: i18n.t('legacyScript.overtimeHours') },
+        { num: 0, img: clockImages.single5, title: i18n.t('legacyScript.clockInCorrectionsTimes') }
       ],
 
       where: {
@@ -334,7 +335,7 @@ export default {
         const userInfoStr = localStorage.getItem('userInfo')
         return userInfoStr ? JSON.parse(userInfoStr) : null
       } catch (error) {
-        console.error('获取用户信息失败:', error)
+        console.error(i18n.t('legacyScript.failedToRetrieveUserInformation'), error)
         return null
       }
     },
@@ -406,7 +407,7 @@ export default {
         this.tableData = result.data?.list || []
         this.totalPage = result.data?.count || 0
       } catch (error) {
-        console.error('获取个人统计数据失败:', error)
+        console.error(i18n.t('legacyScript.failedToRetrievePersonalStatistics'), error)
         this.tableData = []
         this.totalPage = 0
       }
@@ -448,7 +449,7 @@ export default {
           }
         })
         .catch((error) => {
-          console.error('获取考勤统计失败:', error)
+          console.error(i18n.t('legacyScript.failedToRetrieveAttendanceStatistics'), error)
         })
     },
 

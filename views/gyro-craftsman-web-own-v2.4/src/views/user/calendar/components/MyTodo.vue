@@ -96,6 +96,7 @@
 </div>
 </template>
 <script setup>
+import i18n from '@/lang'
 import { ref, computed, onMounted, getCurrentInstance } from 'vue'
 import { todoOverviewApi, todoListApi } from '@/api/user'
 import CalendarDetails from './calendarDetails.vue'
@@ -183,12 +184,12 @@ const activeCategory = ref('all')
 
 const currentCategory = computed(() => {
   if (activeCategory.value === 'all') {
-    return { key: 'all', label: '全部待办', count: totalCount.value }
+    return { key: 'all', label: i18n.t('ui.userCalendarMyTodoAllToDos'), count: totalCount.value }
   }
   return (
     categories.value.find((c) => c.key === activeCategory.value) || {
       key: 'all',
-      label: '全部待办',
+      label: i18n.t('ui.userCalendarMyTodoAllToDos'),
       count: totalCount.value
     }
   )
@@ -222,7 +223,7 @@ async function fetchOverview() {
       }))
     }
   } catch (e) {
-    console.error('获取待办概览失败:', e)
+    console.error(i18n.t('legacyScript.failedToGetThePendingTaskOverview'), e)
   }
 }
 
@@ -270,7 +271,7 @@ async function loadPending(reset = false) {
       pendingPage.value = page + 1
     }
   } catch (e) {
-    console.error('获取未完成待办失败:', e)
+    console.error(i18n.t('legacyScript.failedToRetrievePendingTasks'), e)
   } finally {
     pendingLoading.value = false
   }
@@ -295,7 +296,7 @@ async function loadCompleted(reset = false) {
       completedPage.value = page + 1
     }
   } catch (e) {
-    console.error('获取已完成待办失败:', e)
+    console.error(i18n.t('legacyScript.failedToRetrieveCompletedToDos'), e)
   } finally {
     completedLoading.value = false
   }
@@ -308,7 +309,7 @@ async function fetchList() {
   try {
     await loadPending(true)
   } catch (e) {
-    console.error('获取待办列表失败:', e)
+    console.error(i18n.t('legacyScript.failedToRetrieveThePendingTaskList'), e)
   } finally {
     listLoading.value = false
   }

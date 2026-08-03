@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 /**
  * 容器组件数组
  * @type {Container[]}
@@ -668,7 +669,7 @@ export const basicFields = [
       validationHint: '',
       //-------------------
       showType:1,
-      buttonText: '选择',
+      buttonText: i18n.t('ui.developTableDialogSelect'),
       dataLink:'', // 数据联动
       labelIconPosition: 'rear',
       prefixIcon: '',
@@ -711,7 +712,7 @@ export const basicFields = [
       name: '',
       keyNameEnabled: false,
       keyName: '',
-      label: '地区选择',
+      label: i18n.t('legacyScript.regionSelection'),
       labelAlign: '',
       defaultValue: '',
       placeholder: '',
@@ -757,7 +758,7 @@ export const basicFields = [
       name: 'zhengshuziduan',
       keyNameEnabled: false,
       keyName: '',
-      label: '整数字段',
+      label: i18n.t('legacyScript.integerField'),
       labelAlign: '',
       defaultValue: 0,
       placeholder: '',
@@ -802,7 +803,7 @@ export const basicFields = [
       name: 'jingquexiaoshu',
       keyNameEnabled: false,
       keyName: '',
-      label: '精确小数',
+      label: i18n.t('legacyScript.preciseDecimal'),
       labelAlign: '',
       defaultValue: 0,
       placeholder: '',
@@ -846,7 +847,7 @@ export const basicFields = [
       name: 'jine',
       keyNameEnabled: false,
       keyName: '',
-      label: '金额',
+      label: i18n.t('finance.amountmoney'),
       labelAlign: '',
       defaultValue: 0,
       placeholder: '',

@@ -271,6 +271,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import vuedraggable from 'vuedraggable'
 import { productCreateApi, productSaveApi, productInfoApi, putProductApi } from '@/api/client'
@@ -318,33 +319,33 @@ export default {
       },
       formThead: {
         price: {
-          title: '产品售价(元)'
+          title: i18n.t('legacyScript.productPriceYuan')
         },
         cost: {
-          title: '产品成本价（元）'
+          title: i18n.t('legacyScript.productCostYuan')
         },
         bar_code: {
-          title: '产品规格编号',
+          title: i18n.t('legacyScript.productSpecNo'),
           type: 'text'
         }
       },
       id: 0,
       GoodsTableHead: [
         {
-          title: '图片',
+          title: i18n.t('file.picture'),
           slot: 'image',
           align: 'center',
           minWidth: '80px'
         },
         {
-          title: '产品售价(元)',
+          title: i18n.t('legacyScript.productPriceYuan'),
           slot: 'price',
           align: 'center',
           type: 'num',
           minWidth: '120px'
         },
         {
-          title: '产品成本(元)',
+          title: i18n.t('legacyScript.productCostYuan2'),
           slot: 'cost',
           align: 'center',
           type: 'num',
@@ -352,14 +353,14 @@ export default {
         },
 
         {
-          title: '产品规格编码',
+          title: i18n.t('legacyScript.productSpecCode'),
           slot: 'bar_code',
           align: 'center',
           type: 'text',
           minWidth: '120px'
         },
         {
-          title: '操作',
+          title: i18n.t('toptable.operation'),
           slot: 'action',
           align: 'center',
           minWidth: '120px',
@@ -485,7 +486,7 @@ export default {
         }
       }
       if (isHas) {
-        this.$confirm('可以同步修改下方该规格图片，确定要替换吗？', '提示', {
+        this.$confirm(i18n.t('legacyScript.youCanAlsoUpdateTheImageForThisSpecificationBelow'), i18n.t('public.tips'), {
           confirmButtonText: '替换',
           cancelButtonText: '暂不',
           type: 'warning'
@@ -632,7 +633,7 @@ export default {
         // 判断是否存在同样熟悉
         const isExist = this.attrs[idx].detail.some((item) => item.value === num)
         if (isExist) {
-          this.$message.error('规格值已存在')
+          this.$message.error(i18n.t('legacyScript.specificationValueAlreadyExists'))
           return
         }
         this.attrs[idx].detail.push({ value: num, image: '' })
@@ -682,7 +683,7 @@ export default {
       if (this.form.spec_type == 0) {
         this.form.attrValue = this.OneattrValue
       } else {
-        if (this.ManyAttrValue.length < 2) return this.$message.warning('商品规格-规格数量最少1个')
+        if (this.ManyAttrValue.length < 2) return this.$message.warning(i18n.t('legacyScript.productSpecificationsMinimumOf1SpecificationRequired'))
 
         let newData = JSON.parse(JSON.stringify(this.ManyAttrValue))
 

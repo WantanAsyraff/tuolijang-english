@@ -459,6 +459,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { extractArrayIds } from '@/libs/public'
 import { pinyin } from 'pinyin-pro'
@@ -908,7 +909,7 @@ export default {
           } catch {
             throw {
               data: {
-                message: '操作已取消'
+                message: i18n.t('legacyScript.operationCanceled')
               }
             }
           }
@@ -939,7 +940,7 @@ export default {
       this.editKey = val.key
       this.itemData = val
       this.labelData = {
-        title: '客户标签',
+        title: i18n.t('customer.customerlabel'),
         width: '540px',
         label: this.labelList,
         edit: 1

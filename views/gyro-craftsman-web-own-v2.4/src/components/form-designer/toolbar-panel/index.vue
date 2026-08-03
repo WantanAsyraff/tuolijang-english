@@ -127,6 +127,7 @@
 </div>
 </template>
 <script>
+import appI18n from '@/lang'
 import VFormRender from '@/components/form-render/index'
 import Clipboard from 'clipboard'
 import {
@@ -206,9 +207,9 @@ export default {
         ],
 
         select001: [
-          { label: '辣椒', value: 1 },
-          { label: '菠萝', value: 2 },
-          { label: '丑橘子', value: 3 }
+          { label: appI18n.t('legacyScript.chiliPepper'), value: 1 },
+          { label: appI18n.t('legacyScript.pineapple'), value: 2 },
+          { label: appI18n.t('legacyScript.dekopon'), value: 3 }
         ]
       },
       id: 0,
@@ -423,7 +424,7 @@ if( res.data.fields && res.data.fields.length > 0){
     },
 
     saveAsFile(fileContent, defaultFileName) {
-      this.$prompt('文件名：', '保存为文件', {
+      this.$prompt(appI18n.t('legacyScript.fileName'), appI18n.t('legacyScript.saveAsFile'), {
         inputValue: defaultFileName,
         closeOnClickModal: false,
         inputPlaceholder: '请输入文件名'

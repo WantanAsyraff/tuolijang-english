@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 export default {
   name: 'CrmebOaEntCopyright',
@@ -19,19 +20,19 @@ export default {
       title: '',
       links: [
         {
-          title: '官网',
+          title: i18n.t('legacyScript.officialWebsite'),
           key: '官网',
           href: 'https://tuoluojiang.com',
           blankTarget: true
         },
         {
-          title: '社区',
+          title: i18n.t('legacyScript.community'),
           key: '社区',
           href: 'https://www.crmeb.com/ask/thread/list/157',
           blankTarget: true
         },
         {
-          title: '文档',
+          title: i18n.t('file.document'),
           key: '文档',
           href: 'https://tuoluojiang.com/doc/own/0',
           blankTarget: true

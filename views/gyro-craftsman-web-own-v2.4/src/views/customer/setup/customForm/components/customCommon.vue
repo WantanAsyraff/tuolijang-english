@@ -1,74 +1,75 @@
 <script>
+import i18n from '@/lang'
 // 自定义表单-字段类型选项
 const typeOptions = [
   {
-    label: '文本框',
+    label: i18n.t('legacyScript.text2'),
     value: 'text',
     type: 'input'
   },
   {
-    label: '数字',
+    label: i18n.t('legacyScript.number'),
     value: 'number',
     type: 'input'
   },
   {
-    label: '文本域',
+    label: i18n.t('legacyScript.textArea'),
     value: 'textarea',
     type: 'input'
   },
   {
-    label: '人员(单选)',
+    label: i18n.t('legacyScript.personSingleSelect'),
     value: 'singleMember',
     type: 'member'
   },
   {
-    label: '人员(多选)',
+    label: i18n.t('legacyScript.personnelMultipleSelect'),
     value: 'multipleMember',
     type: 'member'
   },
 
   {
-    label: '下拉单选',
+    label: i18n.t('legacyScript.dropdownSingleSelect'),
     value: 'single',
     type: 'select'
   },
   {
-    label: '下拉复选',
+    label: i18n.t('legacyScript.multiSelectDropdown'),
     value: 'multiple',
     type: 'select'
   },
   {
-    label: '单选按钮',
+    label: i18n.t('legacyScript.radioButtons'),
     value: 'radio',
     type: 'radio'
   },
   {
-    label: '复选按钮组',
+    label: i18n.t('legacyScript.checkboxGroup'),
     value: 'checked',
     type: 'checked'
   },
   {
-    label: '日期控件',
+    label: i18n.t('legacyScript.datePicker2'),
     value: 'date',
     type: 'date'
   },
   {
-    label: '日期时间控件',
+    label: i18n.t('legacyScript.dateAndTimePicker'),
     value: 'datetime',
     type: 'datetime'
   },
   {
-    label: '图片选择控件',
+    label: i18n.t('legacyScript.imagePicker'),
     value: 'images',
     type: 'images'
   },
   {
-    label: '附件控件',
+    label: i18n.t('legacyScript.attachmentUploader'),
     value: 'file',
     type: 'file'
   },
   {
-    label: '富文本控件',
+    label: i18n.t('legacyScript.richText'),
     value: 'oaWangeditor',
     type: 'oaWangeditor'
   }

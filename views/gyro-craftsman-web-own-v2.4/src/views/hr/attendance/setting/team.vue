@@ -115,6 +115,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import oaFromBox from '@/components/common/oaFromBox'
 import { attendanceGroupListApi, deleteAttendanceGroup, attendanceUnattendedMember } from '@/api/config'
@@ -144,7 +145,7 @@ export default {
       ],
       dropdownList: [
         {
-          label: '未设置考勤组人员',
+          label: i18n.t('ui.hrAttendanceSettingTeamEmployeesWithoutAnAttendanceGroup'),
           value: 1
         }
       ],

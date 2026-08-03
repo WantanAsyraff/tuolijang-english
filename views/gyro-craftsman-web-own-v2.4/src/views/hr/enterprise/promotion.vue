@@ -188,6 +188,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Sortable from 'sortablejs'
 import { getIdsArray, getArrayDifference } from '@/libs/public'
 
@@ -330,7 +331,7 @@ export default {
     // 打开晋升标准
     handleCheck(row) {
       if (!row.id) {
-        return this.$message.error('请先保存数据')
+        return this.$message.error(i18n.t('legacyScript.pleaseSaveTheDataFirst'))
       }
 
       this.editDrawer = true
@@ -361,7 +362,7 @@ export default {
     // 保存
     async addRow(row) {
       if (!row.rank.length) {
-        return this.$message.error('请先选择职位')
+        return this.$message.error(i18n.t('legacyScript.pleaseSelectAPositionFirst'))
       }
       let data = {
         promotion_id: this.promotion_id,

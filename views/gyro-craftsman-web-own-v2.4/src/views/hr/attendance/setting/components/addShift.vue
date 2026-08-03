@@ -362,6 +362,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { saveAttendanceShiftApi, detailShiftListApi, putShiftListApi } from '@/api/config'
 import { getInervalHour, getInervalTwoHour, getHour } from '@/libs/public'
 export default {
@@ -371,15 +372,15 @@ export default {
     return {
       drawer: false,
       loading: false,
-      title: '新增班次',
+      title: i18n.t('legacyScript.newShift'),
       options: [
         {
           value: '0',
-          label: '当日'
+          label: i18n.t('ui.hrAttendanceSettingAddConentToday')
         },
         {
           value: '1',
-          label: '次日'
+          label: i18n.t('ui.hrAttendanceSettingAddConentNextDay')
         }
       ],
 
@@ -517,8 +518,8 @@ export default {
         }
       },
       rules: {
-        name: [{ required: true, message: '请输入班次名称', trigger: 'blur' }],
-        number: [{ required: true, message: '请选择班次', trigger: 'change' }]
+        name: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddShiftPleaseEnterShiftName'), trigger: 'blur' }],
+        number: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddCyclePleaseSelectShift'), trigger: 'change' }]
       },
       tableData: [
         {
@@ -573,21 +574,21 @@ export default {
       if (this.formData.number == 1 && this.formData.rest_time == 1) {
         if (this.formData.number1.second_day_after == 0) {
           if (this.formData.number1.work_hours > this.formData.rest_start) {
-            return this.$message.error('中途休息开始时间要大于上班时间')
+            return this.$message.error(i18n.t('legacyScript.breakStartTimeMustBeLaterThanWorkStartTime'))
           }
           if (this.formData.number1.off_hours < this.formData.rest_end) {
-            return this.$message.error('中途休息结束时间要小于下班时间')
+            return this.$message.error(i18n.t('legacyScript.breakEndTimeMustBeBeforeClockOutTime'))
           }
         } else {
           if (this.formData.rest_start_after == 0) {
             if (this.formData.number1.work_hours > this.formData.rest_start) {
-              return this.$message.error('中途休息开始时间要大于上班时间')
+              return this.$message.error(i18n.t('legacyScript.breakStartTimeMustBeLaterThanWorkStartTime'))
             }
           }
 
           if (this.formData.rest_end_after == 1) {
             if (this.formData.number1.off_hours < this.formData.rest_end) {
-              return this.$message.error('中途休息结束时间要小于下班时间')
+              return this.$message.error(i18n.t('legacyScript.breakEndTimeMustBeBeforeClockOutTime'))
             }
           }
         }
@@ -642,7 +643,7 @@ export default {
           this.formData.number1.second_day_after == 0 &&
           Date.parse(new Date(this.formData.number1.off_hours)) < Date.parse(new Date(this.formData.number1.work_hours))
         ) {
-          return this.$message.error('下班时间要大于上班时间')
+          return this.$message.error(i18n.t('legacyScript.endTimeMustBeGreaterThanStartTime'))
         }
         if (this.formData.number == 1) {
           duration1 = getHour(this.formData.number1.work_hours, this.formData.number1.off_hours, 0, 0)
@@ -712,12 +713,12 @@ export default {
     openBox(id, type) {
       this.type = type
       if (type == 'edit') {
-        this.title = '编辑班次'
+        this.title = i18n.t('legacyScript.editShift')
       } else if (type == 'check') {
-        this.title = '查看班次'
+        this.title = i18n.t('ui.hrAttendanceSettingShiftListViewShift')
       } else {
         this.type = 'add'
-        this.title = '新建班次'
+        this.title = i18n.t('ui.hrAttendanceSettingShiftListNewShift')
         this.changeTime()
       }
       if (id) {
@@ -793,7 +794,7 @@ export default {
     // 提交表单
     submitForm() {
       if (!this.formData.name) {
-        return this.$message.error('班次名称不能为空')
+        return this.$message.error(i18n.t('legacyScript.shiftNameIsRequired'))
       }
       // 计算工作时长函数
       this.changeTime()
@@ -801,24 +802,24 @@ export default {
       this.conversion()
 
       if (this.formData.number1.late > this.formData.number1.extreme_late) {
-        return this.$message.error('严重迟到值要大于迟到')
+        return this.$message.error(i18n.t('legacyScript.theSevereLateThresholdMustBeGreaterThanTheStandard'))
       }
       if (this.formData.number1.extreme_late > this.formData.number1.late_lack_card) {
-        return this.$message.error('半天缺卡值要大于严重迟到')
+        return this.$message.error(i18n.t('legacyScript.halfDayMissingPunchInValueMustBeGreaterThan'))
       }
       if (this.formData.number1.early_leave > this.formData.number1.early_lack_card) {
-        return this.$message.error('半天缺卡要大于早退值要大于严重迟到')
+        return this.$message.error(i18n.t('legacyScript.halfDayAbsenceMustBeGreaterThanEarlyLeaveWhich'))
       }
 
       if (this.formData.number == 2) {
         if (this.formData.number2.late > this.formData.number2.extreme_late) {
-          return this.$message.error('严重迟到值要大于迟到')
+          return this.$message.error(i18n.t('legacyScript.theSevereLateThresholdMustBeGreaterThanTheStandard'))
         }
         if (this.formData.number2.extreme_late > this.formData.number2.late_lack_card) {
-          return this.$message.error('半天缺卡值要大于严重迟到')
+          return this.$message.error(i18n.t('legacyScript.halfDayMissingPunchInValueMustBeGreaterThan'))
         }
         if (this.formData.number2.early_leave > this.formData.number2.early_lack_card) {
-          return this.$message.error('半天缺卡要大于早退值要大于严重迟到')
+          return this.$message.error(i18n.t('legacyScript.halfDayAbsenceMustBeGreaterThanEarlyLeaveWhich'))
         }
         this.formData.number2.work_hours = this.$moment(this.formData.number2.work_hours).format('HH:mm')
         this.formData.number2.off_hours = this.$moment(this.formData.number2.off_hours).format('HH:mm')

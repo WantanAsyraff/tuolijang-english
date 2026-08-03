@@ -284,6 +284,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { translateRuntimeText } from '@/utils/i18ns'
 import Common from '@/components/user/accessCommon'
 import { userAssessEditApi, userAssessInfo, userAssessCreateApi } from '@/api/user'
@@ -343,11 +344,11 @@ export default {
       periodOptions: Common.periodOptions,
       periodOption: [{ value: '', label: this.$t('access.selecteassessmenttype') }],
       dateArray: [
-        { value: 1, type: 'week', text: '选择周', format: 'yyyy 第 WW 周' },
-        { value: 2, type: 'month', text: '选择月份', format: 'yyyy-MM' },
+        { value: 1, type: 'week', text: i18n.t('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
+        { value: 2, type: 'month', text: i18n.t('legacyScript.selectMonth'), format: 'yyyy-MM' },
         { value: 4, type: '' },
         { value: 5, type: '' },
-        { value: 3, type: 'year', text: '选择年份', format: 'yyyy' }
+        { value: 3, type: 'year', text: i18n.t('legacyScript.selectYear'), format: 'yyyy' }
       ],
       quarterBtn: false,
       halfYearBtn: false,
@@ -478,7 +479,7 @@ export default {
       assessPlanPeriodApi().then((res) => {
         res.data == undefined ? (this.assessPlan = []) : (this.assessPlan = res.data)
         if (this.assessPlan.length === 0) {
-          this.$message.error('请开启考核类型')
+          this.$message.error(i18n.t('access.openassessmenttype'))
         } else {
           for (let i = 0; i < this.assessPlan.length; i++) {
             var index = this.periodOptions.findIndex((item) => {
@@ -649,7 +650,7 @@ export default {
     // 添加保存绩效
     preserve(status) {
       if (this.handleTotalWeight() != this.enterprise.maxScore) {
-        this.$message.error('当前总分和总分不一致')
+        this.$message.error(i18n.t('legacyScript.currentTotalScoreDoesNotMatchTheTotalScore'))
         return false
       }
       const res = this.judge()
@@ -781,40 +782,40 @@ export default {
         } else if (this.tableFrom.date === '' && !this.isEdit && this.is_temp === 0) {
           this.$message.error(this.$t('access.placeholder15'))
         } else if (this.tableFrom.testUid.length === 0 && this.is_temp === 0) {
-          this.$message.error('被考核人不能为空')
+          this.$message.error(i18n.t('legacyScript.appraiseeIsRequired'))
         }
       }
       if (this.tableData.length > 0) {
         for (let i = 0; i < this.tableData.length; i++) {
           if (this.tableData[i].name == '') {
-            this.$message.error('考核维度名称不能为空')
+            this.$message.error(i18n.t('legacyScript.assessmentDimensionNameCannotBeEmpty'))
             break
           }
           if (this.tableData[i].ratio <= 0 && this.is_draft === 0) {
-            this.$message.error('考核维度权重不能为零')
+            this.$message.error(i18n.t('legacyScript.assessmentDimensionWeightCannotBeZero'))
             break
           }
           if (this.tableData[i].target.length <= 0) {
-            this.$message.error('考核指标不能空')
+            this.$message.error(i18n.t('legacyScript.assessmentIndicatorsCannotBeEmpty'))
             break
           }
           const target = []
           for (let j = 0; j < this.tableData[i].target.length; j++) {
             if (this.tableData[i].target[j].name == '') {
-              this.$message.error('指标名称不能为空')
+              this.$message.error(i18n.t('legacyScript.indicatorNameIsRequired'))
               break
             }
             if (this.tableData[i].target[j].content == '') {
-              this.$message.error('指标内容不能为空')
+              this.$message.error(i18n.t('legacyScript.indicatorContentIsRequired'))
               break
             }
             const info = this.tableData[i].target[j].info
             if (info == '' || info == undefined) {
-              this.$message.error('评分标准不能为空')
+              this.$message.error(i18n.t('legacyScript.scoringCriteriaIsRequired'))
               break
             }
             if (this.tableData[i].target[j].ratio <= 0 && this.is_draft === 0) {
-              this.$message.error('指标权重不能为零')
+              this.$message.error(i18n.t('legacyScript.indicatorWeightCannotBeZero'))
               break
             }
 

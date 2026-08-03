@@ -30,6 +30,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import store from '@/store'
 import { mapMutations } from 'vuex'
 import Verify from '@/components/verifition/Verify'
@@ -56,9 +57,9 @@ export default {
         ],
 
         select001: [
-          { label: '辣椒', value: 1 },
-          { label: '菠萝', value: 2 },
-          { label: '丑橘子', value: 3 }
+          { label: i18n.t('legacyScript.chiliPepper'), value: 1 },
+          { label: i18n.t('legacyScript.pineapple'), value: 2 },
+          { label: i18n.t('legacyScript.dekopon'), value: 3 }
         ]
       },
       loading: false,

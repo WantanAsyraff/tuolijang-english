@@ -1,8 +1,9 @@
+import i18n from '@/lang'
 //日历搜索快捷键
 export default {
   shortcuts: [
     {
-      text: '今天',
+      text: i18n.t('toptable.today'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -10,7 +11,7 @@ export default {
       },
     },
     {
-      text: '昨天',
+      text: i18n.t('toptable.yesterday'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -19,7 +20,7 @@ export default {
       },
     },
     {
-      text: '本月',
+      text: i18n.t('hr.month'),
       onClick(picker) {
         const start = new Date();
         const end = new Date();
@@ -31,7 +32,7 @@ export default {
       },
     },
     {
-      text: '上月',
+      text: i18n.t('toptable.lastmonth'),
       onClick(picker) {
         const start = picker.$moment().subtract(1, 'month').startOf('month').format('YYYY/MM/DD');
         const end = picker.$moment().subtract(1, 'month').endOf('month').format('YYYY/MM/DD');
@@ -39,7 +40,7 @@ export default {
       },
     },
     {
-      text: '最近7天',
+      text: i18n.t('toptable.day7'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -48,7 +49,7 @@ export default {
       },
     },
     {
-      text: '最近30天',
+      text: i18n.t('toptable.day30'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -57,7 +58,7 @@ export default {
       },
     },
     {
-      text: '最近90天',
+      text: i18n.t('legacyScript.last90Days'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -66,7 +67,7 @@ export default {
       },
     },
     {
-      text: '最近1年',
+      text: i18n.t('legacyScript.lastYear2'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -75,7 +76,7 @@ export default {
       },
     },
     {
-      text: '本年',
+      text: i18n.t('toptable.thisyear'),
       onClick(picker) {
         const start = picker.$moment().startOf('year').format('YYYY/MM/DD HH:mm:ss');
         const end = picker.$moment().format('YYYY/MM/DD HH:mm:ss');
@@ -83,7 +84,7 @@ export default {
       },
     },
     {
-      text: '去年',
+      text: i18n.t('legacyScript.lastYear'),
       onClick(picker) {
         const start = picker.$moment().subtract(1, 'year').startOf('year').format('YYYY/MM/DD HH:mm:ss');
         const end = picker.$moment().subtract(1, 'year').endOf('year').format('YYYY/MM/DD HH:mm:ss');

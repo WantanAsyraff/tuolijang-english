@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { attendanceShiftSelectApi, saveRosterCycleApi, rosterCycleDetailApi, putCycleListApi } from '@/api/config'
 export default {
   name: 'CrmebOaEntAddCycle',
@@ -71,11 +72,11 @@ export default {
     // 提交
     async submitForm() {
       if (!this.name) {
-        return this.$message.error('请输入周期名称')
+        return this.$message.error(i18n.t('ui.hrAttendanceSettingAddCyclePleaseEnterCycleName'))
       }
 
       if (this.cycle !== this.shifts.length - 1) {
-        return this.$message.error('请选择班次')
+        return this.$message.error(i18n.t('ui.hrAttendanceSettingAddCyclePleaseSelectShift'))
       }
 
       let data = {

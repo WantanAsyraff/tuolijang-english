@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 export default {
   name: 'AssistantDialog',
@@ -80,7 +81,7 @@ export default {
     },
     handleSend() {
       if (this.list.length > 0 && this.list[this.list.length - 1].loading) {
-        this.$message.error('正在处理中，请稍后再试')
+        this.$message.error(i18n.t('legacyScript.processingPleaseTryAgainShortly'))
         return
       }
       if (this.userMessage) {

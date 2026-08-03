@@ -138,6 +138,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { contractList } from '@/api/enterprise'
 import { clientContractEditApi, clientContractSaveApi, clientNameApi } from '@/api/client'
 
@@ -192,8 +193,8 @@ export default {
             trigger: 'blur'
           }
         ],
-        sign_status: [{ required: true, message: '请选择签约状态', trigger: 'change' }],
-        eid: [{ required: true, message: '请选择客户名称', trigger: 'change' }],
+        sign_status: [{ required: true, message: i18n.t('legacyScript.pleaseSelectSigningStatus'), trigger: 'change' }],
+        eid: [{ required: true, message: i18n.t('legacyScript.pleaseSelectCustomerName'), trigger: 'change' }],
         endTime: [
           {
             required: true,
@@ -201,7 +202,7 @@ export default {
             trigger: 'blur'
           }
         ],
-        category_id: [{ required: true, message: '请选择订单分类', trigger: 'change' }]
+        category_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectOrderCategory'), trigger: 'change' }]
       },
       startDatePicker: this.beginDate(),
       endDatePicker: this.processDate(),
@@ -281,7 +282,7 @@ export default {
     handleConfirm() {
       return new Promise((resolve, reject) => {
         if (this.rules.endTime && new Date(this.rules.startTime) > new Date(this.rules.endTime)) {
-          return this.$message.error('结束时间不能小于开始时间')
+          return this.$message.error(i18n.t('legacyScript.theEndTimeCannotBeEarlierThanTheStart'))
         }
         this.$refs.form.validate((valid) => {
           if (valid) {

@@ -109,6 +109,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { noticeEditApi, noticeEditCreateApi, noticeSaveApi } from '@/api/administration'
 export default {
   name: 'AddNotice',
@@ -151,9 +152,9 @@ export default {
         }
       },
       rules: {
-        title: [{ required: true, message: '请输入公告标题', trigger: 'blur' }],
-        categoryId: [{ required: true, message: '请选择公告分类', trigger: 'change' }],
-        contents: [{ required: true, message: '请输入公告正文', trigger: 'change' }]
+        title: [{ required: true, message: i18n.t('ui.administrationNoticeAddNoticePleaseEnterAnnouncementTitle'), trigger: 'blur' }],
+        categoryId: [{ required: true, message: i18n.t('ui.administrationNoticeAddNoticePleaseSelectAnnouncementCategory'), trigger: 'change' }],
+        contents: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheAnnouncementBody'), trigger: 'change' }]
       },
       isImage: false,
       srcList: []
@@ -217,13 +218,13 @@ export default {
     },
     handleConfirm() {
       if (this.form.resource == 1 && !this.form.date) {
-        this.$message.error('请选择发布时间')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectReleaseTime'))
 
         return false
       }
       this.form.contents = this.$refs.ueditorFrom.getValue()
       if (this.form.contents == '<p><br></p>') {
-        this.$message.error('请输入公告正文')
+        this.$message.error(i18n.t('legacyScript.pleaseEnterTheAnnouncementBody'))
         return false
       }
       this.$refs.form.validate((valid) => {

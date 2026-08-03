@@ -25,6 +25,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { oddsCreateApi } from '@/api/client'
 import { chargeCreateApi, chargeEditApi, chargeEditSubmitApi } from '@/api/enterprise'
 import { clientCustomerSaveApi } from '@/api/client'
@@ -91,7 +92,7 @@ export default {
             if (res.status == 200) {
               if (type == 1) {
                 this.formBoxConfig = {
-                  title: '新增商机',
+                  title: i18n.t('legacyScript.addOpportunity'),
                   width: '1000px',
                   types: 'odds'
                 }
@@ -138,7 +139,7 @@ export default {
             if (res.status == 200) {
               if (type == 1) {
                 this.formBoxConfig = {
-                  title: '新增商机',
+                  title: i18n.t('legacyScript.addOpportunity'),
                   width: '1000px',
                   types: 'odds'
                 }

@@ -359,6 +359,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Sortable from 'sortablejs'
 import manageRange from '@/components/form-common/select-manageRange'
 import {
@@ -406,45 +407,45 @@ export default {
         priorityOptions: [
           {
             value: 1,
-            label: '紧急'
+            label: i18n.t('ui.programProgramTaskTableDataUrgent')
           },
           {
             value: 2,
-            label: '高'
+            label: i18n.t('ui.programProgramTaskTableDataHeight')
           },
           {
             value: 3,
-            label: '中'
+            label: i18n.t('ui.programProgramTaskTableDataCenter')
           },
           {
             value: 4,
-            label: '低'
+            label: i18n.t('ui.programProgramTaskTableDataLow')
           },
           {
             value: 0,
-            label: '无优先级'
+            label: i18n.t('ui.programProgramTaskTableDataNoPriority')
           }
         ],
         statusOptions: [
           {
             value: 0,
-            label: '未处理'
+            label: i18n.t('ui.programProgramTaskTableDataUnprocessed')
           },
           {
             value: 1,
-            label: '进行中'
+            label: i18n.t('customer.execution')
           },
           {
             value: 2,
-            label: '已解决'
+            label: i18n.t('ui.programProgramTaskTableDataResolved')
           },
           {
             value: 3,
-            label: '已验收'
+            label: i18n.t('ui.programProgramTaskTableDataAccepted')
           },
           {
             value: 4,
-            label: '已拒绝'
+            label: i18n.t('ui.userExamineExamineRejected')
           }
         ]
       },
@@ -472,55 +473,55 @@ export default {
       typesOptions: [
         {
           value: 0,
-          label: '全部任务'
+          label: i18n.t('legacyScript.allTasks')
         },
         {
           value: 1,
-          label: '我负责的'
+          label: i18n.t('legacyScript.ownedByMe')
         },
         {
           value: 2,
-          label: '我参与的'
+          label: i18n.t('legacyScript.myParticipations')
         },
         {
           value: 3,
-          label: '我创建的'
+          label: i18n.t('legacyScript.createdByMe')
         }
       ],
       statusOptions: [
         {
           value: 0,
-          label: '未处理'
+          label: i18n.t('ui.programProgramTaskTableDataUnprocessed')
         },
         {
           value: 1,
-          label: '进行中'
+          label: i18n.t('customer.execution')
         },
         {
           value: 2,
-          label: '已解决'
+          label: i18n.t('ui.programProgramTaskTableDataResolved')
         },
         {
           value: 3,
-          label: '已验收'
+          label: i18n.t('ui.programProgramTaskTableDataAccepted')
         },
         {
           value: 4,
-          label: '已拒绝'
+          label: i18n.t('ui.userExamineExamineRejected')
         }
       ],
       timeOptions: [
         {
           value: 'plan_start',
-          label: '计划开始'
+          label: i18n.t('ui.programProgramTaskTableDataPlannedStart')
         },
         {
           value: 'plan_end',
-          label: '计划结束'
+          label: i18n.t('ui.programProgramTaskTableDataPlannedEnd')
         },
         {
           value: 'created_at',
-          label: '创建时间'
+          label: i18n.t('customer.creationtime')
         }
       ],
       type: 0,
@@ -654,7 +655,7 @@ export default {
       if (this.versionList.length) {
         this.$set(this.versionVisible, index, true)
       } else if (type == 1) {
-        this.$message('请到任务详情设置版本')
+        this.$message(i18n.t('legacyScript.pleaseSetTheVersionInTheTaskDetails'))
       }
     },
     chooseVersion(row, index) {
@@ -716,7 +717,7 @@ export default {
         this.activeIds = []
         this.childrenNewPid = 0
         this.childrenTotal = 0
-        this.$message.warning('不允许跨级拖动!')
+        this.$message.warning(i18n.t('legacyScript.crossLevelDraggingIsNotAllowed'))
         return false
       }
       const filteredRows = this.activeRows.filter((row) => row.level === this.childrenLevel)

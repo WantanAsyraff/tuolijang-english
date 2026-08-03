@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import { ref, reactive, getCurrentInstance } from 'vue';
 import {
   clientInvoiceDetailApi
@@ -15,7 +16,7 @@ export const useInvoice = () => {
       const res = await clientInvoiceDetailApi(invoiceId);
 
       invoiceFromData.value = {
-        title: '发票查看',
+        title: i18n.t('legacyScript.viewInvoice'),
         width: '1000px',
         data: res.data,
       };

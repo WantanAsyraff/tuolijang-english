@@ -224,6 +224,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { systemRoleCreateApi, systemRoleStoreApi, systemRoleUpdateApi } from '@/api/config'
 import settingsPopover from './settingsPopover'
 import { getcrudCateListApi } from '@/api/develop'
@@ -268,36 +269,36 @@ export default {
       crudList: [
         {
           value: 0,
-          label: '不允许'
+          label: i18n.t('ui.customerWeChatMassAddGroupPostingNotAllowed')
         },
         {
           value: 1,
-          label: '仅本人'
+          label: i18n.t('customer.meOnly')
         },
         {
           value: 5,
-          label: '直属下级'
+          label: i18n.t('customer.directSubordinates')
         },
         {
           value: 2,
-          label: '本部门'
+          label: i18n.t('customer.thisDept')
         },
         {
           value: 3,
-          label: '自定义部门'
+          label: i18n.t('customer.custDept')
         },
         {
           value: 4,
-          label: '全部数据'
+          label: i18n.t('customer.allData')
         }
       ],
       allowOptions: [
         {
-          label: '允许',
+          label: i18n.t('ui.customerWeChatMassAddGroupPostingAllowed'),
           value: 1
         },
         {
-          label: '不允许',
+          label: i18n.t('ui.customerWeChatMassAddGroupPostingNotAllowed'),
           value: 0
         }
       ],
@@ -392,7 +393,7 @@ export default {
       } else if (type === 1) {
         // 按列设置所有选中实体的某种类型权限
 
-        if (this.ids.length == 0) return this.$message.error('请选择要设置权限的实体')
+        if (this.ids.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectTheEntityWhosePermissionsYouWantToConfigure'))
         this.searchList.forEach((val) => {
           this.ids.forEach((el) => {
             if (val.id === el.id) {
@@ -402,7 +403,7 @@ export default {
         })
       } else if (type === 2) {
         // 批量设置所有被选择实体的所有权限
-        if (this.ids.length == 0) return this.$message.error('请选择要设置权限的实体')
+        if (this.ids.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectTheEntityWhosePermissionsYouWantToConfigure'))
 
         const idSet = new Set(this.ids.map((item) => item.id))
 

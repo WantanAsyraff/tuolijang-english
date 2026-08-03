@@ -166,6 +166,7 @@
 </el-drawer>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   props: {
     directorMaxLevel: {
@@ -223,7 +224,7 @@ export default {
         (this.approverConfig.settype == 4 && this.approverConfig.selectRange == 2)
       ) {
         if (this.approverConfig.nodeUserList.length <= 0) {
-          this.$message.warning('至少选择一个指定成员')
+          this.$message.warning(i18n.t('legacyScript.selectAtLeastOneSpecifiedMember'))
           return false
         }
       }

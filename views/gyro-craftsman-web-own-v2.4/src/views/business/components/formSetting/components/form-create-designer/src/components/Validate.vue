@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 export default {
   name: 'Validate',
   props: {
@@ -36,9 +37,9 @@ export default {
           type: 'select',
           field: 'type',
           value: undefined,
-          title: '字段类型',
+          title: i18n.t('ui.developForeignDocumentFieldType'),
           options: [
-            { value: undefined, label: '请选择' },
+            { value: undefined, label: i18n.t('finance.pleaseselect') },
             { value: 'string', label: 'String' },
             { value: 'array', label: 'Array' },
             { value: 'number', label: 'Number' },
@@ -64,7 +65,7 @@ export default {
                     rules: [
                       {
                         type: 'select',
-                        title: '触发方式',
+                        title: i18n.t('legacyScript.triggerMethod'),
                         field: 'trigger',
                         value: 'change',
                         options: [
@@ -75,14 +76,14 @@ export default {
                       },
                       {
                         type: 'select',
-                        title: '验证方式',
+                        title: i18n.t('legacyScript.verificationMethod'),
                         field: 'mode',
                         options: [
-                          { value: 'required', label: '必填' },
-                          { value: 'pattern', label: '正则表达式' },
-                          { value: 'min', label: '最小值' },
-                          { value: 'max', label: '最大值' },
-                          { value: 'len', label: '长度' },
+                          { value: 'required', label: i18n.t('ui.developForeignDocumentRequired') },
+                          { value: 'pattern', label: i18n.t('legacyScript.regularExpression') },
+                          { value: 'min', label: i18n.t('legacyScript.minimumValue') },
+                          { value: 'max', label: i18n.t('legacyScript.maximumValue') },
+                          { value: 'len', label: i18n.t('legacyScript.length') },
                         ],
                         value: 'required',
                         control: [
@@ -102,7 +103,7 @@ export default {
                               {
                                 type: 'input',
                                 field: 'pattern',
-                                title: '正则表达式',
+                                title: i18n.t('legacyScript.regularExpression'),
                               },
                             ],
                           },
@@ -112,7 +113,7 @@ export default {
                               {
                                 type: 'inputNumber',
                                 field: 'min',
-                                title: '最小值',
+                                title: i18n.t('legacyScript.minimumValue'),
                               },
                             ],
                           },
@@ -122,7 +123,7 @@ export default {
                               {
                                 type: 'inputNumber',
                                 field: 'max',
-                                title: '最大值',
+                                title: i18n.t('legacyScript.maximumValue'),
                               },
                             ],
                           },
@@ -132,7 +133,7 @@ export default {
                               {
                                 type: 'inputNumber',
                                 field: 'len',
-                                title: '长度',
+                                title: i18n.t('legacyScript.length'),
                               },
                             ],
                           },
@@ -140,7 +141,7 @@ export default {
                       },
                       {
                         type: 'input',
-                        title: '错误信息',
+                        title: i18n.t('legacyScript.errorInformation'),
                         field: 'message',
                         value: '',
                       },

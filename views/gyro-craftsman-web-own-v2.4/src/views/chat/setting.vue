@@ -56,6 +56,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getApplicationsInfoApi, chatPutApplicationsApi, chatReleasesApplicationsApi } from '@/api/chatAi'
 import applicationForm from './components/applicationForm'
 import modelForm from './components/modelForm'
@@ -76,7 +77,7 @@ export default {
       id,
       info: {},
       loading: false,
-      tabArray: [{ value: '1', label: '设置' }]
+      tabArray: [{ value: '1', label: i18n.t('systemText.settings') }]
     }
   },
 

@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { messageUpdateApi, upDateMessageApi } from '@/api/setting'
 
 export default {
@@ -69,7 +70,7 @@ export default {
         date: ''
       },
       rules: {
-        date: [{ required: true, message: '请选择提醒时间', trigger: 'change' }]
+        date: [{ required: true, message: i18n.t('legacyScript.selectReminderTime'), trigger: 'change' }]
       }
     }
   },

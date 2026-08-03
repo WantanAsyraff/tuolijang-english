@@ -114,6 +114,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { storageRecordSaveApi } from '@/api/administration'
 
 export default {
@@ -185,9 +186,9 @@ export default {
     // 提交
     handleConfirm() {
       if (this.type == 0 && this.userList.length <= 0) {
-        return this.$message.error('请选择人员')
+        return this.$message.error(i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'))
       } else if (this.type == 1 && this.frames.length <= 0) {
-        return this.$message.error('请选择部门')
+        return this.$message.error(i18n.t('legacyScript.pleaseSelectDepartment'))
       } else {
         let user_type = null
         let user_id = null

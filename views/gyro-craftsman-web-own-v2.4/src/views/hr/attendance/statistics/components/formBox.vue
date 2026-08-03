@@ -48,6 +48,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import SettingMer from '@/libs/settingMer'
 import helper from '@/libs/helper'
@@ -73,23 +74,23 @@ export default {
       },
       dropdownList: [
         {
-          label: '导入',
+          label: i18n.t('finance.batchupload'),
           value: 1
         },
         {
-          label: '导出',
+          label: i18n.t('customer.export'),
           value: 2
         },
         {
-          label: '导出模板',
+          label: i18n.t('legacyScript.exportTemplate'),
           value: 3
         },
         {
-          label: '企微导入',
+          label: i18n.t('legacyScript.weComImport'),
           value: 4
         },
         {
-          label: '钉钉导入',
+          label: i18n.t('legacyScript.dingTalkImport'),
           value: 5
         }
       ],
@@ -184,27 +185,27 @@ export default {
       const diffDays = endDay.diff(startDay, 'days')
 
       if (diffDays > 30) {
-        this.$message.error('日期跨度不能超过30天，请重新选择！')
+        this.$message.error(i18n.t('legacyScript.theDateRangeCannotExceed30DaysPleaseSelectAgain'))
         this.clockInTime = [start, startDay.clone().add(30, 'days').format('YYYY/MM/DD')]
       } else if (diffDays < 0) {
-        this.$message.error('结束日期不能早于开始日期！')
+        this.$message.error(i18n.t('legacyScript.endDateCannotBeEarlierThanStartDate'))
         this.clockInTime = []
       }
     },
     // 企微同步
     qiweiAsync() {
       if (this.clockInTime.length == 0) {
-        return this.$message.error('请选择时间！')
+        return this.$message.error(i18n.t('legacyScript.pleaseSelectATime'))
       }
       const [start, end] = this.clockInTime
       const startDay = this.$moment(start)
       const endDay = this.$moment(end)
       const diffDays = endDay.diff(startDay, 'days')
       if (diffDays > 30) {
-        this.$message.error('日期跨度不能超过30天，请重新选择！')
+        this.$message.error(i18n.t('legacyScript.theDateRangeCannotExceed30DaysPleaseSelectAgain'))
         return false
       } else if (diffDays < 0) {
-        this.$message.error('结束日期不能早于开始日期！')
+        this.$message.error(i18n.t('legacyScript.endDateCannotBeEarlierThanStartDate'))
         return false
       }
       attendanceWorkClockRecord({ date: this.clockInTime }).then((res) => {
@@ -236,13 +237,13 @@ export default {
       this.viewSearch = [
         {
           field: 'group_id',
-          title: '考勤组',
+          title: i18n.t('ui.hrAttendanceStatisticsClockAttendanceGroup'),
           type: 'select',
           options: this.list
         },
         {
           field: 'scope',
-          title: '数据',
+          title: i18n.t('legacyScript.data'),
           type: 'select',
           options: [
             {
@@ -261,7 +262,7 @@ export default {
         },
         {
           field: 'user_id',
-          title: '人员',
+          title: i18n.t('ui.hrAttendanceSettingAddConentPersonnel'),
           type: 'user_id',
           options: []
         }
@@ -287,7 +288,7 @@ export default {
         }
       ]
       if (type == 'clock') {
-        this.title = '打卡记录'
+        this.title = i18n.t('legacyScript.clockInRecords')
         let obj = {
           field_name_en: 'group_id',
           field_name: '考勤组',
@@ -295,7 +296,7 @@ export default {
           data_dict: this.list
         }
         this.dropdownList.push({
-          label: '企微同步',
+          label: i18n.t('legacyScript.weComSync'),
           value: 6
         })
         searchList.splice(1, 1)
@@ -303,11 +304,11 @@ export default {
         this.search.push(obj)
         this.viewSearch.splice(0, 1)
       } else if (type == 'month') {
-        this.title = '月度统计'
+        this.title = i18n.t('legacyScript.monthlyStatistics')
         searchList[0].form_value = 'month'
         this.search = searchList
       } else {
-        this.title = '每日统计'
+        this.title = i18n.t('legacyScript.dailyStatistics')
         this.search = searchList
       }
     },

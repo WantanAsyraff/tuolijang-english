@@ -97,6 +97,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Commnt from '@/components/develop/commonData'
 import oaDialog from '@/components/form-common/dialog-form'
 import fieldPopover from './fieldPopover'
@@ -131,7 +132,7 @@ export default {
       info: this.infoData,
       fromData: {
         width: '600px',
-        title: '新建字段',
+        title: i18n.t('ui.developCrudFieldSettingNewField'),
         btnText: '确定',
         labelWidth: '100px',
         type: ''
@@ -249,7 +250,7 @@ export default {
 
       let typeObj = {
         type: 'select',
-        label: '字段类型：',
+        label: i18n.t('legacyScript.fieldType'),
         key: 'value',
         options: fieldList
       }

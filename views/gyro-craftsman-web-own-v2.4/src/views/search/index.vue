@@ -83,6 +83,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { mapMutations } from 'vuex'
 import { helpCenterApi, templatePayCode, templateViewApi, templateExportApi } from '@/api/user'
 import file from '@/utils/file'
@@ -201,7 +202,7 @@ export default {
     handlePayment(id) {
       templatePayCode(id).then((res) => {
         this.payData = {
-          title: '支付',
+          title: i18n.t('legacyScript.payment'),
           width: '300px',
           type: 0,
           data: res.data

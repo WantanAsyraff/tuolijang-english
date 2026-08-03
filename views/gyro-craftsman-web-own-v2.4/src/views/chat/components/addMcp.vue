@@ -108,6 +108,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getMcpListApi, saveMcpServiceApi, getMcpServiceApi, putMcpServiceApi, delMcpServiceApi } from '@/api/chatAi'
 import oaDialog from '@/components/form-common/dialog-form'
 import CodeEditor from '@/components/code-editor/index'
@@ -139,13 +140,13 @@ export default {
         app_id: ''
       },
       rules: {
-        name: [{ required: true, message: '请输入功能名称', trigger: 'blur' }],
-        info: [{ required: true, message: '请输入功能简介', trigger: 'blur' }],
-        config_json: [{ required: true, message: '请输入JSON配置', trigger: 'blur' }]
+        name: [{ required: true, message: i18n.t('legacyScript.enterFunctionName'), trigger: 'blur' }],
+        info: [{ required: true, message: i18n.t('legacyScript.enterFunctionDescription'), trigger: 'blur' }],
+        config_json: [{ required: true, message: i18n.t('legacyScript.enterJSONConfig'), trigger: 'blur' }]
       },
       fromData: {
         width: '650px',
-        title: '自定义MCP',
+        title: i18n.t('legacyScript.customMCP'),
         btnText: '确定',
         labelWidth: '90px',
         type: 'slot'
@@ -209,7 +210,7 @@ export default {
           try {
             configJson = typeof configJson === 'string' ? JSON.parse(configJson) : configJson
           } catch (error) {
-            this.$message.error('JSON配置格式不正确，请检查后重试')
+            this.$message.error(i18n.t('legacyScript.invalidJSONConfigurationFormatPleaseCheckAndTryAgain'))
             return
           }
         }
@@ -231,7 +232,7 @@ export default {
 
     submitFn() {
       if (this.selectList.length == 0) {
-        this.$message.error('请选择要添加的MCP')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectTheMCPToAdd'))
         return false
       }
       this.show = false

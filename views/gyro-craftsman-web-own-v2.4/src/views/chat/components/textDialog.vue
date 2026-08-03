@@ -28,6 +28,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   props: {},
   data() {
@@ -44,11 +45,11 @@ export default {
   methods: {
     openBox(obj) {
       if (obj.type === 'tooltip_text') {
-        this.title = '提示词'
+        this.title = i18n.t('legacyScript.prompt')
       } else if (obj.type === 'prologue_text') {
-        this.title = '开场白'
+        this.title = i18n.t('ui.chatModelFormOpeningMessage')
       } else if (obj.type === 'data_arrange_text') {
-        this.title = '整理数据规则'
+        this.title = i18n.t('ui.chatModelFormDataFormattingRules')
       }
       this.type = obj.type
       this.maxlength = obj.max

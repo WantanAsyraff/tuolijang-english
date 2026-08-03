@@ -116,6 +116,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   getWorkReplyListApi,
   workReplyDelApi,
@@ -161,8 +162,8 @@ export default {
       leftList: [],
       groupedData: [],
       dropdownList: [
-        { label: '下载模板', value: 1 },
-        { label: '导入快捷回复', value: 2 }
+        { label: i18n.t('ui.developCrudEntityTableDownloadTemplate'), value: 1 },
+        { label: i18n.t('legacyScript.importQuickReplies'), value: 2 }
       ],
       where: {
         page: 1,
@@ -178,32 +179,32 @@ export default {
       type: [
         {
           icon: 'iconwenben',
-          label: '文本',
+          label: i18n.t('legacyScript.text'),
           value: 'text'
         },
         {
           icon: 'icontupian4',
-          label: '图片',
+          label: i18n.t('file.picture'),
           value: 'image'
         },
         {
           icon: 'iconshipin1',
-          label: '视频',
+          label: i18n.t('legacyScript.video'),
           value: 'video'
         },
         {
           icon: 'iconwenjian4',
-          label: '文件',
+          label: i18n.t('ui.userCloudfileLayoutCloudfileLeftFile'),
           value: 'file'
         },
         {
           icon: 'iconwangye-01',
-          label: '网页',
+          label: i18n.t('legacyScript.webPage'),
           value: 'link'
         },
         {
           icon: 'iconxiaochengxu',
-          label: '小程序',
+          label: i18n.t('ui.customerWeChatMassAddGroupPostingMiniProgram'),
           value: 'mini_program'
         }
       ],
@@ -271,7 +272,7 @@ export default {
     async importExcelData(value) {
       const res = []
       if (value.length <= 0) {
-        this.$message.error('批量导入内容为空')
+        this.$message.error(i18n.t('legacyScript.batchImportContentIsEmpty'))
         return false
       }
       for (let i = 0; i <= value.length - 1; i++) {

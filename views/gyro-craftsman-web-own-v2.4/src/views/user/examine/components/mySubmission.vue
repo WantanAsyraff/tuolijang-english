@@ -126,6 +126,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { approveApplyApi, approveApplyRevokeApi, approveConfigSearchApi } from '@/api/business'
 import func from '@/utils/preload'
 export default {
@@ -146,17 +147,17 @@ export default {
       formConfig: [
         {
           type: 'textarea',
-          label: '撤销理由：',
-          placeholder: '请输入撤销理由',
+          label: i18n.t('legacyScript.reasonForReversal'),
+          placeholder: i18n.t('legacyScript.enterWithdrawalReason'),
           key: 'info'
         }
       ],
       formRules: {
-        info: [{ required: true, message: '请输入撤销理由', trigger: 'blur' }]
+        info: [{ required: true, message: i18n.t('legacyScript.enterWithdrawalReason'), trigger: 'blur' }]
       },
       fromData: {
         width: '600px',
-        title: '撤销',
+        title: i18n.t('ui.formDesignerToolbarPanelIndexRevoke'),
         btnText: '确定',
         labelWidth: 'auto',
         type: ''
@@ -213,8 +214,8 @@ export default {
     try {
       await Promise.all([this.getTableData(), this.getConfigSearch(0), this.getConfigSearch(3)])
     } catch (error) {
-      console.error('初始化数据加载失败:', error)
-      this.$message.error('数据加载失败，请刷新页面重试')
+      console.error(i18n.t('legacyScript.failedToInitializeDataLoading'), error)
+      this.$message.error(i18n.t('legacyScript.dataLoadingFailedPleaseRefreshThePageAndTryAgain'))
     }
   },
   methods: {
@@ -250,7 +251,7 @@ export default {
           }
         }
       } catch (error) {
-        console.error('获取配置数据失败:', error)
+        console.error(i18n.t('legacyScript.failedToRetrieveConfigurationData'), error)
         if (id === 0) {
           this.dropdownList = []
         } else if (id === 3 || id === 1) {
@@ -296,7 +297,7 @@ export default {
         this.tableData = result && result.data && Array.isArray(result.data.list) ? result.data.list : []
         this.total = result && result.data && typeof result.data.count === 'number' ? result.data.count : 0
       } catch (error) {
-        console.error('获取审批数据失败:', error)
+        console.error(i18n.t('legacyScript.failedToRetrieveApprovalData'), error)
         this.tableData = []
         this.total = 0
       } finally {
@@ -340,7 +341,7 @@ export default {
     handleRefuse(row) {
       this.rowData = row
       if (row.status === 0) {
-        this.$confirm(this.$ts('你确定要撤销申请吗'), '提示', {
+        this.$confirm(this.$ts('你确定要撤销申请吗'), i18n.t('public.tips'), {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -362,9 +363,9 @@ export default {
         if (this.$refs.oaDialog && typeof this.$refs.oaDialog.handleClose === 'function') {
           // this.$refs.oaDialog.handleClose()
         }
-        this.$message.success('撤销申请成功')
+        this.$message.success(i18n.t('legacyScript.withdrawApplicationSuccessful'))
       } catch (error) {
-        console.error('撤销申请失败:', error)
+        console.error(i18n.t('legacyScript.withdrawApplicationFailed'), error)
         this.$message.error(error.message || '撤销申请失败')
       }
       this.getTableData()

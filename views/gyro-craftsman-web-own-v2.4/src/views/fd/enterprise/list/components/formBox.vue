@@ -22,6 +22,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import file from '@/utils/file'
 import Vue from 'vue'
 Vue.use(file)
@@ -67,15 +68,15 @@ export default {
       columnNumber: 2,
       dropdownList: [
         {
-          label: '导出',
+          label: i18n.t('customer.export'),
           value: 1
         },
         {
-          label: '导入',
+          label: i18n.t('finance.batchupload'),
           value: 2
         },
         {
-          label: '下载模板',
+          label: i18n.t('ui.developCrudEntityTableDownloadTemplate'),
           value: 3
         }
       ],
@@ -117,15 +118,15 @@ export default {
           options: [
             {
               value: '',
-              label: '全部'
+              label: i18n.t('finance.all')
             },
             {
               value: '1',
-              label: '收入'
+              label: i18n.t('customer.income')
             },
             {
               value: '0',
-              label: '支出'
+              label: i18n.t('customer.expense')
             }
           ]
         }
@@ -270,7 +271,7 @@ export default {
       }
       const res = []
       if (data.length <= 0) {
-        this.$message.error('批量导出内容为空')
+        this.$message.error(i18n.t('legacyScript.batchExportContentIsEmpty'))
       } else {
         for (let i = 0; i <= data.length - 1; i++) {
           if (data[i][0] === '') {
@@ -300,7 +301,7 @@ export default {
     exportTemplate() {
       this.gettime = this.$moment().format('YYYY-MM-DD HH:mm:ss')
       if (!this.exportFileUrl) {
-        this.$message.error('暂无导入模板,请联系管理员')
+        this.$message.error(i18n.t('legacyScript.noImportTemplateAvailablePleaseContactTheAdministrator'))
       } else {
         this.fileLinkDownLoad(this.exportFileUrl, '收支记账导入模板' + this.gettime + '.xlsx')
       }

@@ -39,6 +39,7 @@
 </template>
 
 <script setup>
+import i18n from '@/lang'
 import { ref, computed, onMounted, getCurrentInstance } from 'vue'
 import iconfontIcons from '../../libs/iconfont-icons'
 
@@ -54,7 +55,7 @@ const emit = defineEmits(['select'])
 const { proxy } = getCurrentInstance()
 
 const sourceOptions = [
-  { label: '官方图标库', value: 'crmeb' },
+  { label: i18n.t('legacyScript.officialIconLibrary'), value: 'crmeb' },
   { label: 'ELEMENT', value: 'element' }
 ]
 

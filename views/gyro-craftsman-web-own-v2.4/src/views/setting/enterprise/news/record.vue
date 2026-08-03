@@ -58,6 +58,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getCompanyMessageApi, messageCateApi } from '@/api/setting'
 export default {
   name: 'Apply',
@@ -164,7 +165,7 @@ export default {
 
     getMessageCate() {
       messageCateApi().then((res) => {
-        this.options = [{ label: '全部', value: '' }, ...res.data]
+        this.options = [{ label: i18n.t('finance.all'), value: '' }, ...res.data]
         for (let i = 0; i < res.data.length; i++) {
           res.data[i].name = res.data[i].label
         }

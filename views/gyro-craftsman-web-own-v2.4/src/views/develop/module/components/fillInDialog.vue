@@ -22,6 +22,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { moduleQuestionnaireApi } from '@/api/develop'
 import { roterPre } from '@/settings'
 import { mapMutations } from 'vuex'
@@ -38,29 +39,29 @@ export default {
       roleOptions: [
         {
           value: '0',
-          label: '仅企业员工可见'
+          label: i18n.t('legacyScript.visibleToCompanyEmployeesOnly')
         },
         {
           value: '1',
-          label: '所有人'
+          label: i18n.t('ui.workFlowNodeWrapEveryone')
         }
       ],
       invalidOptions: [
         {
           value: '1',
-          label: '1天'
+          label: i18n.t('legacyScript.text1Day')
         },
         {
           value: '7',
-          label: '7天'
+          label: i18n.t('legacyScript.text7Days')
         },
         {
           value: '30',
-          label: '30天'
+          label: i18n.t('legacyScript.text30Days')
         },
         {
           value: '0',
-          label: '永久'
+          label: i18n.t('ui.settingAuthAuthIndexPermanent')
         }
       ],
       keyName: ''
@@ -95,7 +96,7 @@ export default {
           document.execCommand('Copy')
           oInput.style.display = 'none'
           document.body.removeChild(oInput)
-          this.$message.success('复制成功')
+          this.$message.success(i18n.t('setting.copytitle'))
           setTimeout(() => {
             this.handleClose()
           }, 300)

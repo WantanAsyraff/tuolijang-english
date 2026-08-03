@@ -283,6 +283,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { financeInvoiceListApi } from '@/api/enterprise'
 import ClipboardJS from 'clipboard'
 import { getInvoiceClassName, getInvoiceText, getInvoiceType, selectInvoiceFd } from '@/libs/customer'
@@ -425,7 +426,7 @@ export default {
     },
     handleInvoicUri(item) {
       if (!item.id) {
-        return this.$message.error('缺少发票记录ID')
+        return this.$message.error(i18n.t('legacyScript.missingInvoiceRecordID'))
       }
       clientInvoiceUriApi(item.id).then((res) => {
         if (res.status === 400) {
@@ -443,7 +444,7 @@ export default {
         if (res.data.attach) {
           fileLinkDownLoad(res.data.attach, '发票详情')
         } else {
-          this.$message.error('获取下载地址失败')
+          this.$message.error(i18n.t('legacyScript.failedToGetDownloadURL'))
         }
       })
     },
@@ -497,7 +498,7 @@ export default {
     // 开票
     handleInvoicing(row) {
       this.invoicingDialog = {
-        title: '开票审核',
+        title: i18n.t('customer.invoicingapproval'),
         data: row
       }
       this.$refs.invoicingDialog.openBox()
@@ -505,7 +506,7 @@ export default {
     // c查看
     async handleCheck(item) {
       this.invoiceData = {
-        title: '发票查看',
+        title: i18n.t('legacyScript.viewInvoice'),
         width: '1000px',
         data: item,
         follType: 'fd'
@@ -536,7 +537,7 @@ export default {
     async handleEdit(item, type) {
       if (type === 1) {
         this.config = {
-          title: '作废审核',
+          title: i18n.t('legacyScript.voidApproval'),
           width: '480px',
           type: 2,
           data: item

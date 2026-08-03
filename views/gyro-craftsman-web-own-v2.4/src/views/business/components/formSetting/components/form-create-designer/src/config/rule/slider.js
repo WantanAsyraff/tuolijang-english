@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '滑块';
@@ -18,36 +19,36 @@ export default {
   },
   props() {
     return [
-      { type: 'inputNumber', field: 'min', title: '最小值' },
+      { type: 'inputNumber', field: 'min', title: i18n.t('legacyScript.minimumValue') },
       {
         type: 'inputNumber',
         field: 'max',
-        title: '最大值',
+        title: i18n.t('legacyScript.maximumValue'),
       },
-      { type: 'switch', field: 'disabled', title: '是否禁用' },
+      { type: 'switch', field: 'disabled', title: i18n.t('legacyScript.disable') },
       {
         type: 'inputNumber',
         field: 'step',
-        title: '步长',
+        title: i18n.t('legacyScript.stepSize'),
       },
-      { type: 'switch', field: 'showInput', title: '是否显示输入框，仅在非范围选择时有效' },
+      { type: 'switch', field: 'showInput', title: i18n.t('legacyScript.showInputBoxOnlyValidForNonRangeSelection') },
       {
         type: 'switch',
         field: 'showInputControls',
-        title: '在显示输入框的情况下，是否显示输入框的控制按钮',
+        title: i18n.t('legacyScript.showControlButtonsForTheInputFieldWhenVisible'),
         value: true,
       },
-      { type: 'switch', field: 'showStops', title: '是否显示间断点' },
+      { type: 'switch', field: 'showStops', title: i18n.t('legacyScript.showDiscontinuityPoints') },
       {
         type: 'switch',
         field: 'range',
-        title: '是否为范围选择',
+        title: i18n.t('legacyScript.enableRangeSelection'),
       },
-      { type: 'switch', field: 'vertical', title: '是否竖向模式' },
+      { type: 'switch', field: 'vertical', title: i18n.t('legacyScript.useVerticalOrientation') },
       {
         type: 'input',
         field: 'height',
-        title: 'Slider 高度，竖向模式时必填',
+        title: i18n.t('legacyScript.sliderHeightRequiredInVerticalMode'),
       },
     ];
   },

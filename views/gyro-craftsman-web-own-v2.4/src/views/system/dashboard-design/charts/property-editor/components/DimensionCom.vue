@@ -188,6 +188,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { mapGetters } from 'vuex'
 import SvgIcon from '@/components/svg-icon-nc'
 export default {
@@ -237,16 +238,16 @@ export default {
       visibles: [],
       list: this.modelValue,
       calcMode: [
-        { label: '求和', type: 'N', code: 'sum' },
-        { label: '计数', type: 'N|T', code: 'count' },
-        { label: '去重计数', type: 'N|T', code: 'uniqid_count' },
-        { label: '平均值', type: 'N', code: 'avg' },
-        { label: '最大值', type: 'N', code: 'max' },
-        { label: '最小值', type: 'N', code: 'min' }
+        { label: i18n.t('legacyScript.sum'), type: 'N', code: 'sum' },
+        { label: i18n.t('legacyScript.count'), type: 'N|T', code: 'count' },
+        { label: i18n.t('legacyScript.deduplicatedCount'), type: 'N|T', code: 'uniqid_count' },
+        { label: i18n.t('legacyScript.average'), type: 'N', code: 'avg' },
+        { label: i18n.t('legacyScript.maximumValue'), type: 'N', code: 'max' },
+        { label: i18n.t('legacyScript.minimumValue'), type: 'N', code: 'min' }
       ],
       textMode: [
-        { label: '计数', type: 'N|T', code: 'count' },
-        { label: '去重计数', type: 'N|T', code: 'uniqid_count' }
+        { label: i18n.t('legacyScript.count'), type: 'N|T', code: 'count' },
+        { label: i18n.t('legacyScript.deduplicatedCount'), type: 'N|T', code: 'uniqid_count' }
       ],
       CalcMode: {
         sum: '求和',
@@ -258,15 +259,15 @@ export default {
       },
       numType: ['Integer', 'Decimal', 'Percent', 'Money'],
       options: [
-        { value: '无', label: '无' },
+        { value: i18n.t('ui.xmindEditorNodeHyperlinkNone'), label: i18n.t('ui.xmindEditorNodeHyperlinkNone') },
         { value: '%', label: '%' },
-        { value: '元', label: '元' },
-        { value: '万元', label: '万元' },
-        { value: '亿', label: '亿' },
-        { value: '美元', label: '美元' },
-        { value: '个', label: '个' },
-        { value: '位', label: '位' },
-        { value: '天', label: '天' }
+        { value: i18n.t('legacyScript.yuan'), label: i18n.t('legacyScript.yuan') },
+        { value: i18n.t('legacyScript.tenThousandYuan'), label: i18n.t('legacyScript.tenThousandYuan') },
+        { value: i18n.t('legacyScript.hundredMillion'), label: i18n.t('legacyScript.hundredMillion') },
+        { value: i18n.t('legacyScript.uSD'), label: i18n.t('legacyScript.uSD') },
+        { value: i18n.t('file.individual'), label: i18n.t('file.individual') },
+        { value: i18n.t('legacyScript.text1Position'), label: i18n.t('legacyScript.text1Position') },
+        { value: i18n.t('access.day'), label: i18n.t('access.day') }
       ],
       sortPopoverRefs: null,
       dialogConf: {

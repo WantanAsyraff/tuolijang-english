@@ -255,6 +255,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { getDictTreeListApi } from '@/api/form'
 import { translateRuntimeText } from '@/utils/i18ns'
 
@@ -728,7 +729,7 @@ export default {
           this.addressList = this.normalizeAddressOptions(data)
         })
         .catch((error) => {
-          console.error('获取城市列表失败:', error)
+          console.error(i18n.t('legacyScript.failedToRetrieveTheCityList'), error)
         })
         .finally(() => {
           this.addressLoading = false

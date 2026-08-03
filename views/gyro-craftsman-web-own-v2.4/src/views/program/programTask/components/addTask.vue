@@ -170,6 +170,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { saveProgramTaskApi, getProgramTaskInfoApi, getProgramVersionApi, setProgramVersionApi } from '@/api/program'
 import draggable from 'vuedraggable'
 export default {
@@ -221,28 +222,28 @@ export default {
       priorityOptions: [
         {
           value: 1,
-          label: '紧急'
+          label: i18n.t('ui.programProgramTaskTableDataUrgent')
         },
         {
           value: 2,
-          label: '高'
+          label: i18n.t('ui.programProgramTaskTableDataHeight')
         },
         {
           value: 3,
-          label: '中'
+          label: i18n.t('ui.programProgramTaskTableDataCenter')
         },
         {
           value: 4,
-          label: '低'
+          label: i18n.t('ui.programProgramTaskTableDataLow')
         },
         {
           value: 0,
-          label: '无优先级'
+          label: i18n.t('ui.programProgramTaskTableDataNoPriority')
         }
       ],
       rule: {
-        name: [{ required: true, message: '请输入任务名称', trigger: 'blur' }],
-        program_id: [{ required: true, message: '请选择关联项目', trigger: 'change' }]
+        name: [{ required: true, message: i18n.t('ui.programProgramTaskAddTaskPleaseEnterTaskName'), trigger: 'blur' }],
+        program_id: [{ required: true, message: i18n.t('ui.programProgramTaskAddTaskPleaseSelectRelatedProject'), trigger: 'change' }]
       },
       programId: '',
       currentPid: 0,

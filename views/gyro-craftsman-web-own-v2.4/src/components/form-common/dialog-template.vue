@@ -128,6 +128,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import {
   assessTargetCateApi,
   assessTargetCateEditApi,
@@ -276,7 +277,7 @@ export default {
     },
     handleConfirm() {
       if (this.clickIndex < 0) {
-        this.$message.error('选择为空')
+        this.$message.error(i18n.t('legacyScript.noSelectionMade'))
       } else {
         if (this.remindButton) {
           var selectDada = this.selectDada
@@ -377,7 +378,7 @@ export default {
     handleEdit(item) {
       assessTemplateEditApi(item.id).then((res) => {
         if (res.data === undefined) {
-          this.$message.error('内容为空，不能编辑')
+          this.$message.error(i18n.t('legacyScript.theContentIsEmptyAndCannotBeEdited'))
         } else {
           this.configData.edit = 2
           this.configData.data = {

@@ -18,6 +18,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   dataFieldTypeApi,
   dataFieldSaveApi
@@ -52,31 +53,31 @@ export default {
       list: [
         {
           icon: 'iconwenben1',
-          label: '文本',
+          label: i18n.t('legacyScript.text'),
           value: 'text'
         }, {
           icon: 'iconshuzi2',
-          label: '数字',
+          label: i18n.t('legacyScript.number'),
           value: 'number'
         }, {
           icon: 'iconxuanxiang',
-          label: '选项',
+          label: i18n.t('legacyScript.option'),
           value: 'select'
         }, {
           icon: 'iconshijian1',
-          label: '时间',
+          label: i18n.t('legacyScript.time'),
           value: 'date'
         }, {
           icon: 'icontupian5',
-          label: '图片',
+          label: i18n.t('file.picture'),
           value: 'image'
         }, {
           icon: 'iconwenjian5',
-          label: '文件',
+          label: i18n.t('ui.userCloudfileLayoutCloudfileLeftFile'),
           value: 'file'
         }, {
           icon: 'iconguanlian',
-          label: '一对一关联',
+          label: i18n.t('legacyScript.oneToOneRelation'),
           value: 'oneToOne'
         }
       ]

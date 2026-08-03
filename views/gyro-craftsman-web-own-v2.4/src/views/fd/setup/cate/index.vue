@@ -62,6 +62,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import dialogForm from './components/index'
 import oaFromBox from '@/components/common/oaFromBox'
 import { billCateApi, billCateCreateApi, billCateEditApi, billCateDeleteApi } from '@/api/enterprise'
@@ -146,7 +147,7 @@ export default {
     handleAdd(row) {
       billCateCreateApi(row.id).then((res) => {
         this.formBoxConfig = {
-          title: '添加子分类',
+          title: i18n.t('calendar.addtype'),
           width: '500px',
           method: res.data.method,
           type: 1,

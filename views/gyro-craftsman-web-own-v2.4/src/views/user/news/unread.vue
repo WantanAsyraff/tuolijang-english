@@ -75,6 +75,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { noticeMessageListApi, noticeMessageReadApi, noticeMessageDeleteApi } from '@/api/user'
 import { messageListApi } from '@/api/public'
 
@@ -158,7 +159,7 @@ export default {
     },
     handleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error('至少选择一项内容')
+        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
       } else {
         this.$modalSure('删除后不可恢复,您确认要删除吗').then(() => {
           const ids = []
@@ -185,7 +186,7 @@ export default {
     },
     handleIsRead() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error('至少选择一项内容')
+        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
       } else {
         const ids = []
         this.multipleSelection.map((value) => {

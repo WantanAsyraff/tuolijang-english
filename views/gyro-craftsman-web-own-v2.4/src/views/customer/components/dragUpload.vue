@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { uploader } from '@/utils/uploadCloud'
 import { clientImportTemplateApi, clientImportApi } from '@/api/client'
 import { formatBytes } from '@/libs/public'
@@ -69,7 +70,7 @@ export default {
                 authorization: 'Bearer ' + localStorage.getItem('token')
             },
             file: {},
-            title:'客户模板',
+            title:i18n.t('legacyScript.customerTemplate'),
             url:'',
             keyWord: '',
             response_data: '',

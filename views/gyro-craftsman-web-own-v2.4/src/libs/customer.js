@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import moment from 'moment'
 
 /**
@@ -136,33 +137,33 @@ export const getInvoiceType = (status) => {
  * 发票审核状态筛选下拉框
  */
 export const selectInvoiceTitle = [
-  { label: '全部', value: '' },
-  { label: '待审核', value: 0 },
-  { label: '待开票', value: 1 },
-  { label: '已拒绝', value: 2 },
-  { label: '开票撤回', value: 3 },
-  { label: '申请作废', value: 4 },
-  { label: '已开票', value: 5 },
-  { label: '已作废', value: -1 }
+  { label: i18n.t('finance.all'), value: '' },
+  { label: i18n.t('customer.pendingApproval'), value: 0 },
+  { label: i18n.t('ui.customerInvoiceIndexPendingInvoicing'), value: 1 },
+  { label: i18n.t('ui.userExamineExamineRejected'), value: 2 },
+  { label: i18n.t('ui.customerContractPaymentTableWithdrawInvoice'), value: 3 },
+  { label: i18n.t('ui.customerInvoiceIndexApplyToVoid'), value: 4 },
+  { label: i18n.t('customer.invoiced'), value: 5 },
+  { label: i18n.t('ui.customerInvoiceIndexVoided'), value: -1 }
 ]
 
 /**
  * 发票审核状态筛选下拉框
  */
 export const selectInvoiceFd = [
-  { label: '待开票', value: 1 },
-  { label: '开票撤回', value: 3 },
-  { label: '申请作废', value: 4 },
-  { label: '已开票', value: 5 },
-  { label: '已作废', value: -1 }
+  { label: i18n.t('ui.customerInvoiceIndexPendingInvoicing'), value: 1 },
+  { label: i18n.t('ui.customerContractPaymentTableWithdrawInvoice'), value: 3 },
+  { label: i18n.t('ui.customerInvoiceIndexApplyToVoid'), value: 4 },
+  { label: i18n.t('customer.invoiced'), value: 5 },
+  { label: i18n.t('ui.customerInvoiceIndexVoided'), value: -1 }
 ]
 
 /**
  * 发票类型筛选下拉框
  */
 export const selectInvoiceType = [
-  { value: '', label: '全部' },
-  { value: 1, label: '个人普通发票' },
-  { value: 2, label: '企业普通发票' },
-  { value: 3, label: '企业专用发票' }
+  { value: '', label: i18n.t('finance.all') },
+  { value: 1, label: i18n.t('customer.personalinvoice') },
+  { value: 2, label: i18n.t('customer.enterpriseinvoice') },
+  { value: 3, label: i18n.t('customer.specialinvoice') }
 ]

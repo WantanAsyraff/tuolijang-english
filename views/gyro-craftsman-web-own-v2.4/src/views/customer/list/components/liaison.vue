@@ -24,6 +24,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import liaisonDialog from '@/views/customer/list/components/liaisonDialog'
 import detailsDrawer from '@/views/customer/components/details'
 import { clientLiaisonDeleteApi, clientLiaisonListApi as liaisonViewApi } from '@/api/client'
@@ -104,7 +105,7 @@ export default {
     // 添加编辑联系人
     handleCheck(item) {
           this.detailsFromData = {
-        title: '联系人查看',
+        title: i18n.t('legacyScript.viewContact'),
         width: '1000px',
         data: item,
         types: 'liaison',

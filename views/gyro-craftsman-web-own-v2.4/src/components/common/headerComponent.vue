@@ -165,6 +165,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import viewManagement from '@/components/develop/viewManagement'
 import oaDialog from '@/components/form-common/dialog-form'
 import formList from '@/views/develop/module/components/formList'
@@ -369,7 +370,7 @@ export default {
       treeValue: '', // 树形选择值
       fromData: {
         width: '500px',
-        title: '新建视图',
+        title: i18n.t('ui.developViewManagementCreateView'),
         btnText: '确定',
         labelWidth: '100px',
         type: ''
@@ -381,14 +382,14 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: '视图名称：',
-          placeholder: '请输入视图名称(10个字以内)',
+          label: i18n.t('legacyScript.viewName'),
+          placeholder: i18n.t('legacyScript.pleaseEnterAViewNameWithin10Characters'),
           key: 'senior_title'
         },
         {
           type: 'radio',
-          label: '视图类型：',
-          placeholder: '请选择视图类型',
+          label: i18n.t('legacyScript.viewType'),
+          placeholder: i18n.t('legacyScript.pleaseSelectViewType'),
           key: 'senior_type',
           options: [
             {
@@ -408,15 +409,15 @@ export default {
         senior_title: [
           {
             required: true,
-            message: '请输入视图名称',
+            message: i18n.t('ui.developViewManagementPleaseEnterViewName'),
             trigger: 'blur'
           },
-          { min: 0, max: 10, message: '最多输入10个字', trigger: 'blur' }
+          { min: 0, max: 10, message: i18n.t('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
         ],
         senior_type: [
           {
             required: true,
-            message: '请选择视图类型',
+            message: i18n.t('legacyScript.pleaseSelectViewType'),
             trigger: 'change'
           }
         ]

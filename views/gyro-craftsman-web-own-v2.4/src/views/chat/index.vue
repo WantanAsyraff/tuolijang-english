@@ -60,6 +60,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import formBox from '@/components/common/oaFromBox'
 import oaDialog from '@/components/form-common/dialog-form'
@@ -83,7 +84,7 @@ export default {
         }
       ],
       fromData: {
-        title: '创建应用',
+        title: i18n.t('legacyScript.createApplication'),
         width: '650px',
         type: 'add',
         btnText: '创建'
@@ -91,19 +92,19 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: '应用名称：',
-          placeholder: '请输入应用名称',
+          label: i18n.t('legacyScript.applicationName'),
+          placeholder: i18n.t('legacyScript.enterApplicationName'),
           key: 'name',
           maxlength: 20,
           showWordLimit: true
         },
         {
           type: 'textarea',
-          label: '应用简介：',
+          label: i18n.t('legacyScript.applicationDescription'),
           maxlength: 100,
           showWordLimit: true,
           placeholder:
-            '你是一个企业管理小助手，你能通过企业管理数据，进行挑战与现状分析、核心数据统计和优化建议；同时，保持积极的语气，展示出解决方案的可行性，这样更有助于激励团队采取行动。',
+            i18n.t('legacyScript.youAreAnEnterpriseManagementAssistantThatAnalyzesChallengesAnd'),
           key: 'info',
           height: '120px'
         }
@@ -113,7 +114,7 @@ export default {
         info: ''
       },
       formRules: {
-        name: [{ required: true, message: '请输入应用名称', trigger: 'blur' }]
+        name: [{ required: true, message: i18n.t('legacyScript.enterApplicationName'), trigger: 'blur' }]
       },
       total: 0,
       where: {
@@ -163,14 +164,14 @@ export default {
           name: 'temperature',
           filed: '采样温度',
           value: '0.95',
-          message: '介于 0 和 2 之间。更高的值，如 0.8，会使输出更随机，而更低的值，如 0.2，会使其更加集中和确定'
+          message: i18n.t('legacyScript.range0To2HigherValuesEG08')
         },
         {
           name: 'max_tokens',
           filed: '最大tokens',
           value: '2048',
           message:
-            '限制一次请求中模型生成 completion 的最大 token 数。输入 token 和输出 token 的总长度受模型的上下文长度的限制'
+            i18n.t('legacyScript.maximumTokensForModelGeneratedCompletionsPerRequestTotalInput')
         }
       ]
       chatSaveApplicationsApi(data).then((res) => {

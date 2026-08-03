@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule } from '../../utils/index';
 import { makeRequiredRule } from '../../utils';
@@ -18,8 +19,8 @@ export default {
 
       props: {},
       options: [
-        { value: '选项1', label: '选项1' },
-        { value: '选项2', label: '选项2' },
+        { value: i18n.t('legacyScript.option1'), label: i18n.t('legacyScript.option1') },
+        { value: i18n.t('legacyScript.option2'), label: i18n.t('legacyScript.option2') },
       ],
     };
   },

@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { divTime } from '@/utils'
 export default {
   name: 'Index',
@@ -89,11 +90,11 @@ export default {
       options: [
         {
           value: '1',
-          label: '上午'
+          label: i18n.t('legacyScript.aM')
         },
         {
           value: '0',
-          label: '下午'
+          label: i18n.t('legacyScript.pM')
         }
       ],
       timeData: {
@@ -222,13 +223,13 @@ export default {
       const time1 = Date.parse(new Date(this.timeData.dateStart))
       const time2 = Date.parse(new Date(this.timeData.dateEnd))
       if (time1 > time2) {
-        return this.$message.error('结束时间不能小于开始时间')
+        return this.$message.error(i18n.t('legacyScript.theEndTimeCannotBeEarlierThanTheStart'))
       }
       if (this.timeData.timeType === 'day') {
         if (time2 == time1) {
           setTimeout(() => {
             if (this.timeData.timeStart === '0' && this.timeData.timeEnd === '1') {
-              return this.$message.error('结束时间不能小于开始时间')
+              return this.$message.error(i18n.t('legacyScript.theEndTimeCannotBeEarlierThanTheStart'))
             }
           }, 200)
         }

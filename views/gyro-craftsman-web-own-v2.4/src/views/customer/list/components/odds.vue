@@ -40,6 +40,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { oddsCreateApi, oddsListApi } from '@/api/client'
 export default {
   name: 'Liaison',
@@ -134,7 +135,7 @@ export default {
       this.product = item.product || []
      
    this.orderFromData = {
-        title: '添加订单',
+        title: i18n.t('customer.addcontract'),
         id: this.where.eid,
         name: this.formInfo.data.name,
         edit: false,
@@ -150,7 +151,7 @@ export default {
     // 查看
     async openDetails(item) {
       this.detailsFromData = {
-        title: '商机查看',
+        title: i18n.t('legacyScript.viewOpportunity'),
         width: '1000px',
         data: item,
         eid: item.id,
@@ -168,7 +169,7 @@ export default {
     // 添加商机
     addLiaison(edit, row) {
       this.formBoxConfig = {
-        title: '新增商机',
+        title: i18n.t('legacyScript.addOpportunity'),
         width: '1000px',
         types: 'odds'
       }

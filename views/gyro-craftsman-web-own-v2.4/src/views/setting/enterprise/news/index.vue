@@ -161,6 +161,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { messageListApi, putStatusMessageApi, messageSubscribeApi, messageSyncApi, messageCateApi } from '@/api/setting'
 import { status } from 'nprogress'
 
@@ -210,7 +211,7 @@ export default {
           form_value: 'input'
         }
       ],
-      dropdownList: [{ label: '同步数据', value: 'sync' }]
+      dropdownList: [{ label: i18n.t('legacyScript.syncData'), value: 'sync' }]
     }
   },
   mounted() {
@@ -311,7 +312,7 @@ export default {
       }
       this.messageData = {
         width: '560px',
-        title: '设置提醒时间',
+        title: i18n.t('legacyScript.setReminderTime'),
         type,
         data: row
       }
@@ -322,7 +323,7 @@ export default {
     },
     handleBatchPush() {
       if (!this.selectedRows.length) {
-        this.$message.warning('请先勾选需要设置的消息')
+        this.$message.warning(i18n.t('legacyScript.selectTheMessagesYouWantToConfigureFirst'))
         return
       }
       this.$refs.messagePush.openBatchBox(this.selectedRows.map((row) => row.id))
@@ -353,7 +354,7 @@ export default {
     },
     getMessageCate() {
       messageCateApi().then((res) => {
-        this.options = [{ label: '全部', value: '' }, ...res.data]
+        this.options = [{ label: i18n.t('finance.all'), value: '' }, ...res.data]
         for (let i = 0; i < res.data.length; i++) {
           res.data[i].name = res.data[i].label
         }

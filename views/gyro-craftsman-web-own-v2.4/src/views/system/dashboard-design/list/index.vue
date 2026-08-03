@@ -74,6 +74,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import oaDialog from '@/components/form-common/dialog-form'
 import { roterPre } from '@/settings'
 import { menuListApi } from '@/api/system'
@@ -95,7 +96,7 @@ export default {
       ids: [],
       fromData: {
         width: '600px',
-        title: '新建图表',
+        title: i18n.t('ui.systemDashboardDesignListIndexNewChart'),
         btnText: '确定',
         labelWidth: '100px',
         type: ''
@@ -104,25 +105,25 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: '图表名称：',
-          placeholder: '请输入图表名称',
+          label: i18n.t('legacyScript.chartName'),
+          placeholder: i18n.t('legacyScript.pleaseEnterChartName'),
           key: 'name',
           value: '',
           options: []
         },
           {
     type: 'cascader',
-    label: '上级菜单：',
-    placeholder: '请选择上级菜单',
+    label: i18n.t('legacyScript.parentMenu'),
+    placeholder: i18n.t('legacyScript.selectTheParentMenu'),
     key: 'path',
     props: {label: 'menu_name', value: 'id', children: 'children' ,checkStrictly: true},
     options: [],
-    tips: '若不选择上级菜单，则不生成菜单'
+    tips: i18n.t('legacyScript.noMenuWillBeGeneratedUnlessAParentMenu')
   },
    {
     type: 'icon',
-    label: '菜单图标：',
-    placeholder: '请选择菜单图标',
+    label: i18n.t('legacyScript.menuIcon'),
+    placeholder: i18n.t('legacyScript.selectAMenuIcon'),
     key: 'icon',
   },
       ],
@@ -130,7 +131,7 @@ export default {
         name: [
           {
             required: true,
-            message: '请输入图表名称',
+            message: i18n.t('legacyScript.pleaseEnterChartName'),
             trigger: 'blur'
           }
         ]
@@ -151,11 +152,11 @@ export default {
       total: 0,
       options: [
         {
-          label: '启用',
+          label: i18n.t('public.enable'),
           value: 1
         },
         {
-          label: '停用',
+          label: i18n.t('hr.blockup'),
           value: 0
         }
       ]
@@ -209,7 +210,7 @@ export default {
     async addFinance() {
       this.id = 0
       this.formDataInit.name = ''
-      this.fromData.title = '新建图表'
+      this.fromData.title = i18n.t('ui.systemDashboardDesignListIndexNewChart')
         const result = await menuListApi()
         this.formConfig[1].options = result.data
     
@@ -219,7 +220,7 @@ export default {
     // 编辑
     async editFn(row) {
       this.id = row.id
-      this.fromData.title = '编辑图表'
+      this.fromData.title = i18n.t('legacyScript.editChart')
         const result = await menuListApi()
         this.formConfig[1].options = result.data
       this.formDataInit.name = row.name

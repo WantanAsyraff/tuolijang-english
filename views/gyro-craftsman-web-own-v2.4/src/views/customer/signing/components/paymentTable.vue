@@ -67,6 +67,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getColor } from '@/utils/format'
 import { customerViewApi, clientContractListApi } from '@/api/enterprise'
 export default {
@@ -143,7 +144,7 @@ export default {
     checkFn(item) {
       item.cid = item.id
       this.fromData = {
-        title: '查看订单',
+        title: i18n.t('legacyScript.viewOrder'),
         width: '1000px',
         data: item,
         isClient: false,

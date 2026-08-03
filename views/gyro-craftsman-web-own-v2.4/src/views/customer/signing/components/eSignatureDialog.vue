@@ -38,6 +38,7 @@
     </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
     name: 'eSignatureDialog',
     components: {
@@ -48,7 +49,7 @@ export default {
         return {
             fromData: {
                 width: '500px',
-                title: '电子签',
+                title: i18n.t('ui.customerSigningInfoItemESign'),
                 btnText: '确定',
                 labelWidth: '100px',
                 type: 'slot'

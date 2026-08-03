@@ -69,6 +69,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import fillInDialog from './fillInDialog'
 import { getModuleQuestionnaireApi, delModuleQuestionnaireApi, putModuleQuestionnaireApi } from '@/api/develop'
 export default {
@@ -136,7 +137,7 @@ export default {
     },
     copy(val) {
       clipboard.writeText(val)
-      this.$message.success('复制成功')
+      this.$message.success(i18n.t('setting.copytitle'))
     }
   }
 }

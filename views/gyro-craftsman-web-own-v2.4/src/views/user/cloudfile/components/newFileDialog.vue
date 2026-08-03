@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { folderCreateApi, folderMakeApi, folderSpaceEntCreateApi, folderSpaceEntMakeApi } from '@/api/cloud'
 export default {
   name: 'MyFileDialog',
@@ -44,9 +45,9 @@ export default {
         type: ''
       },
       options: [
-        { label: '文档', value: 'word' },
-        { label: '表格', value: 'excel' },
-        { label: '思维导图', value: 'mindmap' }
+        { label: i18n.t('file.document'), value: 'word' },
+        { label: i18n.t('file.table'), value: 'excel' },
+        { label: i18n.t('legacyScript.mindMap'), value: 'mindmap' }
         // { label: '幻灯片', value: 'ppt' }
       ],
       loading: false
@@ -75,7 +76,7 @@ export default {
       // 创建文件夹
       if (this.config.command === 5) {
         if (this.info.name === '') {
-          this.$message.error('文件夹名称不能空')
+          this.$message.error(i18n.t('legacyScript.folderNameCannotBeEmpty'))
         } else {
           const data = {
             pid: this.config.pid,
@@ -109,7 +110,7 @@ export default {
         }
       } else {
         if (this.info.name === '') {
-          this.$message.error('文件名称不能空')
+          this.$message.error(i18n.t('legacyScript.fileNameCannotBeEmpty'))
         } else {
           const data = {
             pid: this.config.pid,

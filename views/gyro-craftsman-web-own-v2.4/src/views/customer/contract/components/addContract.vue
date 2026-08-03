@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { oddsCreateEditApi } from '@/api/client'
 import { contractCreateApi, contractEditCreateApi } from '@/api/enterprise'
 import { clientContractSaveApi as contractAddApi, clientContractEditApi } from '@/api/client'
@@ -147,7 +148,7 @@ export default {
           const res = await oddsCreateEditApi(val);
           this.product = res.data.product;
         } catch (error) {
-          this.$message.error('获取商机产品信息失败');
+          this.$message.error(i18n.t('legacyScript.failedToRetrieveOpportunityProductInformation'));
         } finally {
           this.productLoading = false;
         }
@@ -257,7 +258,7 @@ export default {
                 data.eid = data.contract_customer
                 data.cid = this.row.id
                 this.fromData = {
-                  title: '查看订单',
+                  title: i18n.t('legacyScript.viewOrder'),
                   width: '1000px',
                   data: data,
                   isClient: false,
@@ -293,7 +294,7 @@ export default {
                 data.eid = data.contract_customer
                 data.cid = res.data.id
                 this.fromData = {
-                  title: '查看订单',
+                  title: i18n.t('legacyScript.viewOrder'),
                   width: '1000px',
                   data: data,
                   isClient: false,

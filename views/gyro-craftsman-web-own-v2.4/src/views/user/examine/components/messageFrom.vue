@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { approveReplyApi, approveReplyDelApi } from '@/api/business'
 export default {
   name: 'MessageFrom',
@@ -74,7 +75,7 @@ export default {
   methods: {
     async add() {
       if (this.textarea == '') {
-        return this.$message.error('请输入留言')
+        return this.$message.error(i18n.t('legacyScript.pleaseEnterComment'))
       }
       await approveReplyApi({
         apply_id: this.examineData.id,

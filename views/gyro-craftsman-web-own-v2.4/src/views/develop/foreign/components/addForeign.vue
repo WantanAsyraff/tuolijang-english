@@ -67,6 +67,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { extractArrayIds } from '@/libs/public'
 import { getOenapiApi, saveOpenKeyApi, getOpenKeyInfoApi, putOpenKeyApi } from '@/api/develop'
 export default {
@@ -76,13 +77,13 @@ export default {
   data() {
     return {
       show: false,
-      title: '新建授权密钥',
+      title: i18n.t('legacyScript.newAuthorizationKey'),
       ruleForm: {
         title: '',
         info: ''
       },
       rules: {
-        title: [{ required: true, message: '请输入密钥名称', trigger: 'blur' }]
+        title: [{ required: true, message: i18n.t('legacyScript.pleaseEnterAKeyName'), trigger: 'blur' }]
       },
       info: '',
       id: 0,
@@ -165,7 +166,7 @@ export default {
 
     submit() {
       if (this.auth.length == 0) {
-        this.$message.error('请选择密钥权限')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectKeyPermissions'))
         return false
       }
       let obj = {
@@ -224,7 +225,7 @@ export default {
     openBox(id) {
       this.show = true
       if (id) {
-        this.title = '编辑授权密钥'
+        this.title = i18n.t('legacyScript.editAuthorizationKey')
         this.id = id
         getOpenKeyInfoApi(id).then((res) => {
           this.ruleForm.info = res.data.info
@@ -234,7 +235,7 @@ export default {
           this.getidsFn(this.auth)
         })
       } else {
-        this.title = '新建授权密钥'
+        this.title = i18n.t('legacyScript.newAuthorizationKey')
       }
     },
 

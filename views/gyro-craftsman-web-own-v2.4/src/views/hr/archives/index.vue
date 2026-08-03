@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { perfectCard, deleteCard, formalCard, quitCard, importCardApi, getTemp, getInterview } from '@/api/enterprise'
 import file from '@/utils/file'
 import { getStorageJson } from '@/utils/storage'
@@ -74,37 +75,37 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: '人员姓名：',
-          placeholder: '人员姓名',
+          label: i18n.t('ui.hrEnterpriseJobAnalysisPersonName'),
+          placeholder: i18n.t('ui.hrAttendanceSettingNotJoinPersonName'),
           key: 'name',
           disabled: true
         },
         {
           type: 'date',
-          label: '离职时间：',
-          placeholder: '选择时间',
+          label: i18n.t('legacyScript.resignationTime'),
+          placeholder: i18n.t('toptable.selecttime'),
           key: 'quit_time',
           format: 'yyyy-MM-dd'
         },
         {
           type: 'input',
-          label: '离职原因：',
-          placeholder: '请输入离职原因',
+          label: i18n.t('legacyScript.reasonsForLeaving'),
+          placeholder: i18n.t('legacyScript.pleaseEnterReasonsForLeaving'),
           key: 'info'
         },
         {
           type: 'textarea',
-          label: '离职备注：',
-          placeholder: '请输入备注',
+          label: i18n.t('legacyScript.resignationNotes'),
+          placeholder: i18n.t('ui.customerProductListPleaseEnterRemarks'),
           key: 'mark'
         },
         {
           type: 'user_id',
-          label: '交接人员：',
-          placeholder: '请选择人员',
+          label: i18n.t('legacyScript.handoverPersonnel'),
+          placeholder: i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'),
           only_one: true,
           key: 'user_id',
-          tips: '提示：办理离职后，系统将自动停用离职人员的账号，离职人员所有待办事项转移交接人员处理。'
+          tips: i18n.t('legacyScript.noteAfterProcessingTheResignationTheSystemWillAutomaticallyDeactivate')
         }
       ],
       copyName: '',
@@ -121,24 +122,24 @@ export default {
       actionType: '',
       fromData: {
         width: '600px',
-        title: '办理离职',
+        title: i18n.t('legacyScript.processResignation'),
         btnText: '确定',
         labelWidth: '90px',
         type: ''
       },
       formRules: {
-        quit_time: [{ required: true, message: '请选择离职时间', trigger: 'blur' }],
+        quit_time: [{ required: true, message: i18n.t('legacyScript.pleaseSelectResignationTime'), trigger: 'blur' }],
         info: [
           {
             required: true,
-            message: '请输入离职原因',
+            message: i18n.t('legacyScript.pleaseEnterReasonsForLeaving'),
             trigger: 'blur'
           }
         ],
         user_id: [
           {
             required: true,
-            message: '请选择交接人员',
+            message: i18n.t('legacyScript.pleaseSelectTheHandoverPersonnel'),
             trigger: 'blur'
           }
         ]
@@ -316,7 +317,7 @@ export default {
       document.execCommand('Copy')
       oInput.style.display = 'none'
       document.body.removeChild(oInput)
-      this.$message.success('复制成功')
+      this.$message.success(i18n.t('setting.copytitle'))
       this.handleClose()
     },
 

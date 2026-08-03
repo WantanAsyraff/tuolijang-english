@@ -61,6 +61,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getColor } from '@/utils/format'
 import { contractDocDetailApi, contractDocOrdersApi,contractLinkOrderApi } from '@/api/contractSign'
 export default {
@@ -97,9 +98,9 @@ export default {
       tabIndex: '1',
       tabNumber: 1,
       tabData: [
-        { value: '1', label: '基本信息' },
-        { value: '2', label: '订单记录' },
-        { value: '3', label: '动态记录' }
+        { value: '1', label: i18n.t('setting.info.essentialinformation') },
+        { value: '2', label: i18n.t('legacyScript.orderRecords') },
+        { value: '3', label: i18n.t('ui.customerListDynamicRecordActivityRecords') }
       ],
       statusList: {
         '-1': {

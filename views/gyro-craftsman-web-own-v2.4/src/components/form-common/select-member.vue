@@ -85,6 +85,7 @@
 </el-popover>
 </template>
 <script>
+import i18n from '@/lang'
 import { getArrayDifference, isInArray, removeDuplicateObjects } from '@/libs/public'
 import isFullScreen from '@/components/isFullScreen/index'
 
@@ -283,7 +284,7 @@ export default {
       }
 
       if (this.isDisabledUser(data)) {
-        return this.$message.warning('不能选择此人员')
+        return this.$message.warning(i18n.t('legacyScript.thisPersonCannotBeSelected'))
       }
 
       // 选择成员
@@ -318,7 +319,7 @@ export default {
       if (user.type === 0) return false
 
       if (this.isDisabledUser(user)) {
-        return this.$message.warning('不能选择此人员')
+        return this.$message.warning(i18n.t('legacyScript.thisPersonCannotBeSelected'))
       }
 
       if (!this.onlyOne) {
@@ -326,7 +327,7 @@ export default {
       }
 
       if (this.userIds.some((id) => this.isSameId(id, this.getUserValue(user)))) {
-        return this.$message.warning('已选中该成员')
+        return this.$message.warning(i18n.t('legacyScript.thisMemberIsAlreadySelected'))
       }
 
       this.userList = [user]

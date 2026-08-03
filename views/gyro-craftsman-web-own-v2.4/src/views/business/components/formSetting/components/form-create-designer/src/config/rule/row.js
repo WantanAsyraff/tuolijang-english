@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 const label = '栅格布局';
 const name = 'row';
 
@@ -15,17 +16,17 @@ export default {
   children: 'col',
   props() {
     return [
-      { type: 'inputNumber', field: 'gutter', title: '栅格间隔' },
+      { type: 'inputNumber', field: 'gutter', title: i18n.t('legacyScript.gridSpacing') },
       {
         type: 'switch',
         field: 'type',
-        title: 'flex布局模式',
+        title: i18n.t('legacyScript.flexLayoutMode'),
         props: { activeValue: 'flex', inactiveValue: 'default' },
       },
       {
         type: 'select',
         field: 'justify',
-        title: 'flex 布局下的水平排列方式',
+        title: i18n.t('legacyScript.horizontalAlignmentInFlexLayout'),
         options: [
           { label: 'start', value: 'start' },
           { label: 'end', value: 'end' },
@@ -40,7 +41,7 @@ export default {
       {
         type: 'select',
         field: 'align',
-        title: 'flex 布局下的垂直排列方式',
+        title: i18n.t('legacyScript.verticalAlignmentInFlexLayout'),
         options: [
           { label: 'top', value: 'top' },
           { label: 'middle', value: 'middle' },

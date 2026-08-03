@@ -565,6 +565,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   getProgramSelectApi,
   getProgramTaskApi,
@@ -663,49 +664,49 @@ export default {
         priorityOptions: [
           {
             value: 1,
-            label: '紧急'
+            label: i18n.t('ui.programProgramTaskTableDataUrgent')
           },
           {
             value: 2,
-            label: '高'
+            label: i18n.t('ui.programProgramTaskTableDataHeight')
           },
           {
             value: 3,
-            label: '中'
+            label: i18n.t('ui.programProgramTaskTableDataCenter')
           },
           {
             value: 4,
-            label: '低'
+            label: i18n.t('ui.programProgramTaskTableDataLow')
           },
           {
             value: 0,
-            label: '无优先级'
+            label: i18n.t('ui.programProgramTaskTableDataNoPriority')
           }
         ],
         statusOptions: [
           {
             value: 0,
-            label: '未处理'
+            label: i18n.t('ui.programProgramTaskTableDataUnprocessed')
           },
           {
             value: 1,
-            label: '进行中'
+            label: i18n.t('customer.execution')
           },
           {
             value: 2,
-            label: '已解决'
+            label: i18n.t('ui.programProgramTaskTableDataResolved')
           },
           {
             value: 3,
-            label: '已验收'
+            label: i18n.t('ui.programProgramTaskTableDataAccepted')
           },
           {
             value: 4,
-            label: '已拒绝'
+            label: i18n.t('ui.userExamineExamineRejected')
           },
           {
             value: 5,
-            label: '已关闭'
+            label: i18n.t('ui.programProgramTaskAddTaskClosed')
           }
         ]
       },
@@ -735,19 +736,19 @@ export default {
           options: [
             {
               value: 0,
-              label: '全部任务'
+              label: i18n.t('legacyScript.allTasks')
             },
             {
               value: 1,
-              label: '我负责的'
+              label: i18n.t('legacyScript.ownedByMe')
             },
             {
               value: 2,
-              label: '我参与的'
+              label: i18n.t('legacyScript.myParticipations')
             },
             {
               value: 3,
-              label: '我创建的'
+              label: i18n.t('legacyScript.createdByMe')
             }
           ]
         }
@@ -769,23 +770,23 @@ export default {
           data_dict: [
             {
               value: 1,
-              label: '紧急'
+              label: i18n.t('ui.programProgramTaskTableDataUrgent')
             },
             {
               value: 2,
-              label: '高'
+              label: i18n.t('ui.programProgramTaskTableDataHeight')
             },
             {
               value: 3,
-              label: '中'
+              label: i18n.t('ui.programProgramTaskTableDataCenter')
             },
             {
               value: 4,
-              label: '低'
+              label: i18n.t('ui.programProgramTaskTableDataLow')
             },
             {
               value: '0',
-              label: '无优先级'
+              label: i18n.t('ui.programProgramTaskTableDataNoPriority')
             }
           ]
         },
@@ -847,30 +848,30 @@ export default {
       ],
       viewSearch: [
         {
-          title: '负责人',
+          title: i18n.t('ui.developModuleTreeOwner'),
           field: 'user_id'
         },
         {
-          title: '协作者',
+          title: i18n.t('ui.programProgramTaskTableDataCollaborators'),
           field: 'update_user_id'
         },
         {
-          title: '计划开始',
+          title: i18n.t('ui.programProgramTaskTableDataPlannedStart'),
           field: 'plan_start',
           type: 'date_picker'
         },
         {
-          title: '计划结束',
+          title: i18n.t('ui.programProgramTaskTableDataPlannedEnd'),
           field: 'plan_end',
           type: 'date_picker'
         },
         {
-          title: '创建时间',
+          title: i18n.t('customer.creationtime'),
           field: 'created_at',
           type: 'date_picker'
         }
       ],
-      dropdownList: [{ label: '批量操作', value: 1 }],
+      dropdownList: [{ label: i18n.t('legacyScript.batchOperations'), value: 1 }],
       treeDefault: 0
     }
   },
@@ -945,7 +946,7 @@ export default {
               this.getProgramVersion(this.programId),
               this.getProgramMember(this.programId),
               this.getProgramSelect({ program_id: this.programId })
-            ]).catch((err) => console.error('项目关联请求失败:', err))
+            ]).catch((err) => console.error(i18n.t('legacyScript.projectAssociationRequestFailed'), err))
           } else {
             this.getProgramVersion('')
           }
@@ -956,7 +957,7 @@ export default {
           this.search = this.search.filter((item) => item.field_name_en !== 'program_id')
         }
       } catch (err) {
-        console.error('页面初始化失败:', err)
+        console.error(i18n.t('legacyScript.pageInitializationFailed'), err)
         // 可选：添加错误兜底（比如空数据展示）
       }
     },
@@ -999,7 +1000,7 @@ export default {
             if (rowDown.pid !== rowUp.pid) {
               // 恢复原始位置
               evt.item.parentNode.insertBefore(evt.item, [...evt.item.parentNode.children][oldIndex])
-              return this.$message.warning('不允许跨级拖动!')
+              return this.$message.warning(i18n.t('legacyScript.crossLevelDraggingIsNotAllowed'))
             }
 
             // 收集可排序ID（优化为递归处理）
@@ -1021,8 +1022,8 @@ export default {
             // 刷新数据
             await this.getTableData()
           } catch (e) {
-            console.error('排序失败:', e)
-            this.$message.error('排序操作失败')
+            console.error(i18n.t('legacyScript.sortFailed'), e)
+            this.$message.error(i18n.t('legacyScript.sortingOperationFailed'))
           } finally {
             this.dragLoading = false
           }
@@ -1203,7 +1204,7 @@ export default {
           .catch((error) => {
             // 出错时关闭加载状态
             this.loading = false
-            console.error('获取表格数据出错:', error)
+            console.error(i18n.t('legacyScript.errorFetchingTableData'), error)
           })
       }
       // 懒加载刷新当前父级
@@ -1378,7 +1379,7 @@ export default {
       if (this.programVersionList.length) {
         this.$set(this.versionVisible, index, true)
       } else if (type == 1) {
-        this.$message('请到任务详情设置版本')
+        this.$message(i18n.t('legacyScript.pleaseSetTheVersionInTheTaskDetails'))
       }
     },
 
@@ -1443,7 +1444,7 @@ export default {
     // 批量提交
     submitEvt() {
       if (this.ids.length == 0) {
-        return this.$message.error('请至少选择一项')
+        return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem2'))
       }
       this.ids.forEach((item) => {
         this.formData.data.push(item.id)
@@ -1459,7 +1460,7 @@ export default {
     // 批量删除
     deleteEvt() {
       if (this.ids.length == 0) {
-        return this.$message.error('请至少选择一项')
+        return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem2'))
       }
       this.ids.forEach((item) => {
         this.formData.data.push(item.id)
@@ -1648,7 +1649,7 @@ export default {
      */
     isOperate(row) {
       if (!row.operate) {
-        return this.$message('没有操作权限')
+        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
       }
     },
     /**
@@ -1659,7 +1660,7 @@ export default {
      */
     handleStartClick(row) {
       if (!row.operate) {
-        return this.$message('没有操作权限')
+        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
       }
       this.$set(this.startShowStates, row.id, true)
     },
@@ -1680,7 +1681,7 @@ export default {
      */
     handleEndClick(row) {
       if (!row.operate) {
-        return this.$message('没有操作权限')
+        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
       }
       this.$set(this.endShowStates, row.id, true)
     },
@@ -1875,7 +1876,7 @@ export default {
         if (row.name.trim()) {
           this.putProgramTask('name', row.name, row.id)
         } else {
-          this.$message('任务名称不能为空')
+          this.$message(i18n.t('legacyScript.taskNameIsRequired'))
         }
       })
     },
@@ -1912,7 +1913,7 @@ export default {
      */
     showVersion(row, index, type) {
       if (!row.operate) {
-        return this.$message('没有操作权限')
+        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
       }
 
       this.versionId = ''
@@ -1931,7 +1932,7 @@ export default {
      */
     showAdmins(row, index) {
       if (!row.operate) {
-        return this.$message('没有操作权限')
+        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
       }
       this.adminsUid = null
       this.$set(this.adminsVisible, this.adminIndex, false)
@@ -1949,7 +1950,7 @@ export default {
      */
     showMembers(row, index) {
       if (!row.operate) {
-        return this.$message('没有操作权限')
+        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
       }
       this.membersId = []
       this.$set(this.adminsVisible, this.adminIndex, false)

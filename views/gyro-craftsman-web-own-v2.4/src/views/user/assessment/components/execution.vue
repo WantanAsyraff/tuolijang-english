@@ -420,6 +420,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { translateRuntimeText } from '@/utils/i18ns'
 import {
   userAssessInfo,
@@ -885,29 +886,29 @@ export default {
       } else {
         for (let i = 0; i < this.tableData.length; i++) {
           if (this.tableData[i].name == '') {
-            this.$message.error('考核维度名称不能为空')
+            this.$message.error(i18n.t('legacyScript.assessmentDimensionNameCannotBeEmpty'))
             break
           }
           if (this.tableData[i].ratio <= 0 && this.is_draft === 0) {
-            this.$message.error('考核维度权重不能为零')
+            this.$message.error(i18n.t('legacyScript.assessmentDimensionWeightCannotBeZero'))
             break
           }
           if (this.tableData[i].target.length <= 0) {
-            this.$message.error('考核指标不能空')
+            this.$message.error(i18n.t('legacyScript.assessmentIndicatorsCannotBeEmpty'))
             break
           }
           const target = []
           for (let j = 0; j < this.tableData[i].target.length; j++) {
             if (this.tableData[i].target[j].name == '') {
-              this.$message.error('指标名称不能为空')
+              this.$message.error(i18n.t('legacyScript.indicatorNameIsRequired'))
               break
             }
             if (this.tableData[i].target[j].content == '') {
-              this.$message.error('指标内容不能为空')
+              this.$message.error(i18n.t('legacyScript.indicatorContentIsRequired'))
               break
             }
             if (this.tableData[i].target[j].ratio <= 0 && this.is_draft === 0) {
-              this.$message.error('指标权重不能为零')
+              this.$message.error(i18n.t('legacyScript.indicatorWeightCannotBeZero'))
               break
             }
             target.push({
@@ -945,7 +946,7 @@ export default {
 
     async preserveMark() {
       if (this.onlyMark === '') {
-        this.$message.error('备注不能为空')
+        this.$message.error(i18n.t('legacyScript.remarksIsRequired'))
       } else {
         var data = {
           mark: this.onlyMark

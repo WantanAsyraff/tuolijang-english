@@ -147,6 +147,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { storageRecordRepairApi, storageRecordSaveApi } from '@/api/administration'
 
 export default {
@@ -194,9 +195,9 @@ export default {
       },
       rules: {
         mark: [{ required: this.fromData.type < 3, validator: checkMark, trigger: 'blur' }],
-        other: [{ required: true, message: '请选择处理类型', trigger: 'change' }],
-        price: [{ required: true, message: '请输入维修金额', trigger: 'blur' }],
-        number: [{ required: true, message: '请输入入库数量', trigger: 'blur' }],
+        other: [{ required: true, message: i18n.t('legacyScript.pleaseSelectDisposeType'), trigger: 'change' }],
+        price: [{ required: true, message: i18n.t('legacyScript.pleaseEnterRepairAmount'), trigger: 'blur' }],
+        number: [{ required: true, message: i18n.t('ui.administrationMaterialFixedAddMaterialPleaseEnterStockInQuantity'), trigger: 'blur' }],
         prices: [{ required: true, validator: checkPrices, trigger: 'blur' }]
       },
       markDefault: {},
@@ -243,9 +244,9 @@ export default {
     handleAdd() {
       let types = [5, 7]
       if (this.type == 0 && this.userList.length <= 0 && types.includes(this.fromData.type)) {
-        return this.$message.error('请选择人员')
+        return this.$message.error(i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'))
       } else if (this.type == 1 && this.frames.length <= 0 && types.includes(this.fromData.type)) {
-        return this.$message.error('请选择部门')
+        return this.$message.error(i18n.t('legacyScript.pleaseSelectDepartment'))
       }
       this.$refs.form.validate((valid) => {
         if (valid) {

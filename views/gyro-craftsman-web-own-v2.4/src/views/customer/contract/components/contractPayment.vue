@@ -125,6 +125,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { mapGetters } from 'vuex'
 import { clientBillDeleteApi, clientBillListApi, getContractStatisticsApi } from '@/api/enterprise'
 import { approveApplyRevokeApi } from '@/api/business'
@@ -167,8 +168,8 @@ export default {
       formConfig: [
         {
           type: 'textarea',
-          label: '撤销理由：',
-          placeholder: '请输入撤销理由',
+          label: i18n.t('legacyScript.reasonForReversal'),
+          placeholder: i18n.t('legacyScript.enterWithdrawalReason'),
           key: 'info'
         }
       ],
@@ -177,7 +178,7 @@ export default {
       },
       oaFromData: {
         width: '600px',
-        title: '撤销',
+        title: i18n.t('ui.formDesignerToolbarPanelIndexRevoke'),
         btnText: '确定',
         labelWidth: 'auto',
         type: ''

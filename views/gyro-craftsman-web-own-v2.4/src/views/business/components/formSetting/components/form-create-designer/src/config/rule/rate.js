@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '评分';
@@ -18,35 +19,35 @@ export default {
   },
   props() {
     return [
-      { type: 'inputNumber', field: 'max', title: '最大分值' },
+      { type: 'inputNumber', field: 'max', title: i18n.t('legacyScript.maximumScore') },
       {
         type: 'switch',
         field: 'disabled',
-        title: '是否为只读',
+        title: i18n.t('legacyScript.isReadOnly'),
       },
-      { type: 'switch', field: 'allowHalf', title: '是否允许半选' },
+      { type: 'switch', field: 'allowHalf', title: i18n.t('legacyScript.allowPartialSelection') },
       {
         type: 'input',
         field: 'voidColor',
-        title: '未选中 icon 的颜色',
+        title: i18n.t('legacyScript.colorOfUnselectedIcon'),
       },
-      { type: 'input', field: 'disabledVoidColor', title: '只读时未选中 icon 的颜色' },
+      { type: 'input', field: 'disabledVoidColor', title: i18n.t('legacyScript.colorOfUnselectedIconInReadOnlyMode') },
       {
         type: 'input',
         field: 'voidIconClass',
-        title: '未选中 icon 的类名',
+        title: i18n.t('legacyScript.classNameOfUnselectedIcon'),
       },
-      { type: 'input', field: 'disabledVoidIconClass', title: '只读时未选中 icon 的类名' },
+      { type: 'input', field: 'disabledVoidIconClass', title: i18n.t('legacyScript.classNameOfUnselectedIconInReadOnlyMode') },
       {
         type: 'switch',
         field: 'showScore',
-        title: '是否显示当前分数，show-score 和 show-text 不能同时为真',
+        title: i18n.t('legacyScript.whetherToDisplayTheCurrentScoreShowScoreAndShow'),
       },
-      { type: 'input', field: 'textColor', title: '辅助文字的颜色' },
+      { type: 'input', field: 'textColor', title: i18n.t('legacyScript.colorOfAuxiliaryText') },
       {
         type: 'input',
         field: 'scoreTemplate',
-        title: '分数显示模板',
+        title: i18n.t('legacyScript.scoreDisplayTemplate'),
       },
     ];
   },

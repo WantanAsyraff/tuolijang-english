@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeRequiredRule } from '../../utils';
 
@@ -27,7 +28,7 @@ export default {
       {
         type: 'input',
         field: 'titleIpt',
-        title: '标识名',
+        title: i18n.t('legacyScript.identifierName'),
         value: '省市区',
       },
       makeRequiredRule(),

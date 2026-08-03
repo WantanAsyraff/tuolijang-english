@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { memorialCateListApi, memorialEditApi } from '@/api/user'
 
 export default {
@@ -90,7 +91,7 @@ export default {
     },
     handleSave() {
       if (!this.fileId) {
-        this.$message.error('选择移动的文件夹')
+        this.$message.error(i18n.t('legacyScript.selectTheFolderToMove'))
       } else {
         const data = {
           title: this.moveData.data.title,

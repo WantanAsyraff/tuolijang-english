@@ -89,6 +89,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import tree from './tree'
 import addMaterial from './addMaterial'
 import receive from './receive'
@@ -125,7 +126,7 @@ export default {
       },
       fromData1: {
         width: '500px',
-        title: '批量移动物资分类',
+        title: i18n.t('legacyScript.batchMoveMaterialCategories'),
         btnText: '确定',
         labelWidth: '80px',
         type: ''
@@ -137,7 +138,7 @@ export default {
         cate_id: [
           {
             required: true,
-            message: '请选择物资类别',
+            message: i18n.t('legacyScript.pleaseSelectAMaterialCategory'),
             trigger: 'change'
           }
         ]
@@ -159,11 +160,11 @@ export default {
       ],
       dropdownList: [
         {
-          label: '领用',
+          label: i18n.t('ui.administrationMaterialFixedConsumeIssue'),
           value: 1
         },
         {
-          label: '批量移动',
+          label: i18n.t('legacyScript.batchMove'),
           value: 2
         }
       ],
@@ -208,8 +209,8 @@ export default {
         this.formConfig = [
           {
             type: 'cascaderNew',
-            label: '物资类别:',
-            placeholder: '请搜索选择物资类别',
+            label: i18n.t('legacyScript.materialCategory'),
+            placeholder: i18n.t('legacyScript.searchAndSelectAMaterialCategory'),
             key: 'cate_id',
             options: this.treeData
           }
@@ -221,7 +222,7 @@ export default {
       if (data.value == '1') {
         this.handleReceive()
       } else {
-        if (this.multipleSelection.length == 0) return this.$message.error('请选择要操作的物资')
+        if (this.multipleSelection.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectTheMaterialsToOperateOn'))
         this.$refs.oaDialog.openBox()
       }
     },
@@ -229,10 +230,10 @@ export default {
     // 领用
     handleCollection(item) {
       this.stockData = {
-        title: '物资领用（消耗物资）',
+        title: i18n.t('legacyScript.materialRequisitionConsumable'),
         width: '620px',
-        label: '备 注',
-        placeholder: '请输入备注',
+        label: i18n.t('legacyScript.remarks'),
+        placeholder: i18n.t('ui.customerProductListPleaseEnterRemarks'),
         data: item,
         type: 7
       }
@@ -305,7 +306,7 @@ export default {
     },
     handleManage() {
       this.fromData = {
-        title: '新增入库(消耗物资)',
+        title: i18n.t('legacyScript.newInboundEntryConsumable'),
         width: 720,
         treeData: this.treeData,
         selectData: this.selectData,
@@ -322,7 +323,7 @@ export default {
         row.cate.path.push(row.cid) // 添加当前分类
       }
       this.fromData = {
-        title: '编辑入库(消耗物资)',
+        title: i18n.t('legacyScript.editInboundEntryConsumable'),
         width: 720,
         treeData: this.treeData,
         edit: true,
@@ -334,7 +335,7 @@ export default {
     },
     handleReceive() {
       this.receiveData = {
-        title: '领用(消耗物资)',
+        title: i18n.t('legacyScript.requisitionConsumable'),
         width: 820,
         selectData: this.selectReceive,
         type: this.types
@@ -343,7 +344,7 @@ export default {
     },
     handleRecord(row) {
       this.recordData = {
-        title: '记录详情(消耗物资)',
+        title: i18n.t('legacyScript.recordDetailsConsumable'),
         width: 820,
         data: row,
         type: this.types
@@ -354,11 +355,11 @@ export default {
     },
     handleStock(row) {
       this.stockData = {
-        title: '补货',
+        title: i18n.t('ui.administrationMaterialChartIndexRestock'),
         width: '520px',
         data: row,
-        label: '入库说明',
-        placeholder: '请填写入库说明',
+        label: i18n.t('legacyScript.stockInDescription'),
+        placeholder: i18n.t('legacyScript.pleaseEnterStockInDescription'),
         type: 4
       }
       this.$refs.materialDialog.handleOpen()

@@ -98,6 +98,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import oaPopover from '@/components/form-common/oa-popover'
 import oaFromBox from '@/components/common/oaFromBox'
 import { roterPre } from '@/settings'
@@ -158,11 +159,11 @@ export default {
       total: 0,
       options: [
         {
-          label: '启用',
+          label: i18n.t('public.enable'),
           value: 1
         },
         {
-          label: '停用',
+          label: i18n.t('hr.blockup'),
           value: 0
         }
       ]

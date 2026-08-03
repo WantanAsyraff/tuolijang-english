@@ -135,6 +135,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { chargeEditApi } from '@/api/enterprise';
 import { CUSTOMER_MODULE_KEYS } from '@/constants/customerModules';
 import { DRAWER_SIZE } from '@/constants/popupSize';
@@ -185,14 +186,14 @@ export default {
         { value: '1', label: this.$t('setting.info.essentialinformation') },
         { value: '2', label: this.$t('customer.followrecord'), badgeKey: 'follow_count' },
         { value: '8', label: this.$t('customer.contacts'), badgeKey: 'liaisons_count', moduleKey: CUSTOMER_MODULE_KEYS.LIAISON },
-        { value: '10', label: '商机', badgeKey: 'odds_count', moduleKey: CUSTOMER_MODULE_KEYS.OPPORTUNITY },
-        { value: '11', label: '合同', badgeKey: 'contract_doc_count', moduleKey: CUSTOMER_MODULE_KEYS.CONTRACT },
-        { value: '3', label: '订单', badgeKey: 'contract_count', moduleKey: CUSTOMER_MODULE_KEYS.ORDER },
-        { value: '4', label: '账目记录', badgeKey: 'bill_count' },
+        { value: '10', label: i18n.t('systemText.opportunities'), badgeKey: 'odds_count', moduleKey: CUSTOMER_MODULE_KEYS.OPPORTUNITY },
+        { value: '11', label: i18n.t('systemText.contracts'), badgeKey: 'contract_doc_count', moduleKey: CUSTOMER_MODULE_KEYS.CONTRACT },
+        { value: '3', label: i18n.t('customer.contract'), badgeKey: 'contract_count', moduleKey: CUSTOMER_MODULE_KEYS.ORDER },
+        { value: '4', label: i18n.t('legacyScript.accountRecords'), badgeKey: 'bill_count' },
         { value: '5', label: this.$t('customer.paymentreminder'), badgeKey: 'remind_count' },
         { value: '6', label: this.$t('customer.invoice'), badgeKey: 'invoice_count', moduleKey: CUSTOMER_MODULE_KEYS.INVOICE },
         { value: '7', label: this.$t('customer.annexrelated'), badgeKey: 'file_count' },
-        { value: '9', label: '动态记录', badgeKey: 'record_count' }
+        { value: '9', label: i18n.t('ui.customerListDynamicRecordActivityRecords'), badgeKey: 'record_count' }
       ];
 
       return config.filter(item => {

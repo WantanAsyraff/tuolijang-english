@@ -109,6 +109,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   billListApi,
   billListEditApi,
@@ -266,7 +267,7 @@ export default {
     importExcelData(data) {
       const res = []
       if (data.length <= 0) {
-        this.$message.error('批量导入内容为空')
+        this.$message.error(i18n.t('legacyScript.batchImportContentIsEmpty'))
       } else {
         try {
           for (let i = 0; i <= data.length - 1; i++) {
@@ -280,7 +281,7 @@ export default {
           return
         }
         if (!res.length) {
-          this.$message.error('未读取到有效导入数据')
+          this.$message.error(i18n.t('legacyScript.noValidImportDataRead'))
           return
         }
         const data_s = {

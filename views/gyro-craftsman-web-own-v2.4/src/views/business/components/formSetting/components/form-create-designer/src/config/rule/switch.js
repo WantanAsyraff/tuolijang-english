@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '开关';
@@ -18,29 +19,29 @@ export default {
   },
   props() {
     return [
-      { type: 'switch', field: 'disabled', title: '是否禁用' },
+      { type: 'switch', field: 'disabled', title: i18n.t('legacyScript.disable') },
       {
         type: 'inputNumber',
         field: 'width',
-        title: '宽度（px）',
+        title: i18n.t('legacyScript.widthPx'),
       },
-      { type: 'input', field: 'activeText', title: 'switch 打开时的文字描述' },
+      { type: 'input', field: 'activeText', title: i18n.t('legacyScript.textDescriptionWhenSwitchIsOn') },
       {
         type: 'input',
         field: 'inactiveText',
-        title: 'switch 关闭时的文字描述',
+        title: i18n.t('legacyScript.textDescriptionWhenSwitchIsOff'),
       },
-      { type: 'input', field: 'activeValue', title: 'switch 打开时的值' },
+      { type: 'input', field: 'activeValue', title: i18n.t('legacyScript.valueWhenSwitchIsOn') },
       {
         type: 'input',
         field: 'inactiveValue',
-        title: 'switch 关闭时的值',
+        title: i18n.t('legacyScript.valueWhenSwitchIsOff'),
       },
-      { type: 'input', field: 'activeColor', title: 'switch 打开时的背景色' },
+      { type: 'input', field: 'activeColor', title: i18n.t('legacyScript.backgroundColorWhenTheSwitchIsOn') },
       {
         type: 'input',
         field: 'inactiveColor',
-        title: 'switch 关闭时的背景色',
+        title: i18n.t('legacyScript.backgroundColorWhenTheSwitchIsOff'),
       },
     ];
   },

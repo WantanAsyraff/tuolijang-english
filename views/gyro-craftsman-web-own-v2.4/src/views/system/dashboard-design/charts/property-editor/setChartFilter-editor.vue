@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { mapState } from 'vuex'
 import zbDialog from '@/components/zbDialog'
 import zbSetConditions from '@/components/zbSetConditions'
@@ -129,7 +130,7 @@ export default {
     },
     setCondition() {
       if (!this.optionModel.dataEntity) {
-        this.$message.warning('请先选择图标数据实体')
+        this.$message.warning(i18n.t('legacyScript.pleaseSelectAnIconDataEntityFirst'))
         return
       }
       let actionFilter = this.initFilter({ ...this.cutOption.setChartFilter })

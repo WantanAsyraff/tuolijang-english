@@ -1,4 +1,5 @@
 <script>
+import i18n from '@/lang'
 import xitongImg from '@/assets/images/empty/xitong.png';
 import duanxinImg from '@/assets/images/empty/duanxin.png';
 import qiweiImg from '@/assets/images/empty/qiwei.png';
@@ -18,7 +19,7 @@ const messagePushData = [
     status: 'sms_status',
     is_edit: false,
     key: 'sms_template_id',
-    placeholder: '请输入一号通中短信模板编号'
+    placeholder: i18n.t('legacyScript.enterTheSMSTemplateIDFromYihaotong')
   },
   {
     icon: qiweiImg,
@@ -26,7 +27,7 @@ const messagePushData = [
     is_edit: false,
     status: 'work_webhook_status',
     key: 'work_webhook_url',
-    placeholder: '请输入企业微信机器人生成的Webhook'
+    placeholder: i18n.t('legacyScript.enterTheWebhookGeneratedByTheWeComBot')
   },
   {
     icon: dingdingImg,
@@ -34,7 +35,7 @@ const messagePushData = [
     is_edit: false,
     status: 'ding_webhook_status',
     key: 'ding_webhook_url',
-    placeholder: '请输入钉钉机器人生成的Webhook'
+    placeholder: i18n.t('legacyScript.enterTheWebhookGeneratedByTheDingTalkBot')
   },
   {
     icon: qitaImg,
@@ -42,83 +43,83 @@ const messagePushData = [
     is_edit: false,
     status: 'other_webhook_status',
     key: 'other_webhook_url',
-    placeholder: '请输入其他第三方机器人生成的Webhook'
+    placeholder: i18n.t('legacyScript.enterTheWebhookGeneratedByTheThirdPartyBot')
   }
 ]
 const weekOptions = [
   {
     value: '1',
-    label: '周一'
+    label: i18n.t('legacyScript.mon')
   },
   {
     value: '2',
-    label: '周二'
+    label: i18n.t('legacyScript.tue')
   },
   {
     value: '3',
-    label: '周三'
+    label: i18n.t('legacyScript.wed')
   },
   {
     value: '4',
-    label: '周四'
+    label: i18n.t('legacyScript.thu')
   },
   {
     value: '5',
-    label: '周五'
+    label: i18n.t('legacyScript.fri')
   },
   {
     value: '6',
-    label: '周六'
+    label: i18n.t('legacyScript.sat')
   },
   {
     value: '7',
-    label: '周日'
+    label: i18n.t('legacyScript.sun')
   }
 ]
 const timeOptions = [
   {
     value: '0',
-    label: '每隔N秒'
+    label: i18n.t('legacyScript.everyNSeconds')
   },
   {
     value: '1',
-    label: '每隔N分钟'
+    label: i18n.t('legacyScript.everyNMinutes')
   },
   {
     value: '2',
-    label: '每隔N小时'
+    label: i18n.t('legacyScript.everyNHours')
   },
   {
     value: '3',
-    label: '每隔N天'
+    label: i18n.t('legacyScript.everyNDays')
   },
   {
     value: '4',
-    label: '每天'
+    label: i18n.t('legacyScript.daily')
   },
   {
     value: '5',
-    label: '每星期'
+    label: i18n.t('legacyScript.weekly')
   },
   {
     value: '6',
-    label: '每月'
+    label: i18n.t('calendar.monthly')
   },
   {
     value: '7',
-    label: '每年'
+    label: i18n.t('legacyScript.annually')
   }
 ]
 
 const activities = [
   {
-    title: '当发生动作时',
+    title: i18n.t('legacyScript.whenAnActionOccurs'),
     icon: 'iconfont icondangqian',
     color: '#1C9399',
     id: 1
   },
   {
-    title: '就执行操作',
+    title: i18n.t('legacyScript.executeAction'),
     icon: 'iconfont icondangqian',
     color: '#eebe77',
     id: 2

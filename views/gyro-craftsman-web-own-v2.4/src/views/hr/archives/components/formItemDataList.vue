@@ -331,6 +331,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import formOptions from '../mixins/index.js'
 import myMixins from '../mixins/method.js'
 import {
@@ -562,9 +563,9 @@ export default {
           if (item.title == '职工信息') {
             let obj = {
               type: 'date',
-              label: '离职时间：',
+              label: i18n.t('legacyScript.resignationTime'),
               value: 'quit_time',
-              placeholder: '请选择离职时间'
+              placeholder: i18n.t('legacyScript.pleaseSelectResignationTime')
             }
 
             item.data.push(obj)
@@ -710,7 +711,7 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           if (this.tabtypes != 0 && this.ruleForm.frame_id.length == 0) {
-            this.$message.error('请选择所属部门')
+            this.$message.error(i18n.t('legacyScript.selectDepartment'))
             return
           }
           if (this.ruleForm.position.length > 0) {
@@ -800,7 +801,7 @@ export default {
     // 新增：职位等级
     addQuick() {
       this.positionConfig = {
-        title: '添加职位',
+        title: i18n.t('hr.addposition'),
         width: '520px',
         data: this.treeData
       }
@@ -842,13 +843,13 @@ export default {
       this.setIndex = index
       this.editTable = '编辑'
       if (type === 'works') {
-        this.$refs.refwork.title = '编辑工作经历'
+        this.$refs.refwork.title = i18n.t('legacyScript.editWorkExperience')
         this.add = 'work'
         this.$nextTick(() => {
           this.$refs.refwork.workForm = row
         })
       } else {
-        this.$refs.refwork.title = '编辑教育经历'
+        this.$refs.refwork.title = i18n.t('legacyScript.editEducationExperience')
         this.add = 'education'
         this.$nextTick(() => {
           this.$refs.refwork.educationForm = row
@@ -1082,7 +1083,7 @@ export default {
         })
         this.$emit('getPhoto', res.data.photo)
       } catch (error) {
-        console.error('获取企业卡片信息失败:', error)
+        console.error(i18n.t('legacyScript.failedToRetrieveEnterpriseCardInformation'), error)
       }
     }
   },

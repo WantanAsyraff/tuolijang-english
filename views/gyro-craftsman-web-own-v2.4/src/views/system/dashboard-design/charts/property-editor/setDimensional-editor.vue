@@ -202,6 +202,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { mapActions } from 'vuex'
 // import VueDraggableNext from 'vue-draggable-next'
 import DimensionCom from './components/DimensionCom.vue'
@@ -329,7 +330,7 @@ export default {
     },
     openDrawer() {
       if (!this.optionModel.dataEntity) {
-        this.$message.warning('请先选择图标数据实体')
+        this.$message.warning(i18n.t('legacyScript.pleaseSelectAnIconDataEntityFirst'))
         return
       }
       this.drawer = true
@@ -364,23 +365,23 @@ export default {
       let checkHasMetrics = this.metrics.filter((el) => el.field_name == cutField.field_name)
       let checkHasShowFields = this.showFields.filter((el) => el.field_name == cutField.field_name)
       if (checkHasDimension.length > 0) {
-        this.$message.warning('添加失败，同一字段不能重复添加维度')
+        this.$message.warning(i18n.t('legacyScript.failedToAddDimensionsCannotBeAddedRepeatedlyForThe'))
         return
       }
       if (checkHasDimensionRow.length > 0) {
-        this.$message.warning('添加失败，同一字段不能重复添加维度行')
+        this.$message.warning(i18n.t('legacyScript.failedToAddDimensionRowsCannotBeAddedForThe'))
         return
       }
       if (checkHasDimensionCol.length > 0) {
-        this.$message.warning('添加失败，同一字段不能重复添加维度列')
+        this.$message.warning(i18n.t('legacyScript.failedToAddTheSameFieldCannotHaveDuplicateDimension'))
         return
       }
       if (checkHasMetrics.length > 0) {
-        this.$message.warning('添加失败，同一字段不能重复添加指标')
+        this.$message.warning(i18n.t('legacyScript.failedToAddDuplicateMetricsCannotBeAddedForThe'))
         return
       }
       if (checkHasShowFields.length > 0) {
-        this.$message.warning('添加失败，同一字段不能重复添加显示字段')
+        this.$message.warning(i18n.t('legacyScript.failedToAddTheSameFieldCannotBeAddedMultiple'))
         return
       }
       let dimensionLength = this.dimension.length
@@ -393,17 +394,17 @@ export default {
         // 2个维度或1个指标
         if (max3.includes(type)) {
           if (dimensionLength > 1) {
-            this.$message.warning('添加失败，最多添加2个维度')
+            this.$message.warning(i18n.t('legacyScript.additionFailedAMaximumOf2DimensionsCanBeAdded'))
             return
           }
           if (metricsLength > 1 && dimensionLength > 0) {
-            this.$message.warning('添加失败，多个指标最多只能添加1个维度')
+            this.$message.warning(i18n.t('legacyScript.failedToAddMultipleIndicatorsCanHaveAtMostOne'))
             return
           }
         }
         // 如果是饼图、漏斗图 最多添加1个维度
         if ((type == 'pieChart' || type == 'funnelChart') && dimensionLength > 0) {
-          this.$message.warning('添加失败，最多添加1个维度')
+          this.$message.warning(i18n.t('legacyScript.failedToAddMaximumOf1DimensionAllowed'))
           return
         }
         this.dimension.push(cutField)
@@ -414,13 +415,13 @@ export default {
         // 2个维度或1个指标
         if (max3.includes(type)) {
           if (dimensionLength > 1 && metricsLength > 0) {
-            this.$message.warning('添加失败，2个维度最多只能添加1个指标')
+            this.$message.warning(i18n.t('legacyScript.additionFailedAMaximumOf1MetricCanBeAdded'))
             return
           }
         }
         // 如果是饼图、进度条 最多添加1个指标
         if ((type == 'pieChart' || type == 'progressbar' || type == 'statistic') && metricsLength > 0) {
-          this.$message.warning('添加失败，最多添加1个指标')
+          this.$message.warning(i18n.t('legacyScript.additionFailedMaximumOf1MetricAllowed'))
           return
         }
         this.metrics.push(cutField)

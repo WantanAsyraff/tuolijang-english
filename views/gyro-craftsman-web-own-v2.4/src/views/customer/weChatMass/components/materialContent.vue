@@ -143,6 +143,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getUploadKeysApi } from '@/api/public'
 import SettingMer from '@/libs/settingMer'
 import { getFileType, getFileExtension } from '@/libs/public'
@@ -182,36 +183,36 @@ export default {
         app_id: ''
       },
       rules: {
-        title: [{ required: true, message: '请输入标题', trigger: 'blur' }],
-        info: [{ required: true, message: '请输入摘要', trigger: 'blur' }],
-        link: [{ required: true, message: '请输入路径链接', trigger: 'blur' }],
-        app_id: [{ required: true, message: '请输入应用id', trigger: 'blur' }]
+        title: [{ required: true, message: i18n.t('legacyScript.enterTitle'), trigger: 'blur' }],
+        info: [{ required: true, message: i18n.t('legacyScript.pleaseEnterSummary'), trigger: 'blur' }],
+        link: [{ required: true, message: i18n.t('legacyScript.pleaseEnterThePathLink'), trigger: 'blur' }],
+        app_id: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheApplicationID'), trigger: 'blur' }]
       },
       acceptType: '', // 上传类型
       type: [
         {
           icon: 'icontupian4',
-          label: '图片',
+          label: i18n.t('file.picture'),
           value: 'image'
         },
         {
           icon: 'iconshipin1',
-          label: '视频',
+          label: i18n.t('legacyScript.video'),
           value: 'video'
         },
         {
           icon: 'iconwenjian4',
-          label: '文件',
+          label: i18n.t('ui.userCloudfileLayoutCloudfileLeftFile'),
           value: 'file'
         },
         {
           icon: 'iconwangye-01',
-          label: '网页',
+          label: i18n.t('legacyScript.webPage'),
           value: 'link'
         },
         {
           icon: 'iconxiaochengxu',
-          label: '小程序',
+          label: i18n.t('ui.customerWeChatMassAddGroupPostingMiniProgram'),
           value: 'mini_program'
         }
       ]
@@ -267,14 +268,14 @@ export default {
         const end = input.selectionEnd
         const newText = text.substring(0, start) + tag + text.substring(end)
         if (newText.length > 1000) {
-          this.$message.warning('内容长度不能超过1000字')
+          this.$message.warning(i18n.t('legacyScript.contentLengthMustNotExceed1000Characters'))
           return
         }
         this.content = newText
       } else {
         const newText = text + tag
         if (newText.length > 1000) {
-          this.$message.warning('内容长度不能超过1000字')
+          this.$message.warning(i18n.t('legacyScript.contentLengthMustNotExceed1000Characters'))
           return
         }
         this.content = newText
@@ -316,7 +317,7 @@ export default {
               this.form.file_id = this.file.id
             }
             if (this.activeType === 'mini_program' && !this.form.file_id) {
-              return this.$message.error('请上传小程序封面')
+              return this.$message.error(i18n.t('legacyScript.pleaseUploadTheMiniProgramCoverImage'))
             }
             this.form.types = this.activeType
             this.uploadFileList.push(JSON.parse(JSON.stringify(this.form)))
@@ -337,13 +338,13 @@ export default {
         // 参数校验：确保文件存在
         const file = params?.file
         if (!file) {
-          this.$message.error('未获取到上传文件，请重新选择')
+          this.$message.error(i18n.t('legacyScript.noUploadedFileDetectedPleaseSelectAFileAgain'))
           return
         }
 
         if (['mini_program', 'image', 'link'].includes(this.activeType)) {
           if (file.size / 1024 / 1024 > 10) {
-            this.$message.error('图片最大不能超过10M')
+            this.$message.error(i18n.t('legacyScript.imageSizeMustNotExceed10MB'))
             return false
           }
           const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg']
@@ -354,13 +355,13 @@ export default {
             allowedMimeTypes.includes(file.type) || (fileExtension && allowedExtensions.includes(fileExtension))
 
           if (!isAllowed) {
-            this.$message.error('请上传 PNG 或 JPG 格式的图片')
+            this.$message.error(i18n.t('legacyScript.pleaseUploadAnImageInPNGOrJPGFormat'))
             return false
           }
         }
         if (this.activeType === 'video') {
           if (file.size / 1024 / 1024 > 10) {
-            this.$message.error('视频最大不能超过10M')
+            this.$message.error(i18n.t('legacyScript.videoSizeMustNotExceed10MB'))
             return false
           }
           const fileName = file.name.toLowerCase()
@@ -369,14 +370,14 @@ export default {
 
           // 双重校验：后缀或 MIME 类型任一不符合则拒绝
           if (!isMP4ByExtension || !isMP4ByType) {
-            this.$message.error('请上传 MP4 格式的视频')
+            this.$message.error(i18n.t('legacyScript.pleaseUploadAVideoInMP4Format'))
             return false
           }
         }
 
         if (this.activeType === 'file') {
           if (file.size / 1024 / 1024 > 200) {
-            this.$message.error('文件最大不能超过200M')
+            this.$message.error(i18n.t('legacyScript.fileSizeMustNotExceed200MB'))
             return false
           }
         }
@@ -389,7 +390,7 @@ export default {
         const uploadKeysRes = await getUploadKeysApi(obj)
 
         if (!uploadKeysRes?.data) {
-          this.$message.error('获取上传配置失败，返回格式异常')
+          this.$message.error(i18n.t('legacyScript.failedToRetrieveUploadConfigurationInvalidResponseFormat'))
         }
 
         const isLocalUpload = uploadKeysRes.data.type === 'local'

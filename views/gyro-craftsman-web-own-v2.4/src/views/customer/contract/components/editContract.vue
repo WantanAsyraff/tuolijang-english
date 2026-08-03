@@ -150,6 +150,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { contractDocDetailApi } from '@/api/contractSign'
 import { contractEditCreateApi } from '@/api/enterprise'
 import { clientDataInfoApi, clientContractDetailApi as contractDetailApi } from '@/api/client'
@@ -208,13 +209,13 @@ export default {
       tabNumber: 1,
       tabData: [
         { value: '1', label: this.$t('setting.info.essentialinformation') },
-        { value: '8', label: '合同信息' },
-        { value: '2', label: '账目记录', badgeKey: 'bill_count' },
+        { value: '8', label: i18n.t('legacyScript.contractInformation') },
+        { value: '2', label: i18n.t('legacyScript.accountRecords'), badgeKey: 'bill_count' },
         // { value: '6', label: '订单续费' },
         { value: '3', label: this.$t('customer.paymentreminder'), badgeKey: 'remind_count' },
         { value: '4', label: this.$t('customer.invoice'), badgeKey: 'invoice_count' },
-        { value: '5', label: '记录', badgeKey: 'file_count' },
-        { value: '6', label: '动态记录', badgeKey: 'record_count' }
+        { value: '5', label: i18n.t('ui.administrationMaterialFixedConsumeRecords'), badgeKey: 'file_count' },
+        { value: '6', label: i18n.t('ui.customerListDynamicRecordActivityRecords'), badgeKey: 'record_count' }
       ],
       configContract: {},
       formBoxConfig: {},
@@ -245,12 +246,12 @@ export default {
     setOptions() {
       this.tabData = [
         { value: '1', label: this.$t('setting.info.essentialinformation') },
-        { value: '8', label: '合同信息' },
+        { value: '8', label: i18n.t('legacyScript.contractInformation') },
         { value: '2', label: this.$t('customer.paymentrecord'), badgeKey: 'bill_count' },
         { value: '3', label: this.$t('customer.paymentreminder'), badgeKey: 'remind_count' },
         { value: '4', label: this.$t('customer.invoice'), badgeKey: 'invoice_count' },
         { value: '5', label: this.$t('customer.annexrelated'), badgeKey: 'file_count' },
-        { value: '6', label: '动态记录', badgeKey: 'record_count' }
+        { value: '6', label: i18n.t('ui.customerListDynamicRecordActivityRecords'), badgeKey: 'record_count' }
       ]
     },
     handleClose() {
@@ -274,7 +275,7 @@ export default {
     },
     openContract() {
       if (!this.formData.data.eid) {
-        this.$message.error('无效的客户')
+        this.$message.error(i18n.t('legacyScript.invalidCustomer'))
         return false
       }
       this.formData.data.link_type = '2'

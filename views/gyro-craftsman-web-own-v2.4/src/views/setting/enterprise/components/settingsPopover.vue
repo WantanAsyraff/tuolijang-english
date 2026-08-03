@@ -21,6 +21,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   name: '',
   props: {
@@ -41,24 +42,24 @@ export default {
       crudList: [
         {
           value: 0,
-          label: '不允许'
+          label: i18n.t('ui.customerWeChatMassAddGroupPostingNotAllowed')
         },
         {
           value: 1,
-          label: '仅本人'
+          label: i18n.t('customer.meOnly')
         },
         {
           value: 5,
-          label: '直属下级'
+          label: i18n.t('customer.directSubordinates')
         },
         {
           value: 2,
-          label: '本部门'
+          label: i18n.t('customer.thisDept')
         },
 
         {
           value: 4,
-          label: '全部数据'
+          label: i18n.t('customer.allData')
         }
       ]
     }

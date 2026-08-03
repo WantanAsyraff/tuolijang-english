@@ -149,6 +149,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { getCityListApi } from '@/api/public'
 import { mapGetters } from 'vuex'
 import { enterpriseEntInfoApi, entInfoUpdateApi } from '@/api/enterprise'
@@ -191,7 +192,7 @@ export default {
       },
       rules: {
         enterprise_name: [{ required: true, message: this.$t('setting.info.title1'), trigger: 'blur' }],
-        short_name: [{ required: true, message: '请填写企业简称', trigger: 'blur' }],
+        short_name: [{ required: true, message: i18n.t('legacyScript.pleaseEnterEnterpriseAbbreviation'), trigger: 'blur' }],
         address: [{ required: true, message: this.$t('setting.info.title2'), trigger: 'blur' }],
         phone: [{ required: true, message: this.$t('setting.info.title3'), trigger: 'blur' }]
       },

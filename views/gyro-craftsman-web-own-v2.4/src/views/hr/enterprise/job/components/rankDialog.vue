@@ -83,6 +83,7 @@
   </el-dialog>
 </template>
 <script>
+import i18n from '@/lang'
 import { rankLevelBatchApi, rankLevelEditApi, rankLevelSaveApi } from '@/api/setting'
 
 export default {
@@ -120,10 +121,10 @@ export default {
       },
       rules: {
         levelMin: [{ required: true, validator: checkLevelMin, trigger: 'blur' }],
-        levelMax: [{ required: true, message: '请输入最高职等', trigger: 'blur' }],
-        salaryMin: [{ required: true, message: '请输入最低薪资', trigger: 'blur' }],
-        salaryMax: [{ required: true, message: '请输入最高薪资', trigger: 'blur' }],
-        rank: [{ required: true, message: '请输入职等跨度', trigger: 'blur' }]
+        levelMax: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheHighestJobLevel'), trigger: 'blur' }],
+        salaryMin: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheMinimumSalary'), trigger: 'blur' }],
+        salaryMax: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheMaximumSalary'), trigger: 'blur' }],
+        rank: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheJobGradeSpan'), trigger: 'blur' }]
       },
       loading: false
     }

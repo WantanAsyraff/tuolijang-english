@@ -125,6 +125,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import file from '@/utils/file'
 import { paymentRecordApi, operationRecordApi,uninvoicedListApi ,invoiceBillApi} from '@/api/enterprise'
 import Vue from 'vue'
@@ -229,7 +230,7 @@ export default {
     // 开票
     handleInvoicing() {
       this.invoicingDialog = {
-        title: '开票审核',
+        title: i18n.t('customer.invoicingapproval'),
         data: this.formData.data
       }
       this.$refs.invoicingDialog.openBox()

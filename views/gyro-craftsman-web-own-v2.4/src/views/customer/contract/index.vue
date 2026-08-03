@@ -93,6 +93,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { clientContractDeleteApi, contractViewApi, contractAbnormalApi, contractImport } from '@/api/enterprise'
 import { clientExportApi } from '@/api/client'
 import { configRuleApproveApi } from '@/api/config'
@@ -159,50 +160,50 @@ export default {
       timeSearchObj: {},
       viewSearch: [],
       dropdownList: [
-        { label: '移交同事', value: 1 },
-        { label: '筛选条件设置', value: 4 },
-        { label: '表头显示设置', value: 5 },
-        { label: '导出', value: 2 },
-        { label: '导入', value: 3 },
-        { label: '导入导出记录', value: 6 },
-        { label: '字段选项设置', value: 7 }
+        { label: i18n.t('ui.customerClueIndexTransferToColleague'), value: 1 },
+        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 4 },
+        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 5 },
+        { label: i18n.t('customer.export'), value: 2 },
+        { label: i18n.t('finance.batchupload'), value: 3 },
+        { label: i18n.t('legacyScript.importExportRecords'), value: 6 },
+        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 7 }
       ],
       treeDataGroup: [
         {
           id: 1,
-          label: '我负责的'
+          label: i18n.t('legacyScript.ownedByMe')
         },
         {
           id: 2,
-          label: '下属负责的'
+          label: i18n.t('legacyScript.ownedBySubordinates')
         },
         {
           id: 3,
-          label: '我关注的'
+          label: i18n.t('legacyScript.followedByMe')
         },
         {
           id: 4,
-          label: '已签约'
+          label: i18n.t('ui.customerSigningInfoItemSigned')
         },
         {
           id: 5,
-          label: '未签约'
+          label: i18n.t('legacyScript.notSigned')
         },
         {
           id: 6,
-          label: '签约作废'
+          label: i18n.t('legacyScript.contractVoided')
         },
         {
           id: 7,
-          label: '过期订单'
+          label: i18n.t('legacyScript.expiredOrders')
         },
         {
           id: 8,
-          label: '急需续费'
+          label: i18n.t('customer.urgentrenewal')
         },
         {
           id: 9,
-          label: '费用过期',
+          label: i18n.t('legacyScript.feeExpired'),
           line: true
         }
       ]
@@ -347,7 +348,7 @@ export default {
     async handleCheck(item) {
       item.cid = item.id
       this.fromData = {
-        title: '查看订单',
+        title: i18n.t('legacyScript.viewOrder'),
         width: DRAWER_SIZE.LG,
         data: item,
         isClient: false,

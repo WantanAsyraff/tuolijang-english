@@ -100,6 +100,7 @@
 </template>
 
 <script>
+import appI18n from '@/lang'
 import emitter from '@/utils/emitter'
 import i18n from '../../../utils/i18n'
 import { deepClone, generateId } from '../../../utils/util'
@@ -297,7 +298,7 @@ export default {
     },
 
     deleteSubFormRow(formRowIndex) {
-      this.$confirm(this.i18nt('render.hint.deleteSubFormRow') + '?', '提示', {
+      this.$confirm(this.i18nt('render.hint.deleteSubFormRow') + '?', appI18n.t('public.tips'), {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       })

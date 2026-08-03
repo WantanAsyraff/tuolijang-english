@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import file from '@/utils/file'
 import Vue from 'vue'
 Vue.use(file)
@@ -35,7 +36,7 @@ export default {
       payData: {},
       fileTemp: {
         type: 1,
-        title: '查看更多文档',
+        title: i18n.t('legacyScript.viewMoreDocumentation'),
         width: '820px'
       },
       wordList: [],

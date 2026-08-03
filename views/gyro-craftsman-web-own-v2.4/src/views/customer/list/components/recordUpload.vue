@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { saveClientFollowApi, putClientFollowApi } from '@/api/client'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
@@ -95,7 +96,7 @@ export default {
       },
       follow_id: 0,
       rules: {
-        content: [{ required: true, message: '请输入跟进信息', trigger: 'blur' }]
+        content: [{ required: true, message: i18n.t('legacyScript.pleaseEnterFollowUpInformation'), trigger: 'blur' }]
       },
       avatar: '',
       uploadData: {},

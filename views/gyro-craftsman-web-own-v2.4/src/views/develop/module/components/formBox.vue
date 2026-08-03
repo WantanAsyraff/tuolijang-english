@@ -214,6 +214,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   crudModuleSaveApi,
   crudViewSaveApi,
@@ -289,7 +290,7 @@ export default {
       merges: [{ s: { r: 0, c: 0 }, e: { r: 0, c: 10 } }],
       fromData: {
         width: '500px',
-        title: '新建视图',
+        title: i18n.t('ui.developViewManagementCreateView'),
         btnText: '确定',
         labelWidth: '100px',
         type: ''
@@ -301,14 +302,14 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: '视图名称：',
-          placeholder: '请输入视图名称(10个字以内)',
+          label: i18n.t('legacyScript.viewName'),
+          placeholder: i18n.t('legacyScript.pleaseEnterAViewNameWithin10Characters'),
           key: 'senior_title'
         },
         {
           type: 'radio',
-          label: '视图类型：',
-          placeholder: '请选择视图类型',
+          label: i18n.t('legacyScript.viewType'),
+          placeholder: i18n.t('legacyScript.pleaseSelectViewType'),
           key: 'senior_type',
           options: [
             {
@@ -326,15 +327,15 @@ export default {
         senior_title: [
           {
             required: true,
-            message: '请输入视图名称',
+            message: i18n.t('ui.developViewManagementPleaseEnterViewName'),
             trigger: 'blur'
           },
-          { min: 0, max: 10, message: '最多输入10个字', trigger: 'blur' }
+          { min: 0, max: 10, message: i18n.t('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
         ],
         senior_type: [
           {
             required: true,
-            message: '请选择视图类型',
+            message: i18n.t('legacyScript.pleaseSelectViewType'),
             trigger: 'change'
           }
         ]
@@ -355,18 +356,18 @@ export default {
       ],
       dropdownList: [
         {
-          label: '操作',
+          label: i18n.t('toptable.operation'),
           children: [
             {
-              label: '批量共享协作',
+              label: i18n.t('ui.developModuleTableStyleBatchShareAndCollaborate'),
               value: 7
             },
             {
-              label: '批量移交',
+              label: i18n.t('ui.developModuleTableStyleBatchTransfer'),
               value: 8
             },
             {
-              label: '批量删除',
+              label: i18n.t('ui.customerSetupDictionaryManagementBatchDelete'),
               value: 1
             }
           ]
@@ -374,11 +375,11 @@ export default {
         {
           children: [
             {
-              label: '邀请填写',
+              label: i18n.t('ui.developModuleFillInInviteToComplete'),
               value: 9
             },
             {
-              label: '邀请链接记录',
+              label: i18n.t('ui.developModuleFillInInvitationLinkRecords'),
               value: 10
             }
           ]
@@ -386,11 +387,11 @@ export default {
         {
           children: [
             {
-              label: '数据导入',
+              label: i18n.t('ui.developModuleTableStyleImportData'),
               value: 5
             },
             {
-              label: '数据导出',
+              label: i18n.t('ui.developModuleTableStyleExportData'),
               value: 4
             }
           ]
@@ -398,19 +399,19 @@ export default {
         {
           children: [
             {
-              label: '筛选条件设置',
+              label: i18n.t('ui.developModuleTableStyleFilterSettings'),
               value: 2
             },
             {
-              label: '表头显示设置',
+              label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'),
               value: 3
             },
             {
-              label: '详情tab设置',
+              label: i18n.t('ui.developModuleTableStyleDetailTabSettings'),
               value: 6
             },
             {
-              label: '字典选项设置',
+              label: i18n.t('ui.customerDictOptionSettingDictionaryOptionSettings'),
               value: 12
             }
           ]
@@ -625,7 +626,7 @@ export default {
       if (val.value === 2) {
         this.max = 2
         this.min = 0
-        this.title = '搜索显示设置'
+        this.title = i18n.t('legacyScript.searchDisplaySettings')
         this.searchType = 2
         if (this.info.crudInfo.customField) {
           this.info.crudInfo.customField = this.info.crudInfo.customField.filter((item) => {
@@ -637,7 +638,7 @@ export default {
       } else if (val.value === 3) {
         this.max = 0
         this.min = 5
-        this.title = '表头显示设置'
+        this.title = i18n.t('ui.developModuleTableStyleColumnDisplaySettings')
         this.searchType = 3
         this.info.crudInfo.customField = this.info.crudInfo.customField.filter((item) => {
           return !['file', 'rich_text'].includes(item.form_value)
@@ -648,7 +649,7 @@ export default {
       } else if (val.value == 4) {
         // 导出
         if (this.total > 1000) {
-          return this.$message.error('超出限制，最大支持导出1000条数据')
+          return this.$message.error(i18n.t('legacyScript.exportLimitExceededUpTo1000RecordsAreSupported'))
         }
         this.where.page = 0
         this.where.limit = 1000
@@ -705,7 +706,7 @@ export default {
         this.max = 0
         let selectList = []
         let ids = []
-        this.title = '配置tab显示项'
+        this.title = i18n.t('legacyScript.configureTabDisplay')
         let tabData = this.info.userOptions.options
         if (tabData && tabData.tab && tabData.tab.length > 0) {
           selectList = tabData.tab

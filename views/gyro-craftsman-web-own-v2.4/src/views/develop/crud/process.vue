@@ -146,6 +146,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import selectMember from '@/components/form-common/select-member'
 import processSetting from '@/components/develop/processSetting'
 import iconfontList from '@/views/business/components/basicSetting/iconfontList.js'
@@ -196,14 +197,14 @@ export default {
         crud_id: [
           {
             required: true,
-            message: '请选择应用实体',
+            message: i18n.t('legacyScript.pleaseSelectAnApplicationEntity'),
             trigger: 'change'
           }
         ],
         name: [
           {
             required: true,
-            message: '请选择输入流程名称',
+            message: i18n.t('legacyScript.pleaseEnterAWorkflowName'),
             trigger: 'blur'
           }
         ],
@@ -217,14 +218,14 @@ export default {
         abnormal: [
           {
             required: true,
-            message: '请选择应用实体',
+            message: i18n.t('legacyScript.pleaseSelectAnApplicationEntity'),
             trigger: 'change'
           }
         ],
         auto: [
           {
             required: true,
-            message: '请选择应用实体',
+            message: i18n.t('legacyScript.pleaseSelectAnApplicationEntity'),
             trigger: 'change'
           }
         ]
@@ -308,8 +309,8 @@ export default {
             this.ruleConfig.abnormal = this.userList[0].value ? this.userList[0].value : this.userList[0].id
           }
 
-          if (!this.baseConfig.name) return this.$message('流程名称不能为空')
-          if (!this.baseConfig.icon) return this.$message('流程图标不能为空')
+          if (!this.baseConfig.name) return this.$message(i18n.t('legacyScript.workflowNameIsRequired'))
+          if (!this.baseConfig.icon) return this.$message(i18n.t('legacyScript.workflowIconIsRequired'))
           this.loading = true
           this.sendToServer(param, val)
         })
@@ -386,7 +387,7 @@ export default {
       } else if (this.activeName == 'processSetting') {
         this.activeName = 'ruleSetting'
       } else if (this.activeName == 'ruleSetting') {
-        this.$message.error('没有下一步')
+        this.$message.error(i18n.t('legacyScript.noNextStep'))
         this.activeName = 'ruleSetting'
       }
     }

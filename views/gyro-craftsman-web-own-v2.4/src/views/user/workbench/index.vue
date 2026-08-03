@@ -279,6 +279,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   dealtScheduleListApi,
   noticeMessageListApi,
@@ -482,7 +483,7 @@ export default {
       this.getConfigApprove()
     ])
       .catch((error) => {
-        console.error('异步任务执行出错:', error)
+        console.error(i18n.t('legacyScript.asynchronousTaskExecutionFailed'), error)
       })
       .finally(() => {
         this.pageLoading = false
@@ -565,7 +566,7 @@ export default {
           this.currentWeather.text = str
         })
         .catch((error) => {
-          console.error('天气数据获取失败:', error)
+          console.error(i18n.t('legacyScript.failedToFetchWeatherData'), error)
         })
     },
 
@@ -808,7 +809,7 @@ export default {
     getPassword() {
       if (this.userInfo && this.userInfo.is_init === 1) {
         this.passwordData = {
-          title: '修改密码',
+          title: i18n.t('passwordDialog.title'),
           width: '540px'
         }
         setTimeout(() => {
@@ -825,7 +826,7 @@ export default {
           const invitation = JSON.parse(invitationStorage)
           this.getEnterpriseInfo(invitation)
         } catch (e) {
-          console.error('解析邀请信息失败:', e)
+          console.error(i18n.t('legacyScript.failedToParseInvitationInformation'), e)
         }
       }
     },

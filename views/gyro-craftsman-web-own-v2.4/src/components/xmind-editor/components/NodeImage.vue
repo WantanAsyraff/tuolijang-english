@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { NODE_ACTIVE, SHOW_NODE_IMAGE } from '../event-constant';
 import compressImg from '@/utils/compressImg';
 
@@ -44,7 +45,7 @@ export default {
     async handleImgChange(e) {
       if (!/^image\//.test(e.raw.type)) {
         this.$refs.uploader.clearFiles();
-        return this.$message.error("请上传正确的图片!");
+        return this.$message.error(i18n.t('legacyScript.uploadAValidImage'));
       }
       this.img = await compressImg(e.raw, e.raw.size >= 2097152);
     },

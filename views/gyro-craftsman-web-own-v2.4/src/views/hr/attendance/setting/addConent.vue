@@ -384,6 +384,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import { mapGetters } from 'vuex'
 import {
@@ -620,9 +621,9 @@ export default {
         }
         let set = new Set(this.from.shifts)
         this.from.shifts = Array.from(set)
-        if (!this.from.name) return this.$message.error('请输入考勤组名称')
-        if (this.from.members.length == 0) return this.$message.error('请选择考勤人员或者部门')
-        if (this.from.admins.length == 0) return this.$message.error('请选择考勤组管理人员')
+        if (!this.from.name) return this.$message.error(i18n.t('ui.hrAttendanceSettingAddConentEnterAttendanceGroupName'))
+        if (this.from.members.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectAnEmployeeOrDepartment'))
+        if (this.from.admins.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectAttendanceGroupManagementPersonnel'))
         this.filterList.map((item) => {
           this.from.filters.push(item.value)
         })
@@ -630,7 +631,7 @@ export default {
         this.saveFn(this.from)
       } else if (this.activeIndex == 2) {
         if (!this.from.is_map && !this.from.is_wifi) {
-          return this.$message.error('请至少选择一种考勤方式')
+          return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneAttendanceMethod'))
         }
         this.from.step = 'two'
         this.saveFn(this.from)
@@ -669,7 +670,7 @@ export default {
         if (data.is_wifi) {
           wifi_data = data.wifi_data.filter((item) => item.name && item.mac)
           if (wifi_data.length <= 0) {
-            return this.$message.error('请至少输入一条wifi配置!')
+            return this.$message.error(i18n.t('legacyScript.pleaseEnterAtLeastOneWiFiConfiguration'))
           }
         }
         const res = await putAttendanceGroup(this.id, data)

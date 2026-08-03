@@ -242,6 +242,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import conditionsConfig from '@/config/conditionsConfig'
 import ReferenceSearchTable from '@/components/mlReferenceSearch/reference-search-table.vue'
 import useCommonStore from '@/store/modules/common'
@@ -408,7 +409,7 @@ export default {
     // 添加条件
     addConditions() {
       if (this.fieldList.length < 1) {
-        this.$message.error('暂未获取到条件字段，请尝试刷新页面后重试')
+        this.$message.error(i18n.t('legacyScript.conditionFieldsCouldNotBeRetrievedRefreshThePage'))
         return
       }
       if (this.conditionConf.items.length > this.maxConditionsLength - 1) {
@@ -444,7 +445,7 @@ export default {
           if (notNeedMsg) {
             return
           }
-          this.$message.error('部分条件设置有误，请检查')
+          this.$message.error(i18n.t('legacyScript.someConditionSettingsAreInvalidPleaseCheckThem'))
           return
         }
       }
@@ -467,7 +468,7 @@ export default {
       if (type === 3 && equation) {
         await this.checkEquation()
         if (this.errorEquation) {
-          this.$message.error('无效高级表达式')
+          this.$message.error(i18n.t('legacyScript.invalidAdvancedExpression'))
           return
         }
       }

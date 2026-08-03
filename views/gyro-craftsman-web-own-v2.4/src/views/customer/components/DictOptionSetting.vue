@@ -166,6 +166,7 @@
   </div>
 </template>
 <script setup>
+import i18n from '@/lang'
 /**
  * @description 字典选项设置基础组件
  * 使用 Vue 2.7 Composition API (setup) 编写
@@ -298,7 +299,7 @@ const loadDictTypes = async () => {
       handleTypeSelect(dictTypes.value[0])
     }
   } catch (err) {
-    proxy.$message.error('获取字典类型列表失败')
+    proxy.$message.error(i18n.t('legacyScript.failedToRetrieveDictionaryTypeList'))
   }
 }
 
@@ -312,7 +313,7 @@ const loadOptionData = async (typeItem) => {
     const res = await getDictTreeListApi({ types: typeItem.ident })
     optionItems.value = res.data || []
   } catch (err) {
-    proxy.$message.error('获取选项数据失败')
+    proxy.$message.error(i18n.t('legacyScript.failedToRetrieveOptionData'))
   } finally {
     loading.value = false
   }

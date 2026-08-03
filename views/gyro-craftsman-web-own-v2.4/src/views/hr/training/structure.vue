@@ -17,6 +17,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 import { employeeTrainApi, getEmployeeTrainApi } from '@/api/config.js'
 export default {
@@ -43,7 +44,7 @@ export default {
     handleConfirm() {
       this.content = this.$refs.ueditorFrom.getValue()
       if (this.content == '') {
-        return this.$message.error('内容不能为空')
+        return this.$message.error(i18n.t('customer.message02'))
       }
       this.loading = true
       let type = 'organization_chart'

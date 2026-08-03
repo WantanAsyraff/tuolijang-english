@@ -140,6 +140,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   getDynamicApi,
   getDynamicTaskApi,
@@ -192,11 +193,11 @@ export default {
       activeName: '1',
       typesOptions: [
         {
-          label: '项目动态',
+          label: i18n.t('legacyScript.projectActivity'),
           value: 1
         },
         {
-          label: '任务动态',
+          label: i18n.t('legacyScript.taskUpdates'),
           value: 2
         }
       ]

@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import XmindParse from 'simple-mind-map/src/parse/xmind';
 
 // 复制文本到剪贴板
@@ -54,7 +55,7 @@ export const fullScreen = element => {
 export const generateXmindFile = async (fileName) => {
   const XMIND_FILE_TEMPLATE_DATA = {
     "data": {
-      "text": "<p><span style=\"\n      color: #fff;\n      font-family: 微软雅黑, Microsoft YaHei;\n      font-size: 16px;\n      font-weight: bold;\n      font-style: normal;\n      text-decoration: none\n    \">中心主题</span></p>",
+      "text": i18n.t('legacyScript.centralTopicCentralTopicCentralTopicCentralTopicCentral'),
       "generalization": [],
       "expand": true,
       "richText": true,

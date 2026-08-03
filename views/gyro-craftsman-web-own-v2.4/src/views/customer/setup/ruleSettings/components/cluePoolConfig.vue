@@ -134,6 +134,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 export default {
   name: 'CluePoolConfig',
   props: {
@@ -159,11 +160,11 @@ export default {
         xs: 24
       },
       rules: {
-        clue_follow_date: [{ required: true, message: '请输入线索根据提醒' }],
-        return_clue_date: [{ required: true, message: '请输入未转客户退回' }],
-        return_clue_cycle: [{ required: true, message: '请输入未跟进退回' }],
-        return_clue_remind: [{ required: true, message: '请输入退回公海提醒' }],
-        clue_policy_count: [{ required: true, message: '请输入保单数量' }]
+        clue_follow_date: [{ required: true, message: i18n.t('legacyScript.pleaseEnterCluesBasedOnTheReminder') }],
+        return_clue_date: [{ required: true, message: i18n.t('legacyScript.pleaseEnterReturnIfNotConvertedToCustomer') }],
+        return_clue_cycle: [{ required: true, message: i18n.t('legacyScript.pleaseEnterReturnIfNotFollowedUp') }],
+        return_clue_remind: [{ required: true, message: i18n.t('legacyScript.pleaseEnterCustomerPoolReturnReminder') }],
+        clue_policy_count: [{ required: true, message: i18n.t('legacyScript.pleaseEnterPolicyCount') }]
       }
     }
   },

@@ -168,6 +168,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   props: {
     field: {
@@ -200,43 +201,43 @@ export default {
       remindOptions: [
         {
           value: -1,
-          label: '不提醒'
+          label: i18n.t('legacyScript.noReminder')
         },
         {
           value: 0,
-          label: '任务开始时'
+          label: i18n.t('legacyScript.atTaskStart')
         },
         {
           value: 1,
-          label: '提前5分钟'
+          label: i18n.t('legacyScript.text5MinutesBefore')
         },
         {
           value: 2,
-          label: '提前15分钟'
+          label: i18n.t('legacyScript.text15MinutesBefore')
         },
         {
           value: 3,
-          label: '提前30分钟'
+          label: i18n.t('legacyScript.text30MinutesBefore')
         },
         {
           value: 4,
-          label: '提前1小时'
+          label: i18n.t('legacyScript.text1HourBefore')
         },
         {
           value: 5,
-          label: '提前2小时'
+          label: i18n.t('legacyScript.text2HoursBefore')
         },
         {
           value: 6,
-          label: '提前1天'
+          label: i18n.t('legacyScript.text1DayBefore')
         },
         {
           value: 7,
-          label: '提前2天'
+          label: i18n.t('legacyScript.text2DaysBefore')
         },
         {
           value: 8,
-          label: '提前1周'
+          label: i18n.t('legacyScript.text1WeekBefore')
         }
       ]
     }

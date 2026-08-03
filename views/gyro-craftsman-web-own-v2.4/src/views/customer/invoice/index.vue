@@ -311,6 +311,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   getSalesman,
   uninvoicedListApi
@@ -354,11 +355,11 @@ export default {
       treeDataGroup: [
         {
           id: 1,
-          label: '我负责的'
+          label: i18n.t('legacyScript.ownedByMe')
         },
         {
           id: 2,
-          label: '下属负责的'
+          label: i18n.t('legacyScript.ownedBySubordinates')
         }
       ],
       where: {
@@ -372,7 +373,7 @@ export default {
       },
       withdrawId: '',
       rules: {
-        remarks: [{ required: true, message: '请填写撤回理由', trigger: 'blur' }]
+        remarks: [{ required: true, message: i18n.t('legacyScript.pleaseProvideAReasonForWithdrawal'), trigger: 'blur' }]
       },
       tooltipTrue: true,
       putInvoiceId: '',
@@ -471,7 +472,7 @@ export default {
     },
     // 申请作废
     apply(val) {
-      this.title = '发票申请作废'
+      this.title = i18n.t('legacyScript.invoiceVoidRequest')
       this.reason = '作废原因'
       this.dialogVisible = true
       this.withdrawId = val.id
@@ -542,7 +543,7 @@ export default {
     async handleEdit(row, type) {
       this.editPaymentRecord(row).then(() => {
         this.formBoxConfig = {
-          title: '申请发票',
+          title: i18n.t('customer.invoiceapply'),
           width: '1000px',
           edit: true,
           rowData: row,
@@ -636,7 +637,7 @@ export default {
     // 编辑
     async handleCheck(item) {
       this.invoiceData = {
-        title: '发票查看',
+        title: i18n.t('legacyScript.viewInvoice'),
         width: '1000px',
         data: item
       }

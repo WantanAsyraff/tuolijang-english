@@ -247,6 +247,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import func from '@/utils/preload'
 import { toSrcFn } from '@/utils/format'
 import { getStorageJson } from '@/utils/storage'
@@ -300,17 +301,17 @@ export default {
       formConfig: [
         {
           type: 'textarea',
-          label: '撤销理由：',
-          placeholder: '请输入撤销理由',
+          label: i18n.t('legacyScript.reasonForReversal'),
+          placeholder: i18n.t('legacyScript.enterWithdrawalReason'),
           key: 'info'
         }
       ],
       formRules: {
-        info: [{ required: true, message: '请输入撤销理由', trigger: 'blur' }]
+        info: [{ required: true, message: i18n.t('legacyScript.enterWithdrawalReason'), trigger: 'blur' }]
       },
       fromData: {
         width: '600px',
-        title: '撤销',
+        title: i18n.t('ui.formDesignerToolbarPanelIndexRevoke'),
         btnText: '确定',
         labelWidth: 'auto',
         type: ''
@@ -348,7 +349,7 @@ export default {
   methods: {
     async submitReply() {
       if (this.textarea == '') {
-        return this.$message.error('请输入留言')
+        return this.$message.error(i18n.t('legacyScript.pleaseEnterComment'))
       }
       const ids = []
       this.uploadList.map((item) => {
@@ -467,7 +468,7 @@ export default {
           info: data.info
         }
         if (getStorageJson('userInfo', {}).id == obj.user[0]) {
-          this.$message.error('转审人不能选自己')
+          this.$message.error(i18n.t('legacyScript.theReviewerCannotBeYourself'))
 
           return false
         }

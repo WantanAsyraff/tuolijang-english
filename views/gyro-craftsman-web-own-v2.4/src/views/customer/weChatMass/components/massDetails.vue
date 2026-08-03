@@ -194,6 +194,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getWorkMassEdit, getWorkMassResult } from '@/api/weCom'
 import { getFileType, getFileExtension } from '@/libs/public'
 import { DRAWER_SIZE } from '@/constants/popupSize'
@@ -219,8 +220,8 @@ export default {
       },
       total: 0,
       tabData: [
-        { value: '1', label: '基础信息' },
-        { value: '2', label: '接收情况' }
+        { value: '1', label: i18n.t('ui.customerWeChatMassGroupDetailsBasicInformation') },
+        { value: '2', label: i18n.t('ui.customerWeChatMassMassDetailsDeliveryStatus') }
       ]
     }
   },

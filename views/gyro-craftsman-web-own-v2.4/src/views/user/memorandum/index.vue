@@ -141,6 +141,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { memorialListApi, memorialSaveApi, memorialEditApi, memorialDeleteApi, memorialGroupApi } from '@/api/user'
 import fSpan from '@/views/business/components/formSetting/components/form-create-designer/src/config/rule/span'
 
@@ -312,7 +313,7 @@ export default {
       memorialEditApi(id, data)
         .then(async (res) => {
           if (res.status === '200' && val !== 'auto') {
-            this.$message.success('修改成功')
+            this.$message.success(i18n.t('legacyScript.updatedSuccessfully'))
           }
           this.saveLoading = false
           if (this.recently) {

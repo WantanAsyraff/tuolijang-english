@@ -81,6 +81,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Vue from 'vue'
 import file from '@/utils/file'
 Vue.use(file)
@@ -110,7 +111,7 @@ export default {
       },
       userInfo: getStorageJson('userInfo', {}),
 
-      dropdownList: [{ label: '恢复文件', value: '1' }],
+      dropdownList: [{ label: i18n.t('file.restorefile'), value: '1' }],
       search: [
         {
           field_name: '搜索文件名称',
@@ -160,7 +161,7 @@ export default {
     },
     dropdownFn() {
       if (this.ids.length == 0) {
-        this.$message.error('至少选中一个数据')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem3'))
         return false
       }
       let data = {
@@ -203,7 +204,7 @@ export default {
     // 批量删除
     batchDeletFn() {
       if (this.ids.length == 0) {
-        this.$message.error('至少选中一个数据')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem3'))
         return false
       }
       let data = {

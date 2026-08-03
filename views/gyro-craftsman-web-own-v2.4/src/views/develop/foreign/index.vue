@@ -94,6 +94,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import addForeign from './components/addForeign'
 import { deleteOpenKeyApi, getOpenKeyApi, getOpenKeyStatusApi, getFindskApi } from '@/api/develop'
@@ -161,7 +162,7 @@ export default {
 
     copy(val) {
       clipboard.writeText(val)
-      this.$message.success('复制成功')
+      this.$message.success(i18n.t('setting.copytitle'))
     },
 
     // 修改状态

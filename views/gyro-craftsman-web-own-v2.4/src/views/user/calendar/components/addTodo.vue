@@ -181,6 +181,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { scheduleStoreApi, scheduleTypesApi, scheduleEditApi, scheduleInfoApi } from '@/api/user'
 import { getStorageJson } from '@/utils/storage'
 import { translateRuntimeText } from '@/utils/i18ns'
@@ -209,7 +210,7 @@ export default {
 
     return {
       edit: false,
-      title: '选择成员',
+      title: i18n.t('hr.selectmembers'),
       loading: false,
       cidName: '',
       superiorUser: [], // 参与人
@@ -223,11 +224,11 @@ export default {
       tableData: [],
       durationType: 2,
       durationList: [
-        { value: 1, label: '30分钟' },
-        { value: 2, label: '1小时' },
-        { value: 3, label: '2小时' },
-        { value: 4, label: '3小时' },
-        { value: 5, label: '自定义结束时间' }
+        { value: 1, label: i18n.t('legacyScript.text30Minutes') },
+        { value: 2, label: i18n.t('legacyScript.text1Hour') },
+        { value: 3, label: i18n.t('legacyScript.text2Hours') },
+        { value: 4, label: i18n.t('legacyScript.text3Hours') },
+        { value: 5, label: i18n.t('legacyScript.customEndTime') }
       ],
       week: [
         { value: '1', label: this.$t('hr.monday') },
@@ -260,7 +261,7 @@ export default {
         title: [
           {
             required: true,
-            message: '请输入待办标题',
+            message: i18n.t('ui.userCalendarAddTodoEnterAToDoTitle'),
             trigger: 'change'
           }
         ],
@@ -276,7 +277,7 @@ export default {
         remind: [
           {
             required: true,
-            message: '请选择提醒时间',
+            message: i18n.t('legacyScript.selectReminderTime'),
             trigger: 'blur'
           }
         ],
@@ -284,35 +285,35 @@ export default {
         period: [
           {
             required: true,
-            message: '请选择重复频率',
+            message: i18n.t('legacyScript.selectRepeatFrequency'),
             trigger: 'blur'
           }
         ],
         start_time: [
           {
             required: true,
-            message: '请选择开始时间',
+            message: i18n.t('customer.placeholder29'),
             trigger: 'blur'
           }
         ],
         end_time: [
           {
             required: true,
-            message: '请选择结束时间',
+            message: i18n.t('customer.placeholder30'),
             trigger: 'blur'
           }
         ],
         cid: [
           {
             required: true,
-            message: '请选择日程类型',
+            message: i18n.t('legacyScript.selectScheduleType'),
             trigger: 'change'
           }
         ],
         rate: [
           {
             required: true,
-            message: '请输入频率',
+            message: i18n.t('legacyScript.enterFrequency'),
             trigger: 'blur'
           }
         ]
@@ -320,65 +321,65 @@ export default {
       repeatOptions: [
         {
           value: 0,
-          label: '不重复'
+          label: i18n.t('calendar.norepetition')
         },
         {
           value: 1,
-          label: '按天重复'
+          label: i18n.t('calendar.repeatbyday')
         },
         {
           value: 2,
-          label: '按周重复'
+          label: i18n.t('calendar.repeatweekly')
         },
         {
           value: 3,
-          label: '按月重复'
+          label: i18n.t('calendar.repeatmonthly')
         },
         {
           value: 4,
-          label: '按年重复'
+          label: i18n.t('calendar.repeatyear')
         }
       ],
       options: [
         {
           value: -1,
-          label: '不提醒'
+          label: i18n.t('legacyScript.noReminder')
         },
         {
           value: 0,
-          label: '任务开始时'
+          label: i18n.t('legacyScript.atTaskStart')
         },
         {
           value: 1,
-          label: '提前5分钟'
+          label: i18n.t('legacyScript.text5MinutesBefore')
         },
         {
           value: 2,
-          label: '提前15分钟'
+          label: i18n.t('legacyScript.text15MinutesBefore')
         },
         {
           value: 3,
-          label: '提前30分钟'
+          label: i18n.t('legacyScript.text30MinutesBefore')
         },
         {
           value: 4,
-          label: '提前1小时'
+          label: i18n.t('legacyScript.text1HourBefore')
         },
         {
           value: 5,
-          label: '提前2小时'
+          label: i18n.t('legacyScript.text2HoursBefore')
         },
         {
           value: 6,
-          label: '提前1天'
+          label: i18n.t('legacyScript.text1DayBefore')
         },
         {
           value: 7,
-          label: '提前2天'
+          label: i18n.t('legacyScript.text2DaysBefore')
         },
         {
           value: 8,
-          label: '提前1周'
+          label: i18n.t('legacyScript.text1WeekBefore')
         }
       ]
     }
@@ -438,10 +439,10 @@ export default {
 
       // 日期验证
       if (this.isDateInvalid(this.ruleForm.start_time, this.ruleForm.end_time)) {
-        return this.$message.error('结束日期不能小于开始日期')
+        return this.$message.error(i18n.t('legacyScript.endDateCannotBeEarlierThanStartDate2'))
       }
       if (this.ruleForm.fail_time && this.isDateInvalid(this.ruleForm.start_time, this.ruleForm.fail_time)) {
-        return this.$message.error('重复截至日期不能小于开始日期')
+        return this.$message.error(i18n.t('legacyScript.repeatEndDateCannotBeEarlierThanStartDate'))
       }
 
       // 处理参与人

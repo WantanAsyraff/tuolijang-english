@@ -169,6 +169,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { entAddApi, entListApi, entInfoApi, entEditApi, entDeleteApi, entChangeApi } from '@/api/business'
 export default {
   name: 'BusinessExamine',
@@ -245,7 +246,7 @@ export default {
       } else if (this.activeName == 'processSetting') {
         this.activeName = 'ruleSetting'
       } else if (this.activeName == 'ruleSetting') {
-        this.$message.error('没有下一步')
+        this.$message.error(i18n.t('legacyScript.noNextStep'))
         this.activeName = 'ruleSetting'
       }
     },
@@ -362,7 +363,7 @@ export default {
               props: {
                 member: false
               },
-              title: '申请人',
+              title: i18n.t('access.applicant'),
               type: 'departmentTree'
             })
             this.$store.commit('upDateFormSetting', formConfig)

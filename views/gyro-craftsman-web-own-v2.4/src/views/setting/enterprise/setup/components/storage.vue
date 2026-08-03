@@ -450,6 +450,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import ClipboardJS from 'clipboard'
 
 import {
@@ -504,28 +505,28 @@ export default {
         upload_type: ''
       },
       boxs: [
-        { content: '左上', id: 1 },
-        { content: '上', id: 2 },
-        { content: '右上', id: 3 },
-        { content: '左中', id: 4 },
-        { content: '中', id: 5 },
-        { content: '右中', id: 6 },
-        { content: '左下', id: 7 },
-        { content: '下', id: 8 },
-        { content: '右下', id: 9 }
+        { content: i18n.t('legacyScript.topLeft'), id: 1 },
+        { content: i18n.t('legacyScript.top'), id: 2 },
+        { content: i18n.t('legacyScript.topRight'), id: 3 },
+        { content: i18n.t('legacyScript.centerLeft'), id: 4 },
+        { content: i18n.t('ui.programProgramTaskTableDataCenter'), id: 5 },
+        { content: i18n.t('legacyScript.centerRight'), id: 6 },
+        { content: i18n.t('legacyScript.bottomLeft'), id: 7 },
+        { content: i18n.t('legacyScript.bottom'), id: 8 },
+        { content: i18n.t('legacyScript.bottomRight'), id: 9 }
       ],
       upload_type: null,
       ruleValidate: {},
       configuModal: false,
       configData: '',
       headerList: [
-        { label: '储存配置', value: 1 },
-        { label: '七牛云储存', value: 2 },
-        { label: '阿里云储存', value: 3 },
-        { label: '腾讯云储存', value: '4' },
-        { label: '京东云储存', value: '5' },
-        { label: '华为云储存', value: '6' },
-        { label: '天翼云储存', value: '7' }
+        { label: i18n.t('legacyScript.storageSettings'), value: 1 },
+        { label: i18n.t('legacyScript.qiniuCloudStorage'), value: 2 },
+        { label: i18n.t('legacyScript.alibabaCloudStorage'), value: 3 },
+        { label: i18n.t('legacyScript.tencentCloudStorage'), value: '4' },
+        { label: i18n.t('legacyScript.jDCloudStorage'), value: '5' },
+        { label: i18n.t('legacyScript.huaweiCloudStorage'), value: '6' },
+        { label: i18n.t('legacyScript.chinaTelecomCloudStorage'), value: '7' }
         // { label: "缩略图配置", value: "10" },
       ],
 
@@ -564,7 +565,7 @@ export default {
       this.$nextTick(() => {
         const clipboard = new ClipboardJS('.copy')
         clipboard.on('success', () => {
-          this.$message.success('复制成功')
+          this.$message.success(i18n.t('setting.copytitle'))
           clipboard.destroy()
         })
       })
@@ -635,7 +636,7 @@ export default {
     },
     async changeSwitch(row, item) {
       await Tips.confirm({
-        message: '您确认要切换使用状态吗',
+        message: i18n.t('legacyScript.changeTheCurrentStatus'),
         confirmButtonClass: 'btn-custom-cancel'
       })
       await storageStatusApi(row.id)

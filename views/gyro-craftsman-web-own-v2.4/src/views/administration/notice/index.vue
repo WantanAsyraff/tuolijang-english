@@ -115,6 +115,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { noticeCategoryApi, noticeDeleteApi, noticeListApi, noticeStatusApi, noticeTopApi } from '@/api/administration'
 
 import noticeImg from '@/assets/images/notice.png'
@@ -204,7 +205,7 @@ export default {
     },
     handleNews() {
       if (this.$refs.left.department.length == 0) {
-        this.$message.error('请先新建公告类型')
+        this.$message.error(i18n.t('legacyScript.pleaseCreateAnAnnouncementTypeFirst'))
         return false
       }
       this.getTargetCate()

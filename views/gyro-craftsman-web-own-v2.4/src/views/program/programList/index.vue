@@ -86,6 +86,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getProgramListApi, deleteProgramApi } from '@/api/program'
 import { customerSelectApi } from '@/api/enterprise'
 import { roterPre } from '@/settings'
@@ -124,19 +125,19 @@ export default {
           options: [
             {
               value: 0,
-              label: '全部项目'
+              label: i18n.t('legacyScript.allProjects')
             },
             {
               value: 1,
-              label: '我负责的'
+              label: i18n.t('legacyScript.ownedByMe')
             },
             {
               value: 2,
-              label: '我参与的'
+              label: i18n.t('legacyScript.myParticipations')
             },
             {
               value: 3,
-              label: '我创建的'
+              label: i18n.t('legacyScript.createdByMe')
             }
           ]
         }
@@ -194,45 +195,45 @@ export default {
       ],
       tableOptions: [
         {
-          label: '项目编号',
+          label: i18n.t('legacyScript.projectNumber'),
           prop: 'ident',
           width: '120px'
         },
         {
-          label: '项目名称',
+          label: i18n.t('legacyScript.projectName'),
           type: 'slot',
           name: 'name'
           // width: '450px'
         },
         {
-          label: '状态',
+          label: i18n.t('hr.state'),
           type: 'slot',
           name: 'status'
           // width: '120px'
         },
         {
-          label: '负责人',
+          label: i18n.t('ui.developModuleTreeOwner'),
           type: 'slot',
           name: 'admins'
           // width: '150px'
         },
         {
-          label: '计划开始',
+          label: i18n.t('ui.programProgramTaskTableDataPlannedStart'),
           prop: 'start_date'
           // width: '140px'
         },
         {
-          label: '计划结束',
+          label: i18n.t('ui.programProgramTaskTableDataPlannedEnd'),
           prop: 'end_date'
           // width: '140px'
         },
         {
-          label: '项目进度',
+          label: i18n.t('legacyScript.projectProgress'),
           type: 'slot',
           name: 'progress'
         },
         {
-          label: '未完成/总任务数',
+          label: i18n.t('legacyScript.uncompletedTotalTasks'),
           // width: '120px',
           render: (row) => {
             return (

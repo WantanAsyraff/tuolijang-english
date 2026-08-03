@@ -176,6 +176,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { cloudFileSetupApi } from '@/api/config'
 import uploadPicture from '@/components/uploadPicture/index'
 import request from '@/api/request'
@@ -423,7 +424,7 @@ export default {
           await this.getConfig()
         }
       } catch (error) {
-        console.error('保存配置失败:', error)
+        console.error(i18n.t('legacyScript.failedToSaveSettings'), error)
       } finally {
         this.loading = false
       }
@@ -446,7 +447,7 @@ export default {
       try {
         await this.$store.dispatch('appConfig/fetchConfig', true)
       } catch (error) {
-        console.error('获取配置失败:', error)
+        console.error(i18n.t('legacyScript.failedToLoadSettings'), error)
       }
     }
   }

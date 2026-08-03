@@ -141,6 +141,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { storageCateApi, storageDeleteApi, storageListApi, storageListCateApi } from '@/api/administration'
 export default {
   name: 'Consume',
@@ -175,7 +176,7 @@ export default {
       },
       fromData1: {
         width: '500px',
-        title: '批量移动物资分类',
+        title: i18n.t('legacyScript.batchMoveMaterialCategories'),
         btnText: '确定',
         labelWidth: '80px',
         type: ''
@@ -185,7 +186,7 @@ export default {
         cate_id: [
           {
             required: true,
-            message: '请选择物资类别',
+            message: i18n.t('legacyScript.pleaseSelectAMaterialCategory'),
             trigger: 'change'
           }
         ]
@@ -225,14 +226,14 @@ export default {
         }
       ],
       dropdownList: [
-        { label: '批量移动', value: '4' },
-        { label: '导出', value: '1' },
+        { label: i18n.t('legacyScript.batchMove'), value: '4' },
+        { label: i18n.t('customer.export'), value: '1' },
         {
-          label: '领用',
+          label: i18n.t('ui.administrationMaterialFixedConsumeIssue'),
           value: '2'
         },
         {
-          label: '归还',
+          label: i18n.t('ui.administrationMaterialFixedFixedReturn'),
           value: '3'
         }
       ],
@@ -299,8 +300,8 @@ export default {
           this.formConfig = [
             {
               type: 'cascaderNew',
-              label: '物资类别:',
-              placeholder: '请搜索选择物资类别',
+              label: i18n.t('legacyScript.materialCategory'),
+              placeholder: i18n.t('legacyScript.searchAndSelectAMaterialCategory'),
               key: 'cate_id',
 
               options: this.treeData
@@ -326,7 +327,7 @@ export default {
       } else if (item.value == 3) {
         this.handleReturn()
       } else if (item.value == 4) {
-        if (this.multipleSelection.length == 0) return this.$message.error('请选择要操作的物资')
+        if (this.multipleSelection.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectTheMaterialsToOperateOn'))
         this.$refs.oaDialog.openBox()
       }
     },
@@ -419,7 +420,7 @@ export default {
     handleManage() {
       this.getSelectTableData('')
       this.fromData = {
-        title: '新增入库(固定物资)',
+        title: i18n.t('legacyScript.newInboundEntryFixedAsset'),
         width: 720,
         treeData: this.treeData,
         selectData: this.selectData,
@@ -431,7 +432,7 @@ export default {
     handleReceive() {
       this.getSelectTableData(0)
       this.receiveData = {
-        title: '领用(固定物资)',
+        title: i18n.t('legacyScript.requisitionFixedAsset'),
         width: 820,
         selectData: this.selectData,
         type: this.types
@@ -440,7 +441,7 @@ export default {
     },
     handleReturn() {
       this.returnData = {
-        title: '归还(固定物资)',
+        title: i18n.t('legacyScript.returnFixedAsset'),
         width: 820,
         type: this.types
       }
@@ -448,7 +449,7 @@ export default {
     },
     handleRecord(row) {
       this.recordData = {
-        title: '记录详情(固定物资)',
+        title: i18n.t('legacyScript.recordDetailsFixedAsset'),
         width: 820,
         data: row,
         type: this.types
@@ -480,7 +481,7 @@ export default {
         row.cate.path.push(row.cid) // 添加当前分类
       }
       this.fromData = {
-        title: '编辑入库(固定物资)',
+        title: i18n.t('legacyScript.editInboundEntryFixedAsset'),
         width: 720,
         treeData: this.treeData,
         edit: true,
@@ -502,25 +503,25 @@ export default {
       let label = ''
       let placeholder = ''
       if (type === 1) {
-        title = '报废'
-        label = '报废原因'
-        placeholder = '请输入报废原因'
+        title = i18n.t('ui.administrationMaterialFixedFixedDisposal')
+        label = i18n.t('legacyScript.disposalReason')
+        placeholder = i18n.t('legacyScript.pleaseEnterDisposalReason')
       } else if (type === 2) {
-        title = '维修'
-        label = '维修原因'
-        placeholder = '请输入维修原因'
+        title = i18n.t('ui.administrationMaterialFixedFixedRepair')
+        label = i18n.t('legacyScript.repairReason')
+        placeholder = i18n.t('legacyScript.pleaseEnterRepairReason')
       } else if (type === 3) {
-        title = '维修处理'
-        label = '备 注'
-        placeholder = '请输入备注'
+        title = i18n.t('ui.administrationMaterialFixedRecordRepairHandling')
+        label = i18n.t('legacyScript.remarks')
+        placeholder = i18n.t('ui.customerProductListPleaseEnterRemarks')
       } else if (type === 5) {
-        title = '物资领用（固定物资）'
-        label = '备 注'
-        placeholder = '请输入备注'
+        title = i18n.t('legacyScript.materialRequisitionFixedAsset')
+        label = i18n.t('legacyScript.remarks')
+        placeholder = i18n.t('ui.customerProductListPleaseEnterRemarks')
       } else if (type === 6) {
-        title = '物资归还（固定物资）'
-        label = '备 注'
-        placeholder = '请输入备注'
+        title = i18n.t('legacyScript.materialReturnFixedAsset')
+        label = i18n.t('legacyScript.remarks')
+        placeholder = i18n.t('ui.customerProductListPleaseEnterRemarks')
       }
       this.materialData = {
         title: title,

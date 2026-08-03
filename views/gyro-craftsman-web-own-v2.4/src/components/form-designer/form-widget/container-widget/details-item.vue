@@ -78,6 +78,7 @@
 </container-item-wrapper>
 </template>
 <script>
+import appI18n from '@/lang'
 import { putUpdateFieldApi } from '@/api/develop'
 import emitter from '@/utils/emitter'
 import i18n from '@/utils/i18n'
@@ -176,7 +177,7 @@ export default {
     },
     handleDelete(index) {
       if (this.tableData.length <= 1) {
-        this.$message.warning('至少保留一行数据')
+        this.$message.warning(appI18n.t('legacyScript.keepAtLeastOneRowOfData'))
         return
       }
 

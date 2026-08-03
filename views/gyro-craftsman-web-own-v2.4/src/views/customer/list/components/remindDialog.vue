@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { clientFollowEditApi, clientFollowSaveApi } from '@/api/client'
 import { DIALOG_SIZE } from '@/constants/popupSize'
 export default {
@@ -53,8 +54,8 @@ export default {
         content: ''
       },
       rules: {
-        time: [{ required: true, message: '请选择提醒时间', trigger: 'change' }],
-        content: [{ required: true, message: '请填写提醒内容', trigger: 'blur' }]
+        time: [{ required: true, message: i18n.t('legacyScript.selectReminderTime'), trigger: 'change' }],
+        content: [{ required: true, message: i18n.t('legacyScript.pleaseEnterReminderContent'), trigger: 'blur' }]
       },
       labelWidth: 110,
       loading: false,
