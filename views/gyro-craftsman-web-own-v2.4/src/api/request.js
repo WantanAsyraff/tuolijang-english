@@ -86,7 +86,7 @@ const refreshAccessToken = () => {
 
 const handleAuthExpired = (options) => {
   if (options.skipAuthRefresh || options._retry) {
-    return redirectToLogin().then(() => Promise.reject({ message: '登录状态已失效' }))
+    return redirectToLogin().then(() => Promise.reject(new Error('common.loginExpired')))
   }
 
   return refreshAccessToken()

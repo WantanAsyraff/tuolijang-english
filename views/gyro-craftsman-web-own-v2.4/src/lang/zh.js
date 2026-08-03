@@ -18,7 +18,9 @@ export default {
     noData: '暂无数据',
     noViews: '暂无视图',
     questSuccess: '您的问卷已经提交，感谢您的参与！',
-    noAssessmentRecord: 'No assessment records Available.'
+    noAssessmentRecord: 'No assessment records Available.',
+    loginExpired: '登录状态已失效',
+    nullMailing: '邮寄地址不能为空'
   },
   login: {
     smslogin: '短信登录',

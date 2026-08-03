@@ -178,7 +178,7 @@ export default {
         collect_name: [{ required: true, message: '电话号码不能为空', trigger: 'blur' }],
         collect_tel: [{ required: true, message: '电话号码不能为空', trigger: 'blur' }],
         collect_email: [{ required: true, message: '邮箱地址不能为空', trigger: 'blur' }],
-        mail_address: [{ required: true, message: '邮寄地址不能为空', trigger: 'blur' }],
+        mail_address: [{ required: true, message: this.$t('customer.nullMailing'), trigger: 'blur' }],
         address: [{ required: true, message: this.$t('customer.placeholder56'), trigger: 'blur' }],
         bank: [{ required: true, message: this.$t('customer.placeholder48'), trigger: 'blur' }],
         account: [{ required: true, message: this.$t('customer.placeholder49'), trigger: 'blur' }],

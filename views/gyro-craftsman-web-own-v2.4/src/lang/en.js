@@ -18,7 +18,9 @@ export default {
     noData: 'No data available',
     noViews: 'No view available',
     questSuccess: 'Your questionnaire has been submitted, thank you for your participation!',
-    noAssessmentRecord: 'No assessment records Available.'
+    noAssessmentRecord: 'No assessment records Available.',
+    loginExpired: 'Login session expired.',
+    nullMailing: 'The mailing address cannot be empty.'
   },
   login: {
     smslogin: 'SMS login',
