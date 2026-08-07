@@ -173,6 +173,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Commnt from '@/components/user/accessCommon'
 export default {
   name: 'FormBox',
@@ -234,28 +235,28 @@ export default {
       viewSearch: [
         {
           field: 'frame',
-          title: '部门',
+          title: i18n.t('customer.department'),
           type: 'frame_id'
         },
         {
           field: 'check_uid',
-          title: '考核人',
+          title: i18n.t('user.work.assessor'),
           type: 'check_uid'
         },
         {
           field: 'status',
-          title: '考核状态',
+          title: i18n.t('hr.assessmentstatus'),
           type: 'select',
           options: Commnt.statusOptions
         }
       ],
       title: '',
       dateArray: [
-        { value: 1, type: 'week', text: '选择周', format: 'yyyy 第 WW 周' },
-        { value: 2, type: 'month', text: '选择月份', format: 'yyyy-MM' },
+        { value: 1, type: 'week', text: i18n.t('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
+        { value: 2, type: 'month', text: i18n.t('legacyScript.selectMonth'), format: 'yyyy-MM' },
         { value: 4, type: '' },
         { value: 5, type: '' },
-        { value: 3, type: 'year', text: '选择年份', format: 'yyyy' }
+        { value: 3, type: 'year', text: i18n.t('legacyScript.selectYear'), format: 'yyyy' }
       ],
       quarterBtn: false,
       halfYearBtn: false

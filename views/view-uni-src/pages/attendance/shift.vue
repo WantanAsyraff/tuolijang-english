@@ -42,7 +42,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { saveAttendanceGroupShiftApi, attendanceScheduleShiftApi, attendanceScheduleShiftDelApi } from '@/api/attendance';
 import DropDown from "@/components/DropDown/index.vue";
 import message from '@/utils/message';
@@ -76,8 +77,8 @@ const handleBack = () => {
 
 const handleDelShift = async () => {
   const res = await uni.showModal({
-    title: '删除提示',
-    content: '确认删除该班次吗？班次将无法恢复'
+    title: appI18n.global.t('ui.attendanceShiftDeleteHint'),
+    content: appI18n.global.t('ui.attendanceShiftDeleteThisShiftItCannotBeRestored')
   });
   if (!res.confirm) return;
   uni.showLoading({ mask: true });
@@ -107,7 +108,7 @@ const handleGoEditPage = () => {
 
 const handleSaveScheduleByShift = async () => {
   if (!props.groupId) return;
-  if (shiftData.selectItemIdSet.size === 0) return message.error('请选择班次', 'none');
+  if (shiftData.selectItemIdSet.size === 0) return message.error(appI18n.global.t('ui.attendanceShiftPleaseSelectShift'), 'none');
   uni.showLoading({ mask: true });
   try {
     const res = await saveAttendanceGroupShiftApi(props.groupId, {

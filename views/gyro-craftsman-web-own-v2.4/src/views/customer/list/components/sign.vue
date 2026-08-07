@@ -108,6 +108,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 
 import { getStorageJson } from '@/utils/storage'
 import { getColor } from '@/utils/format'
@@ -157,8 +158,8 @@ export default {
       contractData: [],
       fromData: {
         width: '500px',
-        title: '签约录入',
-        btnText: '确定',
+        title: i18n.t('ui.customerListSignSignEntry'),
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: 'slot'
       },
@@ -252,7 +253,7 @@ export default {
 
     submit() {
       if (!this.file) {
-        this.$message.error('请上传文件')
+        this.$message.error(i18n.t('hr.placeholder24'))
         return false
       }
       let obj = {

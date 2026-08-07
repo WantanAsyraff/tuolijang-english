@@ -49,6 +49,7 @@
 </el-drawer>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   props: {
     directorMaxLevel: {
@@ -66,7 +67,7 @@ export default {
   },
   data() {
     return {
-      title: '抄送人设置',
+      title: i18n.t('legacyScript.cCRecipientSettings'),
       memberShow: false,
       copyerConfig: {},
       ccSelfSelectFlag: [],
@@ -92,7 +93,7 @@ export default {
         this.checkedList.length <= 0 &&
         this.ccSelfSelectFlag.length <= 0
       ) {
-        this.$message.warning('至少选择一项')
+        this.$message.warning(i18n.t('customer.placeholder22'))
         return false
       }
       this.copyerConfig.ccSelfSelectFlag = this.ccSelfSelectFlag.length == 0 ? 0 : '1'

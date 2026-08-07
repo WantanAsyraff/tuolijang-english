@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { contracFileEditApi, contracFileSaveApi } from '@/api/client'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
 import { uploader } from '@/utils/uploadCloud'
@@ -96,7 +97,7 @@ export default {
       },
 
       rules: {
-        content: [{ required: true, message: '请填写记录描述', trigger: 'blur' }]
+        content: [{ required: true, message: i18n.t('legacyScript.pleaseEnterRecordDescription'), trigger: 'blur' }]
       },
       uploadData: {},
 
@@ -170,7 +171,7 @@ export default {
     clientFollowSave() {
       this.form.attach_ids = []
       if (!this.form.content) {
-        return this.$message.error('记录描述不能为空！')
+        return this.$message.error(i18n.t('legacyScript.recordDescriptionCannotBeEmpty'))
       }
       if (this.uploadList.length > 0) {
         this.uploadList.map((value) => {

@@ -124,6 +124,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { configFrameApi } from '@/api/setting'
 import { loginRegex } from '@/utils/format'
 import { userListApi } from '@/api/user'
@@ -145,8 +146,8 @@ export default {
     return {
       fromData: {
         with: '400px',
-        title: '修改密码',
-        btnText: '确定',
+        title: i18n.t('passwordDialog.title'),
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '90px',
         type: ''
       },
@@ -171,14 +172,14 @@ export default {
       formConfig: [
         {
           type: 'password',
-          label: '密码：',
-          placeholder: '请输入密码',
+          label: i18n.t('ui.settingUserRoomIndexPassword'),
+          placeholder: i18n.t('passwordDialog.passwordRequired'),
           key: 'password'
         },
         {
           type: 'password',
-          label: '确认密码：',
-          placeholder: '请确认密码',
+          label: i18n.t('ui.settingUserRoomIndexConfirmPassword'),
+          placeholder: i18n.t('legacyScript.pleaseConfirmThePassword'),
           key: 'password_confirm'
         }
       ],
@@ -213,7 +214,7 @@ export default {
       indexType: null,
       searchData: [
         {
-          field_name: '姓名、电话号码',
+          field_name: this.$ts('姓名、电话号码'),
           field_name_en: 'name',
           form_value: 'input'
         }

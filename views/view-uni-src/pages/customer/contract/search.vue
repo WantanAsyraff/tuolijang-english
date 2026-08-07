@@ -18,7 +18,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive } from "vue";
 import message from "@/utils/message";
 import contractList from "./components/contractList.vue";
@@ -31,7 +32,7 @@ const data = reactive({
     { name: "我查看的", id: 5 },
   ],
   listData: [],
-  emptyTitle: "暂无搜索结果～",
+  emptyTitle: appI18n.global.t('ui.customerAddressSearchIndexNoSearchResults'),
   btnShow: false,
   where: {
     page: 1,

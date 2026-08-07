@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '颜色选择器';
@@ -18,16 +19,16 @@ export default {
   },
   props() {
     return [
-      { type: 'switch', field: 'disabled', title: '是否禁用' },
+      { type: 'switch', field: 'disabled', title: i18n.t('legacyScript.disable') },
       {
         type: 'switch',
         field: 'showAlpha',
-        title: '是否支持透明度选择',
+        title: i18n.t('legacyScript.supportTransparencySelection'),
       },
       {
         type: 'select',
         field: 'colorFormat',
-        title: '颜色的格式',
+        title: i18n.t('legacyScript.colorFormat'),
         options: [
           { label: 'hsl', value: 'hsl' },
           { label: 'hsv', value: 'hsv' },

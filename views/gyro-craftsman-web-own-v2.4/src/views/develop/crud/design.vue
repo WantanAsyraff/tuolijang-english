@@ -38,6 +38,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import basicSetting from './components/basicSetting'
 import fieldSetting from './components/fieldSetting'
@@ -54,13 +55,13 @@ export default {
       infoLoading: false,
       info: {},
       tabArray: [
-      { label: '列表设计', value: '4', number: 4 },
-        { label: '字段设计', value: '2', number: 2 },
-        { label: '表单设计', value: '3', number: 3 },
+      { label: i18n.t('ui.developCrudEntityTableListDesign'), value: '4', number: 4 },
+        { label: i18n.t('ui.developCrudEntityTableFieldDesign'), value: '2', number: 2 },
+        { label: i18n.t('ui.developCrudEntityTableFormDesign'), value: '3', number: 3 },
         
-        { label: '流程设计', value: '5', number: 5 },
-        { label: '触发器设计', value: '6', number: 6 },
-          { label: '实体属性', value: '1', number: 1 },
+        { label: i18n.t('ui.workFlowDialogErrorDialogWorkflowDesign'), value: '5', number: 5 },
+        { label: i18n.t('ui.developCrudEntityTableTriggerDesign'), value: '6', number: 6 },
+          { label: i18n.t('ui.developCrudEntityTableEntityProperties'), value: '1', number: 1 },
       ]
     }
   },

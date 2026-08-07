@@ -143,7 +143,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { reactive, ref } from 'vue'
 import empty from '@/components/empty/index.vue'
 import detailItem from '@/pages/customer/signing/components/detailItem.vue'
@@ -239,10 +240,10 @@ const momentWhere = ref({
 const handleShift = async (users: any) => {
   if (!users.length) return
   const res = await uni.showModal({
-    title: '提示',
+    title: appI18n.global.t('ui.customerLeadDetailHint'),
     content: `确定将商机移交给${users[0].name}吗？`,
-    confirmText: '确定',
-    cancelText: '取消',
+    confirmText: appI18n.global.t('ui.baTreePickerIndexOk'),
+    cancelText: appI18n.global.t('ui.baTreePickerIndexCancel'),
   })
 
   if (!res.confirm) return
@@ -307,8 +308,8 @@ const dropDownItem = async (item: any) => {
     })
   } else if (item.id == 3) {
     uni.showModal({
-      title: '提示',
-      content: '您确定要删除此商机吗?',
+      title: appI18n.global.t('ui.customerLeadDetailHint'),
+      content: appI18n.global.t('ui.customerListCustomerMoreDeleteThisOpportunity'),
       success: (res) => {
         if (res.confirm) {
           opportunityDelApi(data.id)
@@ -356,8 +357,8 @@ const AddSigning = () => {
 
 // 打开客户聊天对话框
 const openCustomerChat = async () => {
-  if (!isWxWorkEnv) return message.error('只有在企业微信中可进行聊天')
-  if (!data.detailData.data.work_customer || !data.detailData.data.work_customer.external_userid) return message.error('客户没有绑定企业微信')
+  if (!isWxWorkEnv) return message.error(appI18n.global.t('ui.customerListLiaisonListChatIsAvailableOnlyInWeCom'))
+  if (!data.detailData.data.work_customer || !data.detailData.data.work_customer.external_userid) return message.error(appI18n.global.t('ui.customerOpportunityOpportunityListTheCustomerIsNotLinkedToWeCom'))
   try {
     const wxWork = await WxWork.getInstance()
     await new Promise((resolve, reject) => {
@@ -370,7 +371,7 @@ const openCustomerChat = async () => {
         fail: reject,
       })
     })
-    message.success('打开会话框')
+    message.success(appI18n.global.t('ui.customerLeadLeadListChatOpened'))
   } catch (err) {
     message.error(`打开个人资料页失败: ${err.errMsg || err.message || '操作失败'}`)
   }
@@ -406,7 +407,7 @@ const uploadAvatar = () => {
 
 // 提交跟进记录
 const handleConfirm = debounce(async () => {
-  if (!formData.value.content) return message.error('跟进信息不能为空')
+  if (!formData.value.content) return message.error(appI18n.global.t('ui.customerLeadDetailFollowUpInformationCannotBeEmpty'))
   formData.value.attach_ids = data.imgs.map((item) => item.id)
   formData.value.eid = data.id
 
@@ -449,7 +450,7 @@ const getContractList = async () => {
 
   try {
     uni.showLoading({
-      title: '加载中',
+      title: appI18n.global.t('ui.customerContractIndexLoading'),
     })
     const res = await clientContractListApi({
       oid: data.id,
@@ -473,7 +474,7 @@ const handleGetDynamicRecord = async () => {
   try {
     const { page } = momentWhere.value
     uni.showLoading({
-      title: '加载中',
+      title: appI18n.global.t('ui.customerContractIndexLoading'),
     })
     const { data: res } = await momentRecordApi({
       link_type: 'odds',

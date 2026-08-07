@@ -86,6 +86,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getClientFollowApi, delClientFollowApi } from '@/api/client'
 import { divTime } from '@/utils'
 export default {
@@ -102,11 +103,11 @@ export default {
     return {
       treeData: [
         {
-          label: '我负责的',
+          label: i18n.t('legacyScript.ownedByMe'),
           id: 1
         },
         {
-          label: '下属负责的',
+          label: i18n.t('legacyScript.ownedBySubordinates'),
           id: 2
         }
       ],
@@ -155,7 +156,7 @@ export default {
     },
     openOdds(item) {
       this.detailsFromData = {
-        title: '商机查看',
+        title: i18n.t('legacyScript.viewOpportunity'),
         width: '1000px',
         data: item,
         eid: item.title.id,
@@ -169,7 +170,7 @@ export default {
     openDetails(item) {
       if (item.link_type === 'clue') {
         this.detailsFromData = {
-          title: '线索查看',
+          title: i18n.t('legacyScript.viewLeads'),
           width: '1000px',
           data: item,
           types: 'clue',

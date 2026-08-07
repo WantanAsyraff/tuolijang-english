@@ -35,6 +35,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import VFormRender from '@/components/form-render/index'
 import defaultPage from '@/components/common/defaultPage'
 import { crudModuleCreateApi, crudModuleSaveDataApi, crudModuleUpdateApi } from '@/api/develop'
@@ -59,7 +60,7 @@ export default {
         formConfig: {},
         widgetList: []
       },
-      title: '新增',
+      title: i18n.t('ui.businessHolidayTypeIndexAdd'),
       id: 0, // 当前列表的id值
       designer: {},
       testFormData: {},
@@ -72,9 +73,9 @@ export default {
         ],
 
         select001: [
-          { label: '辣椒', value: 1 },
-          { label: '菠萝', value: 2 },
-          { label: '丑橘子', value: 3 }
+          { label: i18n.t('legacyScript.chiliPepper'), value: 1 },
+          { label: i18n.t('legacyScript.pineapple'), value: 2 },
+          { label: i18n.t('legacyScript.dekopon'), value: 3 }
         ]
       }
     }

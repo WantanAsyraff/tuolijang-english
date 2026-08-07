@@ -21,18 +21,19 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive } from "vue";
 
 const popupRef = ref(null);
 
 const data = reactive({
   listData: [
-    { type: 1, image: "/static/image/share-wechat.png", text: "微信好友" },
-    { type: 2, image: "/static/image/share-wechat-m.png", text: "朋友圈" },
+    { type: 1, image: "/static/image/share-wechat.png", text: appI18n.global.t('ui.shareIndexWeChatContact') },
+    { type: 2, image: "/static/image/share-wechat-m.png", text: appI18n.global.t('ui.shareIndexMoments') },
     { type: 3, image: "/static/image/share-qq.png", text: "QQ" },
-    { type: 4, image: "/static/image/share-weibo.png", text: "微博分享" },
-    { type: 5, image: "/static/image/share-link.png", text: "复制链接" },
+    { type: 4, image: "/static/image/share-weibo.png", text: appI18n.global.t('ui.shareIndexShareToWeibo') },
+    { type: 5, image: "/static/image/share-link.png", text: appI18n.global.t('ui.shareIndexCopyLink') },
   ]
 });
 

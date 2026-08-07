@@ -8,7 +8,7 @@
         :search="searchData"
         :sortSearch="false"
         :title="$route.meta.title"
-        btnText="添加菜单"
+:btn-text="$t('ui.settingSystemMenusIndexAddMenu')"
         @addDataFn="addMenu"
         @confirmData="confirmData"
       ></oaFromBox>
@@ -41,8 +41,8 @@
                 v-model="props.row.is_show"
                 :active-value="1"
                 :inactive-value="0"
-                active-text="显示"
-                inactive-text="隐藏"
+:active-text="$t('ui.userWorkDealtIndexDisplay')"
+:inactive-text="$t('ui.developConditionGroupDialogHide')"
                 @change="changeStatus(props.row)"
               >
               </el-switch>
@@ -63,6 +63,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import rightDrawer from '@/components/setting/rightDrawer'
 import oaFromBox from '@/components/common/oaFromBox'
 import formCreate from '@form-create/element-ui'
@@ -79,7 +80,7 @@ export default {
       },
       tableData: [],
       drawerConfig: {
-        title: '添加菜单',
+        title: i18n.t('layout.addMenu'),
         api: 'system/menus/create'
       },
       searchData: [
@@ -112,7 +113,7 @@ export default {
       this.$refs.rightBox.handelOpen()
     },
     async delMenu(id) {
-      await Tips.confirm({ message: '确定删除该菜单吗,删除后将不可恢复？' })
+      await Tips.confirm({ message: i18n.t('legacyScript.deleteThisMenuThisActionCannotBeUndone') })
       await menuDeleteitApi(id)
       await this.getAllMenus()
     },

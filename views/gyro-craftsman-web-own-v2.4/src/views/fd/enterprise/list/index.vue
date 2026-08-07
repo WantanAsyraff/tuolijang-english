@@ -109,6 +109,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   billListApi,
   billListEditApi,
@@ -142,7 +143,7 @@ export default {
         data: [],
         cols: [{ wpx: 70 }, { wpx: 70 }, { wpx: 120 }, { wpx: 140 }, { wpx: 120 }]
       },
-      saveName: '导出收支记账模板.xlsx',
+      saveName: 'Export Income and Expense Recording Template.xlsx',
       where: {
         page: 1,
         limit: 15,
@@ -211,8 +212,23 @@ export default {
       this.$refs.importExcel.btnClick()
     },
     normalizeImportType(value) {
-      return String(value || '').replace(/^示例[:：]/, '').trim()
-    },
+  const prefixes = [
+    this.$ts('示例'),
+    this.$ts('示例')
+  ]
+
+  const escapedPrefixes = [...new Set(prefixes)]
+    .map(text => String(text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+
+  const pattern = new RegExp(
+    `^(?:${escapedPrefixes.join('|')})\\s*[:：]\\s*`,
+    'i'
+  )
+
+  return String(value ?? '')
+    .replace(pattern, '')
+    .trim()
+  },
     parseImportDate(value) {
       if (value instanceof Date) {
         return this.$moment(value).isValid() ? this.$moment(value).format('YYYY-MM-DD HH:mm:ss') : ''
@@ -236,6 +252,7 @@ export default {
     },
     buildImportRow(row, rowIndex) {
       const rawType = String(row[0] || '').trim()
+      // This does not need localization because it is checking imported data, not showing text to the user.
       if (/^示例[:：]/.test(rawType)) {
         return null
       }
@@ -243,15 +260,24 @@ export default {
       if (!types || types.includes('账目类型')) {
         return null
       }
+
       if (!['收入', '支出'].includes(types)) {
-        throw new Error(`第${rowIndex + 1}行账目类型只能填写收入或支出`)
+        const message = this
+          .$ts('第{row}行账目类型只能填写收入或支出')
+          .replace('{row}', String(rowIndex + 1))
+
+        throw new Error(message)
       }
       const dateAtColumn4 = this.parseImportDate(row[3])
       const dateAtColumn5 = this.parseImportDate(row[4])
       const useTemplateOrder = !dateAtColumn4 && !!dateAtColumn5
       const editTime = useTemplateOrder ? dateAtColumn5 : dateAtColumn4
-      if (!editTime) {
-        throw new Error(`第${rowIndex + 1}行收支时间格式不正确`)
+            if (!editTime) {
+        const message = this
+          .$ts('第{row}行收支时间格式不正确')
+          .replace('{row}', String(rowIndex + 1))
+
+        throw new Error(message)
       }
       return {
         types,
@@ -266,7 +292,7 @@ export default {
     importExcelData(data) {
       const res = []
       if (data.length <= 0) {
-        this.$message.error('批量导入内容为空')
+        this.$message.error(i18n.t('legacyScript.batchImportContentIsEmpty'))
       } else {
         try {
           for (let i = 0; i <= data.length - 1; i++) {
@@ -280,7 +306,7 @@ export default {
           return
         }
         if (!res.length) {
-          this.$message.error('未读取到有效导入数据')
+          this.$message.error(i18n.t('legacyScript.noValidImportDataRead'))
           return
         }
         const data_s = {

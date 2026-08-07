@@ -3,7 +3,7 @@
   <el-table
     :data="tableData"
     v-loading="loading"
-    element-loading-text="拼命加载中"
+:element-loading-text="$t('ui.formCommonOaTableLoading')"
     element-loading-background="rgba(255, 255, 255, 0.7)"
     :height="height"
     ref="elTable"

@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 let frameFn = (rule, value, callback) => {
   if (value && value.length > 0) {
     callback()
@@ -19,133 +20,133 @@ let formOptions = {
     this.FORMOPTIONS = [
       // 基本信息数据集合
       {
-        title: '基本信息',
+        title: i18n.t('setting.info.essentialinformation'),
         edit_type: 'basic',
         data: [
           {
             type: 'input',
-            label: '人员姓名：',
+            label: i18n.t('ui.hrEnterpriseJobAnalysisPersonName'),
             value: 'name',
-            placeholder: '请输入人员姓名'
+            placeholder: i18n.t('legacyScript.pleaseEnterPersonName')
           },
           {
             type: 'input',
-            label: '手机号码：',
+            label: i18n.t('legacyScript.mobileNumber'),
             value: 'phone',
-            placeholder: '手机号为员工登录账号，默认密码：888888'
+            placeholder: i18n.t('legacyScript.phoneNumberIsTheEmployeeLoginAccountDefaultPassword888888')
           },
           {
             slot: 'cascader',
-            label: '职位：',
+            label: i18n.t('ui.userTrainingPromotionPosition'),
             value: 'position',
-            placeholder: '请选择职位'
+            placeholder: i18n.t('ui.userDutyAnalyseSelectPosition')
           },
           {
             slot: 'frame_id',
-            label: '部门：',
+            label: i18n.t('ui.hrAttendanceStatisticsDetailsDrawerDepartment'),
             value: 'frame_id',
-            placeholder: '请选择所属部门'
+            placeholder: i18n.t('legacyScript.selectDepartment')
           },
           {
             type: 'radio',
-            label: '负责人：',
+            label: i18n.t('ui.programProgramListAddProgramOwner'),
             value: 'is_admin',
-            placeholder: '请选择负责人'
+            placeholder: i18n.t('ui.programProgramListAddProgramPleaseSelectOwner')
           },
           {
-            label: '负责部门：',
+            label: i18n.t('ui.hrEnterpriseGroupEditUserResponsibleDepartments'),
             slot: 'manage_frame'
           },
 
           {
-            label: '直属上级：',
+            label: i18n.t('legacyScript.directSuperior'),
             slot: 'superior_uid'
           }
         ]
       },
       // 职工信息数据集合
       {
-        title: '职工信息',
+        title: i18n.t('hr.tablist2'),
         edit_type: 'staff',
         data: [
           {
             type: 'select',
 
-            label: '员工类型：',
+            label: i18n.t('legacyScript.employmentType'),
             value: 'is_part',
-            placeholder: '请选择员工类型',
+            placeholder: i18n.t('legacyScript.pleaseSelectEmploymentType'),
             optionsList: [
               {
-                label: '全职',
+                label: i18n.t('legacyScript.fullTime'),
                 value: 0
               },
               {
-                label: '兼职',
+                label: i18n.t('legacyScript.partTime'),
                 value: 1
               },
               {
-                label: '实习 ',
+                label: i18n.t('hr.internship'),
                 value: 2
               },
               {
-                label: '劳务派遣',
+                label: i18n.t('legacyScript.laborDispatch'),
                 value: 3
               },
               {
-                label: '退休返聘',
+                label: i18n.t('legacyScript.retireeRehired'),
                 value: 4
               },
               {
-                label: '劳务外包',
+                label: i18n.t('legacyScript.laborOutsourcing'),
                 value: 5
               },
               {
-                label: '其他',
+                label: i18n.t('hr.other'),
                 value: 6
               }
             ]
           },
           {
             type: 'select',
-            label: '员工状态：',
+            label: i18n.t('legacyScript.employeeStatus'),
             value: 'type',
-            placeholder: '请选择员工状态',
+            placeholder: i18n.t('hr.placeholder19'),
             optionsList: [
               {
-                label: '正式',
+                label: i18n.t('hr.formal'),
                 value: '1'
               },
               {
-                label: '试用',
+                label: i18n.t('hr.ontrial'),
                 value: '2'
               },
               {
-                label: '实习',
+                label: i18n.t('hr.internship'),
                 value: '3'
               },
               {
-                label: '离职',
+                label: i18n.t('hr.dimission'),
                 value: '4'
               }
             ]
           },
           {
             type: 'date',
-            label: '入职时间：',
+            label: i18n.t('legacyScript.onboardingTime'),
             value: 'work_time',
-            placeholder: '请选择入职时间'
+            placeholder: i18n.t('legacyScript.pleaseSelectOnboardingTime')
           },
           {
             type: 'date',
-            label: '试用到期：',
+            label: i18n.t('legacyScript.probationEndDate'),
             value: 'trial_time',
-            placeholder: '请选择试用到期时间'
+            placeholder: i18n.t('legacyScript.selectProbationEndDate')
           },
           {
             type: 'date',
-            label: '转正时间：',
+            label: i18n.t('legacyScript.positiveTime'),
             value: 'formal_time',
-            placeholder: '请选择转正时间'
+            placeholder: i18n.t('legacyScript.pleaseSelectPositiveTime')
           }
           // {
           //   type: 'date',
@@ -157,268 +158,268 @@ let formOptions = {
       },
       // 个人信息数据集合
       {
-        title: '个人信息',
+        title: i18n.t('hr.tablist1'),
         edit_type: 'user',
         data: [
           {
             type: 'input',
-            label: '身份证：',
+            label: i18n.t('legacyScript.iDNumber'),
             value: 'card_id',
-            placeholder: '请输入身份证号码'
+            placeholder: i18n.t('legacyScript.enterIDNumber')
           },
           {
             type: 'select',
-            label: '性别：',
+            label: i18n.t('legacyScript.gender'),
             value: 'sex',
-            placeholder: '请选择性别',
+            placeholder: i18n.t('hr.placeholder3'),
             optionsList: [
               {
-                label: '男',
+                label: i18n.t('hr.male'),
                 value: 1
               },
               {
-                label: '女',
+                label: i18n.t('hr.female'),
                 value: 2
               },
               {
-                label: '未知',
+                label: i18n.t('hr.unknown'),
                 value: 0
               }
             ]
           },
           {
             type: 'date',
-            label: '出生日期：',
+            label: i18n.t('legacyScript.dateOfBirth'),
             value: 'birthday',
-            placeholder: '请选择出生日期'
+            placeholder: i18n.t('legacyScript.pleaseSelectDateOfBirth')
           },
           {
             type: 'input',
-            label: '年龄：',
+            label: i18n.t('legacyScript.age'),
             value: 'age',
-            placeholder: '请输入年龄'
+            placeholder: i18n.t('legacyScript.pleaseEnterAge')
           },
           {
             type: 'input',
-            label: '民族：',
+            label: i18n.t('legacyScript.nation'),
             value: 'nation',
-            placeholder: '请输入民族'
+            placeholder: i18n.t('legacyScript.pleaseEnterNation')
           },
           {
             type: 'input',
-            label: '政治面貌：',
+            label: i18n.t('legacyScript.politicalOutlook'),
             value: 'politic',
-            placeholder: '请输入政治面貌'
+            placeholder: i18n.t('legacyScript.pleaseEnterPoliticalOutlook')
           },
           {
             type: 'input',
-            label: '工作年限：',
+            label: i18n.t('legacyScript.yearsOfExperience'),
             value: 'work_years',
-            placeholder: '请输入相关岗位工作年限'
+            placeholder: i18n.t('legacyScript.enterYearsOfRelevantExperience')
           },
           {
             type: 'input',
-            label: '籍贯：',
+            label: i18n.t('legacyScript.nativePlace'),
             value: 'native',
-            placeholder: '请输入籍贯'
+            placeholder: i18n.t('legacyScript.enterNativePlace')
           },
           {
             type: 'input',
-            label: '现居住地：',
+            label: i18n.t('legacyScript.currentAddress'),
             value: 'address',
-            placeholder: '请输入现居住地,详细地址'
+            placeholder: i18n.t('legacyScript.enterCurrentResidentialAddress')
           },
           {
             type: 'select',
-            label: '婚姻状况：',
+            label: i18n.t('legacyScript.maritalStatus'),
             value: 'marriage',
-            placeholder: '请选择婚姻状况',
+            placeholder: i18n.t('legacyScript.pleaseSelectMaritalStatus'),
             optionsList: [
               {
-                label: '未婚',
+                label: i18n.t('hr.unmarried'),
                 value: 0
               },
               {
-                label: '已婚',
+                label: i18n.t('hr.married'),
                 value: 1
               },
               {
-                label: '已婚已育',
+                label: i18n.t('legacyScript.marriedWithChildren'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: '邮箱地址： ',
+            label: i18n.t('legacyScript.emailAddress'),
             value: 'email',
-            placeholder: '请输入邮箱地址'
+            placeholder: i18n.t('customer.placeholder55')
           }
         ]
       },
       // 学历信息数据集合
       {
-        title: '学历信息',
+        title: i18n.t('legacyScript.educationInformation'),
         edit_type: 'education',
         data: [
           {
             type: 'select',
-            label: '最高学历：',
+            label: i18n.t('legacyScript.highestEducation'),
             value: 'education',
-            placeholder: '请输入最高学历',
+            placeholder: i18n.t('legacyScript.enterHighestEducation'),
             optionsList: [
               {
-                label: '研究生',
+                label: i18n.t('legacyScript.graduateDegree'),
                 value: 6
               },
               {
-                label: '本科',
+                label: i18n.t('legacyScript.bachelorDegree'),
                 value: 5
               },
               {
-                label: '专科',
+                label: i18n.t('legacyScript.associateDegree'),
                 value: 4
               },
 
               {
-                label: '高中及以下',
+                label: i18n.t('legacyScript.highSchoolOrBelow'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: '最高学位：',
+            label: i18n.t('legacyScript.highestDegree'),
             value: 'acad',
-            placeholder: '请输入最高学位'
+            placeholder: i18n.t('legacyScript.enterHighestDegree')
           },
           {
             type: 'date',
-            label: '毕业时间：',
+            label: i18n.t('legacyScript.graduationDate'),
             value: 'graduate_date',
-            placeholder: '请选择毕业时间'
+            placeholder: i18n.t('legacyScript.pleaseSelectGraduationDate')
           },
           {
             type: 'input',
-            label: '毕业院校：',
+            label: i18n.t('legacyScript.schoolOrUniversity'),
             value: 'graduate_name',
-            placeholder: '请输入毕业院校'
+            placeholder: i18n.t('legacyScript.enterSchoolOrUniversity')
           }
         ]
       },
       // 个人材料
       {
-        title: '个人材料',
+        title: i18n.t('legacyScript.personalDocuments'),
         edit_type: 'card',
 
         slot: 'personalMaterials',
         data: [
           {
             type: 'uploadImg',
-            label: '身份证正面：',
+            label: i18n.t('legacyScript.frontOfIDCard'),
             value: 'card_front'
           },
           {
             type: 'uploadImg',
-            label: '身份证反面：',
+            label: i18n.t('legacyScript.backOfIDCard'),
             value: 'card_both'
           },
           {
             type: 'uploadImg',
-            label: '学历证书：',
+            label: i18n.t('legacyScript.educationCertificate'),
             value: 'education_image'
           },
           {
             type: 'uploadImg',
-            label: '学位证书：',
+            label: i18n.t('legacyScript.degreeCertificate'),
             value: 'acad_image'
           }
         ]
       },
       // 银行卡信息
       {
-        title: '银行卡信息',
+        title: i18n.t('legacyScript.bankCardInformation'),
         edit_type: 'bank',
         data: [
           {
             type: 'input',
-            label: '银行卡号：',
+            label: i18n.t('legacyScript.bankCardNumber'),
             value: 'bank_num',
-            placeholder: '请输入银行卡'
+            placeholder: i18n.t('legacyScript.enterBankCardNumber')
           },
 
           {
             type: 'input',
-            label: '开户行：',
+            label: i18n.t('legacyScript.bankOfDeposit'),
             value: 'bank_name',
-            placeholder: '请输入该银行卡开户行'
+            placeholder: i18n.t('legacyScript.enterBankOfDeposit')
           }
         ]
       },
       // 社保信息
       {
-        title: '社保信息',
+        title: i18n.t('legacyScript.socialSecurityInformation'),
         edit_type: 'social',
         data: [
           {
             type: 'input',
-            label: '社保账号：',
+            label: i18n.t('legacyScript.socialSecurityAccount'),
             value: 'social_num',
-            placeholder: '请输入个人社保账号'
+            placeholder: i18n.t('legacyScript.enterSocialSecurityAccount')
           },
           {
             type: 'input',
-            label: '公积金号：',
+            label: i18n.t('legacyScript.housingProvidentFundAccount'),
             value: 'fund_num',
-            placeholder: '请输入该个人公积金账号'
+            placeholder: i18n.t('legacyScript.enterHousingProvidentFundAccount')
           }
         ]
       },
       // 紧急联系人
       {
-        title: '紧急联系人',
+        title: i18n.t('hr.emergencycontact'),
         edit_type: 'spare',
         data: [
           {
             type: 'input',
-            label: '联系人姓名：',
+            label: i18n.t('legacyScript.contactName'),
             value: 'spare_name',
-            placeholder: '请输入紧急联系人姓名'
+            placeholder: i18n.t('legacyScript.enterEmergencyContactName')
           },
           {
             type: 'input',
-            label: '联系人电话：',
+            label: i18n.t('legacyScript.contactPhone'),
             value: 'spare_tel',
-            placeholder: '请输入紧急联系人电话'
+            placeholder: i18n.t('legacyScript.enterEmergencyContactPhone')
           }
         ]
       },
 
       // 工作经历
       {
-        title: '工作经历',
+        title: i18n.t('hr.workexperience'),
         type: 1,
         slot: 'workExperience',
         data: []
       },
       // 教育经历
       {
-        title: '教育经历',
+        title: i18n.t('hr.educationalexperience'),
         type: 1,
         slot: 'educationalExperience',
         data: []
       },
       {
-        title: '系统信息',
+        title: i18n.t('legacyScript.systemInformation'),
         type: 1,
         edit_type: 'sort',
         slot: 'systemInformation',
         data: [
           {
             type: 'num',
-            label: '排序：',
+            label: i18n.t('ui.businessHolidayTypeIndexSort'),
             value: 'sort',
-            placeholder: '请输入排序数值'
+            placeholder: i18n.t('legacyScript.pleaseEnterASortingValue')
           }
         ]
       }
@@ -426,13 +427,13 @@ let formOptions = {
     // 个人简历
     this.userForm = [
       {
-        title: '职工信息',
+        title: i18n.t('hr.tablist2'),
         data: [
           {
             type: 'input',
-            label: '职位：',
+            label: i18n.t('ui.userTrainingPromotionPosition'),
             value: 'position',
-            placeholder: '请输入职位'
+            placeholder: i18n.t('legacyScript.pleaseEnterPosition')
           },
           {
             type: 'select',
@@ -441,11 +442,11 @@ let formOptions = {
             placeholder: this.$t('setting.group.employmentTypePlaceholder'),
             optionsList: [
               {
-                label: '全职',
+                label: i18n.t('legacyScript.fullTime'),
                 value: 0
               },
               {
-                label: '兼职',
+                label: i18n.t('legacyScript.partTime'),
                 value: 1
               }
             ]
@@ -453,256 +454,256 @@ let formOptions = {
         ]
       },
       {
-        title: '个人信息',
+        title: i18n.t('hr.tablist1'),
         data: [
           {
             type: 'input',
-            label: '人员姓名：',
+            label: i18n.t('ui.hrEnterpriseJobAnalysisPersonName'),
             value: 'name',
-            placeholder: '请输入姓名'
+            placeholder: i18n.t('legacyScript.enterName')
           },
           {
             type: 'input',
-            label: '联系电话：',
+            label: i18n.t('ui.customerSigningAddContractSignContactPhone'),
             value: 'phone',
-            placeholder: '请输入手机号码'
+            placeholder: i18n.t('customer.placeholder09')
           },
 
           {
             type: 'input',
-            label: '身份证：',
+            label: i18n.t('legacyScript.iDNumber'),
             value: 'card_id',
-            placeholder: '请输入身份证号码'
+            placeholder: i18n.t('legacyScript.enterIDNumber')
           },
           {
             type: 'select',
-            label: '性别：',
+            label: i18n.t('legacyScript.gender'),
             value: 'sex',
-            placeholder: '请选择性别',
+            placeholder: i18n.t('hr.placeholder3'),
             optionsList: [
               {
-                label: '男',
+                label: i18n.t('hr.male'),
                 value: 1
               },
               {
-                label: '女',
+                label: i18n.t('hr.female'),
                 value: 2
               },
               {
-                label: '未知',
+                label: i18n.t('hr.unknown'),
                 value: 0
               }
             ]
           },
           {
             type: 'date',
-            label: '出生日期：',
+            label: i18n.t('legacyScript.dateOfBirth'),
             value: 'birthday',
-            placeholder: '请选择出生日期'
+            placeholder: i18n.t('legacyScript.pleaseSelectDateOfBirth')
           },
           {
             type: 'input',
-            label: '年龄：',
+            label: i18n.t('legacyScript.age'),
             value: 'age',
-            placeholder: '请输入年龄'
+            placeholder: i18n.t('legacyScript.pleaseEnterAge')
           },
           {
             type: 'input',
-            label: '民族：',
+            label: i18n.t('legacyScript.nation'),
             value: 'nation',
-            placeholder: '请输入民族'
+            placeholder: i18n.t('legacyScript.pleaseEnterNation')
           },
           {
             type: 'input',
-            label: '政治面貌：',
+            label: i18n.t('legacyScript.politicalOutlook'),
             value: 'politic',
-            placeholder: '请输入政治面貌'
+            placeholder: i18n.t('legacyScript.pleaseEnterPoliticalOutlook')
           },
           {
             type: 'input',
-            label: '工作年限：',
+            label: i18n.t('legacyScript.yearsOfExperience'),
             value: 'work_years',
-            placeholder: '请输入相关岗位工作年限'
+            placeholder: i18n.t('legacyScript.enterYearsOfRelevantExperience')
           },
           {
             type: 'input',
-            label: '籍贯：',
+            label: i18n.t('legacyScript.nativePlace'),
             value: 'native',
-            placeholder: '请输入籍贯'
+            placeholder: i18n.t('legacyScript.enterNativePlace')
           },
           {
             type: 'input',
-            label: '现居住地：',
+            label: i18n.t('legacyScript.currentAddress'),
             value: 'address',
-            placeholder: '请输入现居住地,详细地址'
+            placeholder: i18n.t('legacyScript.enterCurrentResidentialAddress')
           },
           {
             type: 'select',
-            label: '婚姻状况：',
+            label: i18n.t('legacyScript.maritalStatus'),
             value: 'marriage',
-            placeholder: '请选择婚姻状况',
+            placeholder: i18n.t('legacyScript.pleaseSelectMaritalStatus'),
             optionsList: [
               {
-                label: '未婚',
+                label: i18n.t('hr.unmarried'),
                 value: 0
               },
               {
-                label: '已婚',
+                label: i18n.t('hr.married'),
                 value: 1
               },
               {
-                label: '已婚已育',
+                label: i18n.t('legacyScript.marriedWithChildren'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: '邮箱地址： ',
+            label: i18n.t('legacyScript.emailAddress'),
             value: 'email',
-            placeholder: '请输入邮箱地址'
+            placeholder: i18n.t('customer.placeholder55')
           }
         ]
       },
 
       {
-        title: '学历信息',
+        title: i18n.t('legacyScript.educationInformation'),
         data: [
           {
             type: 'select',
-            label: '最高学历：',
+            label: i18n.t('legacyScript.highestEducation'),
             value: 'education',
-            placeholder: '请输入最高学历',
+            placeholder: i18n.t('legacyScript.enterHighestEducation'),
             optionsList: [
               {
-                label: '研究生',
+                label: i18n.t('legacyScript.graduateDegree'),
                 value: 6
               },
               {
-                label: '本科',
+                label: i18n.t('legacyScript.bachelorDegree'),
                 value: 5
               },
               {
-                label: '专科',
+                label: i18n.t('legacyScript.associateDegree'),
                 value: 4
               },
 
               {
-                label: '高中及以下',
+                label: i18n.t('legacyScript.highSchoolOrBelow'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: '最高学位：',
+            label: i18n.t('legacyScript.highestDegree'),
             value: 'acad',
-            placeholder: '请输入最高学位'
+            placeholder: i18n.t('legacyScript.enterHighestDegree')
           },
           {
             type: 'date',
-            label: '毕业时间：',
+            label: i18n.t('legacyScript.graduationDate'),
             value: 'graduate_date',
-            placeholder: '请选择毕业时间'
+            placeholder: i18n.t('legacyScript.pleaseSelectGraduationDate')
           },
           {
             type: 'input',
-            label: '毕业院校：',
+            label: i18n.t('legacyScript.schoolOrUniversity'),
             value: 'graduate_name',
-            placeholder: '请输入毕业院校'
+            placeholder: i18n.t('legacyScript.enterSchoolOrUniversity')
           }
         ]
       },
       {
-        title: '个人材料',
+        title: i18n.t('legacyScript.personalDocuments'),
 
         slot: 'personalMaterials',
         data: [
           {
             type: 'uploadImg',
-            label: '身份证正面：',
+            label: i18n.t('legacyScript.frontOfIDCard'),
             value: 'card_front'
           },
           {
             type: 'uploadImg',
-            label: '身份证反面：',
+            label: i18n.t('legacyScript.backOfIDCard'),
             value: 'card_both'
           },
           {
             type: 'uploadImg',
-            label: '学历证书：',
+            label: i18n.t('legacyScript.educationCertificate'),
             value: 'education_image'
           },
           {
             type: 'uploadImg',
-            label: '学位证书：',
+            label: i18n.t('legacyScript.degreeCertificate'),
             value: 'acad_image'
           }
         ]
       },
       {
-        title: '银行卡信息',
+        title: i18n.t('legacyScript.bankCardInformation'),
         data: [
           {
             type: 'input',
-            label: '银行卡号：',
+            label: i18n.t('legacyScript.bankCardNumber'),
             value: 'bank_num',
-            placeholder: '请输入银行卡'
+            placeholder: i18n.t('legacyScript.enterBankCardNumber')
           },
 
           {
             type: 'input',
-            label: '开户行：',
+            label: i18n.t('legacyScript.bankOfDeposit'),
             value: 'bank_name',
-            placeholder: '请输入该银行卡开户行'
+            placeholder: i18n.t('legacyScript.enterBankOfDeposit')
           }
         ]
       },
       {
-        title: '社保信息',
+        title: i18n.t('legacyScript.socialSecurityInformation'),
         data: [
           {
             type: 'input',
-            label: '社保账号：',
+            label: i18n.t('legacyScript.socialSecurityAccount'),
             value: 'social_num',
-            placeholder: '请输入个人社保账号'
+            placeholder: i18n.t('legacyScript.enterSocialSecurityAccount')
           },
           {
             type: 'input',
-            label: '公积金号：',
+            label: i18n.t('legacyScript.housingProvidentFundAccount'),
             value: 'fund_num',
-            placeholder: '请输入该个人公积金账号'
+            placeholder: i18n.t('legacyScript.enterHousingProvidentFundAccount')
           }
         ]
       },
       {
-        title: '紧急联系人',
+        title: i18n.t('hr.emergencycontact'),
         data: [
           {
             type: 'input',
-            label: '联系人姓名：',
+            label: i18n.t('legacyScript.contactName'),
             value: 'spare_name',
-            placeholder: '请输入紧急联系人姓名'
+            placeholder: i18n.t('legacyScript.enterEmergencyContactName')
           },
           {
             type: 'input',
-            label: '联系人电话：',
+            label: i18n.t('legacyScript.contactPhone'),
             value: 'spare_tel',
-            placeholder: '请输入紧急联系人电话'
+            placeholder: i18n.t('legacyScript.enterEmergencyContactPhone')
           }
         ]
       },
 
       // 工作经历
       {
-        title: '工作经历',
+        title: i18n.t('hr.workexperience'),
         type: 1,
         slot: 'workExperience',
         data: []
       },
       // 教育经历
       {
-        title: '教育经历',
+        title: i18n.t('hr.educationalexperience'),
         type: 1,
         slot: 'educationalExperience',
         data: []
@@ -712,77 +713,77 @@ let formOptions = {
     // 未入职员工
     ;(this.notEntry = [
       {
-        title: '职工信息',
+        title: i18n.t('hr.tablist2'),
         edit_type: 'staff',
         data: [
           {
             type: 'date',
-            label: '面试时间：',
+            label: i18n.t('legacyScript.interviewTime'),
             value: 'interview_date',
-            placeholder: '请选择面试时间'
+            placeholder: i18n.t('legacyScript.pleaseSelectInterviewTime')
           },
           {
             type: 'select',
-            label: '员工类型：',
+            label: i18n.t('legacyScript.employmentType'),
             value: 'is_part',
-            placeholder: '请选择员工类型',
+            placeholder: i18n.t('legacyScript.pleaseSelectEmploymentType'),
             optionsList: [
               {
-                label: '全职',
+                label: i18n.t('legacyScript.fullTime'),
                 value: 0
               },
               {
-                label: '兼职',
+                label: i18n.t('legacyScript.partTime'),
                 value: 1
               },
               {
-                label: '实习 ',
+                label: i18n.t('hr.internship'),
                 value: 2
               },
               {
-                label: '劳务派遣',
+                label: i18n.t('legacyScript.laborDispatch'),
                 value: 3
               },
               {
-                label: '退休返聘',
+                label: i18n.t('legacyScript.retireeRehired'),
                 value: 4
               },
               {
-                label: '劳务外包',
+                label: i18n.t('legacyScript.laborOutsourcing'),
                 value: 5
               },
               {
-                label: '其他',
+                label: i18n.t('hr.other'),
                 value: 6
               }
             ]
           },
           {
             type: 'input',
-            label: '面试职位：',
+            label: i18n.t('legacyScript.interviewPosition'),
             value: 'interview_position',
-            placeholder: '请输入面试职位'
+            placeholder: i18n.t('legacyScript.pleaseEnterInterviewPosition')
           },
           {
             type: 'select',
-            label: '员工状态：',
+            label: i18n.t('legacyScript.employeeStatus'),
             value: 'type',
-            placeholder: '请选择员工状态',
+            placeholder: i18n.t('hr.placeholder19'),
             optionsList: [
               {
-                label: '正式',
+                label: i18n.t('hr.formal'),
                 value: '1'
               },
               {
-                label: '试用',
+                label: i18n.t('hr.ontrial'),
                 value: '3'
               },
               {
-                label: '未入职',
+                label: i18n.t('ui.hrArchivesTableNotOnboarded'),
                 value: '0'
               },
               {
-                label: '离职',
+                label: i18n.t('hr.dimission'),
                 value: '4'
               }
             ]
@@ -790,195 +791,195 @@ let formOptions = {
         ]
       },
       {
-        title: '个人信息',
+        title: i18n.t('hr.tablist1'),
         edit_type: 'user',
         data: [
           {
             type: 'input',
-            label: '人员姓名：',
+            label: i18n.t('ui.hrEnterpriseJobAnalysisPersonName'),
             value: 'name',
-            placeholder: '请输入姓名'
+            placeholder: i18n.t('legacyScript.enterName')
           },
           {
             type: 'input',
-            label: '手机号码：',
+            label: i18n.t('legacyScript.mobileNumber'),
             value: 'phone',
-            placeholder: '手机账号为员工登录账号，默认密码：888888'
+            placeholder: i18n.t('legacyScript.theMobileNumberServesAsTheEmployeeLoginIDDefault')
           },
 
           {
             type: 'input',
-            label: '身份证：',
+            label: i18n.t('legacyScript.iDNumber'),
             value: 'card_id',
-            placeholder: '请输入身份证号码'
+            placeholder: i18n.t('legacyScript.enterIDNumber')
           },
           {
             type: 'select',
-            label: '性别：',
+            label: i18n.t('legacyScript.gender'),
             value: 'sex',
-            placeholder: '请选择性别',
+            placeholder: i18n.t('hr.placeholder3'),
             optionsList: [
               {
-                label: '男',
+                label: i18n.t('hr.male'),
                 value: 1
               },
               {
-                label: '女',
+                label: i18n.t('hr.female'),
                 value: 2
               },
               {
-                label: '未知',
+                label: i18n.t('hr.unknown'),
                 value: 0
               }
             ]
           },
           {
             type: 'date',
-            label: '出生日期：',
+            label: i18n.t('legacyScript.dateOfBirth'),
             value: 'birthday',
-            placeholder: '请选择出生日期'
+            placeholder: i18n.t('legacyScript.pleaseSelectDateOfBirth')
           },
           {
             type: 'input',
-            label: '年龄：',
+            label: i18n.t('legacyScript.age'),
             value: 'age',
-            placeholder: '请输入年龄'
+            placeholder: i18n.t('legacyScript.pleaseEnterAge')
           },
           {
             type: 'input',
-            label: '民族：',
+            label: i18n.t('legacyScript.nation'),
             value: 'nation',
-            placeholder: '请输入民族'
+            placeholder: i18n.t('legacyScript.pleaseEnterNation')
           },
           {
             type: 'input',
-            label: '政治面貌：',
+            label: i18n.t('legacyScript.politicalOutlook'),
             value: 'politic',
-            placeholder: '请输入政治面貌'
+            placeholder: i18n.t('legacyScript.pleaseEnterPoliticalOutlook')
           },
           {
             type: 'input',
-            label: '工作年限：',
+            label: i18n.t('legacyScript.yearsOfExperience'),
             value: 'work_years',
-            placeholder: '请输入相关岗位工作年限'
+            placeholder: i18n.t('legacyScript.enterYearsOfRelevantExperience')
           },
           {
             type: 'input',
-            label: '籍贯：',
+            label: i18n.t('legacyScript.nativePlace'),
             value: 'native',
-            placeholder: '请输入籍贯'
+            placeholder: i18n.t('legacyScript.enterNativePlace')
           },
           {
             type: 'input',
-            label: '现居住地：',
+            label: i18n.t('legacyScript.currentAddress'),
             value: 'address',
-            placeholder: '请输入现居住地,详细地址'
+            placeholder: i18n.t('legacyScript.enterCurrentResidentialAddress')
           },
           {
             type: 'select',
-            label: '婚姻状况：',
+            label: i18n.t('legacyScript.maritalStatus'),
             value: 'marriage',
-            placeholder: '请选择婚姻状况',
+            placeholder: i18n.t('legacyScript.pleaseSelectMaritalStatus'),
             optionsList: [
               {
-                label: '未婚',
+                label: i18n.t('hr.unmarried'),
                 value: 0
               },
               {
-                label: '已婚',
+                label: i18n.t('hr.married'),
                 value: 1
               },
               {
-                label: '已婚已育',
+                label: i18n.t('legacyScript.marriedWithChildren'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: '邮箱地址： ',
+            label: i18n.t('legacyScript.emailAddress'),
             value: 'email',
-            placeholder: '请输入邮箱地址'
+            placeholder: i18n.t('customer.placeholder55')
           }
         ]
       },
       {
-        title: '学历信息',
+        title: i18n.t('legacyScript.educationInformation'),
         edit_type: 'education',
         data: [
           {
             type: 'select',
-            label: '最高学历：',
+            label: i18n.t('legacyScript.highestEducation'),
             value: 'education',
-            placeholder: '请输入最高学历',
+            placeholder: i18n.t('legacyScript.enterHighestEducation'),
             optionsList: [
               {
-                label: '研究生',
+                label: i18n.t('legacyScript.graduateDegree'),
                 value: 6
               },
               {
-                label: '本科',
+                label: i18n.t('legacyScript.bachelorDegree'),
                 value: 5
               },
               {
-                label: '专科',
+                label: i18n.t('legacyScript.associateDegree'),
                 value: 4
               },
 
               {
-                label: '高中及以下',
+                label: i18n.t('legacyScript.highSchoolOrBelow'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: '最高学位：',
+            label: i18n.t('legacyScript.highestDegree'),
             value: 'acad',
-            placeholder: '请输入最高学位'
+            placeholder: i18n.t('legacyScript.enterHighestDegree')
           },
           {
             type: 'date',
-            label: '毕业时间：',
+            label: i18n.t('legacyScript.graduationDate'),
             value: 'graduate_date',
-            placeholder: '请选择毕业时间'
+            placeholder: i18n.t('legacyScript.pleaseSelectGraduationDate')
           },
           {
             type: 'input',
-            label: '毕业院校：',
+            label: i18n.t('legacyScript.schoolOrUniversity'),
             value: 'graduate_name',
-            placeholder: '请输入毕业院校'
+            placeholder: i18n.t('legacyScript.enterSchoolOrUniversity')
           }
         ]
       },
       {
-        title: '紧急联系人',
+        title: i18n.t('hr.emergencycontact'),
         edit_type: 'spare',
         data: [
           {
             type: 'input',
-            label: '联系人姓名：',
+            label: i18n.t('legacyScript.contactName'),
             value: 'spare_name',
-            placeholder: '请输入紧急联系人姓名'
+            placeholder: i18n.t('legacyScript.enterEmergencyContactName')
           },
           {
             type: 'input',
-            label: '联系人电话：',
+            label: i18n.t('legacyScript.contactPhone'),
             value: 'spare_tel',
-            placeholder: '请输入紧急联系人电话'
+            placeholder: i18n.t('legacyScript.enterEmergencyContactPhone')
           }
         ]
       },
       // 工作经历
       {
-        title: '工作经历',
+        title: i18n.t('hr.workexperience'),
         type: 1,
         slot: 'workExperience',
         data: []
       },
       // 教育经历
       {
-        title: '教育经历',
+        title: i18n.t('hr.educationalexperience'),
         type: 1,
         slot: 'educationalExperience',
         data: []
@@ -986,40 +987,40 @@ let formOptions = {
     ]),
       // 表单校验
       (this.fromRules = {
-        name: [{ required: true, message: '请输入人员姓名', trigger: 'blur' }],
+        name: [{ required: true, message: i18n.t('legacyScript.pleaseEnterPersonName'), trigger: 'blur' }],
 
         position: [{ required: true, validator: positionFn, trigger: 'change' }],
 
-        is_admin: [{ required: true, message: '负责人不能为空', trigger: 'change' }],
+        is_admin: [{ required: true, message: i18n.t('legacyScript.ownerIsRequired'), trigger: 'change' }],
         frame_id: [{ required: true, validator: frameFn, trigger: 'blur' }],
         phone: [
-          { required: true, message: '请输入手机号码', trigger: 'blur' },
+          { required: true, message: i18n.t('customer.placeholder09'), trigger: 'blur' },
           {
             pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
-            message: '请输入正确的手机号码'
+            message: i18n.t('legacyScript.pleaseEnterAValidPhoneNumber')
           }
         ],
-        is_part: [{ required: true, message: '请选择员工类型', trigger: 'change' }],
+        is_part: [{ required: true, message: i18n.t('legacyScript.pleaseSelectEmploymentType'), trigger: 'change' }],
         email: [
-          { required: false, message: '请选择员工类型', trigger: 'change' },
+          { required: false, message: i18n.t('legacyScript.pleaseSelectEmploymentType'), trigger: 'change' },
           {
             type: 'email',
-            message: '请输入正确的邮箱地址',
+            message: i18n.t('legacyScript.pleaseEnterAValidEmailAddress'),
             trigger: ['blur']
           }
         ],
-        type: [{ required: true, message: '员工状态不能为空', trigger: 'change' }],
+        type: [{ required: true, message: i18n.t('legacyScript.employeeStatusIsRequired'), trigger: 'change' }],
         card_id: [
           {
             pattern: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,
-            message: '请输入正确的身份证号码',
+            message: i18n.t('legacyScript.pleaseEnterAValidIDNumber'),
             trigger: 'blur'
           }
         ],
-        work_time: [{ required: true, message: '请选择入职时间', trigger: 'blur' }],
-        interview_date: [{ required: true, message: '请选择面试时间', trigger: 'blur' }],
-        quit_time: [{ required: true, message: '请选择离职时间', trigger: 'blur' }],
-        interview_position: [{ required: true, message: '请输入面试职位', trigger: 'blur' }]
+        work_time: [{ required: true, message: i18n.t('legacyScript.pleaseSelectOnboardingTime'), trigger: 'blur' }],
+        interview_date: [{ required: true, message: i18n.t('legacyScript.pleaseSelectInterviewTime'), trigger: 'blur' }],
+        quit_time: [{ required: true, message: i18n.t('legacyScript.pleaseSelectResignationTime'), trigger: 'blur' }],
+        interview_position: [{ required: true, message: i18n.t('legacyScript.pleaseEnterInterviewPosition'), trigger: 'blur' }]
       })
     return {
       // 控制每个表单的是否修改状态

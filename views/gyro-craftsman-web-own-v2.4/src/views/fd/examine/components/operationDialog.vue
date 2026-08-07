@@ -120,6 +120,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { enterprisePayTypeApi, clientConfigListApi, billFinanceApi } from '@/api/enterprise'
 import { clientBillStatusApi } from '@/api/client'
 import { getToken } from '@/utils/auth'
@@ -200,9 +201,9 @@ export default {
         amount: [{ required: true, validator: checkAmount, trigger: 'blur' }],
         dateTime: [{ required: true, validator: checkDateTime, trigger: 'change' }],
         type: [{ required: true, validator: checkType, trigger: 'change' }],
-        cate_id: [{ required: true, message: '请选择续费类型', trigger: 'change' }],
-        bill_cate_id: [{ required: true, message: '请选择账目分类', trigger: 'blur' }],
-        type_id: { required: true, message: '请选择支付方式', trigger: 'change' } // 支付方式
+        cate_id: [{ required: true, message: i18n.t('customer.placeholder31'), trigger: 'change' }],
+        bill_cate_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectAccountCategory'), trigger: 'blur' }],
+        type_id: { required: true, message: i18n.t('ui.customerContractContractDialogSelectPaymentMethod'), trigger: 'change' } // 支付方式
       }
     }
   },

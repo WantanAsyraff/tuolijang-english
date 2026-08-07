@@ -15,7 +15,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import defaultNavBar from "@/components/defaultNavBar/index.vue";
   import liaisonList from "./components/liaisonList.vue";
   import globalIndex from "@/components/globalIndex/index.vue";
@@ -26,7 +27,7 @@
     typeIndex: 0,
     tabIndex: 0,
     tabId: 1,
-    emptyTitle: "暂无联系人，快去添加吧～",
+    emptyTitle: appI18n.global.t('ui.customerListLiaisonNoContactsYetAddOneNow'),
     listData: [],
     where: {
       limit: 10,

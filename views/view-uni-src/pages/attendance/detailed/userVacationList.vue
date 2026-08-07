@@ -58,7 +58,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import {
   onReachBottom
 } from "@dcloudio/uni-app";
@@ -79,7 +80,7 @@ let limit = ref(20);
 const andMore = ref(true);
 
 const typeList = ref([{
-  label: "全部",
+  label: appI18n.global.t('ui.attendanceDetailedUserCheckListAll'),
   value: 0,
 }]);
 const leaveList = ref([]);

@@ -16,8 +16,8 @@
               v-model="ruleForm[item.status]"
               active-value="1"
               inactive-value="0"
-              active-text="开启"
-              inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
             >
             </el-switch>
           </el-form-item>
@@ -35,6 +35,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getMessageDetailsApi, upDateMessageApi, batchUpdateMessageApi } from '@/api/setting'
 
 const defaultForm = () => ({
@@ -64,46 +65,46 @@ export default {
       ruleForm: defaultForm(),
       list: [
         {
-          title: '系统通知',
+          title: i18n.t('workbench.systemNotice'),
           statusName: '通知状态：',
           status: 'status'
         },
         {
-          title: '短信',
+          title: i18n.t('ui.settingEnterpriseNewsIndexSms'),
           statusName: '通知状态：',
           status: 'sms_status',
           keyName: '模板编号：',
           key: 'template_id',
-          placeholder: '请输入一号通中短信模板编号'
+          placeholder: i18n.t('legacyScript.enterTheSMSTemplateIDFromYihaotong')
         },
          {
-          title: '企微消息',
+          title: i18n.t('ui.settingEnterpriseNewsIndexWeComMessage'),
           statusName: '通知状态：',
           status: 'wework_status',
         },
         {
-          title: '企微BOT',
+          title: i18n.t('ui.settingEnterpriseNewsIndexWeComBot'),
           statusName: '通知状态：',
           status: 'work_status',
           keyName: '推送地址：',
           key: 'work_webhook_url',
-          placeholder: '请输入企业微信机器人生成的Webhook地址'
+          placeholder: i18n.t('legacyScript.enterTheWebhookURLGeneratedByTheWeComBot')
         },
         {
-          title: '钉钉BOT',
+          title: i18n.t('ui.settingEnterpriseNewsIndexDingTalkBot'),
           statusName: '通知状态：',
           status: 'ding_status',
           keyName: '推送地址：',
           key: 'ding_webhook_url',
-          placeholder: '请输入钉钉机器人生成的Webhook地址'
+          placeholder: i18n.t('legacyScript.enterTheWebhookURLGeneratedByTheDingTalkBot')
         },
         {
-          title: '其他BOT',
+          title: i18n.t('ui.settingEnterpriseNewsIndexOtherBot'),
           statusName: '通知状态：',
           status: 'other_status',
           keyName: '推送地址：',
           key: 'other_webhook_url',
-          placeholder: '请输入其他第三方机器人生成的Webhook地址'
+          placeholder: i18n.t('legacyScript.enterTheWebhookURLGeneratedByTheThirdPartyBot')
         }
       ],
       rules: {}

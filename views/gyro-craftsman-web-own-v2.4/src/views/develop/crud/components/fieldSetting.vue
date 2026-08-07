@@ -69,8 +69,8 @@
             v-model="scope.row.is_main"
             :active-value="1"
             :inactive-value="0"
-            active-text="开启"
-            inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
           >
           </el-switch>
         </template>
@@ -97,6 +97,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Commnt from '@/components/develop/commonData'
 import oaDialog from '@/components/form-common/dialog-form'
 import fieldPopover from './fieldPopover'
@@ -131,8 +132,8 @@ export default {
       info: this.infoData,
       fromData: {
         width: '600px',
-        title: '新建字段',
-        btnText: '确定',
+        title: i18n.t('ui.developCrudFieldSettingNewField'),
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: ''
       },
@@ -249,7 +250,7 @@ export default {
 
       let typeObj = {
         type: 'select',
-        label: '字段类型：',
+        label: i18n.t('legacyScript.fieldType'),
         key: 'value',
         options: fieldList
       }

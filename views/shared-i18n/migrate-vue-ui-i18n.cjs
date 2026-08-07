@@ -10,36 +10,68 @@ const vue3Compiler = require("../view-uni-src/node_modules/@vue/compiler-dom");
 const HAS_HAN = /[\u3400-\u9fff]/;
 const MANUAL_EN = { ...require("./manual-ui-en.cjs"), ...require("./manual-ui-en-extra.cjs"), ...require("./manual-ui-en-mobile.cjs"), ...require("./manual-ui-en-web.cjs"), ...require("./manual-ui-en-final.cjs") };
 const VISIBLE_ATTRIBUTES = new Set([
+  "active-text",
   "alt",
   "aria-label",
   "button-text",
   "button-title",
+  "btntext",
   "cancel-button-text",
   "cancel-text",
+  "close-text",
   "confirm-button-text",
   "confirm-text",
   "content",
   "default-title",
   "description",
+  "element-loading-text",
   "empty-text",
+  "empty-title",
+  "end-placeholder",
+  "inactive-text",
   "label",
+  "left-text",
+  "lefttext",
   "loading-text",
+  "no-data-text",
+  "no-filtered-data-text",
+  "no-filtered-userfrom-text",
+  "no-match-text",
+  "no-userfrom-text",
   "placeholder",
   "popup-title",
+  "range-separator",
   "right-text",
+  "righttext",
+  "start-placeholder",
   "text",
   "tip",
   "tips",
   "title",
+  "topbreadcrumbtext",
   "unit",
 ]);
 const SKIP_DIRS = new Set(["node_modules", "dist", "unpackage", "public", "static", "__MACOSX"]);
+const SCRIPT_DISPLAY_PROPERTIES = new Set([
+  "activeText", "alt", "ariaLabel", "btnText", "buttonText", "cancelText", "confirmText", "content",
+  "description", "emptyText", "emptyTitle", "endPlaceholder", "inactiveText", "label", "loadingText",
+  "message", "placeholder", "popupTitle", "rangeSeparator", "rightText", "startPlaceholder", "text", "tip",
+  "tips", "title", "unit"
+]);
+const SCRIPT_SINK_CALLS = new Set([
+  "$alert", "$confirm", "$message", "$notify", "$prompt", "alert", "confirm", "error", "info", "open",
+  "prompt", "setNavigationBarTitle", "showLoading", "showModal", "showToast", "success", "warning"
+]);
+const SCRIPT_TRANSLATORS = new Set(["$localize", "$t", "$ts", "t", "translate", "translateSystemText"]);
 
 const APPS = {
   web: {
     root: path.join(viewsRoot, "gyro-craftsman-web-own-v2.4"),
     source: "src",
     compiler: "vue2",
+    migrateScripts: true,
+    i18nImport: "@/lang",
+    i18nAccessor: "t",
     generatedEn: "src/lang/generated-ui-en.js",
     generatedZh: "src/lang/generated-ui-zh.js",
   },
@@ -54,6 +86,10 @@ const APPS = {
     root: path.join(viewsRoot, "view-uni-src"),
     source: ".",
     compiler: "vue3",
+    migrateScripts: true,
+    i18nImport: "@/locale",
+    i18nAccessor: "global.t",
+    recoverScriptParse: true,
     generatedEn: "locale/generated-ui-en.ts",
     generatedZh: "locale/generated-ui-zh.ts",
     skipDirs: new Set(["uni_modules"]),
@@ -191,8 +227,13 @@ function collectMustacheExpressions(template, register, replacements) {
 }
 
 function transformVue2Template(template, register) {
-  const compiled = vue2Compiler.compile(template, { outputSourceRange: true, comments: true });
+  const newline = template.includes("\r\n") ? "\r\n" : "\n";
+  const normalizedTemplate = template.replace(/\r\n?/g, "\n");
+  const compiled = vue2Compiler.compile(normalizedTemplate, { outputSourceRange: true, comments: true });
   if (!compiled.ast) return template;
+  // vue-template-compiler trims leading whitespace before calculating source ranges.
+  // Account for the real prefix (LF, CRLF, or indentation) instead of assuming one byte.
+  const sourceOffset = Math.max(0, normalizedTemplate.search(/\S/));
   const replacements = [];
   const visited = new Set();
 
@@ -201,8 +242,8 @@ function transformVue2Template(template, register) {
     visited.add(node);
     if (node.type === 3 && !node.isComment && !node.text.includes("<!--") && HAS_HAN.test(node.text || "")) {
       addReplacement(replacements, {
-        start: node.start + 1,
-        end: node.end + 1,
+        start: node.start + sourceOffset,
+        end: node.end + sourceOffset,
         value: translatedText(node.text, register),
       });
     }
@@ -211,34 +252,78 @@ function transformVue2Template(template, register) {
     for (const raw of Object.values(node.rawAttrsMap || {})) {
       const rawName = raw.name || "";
       const bound = rawName.startsWith(":") || rawName.startsWith("v-bind:");
-      const name = rawName.replace(/^:|^v-bind:/, "").toLowerCase();
-      if (!VISIBLE_ATTRIBUTES.has(name) || !HAS_HAN.test(raw.value || "")) continue;
+      const sourceName = rawName.replace(/^:|^v-bind:/, "");
+      const name = sourceName.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+      const lookupName = name.replace(/-/g, "") === "btntext" ? "btntext" : name;
+      if (!VISIBLE_ATTRIBUTES.has(lookupName) || !HAS_HAN.test(raw.value || "")) continue;
       if (bound) {
         const next = transformExpression(raw.value, register);
         if (next !== raw.value) {
           addReplacement(replacements, {
-            start: raw.start + 1,
-            end: raw.end + 1,
+            start: raw.start + sourceOffset,
+            end: raw.end + sourceOffset,
             value: `:${name}="${next.replace(/"/g, "&quot;")}"`,
           });
         }
       } else {
         addReplacement(replacements, {
-          start: raw.start + 1,
-          end: raw.end + 1,
+          start: raw.start + sourceOffset,
+          end: raw.end + sourceOffset,
           value: `:${name}="$t('${register(raw.value)}')"`,
         });
       }
     }
     for (const child of node.children || []) visit(child);
+    for (const slot of Object.values(node.scopedSlots || {})) visit(slot);
     for (const condition of node.ifConditions || []) visit(condition.block);
   }
 
   visit(compiled.ast);
-  collectMustacheExpressions(template, register, replacements);
-  return replacements
+  collectMustacheExpressions(normalizedTemplate, register, replacements);
+  const transformed = replacements
     .sort((a, b) => b.start - a.start)
-    .reduce((result, item) => result.slice(0, item.start) + item.value + result.slice(item.end), template);
+    .reduce(
+      (result, item) => result.slice(0, item.start) + item.value + result.slice(item.end),
+      normalizedTemplate
+    );
+  return newline === "\r\n" ? transformed.replace(/\n/g, "\r\n") : transformed;
+}
+
+function scriptSourceFiles(root, extraSkipped = new Set()) {
+  const result = [];
+  function visit(directory) {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      if (entry.isDirectory() && (SKIP_DIRS.has(entry.name) || extraSkipped.has(entry.name))) continue;
+      const target = path.join(directory, entry.name);
+      if (entry.isDirectory()) visit(target);
+      else if (/\.(?:vue|[cm]?[jt]s)$/i.test(entry.name) && !/\.d\.ts$/i.test(entry.name)) result.push(target);
+    }
+  }
+  visit(root);
+  return result;
+}
+
+function scriptPropertyName(node) {
+  if (!node || node.computed) return "";
+  if (node.type === "Identifier") return node.name;
+  if (node.type === "StringLiteral") return node.value;
+  return "";
+}
+
+function scriptCalleeName(node) {
+  if (!node) return "";
+  if (node.type === "Identifier") return node.name;
+  if (node.type === "MemberExpression" || node.type === "OptionalMemberExpression") {
+    return node.computed ? scriptPropertyName(node.property) : node.property?.name || "";
+  }
+  return "";
+}
+
+function isScriptComparison(parent) {
+  return (
+    (parent?.type === "BinaryExpression" && ["==", "===", "!=", "!==", "in"].includes(parent.operator)) ||
+    parent?.type === "SwitchCase"
+  );
 }
 
 function transformVue3Template(template, register) {
@@ -306,6 +391,104 @@ function transformVue3Template(template, register) {
   return replacements
     .sort((a, b) => b.start - a.start)
     .reduce((result, item) => result.slice(0, item.start) + item.value + result.slice(item.end), template);
+}
+
+function transformScriptUi(source, register, i18nImport, i18nAccessor, lang = "js", errorRecovery = false) {
+  let ast;
+  try {
+    ast = babelParser.parse(source, {
+      sourceType: "module",
+      plugins: [
+        "typescript",
+        ...(lang === "ts" ? [] : ["jsx"]),
+        "decorators-legacy",
+        "optionalChaining"
+      ],
+      errorRecovery
+    });
+  } catch {
+    return source;
+  }
+
+  let i18nName = "appI18n";
+  for (const statement of ast.program.body) {
+    if (statement.type !== "ImportDeclaration" || statement.source.value !== i18nImport) continue;
+    const defaultImport = statement.specifiers.find((item) => item.type === "ImportDefaultSpecifier");
+    if (defaultImport) i18nName = defaultImport.local.name;
+  }
+  const hasI18nImport = ast.program.body.some(
+    (statement) =>
+      statement.type === "ImportDeclaration" &&
+      statement.source.value === i18nImport &&
+      statement.specifiers.some((item) => item.type === "ImportDefaultSpecifier")
+  );
+  const replacements = [];
+
+  function visit(node, parent, ancestors) {
+    if (!node || typeof node !== "object") return;
+    if (node.type === "StringLiteral" && HAS_HAN.test(node.value || "")) {
+      const call = [...ancestors].reverse().find((entry) => entry.type === "CallExpression");
+      const translated = call && SCRIPT_TRANSLATORS.has(scriptCalleeName(call.callee));
+      const displayProperty =
+        parent?.type === "ObjectProperty" && parent.value === node && SCRIPT_DISPLAY_PROPERTIES.has(scriptPropertyName(parent.key));
+      const assignmentProperty =
+        parent?.type === "AssignmentExpression" &&
+        parent.right === node &&
+        SCRIPT_DISPLAY_PROPERTIES.has(scriptCalleeName(parent.left));
+      const sinkCall =
+        parent?.type === "CallExpression" &&
+        parent.arguments.includes(node) &&
+        SCRIPT_SINK_CALLS.has(scriptCalleeName(parent.callee)) &&
+        !(parent.callee?.object?.type === "Identifier" && parent.callee.object.name === "console");
+      const formatterReturn =
+        parent?.type === "ReturnStatement" &&
+        ancestors.some(
+          (entry) =>
+            (entry.type === "ObjectMethod" && scriptPropertyName(entry.key) === "formatter") ||
+            (entry.type === "ObjectProperty" && scriptPropertyName(entry.key) === "formatter")
+        );
+      if (!translated && !isScriptComparison(parent) && (displayProperty || assignmentProperty || sinkCall || formatterReturn)) {
+        addReplacement(replacements, {
+          start: node.start,
+          end: node.end,
+          value: `${i18nName}.${i18nAccessor}('${register(node.value)}')`
+        });
+      }
+    }
+    const nextAncestors = ancestors.concat(node);
+    for (const [key, value] of Object.entries(node)) {
+      if (["loc", "start", "end", "leadingComments", "trailingComments", "innerComments"].includes(key)) continue;
+      if (Array.isArray(value)) value.forEach((child) => visit(child, node, nextAncestors));
+      else if (value && typeof value === "object") visit(value, node, nextAncestors);
+    }
+  }
+  visit(ast.program, null, []);
+  if (!replacements.length) return source;
+  let transformed = replacements
+    .sort((a, b) => b.start - a.start)
+    .reduce((result, item) => result.slice(0, item.start) + item.value + result.slice(item.end), source);
+  if (!hasI18nImport) transformed = `import ${i18nName} from '${i18nImport}';\n${transformed}`;
+  return transformed;
+}
+
+function transformSourceScripts(file, source, register, i18nImport, i18nAccessor, errorRecovery) {
+  if (!file.endsWith(".vue")) {
+    const lang = path.extname(file).slice(1).toLowerCase();
+    return transformScriptUi(source, register, i18nImport, i18nAccessor, lang, errorRecovery);
+  }
+  const replacements = [];
+  for (const match of source.matchAll(/<script(?![^>]*\bsrc=)(\s[^>]*)?>([\s\S]*?)<\/script>/gi)) {
+    const attributes = match[1] || "";
+    const body = match[2];
+    const lang = attributes.match(/\blang\s*=\s*["']([^"']+)["']/i)?.[1]?.toLowerCase() || "js";
+    const next = transformScriptUi(body, register, i18nImport, i18nAccessor, lang, errorRecovery);
+    if (next === body) continue;
+    const start = match.index + match[0].indexOf(body);
+    replacements.push({ start, end: start + body.length, value: next });
+  }
+  return replacements
+    .sort((a, b) => b.start - a.start)
+    .reduce((result, item) => result.slice(0, item.start) + item.value + result.slice(item.end), source);
 }
 
 function generatedSource(catalog) {
@@ -387,6 +570,27 @@ async function run(appName) {
     pendingWrites.set(file, next);
     changedFiles += 1;
     changedTemplates += 1;
+  }
+
+  if (config.migrateScripts) {
+    for (const file of scriptSourceFiles(sourceRoot, config.skipDirs || new Set())) {
+      const relative = path.relative(sourceRoot, file).replace(/\\/g, "/");
+      if (/(?:^|\/)(?:lang|locale)\//.test(relative) || /system-text\.(?:js|ts)$/.test(relative)) continue;
+      currentRelative = relative;
+      const alreadyPending = pendingWrites.has(file);
+      const source = alreadyPending ? pendingWrites.get(file) : fs.readFileSync(file, "utf8");
+      const next = transformSourceScripts(
+        file,
+        source,
+        register,
+        config.i18nImport,
+        config.i18nAccessor,
+        config.recoverScriptParse || false
+      );
+      if (next === source) continue;
+      pendingWrites.set(file, next);
+      if (!alreadyPending) changedFiles += 1;
+    }
   }
 
   if (unresolved.size) {

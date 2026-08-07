@@ -41,6 +41,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { putWhitelistApi, getWhitelistApi } from '@/api/config'
 export default {
   name: '',
@@ -49,7 +50,7 @@ export default {
   data() {
     return {
       loading: false,
-      title: '选择白名单人员',
+      title: i18n.t('legacyScript.selectWhitelistedEmployees'),
       departmentObj: {
         userList: [], // 选择成员
         adminList: []

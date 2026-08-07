@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import appI18n from '@/lang'
 import Draggable from 'vuedraggable'
 import '@/components/form-designer/form-widget/container-widget/index'
 import FieldComponents from '@/components/form-designer/form-widget/field-widget/index'
@@ -179,7 +180,7 @@ export default {
         this.designer.widgetList.map((item) => {
           if (item.type === 'details' && widget.options.name.indexOf('@') !== -1) {
             this.designer.widgetList.splice(newIndex, 1)
-            this.$message.error('从实体字段仅支持拖拽到明细组件内')
+            this.$message.error(appI18n.t('legacyScript.childEntityFieldsCanOnlyBeDraggedIntoA'))
             return false
           }
         })

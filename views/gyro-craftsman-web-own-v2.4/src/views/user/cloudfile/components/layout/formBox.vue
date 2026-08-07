@@ -281,8 +281,8 @@ export default {
         { name: this.$t('file.table'), id: 5 }
       ],
       newlyBuildData: [
-        { name: '使用模版', id: 7, icon: 'iconshiyongmoban color-doc' },
-        { name: '上传文件', id: 6, icon: ' iconwenjianshangchuan color-file', divided: true },
+        { name: this.$t('file.usetemplate'), id: 7, icon: 'iconshiyongmoban color-doc' },
+        { name: this.$t('file.uploadFile'), id: 6, icon: ' iconwenjianshangchuan color-file', divided: true },
         { name: this.$t('file.newdocument'), id: 1, icon: 'iconwendang1 color-doc', divided: false },
         { name: this.$t('file.newtable'), id: 2, icon: 'iconbiaoge color-excel', divided: false },
         { name: this.$t('file.newmindmap'), id: 9, icon: 'iconxmind color-mindmap', divided: false },

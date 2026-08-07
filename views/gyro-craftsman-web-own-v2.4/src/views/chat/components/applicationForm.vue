@@ -101,6 +101,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import popover from './popover'
 import uploadPicture from '@/components/uploadPicture/index'
 import selectMember from '@/components/form-common/select-member'
@@ -157,7 +158,7 @@ export default {
       edituser: [],
       authuser: [],
       formRules: {
-        name: [{ required: true, message: '请输入应用名称', trigger: 'blur' }]
+        name: [{ required: true, message: i18n.t('legacyScript.enterApplicationName'), trigger: 'blur' }]
         // edit: [{ required: true, validator: userValidate, trigger: 'blur' }],
         // auth_ids: [{ required: true, validator: authValidate, trigger: 'blur' }],
         // use_limit: [{ required: true, message: '请输入使用频次', trigger: 'change' }]

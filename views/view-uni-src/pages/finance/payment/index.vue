@@ -16,7 +16,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import customerTab from "@/pages/customer/list/components/customerTab.vue";
 import paymentRecord from "@/pages/customer/list/components/paymentRecord.vue";
@@ -34,7 +35,7 @@ const data = reactive({
   typeIndex: 0,
   tabIndex: 0,
   tabId: 1,
-  emptyTitle: "暂无付款记录～",
+  emptyTitle: appI18n.global.t('ui.financePaymentIndexNoPaymentRecord'),
   customStyle: { border: "none", lineHeight: "20px", background: "#ED4014" },
   examineTabData: pendingTabData,
   listData: [],

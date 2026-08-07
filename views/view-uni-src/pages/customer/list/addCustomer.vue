@@ -17,7 +17,8 @@
   </BaseContainer>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import oaForm from '@/components/oaForm/index.vue'
 import BaseContainer from '@/components/BaseContainer/index.vue'
 import BaseBottomBtn from '@/components/BaseBottomBtn/index.vue'
@@ -190,7 +191,7 @@ const clientSave = (obj) => {
     .catch((err) => {
       if (err.status == 2001) {
         uni.showModal({
-          title: '提示',
+          title: appI18n.global.t('ui.customerLeadDetailHint'),
           content: err.message,
           success: (res) => {
             if (res.confirm) {

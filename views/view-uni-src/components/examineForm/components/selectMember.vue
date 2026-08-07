@@ -44,7 +44,8 @@
   <oa-member ref="memberRef" :onlyOne="onlyOne" @confirm="confirmMember"></oa-member>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { reactive, toRefs, computed, watch } from 'vue'
 import avatar from '@/components/avatar/index'
 import message from '@/utils/message'
@@ -92,7 +93,7 @@ const confirmMember = (e) => {
 // 添加成员
 const addMember = () => {
   if (disabled.value) {
-    message.error('禁止手动修改数据')
+    message.error(appI18n.global.t('ui.examineFormSelectMemberManualChangesAreNotAllowed'))
     return false
   }
   memberRef.value.popupOpen(configData.value.value || [])

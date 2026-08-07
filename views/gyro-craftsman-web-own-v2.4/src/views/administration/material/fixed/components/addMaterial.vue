@@ -180,6 +180,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { storageListSaveApi } from '@/api/administration'
 
 export default {
@@ -225,8 +226,8 @@ export default {
       loading: false,
       itemData: {},
       rule: {
-        name: [{ required: true, message: '请选择(输入)物资名称', trigger: 'change,blur' }],
-        cid: [{ required: true, message: '请选择物资分类', trigger: 'change' }],
+        name: [{ required: true, message: i18n.t('ui.administrationMaterialFixedAddMaterialSelectOrEnterAMaterialName'), trigger: 'change,blur' }],
+        cid: [{ required: true, message: i18n.t('ui.administrationMaterialFixedAddMaterialPleaseSelectMaterialCategory'), trigger: 'change' }],
         number: [{ required: true, validator: checkNumber, trigger: 'blur' }],
         price: [{ required: true, validator: checkPrice, trigger: 'blur' }]
       }
@@ -325,7 +326,7 @@ export default {
           this.loading = false
           let message = ''
           if (type) {
-            message = '修改成功'
+            message = i18n.t('legacyScript.updatedSuccessfully')
           } else {
             if (this.formData.type === 1) {
               message = ''
@@ -338,7 +339,7 @@ export default {
                 }
               }
             } else {
-              message = '添加成功'
+              message = i18n.t('legacyScript.addedSuccessfully')
             }
           }
         })

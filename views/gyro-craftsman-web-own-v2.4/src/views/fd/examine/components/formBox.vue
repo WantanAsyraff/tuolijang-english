@@ -61,6 +61,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import manageRange from '@/components/form-common/select-manageRange'
 
 export default {
@@ -95,10 +96,10 @@ export default {
         scope_frame: 'all'
       },
       sexOptions: [
-        { label: '全部', value: '' },
-        { label: '订单回款', value: 0 },
-        { label: '订单续费', value: 1 },
-        { label: '订单支出', value: 2 }
+        { label: i18n.t('finance.all'), value: '' },
+        { label: i18n.t('customer.orderPayment'), value: 0 },
+        { label: i18n.t('customer.orderRenewal'), value: 1 },
+        { label: i18n.t('customer.orderExpense'), value: 2 }
       ]
     }
   },

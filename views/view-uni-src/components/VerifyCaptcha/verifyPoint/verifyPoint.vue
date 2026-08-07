@@ -40,7 +40,8 @@
     </view>
   </view>
 </template>
-<script type="text/babel">
+<script type="text/babel">import appI18n from '@/locale';
+
 /**
  * VerifyPoints
  * @description 点选
@@ -154,7 +155,7 @@ export default {
                   let res = result.data;
                   this.barAreaColor = "#4cae4c";
                   this.barAreaBorderColor = "#5cb85c";
-                  this.text = "验证成功";
+                  this.text = appI18n.global.t('ui.verifitionVerifyVerifyPointsVerificationSuccessful');
                   this.bindingClick = false;
                   setTimeout(() => {
                     if (this.mode == "pop") {
@@ -168,7 +169,7 @@ export default {
                   this.$parent.$emit("error", this);
                   this.barAreaColor = "#d9534f";
                   this.barAreaBorderColor = "#d9534f";
-                  this.text = "验证失败";
+                  this.text = appI18n.global.t('ui.verifitionVerifyVerifyPointsVerificationFailed');
                   setTimeout(() => {
                     this.refresh();
                   }, 700);

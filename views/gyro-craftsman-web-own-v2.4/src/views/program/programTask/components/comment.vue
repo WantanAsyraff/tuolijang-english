@@ -126,6 +126,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getTaskCommentApi, saveTaskCommentApi, putTaskCommentApi, deleteTaskCommentApi } from '@/api/program'
 import imageViewer from '@/components/common/imageViewer'
 import { getStorageJson } from '@/utils/storage'
@@ -266,7 +267,7 @@ export default {
         this.$message({
           showClose: true,
           type: 'warning',
-          message: '评论不能为空'
+          message: i18n.t('legacyScript.commentCannotBeEmpty')
         })
       } else {
         let data = {
@@ -318,7 +319,7 @@ export default {
         this.$message({
           showClose: true,
           type: 'warning',
-          message: '评论不能为空'
+          message: i18n.t('legacyScript.commentCannotBeEmpty')
         })
       }
     },

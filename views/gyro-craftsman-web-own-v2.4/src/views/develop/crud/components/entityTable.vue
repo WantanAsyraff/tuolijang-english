@@ -103,6 +103,7 @@
 
 </template>
 <script>
+import i18n from '@/lang'
 import {
     databaseSaveApi,
     databaseListApi,
@@ -163,8 +164,8 @@ export default {
             loading:false,
             fromData: {
                 width: '663px',
-                title: '新建实体',
-                btnText: '确定',
+                title: i18n.t('ui.developCrudEntityTableNewEntity'),
+                btnText: i18n.t('ui.formCommonDialogFormOk'),
                 labelWidth: '100px',
                 type: ''
             },
@@ -224,7 +225,7 @@ export default {
 
             const header = data[0] || [];
             if (!header.length || header.every(v => !v)) {
-                return this.$message.error('导入的数据不能为空');
+                return this.$message.error(i18n.t('legacyScript.importedDataCannotBeEmpty'));
             }
 
             // 生成字段列表
@@ -293,7 +294,7 @@ setTimeout(() => {
 
             // 复制模式或编辑模式
             if (type === 'copy') {
-                this.fromData = { title: '复制实体', type: 'copy' }
+                this.fromData = { title: i18n.t('legacyScript.duplicateEntity'), type: 'copy' }
                 this.formDataInit.info = row.info
                 this.formDataInit.cate_ids = row.cate_ids
             } else {

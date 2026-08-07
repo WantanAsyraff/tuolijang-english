@@ -1,17 +1,18 @@
+import i18n from '@/lang'
 // @FileDescription: 绩效考核用到的静态数据、函数、变量
 const periodOptions = [
-  { value: 1, label: '周考核' },
-  { value: 2, label: '月考核' },
-  { value: 5, label: '季度考核' },
-  { value: 4, label: '半年考核' },
-  { value: 3, label: '年考核' }
+  { value: 1, label: i18n.t('hr.weeklyassessment') },
+  { value: 2, label: i18n.t('hr.monthlyassessment') },
+  { value: 5, label: i18n.t('legacyScript.quarterlyAssessment') },
+  { value: 4, label: i18n.t('legacyScript.semiannualAssessment') },
+  { value: 3, label: i18n.t('hr.annualassessment') }
 ]
 const periodOption = [
-  { value: 1, label: '周考核' },
-  { value: 2, label: '月考核' },
-  { value: 5, label: '季度考核' },
-  { value: 4, label: '半年考核' },
-  { value: 3, label: '年考核' }
+  { value: 1, label: i18n.t('hr.weeklyassessment') },
+  { value: 2, label: i18n.t('hr.monthlyassessment') },
+  { value: 5, label: i18n.t('legacyScript.quarterlyAssessment') },
+  { value: 4, label: i18n.t('legacyScript.semiannualAssessment') },
+  { value: 3, label: i18n.t('hr.annualassessment') }
 ]
 const statusOptions = [
   { name: '目标制定', value: '0' },
@@ -42,37 +43,37 @@ function getStatusTag(status) {
   if (status == 0) {
     return {
       type: '',
-      text: '目标制定'
+      text: i18n.t('access.goalsetting')
     }
   } else if (status == 1) {
     return {
       type: '',
-      text: '执行期'
+      text: i18n.t('access.executionphase')
     }
   } else if (status == 2) {
     return {
       type: 'success',
-      text: '上级评价'
+      text: i18n.t('access.higherevaluation')
     }
   } else if (status == 3) {
     return {
       type: '',
-      text: '绩效审核'
+      text: i18n.t('access.performancereview')
     }
   } else if (status == 4) {
     return {
       type: 'info',
-      text: '结束'
+      text: i18n.t('access.end')
     }
   } else if (status == 5) {
     return {
       type: 'info',
-      text: '未开始'
+      text: i18n.t('customer.notstarted')
     }
   } else {
     return {
       type: 'info',
-      text: '结束'
+      text: i18n.t('access.end')
     }
   }
 }

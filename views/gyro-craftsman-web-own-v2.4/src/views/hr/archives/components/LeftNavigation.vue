@@ -61,6 +61,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { putCardApi } from '@/api/enterprise'
 import { getToken } from '@/utils/auth'
 import { uploader } from '@/utils/uploadCloud'
@@ -168,7 +169,7 @@ export default {
             this.$emit('getImageUrl', res.data.url)
           }
         })
-        .catch((err) => console.error('上传失败:', err))
+        .catch((err) => console.error(i18n.t('legacyScript.uploadFail'), err))
     },
 
     // 获取选择的图片

@@ -14,16 +14,16 @@
 <body>
 <div class="wrap">
     <div class="title">
-        安装完成
+        {{ __('frontend.install.complete') }}
     </div>
     <section class="section">
         <div class="title">
             <img src="/install/images/success.png" alt="">
-            <h1>安装成功</h1>
+            <h1>{{ __('frontend.install.success') }}</h1>
         </div>
         <div class="progress">
             <div class="trip p8">
-                为了您站点的安全，安装完成后即可将根目录下的“install”文件夹内除install.lock文件删除，防止重复安装。
+                {{ __('frontend.install.security_notice') }}
             </div>
         </div>
         <div class="bottom-btn">
@@ -31,7 +31,7 @@
 {{--                <a href="<?php echo 'http://'.$host;?>/work" class="btn mid">进入前台</a>--}}
 {{--            </div>--}}
             <div class="admin btn">
-                <a href="{{ $siteUrl }}/admin" class="btn btn_submit J_install_btn mid">进入后台</a>
+                <a href="{{ $siteUrl }}/admin" class="btn btn_submit J_install_btn mid">{{ __('frontend.install.enter_admin') }}</a>
             </div>
         </div>
     </section>

@@ -218,6 +218,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { formatBytes } from '@/libs/public'
 import helper from '@/libs/helper'
 import {
@@ -490,7 +491,7 @@ export default {
     // 浏览文件
     handleSeeFil(item) {
       folderSpaceEntViewApi(item.pid, item.id).then((res) => {
-        if (!res.data.url) return this.$message.error('您暂时没有权限查看此文件')
+        if (!res.data.url) return this.$message.error(i18n.t('legacyScript.youCurrentlyDoNotHavePermissionToViewThisFile'))
         window.open(res.data.url, '_blank')
       })
     },

@@ -34,7 +34,8 @@
   </BaseContainer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import BaseContainer from "@/components/BaseContainer/index.vue";
 import NavBar from "@/components/defaultNavBar/index.vue";
 import BaseBottomBtn from "@/components/BaseBottomBtn/index.vue";
@@ -82,7 +83,7 @@ const handleSearch = () => {
 
 const handleSubmit = () => {
   if (selectedCount.value === 0) {
-    return message.error("请选择商品");
+    return message.error(appI18n.global.t('ui.customerOpportunityAddProductPleaseSelectProduct'));
   }
   
   uni.$emit(eventName.value, toRaw(productList.value).filter(item => item.selected));

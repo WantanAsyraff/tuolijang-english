@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 import { makeRequiredRule } from '../../utils'
 
@@ -35,8 +36,8 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: '请输入出发城市' },
-          title: '出发城市',
+          props: { type: 'input', placeholder: i18n.t('legacyScript.pleaseEnterDepartureCity') },
+          title: i18n.t('legacyScript.departureCity'),
           type: 'input',
           _fc_drag_tag: 'input'
         },
@@ -47,8 +48,8 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: '请输入目的城市' },
-          title: '目的城市',
+          props: { type: 'input', placeholder: i18n.t('legacyScript.pleaseEnterDestinationCity') },
+          title: i18n.t('legacyScript.destinationCity'),
           type: 'input',
           _fc_drag_tag: 'input'
         },
@@ -60,16 +61,16 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '交通工具',
+          title: i18n.t('legacyScript.transportationMode'),
           type: 'select',
           _fc_drag_tag: 'select',
           options: [
-            { value: '飞机', label: '飞机' },
-            { value: '火车', label: '火车' },
-            { value: '高铁/动车', label: '高铁/动车' },
-            { value: '汽车', label: '汽车' },
-            { value: '船', label: '船' },
-            { value: '其他', label: '其他' }
+            { value: i18n.t('legacyScript.flight'), label: i18n.t('legacyScript.flight') },
+            { value: i18n.t('legacyScript.train'), label: i18n.t('legacyScript.train') },
+            { value: i18n.t('legacyScript.highSpeedRail'), label: i18n.t('legacyScript.highSpeedRail') },
+            { value: i18n.t('legacyScript.car'), label: i18n.t('legacyScript.car') },
+            { value: i18n.t('legacyScript.boat'), label: i18n.t('legacyScript.boat') },
+            { value: i18n.t('hr.other'), label: i18n.t('hr.other') }
           ]
         },
         {
@@ -80,12 +81,12 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '单程往返',
+          title: i18n.t('legacyScript.roundTrip'),
           type: 'select',
           _fc_drag_tag: 'select',
           options: [
-            { value: '单程', label: '单程' },
-            { value: '往返', label: '往返' }
+            { value: i18n.t('legacyScript.oneWay'), label: i18n.t('legacyScript.oneWay') },
+            { value: i18n.t('legacyScript.roundTrip2'), label: i18n.t('legacyScript.roundTrip2') }
           ]
         },
         {
@@ -95,8 +96,8 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          props: { type: 'textarea', titleIpt: '出差事由', placeholder: '请输入出差事由' },
-          title: '出差事由',
+          props: { type: 'textarea', titleIpt: '出差事由', placeholder: i18n.t('legacyScript.pleaseEnterTheReasonForTheBusinessTrip') },
+          title: i18n.t('legacyScript.reasonForBusinessTrip'),
           type: 'input',
           _fc_drag_tag: 'textarea'
         }
@@ -146,7 +147,7 @@ export default {
         props: {
           value:
             '1. 时长根据自然日计算，提交人可修改<br>2. 交通工具：飞机、火车、高铁/动车、汽车、船、其他<br>3. 单程往返：单程或往返<br>4. 出差总时长：所有行程的总时长，自动计算，支持修改；审批通过之后会同步至考勤',
-          title: '出差规则'
+          title: i18n.t('legacyScript.businessTripRules')
         },
         input: false,
         title: '',

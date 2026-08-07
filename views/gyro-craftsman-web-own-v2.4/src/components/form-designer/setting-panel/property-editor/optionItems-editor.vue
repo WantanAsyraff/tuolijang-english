@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import appI18n from '@/lang'
 import { getDictListApi, getDictTreeListApi } from '@/api/form'
 import i18n from '@/utils/i18n'
 import OptionItemsSetting from '@/components/form-designer/setting-panel/option-items-setting'
@@ -66,7 +67,7 @@ export default {
       level1: ['radio', 'checkbox'],
       level4: ['cascader-radio', 'cascader', 'tag'],
       tabList: [
-        { label: '静态数据', value: '1' },
+        { label: appI18n.t('legacyScript.staticData'), value: '1' },
         // { label: '数据字典', value: '0' }
       ]
     }

@@ -284,7 +284,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import defaultNavBar from '@/components/defaultNavBar/index.vue'
 import oaMember from '@/components/oaMember/index.vue'
 import cEditor from '@/components/editor-common/editor.vue'
@@ -312,34 +313,34 @@ const styles = reactive({
 // 获取
 const userInfo = computed(() => store.state.app.userInfo)
 const option = reactive([
-  { value: 0, text: '不重复' },
-  { value: 1, text: '按天重复' },
-  { value: 2, text: '按周重复' },
-  { value: 3, text: '按月重复' },
-  { value: 4, text: '按年重复' },
+  { value: 0, text: appI18n.global.t('ui.usersScheduleCreateNoRepeat') },
+  { value: 1, text: appI18n.global.t('ui.usersScheduleCustomCreateRepeatDaily') },
+  { value: 2, text: appI18n.global.t('ui.usersScheduleCustomCreateRepeatWeekly') },
+  { value: 3, text: appI18n.global.t('ui.usersScheduleCustomCreateRepeatMonthly') },
+  { value: 4, text: appI18n.global.t('ui.usersScheduleCustomCreateRepeatYearly') },
 ])
 
 const repeatOption = reactive([
-  { value: -1, text: '不提醒' },
-  { value: 0, text: '任务开始时' },
-  { value: 1, text: '提前5分钟' },
-  { value: 2, text: '提前15分钟' },
-  { value: 3, text: '提前30分钟' },
-  { value: 4, text: '提前1小时' },
-  { value: 5, text: '提前2小时' },
-  { value: 6, text: '提前1天' },
-  { value: 7, text: '提前2天' },
-  { value: 8, text: '提前1周' },
+  { value: -1, text: appI18n.global.t('ui.usersScheduleCreateNoReminder') },
+  { value: 0, text: appI18n.global.t('ui.usersScheduleCreateAtTaskStart') },
+  { value: 1, text: appI18n.global.t('ui.usersScheduleCreate5MinutesBefore') },
+  { value: 2, text: appI18n.global.t('ui.usersScheduleCreate15MinutesBefore') },
+  { value: 3, text: appI18n.global.t('ui.usersScheduleCreate30MinutesBefore') },
+  { value: 4, text: appI18n.global.t('ui.usersScheduleCreate1HourBefore') },
+  { value: 5, text: appI18n.global.t('ui.usersScheduleCreate2HoursBefore') },
+  { value: 6, text: appI18n.global.t('ui.usersScheduleCreate1DayBefore') },
+  { value: 7, text: appI18n.global.t('ui.usersScheduleCreate2DaysBefore') },
+  { value: 8, text: appI18n.global.t('ui.usersScheduleCreate1WeekBefore') },
 ])
 
 const week = reactive([
-  { value: 1, text: '星期一' },
-  { value: 2, text: '星期二' },
-  { value: 3, text: '星期三' },
-  { value: 4, text: '星期四' },
-  { value: 5, text: '星期五' },
-  { value: 6, text: '星期六' },
-  { value: 7, text: '星期天' },
+  { value: 1, text: appI18n.global.t('ui.usersScheduleCustomCreateMonday') },
+  { value: 2, text: appI18n.global.t('ui.usersScheduleCustomCreateTuesday') },
+  { value: 3, text: appI18n.global.t('ui.usersScheduleCustomCreateWednesday') },
+  { value: 4, text: appI18n.global.t('ui.usersScheduleCustomCreateThursday') },
+  { value: 5, text: appI18n.global.t('ui.usersScheduleCustomCreateFriday') },
+  { value: 6, text: appI18n.global.t('ui.usersScheduleCustomCreateSaturday') },
+  { value: 7, text: appI18n.global.t('ui.usersScheduleCustomCreateSunday') },
 ])
 
 onLoad((e) => {
@@ -355,7 +356,7 @@ onLoad((e) => {
       end_time: options.end,
     })
     data.repeatTitle = '编辑日程'
-    uni.setNavigationBarTitle({ title: '编辑日程' })
+    uni.setNavigationBarTitle({ title: appI18n.global.t('ui.usersScheduleCreateEditSchedule') })
   } else if (e.time) {
     let timeObj = JSON.parse(e.time)
     formData.start_time = moment(timeObj.start_time).format('yyyy-MM-DD HH:mm:ss')
@@ -447,27 +448,27 @@ const saveContent = (e: string) => {
 
 const clickSubmi = (): boolean => {
   if (!formData.title) {
-    message.error('请填写待办标题')
+    message.error(appI18n.global.t('ui.usersScheduleCreatePleaseEnterToDoTitle'))
     return false
   }
   if (!formData.start_time) {
-    message.error('请选择开始时间')
+    message.error(appI18n.global.t('ui.usersScheduleCreateSelectStartTime'))
     return false
   }
   if (!formData.end_time) {
-    message.error('请选择结束时间')
+    message.error(appI18n.global.t('ui.usersScheduleCreateSelectEndTime'))
     return false
   }
   if (data.infoUser.length <= 0) {
-    message.error('请选择参与人')
+    message.error(appI18n.global.t('ui.usersScheduleCreateSelectParticipants'))
     return false
   }
   if (formData.period === 2 && data.weekDays.length <= 0) {
-    message.error('请选择重复星期')
+    message.error(appI18n.global.t('ui.usersScheduleCreatePleaseSelectARepeatingWeek'))
     return false
   }
   if (formData.period === 3 && data.monthDays.length <= 0) {
-    message.error('请选择重复日期')
+    message.error(appI18n.global.t('ui.usersScheduleCreateSelectRepeatDate'))
     return false
   }
   // if (!data.contents) {
@@ -475,11 +476,11 @@ const clickSubmi = (): boolean => {
   //   return false
   // }
   if (isDateGreater(formData.start_time, formData.end_time)) {
-    message.error('结束时间不能小于开始时间')
+    message.error(appI18n.global.t('ui.examineFormTimeFromTheEndTimeCannotBeEarlierThanTheStart'))
     return false
   }
   if (formData.fail_time && isDateGreater(formData.start_time, `${formData.fail_time} 23:59:59`)) {
-    message.error('重复截至时间不能小于开始时间')
+    message.error(appI18n.global.t('ui.usersScheduleCreateRepeatEndTimeCannotBeEarlierThanTheStart'))
     return false
   }
 

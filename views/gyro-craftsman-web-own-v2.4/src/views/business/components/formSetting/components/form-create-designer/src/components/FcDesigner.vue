@@ -369,6 +369,7 @@
 </ElContainer>
 </template>
 <script>
+import i18n from '@/lang'
 import form from '../config/base/form'
 import field from '../config/base/field'
 import validate from '../config/base/validate'
@@ -1020,7 +1021,7 @@ export default {
           if (this.gropList.length === 0) {
             this.gropList.push(config)
           } else {
-            this.$message.error('当前表单最多只能添加一个控件组')
+            this.$message.error(i18n.t('legacyScript.theCurrentFormCanOnlyAddOneControlGroupAt'))
             return
           }
         }
@@ -1072,7 +1073,7 @@ export default {
                 const top = this.getParent(self)
                 const field = top.parent.field
                 if (this.condition && this.condition.indexOf(field) > -1) {
-                  this.$message.error('该字段在流程中被使用')
+                  this.$message.error(i18n.t('legacyScript.thisFieldIsUsedInTheWorkflow'))
                   return
                 }
 
@@ -1122,7 +1123,7 @@ export default {
             delete: ({ self }) => {
               const field = self.children[0].field
               if (this.condition && this.condition.indexOf(field) > -1) {
-                this.$message.error('该字段在流程中被使用')
+                this.$message.error(i18n.t('legacyScript.thisFieldIsUsedInTheWorkflow'))
                 return
               }
 

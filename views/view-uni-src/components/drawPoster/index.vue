@@ -4,7 +4,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { reactive, toRefs, watch } from "vue";
 const props = defineProps({
   data: {
@@ -35,11 +36,11 @@ const poster = () => {
     let h = height.value;
     let len = config.newData.length;
     if (len <= 0) {
-      message.error("海报生成内容不能为空");
+      message.error(appI18n.global.t('ui.drawPosterIndexPosterContentCannotBeEmpty'));
       return false;
     }
     uni.showLoading({
-      title: "海报生成中"
+      title: appI18n.global.t('ui.drawPosterIndexGeneratingPoster')
     });
     let canvas = uni.createCanvasContext("canvas");
     canvas.clearRect(0, 0, 0, 0);
@@ -78,7 +79,7 @@ const poster = () => {
         },
         fail: () => {
           uni.showToast({
-            title: "名片加载失败",
+            title: appI18n.global.t('ui.drawPosterIndexFailedToLoadBusinessCard'),
             duration: 2000,
           });
         }

@@ -9,8 +9,8 @@
     </view>
 
     <view class="report-content m10">
-      <newes-list v-if="config.type === 'newes'" :list-data="config.newesData" empty-title="暂无搜索的最新内容～"></newes-list>
-      <folder-list v-if="config.type === 'folder'" :list-data="config.folderData" @btn-click="folderChange" empty-title="暂无搜索的内容～"></folder-list>
+      <newes-list v-if="config.type === 'newes'" :list-data="config.newesData" :empty-title="$t('ui.usersMemorandumSearchNoRecentSearchResults')"></newes-list>
+      <folder-list v-if="config.type === 'folder'" :list-data="config.folderData" @btn-click="folderChange" :empty-title="$t('ui.usersMemorandumSearchNoSearchSContent')"></folder-list>
     </view>
 
   </view>

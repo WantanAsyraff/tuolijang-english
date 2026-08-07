@@ -58,18 +58,18 @@
                             class="pointer"
                           >
                             {{
-                              item.info && item.info.rank ? item.info.rank.alias + ' (' + item.info.rank.name + ')' : ''
+                              item.info && item.info.rank ? $ts(item.info.rank.alias) + ' (' + $ts(item.info.rank.name) + ')' : ''
                             }}
                           </div>
                         </div>
                       </template>
                     </el-table-column>
-                    <el-table-column :label="info.name">
+                    <el-table-column :label="$ts(info.name)">
                       <template slot-scope="scope">
                         <div v-for="item in scope.row.info" v-show="info.id === item.id" :key="item.id">
                           <span v-if="item.info && item.info.job.length > 0">
                             <span v-for="(col, index) in item.info.job" :key="index">
-                              {{ col.name }}
+                              {{ $ts(col.name) }}
                               {{ item.info.job.length - 1 !== index ? '、' : '' }}
                             </span>
                           </span>

@@ -71,6 +71,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { assessPlanUserListApi } from '@/api/enterprise'
 
 export default {
@@ -83,8 +84,8 @@ export default {
       drawer: false,
       tabCur: 0,
       tabList: [
-        { title: '未设置人', id: 0 },
-        { title: '已设置人', id: 1 }
+        { title: i18n.t('legacyScript.notSet'), id: 0 },
+        { title: i18n.t('legacyScript.assignedPerson'), id: 1 }
       ],
       where: {
         page: 1,

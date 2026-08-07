@@ -16,7 +16,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import message from "@/utils/message";
 import paymentRecord from "@/pages/customer/list/components/paymentRecord.vue";
 import customerTab from "@/pages/customer/list/components/customerTab.vue";
@@ -28,10 +29,10 @@ const data = reactive({
   typeIndex: 0,
   tabIndex: 0,
   tabId: 1,
-  placeholder: "请输入关键字搜索",
+  placeholder: appI18n.global.t('ui.financeInvoiceSearchPleaseEnterInvoiceNameCustomerNameContractName'),
   examineTabData: pendingTabData,
   listData: [],
-  emptyTitle: "暂无搜索结果～",
+  emptyTitle: appI18n.global.t('ui.customerAddressSearchIndexNoSearchResults'),
   where: {
     types: "",
     page: 1,

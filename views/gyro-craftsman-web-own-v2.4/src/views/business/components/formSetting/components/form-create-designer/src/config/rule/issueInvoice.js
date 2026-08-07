@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 const label = '开具发票'
 const name = 'issueInvoice'
@@ -19,7 +20,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '客户名称',
+          title: i18n.t('customer.customerName'),
           symbol: 'customerList',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -32,7 +33,7 @@ export default {
           hidden: true,
           info: '',
           input: false,
-          title: '关联付款单',
+          title: i18n.t('ui.invoiceInvoiceDetailsRelatedPaymentOrder'),
           symbol: 'billId',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -45,9 +46,9 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '关联付款金额',
+          title: i18n.t('legacyScript.relatedPaymentAmount'),
           symbol: 'billAmount',
-          props: { disabled: true,readonly:true,placeholder:'请输入关联付款单' },
+          props: { disabled: true,readonly:true,placeholder:i18n.t('legacyScript.pleaseEnterRelatedPaymentOrder') },
           type: 'input',
           _fc_drag_tag: 'input',
           options: []
@@ -59,8 +60,8 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          props: { placeholder: '请选择期望开票日期' },
-          title: '期望开票日期',
+          props: { placeholder: i18n.t('legacyScript.pleaseSelectBillingDate') },
+          title: i18n.t('customer.invoicingdate'),
           symbol: 'desireDate',
           type: 'datePicker',
           _fc_drag_tag: 'datePicker'
@@ -69,14 +70,14 @@ export default {
           effect: { fetch: '', required: true },
           field: uniqueId(),
           props: { type: 'radio' },
-          title: '开票要求',
+          title: i18n.t('legacyScript.invoiceRequirements'),
           symbol: 'invoicingMethod',
           value: 'mail',
           type: 'radio',
           _fc_drag_tag: 'radio',
           options: [
-            { value: 'mail', label: '电子' },
-            { value: 'express', label: '纸质' }
+            { value: 'mail', label: i18n.t('ui.customerInvoiceInvoiceViewElectronic') },
+            { value: 'express', label: i18n.t('ui.customerInvoiceInvoiceViewPaper') }
           ]
         },
         {
@@ -86,8 +87,8 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: '请输入邮箱地址'  },
-          title: '邮箱地址',
+          props: { type: 'input', placeholder: i18n.t('customer.placeholder55')  },
+          title: i18n.t('customer.emailaddress'),
           symbol: 'invoicingEmail',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -99,8 +100,8 @@ export default {
           hidden: true,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: '请输入联系人' },
-          title: '联系人',
+          props: { type: 'input', placeholder: i18n.t('customer.placeholder52') },
+          title: i18n.t('customer.contacts'),
           symbol: 'liaisonMan',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -112,8 +113,8 @@ export default {
           hidden: true,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: '请输入联系电话' },
-          title: '联系电话',
+          props: { type: 'input', placeholder: i18n.t('customer.placeholder53') },
+          title: i18n.t('customer.contactnumber'),
           symbol: 'telephone',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -125,8 +126,8 @@ export default {
           hidden: true,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: '请输入邮寄详细地址' },
-          title: '邮寄地址',
+          props: { type: 'input', placeholder: i18n.t('customer.placeholder56') },
+          title: i18n.t('customer.mailingaddress'),
           symbol: 'mailingAddress',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -139,7 +140,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: '发票类型',
+          title: i18n.t('customer.headerinformation'),
           symbol: 'invoiceType',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -148,8 +149,8 @@ export default {
         {
           effect: { fetch: '', required: true },
           field: uniqueId(),
-          props: { type: 'moneyFrom', placeholder: '请输入开票金额' },
-          title: '开票金额（元）',
+          props: { type: 'moneyFrom', placeholder: i18n.t('customer.placeholder44') },
+          title: i18n.t('legacyScript.invoiceAmountCNY'),
           symbol: 'invoiceAmount',
           type: 'moneyFrom',
           _fc_drag_tag: 'moneyFrom'
@@ -161,8 +162,8 @@ export default {
           hidden: false,
           info: '',
       
-          props: { type: 'input', placeholder: '请输入抬头信息' },
-          title: '发票抬头',
+          props: { type: 'input', placeholder: i18n.t('customer.placeholder46') },
+          title: i18n.t('customer.invoiceheader'),
           symbol: 'invoiceHeader',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -174,8 +175,8 @@ export default {
           hidden: false,
           info: '',
      
-          props: { type: 'input', placeholder: '请输入纳税人识别号' },
-          title: '纳税人识别号',
+          props: { type: 'input', placeholder: i18n.t('customer.placeholder47') },
+          title: i18n.t('customer.paytaxes'),
           symbol: 'dutyParagraph',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -186,8 +187,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: '请填写备注信息' },
-          title: '备注',
+          props: { type: 'textarea', placeholder: i18n.t('customer.placeholder18') },
+          title: i18n.t('customer.remark'),
           symbol: 'remark',
           _fc_drag_tag: 'textarea'
         }
@@ -264,7 +265,7 @@ export default {
         info: '',
         props: {
           value: '1.开具发票是否需要审批流，在客户规格设置中配置<br>2.支持财务进行发票开具/拒绝开票',
-          title: '开具发票规则'
+          title: i18n.t('legacyScript.issueInvoiceRules')
         },
         input: false,
         title: '',

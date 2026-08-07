@@ -41,11 +41,11 @@
           <!-- 树形 -->
           <el-tree :data="customizeItems" node-key="value" default-expand-all v-else>
             <div class="custom-tree-node" slot-scope="{ node, data }">
-              <el-input v-model="data.name" placeholder="数据值" size="small" style="width: 300px;" />
+              <el-input v-model="data.name" :placeholder="$t('ui.customerSetupDictionaryManagementDataValue')" size="small" style="width: 300px;" />
               <template>
                 <span class="iconfont icontianjia1 iconadd" @click="addFn(node, data)" />
-                <span class="iconfont icona-ziji1x iconadd" title="添加子项" @click="addChildFn(node, data)" />
-                <span class="el-icon-delete iconadd" title="删除" @click="deleteFn(node, data)" />
+                <span class="iconfont icona-ziji1x iconadd" :title="$t('ui.customerDictOptionSettingAddChildItem')" @click="addChildFn(node, data)" />
+                <span class="el-icon-delete iconadd" :title="$t('ui.chatIndexDelete')" @click="deleteFn(node, data)" />
               </template>
             </div>
           </el-tree>

@@ -34,7 +34,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import avatar from "@/components/avatar/index.vue";
 import { ref, reactive, computed, watch } from "vue";
@@ -90,7 +91,7 @@ watch(getSelectPeople, (newvalue) => {
 
 const clickItem = (id) => {
   if (data.selectUser.length <= 0) {
-    message.error("请选择转移的业务员");
+    message.error(appI18n.global.t('ui.customerListShiftSelectTheSalespersonToTransferTo'));
     return false;
   }
   if (id <= data.type) return false;
@@ -110,7 +111,7 @@ const clickAdd = () => {
 import message from "@/utils/message";
 const handleConfirm = () => {
   if (data.selectUser.length <= 0) {
-    message.error("请选择转移的业务员");
+    message.error(appI18n.global.t('ui.customerListShiftSelectTheSalespersonToTransferTo'));
     return false;
   }
   if (!loading.value) {

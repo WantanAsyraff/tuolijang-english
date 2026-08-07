@@ -64,7 +64,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import loginPop from "./components/loginPop.vue";
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import globalIndex from "@/components/globalIndex/index.vue";
@@ -113,9 +114,9 @@ const getArticleCollect = (row: Detail): void => {
     };
     articleCollectApi(datas).then(() => {
       if (row.is_collect === 0) {
-        message.success("收藏成功");
+        message.success(appI18n.global.t('ui.forumDefaultFavoriteSuccessful'));
       } else {
-        message.success("取消收藏");
+        message.success(appI18n.global.t('ui.forumDefaultCancelCollection'));
       }
       getArticleInfo(row.id);
     }).catch((error: Res) => {
@@ -135,9 +136,9 @@ const getArticleSupport = (row: Detail): void => {
     };
     articleSupportApi(datas).then(() => {
       if (row.is_support === 0) {
-        message.success("点赞成功");
+        message.success(appI18n.global.t('ui.forumDefaultLikeSuccessful'));
       } else {
-        message.success("取消点赞");
+        message.success(appI18n.global.t('ui.forumDefaultUnlike'));
       }
       getArticleInfo(row.id);
     }).catch((error: Res) => {
@@ -147,7 +148,7 @@ const getArticleSupport = (row: Detail): void => {
 };
 
 const getArticleShare = (e) => {
-  message.error("分享制作中");
+  message.error(appI18n.global.t('ui.forumDefaultPreparingShare'));
   const oInput = document.createElement("input");
   let value = "";
   value = `https://tuoluojiang.com/mobile/detail/${e.id}`;
@@ -157,7 +158,7 @@ const getArticleShare = (e) => {
   document.execCommand("Copy");
   oInput.style.display = "none";
   document.body.removeChild(oInput);
-  message.success("复制分享链接成功，请前去粘贴使用");
+  message.success(appI18n.global.t('ui.forumDefaultShareLinkCopiedPasteItWhereNeeded'));
 };
 </script>
 <style>

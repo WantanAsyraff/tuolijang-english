@@ -59,6 +59,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 // 引入用户通讯录树和列表的API
 import { userAddBookTree, userAddBookeList } from '@/api/user'
 // 引入菜单树组件
@@ -100,26 +101,26 @@ export default {
       },
       tableOptions: [
         {
-          label: '姓名',
+          label: i18n.t('customer.name'),
           prop: 'name'
         },
         {
-          label: '职位',
+          label: i18n.t('customer.position'),
           render: (row) => {
             return <span>{row.job ? row.job.name : '--'}</span>
           }
         },
         {
-          label: '部门',
+          label: i18n.t('customer.department'),
           type: 'slot',
           name: 'frames'
         },
         {
-          label: '联系方式',
+          label: i18n.t('legacyScript.contactInformation'),
           prop: 'phone'
         },
         {
-          label: '邮箱',
+          label: i18n.t('customer.customeremail'),
           render: (row) => {
             return <span>{row.info && row.info.email ? row.info.email : '--'}</span>
           }
@@ -140,7 +141,7 @@ export default {
         this.treeData = result.data
         this.getUserAddBookeList()
       } catch (error) {
-        console.error('获取用户通讯录树数据失败:', error)
+        console.error(i18n.t('legacyScript.failedToRetrieveUserContactTreeData'), error)
       }
     },
 
@@ -151,7 +152,7 @@ export default {
         this.tableData = result.data.list
         this.total = result.data.count
       } catch (error) {
-        console.error('获取用户通讯录列表数据失败:', error)
+        console.error(i18n.t('legacyScript.failedToRetrieveUserContactListData'), error)
       }
     },
 

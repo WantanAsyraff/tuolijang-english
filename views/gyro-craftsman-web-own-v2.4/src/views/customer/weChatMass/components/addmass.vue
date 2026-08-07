@@ -19,6 +19,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { workMassTempSaveApi, workMassTempEditApi, workMassTempApi } from '@/api/weCom'
 export default {
   name: '',
@@ -38,7 +39,7 @@ export default {
       id: 0,
       form: { group_id: this.group_id, attach: [], content: '' },
       rules: {
-        group_id: [{ required: true, message: '请选择素材分类', trigger: 'change' }]
+        group_id: [{ required: true, message: i18n.t('ui.customerWeChatMassMaterialLibrarySelectMaterialCategory'), trigger: 'change' }]
       }
     }
   },
@@ -55,7 +56,7 @@ export default {
         this.form.content = this.$refs.materialContent.content
       }
       if (this.form.content == '') {
-        this.$message.error('请填写内容')
+        this.$message.error(i18n.t('user.work.title2'))
         return false
       }
 

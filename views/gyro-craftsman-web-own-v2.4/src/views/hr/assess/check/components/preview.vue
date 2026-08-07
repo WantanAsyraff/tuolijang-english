@@ -93,6 +93,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import RGBaster from '@/utils/rgbaster'
 import { attachCoverDeleteApi, attachCoverListApi, attachCoverSetApi } from '@/api/enterprise'
 import SettingMer from '@/libs/settingMer'
@@ -212,7 +213,7 @@ export default {
     },
     handleConfirm() {
       if (this.id == 0) {
-        this.$message.error('请选择封面图')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectACoverImage'))
       } else {
         this.setImagePreview()
       }
@@ -239,7 +240,7 @@ export default {
     // 上传成功
     handleSuccess(response) {
       if (response.status === 200) {
-        this.$message.success('上传成功')
+        this.$message.success(i18n.t('public.tipstext2'))
         this.where.page = 1
         this.getTableData()
       } else {

@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import { createDesigner } from './designer'
 export const dashboard_container_schema = {
   type: 'dashboard-container',
@@ -19,7 +20,7 @@ export const ext_chart_containers = [
     options: {
       name: '',
       value: 13232.12,
-      label: 'Tab标签',
+      label: i18n.t('legacyScript.tab'),
       // 数据实体
       activeValue: 'tab1', // 选中实体ID
       tabList: [
@@ -74,7 +75,7 @@ export const ext_chart_containers = [
     options: {
       name: '',
       value: 13232.12,
-      label: '筛选组件',
+      label: i18n.t('legacyScript.filterComponent'),
       // 数据实体
       entityIds: [], // 选中实体ID
 
@@ -116,7 +117,7 @@ export const ext_charts_widgets = [
     options: {
       name: '',
       value: 13232.12,
-      label: '统计数值',
+      label: i18n.t('legacyScript.statisticalValue'),
 
       // 数据实体
       dataEntity: '',
@@ -175,7 +176,7 @@ export const ext_charts_widgets = [
     options: {
       name: '',
       value: 13232.12,
-      label: '进度条',
+      label: i18n.t('legacyScript.progressBar'),
 
       // 数据实体
       dataEntity: '',
@@ -227,7 +228,7 @@ export const ext_charts_widgets = [
     options: {
       name: '',
       value: 13232.12,
-      label: '柱状图',
+      label: i18n.t('legacyScript.barChart'),
 
       // 数据实体
       dataEntity: '',
@@ -285,7 +286,7 @@ export const ext_charts_widgets = [
     options: {
       name: '',
       value: 13232.12,
-      label: '条形图',
+      label: i18n.t('legacyScript.barChart2'),
       // 数据实体
       dataEntity: '',
       // 维度指标设置
@@ -343,7 +344,7 @@ export const ext_charts_widgets = [
     options: {
       name: '',
       value: 13232.12,
-      label: '折线图',
+      label: i18n.t('legacyScript.lineChart'),
       // 数据实体
       dataEntity: '',
       // 维度指标设置
@@ -401,7 +402,7 @@ export const ext_charts_widgets = [
     options: {
       name: '',
       value: 13232.12,
-      label: '漏斗图',
+      label: i18n.t('legacyScript.funnelChart'),
       // 数据实体
       dataEntity: '',
       // 维度指标设置
@@ -450,7 +451,7 @@ export const ext_charts_widgets = [
     options: {
       name: '',
       value: 13232.12,
-      label: '饼图',
+      label: i18n.t('legacyScript.pieChart'),
       // 数据实体
       dataEntity: '',
       // 维度指标设置
@@ -500,7 +501,7 @@ export const ext_charts_widgets = [
     options: {
       name: '',
       value: 13232.12,
-      label: '雷达图',
+      label: i18n.t('legacyScript.radarChart'),
       // 数据实体
       dataEntity: '',
       // 维度指标设置
@@ -595,7 +596,7 @@ export const ext_charts_widgets = [
     options: {
       name: '',
       value: 13232.12,
-      label: '数据列表',
+      label: i18n.t('legacyScript.dataList'),
       // 数据实体
       dataEntity: '',
       // 维度指标设置

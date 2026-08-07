@@ -119,6 +119,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getInvoiceText, getInvoiceClassName } from '@/libs/customer'
 import { approveApplyRevokeApi } from '@/api/business'
 import {
@@ -182,7 +183,7 @@ export default {
         remarks: ''
       },
       rules: {
-        remarks: [{ required: true, message: '请填写撤回理由', trigger: 'blur' }]
+        remarks: [{ required: true, message: i18n.t('legacyScript.pleaseProvideAReasonForWithdrawal'), trigger: 'blur' }]
       },
       tableData: [],
       where: {
@@ -346,7 +347,7 @@ export default {
     },
     // 申请作废
     apply(val) {
-      this.title = '发票申请作废'
+      this.title = i18n.t('legacyScript.invoiceVoidRequest')
       this.reason = '作废原因'
       this.dialogVisible = true
       this.withdrawId = val.id
@@ -414,7 +415,7 @@ export default {
       if (type == '') {
         this.mergeOpenFn(val, type).then(() => {
           this.formBoxConfig = {
-            title: '申请开票',
+            title: i18n.t('ui.customerContractContractInvoiceApplyForInvoice'),
             width: '1000px',
             edit: false,
             data: this.formInfo.data,
@@ -437,7 +438,7 @@ export default {
         this.mergeOpenFn(val, type).then(() => {
           if (this.mergeOpen) {
             this.formBoxConfig = {
-              title: '编辑发票申请',
+              title: i18n.t('legacyScript.editInvoiceApplication'),
               width: '1000px',
               edit: true,
               rowData: val,
@@ -447,7 +448,7 @@ export default {
             this.$refs.mergeInvoice.openBox()
           } else {
             this.formBoxConfig = {
-              title: '编辑发票申请',
+              title: i18n.t('legacyScript.editInvoiceApplication'),
               width: '1000px',
               edit: true,
               data: this.formInfo.data,
@@ -473,7 +474,7 @@ export default {
     },
     handleCheck(row) {
       this.invoiceData = {
-        title: '发票查看',
+        title: i18n.t('legacyScript.viewInvoice'),
         width: '1000px',
         data: row
       }

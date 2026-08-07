@@ -84,6 +84,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getModelsSelectApi, saveModelsApi, getModelsInfoApi, editModelsApi } from '@/api/chatAi'
 import popover from './popover'
 
@@ -110,10 +111,10 @@ export default {
       options: [],
       modelsOptions: [],
       rules: {
-        name: [{ required: true, message: '请输入模型名称', trigger: 'blur' }],
-        models_type: [{ required: true, message: '请选择模型类型', trigger: 'change' }],
-        is_model: [{ required: true, message: '请选择基础模型', trigger: 'change' }],
-        key: [{ required: true, message: '请输入key', trigger: 'blur' }]
+        name: [{ required: true, message: i18n.t('legacyScript.pleaseEnterModelName'), trigger: 'blur' }],
+        models_type: [{ required: true, message: i18n.t('ui.chatModelDialogSelectAModelType'), trigger: 'change' }],
+        is_model: [{ required: true, message: i18n.t('legacyScript.pleaseSelectTheBaseModel'), trigger: 'change' }],
+        key: [{ required: true, message: i18n.t('legacyScript.pleaseEnterKey'), trigger: 'blur' }]
       }
     }
   },

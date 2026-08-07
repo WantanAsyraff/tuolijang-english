@@ -104,6 +104,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import {
   selectContractListApi,
   enterprisePayTypeApi,
@@ -153,11 +154,11 @@ export default {
         }
       },
       rule: {
-        cid: [{ required: true, message: '请选择订单', trigger: 'change' }],
-        num: [{ required: true, message: '请输入支出金额', trigger: 'blur' }],
-        date: [{ required: true, message: '请选择时间', trigger: 'change' }],
-        bill_cate_id: [{ required: true, message: '请选择支出类型', trigger: 'change' }],
-        type_id: { required: true, message: '请选择支付方式', trigger: 'change' } // 支付方式
+        cid: [{ required: true, message: i18n.t('ui.customerContractContractDialogSelectOrder2'), trigger: 'change' }],
+        num: [{ required: true, message: i18n.t('legacyScript.pleaseEnterExpenseAmount'), trigger: 'blur' }],
+        date: [{ required: true, message: i18n.t('legacyScript.pleaseSelectTime'), trigger: 'change' }],
+        bill_cate_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectExpenseType'), trigger: 'change' }],
+        type_id: { required: true, message: i18n.t('ui.customerContractContractDialogSelectPaymentMethod'), trigger: 'change' } // 支付方式
       },
 
       labelWidth: 120,

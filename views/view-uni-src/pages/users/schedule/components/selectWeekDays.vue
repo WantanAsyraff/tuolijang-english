@@ -54,7 +54,8 @@
     </view>
   </view>
 </template>
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, computed, onMounted } from 'vue'
 import { onReachBottom, onPullDownRefresh, onPageScroll } from '@dcloudio/uni-app'
 import { dayCycleArray, getColor, clickNavigateTo } from '@/utils/helper'
@@ -215,7 +216,7 @@ const scheduleRecord = (item) => {
 // 获取日程列表
 const getScheduleList = (start, end) => {
   uni.showLoading({
-    title: '加载中',
+    title: appI18n.global.t('ui.customerContractIndexLoading'),
   })
   const data_s = {
     cid: checkedTypes.value,

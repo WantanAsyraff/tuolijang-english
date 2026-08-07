@@ -150,6 +150,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getProductInfoApi } from '@/api/client'
 export default {
   name: 'details',
@@ -175,17 +176,17 @@ export default {
       manyTabTit: {},
 
       formThead: [
-        { title: '图片', key: 'image' },
+        { title: i18n.t('file.picture'), key: 'image' },
         {
-          title: '产品售价(元)',
+          title: i18n.t('legacyScript.productPriceYuan'),
           key: 'price'
         },
         {
-          title: '产品成本价（元）',
+          title: i18n.t('legacyScript.productCostYuan'),
           key: 'cost'
         },
         {
-          title: '产品规格编号',
+          title: i18n.t('legacyScript.productSpecNo'),
           key: 'bar_code'
         }
       ],

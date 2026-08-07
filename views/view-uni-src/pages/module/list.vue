@@ -39,7 +39,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import { crudModuleInfoApi, crudModuleListApi, crudModuleDelApi, crudModuleMenusApi } from "@/api/crud";
   import defaultNavBar from "@/components/defaultNavBar/index.vue";
   import message from "@/utils/message";
@@ -51,7 +52,7 @@
     backgroundColor: "rgba(0,0,0,0)",
     info: {},
     rightIcon: [{ type: 1, icon: "icon-xuanfuanniu-jia" }],
-    title: "列表名称",
+    title: appI18n.global.t('ui.moduleListListName'),
     keyName: "kehuguanli",
     tableData: [],
     main_name: false,
@@ -112,7 +113,7 @@
   // 编辑删除
   const selectFn = (e, row) => {
     if (e.type == 2) {
-      showModal("您确定要删除吗")
+      showModal(appI18n.global.t('ui.moduleDetailsDeleteThisItem'))
         .then(() => {
           crudModuleDelApi(data.keyName, row)
             .then((res) => {

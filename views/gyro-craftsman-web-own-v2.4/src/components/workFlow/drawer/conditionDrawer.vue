@@ -193,6 +193,7 @@
 </el-drawer>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   components: {
     selectMember: () => import('@/components/form-common/select-member'),
@@ -294,7 +295,7 @@ export default {
         }
         this.conditionsPopover = this.conditionsPopover !== true
       } else {
-        this.$message.warning('表单配置为空')
+        this.$message.warning(i18n.t('legacyScript.theFormConfigurationIsEmpty'))
       }
     },
     itemConditions(row, index) {

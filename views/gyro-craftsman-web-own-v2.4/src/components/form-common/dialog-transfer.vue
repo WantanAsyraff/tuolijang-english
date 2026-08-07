@@ -39,6 +39,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Sortable from 'sortablejs'
 import cloneDeep from 'lodash/cloneDeep' //避免修改父组件传过来的数据
 export default {
@@ -200,7 +201,7 @@ export default {
     handleConfirm() {
       if (this.visibleValue.length <= 0) {
         this.$message({
-          message: '未选中任何需要显示的数据',
+          message: i18n.t('legacyScript.noDataSelectedForDisplay'),
           type: 'warning'
         })
         return

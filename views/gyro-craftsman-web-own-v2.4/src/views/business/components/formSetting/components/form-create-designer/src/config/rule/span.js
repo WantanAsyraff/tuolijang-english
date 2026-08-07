@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '文字';
@@ -11,7 +12,7 @@ export default {
     return {
       type: name,
       field: uniqueId(),
-      title: '文字',
+      title: i18n.t('ui.settingEnterpriseSetupStorageText'),
       native: false,
       children: ['这是一段文字'],
     };
@@ -26,7 +27,7 @@ export default {
       {
         type: 'input',
         field: 'formCreateChild',
-        title: '内容',
+        title: i18n.t('legacyScript.content'),
         props: {
           type: 'textarea',
         },

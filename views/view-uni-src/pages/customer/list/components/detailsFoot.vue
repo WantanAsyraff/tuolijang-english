@@ -24,7 +24,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import { ref } from "vue";
   import { clickNavigateTo } from "@/utils/helper";
   import { useStore } from 'vuex'
@@ -85,7 +86,7 @@
       if (error?.errMsg) {
         if (error.errMsg.includes('auth deny')) {
           uni.showToast({
-            title: '缺少定位权限',
+            title: appI18n.global.t('ui.customerListDetailsFootLocationPermissionRequired'),
             icon: 'error'
           });
           return;

@@ -8,7 +8,7 @@
     </view>
 
     <view class="content">
-      <forum-list :list-data="data.listData" :hot-data="data.hotData" empty-title="暂无文章~"></forum-list>
+      <forum-list :list-data="data.listData" :hot-data="data.hotData" :empty-title="$t('ui.forumHistoryNoArticles')"></forum-list>
     </view>
     <loginPop ref="loginRef" @loginOk='loginOk'></loginPop>
   </view>

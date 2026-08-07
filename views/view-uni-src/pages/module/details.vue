@@ -37,7 +37,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import defaultNavBar from "@/components/defaultNavBar/index";
   import dropDown from "@/pages/forum/components/dropDown.vue";
 
@@ -56,7 +57,7 @@
   } from "@/api/crud";
   import { reactive } from "vue";
   const data = reactive({
-    title: "详情",
+    title: appI18n.global.t('ui.usersReportMineDetails'),
     backgroundColor: "rgba(0,0,0,0)",
     info: {},
     rightIcon: [
@@ -124,7 +125,7 @@
   // 获取当前实体详情
   const getFindInfo = () => {
     uni.showLoading({
-      title: "加载中",
+      title: appI18n.global.t('ui.customerContractIndexLoading'),
     });
     crudModuleFindApi(data.keyName, data.id).then((res) => {
       data.infoList = res.data.values;
@@ -161,7 +162,7 @@
 
   // 删除评论
   const deleteReplyFn = (item) => {
-    showModal("您确定要删除吗")
+    showModal(appI18n.global.t('ui.moduleDetailsDeleteThisItem'))
       .then(() => {
         crudModuleCommentDeleteDataApi(data.keyName, item.id)
           .then((res) => {
@@ -181,7 +182,7 @@
   // 编辑删除
   const selectFn = (e, row) => {
     if (e.type == 2) {
-      showModal("您确定要删除吗")
+      showModal(appI18n.global.t('ui.moduleDetailsDeleteThisItem'))
         .then(() => {
           crudModuleDelApi(data.tablename, row)
             .then((res) => {
@@ -272,7 +273,7 @@
       if (e.id == 1) {
         clickNavigateTo(`/pages/module/addForm?key=${data.keyName}&&id=${data.id}&&name=${data.title}`);
       } else if (e.id == 3) {
-        showModal("您确定要删除吗")
+        showModal(appI18n.global.t('ui.moduleDetailsDeleteThisItem'))
           .then(() => {
             crudModuleDelApi(data.keyName, data.id)
               .then((res) => {

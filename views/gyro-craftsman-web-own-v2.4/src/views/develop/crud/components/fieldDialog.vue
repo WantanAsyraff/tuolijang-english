@@ -47,7 +47,7 @@
                 </el-form-item>
                 <el-form-item :label='$ts("字段唯一：")' prop="is_uniqid" v-if="form.value == 'input'">
                     <el-switch v-model="form.is_uniqid" size="small" active-value="1" inactive-value="0"
-                        active-text="开启" inactive-text="关闭">
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
                     </el-switch>
                 </el-form-item>
                 <el-form-item :label='$ts("新增时：")' prop="create_modify">
@@ -71,6 +71,7 @@
     </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { pinyin } from 'pinyin-pro'
 import oaDialog from '@/components/form-common/dialog-form.vue'
 import checkboxDialog from '@/components/develop/checkboxDialog'
@@ -99,8 +100,8 @@ export default {
             visible: false,
             fromData: {
                 width: '600px',
-                title: '新建字段',
-                btnText: '确定',
+                title: i18n.t('ui.developCrudFieldSettingNewField'),
+                btnText: i18n.t('ui.formCommonDialogFormOk'),
                 labelWidth: '100px',
                 type: 'slot'
             },
@@ -139,7 +140,7 @@ export default {
                 field_name: [
                     {
                         required: true,
-                        message: '请输入显示名称',
+                        message: i18n.t('legacyScript.pleaseEnterDisplayName'),
                         trigger: 'blur'
                     },
                     {
@@ -156,7 +157,7 @@ export default {
                 field_name_en: [
                     {
                         required: true,
-                        message: '请输入字段名称',
+                        message: i18n.t('legacyScript.enterTheFieldName'),
                         trigger: 'blur'
                     },
                     {
@@ -173,14 +174,14 @@ export default {
                 value: [
                     {
                         required: true,
-                        message: '请选择文本类型',
+                        message: i18n.t('legacyScript.pleaseSelectTextType'),
                         trigger: 'change'
                     }
                 ],
                 data_dict_id: [
                     {
                         required: true,
-                        message: '请选择关联字典',
+                        message: i18n.t('ui.customerSetupCustomFormIndexSelectLinkedDictionary'),
                         trigger: 'change'
                     }
                 ]
@@ -209,7 +210,7 @@ export default {
                 }
             }
             if (data && data.id) {
-                this.fromData.title = '编辑字段'
+                this.fromData.title = i18n.t('ui.businessFormSettingFormCreateDesignerFcDesignerEditField')
             } else {
                 this.textTypes = this.typesObj[this.rowData.value]
                 this.fromData.title = '新建字段' + '-' + this.rowData.label

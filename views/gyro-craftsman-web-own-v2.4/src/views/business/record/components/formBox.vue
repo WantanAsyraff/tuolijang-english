@@ -2,7 +2,7 @@
 <div class="box">
   <oaFromBox
     v-if="search.length > 0"
-    :btnText="'导出'"
+:btn-text="$t('ui.fdExamineIndexExport')"
     :isAddBtn="true"
     :search="search"
     :title="$t('ui.businessRecordFormBoxApprovalRecords')"
@@ -15,6 +15,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import { approveConfigSearchApi } from '@/api/business'
 import 'animate.css'
@@ -48,7 +49,7 @@ export default {
       viewSearch: [
         {
           field: 'status',
-          title: '审批状态',
+          title: i18n.t('business.approvalStatus'),
           type: 'select',
           options: [
             { name: this.$t('toptable.all'), value: '' },
@@ -60,7 +61,7 @@ export default {
         },
         {
           field: 'frame_id',
-          title: '部门',
+          title: i18n.t('customer.department'),
           type: 'frame_id',
           options: []
         }

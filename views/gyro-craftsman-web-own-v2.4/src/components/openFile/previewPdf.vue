@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import * as PDFJS from 'pdfjs-dist'
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
 
@@ -90,7 +91,7 @@ export default {
         // 渲染所有页面
         await this.renderAllPages()
       } catch (error) {
-        console.error('PDF加载失败:', error)
+        console.error(i18n.t('legacyScript.failedToLoadPDF'), error)
         this.$emit('pdf-error', error)
 
         let errorMsg = 'PDF加载失败，请检查文件地址或网络'
@@ -128,7 +129,7 @@ export default {
           await this.renderPage(page, pageNum)
         }
       } catch (error) {
-        console.error('PDF渲染失败:', error)
+        console.error(i18n.t('legacyScript.failedToRenderPDF'), error)
         this.$emit('pdf-error', error)
       } finally {
         this.isRendering = false

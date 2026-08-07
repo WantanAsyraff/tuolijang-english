@@ -63,6 +63,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import ClipboardJS from 'clipboard'
 import { cloudFileSetupApi } from '@/api/config'
 import { configUpdateDataApi } from '@/api/setting'
@@ -87,10 +88,10 @@ export default {
         address: location.protocol + '//' + location.host
       },
       rules: {
-        wps_type: [{ required: true, message: '请输入wps_type', trigger: 'change' }],
-        wps_appid: [{ required: true, message: '请输入APPID', trigger: 'blur' }],
-        wps_appkey: [{ required: true, message: '请输入APPKEY', trigger: 'blur' }],
-        address: [{ required: true, message: '请输入网站地址', trigger: 'blur' }]
+        wps_type: [{ required: true, message: i18n.t('legacyScript.pleaseEnterWpsType'), trigger: 'change' }],
+        wps_appid: [{ required: true, message: i18n.t('legacyScript.pleaseEnterAPPID'), trigger: 'blur' }],
+        wps_appkey: [{ required: true, message: i18n.t('legacyScript.pleaseEnterAPPKEY'), trigger: 'blur' }],
+        address: [{ required: true, message: i18n.t('ui.settingEnterpriseSetupCloudfilePleaseEnterTheWebsiteUrl'), trigger: 'blur' }]
       },
       loading: false
     }

@@ -121,7 +121,8 @@
   </BaseContainer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { ref, onMounted, reactive, computed } from 'vue'
 import { WxWork, isWxWorkEnv } from '@/libs/wxwork'
 import { lookPreview } from '@/utils/helper'
@@ -145,15 +146,15 @@ const fileUrl = ref(null)
 const addReplyRef = ref(null)
 const swipeActions = ref([
   {
-    text: '选择',
+    text: appI18n.global.t('ui.customerQuickReplyIndexSelect'),
     value: 1,
   },
   {
-    text: '编辑',
+    text: appI18n.global.t('ui.customerQuickReplyIndexEdit'),
     value: 2,
   },
   {
-    text: '删除',
+    text: appI18n.global.t('ui.examineFormApprovalBillDelete'),
     value: 3,
   },
 ])
@@ -195,7 +196,7 @@ const loadCustomerData = () => {
   if (where.group_id === 'my') {
     replyTempMyListApi({ name: where.name, types: where.types }).then((res) => {
       uni.showLoading({
-        title: '加载中',
+        title: appI18n.global.t('ui.customerContractIndexLoading'),
       })
       contentList.value = res.data.list
       uni.hideLoading()
@@ -203,7 +204,7 @@ const loadCustomerData = () => {
   } else {
     getWorkReplyTempApi(where).then((res) => {
       uni.showLoading({
-        title: '加载中',
+        title: appI18n.global.t('ui.customerContractIndexLoading'),
       })
       contentList.value = res.data.list
       uni.hideLoading()
@@ -218,7 +219,7 @@ const preview = (item: any) => {
 // 打开客户聊天对话框
 const openReply = async (item) => {
   let messageType = 'text'
-  let messageContent = { text: { content: '默认回复内容' } }
+  let messageContent = { text: { content: appI18n.global.t('ui.customerQuickReplyIndexDefaultReplyContent') } }
   let wxWork = null
 
   try {
@@ -283,7 +284,7 @@ const openReply = async (item) => {
       })
     })
 
-    message.success('快捷回复成功')
+    message.success(appI18n.global.t('ui.customerQuickReplyIndexQuickRepliesSuccessful'))
   } catch (err) {
     const errorMsg = err.message || err.errMsg || '操作失败'
     console.error('快捷回复异常:', err)
@@ -318,32 +319,32 @@ const screenChange = (e) => {
 // 标签列表
 const tabList = ref([
   {
-    label: '全部',
+    label: appI18n.global.t('ui.attendanceDetailedUserCheckListAll'),
     value: '',
   },
   {
-    label: '文本',
+    label: appI18n.global.t('ui.customerQuickReplyIndexText'),
     value: 'text',
   },
   {
-    label: '文件',
+    label: appI18n.global.t('ui.customerQuickReplyIndexFile'),
     value: 'file',
   },
   {
-    label: '图片',
+    label: appI18n.global.t('ui.customerContractUploadFileImageImage'),
     value: 'image',
   },
   {
-    label: '视频',
+    label: appI18n.global.t('ui.customerQuickReplyIndexVideo'),
     value: 'video',
   },
 
   {
-    label: '链接',
+    label: appI18n.global.t('ui.customerQuickReplyIndexLink'),
     value: 'link',
   },
   {
-    label: '小程序',
+    label: appI18n.global.t('ui.customerQuickReplyIndexMiniProgram'),
     value: 'mini_program',
   },
 ])
@@ -380,7 +381,7 @@ const searchData = () => {
 const handleAddReply = async (formData: any) => {
   try {
     uni.showLoading({
-      title: '保存中...',
+      title: appI18n.global.t('ui.attendanceShiftAddSaving'),
     })
     if (formData.id) {
       // 编辑模式
@@ -390,11 +391,11 @@ const handleAddReply = async (formData: any) => {
       await replyTempSaveApi(formData)
     }
     uni.hideLoading()
-    message.success('保存成功')
+    message.success(appI18n.global.t('ui.navigationBarSiderbarSavedSuccessfully'))
     loadCustomerData()
   } catch (error) {
     uni.hideLoading()
-    message.error('保存失败')
+    message.error(appI18n.global.t('ui.customerQuickReplyIndexSaveFailed'))
   }
 }
 
@@ -410,21 +411,21 @@ const handleEdit = (item: any) => {
 // 删除快捷回复
 const handleDelete = (item: any) => {
   uni.showModal({
-    title: '提示',
-    content: '确定要删除该快捷回复吗？',
+    title: appI18n.global.t('ui.customerLeadDetailHint'),
+    content: appI18n.global.t('ui.customerQuickReplyIndexDeleteThisQuickReply'),
     success: async (res) => {
       if (res.confirm) {
         try {
           uni.showLoading({
-            title: '删除中...',
+            title: appI18n.global.t('ui.customerQuickReplyIndexDeleting'),
           })
           await replyTempDeleteApi(item.id)
           uni.hideLoading()
-          message.success('删除成功')
+          message.success(appI18n.global.t('ui.customerQuickReplyIndexSuccessfullyDeleted'))
           loadCustomerData()
         } catch (error) {
           uni.hideLoading()
-          message.error('删除失败')
+          message.error(appI18n.global.t('ui.customerQuickReplyIndexDeleteFail'))
         }
       }
     },

@@ -12,7 +12,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 const props = defineProps<{
   census: BillStatisticCensus;
 }>();
@@ -30,22 +31,22 @@ const formatToTwoDecimal = (value: number | string) => {
 const config = [
   {
     icon: "icon-yeji-zongshouru",
-    label: "流入(元)",
+    label: appI18n.global.t('ui.financeBillIndexBillStatisticTotalInflowCny'),
     key: "income"
   },
   {
     icon: "icon-yeji-xinzengkehu",
-    label: "流出(元)",
+    label: appI18n.global.t('ui.financeBillIndexBillStatisticTotalOutflowCny'),
     key: "expend"
   },
   {
     icon: "icon-yeji-zongshouru",
-    label: "净额(元)",
+    label: appI18n.global.t('ui.financeBillIndexBillStatisticTotalNetAmountCny'),
     key: "profit"
   },
   {
     icon: "icon-yeji-xinzenghetong",
-    label: "流水数量(笔)",
+    label: appI18n.global.t('ui.financeBillIndexBillStatisticTotalTransactionCount'),
     key: "count"
   }
 ];

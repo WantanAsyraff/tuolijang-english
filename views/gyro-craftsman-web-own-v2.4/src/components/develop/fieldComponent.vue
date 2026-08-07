@@ -59,7 +59,7 @@
     <div v-if="item.type == 'date_picker' && !dateList.includes(item.value)">
         <div v-if="item.value == 'between' || !noRule" class="flex">
             <el-date-picker v-model="item.option" type="daterange" :picker-options="pickerOptions"
-                range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" style="width: 100%" size="small"
+:range-separator="$t('ui.commonFormListTo')" :start-placeholder="$t('ui.customerSigningIndexStartDate')" :end-placeholder="$t('ui.customerSigningIndexEndDate')" style="width: 100%" size="small"
                 format=" yyyy/MM/dd" value-format="yyyy/MM/dd">
             </el-date-picker>
         </div>
@@ -73,8 +73,8 @@
     <!-- 日期时间选择 -->
     <div v-if="item.type == 'date_time_picker' && !lastYearList.includes(item.value)">
         <div v-if="item.value == 'between'" class="flex">
-            <el-date-picker v-model="item.option" type="datetimerange" range-separator="至" start-placeholder="开始日期"
-                end-placeholder="结束日期" style="width: 100%" size="small" format=" yyyy/MM/dd HH:mm:ss"
+            <el-date-picker v-model="item.option" type="datetimerange" :range-separator="$t('ui.commonFormListTo')" :start-placeholder="$t('ui.customerSigningIndexStartDate')"
+:end-placeholder="$t('ui.customerSigningIndexEndDate')" style="width: 100%" size="small" format=" yyyy/MM/dd HH:mm:ss"
                 value-format="yyyy/MM/dd HH:mm:ss" :picker-options="pickerOptions">
             </el-date-picker>
         </div>

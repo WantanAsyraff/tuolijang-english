@@ -21,18 +21,19 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive } from "vue";
 
 const data = reactive({
   frameText: "选择部门",
   index: 0,
   listData: [
-    { text: "本人及下属", id: 1 },
-    { text: "仅本人", id: 2 },
-    { text: "仅本部门", id: 3 },
-    { text: "选择部门", id: 4 },
-    { text: "选择成员", id: 5 },
+    { text: appI18n.global.t('ui.departmentPopupIndexMeAndSubordinates'), id: 1 },
+    { text: appI18n.global.t('ui.departmentPopupIndexMeOnly'), id: 2 },
+    { text: appI18n.global.t('ui.usersReportSelectFrameCurrentDepartmentOnly'), id: 3 },
+    { text: appI18n.global.t('ui.departmentPopupIndexSelectDepartment'), id: 4 },
+    { text: appI18n.global.t('ui.oaMemberIndexSelectMembers'), id: 5 },
 
   ]
 });

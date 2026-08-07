@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '穿梭框';
@@ -35,19 +36,19 @@ export default {
       {
         type: 'Struct',
         field: 'data',
-        title: 'Transfer 的数据源',
+        title: i18n.t('legacyScript.dataSourceForTransfer'),
         props: { defaultValue: [] },
       },
-      { type: 'switch', field: 'filterable', title: '是否可搜索' },
+      { type: 'switch', field: 'filterable', title: i18n.t('legacyScript.searchable') },
       {
         type: 'input',
         field: 'filterPlaceholder',
-        title: '搜索框占位符',
+        title: i18n.t('legacyScript.searchBoxPlaceholder'),
       },
       {
         type: 'select',
         field: 'targetOrder',
-        title: '右侧列表元素的排序策略',
+        title: i18n.t('legacyScript.sortingStrategyForRightListItems'),
         info: '若为 original，则保持与数据源相同的顺序；若为 push，则新加入的元素排在最后；若为 unshift，则新加入的元素排在最前',
         options: [
           { label: 'original', value: 'original' },
@@ -61,37 +62,37 @@ export default {
       {
         type: 'Struct',
         field: 'titles',
-        title: '自定义列表标题',
+        title: i18n.t('legacyScript.customListTitle'),
         props: { defaultValue: [] },
       },
       {
         type: 'Struct',
         field: 'buttonTexts',
-        title: '自定义按钮文案',
+        title: i18n.t('legacyScript.customButtonLabel'),
         props: { defaultValue: [] },
       },
       {
         type: 'Struct',
         field: 'format',
-        title: '列表顶部勾选状态文案',
+        title: i18n.t('legacyScript.selectionStatusAtTopOfList'),
         props: { defaultValue: {} },
       },
       {
         type: 'Struct',
         field: 'props',
-        title: '数据源的字段别名',
+        title: i18n.t('legacyScript.fieldAliasForDataSource'),
         props: { defaultValue: {} },
       },
       {
         type: 'Struct',
         field: 'leftDefaultChecked',
-        title: '初始状态下左侧列表的已勾选项的 key 数组',
+        title: i18n.t('legacyScript.arrayOfSelectedKeysInLeftListInitialState'),
         props: { defaultValue: [] },
       },
       {
         type: 'Struct',
         field: 'rightDefaultChecked',
-        title: '初始状态下右侧列表的已勾选项的 key 数组',
+        title: i18n.t('legacyScript.arrayOfSelectedKeysInRightListInitialState'),
         props: { defaultValue: [] },
       },
     ];

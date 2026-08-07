@@ -90,6 +90,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   name: 'Table',
   props: {
@@ -126,7 +127,7 @@ export default {
         2: { text: this.$t('toptable.ontrial'), color: 'yellow' },
         3: { text: this.$t('toptable.internship'), color: 'green' },
         4: { text: this.$t('toptable.dimission'), color: 'yellow' },
-        0: { text: '未入职', color: 'gray' }
+        0: { text: i18n.t('ui.hrArchivesTableNotOnboarded'), color: 'gray' }
       },
 
       multipleSelectList: [],
@@ -209,9 +210,9 @@ export default {
     },
     getStatusInfo(row) {
       const statusMap = {
-        emptyUid: { text: '未激活', iconClass: 'bg-danger', class: 'table-txt' },
-        status0: { text: '未激活', iconClass: 'bg-danger', class: 'table-txt' },
-        status2: { text: '停用', iconClass: 'bg-danger', class: 'table-txt' },
+        emptyUid: { text: i18n.t('legacyScript.inactive'), iconClass: 'bg-danger', class: 'table-txt' },
+        status0: { text: i18n.t('legacyScript.inactive'), iconClass: 'bg-danger', class: 'table-txt' },
+        status2: { text: i18n.t('hr.blockup'), iconClass: 'bg-danger', class: 'table-txt' },
         status1: { text: this.$t('setting.info.normal'), iconClass: 'bg-default', class: 'table-txt' }
       }
 

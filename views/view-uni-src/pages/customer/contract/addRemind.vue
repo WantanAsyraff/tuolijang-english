@@ -120,7 +120,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index";
 import {
   ref,
@@ -149,30 +150,30 @@ const styles = reactive({
 const data = reactive({
   defaultTitle: "添加付款提醒",
   rangeType: [{
-    label: "回款提醒",
+    label: appI18n.global.t('ui.customerContractPayRemindPaymentReminder'),
     value: 0
   },
   {
-    label: "续费提醒",
+    label: appI18n.global.t('ui.customerContractPayRemindRenewalReminder'),
     value: 1
   },
   ],
   renewal: [],
   rateIndex: 2,
   rangeRate: [{
-    label: "按天",
+    label: appI18n.global.t('ui.customerContractAddRemindByDay'),
     value: 0
   },
   {
-    label: "按周",
+    label: appI18n.global.t('ui.customerContractAddRemindByWeek'),
     value: 1
   },
   {
-    label: "按月",
+    label: appI18n.global.t('ui.customerContractAddRemindByMonth'),
     value: 2
   },
   {
-    label: "按年",
+    label: appI18n.global.t('ui.customerContractAddRemindByYear'),
     value: 3
   },
   ],
@@ -259,24 +260,24 @@ const blurNum = () => {
 // 提交表单
 const handleConfirm = debounce(() => {
   if (!data.cid) {
-    message.error("缺少必要参数不能添加");
+    message.error(appI18n.global.t('ui.customerContractAddRemindRequiredInformationIsMissing'));
     return false;
   }
 
   if (formData.types == 1) {
 
     if (!formData.num) {
-      message.error("续费金额不能为空");
+      message.error(appI18n.global.t('ui.customerContractAddPaymentRenewalAmountIsRequired'));
       return false;
     }
     if (!formData.time) {
-      message.error("续费日期不能为空");
+      message.error(appI18n.global.t('ui.customerContractAddRemindRenewalDateIsRequired'));
       return false;
     }
   }
 
   if (!formData.mark) {
-    message.error("提醒内容不能为空");
+    message.error(appI18n.global.t('ui.customerContractAddRemindReminderContentIsRequired'));
     return false;
   }
 

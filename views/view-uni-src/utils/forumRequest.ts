@@ -1,3 +1,4 @@
+import appI18n from '@/locale';
 import { TOKENNAME } from "@/config/app";
 import { toLogin } from "../libs/login";
 import type { Res } from "../utils/typeHelper";
@@ -27,7 +28,7 @@ function baseRequest(url: string, method: UniNamespace.RequestOptions["method"],
   });
   return new Promise((reslove, reject) => {
     if (networkType === "none") {
-      message.error("似乎已断开网络连接");
+      message.error(appI18n.global.t('ui.utilsForumRequestTsTheNetworkConnectionAppearsToBeUnavailable'));
       return false;
     }
     uni.request({
@@ -45,14 +46,14 @@ function baseRequest(url: string, method: UniNamespace.RequestOptions["method"],
           reslove(res.data);
         else if ([410000, 410001, 410002, 410003].indexOf(res.data.status) !== -1) {
           toLogin({ forceLogout: true });
-          res.data.message = "登录已过期，请重新登录";
+          res.data.message = appI18n.global.t('ui.utilsForumRequestTsYourSessionHasExpiredSignInAgain');
           reject(res.data);
         } else {
           reject(res.data);
         }
       },
       fail: () => {
-        reject({ message: "请求失败" });
+        reject({ message: appI18n.global.t('ui.utilsForumRequestTsRequestFailed') });
       }
     });
 

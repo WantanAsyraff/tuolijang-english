@@ -133,7 +133,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import defaultNavBar from "@/components/defaultNavBar/index.vue";
   import globalIndex from "@/components/globalIndex/index.vue";
   import dropDown from "@/pages/forum/components/dropDown.vue";
@@ -172,7 +173,7 @@
   }
 
   const data = reactive({
-    placeholder: "您可以发布评论哟～",
+    placeholder: appI18n.global.t('ui.usersScheduleDetailYouCanPostAComment'),
     replayShow: false,
     content: "",
     reply_id: "",
@@ -191,10 +192,10 @@
 
   // 底部按钮 {
   const bottomBtn = reactive([
-    { id: 1, text: "接受", color: "#19BE6B" },
-    { id: 0, text: "待定", color: "#FF9900" },
-    { id: 2, text: "拒绝", color: "#ED4014" },
-    { id: 3, text: "完成", color: "#308BF8" }
+    { id: 1, text: appI18n.global.t('ui.usersScheduleDetailAccept'), color: "#19BE6B" },
+    { id: 0, text: appI18n.global.t('ui.usersScheduleDetailTentative'), color: "#FF9900" },
+    { id: 2, text: appI18n.global.t('ui.financePaymentDetailsRefuse'), color: "#ED4014" },
+    { id: 3, text: appI18n.global.t('ui.examineFormTimeFromPickerCompleted'), color: "#308BF8" }
   ]);
 
   onLoad((options : NewGet) => {
@@ -297,7 +298,7 @@
 
   // 删除评论
   const commentDel = (obj : any) : void => {
-    showModal("您确定要删除此评论吗").then(() => {
+    showModal(appI18n.global.t('ui.usersScheduleDetailDeleteThisComment')).then(() => {
       replyDelApi(obj.id).then((res : any) => {
         message.success(res.message);
         getReplyList();
@@ -330,7 +331,7 @@
   };
   // 删除
   const clickDelete = () : void => {
-    showModal("确定要删除当前日程吗").then(() => {
+    showModal(appI18n.global.t('ui.usersScheduleDetailDeleteTheCurrentSchedule')).then(() => {
       const datas = {
         type: data.selectStatus,
         end: data.end,

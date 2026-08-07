@@ -251,6 +251,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { clientInvoiceEditApi, clientInvoiceSaveApi, clientInvoiceDetailApi } from '@/api/client'
 import helper from '@/libs/helper'
 import { getStorageJson } from '@/utils/storage'
@@ -336,15 +337,15 @@ export default {
         bill_date: [{ required: true, message: this.$t('customer.placeholder65'), trigger: 'blur' }],
         title: [{ required: true, message: this.$t('customer.placeholder46'), trigger: 'blur' }],
         ident: [{ required: true, validator: checkIdent, trigger: 'blur' }],
-        category_id: [{ required: true, message: '请选择发票类目', trigger: 'change' }],
-        collect_name: [{ required: true, message: '电话号码不能为空', trigger: 'blur' }],
-        collect_tel: [{ required: true, message: '电话号码不能为空', trigger: 'blur' }],
+        category_id: [{ required: true, message: i18n.t('legacyScript.selectAnInvoiceCategory'), trigger: 'change' }],
+        collect_name: [{ required: true, message: i18n.t('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
+        collect_tel: [{ required: true, message: i18n.t('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
         collect_email: [{ required: true, validator: checkEmail, trigger: 'blur' }],
-        mail_address: [{ required: true, message: '请填写邮寄地址', trigger: 'blur' }],
-        address: [{ required: true, message: '请填写开票地址', trigger: 'blur' }],
+        mail_address: [{ required: true, message: i18n.t('legacyScript.enterTheMailingAddress'), trigger: 'blur' }],
+        address: [{ required: true, message: i18n.t('legacyScript.enterTheBillingAddress'), trigger: 'blur' }],
         bank: [{ required: true, message: this.$t('customer.placeholder48'), trigger: 'blur' }],
         account: [{ required: true, message: this.$t('customer.placeholder49'), trigger: 'blur' }],
-        tel: [{ required: true, message: '电话号码不能为空', trigger: 'blur' }]
+        tel: [{ required: true, message: i18n.t('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }]
       }
     }
   },

@@ -180,7 +180,8 @@
   </uni-popup>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import defaultNavBar from "@/components/defaultNavBar/index.vue";
   import { uploadImage } from "@/utils/file";
   import { fileSizeOne } from "@/utils/helper";
@@ -287,24 +288,24 @@
   const handleConfirm = () : boolean => {
     if (configData.value.type === 1) {
       if (formData.status === 2 && !formData.remark) {
-        message.error("请填写拒绝原因");
+        message.error(appI18n.global.t('ui.financeInvoiceInvoiceExaminePleaseEnterRefuseReason'));
         return false;
       }
 
       if (formData.status === 1 && formData.invoice_type === "express" && !formData.collect_name) {
-        message.error("请填写联系人");
+        message.error(appI18n.global.t('ui.financeInvoiceInvoiceExaminePleaseEnterContacts'));
         return false;
       }
       if (formData.status === 1 && formData.invoice_type === "express" && !formData.collect_tel) {
-        message.error("请填写联系电话");
+        message.error(appI18n.global.t('ui.financeInvoiceInvoiceExaminePleaseEnterTheContactNumber'));
         return false;
       }
       if (formData.status === 1 && formData.invoice_type === "express" && !formData.invoice_address) {
-        message.error("请填写邮寄地址");
+        message.error(appI18n.global.t('ui.financeInvoiceInvoiceExaminePleaseEnterMailingAddress'));
         return false;
       }
       if (formData.status === 1 && formData.invoice_type === "mail" && !formData.invoice_mail) {
-        message.error("请填写邮箱地址");
+        message.error(appI18n.global.t('ui.financeInvoiceInvoiceExaminePleaseFillInTheEmailAddress'));
         return false;
       }
       if (data.imgs.thumb_dir) {
@@ -314,7 +315,7 @@
       getBilllStatus(configData.value.row.id, formData);
     } else if (configData.value.type === 2) {
       if (!formData.remark) {
-        message.error("请填写作废原因");
+        message.error(appI18n.global.t('ui.financeInvoiceInvoiceExaminePleaseEnterInvalidateReason'));
         return false;
       }
       getBilllInvalid(configData.value.row.id, {
@@ -323,7 +324,7 @@
       });
     } else if (configData.value.type === 3) {
       if (formData.invalid === 3 && !formData.remark) {
-        message.error("请填写拒绝原因");
+        message.error(appI18n.global.t('ui.financeInvoiceInvoiceExaminePleaseEnterRefuseReason'));
         return false;
       }
       getBilllInvalid(configData.value.row.id, {

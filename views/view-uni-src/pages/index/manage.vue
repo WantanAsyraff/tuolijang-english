@@ -2,7 +2,7 @@
   <view>
     <view class="cr-position-header">
       <view class="status_bar"></view>
-      <uni-nav-bar left-text="取消" @clickLeft="cancel">
+      <uni-nav-bar :left-text="$t('ui.baTreePickerIndexCancel')" @clickLeft="cancel">
         <view class="uni-nav-bar-text">{{ $t('ui.indexManageManageApps') }}</view>
         <template v-slot:right>
           <button class="save" :loading="config.loading" @click="handleSave">{{ $t('ui.attendanceShiftAddSave') }}</button>
@@ -69,7 +69,8 @@
     <global-index />
   </view>
 </template>
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import globalIndex from "@/components/globalIndex/index.vue";
   import message from "@/utils/message";
   import { delayedReLaunch } from "@/utils/helper";
@@ -165,7 +166,7 @@
   // 保存
   const handleSave = () : boolean => {
     if (config.menus.length < 1) {
-      message.error("至少添加一个应用");
+      message.error(appI18n.global.t('ui.indexManageAddAtLeastOneApplication'));
       return false;
     }
     const data : any[] = [];

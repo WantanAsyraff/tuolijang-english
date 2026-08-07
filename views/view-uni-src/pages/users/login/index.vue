@@ -65,7 +65,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import forgotPassword from "@/components/forgotPassword/index.vue";
   import copyright from "@/components/copyright/index.vue";
   import {
@@ -217,23 +218,23 @@
   // 登录提交
   const handlePreserve = () => {
     if (!formData.phone) {
-      message.error("电话号码不能为空");
+      message.error(appI18n.global.t('ui.forumLoginPopPhoneNumberCannotBeEmpty'));
       return false;
     }
     if (index.value === 0 && formData.phone && !phoneReg.test(formData.phone)) {
-      message.error("电话号码不合法");
+      message.error(appI18n.global.t('ui.forgotPasswordIndexInvalidPhoneNumber'));
       return false;
     }
     if (index.value === 0 && !formData.password) {
-      message.error("密码不能为空");
+      message.error(appI18n.global.t('ui.usersCenterPasswordPasswordIsRequired'));
       return false;
     }
     if (index.value === 1 && !formData.verificationCode) {
-      message.error("验证码不能为空");
+      message.error(appI18n.global.t('ui.forumLoginPopCodeIsRequired'));
       return false;
     }
     if (formData.agreeArr.length <= 0) {
-      message.error("请阅读用户协议");
+      message.error(appI18n.global.t('ui.usersLoginIndexReadTheUserAgreement'));
       return false;
     }
     if (index.value === 0) {
@@ -271,7 +272,7 @@
         if (res.status === 200) {
           const data = res.data;
           store.commit("login", data);
-          message.success("登录成功");
+          message.success(appI18n.global.t('ui.forumLoginPopLoginSuccessful'));
           loginSuccess();
         }
       })
@@ -289,7 +290,7 @@
         if (res.status === 200) {
           const data = res.data;
           store.commit("login", data);
-          message.success("登录成功");
+          message.success(appI18n.global.t('ui.forumLoginPopLoginSuccessful'));
           loginSuccess();
         }
       })

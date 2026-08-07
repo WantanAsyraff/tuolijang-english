@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { userAssessEvalApi } from '@/api/user'
 export default {
   name: 'MarkDialog',
@@ -91,7 +92,7 @@ export default {
     },
     handleConfirm() {
       if (this.config.data.finish_ratio === undefined) {
-        this.$message.error('自评分不能为空')
+        this.$message.error(i18n.t('legacyScript.selfScoringSelfEvaluationIsRequired'))
       } else {
         const data = {
           assess_id: this.config.assessId,

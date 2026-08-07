@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { menuNotSaveApi } from '@/api/system'
 
 export default {
@@ -72,7 +73,7 @@ export default {
         this.mobileList = res.data.uni || []
         this.list = this.webList
       }).catch(error => {
-        console.error('获取权限列表失败:', error)
+        console.error(i18n.t('legacyScript.failedToRetrieveThePermissionList'), error)
       })
     },
     // 切换tab

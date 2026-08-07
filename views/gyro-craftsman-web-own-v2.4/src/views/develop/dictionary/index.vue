@@ -94,6 +94,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import oaFromBox from '@/components/common/oaFromBox'
 import { getcrudCateListApi, getDatabaseApi } from '@/api/develop'
@@ -115,11 +116,11 @@ export default {
           form_value: 'select',
           data_dict: [
             {
-              label: '启用',
+              label: i18n.t('public.enable'),
               value: '1'
             },
             {
-              label: '停用',
+              label: i18n.t('hr.blockup'),
               value: '0'
             }
           ]
@@ -134,7 +135,7 @@ export default {
       ],
       dropdownList: [
         {
-          label: '批量删除',
+          label: i18n.t('ui.customerSetupDictionaryManagementBatchDelete'),
           value: 1
         }
       ],
@@ -151,11 +152,11 @@ export default {
       application: [], // 应用数据
       options: [
         {
-          label: '启用',
+          label: i18n.t('public.enable'),
           value: 1
         },
         {
-          label: '停用',
+          label: i18n.t('hr.blockup'),
           value: 0
         }
       ]
@@ -194,7 +195,7 @@ export default {
       this.viewSearch = [
         {
           field: 'cate_id',
-          title: '关联应用',
+          title: i18n.t('ui.developApproveIndexLinkedApplication'),
           type: 'select',
           options: this.application
         }
@@ -204,7 +205,7 @@ export default {
     // 批量删除
     async batchDelete() {
       if (this.ids.length === 0) {
-        return this.$message.error('请先选择要删除的数据')
+        return this.$message.error(i18n.t('legacyScript.selectDataToDeleteFirst'))
       }
       let id = this.ids.join(',')
       await this.$modalSure('你确定要批量删除这条内容吗')

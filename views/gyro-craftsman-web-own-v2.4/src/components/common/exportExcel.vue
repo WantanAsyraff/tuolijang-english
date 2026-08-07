@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import XLSX from 'xlsx'
 
 export default {
@@ -53,7 +54,7 @@ export default {
      */
     exportExcel() {
       if (this.exportData.data.length <= 0) {
-        this.$message.error('内容为空')
+        this.$message.error(i18n.t('legacyScript.contentIsEmpty'))
         return
       }
       

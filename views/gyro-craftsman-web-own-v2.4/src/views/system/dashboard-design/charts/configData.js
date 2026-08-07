@@ -1,3 +1,4 @@
+import appI18n from '@/lang';
 export const COMMON_PROPERTIES$1 = {
   name: 'name-editor',
   keyNameEnabled: 'keyNameEnabled-editor',
@@ -201,7 +202,7 @@ export const zhLocale_extension = {
       cardShadow: '\u663E\u793A\u9634\u5F71',
       alertTitle: '\u6807\u9898',
       alertType: '\u7C7B\u578B',
-      description: '\u8F85\u52A9\u6027\u6587\u5B57',
+      description: appI18n.t('ui.systemDashboardDesignChartsConfigDataJsSupportingText'),
       closable: '\u662F\u5426\u53EF\u5173\u95ED',
       closeText: '\u5173\u95ED\u6309\u94AE\u6587\u5B57',
       center: '\u6587\u5B57\u5C45\u4E2D',

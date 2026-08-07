@@ -136,6 +136,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getbillCate, billCateApi } from '@/api/enterprise'
 import { clientBillStatusApi } from '@/api/client'
 import { getInvoiceText } from '@/libs/customer'
@@ -172,11 +173,11 @@ export default {
         remarks: ''
       },
       rules: {
-        remarks: [{ required: true, message: '请填写拒绝原因', trigger: 'blur' }]
+        remarks: [{ required: true, message: i18n.t('legacyScript.pleaseEnterRefuseReason'), trigger: 'blur' }]
       },
 
       reason: '拒绝原因',
-      title: '审核未通过'
+      title: i18n.t('ui.settingAuthAuthIndexReviewRejected')
     }
   },
 

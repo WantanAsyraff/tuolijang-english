@@ -167,6 +167,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   folderSpaceEntAllMoveApi,
   folderSpaceEntDeleteApi,
@@ -455,7 +456,7 @@ export default {
         return;
       }
       if (moveIds.length === 1 && String(dragItem.pid || "") === String(item.id)) {
-        this.$message.warning("该文件已在当前文件夹中");
+        this.$message.warning(i18n.t('legacyScript.thisFileAlreadyExistsInTheCurrentFolder'));
         this.resetDragState();
         return;
       }

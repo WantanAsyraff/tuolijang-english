@@ -8,13 +8,14 @@
     </view>
     <view class="opportunity-list-wrap">
       <OpportunityList :list-data="pageData.list" :total="pageData.total" :loading="pageData.loading"
-        :loaded="pageData.loaded" empty-title="当前暂无商机～"></OpportunityList>
+        :loaded="pageData.loaded" :empty-title="$t('ui.customerListOppCurrentNoOpportunity')"></OpportunityList>
     </view>
     <TabBar :currentIndex="2" navigateType="redirectTo" />
   </BaseContainer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import BaseContainer from "@/components/BaseContainer/index.vue";
   import TabBar from "@/components/tabbar/index.vue";
     import formBox from "@/pages/customer/list/components/formBox.vue";
@@ -71,7 +72,7 @@
     try {
       const page = query.value.page;
  uni.showLoading({
-	title: '加载中'
+	title: appI18n.global.t('ui.customerContractIndexLoading')
 });
       const res = await opportunityListApi(
         query.value

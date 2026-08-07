@@ -9,7 +9,7 @@
         <!-- 表单内容 -->
         <div class="flex">
           <div style="width: 55%" class="p20">
-            <el-form ref="formRef" :model="formData" :rules="rules" label-width="auto">
+            <el-form ref="formRef" :model="formData" :rules="rules" :label-width="formLabelWidth">
               <div class="title">{{ $t("ui.customerWeChatMassAddGroupPostingBasicInformation") }}</div>
               <el-form-item>
                 <div slot="label">
@@ -200,6 +200,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { workMassTempApi, workMassSave, getWorkMassEdit, getWorkMassCustomerCount, putWorkMassEdit } from '@/api/weCom'
 import { salesmanCustomApi } from '@/api/client'
 import { formatBytes } from '@/libs/public'
@@ -256,10 +257,10 @@ export default {
       userInfo: getStorageJson('userInfo', {}),
       labelData: {},
       rules: {
-        is_all: [{ required: true, message: '请选择群发范围', trigger: 'change' }],
+        is_all: [{ required: true, message: i18n.t('legacyScript.pleaseSelectTheBroadcastScope'), trigger: 'change' }],
 
-        is_modify: [{ required: true, message: '请选择是否允许调整', trigger: 'change' }],
-        is_timed: [{ required: true, message: '请选择群发时间类型', trigger: 'change' }]
+        is_modify: [{ required: true, message: i18n.t('legacyScript.pleaseSelectWhetherToAllowAdjustments'), trigger: 'change' }],
+        is_timed: [{ required: true, message: i18n.t('legacyScript.pleaseSelectMassSendTimeType'), trigger: 'change' }]
       }
     }
   },
@@ -273,11 +274,16 @@ export default {
       this.getInfo()
     }
   },
+  computed: {
+    formLabelWidth() {
+      return this.$i18n.locale === 'en' ? '230px' : '132px'
+    }
+  },
   methods: {
     getCount() {
       this.countShow = true
       if (this.formData.send_uid.length == 0) {
-        this.$message.error('请先选择员工')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectAnEmployeeFirst'))
         return false
       }
       let data = {
@@ -309,7 +315,7 @@ export default {
     // 打开客户标签
     handleLabel(val) {
       this.labelData = {
-        title: '客户标签',
+        title: i18n.t('customer.customerlabel'),
         width: '540px',
         label: this.labelList,
         edit: 1
@@ -333,13 +339,13 @@ export default {
     // 打开群聊选择弹窗
     groupChatFn() {
       if (this.formData.send_uid.length == 0) {
-        return this.$message.error('请先选择群主')
+        return this.$message.error(i18n.t('legacyScript.pleaseSelectTheGroupOwnerFirst'))
       }
       if (this.$refs.groupChatRef) {
         // 检查组件实例是否存在
         this.$refs.groupChatRef.openBox(this.formData.send_uid)
       } else {
-        this.$message.error('群聊选择组件加载失败')
+        this.$message.error(i18n.t('legacyScript.failedToLoadGroupChatSelectionComponent'))
       }
     },
 
@@ -360,7 +366,7 @@ export default {
       if (this.$refs.libraryRef) {
         this.$refs.libraryRef.openBox()
       } else {
-        this.$message.error('素材库组件加载失败')
+        this.$message.error(i18n.t('legacyScript.failedToLoadAssetLibraryComponent'))
       }
     },
 
@@ -432,12 +438,12 @@ export default {
             return !item.value || item.value.toString().trim() === ''
           })
           if (hasEmptyValue) {
-            this.$message.error('请选择筛选条件')
+            this.$message.error(i18n.t('legacyScript.pleaseSelectFilterConditions'))
             return false
           }
           this.formData.search = data
         } else {
-          this.$message.error('请选择筛选条件')
+          this.$message.error(i18n.t('legacyScript.pleaseSelectFilterConditions'))
           return false
         }
       }
@@ -447,7 +453,7 @@ export default {
     submitFn() {
       this.$refs.formRef.validate((valid) => {
         if (valid) {
-          if (this.formData.send_uid.length == 0) return this.$message.error('请选择员工')
+          if (this.formData.send_uid.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectEmployee'))
           // 筛选客户校验
           this.filterData()
 
@@ -458,7 +464,7 @@ export default {
           }
 
           if (this.formData.types == '2' && this.formData.is_all == 0 && this.formData.send_group.length == 0) {
-            return this.$message.error('请选择筛选条件')
+            return this.$message.error(i18n.t('legacyScript.pleaseSelectFilterConditions'))
           }
 
           if (this.formData.types == 1 && this.groupList.length > 0) {
@@ -467,10 +473,10 @@ export default {
             })
           }
           if (!this.formData.temp.content) {
-            return this.$message.error('请填写发送内容')
+            return this.$message.error(i18n.t('legacyScript.pleaseEnterTheMessageContent'))
           }
           if (this.formData.is_timed == 1 && !this.formData.send_time) {
-            return this.$message.error('请选择定时发送时间')
+            return this.$message.error(i18n.t('legacyScript.selectScheduledSendTime'))
           }
 
           if (this.$refs.materialContentRef) {

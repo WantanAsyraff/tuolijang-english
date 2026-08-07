@@ -10,7 +10,7 @@
         :viewSearch="viewSearch"
         :category="keyword"
         :timeSearchObj="timeSearchObj"
-        btnText="添加产品"
+:btn-text="$t('ui.customerProductIndexAddProduct')"
         ref="fromBox"
         @addDataFn="addDataFn"
         @dropdownFn="dropdownFn"
@@ -42,6 +42,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import { productListApi, productDelApi } from '@/api/client'
 import { DRAWER_SIZE } from '@/constants/popupSize'
@@ -63,9 +64,9 @@ export default {
         types: 'product'
       },
       dropdownList: [
-        { label: '筛选条件设置', value: 1 },
-        { label: '表头显示设置', value: 2 },
-        { label: '字典选项设置', value: 3 },
+        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 1 },
+        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 2 },
+        { label: i18n.t('ui.customerDictOptionSettingDictionaryOptionSettings'), value: 3 },
       ],
       timeSearchObj: {},
       keyword: 'product',
@@ -75,7 +76,7 @@ export default {
       search: [],
       treeData: [
         {
-          label: '全部',
+          label: i18n.t('finance.all'),
           id: ''
         }
       ],
@@ -135,7 +136,7 @@ export default {
     // 查看
     async openDetails(item) {
       this.detailsFromData = {
-        title: '产品查看',
+        title: i18n.t('legacyScript.viewProduct'),
         width: DRAWER_SIZE.LG,
         data: item,
         types: this.types

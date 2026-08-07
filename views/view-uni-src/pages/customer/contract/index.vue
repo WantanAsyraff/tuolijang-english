@@ -18,7 +18,8 @@
   </BaseContainer>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import BaseContainer from "@/components/BaseContainer/index.vue";
   import defaultNavBar from "@/components/defaultNavBar/index.vue";
   import contractList from "./components/contractList.vue";
@@ -36,7 +37,7 @@ import BaseContainer from "@/components/BaseContainer/index.vue";
     tabId: 1,
     keyWord:'contract',
     followIndex: 0,
-    emptyTitle: "当前暂无订单～",
+    emptyTitle: appI18n.global.t('ui.customerContractIndexCurrentNoOrder'),
     customStyle: { border: "none", lineHeight: "20px", background: "#ED4014" },
     examineTabData: contractTabData,
     listData: [],
@@ -142,7 +143,7 @@ import BaseContainer from "@/components/BaseContainer/index.vue";
   // 列表加载
   const getConfigList = (tab = false) => {
     uni.showLoading({
-      title: '加载中',
+      title: appI18n.global.t('ui.customerContractIndexLoading'),
     })
     clientContractListApi(data.where)
       .then((res) => {

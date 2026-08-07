@@ -31,8 +31,8 @@
         v-model="ruleForm.show_log"
         active-value="1"
         inactive-value="0"
-        inactive-text="关闭"
-        active-text="开启"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
         size="small"
       ></el-switch>
     </el-form-item>
@@ -43,8 +43,8 @@
           v-model="ruleForm.show_comment"
           active-value="1"
           inactive-value="0"
-          inactive-text="关闭"
-          active-text="开启"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
         ></el-switch>
         <el-input
           v-if="ruleForm.show_comment == 1"

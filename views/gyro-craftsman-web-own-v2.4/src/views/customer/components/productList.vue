@@ -88,6 +88,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Sortable from 'sortablejs'
 export default {
   name: 'ProductList',
@@ -170,7 +171,7 @@ export default {
     },
     handleAdd(index) {
       if (this.tableData[index].unique == '') {
-        return this.$message.error('请选择和填写产品信息')
+        return this.$message.error(i18n.t('legacyScript.pleaseSelectAndFillInProductInformation'))
       }
 
       this.tableData.splice(index + 1, 0, {

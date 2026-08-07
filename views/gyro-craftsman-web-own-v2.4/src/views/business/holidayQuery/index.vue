@@ -70,6 +70,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   name: '',
   components: {
@@ -79,42 +80,42 @@ export default {
     return {
       treeData: [
         {
-          label: '年假',
+          label: i18n.t('legacyScript.annualLeave'),
           value: '',
           num: 0
         },
         {
-          label: '事假',
+          label: i18n.t('legacyScript.personalLeave'),
           value: 0,
           num: 0
         },
         {
-          label: '病假',
+          label: i18n.t('legacyScript.sickLeave'),
           value: 1,
           num: 0
         },
         {
-          label: '调休假',
+          label: i18n.t('legacyScript.compensatoryLeave'),
           value: 2,
           num: 0
         },
         {
-          label: '婚假',
+          label: i18n.t('legacyScript.marriageLeave'),
           value: 3,
           num: 0
         },
         {
-          label: '产假',
+          label: i18n.t('legacyScript.maternityLeave'),
           value: 4,
           num: 0
         },
         {
-          label: '陪产假',
+          label: i18n.t('legacyScript.paternityLeave'),
           value: 5,
           num: 0
         },
         {
-          label: '丧假',
+          label: i18n.t('legacyScript.bereavementLeave'),
           value: 6,
           num: 0
         }

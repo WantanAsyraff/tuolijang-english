@@ -38,8 +38,8 @@
                 <el-switch
                   v-if="scope.row.system_template"
                   v-model="scope.row.system_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.system_template, 0)"
                   :active-value="1"
                   :inactive-value="0"
@@ -51,8 +51,8 @@
                 <el-switch
                   v-if="scope.row.sms_template"
                   v-model="scope.row.sms_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.sms_template, 1)"
                   :active-value="1"
                   :inactive-value="0"
@@ -64,8 +64,8 @@
                 <el-switch
                   v-if="scope.row.wework_template"
                   v-model="scope.row.wework_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.wework_template, 5)"
                   :active-value="1"
                   :inactive-value="0"
@@ -77,8 +77,8 @@
                 <el-switch
                   v-if="scope.row.work_template"
                   v-model="scope.row.work_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.work_template, 2)"
                   :active-value="1"
                   :inactive-value="0"
@@ -90,8 +90,8 @@
                 <el-switch
                   v-if="scope.row.ding_template"
                   v-model="scope.row.ding_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.ding_template, 3)"
                   :active-value="1"
                   :inactive-value="0"
@@ -103,8 +103,8 @@
                 <el-switch
                   v-if="scope.row.other_template"
                   v-model="scope.row.other_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.other_template, 4)"
                   :active-value="1"
                   :inactive-value="0"
@@ -115,8 +115,8 @@
               <template slot-scope="scope">
                 <el-switch
                   v-model="scope.row.user_sub"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageSubscribe(scope.row)"
                   :active-value="1"
                   :inactive-value="0"
@@ -161,6 +161,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { messageListApi, putStatusMessageApi, messageSubscribeApi, messageSyncApi, messageCateApi } from '@/api/setting'
 import { status } from 'nprogress'
 
@@ -210,7 +211,7 @@ export default {
           form_value: 'input'
         }
       ],
-      dropdownList: [{ label: '同步数据', value: 'sync' }]
+      dropdownList: [{ label: i18n.t('legacyScript.syncData'), value: 'sync' }]
     }
   },
   mounted() {
@@ -311,7 +312,7 @@ export default {
       }
       this.messageData = {
         width: '560px',
-        title: '设置提醒时间',
+        title: i18n.t('legacyScript.setReminderTime'),
         type,
         data: row
       }
@@ -322,7 +323,7 @@ export default {
     },
     handleBatchPush() {
       if (!this.selectedRows.length) {
-        this.$message.warning('请先勾选需要设置的消息')
+        this.$message.warning(i18n.t('legacyScript.selectTheMessagesYouWantToConfigureFirst'))
         return
       }
       this.$refs.messagePush.openBatchBox(this.selectedRows.map((row) => row.id))
@@ -353,7 +354,7 @@ export default {
     },
     getMessageCate() {
       messageCateApi().then((res) => {
-        this.options = [{ label: '全部', value: '' }, ...res.data]
+        this.options = [{ label: i18n.t('finance.all'), value: '' }, ...res.data]
         for (let i = 0; i < res.data.length; i++) {
           res.data[i].name = res.data[i].label
         }

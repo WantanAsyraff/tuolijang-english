@@ -1,3 +1,4 @@
+import appI18n from '@/locale';
 // #ifdef APP
 import message from "@/utils/message";
 import { getWifiInfo } from "@/utils/wifi";
@@ -23,7 +24,7 @@ export const useWifiInfo = () => {
     // getWifiInfo 依赖 APP 原生能力；失败时给出提示，页面仍可走定位/外勤打卡。
     const info = await getWifiInfo() as any;
     if (!info) {
-      message.error("获取 WIFI 信息失败", "error");
+      message.error(appI18n.global.t('ui.attendanceComposablesUseWifiInfoTsFailedToGetWiFiInformation'), "error");
     } else {
       wifiInfo.value = info.wifi;
     }

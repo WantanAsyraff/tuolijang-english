@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import AMapLoader from '@amap/amap-jsapi-loader'
 
 // 高德地图安全配置
@@ -157,7 +158,7 @@ export default {
         if (status === 'complete' && result.regeocode) {
           this.address = result.regeocode.formattedAddress
         } else {
-          this.$message.error('根据经纬度查询地址失败')
+          this.$message.error(i18n.t('legacyScript.failedToLookUpTheAddressByCoordinates'))
         }
       })
     },
@@ -205,7 +206,7 @@ export default {
         if (status === 'complete') {
           this.showLocation(result.position)
         } else {
-          this.$message.error('获取地址失败')
+          this.$message.error(i18n.t('legacyScript.failedToGetTheAddress'))
         }
       })
     },
@@ -269,7 +270,7 @@ export default {
         } else {
           this.show = false
           this.poiList = []
-          this.$message.warning('没有查到结果')
+          this.$message.warning(i18n.t('legacyScript.noResultsFound'))
         }
       })
     },

@@ -167,6 +167,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { dailyStatisticsApi, putStatisticsApi } from '@/api/config'
 export default {
   name: 'CrmebOaEntDaily',
@@ -245,8 +246,8 @@ export default {
       val: '',
       fromData: {
         with: '700px',
-        title: '打卡结果更改',
-        btnText: '确定',
+        title: i18n.t('legacyScript.changeClockInResult'),
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '90px',
         type: 'slot'
       },
@@ -467,9 +468,9 @@ export default {
       }
       if (tip == 0) {
       } else if (tip == 1) {
-        tips = '(外勤卡)'
+        tips = i18n.t('legacyScript.fieldClockIn')
       } else if (tip == 2) {
-        tips = '(地点异常)'
+        tips = i18n.t('legacyScript.locationException')
       }
 
       if (time !== 0) {

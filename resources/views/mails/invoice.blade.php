@@ -1,3 +1,3 @@
 <div>
-    <p>发票编号：{{$num}}</p>
+    <p>{{ __('frontend.mail.invoice_number', ['number' => $num]) }}</p>
 </div>

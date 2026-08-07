@@ -59,6 +59,7 @@
   </div>
 </template>
 <script type="text/babel">
+import i18n from '@/lang'
 /**
  * VerifyPoints
  * @description 点选
@@ -186,7 +187,7 @@ export default {
             if (res.status == '200') {
               this.barAreaColor = '#4cae4c'
               this.barAreaBorderColor = '#5cb85c'
-              this.text = '验证成功'
+              this.text = i18n.t('legacyScript.verificationSuccessful')
               this.bindingClick = false
               if (this.mode == 'pop') {
                 setTimeout(() => {
@@ -199,7 +200,7 @@ export default {
               this.$parent.$emit('error', this)
               this.barAreaColor = '#d9534f'
               this.barAreaBorderColor = '#d9534f'
-              this.text = '验证失败'
+              this.text = i18n.t('legacyScript.verificationFailed')
               setTimeout(() => {
                 this.refresh()
               }, 700)
@@ -232,7 +233,7 @@ export default {
       this.checkPosArr.splice(0, this.checkPosArr.length)
       this.num = 1
       this.getPictrue()
-      this.text = '验证失败'
+      this.text = i18n.t('legacyScript.verificationFailed')
       this.showRefresh = true
     },
 

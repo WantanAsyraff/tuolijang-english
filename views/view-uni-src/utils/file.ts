@@ -1,3 +1,4 @@
+import appI18n from '@/locale';
 import { TOKENNAME, BASEAPI, FORM_TYPE } from "@/config/app";
 import store from "../store";
 import { uploadTypes } from "@/utils/helper";
@@ -74,7 +75,7 @@ export const uploadFlie = (url: string = "common/upload", formData: object = {},
     // 文件上传
     const uploadFiles = (tempFilePaths: any, url: string) => {
       uni.showLoading({
-        title: "上传中"
+        title: appI18n.global.t('ui.utilsFileTsUploadCenter')
       });
 
       ensureValidAccessToken()
@@ -171,7 +172,7 @@ export const uploadImage = (url: string = "common/upload", formData: object = {}
     // 文件上传
     const uploadFiles = (tempFilePaths: any, url: string) => {
       uni.showLoading({
-        title: "上传中"
+        title: appI18n.global.t('ui.utilsFileTsUploadCenter')
       });
       ensureValidAccessToken()
         .then(() => {

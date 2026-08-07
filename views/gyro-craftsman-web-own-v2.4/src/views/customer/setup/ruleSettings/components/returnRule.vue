@@ -15,9 +15,9 @@
                 :active-value="1"
                 :inactive-value="0"
                 active-color="#1890ff"
-                active-text="开启"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
                 inactive-color="#cccccc"
-                inactive-text="关闭"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
               >
               </el-switch>
             </el-form-item>
@@ -78,9 +78,9 @@
                 :active-value="1"
                 :inactive-value="0"
                 active-color="#1890ff"
-                active-text="开启"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
                 inactive-color="#cccccc"
-                inactive-text="关闭"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
               >
               </el-switch>
             </el-form-item>
@@ -156,6 +156,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   name: 'ReturnRule',
   props: {
@@ -181,10 +182,10 @@ export default {
         xs: 24
       },
       rules: {
-        unsettled_cycle: [{ required: true, message: '请输入退回客户公海周期' }],
+        unsettled_cycle: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheCustomerReturnCycleToThePublicPool') }],
         advance_cycle: [{ required: true, validator: this.checkAdvanceCycle }],
-        unsettled_client_number: [{ required: true, message: '请输入未成交客户数量' }],
-        unfollowed_cycle: [{ required: true, message: '请输入未跟进退回公海数量' }]
+        unsettled_client_number: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheNumberOfUnconvertedCustomers') }],
+        unfollowed_cycle: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheNumberOfUnfollowedItemsReturnedToThe') }]
       }
     }
   },

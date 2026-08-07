@@ -33,7 +33,8 @@
   
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive } from "vue";
 import moment from "moment";
 
@@ -41,18 +42,18 @@ const data = reactive({
   frameText: "本月",
   index: moment(new Date()).format("M") - 1,
   listData: [
-    { text: "一月", id: 1 },
-    { text: "二月", id: 2 },
-    { text: "三月", id: 3 },
-    { text: "四月", id: 4 },
-    { text: "五月", id: 5 },
-    { text: "六月", id: 6 },
-    { text: "七月", id: 7 },
-    { text: "八月", id: 8 },
-    { text: "九月", id: 9 },
-    { text: "十月", id: 10 },
-    { text: "十一月", id: 11 },
-    { text: "十二月", id: 12 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthJanuary'), id: 1 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthFebruary'), id: 2 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthMarch'), id: 3 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthApril'), id: 4 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthMay'), id: 5 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthJune'), id: 6 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthJuly'), id: 7 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthAugust'), id: 8 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthSeptember'), id: 9 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthOctober'), id: 10 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthNovember'), id: 11 },
+    { text: appI18n.global.t('ui.usersReportSelectMonthDecember'), id: 12 },
   ],
   yearText: moment(new Date()).format("YYYY"),
   currentYear: false

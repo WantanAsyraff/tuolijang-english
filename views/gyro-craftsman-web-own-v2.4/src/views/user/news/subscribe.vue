@@ -13,8 +13,8 @@
             <el-switch
               v-if="scope.row.is_subscribe === 2"
               :value="1"
-              active-text="订阅"
-              inactive-text="取消"
+:active-text="$t('ui.userNewsSubscribeSubscribe')"
+:inactive-text="$t('ui.formCommonSelectLabelCancel')"
               :disabled="true"
               :active-value="1"
               :inactive-value="0"
@@ -22,8 +22,8 @@
             <el-switch
               v-else
               v-model="scope.row.is_subscribe"
-              active-text="订阅"
-              inactive-text="取消"
+:active-text="$t('ui.userNewsSubscribeSubscribe')"
+:inactive-text="$t('ui.formCommonSelectLabelCancel')"
               @change="messageSubscribe(scope.row)"
               :active-value="1"
               :inactive-value="0"

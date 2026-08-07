@@ -65,7 +65,7 @@
                 :isViewSearch="false"
                 :total="total"
                 :title="$t('ui.hrEnterpriseJobRankManagementRankList')"
-                :btnText="'添加职级'"
+:btn-text="$t('ui.hrEnterpriseJobRankManagementAddRank')"
                 :isAddBtn="true"
                 @addDataFn="addRank"
                 @dropdownFn="batchHandleDelete"
@@ -131,6 +131,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import dialogForm from './components/index'
 import oaFromBox from '@/components/common/oaFromBox'
 import {
@@ -174,7 +175,7 @@ export default {
       formBoxConfig: {},
       dropdownList: [
         {
-          label: '删除',
+          label: i18n.t('public.delete'),
           value: 1
         }
       ],
@@ -250,7 +251,7 @@ export default {
     // 删除职级类别
     deleteRankType(item) {
       this.closePopover()
-      this.$modalSure('你确定要删除该职级类别吗').then(() => {
+      this.$modalSure(this.$ts('你确定要删除该职级类别吗')).then(() => {
         rankCateDeleteApi(item.id).then((res) => {
           this.rankIndex = 0
           this.getRankList()
@@ -263,7 +264,7 @@ export default {
     // 添加职级
     async addRank() {
       if (this.where.cate_id === 0) {
-        this.$message.error('请先创建职级类别,再添加职级')
+        this.$message.error(i18n.t('legacyScript.pleaseCreateAJobLevelCategoryFirstThenAddThe'))
       } else {
         const result = await rankCreateApi({ cate_id: this.where.cate_id })
         this.formBoxConfig = {
@@ -289,19 +290,19 @@ export default {
       await this.$refs.dialogForm.openBox()
     },
     deleteRank(row) {
-      this.$modalSure('你确定要删除该职级吗').then(() => {
+      this.$modalSure(this.$ts('你确定要删除该职级吗')).then(() => {
         this.handleDelete(row.id)
       })
     },
     batchHandleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error('至少选择一项要删除的内容')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItemToDelete'))
       } else {
         const ids = []
         this.multipleSelection.forEach((value) => {
           ids.push(value.id)
         })
-        this.$modalSure('确定要全部删除已选择的内容吗').then(() => {
+        this.$modalSure(this.$ts('确定要全部删除已选择的内容吗')).then(() => {
           this.handleDelete(ids.join(','))
         })
       }

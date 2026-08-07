@@ -13,73 +13,73 @@
 <body>
 <div class="wrap" id="step3" v-cloak>
     <div class="title">
-        创建数据
+        {{ __('frontend.install.create_data') }}
     </div>
     <section class="section">
         <div class="server"  ref="mianscroll">
             <el-form :model="form" :rules="rules" ref="ruleForm" label-width="120px">
-                <p class="tip">数据库信息</p>
-                <el-form-item label="数据库用户名:" prop="dbUser" class="label" :error="errorMsg.db_user">
-                    <el-input v-model="form.dbUser" placeholder="请输入数据库用户名"></el-input>
+                <p class="tip">{{ __('frontend.install.database_info') }}</p>
+                <el-form-item label="{{ __('frontend.install.database_user') }}" prop="dbUser" class="label" :error="errorMsg.db_user">
+                    <el-input v-model="form.dbUser" placeholder="{{ __('frontend.install.placeholder_database_user') }}"></el-input>
                 </el-form-item>
-                <el-form-item label="数据库密码:" prop="dbPwd" class="label" :error="errorMsg.db_pwd">
-                    <el-input v-model="form.dbPwd" type="password" placeholder="请输入数据库密码" show-password></el-input>
+                <el-form-item label="{{ __('frontend.install.database_password') }}" prop="dbPwd" class="label" :error="errorMsg.db_pwd">
+                    <el-input v-model="form.dbPwd" type="password" placeholder="{{ __('frontend.install.placeholder_database_password') }}" show-password></el-input>
                 </el-form-item>
-                <el-form-item label="数据库名:" prop="dbName" class="label" :error="errorMsg.db_name">
-                    <el-input v-model="form.dbName" placeholder="请输入数据库名"></el-input>
+                <el-form-item label="{{ __('frontend.install.database_name') }}" prop="dbName" class="label" :error="errorMsg.db_name">
+                    <el-input v-model="form.dbName" placeholder="{{ __('frontend.install.placeholder_database_name') }}"></el-input>
                 </el-form-item>
-                <el-form-item label="高级设置:" class="label">
+                <el-form-item label="{{ __('frontend.install.advanced') }}" class="label">
                     <el-switch v-model="value" active-color="#37CA71" inactive-color="#575869"></el-switch>
                 </el-form-item>
-                <el-form-item label="数据库服务器:" prop="dbHost" class="label" v-if="value" :error="errorMsg.db_host">
-                    <el-input v-model="form.dbHost" placeholder="请输入数据库地址"></el-input>
+                <el-form-item label="{{ __('frontend.install.database_host') }}" prop="dbHost" class="label" v-if="value" :error="errorMsg.db_host">
+                    <el-input v-model="form.dbHost" placeholder="{{ __('frontend.install.placeholder_database_host') }}"></el-input>
                 </el-form-item>
-                <el-form-item label="数据库端口:" prop="dbPort" class="label" v-if="value" :error="errorMsg.db_port">
-                    <el-input v-model="form.dbPort" placeholder="请输入数据库端口号"></el-input>
+                <el-form-item label="{{ __('frontend.install.database_port') }}" prop="dbPort" class="label" v-if="value" :error="errorMsg.db_port">
+                    <el-input v-model="form.dbPort" placeholder="{{ __('frontend.install.placeholder_database_port') }}"></el-input>
                 </el-form-item>
-                <el-form-item label="数据表前缀:" prop="dbPrefix" class="label" v-if="value" :error="errorMsg.db_prefix">
-                    <el-input v-model="form.dbPrefix" placeholder="请输入数据表前缀"></el-input>
+                <el-form-item label="{{ __('frontend.install.database_prefix') }}" prop="dbPrefix" class="label" v-if="value" :error="errorMsg.db_prefix">
+                    <el-input v-model="form.dbPrefix" placeholder="{{ __('frontend.install.placeholder_database_prefix') }}"></el-input>
                 </el-form-item>
-                <el-form-item label="演示数据:" class="label" v-if="value">
+                <el-form-item label="{{ __('frontend.install.demo_data') }}" class="label" v-if="value">
                     <el-checkbox v-model="form.initData"></el-checkbox>
                 </el-form-item>
-                <p class="tip">管理员信息</p>
-                <el-form-item label="管理员帐号:" prop="account" class="label" :error="errorMsg.account">
-                    <el-input v-model="form.account" placeholder="请输入管理员手机号"></el-input>
+                <p class="tip">{{ __('frontend.install.admin_info') }}</p>
+                <el-form-item label="{{ __('frontend.install.admin_account') }}" prop="account" class="label" :error="errorMsg.account">
+                    <el-input v-model="form.account" placeholder="{{ __('frontend.install.placeholder_admin_account') }}"></el-input>
                 </el-form-item>
-                <el-form-item label="管理员密码:" prop="password" class="label" :error="errorMsg.password">
-                    <el-input v-model="form.password" type="password" placeholder="请输入密码（至少6个字符）" show-password></el-input>
+                <el-form-item label="{{ __('frontend.install.admin_password') }}" prop="password" class="label" :error="errorMsg.password">
+                    <el-input v-model="form.password" type="password" placeholder="{{ __('frontend.install.placeholder_admin_password') }}" show-password></el-input>
                 </el-form-item>
-                <el-form-item label="重复密码:" prop="checkPass" class="label" :error="errorMsg.check_pass">
-                    <el-input v-model="form.checkPass" type="password" placeholder="请再次输入密码" show-password></el-input>
+                <el-form-item label="{{ __('frontend.install.repeat_password') }}" prop="checkPass" class="label" :error="errorMsg.check_pass">
+                    <el-input v-model="form.checkPass" type="password" placeholder="{{ __('frontend.install.placeholder_repeat_password') }}" show-password></el-input>
                 </el-form-item>
-                <p class="tip">缓存设置</p>
-                <el-form-item label="缓存方式:" class="label">
+                <p class="tip">{{ __('frontend.install.cache_settings') }}</p>
+                <el-form-item label="{{ __('frontend.install.cache_method') }}" class="label">
                     <el-radio-group v-model="form.cacheDriver" class="ml-4">
 {{--                        <el-radio label="file" name="cache_type" id="cache_type1">文件缓存</el-radio>--}}
-                        <el-radio label="redis" name="cache_type" id="cache_type2">redis缓存</el-radio>
+                        <el-radio label="redis" name="cache_type" id="cache_type2">{{ __('frontend.install.redis_cache') }}</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="服务器地址:" prop="rbHost" class="label" v-if="form.cacheDriver === 'redis'" :error="errorMsg.redis_host">
-                    <el-input v-model="form.rbHost" placeholder="请输入redis服务器地址"></el-input>
+                <el-form-item label="{{ __('frontend.install.server_address') }}" prop="rbHost" class="label" v-if="form.cacheDriver === 'redis'" :error="errorMsg.redis_host">
+                    <el-input v-model="form.rbHost" placeholder="{{ __('frontend.install.placeholder_redis_host') }}"></el-input>
                 </el-form-item>
-                <el-form-item label="端口号:" prop="rbPort" class="label" v-if="form.cacheDriver === 'redis'" :error="errorMsg.redis_port">
-                    <el-input v-model="form.rbPort" placeholder="请输入redis服务器端口号"></el-input>
+                <el-form-item label="{{ __('frontend.install.port') }}" prop="rbPort" class="label" v-if="form.cacheDriver === 'redis'" :error="errorMsg.redis_port">
+                    <el-input v-model="form.rbPort" placeholder="{{ __('frontend.install.placeholder_redis_port') }}"></el-input>
                 </el-form-item>
-                <el-form-item label="数据库:" prop="rbNum" class="label" v-if="form.cacheDriver === 'redis'" :error="errorMsg.redis_db">
-                    <el-input v-model="form.rbNum" placeholder="请输入redis服务器数据库编号"></el-input>
+                <el-form-item label="{{ __('frontend.install.database') }}" prop="rbNum" class="label" v-if="form.cacheDriver === 'redis'" :error="errorMsg.redis_db">
+                    <el-input v-model="form.rbNum" placeholder="{{ __('frontend.install.placeholder_redis_database') }}"></el-input>
                 </el-form-item>
-                <el-form-item label="数据库密码:" class="label" v-if="form.cacheDriver === 'redis'" :error="errorMsg.redis_pwd">
-                    <el-input v-model="form.rbPwd" type="password" placeholder="请输入redis数据库密码" show-password></el-input>
+                <el-form-item label="{{ __('frontend.install.database_password') }}" class="label" v-if="form.cacheDriver === 'redis'" :error="errorMsg.redis_pwd">
+                    <el-input v-model="form.rbPwd" type="password" placeholder="{{ __('frontend.install.placeholder_redis_password') }}" show-password></el-input>
                 </el-form-item>
             </el-form>
         </div>
         <div class="bottom-btn">
             <div class="bottom tac up-btn">
-                <a href="/install/index/2" class="btn">上一步</a>
+                <a href="/install/index/2" class="btn">{{ __('frontend.install.previous') }}</a>
             </div>
             <div class="bottom tac next">
-                <a @click="submitForm('ruleForm')" class="btn" v-loading="loading">下一步</a>
+                <a @click="submitForm('ruleForm')" class="btn" v-loading="loading">{{ __('frontend.install.next') }}</a>
             </div>
         </div>
     </section>
@@ -91,9 +91,9 @@
             data() {
                 const validatePass = (rule, value, callback) => {
                     if (value === '') {
-                        callback(new Error('请输入密码'));
+                        callback(new Error(@json(__('frontend.install.password_required'))));
                     } else if (value.length < 6) {
-                        callback(new Error('管理员密码必须6位字符以上'));
+                        callback(new Error(@json(__('frontend.install.password_min'))));
                     } else {
                         if (this.form.checkPass !== '') {
                             this.$refs.ruleForm.validateField('checkPass');
@@ -103,9 +103,9 @@
                 };
                 const validatePass2 = (rule, value, callback) => {
                     if (value === '') {
-                        callback(new Error('请再次输入密码'))
+                        callback(new Error(@json(__('frontend.install.password_repeat'))))
                     } else if (value !== this.form.password) {
-                        callback(new Error("两次输入密码不一致!"))
+                        callback(new Error(@json(__('frontend.install.password_mismatch'))))
                     } else {
                         callback()
                     }
@@ -113,14 +113,14 @@
                 const validatePort = (rule, value, callback) => {
                     const port = Number(value)
                     if (!/^\d+$/.test(String(value)) || port < 1 || port > 65535) {
-                        callback(new Error('端口必须是1-65535的数字'))
+                        callback(new Error(@json(__('frontend.install.invalid_port'))))
                     } else {
                         callback()
                     }
                 }
                 const validateDbPrefix = (rule, value, callback) => {
                     if (!/^[A-Za-z][A-Za-z0-9_]*_$/.test(value)) {
-                        callback(new Error('前缀需以字母开头并以下划线结尾'))
+                        callback(new Error(@json(__('frontend.install.invalid_prefix'))))
                     } else {
                         callback()
                     }
@@ -128,7 +128,7 @@
                 const validateRedisDb = (rule, value, callback) => {
                     const db = Number(value)
                     if (!/^\d+$/.test(String(value)) || db < 0 || db > 15) {
-                        callback(new Error('Redis数据库编号必须是0-15'))
+                        callback(new Error(@json(__('frontend.install.invalid_redis_database'))))
                     } else {
                         callback()
                     }
@@ -139,18 +139,18 @@
                     radio: 0,
                     form: form,
                     rules:{
-                        dbUser:[{ required: true, message: '请输入数据库用户名', trigger: 'blur' },],
-                        dbHost:[{ required: true, message: '请输入数据库服务器', trigger: 'blur' },],
-                        dbPort:[{ required: true, message: '请输入数据库端口号', trigger: 'blur' },{ validator: validatePort, trigger: 'blur' }],
-                        dbName:[{ required: true, message: '请输入数据库名称', trigger: 'blur' },],
-                        dbPwd:[{ required: true, message: '请输入数据库密码', trigger: 'blur' },],
-                        dbPrefix:[{ required: true, message: '请输入数据表前缀', trigger: 'blur' },{ validator: validateDbPrefix, trigger: 'blur' }],
-                        rbHost:[{ required: true, message: '请输入redis服务器地址', trigger: 'blur' },],
-                        rbPort:[{ required: true, message: '请输入redis服务器端口号', trigger: 'blur' },{ validator: validatePort, trigger: 'blur' }],
-                        rbNum:[{ required: true, message: '请输入redis数据库编号', trigger: 'blur' },{ validator: validateRedisDb, trigger: 'blur' }],
-                        account:[{ required: true, message: '请输入管理员手机号', trigger: 'blur' },{ validator: this.validateMobile, trigger: 'blur' },],
+                        dbUser:[{ required: true, message: @json(__('frontend.install.placeholder_database_user')), trigger: 'blur' },],
+                        dbHost:[{ required: true, message: @json(__('frontend.install.placeholder_database_host')), trigger: 'blur' },],
+                        dbPort:[{ required: true, message: @json(__('frontend.install.placeholder_database_port')), trigger: 'blur' },{ validator: validatePort, trigger: 'blur' }],
+                        dbName:[{ required: true, message: @json(__('frontend.install.placeholder_database_name')), trigger: 'blur' },],
+                        dbPwd:[{ required: true, message: @json(__('frontend.install.placeholder_database_password')), trigger: 'blur' },],
+                        dbPrefix:[{ required: true, message: @json(__('frontend.install.placeholder_database_prefix')), trigger: 'blur' },{ validator: validateDbPrefix, trigger: 'blur' }],
+                        rbHost:[{ required: true, message: @json(__('frontend.install.placeholder_redis_host')), trigger: 'blur' },],
+                        rbPort:[{ required: true, message: @json(__('frontend.install.placeholder_redis_port')), trigger: 'blur' },{ validator: validatePort, trigger: 'blur' }],
+                        rbNum:[{ required: true, message: @json(__('frontend.install.placeholder_redis_database')), trigger: 'blur' },{ validator: validateRedisDb, trigger: 'blur' }],
+                        account:[{ required: true, message: @json(__('frontend.install.placeholder_admin_account')), trigger: 'blur' },{ validator: this.validateMobile, trigger: 'blur' },],
                         password:[{ validator: validatePass, trigger: 'blur' }],
-                        checkPass: [{ required: true, message: '请确认管理员密码', trigger: 'blur' },{ validator: validatePass2, trigger: 'blur' }],
+                        checkPass: [{ required: true, message: @json(__('frontend.install.password_repeat')), trigger: 'blur' },{ validator: validatePass2, trigger: 'blur' }],
                     },
                     errorMsg:{
                         db_host:'',
@@ -192,7 +192,7 @@
                     if (value === '' || reg.test(normalized)) {
                         callback();
                     } else {
-                        callback(new Error('请输入正确的手机号'));
+                        callback(new Error(@json(__('frontend.install.invalid_mobile'))));
                     }
                 },
                 jumpButton(){
@@ -212,37 +212,37 @@
                                 let hasError = false
                                 switch (code){
                                     case 2002:
-                                        this.errorMsg.db_host = '数据库地址或端口错误'
-                                        this.errorMsg.db_port = '数据库地址或端口错误'
+                                        this.errorMsg.db_host = @json(__('frontend.install.database_connection'))
+                                        this.errorMsg.db_port = @json(__('frontend.install.database_connection'))
                                         hasError = true
                                         break;
                                     case 1045:
-                                        this.errorMsg.db_user = '数据库用户名或密码错误'
-                                        this.errorMsg.db_pwd = '数据库用户名或密码错误'
+                                        this.errorMsg.db_user = @json(__('frontend.install.database_credentials'))
+                                        this.errorMsg.db_pwd = @json(__('frontend.install.database_credentials'))
                                         hasError = true
                                         break;
                                     case 1049:
-                                        this.errorMsg.db_name = '请检查数据库是否存在'
+                                        this.errorMsg.db_name = @json(__('frontend.install.database_missing'))
                                         hasError = true
                                         break;
                                     case -5:
-                                        this.errorMsg.db_name = 'MySql数据库必须是5.7及以上版本'
+                                        this.errorMsg.db_name = @json(__('frontend.install.mysql_version'))
                                         hasError = true
                                         break;
                                     case -4:
-                                        this.errorMsg.db_name = '数据库不为空，请更换一个数据库'
+                                        this.errorMsg.db_name = @json(__('frontend.install.database_not_empty'))
                                         hasError = true
                                         break;
                                     case -3:
-                                        this.errorMsg.redis_pwd = 'Redis数据库没有启动或者配置错误'
+                                        this.errorMsg.redis_pwd = @json(__('frontend.install.redis_connection'))
                                         hasError = true
                                         break;
                                     case -2:
-                                        this.errorMsg.account = '请填写正确的手机号'
+                                        this.errorMsg.account = @json(__('frontend.install.invalid_mobile'))
                                         hasError = true
                                         break;
                                     case -1:
-                                        this.errorMsg.redis_host = 'Redis扩展没有安装'
+                                        this.errorMsg.redis_host = @json(__('frontend.install.redis_extension'))
                                         hasError = true
                                         break;
                                     case -6:
@@ -308,7 +308,7 @@
                                 }
                             }).catch(err=>{
                                 this.loading = false
-                                this.$message.error('请求失败，请检查服务器状态后重试')
+                                this.$message.error(@json(__('frontend.install.request_failed')))
                             })
                         } else {
                             console.log('error submit!!');

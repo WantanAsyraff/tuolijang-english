@@ -39,7 +39,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index";
 import { ref, reactive } from "vue";
 import passwordImg from "../static/image/password.png";
@@ -63,17 +64,17 @@ const handleDisabled = () => {
 
 const handlePreserve = () => {
   if (!formData.password) {
-    message.error("密码不能为空");
+    message.error(appI18n.global.t('ui.usersCenterPasswordPasswordIsRequired'));
     return false;
   }
 
   if (!formData.password_confirm) {
-    message.error("确认密码不能为空");
+    message.error(appI18n.global.t('ui.usersCenterPasswordConfirmPasswordIsRequired'));
     return false;
   }
 
   if (formData.password !== formData.password_confirm) {
-    message.error("输入的密码不一致");
+    message.error(appI18n.global.t('ui.usersCenterPasswordPasswordsDoNotMatch'));
     return false;
   }
 

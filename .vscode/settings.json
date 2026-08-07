@@ -1,24 +1,25 @@
 {
   "i18n-ally.localesPaths": [
-    "resources/lang",
     "views/gyro-craftsman-web-own-v2.4/src/lang"
   ],
-  "i18n-ally.sourceLanguage": "en",
-  "i18n-ally.defaultLanguage": "en",
+  "i18n-ally.enabledFrameworks": [
+    "vue"
+  ],
   "i18n-ally.enabledParsers": [
-    "php",
-    "json",
-    "js",
-    "ts"
+    "js"
   ],
   "i18n-ally.files.include": [
-    "resources/lang/**/*.{php,json}",
-    "views/gyro-craftsman-web-own-v2.4/src/lang/**/*.{js,ts,json}"
+    "views/gyro-craftsman-web-own-v2.4/src/**/*.{vue,js}"
   ],
-  "i18n-ally.languageIds": [
-    "en",
-    "zh-cn",
-    "zh-hk"
+  "i18n-ally.ignoreFiles": [
+    "**/system-text.js",
+    "**/en-US.js",
+    "**/zh-CN.js",
+    "**/es.js",
+    "**/ja.js"
   ],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.sourceLanguage": "zh",
+  "i18n-ally.displayLanguage": "en",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.annotations": true
 }

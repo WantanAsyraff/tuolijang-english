@@ -116,6 +116,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { frameTreeApi } from '@/api/public'
 import Common from '@/components/develop/commonData'
 import { dataDatabaseFieldsApi } from '@/api/develop'
@@ -379,7 +380,7 @@ export default {
 
     addCondition() {
       if (this.max && this.conditionConfig.conditionList.length > this.max - 1) {
-        this.$message.error('最多只能添加9个条件')
+        this.$message.error(i18n.t('legacyScript.youCanAddUpTo9Conditions'))
         return false
       }
       this.conditionConfig.conditionList.push({ field: '', value: '', type: 'input', form_value: 'input' })

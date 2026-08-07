@@ -2,7 +2,7 @@
   <view class="content">
     <view class="cr-position-header">
       <view class="status_bar"></view>
-      <uni-nav-bar left-text="取消" @clickLeft="loginCancel">
+      <uni-nav-bar :left-text="$t('ui.baTreePickerIndexCancel')" @clickLeft="loginCancel">
         <view class="uni-nav-bar-text">{{typeIndex === 0 ? $t('ui.usersScanCodeIndexScanFailed') : $t('ui.usersScanCodeIndexScanSuccessful')}}</view>
       </uni-nav-bar>
     </view>

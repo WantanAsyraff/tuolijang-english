@@ -23,7 +23,8 @@
   </BaseContainer>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import BaseContainer from "@/components/BaseContainer/index.vue";
 import defaultNavBar from "@/components/defaultNavBar/index";
 import globalIndex from "@/components/globalIndex/index.vue";
@@ -109,7 +110,7 @@ const dropDownItem = (e) => {
   if (e.id === 2) {
     treePickerRef.value.show();
   } else if (e.id === 3) {
-    showModal("确定要删除这条内容吗").then(() => {
+    showModal(appI18n.global.t('ui.usersMemorandumDetailsDeleteThisContent')).then(() => {
       getMemorialDelete(data.default.id, data.default.pid);
     }).catch(() => {
       console.log("取消");
@@ -145,7 +146,7 @@ const selectChange = (e) => {
 // 获取记事本移动至
 const setMemorialEdit = (id, datas) => {
   userMemorialEditApi(id, datas).then(() => {
-    message.success("移动成功");
+    message.success(appI18n.global.t('ui.usersMemorandumDetailsMovedSuccessfully'));
     delayedReLaunch("/pages/users/memorandum/index");
   }).catch((error) => {
     message.error(error.message);

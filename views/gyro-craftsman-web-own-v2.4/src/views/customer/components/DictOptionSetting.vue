@@ -76,26 +76,26 @@
               <!-- 节点名称输入框 -->
               <el-input
                 v-model="data.name"
-                placeholder="数据值"
+:placeholder="$t('ui.customerSetupDictionaryManagementDataValue')"
                 size="small"
                 class="dict-option-setting__tree-input"
               />
               <!-- 添加同级节点 -->
               <span
                 class="iconfont icontianjia1 dict-option-setting__action-icon"
-                title="添加同级"
+:title="$t('ui.customerDictOptionSettingAddSibling')"
                 @click="handleAddTreeSibling(node, data)"
               />
               <!-- 添加子级节点 -->
               <span
                 class="iconfont icona-ziji1x dict-option-setting__action-icon"
-                title="添加子项"
+:title="$t('ui.customerDictOptionSettingAddChildItem')"
                 @click="handleAddTreeChild(node, data)"
               />
               <!-- 删除节点 -->
               <span
                 class="el-icon-delete dict-option-setting__action-icon"
-                title="删除"
+:title="$t('ui.chatIndexDelete')"
                 @click="handleDeleteTreeNode(node, data)"
               />
             </div>
@@ -166,6 +166,7 @@
   </div>
 </template>
 <script setup>
+import i18n from '@/lang'
 /**
  * @description 字典选项设置基础组件
  * 使用 Vue 2.7 Composition API (setup) 编写
@@ -298,7 +299,7 @@ const loadDictTypes = async () => {
       handleTypeSelect(dictTypes.value[0])
     }
   } catch (err) {
-    proxy.$message.error('获取字典类型列表失败')
+    proxy.$message.error(i18n.t('legacyScript.failedToRetrieveDictionaryTypeList'))
   }
 }
 
@@ -312,7 +313,7 @@ const loadOptionData = async (typeItem) => {
     const res = await getDictTreeListApi({ types: typeItem.ident })
     optionItems.value = res.data || []
   } catch (err) {
-    proxy.$message.error('获取选项数据失败')
+    proxy.$message.error(i18n.t('legacyScript.failedToRetrieveOptionData'))
   } finally {
     loading.value = false
   }

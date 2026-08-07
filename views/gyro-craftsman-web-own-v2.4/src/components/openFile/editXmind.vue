@@ -4,6 +4,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { fileUpload } from "@/api/public";
 import XmindEditor from "@/components/xmind-editor/index.vue";
 import XmindParse from 'simple-mind-map/src/parse/xmind';
@@ -66,7 +67,7 @@ export default {
       } catch (err) {
         this.$emit('closeLoading')
         console.error(err)
-        this.$message.error("保存失败")
+        this.$message.error(i18n.t('legacyScript.saveFailed'))
       }
 
       this.isSaveProcessing = false;

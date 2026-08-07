@@ -50,7 +50,8 @@ s<template>
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index";
 import { ref, reactive, type Ref } from "vue";
 import message from "@/utils/message";
@@ -113,7 +114,7 @@ const resourceDetail = (id: number): void => {
 // 提交表单
 const handleConfirm = (): boolean => {
   if (!formData.content) {
-    message.error("请填写记录描述");
+    message.error(appI18n.global.t('ui.customerContractAddFilePleaseEnterRecordDescription'));
     return false;
   }
   if (data.fileList.length > 0) {

@@ -13,7 +13,7 @@
           :search="search"
           :total="total"
           :title="$t('ui.administrationMaterialConsumeLogMaterialRecords')"
-          :btnText="`导出`"
+:btn-text="$t('ui.fdExamineIndexExport')"
           :btnIcon="false"
           :isAddBtn="true"
           :isViewSearch="false"

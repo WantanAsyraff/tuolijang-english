@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 const data = {
   // 海事量表基础数据
   data() {
@@ -5,35 +6,35 @@ const data = {
     this.professionalKnowledge = [
       {
         id: 1,
-        label: '基本的',
+        label: i18n.t('legacyScript.basic'),
       },
       {
         id: 2,
-        label: '初等业务的',
+        label: i18n.t('legacyScript.basicBusiness'),
       },
       {
         id: 3,
-        label: '中等业务的',
+        label: i18n.t('legacyScript.mediumSizedBusiness'),
       },
       {
         id: 4,
-        label: '高等业务的',
+        label: i18n.t('legacyScript.highLevelBusiness'),
       },
       {
         id: 5,
-        label: '基本专门技术的',
+        label: i18n.t('legacyScript.basicSpecializedTechnology'),
       },
       {
         id: 6,
-        label: '熟练专门技术的',
+        label: i18n.t('legacyScript.proficientInSpecializedTechnology'),
       },
       {
         id: 7,
-        label: '精通专门技术的',
+        label: i18n.t('legacyScript.proficientInSpecializedTechnology2'),
       },
       {
         id: 8,
-        label: '权威专门技术的',
+        label: i18n.t('legacyScript.authoritativeSpecializedTechnology'),
       },
     ];
 
@@ -41,23 +42,23 @@ const data = {
     this.managementKnowHow = [
       {
         id: 1,
-        label: '起码的',
+        label: i18n.t('legacyScript.basic2'),
       },
       {
         id: 2,
-        label: '有关的',
+        label: i18n.t('legacyScript.related'),
       },
       {
         id: 3,
-        label: '多样的',
+        label: i18n.t('legacyScript.diverse'),
       },
       {
         id: 4,
-        label: '广博的',
+        label: i18n.t('legacyScript.broad'),
       },
       {
         id: 5,
-        label: '全面的',
+        label: i18n.t('legacyScript.comprehensive'),
       },
     ];
 
@@ -66,15 +67,15 @@ const data = {
      
         {
           id: 1,
-          label: '基本的',
+          label: i18n.t('legacyScript.basic'),
         },
         {
           id: 2,
-          label: '重要的',
+          label: i18n.t('legacyScript.important'),
         },
         {
           id: 3,
-          label: '关键的',
+          label: i18n.t('legacyScript.critical'),
         },
   
       ]
@@ -215,35 +216,35 @@ const data = {
     this.environment = [
       {
         id: 1,
-        label: '高度常规性的',
+        label: i18n.t('legacyScript.highlyRoutine'),
       },
       {
         id: 2,
-        label: '常规性的',
+        label: i18n.t('legacyScript.routine'),
       },
       {
         id: 3,
-        label: '半常规性的',
+        label: i18n.t('legacyScript.semiRoutine'),
       },
       {
         id: 4,
-        label: '标准化的',
+        label: i18n.t('legacyScript.standardized'),
       },
       {
         id: 5,
-        label: '明确规定的',
+        label: i18n.t('legacyScript.explicitlyDefined'),
       },
       {
         id: 6,
-        label: '广泛规定的',
+        label: i18n.t('legacyScript.broadlySpecified'),
       },
       {
         id: 7,
-        label: '一般规定的',
+        label: i18n.t('legacyScript.generalProvisions'),
       },
       {
         id: 8,
-        label: '抽象规定的',
+        label: i18n.t('legacyScript.abstractlySpecified'),
       },
     ]
 
@@ -251,23 +252,23 @@ const data = {
     this.difficulty = [
     {
       id: 1,
-      label: '重复性的'
+      label: i18n.t('legacyScript.repetitive')
     },
     {
       id: 2,
-      label: '模式化的'
+      label: i18n.t('legacyScript.modeBased')
     },
     {
       id: 3,
-      label: '中间型的'
+      label: i18n.t('legacyScript.intermediate')
     },
     {
       id: 4,
-      label: '适应性的'
+      label: i18n.t('legacyScript.adaptive')
     },
     {
       id: 5,
-      label: '无先例的'
+      label: i18n.t('legacyScript.noPrecedent')
     },
    
     ]
@@ -328,39 +329,39 @@ const data = {
     this.free = [
       {
         id: 1,
-        label: '有规定的'
+        label: i18n.t('legacyScript.regulationsApply')
       },
       {
         id: 2,
-        label: '受控制的'
+        label: i18n.t('legacyScript.controlled')
       },
       {
         id: 3,
-        label: '标准化的'
+        label: i18n.t('legacyScript.standardized')
       },
       {
         id: 4,
-        label: '一般性规范的'
+        label: i18n.t('legacyScript.general')
       },
       {
         id: 5,
-        label: '有指导的'
+        label: i18n.t('legacyScript.guided')
       },
       {
         id: 6,
-        label: '方向性指导的'
+        label: i18n.t('legacyScript.directionalGuidance')
       },
       {
         id: 7,
-        label: '广泛性指引的'
+        label: i18n.t('legacyScript.broadGuidelines')
       },
       {
         id: 8,
-        label: '战略性指引的'
+        label: i18n.t('legacyScript.strategicGuidance')
       },
       {
         id: 9,
-        label: '一般性无指引的'
+        label: i18n.t('legacyScript.generalUnguided')
       },
     ]
 
@@ -368,19 +369,19 @@ const data = {
     this.responsibility = [
       {
         id: 1,
-        label: '微小'
+        label: i18n.t('legacyScript.tiny')
       },
       {
         id: 2,
-        label: '少量'
+        label: i18n.t('legacyScript.smallAmount')
       },
       {
         id: 3,
-        label: '中级'
+        label: i18n.t('legacyScript.intermediate2')
       },
       {
         id: 4,
-        label: '大量'
+        label: i18n.t('legacyScript.largeVolume')
       },
     ]
 
@@ -388,27 +389,27 @@ const data = {
     this.influence = [
     {
       value:1,
-    label:'间接',
+    label:i18n.t('legacyScript.indirect'),
     children:[
       {
         value:1,
-    label:'后勤'
+    label:i18n.t('legacyScript.logistics')
     },
     {
       value:2,
-      label:'辅助'
+      label:i18n.t('legacyScript.assistant')
     }]
     },
     {
       value:2,
-    label:'直接',
+    label:i18n.t('legacyScript.direct'),
     children:[{
       value:1,
-    label:'分摊'
+    label:i18n.t('legacyScript.allocation')
     },
     {
       value:2,
-      label:'主要'
+      label:i18n.t('legacyScript.main')
     }]
     },
     ]

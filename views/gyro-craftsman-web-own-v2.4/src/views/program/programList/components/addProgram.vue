@@ -128,6 +128,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { saveProgramApi, putProgramApi, getProgramInfoApi } from '@/api/program'
 import debounce from '@form-create/utils/lib/debounce'
 import { customerSelectApi, selectContractListApi } from '@/api/enterprise'
@@ -173,12 +174,12 @@ export default {
       },
       detailsData: {},
       rule: {
-        name: [{ required: true, message: '请输入项目名称', trigger: 'blur' }],
+        name: [{ required: true, message: i18n.t('ui.programProgramListAddProgramPleaseEnterProjectName'), trigger: 'blur' }],
         // uid: [{ required: true, validator: this.checkUid, message: '请选择负责人', trigger: 'blur' }],
         end_date: [
           {
             required: false,
-            message: '请选择项目计划结束日期',
+            message: i18n.t('ui.programProgramListAddProgramSelectThePlannedProjectEndDate'),
             trigger: 'blur'
           },
           {
@@ -333,7 +334,7 @@ export default {
     // 提交
     handleConfirm: debounce(function () {
       if(!this.formData.uid){
-        this.$message.error('请选择负责人')
+        this.$message.error(i18n.t('ui.programProgramListAddProgramPleaseSelectOwner'))
         return false
       }
       this.$refs.formData.validate((valid) => {
@@ -354,7 +355,7 @@ export default {
                 this.loading = false
               })
             } else {
-              this.$message('项目名称不能为空')
+              this.$message(i18n.t('legacyScript.projectNameIsRequired'))
             }
           } else {
             if (this.formData.name.trim()) {
@@ -368,7 +369,7 @@ export default {
                 this.loading = false
               })
             } else {
-              this.$message('项目名称不能为空')
+              this.$message(i18n.t('legacyScript.projectNameIsRequired'))
             }
           }
         }

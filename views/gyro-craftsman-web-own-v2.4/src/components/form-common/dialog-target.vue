@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { assessTargetListApi } from '@/api/enterprise'
 export default {
   name: 'SelectTarget',
@@ -118,7 +119,7 @@ export default {
     },
     handleConfirm() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error('选择为空')
+        this.$message.error(i18n.t('legacyScript.noSelectionMade'))
       } else {
         this.$emit('dialogChangeDada', this.multipleSelection)
         this.closeDialog()

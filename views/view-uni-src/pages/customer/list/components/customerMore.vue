@@ -44,7 +44,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import { ref, reactive, toRefs } from "vue";
   import message from "@/utils/message";
   import textareaPopup from "@/components/textareaPopup/index.vue";
@@ -103,25 +104,25 @@
   const data = reactive({
     type: 1,
     configData: {
-      title: "退回客户公海",
-      placeholder: "说明原因",
+      title: appI18n.global.t('ui.customerListCustomerMoreReturnCustomerToPool'),
+      placeholder: appI18n.global.t('ui.customerLeadDetailReason'),
       type: "",
       text: "",
       refundType: 0, // 4 -> 客户公海 802 -> 线索池
     },
     listData: [
-      { type: 1, icon: "icon-danchuang-bianji", text: "编辑" },
-      { type: 2, icon: "icon-danchuang-tianjiahetong", text: "添加订单" },
-      { type: 3, icon: "icon-tianjiashangji", text: "添加商机" },
+      { type: 1, icon: "icon-danchuang-bianji", text: appI18n.global.t('ui.customerQuickReplyIndexEdit') },
+      { type: 2, icon: "icon-danchuang-tianjiahetong", text: appI18n.global.t('ui.oaFormIndexAddOrder') },
+      { type: 3, icon: "icon-tianjiashangji", text: appI18n.global.t('ui.customerListAddCustomerAddOpportunity') },
 
     ],
     tableData: [
       // { type: 5, icon: "icon-danchuang-genjinzhong", text: "填写跟进" },
-      { type: 1, icon: "icon-danchuang-zhuanyi", text: "移交同事" },
-      { type: 4, icon: "icon-tuihuixiansuochi", text: "退回公海" },
+      { type: 1, icon: "icon-danchuang-zhuanyi", text: appI18n.global.t('ui.customerListCustomerMoreTransferToColleague') },
+      { type: 4, icon: "icon-tuihuixiansuochi", text: appI18n.global.t('ui.customerListCustomerMoreReturnToPool') },
       // { type: 6, icon: "icon-xiugaizhuangtai", text: "修改状态" },
       // { type: 2, icon: "icon-danchuang-shezhibiaoqian", text: "设置标签" },
-      { type: 3, icon: "icon-danchuang-shanchu", text: "删除客户" },
+      { type: 3, icon: "icon-danchuang-shanchu", text: appI18n.global.t('ui.customerListCustomerMoreDeleteCustomer') },
     ],
   });
 
@@ -130,51 +131,51 @@
     popupRef.value.open();
     if (types.value == 3) {
       data.listData = [
-        { type: 1, icon: "icon-danchuang-bianji", text: "编辑" },
+        { type: 1, icon: "icon-danchuang-bianji", text: appI18n.global.t('ui.customerQuickReplyIndexEdit') },
         { type: 4, icon: "icon-danchuang-liushi", text: dataInfo.value.customer_status == 2 ? "取消流失" : "标为流失" },
-        { type: 5, icon: "icon-danchuang-lingqu", text: "领取" },
+        { type: 5, icon: "icon-danchuang-lingqu", text: appI18n.global.t('ui.customerListCustomerMoreIssue') },
       ];
 
       data.tableData = [
-        { type: 1, icon: "icon-danchuang-zhuanyi", text: "分配" },
+        { type: 1, icon: "icon-danchuang-zhuanyi", text: appI18n.global.t('ui.customerListCustomerMoreAssign') },
         // { type: 2, icon: "icon-danchuang-shezhibiaoqian", text: "设置标签" },
-        { type: 3, icon: "icon-danchuang-shanchu", text: "删除客户" },
+        { type: 3, icon: "icon-danchuang-shanchu", text: appI18n.global.t('ui.customerListCustomerMoreDeleteCustomer') },
       ];
     } else if (types.value == 8) {
       // 线索弹窗
 
       data.listData = [
-        { type: 81, icon: "icon-danchuang-bianji", text: "编辑" },
-        { type: 84, icon: "icon-danchuang-zhuanyi", text: "移交同事" },
-        { type: 85, icon: "icon-danchuang-genjinzhong", text: "填写跟进" },
+        { type: 81, icon: "icon-danchuang-bianji", text: appI18n.global.t('ui.customerQuickReplyIndexEdit') },
+        { type: 84, icon: "icon-danchuang-zhuanyi", text: appI18n.global.t('ui.customerListCustomerMoreTransferToColleague') },
+        { type: 85, icon: "icon-danchuang-genjinzhong", text: appI18n.global.t('ui.customerListCustomerMoreWriteFollowUp') },
       ];
 
       const unassignedList = [
-        { type: 805, icon: "icon-fenpei", text: "分配" },
-        { type: 806, icon: "icon-lingqu", text: "领取" },
+        { type: 805, icon: "icon-fenpei", text: appI18n.global.t('ui.customerListCustomerMoreAssign') },
+        { type: 806, icon: "icon-lingqu", text: appI18n.global.t('ui.customerListCustomerMoreIssue') },
       ];
 
       const assignedList = [
         // { type: 801, icon: "icon-danchuang-zhuanyi", text: "移交同事" },
-        { type: 802, icon: "icon-tuihuixiansuochi", text: "退回线索池" },
+        { type: 802, icon: "icon-tuihuixiansuochi", text: appI18n.global.t('ui.customerLeadDetailReturnToLeadPool') },
       ];
 
       data.tableData = (dataInfo.value.salesman ? assignedList : unassignedList).concat([
-        { type: 803, icon: "icon-xiugaizhuangtai", text: "修改状态" },
-        { type: 804, icon: "icon-danchuang-shanchu", text: "删除线索" },
+        { type: 803, icon: "icon-xiugaizhuangtai", text: appI18n.global.t('ui.customerListCustomerMoreEditStatus') },
+        { type: 804, icon: "icon-danchuang-shanchu", text: appI18n.global.t('ui.customerListCustomerMoreDeleteLead') },
       ]);
     } else if (types.value == 9) {
       // 商机弹窗
       data.listData = [
-        { type: 91, icon: "icon-danchuang-bianji", text: "编辑" },
-        { type: 94, icon: "icon-danchuang-tianjiahetong", text: "添加订单" },
-        { type: 95, icon: "icon-danchuang-genjinzhong", text: "填写跟进" },
+        { type: 91, icon: "icon-danchuang-bianji", text: appI18n.global.t('ui.customerQuickReplyIndexEdit') },
+        { type: 94, icon: "icon-danchuang-tianjiahetong", text: appI18n.global.t('ui.oaFormIndexAddOrder') },
+        { type: 95, icon: "icon-danchuang-genjinzhong", text: appI18n.global.t('ui.customerListCustomerMoreWriteFollowUp') },
       ];
 
       data.tableData = [
-        { type: 901, icon: "icon-danchuang-zhuanyi", text: "移交同事" },
-        { type: 903, icon: "icon-xiugaizhuangtai", text: "修改状态" },
-        { type: 904, icon: "icon-danchuang-shanchu", text: "删除商机" },
+        { type: 901, icon: "icon-danchuang-zhuanyi", text: appI18n.global.t('ui.customerListCustomerMoreTransferToColleague') },
+        { type: 903, icon: "icon-xiugaizhuangtai", text: appI18n.global.t('ui.customerListCustomerMoreEditStatus') },
+        { type: 904, icon: "icon-danchuang-shanchu", text: appI18n.global.t('ui.customerListCustomerMoreDeleteOpportunity') },
       ];
     }
   };
@@ -240,8 +241,8 @@
   // 领取客户
   const clientclaim = (id) => {
     uni.showModal({
-      title: "提示",
-      content: "您确定要领取将此客户吗?",
+      title: appI18n.global.t('ui.customerLeadDetailHint'),
+      content: appI18n.global.t('ui.customerListCustomerMoreClaimThisCustomer'),
       success: (res) => {
         if (res.confirm) {
           clientclaimApi(id).then((res) => {
@@ -260,8 +261,8 @@
   // 取消流失
   const clientCancelLost = (id) => {
     uni.showModal({
-      title: "提示",
-      content: "您确定要将此客户取消流失吗?",
+      title: appI18n.global.t('ui.customerLeadDetailHint'),
+      content: appI18n.global.t('ui.customerListCustomerMoreRemoveTheLostStatusFromThisCustomer'),
       success: (res) => {
         if (res.confirm) {
           clientCancelLostApi(id).then((res) => {
@@ -279,8 +280,8 @@
   // 标为流失
   const clientLost = (id) => {
     uni.showModal({
-      title: "提示",
-      content: "您确定要将此客户标为流失吗?",
+      title: appI18n.global.t('ui.customerLeadDetailHint'),
+      content: appI18n.global.t('ui.customerListCustomerMoreMarkThisCustomerAsLost'),
       success: (res) => {
         if (res.confirm) {
           clientlostApi(id).then((res) => {
@@ -352,8 +353,8 @@
     } else if (type === 3) {
       let liaisonId = dataInfo.value.id;
       uni.showModal({
-        title: "提示",
-        content: "您确定要删除该客户吗?",
+        title: appI18n.global.t('ui.customerLeadDetailHint'),
+        content: appI18n.global.t('ui.customerListCustomerMoreDeleteThisCustomer'),
         success: (res) => {
           if (res.confirm) {
             clientDeleteApi(liaisonId).then((res) => {
@@ -369,37 +370,37 @@
       });
     } else if (type === 4) {
       data.configData.refundType = 4;
-      data.configData.title = "退回客户公海";
+      data.configData.title = appI18n.global.t('ui.customerListCustomerMoreReturnCustomerToPool');
       textareaPopupRef.value.popupOpen();
     } else if (type === 5) {
       clickNavigateTo(`/pages/customer/list/addFollow?eid=${dataInfo.value.id}&type=1`);
     } else if (type === 6) {
       sheetRef.value.openActionSheet({
-        title: "修改客户状态",
+        title: appI18n.global.t('ui.customerListCustomerMoreEditCustomerStatus'),
         type: "client_status",
         options: [
           {
-            label: "暂未成交",
+            label: appI18n.global.t('ui.customerListCustomerMoreNotConverted'),
             value: "1"
           },
           {
-            label: "已成交",
+            label: appI18n.global.t('ui.customerListCustomerMoreClosed'),
             value: "2"
           },
           {
-            label: "已放弃",
+            label: appI18n.global.t('ui.customerListCustomerMoreAbandoned'),
             value: "3"
           }
         ]
       });
     } else if (type == 802) {
       data.configData.refundType = 802;
-      data.configData.title = "退回线索池";
+      data.configData.title = appI18n.global.t('ui.customerLeadDetailReturnToLeadPool');
       textareaPopupRef.value.popupOpen();
     } else if (type == 806) {
       uni.showModal({
-        title: "提示",
-        content: "您确定要领取此线索吗?",
+        title: appI18n.global.t('ui.customerLeadDetailHint'),
+        content: appI18n.global.t('ui.customerListCustomerMoreClaimThisLead'),
         success: (res) => {
           if (res.confirm) {
             leadClaimApi({
@@ -419,7 +420,7 @@
       });
       if (!res.data.length) return;
       sheetRef.value.openActionSheet({
-        title: "修改线索状态",
+        title: appI18n.global.t('ui.customerListCustomerMoreEditLeadStatus'),
         type: "clue_status",
         options: res.data.map((item) => ({
           label: item.name,
@@ -428,8 +429,8 @@
       });
     } else if (type == 804) {
       uni.showModal({
-        title: "提示",
-        content: "您确定要删除此线索吗?",
+        title: appI18n.global.t('ui.customerLeadDetailHint'),
+        content: appI18n.global.t('ui.customerListCustomerMoreDeleteThisLead'),
         success: (res) => {
           if (res.confirm) {
             leadDeleteApi(dataInfo.value.id).then((res) => {
@@ -447,7 +448,7 @@
       });
       if (!res.data.length) return;
       sheetRef.value.openActionSheet({
-        title: "修改商机状态",
+        title: appI18n.global.t('ui.customerListCustomerMoreEditOpportunityStatus'),
         type: "odds_status",
         options: res.data.map((item) => ({
           label: item.name,
@@ -456,8 +457,8 @@
       });
     } else if (type == 904) {
       uni.showModal({
-        title: "提示",
-        content: "您确定要删除此商机吗?",
+        title: appI18n.global.t('ui.customerLeadDetailHint'),
+        content: appI18n.global.t('ui.customerListCustomerMoreDeleteThisOpportunity'),
         success: (res) => {
           if (res.confirm) {
             opportunityDelApi(dataInfo.value.id).then((res) => {
@@ -499,7 +500,7 @@
         formData["status"] = value;
         await leadEditApi(dataInfo.value.id, formData);
         uni.hideLoading();
-        message.success("修改成功");
+        message.success(appI18n.global.t('ui.customerListCustomerMoreUpdatedSuccessfully'));
         setTimeout(() => {
           emit("change");
         }, 500);
@@ -520,7 +521,7 @@
         formData["status"] = value;
         await opportunityEditApi(dataInfo.value.id, formData);
         uni.hideLoading();
-        message.success("修改成功");
+        message.success(appI18n.global.t('ui.customerListCustomerMoreUpdatedSuccessfully'));
         setTimeout(() => {
           emit("change");
         }, 500);
@@ -540,8 +541,8 @@
         types: 0
       };
       uni.showModal({
-        title: "提示",
-        content: "您确定要修改此状态吗?",
+        title: appI18n.global.t('ui.customerLeadDetailHint'),
+        content: appI18n.global.t('ui.customerListCustomerMoreChangeThisStatus'),
         success: (res) => {
           if (res.confirm) {
             clientStatusApi(liaisonId, data).then((res) => {

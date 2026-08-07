@@ -131,6 +131,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { clientBillListApi, getbillCate } from '@/api/enterprise'
 
 export default {
@@ -302,7 +303,7 @@ export default {
       item.contract_name = item.contract.contract_name
       item.eid = item.eid
       this.contractFromData = {
-        title: '查看订单',
+        title: i18n.t('legacyScript.viewOrder'),
         width: '1000px',
         data: item,
         isClient: false,

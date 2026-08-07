@@ -12,7 +12,7 @@
         <el-form-item class="mt20">
           <span slot="label">
             <span class="color-tab">*</span>
-            {{ $ts("职等区间：") }}
+            {{ $ts("职等区间") }}
           </span>
           <el-col :span="11">
             <el-form-item prop="levelMin">
@@ -39,7 +39,7 @@
         <el-form-item class="mt20">
           <span slot="label">
             <span class="color-tab">*</span>
-            {{ $ts("薪资区间：") }}
+            {{ $ts("薪资区间") }}
           </span>
           <el-col :span="11">
             <el-form-item prop="salaryMin">
@@ -68,7 +68,7 @@
         <el-form-item class="mt20" :label='$ts("每级职等跨度:")' prop="rank">
           <el-input-number :placeholder='$ts("请输入职等跨度")' v-model="formData.rank" :controls="false"></el-input-number>
         </el-form-item>
-        <el-form-item class="mt20" :label='$ts("跨度说明:")' style="margin-bottom: 0">
+        <el-form-item class="mt20" :label='$ts("跨度说明")' style="margin-bottom: 0">
           <div class="rank-explain">
             <p>{{ $ts("1. 批量设置职等跨度，跨度只能为正整数，不能为负数；") }}</p>
             <p>{{ $ts("2. 职等跨度示例：1-4，跨度数字为4。") }}</p>
@@ -83,6 +83,7 @@
   </el-dialog>
 </template>
 <script>
+import i18n from '@/lang'
 import { rankLevelBatchApi, rankLevelEditApi, rankLevelSaveApi } from '@/api/setting'
 
 export default {
@@ -120,10 +121,10 @@ export default {
       },
       rules: {
         levelMin: [{ required: true, validator: checkLevelMin, trigger: 'blur' }],
-        levelMax: [{ required: true, message: '请输入最高职等', trigger: 'blur' }],
-        salaryMin: [{ required: true, message: '请输入最低薪资', trigger: 'blur' }],
-        salaryMax: [{ required: true, message: '请输入最高薪资', trigger: 'blur' }],
-        rank: [{ required: true, message: '请输入职等跨度', trigger: 'blur' }]
+        levelMax: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheHighestJobLevel'), trigger: 'blur' }],
+        salaryMin: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheMinimumSalary'), trigger: 'blur' }],
+        salaryMax: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheMaximumSalary'), trigger: 'blur' }],
+        rank: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheJobGradeSpan'), trigger: 'blur' }]
       },
       loading: false
     }

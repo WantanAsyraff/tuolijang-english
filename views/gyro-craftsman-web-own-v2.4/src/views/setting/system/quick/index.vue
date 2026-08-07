@@ -14,7 +14,7 @@
               :total="total"
               :isViewSearch="false"
               :sortSearch="false"
-              btnText="新建入口"
+:btn-text="$t('ui.settingSystemQuickIndexNewShortcut')"
               @addDataFn="handleNews"
               @confirmData="confirmData"
             ></oaFromBox>
@@ -57,8 +57,8 @@
                 <template slot-scope="scope">
                   <el-switch
                     v-model="scope.row.status"
-                    active-text="开启"
-                    inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                     :active-value="1"
                     :inactive-value="0"
                     @change="handleStatus(scope.row)"

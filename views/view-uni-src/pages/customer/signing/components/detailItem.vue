@@ -160,7 +160,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { defineProps, ref, toRefs } from "vue";
 import eSignatureDialog from './eSignatureDialog.vue'
 import ProductList from "@/pages/customer/opportunity/components/product-list.vue";
@@ -185,15 +186,15 @@ const props = defineProps<{
 const { detail } = toRefs(props);
 const statusMap = {
   '0': {
-    text: '待签约',
+    text: appI18n.global.t('ui.customerSigningDetailItemPendingSigning'),
     color: '#FF9900',
   },
   '1': {
-    text: '已签约',
+    text: appI18n.global.t('ui.customerSigningDetailItemSigned'),
     color: '#909399',
   },
   '2': {
-    text: '已拒绝',
+    text: appI18n.global.t('ui.customerInvoiceCheckPaymentRejected'),
     color: '#ED4014',
   },
 
@@ -221,7 +222,7 @@ const openProgram = (val) => {
       }, function (err) {
         console.log('打开链接失败', err);
         uni.showToast({
-          title: '打开失败，请检查链接',
+          title: appI18n.global.t('ui.customerSigningDetailItemFailedToOpenCheckTheLink'),
           icon: 'none'
         });
       });
@@ -235,7 +236,7 @@ const openProgram = (val) => {
         fail: function (err) {
           console.log('打开链接失败', err);
           uni.showToast({
-            title: '打开失败，请检查链接',
+            title: appI18n.global.t('ui.customerSigningDetailItemFailedToOpenCheckTheLink'),
             icon: 'none'
           });
         }
@@ -261,7 +262,7 @@ const handleAddFile = () => {
           if (val.status == 200) {
             emit('getDetails', detail.value.id);
             uni.showToast({
-              title: '签约文件上传成功',
+              title: appI18n.global.t('ui.customerSigningDetailItemSigningDocumentUploaded'),
               icon: 'success',
 
             })

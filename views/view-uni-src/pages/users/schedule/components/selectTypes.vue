@@ -8,7 +8,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { ref, reactive, toRefs } from "vue";
 const props = defineProps({
   title: {
@@ -25,9 +26,9 @@ const popupRef = ref(null);
 
 const type = ref(0);
 const range = reactive([
-  { value: 0, text: "此日程" },
-  { value: 1, text: "此日程及后续日程" },
-  { value: 2, text: "所有日程" }
+  { value: 0, text: appI18n.global.t('ui.usersScheduleSelectTypesThisSchedule') },
+  { value: 1, text: appI18n.global.t('ui.usersScheduleSelectTypesThisAndFollowingSchedules') },
+  { value: 2, text: appI18n.global.t('ui.usersScheduleSelectTypesAllSchedules') }
 ]);
 
 const popupOpen = () => {

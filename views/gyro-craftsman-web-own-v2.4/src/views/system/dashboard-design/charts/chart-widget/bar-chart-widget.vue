@@ -3,6 +3,7 @@
   <myEcharts :isShowEmpty="isShowEmpty" :option="option" :field="field" :designer="designer" v-loading="loading" />
 </template>
 <script>
+import i18n from '@/lang'
 import myEcharts from '@/components/scEcharts/chart-widget.vue'
 import { queryChartData } from '@/api/chart'
 import { EventBus } from '@/libs/bus'
@@ -110,7 +111,7 @@ export default {
               left: '3%',
               top: '3%',
               style: {
-                text: '返回',
+                text: i18n.t('business.return'),
                 fontSize: 12,
                 fill: '#ccc'
               },

@@ -29,7 +29,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index";
 import dropDown from "@/pages/forum/components/dropDown.vue";
 import payDetail from "@/pages/customer/contract/components/payDetail.vue";
@@ -105,13 +106,13 @@ const handleNarItem = (): void => {
 };
 const dropDownItem = (e: Drop): void => {
   if (e.id === 2) {
-    showModal("删除后，对应的订单付款以及收支记账也会删除")
+    showModal(appI18n.global.t('ui.financePaymentDetailsDeletingThisWillAlsoDeleteTheRelatedOrderPayment'))
       .then((): void => {
         getBilllDelete(data.info.id);
       })
       .catch((): void => {});
   } else if (e.id === 1) {
-    showModal("确定要撤回审核状态吗")
+    showModal(appI18n.global.t('ui.financePaymentDetailsAreYouSureYouWantToRecallTheApproval'))
       .then((): void => {
         getBilllStatus(data.info.id, { status: -1 });
       })

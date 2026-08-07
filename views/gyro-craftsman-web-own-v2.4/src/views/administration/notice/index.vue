@@ -17,7 +17,7 @@
                 :sortSearch="false"
                 :isAddBtn="hasAddPermission"
                 :title="$route.meta.title"
-                btnText="新建公告"
+:btn-text="$t('ui.administrationNoticeIndexNewAnnouncement')"
                 @addDataFn="handleNews"
                 @confirmData="confirmData"
               ></oaFromBox>
@@ -46,8 +46,8 @@
                     <template slot-scope="scope">
                       <el-switch
                         v-model="scope.row.status"
-                        active-text="开启"
-                        inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                         :active-value="1"
                         :inactive-value="0"
                         @change="handleStatus(scope.row)"
@@ -63,8 +63,8 @@
                     <template slot-scope="scope">
                       <el-switch
                         v-model="scope.row.is_top"
-                        active-text="已置顶"
-                        inactive-text="未置顶"
+:active-text="$t('ui.administrationNoticeIndexPinned')"
+:inactive-text="$t('ui.administrationNoticeIndexNotPinned')"
                         :active-value="1"
                         :inactive-value="0"
                         :width="70"
@@ -115,6 +115,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { noticeCategoryApi, noticeDeleteApi, noticeListApi, noticeStatusApi, noticeTopApi } from '@/api/administration'
 
 import noticeImg from '@/assets/images/notice.png'
@@ -204,7 +205,7 @@ export default {
     },
     handleNews() {
       if (this.$refs.left.department.length == 0) {
-        this.$message.error('请先新建公告类型')
+        this.$message.error(i18n.t('legacyScript.pleaseCreateAnAnnouncementTypeFirst'))
         return false
       }
       this.getTargetCate()

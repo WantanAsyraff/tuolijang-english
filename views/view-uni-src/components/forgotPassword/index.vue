@@ -50,7 +50,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive } from "vue";
 const popupRef = ref(null);
 // 获取验证码-组合式函数
@@ -99,7 +100,7 @@ const sendVerificationCode = () => {
 import { savePasswordApi } from "@/api/public";
 const handlePreserve = () => {
   if (formData.phone && !phoneReg.test(formData.phone)) {
-    message.error("电话号码不合法");
+    message.error(appI18n.global.t('ui.forgotPasswordIndexInvalidPhoneNumber'));
     return false;
   }
 

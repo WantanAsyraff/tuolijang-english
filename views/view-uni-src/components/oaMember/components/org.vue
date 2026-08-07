@@ -159,7 +159,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, toRefs, reactive, computed, watch } from 'vue'
 import message from '@/utils/message'
 import { clickNavigateTo } from '@/utils/helper'
@@ -205,7 +206,7 @@ let data = reactive({
 const currentDepId = ref('')
 const breadcrumbList = ref([
   {
-    label: '组织架构',
+    label: appI18n.global.t('ui.usersDepartmentIndexOrganization'),
     id: '',
   },
 ])
@@ -345,7 +346,7 @@ const changeDepartment = (item, index) => {
     // 判断是否为单选
     if (onlyOne.value) {
       if (selectPeopleArr.value.length > 0) {
-        message.error('只能选择一个部门')
+        message.error(appI18n.global.t('ui.oaMemberOrgOnlyOneMemberCanBeSelected'))
         return false
       }
     }

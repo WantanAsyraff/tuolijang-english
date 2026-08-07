@@ -142,6 +142,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 import oaTable from '@/components/form-common/oa-table'
 import defaultPage from '@/components/common/defaultPage'
@@ -181,31 +182,31 @@ export default {
       options: [],
       tableOptions: [
         {
-          label: '序号',
+          label: i18n.t('finance.serialnumber'),
           type: 'index'
         },
         {
-          label: '人员姓名',
+          label: i18n.t('ui.hrAttendanceSettingNotJoinPersonName'),
           prop: 'name'
         },
         {
-          label: '职位',
+          label: i18n.t('customer.position'),
           render: (row) => {
             return <span>{row.job ? row.job.name : '--'}</span>
           }
         },
         {
-          label: '部门',
+          label: i18n.t('customer.department'),
           render: (row) => {
             return <span>{row.frame ? row.frame.name : '--'}</span>
           }
         },
         {
-          label: '更新时间',
+          label: i18n.t('file.updatetime'),
           prop: 'updated_at'
         },
         {
-          label: '操作',
+          label: i18n.t('toptable.operation'),
           slot: 'options',
           fixed: 'right',
           width: '130'

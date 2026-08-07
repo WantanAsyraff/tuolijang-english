@@ -252,6 +252,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   name: 'CustomerManagement',
   data() {
@@ -319,7 +320,7 @@ export default {
         // 检查是否还有更多数据
         this.hasMore = this.pagination.currentPage * this.pagination.pageSize < this.total
       } catch (error) {
-        this.$message.error('加载数据失败')
+        this.$message.error(i18n.t('legacyScript.failedToLoadData'))
       } finally {
         this.loading = false
       }
@@ -547,7 +548,7 @@ export default {
         
         this.$message.success(`已加载更多${group.groupName}的客户数据`)
       } catch (error) {
-        this.$message.error('加载更多数据失败')
+        this.$message.error(i18n.t('legacyScript.failedToLoadMoreData'))
       } finally {
         group.loading = false
       }
@@ -699,20 +700,20 @@ export default {
       return [
         {
           time: '2023-06-15 14:30',
-          title: '电话回访',
-          content: '与客户沟通产品使用情况，客户表示满意',
+          title: i18n.t('legacyScript.phoneFollowUp'),
+          content: i18n.t('legacyScript.communicatedWithTheClientRegardingProductUsageTheClientExpressed'),
           staff: row.business_staff ? row.business_staff.name : '系统'
         },
         {
           time: '2023-06-10 10:15',
-          title: '上门拜访',
-          content: '实地了解客户需求，讨论后续合作方案',
+          title: i18n.t('legacyScript.onSiteVisit'),
+          content: i18n.t('legacyScript.understandCustomerNeedsOnSiteAndDiscussFollowUpCooperation'),
           staff: row.business_staff ? row.business_staff.name : '系统'
         },
         {
           time: '2023-06-05 16:45',
-          title: '邮件沟通',
-          content: '发送产品资料和技术文档',
+          title: i18n.t('legacyScript.emailCommunication'),
+          content: i18n.t('legacyScript.sendProductMaterialsAndTechnicalDocuments'),
           staff: row.business_staff ? row.business_staff.name : '系统'
         }
       ]
@@ -784,13 +785,13 @@ export default {
 
     // 新增客户
     handleAdd() {
-      this.$message.info('新增功能待实现')
+      this.$message.info(i18n.t('legacyScript.newFeaturesToBeImplemented'))
     },
 
     // 批量删除
     async handleBatchDelete() {
       try {
-        await this.$confirm(`确定要删除选中的 ${this.selectedRows.length} 个客户吗?`, '批量删除确认', {
+        await this.$confirm(`确定要删除选中的 ${this.selectedRows.length} 个客户吗?`, i18n.t('legacyScript.confirmBatchDeletion'), {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -814,12 +815,12 @@ export default {
     // 删除客户
     async handleDelete(row) {
       try {
-        await this.$confirm('确定要删除该客户吗?', '提示', {
+        await this.$confirm(i18n.t('legacyScript.areYouSureYouWantToDeleteThisCustomer'), i18n.t('public.tips'), {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         })
-        this.$message.success('删除成功')
+        this.$message.success(i18n.t('hr.deleteok'))
         // 重新加载数据
         this.loadCustomerData()
       } catch (error) {
@@ -858,7 +859,7 @@ export default {
         this.tableData = [...this.tableData, ...newData]
         this.hasMore = this.pagination.currentPage * this.pagination.pageSize < this.total
       } catch (error) {
-        this.$message.error('加载更多数据失败')
+        this.$message.error(i18n.t('legacyScript.failedToLoadMoreData'))
       } finally {
         this.loadingMore = false
       }

@@ -40,6 +40,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { customerShiftApi, clientInvoiceShiftApi, cluesShiftApi } from '@/api/enterprise'
 import { clientContractShiftApi, oddsShiftApi } from '@/api/client'
 export default {
@@ -91,9 +92,9 @@ export default {
     handleOpen(keyword) {
       this.keyword = keyword
       if (keyword == 'clue' || keyword === 'clue_seas') {
-        this.transfer.push({ value: 5, label: '线索移交' })
+        this.transfer.push({ value: 5, label: i18n.t('legacyScript.transferLead') })
       } else if (keyword === 'odds') {
-        this.transfer[0].label = '商机移交'
+        this.transfer[0].label = i18n.t('legacyScript.transferOpportunity')
       }
 
       this.dialogVisible = true

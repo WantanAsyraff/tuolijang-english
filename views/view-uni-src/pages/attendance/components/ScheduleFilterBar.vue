@@ -28,7 +28,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import message from '@/utils/message';
   import moment from 'moment';
 
@@ -45,11 +46,11 @@
 
   const cycleConfig = [
     {
-      label: "月",
+      label: appI18n.global.t('ui.examineFormTimeFromPickerMonth'),
       type: "month"
     },
     {
-      label: "周",
+      label: appI18n.global.t('ui.attendanceScheduleFilterBarWeek'),
       type: "week"
     }
   ];
@@ -92,7 +93,7 @@
     const isEqualYear = year === currentYear;
     const isPrevMonth = month < currentMonth;
     if (isPrevYear || isEqualYear && isPrevMonth) {
-      message.error("不能选择之前的日期", 'none');
+      message.error(appI18n.global.t('ui.attendanceScheduleFilterBarPastDatesCannotBeSelected'), 'none');
       return;
     }
 
@@ -114,7 +115,7 @@
     const instance = moment(e.fulldate);
     const isPrevDate = instance.endOf("week").isBefore(moment(), "day");
     if (isPrevDate) {
-      message.error("不能选择之前的日期", 'none');
+      message.error(appI18n.global.t('ui.attendanceScheduleFilterBarPastDatesCannotBeSelected'), 'none');
       return;
     }
 

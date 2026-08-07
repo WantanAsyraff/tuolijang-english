@@ -128,6 +128,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import draweForm from '@/components/form-common/drawer-form'
 import { endJobApi, endJobStatusApi, endJobInfoApi, endJobDeleteApi, enterpriseEntInfoApi } from '@/api/enterprise'
@@ -143,7 +144,7 @@ export default {
       drawer: false,
       input: '',
       fromData: {
-        title: '添加职位',
+        title: i18n.t('hr.addposition'),
         width: '850px',
         type: 'add'
       },
@@ -151,46 +152,46 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: '职位名称：',
+          label: i18n.t('legacyScript.jobTitle'),
           maxlength: 20,
-          placeholder: '请输入职位名称',
+          placeholder: i18n.t('hr.placeholder25'),
           key: 'name'
         },
         {
           type: 'select',
-          label: '职级类别：',
-          placeholder: '请选择职级类别',
+          label: i18n.t('legacyScript.rankCategory'),
+          placeholder: i18n.t('legacyScript.pleaseSelectRankCategory'),
           key: 'cate_id',
           options: []
         },
         {
           type: 'select',
-          label: '职级：',
-          placeholder: '请选择职级',
+          label: i18n.t('ui.hrEnterprisePromotionRank2'),
+          placeholder: i18n.t('hr.message9'),
           key: 'rank_id',
           options: []
         },
         {
           type: 'textarea',
-          label: '工作描述：',
-          placeholder: '请输入工作描述',
+          label: i18n.t('legacyScript.jobDescription'),
+          placeholder: i18n.t('legacyScript.pleaseEnterJobDescription'),
           key: 'describe'
         },
         {
           type: 'richText',
-          label: '职位职责：',
-          placeholder: '请输入职位职责',
+          label: i18n.t('legacyScript.jobResponsibilities'),
+          placeholder: i18n.t('legacyScript.pleaseEnterJobResponsibilities'),
           key: 'duty'
         }
       ],
 
       formRules: {
         name: [
-          { required: true, message: '请输入职位名称', trigger: 'blur' },
-          { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
+          { required: true, message: i18n.t('hr.placeholder25'), trigger: 'blur' },
+          { min: 1, max: 20, message: i18n.t('legacyScript.lengthMustBeBetween1And20Characters'), trigger: 'blur' }
         ],
-        cate_id: [{ required: true, message: '请选择职级类别', trigger: 'change' }],
-        rank_id: [{ required: true, message: '请选择职级', trigger: 'change' }]
+        cate_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectRankCategory'), trigger: 'change' }],
+        rank_id: [{ required: true, message: i18n.t('hr.message9'), trigger: 'change' }]
       },
 
       rolesConfig: [],
@@ -210,7 +211,7 @@ export default {
       search: [],
       dropdownList: [
         {
-          label: '删除',
+          label: i18n.t('public.delete'),
           value: 1
         }
       ],
@@ -247,12 +248,12 @@ export default {
       this.formConfig[1].options = this.rankDataList
       this.search = [
         {
-          field_name: '职位名称',
+          field_name: this.$ts('职位名称'),
           field_name_en: 'name',
           form_value: 'input'
         },
         {
-          field_name: '职位类别',
+          field_name: this.$ts('职位类别'),
           field_name_en: 'cate_id',
           form_value: 'select',
           data_dict: this.rankDataList
@@ -301,7 +302,7 @@ export default {
     },
     // 添加职位
     async addJob() {
-      this.fromData.title = '添加职位'
+      this.fromData.title = i18n.t('hr.addposition')
       this.fromData.type = 'add'
       this.formDataInit = { name: '', cate_id: '', rank_id: '', describe: '', duty: '' }
       setTimeout(() => {
@@ -352,7 +353,7 @@ export default {
           this.formDataInit[key] = data[key]
         }
         this.getRankList(this.formDataInit.cate_id)
-        this.fromData.title = '编辑职位'
+        this.fromData.title = i18n.t('hr.editorialpost')
         this.fromData.type = 'edit'
         setTimeout(() => {
           this.$refs.draweForm.openBox()
@@ -369,13 +370,13 @@ export default {
     },
     batchHandleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error('至少选择一项要删除的内容')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItemToDelete'))
       } else {
         const ids = []
         this.multipleSelection.forEach((value) => {
           ids.push(value.id)
         })
-        this.$modalSure('确定要全部删除已选择的内容吗').then(() => {
+        this.$modalSure(this.$ts('确定要全部删除已选择的内容吗')).then(() => {
           this.endJobDelete(ids.join(','))
         })
       }

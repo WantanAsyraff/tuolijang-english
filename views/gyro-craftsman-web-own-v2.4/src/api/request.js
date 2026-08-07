@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import axios from 'axios'
 import store from '@/store'
 import router from '../router'
@@ -86,7 +87,7 @@ const refreshAccessToken = () => {
 
 const handleAuthExpired = (options) => {
   if (options.skipAuthRefresh || options._retry) {
-    return redirectToLogin().then(() => Promise.reject({ message: '登录状态已失效' }))
+    return redirectToLogin().then(() => Promise.reject(new Error('common.loginExpired')))
   }
 
   return refreshAccessToken()
@@ -133,7 +134,7 @@ function baseRequest(options) {
         updateTokenFromResponse(res)
         const data = processResourceData(res.data || {})
         if (res.status !== 200) {
-          return reject({ message: '请求失败', res, data })
+          return reject({ message: i18n.t('apiMessages.requestFailed'), res, data })
         } else if (AUTH_EXPIRED_STATUS.indexOf(data.status) !== -1) {
           handleAuthExpired(options).then(resolve).catch(reject)
         } else if (data.status === 200) {

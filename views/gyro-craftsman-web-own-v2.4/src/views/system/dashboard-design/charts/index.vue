@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { dashboard_container_schema } from '@/views/system/dashboard-design/charts/charts-schema'
 import { deepClone, mlShortcutkeys } from '@/utils/formDesignerUtils'
 import { getDashboardDesign, changeDashboardDesign } from '@/api/chart'
@@ -58,7 +59,7 @@ export default {
         chartLib: true
       },
       isMobile: false,
-      title: '统计看板设计'
+      title: i18n.t('legacyScript.dashboardDesign')
     }
   },
   mounted() {
@@ -148,19 +149,31 @@ export default {
       this.loading = false
     },
     copyCanvas() {
-      this.$message
-        .confirm('从' + (this.isMobile ? 'PC' : '移动端') + '复制图表将会清空当前配置，是否确认复制?', '提示：', {
-          confirmButtonText: '确认',
-          cancelButtonText: '取消',
+    const message = this.isMobile
+      ? '从PC复制图表将会清空当前配置，是否确认复制？'
+      : '从移动端复制图表将会清空当前配置，是否确认复制？'
+
+    this.$message
+      .confirm(
+        this.$ts(message),
+        i18n.t('legacyScript.hint'),
+        {
+          confirmButtonText: this.$ts('确认'),
+          cancelButtonText: this.$ts('取消'),
           type: 'warning'
-        })
-        .then(async () => {
-          this.clearCanvas()
-          let key = this.isMobile ? 'chartData' : 'mobileChartData'
-          this.initFormConfig(key)
-        })
-        .catch(() => {})
-    },
+        }
+      )
+      .then(async () => {
+        this.clearCanvas()
+
+        const key = this.isMobile
+          ? 'chartData'
+          : 'mobileChartData'
+
+        this.initFormConfig(key)
+      })
+      .catch(() => {})
+  },
     clearCanvas() {
       const newDashboardCon = deepClone(dashboard_container_schema)
       newDashboardCon.id = 'dbCon' + generateId()

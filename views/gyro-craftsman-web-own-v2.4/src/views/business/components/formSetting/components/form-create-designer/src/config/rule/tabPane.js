@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 const label = '标签页';
 const name = 'tab-pane';
 
@@ -10,23 +11,23 @@ export default {
   rule() {
     return {
       type: 'el-tab-pane',
-      props: { label: '新标签页' },
+      props: { label: i18n.t('legacyScript.newTab') },
       children: [],
     };
   },
   props() {
     return [
-      { type: 'input', field: 'label', title: '选项卡标题' },
+      { type: 'input', field: 'label', title: i18n.t('legacyScript.tabTitle') },
       {
         type: 'switch',
         field: 'disabled',
-        title: '是否禁用',
+        title: i18n.t('legacyScript.disable'),
       },
-      { type: 'input', field: 'name', title: '与选项卡绑定值 value 对应的标识符，表示选项卡别名' },
+      { type: 'input', field: 'name', title: i18n.t('legacyScript.identifierCorrespondingToTheBoundTabValueRepresentingTheTab') },
       {
         type: 'switch',
         field: 'lazy',
-        title: '标签是否延迟渲染',
+        title: i18n.t('legacyScript.whetherTheLabelIsRenderedLazily'),
       },
     ];
   },

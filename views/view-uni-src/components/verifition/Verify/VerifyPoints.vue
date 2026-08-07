@@ -37,7 +37,8 @@
 </div>
 </div>
 </template>
-<script type="text/babel">
+<script type="text/babel">import appI18n from '@/locale';
+
 import { resetSize } from "./../utils/util";
 import { aesEncrypt } from "./../utils/ase";
 // import {ajCaptcha, ajCaptchaCheck} from "../../../api/common";
@@ -157,7 +158,7 @@ export default {
             if (res.repCode == "0000") {
               this.barAreaColor = "#4cae4c";
               this.barAreaBorderColor = "#5cb85c";
-              this.text = "验证成功";
+              this.text = appI18n.global.t('ui.verifitionVerifyVerifyPointsVerificationSuccessful');
               this.bindingClick = false;
               if (this.mode == "pop") {
                 setTimeout(() => {
@@ -170,7 +171,7 @@ export default {
               this.$parent.$emit("error", this);
               this.barAreaColor = "#d9534f";
               this.barAreaBorderColor = "#d9534f";
-              this.text = "验证失败";
+              this.text = appI18n.global.t('ui.verifitionVerifyVerifyPointsVerificationFailed');
               setTimeout(() => {
                 this.refresh();
               }, 700);
@@ -203,7 +204,7 @@ export default {
       this.checkPosArr.splice(0, this.checkPosArr.length);
       this.num = 1;
       this.getPictrue();
-      this.text = "验证失败";
+      this.text = appI18n.global.t('ui.verifitionVerifyVerifyPointsVerificationFailed');
       this.showRefresh = true;
     },
 

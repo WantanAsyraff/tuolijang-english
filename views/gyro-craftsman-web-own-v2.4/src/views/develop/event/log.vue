@@ -77,6 +77,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { dataEventLogApi, dataEventTypeApi, dataEventActionApi, getDatabaseApi } from '@/api/develop'
 import JsonViewer from 'vue-json-viewer'
 import oaDialog from '@/components/form-common/drawer-form'
@@ -109,7 +110,7 @@ export default {
       ],
       tableData: [],
       fromData: {
-        title: '查看',
+        title: i18n.t('customer.view'),
         type: 'slot',
         width: '40%'
       },

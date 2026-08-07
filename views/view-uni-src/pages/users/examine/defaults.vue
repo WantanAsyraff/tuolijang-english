@@ -135,7 +135,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import moment from 'moment'
 import { reactive, computed } from 'vue'
 import defaultNavBar from '@/components/defaultNavBar/index.vue'
@@ -210,7 +211,7 @@ import { showModal, delayedNavigateTo } from '@/utils/helper'
 
 // 同意
 const handleAgree = () => {
-  showModal('确定要 同意 申请人的申请吗')
+  showModal(appI18n.global.t('ui.usersExamineDefaultsApproveThisApplication'))
     .then(() => {
       getApproveVerify(data.id, 1)
     })
@@ -231,7 +232,7 @@ const revokeFn = (id) => {
 // 撤销
 const handleRevoke = () => {
   if (data.listData.status === 0) {
-    showModal('确定要 撤销 申请吗')
+    showModal(appI18n.global.t('ui.usersExamineDefaultsRevokeThisApplication'))
       .then(() => {
         getApplyRevoke(data.id)
       })
@@ -256,7 +257,7 @@ const selectFn = (e) => {
 
 // 拒绝
 const handleRefuse = () => {
-  showModal('确定要 拒绝 申请人的申请吗')
+  showModal(appI18n.global.t('ui.usersExamineExamineListDefaultRejectThisApplication'))
     .then(() => {
       getApproveVerify(data.id, 0)
     })
@@ -339,7 +340,7 @@ const clickReplay = (content, ids) => {
 
 // 删除留言
 const handleDelete = (item, index) => {
-  showModal('确定要删除留言吗')
+  showModal(appI18n.global.t('ui.usersExamineDefaultsDeleteThisMessage'))
     .then(() => {
       approveReplyDelete(item.id, index)
     })
@@ -372,7 +373,7 @@ const getApplyRevoke = (id) => {
 const getApproveApply = (id, datas, flage = false) => {
   if (!flage) {
     uni.showLoading({
-      title: '加载中',
+      title: appI18n.global.t('ui.customerContractIndexLoading'),
     })
   }
   approveApplyEditApi(id, datas)

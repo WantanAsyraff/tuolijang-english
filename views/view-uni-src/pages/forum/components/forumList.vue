@@ -68,7 +68,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import empty from "@/components/empty/index.vue";
 import share from "@/components/share/index.vue";
 import { clickNavigateTo } from "@/utils/helper";
@@ -85,7 +86,7 @@ const props = withDefaults(
     listData: Array<any>;
     emptyTitle?: string;
   }>(), {
-    emptyTitle: "暂无数据",
+    emptyTitle: appI18n.global.t('ui.customerListStatisticsNoData'),
     listData: <any>[]
   });
 const { listData, emptyTitle } = toRefs(props);

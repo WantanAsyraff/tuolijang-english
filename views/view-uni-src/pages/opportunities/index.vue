@@ -76,7 +76,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import empty from '@/components/empty/index.vue'
 import FormBox, { FormItemType, FormBoxConfig } from '@/components/BaseFilterFormBox/index.vue'
 import moment from 'moment'
@@ -138,12 +139,12 @@ const searchData = () => {
 const formBoxConfig = computed<FormBoxConfig[]>(() => {
   return [
     {
-      label: '创建时间',
+      label: appI18n.global.t('ui.customerInvoiceCheckPaymentCreatedTime'),
       key: 'created_at',
       type: 'daterange',
     },
     {
-      label: '状态筛选',
+      label: appI18n.global.t('ui.opportunitiesIndexFilterByStatus'),
       key: 'status',
       type: FormItemType.PICKER,
       range: [
@@ -218,7 +219,7 @@ const openCustomer = (item) => {
  * 在企业微信环境中打开与当前客户的会话窗口。
  */
 const openCustomerChat = async (item) => {
-  if (!isWxWorkEnv) return message.error('只有在企业微信中可进行聊天')
+  if (!isWxWorkEnv) return message.error(appI18n.global.t('ui.customerListLiaisonListChatIsAvailableOnlyInWeCom'))
   try {
     const wxWork = await WxWork.getInstance()
     await new Promise((resolve, reject) => {
@@ -231,7 +232,7 @@ const openCustomerChat = async (item) => {
         fail: reject,
       })
     })
-    message.success('打开会话框')
+    message.success(appI18n.global.t('ui.customerLeadLeadListChatOpened'))
   } catch (err) {
     message.error(`打开个人资料页失败: ${err.errMsg || err.message || '操作失败'}`)
   }

@@ -85,7 +85,7 @@
             </div>
             <div v-else-if="item.form_value === 'switch'">
               <el-switch disabled v-model="scope.row[item.field_name_en]" :active-value="1" :inactive-value="0"
-                active-text="开启" inactive-text="关闭">
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
               </el-switch>
             </div>
             <div v-else-if="item.form_value === 'textarea'">
@@ -193,6 +193,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import treeTable from '@/views/develop/module/treeTable.vue'
 import { getColor } from '@/utils/format'
 import Commnt from '@/components/develop/commonData'
@@ -254,14 +255,14 @@ export default {
       },
       dropdownType: '',
       formRules: {
-        user_id: [{ required: true, message: '请选择人员', trigger: 'blur' }],
-        user_ids: [{ required: true, message: '请选择人员', trigger: 'blur' }],
-        role_type: [{ required: true, message: '请选择共享权限', trigger: 'blur' }]
+        user_id: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'), trigger: 'blur' }],
+        user_ids: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'), trigger: 'blur' }],
+        role_type: [{ required: true, message: i18n.t('legacyScript.pleaseSelectASharingPermission'), trigger: 'blur' }]
       },
       fromData: {
         width: '600px',
-        title: '选择接手人',
-        btnText: '确定',
+        title: i18n.t('legacyScript.selectNewOwner'),
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: ''
       },
@@ -315,7 +316,7 @@ export default {
           target.children = [...(target.children || []), ...(res.data || [])];
         }
       } catch {
-        this.$message.error('加载更多失败');
+        this.$message.error(i18n.t('legacyScript.failedToLoadMore'));
       } finally {
         this.loading = false;
       }
@@ -357,41 +358,41 @@ export default {
       switch (type) {
         case 'transfer':
           // 移交
-          if (this.multipleSelection.length == 0 && !row) return this.$message.error('请选择至少一项内容')
-          this.fromData.title = '选择接手人'
+          if (this.multipleSelection.length == 0 && !row) return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem'))
+          this.fromData.title = i18n.t('legacyScript.selectNewOwner')
           this.formConfig = [
             {
               type: 'user_id',
-              label: '选择人员：',
-              placeholder: '请选择人员（单选）',
+              label: i18n.t('legacyScript.selectPersonnel'),
+              placeholder: i18n.t('legacyScript.pleaseSelectOnePerson'),
               key: 'user_id',
               only_one: true,
-              tips: '数据移交之后，以后由接手人负责；数据移交用于业务调整或者人员离职。'
+              tips: i18n.t('legacyScript.afterTransferTheNewOwnerIsResponsibleForTheData')
             }
           ]
           this.$refs.oaDialog.openBox()
           break
         case 'share':
           // 共享
-          if (this.multipleSelection.length == 0 && !row) return this.$message.error('请选择至少一项内容')
-          this.fromData.title = '数据共享协作'
+          if (this.multipleSelection.length == 0 && !row) return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem'))
+          this.fromData.title = i18n.t('ui.developModuleShareDataSharingAndCollaboration')
           this.formConfig = [
             {
               type: 'user_id',
-              label: '选择人员：',
-              placeholder: '请选择人员（多选）',
+              label: i18n.t('legacyScript.selectPersonnel'),
+              placeholder: i18n.t('legacyScript.pleaseSelectPersonnel'),
               key: 'user_ids',
               only_one: false
             },
             {
               type: 'select',
-              label: '共享权限：',
-              placeholder: '请选择共享权限',
+              label: i18n.t('legacyScript.sharingPermission'),
+              placeholder: i18n.t('legacyScript.pleaseSelectASharingPermission'),
               key: 'role_type',
               options: [
-                { label: '仅可查看', value: '0' },
-                { label: '可查看、编辑', value: '1' },
-                { label: '可查看、编辑、删除', value: '2' }
+                { label: i18n.t('legacyScript.viewOnly'), value: '0' },
+                { label: i18n.t('legacyScript.viewAndEdit'), value: '1' },
+                { label: i18n.t('legacyScript.viewEditAndDelete'), value: '2' }
               ]
             }
           ]
@@ -466,7 +467,7 @@ export default {
 
     handleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error('至少选择一项内容')
+        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
       } else {
         this.$modalSure('您确认要删除吗').then(() => {
           const ids = []

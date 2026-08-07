@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import request from '@/api/request'
 import {
   approveApplyEditApi,
@@ -387,11 +388,11 @@ export default {
           for (let i = 0; i < processInfo.length; i++) {
             const value = processInfo[i]
             if (!this.approverDelete && value.types == 1 && value.users.length <= 0) {
-              this.$message.error('自选节点不能为空')
+              this.$message.error(i18n.t('legacyScript.theOptionalNodeCannotBeEmpty'))
               return
             }
             if (!this.copyerDelete && value.types == 2 && value.users.length <= 0) {
-              this.$message.error('自选节点不能为空')
+              this.$message.error(i18n.t('legacyScript.theOptionalNodeCannotBeEmpty'))
               return
             }
             if (
@@ -400,7 +401,7 @@ export default {
               (value.settype == 4 || value.settype == 1) &&
               value.users.length <= 0
             ) {
-              this.$message.error('自选节点不能为空')
+              this.$message.error(i18n.t('legacyScript.theOptionalNodeCannotBeEmpty'))
               return
             }
             if (value.users.length <= 0) {
@@ -408,7 +409,7 @@ export default {
             }
           }
           if (len === processInfo.length) {
-            this.$message.error('自选节点不能为空')
+            this.$message.error(i18n.t('legacyScript.theOptionalNodeCannotBeEmpty'))
             return
           }
           processInfo.forEach((value, index) => {

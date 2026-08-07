@@ -93,14 +93,14 @@
           </template>
         </el-table-column>
         <!-- 是否必填 -->
-        <el-table-column :label="$t('ui.customerSetupCustomFormIndexRequired')" prop="required">
+        <el-table-column :label="$t('ui.customerSetupCustomFormIndexRequired')" prop="required" min-width="145">
           <template slot-scope="scope">
             <el-switch
               v-model="scope.row.required"
               :active-value="1"
               :inactive-value="0"
-              active-text="必填"
-              inactive-text="选填"
+:active-text="$t('ui.developForeignDocumentRequired')"
+:inactive-text="$t('ui.customerSetupCustomFormIndexOptional')"
             />
           </template>
         </el-table-column>
@@ -112,8 +112,8 @@
               :active-value="1"
               :disabled="contractList.includes(row.key)"
               :inactive-value="0"
-              active-text="唯一"
-              inactive-text="重复"
+:active-text="$t('ui.customerSetupCustomFormIndexUnique')"
+:inactive-text="$t('ui.customerSetupCustomFormIndexDuplicate')"
             />
           </template>
         </el-table-column>
@@ -247,8 +247,8 @@
               :active-value="1"
               :disabled="row.enable_delete !== 1"
               :inactive-value="0"
-              active-text="启用"
-              inactive-text="停用"
+:active-text="$t('ui.settingAuthAdminIndexEnabled2')"
+:inactive-text="$t('ui.customerSetupCustomFormIndexDisabled')"
             />
           </template>
         </el-table-column>
@@ -308,6 +308,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Sortable from 'sortablejs'
 import { configConvertApi } from '@/api/client'
 import common from './components/customCommon'
@@ -333,11 +334,11 @@ export default {
       loadingBox: false,
       loading: false,
       fromData: {
-        title: '新增分组',
+        title: i18n.t('ui.customerSetupCustomFormIndexAddGroup'),
         type: 'add',
         width: '500px',
         labelWidth: '80px',
-        btnText: '确定'
+        btnText: i18n.t('ui.formCommonDialogFormOk')
       },
       clueList: [],
       formConfig: [],
@@ -347,7 +348,7 @@ export default {
         title: [
           {
             required: true,
-            message: '请输入分组名称',
+            message: i18n.t('ui.developModuleFormBoxEnterGroupName'),
             trigger: 'blur'
           }
         ]
@@ -384,16 +385,16 @@ export default {
       this.formConfig = [
         {
           key: 'title',
-          label: '分组名称:',
+          label: i18n.t('legacyScript.groupName'),
           type: 'input',
           maxlength: 20,
-          placeholder: '请输入分组名称'
+          placeholder: i18n.t('ui.developModuleFormBoxEnterGroupName')
         },
         {
           key: 'sort',
-          label: '排序:',
+          label: i18n.t('legacyScript.sort'),
           type: 'inputNumber',
-          placeholder: '请输入排序，数字越大越靠前'
+          placeholder: i18n.t('legacyScript.enterASortValueHigherNumbersAppearFirst')
         }
       ]
       this.formDataInit = {
@@ -516,15 +517,15 @@ export default {
     moveFn(row) {
       this.id = row.id
       this.move = true
-      this.fromData.title = '移动分组'
+      this.fromData.title = i18n.t('ui.customerSetupCustomFormIndexMoveGroup')
       this.fromData.type = 'add'
       this.formConfig = [
         {
           key: 'itemId',
-          label: '分组名称:',
+          label: i18n.t('legacyScript.groupName'),
           type: 'select',
           maxlength: 20,
-          placeholder: '请选择分组',
+          placeholder: i18n.t('legacyScript.pleaseSelectGroup'),
           options: this.groupList
         }
       ]
@@ -538,7 +539,7 @@ export default {
     editCate(row) {
       this.addGroupingData()
       this.cate_id = row.id
-      this.fromData.title = '编辑分组'
+      this.fromData.title = i18n.t('legacyScript.editGroup')
       this.fromData.type = 'edit'
       this.formDataInit.title = row.title
       this.formDataInit.sort = row.sort
@@ -547,9 +548,11 @@ export default {
 
     // 删除
     deleteFn(row, index) {
-      this.$modalSure('你确定要删除这条数据吗').then(() => {
-        this.dataList[index].data.splice(row.$index, 1)
-      })
+    this.$modalSure(
+      this.$ts("你确定要删除这条数据吗")
+    ).then(() => {
+      this.dataList[index].data.splice(row.$index, 1)
+    })
     },
 
     // 修改分组状态
@@ -567,7 +570,7 @@ export default {
     async submitFrom() {
       let result = true
       if (!result) {
-        return this.$message.error('请选择职位')
+        return this.$message.error(i18n.t('ui.userDutyAnalyseSelectPosition'))
       }
 
       this.dataList.forEach((item) => {
@@ -584,7 +587,7 @@ export default {
         })
       })
       if (!result) {
-        return this.$message.error('字段名称和字段类型不能为空，请重新输入')
+        return this.$message.error(i18n.t('legacyScript.fieldNameAndFieldTypeCannotBeEmptyPleaseRe'))
       }
       let list = this.dataList
       list.map((item) => {
@@ -642,7 +645,7 @@ export default {
     // 新增分组
     addGroup() {
       this.addGroupingData()
-      this.fromData.title = '新增分组'
+      this.fromData.title = i18n.t('ui.customerSetupCustomFormIndexAddGroup')
       this.fromData.type = 'add'
       this.$refs.oaDialog.openBox()
     },

@@ -78,6 +78,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 export default {
   name: 'DetailProcess',
   props: {
@@ -93,7 +94,7 @@ export default {
       openStatus: false,
       onlyPerson: false,
       selectPerson: false,
-      title: '选择成员',
+      title: i18n.t('hr.selectmembers'),
       checkedList: [],
       examineList: [],
       activeDepartment: {},

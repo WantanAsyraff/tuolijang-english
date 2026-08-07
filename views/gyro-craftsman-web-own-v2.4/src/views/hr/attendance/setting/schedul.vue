@@ -88,6 +88,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { attendanceGroupListApi, attendanceArrangeApi, attendanceArrangeListApi } from '@/api/config'
 import oaFromBox from '@/components/common/oaFromBox'
 
@@ -124,8 +125,8 @@ export default {
 
       fromData: {
         with: '600px',
-        title: '新增晋排班',
-        btnText: '确定',
+        title: i18n.t('legacyScript.addJinShift'),
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: ''
       },
@@ -134,20 +135,20 @@ export default {
         groups: []
       },
       formRules: {
-        date: { required: true, message: '请选择考勤时间', trigger: 'blur' },
-        groups: { required: true, message: '请选择考勤组', trigger: 'change' }
+        date: { required: true, message: i18n.t('legacyScript.pleaseSelectAttendanceTime'), trigger: 'blur' },
+        groups: { required: true, message: i18n.t('legacyScript.selectAnAttendanceGroup'), trigger: 'change' }
       },
       formConfig: [
         {
           type: 'month',
-          label: '考勤时间：',
-          placeholder: '请输入晋升表名称',
+          label: i18n.t('legacyScript.attendanceTime'),
+          placeholder: i18n.t('legacyScript.pleaseEnterPromotionTableName'),
           key: 'date'
         },
         {
           type: 'multipleSelect',
-          label: '考勤组名称：',
-          placeholder: '请选择考勤组(多选)',
+          label: i18n.t('ui.hrAttendanceSettingAddConentAttendanceGroupName'),
+          placeholder: i18n.t('legacyScript.pleaseSelectAttendanceGroupsMultiple'),
           key: 'groups',
           options: []
         }
@@ -229,7 +230,7 @@ export default {
         groups: []
       }
       this.fromData.type = 'add'
-      this.fromData.title = '新增排班'
+      this.fromData.title = i18n.t('legacyScript.addSchedule')
       this.$refs.oaDialog.openBox()
     },
     checkFn(data) {
@@ -240,7 +241,7 @@ export default {
     copyFn(data) {
       this.getTeamList()
       this.formDataInit.groups = []
-      this.fromData.title = '复制排班'
+      this.fromData.title = i18n.t('legacyScript.copySchedule')
       this.fromData.type = 'edit'
       this.formDataInit.groups.push(data.group.id)
       this.$refs.oaDialog.openBox()

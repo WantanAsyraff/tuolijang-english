@@ -337,7 +337,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import globalIndex from '@/components/globalIndex/index.vue'
 import avatar from '@/components/avatar/index.vue'
 import avatarSideslip from '@/pages/user/components/avatarSideslip.vue'
@@ -599,7 +600,7 @@ const taskItemNavigateTo = (item: Detail): void => {
     } else if (['assess_appeal', 'assess_check', 'assess_self'].includes(item.type)) {
       clickNavigateTo(`/pages/users/assessment/default?id=${item.source_id}`)
     } else {
-      message.error('移动端暂不支持此类待办')
+      message.error(appI18n.global.t('ui.usersScheduleTodoThisTaskTypeIsNotSupportedOnMobile'))
     }
   } else if (data.taskTabIndex === 1) {
     url = `/pages/users/examine/defaults?id=${item.id}`

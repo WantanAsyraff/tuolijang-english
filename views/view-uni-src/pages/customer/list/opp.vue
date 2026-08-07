@@ -8,7 +8,7 @@
     </view>
     <view class="examine-content m10">
       <OpportunityList :list-data="data.list" :total="data.total" :loading="data.loading" :loaded="data.loaded"
-        empty-title="当前暂无商机～"></OpportunityList>
+        :empty-title="$t('ui.customerListOppCurrentNoOpportunity')"></OpportunityList>
     </view>
     <global-index />
   </view>

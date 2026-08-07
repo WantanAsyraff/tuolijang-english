@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { billCateApi } from '@/api/enterprise'
 import oaFromBox from '@/components/common/oaFromBox'
 export default {
@@ -65,15 +66,15 @@ export default {
           options: [
             {
               value: '',
-              label: '全部'
+              label: i18n.t('finance.all')
             },
             {
               value: '1',
-              label: '收入'
+              label: i18n.t('customer.income')
             },
             {
               value: '0',
-              label: '支出'
+              label: i18n.t('customer.expense')
             }
           ]
         }

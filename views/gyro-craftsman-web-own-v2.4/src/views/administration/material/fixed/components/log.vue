@@ -13,7 +13,7 @@
           :viewSearch="viewSearch"
           :total="total"
           :title="$t('ui.administrationMaterialConsumeLogMaterialRecords')"
-          :btnText="`导出`"
+:btn-text="$t('ui.fdExamineIndexExport')"
           :btnIcon="false"
           :isAddBtn="true"
           @addDataFn="handleExport"
@@ -80,6 +80,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { storageCateApi, storageRecordApi, storageRecordUsersApi } from '@/api/administration'
 import 'animate.css'
 export default {
@@ -141,7 +142,7 @@ export default {
         // },
         {
           field: 'status',
-          title: '物资状态',
+          title: i18n.t('legacyScript.materialStatus'),
           type: 'select',
           options: [
             { value: '', name: '全部' },

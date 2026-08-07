@@ -13,17 +13,17 @@
 <div class="wrap" id="step2">
     <!--    --><?php //require './templates/header.php'; ?>
     <div class="title">
-        安装检测
+        {{ __('frontend.install.check') }}
     </div>
     <div class="content">
         <div class="menu">
             <div class="head">
-                <h1>安装检测</h1>
-                <a class="again" href="/install/index/2">重新检测
+                <h1>{{ __('frontend.install.check') }}</h1>
+                <a class="again" href="/install/index/2">{{ __('frontend.install.recheck') }}
                     <img class="upload" src="/install/images/upload.png" alt="">
                 </a>
             </div>
-            <div class="p8">安装环境需满足系统运行要求</div>
+            <div class="p8">{{ __('frontend.install.requirements') }}</div>
             <div>
                 <div class="tab" :class="{'on': index === 0}" @click="index = 0">
                     <div class="left-img">
@@ -33,8 +33,8 @@
 
                     </div>
                     <div>
-                        <div>环境及配置</div>
-                        <div class="p8">基础的系统操作环境</div>
+                        <div>{{ __('frontend.install.environment') }}</div>
+                        <div class="p8">{{ __('frontend.install.environment_help') }}</div>
                     </div>
                 </div>
                 <div class="tab" :class="{'on': index === 1}" @click="index = 1">
@@ -44,8 +44,8 @@
                         <img v-else class="warring btn-warning" src="/install/images/warring.png" alt="">
                     </div>
                     <div>
-                        <div>权限检测</div>
-                        <div class="p8">目录及文件权限检测</div>
+                        <div>{{ __('frontend.install.permissions') }}</div>
+                        <div class="p8">{{ __('frontend.install.permissions_help') }}</div>
                     </div>
                 </div>
 
@@ -55,10 +55,10 @@
             <div class="server">
                 <table width="100%" v-if="index === 0">
                     <tr>
-                        <td class="td1">环境检测</td>
-                        <td class="td1" width="20%">推荐配置</td>
-                        <td class="td1" width="20%">最低要求</td>
-                        <td class="td1" width="20%">当前状态</td>
+                        <td class="td1">{{ __('frontend.install.environment') }}</td>
+                        <td class="td1" width="20%">{{ __('frontend.install.recommended') }}</td>
+                        <td class="td1" width="20%">{{ __('frontend.install.minimum') }}</td>
+                        <td class="td1" width="20%">{{ __('frontend.install.status') }}</td>
                     </tr>
                     @foreach($configData as $config)
                         <tr>
@@ -68,9 +68,9 @@
                             <td>
                                 <div class="ls-td">
                                 @if($config['types'])
-                                    <img class="yes" src="/install/images/yes.png" alt="对">
+                                    <img class="yes" src="/install/images/yes.png" alt="{{ __('frontend.install.yes') }}">
                                 @else
-                                    <img class="no" src="/install/images/warring.png" alt="错">
+                                    <img class="no" src="/install/images/warring.png" alt="{{ __('frontend.install.no') }}">
                                 @endif
                                     {{$config['status']}}
                                 </div>
@@ -83,34 +83,34 @@
 
                 <table width="100%" v-else>
                     <tr>
-                        <td class="td1">权限检查</td>
-                        <td class="td1" width="20%">推荐配置</td>
-                        <td class="td1" width="20%">读取</td>
-                        <td class="td1" width="20%">写入</td>
+                        <td class="td1">{{ __('frontend.install.permissions') }}</td>
+                        <td class="td1" width="20%">{{ __('frontend.install.recommended') }}</td>
+                        <td class="td1" width="20%">{{ __('frontend.install.read') }}</td>
+                        <td class="td1" width="20%">{{ __('frontend.install.write') }}</td>
                     </tr>
                     @foreach($files as $file)
                         <tr>
                             <td>{{$file['path']}}</td>
-                            <td>{{$file['readable'] && $file['writable'] ? '读写' : '读取'}}</td>
+                            <td>{{ $file['readable'] && $file['writable'] ? __('frontend.install.read_write') : __('frontend.install.read') }}</td>
                             <td>
                                 <div class="ls-td">
                                     @if(! $file['readable'])
-                                        无需检测
+                                        {{ __('frontend.install.not_required') }}
                                     @elseif(is_readable(base_path($file['path'])))
-                                        <img class="yes" src="/install/images/yes.png" alt="对">
+                                        <img class="yes" src="/install/images/yes.png" alt="{{ __('frontend.install.yes') }}">
                                     @else
-                                        <img class="no" src="/install/images/warring.png" alt="错">
+                                        <img class="no" src="/install/images/warring.png" alt="{{ __('frontend.install.no') }}">
                                     @endif
                                 </div>
                             </td>
                             <td>
                                 <div class="ls-td">
                                     @if(! $file['writable'])
-                                        无需写入
+                                        {{ __('frontend.install.write_not_required') }}
                                     @elseif(is_writeable(base_path($file['path'])))
-                                        <img class="yes" src="/install/images/yes.png" alt="对">
+                                        <img class="yes" src="/install/images/yes.png" alt="{{ __('frontend.install.yes') }}">
                                     @else
-                                        <img class="no" src="/install/images/warring.png" alt="错">
+                                        <img class="no" src="/install/images/warring.png" alt="{{ __('frontend.install.no') }}">
                                     @endif
                                 </div>
                             </td>
@@ -128,13 +128,13 @@
 {{--    </div>--}}
     <div class="bottom-btn">
         <div class="bottom tac up-btn">
-            <a href="/install/index/1" class="btn">上一步</a>
+            <a href="/install/index/1" class="btn">{{ __('frontend.install.previous') }}</a>
         </div>
         <div class="bottom tac">
             @if($passOne && $passTwo)
-                <a href="/install/index/3" class="btn next">下一步</a>
+                <a href="/install/index/3" class="btn next">{{ __('frontend.install.next') }}</a>
             @else
-                <span class="next" @click="next" class="btn">下一步</span>
+                <span class="next" @click="next" class="btn">{{ __('frontend.install.next') }}</span>
             @endif
         </div>
     </div>
@@ -151,7 +151,7 @@
         methods: {
             next() {
                 this.$message({
-                    message: '安装环境检测未通过，请检查',
+                    message: @json(__('frontend.install.check_failed')),
                     type: 'warning'
                 });
             },

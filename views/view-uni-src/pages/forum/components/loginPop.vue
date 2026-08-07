@@ -32,7 +32,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import { phoneReg } from "@/utils/helper";
   import { articleUserLoginApi } from "@/api/forum";
   import { useStore } from "vuex";
@@ -58,11 +59,11 @@
   // 登录
   const handlePreserve = () => {
     if (!formData.phone) {
-      message.error("电话号码不能为空");
+      message.error(appI18n.global.t('ui.forumLoginPopPhoneNumberCannotBeEmpty'));
       return false;
     }
     if (!formData.verificationCode) {
-      message.error("验证码不能为空");
+      message.error(appI18n.global.t('ui.forumLoginPopCodeIsRequired'));
       return false;
     }
     const data = {
@@ -74,7 +75,7 @@
     articleUserLoginApi(data).then((res : any) => {
       loading.value = false;
       if (res.status === 200) {
-        message.success("登录成功");
+        message.success(appI18n.global.t('ui.forumLoginPopLoginSuccessful'));
         // emit('loginOk')
         inputDialog.value.close();
       }

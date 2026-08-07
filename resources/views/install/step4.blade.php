@@ -13,7 +13,7 @@
 <body>
 <div class="wrap" id="step4">
     <div class="title">
-        安装进度
+        {{ __('frontend.install.progress') }}
     </div>
     <section class="section">
         <div class="title">
@@ -51,30 +51,30 @@
                 n:0,
                 failed: false,
                 finished: false,
-                currentMsg: '正在准备安装...'
+                currentMsg: @json(__('frontend.install.preparing'))
             }
         },
         computed: {
             statusTitle() {
                 if (this.failed) {
-                    return '安装失败，请根据提示处理后重试'
+                    return @json(__('frontend.install.failed_retry'))
                 }
                 if (this.finished) {
-                    return '安装完成，正在跳转...'
+                    return @json(__('frontend.install.complete_redirect'))
                 }
-                return '系统安装中，请稍等片刻...'
+                return @json(__('frontend.install.installing_wait'))
             },
             progressStatus() {
                 return this.failed ? 'exception' : 'success'
             },
             buttonText() {
                 if (this.failed) {
-                    return '重新安装'
+                    return @json(__('frontend.install.reinstall'))
                 }
                 if (this.finished) {
-                    return '安装完成'
+                    return @json(__('frontend.install.complete'))
                 }
-                return '正在安装...'
+                return @json(__('frontend.install.installing'))
             }
         },
         mounted() {
@@ -96,7 +96,7 @@
                     },
                     success: (res) => {
                         if (!res || !res.data) {
-                            this.handleFail('服务器返回异常，请刷新后重试')
+                            this.handleFail(@json(__('frontend.install.invalid_response')))
                             return
                         }
                         const count = Number(res.data.count) > 0 ? Number(res.data.count) : 1
@@ -114,7 +114,7 @@
                             })
                         }
                         if (res.data.error) {
-                            this.handleFail(res.data.msg || '安装失败，请检查日志')
+                            this.handleFail(res.data.msg || @json(__('frontend.install.failed_log')))
                             return false
                         }
 
@@ -130,12 +130,12 @@
                                 this.reloads(n);
                             }
                         } else {
-                            this.handleFail(res.data.msg || '安装失败，请检查配置')
+                            this.handleFail(res.data.msg || @json(__('frontend.install.failed_config')))
                         }
 
                     },
                     error: () => {
-                        this.handleFail('请求安装接口失败，请检查服务状态后重试')
+                        this.handleFail(@json(__('frontend.install.api_failed')))
                     }
                 });
             },

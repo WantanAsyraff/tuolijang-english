@@ -37,6 +37,7 @@
   </el-drawer>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   components: {
     selectMember: () => import('@/components/form-common/select-member'),
@@ -51,7 +52,7 @@ export default {
       radio: 1,
       userList: [],
       depList: [],
-      title: '申请人'
+      title: i18n.t('access.applicant')
     }
   },
   computed: {

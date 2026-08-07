@@ -1,3 +1,4 @@
+import appI18n from '@/locale';
 import { computed, ref, watch, type ComputedRef, type Ref } from "vue";
 import { attendanceClockIn } from "@/api/attendance";
 import type {
@@ -200,7 +201,7 @@ export function useAttendanceClockFlow(options: UseAttendanceClockFlowOptions) {
   function startClock(index?: number, type?: AttendanceWorkType) {
     if (isMissingAttendancePosition()) {
       uni.showToast({
-        title: "无法打卡",
+        title: appI18n.global.t('ui.attendanceComposablesUseAttendanceClockFlowTsUnableToClockIn'),
         icon: "none",
       });
       return;
@@ -243,7 +244,7 @@ export function useAttendanceClockFlow(options: UseAttendanceClockFlowOptions) {
   function submitClock(isUpdate: number | "" = updateNumber.value) {
     if (isMissingAttendancePosition()) {
       uni.showToast({
-        title: "不在考勤范围内无法打卡",
+        title: appI18n.global.t('ui.attendanceComposablesUseAttendanceClockFlowTsYouCannotClockInOutsideTheAttendanceArea'),
         icon: "none",
       });
       return;

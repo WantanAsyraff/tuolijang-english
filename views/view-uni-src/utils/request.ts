@@ -1,3 +1,4 @@
+import appI18n from '@/locale';
 import { HEADER, TOKENNAME, BASEAPI, APPVERSION } from "@/config/app";
 import { toLogin } from "@/libs/login";
 import type { Res } from "@/utils/typeHelper";
@@ -46,11 +47,11 @@ const buildHeader = (noAuth = false) => {
 export const refreshAccessToken = () => {
   const refreshToken = store.state.app.refreshToken;
   if (!refreshToken) {
-    return Promise.reject({ message: "缺少刷新TOKEN" });
+    return Promise.reject({ message: appI18n.global.t('ui.utilsRequestTsMissingRefreshToken') });
   }
   // #ifndef APP-PLUS
   if (store.state.app.refreshExpiresAt && Date.now() >= store.state.app.refreshExpiresAt) {
-    return Promise.reject({ message: "登录信息已失效，请重新登录" });
+    return Promise.reject({ message: appI18n.global.t('ui.utilsRequestTsYourSignInHasExpiredSignInAgain') });
   }
   // #endif
 
@@ -69,11 +70,11 @@ export const refreshAccessToken = () => {
             socketService.ensureConnected(responseData.data.token);
             resolve(responseData.data);
           } else {
-            reject(responseData || { message: "登录状态已失效" });
+            reject(responseData || { message: appI18n.global.t('ui.utilsRequestTsLoginSessionExpired') });
           }
         },
         fail: () => {
-          reject({ message: "刷新登录凭证失败" });
+          reject({ message: appI18n.global.t('ui.utilsRequestTsFailedToRefreshSignInCredentials') });
         }
       });
     }).finally(() => {
@@ -105,7 +106,7 @@ const handleAuthExpired = (
 ) => {
   if (opt.skipAuthRefresh || opt._retry) {
     toLogin({ forceLogout: true });
-    return Promise.reject({ message: "登录已过期，请重新登录" });
+    return Promise.reject({ message: appI18n.global.t('ui.utilsForumRequestTsYourSessionHasExpiredSignInAgain') });
   }
 
   return refreshAccessToken()
@@ -158,7 +159,7 @@ function baseRequest(url: string, method: UniNamespace.RequestOptions["method"],
   });
   return new Promise((resolve, reject) => {
     if (networkType === "none") {
-      message.error("网络开小差了！");
+      message.error(appI18n.global.t('ui.utilsRequestTsNetworkError'));
       return false;
     }
     uni.request({
@@ -169,7 +170,7 @@ function baseRequest(url: string, method: UniNamespace.RequestOptions["method"],
       data: data || {},
       success: (res: UniApp.RequestSuccessCallbackResult | Res) => {
         if (res.statusCode === 500) {
-          reject({ message: "服务器内部错误: 500" });
+          reject({ message: appI18n.global.t('ui.utilsRequestTsInternalServerError500') });
         } else if (noVerify)
           resolve(res.data);
         else if (res.data.status == 200)
@@ -182,7 +183,7 @@ function baseRequest(url: string, method: UniNamespace.RequestOptions["method"],
       },
       fail: (error) => {
         console.log(error);
-        reject({ message: "请求失败" });
+        reject({ message: appI18n.global.t('ui.utilsForumRequestTsRequestFailed') });
       }
     });
   });

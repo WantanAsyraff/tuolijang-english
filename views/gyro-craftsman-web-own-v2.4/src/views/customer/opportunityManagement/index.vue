@@ -12,7 +12,7 @@
         :category="keyword"
         :timeSearchObj="timeSearchObj"
         ref="fromBox"
-        btnText="添加商机"
+:btn-text="$t('ui.customerListOddsAddOpportunity')"
         @addDataFn="addDataFn"
         @confirmData="confirmData"
         @dropdownFn="dropdownFn"
@@ -88,6 +88,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   oddsCreateApi,
   oddsCreateEditApi,
@@ -124,29 +125,29 @@ export default {
       },
       contractFromData: {},
       dropdownList: [
-        { label: '移交同事', value: 1 },
-        { label: '筛选条件设置', value: 2 },
-        { label: '表头显示设置', value: 3 },
-        { label: '导出', value: 4 },
-        { label: '导入', value: 5 },
-        { label: '导入导出记录', value: 6 },
-        { label: '字段选项设置', value: 7 }
+        { label: i18n.t('ui.customerClueIndexTransferToColleague'), value: 1 },
+        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 2 },
+        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 3 },
+        { label: i18n.t('customer.export'), value: 4 },
+        { label: i18n.t('finance.batchupload'), value: 5 },
+        { label: i18n.t('legacyScript.importExportRecords'), value: 6 },
+        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 7 }
       ],
       treeData: [
         {
-          label: '我负责的',
+          label: i18n.t('legacyScript.ownedByMe'),
           id: 1
         },
         {
-          label: '下属负责的',
+          label: i18n.t('legacyScript.ownedBySubordinates'),
           id: 2
         },
         {
-          label: '我关注的',
+          label: i18n.t('legacyScript.followedByMe'),
           id: 3
         },
         {
-          label: '急需跟进',
+          label: i18n.t('legacyScript.needsUrgentFollowUp'),
           id: 4,
           line: true
         }
@@ -209,7 +210,7 @@ export default {
     // 生成合同
     addSigning(data) {
       if (!data.eid) {
-        this.$message.error('无效的客户')
+        this.$message.error(i18n.t('legacyScript.invalidCustomer'))
         return false
       }
       data.link_type = '5'
@@ -235,7 +236,7 @@ export default {
     // 编辑商机
     handleEdit(data) {
       this.formBoxConfig = {
-        title: '编辑商机',
+        title: i18n.t('legacyScript.editOpportunity'),
         width: '1000px',
         types: this.keyword
       }
@@ -267,7 +268,7 @@ export default {
       } else {
         const ids = type === 1 ? this.ids : [row.id]
         this.transferData = {
-          title: '移交其他同事',
+          title: i18n.t('legacyScript.transferToAnotherColleague'),
           width: '520px',
           type: 1,
           ids
@@ -278,7 +279,7 @@ export default {
     // 查看
     async openDetails(item) {
       this.detailsFromData = {
-        title: '商机查看',
+        title: i18n.t('legacyScript.viewOpportunity'),
         width: DRAWER_SIZE.LG,
         data: item,
         eid: item.id,

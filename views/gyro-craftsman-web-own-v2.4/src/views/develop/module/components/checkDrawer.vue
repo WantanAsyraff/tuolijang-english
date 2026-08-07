@@ -174,8 +174,8 @@
                   v-model="scope.row[item.field_name_en]"
                   :active-value="1"
                   :inactive-value="0"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                 >
                 </el-switch>
               </div>
@@ -272,6 +272,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getColor } from '@/utils/format'
 import VFormRender from '@/components/form-render/index'
 import oaLog from '@/components/form-common/oa-log'
@@ -556,7 +557,7 @@ export default {
       let ids = []
       if (type === 'tab') {
         this.tabSave = 'tab'
-        this.title = '配置tab显示项'
+        this.title = i18n.t('legacyScript.configureTabDisplay')
         if (this.tabData && this.tabData.length > 0) {
           selectList = this.tabData
           this.tabData.map((item) => {
@@ -567,7 +568,7 @@ export default {
         }
       } else {
         this.tabSave = 'create'
-        this.title = '配置新增按钮'
+        this.title = i18n.t('legacyScript.configureAddButton')
         if (this.dropdownList && this.dropdownList.length > 0) {
           selectList = this.dropdownList
           this.dropdownList.map((item) => {

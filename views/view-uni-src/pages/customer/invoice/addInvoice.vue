@@ -219,7 +219,8 @@
 
   </view>
 </template>
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index";
 import { ref, reactive, computed } from "vue";
 const loading = ref(false);
@@ -249,13 +250,13 @@ const data = reactive({
   show: false,
   categoryOptions: [],
   invoiceOptions: [
-    { label: "个人普通发票", value: 1 },
-    { label: "企业普通发票", value: 2 },
-    { label: "企业专用发票", value: 3 },
+    { label: appI18n.global.t('ui.customerInvoiceAddInvoicePersonalGeneralInvoice'), value: 1 },
+    { label: appI18n.global.t('ui.customerInvoiceAddInvoiceEnterpriseGeneralInvoice'), value: 2 },
+    { label: appI18n.global.t('ui.customerInvoiceAddInvoiceEnterpriseSpecialInvoice'), value: 3 },
   ],
   rangeSource: [
-    { value: "mail", label: "电子" },
-    { value: "express", label: "纸质" }
+    { value: "mail", label: appI18n.global.t('ui.customerInvoiceInvoiceDetailElectronic') },
+    { value: "express", label: appI18n.global.t('ui.customerInvoiceInvoiceDetailPaper') }
   ]
 });
 const formData = reactive({
@@ -367,30 +368,30 @@ import { identReg } from "@/utils/helper";
 // 提交表单
 const handleConfirm = () => {
   if (!formData.category_id) {
-    message.error("请选择发票类目");
+    message.error(appI18n.global.t('ui.customerInvoiceAddInvoicePleaseSelectInvoiceCategory'));
     return false;
   }
   if (!formData.bill_date) {
-    message.error("请选择期望开票日期");
+    message.error(appI18n.global.t('ui.customerInvoiceAddInvoicePleaseSelectBillingDate'));
     return false;
   }
   if (!formData.amount) {
-    message.error("开票金额不能为空");
+    message.error(appI18n.global.t('ui.customerInvoiceAddInvoiceInvoiceAmountIsRequired'));
     return false;
   }
 
   if (!formData.title) {
-    message.error("发票抬头不能为空");
+    message.error(appI18n.global.t('ui.customerInvoiceAddInvoiceInvoiceHeaderIsRequired'));
     return false;
   }
   if (formData.types != 1) {
     if (!formData.ident) {
-      message.error("纳税人识别号不能为空");
+      message.error(appI18n.global.t('ui.customerInvoiceAddInvoiceTaxpayerIdIsRequired'));
       return false;
     }
   }
   if (formData.types >= 2 && !identReg.test(formData.ident)) {
-    message.error("请输入正确的纳税人识别号");
+    message.error(appI18n.global.t('ui.customerInvoiceAddInvoiceEnterAValidTaxpayerIdentificationNumber'));
     return false;
   }
 
@@ -415,21 +416,21 @@ const handleConfirm = () => {
   // }
   if (formData.collect_type == "mail") {
     if (!formData.collect_email) {
-      message.error("邮箱地址不能为空");
+      message.error(appI18n.global.t('ui.customerInvoiceAddInvoiceEmailAddressIsRequired'));
       return false;
     }
   } else {
     if (!formData.collect_name) {
-      message.error("联系人不能为空");
+      message.error(appI18n.global.t('ui.customerInvoiceAddInvoiceContactsIsRequired'));
       return false;
     }
     if (!formData.collect_tel) {
-      message.error("联系电话不能为空");
+      message.error(appI18n.global.t('ui.customerInvoiceAddInvoiceContactPhoneIsRequired'));
       return false;
     }
 
     if (!formData.mail_address) {
-      message.error("邮寄地址不能为空");
+      message.error(appI18n.global.t('ui.customerInvoiceAddInvoiceMailingAddressIsRequired'));
       return false;
     }
   }

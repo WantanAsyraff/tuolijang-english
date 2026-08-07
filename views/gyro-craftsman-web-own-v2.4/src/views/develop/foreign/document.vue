@@ -112,6 +112,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getDocsApi } from '@/api/develop'
 import JsonViewer from 'vue-json-viewer'
 export default {
@@ -142,7 +143,7 @@ export default {
           name: 'Authorization',
           form_type: 'string',
           is_must: true,
-          message: 'Bearer <授权登录token>'
+          message: i18n.t('legacyScript.bearerHtml')
         }
       ],
       gridr: {
@@ -173,7 +174,7 @@ export default {
     },
     copy(val) {
       clipboard.writeText(val)
-      this.$message.success('复制成功')
+      this.$message.success(i18n.t('setting.copytitle'))
     },
     async getData() {
       const res = await getDocsApi()

@@ -250,6 +250,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import Common from '@/components/user/accessCommon'
 import { assessPlanGetApi, assessPlanPutApi } from '@/api/enterprise'
 export default {
@@ -280,23 +281,23 @@ export default {
       },
       afterMaxDay: 3650,
       makeOptions: [
-        { value: 'start', label: '考核开始后' },
-        { value: 'before', label: '考核结束前' },
-        { value: 'after', label: '考核结束后' }
+        { value: 'start', label: i18n.t('access.aftertheexaminationbegins') },
+        { value: 'before', label: i18n.t('access.beforetheendofassessment') },
+        { value: 'after', label: i18n.t('access.aftertheexamination') }
       ],
       evalOptions: [
-        { value: 'start', label: '考核开始后' },
-        { value: 'before', label: '考核结束前' },
-        { value: 'after', label: '考核结束后' }
+        { value: 'start', label: i18n.t('access.aftertheexaminationbegins') },
+        { value: 'before', label: i18n.t('access.beforetheendofassessment') },
+        { value: 'after', label: i18n.t('access.aftertheexamination') }
       ],
       remindDaysData: [
-        { value: 1, label: '星期一' },
-        { value: 2, label: '星期二' },
-        { value: 3, label: '星期三' },
-        { value: 4, label: '星期四' },
-        { value: 5, label: '星期五' },
-        { value: 6, label: '星期六' },
-        { value: 7, label: '星期七' }
+        { value: 1, label: i18n.t('hr.monday') },
+        { value: 2, label: i18n.t('hr.tuesday') },
+        { value: 3, label: i18n.t('hr.wednesday') },
+        { value: 4, label: i18n.t('hr.thursday') },
+        { value: 5, label: i18n.t('hr.friday') },
+        { value: 6, label: i18n.t('hr.saturday') },
+        { value: 7, label: i18n.t('legacyScript.day7') }
       ],
 
       departmentObj: {
@@ -400,7 +401,7 @@ export default {
         this.$message.error(this.$t('access.tips09'))
       } else if (this.days.makeDays > this.afterMaxDay) {
         this.days.makeDays = this.afterMaxDay
-        this.$message.error('目标制定时间超过了最大天数')
+        this.$message.error(i18n.t('legacyScript.theGoalSettingPeriodExceedsTheMaximumNumberOfDays'))
       } else {
         let check = []
         let frame = []

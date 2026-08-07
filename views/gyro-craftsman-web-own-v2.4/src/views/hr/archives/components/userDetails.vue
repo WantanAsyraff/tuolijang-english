@@ -128,6 +128,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getSalaryList, deleteSalaryList, changeCard, entryCard, perfectCard } from '@/api/enterprise'
 import formOptions from '../mixins/index.js'
 export default {
@@ -259,14 +260,14 @@ export default {
     // 编辑: 调薪弹窗
     changeSalary() {
       let data = {
-        title: '调薪弹窗'
+        title: i18n.t('legacyScript.salaryAdjustmentPopup')
       }
       this.$refs.salaryAdjustmentRecord.changeSalary(data)
     },
     // 定薪
     onSalary() {
       this.$refs.salaryAdjustmentRecord.dialogVisible = true
-      this.$refs.salaryAdjustmentRecord.title = '定薪'
+      this.$refs.salaryAdjustmentRecord.title = i18n.t('legacyScript.setSalary')
       this.$refs.salaryAdjustmentRecord.status = 'add'
     },
 
@@ -282,7 +283,7 @@ export default {
     // 编辑: 编辑调薪记录
     getSalaryContent(id) {
       let data = {
-        title: '编辑薪资',
+        title: i18n.t('legacyScript.editSalary'),
         id: id
       }
       this.$refs.salaryAdjustmentRecord.editId(data)

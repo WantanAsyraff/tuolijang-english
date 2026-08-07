@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { clientTargetPutApi } from '@/api/client'
 export default {
   name: 'addKpi',
@@ -190,7 +191,7 @@ export default {
         isNaN(Number(this.monthData.annual)) ||
         Number(this.monthData.annual) <= 0
       ) {
-        this.$message.error('请输入有效的年度目标（正数）')
+        this.$message.error(i18n.t('legacyScript.pleaseEnterAValidAnnualTargetPositiveNumber'))
         return
       }
 

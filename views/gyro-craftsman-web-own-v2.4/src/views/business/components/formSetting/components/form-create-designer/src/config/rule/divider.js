@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 const label = '分割线';
 const name = 'el-divider';
 
@@ -19,7 +20,7 @@ export default {
       {
         type: 'select',
         field: 'direction',
-        title: '设置分割线方向',
+        title: i18n.t('legacyScript.setDividerDirection'),
         options: [
           { label: 'horizontal', value: 'horizontal' },
           { label: 'vertical', value: 'vertical' },
@@ -28,12 +29,12 @@ export default {
       {
         type: 'input',
         field: 'formCreateChild',
-        title: '设置分割线文案',
+        title: i18n.t('legacyScript.setDividerText'),
       },
       {
         type: 'select',
         field: 'contentPosition',
-        title: '设置分割线文案的位置',
+        title: i18n.t('legacyScript.setDividerTextPosition'),
         options: [
           { label: 'left', value: 'left' },
           { label: 'right', value: 'right' },

@@ -12,7 +12,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, toRefs, watch } from "vue";
 import message from "@/utils/message";
 const props = defineProps({
@@ -47,7 +48,7 @@ const cancel = () => {
 
 const dialogInputConfirm = () => {
   if (!folderName.value) {
-    message.error("输入的内容不能为空");
+    message.error(appI18n.global.t('ui.textareaPopupIndexContentCannotBeEmpty'));
     return false;
   }
   const data = {

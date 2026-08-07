@@ -16,7 +16,8 @@
   </BaseContainer>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import BaseContainer from "@/components/BaseContainer/index.vue";
   import BaseRichEditor from "@/components/BaseRichEditor/index.vue";
   import defaultNavBar from "@/components/defaultNavBar/index";
@@ -93,11 +94,11 @@
 
   const saveRight = () => {
     if (!data.title) {
-      message.error("请输入记事本标题");
+      message.error(appI18n.global.t('ui.usersMemorandumCreatePleaseEnterMemorandumTitle'));
       return false;
     }
     if (!data.contents) {
-      message.error("请输入记事本内容");
+      message.error(appI18n.global.t('ui.usersMemorandumCreatePleaseEnterMemorandumContent'));
       return false;
     }
     const res = {
@@ -132,7 +133,7 @@
   const setMemorialEdit = (id, datas) => {
     loading.value = true;
     userMemorialEditApi(id, datas).then(() => {
-      message.success("编辑成功");
+      message.success(appI18n.global.t('ui.customerSigningAddFormEditSuccess'));
       loading.value = true;
       delayedReLaunch(`/pages/users/memorandum/index?tab=${data.tab}&id=${data.pid}`);
     }).catch((error) => {

@@ -328,6 +328,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { oddsListApi, clientCustomerBaseApi } from '@/api/client'
 import { clientContractListApi } from '@/api/enterprise'
 import {
@@ -421,7 +422,7 @@ export default {
           }
         ]
       },
-      tips: '文件正在处理中',
+      tips: i18n.t('legacyScript.fileIsBeingProcessed'),
       fileLoading: false,
       timer: null,
       examineData: {},
@@ -441,13 +442,13 @@ export default {
         remark: ''
       },
       rules: {
-        doc_name: [{ required: true, message: '请输入合同名称', trigger: 'blur' }],
-        sign_type: [{ required: true, message: '请选择签约方式', trigger: 'blur' }],
-        term_type: [{ required: true, message: '请选择合同时期类型', trigger: 'blur' }],
-        date_count: [{ required: true, message: '请输入合同时期（天）', trigger: 'blur' }],
-        enableQuery: [{ required: true, message: '请选择是否开启查询', trigger: 'change' }],
-        start_date: [{ required: true, message: '请选择开始日期', trigger: 'change' }],
-        end_date: [{ required: true, message: '请选择结束日期', trigger: 'change' }]
+        doc_name: [{ required: true, message: i18n.t('ui.customerSigningAddContractSignEnterContractName'), trigger: 'blur' }],
+        sign_type: [{ required: true, message: i18n.t('legacyScript.pleaseSelectSigningMethod'), trigger: 'blur' }],
+        term_type: [{ required: true, message: i18n.t('legacyScript.pleaseSelectTheContractPeriodType'), trigger: 'blur' }],
+        date_count: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheContractPeriodDays'), trigger: 'blur' }],
+        enableQuery: [{ required: true, message: i18n.t('legacyScript.pleaseSelectWhetherToEnableTheQuery'), trigger: 'change' }],
+        start_date: [{ required: true, message: i18n.t('legacyScript.pleaseSelectStartDate'), trigger: 'change' }],
+        end_date: [{ required: true, message: i18n.t('calendar.placeholder14'), trigger: 'change' }]
       },
       fileList: [],
 
@@ -733,11 +734,11 @@ export default {
       // 提交表单
 
       if (Object.keys(this.contractForm.sign_file).length === 0) {
-        this.$message.error('请上传签署文件')
+        this.$message.error(i18n.t('legacyScript.pleaseUploadTheSignedDocument'))
         return
       }
       if (this.contractForm.sign_type == 2 && !this.contractForm.file_id) {
-        this.$message.error('请上传合同文件')
+        this.$message.error(i18n.t('legacyScript.pleaseUploadTheContractFile'))
         return
       }
       // 使用 find 提前中断循环，避免无效遍历
@@ -790,7 +791,7 @@ export default {
       // 添加签约方
       if (this.contractForm.signatory.length >= 4) {
         this.$message({
-          message: '最多只能添加3个签署方',
+          message: i18n.t('legacyScript.aMaximumOf3SignersCanBeAdded'),
           type: 'warning'
         })
         return

@@ -12,7 +12,7 @@
         :timeSearchObj="timeSearchObj"
         :category="keyword"
         ref="fromBox"
-        btnText="添加联系人"
+:btn-text="$t('ui.customerLiaisonIndexAddContact')"
         :isAddBtn="false"
         @dropdownFn="dropdownFn"
         @addDataFn="addDataFn"
@@ -49,6 +49,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { clientExportApi, clientLiaisonDeleteApi, clientLiaisonListApi as liaisonViewApi } from '@/api/client'
 import { DRAWER_SIZE } from '@/constants/popupSize'
 import { roterPre } from '@/settings'
@@ -68,11 +69,11 @@ export default {
     return {
       treeData: [
         {
-          label: '我负责的',
+          label: i18n.t('legacyScript.ownedByMe'),
           id: 1
         },
         {
-          label: '下属负责的',
+          label: i18n.t('legacyScript.ownedBySubordinates'),
           id: 2
         }
       ],
@@ -85,12 +86,12 @@ export default {
         view_search: 1
       },
       dropdownList: [
-        { label: '筛选条件设置', value: 1 },
-        { label: '表头显示设置', value: 2 },
-        { label: '导出', value: 3 },
-        { label: '导入', value: 4 },
-        { label: '导入导出记录', value: 5 },
-        { label: '字段选项设置', value: 6 }
+        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 1 },
+        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 2 },
+        { label: i18n.t('customer.export'), value: 3 },
+        { label: i18n.t('finance.batchupload'), value: 4 },
+        { label: i18n.t('legacyScript.importExportRecords'), value: 5 },
+        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 6 }
       ],
       keyword: 'liaison',
       total: 0,
@@ -115,7 +116,7 @@ export default {
     //添加联系人
     addDataFn() {
       this.liaisonConfig = {
-        title: '新增联系人',
+        title: i18n.t('legacyScript.addContact'),
         width: '570px'
       }
       this.$refs.liaisonDialog.openBox('', this.customInfo, '')
@@ -132,7 +133,7 @@ export default {
 
     handleCheck(item) {
       this.detailsFromData = {
-        title: '联系人查看',
+        title: i18n.t('legacyScript.viewContact'),
         width: DRAWER_SIZE.LG,
         data: item,
         types: 'liaison',

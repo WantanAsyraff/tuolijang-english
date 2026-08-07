@@ -20,7 +20,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import defaultNavBar from "@/components/defaultNavBar/index.vue";
   import bottomNavigation from "@/components/bottomNavigation/index.vue";
   import examineListDefault from "./components/examineListDefault.vue";
@@ -42,7 +43,7 @@
     tabIndex: 0,
     tabId: 1,
     defaultTitle: "待处理",
-    emptyTitle: "当前暂无审批内容～",
+    emptyTitle: appI18n.global.t('ui.usersExamineApproveCurrentNoApprovalContent'),
     customStyle: {
       border: "none",
       lineHeight: "20px",

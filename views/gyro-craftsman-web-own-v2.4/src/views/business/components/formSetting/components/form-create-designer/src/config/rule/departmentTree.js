@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeRequiredRule } from '../../utils';
 
@@ -23,10 +24,10 @@ export default {
       {
         type: 'radio',
         field: 'departType',
-        title: '选择类型',
+        title: i18n.t('legacyScript.selectType'),
         options: [
-          { label: '可选一个部门', value: 'oneself' },
-          { label: '可选多个部门', value: 'many' },
+          { label: i18n.t('legacyScript.selectOneDepartment'), value: 'oneself' },
+          { label: i18n.t('legacyScript.selectMultipleDepartments'), value: 'many' },
         ],
       },
       makeRequiredRule(),

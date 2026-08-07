@@ -439,7 +439,8 @@
     ></selected-label>
   </view>
 </template>
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, toRefs, watch } from 'vue'
 import moment from 'moment'
 import cEditor from '@/components/editor-common/editor.vue'
@@ -630,7 +631,7 @@ const multiplePickerChange = (e) => {
   ontouchcancel()
 }
 const disabledFn = () => {
-  message.error('禁止手动修改数据')
+  message.error(appI18n.global.t('ui.examineFormSelectMemberManualChangesAreNotAllowed'))
   return false
 }
 

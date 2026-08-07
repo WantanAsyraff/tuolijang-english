@@ -119,6 +119,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 export default {
   name: 'ConditionGroup', // 递归组件必须声明name
   props: {
@@ -146,41 +147,41 @@ export default {
       ],
       fieldOptions: [
         // { label: '字段', value: '1' },
-        { label: '变量', value: '2' }
+        { label: i18n.t('legacyScript.variable'), value: '2' }
       ],
       operatorOptions: [
         {
           value: 'gt',
-          label: '大于'
+          label: i18n.t('legacyScript.greaterThan')
         },
         {
           value: 'lt',
-          label: '小于'
+          label: i18n.t('ui.workFlowDrawerConditionDrawerLessThan')
         },
         {
           value: 'eq',
-          label: '等于'
+          label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
         },
         {
           value: 'not_eq',
-          label: '不等于'
+          label: i18n.t('legacyScript.notEqualTo')
         },
         {
           value: 'in',
-          label: '包含'
+          label: i18n.t('legacyScript.contains')
         },
         {
           value: 'not_in',
-          label: '不包含'
+          label: i18n.t('legacyScript.doesNotContain')
         },
 
         {
           value: 'is_empty',
-          label: '为空'
+          label: i18n.t('legacyScript.isEmpty')
         },
         {
           value: 'not_empty',
-          label: '不为空'
+          label: i18n.t('legacyScript.isNotEmpty')
         }
       ]
     }

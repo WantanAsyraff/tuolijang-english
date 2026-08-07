@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule } from '../../utils/index';
 
@@ -21,41 +22,41 @@ export default {
         options: [
           {
             value: 'zhinan',
-            label: '指南',
+            label: i18n.t('legacyScript.guide'),
             children: [
               {
                 value: 'shejiyuanze',
-                label: '设计原则',
+                label: i18n.t('legacyScript.designPrinciples'),
                 children: [
                   {
                     value: 'yizhi',
-                    label: '一致',
+                    label: i18n.t('legacyScript.consistency'),
                   },
                   {
                     value: 'fankui',
-                    label: '反馈',
+                    label: i18n.t('legacyScript.feedback'),
                   },
                   {
                     value: 'xiaolv',
-                    label: '效率',
+                    label: i18n.t('legacyScript.efficiency'),
                   },
                   {
                     value: 'kekong',
-                    label: '可控',
+                    label: i18n.t('legacyScript.controllability'),
                   },
                 ],
               },
               {
                 value: 'daohang',
-                label: '导航',
+                label: i18n.t('legacyScript.navigation'),
                 children: [
                   {
                     value: 'cexiangdaohang',
-                    label: '侧向导航',
+                    label: i18n.t('legacyScript.sidebarNavigation'),
                   },
                   {
                     value: 'dingbudaohang',
-                    label: '顶部导航',
+                    label: i18n.t('legacyScript.topNavigation'),
                   },
                 ],
               },
@@ -63,7 +64,7 @@ export default {
           },
           {
             value: 'zujian',
-            label: '组件',
+            label: i18n.t('legacyScript.components'),
             children: [
               {
                 value: 'basic',
@@ -71,23 +72,23 @@ export default {
                 children: [
                   {
                     value: 'layout',
-                    label: 'Layout 布局',
+                    label: i18n.t('legacyScript.layout'),
                   },
                   {
                     value: 'color',
-                    label: 'Color 色彩',
+                    label: i18n.t('legacyScript.color'),
                   },
                   {
                     value: 'typography',
-                    label: 'Typography 字体',
+                    label: i18n.t('legacyScript.typography'),
                   },
                   {
                     value: 'icon',
-                    label: 'Icon 图标',
+                    label: i18n.t('legacyScript.icon'),
                   },
                   {
                     value: 'button',
-                    label: 'Button 按钮',
+                    label: i18n.t('legacyScript.button'),
                   },
                 ],
               },
@@ -97,59 +98,59 @@ export default {
                 children: [
                   {
                     value: 'radio',
-                    label: 'Radio 单选框',
+                    label: i18n.t('legacyScript.radio'),
                   },
                   {
                     value: 'checkbox',
-                    label: 'Checkbox 多选框',
+                    label: i18n.t('legacyScript.checkbox'),
                   },
                   {
                     value: 'input',
-                    label: 'Input 输入框',
+                    label: i18n.t('legacyScript.input'),
                   },
                   {
                     value: 'input-number',
-                    label: 'InputNumber 计数器',
+                    label: i18n.t('legacyScript.inputNumber'),
                   },
                   {
                     value: 'select',
-                    label: 'Select 选择器',
+                    label: i18n.t('legacyScript.select'),
                   },
                   {
                     value: 'cascader',
-                    label: 'Cascader 级联选择器',
+                    label: i18n.t('legacyScript.cascader'),
                   },
                   {
                     value: 'switch',
-                    label: 'Switch 开关',
+                    label: i18n.t('legacyScript.switch'),
                   },
                   {
                     value: 'slider',
-                    label: 'Slider 滑块',
+                    label: i18n.t('legacyScript.slider'),
                   },
                   {
                     value: 'time-picker',
-                    label: 'TimePicker 时间选择器',
+                    label: i18n.t('legacyScript.timePicker'),
                   },
                   {
                     value: 'date-picker',
-                    label: 'DatePicker 日期选择器',
+                    label: i18n.t('legacyScript.datePicker'),
                   },
                   {
                     value: 'datetime-picker',
-                    label: 'DateTimePicker 日期时间选择器',
+                    label: i18n.t('legacyScript.dateTimePicker'),
                   },
                   {
                     value: 'upload',
-                    label: 'Upload 上传',
+                    label: i18n.t('legacyScript.upload'),
                   },
                   {
                     value: 'rate',
-                    label: 'Rate 评分',
+                    label: i18n.t('legacyScript.rate'),
                   },
                   {
                     value: 'form',
-                    label: 'Form 表单',
+                    label: i18n.t('legacyScript.form'),
                   },
                 ],
               },
@@ -165,51 +166,51 @@ export default {
       {
         type: 'Object',
         field: 'props',
-        title: '配置选项',
+        title: i18n.t('legacyScript.configurationOptions'),
         props: {
           rule: [
             {
               type: 'select',
               field: 'expandTrigger',
-              title: '次级菜单的展开方式',
+              title: i18n.t('legacyScript.submenuExpandMode'),
               options: [
                 { label: 'click', value: 'click' },
                 { label: 'hover', value: 'hover' },
               ],
             },
-            { type: 'switch', field: 'multiple', title: '是否多选' },
+            { type: 'switch', field: 'multiple', title: i18n.t('legacyScript.allowMultipleSelection') },
             {
               type: 'switch',
               field: 'checkStrictly',
-              title: '是否严格的遵守父子节点不互相关联',
+              title: i18n.t('legacyScript.strictlyEnforceParentChildNodeIndependence'),
             },
             {
               type: 'switch',
               field: 'emitPath',
               title:
-                '在选中节点改变时，是否返回由该节点所在的各级菜单的值所组成的数组，若设置 false，则只返回该节点的值',
+                i18n.t('legacyScript.returnAnArrayOfValuesFromAllAncestorMenuLevels'),
               value: true,
             },
-            { type: 'input', field: 'value', title: '指定选项的值为选项对象的某个属性值' },
+            { type: 'input', field: 'value', title: i18n.t('legacyScript.specifyOptionValueAsAPropertyOfTheOptionObject') },
             {
               type: 'input',
               field: 'label',
-              title: '指定选项标签为选项对象的某个属性值',
+              title: i18n.t('legacyScript.specifyTheOptionLabelAsAPropertyValueOfThe'),
             },
-            { type: 'input', field: 'children', title: '指定选项的子选项为选项对象的某个属性值' },
+            { type: 'input', field: 'children', title: i18n.t('legacyScript.specifyTheSubOptionsAsAPropertyValueOfThe') },
             {
               type: 'input',
               field: 'disabled',
-              title: '指定选项的禁用为选项对象的某个属性值',
+              title: i18n.t('legacyScript.specifyWhetherTheOptionIsDisabledViaAPropertyValue'),
             },
-            { type: 'input', field: 'leaf', title: '指定选项的叶子节点的标志位为选项对象的某个属性值' },
+            { type: 'input', field: 'leaf', title: i18n.t('legacyScript.specifyTheLeafNodeFlagForTheOptionAsA') },
           ],
         },
       },
       {
         type: 'select',
         field: 'size',
-        title: '尺寸',
+        title: i18n.t('legacyScript.size'),
         options: [
           { label: 'medium', value: 'medium' },
           { label: 'small', value: 'small' },
@@ -219,24 +220,24 @@ export default {
           },
         ],
       },
-      { type: 'input', field: 'placeholder', title: '输入框占位文本' },
+      { type: 'input', field: 'placeholder', title: i18n.t('legacyScript.inputPlaceholderText') },
       {
         type: 'switch',
         field: 'disabled',
-        title: '是否禁用',
+        title: i18n.t('legacyScript.disable'),
       },
-      { type: 'switch', field: 'clearable', title: '是否支持清空选项' },
+      { type: 'switch', field: 'clearable', title: i18n.t('legacyScript.supportClearOption') },
       {
         type: 'switch',
         field: 'showAllLevels',
-        title: '输入框中是否显示选中值的完整路径',
+        title: i18n.t('legacyScript.showFullPathOfSelectedValueInInputBox'),
         value: true,
       },
-      { type: 'switch', field: 'collapseTags', title: '多选模式下是否折叠Tag' },
+      { type: 'switch', field: 'collapseTags', title: i18n.t('legacyScript.collapseTagsInMultiSelectMode') },
       {
         type: 'input',
         field: 'separator',
-        title: '选项分隔符',
+        title: i18n.t('legacyScript.optionSeparator'),
       },
     ];
   },

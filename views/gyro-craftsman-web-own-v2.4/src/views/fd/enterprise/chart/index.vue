@@ -136,19 +136,19 @@ export default {
         width: '100%'
       },
       expenditureId: '',
-      expenditure: '支出',
+      expenditure: this.$ts('支出'),
       expenditureList: [
         {
-          name: '支出',
+          name: this.$ts('支出'),
           cate_id: 0,
           types: 2
         }
       ],
       activeId: '',
-      active: '收入',
+      active: this.$ts('收入'),
       incomeList: [
         {
-          name: '收入',
+          name: this.$ts('收入'),
           cate_id: 0,
           types: 1
         }
@@ -198,10 +198,10 @@ export default {
       this.active = row.name
       this.incomeList.splice(index + 1)
 
-      if (row.name == '收入') {
+      if (row.name == this.$ts('收入')) {
         this.incomeList = [
           {
-            name: '收入',
+            name: this.$ts('收入'),
             cate_id: 0,
             types: 1
           }
@@ -215,10 +215,10 @@ export default {
     changeExpenditure(row, index) {
       this.expenditure = row.name
       this.expenditureList.splice(index + 1)
-      if (row.name == '支出') {
+      if (row.name == this.$ts('支出')) {
         this.expenditureList = [
           {
-            name: '支出',
+            name: this.$ts('支出'),
             cate_id: 0,
             types: 2
           }
@@ -580,14 +580,14 @@ export default {
       this.cateIds = data.cate_id
       this.expenditureList = [
         {
-          name: '支出',
+          name: this.ts('支出'),
           cate_id: 0,
           types: 2
         }
       ]
       this.incomeList = [
         {
-          name: '收入',
+          name: this.$ts('收入'),
           cate_id: 0,
           types: 1
         }

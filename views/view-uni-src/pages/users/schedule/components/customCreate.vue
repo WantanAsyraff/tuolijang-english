@@ -65,7 +65,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, toRefs, watch } from "vue";
 import message from "@/utils/message";
 const props = defineProps({
@@ -104,20 +105,20 @@ const formData = reactive({
 });
 
 const periodData = reactive([
-  { value: 0, label: "按天重复" },
-  { value: 1, label: "按周重复" },
-  { value: 2, label: "按月重复" },
-  { value: 3, label: "按年重复" },
+  { value: 0, label: appI18n.global.t('ui.usersScheduleCustomCreateRepeatDaily') },
+  { value: 1, label: appI18n.global.t('ui.usersScheduleCustomCreateRepeatWeekly') },
+  { value: 2, label: appI18n.global.t('ui.usersScheduleCustomCreateRepeatMonthly') },
+  { value: 3, label: appI18n.global.t('ui.usersScheduleCustomCreateRepeatYearly') },
 ]);
 
 const week = reactive([
-  { value: 1, text: "星期一" },
-  { value: 2, text: "星期二" },
-  { value: 3, text: "星期三" },
-  { value: 4, text: "星期四" },
-  { value: 5, text: "星期五" },
-  { value: 6, text: "星期六" },
-  { value: 7, text: "星期天" }
+  { value: 1, text: appI18n.global.t('ui.usersScheduleCustomCreateMonday') },
+  { value: 2, text: appI18n.global.t('ui.usersScheduleCustomCreateTuesday') },
+  { value: 3, text: appI18n.global.t('ui.usersScheduleCustomCreateWednesday') },
+  { value: 4, text: appI18n.global.t('ui.usersScheduleCustomCreateThursday') },
+  { value: 5, text: appI18n.global.t('ui.usersScheduleCustomCreateFriday') },
+  { value: 6, text: appI18n.global.t('ui.usersScheduleCustomCreateSaturday') },
+  { value: 7, text: appI18n.global.t('ui.usersScheduleCustomCreateSunday') }
 ]);
 
 const changePeriod = (e) => {
@@ -171,15 +172,15 @@ const handleRepeat = (e) => {
 
 const handleConfirm = () => {
   if (!formData.rate) {
-    message.error("频率不能为空");
+    message.error(appI18n.global.t('ui.usersScheduleCustomCreateFrequencyIsRequired'));
     return false;
   }
   if (formData.period === 1 && formData.weekDays.length <= 0) {
-    message.error("至少选择一天重复");
+    message.error(appI18n.global.t('ui.usersScheduleCustomCreateSelectAtLeastOneRepeatDay'));
     return false;
   }
   if (formData.period === 2 && formData.monthDays.length <= 0) {
-    message.error("至少选择一天重复");
+    message.error(appI18n.global.t('ui.usersScheduleCustomCreateSelectAtLeastOneRepeatDay'));
     return false;
   }
 

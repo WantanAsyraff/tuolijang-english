@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { storageListApi, storageRecordUserApi, storageRecordSaveApi } from '@/api/administration'
 export default {
   name: 'Return',
@@ -157,9 +158,9 @@ export default {
     // 提交
     handleConfirm() {
       if (typeof this.index !== 'number') {
-        this.$message.error('请选择归还部门/人员')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectTheReturningDepartmentPersonnel'))
       } else if (this.multipleSelection.length <= 0) {
-        this.$message.error('请选择归还的物资')
+        this.$message.error(i18n.t('legacyScript.pleaseSelectTheMaterialsToReturn'))
       } else {
         let res = []
         this.multipleSelection.map((value) => {
@@ -187,7 +188,7 @@ export default {
           }
 
           this.loading = false
-          this.$message.success('物资归还成功')
+          this.$message.success(i18n.t('legacyScript.materialReturnedSuccessfully'))
         })
         .catch((error) => {
           this.loading = false

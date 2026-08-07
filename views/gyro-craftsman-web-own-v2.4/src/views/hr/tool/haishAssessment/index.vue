@@ -354,6 +354,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import Sortable from 'sortablejs'
 import data from './mixins/index.js'
 import { jobSelectApi, hayGroupApi, getHayGroupApi, putHayGroupApi } from '@/api/config.js'
@@ -370,7 +371,7 @@ export default {
     return {
       type: 'list',
       name: '评估表',
-      title: '新增评估表',
+      title: i18n.t('legacyScript.addAssessmentForm'),
       position: [],
       choiceEdit: 0,
       pageLoading: false,
@@ -525,7 +526,7 @@ export default {
       })
 
       if (!result) {
-        return this.$message.error('请选择职位')
+        return this.$message.error(i18n.t('ui.userDutyAnalyseSelectPosition'))
       }
       this.loading = true
       let data = {
@@ -609,7 +610,7 @@ export default {
       this.list = []
       this.selectedList = []
       this.type = 'add'
-      this.title = '新增评估表'
+      this.title = i18n.t('legacyScript.addAssessmentForm')
       this.name = '评估表' + this.$moment(new Date()).format('YYYYMMDD')
       this.addANewLine()
       setTimeout(() => {
@@ -621,7 +622,7 @@ export default {
     async editType(data) {
       this.pageLoading = true
       this.type = 'edit'
-      this.title = '编辑评估表'
+      this.title = i18n.t('legacyScript.editEvaluationForm')
       this.name = data.name
       this.id = data.id
       const result = await getHayGroupApi(data.id)

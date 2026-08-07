@@ -153,8 +153,8 @@
           :data="pictrueList"
           :row-key="getRowKey"
           highlight-row
-          no-data-text="暂无数据"
-          no-filtered-data-text="暂无筛选结果"
+:no-data-text="$t('ui.scEchartsChartWidgetNoData')"
+:no-filtered-data-text="$t('ui.uploadPictureIndexNoFilterResult')"
           @selection-change="handleSelectRow"
         >
           <el-table-column :reserve-selection="true" type="selection" width="60"> </el-table-column>
@@ -209,6 +209,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   formatLstApi,
   attachmentCreateApi,
@@ -348,8 +349,8 @@ export default {
     onDel(node) {
       let method = node.cate_id ? routeDel : routeCateDel
       this.$msgbox({
-        title: '提示',
-        message: '是否确定删除该菜单',
+        title: i18n.t('public.tips'),
+        message: i18n.t('legacyScript.areYouSureYouWantToDeleteThisMenu'),
         showCancelButton: true,
         cancelButtonText: '取消',
         confirmButtonText: '删除',
@@ -403,13 +404,13 @@ export default {
     moveImg(status) {
       if (!status) {
         if (!this.pids) {
-          this.$message.warning('请先选择分类')
+          this.$message.warning(i18n.t('legacyScript.selectACategoryFirst'))
           return
         }
         this.getMove()
       } else {
         if (!this.ids.toString()) {
-          this.$message.warning('请先选择图片')
+          this.$message.warning(i18n.t('legacyScript.selectAnImageFirst'))
           return
         }
       }
@@ -433,7 +434,7 @@ export default {
         ids: id
       }
       let delfromData = {
-        title: '删除选中图片',
+        title: i18n.t('legacyScript.deleteSelectedImages'),
         url: `file/file/delete`,
         method: 'POST',
         ids: ids
@@ -453,7 +454,7 @@ export default {
       let ids = {
         ids: id || this.ids.toString()
       }
-      await Tips.confirm({ message: '此操作将永久删除该文件, 是否继续?' })
+      await Tips.confirm({ message: i18n.t('legacyScript.thisWillPermanentlyDeleteTheFileContinue') })
       await picDeleteApi(ids)
       const deleteCount = id ? 1 : this.ids.length
       if (deleteCount === this.pictrueList.length && this.fileData.page > 1) {
@@ -630,7 +631,7 @@ export default {
     // 上传之前
     beforeUpload(file) {
       if (!/image\/\w+/.test(file.type)) {
-        this.$message.error('请上传以jpg、jpeg、png等结尾的图片文件') //FileExt.toLowerCase()
+        this.$message.error(i18n.t('legacyScript.uploadAnImageFileWithAJPGJPEGPNG')) //FileExt.toLowerCase()
         return false
       }
       this.uploadData = {
@@ -684,7 +685,7 @@ export default {
     checkPics() {
       if (this.$route && this.$route.query.field) {
         if (this.checkPicList.length > 1) {
-          return this.$message.warning('最多只能选一张图片')
+          return this.$message.warning(i18n.t('legacyScript.youCanSelectOnlyOneImage'))
         }
 
         form_create_helper.set(this.$route.query.field, this.checkPicList[0].att_dir)
@@ -699,7 +700,7 @@ export default {
           return this.$message.warning('最多只能选' + maxLength + '张图片')
         this.$emit('getImage', this.checkPicList)
       } else {
-        if (this.checkPicList.length > 1) return this.$message.warning('最多只能选一张图片')
+        if (this.checkPicList.length > 1) return this.$message.warning(i18n.t('legacyScript.youCanSelectOnlyOneImage'))
         this.$emit('getImage', this.checkPicList[0])
       }
     },
@@ -712,7 +713,7 @@ export default {
     // 修改图片名称
     async bindTxt(item) {
       if (!item.real_name) {
-        this.$message.error('请填写名称内容')
+        this.$message.error(i18n.t('legacyScript.enterAName'))
       }
       await picNameEditApi(item.id, { real_name: item.real_name })
       await this.editName(item)

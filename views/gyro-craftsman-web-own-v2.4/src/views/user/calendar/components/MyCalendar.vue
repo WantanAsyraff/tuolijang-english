@@ -5,7 +5,7 @@
       <div class="calendar-sidebar">
         <calendar-bar ref="calendarBar" @handleDate="handleDate" />
       </div>
-      <div class="calendar-main line" v-loading="loading" element-loading-text="数据正在加载中">
+      <div class="calendar-main line" v-loading="loading" :element-loading-text="$t('ui.userCalendarMyCalendarLoadingData')">
         <div class="plan-tabs-content"></div>
         <div class="needToBeDealt">
           <div class="add-btn">

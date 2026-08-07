@@ -10,7 +10,7 @@
         :treeData="treeData"
         :isViewSearch="false"
         ref="fromBox"
-        btnText="添加群发"
+:btn-text="$t('ui.customerWeChatMassClientGroupChatAddMassSend')"
         @addDataFn="addDataFn"
         @treeChange="treeChange"
         @confirmData="confirmData"
@@ -87,6 +87,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getMassList, delWorkMass, getWorkMassStatus, getWorkMassRemind } from '@/api/weCom'
 import { roterPre } from '@/settings'
 export default {
@@ -105,27 +106,27 @@ export default {
         {
           options: [
             {
-              label: '全部',
+              label: i18n.t('finance.all'),
               id: '',
               value: ''
             },
             {
-              label: '定时中',
+              label: i18n.t('ui.customerWeChatMassClientGroupChatScheduled'),
               id: 1,
               value: 1
             },
             {
-              label: '发送中',
+              label: i18n.t('ui.customerWeChatMassMassDetailsSending'),
               id: 2,
               value: 2
             },
             {
-              label: '已完成',
+              label: i18n.t('ui.customerWeChatMassMassDetailsCompleted'),
               id: 3,
               value: 3
             },
             {
-              label: '已停止',
+              label: i18n.t('ui.customerWeChatMassMassDetailsStopped'),
               id: '0',
               value: '0'
             }

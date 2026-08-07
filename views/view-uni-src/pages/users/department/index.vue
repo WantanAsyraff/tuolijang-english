@@ -25,7 +25,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index";
 import personnelList from "./components/personnelList/uni-indexed-list.vue";
 import selectBottomBar from "./components/selectBottomBar.vue";
@@ -46,7 +47,7 @@ const store = useStore();
 const data = reactive({
   list: [],
   count: 0,
-  title: "选择成员",
+  title: appI18n.global.t('ui.oaMemberIndexSelectMembers'),
   mode: "selector",
   isChecked: 0
 });

@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '富文本框';
@@ -17,6 +18,6 @@ export default {
     };
   },
   props() {
-    return [{ type: 'switch', field: 'disabled', title: '是否禁用' }];
+    return [{ type: 'switch', field: 'disabled', title: i18n.t('legacyScript.disable') }];
   },
 };

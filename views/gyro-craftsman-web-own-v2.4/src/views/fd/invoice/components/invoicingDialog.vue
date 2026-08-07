@@ -64,6 +64,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 
 import { clientInvoiceStatusApi } from '@/api/client'
 import { getToken } from '@/utils/auth'
@@ -103,13 +104,13 @@ export default {
         file: ''
       },
       rule: {
-        status: [{ required: true, message: '请选择开票结果', trigger: 'change' }],
-        invoice_type: [{ required: true, message: '请选择发送方式', trigger: 'change' }],
-        invoice_address: [{ required: true, message: '请输入邮寄地址', trigger: 'blur' }],
-        invoice_mail: [{ required: true, message: '请输入邮箱地址', trigger: 'blur' }],
-        collect_name: [{ required: true, message: '请输入联系人', trigger: 'blur' }],
-        collect_tel: [{ required: true, message: '请输入联系电话', trigger: 'blur' }],
-        remark: [{ required: true, message: '请输入拒绝理由', trigger: 'blur' }]
+        status: [{ required: true, message: i18n.t('legacyScript.pleaseSelectInvoiceResult'), trigger: 'change' }],
+        invoice_type: [{ required: true, message: i18n.t('ui.fdInvoiceInvoicingDialogPleaseSelectSendMethod'), trigger: 'change' }],
+        invoice_address: [{ required: true, message: i18n.t('ui.fdInvoiceInvoicingDialogPleaseEnterMailingAddress'), trigger: 'blur' }],
+        invoice_mail: [{ required: true, message: i18n.t('customer.placeholder55'), trigger: 'blur' }],
+        collect_name: [{ required: true, message: i18n.t('customer.placeholder52'), trigger: 'blur' }],
+        collect_tel: [{ required: true, message: i18n.t('customer.placeholder53'), trigger: 'blur' }],
+        remark: [{ required: true, message: i18n.t('legacyScript.pleaseEnterARejectionReason'), trigger: 'blur' }]
       },
       loading: false
     }

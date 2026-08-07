@@ -6,7 +6,7 @@
       :isViewSearch="false"
       :title="$route.meta.title"
       :total="total"
-      btnText="添加类目"
+:btn-text="$t('ui.fdSetupCategoryIndexAddCategory')"
       @addDataFn="addFinance"
     ></oaFromBox>
     <el-table
@@ -48,6 +48,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { invoiceCategoryList, deleteInvoiceCategory } from '@/api/enterprise'
 import dialogForm from '@/views/customer/setup/type/components/addDialog'
 import oaFromBox from '@/components/common/oaFromBox'
@@ -100,7 +101,7 @@ export default {
     // 添加分类
     async addFinance() {
       this.repeatData = {
-        title: '添加类目',
+        title: i18n.t('legacyScript.addCategory'),
         width: '480px',
         label: 3,
         type: 1,
@@ -112,7 +113,7 @@ export default {
     // 编辑分类
     async handleEdit(item) {
       this.repeatData = {
-        title: '编辑类目',
+        title: i18n.t('legacyScript.editCategory'),
         width: '480px',
         label: 3,
         type: 2,

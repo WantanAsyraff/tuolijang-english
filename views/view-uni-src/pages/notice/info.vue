@@ -55,7 +55,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import longPressBox from "./components/longPressBox.vue";
 import empty from "@/components/empty/index";
@@ -98,7 +99,7 @@ const data = reactive({
     limit: 10,
     is_read: ""
   },
-  emptyTitle: "暂无消息内容～",
+  emptyTitle: appI18n.global.t('ui.noticeInfoNoMessageContent'),
   // #ifdef APP-PLUS
   defaultTitle: "待办详情",
   // #endif
@@ -145,13 +146,13 @@ const handleNarItem = (): void => {
 };
 const dropDownItem = (item: Drop) => {
   if (item.id === 1) {
-    showModal("你确定要删除全部消息吗", "删除提醒").then(() => {
+    showModal(appI18n.global.t('ui.noticeInfoDeleteAllMessages'), appI18n.global.t('ui.noticeInfoDeleteReminder')).then(() => {
       messageDelete({ cate_id: data.where.cate_id }, true);
     }).catch(() => {
 
     });
   } else {
-    showModal("你确定要全部标记已读吗").then(() => {
+    showModal(appI18n.global.t('ui.noticeInfoMarkAllMessagesAsRead')).then(() => {
       messageBatch(1, { cate_id: data.where.cate_id }, -1, true);
     }).catch(() => {
 
@@ -203,7 +204,7 @@ const noticeDetails = (row: Detail, item: Detail, index: number): boolean => {
 const messageBatch = (status: number, ids: object, index: number, isAll: boolean = false): void => {
   userMessageBatchApi(status, ids).then(() => {
     if (isAll) {
-      message.success("批量标记成功");
+      message.success(appI18n.global.t('ui.noticeInfoMessagesMarkedSuccessfully'));
       data.where.page = 1;
       getMessageList(true);
     } else {

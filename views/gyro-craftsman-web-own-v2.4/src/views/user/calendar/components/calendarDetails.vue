@@ -236,6 +236,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 // 集中导入用户相关的日程API
 import {
   scheduleInfoApi,
@@ -410,7 +411,7 @@ export default {
           this.infoId = masterId
         })
         .catch((error) => {
-          console.error('获取日程信息失败:', error)
+          console.error(i18n.t('legacyScript.failedToRetrieveScheduleInformation'), error)
           this.loading = false
         })
     },
@@ -436,7 +437,7 @@ export default {
     },
     // 删除评论
     async commentDel(data) {
-      await Tips.confirm({ message: '你确定要删除这条评论吗？' })
+      await Tips.confirm({ message: i18n.t('legacyScript.areYouSureYouWantToDeleteThisComment') })
       await scheduleReplyDelApi(data.id)
       await this.getReplyList(this.extendedProps)
     },
@@ -457,7 +458,7 @@ export default {
     // 提交评论/回复
     async commentSubmit() {
       if (this.textarea == '') {
-        return this.$message.error('请填写评论内容')
+        return this.$message.error(i18n.t('legacyScript.pleaseEnterCommentsContent'))
       }
       const ids = []
       if (this.uploadList.length > 0) {

@@ -132,6 +132,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getTextFromHtml, imgToDataUrl } from 'simple-mind-map/src/utils'
 import { transformToMarkdown } from 'simple-mind-map/src/parse/toMarkdown'
 import { transformToTxt } from 'simple-mind-map/src/parse/toTxt'
@@ -410,9 +411,9 @@ export default {
             copy(str)
           }
         }
-        this.$message.success('复制成功')
+        this.$message.success(i18n.t('setting.copytitle'))
       } catch (error) {
-        this.$message.error('复制失败')
+        this.$message.error(i18n.t('legacyScript.copyFailed'))
       }
     }
   }

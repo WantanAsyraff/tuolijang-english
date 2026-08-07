@@ -62,6 +62,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { moduleShareListApi, delModuleShareApi, putModuleShareApi, moduleShareApi } from '@/api/develop'
 import oaDialog from '@/components/form-common/dialog-form'
 export default {
@@ -77,15 +78,15 @@ export default {
       disabledList: [],
       height: `calc(100vh - 200px)`,
       options: [
-        { label: '仅可查看', value: 0 },
-        { label: '可查看、编辑', value: 1 },
-        { label: '可查看、编辑、删除', value: 2 }
+        { label: i18n.t('legacyScript.viewOnly'), value: 0 },
+        { label: i18n.t('legacyScript.viewAndEdit'), value: 1 },
+        { label: i18n.t('legacyScript.viewEditAndDelete'), value: 2 }
       ],
       formConfig: [
         {
           type: 'user_id',
-          label: '选择人员：',
-          placeholder: '请选择人员（多选）',
+          label: i18n.t('legacyScript.selectPersonnel'),
+          placeholder: i18n.t('legacyScript.pleaseSelectPersonnel'),
           key: 'user_ids',
           disabledList: [],
           disabled: true,
@@ -93,13 +94,13 @@ export default {
         },
         {
           type: 'select',
-          label: '共享权限：',
-          placeholder: '请选择共享权限',
+          label: i18n.t('legacyScript.sharingPermission'),
+          placeholder: i18n.t('legacyScript.pleaseSelectASharingPermission'),
           key: 'role_type',
           options: [
-            { label: '仅可查看', value: '0' },
-            { label: '可查看、编辑', value: '1' },
-            { label: '可查看、编辑、删除', value: '2' }
+            { label: i18n.t('legacyScript.viewOnly'), value: '0' },
+            { label: i18n.t('legacyScript.viewAndEdit'), value: '1' },
+            { label: i18n.t('legacyScript.viewEditAndDelete'), value: '2' }
           ]
         }
       ],
@@ -108,13 +109,13 @@ export default {
       },
       dropdownType: '',
       formRules: {
-        user_ids: [{ required: true, message: '请选择人员', trigger: 'blur' }],
-        role_type: [{ required: true, message: '请选择共享权限', trigger: 'blur' }]
+        user_ids: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'), trigger: 'blur' }],
+        role_type: [{ required: true, message: i18n.t('legacyScript.pleaseSelectASharingPermission'), trigger: 'blur' }]
       },
       fromData: {
         width: '600px',
-        title: '数据共享协作',
-        btnText: '确定',
+        title: i18n.t('ui.developModuleShareDataSharingAndCollaboration'),
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: ''
       },

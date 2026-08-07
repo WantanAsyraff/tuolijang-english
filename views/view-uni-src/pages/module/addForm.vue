@@ -12,7 +12,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import moduleForm from "@/components/moduleForm";
   import message from "@/utils/message";
   import { useStore } from "vuex";
@@ -28,7 +29,7 @@
   import { reactive } from "vue";
   const oaFormRef = ref(null);
   const data = reactive({
-    title: "新增",
+    title: appI18n.global.t('ui.moduleAddFormAdd'),
     backgroundColor: "rgba(0,0,0,0)",
     listData: [],
     formInfo: {},
@@ -50,7 +51,7 @@
       data.id = options.id;
       data.detailsId = options.id;
       data.tableName = options.key;
-      data.title = "编辑";
+      data.title = appI18n.global.t('ui.customerQuickReplyIndexEdit');
       getInfo();
     }
     if (options.name) {

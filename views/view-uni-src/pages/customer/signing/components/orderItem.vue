@@ -100,7 +100,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import empty from '@/components/empty/index.vue'
 import { ref, reactive, computed, onMounted, watch } from 'vue'
 import ProductPanel from '@/pages/customer/opportunity/components/product-panel.vue'
@@ -125,8 +126,8 @@ const link_type = ref<number>(5) // 默认关联商机
 
 // 选择器配置
 const recordStatusList = [
-  { label: '关联商机', value: 5 },
-  { label: '关联订单', value: 2 },
+  { label: appI18n.global.t('ui.customerSigningOrderItemRelatedOpportunity'), value: 5 },
+  { label: appI18n.global.t('ui.customerSigningPaymentTableLinkOrder'), value: 2 },
 ]
 
 const getProductForm = () => {

@@ -326,7 +326,8 @@
     <success-popup ref="successPopupRef" :type="0" :title="$t('ui.customerListAddCustomerCustomer')" :button-title="$t('ui.oaFormIndexAddOrder')" @change="successChange"> </success-popup>
   </view>
 </template>
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, toRefs, onMounted } from 'vue'
 import { formatBytes } from '@/utils/file'
 import message from '@/utils/message'
@@ -369,7 +370,7 @@ const styles = reactive({
 const onlyOne = ref(false)
 const data = reactive({
   editorOption: {
-    placeholder: '请输入...',
+    placeholder: appI18n.global.t('ui.oaFormIndexPleaseEnter'),
   },
   indexMember: -1,
   indexItemMember: -1,

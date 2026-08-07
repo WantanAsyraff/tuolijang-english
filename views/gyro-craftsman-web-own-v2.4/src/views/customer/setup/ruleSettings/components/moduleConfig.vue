@@ -19,8 +19,8 @@
                 :disabled="item.disabled"
                 active-color="#1890ff"
                 inactive-color="#dcdfe6"
-                active-text="开启"
-                inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
               />
             </div>
           </li>

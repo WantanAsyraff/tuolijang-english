@@ -96,6 +96,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { clientConfigLabelApi } from '@/api/enterprise'
 import { extractArrayIds, isInArray, removeDuplicateObjects, getArrayDifference } from '@/libs/public'
 export default {
@@ -426,7 +427,7 @@ export default {
     },
     handlePopoverShow() {
       if (this.ids && this.ids.length == 0) {
-        this.$message.error('至少选一项')
+        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem'))
         return false
       }
       if (this.list.length == 0 && this.treeData.length == 0) {
@@ -502,7 +503,7 @@ export default {
     //  选择标签多选
     selectAllFn(node, data) {
       if (data.children.length == 0) {
-        this.$message.error('暂无子级标签可选择')
+        this.$message.error(i18n.t('legacyScript.noChildLabelsAreAvailable'))
         return false
       }
       if (isInArray(this.allIds, data[this.valType])) {

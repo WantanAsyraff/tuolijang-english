@@ -61,7 +61,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { WxWork, isWxWorkEnv } from "@/libs/wxwork";
 import empty from "@/components/empty/index.vue";
 import avatar from "@/components/avatar/index.vue";
@@ -112,7 +113,7 @@ const openCustomerChat = async (item) => {
         fail: reject
       });
     });
-    message.success('打开会话框');
+    message.success(appI18n.global.t('ui.customerLeadLeadListChatOpened'));
   } catch (err) {
     message.error(`打开个人资料页失败: ${err.errMsg || err.message || '操作失败'}`);
   }

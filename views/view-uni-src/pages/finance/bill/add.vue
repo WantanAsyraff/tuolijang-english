@@ -101,7 +101,8 @@
   </BaseContainer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { financeBillDetailsApi, financeBillDetailsAddApi, financeBillDetailsEditApi } from "@/api/finance";
 
 import BaTreePicker from "@/components/baTreePicker/index.vue";
@@ -182,22 +183,22 @@ const handleSaveBillDetails = async () => {
   const { editTime, mark, num, fileId } = billDetailData.form;
 
   if (!incomeAndExpendType.value) {
-    return message.error("请选择账目类型!", "none");
+    return message.error(appI18n.global.t('ui.financeBillAddSelectAnAccountType'), "none");
   }
   if (!billCateIds.value.length) {
-    return message.error("请选择账目分类!", "none");
+    return message.error(appI18n.global.t('ui.financeBillAddSelectAnAccountCategory'), "none");
   }
   if (!num) {
-    return message.error("请输入账目金额!", "none");
+    return message.error(appI18n.global.t('ui.financeBillAddEnterTheAccountAmount'), "none");
   }
   if (Number(num) < 0.01) {
-    return message.error("请输入合法的账目金额!", "none");
+    return message.error(appI18n.global.t('ui.financeBillAddEnterAValidAccountAmount'), "none");
   }
   if (payType.value === DEFAULT_PAY_TYPE_ALL) {
-    return message.error("请选择支付方式!", "none");
+    return message.error(appI18n.global.t('ui.financeBillAddSelectAPaymentMethod'), "none");
   }
   if (!editTime) {
-    return message.error("请选择支付时间!", "none");
+    return message.error(appI18n.global.t('ui.financeBillAddSelectAPaymentTime'), "none");
   }
 
   saveLoading.value = true;
@@ -234,7 +235,7 @@ const handleSaveBillDetails = async () => {
     }
 
     uni.hideLoading();
-    message.success("保存成功", "none");
+    message.success(appI18n.global.t('ui.navigationBarSiderbarSavedSuccessfully'), "none");
     uni.$emit(BILL_DETAIL_FLUSH_EVENT);
   } catch (err) {
     uni.hideLoading();

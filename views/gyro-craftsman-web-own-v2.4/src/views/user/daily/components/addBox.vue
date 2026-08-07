@@ -138,6 +138,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { enterpriseDaily, getEnterpriseEdit, dailyReply, dailydel, getDailyEdit, getCompleted } from '@/api/enterprise'
 import file from '@/utils/file'
 import { dailyReportMemberApi } from '@/api/business'
@@ -515,7 +516,7 @@ export default {
           this.ruleForm.attach_ids = ids.join(',')
           let members = []
           if (processInfo.length == 0) {
-            this.$message.error('请选择汇报人')
+            this.$message.error(i18n.t('legacyScript.pleaseSelectTheReporter'))
             return
           }
           if (processInfo.length > 0) {

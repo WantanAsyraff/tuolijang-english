@@ -103,7 +103,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import oaCalendar from '@/components/oaCalendar/index'
 import moment from 'moment'
 
@@ -351,7 +352,7 @@ const getScheduleCount = () => {
 // 获取列表
 const getScheduleList = (type) => {
   uni.showLoading({
-    title: '加载中',
+    title: appI18n.global.t('ui.customerContractIndexLoading'),
   })
   const data_s = {
     cid: checkedTypes.value,

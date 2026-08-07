@@ -103,6 +103,7 @@
 </el-popover>
 </template>
 <script>
+import i18n from '@/lang'
 import { extractArrayIds, isInArray, removeDuplicateObjects, getArrayDifference } from '@/libs/public'
 import isFullScreen from '@/components/isFullScreen/index'
 
@@ -319,7 +320,7 @@ export default {
         data = rest
       }
       if (this.isDisabledDepartment(data)) {
-        return this.$message.warning('此部门已加入其他考勤组')
+        return this.$message.warning(i18n.t('legacyScript.thisDepartmentHasAlreadyJoinedAnotherAttendanceGroup'))
       }
       const arr = this.getDepartmentDataById(data, data.id)
       // 点击选中
@@ -346,13 +347,13 @@ export default {
     //选择部门单选
     append(node, data) {
       if (this.isDisabledDepartment(data)) {
-        return this.$message.warning('此部门已加入其他考勤组')
+        return this.$message.warning(i18n.t('legacyScript.thisDepartmentHasAlreadyJoinedAnotherAttendanceGroup'))
       }
       if (!this.onlyOne) {
         return false
       }
       if (this.departmentIds.some((id) => this.isSameId(id, data.id))) {
-        return this.$message.warning('已选中该部门')
+        return this.$message.warning(i18n.t('legacyScript.thisDepartmentIsAlreadySelected'))
       }
 
       data.is_mastart = false

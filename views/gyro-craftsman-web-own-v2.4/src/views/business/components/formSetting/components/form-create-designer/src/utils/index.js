@@ -1,3 +1,4 @@
+import i18n from '@/lang'
 import is, { hasProperty } from '@form-create/utils/lib/type';
 import { parseFn } from '@form-create/utils/lib/json';
 
@@ -5,7 +6,7 @@ export function makeRequiredRule() {
   return {
     type: 'switch',
     field: 'formCreateEffect>required',
-    title: '是否必填',
+    title: i18n.t('ui.customerSetupCustomFormIndexRequired'),
   };
 }
 

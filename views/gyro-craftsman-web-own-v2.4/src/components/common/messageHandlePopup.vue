@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { toMessageDetailUrl } from '@/libs/public'
 import {
   chargeDetailsApi
@@ -245,7 +246,7 @@ export default {
     getClientInvoiceDetail(id) {
       clientInvoiceDetailApi(id).then((res) => {
         this.invoiceData = {
-          title: '发票查看',
+          title: i18n.t('legacyScript.viewInvoice'),
           width: '1000px',
           data: res.data
         }
@@ -274,7 +275,7 @@ export default {
           item.eid = res.data.contract_customer.id
 
           this.contractData = {
-            title: '查看订单',
+            title: i18n.t('legacyScript.viewOrder'),
             width: '1000px',
             data: row || item,
             isClient: false,

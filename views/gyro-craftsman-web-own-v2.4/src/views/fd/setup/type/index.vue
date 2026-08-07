@@ -7,7 +7,7 @@
       :title="$route.meta.title"
       :isViewSearch="false"
       :sortSearch="false"
-      btnText="添加支付方式"
+:btn-text="$t('ui.fdSetupTypeIndexAddPaymentMethod')"
       @addDataFn="addFinance"
     ></oaFromBox>
 
@@ -116,7 +116,7 @@ export default {
       })
     },
     handleDelete(row) {
-      this.$modalSure('你确定要删除这条分类吗').then(() => {
+      this.$modalSure(this.$ts('你确定要删除这条分类吗')).then(() => {
         enterprisePayTypeDeleteApi(row.id).then((res) => {
           if (this.tableData.length == 1) {
             this.getTableData(1)

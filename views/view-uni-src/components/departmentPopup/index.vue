@@ -59,7 +59,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, computed, watch } from "vue";
 import { useStore } from "vuex";
 import moment from "moment";
@@ -84,64 +85,64 @@ const data = reactive({
       + "-"
       + moment().month(moment().month()).endOf("month").format("YYYY/MM/DD"),
     member: [],
-    btnText: "本部门",
+    btnText: appI18n.global.t('ui.departmentPopupIndexThisDepartment'),
     timeText: "本月",
   },
   TimeList: [{
-    title: "今天",
+    title: appI18n.global.t('ui.departmentPopupIndexToday'),
     id: 1,
   },
   {
-    title: "昨天",
+    title: appI18n.global.t('ui.departmentPopupIndexYesterday'),
     id: 2,
   },
   {
-    title: "本周",
+    title: appI18n.global.t('ui.departmentPopupIndexThisWeek'),
     id: 3,
   },
   {
-    title: "上周",
+    title: appI18n.global.t('ui.departmentPopupIndexLastWeek'),
     id: 4,
   },
   {
-    title: "本月",
+    title: appI18n.global.t('ui.departmentPopupIndexThisMonth'),
     id: 5,
   },
   {
-    title: "上月",
+    title: appI18n.global.t('ui.departmentPopupIndexLastMonth'),
     id: 6,
   },
   {
-    title: "今年",
+    title: appI18n.global.t('ui.departmentPopupIndexThisYear'),
     id: 7,
   },
   {
-    title: "去年",
+    title: appI18n.global.t('ui.departmentPopupIndexLastYear'),
     id: 8,
   },
   {
-    title: "自定义",
+    title: appI18n.global.t('ui.departmentPopupIndexCustom'),
     id: 9,
   },
   ],
   btnList: [{
-    title: "本人及下属",
+    title: appI18n.global.t('ui.departmentPopupIndexMeAndSubordinates'),
     id: 0,
   },
   {
-    title: "仅本人",
+    title: appI18n.global.t('ui.departmentPopupIndexMeOnly'),
     id: 1,
   },
   {
-    title: "本部门",
+    title: appI18n.global.t('ui.departmentPopupIndexThisDepartment'),
     id: 2,
   },
   {
-    title: "选择部门",
+    title: appI18n.global.t('ui.departmentPopupIndexSelectDepartment'),
     id: 3,
   },
   {
-    title: "选择人员",
+    title: appI18n.global.t('ui.departmentPopupIndexSelectPersonnel'),
     id: 4,
   },
   ],
@@ -157,13 +158,13 @@ const deleteFn = (val, index) => {
     if (data.infoDepartment.length > 1) {
       data.infoDepartment.splice(index, 1);
     } else {
-      return message.error("最少选择一个部门");
+      return message.error(appI18n.global.t('ui.departmentPopupIndexSelectAtLeastOneDepartment'));
     }
   } else if (data.btnIndex == 4) {
     if (data.infoUser.length > 1) {
       data.infoUser.splice(index, 1);
     } else {
-      return message.error("最少选择一个人员");
+      return message.error(appI18n.global.t('ui.departmentPopupIndexSelectAtLeastOnePerson'));
     }
   }
 };
@@ -199,11 +200,11 @@ const confirm = () => {
       data.where.btnText = text.join(",");
     } else {
       if (data.tabIndex == 1) {
-        return message.error("请选择人员");
+        return message.error(appI18n.global.t('ui.departmentPopupIndexPleaseSelectPersonnel'));
       } else {
         data.where.type = 2;
         data.tabIndex = 2;
-        data.where.btnText = "本部门";
+        data.where.btnText = appI18n.global.t('ui.departmentPopupIndexThisDepartment');
       }
     }
   }
@@ -216,21 +217,21 @@ const confirm = () => {
       data.where.btnText = text.join(",");
     } else {
       if (data.tabIndex == 1) {
-        return message.error("请选择部门");
+        return message.error(appI18n.global.t('ui.departmentPopupIndexPleaseSelectDepartment'));
       } else {
         data.where.type = 2;
         data.tabIndex = 2;
-        data.where.btnText = "本部门";
+        data.where.btnText = appI18n.global.t('ui.departmentPopupIndexThisDepartment');
       }
     }
   }
 
   if (data.timeIndex == 9) {
     if (!data.start && data.tabIndex == 2) {
-      return message.error("请选择开始时间");
+      return message.error(appI18n.global.t('ui.usersScheduleCreateSelectStartTime'));
     }
     if (!data.end && data.tabIndex == 2) {
-      return message.error("请选择结束时间");
+      return message.error(appI18n.global.t('ui.usersScheduleCreateSelectEndTime'));
     }
     if (data.start && data.end) {
       data.where.time = moment(data.start).format("YYYY/MM/DD") + "-" + moment(data.end).format("YYYY/MM/DD");
@@ -258,7 +259,7 @@ const reset = () => {
   data.end = "";
 	if(data.managementScope)data.btnIndex = "-";
   data.where.type = data.managementScope ? "" : 2;
-  data.where.btnText = "本部门";
+  data.where.btnText = appI18n.global.t('ui.departmentPopupIndexThisDepartment');
   data.where.member = [];
 	data.where.field = "";
   data.infoUser = [];
@@ -374,22 +375,22 @@ const popupOpen = (val, managementScope) => {
 		if((!data.where.field&& data.where.type != 3) || (!data.where.member.length && !data.where.field))data.btnIndex = "-";
 		data.btnList = [
 			{
-			  title: "本人及下属",
+			  title: appI18n.global.t('ui.departmentPopupIndexMeAndSubordinates'),
 			  id: 0,
 				value: "team"
 			},
 			{
-			  title: "仅本人",
+			  title: appI18n.global.t('ui.departmentPopupIndexMeOnly'),
 			  id: 1,
 				value: "self"
 			},
 			{
-			  title: "本部门",
+			  title: appI18n.global.t('ui.departmentPopupIndexThisDepartment'),
 			  id: 2,
 				value: "dep"
 			},
 			{
-			  title: "选择部门",
+			  title: appI18n.global.t('ui.departmentPopupIndexSelectDepartment'),
 			  id: 3,
 				value: ""
 			}

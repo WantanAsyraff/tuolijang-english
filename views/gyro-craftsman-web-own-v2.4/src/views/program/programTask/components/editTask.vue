@@ -340,6 +340,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import {
   putProgramTaskApi,
   getProgramTaskInfoApi,
@@ -410,54 +411,54 @@ export default {
       priorityOptions: [
         {
           value: 1,
-          label: '紧急'
+          label: i18n.t('ui.programProgramTaskTableDataUrgent')
         },
         {
           value: 2,
-          label: '高'
+          label: i18n.t('ui.programProgramTaskTableDataHeight')
         },
         {
           value: 3,
-          label: '中'
+          label: i18n.t('ui.programProgramTaskTableDataCenter')
         },
         {
           value: 4,
-          label: '低'
+          label: i18n.t('ui.programProgramTaskTableDataLow')
         },
         {
           value: 0,
-          label: '无优先级'
+          label: i18n.t('ui.programProgramTaskTableDataNoPriority')
         }
       ],
       statusOptions: [
         {
           value: 0,
-          label: '未处理'
+          label: i18n.t('ui.programProgramTaskTableDataUnprocessed')
         },
         {
           value: 1,
-          label: '进行中'
+          label: i18n.t('customer.execution')
         },
         {
           value: 2,
-          label: '已解决'
+          label: i18n.t('ui.programProgramTaskTableDataResolved')
         },
         {
           value: 3,
-          label: '已验收'
+          label: i18n.t('ui.programProgramTaskTableDataAccepted')
         },
         {
           value: 4,
-          label: '已拒绝'
+          label: i18n.t('ui.userExamineExamineRejected')
         },
         {
           value: 5,
-          label: '已关闭'
+          label: i18n.t('ui.programProgramTaskAddTaskClosed')
         }
       ],
       rule: {
-        name: [{ required: true, message: '请输入项目名称', trigger: 'blur' }],
-        program_id: [{ required: true, message: '请选择关联项目', trigger: 'change' }]
+        name: [{ required: true, message: i18n.t('ui.programProgramListAddProgramPleaseEnterProjectName'), trigger: 'blur' }],
+        program_id: [{ required: true, message: i18n.t('ui.programProgramTaskAddTaskPleaseSelectRelatedProject'), trigger: 'change' }]
       },
       nameShow: false,
       adminsShow: false,
@@ -484,7 +485,7 @@ export default {
   methods: {
     handleToggle(showProperty) {
       if (!this.formData.operate) {
-        return this.$message('没有操作权限')
+        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
       }
       this[showProperty] = true
     },
@@ -670,7 +671,7 @@ export default {
         this.nameShow = false
         this.putProgramTask('name', this.formData.name)
       } else {
-        this.$message('任务名称不能为空')
+        this.$message(i18n.t('legacyScript.taskNameIsRequired'))
       }
     },
 

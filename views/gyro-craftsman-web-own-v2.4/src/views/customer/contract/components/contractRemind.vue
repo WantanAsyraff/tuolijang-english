@@ -91,6 +91,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { remindAbjureApi } from '@/api/enterprise'
 import { clientRemindDeleteApi, clientRemindListApi } from '@/api/client'
 import { configRuleApproveApi } from '@/api/config'
@@ -206,7 +207,7 @@ export default {
     },
     addContract(row) {
       this.configContract = {
-        title: '添加回款',
+        title: i18n.t('customer.addcollection'),
         width: '480px',
         data: row,
         cid: row.cid,

@@ -178,6 +178,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { storageListApi, storageRecordApi, storageRecordCensusApi } from '@/api/administration'
 export default {
   name: 'FinanceChart',
@@ -276,7 +277,11 @@ export default {
               axisLabel: {
                 color: '#666666'
               },
-              data: ['物资采购金额', '物资报废金额', '物资维修金额']
+              data: [
+                this.$ts('物资采购金额'),
+                this.$ts('物资报废金额'),
+                this.$ts('物资维修金额')
+              ]
             }
           ],
           yAxis: [
@@ -380,11 +385,11 @@ export default {
     },
     handleManage(row) {
       this.fromData = {
-        title: '补货',
+        title: i18n.t('ui.administrationMaterialChartIndexRestock'),
         width: '520px',
         data: row,
-        label: '入库说明',
-        placeholder: '请填写入库说明',
+        label: i18n.t('legacyScript.stockInDescription'),
+        placeholder: i18n.t('legacyScript.pleaseEnterStockInDescription'),
         type: 4
       }
       this.$refs.materialDialog.handleOpen()

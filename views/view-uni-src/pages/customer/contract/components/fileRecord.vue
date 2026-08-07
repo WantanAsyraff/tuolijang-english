@@ -59,7 +59,8 @@
   <empty v-else :index="7" :title="emptyTitle" style="height: 950rpx;"></empty>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { ref, toRefs } from "vue";
 import deanPopover from "@/components/deanPopover/index.vue";
 import empty from "@/components/empty/index.vue";
@@ -72,7 +73,7 @@ const deanPopoverRef = ref(null);
 const addRecord = (type: number, item: PropType, index: number): void => {
   deanPopoverRef.value[index].close();
   if (type === 2) {
-    showModal("您确定要删除订单资料吗").then(() => {
+    showModal(appI18n.global.t('ui.customerContractFileRecordAreYouSureYouWantToDeleteTheOrder')).then(() => {
       resourceDelete(item.id, index);
     }).catch(() => { });
   } else {
@@ -108,7 +109,7 @@ const props = withDefaults(
     activeIcon?: string;
     active?: number;
   }>(), {
-    emptyTitle: "暂无数据",
+    emptyTitle: appI18n.global.t('ui.customerListStatisticsNoData'),
     listData: <any>[],
     direction: "row",
     activeColor: "#1890FF",

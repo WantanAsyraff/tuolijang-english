@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
     import { viewSearchApi } from '@/api/develop'
 export default {
     name: "ChartFilterConfig",
@@ -126,7 +127,7 @@ getChartList() {
 },
         // 添加板块
         addBlock() {
-            this.$message.success("已添加新筛选板块");
+            this.$message.success(i18n.t('legacyScript.newFilterSectionAdded'));
             // 实际场景可在此处追加配置项
         },
         removeSearch(index){

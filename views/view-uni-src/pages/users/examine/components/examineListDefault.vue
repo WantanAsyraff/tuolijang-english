@@ -47,7 +47,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import empty from "@/components/empty/index.vue";
 import examineListItem from "./examineListItem.vue";
 import { toRefs } from "vue";
@@ -102,7 +103,7 @@ const statusList = ref({
 // 重新提交
 const resubmit = (item) => {
   if (!item.approve) {
-    message.error("审批流程已被删除");
+    message.error(appI18n.global.t('ui.usersExamineExamineListDefaultTheApprovalWorkflowHasBeenDeleted'));
     return false;
   }
   clickNavigateTo(
@@ -113,7 +114,7 @@ import { approveApplyRevokeApi, approveVerifyStatusApi } from "@/api/business";
 // 申请审批撤销
 const getApplyRevoke = (item) => {
   if (item.status === 0) {
-    showModal("确定要撤销该审批记录吗").then(() => {
+    showModal(appI18n.global.t('ui.usersExamineExamineListDefaultRevokeThisApprovalRecord')).then(() => {
       approveApplyRevokeApi(item.id).then((res) => {
         message.success(res.message);
         item.status = -1;
@@ -131,7 +132,7 @@ const getApplyRevoke = (item) => {
 import { showModal } from "@/utils/helper";
 // 同意
 const handleAgree = (row, index) => {
-  showModal("确定要同意申请人的申请吗").then(() => {
+  showModal(appI18n.global.t('ui.usersExamineExamineListDefaultApproveThisApplication')).then(() => {
     getApproveVerify(row.id, 1, index);
   }).catch(() => {
     console.log("取消");
@@ -140,7 +141,7 @@ const handleAgree = (row, index) => {
 
 // 拒绝
 const handleRefuse = (row, index) => {
-  showModal("确定要 拒绝 申请人的申请吗").then(() => {
+  showModal(appI18n.global.t('ui.usersExamineExamineListDefaultRejectThisApplication')).then(() => {
     getApproveVerify(row.id, 0, index);
   }).catch(() => {
     console.log("取消");

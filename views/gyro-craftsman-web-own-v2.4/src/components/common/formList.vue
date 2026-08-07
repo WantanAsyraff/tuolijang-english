@@ -184,7 +184,7 @@
         :start-placeholder="`${val.field_name}`"
         class="time mr10"
         format="yyyy/MM"
-        range-separator="至"
+:range-separator="$t('ui.commonFormListTo')"
         size="small"
         type="monthrange"
         value-format="yyyy/MM"
@@ -255,6 +255,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import { getDictTreeListApi } from '@/api/form'
 import { translateRuntimeText } from '@/utils/i18ns'
 
@@ -728,7 +729,7 @@ export default {
           this.addressList = this.normalizeAddressOptions(data)
         })
         .catch((error) => {
-          console.error('获取城市列表失败:', error)
+          console.error(i18n.t('legacyScript.failedToRetrieveTheCityList'), error)
         })
         .finally(() => {
           this.addressLoading = false

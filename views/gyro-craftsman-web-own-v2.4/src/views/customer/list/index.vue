@@ -13,7 +13,7 @@
       :viewSearch="viewSearch"
       :timeSearchObj="timeSearchObj"
       :category="keyword"
-      btnText="添加客户"
+:btn-text="$t('ui.customerListIndexAddCustomer')"
       :whereData="where"
       ref="fromBox"
       @addDataFn="addDataFn"
@@ -182,6 +182,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import {
   customerViewApi,
@@ -273,49 +274,49 @@ export default {
       transferDataList: [],
       timeSearchObj: {},
       rule: {
-        reason: [{ required: true, message: '请输入备注信息', trigger: 'blur' }]
+        reason: [{ required: true, message: i18n.t('finance.pleaseremark'), trigger: 'blur' }]
       },
       checkedId: [],
       treeDataGroup: [
         {
           id: 1,
-          label: '我负责的'
+          label: i18n.t('legacyScript.ownedByMe')
         },
         {
           id: 2,
-          label: '下属负责的'
+          label: i18n.t('legacyScript.ownedBySubordinates')
         },
         {
           id: 9,
-          label: '我协作的'
+          label: i18n.t('legacyScript.myCollaborations')
         },
         {
           id: 3,
-          label: '我关注的'
+          label: i18n.t('legacyScript.followedByMe')
         },
 
         {
           id: 6,
-          label: '急需跟进',
+          label: i18n.t('legacyScript.needsUrgentFollowUp'),
           line: true
         }
       ],
 
       search: [],
       dropdownList: [
-        { label: '设置标签', value: 1 },
-        { label: '移交同事', value: 2 },
-        { label: '分配', value: 5 },
-        { label: '领取', value: 6 },
-        { label: '标为流失', value: 7 },
-        { label: '退回公海', value: 3 },
-        { label: '合并客户', value: 9 },
-        { label: '筛选条件设置', value: 11 },
-        { label: '表头显示设置', value: 10 },
-        { label: '导出', value: 4 },
-        { label: '导入', value: 8 },
-        { label: '导入导出记录', value: 12 },
-        { label: '字段选项设置', value: 13 }
+        { label: i18n.t('customer.selectlabel'), value: 1 },
+        { label: i18n.t('ui.customerClueIndexTransferToColleague'), value: 2 },
+        { label: i18n.t('ui.customerClueIndexAssign'), value: 5 },
+        { label: i18n.t('ui.customerClueIndexIssue'), value: 6 },
+        { label: i18n.t('ui.customerListIndexMarkAsLost'), value: 7 },
+        { label: i18n.t('ui.customerListIndexReturnToPool'), value: 3 },
+        { label: i18n.t('legacyScript.mergeCustomers'), value: 9 },
+        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 11 },
+        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 10 },
+        { label: i18n.t('customer.export'), value: 4 },
+        { label: i18n.t('finance.batchupload'), value: 8 },
+        { label: i18n.t('legacyScript.importExportRecords'), value: 12 },
+        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 13 }
       ],
       viewSearch: []
     }
@@ -355,7 +356,7 @@ export default {
     // 添加商机
     addOdds(data) {
       this.formBoxConfig = {
-        title: '新增商机',
+        title: i18n.t('legacyScript.addOpportunity'),
         width: '1000px',
         types: 'odds'
       }
@@ -537,7 +538,7 @@ export default {
     handleLabel(row) {
       this.rowData = row
       this.labelData = {
-        title: '客户标签',
+        title: i18n.t('customer.customerlabel'),
         width: '540px',
         label: row.customer_label,
         edit: 1
@@ -559,7 +560,7 @@ export default {
     // 合并客户
     mergeCustomerFn() {
       if (this.ids.length < 2) {
-        this.$message.error('最少需要选择两个客户')
+        this.$message.error(i18n.t('legacyScript.selectAtLeastTwoCustomers'))
         return
       } else {
         this.mergeCustomerShow = true
@@ -585,7 +586,7 @@ export default {
 
     mergeCustomerSubmit() {
       if (this.mergeCustomerId == '') {
-        this.$message.error('请选择主客户')
+        this.$message.error(i18n.t('ui.customerListIndexSelectPrimaryCustomer'))
         return
       }
       let data = {
@@ -627,7 +628,7 @@ export default {
     // 标为流失
     markedLoss(row, val) {
       if (this.checkedId.length == 0 && val !== 1) {
-        return this.$message.error('至少选择一项')
+        return this.$message.error(i18n.t('customer.placeholder22'))
       }
 
       let checkedId = Array.from(this.checkedId)
@@ -678,7 +679,7 @@ export default {
       }
 
       this.labelData = {
-        title: '客户标签',
+        title: i18n.t('customer.customerlabel'),
         width: '540px',
         label: [],
         edit: 1

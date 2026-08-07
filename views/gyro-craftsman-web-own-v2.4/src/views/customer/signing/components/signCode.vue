@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
     import QRCode from 'qrcodejs2'
 export default {
     name: 'SignCode',
@@ -29,8 +30,8 @@ export default {
             linkUrl: 'https://tuoluojiang.com',
             fromData: {
                 width: '500px',
-                title: '签署方签约',
-                btnText: '确定',
+                title: i18n.t('legacyScript.signerSigning'),
+                btnText: i18n.t('ui.formCommonDialogFormOk'),
                 labelWidth: '100px',
                 type: 'slot'
             },
@@ -67,14 +68,14 @@ export default {
             // 获取二维码 canvas
             const qrcodeCanvas = this.$refs.qrcode.querySelector('canvas');
             if (!qrcodeCanvas) {
-                this.$message.error('二维码尚未生成，请稍后再试');
+                this.$message.error(i18n.t('legacyScript.theQRCodeHasNotBeenGeneratedYetPleaseTry'));
                 return;
             }
 
             // 将 canvas 转为 blob 并下载
             qrcodeCanvas.toBlob((blob) => {
                 if (!blob) {
-                    this.$message.error('生成图片失败');
+                    this.$message.error(i18n.t('legacyScript.failedToGenerateImage'));
                     return;
                 }
                 const url = URL.createObjectURL(blob);
@@ -85,7 +86,7 @@ export default {
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                this.$message.success('二维码图片已保存');
+                this.$message.success(i18n.t('legacyScript.qRCodeImageSaved'));
             });
         },
 
@@ -93,10 +94,10 @@ export default {
         copyLink() {
             // 使用Clipboard API复制链接
             navigator.clipboard.writeText(this.linkUrl).then(() => {
-                this.$message.success('链接已复制到剪贴板');
+                this.$message.success(i18n.t('legacyScript.linkCopiedToClipboard'));
             }).catch(err => {
-                console.error('复制失败:', err);
-                this.$message.error('复制失败，请手动复制');
+                console.error(i18n.t('legacyScript.copyFail'), err);
+                this.$message.error(i18n.t('legacyScript.copyFailedPleaseCopyManually'));
             });
         }
     }

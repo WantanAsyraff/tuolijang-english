@@ -16,8 +16,8 @@
           v-model="form.wechat_work_forced_build"
           :active-value="1"
           :inactive-value="0"
-          active-text="开启"
-          inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
         >
         </el-switch>
         <div class="tips">{{ $t("ui.settingWecomIndexWhenEnabledCustomersMustBindAWeComAccount") }}</div>
@@ -32,8 +32,8 @@
           v-model="form.wechat_work_user_switch"
           :active-value="1"
           :inactive-value="0"
-          active-text="开启"
-          inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
         >
         </el-switch>
       </el-form-item>
@@ -80,8 +80,8 @@
           v-model="form.wechat_work_client_switch"
           :active-value="1"
           :inactive-value="0"
-          active-text="开启"
-          inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
         >
         </el-switch>
       </el-form-item>
@@ -119,8 +119,8 @@
           v-model="form.wechat_work_session_switch"
           :active-value="1"
           :inactive-value="0"
-          active-text="开启"
-          inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
         >
         </el-switch>
       </el-form-item>
@@ -172,6 +172,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getWorkConfigApi, saveWorkConfigApi, getWorkRsaApi } from '@/api/setting'
 export default {
   data() {
@@ -244,9 +245,9 @@ export default {
       this.form.wechat_work_session_public_key_version = res.data.rsa_public_key
     },
     copyFn(val) {
-      if (!val) return this.$message.error('请输入需要复制的内容')
+      if (!val) return this.$message.error(i18n.t('legacyScript.enterContentToCopy'))
       clipboard.writeText(val)
-      this.$message.success('复制成功')
+      this.$message.success(i18n.t('setting.copytitle'))
     }
   }
 }

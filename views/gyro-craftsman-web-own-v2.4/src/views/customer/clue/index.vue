@@ -14,7 +14,7 @@
         :whereData="where"
         :timeSearchObj="timeSearchObj"
         ref="fromBox"
-        btnText="添加线索"
+:btn-text="$t('ui.customerClueIndexAddLead')"
         @addDataFn="addDataFn"
         @confirmData="confirmData"
         @dropdownFn="dropdownFn"
@@ -96,6 +96,7 @@
   </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import imageViewer from '@/components/common/imageViewer'
 import { getWorkCorpConfigApi } from '@/api/setting'
@@ -137,19 +138,19 @@ export default {
         reason: ''
       },
       fromData: {
-        title: '退回线索池',
+        title: i18n.t('ui.customerClueIndexReturnToLeadPool'),
         width: '540px'
       },
       formDataInit: { reason: '' },
       formRules: {
-        reason: [{ required: true, message: '请输入退回原因', trigger: 'blur' }]
+        reason: [{ required: true, message: i18n.t('legacyScript.pleaseEnterReturnReason'), trigger: 'blur' }]
       },
       client_switch: null,
       formConfig: [
         {
           type: 'textarea',
-          label: '说明原因：',
-          placeholder: '请输入说明原因',
+          label: i18n.t('ui.customerListIndexReason'),
+          placeholder: i18n.t('legacyScript.pleaseEnterReason'),
           key: 'reason'
         }
       ],
@@ -180,7 +181,7 @@ export default {
       total: 0,
       loading: false,
       rule: {
-        reason: [{ required: true, message: '请输入备注信息', trigger: 'blur' }]
+        reason: [{ required: true, message: i18n.t('finance.pleaseremark'), trigger: 'blur' }]
       },
       checkedId: [],
       detailsFromData: {},
@@ -199,28 +200,28 @@ export default {
     },
     dropdownList() {
       let clue = [
-        { label: '移交同事', value: 2 },
-        { label: '退回线索池', value: 3 },
-        { label: '筛选条件设置', value: 6 },
-        { label: '表头显示设置', value: 7 },
-        { label: '导出', value: 8 },
-        { label: '导入', value: 9 },
-        { label: '导入导出记录', value: 10 },
-        { label: '字段选项设置', value: 11 }
+        { label: i18n.t('ui.customerClueIndexTransferToColleague'), value: 2 },
+        { label: i18n.t('ui.customerClueIndexReturnToLeadPool'), value: 3 },
+        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 6 },
+        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 7 },
+        { label: i18n.t('customer.export'), value: 8 },
+        { label: i18n.t('finance.batchupload'), value: 9 },
+        { label: i18n.t('legacyScript.importExportRecords'), value: 10 },
+        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 11 }
       ]
       if (this.client_switch) {
-        clue.unshift({ label: '同步企业微信客户', value: 5 })
+        clue.unshift({ label: i18n.t('legacyScript.syncWeComCustomers'), value: 5 })
       }
 
       let clue_seas = [
-        { label: '分配', value: 2 },
-        { label: '领取', value: 4 },
-        { label: '筛选条件设置', value: 6 },
-        { label: '表头显示设置', value: 7 },
-        { label: '导出', value: 8 },
-        { label: '导入', value: 9 },
-        { label: '导入导出记录', value: 10 },
-        { label: '字段选项设置', value: 11 }
+        { label: i18n.t('ui.customerClueIndexAssign'), value: 2 },
+        { label: i18n.t('ui.customerClueIndexIssue'), value: 4 },
+        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 6 },
+        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 7 },
+        { label: i18n.t('customer.export'), value: 8 },
+        { label: i18n.t('finance.batchupload'), value: 9 },
+        { label: i18n.t('legacyScript.importExportRecords'), value: 10 },
+        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 11 }
       ]
       return this.types == 'clue' ? clue : clue_seas
     },
@@ -228,20 +229,20 @@ export default {
     treeData() {
       let list = [
         {
-          label: '我负责的',
+          label: i18n.t('legacyScript.ownedByMe'),
           id: 1
         },
         {
-          label: '下属负责的',
+          label: i18n.t('legacyScript.ownedBySubordinates'),
           id: 2
         },
         {
-          label: '我关注的',
+          label: i18n.t('legacyScript.followedByMe'),
           id: 3
         },
 
         {
-          label: '急需跟进',
+          label: i18n.t('legacyScript.needsUrgentFollowUp'),
           id: 4,
           line: true
         }
@@ -250,7 +251,7 @@ export default {
         ? list
         : [
             {
-              label: '全部',
+              label: i18n.t('finance.all'),
               id: '5'
             }
           ]
@@ -275,7 +276,7 @@ export default {
     }, // 编辑线索
     handleEdit(item) {
       this.formBoxConfig = {
-        title: '编辑线索',
+        title: i18n.t('legacyScript.editLead'),
         width: '570px'
       }
       getCluesEditApi(item.id).then((res) => {
@@ -290,7 +291,7 @@ export default {
         await this.getTableData()
       } else {
         this.config = {
-          title: '新增客户',
+          title: i18n.t('legacyScript.addCustomer'),
           width: '570px',
           linkId: item.id
         }
@@ -316,7 +317,7 @@ export default {
     // 查看
     async openDetails(item) {
       this.detailsFromData = {
-        title: '线索查看',
+        title: i18n.t('legacyScript.viewLeads'),
         width: DRAWER_SIZE.LG,
         data: item,
         types: this.types,
@@ -473,7 +474,7 @@ export default {
       } else {
         const ids = type === 1 ? this.ids : [row.id]
         this.transferData = {
-          title: '移交其他同事',
+          title: i18n.t('legacyScript.transferToAnotherColleague'),
           width: '520px',
           type: 5,
           ids

@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import Draggable from 'vuedraggable'
 import { clientSaveLabelsApi } from '@/api/client'
 import { clientConfigLabelDeleteApi } from '@/api/enterprise'
@@ -146,7 +147,7 @@ export default {
 
     // 删除标签组
     handleDeleteGroup() {
-      this.$confirm('确定要删除这个标签组吗？删除后不可恢复', '警告', {
+      this.$confirm(i18n.t('legacyScript.areYouSureYouWantToDeleteThisTagGroup'), i18n.t('legacyScript.warning'), {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -163,7 +164,7 @@ export default {
 
     // 确认提交
     handleConfirm() {
-      if (this.form.group.name == '') return this.$message.error('标签组名称不能为空')
+      if (this.form.group.name == '') return this.$message.error(i18n.t('legacyScript.labelGroupNameIsRequired'))
 
       const filteredLabels = this.form.label.filter((item) => {
         return item?.name?.trim() !== ''

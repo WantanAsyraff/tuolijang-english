@@ -42,7 +42,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import morePopup from "@/components/morePopup/index.vue";
   import empty from "@/components/empty/index.vue";
   import { ref, toRefs } from "vue";
@@ -137,13 +138,13 @@
   // 删除
   const onDelete = (item : PropType, type : number) => {
     if (type === 1) {
-      showModal("确定要删除该付款提醒吗").then(() => {
+      showModal(appI18n.global.t('ui.customerContractPayRemindDeleteThisPaymentReminder')).then(() => {
         remindDeleta(item.id);
       }).catch(() => {
 
       });
     } else {
-      showModal("确定之后变为已放弃状态，您确定此订单不再续费了吗").then(() => {
+      showModal(appI18n.global.t('ui.customerContractPayRemindMarkThisOrderAsAbandonedAndStopRenewingIt')).then(() => {
         remindAbjure(item.id);
       }).catch(() => {
 

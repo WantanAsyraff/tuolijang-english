@@ -121,6 +121,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 // 导入辅助工具库
 import helper from '@/libs/helper'
 // 导入云存储上传工具
@@ -246,7 +247,7 @@ export default {
         const xmindFile = await generateXmindFile(data.name + '.xmind')
         const res = await this.handleUpload(xmindFile, true)
         if (res.status === 200) {
-          this.$message.success('创建成功')
+          this.$message.success(i18n.t('legacyScript.createSuccess'))
           success()
         } else {
           error()
@@ -410,7 +411,7 @@ export default {
       document.execCommand('Copy')
       oInput.style.display = 'none'
       document.body.removeChild(oInput)
-      this.$message.success('复制分享链接成功，请前去粘贴使用')
+      this.$message.success(i18n.t('legacyScript.shareLinkCopiedSuccessfullyPleasePasteAndUseIt'))
     },
 
     formBoxClick(type, val, index) {

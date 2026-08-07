@@ -50,6 +50,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { userAssessInfo } from '@/api/user'
 export default {
   name: 'AssessInfo',
@@ -91,7 +92,7 @@ export default {
     },
     targetItem(item, tItem) {
       this.configData = {
-        title: '自评',
+        title: i18n.t('ui.userAssessmentSelfSelfAssessment'),
         width: '600px',
         assessId: this.id,
         spaceId: item.id,

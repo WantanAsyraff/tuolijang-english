@@ -117,8 +117,12 @@ function literalReferences(source) {
 }
 
 const VISIBLE_ATTRIBUTES = new Set([
-  'alt', 'aria-label', 'button-text', 'cancel-text', 'confirm-text', 'content',
-  'empty-text', 'label', 'loading-text', 'placeholder', 'text', 'title'
+  'active-text', 'alt', 'aria-label', 'button-text', 'btntext', 'cancel-text',
+  'close-text', 'confirm-text', 'content', 'element-loading-text', 'empty-text',
+  'empty-title', 'end-placeholder', 'inactive-text', 'label', 'left-text', 'lefttext',
+  'loading-text', 'no-data-text', 'no-filtered-data-text', 'no-filtered-userfrom-text',
+  'no-match-text', 'no-userfrom-text', 'placeholder', 'range-separator', 'right-text',
+  'righttext', 'start-placeholder', 'text', 'title', 'topbreadcrumbtext'
 ])
 
 function templateHanFragments(file, compiler) {
@@ -248,6 +252,35 @@ function checkChartLocalization(appName, report, errors) {
     if (missing.length) errors.push(`unlocalized mobile chart options: ${missing.map((file) => path.relative(APP_CONFIG.mobile.root, file)).join(', ')}`)
   }
 }
+function checkBladeFrontend(errors) {
+  const repoRoot = path.resolve(viewsRoot, '..')
+  const bladeRoot = path.join(repoRoot, 'resources/views')
+  const bladeFiles = []
+  const visit = (directory) => {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const target = path.join(directory, entry.name)
+      if (entry.isDirectory()) visit(target)
+      else if (entry.name.endsWith('.blade.php')) bladeFiles.push(target)
+    }
+  }
+  visit(bladeRoot)
+  const findings = []
+  for (const file of bladeFiles) {
+    const source = fs.readFileSync(file, 'utf8')
+      .replace(/\{\{--[\s\S]*?--\}\}/g, '')
+      .replace(/<!--[\s\S]*?-->/g, '')
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/^\s*\/\/.*$/gm, '')
+    source.split(/\r?\n/).forEach((line, index) => {
+      if (HAS_HAN.test(line)) findings.push(`${path.relative(repoRoot, file)}:${index + 1} ${line.trim()}`)
+    })
+  }
+  if (findings.length) errors.push(`untranslated first-party Blade display text:\n${findings.slice(0, 100).join('\n')}`)
+
+  const installerScript = fs.readFileSync(path.join(repoRoot, 'public/install/js/install-i18n.js'), 'utf8')
+  if (/textMap|MutationObserver/.test(installerScript)) errors.push('installer DOM text replacement must not be used')
+  if (HAS_HAN.test(installerScript)) errors.push('installer locale selector contains hardcoded Han display text')
+}
 async function run(appName) {
   const config = APP_CONFIG[appName]
   if (!config) throw new Error(`Use one of: ${Object.keys(APP_CONFIG).join(', ')}`)
@@ -256,9 +289,15 @@ async function run(appName) {
   const scriptUiIssues = auditScriptUi({
     root: config.root,
     sourceFiles: report.sourceFiles,
-    parse: (source) => babelParser.parse(source, {
+    parse: (source, context) => babelParser.parse(source, {
       sourceType: 'module',
-      plugins: ['typescript', 'jsx', 'decorators-legacy', 'optionalChaining']
+      plugins: [
+        'typescript',
+        ...(context.lang === 'ts' ? [] : ['jsx']),
+        'decorators-legacy',
+        'optionalChaining'
+      ],
+      errorRecovery: appName === 'mobile'
     })
   })
   if (scriptUiIssues.length) {
@@ -282,6 +321,7 @@ async function run(appName) {
   if (unresolvedStatic.length) {
     errors.push(`untranslated visible template text:\n${unresolvedStatic.slice(0, 200).map(({ file, text }) => `${file}: ${text}`).join('\n')}`)
   }
+  if (appName === 'web') checkBladeFrontend(errors)
 
   console.log(`[${appName}] zh/en keys: ${report.zh}/${report.en}`)
   console.log(`[${appName}] checked ${report.sourceFiles.length} first-party source files`)

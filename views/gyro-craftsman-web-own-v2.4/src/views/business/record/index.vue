@@ -69,6 +69,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { approveApplyApi, approveApplyDeleteApi, approveApplyExportApi, approveApplyEditApi } from '@/api/business'
 import func from '@/utils/preload'
 export default {
@@ -154,7 +155,7 @@ export default {
       })
     },
     getExportData() {
-      if (this.where.approve_id == '') return this.$message.error('请选择审批类型')
+      if (this.where.approve_id == '') return this.$message.error(i18n.t('legacyScript.pleaseSelectApprovalType'))
       this.saveName = '审批导出_' + this.$moment(new Date()).format('HH_mm_ss') + '.xlsx'
       const where = JSON.parse(JSON.stringify(this.where))
       where.limit = 0

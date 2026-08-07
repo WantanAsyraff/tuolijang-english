@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 export default {
   name: 'RuleSetting',
   components: {
@@ -141,7 +142,7 @@ export default {
           }
           if (this.examineFrom.abnormal === 1) {
             if (!this.checkedName) {
-              this.$message.warning('请选择指定人员')
+              this.$message.warning(i18n.t('legacyScript.pleaseSelectTheDesignatedPersonnel'))
               return
             }
             if (this.dataList.length > 0) {

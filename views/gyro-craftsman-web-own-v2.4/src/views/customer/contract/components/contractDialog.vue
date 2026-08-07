@@ -98,6 +98,7 @@
 </template>
 
 <script>
+import i18n from '@/lang'
 import {
   clientBillEditApi,
   clientBillSaveApi,
@@ -204,15 +205,15 @@ export default {
         }
       },
       rule: {
-        cid: [{ required: true, message: '请选择订单', trigger: 'change' }],
+        cid: [{ required: true, message: i18n.t('ui.customerContractContractDialogSelectOrder2'), trigger: 'change' }],
         amount: [{ required: true, validator: checkAmount, trigger: 'blur' }],
         dateTime: [{ required: true, validator: checkDateTime, trigger: 'change' }],
         type: [{ required: true, validator: checkType, trigger: 'change' }],
-        type_id: { required: true, message: '请选择支付方式', trigger: 'change' }, // 支付方式
+        type_id: { required: true, message: i18n.t('ui.customerContractContractDialogSelectPaymentMethod'), trigger: 'change' }, // 支付方式
         remarks: [{ required: true, validator: checkRemark, trigger: 'blur' }],
         content: [{ required: true, validator: checkContent, trigger: 'blur' }],
-        radio: [{ required: true, message: '请选择业务类型', trigger: 'change' }],
-        endDate: [{ required: true, message: '请选择提醒时间', trigger: 'change' }]
+        radio: [{ required: true, message: i18n.t('legacyScript.pleaseSelectBusinessType'), trigger: 'change' }],
+        endDate: [{ required: true, message: i18n.t('legacyScript.selectReminderTime'), trigger: 'change' }]
       },
       title01: '回款金额(元)',
       title02: '',
@@ -232,13 +233,13 @@ export default {
       pickerOptions: {
         shortcuts: [
           {
-            text: '今天',
+            text: i18n.t('toptable.today'),
             onClick(picker) {
               picker.$emit('pick', new Date())
             }
           },
           {
-            text: '昨天',
+            text: i18n.t('toptable.yesterday'),
             onClick(picker) {
               const date = new Date()
               date.setTime(date.getTime() - 3600 * 1000 * 24)
@@ -246,7 +247,7 @@ export default {
             }
           },
           {
-            text: '前天',
+            text: i18n.t('legacyScript.dayBeforeYesterday'),
             onClick(picker) {
               const date = new Date()
               date.setTime(date.getTime() - 3600 * 1000 * 24 * 2)

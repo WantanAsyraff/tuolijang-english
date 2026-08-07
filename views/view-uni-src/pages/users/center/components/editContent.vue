@@ -8,7 +8,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, toRefs } from "vue";
 import message from "@/utils/message";
 import { mailboxReg } from "@/utils/helper";
@@ -43,11 +44,11 @@ const cancel = () => {
 
 const dialogInputConfirm = (e) => {
   if (!e) {
-    message.error("输入的内容不能为空");
+    message.error(appI18n.global.t('ui.textareaPopupIndexContentCannotBeEmpty'));
     return false;
   }
   if (editData.value.types && editData.value.types === "email" && !mailboxReg.test(e)) {
-    message.error("输入的邮箱不合法");
+    message.error(appI18n.global.t('ui.usersCenterEditContentEnterAValidEmailAddress'));
     return false;
   }
   const data = {

@@ -120,6 +120,7 @@
 </div>
 </template>
 <script>
+import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import imageViewer from '@/components/common/imageViewer'
 
@@ -268,7 +269,7 @@ export default {
         this.$message({
           showClose: true,
           type: 'warning',
-          message: '评论不能为空'
+          message: i18n.t('legacyScript.commentCannotBeEmpty')
         })
       }
     },

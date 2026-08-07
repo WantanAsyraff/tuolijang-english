@@ -2,7 +2,7 @@
 <div class="divBox">
 
     <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
-        <oaFromBox :title="$route.meta.title" btnText="添加合同" :isAddBtn="false" :treeData="treeDataGroup" :treeDefault="treeDefault"
+        <oaFromBox :title="$route.meta.title" :btn-text="$t('ui.customerListSignAddContract')" :isAddBtn="false" :treeData="treeDataGroup" :treeDefault="treeDefault"
             :search="search" :isViewSearch="false" :total="total" ref="fromBox" @addDataFn="addContract"
             @confirmData="confirmData" @treeChange="treeChange"></oaFromBox>
         <div class="flex-layout-table">
@@ -202,6 +202,7 @@
 
 </template>
 <script>
+import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { getColor } from '@/utils/format'
 import { getContractDocListApi, contractDocDelApi, contractDocCancelApi, contractSignatoryApi, contractDocSignApi } from '@/api/contractSign'
@@ -223,8 +224,8 @@ export default {
             userId: getStorageJson('userInfo', {}).id,
             fromData: {
                 width: '500px',
-                title: '签约录入',
-                btnText: '确定',
+                title: i18n.t('ui.customerListSignSignEntry'),
+                btnText: i18n.t('ui.formCommonDialogFormOk'),
                 labelWidth: '100px',
                 type: 'slot'
             },
@@ -337,13 +338,13 @@ export default {
                     field: 'repeat',
                     field_name_en: 'fail_status',
                     data_dict: [{
-                        label: '未开始',
+                        label: i18n.t('customer.notstarted'),
                         value: '1',
                     }, {
-                        label: '进行中',
+                        label: i18n.t('customer.execution'),
                         value: '0',
                     }, {
-                        label: '已过期',
+                        label: i18n.t('setting.info.expired'),
                         value: '2',
                     }
                     ]
@@ -354,26 +355,26 @@ export default {
                     field_name_en: 'status',
                     field: 'repeat',
                     data_dict: [{
-                        label: '审批驳回',
+                        label: i18n.t('legacyScript.approvalRejected'),
                         value: '-1',
                     },
                     {
-                        label: '待审核',
+                        label: i18n.t('customer.pendingApproval'),
                         value: '1',
                     }, {
-                        label: '待签约',
+                        label: i18n.t('ui.customerSigningInfoItemPendingSigning'),
                         value: '2',
                     }, {
-                        label: '已签约',
+                        label: i18n.t('ui.customerSigningInfoItemSigned'),
                         value: '3',
                     }, {
-                        label: '已拒绝',
+                        label: i18n.t('ui.userExamineExamineRejected'),
                         value: '4',
                     }, {
-                        label: '已过期',
+                        label: i18n.t('setting.info.expired'),
                         value: '5',
                     }, {
-                        label: '已撤销',
+                        label: i18n.t('customer.revoked'),
                         value: '6',
                     }
                     ],
@@ -385,11 +386,11 @@ export default {
                     options: [
                         {
                             value: 1,
-                            label: '我负责的'
+                            label: i18n.t('legacyScript.ownedByMe')
                         },
                         {
                             value: 2,
-                            label: '下属负责的'
+                            label: i18n.t('legacyScript.ownedBySubordinates')
                         }],
                 }
             ]
@@ -504,7 +505,7 @@ export default {
 
         submit() {
             if (!this.file) {
-                this.$message.error('请上传文件')
+                this.$message.error(i18n.t('hr.placeholder24'))
                 return false
             }
             let obj = {

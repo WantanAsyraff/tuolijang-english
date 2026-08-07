@@ -1,3 +1,4 @@
+import appI18n from '@/locale';
 import { computed, type Ref } from "vue";
 import message from "@/utils/message";
 import { useWifiInfo } from "./useWifiInfo";
@@ -58,7 +59,7 @@ export function useAttendanceWifi(group: Ref<AttendanceGroup | null>) {
       data: bssid,
       showToast: false,
       success: () => {
-        message.success("BSSID 已复制");
+        message.success(appI18n.global.t('ui.attendanceComposablesUseAttendanceWifiTsBssidCopied'));
       },
     });
   }

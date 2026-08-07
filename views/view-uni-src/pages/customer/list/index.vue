@@ -18,7 +18,8 @@
   </BaseContainer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import BaseContainer from "@/components/BaseContainer/index.vue";
 import tabbar from "@/components/tabbar/index.vue";
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
@@ -33,7 +34,7 @@ const data = reactive({
   typeIndex: 0,
   tabIndex: 0,
   tabId: 2,
-  emptyTitle: "当前暂无客户～",
+  emptyTitle: appI18n.global.t('ui.customerListIndexCurrentNoCustomer'),
   customStyle: { border: "none", lineHeight: "20px", background: "#ED4014" },
   examineTabData: customerTabList,
   listData: [],
@@ -130,7 +131,7 @@ const listLoading = ref(false);
 const getConfigList = (tab = false) => {
   if (data.where.page === 1) {
     uni.showLoading({
-      title: '加载中',
+      title: appI18n.global.t('ui.customerContractIndexLoading'),
       mask: true
     });
   }
