@@ -38,8 +38,8 @@
                 <el-switch
                   v-if="scope.row.system_template"
                   v-model="scope.row.system_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.system_template, 0)"
                   :active-value="1"
                   :inactive-value="0"
@@ -51,8 +51,8 @@
                 <el-switch
                   v-if="scope.row.sms_template"
                   v-model="scope.row.sms_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.sms_template, 1)"
                   :active-value="1"
                   :inactive-value="0"
@@ -64,8 +64,8 @@
                 <el-switch
                   v-if="scope.row.wework_template"
                   v-model="scope.row.wework_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.wework_template, 5)"
                   :active-value="1"
                   :inactive-value="0"
@@ -77,8 +77,8 @@
                 <el-switch
                   v-if="scope.row.work_template"
                   v-model="scope.row.work_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.work_template, 2)"
                   :active-value="1"
                   :inactive-value="0"
@@ -90,8 +90,8 @@
                 <el-switch
                   v-if="scope.row.ding_template"
                   v-model="scope.row.ding_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.ding_template, 3)"
                   :active-value="1"
                   :inactive-value="0"
@@ -103,8 +103,8 @@
                 <el-switch
                   v-if="scope.row.other_template"
                   v-model="scope.row.other_template.status"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageStatus(scope.row.id, scope.row.other_template, 4)"
                   :active-value="1"
                   :inactive-value="0"
@@ -115,8 +115,8 @@
               <template slot-scope="scope">
                 <el-switch
                   v-model="scope.row.user_sub"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                   @change="messageSubscribe(scope.row)"
                   :active-value="1"
                   :inactive-value="0"

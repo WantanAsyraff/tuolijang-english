@@ -79,7 +79,8 @@
 
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import {
     entSignApi,
     entTransferApi,
@@ -94,7 +95,7 @@
   const data = reactive({
     defaultTitle: "加签",
     infoText: "加签意见",
-    placeholder: "请输入加签意见",
+    placeholder: appI18n.global.t('ui.usersExamineAddSignatureEnterAnAdditionalApproverNote'),
     userList: [],
     type: 1,
     showPerson: false,
@@ -115,15 +116,15 @@
     data.type = option.type;
     if (data.type == 1) {
       data.defaultTitle = "加签";
-      data.placeholder = "请输入加签意见";
+      data.placeholder = appI18n.global.t('ui.usersExamineAddSignatureEnterAnAdditionalApproverNote');
       data.infoText = "加签意见";
     } else if (data.type == 2) {
       data.defaultTitle = "转审";
-      data.placeholder = "请输入转审意见";
+      data.placeholder = appI18n.global.t('ui.usersExamineAddSignatureEnterATransferNote');
       data.infoText = "转审意见";
     } else if (data.type == 3) {
       data.defaultTitle = "撤销";
-      data.placeholder = "填写撤销理由";
+      data.placeholder = appI18n.global.t('ui.usersExamineAddSignatureEnterRevocationReason');
       data.infoText = "撤销理由";
     }
   });
@@ -131,11 +132,11 @@
   // 保存
   const handleConfirm = () => {
     if (data.type == 3 && !data.form.info) {
-      message.error("请填写撤销理由");
+      message.error(appI18n.global.t('ui.usersExamineAddSignatureEnterARevocationReason'));
       return false;
     }
     if (data.userList.length == 0 && data.type != 3) {
-      message.error("请选择加签审核人");
+      message.error(appI18n.global.t('ui.usersExamineAddSignaturePleaseSelectAdditionalApprover'));
       return false;
     }
     data.form.user = [];
@@ -153,7 +154,7 @@
       });
     } else if (data.type == 2) {
       if (JSON.parse(uni.getStorageSync("storageUserData")).userInfo.id == data.form.user[0]) {
-        message.error("转审人不能选自己");
+        message.error(appI18n.global.t('ui.usersExamineAddSignatureYouCannotSelectYourselfAsTheTransferApprover'));
         data.loading = true;
         return false;
       }

@@ -3,7 +3,7 @@
 <div class="divBox">
   <el-card class="normal-page">
     <template v-if="!isShow">
-      <formBox :title="$t('ui.developCrudIndexApplicationManagement')" :total="total" :search="search" :btnText="`新建应用`" :isViewSearch="false"
+      <formBox :title="$t('ui.developCrudIndexApplicationManagement')" :total="total" :search="search" :btn-text="$t('ui.developCrudIndexNewApplication')" :isViewSearch="false"
         :sortSearch="false" @confirmData="confirmData" @addDataFn="addDataFn"></formBox>
       <div id="content-box " class="mt10" v-loading="loading">
         <default-page v-if="listData.length == 0" :index="14" :min-height="520" />

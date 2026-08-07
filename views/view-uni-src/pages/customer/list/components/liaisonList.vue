@@ -74,7 +74,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { WxWork, isWxWorkEnv } from '@/libs/wxwork'
 import empty from '@/components/empty/index.vue'
 import avatar from '@/components/avatar/index.vue'
@@ -114,8 +115,8 @@ const changePopover = (item, index, type) => {
   if (type === 2) {
     let liaisonId = item.id
     uni.showModal({
-      title: '提示',
-      content: '您确定要删除该客户联系人吗?',
+      title: appI18n.global.t('ui.customerLeadDetailHint'),
+      content: appI18n.global.t('ui.customerListCustomerContactsDeleteThisCustomerContact'),
       success: (res) => {
         if (res.confirm) {
           liaisonDeleteApi(liaisonId)
@@ -133,7 +134,7 @@ const changePopover = (item, index, type) => {
 }
 // 打开客户聊天对话框
 const openCustomerChat = async (item) => {
-  if (!isWxWorkEnv) return message.error('只有在企业微信中可进行聊天')
+  if (!isWxWorkEnv) return message.error(appI18n.global.t('ui.customerListLiaisonListChatIsAvailableOnlyInWeCom'))
   if (!item) {
     return false
   }
@@ -149,7 +150,7 @@ const openCustomerChat = async (item) => {
         fail: reject,
       })
     })
-    message.success('打开会话框')
+    message.success(appI18n.global.t('ui.customerLeadLeadListChatOpened'))
   } catch (err) {
     message.error(`打开个人资料页失败: ${err.errMsg || err.message || '操作失败'}`)
   }

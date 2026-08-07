@@ -27,7 +27,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import avatar from '@/components/avatar/index.vue'
 import { toRefs, ref, computed, watch, reactive } from 'vue'
 import { useStore } from 'vuex'
@@ -113,7 +114,7 @@ const onClick = (item) => {
       // 判断是否为单选
       if (onlyOne.value) {
         if (selectPeopleArr.value.length > 0) {
-          message.error('只能选择一个人员')
+          message.error(appI18n.global.t('ui.oaMemberUniIndexedListItemOnlyOnePersonCanBeSelected'))
           return false
         }
       }

@@ -147,7 +147,7 @@ export default {
       fromData: {
         width: '650px',
         title: i18n.t('legacyScript.customMCP'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '90px',
         type: 'slot'
       },

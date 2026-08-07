@@ -74,7 +74,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from '@/components/defaultNavBar/index'
 import { ref, reactive } from 'vue'
 import message from '@/utils/message'
@@ -177,7 +178,7 @@ const handleConfirm = debounce(() => {
   }
   // 提醒时间校验
   if (data.type === 2 && !formData.time) {
-    message.error('请选择提醒时间')
+    message.error(appI18n.global.t('ui.customerListAddFollowSelectReminderTime'))
     return false
   }
 

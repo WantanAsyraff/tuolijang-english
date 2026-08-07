@@ -69,8 +69,8 @@
             v-model="scope.row.is_main"
             :active-value="1"
             :inactive-value="0"
-            active-text="开启"
-            inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
           >
           </el-switch>
         </template>
@@ -133,7 +133,7 @@ export default {
       fromData: {
         width: '600px',
         title: i18n.t('ui.developCrudFieldSettingNewField'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: ''
       },

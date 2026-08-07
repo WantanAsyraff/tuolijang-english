@@ -175,7 +175,8 @@
 
   </view>
 </template>
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, computed } from "vue";
 import message from "@/utils/message";
 import defaultNavBar from "@/components/defaultNavBar/index";
@@ -209,8 +210,8 @@ const data = reactive({
   rangeCate: [],
   treeData: [],
   rangeType: [
-    { value: 0, label: "回款" },
-    { value: 1, label: "续费" },
+    { value: 0, label: appI18n.global.t('ui.customerContractPayRemindPaymentCollection') },
+    { value: 1, label: appI18n.global.t('ui.customerContractPayRemindRenewal') },
   ],
   cid: 0, // 订单id
   id: "", // 付款id
@@ -280,7 +281,7 @@ const getContractSelect = (id) => {
   contractSelectApi(id).then((res) => {
     data.contractList = res.data;
     if (data.contractList.length <= 0) {
-      message.error("暂无订单，请添加订单");
+      message.error(appI18n.global.t('ui.customerContractAddPaymentNoOrdersYetAddAnOrderFirst'));
     } else {
       if (types == 1) {
         formData.cid = res.data[0].id;
@@ -378,30 +379,30 @@ const loading = ref(false);
 // 提交表单
 const handleConfirm = debounce(() => {
   if (!formData.cid) {
-    message.error("订单不能为空");
+    message.error(appI18n.global.t('ui.customerContractAddPaymentOrderIsRequired'));
     return false;
   }
   if (formData.types === 1) {
     if (!formData.cate_id) {
-      message.error("续费类型不能为空");
+      message.error(appI18n.global.t('ui.customerContractAddPaymentRenewalTypeIsRequired'));
       return false;
     }
     if (!formData.num) {
-      message.error("续费金额不能为空");
+      message.error(appI18n.global.t('ui.customerContractAddPaymentRenewalAmountIsRequired'));
       return false;
     }
   } else {
     if (!formData.num) {
-      message.error("回款金额不能为空");
+      message.error(appI18n.global.t('ui.customerContractAddPaymentCollectionAmountIsRequired'));
       return false;
     }
   }
   if (!formData.type_id) {
-    message.error("支付方式不能为空");
+    message.error(appI18n.global.t('ui.customerContractAddPaymentPaymentMethodIsRequired'));
     return false;
   }
   if (!formData.date) {
-    message.error("付款时间不能为空");
+    message.error(appI18n.global.t('ui.customerContractAddPaymentPaymentTimeIsRequired'));
     return false;
   }
   formData.attach_ids = data.imgs.attach_id;

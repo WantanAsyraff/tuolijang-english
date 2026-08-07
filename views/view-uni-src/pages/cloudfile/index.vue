@@ -49,13 +49,14 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive } from "vue";
 const tabIndex = ref(0);
 const data = reactive({
   tabData: [
     // { text: '最近常用', id: 1 },
-    { text: "企业空间", id: 2 }
+    { text: appI18n.global.t('ui.cloudfileIndexEnterpriseSpace'), id: 2 }
   ],
   listData: [{}, {}, {}, {}, {}, {}]
 });

@@ -281,7 +281,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import defaultNavBar from '@/components/defaultNavBar/index.vue'
 import { formatBytes } from '@/utils/file'
 import { reactive, ref, getCurrentInstance, onMounted, nextTick, type Ref, type ComponentInternalInstance } from 'vue'
@@ -516,7 +517,7 @@ const getDetaultIfo = () => {
 
 // 删除评论
 const handleDelete = (item: Detail, index: number) => {
-  showModal('确认要删除这条评论吗')
+  showModal(appI18n.global.t('ui.usersReportMineDeleteThisComment'))
     .then(() => {
       dailyReplyDeleteApi(item.id, config.dailyData.daily_id)
         .then((res: Res) => {
@@ -534,7 +535,7 @@ const handleDelete = (item: Detail, index: number) => {
 // 提交评论
 const clickReplay = (): boolean => {
   if (!formData.content) {
-    message.error('评论内容不能为空')
+    message.error(appI18n.global.t('ui.usersReportMineCommentsContentIsRequired'))
     return false
   }
   const data = {
@@ -574,12 +575,12 @@ const clickSubmi = () => {
     formData.plan = formData.plan.split('\n').filter((item: string) => item.trim() !== '')
   }
   if (formData.finish.length == 0) {
-    message.error('填写汇报不能为空')
+    message.error(appI18n.global.t('ui.usersReportMineWriteReportIsRequired'))
     return false
   }
 
   if (formData.plan.length == 0 && type.value != 3) {
-    message.error('工作计划不能为空')
+    message.error(appI18n.global.t('ui.usersReportMineTomorrowSPlanIsRequired'))
     return false
   }
   let ids: string[] = []

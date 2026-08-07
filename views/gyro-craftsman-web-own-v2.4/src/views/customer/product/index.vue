@@ -10,7 +10,7 @@
         :viewSearch="viewSearch"
         :category="keyword"
         :timeSearchObj="timeSearchObj"
-        btnText="添加产品"
+:btn-text="$t('ui.customerProductIndexAddProduct')"
         ref="fromBox"
         @addDataFn="addDataFn"
         @dropdownFn="dropdownFn"

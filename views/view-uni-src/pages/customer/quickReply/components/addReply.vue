@@ -48,7 +48,8 @@
   </uni-popup>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, computed } from 'vue'
 import message from '@/utils/message'
 const emit = defineEmits(['submit', 'close'])
@@ -104,14 +105,14 @@ const resetForm = () => {
 }
 
 const handleSort = () => {
-  message.error('数字越大越往前')
+  message.error(appI18n.global.t('ui.customerQuickReplyAddReplyHigherNumbersAppearFirst'))
 }
 
 // 提交表单
 const handleConfirm = () => {
   // 验证内容
   if (!formData.content.trim()) {
-    message.error('请输入内容')
+    message.error(appI18n.global.t('ui.attendanceExternalWorkModalEnterContent'))
     return
   }
 

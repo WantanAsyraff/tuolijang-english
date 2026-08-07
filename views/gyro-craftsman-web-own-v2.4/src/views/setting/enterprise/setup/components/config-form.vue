@@ -54,8 +54,8 @@
             <el-switch
               v-else-if="item.type === 'switch'"
               v-model="form[item.field]"
-              :active-text="$ts(item.activeText || '开启', item.activeText_en)"
-              :inactive-text="$ts(item.inactiveText || '关闭', item.inactiveText_en)"
+:active-text="$ts(item.activeText || $t('ui.customerWeChatMassGroupDetailsEnable'), item.activeText_en)"
+:inactive-text="$ts(item.inactiveText || $t('ui.customerWeChatMassGroupDetailsClose'), item.inactiveText_en)"
               :active-value="item.activeValue !== undefined ? item.activeValue : 1"
               :inactive-value="item.inactiveValue !== undefined ? item.inactiveValue : 0"
               :disabled="item.disabled"

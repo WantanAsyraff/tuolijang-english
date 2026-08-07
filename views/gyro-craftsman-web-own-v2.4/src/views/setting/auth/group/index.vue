@@ -147,7 +147,7 @@ export default {
       fromData: {
         with: '400px',
         title: i18n.t('passwordDialog.title'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '90px',
         type: ''
       },
@@ -214,7 +214,7 @@ export default {
       indexType: null,
       searchData: [
         {
-          field_name: '姓名、电话号码',
+          field_name: this.$ts('姓名、电话号码'),
           field_name_en: 'name',
           form_value: 'input'
         }

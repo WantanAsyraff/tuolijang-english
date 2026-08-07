@@ -84,7 +84,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import empty from "@/components/empty/index.vue";
 import defaultNavBar from "@/components/defaultNavBar/index";
 import {
@@ -154,7 +155,7 @@ import {
 const goNext = () => {
   if (!data.eid) {
     uni.showToast({
-      title: '请选择客户',
+      title: appI18n.global.t('ui.customerSigningOrderListSelectCustomer'),
     })
     return false
   }
@@ -166,7 +167,7 @@ const goNext = () => {
     }).then((res) => {
       if (res.status == 200) {
         uni.showToast({
-          title: '关联成功',
+          title: appI18n.global.t('ui.customerSigningOrderListRelatedSuccess'),
         })
       }
       uni.navigateBack();

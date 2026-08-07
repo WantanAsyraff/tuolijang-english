@@ -144,7 +144,8 @@
   </uni-popup>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import defaultNavBar from "@/components/defaultNavBar/index.vue";
   import { uploadImage } from "@/utils/file";
   import message from "@/utils/message";
@@ -257,7 +258,7 @@
   const handleConfirm = () : boolean => {
     if (configData.value.type === 0) {
       if (!formData.mark) {
-        message.error("请填写拒绝原因");
+        message.error(appI18n.global.t('ui.financeInvoiceInvoiceExaminePleaseEnterRefuseReason'));
         return false;
       }
       if (!loading.value) {
@@ -265,7 +266,7 @@
       }
     } else {
       if (!data.cate) {
-        message.error("请选择账目分类");
+        message.error(appI18n.global.t('ui.customerListAddSpendPleaseSelectAccountCategory'));
         return false;
       }
       if (!formData.num) {
@@ -273,16 +274,16 @@
         return false;
       }
       if (!formData.type_id) {
-        message.error("请选择支付方式");
+        message.error(appI18n.global.t('ui.customerListAddSpendSelectPaymentMethod'));
         return false;
       }
       if (!formData.date) {
-        message.error("请选择付款时间");
+        message.error(appI18n.global.t('ui.financePaymentPaymentExaminePleaseSelectPaymentTime'));
         return false;
       }
 
       if (formData.types === 1 && !formData.cate_id) {
-        message.error("请选择续费类型");
+        message.error(appI18n.global.t('ui.financePaymentPaymentExaminePleaseSelectRenewalType'));
         return false;
       }
       formData.bill_cate_id = data.cate;

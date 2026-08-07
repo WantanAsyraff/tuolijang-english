@@ -259,7 +259,8 @@
     </view>
   </BaseContainer>
 </template>
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import BaseContainer from '@/components/BaseContainer/index.vue'
 import BaseBottomBtn from '@/components/BaseBottomBtn/index.vue'
 import defaultNavBar from '@/components/defaultNavBar/index.vue'
@@ -335,35 +336,35 @@ const data = reactive({
   isSelectMember: false,
   typesOptions: [
     {
-      text: '电子签',
+      text: appI18n.global.t('ui.customerSigningDetailItemESign'),
       value: 2,
     },
     {
-      text: '线下签约',
+      text: appI18n.global.t('ui.customerSigningDetailItemOfflineSigning'),
       value: 1,
     },
   ],
   termOptions: [
     {
-      text: '签约日起算',
+      text: appI18n.global.t('ui.customerSigningAddFormStartFromSigningDate'),
       value: 2,
     },
     {
-      text: '固定日期',
+      text: appI18n.global.t('ui.customerSigningAddFormFixedDate'),
       value: 1,
     },
     {
-      text: '无期限',
+      text: appI18n.global.t('ui.customerSigningAddFormNoFixedTerm'),
       value: 0,
     },
   ],
   signatoryOptions: [
     {
-      text: '企业',
+      text: appI18n.global.t('ui.customerSigningDetailItemEnterprise'),
       value: 2,
     },
     {
-      text: '个人',
+      text: appI18n.global.t('ui.customerSigningDetailItemPersonal'),
       value: 1,
     },
   ],
@@ -571,7 +572,7 @@ const getProcessInfo = async () => {
 
 const addSignatory = () => {
   if (formData.value.signatory.length >= 4) {
-    message.error('最多只能添加3个签署方')
+    message.error(appI18n.global.t('ui.customerSigningAddFormUpToThreeSignersCanBeAdded'))
     return
   }
   formData.value.signatory.push({
@@ -584,7 +585,7 @@ const addSignatory = () => {
 }
 const handleDelete = (index) => {
   if (formData.value.signatory.length <= 2) {
-    message.error('第一个签署方不能删除')
+    message.error(appI18n.global.t('ui.customerSigningAddFormTheFirstSignerCannotBeDeleted'))
     return false
   }
   formData.value.signatory.splice(index + 1, 1)
@@ -606,11 +607,11 @@ const clickSubmit = () => {
     for (let i = 0; i < processInfo.length; i++) {
       const value = processInfo[i]
       if (!data.approverDelete && value.types == 1 && value.users.length <= 0) {
-        message.error('自选节点不能为空')
+        message.error(appI18n.global.t('ui.customerSigningAddFormTheSelectableNodeCannotBeEmpty'))
         return
       }
       if (data.approverDelete && value.types == 1 && (value.settype == 4 || value.settype == 1) && value.users.length <= 0) {
-        message.error('自选节点不能为空')
+        message.error(appI18n.global.t('ui.customerSigningAddFormTheSelectableNodeCannotBeEmpty'))
         return
       }
       if (value.users.length <= 0) {
@@ -618,7 +619,7 @@ const clickSubmit = () => {
       }
     }
     if (len === processInfo.length) {
-      message.error('自选节点不能为空')
+      message.error(appI18n.global.t('ui.customerSigningAddFormTheSelectableNodeCannotBeEmpty'))
       return
     }
     processInfo.forEach((value, index) => {
@@ -636,7 +637,7 @@ const clickSubmit = () => {
     contractDocUpdateApi(data.id, formData.value)
       .then((res) => {
         if (res.status == 200) {
-          message.success('编辑成功')
+          message.success(appI18n.global.t('ui.customerSigningAddFormEditSuccess'))
           clickNavigateTo(`/pages/customer/signing/details?id=${data.id}`)
         }
       })
@@ -648,7 +649,7 @@ const clickSubmit = () => {
     contractDocAddApi(formData.value)
       .then((res) => {
         if (res.status == 200) {
-          message.success('添加成功')
+          message.success(appI18n.global.t('ui.customerListSuccessPopupAddedSuccessfully'))
           uni.navigateBack()
         }
       })
@@ -660,19 +661,19 @@ const clickSubmit = () => {
 const validateForm = () => {
   let valid = true
   if (!formData.value.doc_name) {
-    message.error('请填写合同名称')
+    message.error(appI18n.global.t('ui.customerSigningAddFormPleaseEnterContractName'))
     valid = false
   }
   if (!formData.value.sign_file) {
-    message.error('请上传合同文件')
+    message.error(appI18n.global.t('ui.customerSigningAddFormUploadTheContractFile'))
     valid = false
   }
   if (formData.value.term_type == 2 && !formData.value.date_count) {
-    message.error('请填写合同时期（天）')
+    message.error(appI18n.global.t('ui.customerSigningAddFormEnterTheContractPeriodDays'))
     valid = false
   }
   if (formData.value.term_type == 1 && (!formData.value.start_date || !formData.value.end_date)) {
-    message.error('请填写固定日期')
+    message.error(appI18n.global.t('ui.customerSigningAddFormEnterTheFixedDate'))
     valid = false
   }
   return valid

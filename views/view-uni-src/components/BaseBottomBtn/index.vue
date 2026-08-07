@@ -10,14 +10,15 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 const props = withDefaults(
   defineProps<{
     text: string
     disabled?: boolean
   }>(),
   {
-    text: '提交',
+    text: appI18n.global.t('ui.replyComponentIndexSubmit'),
     disabled: false,
   },
 )

@@ -99,8 +99,8 @@ const formConfig = [
     key: 'show_log',
     activeValue: '1',
     inactiveValue: '0',
-    inactiveText: '关闭',
-    activeText: '开启'
+    inactiveText: i18n.t('ui.customerWeChatMassGroupDetailsClose'),
+    activeText: i18n.t('ui.customerWeChatMassGroupDetailsEnable')
   },
   {
     type: 'switch',
@@ -108,8 +108,8 @@ const formConfig = [
     key: 'show_comment',
     activeValue: 1,
     inactiveValue: 0,
-    inactiveText: '关闭',
-    activeText: '开启'
+    inactiveText: i18n.t('ui.customerWeChatMassGroupDetailsClose'),
+    activeText: i18n.t('ui.customerWeChatMassGroupDetailsEnable')
   },
   {
     type: 'input',
@@ -283,8 +283,8 @@ const keyValue = {
       key: 'is_uniqid',
       activeValue: 1,
       inactiveValue: 0,
-      activeText: '开启',
-      inactiveText: '关闭'
+      activeText: i18n.t('ui.customerWeChatMassGroupDetailsEnable'),
+      inactiveText: i18n.t('ui.customerWeChatMassGroupDetailsClose')
     }
   ],
   input_percentage: [],

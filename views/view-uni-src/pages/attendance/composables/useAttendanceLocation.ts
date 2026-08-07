@@ -1,3 +1,4 @@
+import appI18n from '@/locale';
 import { computed, ref, type ComputedRef, type Ref } from "vue";
 import { getDistance } from "@/utils/helper";
 import type { AttendanceCoordinate, AttendanceData } from "./attendanceTypes";
@@ -171,14 +172,14 @@ export function useAttendanceLocation(options: UseAttendanceLocationOptions) {
         if (err.errMsg === "getLocation:fail Geolocation permission denied") {
           // 权限拒绝需要明确提示用户，否则按钮会因缺少 nowXy 无法打卡。
           uni.showToast({
-            title: "用户拒绝了位置权限请求",
+            title: appI18n.global.t('ui.attendanceComposablesUseAttendanceLocationTsLocationPermissionWasDenied'),
             icon: "none",
           });
           return;
         }
 
         uni.showToast({
-          title: "获取位置信息失败",
+          title: appI18n.global.t('ui.attendanceComposablesUseAttendanceLocationTsFailedToGetLocation'),
           icon: "none",
         });
       },

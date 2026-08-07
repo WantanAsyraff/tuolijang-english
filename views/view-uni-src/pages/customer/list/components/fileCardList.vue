@@ -43,7 +43,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import empty from "@/components/empty/index.vue";
   import textareaPopup from "@/components/textareaPopup/index.vue";
   import deanPopover from "@/components/deanPopover/index.vue";
@@ -69,16 +70,16 @@
       uploadDownload(item.att_dir, item.real_name);
     } else if (type === 2) {
       data.configData = {
-        title: "资料重命名",
-        placeholder: "请填写资料名称",
+        title: appI18n.global.t('ui.customerListDetailsRenameDocument'),
+        placeholder: appI18n.global.t('ui.customerListDetailsEnterADocumentName'),
         type: item.id,
         text: item.real_name
       };
       textareaPopupRef.value.popupOpen();
     } else {
       uni.showModal({
-        title: "提示",
-        content: "您确定要删除该资料吗?",
+        title: appI18n.global.t('ui.customerLeadDetailHint'),
+        content: appI18n.global.t('ui.customerListFileCardListAreYouSureYouWantToDeleteThisDocument'),
         success: (res) => {
           if (res.confirm) {
             fileDelete(item.id);
@@ -121,7 +122,7 @@
       type ?: number;
       emptyTitle ?: string;
     }>(), {
-    emptyTitle: "暂无数据",
+    emptyTitle: appI18n.global.t('ui.customerListStatisticsNoData'),
     type: 0,
     listData: <any>[]
   });

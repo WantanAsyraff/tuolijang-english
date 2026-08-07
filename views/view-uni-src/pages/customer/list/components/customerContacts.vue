@@ -35,7 +35,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import empty from '@/components/empty/index.vue'
 import { clickNavigateTo } from '@/utils/helper'
 import deanPopover from '@/components/deanPopover/index.vue'
@@ -127,8 +128,8 @@ const changePopover = (item, index, type) => {
   if (type === 2) {
     let liaisonId = item.id
     uni.showModal({
-      title: '提示',
-      content: '您确定要删除该客户联系人吗?',
+      title: appI18n.global.t('ui.customerLeadDetailHint'),
+      content: appI18n.global.t('ui.customerListCustomerContactsDeleteThisCustomerContact'),
       success: (res) => {
         if (res.confirm) {
           liaisonDeleteApi(liaisonId)

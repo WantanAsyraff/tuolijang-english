@@ -10,7 +10,7 @@
       :sortSearch="false"
       :total="total"
       :title="$route.meta.title"
-      btnText="新增账目"
+:btn-text="$t('ui.fdEnterpriseListFormBoxNewAccounts')"
       :isAddBtn="true"
       @addDataFn="addFinance"
       @dropdownFn="dropdownFn"

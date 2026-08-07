@@ -24,7 +24,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import message from '@/utils/message'
 import { getServerConfigList, setActiveServerConfig } from '@/utils/serverConfig'
 let formData = reactive({
@@ -45,7 +46,7 @@ const handleScan = () => {
 
       containsIsITtem = serverConfigInfoData.some((it) => it.address === res.result)
       if (containsIsITtem) {
-        message.error('您已配置该企业,无需重复配置')
+        message.error(appI18n.global.t('ui.usersLoginConfigThisEnterpriseIsAlreadyConfigured'))
         return false
       }
       getUserScan(res.result)
@@ -63,7 +64,7 @@ const getUserScan = (result) => {
   address = result ? result : formData.address
   containsIsITtem = serverConfigInfoData.some((it) => it.address === address)
   if (containsIsITtem) {
-    return message.error('您已配置该企业,无需重复配置')
+    return message.error(appI18n.global.t('ui.usersLoginConfigThisEnterpriseIsAlreadyConfigured'))
   }
   uni.request({
     method: 'GET',
@@ -88,7 +89,7 @@ const getUserScan = (result) => {
         serverConfigInfoData.push(resData)
         uni.setStorageSync('serverConfigInfo', serverConfigInfoData)
         setActiveServerConfig(resData)
-        message.success('添加成功')
+        message.success(appI18n.global.t('ui.customerListSuccessPopupAddedSuccessfully'))
         setTimeout(function () {
           uni.navigateTo({
             url: '/pages/users/login/index?type=1',
@@ -99,7 +100,7 @@ const getUserScan = (result) => {
       }
     },
     fail: () => {
-      message.error('配置失败，请填写正确的服务域名')
+      message.error(appI18n.global.t('ui.usersLoginConfigConfigurationFailedEnterTheCorrectServiceDomain'))
     },
   })
 }
@@ -107,7 +108,7 @@ const getUserScan = (result) => {
 const handlePreserve = debounce(() => {
   const regex = /^(https?:\/\/)?((([a-zA-Z0-9]|(?:[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9]))\.)+([a-zA-Z]{2,}))|((\d{1,3}\.){3}\d{1,3})(:\d+)?$/
   if (!regex.test(formData.address)) {
-    message.error('请检查域名是否正确')
+    message.error(appI18n.global.t('ui.usersLoginConfigCheckThatTheDomainIsCorrect'))
     return false
   }
   getUserScan()

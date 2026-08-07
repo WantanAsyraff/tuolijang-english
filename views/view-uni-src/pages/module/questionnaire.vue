@@ -20,7 +20,8 @@
   </BaseContainer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import {
   crudModuleQuestionnaireDesignApi,
   getDictTreeListApi,
@@ -42,7 +43,7 @@ const captchaInfo = reactive({
 });
 
 const formInfo = reactive({
-  title: "问卷调查",
+  title: appI18n.global.t('ui.moduleQuestionnaireQuestionnaire'),
   backgroundColor: null,
   _formInfo: {},
 
@@ -108,7 +109,7 @@ const handleSubmit = () => {
 
 const submitOk = async (data: any) => {
   uni.showLoading({
-    title: "提交中...",
+    title: appI18n.global.t('ui.moduleQuestionnaireSubmitting'),
     mask: true
   });
 

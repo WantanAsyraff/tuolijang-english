@@ -96,7 +96,8 @@
     </uni-popup>
   </view>
 </template>
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, computed, watch, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { enterpriseUsersApi } from '@/api/user'
@@ -232,7 +233,7 @@ const removeSelected = (item) => {
 // 确认选择
 const confirmSelect = () => {
   if (selectedCount.value === 0) {
-    message.error('请选择成员')
+    message.error(appI18n.global.t('ui.oaMemberIndexPleaseSelectAMember'))
     return
   }
   emit('confirm', [...selectedList.value])

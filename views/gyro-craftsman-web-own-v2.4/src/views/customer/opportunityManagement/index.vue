@@ -12,7 +12,7 @@
         :category="keyword"
         :timeSearchObj="timeSearchObj"
         ref="fromBox"
-        btnText="添加商机"
+:btn-text="$t('ui.customerListOddsAddOpportunity')"
         @addDataFn="addDataFn"
         @confirmData="confirmData"
         @dropdownFn="dropdownFn"

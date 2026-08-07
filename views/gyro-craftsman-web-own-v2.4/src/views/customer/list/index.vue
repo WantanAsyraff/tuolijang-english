@@ -13,7 +13,7 @@
       :viewSearch="viewSearch"
       :timeSearchObj="timeSearchObj"
       :category="keyword"
-      btnText="添加客户"
+:btn-text="$t('ui.customerListIndexAddCustomer')"
       :whereData="where"
       ref="fromBox"
       @addDataFn="addDataFn"

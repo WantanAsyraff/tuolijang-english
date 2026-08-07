@@ -3,7 +3,7 @@
   <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
     <oaFromBox
       :title="$route.meta.title"
-      btnText="添加订单"
+:btn-text="$t('ui.customerListContractAddOrder')"
       :treeData="treeDataGroup"
       :search="search"
       :viewSearch="viewSearch"

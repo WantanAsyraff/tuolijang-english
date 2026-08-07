@@ -18,7 +18,8 @@
     </BaseContainer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import BaseContainer from "@/components/BaseContainer/index.vue";
 import tabbar from "@/components/tabbar/index.vue";
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
@@ -29,7 +30,7 @@ import { ref, reactive } from "vue";
 import message from "@/utils/message";
 import { getContractDocApi } from "@/api/signing";
 const data = reactive({
-    emptyTitle: "当前暂无合同～",
+    emptyTitle: appI18n.global.t('ui.customerSigningIndexCurrentNoContract'),
     listData: [],
     keyWord: 'customer',
     where: {
@@ -53,81 +54,81 @@ onLoad(() => {
 
 const searchList = ref([
     {
-        text: '我负责的',
-        title: '我负责的',
+        text: appI18n.global.t('ui.customerSigningIndexOwnedByMe'),
+        title: appI18n.global.t('ui.customerSigningIndexOwnedByMe'),
         value: '1',
         key: 'view_search',
         type: 'select',
         options: [
             {
-                text: '我负责的',
+                text: appI18n.global.t('ui.customerSigningIndexOwnedByMe'),
                 value: '1'
             }, {
-                text: '我查看的',
+                text: appI18n.global.t('ui.customerSigningIndexRecordsICanView'),
                 value: '2'
             }
         ]
     }, {
-        text: '到期状态',
-        title: '到期状态',
+        text: appI18n.global.t('ui.customerSigningListExpirationStatus'),
+        title: appI18n.global.t('ui.customerSigningListExpirationStatus'),
         value: '',
         key: 'fail_status',
         type: 'select',
         options: [
             {
-                text: '全部',
+                text: appI18n.global.t('ui.attendanceDetailedUserCheckListAll'),
                 value: ''
             }, {
-                text: '未开始',
+                text: appI18n.global.t('ui.customerSigningListNotStarted'),
                 value: '1'
             }, {
-                text: '进行中',
+                text: appI18n.global.t('ui.customerSigningListInProgress'),
                 value: '0'
             }, {
-                text: '已到期',
+                text: appI18n.global.t('ui.customerSigningIndexExpired'),
                 value: '2'
             }
         ]
     },
     {
-        text: '签约状态',
-        title: '签约状态',
+        text: appI18n.global.t('ui.customerSigningIndexSigningStatus'),
+        title: appI18n.global.t('ui.customerSigningIndexSigningStatus'),
         value: '',
         key: 'status',
         type: 'select',
         options: [
             {
-                text: '全部',
+                text: appI18n.global.t('ui.attendanceDetailedUserCheckListAll'),
                 value: ''
             }, {
-                text: '审批驳回',
+                text: appI18n.global.t('ui.customerSigningIndexApprovalRejected'),
                 value: '-1'
             }, {
-                text: '待处理',
+                text: appI18n.global.t('ui.customerSigningIndexPending'),
                 value: '0'
             }, {
-                text: '待审核',
+                text: appI18n.global.t('ui.customerContractPayDetailPendingReview'),
                 value: '1'
             }, {
-                text: '待签约',
+                text: appI18n.global.t('ui.customerSigningDetailItemPendingSigning'),
                 value: '2'
             }, {
-                text: '已签约',
+                text: appI18n.global.t('ui.customerSigningDetailItemSigned'),
                 value: '3'
             }, {
-                text: '已拒绝',
+                text: appI18n.global.t('ui.customerInvoiceCheckPaymentRejected'),
                 value: '4'
             }, {
-                text: '已过期',
+                text: appI18n.global.t('ui.customerSigningListExpired'),
                 value: '5'
             }, {
-                text: '已撤销',
+                text: appI18n.global.t('ui.customerContractPayDetailRevoked'),
                 value: '6'
             }
         ]
     },{
-        text: '签约时间',
-        title: '签约时间',
+        text: appI18n.global.t('ui.customerSigningIndexSigningTime'),
+        title: appI18n.global.t('ui.customerSigningIndexSigningTime'),
         value: '',
         key: 'time',
         type: 'time',
@@ -148,7 +149,7 @@ const changeSearch = (dataValue) => {
 const getConfigList = (tab = false) => {
   if (data.loaded) return;
   uni.showLoading({
-	title: '加载中'
+	title: appI18n.global.t('ui.customerContractIndexLoading')
 });
 
   getContractDocApi(data.where)

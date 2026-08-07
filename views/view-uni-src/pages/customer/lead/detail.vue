@@ -134,7 +134,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { uploadImage, formatBytes } from '@/utils/file'
 import { reactive, ref, getCurrentInstance, nextTick } from 'vue'
 import { getColor, getPhoneInfo } from '@/utils/helper'
@@ -166,7 +167,7 @@ const rightIcon = ref([
     type: 1,
     icon: 'icon-gengduo1',
     types: 'icon',
-    text: '更多',
+    text: appI18n.global.t('ui.moduleListMore'),
   },
 ])
 const formData = ref({
@@ -194,8 +195,8 @@ const data = reactive({
   scrollTop: 0,
   statusBarHeight: 20,
   configData: {
-    title: '退回线索池',
-    placeholder: '说明原因',
+    title: appI18n.global.t('ui.customerLeadDetailReturnToLeadPool'),
+    placeholder: appI18n.global.t('ui.customerLeadDetailReason'),
     type: '',
     text: '',
     refundType: 0, // 4 -> 客户公海 802 -> 线索池
@@ -254,7 +255,7 @@ const openCustomerChat = async (item) => {
         fail: reject,
       })
     })
-    message.success('打开会话框')
+    message.success(appI18n.global.t('ui.customerLeadLeadListChatOpened'))
   } catch (err) {
     message.error(`打开个人资料页失败: ${err.errMsg || err.message || '操作失败'}`)
   }
@@ -332,8 +333,8 @@ const getLeadCustomerLabels = () => {
 const shiftCustomerFn = () => {
   if (clientInfo.value.customer) {
     uni.showModal({
-      title: '提示',
-      content: '存在关联的企微客户,是否转客户?',
+      title: appI18n.global.t('ui.customerLeadDetailHint'),
+      content: appI18n.global.t('ui.customerLeadDetailALinkedWeComCustomerExistsConvertItTo'),
       success: (res) => {
         if (res.confirm) {
           clientToCustomerApi(clientInfo.value.id)
@@ -420,8 +421,8 @@ const dropDownItem = (item) => {
 // 删除线索
 const handleDelete = async () => {
   const { confirm } = await uni.showModal({
-    title: '提示',
-    content: '确定删除线索吗？',
+    title: appI18n.global.t('ui.customerLeadDetailHint'),
+    content: appI18n.global.t('ui.customerLeadDetailDeleteThisLead'),
   })
   if (!confirm) return
 
@@ -443,7 +444,7 @@ const changePop = ({ value }) =>
 // 领取线索
 const handleClaim = () =>
   uni.showModal({
-    title: '提示',
+    title: appI18n.global.t('ui.customerLeadDetailHint'),
     content: String(translateSystemText('确定领取该线索吗？')),
     success: ({ confirm }) =>
       confirm &&
@@ -460,17 +461,17 @@ const handleShift = async (users: any[]) => {
 
   const isAssign = switchType.value === 805
   const { confirm } = await uni.showModal({
-    title: '提示',
+    title: appI18n.global.t('ui.customerLeadDetailHint'),
     content: `确定将线索${isAssign ? '分配' : '移交给'}${users[0].name}吗？`,
-    confirmText: '确定',
-    cancelText: '取消',
+    confirmText: appI18n.global.t('ui.baTreePickerIndexOk'),
+    cancelText: appI18n.global.t('ui.baTreePickerIndexCancel'),
   })
 
   if (!confirm) return
 
   try {
     await leadShiftApi({ to_uid: users[0].id, data: [leadId.value] })
-    message.success('操作成功')
+    message.success(appI18n.global.t('ui.customerLeadDetailOperationSuccessful'))
     setTimeout(freshData, 300)
   } catch ({ message: msg }) {
     message.error(msg)
@@ -507,7 +508,7 @@ const uploadAvatar = () => {
 // 提交跟进记录
 const handleConfirm = debounce(() => {
   if (!formData.value.content) {
-    message.error('跟进信息不能为空')
+    message.error(appI18n.global.t('ui.customerLeadDetailFollowUpInformationCannotBeEmpty'))
     return false
   }
   formData.value.attach_ids = data.imgs.map((item) => item.id)

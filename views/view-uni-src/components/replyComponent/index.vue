@@ -55,7 +55,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import { ref, reactive, computed, watch } from "vue";
   import { uploadImage, formatBytes } from "@/utils/file";
   import { debounce, lookPreview, isFileTypeIcon } from "@/utils/helper";
@@ -84,7 +85,7 @@
   // 提交跟进记录
   const handleConfirm = debounce(() => {
     if (!formData.value.content) {
-      message.error("内容不能为空");
+      message.error(appI18n.global.t('ui.replyComponentIndexCategoryNameCannotBeEmpty'));
       return false;
     }
     emit("submit", { content: formData.value.content, files: formData.value.imgs });
@@ -100,7 +101,7 @@
       if (res.data.name) {
         formData.value.imgs.push(res.data);
       } else {
-        message.error('上传文件失败！请检查上传文件类型');
+        message.error(appI18n.global.t('ui.replyComponentIndexUploadFailedCheckTheFileType'));
       }
 
     }).catch((error) => {

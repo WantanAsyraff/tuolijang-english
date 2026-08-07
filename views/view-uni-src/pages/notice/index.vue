@@ -19,7 +19,7 @@
     </view>
     <!-- #endif -->
     <view class="notice-content">
-      <notice-list :list-data="data.listData" empty-title="暂无待办消息～"></notice-list>
+      <notice-list :list-data="data.listData" :empty-title="$t('ui.noticeIndexNoPendingMessages')"></notice-list>
     </view>
     <global-index />
   </view>

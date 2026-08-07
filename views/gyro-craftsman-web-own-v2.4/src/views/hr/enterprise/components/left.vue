@@ -69,7 +69,7 @@ export default {
       fromData: {
         with: '600px',
         title: i18n.t('legacyScript.addPromotionTable'),
-        btnText: '保存',
+        btnText: i18n.t('ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave'),
         labelWidth: '90px',
         type: ''
       },

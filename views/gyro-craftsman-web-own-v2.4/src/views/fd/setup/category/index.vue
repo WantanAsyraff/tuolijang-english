@@ -6,7 +6,7 @@
       :isViewSearch="false"
       :title="$route.meta.title"
       :total="total"
-      btnText="添加类目"
+:btn-text="$t('ui.fdSetupCategoryIndexAddCategory')"
       @addDataFn="addFinance"
     ></oaFromBox>
     <el-table

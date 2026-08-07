@@ -72,7 +72,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import globalIndex from "@/components/globalIndex/index.vue";
 import avatar from "@/components/avatar/index.vue";
@@ -115,7 +116,7 @@ const callPhone = (phone: string): void => {
   uni.makePhoneCall({
     phoneNumber: phone,
     success: (res: any) => {
-      message.success('拨打电话成功');
+      message.success(appI18n.global.t('ui.userPersonalPhoneCallStartedSuccessfully'));
     },
     fail: (error: any) => {
       message.error(error.message);

@@ -153,8 +153,8 @@
           :data="pictrueList"
           :row-key="getRowKey"
           highlight-row
-          no-data-text="暂无数据"
-          no-filtered-data-text="暂无筛选结果"
+:no-data-text="$t('ui.scEchartsChartWidgetNoData')"
+:no-filtered-data-text="$t('ui.uploadPictureIndexNoFilterResult')"
           @selection-change="handleSelectRow"
         >
           <el-table-column :reserve-selection="true" type="selection" width="60"> </el-table-column>

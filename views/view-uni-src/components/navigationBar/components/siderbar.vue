@@ -41,7 +41,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, toRefs, onMounted, watch } from "vue";
 import message from "@/utils/message";
 const props = defineProps({
@@ -166,7 +167,7 @@ const selectAllLabel = (row) => {
 // 保存标签
 const saveLabel = () => {
   if (data.selectLabelData.length <= 0) {
-    message.error("至少关注一个文章标签");
+    message.error(appI18n.global.t('ui.navigationBarSiderbarFollowAtLeastOneArticleTag'));
     return false;
   }
 
@@ -181,7 +182,7 @@ const articleSaveLabel = (data) => {
     loading.value = false;
     emit("handleOk");
     cancel();
-    message.success("保存成功");
+    message.success(appI18n.global.t('ui.navigationBarSiderbarSavedSuccessfully'));
   }).catch((error) => {
     loading.value = false;
     message.error(error.message);

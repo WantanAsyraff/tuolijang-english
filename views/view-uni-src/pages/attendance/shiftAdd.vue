@@ -81,7 +81,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import PopupListPicker from "@/components/PopupListPicker/index.vue";
 import ShiftAddForm from "./components/ShiftAddForm.vue";
 import { hourTimeRange, formatHourTime } from '@/utils/date';
@@ -203,7 +204,7 @@ const handleOvertimeChange = (e: any) => {
 // 保存
 const handleSave = async () => {
   uni.showLoading({
-    title: '保存中...',
+    title: appI18n.global.t('ui.attendanceShiftAddSaving'),
     mask: true
   });
 

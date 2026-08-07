@@ -76,26 +76,26 @@
               <!-- 节点名称输入框 -->
               <el-input
                 v-model="data.name"
-                placeholder="数据值"
+:placeholder="$t('ui.customerSetupDictionaryManagementDataValue')"
                 size="small"
                 class="dict-option-setting__tree-input"
               />
               <!-- 添加同级节点 -->
               <span
                 class="iconfont icontianjia1 dict-option-setting__action-icon"
-                title="添加同级"
+:title="$t('ui.customerDictOptionSettingAddSibling')"
                 @click="handleAddTreeSibling(node, data)"
               />
               <!-- 添加子级节点 -->
               <span
                 class="iconfont icona-ziji1x dict-option-setting__action-icon"
-                title="添加子项"
+:title="$t('ui.customerDictOptionSettingAddChildItem')"
                 @click="handleAddTreeChild(node, data)"
               />
               <!-- 删除节点 -->
               <span
                 class="el-icon-delete dict-option-setting__action-icon"
-                title="删除"
+:title="$t('ui.chatIndexDelete')"
                 @click="handleDeleteTreeNode(node, data)"
               />
             </div>

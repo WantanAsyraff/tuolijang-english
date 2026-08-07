@@ -390,9 +390,9 @@
               :active-value="1"
               :inactive-value="0"
               :value="scope.row.status"
-              active-text="开启"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
               class="defineSwitch"
-              inactive-text="关闭"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
               size="large"
               @change="changeSwitch(scope.row, index)"
             >

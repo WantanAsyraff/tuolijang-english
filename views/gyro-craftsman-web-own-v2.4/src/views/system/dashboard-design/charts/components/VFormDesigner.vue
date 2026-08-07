@@ -176,7 +176,7 @@ export default {
       fromData: {
         width: '600px',
         title: appI18n.t('legacyScript.editName'),
-        btnText: '确定',
+        btnText: appI18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: ''
       },

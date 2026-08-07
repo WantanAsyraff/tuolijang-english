@@ -27,7 +27,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive } from 'vue'
 import defaultNavBar from '@/components/defaultNavBar/index.vue'
 import examineForm from '@/components/examineForm/index.vue'
@@ -369,11 +370,11 @@ const handleConfirm = debounce(() => {
       for (let i = 0; i < processInfo.length; i++) {
         const value = processInfo[i]
         if (!data.approverDelete && value.types == 1 && value.users.length <= 0) {
-          message.error('自选节点不能为空')
+          message.error(appI18n.global.t('ui.customerSigningAddFormTheSelectableNodeCannotBeEmpty'))
           return
         }
         if (data.approverDelete && value.types == 1 && (value.settype == 4 || value.settype == 1) && value.users.length <= 0) {
-          message.error('自选节点不能为空')
+          message.error(appI18n.global.t('ui.customerSigningAddFormTheSelectableNodeCannotBeEmpty'))
           return
         }
         if (value.users.length <= 0) {
@@ -381,7 +382,7 @@ const handleConfirm = debounce(() => {
         }
       }
       if (len === processInfo.length) {
-        message.error('自选节点不能为空')
+        message.error(appI18n.global.t('ui.customerSigningAddFormTheSelectableNodeCannotBeEmpty'))
         return
       }
       processInfo.forEach((value, index) => {

@@ -24,12 +24,13 @@
 			<uni-load-more status="loading"></uni-load-more>
 		</view>
     <view class="address-content">
-      <search-list :list-data="locationList" empty-title="暂无搜索结果～"></search-list>
+      <search-list :list-data="locationList" :empty-title="$t('ui.customerAddressSearchIndexNoSearchResults')"></search-list>
     </view>
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import searchList from "./components/searchList.vue";
 import { useStore } from "vuex";
@@ -58,7 +59,7 @@ const loading = ref(false)
 const currentLocation = ref(null)
 
 const data = reactive({
-  placeholder: "搜索位置",
+  placeholder: appI18n.global.t('ui.customerAddressSearchIndexSearchLocation'),
   where: {
     limit: 10,
     page: 1,
@@ -190,7 +191,7 @@ const searchLocations = async (keyword) => {
   } catch (error) {
     console.error('搜索异常:', error)
     uni.showToast({
-      title: '搜索异常，请检查网络',
+      title: appI18n.global.t('ui.customerAddressSearchIndexSearchFailedCheckYourNetworkConnection'),
       icon: 'error'
     })
     // 降级方案：使用模拟数据

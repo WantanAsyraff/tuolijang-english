@@ -11,7 +11,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import fileCardList from "./components/fileCardList.vue";
 import { ref, reactive } from "vue";
@@ -25,7 +26,7 @@ const data = reactive({
     limit: 10,
     eid: ""
   },
-  emptyTitle: "暂无上传资料～",
+  emptyTitle: appI18n.global.t('ui.customerContractDetailsNoUploadedDocuments'),
   jumpUrl: ""
 });
 

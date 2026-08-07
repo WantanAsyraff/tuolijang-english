@@ -174,8 +174,8 @@
                   v-model="scope.row[item.field_name_en]"
                   :active-value="1"
                   :inactive-value="0"
-                  active-text="开启"
-                  inactive-text="关闭"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                 >
                 </el-switch>
               </div>

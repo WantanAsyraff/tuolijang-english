@@ -260,7 +260,7 @@
       <div class="mt20">
         <el-form ref="voidData" :model="voidDataForm" class="from">
           <el-form-item
-            :rules="[{ required: true, message: '请填写作废原因', trigger: 'blur' }]"
+            :rules="[{ required: true, message: this.$ts('请填写作废原因'), trigger: 'blur' }]"
             :label="$t('ui.fdInvoiceIndexInvalidateReason')"
             label-width="100px"
             prop="voidData"
@@ -338,18 +338,18 @@ export default {
       invoiceData: {},
       search: [
         {
-          field_name: '关键字搜索',
+          field_name: this.$ts('关键字搜索'),
           field_name_en: 'search',
           form_value: 'input'
         },
         {
-          field_name: '审核状态',
+          field_name: this.$ts('审核状态'),
           field_name_en: 'status',
           form_value: 'select',
           data_dict: selectInvoiceFd
         },
         {
-          field_name: '发票类型',
+          field_name: this.$ts('发票类型'),
           field_name_en: 'types',
           form_value: 'select',
           data_dict: [
@@ -360,18 +360,18 @@ export default {
           ]
         },
         {
-          field_name: '时间类型',
+          field_name: this.$ts('时间类型'),
           field_name_en: 'time_field',
           form_value: 'select',
           data_dict: [
-            { name: '全部', value: '' },
-            { name: '申请日期', value: 'time' },
-            { name: '开票日期', value: 'real_date' }
+            { name: (this.$ts('全部')), value: '' },
+            { name: this.$ts('申请日期'), value: 'time' },
+            { name: this.$ts('开票日期'), value: 'real_date' }
           ]
         },
         {
-          field_name: '开始日期',
-          field_name_end: '结束日期',
+          field_name: this.$ts('开始日期'),
+          field_name_end: this.$ts('结束日期'),
           field_name_en: 'time',
           form_value: 'date_picker'
         }
@@ -442,7 +442,7 @@ export default {
     handleDown(item) {
       clientInvoiceDetailApi(item.id).then((res) => {
         if (res.data.attach) {
-          fileLinkDownLoad(res.data.attach, '发票详情')
+          fileLinkDownLoad(res.data.attach, this.$ts('发票详情'))
         } else {
           this.$message.error(i18n.t('legacyScript.failedToGetDownloadURL'))
         }

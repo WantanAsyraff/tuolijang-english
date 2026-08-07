@@ -187,7 +187,7 @@ export default {
       oaFromData: {
         width: '600px',
         title: i18n.t('ui.formDesignerToolbarPanelIndexRevoke'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: 'auto',
         type: ''
       },

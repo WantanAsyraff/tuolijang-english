@@ -117,7 +117,7 @@ class DictDataService extends BaseService implements ResourceServicesInterface
      */
     public function resourceCreate(array $other = []): array
     {
-        return $this->createElementForm('新增字典数据', $this->getFormRule(collect($other)), '/ent/config/dict_data');
+        return $this->createElementForm($this->getTranslation('Add new dictionary data'), $this->getFormRule(collect($other)), '/ent/config/dict_data');
     }
 
     /**

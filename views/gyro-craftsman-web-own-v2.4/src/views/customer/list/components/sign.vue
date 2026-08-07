@@ -159,7 +159,7 @@ export default {
       fromData: {
         width: '500px',
         title: i18n.t('ui.customerListSignSignEntry'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: 'slot'
       },

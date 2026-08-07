@@ -65,7 +65,7 @@
                 :isViewSearch="false"
                 :total="total"
                 :title="$t('ui.hrEnterpriseJobRankManagementRankList')"
-                :btnText="'添加职级'"
+:btn-text="$t('ui.hrEnterpriseJobRankManagementAddRank')"
                 :isAddBtn="true"
                 @addDataFn="addRank"
                 @dropdownFn="batchHandleDelete"
@@ -251,7 +251,7 @@ export default {
     // 删除职级类别
     deleteRankType(item) {
       this.closePopover()
-      this.$modalSure('你确定要删除该职级类别吗').then(() => {
+      this.$modalSure(this.$ts('你确定要删除该职级类别吗')).then(() => {
         rankCateDeleteApi(item.id).then((res) => {
           this.rankIndex = 0
           this.getRankList()
@@ -290,7 +290,7 @@ export default {
       await this.$refs.dialogForm.openBox()
     },
     deleteRank(row) {
-      this.$modalSure('你确定要删除该职级吗').then(() => {
+      this.$modalSure(this.$ts('你确定要删除该职级吗')).then(() => {
         this.handleDelete(row.id)
       })
     },
@@ -302,7 +302,7 @@ export default {
         this.multipleSelection.forEach((value) => {
           ids.push(value.id)
         })
-        this.$modalSure('确定要全部删除已选择的内容吗').then(() => {
+        this.$modalSure(this.$ts('确定要全部删除已选择的内容吗')).then(() => {
           this.handleDelete(ids.join(','))
         })
       }

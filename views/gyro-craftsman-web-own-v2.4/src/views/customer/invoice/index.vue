@@ -12,7 +12,7 @@
       :total="total"
       type="0"
       :title="$route.meta.title"
-      btnText="一键转移"
+:btn-text="$t('ui.customerInvoiceIndexOneClickTransfer')"
       btnType="default"
       class="from-box"
       @addDataFn="confirmTransfer(1)"
@@ -391,22 +391,22 @@ export default {
         {
           form_value: 'select',
           field_name_en: 'time_field',
-          field_name: '时间类型',
+          field_name: this.$ts('时间类型'),
           data_dict: [
             {
               value: 'time',
-              name: '申请日期'
+              name: this.$ts('申请日期')
             },
             {
               value: 'bill_date',
-              name: '开票日期'
+              name: this.$ts('开票日期')
             }
           ]
         },
         {
           form_value: 'date_picker',
-          field_name: '开始时间',
-          field_name_end: '结束时间',
+          field_name: this.$ts('开始时间'),
+          field_name_end: this.$ts('结束时间'),
           field_name_en: 'time'
         }
       ]
@@ -473,7 +473,7 @@ export default {
     // 申请作废
     apply(val) {
       this.title = i18n.t('legacyScript.invoiceVoidRequest')
-      this.reason = '作废原因'
+      this.reason = this.$ts('作废原因')
       this.dialogVisible = true
       this.withdrawId = val.id
     },
@@ -482,7 +482,7 @@ export default {
       let data = {
         remark: this.form.remarks
       }
-      if (this.title == '发票申请作废') {
+      if (this.title == this.$ts('发票申请作废')) {
         data.invalid = 1
         await invalidApply(this.withdrawId, data)
         this.cancelFn()

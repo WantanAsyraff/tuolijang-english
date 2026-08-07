@@ -10,7 +10,7 @@
       :dropdownList="dropdownList"
       :total="total"
       :title="$route.meta.title"
-      btnText="新建任务"
+:btn-text="$t('ui.programProgramTaskAddTaskNewTask')"
       @treeChange="treeChange"
       @addDataFn="addProgram"
       @dropdownFn="dropdownFn"
@@ -755,12 +755,12 @@ export default {
       ],
       search: [
         {
-          field_name: '任务名称',
+          field_name: this.$ts('任务名称'),
           field_name_en: 'name',
           form_value: 'input'
         },
         {
-          field_name: '优先级',
+          field_name: this.$ts('优先级'),
           field_name_en: 'priority',
           form_value: 'checkbox',
           multiple: true,
@@ -791,7 +791,7 @@ export default {
           ]
         },
         {
-          field_name: '状态',
+          field_name: this.$ts('状态'),
           field_name_en: 'status',
           form_value: 'checkbox',
           multiple: true,
@@ -801,32 +801,32 @@ export default {
           data_dict: [
             {
               value: '0',
-              name: '未处理'
+              name: this.$ts('未处理')
             },
             {
               value: 1,
-              name: '进行中'
+              name: this.$ts('进行中')
             },
             {
               value: 2,
-              name: '已解决'
+              name: this.$ts('已解决')
             },
             {
               value: 3,
-              name: '已验收'
+              name: this.$ts('已验收')
             },
             {
               value: 4,
-              name: '已拒绝'
+              name: this.$ts('已拒绝')
             },
             {
               value: 5,
-              name: '已关闭'
+              name: this.$ts('已关闭')
             }
           ]
         },
         {
-          field_name: '项目',
+          field_name: this.$ts('项目'),
           field_name_en: 'program_id',
           form_value: 'select',
           multiple: true,
@@ -836,7 +836,7 @@ export default {
           data_dict: []
         },
         {
-          field_name: '版本',
+          field_name: this.$ts('版本'),
           field_name_en: 'version_id',
           form_value: 'checkbox',
           multiple: true,
@@ -1465,7 +1465,7 @@ export default {
       this.ids.forEach((item) => {
         this.formData.data.push(item.id)
       })
-      this.$modalSure('删除任务，关联的子级任务均会被删除').then(() => {
+      this.$modalSure(this.$ts('删除任务，关联的子级任务均会被删除')).then(() => {
         deleteProgramTaskBatchApi({ data: this.formData.data }).then(() => {
           this.headerShow = false
           this.tableFrom.pid = ''

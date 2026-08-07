@@ -25,7 +25,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import moment from 'moment';
   import { hourTimeRange, formatHourTime } from '@/utils/date';
 
@@ -84,32 +85,32 @@
 
   const getWorkForm = () : FormItemConfig[] => [
     {
-      label: "上班时间",
+      label: appI18n.global.t('ui.attendanceShiftAddFormStartTime'),
       key: 'work_hours',
       type: 'date-time',
       index: [0, 0, 0],
       range: generateDatetimeRange(true)
     },
     {
-      label: "晚到超过多久记为迟到",
+      label: appI18n.global.t('ui.attendanceShiftAddFormLateArrivalThreshold'),
       key: "late",
       type: "hour-time",
       index: [0, 0]
     },
     {
-      label: "晚到超过多久记为严重迟到",
+      label: appI18n.global.t('ui.attendanceShiftAddFormSevereLateArrivalThreshold'),
       key: "extreme_late",
       type: "hour-time",
       index: [0, 0]
     },
     {
-      label: "晚到超过多久记为半天缺卡",
+      label: appI18n.global.t('ui.attendanceShiftAddFormHalfDayMissingClockThresholdForLateArrival'),
       key: "late_lack_card",
       type: "hour-time",
       index: [0, 0]
     },
     {
-      label: "最早可提前多久打卡",
+      label: appI18n.global.t('ui.attendanceShiftAddFormEarliestClockInTime'),
       key: "early_card",
       type: "hour-time",
       index: [0, 0]
@@ -118,7 +119,7 @@
 
   const getOffWorkForm = () : FormItemConfig[] => [
     {
-      label: "下班时间",
+      label: appI18n.global.t('ui.attendanceShiftAddFormEndTime'),
       key: 'off_hours',
       type: 'date-time',
       dayAfterKey: 'second_day_after',
@@ -126,25 +127,25 @@
       range: generateDatetimeRange()
     },
     {
-      label: "提前多久打卡记为早退",
+      label: appI18n.global.t('ui.attendanceShiftAddFormEarlyLeaveThreshold'),
       key: "early_leave",
       type: "hour-time",
       index: [0, 0]
     },
     {
-      label: "提前多久打卡记为半天缺卡",
+      label: appI18n.global.t('ui.attendanceShiftAddFormHalfDayMissingClockThresholdForEarlyLeave'),
       key: "early_lack_card",
       type: "hour-time",
       index: [0, 0]
     },
     {
-      label: "最晚可延后多久打卡",
+      label: appI18n.global.t('ui.attendanceShiftAddFormLatestClockInTime'),
       key: "delay_card",
       type: "hour-time",
       index: [0, 0]
     },
     {
-      label: "下班可免打卡",
+      label: appI18n.global.t('ui.attendanceRulesClockOutIsOptional'),
       key: "free_clock",
       type: "switch",
       checked: 0
@@ -153,7 +154,7 @@
 
   const getRestForm = () : FormItemConfig[] => [
     {
-      label: "休息开始时间",
+      label: appI18n.global.t('ui.attendanceShiftAddFormBreakStartTime'),
       key: "rest_start",
       dayAfterKey: 'rest_start_after',
       type: "date-time",
@@ -161,7 +162,7 @@
       range: generateDatetimeRange()
     },
     {
-      label: "休息结束时间",
+      label: appI18n.global.t('ui.attendanceShiftAddFormBreakEndTime'),
       key: "rest_end",
       type: "date-time",
       dayAfterKey: 'rest_end_after',

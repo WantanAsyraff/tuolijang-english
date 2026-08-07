@@ -1,6 +1,17 @@
 import generatedUi from './generated-ui-zh'
 
 export default {
+  attendanceShift: {
+    arrivingLate: '\u665a\u5230\u8d85\u8fc7 {hours} \u5c0f\u65f6{minutes} \u5206\u949f\u8bb0\u4e3a\u8fdf\u5230',
+    arrivingSeverelyLate: '\u665a\u5230\u8d85\u8fc7 {hours} \u5c0f\u65f6{minutes} \u5206\u949f\u8bb0\u4e3a\u4e25\u91cd\u8fdf\u5230',
+    arrivingMissingHalfDay: '\u665a\u5230\u8d85\u8fc7 {hours} \u5c0f\u65f6{minutes} \u5206\u949f\u8bb0\u4e3a\u534a\u5929\u7f3a\u5361',
+    earliestClockIn: '\u6700\u65e9\u63d0\u524d {hours} \u5c0f\u65f6{minutes} \u5206\u949f\u6253\u5361',
+    leavingEarly: '\u63d0\u524d {hours} \u5c0f\u65f6{minutes} \u5206\u949f\u6253\u5361\u8bb0\u4e3a\u65e9\u9000',
+    leavingMissingHalfDay: '\u63d0\u524d {hours} \u5c0f\u65f6{minutes} \u5206\u949f\u6253\u5361\u8bb0\u4e3a\u534a\u5929\u7f3a\u5361',
+    latestClockIn: '\u6700\u665a\u53ef\u5ef6\u540e {hours} \u5c0f\u65f6{minutes} \u5206\u949f\u6253\u5361',
+    fallback: '{premise} {hours} \u5c0f\u65f6{minutes} \u5206\u949f{suffix}',
+    overtime: '\u6700\u540e\u73ed\u6b21\u4e0b\u73ed{hours}\u5c0f\u65f6{minutes}\u5206\u949f\u540e\u5f00\u59cb\u8ba1\u7b97\u52a0\u73ed'
+  },
   legacyScript: {
 
     productDictionarySettings: '产品字典设置',
@@ -1132,6 +1143,8 @@ export default {
     selectAtLeastOneItem2: '至少选择一项内容',
     failedToLoadTheAIPlugin: 'AI 插件加载失败',
     failedToSynchronizeTheAIFloatingButtonState: 'AI 悬浮球状态同步失败:',
+    downloadStopped: '下载终止',
+    upgradeCompletedSignInAgain: '您已成功升级，系统将自动退出，请您重新登录',
     last90Days: '最近90天',
     lastYear2: '最近1年',
     myResume: '我的简历',
@@ -2296,9 +2309,12 @@ export default {
     placeholder11: '搜索文件模板',
     placeholder12: '请选择使用模板内容',
     directory: '目录权限',
-    setdirectory: '设置目录权限'
+    setdirectory: '设置目录权限',
+    useTemplate: '使用模版',
+    uploadFile: '上传文件'
   },
   customer: {
+    nullMailing: '邮寄地址不能为空',
     add: '添加客户',
     addtype: '添加分类',
     edittype: '编辑分类',

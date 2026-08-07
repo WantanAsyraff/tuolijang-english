@@ -191,7 +191,7 @@ export default {
     return {
       tableData: [],
       dialogVisible: false,
-      reason: '拒绝原因',
+      reason: this.$ts('拒绝原因'),
       title: i18n.t('ui.settingAuthAuthIndexReviewRejected'),
       paymentType: '',
       form: {
@@ -294,7 +294,7 @@ export default {
       let data = {
         status: -1
       }
-      await this.$modalSure('确认撤回审核状态吗')
+      await this.$modalSure(this.$ts('确认撤回审核状态吗'))
       await clientBillStatusApi(row.id, data)
       this.getTableData()
     },
@@ -320,44 +320,51 @@ export default {
         no_withdraw: this.where.no_withdraw
       }
       clientBillListApi(where).then((res) => {
-        let data = res.data.list
-        let aoaData = [
-          ['付款时间', '付款金额', '支付方式', '备注', '业务类型', '客户名称', '订单名称', '订单编号', '业务员']
-        ]
-        if (data.length > 0) {
-          data.forEach((value) => {
-            if (value.types == 0) {
-              value.types = '回款记录'
-            } else {
-              if (value.renew) {
-                value.types = '续费记录' + '-' + value.renew
-              } else {
-                value.types = '续费记录'
-              }
-            }
+  const data = res.data.list
 
-            aoaData.push([
-              value.date,
-              value.num,
-              value.pay_type,
-              value.mark,
-              value.types,
-              value.client ? value.client.name : '',
-              value.treaty ? value.treaty.title : '',
-              value.treaty ? value.treaty.contract_no : '',
-              value.card ? value.card.name : ''
-            ])
-          })
+  const aoaData = [
+    [
+      this.$ts('付款时间'),
+      this.$ts('付款金额'),
+      this.$ts('支付方式'),
+      this.$ts('备注'),
+      this.$ts('业务类型'),
+      this.$ts('客户名称'),
+      this.$ts('订单名称'),
+      this.$ts('订单编号'),
+      this.$ts('业务员')
+    ]
+  ]
 
-          this.exportData.data = aoaData
-          this.$refs.exportExcel.exportExcel()
-        }
-      })
+  if (data.length > 0) {
+    data.forEach((value) => {
+      let typeText
 
-      this.where.page = 1
-      this.where.limit = 10
-      this.getTableData()
-    },
+      if (value.types === 0) {
+        typeText = this.$ts('回款记录')
+      } else if (value.renew) {
+        typeText = `${this.$ts('续费记录')}-${value.renew}`
+      } else {
+        typeText = this.$ts('续费记录')
+      }
+
+      aoaData.push([
+        value.date,
+        value.num,
+        value.pay_type,
+        value.mark,
+        typeText,
+        value.client ? value.client.name : '',
+        value.treaty ? value.treaty.title : '',
+        value.treaty ? value.treaty.contract_no : '',
+        value.card ? value.card.name : ''
+      ])
+    })
+
+    this.exportData.data = aoaData
+    this.$refs.exportExcel.exportExcel()
+  }
+})
 
     submitFn() {
       let data = {
@@ -390,9 +397,9 @@ export default {
     handleContract(row, type) {
       this.catePath = []
       this.getbillCate(row.cid)
-      let str = '审核通过'
+      let str = this.$ts('审核通过')
       if (type === 'edit') {
-        str = '编辑账目记录'
+        str = this.$ts('编辑账目记录')
       }
       setTimeout(() => {
         this.operationDialog = {

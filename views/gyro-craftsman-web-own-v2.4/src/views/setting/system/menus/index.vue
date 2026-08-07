@@ -8,7 +8,7 @@
         :search="searchData"
         :sortSearch="false"
         :title="$route.meta.title"
-        btnText="添加菜单"
+:btn-text="$t('ui.settingSystemMenusIndexAddMenu')"
         @addDataFn="addMenu"
         @confirmData="confirmData"
       ></oaFromBox>
@@ -41,8 +41,8 @@
                 v-model="props.row.is_show"
                 :active-value="1"
                 :inactive-value="0"
-                active-text="显示"
-                inactive-text="隐藏"
+:active-text="$t('ui.userWorkDealtIndexDisplay')"
+:inactive-text="$t('ui.developConditionGroupDialogHide')"
                 @change="changeStatus(props.row)"
               >
               </el-switch>

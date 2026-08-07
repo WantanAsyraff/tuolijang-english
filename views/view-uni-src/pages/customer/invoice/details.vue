@@ -16,7 +16,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index";
 import message from "@/utils/message";
 import morePopup from "@/components/morePopup/index.vue";
@@ -79,15 +80,15 @@ const dropDownItem = (e) => {
   } else {
     if (e.id === 1) {
       data.configData = {
-        title: "备注",
-        placeholder: "请填写备注信息",
+        title: appI18n.global.t('ui.customerContractPayDetailRemarks'),
+        placeholder: appI18n.global.t('ui.customerSigningAddFormPleaseFillInTheRemarks'),
         type: e.id,
         text: data.detail.mark
       };
       textareaPopupRef.value.popupOpen();
     } else if (e.id === 2) {
       // 发票撤销
-      showModal("您确定要撤销该发票吗").then(() => {
+      showModal(appI18n.global.t('ui.customerInvoiceDetailsRevokeThisInvoice')).then(() => {
         approveApplyRevokeApi(data.detail.link_id).then((res) => {
           message.success(res.message);
           getDetails(data.detail.id);
@@ -97,7 +98,7 @@ const dropDownItem = (e) => {
       });
     } else if (e.id == 3) {
       // 撤回作废
-      showModal("您确定要撤回作废该发票吗").then(() => {
+      showModal(appI18n.global.t('ui.customerInvoiceDetailsWithdrawTheInvoiceCancellation')).then(() => {
         approveApplyRevokeApi(data.detail.revoke_id).then((res) => {
           message.success(res.message);
           getDetails(data.detail.id);

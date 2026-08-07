@@ -19,7 +19,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import defaultNavBar from "@/components/defaultNavBar/index.vue";
   import invoiceList from "@/pages/customer/invoice/components/invoiceList.vue";
   import customerTab from "@/pages/customer/list/components/customerTab.vue";
@@ -41,7 +42,7 @@
     typeIndex: 0,
     tabIndex: 0,
     tabId: 1,
-    emptyTitle: "当前暂无发票～",
+    emptyTitle: appI18n.global.t('ui.customerInvoiceIndexCurrentNoInvoice'),
     customStyle: { border: "none", lineHeight: "20px", background: "#ED4014" },
     examineTabData: [
       { name: "待开发票", id: 1 },

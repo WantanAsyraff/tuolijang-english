@@ -26,7 +26,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, nextTick, onUnmounted } from "vue";
 import QRCode from 'weapp-qrcode';
 
@@ -40,7 +41,7 @@ const isLoading = ref(false);
 // 打开弹窗（默认使用你提供的链接）
 const openBox = (url) => {
   if (!url) {
-    uni.showToast({ title: '无效的链接地址', icon: 'none' });
+    uni.showToast({ title: appI18n.global.t('ui.customerSigningESignatureDialogInvalidLink'), icon: 'none' });
     return;
   }
   currentUrl.value = url;
@@ -78,14 +79,14 @@ const generateQRCode = (url) => {
   } catch (e) {
     console.error('二维码生成失败：', e);
     isLoading.value = false;
-    uni.showToast({ title: '二维码生成失败', icon: 'none' });
+    uni.showToast({ title: appI18n.global.t('ui.customerSigningESignatureDialogFailedToGenerateQrCode'), icon: 'none' });
   }
 };
 
 // 长按保存逻辑
 const handleLongPress = () => {
   if (isLoading.value) {
-    uni.showToast({ title: '二维码未生成', icon: 'none' });
+    uni.showToast({ title: appI18n.global.t('ui.customerSigningESignatureDialogQrCodeHasNotBeenGenerated'), icon: 'none' });
     return;
   }
 
@@ -95,24 +96,24 @@ const handleLongPress = () => {
       uni.saveImageToPhotosAlbum({
         filePath: res.tempFilePath,
         success: () => {
-          uni.showToast({ title: '保存成功，请在微信内识别', icon: 'success' });
+          uni.showToast({ title: appI18n.global.t('ui.customerSigningESignatureDialogSavedScanItInWeChat'), icon: 'success' });
         },
         fail: (err) => {
           if (err.errMsg.includes('auth deny')) {
             uni.showModal({
-              title: '提示',
-              content: '需要授权相册权限才能保存二维码',
-              confirmText: '去授权',
+              title: appI18n.global.t('ui.customerLeadDetailHint'),
+              content: appI18n.global.t('ui.customerSigningESignatureDialogPhotoLibraryPermissionIsRequiredToSaveTheQr'),
+              confirmText: appI18n.global.t('ui.customerSigningESignatureDialogAuthorize'),
               success: (modalRes) => modalRes.confirm && uni.openSetting()
             });
           } else {
-            uni.showToast({ title: '保存失败', icon: 'none' });
+            uni.showToast({ title: appI18n.global.t('ui.customerQuickReplyIndexSaveFailed'), icon: 'none' });
           }
         }
       });
     },
     fail: () => {
-      uni.showToast({ title: '图片转换失败', icon: 'none' });
+      uni.showToast({ title: appI18n.global.t('ui.customerSigningESignatureDialogImageConversionFailed'), icon: 'none' });
     }
   });
 };

@@ -46,7 +46,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import BottomNavigation from '@/components/bottomNavigation/index.vue'
   import { attendanceScheduleListApi } from '@/api/attendance';
   import moment from 'moment';
@@ -111,7 +112,7 @@
     const [startYearIndex, startMonthIndex, endYearIndex, endMonthIndex] = e.detail.value;
 
     if (endYearIndex < startYearIndex || (endYearIndex === startYearIndex && endMonthIndex < startMonthIndex)) {
-      message.error('结束时间不能小于开始时间', 'none');
+      message.error(appI18n.global.t('ui.examineFormTimeFromTheEndTimeCannotBeEarlierThanTheStart'), 'none');
       currentSelectDateRangeByIndex.value = [...currentSelectDateRangeByIndex.value];
       return;
     }

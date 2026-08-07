@@ -165,7 +165,7 @@ export default {
             fromData: {
                 width: '663px',
                 title: i18n.t('ui.developCrudEntityTableNewEntity'),
-                btnText: '确定',
+                btnText: i18n.t('ui.formCommonDialogFormOk'),
                 labelWidth: '100px',
                 type: ''
             },

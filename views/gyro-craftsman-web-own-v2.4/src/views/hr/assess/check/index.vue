@@ -141,7 +141,7 @@ export default {
       this.$refs.preview.openDialog()
     },
     handleDelete(item, index) {
-      this.$modalSure('你确定要删除这条考核模板吗').then(() => {
+      this.$modalSure(this.$ts('你确定要删除这条考核模板吗')).then(() => {
         templateDeleteApi(item.id).then((res) => {
           this.tableData.splice(index, 1)
         })

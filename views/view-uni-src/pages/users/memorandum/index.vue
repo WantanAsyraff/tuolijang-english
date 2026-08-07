@@ -10,9 +10,9 @@
 
     <view class="report-content m10">
       <newes-list v-if="config.type === 'newes'" :list-data="config.newesData"
-        empty-title="暂无笔记文件，点击右上方按钮可新建～"></newes-list>
+        :empty-title="$t('ui.usersMemorandumIndexNoNoteFilesUseTheButtonAtTheTop')"></newes-list>
       <folder-list v-if="config.type === 'folder'" :parent-id="config.folderId" :list-data="config.folderData"
-        @btn-click="folderChange" empty-title="暂无笔记文件，点击右上方按钮可新建～">
+        @btn-click="folderChange" :empty-title="$t('ui.usersMemorandumIndexNoNoteFilesUseTheButtonAtTheTop')">
       </folder-list>
     </view>
 
@@ -24,7 +24,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index";
 import dragButton from "@/components/dragButton/index.vue";
 import newesList from "./components/newesList.vue";
@@ -42,7 +43,7 @@ const config = reactive({
   type: "newes",
   tabIndex: 0,
   editData: {
-    placeholder: "请输入文件夹名称",
+    placeholder: appI18n.global.t('ui.usersMemorandumFolderListPleaseEnterFolderName'),
     type: 0
   },
   rightIcon: [

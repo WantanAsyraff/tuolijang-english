@@ -62,7 +62,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import { ref, reactive, toRefs } from "vue";
   import empty from "@/components/empty/index";
   import deanPopover from "@/components/deanPopover/index.vue";
@@ -91,11 +92,11 @@
     id: null,
     selectIndex: -1,
     editData: {
-      placeholder: "请输入文件夹名称",
+      placeholder: appI18n.global.t('ui.usersMemorandumFolderListPleaseEnterFolderName'),
       type: 0
     },
     treeData: [],
-    title: "新建文件夹",
+    title: appI18n.global.t('ui.usersMemorandumIndexNewFolder'),
     itemData:{},
     itemIndex: -1,
   });
@@ -138,17 +139,17 @@ const forumMeus = [
     config.id = item.id;
     config.selectIndex = index;
     if (type === 1) {
-      config.title = "新建文件夹";
+      config.title = appI18n.global.t('ui.usersMemorandumIndexNewFolder');
       config.editData.type = 0;
       newsFolderRef.value.popupOpen();
     } else if (type === 2) {
-      config.title = "编辑文件夹";
+      config.title = appI18n.global.t('ui.usersMemorandumFolderListEditFolder');
       config.editData.type = 1;
       config.editData.time = new Date().getTime();
       config.editData.title = item.name;
       newsFolderRef.value.popupOpen();
     } else if (type === 3) {
-      showModal("确定要删除该分类吗").then(() => {
+      showModal(appI18n.global.t('ui.usersMemorandumFolderListDeleteThisCategory')).then(() => {
         userMemorialCateDeleteApi(config.id).then((res) => {
           message.success(res.message);
           listData.value.splice(index, 1);
@@ -211,7 +212,7 @@ const forumMeus = [
       if (config.treeData.length > 0) {
         treePickerRef.value.show();
       } else {
-        message.error("文件夹层级不能超过两级");
+        message.error(appI18n.global.t('ui.usersMemorandumFolderListFoldersCannotBeMoreThanTwoLevelsDeep'));
       }
     }).catch((error) => {
       message.error(error.message);

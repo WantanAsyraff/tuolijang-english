@@ -357,7 +357,7 @@ export default {
       fromData: {
         width: '550px',
         title: i18n.t('legacyScript.formula'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '90px',
         type: 'slot'
       },

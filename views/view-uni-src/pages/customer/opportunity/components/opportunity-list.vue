@@ -74,7 +74,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import empty from "@/components/empty/index.vue";
 import avatar from "@/components/avatar/index.vue";
 import { getColor } from "@/utils/helper"
@@ -106,8 +107,8 @@ const createSigning = () => {
 
 // 打开客户聊天对话框
 const openCustomerChat = async (work_customer) => {
-  if(!isWxWorkEnv) return message.error("只有在企业微信中可进行聊天");
-  if (!work_customer || !work_customer.external_userid) return message.error("客户没有绑定企业微信");
+  if(!isWxWorkEnv) return message.error(appI18n.global.t('ui.customerListLiaisonListChatIsAvailableOnlyInWeCom'));
+  if (!work_customer || !work_customer.external_userid) return message.error(appI18n.global.t('ui.customerOpportunityOpportunityListTheCustomerIsNotLinkedToWeCom'));
   try {
     const wxWork = await WxWork.getInstance();
     await new Promise((resolve, reject) => {
@@ -120,7 +121,7 @@ const openCustomerChat = async (work_customer) => {
         fail: reject
       });
     });
-    message.success('打开会话框');
+    message.success(appI18n.global.t('ui.customerLeadLeadListChatOpened'));
   } catch (err) {
     message.error(`打开个人资料页失败: ${err.errMsg || err.message || '操作失败'}`);
   }

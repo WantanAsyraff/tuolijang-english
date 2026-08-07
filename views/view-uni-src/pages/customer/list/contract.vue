@@ -16,7 +16,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import defaultNavBar from "@/components/defaultNavBar/index.vue";
   import contractList from "@/pages/customer/contract/components/contractList.vue";
   import globalIndex from "@/components/globalIndex/index.vue";
@@ -28,7 +29,7 @@
     tabIndex: 0,
     tabId: 1,
     name: "",
-    emptyTitle: "暂无订单，快去添加吧～",
+    emptyTitle: appI18n.global.t('ui.customerListContractNoOrdersYetAddOneNow'),
     listData: [],
     types: 0,
     where: {

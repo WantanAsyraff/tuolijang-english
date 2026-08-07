@@ -15,12 +15,13 @@
     </view>
 
     <view class="content">
-      <forum-list :list-data="data.listData" :hot-data="data.hotData" empty-title="暂无搜索结果~"></forum-list>
+      <forum-list :list-data="data.listData" :hot-data="data.hotData" :empty-title="$t('ui.forumSearchNoSearchResults')"></forum-list>
     </view>
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import navigationBar from "@/components/navigationBar/index.vue";
 import forumList from "./components/forumList.vue";
 import message from "@/utils/message";
@@ -79,7 +80,7 @@ const getArticleLabel = (): void => {
   articleLabelApi(1).then((res: Res) => {
     data.barList = res.data.list || [];
     if (data.barList.length > 0) {
-      data.barList.unshift({ id: "", title: "全部" });
+      data.barList.unshift({ id: "", title: appI18n.global.t('ui.attendanceDetailedUserCheckListAll') });
     }
   }).catch((error: Res) => {
     message.error(error.message);

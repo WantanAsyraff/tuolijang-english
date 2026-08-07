@@ -36,7 +36,7 @@
   </template>
 
   <!-------------- 新增:新增页面 ------------>
-  <el-form v-else ref="form" :model="ruleForm" :rules="fromRules" label-width="90px">
+  <el-form v-else ref="form" :model="ruleForm" :rules="fromRules" label-width="150px">
     <div v-for="(formItem, itemIndex) in newFrom" :key="itemIndex" class="p20">
       <div
         v-if="componentStatus.type === 'add' || !['工作经历', '教育经历'].includes(formItem.title)"

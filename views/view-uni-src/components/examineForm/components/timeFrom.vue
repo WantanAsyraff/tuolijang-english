@@ -85,7 +85,8 @@
   <time-from-picker ref="timeFromPickerRef" type="time" :data-time="data.dataTime" @change="changeTimePicker"></time-from-picker>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { computed, ref, reactive, toRefs } from 'vue'
 import message from '@/utils/message'
 import timeFromPicker from './timeFromPicker.vue'
@@ -215,7 +216,7 @@ const onChange = (type, e) => {
     time2 = Date.parse(new Date(data.dateEnd))
   }
   if (time1 > time2) {
-    message.error('结束时间不能小于开始时间')
+    message.error(appI18n.global.t('ui.examineFormTimeFromTheEndTimeCannotBeEarlierThanTheStart'))
     return false
   }
   fromData.timeType = configData.value.props.timeType

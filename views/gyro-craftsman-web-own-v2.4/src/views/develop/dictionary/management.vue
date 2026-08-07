@@ -42,8 +42,8 @@
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
-                active-text="启用"
-                inactive-text="停用"
+:active-text="$t('ui.settingAuthAdminIndexEnabled2')"
+:inactive-text="$t('ui.customerSetupCustomFormIndexDisabled')"
                 :active-value="1"
                 :inactive-value="0"
                 :width="60"

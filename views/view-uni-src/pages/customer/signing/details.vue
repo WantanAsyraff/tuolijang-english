@@ -71,7 +71,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from '@/components/defaultNavBar/index'
 import globalIndex from '@/components/globalIndex/index.vue'
 import followRecord from '@/pages/customer/list/components/followRecord.vue'
@@ -255,7 +256,7 @@ const getContractDocOrders = () => {
 const getMomentList = () => {
   if (data.momentLoaded) return
   uni.showLoading({
-    title: '加载中',
+    title: appI18n.global.t('ui.customerContractIndexLoading'),
   })
   momentRecordApi({
     eid: data.id,
@@ -313,7 +314,7 @@ const handleAddFile = () => {
         if (val.status == 200) {
           getDetails()
           uni.showToast({
-            title: '签约文件上传成功',
+            title: appI18n.global.t('ui.customerSigningDetailItemSigningDocumentUploaded'),
             icon: 'success',
           })
         }
@@ -335,8 +336,8 @@ const handleSign = (type) => {
 // 撤销申请
 const handleCancel = () => {
   uni.showModal({
-    title: '提示',
-    content: '您确定要撤销此合同申请吗?',
+    title: appI18n.global.t('ui.customerLeadDetailHint'),
+    content: appI18n.global.t('ui.customerSigningDetailsRevokeThisContractApplication'),
     success: (res) => {
       if (res.confirm) {
         contractDocCancelApi(data.id)
@@ -356,8 +357,8 @@ const handleCancel = () => {
 // 删除
 const handleDelete = () => {
   uni.showModal({
-    title: '提示',
-    content: '您确定要删除此合同吗?',
+    title: appI18n.global.t('ui.customerLeadDetailHint'),
+    content: appI18n.global.t('ui.customerSigningDetailsDeleteThisContract'),
     success: (res) => {
       if (res.confirm) {
         deleteContractDocApi(data.id)

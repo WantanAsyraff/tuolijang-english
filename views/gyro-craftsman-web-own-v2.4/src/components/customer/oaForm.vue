@@ -132,7 +132,7 @@
                   v-if="!viewMode || editKey == val.key"
                   :ref="`input_${val.key}`"
                   v-model="ruleForm[val.key]"
-                  :options="val.options"
+                  :options="localizedOptions(val.options, val.key)"
                   :placeholder="val.placeholder ? val.placeholder : $t('ui.developConditionGroupPleaseSelect') + val.key_name"
                   :props="{
                     checkStrictly: true,
@@ -178,7 +178,7 @@
                   @keyup.enter.native="handlePopoverHide(ruleForm[val.key])"
                 >
                   <el-option
-                    v-for="el in val.options"
+                    v-for="el in localizedOptions(val.options, val.key)"
                     :key="el.value"
                     :disabled="el.disabled"
                     :label="el.label"
@@ -297,7 +297,7 @@
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
                   @keyup.enter.native="handlePopoverHide(ruleForm[val.key])"
                 >
-                  <el-radio v-for="(el, index) in val.options" :key="index" :label="el.value">
+                  <el-radio v-for="(el, index) in localizedOptions(val.options, val.key)" :key="index" :label="el.value">
                     {{ el.label }}
                   </el-radio>
                 </el-radio-group>
@@ -319,7 +319,7 @@
                   class="clickZone"
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
                 >
-                  <el-checkbox v-for="(check, checkIndex) in val.options" :key="checkIndex" :label="check.value">
+                  <el-checkbox v-for="(check, checkIndex) in localizedOptions(val.options, val.key)" :key="checkIndex" :label="check.value">
                     {{ check.label }}
                   </el-checkbox>
                 </el-checkbox-group>

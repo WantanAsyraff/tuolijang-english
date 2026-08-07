@@ -85,7 +85,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 	import { uploadImage,formatBytes } from "@/utils/file";
 	import { debounce, fileSizeOne, lookPreview } from "@/utils/helper";
 	import { followSaveApi } from "@/api/customer";
@@ -149,7 +150,7 @@
 	// 提交跟进记录
 	const handleConfirm = debounce((item) => {
 	  if (!item.content) {
-	    message.error("跟进信息不能为空");
+	    message.error(appI18n.global.t('ui.customerLeadDetailFollowUpInformationCannotBeEmpty'));
 	    return false;
 	  }
 	  let attach_ids = item.imgs.map((img) => img.id);

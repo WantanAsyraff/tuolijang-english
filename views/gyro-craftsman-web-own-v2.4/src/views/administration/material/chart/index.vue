@@ -277,7 +277,11 @@ export default {
               axisLabel: {
                 color: '#666666'
               },
-              data: ['物资采购金额', '物资报废金额', '物资维修金额']
+              data: [
+                this.$ts('物资采购金额'),
+                this.$ts('物资报废金额'),
+                this.$ts('物资维修金额')
+              ]
             }
           ],
           yAxis: [

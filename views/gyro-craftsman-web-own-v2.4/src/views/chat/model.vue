@@ -24,7 +24,7 @@
             <oaFromBox
               :title="title"
               :total="total"
-              :btnText="`添加模型`"
+:btn-text="$t('ui.chatModelAddModel')"
               :search="search"
               :isViewSearch="false"
               :sortSearch="false"

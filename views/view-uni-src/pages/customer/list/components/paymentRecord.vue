@@ -47,7 +47,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import empty from '@/components/empty/index.vue'
 import { toRefs } from 'vue'
 import { clickNavigateTo, getColor } from '@/utils/helper'
@@ -69,7 +70,7 @@ const props = withDefaults(
     cid: 0,
     tab: 0,
     count: 0,
-    emptyTitle: '暂无付款记录，快去添加吧！',
+    emptyTitle: appI18n.global.t('ui.customerListAccountRecordNoPaymentRecordsYetAddOneNow'),
   },
 )
 // toRef {

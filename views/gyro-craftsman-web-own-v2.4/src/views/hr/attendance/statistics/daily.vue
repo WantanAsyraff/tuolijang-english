@@ -247,7 +247,7 @@ export default {
       fromData: {
         with: '700px',
         title: i18n.t('legacyScript.changeClockInResult'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '90px',
         type: 'slot'
       },

@@ -24,7 +24,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, toRefs, onMounted, watch } from "vue";
 import moment from "moment";
 
@@ -60,8 +61,8 @@ const data = reactive({
   dataTime: moment(new Date()).format("YYYY/MM/DD"),
   newTime: moment(new Date()).format("YYYY/MM/DD") + "/1",
   options: [
-    { value: 1, label: "上午" },
-    { value: 0, label: "下午" },
+    { value: 1, label: appI18n.global.t('ui.examineFormTimeFromAm') },
+    { value: 0, label: appI18n.global.t('ui.examineFormTimeFromPm') },
   ],
   monthDays: [4, 6, 9, 11],
   month: moment(new Date()).format("M"),

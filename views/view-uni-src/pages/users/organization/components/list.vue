@@ -93,7 +93,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, toRefs, reactive, computed, watch } from 'vue'
 import message from '@/utils/message'
 import { clickNavigateTo } from '@/utils/helper'
@@ -195,13 +196,13 @@ const userClick = (item) => {
       // 判断是否为单选
       if (mode.value === 'selector') {
         if (selectPeopleArr.value.length > 0) {
-          message.error('只能选择一个人员')
+          message.error(appI18n.global.t('ui.oaMemberUniIndexedListItemOnlyOnePersonCanBeSelected'))
           return false
         }
       }
       // 判断是否可选中自己
       if (!onlyOneself.value && userInfo.value.userId === item.id) {
-        message.error('不能选择自己')
+        message.error(appI18n.global.t('ui.usersOrganizationListYouCannotSelectYourself'))
         return false
       }
       item.name = item.name
@@ -241,7 +242,7 @@ const changeDepartment = (item, index) => {
       // 判断是否为单选
       if (mode.value === 'selector') {
         if (selectPeopleArr.value.length > 0) {
-          message.error('只能选择一个部门')
+          message.error(appI18n.global.t('ui.oaMemberOrgOnlyOneMemberCanBeSelected'))
           return false
         }
       }

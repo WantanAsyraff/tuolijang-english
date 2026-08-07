@@ -18,7 +18,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive } from "vue";
 import message from "@/utils/message";
 import LeadList from "./components/lead-list.vue";
@@ -31,10 +32,10 @@ import { onReachBottom } from "@dcloudio/uni-app";
 const data = reactive({
   typeIndex: 0,
   tabIndex: 0,
-  placeholder: "搜索线索名称",
+  placeholder: appI18n.global.t('ui.customerLeadSearchSearchLeadName'),
   examineTabData: leadExamineTabConfig,
   listData: [],
-  emptyTitle: "暂无搜索结果～",
+  emptyTitle: appI18n.global.t('ui.customerAddressSearchIndexNoSearchResults'),
 
   where: {
     limit: 10,

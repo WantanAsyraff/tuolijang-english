@@ -53,7 +53,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import {
   onReachBottom
 } from "@dcloudio/uni-app";
@@ -96,15 +97,15 @@ onLoad((options) => {
 });
 
 const typeList = reactive([{
-  label: "全部",
+  label: appI18n.global.t('ui.attendanceDetailedUserCheckListAll'),
   value: 0,
 },
 {
-  label: "请假",
+  label: appI18n.global.t('ui.attendanceDetailedUserCheckListLeave'),
   value: 1,
 },
 {
-  label: "迟到",
+  label: appI18n.global.t('ui.attendanceUserAttendanceLate'),
   value: 2,
 },
 ]);

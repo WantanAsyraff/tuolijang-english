@@ -17,7 +17,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import invoiceList from "@/pages/customer/invoice/components/invoiceList.vue";
 import globalIndex from "@/components/globalIndex/index.vue";
@@ -31,7 +32,7 @@ const data = reactive({
   typeIndex: 0,
   tabIndex: 0,
   tabId: 1,
-  emptyTitle: "暂无发票，快去申请吧～",
+  emptyTitle: appI18n.global.t('ui.customerListInvoiceNoInvoicesYetApplyNow'),
   listData: [],
   buildData: {},
   name: "", // 客户名称

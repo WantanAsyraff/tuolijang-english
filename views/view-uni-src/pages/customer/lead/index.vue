@@ -8,13 +8,14 @@
     </view>
     <view class="lead-list-wrap">
       <LeadList :list-data="data.list" :total="data.total" :keyWord="data.keyWord" :loading="data.loading"
-        :loaded="data.loaded" empty-title="当前暂无线索～"></LeadList>
+        :loaded="data.loaded" :empty-title="$t('ui.customerLeadIndexCurrentNoLead')"></LeadList>
     </view>
     <TabBar :currentIndex="0" navigateType="redirectTo" />
   </BaseContainer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import BaseContainer from "@/components/BaseContainer/index.vue";
 import TabBar from "@/components/tabbar/index.vue";
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
@@ -85,7 +86,7 @@ const handleGetLeadList = async () => {
   try {
     data.where.types = data.keyWord
  uni.showLoading({
-	title: '加载中'
+	title: appI18n.global.t('ui.customerContractIndexLoading')
 });
     const res = await leadListApi(data.where);
     if (data.where.page === 1) {

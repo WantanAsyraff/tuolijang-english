@@ -55,7 +55,8 @@
   </BaseContainer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { financeBillDetailsApi, financeBillDetailsDelApi } from "@/api/finance";
 import BaseContainer from "@/components/BaseContainer/index.vue";
 import DefaultNavBar from "@/components/defaultNavBar/index.vue";
@@ -100,40 +101,40 @@ const customerMoreRef = ref(null);
 const isIncomeTypeBill = computed(() => billDetails.value.types !== 0);
 const detailsCardConfigTemplate = [
   {
-    label: "收支时间",
+    label: appI18n.global.t('ui.financeBillDetailsTimeOfPayment'),
     key: "edit_time",
   },
   {
-    label: "收支方式",
+    label: appI18n.global.t('ui.financeBillDetailsIncomeExpenseMethod'),
     key: "pay_type",
   },
   {
-    label: "备注信息",
+    label: appI18n.global.t('ui.customerSigningDetailItemRemarkInformation'),
     get: (detail: BillDetails) => {
       if (detail.mark) return detail.mark;
       return detail?.client_bill?.mark || "--";
     }
   },
   {
-    label: "数据来源",
+    label: appI18n.global.t('ui.financeBillDetailsDataSource'),
     get: (detail: BillDetails) => {
       return detail.link_id > 0 ? "订单账目" : "手动添加";
     }
   },
   {
-    label: "客户名称",
+    label: appI18n.global.t('ui.customerContractPayDetailCustomerName'),
     get: (detail: BillDetails) => {
       return detail.client ? detail.client.customer_name : "--";
     }
   },
   {
-    label: "订单名称",
+    label: appI18n.global.t('ui.customerContractIndexOrderName'),
     get: (detail: BillDetails) => {
       return detail.contract ? detail.contract.title : "--";
     }
   },
   {
-    label: "付款单号",
+    label: appI18n.global.t('ui.customerContractPayDetailPaymentBillNo'),
     get: (detail: BillDetails) => {
       return detail.client_bill ? detail.client_bill.bill_no : "--";
     }
@@ -159,7 +160,7 @@ const handleGoEditBillPage = () => {
 
 const handleConfirmDelBill = async () => {
   try {
-    await showModal("你确定要删除资金记录吗");
+    await showModal(appI18n.global.t('ui.financeBillDetailsAreYouSureYouWantToDeleteTheFund'));
     // 在这里进行删除账户的相关操作
 
     await financeBillDetailsDelApi(billId.value);

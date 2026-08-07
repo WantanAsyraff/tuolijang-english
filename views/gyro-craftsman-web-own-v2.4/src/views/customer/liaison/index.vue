@@ -12,7 +12,7 @@
         :timeSearchObj="timeSearchObj"
         :category="keyword"
         ref="fromBox"
-        btnText="添加联系人"
+:btn-text="$t('ui.customerLiaisonIndexAddContact')"
         :isAddBtn="false"
         @dropdownFn="dropdownFn"
         @addDataFn="addDataFn"

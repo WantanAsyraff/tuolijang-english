@@ -149,19 +149,31 @@ export default {
       this.loading = false
     },
     copyCanvas() {
-      this.$message
-        .confirm('从' + (this.isMobile ? 'PC' : '移动端') + '复制图表将会清空当前配置，是否确认复制?', i18n.t('legacyScript.hint'), {
-          confirmButtonText: '确认',
-          cancelButtonText: '取消',
+    const message = this.isMobile
+      ? '从PC复制图表将会清空当前配置，是否确认复制？'
+      : '从移动端复制图表将会清空当前配置，是否确认复制？'
+
+    this.$message
+      .confirm(
+        this.$ts(message),
+        i18n.t('legacyScript.hint'),
+        {
+          confirmButtonText: this.$ts('确认'),
+          cancelButtonText: this.$ts('取消'),
           type: 'warning'
-        })
-        .then(async () => {
-          this.clearCanvas()
-          let key = this.isMobile ? 'chartData' : 'mobileChartData'
-          this.initFormConfig(key)
-        })
-        .catch(() => {})
-    },
+        }
+      )
+      .then(async () => {
+        this.clearCanvas()
+
+        const key = this.isMobile
+          ? 'chartData'
+          : 'mobileChartData'
+
+        this.initFormConfig(key)
+      })
+      .catch(() => {})
+  },
     clearCanvas() {
       const newDashboardCon = deepClone(dashboard_container_schema)
       newDashboardCon.id = 'dbCon' + generateId()

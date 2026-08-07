@@ -39,7 +39,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { logoutApi } from "@/api/public";
 import avatar from "@/components/avatar/index.vue";
 import message from "@/utils/message";
@@ -112,7 +113,7 @@ const clickNavigate = (url: string): void => {
 
 // 退出登录
 const logout = (): void => {
-  showModal("确认退出登录").then(() => {
+  showModal(appI18n.global.t('ui.userAvatarSideslipAreYouSureYouWantToSignOut')).then(() => {
     logoutApi().then((res: Res) => {
       if (res.status === 200) {
         socketService.disconnect();

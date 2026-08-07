@@ -31,7 +31,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, computed, watch } from "vue";
 import { useStore } from "vuex";
 import moment from "moment";
@@ -53,39 +54,39 @@ const data = reactive({
     timeText: "",
   },
   TimeList: [{
-    title: "今天",
+    title: appI18n.global.t('ui.departmentPopupIndexToday'),
     id: 1,
   },
   {
-    title: "昨天",
+    title: appI18n.global.t('ui.departmentPopupIndexYesterday'),
     id: 2,
   },
   {
-    title: "本周",
+    title: appI18n.global.t('ui.departmentPopupIndexThisWeek'),
     id: 3,
   },
   {
-    title: "上周",
+    title: appI18n.global.t('ui.departmentPopupIndexLastWeek'),
     id: 4,
   },
   {
-    title: "本月",
+    title: appI18n.global.t('ui.departmentPopupIndexThisMonth'),
     id: 5,
   },
   {
-    title: "上月",
+    title: appI18n.global.t('ui.departmentPopupIndexLastMonth'),
     id: 6,
   },
   {
-    title: "今年",
+    title: appI18n.global.t('ui.departmentPopupIndexThisYear'),
     id: 7,
   },
   {
-    title: "去年",
+    title: appI18n.global.t('ui.departmentPopupIndexLastYear'),
     id: 8,
   },
   {
-    title: "自定义",
+    title: appI18n.global.t('ui.departmentPopupIndexCustom'),
     id: 9,
   },
   ],
@@ -96,11 +97,11 @@ const emit = defineEmits(["change"]);
 const confirm = () => {
 if(data.timeIndex == 9){
   if(!data.start || !data.end){
-    return message.error("请选择时间");
+    return message.error(appI18n.global.t('ui.examineFormIndexPleaseSelectTime'));
   }
   // 验证结束时间不能小于开始时间
   if(moment(data.end).isBefore(data.start)){
-    return message.error("结束时间不能小于开始时间");
+    return message.error(appI18n.global.t('ui.examineFormTimeFromTheEndTimeCannotBeEarlierThanTheStart'));
   }
   data.where.time = moment(data.start).format("YYYY/MM/DD") + "-" + moment(data.end).format("YYYY/MM/DD");
   data.where.timeText = moment(data.start).format("MM/DD") + "-" + moment(data.end).format("MM/DD");

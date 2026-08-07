@@ -106,8 +106,8 @@
             <span slot="label">{{ $ts("订单状态:") }}</span>
             <el-switch
               v-model="rules.is_abnormal"
-              active-text="异常"
-              inactive-text="正常"
+:active-text="$t('ui.customerContractContractInfoException')"
+:inactive-text="$t('ui.programProgramListDetailsProgramNormal')"
               :active-value="1"
               :inactive-value="0"
               inactive-color="#1890FF"

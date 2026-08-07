@@ -85,7 +85,7 @@
             </div>
             <div v-else-if="item.form_value === 'switch'">
               <el-switch disabled v-model="scope.row[item.field_name_en]" :active-value="1" :inactive-value="0"
-                active-text="开启" inactive-text="关闭">
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
               </el-switch>
             </div>
             <div v-else-if="item.form_value === 'textarea'">
@@ -262,7 +262,7 @@ export default {
       fromData: {
         width: '600px',
         title: i18n.t('legacyScript.selectNewOwner'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: ''
       },

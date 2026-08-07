@@ -12,7 +12,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { toRefs, ref, type Ref, reactive } from "vue";
 import { getZeroNumber } from "@/utils/helper";
 import type { PropType } from "@/utils/typeHelper";
@@ -21,7 +22,7 @@ const props = withDefaults(
     index: number;
     title?: string;
   }> (), {
-    title: "暂无数据"
+    title: appI18n.global.t('ui.customerListStatisticsNoData')
   }
 );
 const { index, title } = toRefs(props);

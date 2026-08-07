@@ -161,7 +161,7 @@ export default {
       })
     },
     handleDelete(item, index) {
-      this.$modalSure('你确定要删除这条指标模板吗').then(() => {
+      this.$modalSure(this.$ts('你确定要删除这条指标模板吗')).then(() => {
         assessTargetDeleteApi(item.id).then((res) => {
           this.tableData.splice(index, 1)
         })

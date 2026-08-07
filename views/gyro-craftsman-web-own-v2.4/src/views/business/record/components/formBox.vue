@@ -2,7 +2,7 @@
 <div class="box">
   <oaFromBox
     v-if="search.length > 0"
-    :btnText="'导出'"
+:btn-text="$t('ui.fdExamineIndexExport')"
     :isAddBtn="true"
     :search="search"
     :title="$t('ui.businessRecordFormBoxApprovalRecords')"

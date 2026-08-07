@@ -10,6 +10,7 @@ use App\Http\Service\System\RolesService;
 use crmeb\basic\BaseController;
 use crmeb\utils\Regex;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -41,7 +42,7 @@ class Install extends BaseController
         'develop.sql',
     ];
 
-    private string $Title = '陀螺匠安装向导';
+    private string $Title = '';
 
     private string $Powered = 'Powered by Tuoluojiang';
 
@@ -56,18 +57,22 @@ class Install extends BaseController
 
     public function index($step = 1)
     {
+        $language = strtolower((string) request()->cookie('language', 'zh-cn'));
+        App::setLocale(in_array($language, ['zh-cn', 'en'], true) ? $language : 'zh-cn');
+        $this->Title = __('frontend.install.title');
+
         if (file_exists(public_path('install/install.lock'))) {
-            return '你已经安装过该系统，如需重新安装，请先删除public/install目录下的 install.lock 文件，然后再尝试安装。';
+            return __('frontend.install.already_installed');
         }
         @set_time_limit(1000);
         if (version_compare(PHP_VERSION, '8.0.0', '<')) {
-            return '您的PHP版本过低，不能安装本软件，请使用 PHP 8.0 或以上版本。';
+            return __('frontend.install.php_too_old');
         }
         date_default_timezone_set('PRC');
         error_reporting(E_ALL & ~E_NOTICE);
         $configFile = '.env';
         if (! file_exists(base_path($configFile))) {
-            return '缺少必要的安装文件!';
+            return __('frontend.install.files_missing');
         }
         $step = (int) $step;
         if ($step < 1 || $step > 5) {
@@ -536,6 +541,8 @@ class Install extends BaseController
                 $passTwo = false;
             }
         }
+        $configData = array_map(fn (array $row): array => $this->localizeCheckRow($row), $configData);
+        $funcData   = array_map(fn (array $row): array => $this->localizeCheckRow($row), $funcData);
         return view('install/step2', [
             'Title'      => $this->Title,
             'Powered'    => $this->Powered,
@@ -546,6 +553,22 @@ class Install extends BaseController
             'files'      => $files,
         ]);
     }
+
+    private function localizeCheckRow(array $row): array
+    {
+        $keys = [
+            'PHP 版本' => 'php_version', '附件上传' => 'attachment_upload', '开启' => 'enabled', '关闭' => 'disabled',
+            '支持' => 'supported', '不支持' => 'not_supported', '已安装' => 'installed', '未安装' => 'not_installed',
+            '安装' => 'install_required', '禁止上传' => 'upload_disabled',
+        ];
+        foreach (['name', 'config', 'status', 'lowest'] as $field) {
+            if (isset($row[$field], $keys[$row[$field]])) {
+                $row[$field] = __('frontend.install.' . $keys[$row[$field]]);
+            }
+        }
+        return $row;
+    }
+
     /**
      * 安装步骤3.
      */
@@ -581,12 +604,12 @@ class Install extends BaseController
                 $conn = new \PDO($dsn, $post['dbUser'], $post['dbPwd']);
                 $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                 if (version_compare($conn->getAttribute(\PDO::ATTR_SERVER_VERSION), '5.7.0', '<')) {
-                    return $this->success(['code' => -5, 'msg' => 'MySQL 版本过低，需要 5.7.0 或以上版本']);
+                    return $this->success(['code' => -5, 'msg' => __('frontend.install.mysql_too_old')]);
                 }
             } catch (\Exception $e) {
                 Log::error('安装数据库连接失败', ['error' => $e->getMessage()]);
                 $code = $e instanceof \PDOException && isset($e->errorInfo[1]) ? (int) $e->errorInfo[1] : (int) $e->getCode();
-                return $this->success(['code' => $code, 'msg' => '数据库连接失败：' . $e->getMessage()]);
+                return $this->success(['code' => $code, 'msg' => __('frontend.install.database_connection_failed', ['error' => $e->getMessage()])]);
             }
             if ($post['cacheDriver'] == 'redis') {
                 try {
@@ -599,11 +622,11 @@ class Install extends BaseController
                     ]);
                     $response = $client->ping();
                     if (! ($response instanceof Status && $response->getPayload() === 'PONG')) {
-                        return $this->success(['code' => -3, 'msg' => 'Redis 连接失败，请检查配置']);
+                        return $this->success(['code' => -3, 'msg' => __('frontend.install.redis_check_config')]);
                     }
                 } catch (\Exception $e) {
                     Log::error('安装 Redis 连接失败', ['error' => $e->getMessage()]);
-                    return $this->success(['code' => $e->getCode(), 'msg' => 'Redis 连接失败：' . $e->getMessage()]);
+                    return $this->success(['code' => $e->getCode(), 'msg' => __('frontend.install.redis_connection_failed', ['error' => $e->getMessage()])]);
                 }
             }
             /**
@@ -633,7 +656,7 @@ class Install extends BaseController
                 DB::reconnect('mysql');
             } catch (\Throwable $e) {
                 Log::error('安装刷新数据库配置失败', ['error' => $e->getMessage()]);
-                return $this->success(['code' => -6, 'msg' => '刷新数据库配置失败：' . $e->getMessage()]);
+                return $this->success(['code' => -6, 'msg' => __('frontend.install.refresh_database_failed', ['error' => $e->getMessage()])]);
             }
             @shell_exec('php ' . base_path('bin/laravels') . ' reload');
             return $this->success(['code' => 1]);
@@ -669,7 +692,7 @@ class Install extends BaseController
         if (app('request')->isMethod('POST')) {
             $n = (int) app('request')->post('n');
             if ($n >= 99999) {
-                return $this->installError('安装进度参数异常，请刷新后重试');
+                return $this->installError(__('frontend.install.progress_invalid'));
             }
             if ($n < 0) {
                 return $this->success([
@@ -685,11 +708,11 @@ class Install extends BaseController
                 $this->countTotal = $this->getCounts();
             } catch (\Throwable $e) {
                 Log::error('安装读取SQL文件失败', ['error' => $e->getMessage()]);
-                return $this->installError('读取安装SQL文件失败：' . $e->getMessage());
+                return $this->installError(__('frontend.install.read_install_sql_failed', ['error' => $e->getMessage()]));
             }
 
             if ($this->countTotal <= 0) {
-                return $this->installError('安装SQL为空，请检查安装文件是否完整');
+                return $this->installError(__('frontend.install.install_sql_empty'));
             }
 
             if ($n === 0) {
@@ -697,7 +720,7 @@ class Install extends BaseController
                     $this->dropInstallTablesBeforeInit();
                 } catch (\Throwable $e) {
                     Log::error('Failed to drop install tables before initialization.', ['error' => $e->getMessage()]);
-                    return $this->installError('初始化前清理数据表失败：' . $e->getMessage());
+                    return $this->installError(__('frontend.install.cleanup_failed', ['error' => $e->getMessage()]));
                 }
             }
 
@@ -720,7 +743,7 @@ class Install extends BaseController
             return $this->success([
                 'n'    => 99999,
                 'count' => $this->countTotal,
-                'msg'  => '创建企业用户数据成功',
+                'msg'  => __('frontend.install.enterprise_user_created'),
                 'time' => date('Y-m-d H:i:s'),
             ]);
         }
@@ -737,10 +760,10 @@ class Install extends BaseController
         $ip             = $this->get_client_ip();
         $curent_version = $this->getversion();
         if (! $this->installlog()) {
-            return '安装日志写入失败，请检查根目录写入权限。';
+            return __('frontend.install.install_log_failed');
         }
         if (! @touch(public_path('install/install.lock'))) {
-            return '安装锁文件写入失败，请检查 public/install 目录写入权限。';
+            return __('frontend.install.install_lock_failed');
         }
         modify_env([
             'CACHE_PREFIX' => 'TL-' . substr((string) time(), -5, 5),
@@ -778,10 +801,12 @@ class Install extends BaseController
             $dbName = isset($matches[1]) ? $dbPrefix . $matches[1] : '';
             try {
                 DB::unprepared($sql);
-                $message = $dbName ? '创建数据表[' . $dbName . ']完成!' : '';
+                $message = $dbName ? __('frontend.install.table_created', ['name' => $dbName]) : '';
             } catch (\Throwable $exception) {
                 Log::error('安装创建数据表失败', ['n' => $n, 'table' => $dbName, 'error' => $exception->getMessage()]);
-                return $this->installError($dbName ? '创建数据表[' . $dbName . ']失败：' . $exception->getMessage() : '执行SQL失败：' . $exception->getMessage(), $n, $totalCount);
+                return $this->installError($dbName
+                    ? __('frontend.install.table_failed', ['name' => $dbName, 'error' => $exception->getMessage()])
+                    : __('frontend.install.sql_failed', ['error' => $exception->getMessage()]), $n, $totalCount);
             }
             return $this->success([
                 'n'     => $n,
@@ -796,12 +821,12 @@ class Install extends BaseController
             DB::unprepared($sql);
         } catch (\Throwable $exception) {
             Log::error('安装执行初始化SQL失败', ['n' => $n, 'error' => $exception->getMessage()]);
-            return $this->installError('执行初始化SQL失败：' . $exception->getMessage(), $n, $totalCount);
+            return $this->installError(__('frontend.install.sql_failed', ['error' => $exception->getMessage()]), $n, $totalCount);
         }
         return $this->success([
             'n'     => $n,
             'count' => $totalCount,
-            'msg'   => '执行数据库结构SQL完成',
+            'msg'   => __('frontend.install.structure_complete'),
             'time'  => date('Y-m-d H:i:s'),
         ]);
     }
@@ -823,13 +848,13 @@ class Install extends BaseController
             DB::unprepared(prefix_correction($this->readSqlFile($seedFile['path']), get_env('DB_PREFIX') ?: 'eb_'));
         } catch (\Throwable $exception) {
             Log::error('安装执行种子SQL失败', ['n' => $n, 'file' => $seedFile['path'], 'error' => $exception->getMessage()]);
-            return $this->installError('创建[' . $seedFile['name'] . ']失败：' . $exception->getMessage(), $n, $totalCount);
+            return $this->installError(__('frontend.install.seed_failed', ['name' => $seedFile['name'], 'error' => $exception->getMessage()]), $n, $totalCount);
         }
 
         return $this->success([
             'n'     => $n,
             'count' => $totalCount,
-            'msg'   => '创建[' . $seedFile['name'] . ']完成',
+            'msg'   => __('frontend.install.seed_complete', ['name' => $seedFile['name']]),
             'time'  => date('Y-m-d H:i:s'),
         ]);
     }
@@ -842,7 +867,7 @@ class Install extends BaseController
         if (get_env('INIT_DATA')) {
             $file = public_path('install/' . self::OPTIONAL_DEFAULT_SQL);
             if (! is_readable($file)) {
-                throw new \RuntimeException('默认数据文件不可读：' . $file);
+                throw new \RuntimeException(__('frontend.install.file_unreadable', ['file' => $file]));
             }
             DB::unprepared(prefix_correction($this->readSqlFile($file), get_env('DB_PREFIX') ?: 'eb_'));
         }
@@ -860,13 +885,13 @@ class Install extends BaseController
             switch ($taskIndex) {
                 case 0:
                     if (! app()->get(CompanyService::class)->install()) {
-                        return $this->installError('创建企业信息失败', $n, $totalCount);
+                        return $this->installError(__('frontend.install.enterprise_failed'), $n, $totalCount);
                     }
-                    return $this->installProgress($n + 1, $totalCount, '创建企业信息完成');
+                    return $this->installProgress($n + 1, $totalCount, __('frontend.install.enterprise_complete'));
 
                 case 1:
                     $this->createDefaultData();
-                    return $this->installProgress($n + 1, $totalCount, get_env('INIT_DATA') ? '创建默认数据完成' : '跳过默认数据创建');
+                    return $this->installProgress($n + 1, $totalCount, get_env('INIT_DATA') ? __('frontend.install.default_complete') : __('frontend.install.default_skipped'));
 
                 case 2:
                     modify_env([
@@ -874,7 +899,7 @@ class Install extends BaseController
                         'LARAVELS_WEBSOCKET_ENABLE' => true,
                         'QUEUE_CONNECTION'          => 'redis',
                     ]);
-                    return $this->installProgress($n + 1, $totalCount, '写入运行环境配置完成');
+                    return $this->installProgress($n + 1, $totalCount, __('frontend.install.environment_complete'));
 
                 case 3:
                     app()->get(RolesService::class)->initRules();
@@ -886,23 +911,23 @@ class Install extends BaseController
                     Cache::forget('install:config:parsed:v3');
                     Cache::forget('install:schema:parsed:v4');
                     @shell_exec('php ' . base_path('bin/laravels') . ' reload');
-                    return $this->installProgress($n + 1, $totalCount, '初始化角色权限完成');
+                    return $this->installProgress($n + 1, $totalCount, __('frontend.install.roles_complete'));
 
                 case 4:
                     $exitCode = Artisan::call('fix:customer-json-fields', [
                         '--force' => true,
                     ]);
                     if ($exitCode !== 0) {
-                        throw new \RuntimeException(trim(Artisan::output()) ?: '客户JSON字段规整命令执行失败');
+                        throw new \RuntimeException(trim(Artisan::output()) ?: __('frontend.install.customer_json_failed'));
                     }
-                    return $this->installProgress($n + 1, $totalCount, '客户JSON字段规整完成');
+                    return $this->installProgress($n + 1, $totalCount, __('frontend.install.customer_json_complete'));
             }
         } catch (\Throwable $e) {
             Log::error('安装收尾任务失败', ['task' => $taskIndex, 'error' => $e->getMessage()]);
-            return $this->installError($this->finishTaskName($taskIndex) . '失败：' . $e->getMessage(), $n, $totalCount);
+            return $this->installError(__('frontend.install.task_failed', ['task' => $this->finishTaskName($taskIndex), 'error' => $e->getMessage()]), $n, $totalCount);
         }
 
-        return $this->installError('未知安装任务，请刷新后重试', $n, $totalCount);
+        return $this->installError(__('frontend.install.unknown_task'), $n, $totalCount);
     }
 
     /**
@@ -911,12 +936,12 @@ class Install extends BaseController
     private function finishTaskName(int $taskIndex): string
     {
         return match ($taskIndex) {
-            0       => '创建企业信息',
-            1       => '创建默认数据',
-            2       => '写入运行环境配置',
-            3       => '初始化角色权限',
-            4       => '规整客户JSON字段',
-            default => '执行安装任务',
+            0       => __('frontend.install.task_enterprise'),
+            1       => __('frontend.install.task_default'),
+            2       => __('frontend.install.task_environment'),
+            3       => __('frontend.install.task_roles'),
+            4       => __('frontend.install.task_customer_json'),
+            default => __('frontend.install.task_execute'),
         };
     }
 
@@ -954,7 +979,7 @@ class Install extends BaseController
 
         foreach ($files as $file) {
             if (! is_readable($file['path'])) {
-                throw new \RuntimeException('安装种子SQL文件不可读：' . $file['path']);
+                throw new \RuntimeException(__('frontend.install.file_unreadable', ['file' => $file['path']]));
             }
         }
 
@@ -993,12 +1018,12 @@ class Install extends BaseController
     private function readSqlFile(string $file): string
     {
         if (! is_readable($file)) {
-            throw new \RuntimeException('SQL文件不可读：' . $file);
+            throw new \RuntimeException(__('frontend.install.file_unreadable', ['file' => $file]));
         }
 
         $content = file_get_contents($file);
         if ($content === false) {
-            throw new \RuntimeException('SQL文件读取失败：' . $file);
+            throw new \RuntimeException(__('frontend.install.read_install_sql_failed', ['error' => $file]));
         }
 
         return $content;
@@ -1104,10 +1129,10 @@ class Install extends BaseController
     private function installSqlDisplayName(string $fileName): string
     {
         return match ($fileName) {
-            'config.sql'  => '系统配置数据',
-            'dict.sql'    => '默认数据字典',
-            'crud.sql'    => '默认实体模型数据',
-            'develop.sql' => '默认开发模块数据',
+            'config.sql'  => __('frontend.install.sql_config'),
+            'dict.sql'    => __('frontend.install.sql_dict'),
+            'crud.sql'    => __('frontend.install.sql_crud'),
+            'develop.sql' => __('frontend.install.sql_develop'),
             default       => pathinfo($fileName, PATHINFO_FILENAME),
         };
     }
@@ -1138,45 +1163,46 @@ class Install extends BaseController
      */
     private function validateInstallConfig(array $post): ?array
     {
-        foreach (['dbHost' => '数据库服务器不能为空', 'dbPort' => '数据库端口不能为空', 'dbUser' => '数据库用户名不能为空', 'dbName' => '数据库名不能为空'] as $key => $message) {
+        foreach (['dbHost' => 'database_host', 'dbPort' => 'database_port', 'dbUser' => 'database_user', 'dbName' => 'database_name'] as $key => $labelKey) {
             if ($post[$key] === '') {
-                return ['code' => -10, 'field' => $key, 'msg' => $message];
+                $field = rtrim(__('frontend.install.' . $labelKey), ':：');
+                return ['code' => -10, 'field' => $key, 'msg' => __('frontend.install.required_field', ['field' => $field])];
             }
         }
         if (! ctype_digit($post['dbPort']) || (int) $post['dbPort'] < 1 || (int) $post['dbPort'] > 65535) {
-            return ['code' => -10, 'field' => 'dbPort', 'msg' => '数据库端口必须是 1-65535 的数字'];
+            return ['code' => -10, 'field' => 'dbPort', 'msg' => __('frontend.install.invalid_database_port')];
         }
         if (! preg_match('/^[A-Za-z0-9_]+$/', $post['dbName'])) {
-            return ['code' => -10, 'field' => 'dbName', 'msg' => '数据库名只能包含字母、数字和下划线'];
+            return ['code' => -10, 'field' => 'dbName', 'msg' => __('frontend.install.invalid_database_name')];
         }
         if (! preg_match('/^[A-Za-z][A-Za-z0-9_]*_$/', $post['dbPrefix'])) {
-            return ['code' => -10, 'field' => 'dbPrefix', 'msg' => '数据表前缀需以字母开头、以下划线结尾，仅支持字母数字下划线'];
+            return ['code' => -10, 'field' => 'dbPrefix', 'msg' => __('frontend.install.invalid_database_prefix')];
         }
         if (! in_array($post['cacheDriver'], ['redis'], true)) {
-            return ['code' => -10, 'field' => 'cacheDriver', 'msg' => '当前安装流程仅支持 Redis 缓存'];
+            return ['code' => -10, 'field' => 'cacheDriver', 'msg' => __('frontend.install.redis_only')];
         }
         $adminAccount = preg_replace('/[\s()\-]/', '', $post['account']);
         if (! preg_match('/^\+?[1-9]\d{6,14}$/', $adminAccount)) {
-            return ['code' => -2, 'field' => 'account', 'msg' => '管理员手机号格式不正确'];
+            return ['code' => -2, 'field' => 'account', 'msg' => __('frontend.install.invalid_admin_mobile')];
         }
         $post['account'] = $adminAccount;
         if (strlen($post['password']) < 6) {
-            return ['code' => -10, 'field' => 'password', 'msg' => '管理员密码至少需要 6 个字符'];
+            return ['code' => -10, 'field' => 'password', 'msg' => __('frontend.install.admin_password_min')];
         }
         if (! hash_equals($post['password'], $post['checkPass'])) {
-            return ['code' => -10, 'field' => 'checkPass', 'msg' => '两次输入的管理员密码不一致'];
+            return ['code' => -10, 'field' => 'checkPass', 'msg' => __('frontend.install.admin_password_mismatch')];
         }
         if ($post['rbHost'] === '') {
-            return ['code' => -10, 'field' => 'rbHost', 'msg' => 'Redis 服务器地址不能为空'];
+            return ['code' => -10, 'field' => 'rbHost', 'msg' => __('frontend.install.redis_host_required')];
         }
         if (! ctype_digit($post['rbPort']) || (int) $post['rbPort'] < 1 || (int) $post['rbPort'] > 65535) {
-            return ['code' => -10, 'field' => 'rbPort', 'msg' => 'Redis 端口必须是 1-65535 的数字'];
+            return ['code' => -10, 'field' => 'rbPort', 'msg' => __('frontend.install.invalid_redis_port_backend')];
         }
         if (! ctype_digit($post['rbNum']) || (int) $post['rbNum'] < 0 || (int) $post['rbNum'] > 15) {
-            return ['code' => -10, 'field' => 'rbNum', 'msg' => 'Redis 数据库编号必须是 0-15 的数字'];
+            return ['code' => -10, 'field' => 'rbNum', 'msg' => __('frontend.install.invalid_redis_database_backend')];
         }
         if (! is_readable(base_path('.env')) || ! is_writable(base_path('.env'))) {
-            return ['code' => -10, 'field' => 'dbName', 'msg' => '.env 文件不可读写，请检查文件权限'];
+            return ['code' => -10, 'field' => 'dbName', 'msg' => __('frontend.install.env_permissions')];
         }
 
         return null;

@@ -93,14 +93,14 @@
           </template>
         </el-table-column>
         <!-- 是否必填 -->
-        <el-table-column :label="$t('ui.customerSetupCustomFormIndexRequired')" prop="required">
+        <el-table-column :label="$t('ui.customerSetupCustomFormIndexRequired')" prop="required" min-width="145">
           <template slot-scope="scope">
             <el-switch
               v-model="scope.row.required"
               :active-value="1"
               :inactive-value="0"
-              active-text="必填"
-              inactive-text="选填"
+:active-text="$t('ui.developForeignDocumentRequired')"
+:inactive-text="$t('ui.customerSetupCustomFormIndexOptional')"
             />
           </template>
         </el-table-column>
@@ -112,8 +112,8 @@
               :active-value="1"
               :disabled="contractList.includes(row.key)"
               :inactive-value="0"
-              active-text="唯一"
-              inactive-text="重复"
+:active-text="$t('ui.customerSetupCustomFormIndexUnique')"
+:inactive-text="$t('ui.customerSetupCustomFormIndexDuplicate')"
             />
           </template>
         </el-table-column>
@@ -247,8 +247,8 @@
               :active-value="1"
               :disabled="row.enable_delete !== 1"
               :inactive-value="0"
-              active-text="启用"
-              inactive-text="停用"
+:active-text="$t('ui.settingAuthAdminIndexEnabled2')"
+:inactive-text="$t('ui.customerSetupCustomFormIndexDisabled')"
             />
           </template>
         </el-table-column>
@@ -338,7 +338,7 @@ export default {
         type: 'add',
         width: '500px',
         labelWidth: '80px',
-        btnText: '确定'
+        btnText: i18n.t('ui.formCommonDialogFormOk')
       },
       clueList: [],
       formConfig: [],
@@ -548,9 +548,11 @@ export default {
 
     // 删除
     deleteFn(row, index) {
-      this.$modalSure('你确定要删除这条数据吗').then(() => {
-        this.dataList[index].data.splice(row.$index, 1)
-      })
+    this.$modalSure(
+      this.$ts("你确定要删除这条数据吗")
+    ).then(() => {
+      this.dataList[index].data.splice(row.$index, 1)
+    })
     },
 
     // 修改分组状态

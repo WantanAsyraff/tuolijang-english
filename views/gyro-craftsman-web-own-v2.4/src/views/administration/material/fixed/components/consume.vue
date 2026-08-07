@@ -127,7 +127,7 @@ export default {
       fromData1: {
         width: '500px',
         title: i18n.t('legacyScript.batchMoveMaterialCategories'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '80px',
         type: ''
       },

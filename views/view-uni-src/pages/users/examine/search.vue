@@ -24,7 +24,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { ref, reactive, onMounted, getCurrentInstance } from 'vue'
 import message from '@/utils/message'
 import examineListDefault from './components/examineListDefault.vue'
@@ -35,7 +36,7 @@ const data = reactive({
   tabIndex: 0,
   examineTabData: [],
   listData: [],
-  emptyTitle: '暂无搜索结果～',
+  emptyTitle: appI18n.global.t('ui.customerAddressSearchIndexNoSearchResults'),
   where: {
     limit: 10,
     page: 1,

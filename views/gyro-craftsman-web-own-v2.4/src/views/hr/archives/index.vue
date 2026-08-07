@@ -123,7 +123,7 @@ export default {
       fromData: {
         width: '600px',
         title: i18n.t('legacyScript.processResignation'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '90px',
         type: ''
       },

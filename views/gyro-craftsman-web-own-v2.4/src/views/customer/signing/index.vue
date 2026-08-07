@@ -2,7 +2,7 @@
 <div class="divBox">
 
     <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
-        <oaFromBox :title="$route.meta.title" btnText="添加合同" :isAddBtn="false" :treeData="treeDataGroup" :treeDefault="treeDefault"
+        <oaFromBox :title="$route.meta.title" :btn-text="$t('ui.customerListSignAddContract')" :isAddBtn="false" :treeData="treeDataGroup" :treeDefault="treeDefault"
             :search="search" :isViewSearch="false" :total="total" ref="fromBox" @addDataFn="addContract"
             @confirmData="confirmData" @treeChange="treeChange"></oaFromBox>
         <div class="flex-layout-table">
@@ -225,7 +225,7 @@ export default {
             fromData: {
                 width: '500px',
                 title: i18n.t('ui.customerListSignSignEntry'),
-                btnText: '确定',
+                btnText: i18n.t('ui.formCommonDialogFormOk'),
                 labelWidth: '100px',
                 type: 'slot'
             },

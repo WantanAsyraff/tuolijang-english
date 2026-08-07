@@ -14,7 +14,7 @@
         :whereData="where"
         :timeSearchObj="timeSearchObj"
         ref="fromBox"
-        btnText="添加线索"
+:btn-text="$t('ui.customerClueIndexAddLead')"
         @addDataFn="addDataFn"
         @confirmData="confirmData"
         @dropdownFn="dropdownFn"

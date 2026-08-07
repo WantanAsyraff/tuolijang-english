@@ -35,31 +35,32 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import defaultNavBar from "@/components/defaultNavBar/index";
 import bottomNavigation from "@/components/bottomNavigation/index.vue";
 import globalIndex from "@/components/globalIndex/index.vue";
 import { reactive } from "vue";
 const listData = reactive([{
   backgroundImage: "/static/image/report01.png",
-  title: "日报",
+  title: appI18n.global.t('ui.usersReportIndexDaily'),
   caption: "每日沉淀与总结",
   id: 0
 },
 {
   backgroundImage: "/static/image/report02.png",
-  title: "周报",
+  title: appI18n.global.t('ui.usersReportIndexWeekly'),
   caption: "每周回顾与规划",
   id: 1
 },
 {
   backgroundImage: "/static/image/report03.png",
-  title: "月报",
+  title: appI18n.global.t('ui.usersReportIndexMonthly'),
   caption: "每月重温与展望",
   id: 2
 }, {
   backgroundImage: "/static/image/report04.png",
-  title: "汇报",
+  title: appI18n.global.t('ui.usersReportIndexReport'),
   caption: "工作汇报与总结",
   id: 3
 },

@@ -147,7 +147,7 @@
           :eid="data.detail.eid"
           :cid="data.id"
           :name="data.detail.client ? data.detail.client.name : ''"
-          empty-title="暂无申请发票，快去申请吧～"
+          :empty-title="$t('ui.customerContractDetailsNoInvoiceApplicationsYetApplyNow')"
         >
         </invoice-list>
         <view class="footer-text" v-if="data.invoiceList.length > 0 && data.invoiceCount <= data.invoiceList.length"> {{ $t('ui.customerListFollowRecordNoMore') }} </view>
@@ -165,7 +165,7 @@
           direction="column"
           :active="0"
           :list-data="data.fileList"
-          empty-title="暂无上传资料～"
+          :empty-title="$t('ui.customerContractDetailsNoUploadedDocuments')"
         ></file-record>
       </view>
     </view>
@@ -192,7 +192,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from '@/components/defaultNavBar/index'
 import empty from '@/components/empty/index.vue'
 import ProductList from '@/pages/customer/opportunity/components/product-list.vue'
@@ -511,7 +512,7 @@ const dropDownItem = (e) => {
   }
   if (e.id === 3) {
     let cid = data.id
-    showModal('您确定要删除该订单吗')
+    showModal(appI18n.global.t('ui.customerContractDetailsDeleteThisOrder'))
       .then(() => {
         contractDeleteApi(cid)
           .then((res) => {

@@ -7,7 +7,7 @@
         :key="'a' + idx"
         :title="getTitle()+ (Object.keys(cacheRule).indexOf(idx) + 1)"
         type="info"
-        close-text="删除"
+:close-text="$t('ui.chatIndexDelete')"
         @close="del(idx)"
       />
       <div v-if="formCreateInject.preview" class="num">{{ getTitle() + (Object.keys(cacheRule).indexOf(idx) + 1) }}</div>
@@ -90,7 +90,7 @@ export default {
   },
   methods: {
     getTitle() {
-      return this.formCreateInject.rule.title?this.formCreateInject.rule.title:'明细'
+      return this.formCreateInject.rule.title?this.formCreateInject.rule.title:this.$ts('审批单明细')
     },
     cache(k, val) {
       this.cacheValue[k] = JSON.stringify(val)

@@ -47,7 +47,7 @@
                 </el-form-item>
                 <el-form-item :label='$ts("字段唯一：")' prop="is_uniqid" v-if="form.value == 'input'">
                     <el-switch v-model="form.is_uniqid" size="small" active-value="1" inactive-value="0"
-                        active-text="开启" inactive-text="关闭">
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
                     </el-switch>
                 </el-form-item>
                 <el-form-item :label='$ts("新增时：")' prop="create_modify">
@@ -101,7 +101,7 @@ export default {
             fromData: {
                 width: '600px',
                 title: i18n.t('ui.developCrudFieldSettingNewField'),
-                btnText: '确定',
+                btnText: i18n.t('ui.formCommonDialogFormOk'),
                 labelWidth: '100px',
                 type: 'slot'
             },

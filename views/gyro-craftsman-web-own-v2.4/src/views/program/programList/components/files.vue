@@ -33,11 +33,11 @@
     ></el-input>
     <el-date-picker
       v-model="timeVal"
-      end-placeholder="上传时间"
+:end-placeholder="$t('ui.uploadPictureIndexUploadTime')"
       format=" yyyy/MM/dd"
-      range-separator="至"
+:range-separator="$t('ui.commonFormListTo')"
       size="small"
-      start-placeholder="上传时间"
+:start-placeholder="$t('ui.uploadPictureIndexUploadTime')"
       style="width: 250px"
       type="daterange"
       value-format="yyyy/MM/dd"

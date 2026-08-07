@@ -257,7 +257,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { commonCityApi } from '@/api/customer'
 import { ref, reactive, toRefs, onMounted } from 'vue'
 import message from '@/utils/message'
@@ -528,7 +529,7 @@ const submit = (callback) => {
       datas.type === 'timeFrom' &&
       (!datas.value || !datas.value.dateEnd || !datas.value.dateStart || !datas.value.timeEnd || !datas.value.timeStart)
     ) {
-      message.error('请选择时间')
+      message.error(appI18n.global.t('ui.examineFormIndexPleaseSelectTime'))
       return false
       break
     }

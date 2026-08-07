@@ -21,7 +21,7 @@
                 :dropdownList="dropdownList"
                 :isViewSearch="false"
 :title="$t('ui.customerQuickReplyIndexQuickRepliesList')"
-                btnText="新增快捷回复"
+:btn-text="$t('ui.customerQuickReplyAddReplyAddQuickReplies')"
                 @dropdownFn="dropdownFn"
                 @addDataFn="handleNews"
                 @confirmData="confirmData"

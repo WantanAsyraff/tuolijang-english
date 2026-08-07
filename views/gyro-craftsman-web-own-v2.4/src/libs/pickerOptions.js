@@ -1,4 +1,5 @@
 import i18n from '@/lang'
+
 //日历搜索快捷键
 export default {
   shortcuts: [
@@ -20,7 +21,7 @@ export default {
       },
     },
     {
-      text: i18n.t('hr.month'),
+      text: i18n.t('toptable.thismonth'),
       onClick(picker) {
         const start = new Date();
         const end = new Date();

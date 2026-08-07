@@ -138,7 +138,7 @@ export default {
   data() {
     const validCascader = (rule, value, callback) => {
       if (this.form.labelId.length == 0) {
-        callback(new Error('请选择替换标签'))
+        callback(new Error(this.$ts('请选择替换标签')))
       } else {
         callback()
       }

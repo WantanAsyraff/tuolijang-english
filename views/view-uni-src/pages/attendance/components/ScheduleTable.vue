@@ -12,7 +12,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import ScheduleTableHeader from './ScheduleTableHeader.vue';
 import ScheduleTableAside from './ScheduleTableAside.vue';
 import ScheduleTableBody from './ScheduleTableBody.vue';
@@ -65,7 +66,7 @@ const handleTableClick = (e: any) => {
 
     const isPrevDate = moment(selectMinFullDate).isBefore(moment(), "day");
     if (isPrevDate) {
-      message.error("不能选择之前的日期", 'none');
+      message.error(appI18n.global.t('ui.attendanceScheduleFilterBarPastDatesCannotBeSelected'), 'none');
       return;
     }
   }

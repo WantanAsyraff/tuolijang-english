@@ -329,13 +329,13 @@
           </div>
           <div v-if="from.is_external" class="mb20 pl24">
             <span
-              >{{ $t("ui.hrAttendanceSettingAddConentOffSiteClockInRemarksAreRequired") }}<el-switch v-model="from.is_external_note" active-text="开启" inactive-text="关闭">
+              >{{ $t("ui.hrAttendanceSettingAddConentOffSiteClockInRemarksAreRequired") }}<el-switch v-model="from.is_external_note" :active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
               </el-switch
             ></span>
           </div>
           <div v-if="from.is_external" class="pl24">
             <span
-              >{{ $t("ui.hrAttendanceSettingAddConentPhotosAreRequiredForOffSiteClockIns") }}<el-switch v-model="from.is_external_photo" active-text="开启" inactive-text="关闭">
+              >{{ $t("ui.hrAttendanceSettingAddConentPhotosAreRequiredForOffSiteClockIns") }}<el-switch v-model="from.is_external_photo" :active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
               </el-switch
             ></span>
           </div>

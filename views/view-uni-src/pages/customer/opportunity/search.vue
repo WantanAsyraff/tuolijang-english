@@ -18,7 +18,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
   import { ref, reactive } from "vue";
   import message from "@/utils/message";
   import OpportunityList from "./components/opportunity-list.vue";
@@ -31,10 +32,10 @@
   const data = reactive({
     typeIndex: 0,
     tabIndex: 0,
-    placeholder: "搜索商机名称",
+    placeholder: appI18n.global.t('ui.customerOpportunitySearchSearchOpportunityName'),
     examineTabData: opportunityExamineTabConfig,
     listData: [],
-    emptyTitle: "暂无搜索结果～",
+    emptyTitle: appI18n.global.t('ui.customerAddressSearchIndexNoSearchResults'),
     eid: '',
     where: {
       limit: 10,

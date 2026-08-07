@@ -150,7 +150,8 @@
   </BaseContainer>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import BaseContainer from '@/components/BaseContainer/index.vue'
 import defaultNavBar from '@/components/defaultNavBar/index.vue'
 import tabbar from '@/components/tabbar/index.vue'
@@ -188,32 +189,32 @@ const data = reactive({
   list: [
     {
       icon: 'icon-yeji-zongshouru',
-      title: '总收入(元)',
+      title: appI18n.global.t('ui.customerListStatisticsTotalIncomeYuan'),
       num: 0,
     },
     {
       icon: 'icon-yeji-xinzengkehu',
-      title: '新增客户',
+      title: appI18n.global.t('ui.customerListStatisticsAddCustomer'),
       num: 0,
     },
     {
       icon: 'icon-yeji-xinzenghetong',
-      title: '新增订单',
+      title: appI18n.global.t('ui.customerListStatisticsAddOrder'),
       num: 0,
     },
     {
       icon: 'icon-yeji-xinzenghetonge',
-      title: '新增订单金额(元)',
+      title: appI18n.global.t('ui.customerListStatisticsNewContractAmountYuan'),
       num: 0,
     },
     {
       icon: 'icon-yeji-xinzenghetonge',
-      title: '订单续费金额(元)',
+      title: appI18n.global.t('ui.customerListStatisticsOrderRenewalAmountCny'),
       num: 0,
     },
     {
       icon: 'icon-a-yeji-weihuikuanxufei',
-      title: '至今未回款(元)',
+      title: appI18n.global.t('ui.customerListStatisticsOutstandingPaymentToDateCny'),
       num: 0,
     },
   ],
@@ -224,7 +225,7 @@ const data = reactive({
   },
   totalData: 0,
   timeText: '本月',
-  btnText: '本部门',
+  btnText: appI18n.global.t('ui.departmentPopupIndexThisDepartment'),
   active: '订单分类',
   active2: '产品分类',
   activeId: '',

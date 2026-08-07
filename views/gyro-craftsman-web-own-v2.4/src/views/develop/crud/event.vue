@@ -480,310 +480,8 @@
   </el-drawer>
 </div>
 </template>
-<script>
-                    <!-- 发送通知 -->
-                    <template v-if="info.event === 'send_notice'">
-                      <el-form-item label="接受人员">
-                        <select-member
-                          :value="userList || []"
-                          :placeholder="`选择成员`"
-                          @getSelectList="getSelectList"
-                          style="width: 100%"
-                        ></select-member>
-                      </el-form-item>
-                      <!-- <el-form-item label="通知类型" class="mt14">
-                        <el-checkbox-group v-model="notify_type">
-                          <el-checkbox :label="0">通知</el-checkbox>
-                        </el-checkbox-group>
-                      </el-form-item> -->
-                      <el-form-item label="推送标题" class="mt14">
-                        <el-input
-                          class="textPosition"
-                          placeholder="请输入推送标题"
-                          @input="onInput"
-                          v-model="form.title"
-                        >
-                        </el-input>
-                        <el-popover placement="left" trigger="hover">
-                          <div class="field-box">
-                            <div
-                              class="field-text over-text"
-                              v-for="(item, index) in field"
-                              :key="index"
-                              @click="handleClick(item, 1)"
-                            >
-                              {{ item.label }}
-                            </div>
-                          </div>
-                          <span class="el-icon-chat-dot-square icon" slot="reference"></span>
-                        </el-popover>
-                        <div class="prompt mt14">
-                          标题支持字段变量，如 <span class="color-file">{createdOn}</span> (其中 createdOn
-                          为源实体的字段内部标识)
-                        </div>
-                      </el-form-item>
-                    </template>
-                    <el-form-item
-                      v-if="['send_notice', 'data_check'].includes(info.event)"
-                      :label="info.event == 'data_check' ? '提示内容' : '推送内容'"
-                      class="mt14"
-                    >
-                      <el-input
-                        class="textPosition"
-                        type="textarea"
-                        :rows="3"
-                        placeholder="请输入推送内容"
-                        v-model="form.template"
-                      >
-                      </el-input>
-                      <span class="prompt"
-                        >校验未通过时的提示内容。内容支持字段变量，如 <span class="color-file">{createdOn} </span>(其中
-                        createdOn 为源实体的字段内部标识)</span
-                      >
+<script>import appI18n from '@/lang';
 
-                      <el-popover placement="left" trigger="hover">
-                        <div class="field-box">
-                          <div
-                            class="field-text over-text"
-                            v-for="(item, index) in field"
-                            :key="index"
-                            @click="handleClick(item)"
-                          >
-                            {{ item.label }}
-                          </div>
-                        </div>
-                        <span class="el-icon-chat-dot-square icon" slot="reference"></span>
-                      </el-popover>
-                    </el-form-item>
-                    <el-form-item>
-                      <el-table
-                        v-if="info.event == 'send_notice'"
-                        ref="multipleTable"
-                        :data="messagePushData"
-                        @selection-change="handleSelectionChange"
-                      >
-                        <el-table-column type="selection"></el-table-column>
-                        <el-table-column label="推送渠道 " width="150">
-                          <template slot-scope="scope">
-                            <img :src="scope.row.icon" alt="" class="img" />
-                          </template>
-                        </el-table-column>
-                        <el-table-column label="显示名称" prop="name" width="150"> </el-table-column>
-                        <el-table-column label="操作">
-                          <template slot-scope="scope" v-if="scope.row.status !== 'system_status'">
-                            <el-input
-                              v-model="form[scope.row.key]"
-                              :placeholder="scope.row.placeholder"
-                              size="small"
-                              style="width: 350px"
-                            ></el-input>
-                          </template>
-                        </el-table-column>
-                      </el-table>
-                    </el-form-item>
-                    <!-- 发送通知 -->
-
-                    <!-- 自动审核 -->
-                    <el-form-item
-                      label="选择审批流程"
-                      v-if="['auto_revoke_approve', 'auto_approve'].includes(info.event)"
-                    >
-                      <el-select
-                        size="small"
-                        v-model="form.crud_approve_id"
-                        :placeholder="info.event === 'auto_approve' ? '请选择审批流程' : '请搜索选择关联撤销记录'"
-                        style="width: 300px"
-                      >
-                        <el-option v-for="(item, index) in approval" :key="index" :label="item.name" :value="item.id">
-                        </el-option>
-                      </el-select>
-                      <div class="prompt mt14">
-                        {{
-                          info.event === 'auto_approve'
-                            ? $t('ui.developCrudEventAddAnApprovalProcessBeforeSelectingOneHere')
-                            : $t('ui.developCrudEventTheSourceEntityRecordOrAnotherRelatedRecordCan')
-                        }}
-                      </div>
-                    </el-form-item>
-                    <!-- 自动审核 -->
-                    <!-- 日程待办 -->
-                    <template v-if="info.event === 'to_do_schedule'">
-                      <to-do-schedule ref="toDoSchedule" :data="form.options" :options="relatedData"></to-do-schedule>
-                    </template>
-                    <!-- 日程待办 -->
-
-                    <!-- 获取数据 -->
-                    <template v-if="info.event === 'get_data' || info.event === 'push_data'">
-                      <el-form-item label="链接地址">
-                        <el-select
-                          size="small"
-                          v-model="form.curl_id"
-                          filterable
-                          placeholder="链接地址"
-                          style="width: 300px"
-                        >
-                          <el-option v-for="item in dataList" :key="item.id" :label="item.title" :value="item.id">
-                          </el-option>
-                        </el-select>
-                        <div class="mb14">
-                          <el-button
-                            v-if="info.event == 'get_data'"
-                            type="primary"
-                            :loading="curlLoading"
-                            size="small"
-                            class="mt10"
-                            @click="crudSendFn(1)"
-                            >测试请求</el-button
-                          >
-                        </div>
-                        <div v-if="info.event == 'get_data'" class="prompt mb20">
-                          注意：必须执行完测试请求之后，源字段中才会有对应的数据
-                        </div>
-                      </el-form-item>
-                    </template>
-                    <!-- 获取数据 -->
-
-                    <!-- 字段更新/聚合 -->
-                    <el-form-item
-                      label="目标实体"
-                      v-if="
-                        [
-                          'field_update',
-                          'field_aggregate',
-                          'group_aggregate',
-                          'auto_create',
-                          'get_data',
-                          'push_data'
-                        ].includes(info.event)
-                      "
-                    >
-                      <el-select
-                        size="small"
-                        v-model="form.target_crud_id"
-                        filterable
-                        placeholder="应用实体名称"
-                        style="width: 300px"
-                        @change="changeTargetCrudId"
-                      >
-                        <el-option
-                          v-for="(item, index) in targetEntity"
-                          :key="index"
-                          :label="item.table_name"
-                          :value="item.id"
-                        >
-                        </el-option>
-                      </el-select>
-                    </el-form-item>
-                    <el-form-item label="聚合目标条件" class="mt14" v-if="info.event === 'group_aggregate'">
-                      <div class="default-color pointer fz-12">
-                        <span @click="OpenSettings('aggregate_target_search')">
-                          {{
-                            form.aggregate_target_search && form.aggregate_target_search.length > 0
-                              ? $t('ui.developCrudEventConditionsSet') + form.aggregate_target_search.length + '）'
-                              : $t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
-                          }}</span
-                        >
-                      </div>
-                      <div class="prompt">仅会聚合到符合条件的数据上</div>
-                    </el-form-item>
-
-                    <el-form-item label="重复数据处理" class="mt14" v-if="info.event === 'get_data'">
-                      <el-radio-group v-model="form.options.is_skip_value">
-                        <el-radio :label="`0`">跳过</el-radio>
-                        <el-radio :label="`1`">更新</el-radio>
-                      </el-radio-group>
-                    </el-form-item>
-                    <!-- 动态更新渲染组件 -->
-                    <template
-                      v-if="
-                        [
-                          'field_update',
-                          'field_aggregate',
-                          'group_aggregate',
-                          'auto_create',
-                          'get_data',
-                          'push_data'
-                        ].includes(info.event)
-                      "
-                    >
-                      <updateContent
-                        :type="info.event"
-                        :list="getOptions(info.event)"
-                        :groupList="groupList"
-                        :options="options"
-                        :uniqidOptions="uniqidOptions"
-                        :groupField="groupField"
-                        :targetField="targetField"
-                        :action="action"
-                        :field="field"
-                        ref="updateContent"
-                    /></template>
-
-                    <el-form-item
-                      label="聚合数据条件"
-                      class="mt14"
-                      v-if="info.event === 'field_aggregate' || info.event === 'group_aggregate'"
-                    >
-                      <div class="default-color pointer fz-12">
-                        <span @click="OpenSettings('aggregate_data_search')">
-                          {{
-                            form.aggregate_data_search && form.aggregate_data_search.length > 0
-                              ? $t('ui.developCrudEventConditionsSet') + form.aggregate_data_search.length + '）'
-                              : $t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
-                          }}</span
-                        >
-                      </div>
-                      <div class="prompt">仅会聚合到符合过滤条件的数据上</div>
-                    </el-form-item>
-                  </el-form>
-                </div>
-              </el-form-item>
-              <!-- 字段更新/聚合 -->
-              <el-form-item label="执行优先级">
-                <el-input-number v-model="form.sort" :min="0" size="small" style="width: 220px"></el-input-number>
-                <div class="prompt mt14">优先级高（数字大）的会被先执行，优先级相等的先执行创建早的触发器</div>
-              </el-form-item>
-            </el-form>
-          </div>
-        </el-timeline-item>
-      </el-timeline>
-    </div>
-    <!-- 内容 -->
-
-    <!-- 测试请求数据回显 -->
-    <el-dialog title="请求数据" :visible.sync="isRequest" width="50%">
-      <json-viewer style="height: 600px; width: 100%" :value="jsonData" :expand-depth="8" copyable></json-viewer>
-    </el-dialog>
-
-    <!-- 指定字段更新 -->
-    <checkbox-dialog
-      ref="checkboxDialog"
-      :name="name"
-      :showName="showName"
-      :title="`指定字段`"
-      :type="`view`"
-      @getData="getData"
-    ></checkbox-dialog>
-    <!-- 条件设置弹窗 -->
-    <el-drawer
-      size="650px"
-      direction="rtl"
-      title="条件设置"
-      :append-to-body="true"
-      :wrapperClosable="false"
-      class="condition_copyer"
-      :visible.sync="$store.state.business.conditionDialog"
-    >
-      <condition-dialog
-        :id="String(crud_id)"
-        :eventStr="`event`"
-        :additionalBoolean="additional_boolean"
-        v-if="$store.state.business.conditionDialog"
-      />
-    </el-drawer>
-  </div>
-</template>
-<script>
 import JsonViewer from 'vue-json-viewer'
 import Commnt from './components/commonData'
 
@@ -1071,7 +769,7 @@ export default {
       if (this.info.event === 'send_notice') {
         this.form.send_user = []
         if (this.userList.length == 0) {
-          return this.$message.error('请先添加成员')
+          return this.$message.error(appI18n.t('ui.developCrudEventPleaseAddMembers'))
         }
         this.userList.map((item) => {
           this.form.send_user.push(item.id)
@@ -1091,10 +789,10 @@ export default {
 
       this.form.action = this.action
       if (!this.form.name) {
-        return this.$message.error('触发器名称不能为空')
+        return this.$message.error(appI18n.t('ui.developCrudEventTriggerNameIsRequired'))
       }
       if (!this.form.action) {
-        return this.$message.error('触发动作不能为空')
+        return this.$message.error(appI18n.t('ui.developCrudEventTriggerActionIsRequired'))
       }
       if (this.additional_Type === 'testOptions') {
         this.form.options = {
@@ -1162,7 +860,7 @@ export default {
     // 发送请求
     crudSendFn(val) {
       this.field = []
-      if (!this.form.curl_id) return this.$message.error('链接地址不能为空')
+      if (!this.form.curl_id) return this.$message.error(appI18n.t('ui.developCrudEventLinkAddressIsRequired'))
       this.curlLoading = true
       crudSendApi(this.form.curl_id).then((res) => {
         if (res.status == 200) {
@@ -1267,7 +965,7 @@ export default {
         this.relatedData = res.data
         this.targetEntity = res.data.list
         this.options = res.data.update_type
-        this.uniqidOptions = [{ label: '字段值', value: 'field_value' }]
+        this.uniqidOptions = [{ label: appI18n.t('ui.developCrudEventFieldValue'), value: 'field_value' }]
         this.field = res.data.field
         this.approval = res.data.approve
         this.getInfo()
@@ -1324,7 +1022,7 @@ export default {
             return !['approve_create', 'timer'].includes(item.value)
           })
         } else if (this.info.event == 'get_data') {
-          this.actionList = [{ label: '定期执行', value: 'timer' }]
+          this.actionList = [{ label: appI18n.t('ui.developCrudEventScheduledExecution'), value: 'timer' }]
 
           this.form.curl_id = this.form.curl_id == 0 ? '' : this.form.curl_id
           this.getDataList()

@@ -10,7 +10,7 @@
         :treeData="treeData"
         :isViewSearch="false"
         ref="fromBox"
-        btnText="添加群发"
+:btn-text="$t('ui.customerWeChatMassClientGroupChatAddMassSend')"
         @addDataFn="addDataFn"
         @treeChange="treeChange"
         @confirmData="confirmData"

@@ -8,7 +8,7 @@
         :search="search"
         :sortSearch="false"
         :title="$route.meta.title"
-        btnText="新增分类"
+:btn-text="$t('ui.fdSetupCateIndexAddCategory')"
         @addDataFn="addFinance"
         @confirmData="confirmData"
       ></oaFromBox>
@@ -118,7 +118,7 @@ export default {
         {
           form_value: 'input',
           field_name_en: 'name',
-          field_name: '账目分类'
+          field_name: this,$ts('账目分类')
         }
       ]
     }

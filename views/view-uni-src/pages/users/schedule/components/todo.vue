@@ -39,7 +39,8 @@
     <todoTypePopup ref="todoTypePopupRef" :typeList="data.typeList" @change="onTypeChange"></todoTypePopup>
   </view>
 </template>
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { todoListApi, todoViewApi } from '@/api/user'
 import { ref, reactive, onMounted } from 'vue'
 import todoTypePopup from './todoTypePopup.vue'
@@ -48,7 +49,7 @@ const todoTypePopupRef = ref(null)
 import message from '@/utils/message'
 
 const data = reactive({
-  title: '全部待办',
+  title: appI18n.global.t('ui.usersScheduleTodoAllToDos'),
   num: 0,
   typeList: [],
   where: {
@@ -165,7 +166,7 @@ const scheduleItem = (item) => {
   } else if (['assess_appeal', 'assess_check', 'assess_self'].includes(item.type)) {
     clickNavigateTo(`/pages/users/assessment/default?id=${item.source_id}`)
   } else {
-    message.error('移动端暂不支持此类待办')
+    message.error(appI18n.global.t('ui.usersScheduleTodoThisTaskTypeIsNotSupportedOnMobile'))
   }
 }
 

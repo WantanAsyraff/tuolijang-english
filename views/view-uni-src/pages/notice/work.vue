@@ -18,13 +18,14 @@
       </view>
     </view>
     <view class="notice-content">
-      <work-list :list-data="data.listData" empty-title="暂无待处理任务～" />
+      <work-list :list-data="data.listData" :empty-title="$t('ui.noticeWorkNoTasksToProcess')" />
     </view>
     <global-index />
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import workList from "./components/workList.vue";
 import globalIndex from "@/components/globalIndex/index.vue";
@@ -98,7 +99,7 @@ const listLoading = ref(false);
 const getMessageList = (tab = false) => {
   if (tab) {
     uni.showLoading({
-      title: "加载中"
+      title: appI18n.global.t('ui.customerContractIndexLoading')
     });
   }
   messageListApi(data.where).then((res) => {

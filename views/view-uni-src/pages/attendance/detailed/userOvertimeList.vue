@@ -75,7 +75,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import {
   onReachBottom
 } from "@dcloudio/uni-app";
@@ -107,25 +108,25 @@ onLoad((options) => {
 const dataList = ref([]);
 
 const typeList = reactive([{
-  label: "工作日",
+  label: appI18n.global.t('ui.attendanceDetailedUserOvertimeListWorkday'),
   value: 1,
 },
 {
-  label: "节假日",
+  label: appI18n.global.t('ui.attendanceDetailedUserOvertimeListPublicHoliday'),
   value: 2,
 },
 {
-  label: "休息日",
+  label: appI18n.global.t('ui.attendanceDetailedUserOvertimeListRestDay'),
   value: 2,
 },
 ]);
 const leaveList = ref([]);
 const calculateList = reactive([{
-  label: "调休",
+  label: appI18n.global.t('ui.attendanceDetailedUserOvertimeListTimeOffInLieu'),
   value: 1,
 },
 {
-  label: "加班费",
+  label: appI18n.global.t('ui.attendanceDetailedUserOvertimeListOvertimePay'),
   value: 2,
 },
 ]);

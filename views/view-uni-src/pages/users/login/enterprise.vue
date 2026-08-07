@@ -28,7 +28,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
 import {
   showModal
@@ -70,10 +71,10 @@ const handleNarItem = (e) => {
 // 删除企业
 const delEnterprise = (item, index) => {
   let containsIsITtem = false;
-  showModal("确定要删除该企业吗").then(() => {
+  showModal(appI18n.global.t('ui.usersLoginEnterpriseDeleteThisEnterprise')).then(() => {
     if (item.isDefault) {
       uni.showToast({
-        title: "无法删除选中企业",
+        title: appI18n.global.t('ui.usersLoginEnterpriseTheSelectedEnterpriseCannotBeDeleted'),
         icon: "none",
         duration: 2000
       });

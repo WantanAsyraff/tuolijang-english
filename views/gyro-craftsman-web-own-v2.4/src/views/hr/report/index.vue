@@ -3,7 +3,7 @@
   <el-card class="normal-page">
     <oaFromBox
       v-if="search.length > 0"
-      :btnText="`导出`"
+:btn-text="$t('ui.fdExamineIndexExport')"
       :isAddBtn="true"
       :btnIcon="false"
       :isViewSearch="false"

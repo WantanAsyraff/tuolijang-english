@@ -15,7 +15,7 @@
           v-model="item.fieldName"
           @change="fieldChange(item)"
           filterable
-          no-match-text="无匹配文本"
+:no-match-text="$t('ui.zbSetConditionsIndexNoMatchingText')"
           size="default"
         >
           <el-option v-for="op in fieldList" :key="op.fieldName" :label="op.label" :value="op.fieldName" />
@@ -134,7 +134,7 @@
             @focus="clearError(item)"
             placeholder=" "
             filterable
-            no-match-text="无匹配文本"
+:no-match-text="$t('ui.zbSetConditionsIndexNoMatchingText')"
           >
             <el-option
               v-for="(userOp, userInx) of userList"
@@ -155,7 +155,7 @@
             @focus="clearError(item)"
             placeholder=" "
             filterable
-            no-match-text="无匹配文本"
+:no-match-text="$t('ui.zbSetConditionsIndexNoMatchingText')"
           >
             <el-option
               v-for="(departmentOp, departmentInx) of departmentList"

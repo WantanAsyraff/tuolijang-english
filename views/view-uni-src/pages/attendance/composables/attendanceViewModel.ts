@@ -1,3 +1,4 @@
+import appI18n from '@/locale';
 import type {
   AttendanceClockRecord,
   AttendanceClockStage,
@@ -343,19 +344,19 @@ function createStatusTags(record: AttendanceClockRecord | undefined, workType: A
   const tags: AttendanceStatusTag[] = [];
 
   if (record.status === 5 || record.status === 7) {
-    tags.push({ text: "缺卡", className: "lack" });
+    tags.push({ text: appI18n.global.t('ui.attendanceUserAttendanceMissingClockIn'), className: "lack" });
   }
   if (record.location_status === 1) {
-    tags.push({ text: "外勤", className: "out" });
+    tags.push({ text: appI18n.global.t('ui.attendanceUserAttendanceOffSite'), className: "out" });
   }
   if (record.status === 2) {
-    tags.push({ text: "迟到", className: "be-late" });
+    tags.push({ text: appI18n.global.t('ui.attendanceUserAttendanceLate'), className: "be-late" });
   }
   if (workType === "off" && (record.status === 4 || record.status === 6)) {
-    tags.push({ text: "早退", className: "be-late" });
+    tags.push({ text: appI18n.global.t('ui.attendanceUserAttendanceEarlyLeave'), className: "be-late" });
   }
   if (record.location_status === 2) {
-    tags.push({ text: "地点异常", className: "be-add" });
+    tags.push({ text: appI18n.global.t('ui.attendanceUserAttendanceLocationException'), className: "be-add" });
   }
 
   return tags;
@@ -386,12 +387,12 @@ function createRecordAction(
 
   // 下班卡允许更新时，只有当前记录数量停在上班卡之后才展示更新入口。
   if (workType === "off" && record.update_status === 1 && (recordLength === 1 || recordLength === 3)) {
-    return { type: "renew" as const, text: "更新打卡" };
+    return { type: "renew" as const, text: appI18n.global.t('ui.attendanceComposablesAttendanceViewModelTsUpdateClockRecord') };
   }
 
   // 异常处理需要等下班时间过后再开放，避免用户在规则未结束前处理异常。
   if ((Number(record.status) > 1 || record.is_external === 2) && isAfterOffHours) {
-    return { type: "apply" as const, text: "异常处理" };
+    return { type: "apply" as const, text: appI18n.global.t('ui.attendanceUserAttendanceExceptionHandling') };
   }
 
   return undefined;

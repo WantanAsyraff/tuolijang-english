@@ -18,7 +18,8 @@
   </BaseContainer>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import tabbar from "@/components/tabbar/index.vue";
 import BaseContainer from "@/components/BaseContainer/index.vue";
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
@@ -33,7 +34,7 @@ const data = reactive({
   typeIndex: 0,
   tabIndex: 0,
   tabId: 2,
-  emptyTitle: "当前暂无发票～",
+  emptyTitle: appI18n.global.t('ui.customerInvoiceIndexCurrentNoInvoice'),
   customStyle: { border: "none", lineHeight: "20px", background: "#ED4014" },
   examineTabData: [
     { name: "我负责的", id: 2 },

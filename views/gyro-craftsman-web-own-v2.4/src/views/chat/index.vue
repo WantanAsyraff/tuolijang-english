@@ -5,7 +5,7 @@
       :title="$t('ui.chatIndexApplicationList')"
       :total="total"
       :search="search"
-      :btnText="`创建应用`"
+:btn-text="$t('ui.chatIndexCreateApplication')"
       :isViewSearch="false"
       :sortSearch="false"
       @confirmData="confirmData"
@@ -87,7 +87,7 @@ export default {
         title: i18n.t('legacyScript.createApplication'),
         width: '650px',
         type: 'add',
-        btnText: '创建'
+        btnText: i18n.t('ui.formCommonOaLogEstablish')
       },
       formConfig: [
         {

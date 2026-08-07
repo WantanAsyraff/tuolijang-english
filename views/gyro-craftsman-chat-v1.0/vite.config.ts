@@ -8,6 +8,7 @@ import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import UnoCSS from "unocss/vite";
+import unoConfig from "./uno.config";
 import zipPack from "vite-plugin-zip-pack";
 import dayjs from "dayjs";
 import { visualizer } from "rollup-plugin-visualizer";
@@ -58,7 +59,7 @@ export default defineConfig(({ mode }) => {
         })
       ],
     }),
-    UnoCSS(),
+    UnoCSS({ ...unoConfig, configFile: false }),
     Icons({
       autoInstall: true
     }),

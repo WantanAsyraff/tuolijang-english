@@ -155,7 +155,8 @@
 
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import empty from "@/components/empty/index";
 import message from "@/utils/message";
 import examineListItem from "@/pages/users/examine/components/examineListItem.vue";
@@ -198,7 +199,7 @@ const clickHandle = (item, index) => {
 // 处理消息状态
 const getMessageHandle = (id, status, index) => {
   userMessageHandleApi(id, status).then((res) => {
-    message.success("处理成功");
+    message.success(appI18n.global.t('ui.noticeWorkListDisposeSuccessful'));
     listData.value.splice(index, 1);
   }).catch((error) => {
     message.error(error.message);

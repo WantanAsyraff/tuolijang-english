@@ -280,7 +280,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { lookPreview, fileSizeOne } from '@/utils/helper'
 import defaultNavBar from '@/components/defaultNavBar/index'
 import globalIndex from '@/components/globalIndex/index.vue'
@@ -340,12 +341,12 @@ const data = reactive({
       type: 1,
       icon: 'icon-gengduo1',
       types: 'icon',
-      text: '更多',
+      text: appI18n.global.t('ui.moduleListMore'),
     },
   ],
   configData: {
-    title: '资料重命名',
-    placeholder: '请填写资料名称',
+    title: appI18n.global.t('ui.customerListDetailsRenameDocument'),
+    placeholder: appI18n.global.t('ui.customerListDetailsEnterADocumentName'),
   },
 
   customer_switch: JSON.parse(uni.getStorageSync('storageUserData')).enterprise.customer_switch,
@@ -362,19 +363,19 @@ const data = reactive({
   statusText: '全部',
   recordStatusList: [
     {
-      label: '全部',
+      label: appI18n.global.t('ui.attendanceDetailedUserCheckListAll'),
       value: '',
     },
     {
-      label: '回款',
+      label: appI18n.global.t('ui.customerContractPayRemindPaymentCollection'),
       value: 0,
     },
     {
-      label: '续费',
+      label: appI18n.global.t('ui.customerContractPayRemindRenewal'),
       value: 1,
     },
     {
-      label: '支出',
+      label: appI18n.global.t('ui.financePaymentPaymentExamineExpense'),
       value: 2,
     },
   ],
@@ -634,7 +635,7 @@ const openCustomerChat = async (item) => {
         fail: reject,
       })
     })
-    message.success('打开会话框')
+    message.success(appI18n.global.t('ui.customerLeadLeadListChatOpened'))
   } catch (err) {
     message.error(`打开个人资料页失败: ${err.errMsg || err.message || '操作失败'}`)
   }
@@ -642,7 +643,7 @@ const openCustomerChat = async (item) => {
 // 提交跟进记录
 const handleConfirm = debounce(() => {
   if (!formData.value.content) {
-    message.error('跟进信息不能为空')
+    message.error(appI18n.global.t('ui.customerLeadDetailFollowUpInformationCannotBeEmpty'))
     return false
   }
   formData.value.attach_ids = data.imgs.map((item) => item.id)
@@ -727,20 +728,20 @@ const dropDownItem = (e) => {
   } else if (e.id === 3) {
     //退回公海
     data.configData = {
-      title: '退回客户公海',
-      placeholder: '说明原因',
+      title: appI18n.global.t('ui.customerListCustomerMoreReturnCustomerToPool'),
+      placeholder: appI18n.global.t('ui.customerLeadDetailReason'),
       type: '',
       text: '',
       refundType: 0, // 4 -> 客户公海 802 -> 线索池
     }
     data.configData.refundType = 4
-    data.configData.title = '退回客户公海'
+    data.configData.title = appI18n.global.t('ui.customerListCustomerMoreReturnCustomerToPool')
     textareaPopupRef.value.popupOpen()
   } else if (e.id === 7) {
     //删除客户
     uni.showModal({
-      title: '提示',
-      content: '您确定要删除该客户吗?',
+      title: appI18n.global.t('ui.customerLeadDetailHint'),
+      content: appI18n.global.t('ui.customerListCustomerMoreDeleteThisCustomer'),
       success: (res) => {
         if (res.confirm) {
           clientDeleteApi(data.id)
@@ -759,8 +760,8 @@ const dropDownItem = (e) => {
   } else if (e.id === 4) {
     //领取
     uni.showModal({
-      title: '提示',
-      content: '您确定要领取将此客户吗?',
+      title: appI18n.global.t('ui.customerLeadDetailHint'),
+      content: appI18n.global.t('ui.customerListCustomerMoreClaimThisCustomer'),
       success: (res) => {
         if (res.confirm) {
           clientclaimApi(data.id)
@@ -805,8 +806,8 @@ const changePop = (e) => {
 // 取消流失
 const clientCancelLost = (id) => {
   uni.showModal({
-    title: '提示',
-    content: '您确定要将此客户取消流失吗?',
+    title: appI18n.global.t('ui.customerLeadDetailHint'),
+    content: appI18n.global.t('ui.customerListCustomerMoreRemoveTheLostStatusFromThisCustomer'),
     success: (res) => {
       if (res.confirm) {
         clientCancelLostApi(id)
@@ -826,8 +827,8 @@ const clientCancelLost = (id) => {
 // 标为流失
 const clientLost = (id) => {
   uni.showModal({
-    title: '提示',
-    content: '您确定要将此客户标为流失吗?',
+    title: appI18n.global.t('ui.customerLeadDetailHint'),
+    content: appI18n.global.t('ui.customerListCustomerMoreMarkThisCustomerAsLost'),
     success: (res) => {
       if (res.confirm) {
         clientlostApi(id)
@@ -1010,7 +1011,7 @@ const getContactList = (tab = false) => {
   }
   data.contactWhere.eid = data.id
   uni.showLoading({
-    title: '加载中',
+    title: appI18n.global.t('ui.customerContractIndexLoading'),
   })
   clientLiaisonApi(data.contactWhere)
     .then((res) => {
@@ -1035,7 +1036,7 @@ const getContractList = (tab = false) => {
   }
   data.contractWhere.eid = data.id
   uni.showLoading({
-    title: '加载中',
+    title: appI18n.global.t('ui.customerContractIndexLoading'),
   })
   getContractDocApi(data.contractWhere)
     .then((res) => {
@@ -1061,7 +1062,7 @@ const getOrderList = (tab = false) => {
   }
   data.orderWhere.eid = data.id
   uni.showLoading({
-    title: '加载中',
+    title: appI18n.global.t('ui.customerContractIndexLoading'),
   })
   clientContractListApi(data.orderWhere)
     .then((res) => {
@@ -1089,7 +1090,7 @@ const getfollowList = (tab = false) => {
   }
 
   uni.showLoading({
-    title: '加载中',
+    title: appI18n.global.t('ui.customerContractIndexLoading'),
   })
 
   data.followWhere.eid = data.id
@@ -1121,7 +1122,7 @@ const getbillList = (tab = false) => {
   data.payWhere.eid = data.id
   data.payWhere.types = data.recordIndex
   uni.showLoading({
-    title: '加载中',
+    title: appI18n.global.t('ui.customerContractIndexLoading'),
   })
   billListApi(data.payWhere)
     .then((res) => {

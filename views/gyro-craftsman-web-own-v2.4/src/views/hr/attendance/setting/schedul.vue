@@ -126,7 +126,7 @@ export default {
       fromData: {
         with: '600px',
         title: i18n.t('legacyScript.addJinShift'),
-        btnText: '确定',
+        btnText: i18n.t('ui.formCommonDialogFormOk'),
         labelWidth: '100px',
         type: ''
       },

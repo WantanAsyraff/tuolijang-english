@@ -1,7 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
+import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import {
     SYSTEM_TEXT_EN,
@@ -15,6 +17,7 @@ import {
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const views = path.resolve(here, "..");
+const require = createRequire(import.meta.url);
 
 test("normalizes supported locale aliases and rejects unsupported locales", () => {
     assert.equal(normalizeLocale("EN_us"), "en");
@@ -524,7 +527,7 @@ test("covers the latest goal, mass-send, employee archive, and job-level screens
         "utf8"
     );
     assert.match(massSend, /locale === 'en' \? '230px' : '132px'/);
-    assert.match(massSend, /\$ts\(formData\.types == 1/);
+    assert.match(massSend, /formData\.types == 1 \? \$t\(/);
 
     const jobLevels = fs.readFileSync(
         path.join(views, "gyro-craftsman-web-own-v2.4/src/views/hr/enterprise/job/positionSystemChart.vue"),
@@ -566,7 +569,7 @@ test("covers the profile menu, memo, app QR, quick-entry, and workbench notices"
         path.join(views, "gyro-craftsman-web-own-v2.4/src/views/user/workbench/components/quickManage.vue"),
         "utf8"
     );
-    assert.match(quickManage, /\$ts\('陀螺匠会更努力了解你的需求'\)/);
+    assert.match(quickManage, /\$t\("ui\.userWorkbenchQuickManageTuoluojiangWillWorkHarderToUnderstandYourNeeds"\)/);
 
     const memo = fs.readFileSync(
         path.join(views, "gyro-craftsman-web-own-v2.4/src/views/user/memorandum/index.vue"),
@@ -666,7 +669,7 @@ test("covers the assessment library and the remaining reported English screens",
         path.join(views, "gyro-craftsman-web-own-v2.4/src/views/customer/setup/customForm/index.vue"),
         "utf8"
     );
-    assert.match(customForm, /:active-text="\$ts\('必填'\)"/);
+    assert.match(customForm, /:active-text="\$t\('ui\.developForeignDocumentRequired'\)"/);
     assert.match(customForm, /prop="required" min-width="145"/);
 
     const iconPicker = fs.readFileSync(
@@ -771,5 +774,72 @@ test("translates every System application-builder icon label", () => {
             /[\u3400-\u9fff]/,
             `Untranslated System icon label: ${iconName}`
         );
+    }
+});
+
+test("keeps first-party Blade and installer UI server-localized", () => {
+    const repo = path.resolve(views, "..");
+    const bladeFiles = [];
+    const visit = (directory) => {
+        for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+            const target = path.join(directory, entry.name);
+            if (entry.isDirectory()) visit(target);
+            else if (entry.name.endsWith(".blade.php")) bladeFiles.push(target);
+        }
+    };
+    visit(path.join(repo, "resources/views"));
+    for (const file of bladeFiles) {
+        const visible = fs.readFileSync(file, "utf8")
+            .replace(/\{\{--[\s\S]*?--\}\}/g, "")
+            .replace(/<!--[\s\S]*?-->/g, "")
+            .replace(/^\s*\/\/.*$/gm, "");
+        assert.doesNotMatch(visible, /[\u3400-\u9fff]/, file);
+    }
+
+    const controller = fs.readFileSync(path.join(repo, "app/Http/Controller/Install.php"), "utf8");
+    assert.match(controller, /request\(\)->cookie\('language', 'zh-cn'\)/);
+    assert.match(controller, /App::setLocale/);
+    assert.match(controller, /__\('frontend\.install\.progress_invalid'\)/);
+
+    const selector = fs.readFileSync(path.join(repo, "public/install/js/install-i18n.js"), "utf8");
+    assert.doesNotMatch(selector, /textMap|MutationObserver/);
+    assert.match(selector, /COOKIE_NAME = 'language'/);
+});
+
+test("keeps Laravel frontend catalogs and placeholders paired", () => {
+    const repo = path.resolve(views, "..");
+    const readPhpCatalog = (file) => {
+        const source = fs.readFileSync(file, "utf8");
+        const output = new Map();
+        const entry = /'([^']+)'\s*=>\s*(?:'((?:\\.|[^'])*)'|"((?:\\.|[^"])*)")/gs;
+        for (const match of source.matchAll(entry)) output.set(match[1], match[2] ?? match[3] ?? "");
+        return output;
+    };
+    const en = readPhpCatalog(path.join(repo, "resources/lang/en/frontend.php"));
+    const zh = readPhpCatalog(path.join(repo, "resources/lang/zh-cn/frontend.php"));
+    assert.deepEqual([...en.keys()].sort(), [...zh.keys()].sort());
+    const placeholders = (value) => [...value.matchAll(/:([A-Za-z_][A-Za-z0-9_]*)/g)].map((item) => item[1]).sort();
+    for (const key of en.keys()) assert.deepEqual(placeholders(en.get(key)), placeholders(zh.get(key)), key);
+});
+
+test("fails the script UI audit when Chinese-bearing source cannot be parsed", () => {
+    const { auditScriptUi } = require("./script-ui-audit.cjs");
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), "i18n-script-audit-"));
+    const sourceFile = path.join(root, "broken.vue");
+    try {
+        fs.writeFileSync(sourceFile, "<script>const label = '中文'; invalid syntax</script>");
+        const issues = auditScriptUi({
+            root,
+            sourceFiles: [sourceFile],
+            parse: () => { throw new SyntaxError("Unexpected token"); },
+        });
+        assert.deepEqual(issues, [{
+            file: "broken.vue",
+            line: 1,
+            sink: "parse:error",
+            text: "Unexpected token",
+        }]);
+    } finally {
+        fs.rmSync(root, { recursive: true, force: true });
     }
 });

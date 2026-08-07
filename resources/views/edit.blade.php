@@ -1,6 +1,6 @@
 <html lang="zh-CN">
 <head>
-    <title>测试</title>
+    <title>{{ __('frontend.documents.test') }}</title>
 </head>
 <style>
     iframe {
@@ -8,7 +8,7 @@
     }
 </style>
 <body>
-<h2>测试文档</h2>
+<h2>{{ __('frontend.documents.test_document') }}</h2>
 <div class="custom-mount">
 
 </div>

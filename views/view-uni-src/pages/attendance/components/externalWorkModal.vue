@@ -43,7 +43,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { computed, reactive, ref } from "vue";
 import { uploadImage } from "@/utils/file";
 
@@ -103,7 +104,7 @@ function uploadAvatar() {
     .then((res) => {
       formData.imgs.push(res.data.src);
       uni.showToast({
-        title: "上传成功",
+        title: appI18n.global.t('ui.attendanceExternalWorkModalUploadSucceeded'),
         icon: "none",
       });
     })

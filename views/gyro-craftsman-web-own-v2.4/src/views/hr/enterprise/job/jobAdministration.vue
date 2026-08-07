@@ -248,12 +248,12 @@ export default {
       this.formConfig[1].options = this.rankDataList
       this.search = [
         {
-          field_name: '职位名称',
+          field_name: this.$ts('职位名称'),
           field_name_en: 'name',
           form_value: 'input'
         },
         {
-          field_name: '职位类别',
+          field_name: this.$ts('职位类别'),
           field_name_en: 'cate_id',
           form_value: 'select',
           data_dict: this.rankDataList
@@ -376,7 +376,7 @@ export default {
         this.multipleSelection.forEach((value) => {
           ids.push(value.id)
         })
-        this.$modalSure('确定要全部删除已选择的内容吗').then(() => {
+        this.$modalSure(this.$ts('确定要全部删除已选择的内容吗')).then(() => {
           this.endJobDelete(ids.join(','))
         })
       }

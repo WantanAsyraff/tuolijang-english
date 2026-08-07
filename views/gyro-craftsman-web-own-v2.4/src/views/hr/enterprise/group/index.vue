@@ -246,26 +246,32 @@ export default {
     },
     roleChange() {},
     isOk(data) {
-      if (data) {
-        this.rolesConfig[0].control[0].rule[1].value = data.url
-        const oInput = document.createElement('input')
-        const value =
-          '【' +
-          data.name +
-          '】邀请你加入【' +
-          this.$store.state.user.enterprise.enterprise_name +
-          '】办公系统，请点击链接使用手机号验证登录 ' +
-          data.url +
-          ' 链接有效期为7天，请尽快登录加入团队！'
-        oInput.value = value
-        document.body.appendChild(oInput)
-        oInput.select()
-        document.execCommand('Copy')
-        oInput.style.display = 'none'
-        document.body.removeChild(oInput)
-      }
-      this.$refs.dialogForm.handleClose()
-    },
+  if (data) {
+    this.rolesConfig[0].control[0].rule[1].value = data.url
+
+    const oInput = document.createElement('input')
+
+    const enterpriseName =
+      this.$store.state.user.enterprise.enterprise_name
+
+    const value = this
+      .$ts(
+        '【{name}】邀请你加入【{enterprise}】办公系统，请点击链接使用手机号验证登录 {url} 链接有效期为7天，请尽快登录加入团队！'
+      )
+      .replace('{name}', data.name)
+      .replace('{enterprise}', enterpriseName)
+      .replace('{url}', data.url)
+
+    oInput.value = value
+    document.body.appendChild(oInput)
+    oInput.select()
+    document.execCommand('copy')
+    oInput.style.display = 'none'
+    document.body.removeChild(oInput)
+  }
+
+  this.$refs.dialogForm.handleClose()
+},
     // 添加人员
     // addPerson(type) {
     //   switch (type) {

@@ -41,7 +41,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { attendanceGroupListApi, attendanceScheduleAddApi } from '@/api/attendance';
 import multiplePicker from '@/components/multiplePicker/index.vue'
 import message from '@/utils/message';
@@ -107,7 +108,7 @@ const handleScheduleDateChange = (e: any) => {
 
 const handleSubmit = async () => {
   if (scheduleData.yearIndex === -1 || scheduleData.monthIndex === -1) {
-    message.error("请选择考勤时间!", "none");
+    message.error(appI18n.global.t('ui.attendanceScheduleAddSelectAnAttendanceTime'), "none");
     return;
   }
 
@@ -115,12 +116,12 @@ const handleSubmit = async () => {
   const _month = monthRange[scheduleData.monthIndex];
 
   if (_year === year && _month < month) {
-    message.error("不能选择历史月份!", "none");
+    message.error(appI18n.global.t('ui.attendanceScheduleAddPastMonthsCannotBeSelected'), "none");
     return;
   }
 
   if (scheduleData.selectGroupIDs.length === 0) {
-    message.error("请选择考勤组!", "none");
+    message.error(appI18n.global.t('ui.attendanceScheduleAddSelectAnAttendanceGroup'), "none");
     return;
   }
 
@@ -137,7 +138,7 @@ const handleSubmit = async () => {
   try {
     await attendanceScheduleAddApi(data);
     uni.hideLoading();
-    message.success("新增排班成功!", "none");
+    message.success(appI18n.global.t('ui.attendanceScheduleAddScheduleAdded'), "none");
 
     setTimeout(() => {
       uni.navigateBack();
@@ -148,7 +149,7 @@ const handleSubmit = async () => {
       prevPage?.$vm.$.exposed.refreshList();
     } catch {}
   } catch (error) {
-    message.error("新增排班失败!", "none");
+    message.error(appI18n.global.t('ui.attendanceScheduleAddFailedToAddTheSchedule'), "none");
     uni.hideLoading();
   }
 

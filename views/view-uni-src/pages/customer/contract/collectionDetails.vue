@@ -19,7 +19,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import { approveApplyRevokeApi } from "@/api/business";
 import defaultNavBar from "@/components/defaultNavBar/index";
 import dropDown from "@/pages/forum/components/dropDown.vue";
@@ -98,7 +99,7 @@ const dropDownItem = (e) => {
     if (data.info.status === 1) {
       clickNavigateTo(`/pages/users/examine/components/addSignature?id=${data.info.apply_id}&type=3`);
     } else {
-      showModal("您确定要撤回此账目记录吗")
+      showModal(appI18n.global.t('ui.customerContractCollectionDetailsWithdrawThisAccountRecord'))
         .then((res) => {
           approveApplyRevokeApi(data.info.apply_id)
             .then((res) => {
@@ -115,8 +116,8 @@ const dropDownItem = (e) => {
   }
   if (e.id === 1) {
     data.configData = {
-      title: "备注",
-      placeholder: "请填写备注信息",
+      title: appI18n.global.t('ui.customerContractPayDetailRemarks'),
+      placeholder: appI18n.global.t('ui.customerSigningAddFormPleaseFillInTheRemarks'),
       type: e.id,
     };
 
@@ -127,7 +128,7 @@ const dropDownItem = (e) => {
     if (data.info.status === 1) {
       clickNavigateTo(`/pages/users/examine/components/addSignature?id=${data.info.apply_id}&type=3`);
     } else {
-      showModal("您确定要删除此账目记录吗")
+      showModal(appI18n.global.t('ui.customerContractCollectionDetailsDeleteThisAccountRecord'))
         .then((res) => {
           billDelete(data.id);
         })

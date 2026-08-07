@@ -9,7 +9,7 @@
         <!-- 表单内容 -->
         <div class="flex">
           <div style="width: 55%" class="p20">
-            <el-form ref="formRef" :model="formData" :rules="rules" label-width="auto">
+            <el-form ref="formRef" :model="formData" :rules="rules" :label-width="formLabelWidth">
               <div class="title">{{ $t("ui.customerWeChatMassAddGroupPostingBasicInformation") }}</div>
               <el-form-item>
                 <div slot="label">
@@ -272,6 +272,11 @@ export default {
     if (this.editId) {
       this.id = this.editId
       this.getInfo()
+    }
+  },
+  computed: {
+    formLabelWidth() {
+      return this.$i18n.locale === 'en' ? '230px' : '132px'
     }
   },
   methods: {

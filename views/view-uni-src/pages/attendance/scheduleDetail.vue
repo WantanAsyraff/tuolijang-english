@@ -12,7 +12,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 // @ts-ignore
 import moment from 'moment';
 import ScheduleFilterBar from './components/ScheduleFilterBar.vue';
@@ -147,7 +148,7 @@ const handleSaveSchedult = async () => {
   try {
     const results = await Promise.all(tasks);
     uni.hideLoading();
-    message.success("保存成功", "success");
+    message.success(appI18n.global.t('ui.navigationBarSiderbarSavedSuccessfully'), "success");
   } catch (err) {
     uni.hideLoading();
     message.error(err.message, 'none');

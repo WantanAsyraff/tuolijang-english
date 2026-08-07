@@ -129,7 +129,8 @@
 
   </view>
 </template>
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { ref, reactive, computed, type Ref } from "vue";
 import message from "@/utils/message";
 import defaultNavBar from "@/components/defaultNavBar/index";
@@ -233,7 +234,7 @@ const getContractSelect = (id: number): void => {
       formData.cid = res.data[0].id;
     }
     if (data.contractList.length <= 0) {
-      message.error("暂无订单，请添加订单");
+      message.error(appI18n.global.t('ui.customerContractAddPaymentNoOrdersYetAddAnOrderFirst'));
     }
   }).catch((error: Res) => {
     message.error(error.message);
@@ -274,23 +275,23 @@ const loading: Ref<boolean> = ref(false);
 // 提交
 const handleConfirm = (): boolean => {
   if (!formData.cid && !data.isContract) {
-    message.error("请选择订单");
+    message.error(appI18n.global.t('ui.customerListAddSpendSelectOrder'));
     return false;
   }
   if (!data.cate) {
-    message.error("请选择支出类型");
+    message.error(appI18n.global.t('ui.customerListAddSpendPleaseSelectExpenseType'));
     return false;
   }
   if (!formData.num) {
-    message.error("请填写支出金额");
+    message.error(appI18n.global.t('ui.customerListAddSpendPleaseEnterExpenseAmount'));
     return false;
   }
   if (!formData.type_id) {
-    message.error("请选择支付方式");
+    message.error(appI18n.global.t('ui.customerListAddSpendSelectPaymentMethod'));
     return false;
   }
   if (!formData.date) {
-    message.error("请选择支付时间");
+    message.error(appI18n.global.t('ui.customerListAddSpendPleaseSelectPaymentTime'));
     return false;
   }
 

@@ -51,7 +51,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
   import { ref, toRefs } from "vue";
   import deanPopover from "@/components/deanPopover/index.vue";
   import { followDeleteApi } from "@/api/customer";
@@ -139,7 +140,7 @@
   const addRecord = (type : number, item : any, index : number) => {
     deanPopoverRef.value[index].close();
     if (type === 2) {
-      showModal("您确定要删除此跟进记录吗").then(() => {
+      showModal(appI18n.global.t('ui.customerListFollowStepsDeleteThisFollowUpRecord')).then(() => {
         followDeleteApi(item.link_type==='customer'?item.follow_id:item.id).then((res : any) => {
           message.success(res.message);
           emit("editFollow", 3, item);

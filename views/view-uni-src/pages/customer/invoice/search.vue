@@ -19,7 +19,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import invoiceList from "./components/invoiceList.vue";
 import customerTab from "@/pages/customer/list/components/customerTab.vue";
 import globalIndex from "@/components/globalIndex/index.vue";
@@ -34,7 +35,7 @@ const data = reactive({
   tabIndex: 0,
   tabId: 1,
   eid: "",
-  emptyTitle: "暂无搜索结果～",
+  emptyTitle: appI18n.global.t('ui.customerAddressSearchIndexNoSearchResults'),
   customStyle: { border: "none", lineHeight: "20px", background: "#ED4014" },
   examineTabData: [{ name: "我负责的", id: 2 },
     { name: "我查看的", id: 1 },

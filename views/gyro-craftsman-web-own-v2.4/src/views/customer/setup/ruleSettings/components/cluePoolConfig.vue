@@ -22,9 +22,9 @@
                   :active-value="1"
                   :inactive-value="0"
                   active-color="#1890ff"
-                  active-text="开启"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
                   inactive-color="#cccccc"
-                  inactive-text="关闭"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                 >
                 </el-switch>
               </el-form-item>
@@ -51,9 +51,9 @@
                   :active-value="1"
                   :inactive-value="0"
                   active-color="#1890ff"
-                  active-text="开启"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
                   inactive-color="#cccccc"
-                  inactive-text="关闭"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                 >
                 </el-switch>
               </el-form-item>
@@ -104,9 +104,9 @@
                   :active-value="1"
                   :inactive-value="0"
                   active-color="#1890ff"
-                  active-text="开启"
+:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
                   inactive-color="#cccccc"
-                  inactive-text="关闭"
+:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
                 >
                 </el-switch>
               </el-form-item>

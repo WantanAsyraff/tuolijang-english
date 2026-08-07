@@ -23,7 +23,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import message from "@/utils/message";
 import codeInvitation from "./codeInvitation";
 import { clickNavigateTo } from "@/utils/helper";
@@ -34,13 +35,13 @@ const codeInvitationRef = ref(null);
 
 const data = reactive({
   listData: [
-    { type: 1, image: "/static/image/share-wechat.png", text: "微信好友", url: "" },
+    { type: 1, image: "/static/image/share-wechat.png", text: appI18n.global.t('ui.shareIndexWeChatContact'), url: "" },
     { type: 2, image: "/static/image/share-qq.png", text: "QQ", url: "" },
-    { type: 3, image: "/static/image/share-link.png", text: "复制链接", url: "" },
-    { type: 4, image: "/static/image/share-image.png", text: "二维码分享" },
-    { type: 5, image: "/static/image/share-phone.png", text: "手机号添加", url: "/pages/user/userPhone" },
-    { type: 6, image: "/static/image/share-id.png", text: "ID添加", url: "/pages/user/userId" },
-    { type: 7, image: "/static/image/record.png", text: "添加记录", url: "/pages/user/userRecord" },
+    { type: 3, image: "/static/image/share-link.png", text: appI18n.global.t('ui.shareIndexCopyLink'), url: "" },
+    { type: 4, image: "/static/image/share-image.png", text: appI18n.global.t('ui.userAddMembersShareQrCode') },
+    { type: 5, image: "/static/image/share-phone.png", text: appI18n.global.t('ui.userAddMembersAddByPhoneNumber'), url: "/pages/user/userPhone" },
+    { type: 6, image: "/static/image/share-id.png", text: appI18n.global.t('ui.userAddMembersAddById'), url: "/pages/user/userId" },
+    { type: 7, image: "/static/image/record.png", text: appI18n.global.t('ui.userAddMembersAddRecords'), url: "/pages/user/userRecord" },
   ]
 });
 
@@ -74,7 +75,7 @@ const shareListItem = (item) => {
       data: HTTP_REQUEST_URL + "/work/pages/workbench/index",
       showToast: false,
       success: () => {
-        message.success("链接已复制成功");
+        message.success(appI18n.global.t('ui.userAddMembersLinkCopied'));
         cancel();
       }
     });

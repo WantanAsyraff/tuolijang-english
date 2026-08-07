@@ -184,7 +184,7 @@
         :start-placeholder="`${val.field_name}`"
         class="time mr10"
         format="yyyy/MM"
-        range-separator="至"
+:range-separator="$t('ui.commonFormListTo')"
         size="small"
         type="monthrange"
         value-format="yyyy/MM"

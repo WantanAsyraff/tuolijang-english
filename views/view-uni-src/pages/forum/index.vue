@@ -11,13 +11,14 @@
       </view>
     </view>
     <view class="content ">
-      <forum-list :list-data="data.listData" :hot-data="data.hotData" empty-title="暂无文章~"></forum-list>
+      <forum-list :list-data="data.listData" :hot-data="data.hotData" :empty-title="$t('ui.forumHistoryNoArticles')"></forum-list>
     </view>
     <drop-down ref="dropDownRef" :list-data="forumMeus" @btn-click="dropDownItem"></drop-down>
     <global-index />
   </view>
 </template>
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import globalIndex from "@/components/globalIndex/index.vue";
 import navigationBar from "@/components/navigationBar/index.vue";
 import defaultNavBar from "@/components/defaultNavBar/index.vue";
@@ -85,7 +86,7 @@ const getArticleLabel = () => {
   getuserLabel({ types: 1 }).then((res: Res) => {
     data.barList = res.data.list || [];
     if (data.barList.length > 0) {
-      data.barList.unshift({ id: "", title: "全部" });
+      data.barList.unshift({ id: "", title: appI18n.global.t('ui.attendanceDetailedUserCheckListAll') });
     }
   }).catch((error: Res) => {
     message.error(error.message);

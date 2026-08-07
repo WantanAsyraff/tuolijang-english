@@ -80,7 +80,8 @@
   </view>
 </template>
 
-<script setup>
+<script setup>import appI18n from '@/locale';
+
 import moment from 'moment'
 import { ref, reactive, computed, getCurrentInstance, onMounted } from 'vue'
 import { useStore } from 'vuex'
@@ -172,7 +173,7 @@ const getCurrentSwiperHeight = (element) => {
 // 获取日程列表
 const getScheduleList = () => {
   uni.showLoading({
-    title: '加载中',
+    title: appI18n.global.t('ui.customerContractIndexLoading'),
   })
   data.allDayData = []
   let sortedArray = []

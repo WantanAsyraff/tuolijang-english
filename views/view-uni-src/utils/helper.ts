@@ -1,3 +1,4 @@
+import appI18n from '@/locale';
 import type { PropType } from "@/utils/typeHelper";
 
 import { translateSystemText } from "@/locale";
@@ -285,7 +286,7 @@ export const getFindIndex = <T extends PropType>(arr: Array<T>, id: number | str
 };
 
 export const download = (url: string, name: string) => {
-  uni.showLoading({ title: "正在下载" });
+  uni.showLoading({ title: appI18n.global.t('ui.utilsHelperTsDownloading') });
 
   const dtask = plus.downloader.createDownload(url, { filename: "file://storage/emulated/0/tuoluojiang/" + name }, (d,
     status) => {
@@ -303,7 +304,7 @@ export const download = (url: string, name: string) => {
       uni.showToast({
         icon: "none",
         mask: true,
-        title: "下载失败，请稍后重试",
+        title: appI18n.global.t('ui.utilsHelperTsDownloadFailedPleaseTryAgainLater'),
       });
     }
   });

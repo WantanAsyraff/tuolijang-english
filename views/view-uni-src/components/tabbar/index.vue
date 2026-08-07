@@ -20,7 +20,8 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import appI18n from '@/locale';
+
 import { ref, computed } from 'vue'
 import { isModuleEnabled, CUSTOMER_MODULE_KEYS } from '@/utils/customerSwitch'
 
@@ -60,49 +61,49 @@ const handleCloseFloatNavBox = () => {
 const permissionTabs: TabItem[] = [
   {
     id: 0,
-    text: '线索',
+    text: appI18n.global.t('ui.tabbarIndexLead'),
     pagePath: '/pages/customer/lead/index',
     iconPath: '/static/image/lead.png',
     selectedIconPath: '/static/image/lead-active.png',
   },
   {
     id: 1,
-    text: '客户',
+    text: appI18n.global.t('ui.customerListAddCustomerCustomer'),
     pagePath: '/pages/customer/list/index',
     iconPath: '/static/image/customer.png',
     selectedIconPath: '/static/image/customer-s.png',
   },
   {
     id: 2,
-    text: '商机',
+    text: appI18n.global.t('ui.tabbarIndexOpportunity'),
     pagePath: '/pages/customer/opportunity/index',
     iconPath: '/static/image/opportunity.png',
     selectedIconPath: '/static/image/opportunity-active.png',
   },
   {
     id: 7,
-    text: '合同',
+    text: appI18n.global.t('ui.tabbarIndexContract'),
     pagePath: '/pages/customer/signing/index',
     iconPath: '/static/image/contract.png',
     selectedIconPath: '/static/image/contract-s.png',
   },
   {
     id: 4,
-    text: '订单',
+    text: appI18n.global.t('ui.customerContractAddContractOrder'),
     pagePath: '/pages/customer/contract/index',
     iconPath: '/static/image/contract.png',
     selectedIconPath: '/static/image/contract-s.png',
   },
   {
     id: 5,
-    text: '发票',
+    text: appI18n.global.t('ui.tabbarIndexInvoice'),
     pagePath: '/pages/customer/invoice/index',
     iconPath: '/static/image/invoice.png',
     selectedIconPath: '/static/image/invoice-s.png',
   },
   {
     id: 6,
-    text: '统计',
+    text: appI18n.global.t('ui.tabbarIndexAnalytics'),
     pagePath: '/pages/customer/list/statistics',
     iconPath: '/static/image/statistics.png',
     selectedIconPath: '/static/image/statistics-s.png',
@@ -112,7 +113,7 @@ const permissionTabs: TabItem[] = [
 // 更多按钮
 const moreButton: TabItem = {
   id: 3,
-  text: '更多',
+  text: appI18n.global.t('ui.moduleListMore'),
   iconPath: '/static/image/more.png',
   selectedIconPath: '/static/image/more-active.png',
   func: () => {

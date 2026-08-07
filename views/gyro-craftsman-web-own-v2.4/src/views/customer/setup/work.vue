@@ -244,7 +244,7 @@ export default {
       } else if (this.tabId == 2) {
         this.tabName = this.$t('customer.renewaltype')
       } else {
-        this.tabName = '发票类目'
+        this.tabName = this.$ts('发票类目')
         this.invoiceCategoryList()
       }
       this.getClientList()

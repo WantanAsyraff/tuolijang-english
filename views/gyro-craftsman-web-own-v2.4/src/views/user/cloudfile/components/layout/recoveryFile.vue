@@ -5,7 +5,7 @@
     :total="total"
     :isBack="true"
     :title="$t('ui.userCloudfileLayoutRecoveryFileRecycleBin')"
-    :btnText="`彻底删除`"
+:btn-text="$t('ui.userCloudfileLayoutRecoveryFileCompletelyDelete')"
     :btnIcon="false"
     :isViewSearch="false"
     :sortSearch="false"

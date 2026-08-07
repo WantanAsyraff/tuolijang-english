@@ -20,7 +20,7 @@
                 :total="total"
                 :isViewSearch="false"
                 :title="$t('ui.customerWeChatMassMassMassSendMaterialList')"
-                btnText="新增素材"
+:btn-text="$t('ui.customerWeChatMassAddmassAddMaterial')"
                 @addDataFn="handleNews"
                 @confirmData="confirmData"
               ></oaFromBox>

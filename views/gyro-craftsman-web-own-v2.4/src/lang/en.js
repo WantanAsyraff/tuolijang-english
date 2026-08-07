@@ -1,6 +1,17 @@
 import generatedUi from './generated-ui-en'
 
 export default {
+  attendanceShift: {
+    arrivingLate: 'Arriving more than {hours} hours {minutes} minutes late is considered late',
+    arrivingSeverelyLate: 'Arriving more than {hours} hours {minutes} minutes late is considered severely late',
+    arrivingMissingHalfDay: 'Arriving more than {hours} hours {minutes} minutes late is considered a half-day missing clock record',
+    earliestClockIn: 'Clock-in is available up to {hours} hours {minutes} minutes early',
+    leavingEarly: 'Clocking out {hours} hours {minutes} minutes early is considered early leave',
+    leavingMissingHalfDay: 'Clocking out {hours} hours {minutes} minutes early is considered a half-day missing clock record',
+    latestClockIn: 'Clock-in is available up to {hours} hours {minutes} minutes late',
+    fallback: '{premise} {hours} hours {minutes} minutes {suffix}',
+    overtime: 'Overtime starts {hours} hours {minutes} minutes after the final shift ends'
+  },
   legacyScript: {
 
     productDictionarySettings: 'Product Dictionary Settings',
@@ -1132,8 +1143,10 @@ export default {
     selectAtLeastOneItem2: 'Select at least one item',
     failedToLoadTheAIPlugin: 'Failed to load the AI plugin',
     failedToSynchronizeTheAIFloatingButtonState: 'Failed to synchronize the AI floating button state:',
+    downloadStopped: 'Download stopped',
+    upgradeCompletedSignInAgain: 'Upgrade completed. You will be signed out; please sign in again.',
     last90Days: 'Last 90 days',
-    lastYear2: 'Last year',
+    lastYear2: 'Last 1 year',
     myResume: 'My resume',
     projectDetails: 'Project details',
     projectActivity: 'Project activity',
@@ -1499,8 +1512,8 @@ export default {
     day30: 'Last 30 days',
     thisweek: 'This week',
     lastmonth: 'Last month',
-    thismonth: 'Month',
-    thisyear: 'Year',
+    thismonth: 'This month',
+    thisyear: 'This year',
     oneyear: 'One Year',
     name: 'Name',
     department: 'Department',
@@ -2305,9 +2318,12 @@ export default {
     placeholder11: 'Search file templates',
     placeholder12: 'Please select the content to use template',
     directory: 'Directory authorization',
-    setdirectory: 'Set directory authorization'
+    setdirectory: 'Set directory authorization',
+    useTemplate: 'Use template',
+    uploadFile: 'Upload file'
   },
   customer: {
+    nullMailing: 'The mailing address cannot be empty.',
     addtype: 'Add category',
     edittype: 'Edit classification',
     typename: 'Classification name',

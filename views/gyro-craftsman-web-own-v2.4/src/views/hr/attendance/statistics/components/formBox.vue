@@ -2,7 +2,7 @@
   <div>
     <oaFromBox
       v-if="search.length > 0"
-      :btnText="'导出'"
+:btn-text="$t('ui.fdExamineIndexExport')"
       :dropdownList="dropdownList"
       :isAddBtn="false"
       :search="search"
@@ -28,9 +28,9 @@
             size="small"
             v-model="clockInTime"
             type="daterange"
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
+:range-separator="$t('ui.commonFormListTo')"
+:start-placeholder="$t('ui.customerSigningIndexStartDate')"
+:end-placeholder="$t('ui.customerSigningIndexEndDate')"
             format="yyyy/MM/dd"
             value-format="yyyy/MM/dd"
             :picker-options="pickerOptions"
