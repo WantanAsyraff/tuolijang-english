@@ -1,9 +1,9 @@
 <!-- 客户群聊弹窗 -->
 
 <template>
-<el-dialog :title="$t('ui.customerWeChatMassGroupChatSelectGroupChat')" :visible.sync="dialogTableVisible" width="760px">
+<el-dialog :title="$('ui.customerWeChatMassGroupChatSelectGroupChat')" :visible.sync="dialogTableVisible" width="760px">
   <el-input
-    :placeholder="$t('ui.customerWeChatMassGroupChatPleaseEnterGroupChatName')"
+    :placeholder="$('ui.customerWeChatMassGroupChatPleaseEnterGroupChatName')"
     v-model="where.name"
     @change="getList"
     size="small"
@@ -12,19 +12,19 @@
   >
   </el-input>
 
-  <div class="tips mb10 mt10">{{ $t("ui.businessHolidayQueryIndexTotal") }}{{ total }}{{ $t("ui.customerWeChatMassGroupChatGroupChats") }}</div>
+  <div class="tips mb10 mt10">{{ $("ui.businessHolidayQueryIndexTotal") }}{{ total }}{{ $("ui.customerWeChatMassGroupChatGroupChats") }}</div>
   <div>
     <el-table :data="tableData" style="width: 100%" height="500px" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55"> </el-table-column>
-      <el-table-column property="name" :label="$t('ui.customerWeChatMassGroupChatGroupChatName')" width="150">
+      <el-table-column property="name" :label="$('ui.customerWeChatMassGroupChatGroupChatName')" width="150">
         <template slot-scope="scope">
           {{ scope.row.name || '--' }}
         </template>
       </el-table-column>
-      <el-table-column property="admin.name" :label="$t('ui.customerWeChatMassGroupChatGroupOwner')"> </el-table-column>
-      <el-table-column property="member_num" :label="$t('ui.customerWeChatMassGroupChatGroupMemberCount')"></el-table-column>
-      <el-table-column property="retreat_group_num" :label="$t('ui.customerWeChatMassGroupChatMembersWhoLeft')"></el-table-column>
-      <el-table-column property="group_create_time" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" width="200"></el-table-column>
+      <el-table-column property="admin.name" :label="$('ui.customerWeChatMassGroupChatGroupOwner')"> </el-table-column>
+      <el-table-column property="member_num" :label="$('ui.customerWeChatMassGroupChatGroupMemberCount')"></el-table-column>
+      <el-table-column property="retreat_group_num" :label="$('ui.customerWeChatMassGroupChatMembersWhoLeft')"></el-table-column>
+      <el-table-column property="group_create_time" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" width="200"></el-table-column>
     </el-table>
     <el-pagination
       :page-size="where.limit"
@@ -36,8 +36,8 @@
   </div>
 
   <span slot="footer">
-    <el-button @click="handleClose" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-    <el-button type="primary" @click="handleConfirm" size="small">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+    <el-button @click="handleClose" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+    <el-button type="primary" @click="handleConfirm" size="small">{{ $("ui.formCommonDialogFormOk") }}</el-button>
   </span>
 </el-dialog>
 </template>

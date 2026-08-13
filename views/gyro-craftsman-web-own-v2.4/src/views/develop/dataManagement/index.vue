@@ -6,7 +6,7 @@
         v-if="search.length > 0"
         :isViewSearch="false"
         :search="search"
-        :title="$t('ui.developDataManagementIndexApiManagement')"
+        :title="$('ui.developDataManagementIndexApiManagement')"
         :total="total"
         @addDataFn="addFinance"
         @confirmData="confirmData"
@@ -15,20 +15,20 @@
       <!-- 表格数据 -->
       <div v-loading="loading" class="table-box mt10">
         <el-table :data="tableData" :height="tableHeight" row-key="id" style="width: 100%">
-          <el-table-column :label="$t('ui.developDataManagementIndexApiTitle')" prop="title"> </el-table-column>
-          <el-table-column :label="$t('ui.developDataManagementIndexLinkUrl')" prop="url" width="300"> </el-table-column>
-          <el-table-column :label="$t('ui.developDataManagementIndexRequestMethod')" prop="method"> </el-table-column>
-          <el-table-column :label="$t('ui.developDataManagementIndexRequestType')" prop="is_pre">
+          <el-table-column :label="$('ui.developDataManagementIndexApiTitle')" prop="title"> </el-table-column>
+          <el-table-column :label="$('ui.developDataManagementIndexLinkUrl')" prop="url" width="300"> </el-table-column>
+          <el-table-column :label="$('ui.developDataManagementIndexRequestMethod')" prop="method"> </el-table-column>
+          <el-table-column :label="$('ui.developDataManagementIndexRequestType')" prop="is_pre">
             <template slot-scope="scope">
-              <el-tag type="warning" size="small" v-if="scope.row.is_pre == 0">{{ $t("ui.developDataManagementIndexDirectRequest") }}</el-tag>
-              <el-tag type="success" size="small" v-if="scope.row.is_pre == 1">{{ $t("ui.developDataManagementIndexAuthorizationRequest") }}</el-tag>
+              <el-tag type="warning" size="small" v-if="scope.row.is_pre == 0">{{ $("ui.developDataManagementIndexDirectRequest") }}</el-tag>
+              <el-tag type="success" size="small" v-if="scope.row.is_pre == 1">{{ $("ui.developDataManagementIndexAuthorizationRequest") }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="140" prop="created_at"> </el-table-column>
-          <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" prop="address" width="110">
+          <el-table-column :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="140" prop="created_at"> </el-table-column>
+          <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" prop="address" width="110">
             <template slot-scope="scope">
-              <el-button type="text" @click="editFn(scope.row.id)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-              <el-button type="text" @click="deleteFn(scope.row.id)">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" @click="editFn(scope.row.id)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+              <el-button type="text" @click="deleteFn(scope.row.id)">{{ $("ui.chatIndexDelete") }}</el-button>
             </template>
           </el-table-column>
         </el-table>

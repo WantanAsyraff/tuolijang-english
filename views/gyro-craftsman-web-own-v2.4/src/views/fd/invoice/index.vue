@@ -1,4 +1,5 @@
-﻿<!-- 财务-发票审核页面 -->
+import { $ } from '@/lang'
+<!-- 财务-发票审核页面 -->
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '20px 20px 0 20px' }" class="mb14 normal-page">
@@ -13,7 +14,7 @@
     <div v-loading="loading" class="mt10">
       <div v-if="tableData.length == 0" class="defaultPage">
         <img alt="" class="img" src="../../../assets/images/defd.png" />
-        <span class="text"> {{ $t("ui.customerInvoiceIndexNoInvoiceData") }}</span>
+        <span class="text"> {{ $("ui.customerInvoiceIndexNoInvoiceData") }}</span>
       </div>
       <div v-else style="width: 100%; overflow: auto" :style="{ height: tableHeight }">
         <!-- 发票页面 -->
@@ -22,28 +23,28 @@
             <!-- 发票顶部 -->
             <div class="header">
               <div class="header-left">
-                {{ item.types | titleTypeFn }}·{{ item.collect_type == 'mail' ? $t('ui.customerInvoiceInvoiceViewElectronic') : $t('ui.customerInvoiceInvoiceViewPaper') }}
+                {{ item.types | titleTypeFn }}·{{ item.collect_type == 'mail' ? $('ui.customerInvoiceInvoiceViewElectronic') : $('ui.customerInvoiceInvoiceViewPaper') }}
                 <span :class="item.status | bgcFn" class="table-add">{{ item.status | statusTypeFn }}</span>
               </div>
 
               <div class="left">
-                <el-button v-hasPermi="['fd:invoice:check']" type="text" @click="handleCheck(item)">{{ $t("ui.layoutNoticeNoticeListView") }} </el-button>
+                <el-button v-hasPermi="['fd:invoice:check']" type="text" @click="handleCheck(item)">{{ $("ui.layoutNoticeNoticeListView") }} </el-button>
                 <el-button v-if="item.status === 5 && item.num" type="text" @click="handleDown(item)"
-                  >{{ $t("ui.fdInvoiceIndexDownload") }}
+                  >{{ $("ui.fdInvoiceIndexDownload") }}
                 </el-button>
 
-                <el-button v-if="item.status === 1" type="text" @click="handleInvoicUri(item)">{{ $t("ui.fdInvoiceIndexOnlineInvoicing") }} </el-button>
+                <el-button v-if="item.status === 1" type="text" @click="handleInvoicUri(item)">{{ $("ui.fdInvoiceIndexOnlineInvoicing") }} </el-button>
 
                 <el-button
                   v-if="item.status === 1"
                   v-hasPermi="['fd:invoice:edit']"
                   type="text"
                   @click="handleInvoicing(item)"
-                  >{{ $t("ui.fdInvoiceIndexEnterInvoice") }}
+                  >{{ $("ui.fdInvoiceIndexEnterInvoice") }}
                 </el-button>
 
                 <el-button v-if="item.status == 5" v-hasPermi="['fd:invoice:void']" type="text" @click="voidFn(item)"
-                  >{{ $t("ui.fdInvoiceIndexInvalidate") }}
+                  >{{ $("ui.fdInvoiceIndexInvalidate") }}
                 </el-button>
               </div>
             </div>
@@ -52,22 +53,22 @@
             <div v-if="item.types == '3'" class="content main">
               <div class="left">
                 <el-form label-width="110px">
-                  <el-form-item :label="$t('ui.customerInvoiceIndexInvoiceHeader')" prop="name">
-                    <span :data-clipboard-text="item.title" class="pointer copy" :title="$t('ui.customerInvoiceIndexClickToCopy')" @click="copy">{{
+                  <el-form-item :label="$('ui.customerInvoiceIndexInvoiceHeader')" prop="name">
+                    <span :data-clipboard-text="item.title" class="pointer copy" :title="$('ui.customerInvoiceIndexClickToCopy')" @click="copy">{{
                       item.title
                     }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.customerInvoiceIndexTaxpayerId')" prop="name">
-                    <span :data-clipboard-text="item.ident" class="pointer copy" :title="$t('ui.customerInvoiceIndexClickToCopy')" @click="copy">{{
+                  <el-form-item :label="$('ui.customerInvoiceIndexTaxpayerId')" prop="name">
+                    <span :data-clipboard-text="item.ident" class="pointer copy" :title="$('ui.customerInvoiceIndexClickToCopy')" @click="copy">{{
                       item.ident || '--'
                     }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.customerInvoiceIndexInvoiceAmount')" prop="name">
+                  <el-form-item :label="$('ui.customerInvoiceIndexInvoiceAmount')" prop="name">
                     <span
                       :class="item.price == item.amount ? '' : 'active'"
                       :data-clipboard-text="item.amount"
                       class="pointer copy"
-                      :title="$t('ui.customerInvoiceIndexClickToCopy')"
+                      :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
                       >{{ item.amount }}</span
                     >
@@ -77,34 +78,34 @@
               <div class="line"></div>
               <div class="right">
                 <el-form label-width="110px">
-                  <el-form-item :label="$t('ui.customerDetailsCustomerName')" prop="name">
+                  <el-form-item :label="$('ui.customerDetailsCustomerName')" prop="name">
                     <span>{{ item.customer ? item.customer.customer_name : '--' }}</span>
                   </el-form-item>
-                  <el-form-item v-if="item.collect_type == 'mail'" :label="$t('ui.customerInvoiceInvoiceViewEmailInformation')" prop="name">
+                  <el-form-item v-if="item.collect_type == 'mail'" :label="$('ui.customerInvoiceInvoiceViewEmailInformation')" prop="name">
                     <span
                       :data-clipboard-text="item.collect_email"
                       class="pointer copy"
-                      :title="$t('ui.customerInvoiceIndexClickToCopy')"
+                      :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
                       >{{ item.collect_email || '--' }}</span
                     >
                   </el-form-item>
-                  <el-form-item v-else :label="$t('ui.customerInvoiceIndexMailingInformation')" prop="name">
+                  <el-form-item v-else :label="$('ui.customerInvoiceIndexMailingInformation')" prop="name">
                     <span
                       :data-clipboard-text="item.collect_name + ' ' + item.collect_tel + ' ' + item.mail_address"
                       class="pointer copy"
-                      :title="$t('ui.customerInvoiceIndexClickToCopy')"
+                      :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
                       >{{ item.collect_name }} {{ item.collect_tel }} {{ item.mail_address }}</span
                     >
                   </el-form-item>
-                  <el-form-item :label="$t('ui.fdInvoiceIndexApplicant')" prop="name">
+                  <el-form-item :label="$('ui.fdInvoiceIndexApplicant')" prop="name">
                     <span> {{ item.card ? item.card.name : '--' }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.fdInvoiceIndexApplicationTime')" prop="name">
+                  <el-form-item :label="$('ui.fdInvoiceIndexApplicationTime')" prop="name">
                     <span> {{ item.created_at }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.customerInvoiceIndexPaymentAmount')" prop="name">
+                  <el-form-item :label="$('ui.customerInvoiceIndexPaymentAmount')" prop="name">
                     <span :class="item.price == item.amount ? '' : 'active'">{{ item.price }}</span>
                   </el-form-item>
                 </el-form>
@@ -115,22 +116,22 @@
             <div v-if="item.types == '2'" class="content main">
               <div class="left">
                 <el-form label-width="110px">
-                  <el-form-item :label="$t('ui.customerInvoiceIndexInvoiceHeader')" prop="name">
-                    <span :data-clipboard-text="item.title" class="pointer copy" :title="$t('ui.customerInvoiceIndexClickToCopy')" @click="copy">{{
+                  <el-form-item :label="$('ui.customerInvoiceIndexInvoiceHeader')" prop="name">
+                    <span :data-clipboard-text="item.title" class="pointer copy" :title="$('ui.customerInvoiceIndexClickToCopy')" @click="copy">{{
                       item.title
                     }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.customerInvoiceIndexTaxpayerId')" prop="name">
-                    <span :data-clipboard-text="item.ident" class="pointer copy" :title="$t('ui.customerInvoiceIndexClickToCopy')" @click="copy">{{
+                  <el-form-item :label="$('ui.customerInvoiceIndexTaxpayerId')" prop="name">
+                    <span :data-clipboard-text="item.ident" class="pointer copy" :title="$('ui.customerInvoiceIndexClickToCopy')" @click="copy">{{
                       item.ident || '--'
                     }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.customerInvoiceIndexInvoiceAmount')" prop="name">
+                  <el-form-item :label="$('ui.customerInvoiceIndexInvoiceAmount')" prop="name">
                     <span
                       :class="item.price == item.amount ? '' : 'active'"
                       :data-clipboard-text="item.amount"
                       class="pointer copy"
-                      :title="$t('ui.customerInvoiceIndexClickToCopy')"
+                      :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
                       >{{ item.amount }}</span
                     >
@@ -140,34 +141,34 @@
               <div class="line"></div>
               <div class="right">
                 <el-form label-width="110px">
-                  <el-form-item :label="$t('ui.customerDetailsCustomerName')" prop="name">
+                  <el-form-item :label="$('ui.customerDetailsCustomerName')" prop="name">
                     <span>{{ item.customer ? item.customer.customer_name : '--' }}</span>
                   </el-form-item>
-                  <el-form-item v-if="item.collect_type == 'mail'" :label="$t('ui.customerInvoiceInvoiceViewEmailInformation')" prop="name">
+                  <el-form-item v-if="item.collect_type == 'mail'" :label="$('ui.customerInvoiceInvoiceViewEmailInformation')" prop="name">
                     <span
                       :data-clipboard-text="item.collect_email"
                       class="pointer copy"
-                      :title="$t('ui.customerInvoiceIndexClickToCopy')"
+                      :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
                       >{{ item.collect_email || '--' }}</span
                     >
                   </el-form-item>
-                  <el-form-item v-else :label="$t('ui.customerInvoiceIndexMailingInformation')" prop="name">
+                  <el-form-item v-else :label="$('ui.customerInvoiceIndexMailingInformation')" prop="name">
                     <span
                       :data-clipboard-text="item.collect_name + ' ' + item.collect_tel + ' ' + item.mail_address"
                       class="pointer copy"
-                      :title="$t('ui.customerInvoiceIndexClickToCopy')"
+                      :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
                       >{{ item.collect_name }} {{ item.collect_tel }} {{ item.mail_address }}</span
                     >
                   </el-form-item>
-                  <el-form-item :label="$t('ui.fdInvoiceIndexApplicant')" prop="name">
+                  <el-form-item :label="$('ui.fdInvoiceIndexApplicant')" prop="name">
                     <span> {{ item.card ? item.card.name : '--' }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.fdInvoiceIndexApplicationTime')" prop="name">
+                  <el-form-item :label="$('ui.fdInvoiceIndexApplicationTime')" prop="name">
                     <span> {{ item.created_at }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.customerInvoiceIndexPaymentAmount')" prop="name">
+                  <el-form-item :label="$('ui.customerInvoiceIndexPaymentAmount')" prop="name">
                     <span :class="item.price == item.amount ? '' : 'active'">{{ item.price }}</span>
                   </el-form-item>
                 </el-form>
@@ -178,17 +179,17 @@
             <div v-if="item.types == '1'" class="content">
               <div class="left">
                 <el-form label-width="110px">
-                  <el-form-item :label="$t('ui.customerInvoiceIndexInvoiceHeader')" prop="name">
-                    <span :data-clipboard-text="item.title" class="pointer copy" :title="$t('ui.customerInvoiceIndexClickToCopy')" @click="copy">
+                  <el-form-item :label="$('ui.customerInvoiceIndexInvoiceHeader')" prop="name">
+                    <span :data-clipboard-text="item.title" class="pointer copy" :title="$('ui.customerInvoiceIndexClickToCopy')" @click="copy">
                       {{ item.title }}
                     </span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.customerInvoiceIndexInvoiceAmount')" prop="name">
+                  <el-form-item :label="$('ui.customerInvoiceIndexInvoiceAmount')" prop="name">
                     <span
                       :class="item.price == item.amount ? '' : 'active'"
                       :data-clipboard-text="item.amount"
                       class="pointer copy"
-                      :title="$t('ui.customerInvoiceIndexClickToCopy')"
+                      :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
                       >{{ item.amount }}</span
                     >
@@ -198,35 +199,35 @@
               <div class="line"></div>
               <div class="right">
                 <el-form label-width="110px">
-                  <el-form-item :label="$t('ui.customerDetailsCustomerName')" prop="name">
+                  <el-form-item :label="$('ui.customerDetailsCustomerName')" prop="name">
                     <span>{{ item.customer ? item.customer.customer_name : '--' }}</span>
                   </el-form-item>
-                  <el-form-item v-if="item.collect_type == 'mail'" :label="$t('ui.customerInvoiceInvoiceViewEmailInformation')" prop="name">
+                  <el-form-item v-if="item.collect_type == 'mail'" :label="$('ui.customerInvoiceInvoiceViewEmailInformation')" prop="name">
                     <span
                       :data-clipboard-text="item.collect_email"
                       class="pointer copy"
-                      :title="$t('ui.customerInvoiceIndexClickToCopy')"
+                      :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
                       >{{ item.collect_email || '--' }}</span
                     >
                   </el-form-item>
-                  <el-form-item v-else :label="$t('ui.customerInvoiceIndexMailingInformation')" prop="name">
+                  <el-form-item v-else :label="$('ui.customerInvoiceIndexMailingInformation')" prop="name">
                     <span
                       :data-clipboard-text="item.collect_name + ' ' + item.collect_tel + ' ' + item.mail_address"
                       class="pointer copy"
-                      :title="$t('ui.customerInvoiceIndexClickToCopy')"
+                      :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
                       >{{ item.collect_name }} {{ item.collect_tel }} {{ item.mail_address }}</span
                     >
                   </el-form-item>
 
-                  <el-form-item :label="$t('ui.fdInvoiceIndexApplicant')" prop="name">
+                  <el-form-item :label="$('ui.fdInvoiceIndexApplicant')" prop="name">
                     <span> {{ item.card ? item.card.name : '--' }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.fdInvoiceIndexApplicationTime')" prop="name">
+                  <el-form-item :label="$('ui.fdInvoiceIndexApplicationTime')" prop="name">
                     <span> {{ item.created_at }}</span>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.customerInvoiceIndexPaymentAmount')" prop="name">
+                  <el-form-item :label="$('ui.customerInvoiceIndexPaymentAmount')" prop="name">
                     <span :class="item.price == item.amount ? '' : 'active'">{{ item.price }}</span>
                   </el-form-item>
                 </el-form>
@@ -256,20 +257,20 @@
   <invoicingDialog ref="invoicingDialog" :config="invoicingDialog" @isOk="isOk"></invoicingDialog>
   <!-- 申请作废 -->
   <div class="toVoid">
-    <el-dialog :visible.sync="dialogFormVisible" :title="$t('ui.fdInvoiceIndexInvalidate')" width="600px">
+    <el-dialog :visible.sync="dialogFormVisible" :title="$('ui.fdInvoiceIndexInvalidate')" width="600px">
       <div class="mt20">
         <el-form ref="voidData" :model="voidDataForm" class="from">
           <el-form-item
-            :rules="[{ required: true, message: this.$ts('请填写作废原因'), trigger: 'blur' }]"
-            :label="$t('ui.fdInvoiceIndexInvalidateReason')"
+            :rules="[{ required: true, message: '请填写作废原因', trigger: 'blur' }]"
+            :label="$('ui.fdInvoiceIndexInvalidateReason')"
             label-width="100px"
             prop="voidData"
           >
-            <el-input v-model="voidDataForm.voidData" :placeholder="$t('ui.customerInvoiceIndexPleaseEnterReason')" type="textarea"></el-input>
+            <el-input v-model="voidDataForm.voidData" :placeholder="$('ui.customerInvoiceIndexPleaseEnterReason')" type="textarea"></el-input>
           </el-form-item>
           <div class="footer">
-            <el-button class="btn" size="small" @click="dialogFormVisible = false">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-            <el-button size="small" type="primary" @click="submit">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+            <el-button class="btn" size="small" @click="dialogFormVisible = false">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+            <el-button size="small" type="primary" @click="submit">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
           </div>
         </el-form>
       </div>
@@ -283,7 +284,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { financeInvoiceListApi } from '@/api/enterprise'
 import ClipboardJS from 'clipboard'
 import { getInvoiceClassName, getInvoiceText, getInvoiceType, selectInvoiceFd } from '@/libs/customer'
@@ -338,40 +338,40 @@ export default {
       invoiceData: {},
       search: [
         {
-          field_name: this.$ts('关键字搜索'),
+          field_name: '关键字搜索',
           field_name_en: 'search',
           form_value: 'input'
         },
         {
-          field_name: this.$ts('审核状态'),
+          field_name: '审核状态',
           field_name_en: 'status',
           form_value: 'select',
           data_dict: selectInvoiceFd
         },
         {
-          field_name: this.$ts('发票类型'),
+          field_name: '发票类型',
           field_name_en: 'types',
           form_value: 'select',
           data_dict: [
-            { value: '', label: this.$t('toptable.all') },
-            { value: 1, label: this.$t('customer.personalinvoice') },
-            { value: 2, label: this.$t('customer.enterpriseinvoice') },
-            { value: 3, label: this.$t('customer.specialinvoice') }
+            { value: '', label: this.$('toptable.all') },
+            { value: 1, label: this.$('customer.personalinvoice') },
+            { value: 2, label: this.$('customer.enterpriseinvoice') },
+            { value: 3, label: this.$('customer.specialinvoice') }
           ]
         },
         {
-          field_name: this.$ts('时间类型'),
+          field_name: '时间类型',
           field_name_en: 'time_field',
           form_value: 'select',
           data_dict: [
-            { name: (this.$ts('全部')), value: '' },
-            { name: this.$ts('申请日期'), value: 'time' },
-            { name: this.$ts('开票日期'), value: 'real_date' }
+            { name: '全部', value: '' },
+            { name: '申请日期', value: 'time' },
+            { name: '开票日期', value: 'real_date' }
           ]
         },
         {
-          field_name: this.$ts('开始日期'),
-          field_name_end: this.$ts('结束日期'),
+          field_name: '开始日期',
+          field_name_end: '结束日期',
           field_name_en: 'time',
           form_value: 'date_picker'
         }
@@ -426,7 +426,7 @@ export default {
     },
     handleInvoicUri(item) {
       if (!item.id) {
-        return this.$message.error(i18n.t('legacyScript.missingInvoiceRecordID'))
+        return this.$message.error($('legacyScript.missingInvoiceRecordID'))
       }
       clientInvoiceUriApi(item.id).then((res) => {
         if (res.status === 400) {
@@ -442,9 +442,9 @@ export default {
     handleDown(item) {
       clientInvoiceDetailApi(item.id).then((res) => {
         if (res.data.attach) {
-          fileLinkDownLoad(res.data.attach, this.$ts('发票详情'))
+          fileLinkDownLoad(res.data.attach, '发票详情')
         } else {
-          this.$message.error(i18n.t('legacyScript.failedToGetDownloadURL'))
+          this.$message.error($('legacyScript.failedToGetDownloadURL'))
         }
       })
     },
@@ -459,11 +459,11 @@ export default {
     getStatus(id) {
       let str = ''
       if (id === 0) {
-        str = this.$t('customer.audit')
+        str = this.$('customer.audit')
       } else if (id === 1) {
-        str = this.$t('customer.passed')
+        str = this.$('customer.passed')
       } else {
-        str = this.$t('customer.fail')
+        str = this.$('customer.fail')
       }
       return str
     },
@@ -477,11 +477,11 @@ export default {
     getInvoiceType(id) {
       let str = ''
       if (id === 1) {
-        str = this.$t('customer.personalinvoice')
+        str = this.$('customer.personalinvoice')
       } else if (id === 2) {
-        str = this.$t('customer.enterpriseinvoice')
+        str = this.$('customer.enterpriseinvoice')
       } else {
-        str = this.$t('customer.specialinvoice')
+        str = this.$('customer.specialinvoice')
       }
       return str
     },
@@ -498,7 +498,7 @@ export default {
     // 开票
     handleInvoicing(row) {
       this.invoicingDialog = {
-        title: i18n.t('customer.invoicingapproval'),
+        title: $('customer.invoicingapproval'),
         data: row
       }
       this.$refs.invoicingDialog.openBox()
@@ -506,7 +506,7 @@ export default {
     // c查看
     async handleCheck(item) {
       this.invoiceData = {
-        title: i18n.t('legacyScript.viewInvoice'),
+        title: $('legacyScript.viewInvoice'),
         width: '1000px',
         data: item,
         follType: 'fd'
@@ -537,7 +537,7 @@ export default {
     async handleEdit(item, type) {
       if (type === 1) {
         this.config = {
-          title: i18n.t('legacyScript.voidApproval'),
+          title: $('legacyScript.voidApproval'),
           width: '480px',
           type: 2,
           data: item
@@ -545,7 +545,7 @@ export default {
         this.$refs.examineDialog.handleOpen()
       } else {
         this.config = {
-          title: this.$t('customer.invoicereview'),
+          title: this.$('customer.invoicereview'),
           width: '480px',
           type: 2,
           data: item
@@ -577,7 +577,7 @@ export default {
       this.$nextTick(() => {
         const clipboard = new ClipboardJS('.copy')
         clipboard.on('success', () => {
-          this.$message.success(this.$t('setting.copytitle'))
+          this.$message.success(this.$('setting.copytitle'))
           clipboard.destroy()
         })
         this.$store.commit('app/SET_CLICK_TAB', false)

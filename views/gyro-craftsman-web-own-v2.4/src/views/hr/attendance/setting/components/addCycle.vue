@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
-    :title="type == 'add' ? $t('ui.hrAttendanceSettingAddCycleAddScheduleCycle') : $t('ui.hrAttendanceSettingAddCycleEditScheduleCycle')"
+    :title="type == 'add' ? $('ui.hrAttendanceSettingAddCycleAddScheduleCycle') : $('ui.hrAttendanceSettingAddCycleEditScheduleCycle')"
     :visible.sync="drawer"
     size="700px"
     :before-close="handleClose"
@@ -9,39 +10,38 @@
   >
     <el-form ref="ruleForm" label-width="90px" class="demo-ruleForm">
       <el-form-item>
-        <span slot="label"><span class="color-tab">* </span>{{ $t("ui.hrAttendanceSettingAddCycleCycleName") }}</span>
-        <el-input v-model="name" size="small" clearable :placeholder="$t('ui.hrAttendanceSettingAddCyclePleaseEnterCycleName')" />
+        <span slot="label"><span class="color-tab">* </span>{{ $("ui.hrAttendanceSettingAddCycleCycleName") }}</span>
+        <el-input v-model="name" size="small" clearable :placeholder="$('ui.hrAttendanceSettingAddCyclePleaseEnterCycleName')" />
       </el-form-item>
 
       <el-form-item>
-        <span slot="label"><span class="color-tab">* </span>{{ $t("ui.hrAttendanceSettingAddCycleCycleDays") }}</span>
+        <span slot="label"><span class="color-tab">* </span>{{ $("ui.hrAttendanceSettingAddCycleCycleDays") }}</span>
         <el-input-number v-model="cycle" controls-position="right" :min="1" :max="31" style="width: 180px">
         </el-input-number>
-        {{ $t("ui.hrApprovaTimeDay") }}
-        <span class="tips">{{ $t("ui.hrAttendanceSettingAddCycleRepeatsUsingThisCycleTheMaximumCycleIs31") }}</span>
+        {{ $("ui.hrApprovaTimeDay") }}
+        <span class="tips">{{ $("ui.hrAttendanceSettingAddCycleRepeatsUsingThisCycleTheMaximumCycleIs31") }}</span>
       </el-form-item>
 
       <div class="from-item-title mb15">
-        <span>{{ $t("ui.hrAttendanceSettingAddCycleSetShift") }}</span>
+        <span>{{ $("ui.hrAttendanceSettingAddCycleSetShift") }}</span>
       </div>
 
       <el-form-item v-for="index of cycle" :key="index">
-        <span slot="label"><span class="color-tab">* </span>{{ $t("ui.workFlowDrawerApproverDrawerThe") }}{{ index }}{{ $t("ui.hrAttendanceSettingAddCycleDay") }}</span>
-        <el-select v-model="shifts[index]" :placeholder="$t('ui.hrAttendanceSettingAddCyclePleaseSelectShift')" style="width: 100%">
+        <span slot="label"><span class="color-tab">* </span>{{ $("ui.workFlowDrawerApproverDrawerThe") }}{{ index }}{{ $("ui.hrAttendanceSettingAddCycleDay") }}</span>
+        <el-select v-model="shifts[index]" :placeholder="$('ui.hrAttendanceSettingAddCyclePleaseSelectShift')" style="width: 100%">
           <el-option v-for="item in shiftList" :label="item.name" :value="item.id" :key="item.id"></el-option>
         </el-select>
       </el-form-item>
     </el-form>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button @click="handleClose" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button type="primary" :loading="loading" size="small" @click="submitForm">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button @click="handleClose" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button type="primary" :loading="loading" size="small" @click="submitForm">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </el-drawer>
 </div>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { attendanceShiftSelectApi, saveRosterCycleApi, rosterCycleDetailApi, putCycleListApi } from '@/api/config'
 export default {
   name: 'CrmebOaEntAddCycle',
@@ -72,11 +72,11 @@ export default {
     // 提交
     async submitForm() {
       if (!this.name) {
-        return this.$message.error(i18n.t('ui.hrAttendanceSettingAddCyclePleaseEnterCycleName'))
+        return this.$message.error($('ui.hrAttendanceSettingAddCyclePleaseEnterCycleName'))
       }
 
       if (this.cycle !== this.shifts.length - 1) {
-        return this.$message.error(i18n.t('ui.hrAttendanceSettingAddCyclePleaseSelectShift'))
+        return this.$message.error($('ui.hrAttendanceSettingAddCyclePleaseSelectShift'))
       }
 
       let data = {

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 固定物资记录 -->
 <template>
 <div ref="bodyRef">
@@ -12,8 +13,8 @@
           :search="search"
           :viewSearch="viewSearch"
           :total="total"
-          :title="$t('ui.administrationMaterialConsumeLogMaterialRecords')"
-:btn-text="$t('ui.fdExamineIndexExport')"
+          :title="$('ui.administrationMaterialConsumeLogMaterialRecords')"
+          :btnText="$('ui.fdExamineIndexExport')"
           :btnIcon="false"
           :isAddBtn="true"
           @addDataFn="handleExport"
@@ -28,34 +29,34 @@
           row-key="id"
           default-expand-all
         >
-          <el-table-column prop="id" :label="$t('ui.administrationMaterialConsumeLogReceivingDepartmentEmployee')" min-width="100" show-overflow-tooltip>
+          <el-table-column prop="id" :label="$('ui.administrationMaterialConsumeLogReceivingDepartmentEmployee')" min-width="100" show-overflow-tooltip>
             <template slot-scope="scope">
               <span v-if="scope.row.frame">{{ scope.row.frame.name }}</span>
               <span v-if="scope.row.card">{{ scope.row.card.name }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="storage.number" :label="$t('ui.administrationMaterialFixedFixedMaterialNumber')" min-width="130" show-overflow-tooltip />
-          <el-table-column prop="storage.name" :label="$t('ui.administrationMaterialChartIndexMaterialName')" min-width="100" show-overflow-tooltip />
-          <el-table-column prop="storage.units" :label="$t('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" show-overflow-tooltip>
+          <el-table-column prop="storage.number" :label="$('ui.administrationMaterialFixedFixedMaterialNumber')" min-width="130" show-overflow-tooltip />
+          <el-table-column prop="storage.name" :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="100" show-overflow-tooltip />
+          <el-table-column prop="storage.units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" show-overflow-tooltip>
             <template slot-scope="scope">
               {{ scope.row.storage.units || '--' }}
             </template>
           </el-table-column>
-          <el-table-column prop="storage.cate.cate_name" :label="$t('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" show-overflow-tooltip />
-          <el-table-column prop="storage.specs" :label="$t('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" show-overflow-tooltip>
+          <el-table-column prop="storage.cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" show-overflow-tooltip />
+          <el-table-column prop="storage.specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" show-overflow-tooltip>
             <template slot-scope="scope">
               {{ scope.row.storage.specs || '--' }}
             </template>
           </el-table-column>
-          <el-table-column pstatus :label="$t('ui.customerSetupDictionaryIndexStatus')" min-width="80" show-overflow-tooltip>
+          <el-table-column pstatus :label="$('ui.customerSetupDictionaryIndexStatus')" min-width="80" show-overflow-tooltip>
             <template slot-scope="scope">
-              <el-tag v-if="scope.row.status === 1" size="mini">{{ $t("ui.administrationMaterialFixedFixedIssued") }}</el-tag>
-              <el-tag v-if="scope.row.status === 2" type="success" size="mini">{{ $t("ui.administrationMaterialFixedFixedReturned") }}</el-tag>
-              <el-tag v-if="scope.row.status === 3" type="warning" size="mini">{{ $t("ui.administrationMaterialFixedFixedUnderRepair") }}</el-tag>
-              <el-tag v-if="scope.row.status === 4" type="danger" size="mini">{{ $t("ui.administrationMaterialFixedFixedScrapped") }}</el-tag>
+              <el-tag v-if="scope.row.status === 1" size="mini">{{ $("ui.administrationMaterialFixedFixedIssued") }}</el-tag>
+              <el-tag v-if="scope.row.status === 2" type="success" size="mini">{{ $("ui.administrationMaterialFixedFixedReturned") }}</el-tag>
+              <el-tag v-if="scope.row.status === 3" type="warning" size="mini">{{ $("ui.administrationMaterialFixedFixedUnderRepair") }}</el-tag>
+              <el-tag v-if="scope.row.status === 4" type="danger" size="mini">{{ $("ui.administrationMaterialFixedFixedScrapped") }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="updated_at" :label="$t('ui.administrationMaterialFixedLogOperationTime')" min-width="120" show-overflow-tooltip>
+          <el-table-column prop="updated_at" :label="$('ui.administrationMaterialFixedLogOperationTime')" min-width="120" show-overflow-tooltip>
             <template slot-scope="scope">
               {{ $moment(scope.row.updated_at).format('yyyy-MM-DD') }}
             </template>
@@ -80,7 +81,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { storageCateApi, storageRecordApi, storageRecordUsersApi } from '@/api/administration'
 import 'animate.css'
 export default {
@@ -142,7 +142,7 @@ export default {
         // },
         {
           field: 'status',
-          title: i18n.t('legacyScript.materialStatus'),
+          title: $('legacyScript.materialStatus'),
           type: 'select',
           options: [
             { value: '', name: '全部' },
@@ -241,7 +241,7 @@ export default {
       const res = await storageRecordApi(where)
       let data = res.data.list
       if (data.length <= 0) {
-        this.$message.error(this.$t('access.placeholder24'))
+        this.$message.error(this.$('access.placeholder24'))
       } else {
         const aoaData = [
           ['领取部门/人员', '物资编号', '物资名称', '规格型号', '物资分类', '计量单位', '物资状态', '操作时间']

@@ -10,39 +10,39 @@
       @submit.native.prevent
     >
       <el-collapse v-model="formActiveCollapseNames" class="setting-collapse">
-        <el-collapse-item name="1" :title="i18nt('designer.setting.basicSetting')">
-          <el-form-item :label="i18nt('designer.setting.formSize')">
+        <el-collapse-item name="1" :title="$('designer.setting.basicSetting')">
+          <el-form-item :label="$('designer.setting.formSize')">
             <el-select v-model="formConfig.size">
               <el-option v-for="item in formSizes" :key="item.value" :label="item.label" :value="item.value">
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item :label="i18nt('designer.setting.labelPosition')">
+          <el-form-item :label="$('designer.setting.labelPosition')">
             <el-radio-group v-model="formConfig.labelPosition" class="radio-group-custom">
-              <el-radio-button label="left">{{ i18nt('designer.setting.leftPosition') }}</el-radio-button>
-              <el-radio-button label="top">{{ i18nt('designer.setting.topPosition') }}</el-radio-button>
+              <el-radio-button label="left">{{ $('designer.setting.leftPosition') }}</el-radio-button>
+              <el-radio-button label="top">{{ $('designer.setting.topPosition') }}</el-radio-button>
             </el-radio-group>
           </el-form-item>
-          <el-form-item :label="i18nt('designer.setting.labelAlign')">
+          <el-form-item :label="$('designer.setting.labelAlign')">
             <el-radio-group v-model="formConfig.labelAlign" class="radio-group-custom">
-              <el-radio-button label="label-left-align">{{ i18nt('designer.setting.leftAlign') }}</el-radio-button>
-              <el-radio-button label="label-center-align">{{ i18nt('designer.setting.centerAlign') }}</el-radio-button>
-              <el-radio-button label="label-right-align">{{ i18nt('designer.setting.rightAlign') }}</el-radio-button>
+              <el-radio-button label="label-left-align">{{ $('designer.setting.leftAlign') }}</el-radio-button>
+              <el-radio-button label="label-center-align">{{ $('designer.setting.centerAlign') }}</el-radio-button>
+              <el-radio-button label="label-right-align">{{ $('designer.setting.rightAlign') }}</el-radio-button>
             </el-radio-group>
           </el-form-item>
-          <el-form-item :label="i18nt('designer.setting.labelWidth')">
+          <el-form-item :label="$('designer.setting.labelWidth')">
             <el-input-number v-model="formConfig.labelWidth" :min="0" style="width: 100%"></el-input-number>
           </el-form-item>
           <el-form-item label-width="0">
-            <el-divider class="custom-divider">{{ i18nt('designer.setting.formSFCSetting') }}</el-divider>
+            <el-divider class="custom-divider">{{ $('designer.setting.formSFCSetting') }}</el-divider>
           </el-form-item>
-          <el-form-item :label="i18nt('designer.setting.formModelName')">
+          <el-form-item :label="$('designer.setting.formModelName')">
             <el-input type="text" v-model="formConfig.modelName"></el-input>
           </el-form-item>
-          <el-form-item :label="i18nt('designer.setting.formRefName')">
+          <el-form-item :label="$('designer.setting.formRefName')">
             <el-input type="text" v-model="formConfig.refName"></el-input>
           </el-form-item>
-          <el-form-item :label="i18nt('designer.setting.formRulesName')">
+          <el-form-item :label="$('designer.setting.formRulesName')">
             <el-input type="text" v-model="formConfig.rulesName"></el-input>
           </el-form-item>
         </el-collapse-item>
@@ -50,7 +50,7 @@
     </el-form>
 
     <el-dialog
-      :title="i18nt('designer.setting.editFormEventHandler')"
+      :title="$('designer.setting.editFormEventHandler')"
       :visible.sync="showFormEventDialogFlag"
       v-if="showFormEventDialogFlag"
       :show-close="true"
@@ -64,13 +64,13 @@
       <el-alert type="info" :closable="false" :title="'form.' + eventParamsMap[curEventName]"></el-alert>
       <el-alert type="info" :closable="false" title="}"></el-alert>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="showFormEventDialogFlag = false">{{ $ts("取消") }}</el-button>
-        <el-button type="primary" @click="saveFormEventHandler"> {{ i18nt('designer.hint.confirm') }}</el-button>
+        <el-button @click="showFormEventDialogFlag = false">{{ $("public.cancel") }}</el-button>
+        <el-button type="primary" @click="saveFormEventHandler"> {{ $('designer.hint.confirm') }}</el-button>
       </div>
     </el-dialog>
 
     <el-dialog
-      :title="i18nt('designer.setting.formCss')"
+      :title="$('designer.setting.formCss')"
       :visible.sync="showEditFormCssDialogFlag"
       v-if="showEditFormCssDialogFlag"
       :show-close="true"
@@ -82,20 +82,18 @@
       :destroy-on-close="true"
     >
       <div slot="footer" class="dialog-footer">
-        <el-button @click="showEditFormCssDialogFlag = false"> {{ $ts("取消") }}</el-button>
-        <el-button type="primary" @click="saveFormCss"> {{ i18nt('designer.hint.confirm') }}</el-button>
+        <el-button @click="showEditFormCssDialogFlag = false"> {{ $("public.cancel") }}</el-button>
+        <el-button type="primary" @click="saveFormCss"> {{ $('designer.hint.confirm') }}</el-button>
       </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
 import { deepClone, insertCustomCssToHead, insertGlobalFunctionsToHtml } from '@/utils/formDesignerUtils'
 
 export default {
   name: 'form-setting',
-  mixins: [i18n],
   components: {},
   props: {
     designer: Object,
@@ -216,7 +214,7 @@ export default {
         })
 
         if (syntaxErrorFlag) {
-          this.$message.error(this.i18nt('designer.setting.syntaxCheckWarning'))
+          this.$message.error(this.$('designer.setting.syntaxCheckWarning'))
           return
         }
       }
@@ -243,7 +241,7 @@ export default {
         })
 
         if (syntaxErrorFlag) {
-          this.$message.error(this.i18nt('designer.setting.syntaxCheckWarning'))
+          this.$message.error(this.$('designer.setting.syntaxCheckWarning'))
           return
         }
       }
@@ -296,4 +294,3 @@ export default {
   }
 }
 </style>
-@/utils/i18ns

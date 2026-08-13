@@ -1,3 +1,4 @@
+import { $, getLanguage } from '@/lang'
 <!-- @FileDescription: 富文本组件wangeditorV5 -->
 <template>
   <div :class="{ 'train-mode': training }">
@@ -42,13 +43,11 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Vue from 'vue'
 import '@wangeditor-next/editor/dist/css/style.css'
 import { uploader } from '@/utils/uploadCloud'
 import { Editor, Toolbar } from '@wangeditor-next/editor-for-vue2'
 import { i18nChangeLanguage } from '@wangeditor-next/editor'
-import { getLanguage } from '@/lang'
 import { normalizePastedTableHtml } from '@/utils/wangeditor/tablePaste'
 import { TOOLBAR_CONFIG } from './oa-wangeditor-config'
 
@@ -106,7 +105,7 @@ export default Vue.extend({
       editor: null,
       contentVal: this.content,
       toolbarConfig: {},
-      editorConfig: { MENU_CONF: {}, placeholder: this.$ts(this.placeholder), readOnly: this.readOnly },
+      editorConfig: { MENU_CONF: {}, placeholder: this.$(this.placeholder), readOnly: this.readOnly },
       mode: 'default', // or 'simple'
       editableEl: null,
       globalContextMenuBound: false,
@@ -206,7 +205,7 @@ export default Vue.extend({
 
         {
           key: 'group-more-style',
-          title: i18n.t('hr.more'),
+          title: $('hr.more'),
           iconSvg:
             '<svg viewBox="0 0 1024 1024"><path d="M204.8 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"></path><path d="M505.6 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"></path><path d="M806.4 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"></path></svg>',
           menuKeys: ['fontSize', 'fontFamily', 'lineHeight', 'code', 'clearStyle', 'through', 'sup', 'sub']
@@ -219,7 +218,7 @@ export default Vue.extend({
         'todo',
         {
           key: 'group-justify',
-          title: i18n.t('legacyScript.alignment'),
+          title: $('legacyScript.alignment'),
           iconSvg:
             '<svg viewBox="0 0 1024 1024"><path d="M768 793.6v102.4H51.2v-102.4h716.8z m204.8-230.4v102.4H51.2v-102.4h921.6z m-204.8-230.4v102.4H51.2v-102.4h716.8zM972.8 102.4v102.4H51.2V102.4h921.6z"></path></svg>',
           menuKeys: ['justifyLeft', 'justifyRight', 'justifyCenter', 'justifyJustify']
@@ -228,7 +227,7 @@ export default Vue.extend({
         'emotion',
         {
           key: 'group-image',
-          title: i18n.t('file.picture'),
+          title: $('file.picture'),
           iconSvg:
             '<svg viewBox="0 0 1024 1024"><path d="M959.877 128l0.123 0.123v767.775l-0.123 0.122H64.102l-0.122-0.122V128.123l0.122-0.123h895.775zM960 64H64C28.795 64 0 92.795 0 128v768c0 35.205 28.795 64 64 64h896c35.205 0 64-28.795 64-64V128c0-35.205-28.795-64-64-64zM832 288.01c0 53.023-42.988 96.01-96.01 96.01s-96.01-42.987-96.01-96.01S682.967 192 735.99 192 832 234.988 832 288.01zM896 832H128V704l224.01-384 256 320h64l224.01-192z"></path></svg>',
           menuKeys: ['insertImage', 'uploadImage']
@@ -301,7 +300,7 @@ export default Vue.extend({
       // 尽量避免右键导致编辑器内部清空表格多选
       if (typeof event.stopPropagation === 'function') event.stopPropagation()
 
-      const items = [{ key: '__repairTableHtml', label: i18n.t('legacyScript.repairTableStructure'), disabled: false }]
+      const items = [{ key: '__repairTableHtml', label: $('legacyScript.repairTableStructure'), disabled: false }]
 
       if (!items.length) return
 

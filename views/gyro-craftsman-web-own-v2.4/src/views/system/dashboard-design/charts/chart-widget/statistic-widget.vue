@@ -18,8 +18,8 @@
       </div>
     </div>
     <div class="no-data" v-else>
-      {{ $ts("请通过右侧") }}
-      <span class="lh">{{ $ts("维度指标设置") }}</span> {{ $ts("维度、指标栏来添加数据") }}
+      {{ $("ui.scEchartsChartWidgetUseThe") }}
+      <span class="lh">{{ $("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimensionAndMetricSettings") }}</span> {{ $("ui.scEchartsChartWidgetDimensionAndMetricPanelsOnTheRightToAdd") }}
     </div>
   </div>
 </template>

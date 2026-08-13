@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-drawer
-    :title="edit ? $t('ui.userCalendarAddTodoEditSchedule') : $t('ui.userCalendarAddTodoAddSchedule')"
+    :title="edit ? $('ui.userCalendarAddTodoEditSchedule') : $('ui.userCalendarAddTodoAddSchedule')"
     :visible.sync="drawer"
     :wrapperClosable="false"
     size="600px"
@@ -9,17 +10,17 @@
   >
     <div class="box" ref="scrollRef">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item :label="$t('ui.userCalendarAddTodoToDoTitle')" prop="title">
-          <el-input size="small" v-model="ruleForm.title" :placeholder="$t('ui.userCalendarAddTodoEnterAToDoTitle')"></el-input>
+        <el-form-item :label="$('ui.userCalendarAddTodoToDoTitle')" prop="title">
+          <el-input size="small" v-model="ruleForm.title" :placeholder="$('ui.userCalendarAddTodoEnterAToDoTitle')"></el-input>
         </el-form-item>
 
-        <el-form-item :label="$t('ui.userCalendarAddTodoParticipants')" prop="member" v-if="ruleForm.cid !== 5" style="margin-bottom: 15px">
+        <el-form-item :label="$('ui.userCalendarAddTodoParticipants')" prop="member" v-if="ruleForm.cid !== 5" style="margin-bottom: 15px">
           <!-- 选择成员 -->
           <select-member :value="superiorUser" :is-avatar="true" @getSelectList="getSelectList" style="width: 100%">
           </select-member>
         </el-form-item>
         <!-- 开始时间 -->
-        <el-form-item :label="$t('ui.userCalendarAddTodoStartTime')" prop="start_time">
+        <el-form-item :label="$('ui.userCalendarAddTodoStartTime')" prop="start_time">
           <div class="start-time">
             <el-date-picker
               size="small"
@@ -27,7 +28,7 @@
               v-model="startDate"
               type="date"
               :clearable="false"
-              :placeholder="$t('ui.userCalendarAddTodoSelectDate')"
+              :placeholder="$('ui.userCalendarAddTodoSelectDate')"
               format="yyyy-MM-dd"
               @change="durationTypeFn"
               :validate-event="false"
@@ -39,25 +40,25 @@
               style="width: 190px"
               :clearable="false"
               v-model="startTime"
-              :placeholder="$t('ui.userCalendarAddTodoSelectTime')"
+              :placeholder="$('ui.userCalendarAddTodoSelectTime')"
               value-format="HH:mm:ss"
               @change="durationTypeFn"
               :validate-event="false"
             >
             </el-time-picker>
-            <el-checkbox v-model="ruleForm.all_day" @change="allDayFn">{{ $t("ui.userCalendarAddTodoAllDay") }}</el-checkbox>
+            <el-checkbox v-model="ruleForm.all_day" @change="allDayFn">{{ $("ui.userCalendarAddTodoAllDay") }}</el-checkbox>
           </div>
         </el-form-item>
 
-        <el-form-item :label="$t('ui.userCalendarAddTodoDuration')" prop="" v-if="!ruleForm.all_day && !edit">
-          <el-select size="small" v-model="durationType" :placeholder="$t('ui.developConditionGroupPleaseSelect')" @change="durationTypeFn">
+        <el-form-item :label="$('ui.userCalendarAddTodoDuration')" prop="" v-if="!ruleForm.all_day && !edit">
+          <el-select size="small" v-model="durationType" :placeholder="$('ui.developConditionGroupPleaseSelect')" @change="durationTypeFn">
             <el-option v-for="item in durationList" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
 
         <!-- 结束时间 -->
-        <el-form-item :label="$t('ui.userCalendarAddTodoEndTime')" prop="end_time" v-if="durationType == 5 || ruleForm.all_day">
+        <el-form-item :label="$('ui.userCalendarAddTodoEndTime')" prop="end_time" v-if="durationType == 5 || ruleForm.all_day">
           <div class="end-time">
             <el-date-picker
               size="small"
@@ -67,7 +68,7 @@
               format="yyyy-MM-dd"
               value-format="yyyy-MM-dd"
               :clearable="false"
-              :placeholder="$t('ui.userCalendarAddTodoSelectDate')"
+              :placeholder="$('ui.userCalendarAddTodoSelectDate')"
               :validate-event="false"
             >
             </el-date-picker>
@@ -78,7 +79,7 @@
               value-format="HH:mm:ss"
               style="width: 190px"
               :clearable="false"
-              :placeholder="$t('ui.userCalendarAddTodoSelectTime')"
+              :placeholder="$('ui.userCalendarAddTodoSelectTime')"
               :validate-event="false"
             >
             </el-time-picker>
@@ -86,36 +87,36 @@
           </div>
         </el-form-item>
 
-        <el-form-item :label="$t('ui.userCalendarAddTodoReminderTime')" prop="remind">
-          <el-select size="small" v-model="ruleForm.remind" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+        <el-form-item :label="$('ui.userCalendarAddTodoReminderTime')" prop="remind">
+          <el-select size="small" v-model="ruleForm.remind" :placeholder="$('ui.developConditionGroupPleaseSelect')">
             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('ui.userCalendarAddTodoDuplicate')" prop="period">
-          <el-select size="small" v-model="ruleForm.period" @change="daysChange" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+        <el-form-item :label="$('ui.userCalendarAddTodoDuplicate')" prop="period">
+          <el-select size="small" v-model="ruleForm.period" @change="daysChange" :placeholder="$('ui.developConditionGroupPleaseSelect')">
             <el-option v-for="item in repeatOptions" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
 
-        <el-form-item prop="rate" :label="$t('ui.userCalendarAddTodoFrequency')" v-if="ruleForm.period == 1 || ruleForm.period == 4">
+        <el-form-item prop="rate" :label="$('ui.userCalendarAddTodoFrequency')" v-if="ruleForm.period == 1 || ruleForm.period == 4">
           <el-input-number
             v-model="ruleForm.rate"
             size="small"
             :controls="false"
             :min="1"
-            :placeholder="$t('calendar.placeholder17')"
+            :placeholder="$('calendar.placeholder17')"
           />
-          <span>{{ ruleForm.period == 1 ? $t('ui.hrApprovaTimeDay') : $t('ui.userCalendarAddTodoYear') }}</span>
+          <span>{{ ruleForm.period == 1 ? $('ui.hrApprovaTimeDay') : $('ui.userCalendarAddTodoYear') }}</span>
         </el-form-item>
-        <el-form-item prop="days" :label="$t('ui.userCalendarAddTodoWeekly')" v-if="ruleForm.period == 2">
+        <el-form-item prop="days" :label="$('ui.userCalendarAddTodoWeekly')" v-if="ruleForm.period == 2">
           <el-checkbox-group v-model="ruleForm.days" size="small">
             <el-checkbox-button v-for="item in week" :key="item.value" :label="item.value">{{
               item.label
             }}</el-checkbox-button>
           </el-checkbox-group>
         </el-form-item>
-        <el-form-item prop="days" :label="$t('ui.userCalendarAddTodoMonthly')" v-if="ruleForm.period == 3" class="month">
+        <el-form-item prop="days" :label="$('ui.userCalendarAddTodoMonthly')" v-if="ruleForm.period == 3" class="month">
           <el-checkbox-group v-model="ruleForm.days" size="small">
             <el-checkbox-button
               v-for="item in 31"
@@ -125,7 +126,7 @@
             >
           </el-checkbox-group>
         </el-form-item>
-        <el-form-item :label="$t('ui.userCalendarAddTodoRepeatEndDate')" v-if="ruleForm.period != 0">
+        <el-form-item :label="$('ui.userCalendarAddTodoRepeatEndDate')" v-if="ruleForm.period != 0">
           <el-date-picker
             style="width: 100%"
             v-model="ruleForm.fail_time"
@@ -134,16 +135,16 @@
             value-format="yyyy-MM-dd"
             prefix-icon="el-icon-date"
             :clearable="true"
-            :placeholder="$t('calendar.neverend')"
+            :placeholder="$('calendar.neverend')"
           />
         </el-form-item>
-        <el-form-item :label="$t('ui.userCalendarAddTodoScheduleType')" prop="cid">
+        <el-form-item :label="$('ui.userCalendarAddTodoScheduleType')" prop="cid">
           <div v-if="ruleForm.type && ruleForm.cid < 7 && ruleForm.cid != 1">{{ cidName }}</div>
           <div class="start-time" v-else>
             <el-select
               size="small"
               v-model="ruleForm.cid"
-              :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+              :placeholder="$('ui.developConditionGroupPleaseSelect')"
               @change="cidChangeFn"
               :style="{ color: fontColor }"
             >
@@ -158,7 +159,7 @@
             <!--              <div class="colorBox" :style="{ fontColor }"></div>-->
             <!-- <el-color-picker v-model="color1" :disabled="true"></el-color-picker> -->
           </div>
-          <span class="prompt" v-if="!edit"> {{ $t("ui.userCalendarAddTodoCustomerFollowUpRenewalRemindersPaymentRemindersAndReport") }}</span>
+          <span class="prompt" v-if="!edit"> {{ $("ui.userCalendarAddTodoCustomerFollowUpRenewalRemindersPaymentRemindersAndReport") }}</span>
         </el-form-item>
 
         <component
@@ -173,18 +174,16 @@
         />
       </el-form>
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button @click="handleClose" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button type="primary" :loading="loading" size="small" @click="submitForm">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+        <el-button @click="handleClose" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button type="primary" :loading="loading" size="small" @click="submitForm">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
       </div>
     </div>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { scheduleStoreApi, scheduleTypesApi, scheduleEditApi, scheduleInfoApi } from '@/api/user'
 import { getStorageJson } from '@/utils/storage'
-import { translateRuntimeText } from '@/utils/i18ns'
 export default {
   name: '',
   components: {
@@ -210,7 +209,7 @@ export default {
 
     return {
       edit: false,
-      title: i18n.t('hr.selectmembers'),
+      title: $('hr.selectmembers'),
       loading: false,
       cidName: '',
       superiorUser: [], // 参与人
@@ -224,20 +223,20 @@ export default {
       tableData: [],
       durationType: 2,
       durationList: [
-        { value: 1, label: i18n.t('legacyScript.text30Minutes') },
-        { value: 2, label: i18n.t('legacyScript.text1Hour') },
-        { value: 3, label: i18n.t('legacyScript.text2Hours') },
-        { value: 4, label: i18n.t('legacyScript.text3Hours') },
-        { value: 5, label: i18n.t('legacyScript.customEndTime') }
+        { value: 1, label: $('legacyScript.text30Minutes') },
+        { value: 2, label: $('legacyScript.text1Hour') },
+        { value: 3, label: $('legacyScript.text2Hours') },
+        { value: 4, label: $('legacyScript.text3Hours') },
+        { value: 5, label: $('legacyScript.customEndTime') }
       ],
       week: [
-        { value: '1', label: this.$t('hr.monday') },
-        { value: '2', label: this.$t('hr.tuesday') },
-        { value: '3', label: this.$t('hr.wednesday') },
-        { value: '4', label: this.$t('hr.thursday') },
-        { value: '5', label: this.$t('hr.friday') },
-        { value: '6', label: this.$t('hr.saturday') },
-        { value: '7', label: this.$t('hr.sunday') }
+        { value: '1', label: this.$('hr.monday') },
+        { value: '2', label: this.$('hr.tuesday') },
+        { value: '3', label: this.$('hr.wednesday') },
+        { value: '4', label: this.$('hr.thursday') },
+        { value: '5', label: this.$('hr.friday') },
+        { value: '6', label: this.$('hr.saturday') },
+        { value: '7', label: this.$('hr.sunday') }
       ],
 
       ruleForm: {
@@ -261,7 +260,7 @@ export default {
         title: [
           {
             required: true,
-            message: i18n.t('ui.userCalendarAddTodoEnterAToDoTitle'),
+            message: $('ui.userCalendarAddTodoEnterAToDoTitle'),
             trigger: 'change'
           }
         ],
@@ -277,7 +276,7 @@ export default {
         remind: [
           {
             required: true,
-            message: i18n.t('legacyScript.selectReminderTime'),
+            message: $('legacyScript.selectReminderTime'),
             trigger: 'blur'
           }
         ],
@@ -285,35 +284,35 @@ export default {
         period: [
           {
             required: true,
-            message: i18n.t('legacyScript.selectRepeatFrequency'),
+            message: $('legacyScript.selectRepeatFrequency'),
             trigger: 'blur'
           }
         ],
         start_time: [
           {
             required: true,
-            message: i18n.t('customer.placeholder29'),
+            message: $('customer.placeholder29'),
             trigger: 'blur'
           }
         ],
         end_time: [
           {
             required: true,
-            message: i18n.t('customer.placeholder30'),
+            message: $('customer.placeholder30'),
             trigger: 'blur'
           }
         ],
         cid: [
           {
             required: true,
-            message: i18n.t('legacyScript.selectScheduleType'),
+            message: $('legacyScript.selectScheduleType'),
             trigger: 'change'
           }
         ],
         rate: [
           {
             required: true,
-            message: i18n.t('legacyScript.enterFrequency'),
+            message: $('legacyScript.enterFrequency'),
             trigger: 'blur'
           }
         ]
@@ -321,74 +320,71 @@ export default {
       repeatOptions: [
         {
           value: 0,
-          label: i18n.t('calendar.norepetition')
+          label: $('calendar.norepetition')
         },
         {
           value: 1,
-          label: i18n.t('calendar.repeatbyday')
+          label: $('calendar.repeatbyday')
         },
         {
           value: 2,
-          label: i18n.t('calendar.repeatweekly')
+          label: $('calendar.repeatweekly')
         },
         {
           value: 3,
-          label: i18n.t('calendar.repeatmonthly')
+          label: $('calendar.repeatmonthly')
         },
         {
           value: 4,
-          label: i18n.t('calendar.repeatyear')
+          label: $('calendar.repeatyear')
         }
       ],
       options: [
         {
           value: -1,
-          label: i18n.t('legacyScript.noReminder')
+          label: $('legacyScript.noReminder')
         },
         {
           value: 0,
-          label: i18n.t('legacyScript.atTaskStart')
+          label: $('legacyScript.atTaskStart')
         },
         {
           value: 1,
-          label: i18n.t('legacyScript.text5MinutesBefore')
+          label: $('legacyScript.text5MinutesBefore')
         },
         {
           value: 2,
-          label: i18n.t('legacyScript.text15MinutesBefore')
+          label: $('legacyScript.text15MinutesBefore')
         },
         {
           value: 3,
-          label: i18n.t('legacyScript.text30MinutesBefore')
+          label: $('legacyScript.text30MinutesBefore')
         },
         {
           value: 4,
-          label: i18n.t('legacyScript.text1HourBefore')
+          label: $('legacyScript.text1HourBefore')
         },
         {
           value: 5,
-          label: i18n.t('legacyScript.text2HoursBefore')
+          label: $('legacyScript.text2HoursBefore')
         },
         {
           value: 6,
-          label: i18n.t('legacyScript.text1DayBefore')
+          label: $('legacyScript.text1DayBefore')
         },
         {
           value: 7,
-          label: i18n.t('legacyScript.text2DaysBefore')
+          label: $('legacyScript.text2DaysBefore')
         },
         {
           value: 8,
-          label: i18n.t('legacyScript.text1WeekBefore')
+          label: $('legacyScript.text1WeekBefore')
         }
       ]
     }
   },
 
   methods: {
-    translateText(text) {
-      return translateRuntimeText(text, this)
-    },
     formatTime() {
       const currentDate = this.$moment().format('yyyy-MM-DD ')
       const baseTime = this.leftTime ? this.$moment(this.leftTime) : this.$moment()
@@ -439,10 +435,10 @@ export default {
 
       // 日期验证
       if (this.isDateInvalid(this.ruleForm.start_time, this.ruleForm.end_time)) {
-        return this.$message.error(i18n.t('legacyScript.endDateCannotBeEarlierThanStartDate2'))
+        return this.$message.error($('legacyScript.endDateCannotBeEarlierThanStartDate2'))
       }
       if (this.ruleForm.fail_time && this.isDateInvalid(this.ruleForm.start_time, this.ruleForm.fail_time)) {
-        return this.$message.error(i18n.t('legacyScript.repeatEndDateCannotBeEarlierThanStartDate'))
+        return this.$message.error($('legacyScript.repeatEndDateCannotBeEarlierThanStartDate'))
       }
 
       // 处理参与人

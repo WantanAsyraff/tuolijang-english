@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog :title="title" :visible.sync="dialogFormVisible" width="560px" v-bind="$attrs">
@@ -20,8 +21,8 @@
           </div>
         </div>
         <div slot="footer" class="dialog-footer">
-          <el-button size="small" @click="cancelFn">{{ $ts("取消") }}</el-button>
-          <el-button type="primary" size="small" @click="submitFnn()">{{ $ts("确 定") }}</el-button>
+          <el-button size="small" @click="cancelFn">{{ $("public.cancel") }}</el-button>
+          <el-button type="primary" size="small" @click="submitFnn()">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
         </div>
       </el-form>
       <!-- 教育经历 -->
@@ -45,14 +46,13 @@
         </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button size="small" @click="cancelFn">{{ $ts("取消") }}</el-button>
-        <el-button type="primary" size="small" @click="submitFnn()">{{ $ts("确定") }}</el-button>
+        <el-button size="small" @click="cancelFn">{{ $("public.cancel") }}</el-button>
+        <el-button type="primary" size="small" @click="submitFnn()">{{ $("public.ok") }}</el-button>
       </div>
     </el-dialog>
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   name: 'addWork',
   components: {},
@@ -115,7 +115,7 @@ export default {
     }
     return {
       dialogFormVisible: false,
-      title: i18n.t('legacyScript.addWorkExperience'),
+      title: $('legacyScript.addWorkExperience'),
       workForm: {
         start_time: '',
         end_time: '',
@@ -128,39 +128,39 @@ export default {
       workList: [
         {
           type: 'date',
-          label: i18n.t('ui.userCalendarAddTodoStartTime'),
+          label: $('ui.userCalendarAddTodoStartTime'),
           value: 'start_time',
-          placeholder: i18n.t('customer.placeholder29')
+          placeholder: $('customer.placeholder29')
         },
         {
           type: 'date',
-          label: i18n.t('ui.userCalendarAddTodoEndTime'),
+          label: $('ui.userCalendarAddTodoEndTime'),
           value: 'end_time',
-          placeholder: i18n.t('customer.placeholder30')
+          placeholder: $('customer.placeholder30')
         },
         {
           type: 'input',
-          label: i18n.t('legacyScript.company'),
+          label: $('legacyScript.company'),
           value: 'company',
-          placeholder: i18n.t('legacyScript.pleaseEnterYourCompanyName')
+          placeholder: $('legacyScript.pleaseEnterYourCompanyName')
         },
         {
           type: 'input',
-          label: i18n.t('ui.userTrainingPromotionPosition'),
+          label: $('ui.userTrainingPromotionPosition'),
           value: 'position',
-          placeholder: i18n.t('legacyScript.pleaseEnterPosition')
+          placeholder: $('legacyScript.pleaseEnterPosition')
         },
         {
           type: 'textarea',
-          label: i18n.t('legacyScript.jobDescription'),
+          label: $('legacyScript.jobDescription'),
           value: 'describe',
-          placeholder: i18n.t('legacyScript.pleaseEnterJobDescription')
+          placeholder: $('legacyScript.pleaseEnterJobDescription')
         },
         {
           type: 'textarea',
-          label: i18n.t('legacyScript.reasonsForLeaving'),
+          label: $('legacyScript.reasonsForLeaving'),
           value: 'quit_reason',
-          placeholder: i18n.t('legacyScript.pleaseEnterTheReasonForResignation')
+          placeholder: $('legacyScript.pleaseEnterTheReasonForResignation')
         }
       ],
       educationForm: {
@@ -175,60 +175,60 @@ export default {
       educationList: [
         {
           type: 'date',
-          label: i18n.t('legacyScript.admissionTime'),
+          label: $('legacyScript.admissionTime'),
           value: 'start_time',
-          placeholder: i18n.t('customer.placeholder29')
+          placeholder: $('customer.placeholder29')
         },
         {
           type: 'date',
-          label: i18n.t('legacyScript.graduationDate'),
+          label: $('legacyScript.graduationDate'),
           value: 'end_time',
-          placeholder: i18n.t('customer.placeholder30')
+          placeholder: $('customer.placeholder30')
         },
         {
           type: 'input',
-          label: i18n.t('legacyScript.schoolName'),
+          label: $('legacyScript.schoolName'),
           value: 'school_name',
-          placeholder: i18n.t('legacyScript.pleaseEnterSchoolName')
+          placeholder: $('legacyScript.pleaseEnterSchoolName')
         },
         {
           type: 'input',
-          label: i18n.t('legacyScript.major'),
+          label: $('legacyScript.major'),
           value: 'major',
-          placeholder: i18n.t('legacyScript.pleaseEnterYourMajor')
+          placeholder: $('legacyScript.pleaseEnterYourMajor')
         },
         {
           type: 'input',
-          label: i18n.t('legacyScript.education'),
+          label: $('legacyScript.education'),
           value: 'education',
-          placeholder: i18n.t('legacyScript.pleaseEnterEducation')
+          placeholder: $('legacyScript.pleaseEnterEducation')
         },
         {
           type: 'input',
-          label: i18n.t('legacyScript.gegree'),
+          label: $('legacyScript.gegree'),
           value: 'academic',
-          placeholder: i18n.t('legacyScript.pleaseEnterGegree')
+          placeholder: $('legacyScript.pleaseEnterGegree')
         },
         {
           type: 'textarea',
-          label: i18n.t('ui.fdEnterpriseListViewDetailsRemarks'),
+          label: $('ui.fdEnterpriseListViewDetailsRemarks'),
           value: 'remark',
-          placeholder: i18n.t('legacyScript.pleaseEnterANote')
+          placeholder: $('legacyScript.pleaseEnterANote')
         }
       ],
       workRules: {
         start_time: [{ required: true, validator: startTime, trigger: 'blur' }],
         end_time: [{ required: true, validator: endTime, trigger: 'blur' }],
-        company: [{ required: true, message: i18n.t('legacyScript.companyNameIsRequired'), trigger: 'blur' }],
-        position: [{ required: true, message: i18n.t('legacyScript.positionIsRequired'), trigger: 'blur' }],
-        describe: [{ required: true, message: i18n.t('legacyScript.jobDescriptionIsRequired'), trigger: 'blur' }]
+        company: [{ required: true, message: $('legacyScript.companyNameIsRequired'), trigger: 'blur' }],
+        position: [{ required: true, message: $('legacyScript.positionIsRequired'), trigger: 'blur' }],
+        describe: [{ required: true, message: $('legacyScript.jobDescriptionIsRequired'), trigger: 'blur' }]
       },
       educationRules: {
         start_time: [{ required: true, validator: start_Time, trigger: 'blur' }],
         end_time: [{ required: true, validator: end_Time, trigger: 'blur' }],
-        school_name: [{ required: true, message: i18n.t('legacyScript.schoolNameIsRequired'), trigger: 'blur' }],
-        major: [{ required: true, message: i18n.t('legacyScript.majorIsRequired'), trigger: 'blur' }],
-        education: [{ required: true, message: i18n.t('legacyScript.educationIsRequired'), trigger: 'blur' }]
+        school_name: [{ required: true, message: $('legacyScript.schoolNameIsRequired'), trigger: 'blur' }],
+        major: [{ required: true, message: $('legacyScript.majorIsRequired'), trigger: 'blur' }],
+        education: [{ required: true, message: $('legacyScript.educationIsRequired'), trigger: 'blur' }]
       }
     }
   },
@@ -236,7 +236,7 @@ export default {
   methods: {
     submitFn() {
       if (+this.workForm.end_time < +this.workForm.start_time) {
-        this.$message.warning(i18n.t('legacyScript.endDateMustBeGreaterThanStartDate'))
+        this.$message.warning($('legacyScript.endDateMustBeGreaterThanStartDate'))
         return
       }
       if (this.add == 'work') {

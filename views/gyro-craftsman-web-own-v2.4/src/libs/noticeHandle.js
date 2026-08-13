@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 import SettingMer from '@/libs/settingMer'
 import Vue from 'vue'
 import ElementUI from 'element-ui'
@@ -7,7 +8,6 @@ import { roterPre } from '@/settings'
 import { approveVerifyStatusApi } from '@/api/business'
 import { userAssessSetShow } from '@/api/user'
 import { messageListApi } from '@/api/public'
-import { translateMessage } from '@/lang'
 let templateType = ['business_approval']
 
 function handleNotice(data = {}, type = 1) {
@@ -34,13 +34,13 @@ function approveVerify(id, status) {
   approveVerifyStatusApi(id, status)
     .then((res) => {
       ElementUI.Message({
-        message: translateMessage(res.message),
+        message: $(res.message),
         type: 'success'
       })
     })
     .catch((error) => {
       ElementUI.Message({
-        message: translateMessage(error && error.message ? error.message : error),
+        message: $(error && error.message ? error.message : error),
         type: 'error'
       })
     })
@@ -51,13 +51,13 @@ function userAssess(id) {
   userAssessSetShow(id)
     .then((res) => {
       ElementUI.Message({
-        message: translateMessage(res.message),
+        message: $(res.message),
         type: 'success'
       })
     })
     .catch((error) => {
       ElementUI.Message({
-        message: translateMessage(error && error.message ? error.message : error),
+        message: $(error && error.message ? error.message : error),
         type: 'error'
       })
     })
@@ -72,7 +72,7 @@ function getMessage() {
     })
     .catch((error) => {
       ElementUI.Message({
-        message: translateMessage(error && error.message ? error.message : error),
+        message: $(error && error.message ? error.message : error),
         type: 'error'
       })
     })

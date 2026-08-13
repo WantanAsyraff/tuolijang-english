@@ -8,27 +8,27 @@
     <!-- 表格 -->
     <div class="table-box mt10">
       <el-table :data="tableData" v-loading="loading" style="width: 100%" :height="tableHeight">
-        <el-table-column prop="card.name" :label="$t('ui.businessHolidayQueryIndexName')"> </el-table-column>
-        <el-table-column prop="frame.name" :label="$t('ui.businessHolidayQueryIndexDepartment')"> </el-table-column>
-        <el-table-column prop="group" :label="$t('ui.hrAttendanceStatisticsClockAttendanceGroup')">
+        <el-table-column prop="card.name" :label="$('ui.businessHolidayQueryIndexName')"> </el-table-column>
+        <el-table-column prop="frame.name" :label="$('ui.businessHolidayQueryIndexDepartment')"> </el-table-column>
+        <el-table-column prop="group" :label="$('ui.hrAttendanceStatisticsClockAttendanceGroup')">
           <template slot-scope="{ row }">
             {{ row.group || '--' }}
           </template>
         </el-table-column>
-        <el-table-column prop="date" :label="$t('ui.hrAttendanceStatisticsDailyDate')">
+        <el-table-column prop="date" :label="$('ui.hrAttendanceStatisticsDailyDate')">
           <template slot-scope="{ row }">
             {{ $moment(row.created_at).format('YYYY-MM-DD') }}
           </template>
         </el-table-column>
-        <el-table-column prop="date" :label="$t('ui.hrAttendanceStatisticsClockWeekday')">
+        <el-table-column prop="date" :label="$('ui.hrAttendanceStatisticsClockWeekday')">
           <template slot-scope="{ row }">
             {{ getWeek(row.created_at) }}
           </template>
         </el-table-column>
-        <el-table-column prop="created_at" :label="$t('ui.hrAttendanceStatisticsClockClockInTime')"> </el-table-column>
-        <el-table-column prop="date" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')">
+        <el-table-column prop="created_at" :label="$('ui.hrAttendanceStatisticsClockClockInTime')"> </el-table-column>
+        <el-table-column prop="date" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')">
           <template slot-scope="{ row }">
-            <el-button type="text" @click="openDetails(row)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+            <el-button type="text" @click="openDetails(row)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
           </template>
         </el-table-column>
       </el-table>

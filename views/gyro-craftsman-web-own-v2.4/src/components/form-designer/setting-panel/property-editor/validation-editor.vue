@@ -1,7 +1,7 @@
 <template>
   <el-form-item>
-    <span slot="label">{{i18nt('designer.setting.validation')}}
-      <el-tooltip effect="light" :content="i18nt('designer.setting.validationHelp')">
+    <span slot="label">{{$('designer.setting.validation')}}
+      <el-tooltip effect="light" :content="$('designer.setting.validationHelp')">
         <i class="el-icon-info"></i></el-tooltip>
     </span>
     <el-select v-model="optionModel.validation" filterable clearable allow-create default-first-option>
@@ -15,11 +15,8 @@
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
-
   export default {
     name: "validation-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -28,14 +25,14 @@
     data() {
       return {
         fieldValidators: [
-          {value: 'number', label: this.i18nt('designer.hint.numberValidator')},
-          {value: 'letter', label: this.i18nt('designer.hint.letterValidator')},
-          {value: 'letterAndNumber', label: this.i18nt('designer.hint.letterAndNumberValidator')},
-          {value: 'mobilePhone', label: this.i18nt('designer.hint.mobilePhoneValidator')},
-          {value: 'email', label: this.i18nt('designer.hint.emailValidator')},
-          {value: 'url', label: this.i18nt('designer.hint.urlValidator')},
-          {value: 'noChinese', label: this.i18nt('designer.hint.noChineseValidator')},
-          {value: 'chinese', label: this.i18nt('designer.hint.chineseValidator')},
+          {value: 'number', label: this.$('designer.hint.numberValidator')},
+          {value: 'letter', label: this.$('designer.hint.letterValidator')},
+          {value: 'letterAndNumber', label: this.$('designer.hint.letterAndNumberValidator')},
+          {value: 'mobilePhone', label: this.$('designer.hint.mobilePhoneValidator')},
+          {value: 'email', label: this.$('designer.hint.emailValidator')},
+          {value: 'url', label: this.$('designer.hint.urlValidator')},
+          {value: 'noChinese', label: this.$('designer.hint.noChineseValidator')},
+          {value: 'chinese', label: this.$('designer.hint.chineseValidator')},
         ],
       }
     },
@@ -46,4 +43,3 @@
 <style scoped>
 
 </style>
-@/utils/i18ns

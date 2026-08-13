@@ -1,13 +1,14 @@
+import { $ } from '@/lang'
 <template>
 <div class="timeFrom">
   <!-- 请假表单 -->
 
-  <el-form-item :error="errors.dateStart" :required="showRequired" :label="$t('ui.programProgramTaskIndexStartTime')" :label-width="itemLabelWidth">
+  <el-form-item :error="errors.dateStart" :required="showRequired" :label="$('ui.programProgramTaskIndexStartTime')" :label-width="itemLabelWidth">
     <div class="el-form-item__content">
       <el-date-picker
         v-model="timeData.dateStart"
         :type="timeData.timeType === 'day' ? 'date' : 'datetime'"
-        :placeholder="$t('ui.userCalendarAddTodoSelectDate')"
+        :placeholder="$('ui.userCalendarAddTodoSelectDate')"
         :format="timeData.timeType === 'day' ? 'yyyy/MM/dd' : 'yyyy/MM/dd HH:mm:ss'"
         :value-format="timeData.timeType === 'day' ? 'yyyy/MM/dd' : 'yyyy/MM/dd HH:mm:ss'"
         :clearable="false"
@@ -18,7 +19,7 @@
         v-if="timeData.timeType === 'day'"
         v-model="timeData.timeStart"
         class="ml10"
-        :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+        :placeholder="$('ui.developConditionGroupPleaseSelect')"
         @blur="onChange"
         @change="onchangeSel(1)"
       >
@@ -26,12 +27,12 @@
       </el-select>
     </div>
   </el-form-item>
-  <el-form-item :error="errors.dateEnd" :required="showRequired" :label="$t('ui.programProgramTaskIndexEndTime')" :label-width="itemLabelWidth">
+  <el-form-item :error="errors.dateEnd" :required="showRequired" :label="$('ui.programProgramTaskIndexEndTime')" :label-width="itemLabelWidth">
     <div class="el-form-item__content">
       <el-date-picker
         v-model="timeData.dateEnd"
         :type="timeData.timeType === 'day' ? 'date' : 'datetime'"
-        :placeholder="$t('ui.userCalendarAddTodoSelectDate')"
+        :placeholder="$('ui.userCalendarAddTodoSelectDate')"
         :format="timeData.timeType === 'day' ? 'yyyy/MM/dd' : 'yyyy/MM/dd HH:mm:ss'"
         :value-format="timeData.timeType === 'day' ? 'yyyy/MM/dd' : 'yyyy/MM/dd HH:mm:ss'"
         :clearable="false"
@@ -41,7 +42,7 @@
         v-if="timeData.timeType === 'day'"
         v-model="timeData.timeEnd"
         @blur="onChange"
-        :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+        :placeholder="$('ui.developConditionGroupPleaseSelect')"
         class="ml10"
         @change="onchangeSel(2)"
       >
@@ -51,8 +52,8 @@
   </el-form-item>
   <el-form-item :error="errors.duration" :required="showRequired" :label="title" :label-width="itemLabelWidth">
     <div class="el-form-item__content">
-      <el-input v-model="timeData.duration" style="width: 220px" @change="changeDuration" :placeholder="$t('ui.hrApprovaTimePleaseEnterDuration')">
-        <span slot="suffix" class="el-input__icon">{{ timeData.timeType === 'day' ? $t('ui.hrApprovaTimeDay') : $t('ui.hrApprovaTimeHours') }}</span>
+      <el-input v-model="timeData.duration" style="width: 220px" @change="changeDuration" :placeholder="$('ui.hrApprovaTimePleaseEnterDuration')">
+        <span slot="suffix" class="el-input__icon">{{ timeData.timeType === 'day' ? $('ui.hrApprovaTimeDay') : $('ui.hrApprovaTimeHours') }}</span>
       </el-input>
     </div>
   </el-form-item>
@@ -60,7 +61,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { divTime } from '@/utils'
 export default {
   name: 'Index',
@@ -90,11 +90,11 @@ export default {
       options: [
         {
           value: '1',
-          label: i18n.t('legacyScript.aM')
+          label: $('legacyScript.aM')
         },
         {
           value: '0',
-          label: i18n.t('legacyScript.pM')
+          label: $('legacyScript.pM')
         }
       ],
       timeData: {
@@ -223,13 +223,13 @@ export default {
       const time1 = Date.parse(new Date(this.timeData.dateStart))
       const time2 = Date.parse(new Date(this.timeData.dateEnd))
       if (time1 > time2) {
-        return this.$message.error(i18n.t('legacyScript.theEndTimeCannotBeEarlierThanTheStart'))
+        return this.$message.error($('legacyScript.theEndTimeCannotBeEarlierThanTheStart'))
       }
       if (this.timeData.timeType === 'day') {
         if (time2 == time1) {
           setTimeout(() => {
             if (this.timeData.timeStart === '0' && this.timeData.timeEnd === '1') {
-              return this.$message.error(i18n.t('legacyScript.theEndTimeCannotBeEarlierThanTheStart'))
+              return this.$message.error($('legacyScript.theEndTimeCannotBeEarlierThanTheStart'))
             }
           }, 200)
         }

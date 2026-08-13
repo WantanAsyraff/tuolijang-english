@@ -14,7 +14,7 @@
           </el-breadcrumb>
         </el-col>
         <el-col :span="3" class="text-right">
-          <span>{{ $t('file.total') }} {{ total }} {{ $t('file.individual') }}</span>
+          <span>{{ $('file.total') }} {{ total }} {{ $('file.individual') }}</span>
         </el-col>
       </el-row>
     </div>
@@ -22,11 +22,11 @@
       <div class="first-header">
         <p>
           <el-checkbox v-model="menuIds" :disabled="fileData.length <= 0" :label="0" @change="checkChange(1)">
-            {{ checked ? $t('file.reverse') : $t('file.all') }}
+            {{ checked ? $('file.reverse') : $('file.all') }}
           </el-checkbox>
         </p>
-        <p v-if="fileStyle.style == 1 ? true : false">{{ $t('file.updatetime') }}</p>
-        <p v-if="fileStyle.style == 1 ? true : false">{{ $t('file.collection') }}</p>
+        <p v-if="fileStyle.style == 1 ? true : false">{{ $('file.updatetime') }}</p>
+        <p v-if="fileStyle.style == 1 ? true : false">{{ $('file.collection') }}</p>
       </div>
       <ul :class="fileStyle.style == 1 ? 'content-ul' : 'infeed-ul'" class="public-ul">
         <li v-for="(item, index) in fileData" :key="index">
@@ -46,7 +46,7 @@
               <input
                 :id="'input' + index"
                 v-model="item.name"
-                :placeholder="$t('file.placeholder10')"
+                :placeholder="$('file.placeholder10')"
                 autofocus="autofocus"
                 class="rename-input"
                 maxlength="20"
@@ -78,10 +78,10 @@
               >
                 <div class="right-item-list">
                   <div v-if="item.type == 1" class="right-item" @click="setShortcutItem(item)">
-                    {{ item.is_shortcut === 0 ? $t('file.setcommon') : $t('file.cancelcommon') }}
+                    {{ item.is_shortcut === 0 ? $('file.setcommon') : $('file.cancelcommon') }}
                   </div>
                   <div v-if="item.type != 1" class="right-item" @click="fileDownLoad(item)">
-                    {{ $t('public.download') }}
+                    {{ $('public.download') }}
                   </div>
 
                   <div
@@ -89,20 +89,20 @@
                     class="right-item"
                     @click="setShare(item, 1)"
                   >
-                    {{ item.is_share === 0 ? $t('file.share') : $t('file.cancelsharing') }}
+                    {{ item.is_share === 0 ? $('file.share') : $('file.cancelsharing') }}
                   </div>
                   <div class="right-item" @click="getStartCollect(item)">
-                    {{ item.is_collect === 0 ? $t('file.collection') : $t('file.cancelcollection') }}
+                    {{ item.is_collect === 0 ? $('file.collection') : $('file.cancelcollection') }}
                   </div>
 
-                  <div class="right-item" @click="getMoveDialog(item, 1)">{{ $t('file.moveto') }}</div>
+                  <div class="right-item" @click="getMoveDialog(item, 1)">{{ $('file.moveto') }}</div>
                   <div v-if="item.type !== 1" class="right-item" @click="getMoveDialog(item, 2)">
-                    {{ $t('file.copyto') }}
+                    {{ $('file.copyto') }}
                   </div>
-                  <div class="right-item" @click="setRenameItem(item, index)">{{ $t('file.rename') }}</div>
+                  <div class="right-item" @click="setRenameItem(item, index)">{{ $('file.rename') }}</div>
 
-                  <div class="right-item" @click="getFileAttribute(item)">{{ $t('file.attribute') }}</div>
-                  <div class="right-item" @click="getFolderDelete(item.id)">{{ $t('public.delete') }}</div>
+                  <div class="right-item" @click="getFileAttribute(item)">{{ $('file.attribute') }}</div>
+                  <div class="right-item" @click="getFolderDelete(item.id)">{{ $('public.delete') }}</div>
                 </div>
                 <i slot="reference" class="icon iconfont icongengduo1" />
               </el-popover>
@@ -188,7 +188,7 @@ export default {
         is_shortcut: this.switch === 4 ? '' : 1
       },
       total: 0,
-      breadcrumbArray: [{ name: this.$t('file.allfiles'), pid: '' }],
+      breadcrumbArray: [{ name: this.$('file.allfiles'), pid: '' }],
       id: 0,
       isImage: false,
       srcList: [],
@@ -233,7 +233,7 @@ export default {
           this.checked = false
           this.getTreeData()
         }
-        this.breadcrumbArray = [{ name: this.$t('file.allfiles'), pid: '' }]
+        this.breadcrumbArray = [{ name: this.$('file.allfiles'), pid: '' }]
       },
       deep: true
     },
@@ -251,7 +251,7 @@ export default {
   },
   methods: {
     setOptions() {
-      this.breadcrumbArray[0].name = this.$t('file.allfiles')
+      this.breadcrumbArray[0].name = this.$('file.allfiles')
     },
     pageChange(page) {
       this.where.page = page
@@ -453,7 +453,7 @@ export default {
     },
     getFileAttribute(item) {
       this.formBoxConfig = {
-        title: this.$t('file.fileattribute'),
+        title: this.$('file.fileattribute'),
         is_file: true,
         id: item.id,
         width: '450px'
@@ -486,8 +486,8 @@ export default {
     setShare(item, type) {
       this.id = item.id
       this.fromData.id = item.id
-      this.fromData.title = this.$t('file.filesharing')
-      this.fromData.name = this.$t('file.selectsharer')
+      this.fromData.title = this.$('file.filesharing')
+      this.fromData.name = this.$('file.selectsharer')
       if (type === 1) {
         this.closePopover()
         this.fromData.type = 1
@@ -508,7 +508,7 @@ export default {
     },
     // 取消共享
     async getFolderUnShare(item) {
-      await this.$modalSure(this.$t('file.placeholder09'))
+      await this.$modalSure(this.$('file.placeholder09'))
       await folderUnShareApi(item.id)
       await this.getTreeData()
       this.handleData.type = 2

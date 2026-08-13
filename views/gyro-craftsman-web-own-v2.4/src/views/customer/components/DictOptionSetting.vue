@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!--
   @FileDescription: 字典选项设置 - 基础可复用组件
   功能：提供完整的字典选项管理界面，包括：
@@ -15,7 +16,7 @@
     <!-- 顶部标题栏 -->
     <div class="dict-option-setting__header">
       <i class="el-icon-arrow-left dict-option-setting__back-icon" @click="handleBack" />
-      <span>{{ $t("ui.customerDictOptionSettingDictionaryOptionSettings") }}</span>
+      <span>{{ $("ui.customerDictOptionSettingDictionaryOptionSettings") }}</span>
     </div>
 
     <!-- 主体内容区域：左右分栏布局 -->
@@ -58,7 +59,7 @@
                   </span>
                 </el-input>
                 <!-- 拖拽排序手柄 -->
-                <span class="iconfont icontuodong dict-option-setting__drag-handle" :title="$t('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')" />
+                <span class="iconfont icontuodong dict-option-setting__drag-handle" :title="$('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')" />
                 <!-- 删除按钮 -->
                 <span
                   class="el-icon-delete dict-option-setting__action-icon"
@@ -67,7 +68,7 @@
               </div>
             </draggable>
             <!-- 添加新选项按钮 -->
-            <div class="dict-option-setting__add-btn" @click="handleAddFlatItem">{{ $t("ui.customerDictOptionSettingAdd") }}</div>
+            <div class="dict-option-setting__add-btn" @click="handleAddFlatItem">{{ $("ui.customerDictOptionSettingAdd") }}</div>
           </template>
 
           <!-- 多层级模式（level !== 1）：树形结构编辑 -->
@@ -76,26 +77,26 @@
               <!-- 节点名称输入框 -->
               <el-input
                 v-model="data.name"
-:placeholder="$t('ui.customerSetupDictionaryManagementDataValue')"
+                :placeholder="$('ui.customerSetupDictionaryManagementDataValue')"
                 size="small"
                 class="dict-option-setting__tree-input"
               />
               <!-- 添加同级节点 -->
               <span
                 class="iconfont icontianjia1 dict-option-setting__action-icon"
-:title="$t('ui.customerDictOptionSettingAddSibling')"
+                :title="$('ui.shared.addSibling')"
                 @click="handleAddTreeSibling(node, data)"
               />
               <!-- 添加子级节点 -->
               <span
                 class="iconfont icona-ziji1x dict-option-setting__action-icon"
-:title="$t('ui.customerDictOptionSettingAddChildItem')"
+                :title="$('ui.customerSetupDictionaryManagementAddChildItem')"
                 @click="handleAddTreeChild(node, data)"
               />
               <!-- 删除节点 -->
               <span
                 class="el-icon-delete dict-option-setting__action-icon"
-:title="$t('ui.chatIndexDelete')"
+                :title="$('public.delete')"
                 @click="handleDeleteTreeNode(node, data)"
               />
             </div>
@@ -112,61 +113,12 @@
 
   <!-- 底部固定操作栏：取消 / 保存 -->
   <div class="dict-option-setting__footer">
-    <el-button size="small" @click="handleBack">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-    <el-button type="primary" size="small" :loading="saving" @click="handleSave"> {{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }} </el-button>
+    <el-button size="small" @click="handleBack">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+    <el-button type="primary" size="small" :loading="saving" @click="handleSave"> {{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }} </el-button>
   </div>
 </div>
 </template>
-
-            <!-- 多层级模式（level !== 1）：树形结构编辑 -->
-            <el-tree v-else :data="optionItems" node-key="value" default-expand-all>
-              <div slot-scope="{ node, data }" class="dict-option-setting__tree-node">
-                <!-- 节点名称输入框 -->
-                <el-input
-                  v-model="data.name"
-                  placeholder="数据值"
-                  size="small"
-                  class="dict-option-setting__tree-input"
-                />
-                <!-- 添加同级节点 -->
-                <span
-                  class="iconfont icontianjia1 dict-option-setting__action-icon"
-                  title="添加同级"
-                  @click="handleAddTreeSibling(node, data)"
-                />
-                <!-- 添加子级节点 -->
-                <span
-                  class="iconfont icona-ziji1x dict-option-setting__action-icon"
-                  title="添加子项"
-                  @click="handleAddTreeChild(node, data)"
-                />
-                <!-- 删除节点 -->
-                <span
-                  class="el-icon-delete dict-option-setting__action-icon"
-                  title="删除"
-                  @click="handleDeleteTreeNode(node, data)"
-                />
-              </div>
-            </el-tree>
-          </div>
-        </div>
-      </div>
-
-      <!-- 无数据时的空状态展示 -->
-      <div v-else class="dict-option-setting__empty">
-        <default-page :index="18" />
-      </div>
-    </el-card>
-
-    <!-- 底部固定操作栏：取消 / 保存 -->
-    <div class="dict-option-setting__footer">
-      <el-button size="small" @click="handleBack">取消</el-button>
-      <el-button type="primary" size="small" :loading="saving" @click="handleSave"> 保存 </el-button>
-    </div>
-  </div>
-</template>
 <script setup>
-import i18n from '@/lang'
 /**
  * @description 字典选项设置基础组件
  * 使用 Vue 2.7 Composition API (setup) 编写
@@ -299,7 +251,7 @@ const loadDictTypes = async () => {
       handleTypeSelect(dictTypes.value[0])
     }
   } catch (err) {
-    proxy.$message.error(i18n.t('legacyScript.failedToRetrieveDictionaryTypeList'))
+    proxy.$message.error($('legacyScript.failedToRetrieveDictionaryTypeList'))
   }
 }
 
@@ -313,7 +265,7 @@ const loadOptionData = async (typeItem) => {
     const res = await getDictTreeListApi({ types: typeItem.ident })
     optionItems.value = res.data || []
   } catch (err) {
-    proxy.$message.error(i18n.t('legacyScript.failedToRetrieveOptionData'))
+    proxy.$message.error($('legacyScript.failedToRetrieveOptionData'))
   } finally {
     loading.value = false
   }

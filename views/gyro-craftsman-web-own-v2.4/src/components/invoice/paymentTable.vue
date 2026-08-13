@@ -10,19 +10,19 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection" width="55" v-if="edit === ''"> </el-table-column>
-    <el-table-column prop="bill_no" :label="$t('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="100"> </el-table-column>
-    <el-table-column prop="treaty.contract_name" :label="$t('ui.invoiceInvoiceDetailsOrderName')" min-width="100"> </el-table-column>
+    <el-table-column prop="bill_no" :label="$('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="100"> </el-table-column>
+    <el-table-column prop="treaty.contract_name" :label="$('ui.invoiceInvoiceDetailsOrderName')" min-width="100"> </el-table-column>
 
-    <el-table-column prop="types" :label="$t('ui.invoiceInvoiceDetailsBusinessType')" min-width="100">
+    <el-table-column prop="types" :label="$('ui.invoiceInvoiceDetailsBusinessType')" min-width="100">
       <template slot-scope="scope">
-        <span v-if="scope.row.types === 0">{{ $t("ui.invoiceInvoiceDetailsPaymentRecord") }}</span>
+        <span v-if="scope.row.types === 0">{{ $("ui.invoiceInvoiceDetailsPaymentRecord") }}</span>
         <span v-if="scope.row.types === 1"
-          >{{ $t("ui.invoicePaymentTableRenewalRecord") }} <span v-if="scope.row.renew.title">-</span>{{ scope.row.renew.title }}</span
+          >{{ $("ui.invoicePaymentTableRenewalRecord") }} <span v-if="scope.row.renew.title">-</span>{{ scope.row.renew.title }}</span
         >
       </template>
     </el-table-column>
-    <el-table-column prop="num" :label="$t('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100"> </el-table-column>
-    <el-table-column prop="status" :label="$t('ui.invoicePaymentTableInvoiceStatus')" min-width="100">
+    <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100"> </el-table-column>
+    <el-table-column prop="status" :label="$('ui.invoicePaymentTableInvoiceStatus')" min-width="100">
       <template slot-scope="scope">
       
         <div v-if="scope.row.status != undefined">
@@ -36,12 +36,12 @@
       </template>
     </el-table-column>
 
-    <el-table-column prop="card.name" :label="$t('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
-    <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="150"> </el-table-column>
+    <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
+    <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="150"> </el-table-column>
 
-    <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="80" v-if="edit !== ''">
+    <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="80" v-if="edit !== ''">
       <template slot-scope="scope">
-        <el-button @click="deleteFn(scope.row)" type="text" size="small">{{ $t("ui.invoicePaymentTableRemove") }}</el-button>
+        <el-button @click="deleteFn(scope.row)" type="text" size="small">{{ $("ui.invoicePaymentTableRemove") }}</el-button>
       </template>
     </el-table-column>
   </el-table>

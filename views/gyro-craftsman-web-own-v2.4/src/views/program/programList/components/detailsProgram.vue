@@ -2,11 +2,11 @@
 <template>
 <div class="station">
   <el-form ref="formData" :model="formData" label-width="110px">
-    <el-form-item :label="$t('ui.programProgramListAddProgramProjectName')" prop="name" class="lh13">
+    <el-form-item :label="$('ui.programProgramListAddProgramProjectName')" prop="name" class="lh13">
       <span>{{ formData.name || '- -' }}</span>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.programProgramListAddProgramOwner')" prop="uid" class="select-bar">
+    <el-form-item :label="$('ui.programProgramListAddProgramOwner')" prop="uid" class="select-bar">
       <div class="mb-10">
         <div class="avatar-box members-box" v-for="(item, index) in formData.admins" :key="index">
           <img :src="item.avatar" alt="" />
@@ -15,7 +15,7 @@
       </div>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.programProgramListAddProgramProjectMembers')" class="select-bar">
+    <el-form-item :label="$('ui.programProgramListAddProgramProjectMembers')" class="select-bar">
       <div class="mb-10">
         <div class="avatar-box members-box" v-for="(item, index) in formData.members" :key="index">
           <img :src="item.avatar" alt="" />
@@ -25,32 +25,32 @@
       </div>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.programProgramListAddProgramPlannedStart')" class="select-bar" prop="start_date">
+    <el-form-item :label="$('ui.programProgramListAddProgramPlannedStart')" class="select-bar" prop="start_date">
       <span>{{ formData.start_date || '- -' }}</span>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.programProgramListAddProgramPlannedEnd')" class="select-bar" prop="end_date">
+    <el-form-item :label="$('ui.programProgramListAddProgramPlannedEnd')" class="select-bar" prop="end_date">
       <span>{{ formData.end_date || '- -' }}</span>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.programProgramListAddProgramRelatedCustomer')" prop="eid">
+    <el-form-item :label="$('ui.programProgramListAddProgramRelatedCustomer')" prop="eid">
       <div>
         <span>{{ formData.customer ? formData.customer.customer_name : '- -' }}</span>
       </div>
     </el-form-item>
-    <el-form-item v-if="formData.eid" :label="$t('ui.programProgramListAddProgramLinkOrder')" prop="cid">
+    <el-form-item v-if="formData.eid" :label="$('ui.programProgramListAddProgramLinkOrder')" prop="cid">
       <div>
         <span>{{ formData.contract ? formData.contract.contract_name : '--' }}</span>
       </div>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.programProgramListAddProgramProjectStatus')" prop="status">
+    <el-form-item :label="$('ui.programProgramListAddProgramProjectStatus')" prop="status">
       <span>
-        {{ formData.status == 0 ? $t('ui.programProgramListDetailsProgramNormal') : formData.status == 1 ? $t('ui.programProgramListDetailsProgramPause') : $t('ui.customerWeChatMassGroupDetailsClose') }}
+        {{ formData.status == 0 ? $('ui.programProgramListDetailsProgramNormal') : formData.status == 1 ? $('ui.programProgramListDetailsProgramPause') : $('ui.customerWeChatMassGroupDetailsClose') }}
       </span>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.programProgramListAddProgramProjectDescription')">
+    <el-form-item :label="$('ui.programProgramListAddProgramProjectDescription')">
       <span>{{ formData.describe || '- -' }}</span>
     </el-form-item>
   </el-form>

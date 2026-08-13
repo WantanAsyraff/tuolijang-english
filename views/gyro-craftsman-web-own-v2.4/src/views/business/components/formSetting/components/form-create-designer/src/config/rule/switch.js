@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '开关';
@@ -19,29 +19,29 @@ export default {
   },
   props() {
     return [
-      { type: 'switch', field: 'disabled', title: i18n.t('legacyScript.disable') },
+      { type: 'switch', field: 'disabled', title: $('legacyScript.disable') },
       {
         type: 'inputNumber',
         field: 'width',
-        title: i18n.t('legacyScript.widthPx'),
+        title: $('legacyScript.widthPx'),
       },
-      { type: 'input', field: 'activeText', title: i18n.t('legacyScript.textDescriptionWhenSwitchIsOn') },
+      { type: 'input', field: 'activeText', title: $('legacyScript.textDescriptionWhenSwitchIsOn') },
       {
         type: 'input',
         field: 'inactiveText',
-        title: i18n.t('legacyScript.textDescriptionWhenSwitchIsOff'),
+        title: $('legacyScript.textDescriptionWhenSwitchIsOff'),
       },
-      { type: 'input', field: 'activeValue', title: i18n.t('legacyScript.valueWhenSwitchIsOn') },
+      { type: 'input', field: 'activeValue', title: $('legacyScript.valueWhenSwitchIsOn') },
       {
         type: 'input',
         field: 'inactiveValue',
-        title: i18n.t('legacyScript.valueWhenSwitchIsOff'),
+        title: $('legacyScript.valueWhenSwitchIsOff'),
       },
-      { type: 'input', field: 'activeColor', title: i18n.t('legacyScript.backgroundColorWhenTheSwitchIsOn') },
+      { type: 'input', field: 'activeColor', title: $('legacyScript.backgroundColorWhenTheSwitchIsOn') },
       {
         type: 'input',
         field: 'inactiveColor',
-        title: i18n.t('legacyScript.backgroundColorWhenTheSwitchIsOff'),
+        title: $('legacyScript.backgroundColorWhenTheSwitchIsOff'),
       },
     ];
   },

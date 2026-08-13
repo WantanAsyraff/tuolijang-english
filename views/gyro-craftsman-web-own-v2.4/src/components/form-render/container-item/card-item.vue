@@ -65,7 +65,6 @@
 
 <script>
 import emitter from '@/utils/emitter'
-import i18n from '@/utils/i18n'
 import refMixin from '@/components/form-render/refMixin'
 import ContainerItemWrapper from '@/components/form-render/container-item/container-item-wrapper'
 import containerItemMixin from '@/components/form-render/container-item/containerItemMixin'
@@ -74,7 +73,7 @@ import FieldComponents from '@/components/form-designer/form-widget/field-widget
 export default {
   name: 'card-item',
   componentName: 'ContainerItem',
-  mixins: [emitter, i18n, refMixin, containerItemMixin],
+  mixins: [emitter, refMixin, containerItemMixin],
   components: {
     ContainerItemWrapper,
     ...FieldComponents

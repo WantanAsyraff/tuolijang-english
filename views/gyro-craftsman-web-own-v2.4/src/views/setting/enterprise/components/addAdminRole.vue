@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
-    :title="editType === 0 ? $t('ui.settingEnterpriseAddAdminRoleNewRole') : $t('ui.settingEnterpriseAddAdminRoleEditRole')"
+    :title="editType === 0 ? $('ui.settingEnterpriseAddAdminRoleNewRole') : $('ui.settingEnterpriseAddAdminRoleEditRole')"
     :visible.sync="drawer"
     :direction="direction"
     :modal="true"
@@ -13,12 +14,12 @@
     <div v-if="drawer" class="container v-height-flag" style="padding-bottom: 56px;">
       <div class="form-box">
         <el-form :model="ruleForm" label-width="auto">
-          <el-form-item :label="$t('ui.settingAuthAdminIndexRoleName')" prop="name" style="margin-left: 20px">
-            <el-input v-model="ruleForm.role_name" :placeholder="$t('ui.settingEnterpriseAddAdminRolePleaseEnterAnAdministratorName')" size="small" style="width: 460px" />
+          <el-form-item :label="$('ui.settingAuthAdminIndexRoleName')" prop="name" style="margin-left: 20px">
+            <el-input v-model="ruleForm.role_name" :placeholder="$('ui.settingEnterpriseAddAdminRolePleaseEnterAnAdministratorName')" size="small" style="width: 460px" />
           </el-form-item>
           <el-tabs v-model="tabIndex" type="border-card">
-            <el-tab-pane :label="$t('ui.settingAuthAdminIndexPermissionData')" :name="`1`"></el-tab-pane>
-            <el-tab-pane :label="$t('ui.settingEnterpriseAddAdminRoleLowCodeApplications')" :name="`2`"></el-tab-pane>
+            <el-tab-pane :label="$('ui.settingAuthAdminIndexPermissionData')" :name="`1`"></el-tab-pane>
+            <el-tab-pane :label="$('ui.settingEnterpriseAddAdminRoleLowCodeApplications')" :name="`2`"></el-tab-pane>
           </el-tabs>
           <template v-if="tabIndex == 1"> </template>
         </el-form>
@@ -39,7 +40,7 @@
           <!-- <span class="fz13">实体数据权限</span> -->
           <el-input
             style="width: 250px"
-            :placeholder="$t('ui.settingEnterpriseAddAdminRolePleaseEnterEntityName')"
+            :placeholder="$('ui.settingEnterpriseAddAdminRolePleaseEnterEntityName')"
             size="small"
             prefix-icon="el-icon-search"
             class="mr10"
@@ -49,7 +50,7 @@
 
           <el-select
             v-model="cate_id"
-            :placeholder="$t('ui.settingEnterpriseAddAdminRolePleaseSelectLinkedApplicationsMultiple')"
+            :placeholder="$('ui.settingEnterpriseAddAdminRolePleaseSelectLinkedApplicationsMultiple')"
             size="small"
             style="width: 250px"
             filterable
@@ -60,7 +61,7 @@
           </el-select>
           <div style="margin-left: auto; width: 100px">
             <settingsPopover @handClick="rowFn($event, 'reade', 2)">
-              <el-button type="primary" size="small">{{ $t("ui.settingEnterpriseNewsIndexBatchSettings") }}</el-button>
+              <el-button type="primary" size="small">{{ $("ui.settingEnterpriseNewsIndexBatchSettings") }}</el-button>
             </settingsPopover>
           </div>
         </div>
@@ -74,23 +75,23 @@
           @selection-change="handleSelectionChange"
         >
           <el-table-column type="selection" width="55"></el-table-column>
-          <el-table-column prop="table_name" :label="$t('ui.developCrudEntityTableEntityName')" min-width="120"> </el-table-column>
+          <el-table-column prop="table_name" :label="$('ui.developCrudEntityTableEntityName')" min-width="120"> </el-table-column>
           <el-table-column width="300">
             <template slot="header" slot-scope="scope">
               <div class="flex">
-                {{ $t("ui.settingAuthAdminIndexViewPermissions") }} <settingsPopover @handClick="rowFn($event, 'reade', 1)" :icon="true"></settingsPopover>
+                {{ $("ui.settingAuthAdminIndexViewPermissions") }} <settingsPopover @handClick="rowFn($event, 'reade', 1)" :icon="true"></settingsPopover>
               </div>
             </template>
             <template slot-scope="scope">
               <div class="flex">
-                <el-select v-model="scope.row.reade" style="width: 100%" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                <el-select v-model="scope.row.reade" style="width: 100%" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                   <el-option v-for="item in crudList" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
                 <select-department
                   v-if="scope.row.reade == 3"
                   :value="scope.row.reade_frames || []"
-                  :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                  :placeholder="$('ui.developConditionGroupPleaseSelect')"
                   :is-search="true"
                   @changeMastart="changeMastart($event, 'reade_frame', scope.row, scope.$index)"
                   style="width: 100%"
@@ -101,7 +102,7 @@
           <el-table-column width="110">
             <template slot="header" slot-scope="scope">
               <div class="flex">
-                {{ $t("ui.settingAuthAdminIndexAddJurisdiction") }}
+                {{ $("ui.settingAuthAdminIndexAddJurisdiction") }}
                 <settingsPopover
                   @handClick="rowFn($event, 'created', 1)"
                   :list="allowOptions"
@@ -110,7 +111,7 @@
               </div>
             </template>
             <template slot-scope="scope">
-              <el-select v-model="scope.row.created" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+              <el-select v-model="scope.row.created" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                 <el-option v-for="item in allowOptions" :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
               </el-select>
@@ -119,19 +120,19 @@
           <el-table-column prop="date" width="280">
             <template slot="header" slot-scope="scope">
               <div class="flex">
-                {{ $t("ui.settingAuthAdminIndexModifyPermissions") }} <settingsPopover @handClick="rowFn($event, 'updated', 1)" :icon="true"></settingsPopover>
+                {{ $("ui.settingAuthAdminIndexModifyPermissions") }} <settingsPopover @handClick="rowFn($event, 'updated', 1)" :icon="true"></settingsPopover>
               </div>
             </template>
             <template slot-scope="scope">
               <div class="flex">
-                <el-select v-model="scope.row.updated" size="small" style="width: 100%" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                <el-select v-model="scope.row.updated" size="small" style="width: 100%" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                   <el-option v-for="item in crudList" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
                 <select-department
                   v-if="scope.row.updated == 3"
                   :value="scope.row.updated_frames || []"
-                  :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                  :placeholder="$('ui.developConditionGroupPleaseSelect')"
                   :is-search="true"
                   @changeMastart="changeMastart($event, 'updated_frame', scope.row, scope.$index)"
                   style="width: 100%"
@@ -142,19 +143,19 @@
           <el-table-column prop="date" min-width="280">
             <template slot="header" slot-scope="scope">
               <div class="flex">
-                {{ $t("ui.settingAuthAdminIndexDeleteJurisdiction") }} <settingsPopover @handClick="rowFn($event, 'deleted', 1)" :icon="true"></settingsPopover>
+                {{ $("ui.settingAuthAdminIndexDeleteJurisdiction") }} <settingsPopover @handClick="rowFn($event, 'deleted', 1)" :icon="true"></settingsPopover>
               </div>
             </template>
             <template slot-scope="scope">
               <div class="flex">
-                <el-select style="width: 100%" v-model="scope.row.deleted" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                <el-select style="width: 100%" v-model="scope.row.deleted" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                   <el-option v-for="item in crudList" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
                 <select-department
                   v-if="scope.row.deleted == 3"
                   :value="scope.row.deleted_frames || []"
-                  :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                  :placeholder="$('ui.developConditionGroupPleaseSelect')"
                   :is-search="true"
                   @changeMastart="changeMastart($event, 'transfer_frame', scope.row, scope.$index)"
                   style="width: 100%"
@@ -165,19 +166,19 @@
           <el-table-column prop="date" min-width="280">
             <template slot="header" slot-scope="scope">
               <div class="flex">
-                {{ $t("ui.settingAuthAdminIndexSharingPermission") }} <settingsPopover @handClick="rowFn($event, 'share', 1)" :icon="true"></settingsPopover>
+                {{ $("ui.settingAuthAdminIndexSharingPermission") }} <settingsPopover @handClick="rowFn($event, 'share', 1)" :icon="true"></settingsPopover>
               </div>
             </template>
             <template slot-scope="scope">
               <div class="flex">
-                <el-select style="width: 100%" v-model="scope.row.share" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                <el-select style="width: 100%" v-model="scope.row.share" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                   <el-option v-for="item in crudList" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
                 <select-department
                   v-if="scope.row.share == 3"
                   :value="scope.row.share_frames || []"
-                  :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                  :placeholder="$('ui.developConditionGroupPleaseSelect')"
                   :is-search="true"
                   @changeMastart="changeMastart($event, 'share_frame', scope.row, scope.$index)"
                   style="width: 100%"
@@ -188,19 +189,19 @@
           <el-table-column prop="date" min-width="280">
             <template slot="header" slot-scope="scope">
               <div class="flex">
-                {{ $t("ui.settingAuthAdminIndexTransferPermissions") }} <settingsPopover @handClick="rowFn($event, 'transfer', 1)" :icon="true"></settingsPopover>
+                {{ $("ui.settingAuthAdminIndexTransferPermissions") }} <settingsPopover @handClick="rowFn($event, 'transfer', 1)" :icon="true"></settingsPopover>
               </div>
             </template>
             <template slot-scope="scope">
               <div class="flex">
-                <el-select style="width: 100%" v-model="scope.row.transfer" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                <el-select style="width: 100%" v-model="scope.row.transfer" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                   <el-option v-for="item in crudList" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
                 <select-department
                   v-if="scope.row.transfer == 3"
                   :value="scope.row.transfer_frames || []"
-                  :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                  :placeholder="$('ui.developConditionGroupPleaseSelect')"
                   :is-search="true"
                   @changeMastart="changeMastart($event, 'transfer_frame', scope.row, scope.$index)"
                   style="width: 100%"
@@ -217,14 +218,13 @@
       </div>
     </div>
     <div class="from-foot-btn fix btn-shadow">
-      <el-button size="small" @click="close">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" type="primary" :loading="loading" @click="onSubmit">{{ $t('public.save') }}</el-button>
+      <el-button size="small" @click="close">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" type="primary" :loading="loading" @click="onSubmit">{{ $('public.save') }}</el-button>
     </div>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { systemRoleCreateApi, systemRoleStoreApi, systemRoleUpdateApi } from '@/api/config'
 import settingsPopover from './settingsPopover'
 import { getcrudCateListApi } from '@/api/develop'
@@ -269,36 +269,36 @@ export default {
       crudList: [
         {
           value: 0,
-          label: i18n.t('ui.customerWeChatMassAddGroupPostingNotAllowed')
+          label: $('ui.customerWeChatMassAddGroupPostingNotAllowed')
         },
         {
           value: 1,
-          label: i18n.t('customer.meOnly')
+          label: $('customer.meOnly')
         },
         {
           value: 5,
-          label: i18n.t('customer.directSubordinates')
+          label: $('customer.directSubordinates')
         },
         {
           value: 2,
-          label: i18n.t('customer.thisDept')
+          label: $('customer.thisDept')
         },
         {
           value: 3,
-          label: i18n.t('customer.custDept')
+          label: $('customer.custDept')
         },
         {
           value: 4,
-          label: i18n.t('customer.allData')
+          label: $('customer.allData')
         }
       ],
       allowOptions: [
         {
-          label: i18n.t('ui.customerWeChatMassAddGroupPostingAllowed'),
+          label: $('ui.customerWeChatMassAddGroupPostingAllowed'),
           value: 1
         },
         {
-          label: i18n.t('ui.customerWeChatMassAddGroupPostingNotAllowed'),
+          label: $('ui.customerWeChatMassAddGroupPostingNotAllowed'),
           value: 0
         }
       ],
@@ -393,7 +393,7 @@ export default {
       } else if (type === 1) {
         // 按列设置所有选中实体的某种类型权限
 
-        if (this.ids.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectTheEntityWhosePermissionsYouWantToConfigure'))
+        if (this.ids.length == 0) return this.$message.error($('legacyScript.pleaseSelectTheEntityWhosePermissionsYouWantToConfigure'))
         this.searchList.forEach((val) => {
           this.ids.forEach((el) => {
             if (val.id === el.id) {
@@ -403,7 +403,7 @@ export default {
         })
       } else if (type === 2) {
         // 批量设置所有被选择实体的所有权限
-        if (this.ids.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectTheEntityWhosePermissionsYouWantToConfigure'))
+        if (this.ids.length == 0) return this.$message.error($('legacyScript.pleaseSelectTheEntityWhosePermissionsYouWantToConfigure'))
 
         const idSet = new Set(this.ids.map((item) => item.id))
 

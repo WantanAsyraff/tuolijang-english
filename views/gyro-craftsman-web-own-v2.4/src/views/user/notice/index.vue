@@ -23,17 +23,17 @@
                     <el-row :gutter="20">
                       <el-col class="notice-left" :class="item.cover ? '' : 'width'">
                         <p class="title1">
-                          <span class="tag" v-if="item.is_top === 1" size="mini">{{ $t("ui.userNoticeIndexPin") }}</span>
+                          <span class="tag" v-if="item.is_top === 1" size="mini">{{ $("ui.userNoticeIndexPin") }}</span>
                           <span class="over-text"> {{ item.title }}</span>
                         </p>
                         <p class="info over-text2">{{ item.info }}</p>
                         <div class="bottom">
                           <span>
-                            <i class="iconfont iconriqishijian" :title="$t('ui.userNoticeIndexReleaseTime')"></i>
+                            <i class="iconfont iconriqishijian" :title="$('ui.userNoticeIndexReleaseTime')"></i>
                             {{ item.push_time }}
                           </span>
                           <span>
-                            <i class="iconfont iconyiyuedu" :title="$t('ui.userNoticeIndexViewCount')"></i>
+                            <i class="iconfont iconyiyuedu" :title="$('ui.userNoticeIndexViewCount')"></i>
                             {{ item.visit }}
                           </span>
                         </div>
@@ -71,7 +71,7 @@
         <div slot="header" class="clearfix">
           <div class="news-title">
             <span class="before"></span>
-            {{ $t("ui.userNoticeIndexLatestAnnouncement") }}
+            {{ $("ui.userNoticeIndexLatestAnnouncement") }}
           </div>
         </div>
         <ul class="news-content" v-if="nweNoticeData.length > 0">

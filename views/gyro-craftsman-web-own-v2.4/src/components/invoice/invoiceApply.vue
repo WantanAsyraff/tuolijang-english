@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 申请发票信息侧滑弹窗 -->
 <template>
   <div class="station">
@@ -15,21 +16,21 @@
       <div class="invoice">
         <el-form ref="form" :model="rules" :rules="rule" label-width="110px">
           <div class="from-item-title mb15">
-            <span>{{ $t('setting.info.essentialinformation') }}</span>
+            <span>{{ $('setting.info.essentialinformation') }}</span>
           </div>
 
           <!-- 基本信息 -->
           <div class="form-box">
             <div class="form-item">
               <el-form-item>
-                <span slot="label"><span class="color-tab">* </span>{{ $ts("客户名称:") }}</span>
+                <span slot="label"><span class="color-tab">* </span>{{ $("legacy.25689ab2db139b12") }}</span>
 
                 <span class="font-color">{{ rules.source }}</span>
               </el-form-item>
             </div>
             <div class="form-item">
               <el-form-item>
-                <span slot="label"><span class="color-tab">* </span>{{ $t('customer.contractname') }}:</span>
+                <span slot="label"><span class="color-tab">* </span>{{ $('customer.contractname') }}:</span>
 
                 <span class="font-color">{{ rules.name }}</span>
               </el-form-item>
@@ -37,10 +38,10 @@
 
             <div class="form-item">
               <el-form-item prop="category_id">
-                <span slot="label">{{ $ts("发票类目:") }}</span>
+                <span slot="label">{{ $("legacy.9ae229b2aa8c2722") }}</span>
                 <el-select
                   v-model="rules.category_id"
-                  :placeholder="$t('customer.placeholder45')"
+                  :placeholder="$('customer.placeholder45')"
                   clearable
                   size="small"
                 >
@@ -50,10 +51,10 @@
             </div>
             <div class="form-item">
               <el-form-item prop="bill_date">
-                <span slot="label">{{ $t('customer.invoicingdate') }}:</span>
+                <span slot="label">{{ $('customer.invoicingdate') }}:</span>
                 <el-date-picker
                   v-model="rules.bill_date"
-                  :placeholder="$t('customer.placeholder65')"
+                  :placeholder="$('customer.placeholder65')"
                   clearable
                   size="small"
                   type="date"
@@ -65,25 +66,25 @@
           <div class="line" />
           <!-- 邮寄信息 -->
           <div class="from-item-title mb15">
-            <span>{{ $t('customer.mailinginformation') }}</span>
+            <span>{{ $('customer.mailinginformation') }}</span>
           </div>
           <div class="form-box">
             <div class="form-item" style="width: 100%">
               <el-form-item>
-                <span slot="label">{{ $ts("开票要求:") }}</span>
+                <span slot="label">{{ $("legacy.1e27f205dede1e05") }}</span>
                 <el-radio-group v-model="rules.collect_type" @change="collectTypeFn">
-                  <el-radio :label="'mail'">{{ $ts("电子") }}</el-radio>
-                  <el-radio :label="'express'">{{ $ts("纸质") }}</el-radio>
+                  <el-radio :label="'mail'">{{ $("ui.customerInvoiceInvoiceViewElectronic") }}</el-radio>
+                  <el-radio :label="'express'">{{ $("ui.customerInvoiceInvoiceViewPaper") }}</el-radio>
                 </el-radio-group>
               </el-form-item>
             </div>
 
             <div v-if="rules.collect_type == 'express'" class="form-item">
               <el-form-item prop="collect_name">
-                <span slot="label">{{ $ts("联系人:") }}</span>
+                <span slot="label">{{ $("legacy.a346441f0ad24771") }}</span>
                 <el-input
                   v-model.trim="rules.collect_name"
-                  :placeholder="$t('customer.placeholder52')"
+                  :placeholder="$('customer.placeholder52')"
                   clearable
                   size="small"
                 />
@@ -91,10 +92,10 @@
             </div>
             <div v-if="rules.collect_type == 'express'" class="form-item">
               <el-form-item prop="collect_tel">
-                <span slot="label">{{ $t('customer.contactnumber') }}:</span>
+                <span slot="label">{{ $('customer.contactnumber') }}:</span>
                 <el-input
                   v-model.trim="rules.collect_tel"
-                  :placeholder="$t('customer.placeholder53')"
+                  :placeholder="$('customer.placeholder53')"
                   clearable
                   size="small"
                 />
@@ -103,10 +104,10 @@
 
             <div v-if="rules.collect_type == 'mail'" class="form-item">
               <el-form-item prop="collect_email">
-                <span slot="label">{{ $ts("邮箱地址:") }}</span>
+                <span slot="label">{{ $("legacy.5bdc0f97a83025da") }}</span>
                 <el-input
                   v-model="rules.collect_email"
-                  :placeholder="$t('customer.placeholder55')"
+                  :placeholder="$('customer.placeholder55')"
                   clearable
                   size="small"
                 />
@@ -114,10 +115,10 @@
             </div>
             <div v-else class="form-item">
               <el-form-item prop="mail_address">
-                <span slot="label">{{ $ts("邮寄地址:") }}</span>
+                <span slot="label">{{ $("legacy.99f7fd8b9ef7d4bf") }}</span>
                 <el-input
                   v-model.trim="rules.mail_address"
-                  :placeholder="$t('customer.placeholder56')"
+                  :placeholder="$('customer.placeholder56')"
                   clearable
                   size="small"
                 />
@@ -128,25 +129,25 @@
 
           <!-- 发票信息 -->
           <div class="from-item-title mb15">
-            <span>{{ $t('customer.invoiceinformation') }}</span>
+            <span>{{ $('customer.invoiceinformation') }}</span>
           </div>
           <div class="form-box">
             <div class="form-item">
               <el-form-item>
-                <span slot="label"><span class="color-tab">* </span>{{ $t('customer.headerinformation') }}:</span>
-                <el-select v-model="rules.types" :placeholder="$t('customer.placeholder45')" clearable size="small">
+                <span slot="label"><span class="color-tab">* </span>{{ $('customer.headerinformation') }}:</span>
+                <el-select v-model="rules.types" :placeholder="$('customer.placeholder45')" clearable size="small">
                   <el-option v-for="item in invoiceOptions" :key="item.value" :label="item.label" :value="item.value" />
                 </el-select>
               </el-form-item>
             </div>
             <div class="form-item">
               <el-form-item prop="amount">
-                <span slot="label">{{ $t('customer.invoicingpay') }}:</span>
+                <span slot="label">{{ $('customer.invoicingpay') }}:</span>
                 <el-input-number
                   v-model="rules.amount"
                   :controls="false"
                   :min="0"
-                  :placeholder="$t('customer.placeholder44')"
+                  :placeholder="$('customer.placeholder44')"
                   :precision="2"
                   clearable
                   size="small"
@@ -156,10 +157,10 @@
 
             <div class="form-item">
               <el-form-item prop="title">
-                <span slot="label">{{ $t('customer.invoiceheader') }}:</span>
+                <span slot="label">{{ $('customer.invoiceheader') }}:</span>
                 <el-input
                   v-model.trim="rules.title"
-                  :placeholder="$t('customer.placeholder46')"
+                  :placeholder="$('customer.placeholder46')"
                   clearable
                   size="small"
                 />
@@ -167,10 +168,10 @@
             </div>
             <div v-if="rules.types > 1" class="form-item">
               <el-form-item prop="ident">
-                <span slot="label">{{ $t('customer.paytaxes') }}:</span>
+                <span slot="label">{{ $('customer.paytaxes') }}:</span>
                 <el-input
                   v-model.trim="rules.ident"
-                  :placeholder="$t('customer.placeholder47')"
+                  :placeholder="$('customer.placeholder47')"
                   clearable
                   size="small"
                 />
@@ -179,10 +180,10 @@
             <div v-if="rules.types > 2" class="form-item">
               <el-form-item>
                 <!-- prop="bank" -->
-                <span slot="label">{{ $t('customer.bankdeposit') }}:</span>
+                <span slot="label">{{ $('customer.bankdeposit') }}:</span>
                 <el-input
                   v-model.trim="rules.bank"
-                  :placeholder="$t('customer.placeholder48')"
+                  :placeholder="$('customer.placeholder48')"
                   clearable
                   size="small"
                 />
@@ -191,10 +192,10 @@
             <div v-if="rules.types > 2" class="form-item">
               <el-form-item>
                 <!-- prop="account" -->
-                <span slot="label">{{ $t('customer.accountnumber') }}:</span>
+                <span slot="label">{{ $('customer.accountnumber') }}:</span>
                 <el-input
                   v-model.trim="rules.account"
-                  :placeholder="$t('customer.placeholder49')"
+                  :placeholder="$('customer.placeholder49')"
                   clearable
                   size="small"
                 />
@@ -203,10 +204,10 @@
             <div v-if="rules.types > 2" class="form-item">
               <el-form-item>
                 <!-- prop="address" -->
-                <span slot="label">{{ $t('customer.billingaddress') }}:</span>
+                <span slot="label">{{ $('customer.billingaddress') }}:</span>
                 <el-input
                   v-model="rules.address"
-                  :placeholder="$t('customer.placeholder50')"
+                  :placeholder="$('customer.placeholder50')"
                   clearable
                   size="small"
                   @input="onInput()"
@@ -216,8 +217,8 @@
             <div v-if="rules.types > 2" class="form-item">
               <el-form-item>
                 <!-- prop="tel" -->
-                <span slot="label">{{ $t('customer.tel') }}:</span>
-                <el-input v-model.trim="rules.tel" :placeholder="$t('customer.placeholder51')" clearable size="small" />
+                <span slot="label">{{ $('customer.tel') }}:</span>
+                <el-input v-model.trim="rules.tel" :placeholder="$('customer.placeholder51')" clearable size="small" />
               </el-form-item>
             </div>
           </div>
@@ -226,10 +227,10 @@
           <div class="form-box">
             <div class="form-item" style="width: 100%">
               <el-form-item>
-                <span slot="label">{{ $t('public.remarks') }}:</span>
+                <span slot="label">{{ $('public.remarks') }}:</span>
                 <el-input
                   v-model="rules.mark"
-                  :placeholder="$t('customer.placeholder18')"
+                  :placeholder="$('customer.placeholder18')"
                   :rows="4"
                   maxlength="255"
                   show-word-limit
@@ -240,9 +241,9 @@
           </div>
         </el-form>
         <div class="button from-foot-btn fix btn-shadow">
-          <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
+          <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
           <el-button :loading="loading" size="small" type="primary" @click="handleConfirm('ruleForm')">{{
-            $t('public.ok')
+            $('public.ok')
           }}</el-button>
         </div>
       </div>
@@ -251,7 +252,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { clientInvoiceEditApi, clientInvoiceSaveApi, clientInvoiceDetailApi } from '@/api/client'
 import helper from '@/libs/helper'
 import { getStorageJson } from '@/utils/storage'
@@ -278,14 +278,14 @@ export default {
     const checkEmail = (rule, value, callback) => {
       const mailReg = helper.mailboxReg
       if (!value) {
-        return callback(new Error(this.$t('customer.placeholder68')))
+        return callback(new Error(this.$('customer.placeholder68')))
       } else {
         return callback()
       }
     }
     const checkIdent = (rule, value, callback) => {
       if (!value && this.rules.types > 1) {
-        return callback(new Error(this.$t('customer.placeholder47')))
+        return callback(new Error(this.$('customer.placeholder47')))
       } else if (!helper.identReg.test(value)) {
         callback(new Error('税号输入不合法'))
       } else {
@@ -322,30 +322,30 @@ export default {
         category_id: ''
       },
       methodOptions: [
-        { value: 'express', label: this.$t('customer.express') },
-        { value: 'mail', label: this.$t('customer.mail') }
+        { value: 'express', label: this.$('customer.express') },
+        { value: 'mail', label: this.$('customer.mail') }
       ],
       loading: false,
       invoiceOptions: [
-        { value: 1, label: this.$t('customer.personalinvoice') },
-        { value: 2, label: this.$t('customer.enterpriseinvoice') },
-        { value: 3, label: this.$t('customer.specialinvoice') }
+        { value: 1, label: this.$('customer.personalinvoice') },
+        { value: 2, label: this.$('customer.enterpriseinvoice') },
+        { value: 3, label: this.$('customer.specialinvoice') }
       ],
       rule: {
-        name: [{ required: true, message: this.$t('customer.placeholder42'), trigger: 'blur' }],
-        amount: [{ required: true, message: this.$t('customer.placeholder44'), trigger: 'blur' }],
-        bill_date: [{ required: true, message: this.$t('customer.placeholder65'), trigger: 'blur' }],
-        title: [{ required: true, message: this.$t('customer.placeholder46'), trigger: 'blur' }],
+        name: [{ required: true, message: this.$('customer.placeholder42'), trigger: 'blur' }],
+        amount: [{ required: true, message: this.$('customer.placeholder44'), trigger: 'blur' }],
+        bill_date: [{ required: true, message: this.$('customer.placeholder65'), trigger: 'blur' }],
+        title: [{ required: true, message: this.$('customer.placeholder46'), trigger: 'blur' }],
         ident: [{ required: true, validator: checkIdent, trigger: 'blur' }],
-        category_id: [{ required: true, message: i18n.t('legacyScript.selectAnInvoiceCategory'), trigger: 'change' }],
-        collect_name: [{ required: true, message: i18n.t('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
-        collect_tel: [{ required: true, message: i18n.t('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
+        category_id: [{ required: true, message: $('legacyScript.selectAnInvoiceCategory'), trigger: 'change' }],
+        collect_name: [{ required: true, message: $('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
+        collect_tel: [{ required: true, message: $('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
         collect_email: [{ required: true, validator: checkEmail, trigger: 'blur' }],
-        mail_address: [{ required: true, message: i18n.t('legacyScript.enterTheMailingAddress'), trigger: 'blur' }],
-        address: [{ required: true, message: i18n.t('legacyScript.enterTheBillingAddress'), trigger: 'blur' }],
-        bank: [{ required: true, message: this.$t('customer.placeholder48'), trigger: 'blur' }],
-        account: [{ required: true, message: this.$t('customer.placeholder49'), trigger: 'blur' }],
-        tel: [{ required: true, message: i18n.t('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }]
+        mail_address: [{ required: true, message: $('legacyScript.enterTheMailingAddress'), trigger: 'blur' }],
+        address: [{ required: true, message: $('legacyScript.enterTheBillingAddress'), trigger: 'blur' }],
+        bank: [{ required: true, message: this.$('customer.placeholder48'), trigger: 'blur' }],
+        account: [{ required: true, message: this.$('customer.placeholder49'), trigger: 'blur' }],
+        tel: [{ required: true, message: $('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }]
       }
     }
   },
@@ -398,13 +398,13 @@ export default {
   methods: {
     setOptions() {
       this.methodOptions = [
-        { value: 'express', label: this.$t('customer.express') },
-        { value: 'mail', label: this.$t('customer.mail') }
+        { value: 'express', label: this.$('customer.express') },
+        { value: 'mail', label: this.$('customer.mail') }
       ]
       this.invoiceOptions = [
-        { value: 1, label: this.$t('customer.personalinvoice') },
-        { value: 2, label: this.$t('customer.enterpriseinvoice') },
-        { value: 3, label: this.$t('customer.specialinvoice') }
+        { value: 1, label: this.$('customer.personalinvoice') },
+        { value: 2, label: this.$('customer.enterpriseinvoice') },
+        { value: 3, label: this.$('customer.specialinvoice') }
       ]
     },
     change(e) {

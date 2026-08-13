@@ -22,7 +22,7 @@
     {{ row[column.prop] ? row[column.prop].label : '' }}
   </div>
   <div class="text-ellipsis" v-else-if="column.type == 'Boolean'">
-    {{ row[column.prop] == null ? '' : row[column.prop] ? $t('ui.developFieldComponentYes') : $t('ui.developFieldComponentNo') }}
+    {{ row[column.prop] == null ? '' : row[column.prop] ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}
   </div>
   <div class="text-ellipsis" v-else-if="column.type == 'Money'">
     {{ numberToCurrencyNo(row[column.prop]) }}
@@ -66,14 +66,14 @@
   </div>
   <div class="text-ellipsis" v-else>{{ row[column.prop] === undefined ? row.sumcol : row[column.prop] }}</div>
 
-  <zbDialog v-model="filesDialog" :title="$t('ui.simpleTableFormatRowDownloadFile')" appendToBody width="400px">
+  <zbDialog v-model="filesDialog" :title="$('ui.simpleTableFormatRowDownloadFile')" appendToBody width="400px">
     <el-scrollbar max-height="400px">
       <div v-for="(field, inx) of filesList" :key="inx" class="field-item">
         <span class="ml-a-span" @click.stop="downField(field.url, field.name)">{{ field.name }}</span>
       </div>
     </el-scrollbar>
   </zbDialog>
-  <zbDialog v-model="previewDialog" :title="$t('ui.simpleTableFormatRowClickToPreviewImage')" appendToBody width="400px">
+  <zbDialog v-model="previewDialog" :title="$('ui.simpleTableFormatRowClickToPreviewImage')" appendToBody width="400px">
     <div class="preview-box">
       <el-image
         :src="formatUrl(previewUrl)"

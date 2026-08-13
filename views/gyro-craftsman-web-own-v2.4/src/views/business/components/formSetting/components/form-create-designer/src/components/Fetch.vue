@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="_fc_fetch">
  
@@ -6,7 +7,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import debounce from '@form-create/utils/lib/debounce'
 import is from '@form-create/utils/lib/type'
 
@@ -49,13 +49,13 @@ export default {
         {
           type: 'input',
           field: 'action',
-          title: i18n.t('legacyScript.aPI'),
-          validate: [{ required: true, message: i18n.t('legacyScript.pleaseConfigureTheDataInterface') }]
+          title: $('legacyScript.aPI'),
+          validate: [{ required: true, message: $('legacyScript.pleaseConfigureTheDataInterface') }]
         },
         {
           type: 'select',
           field: 'method',
-          title: i18n.t('legacyScript.requestMethod'),
+          title: $('legacyScript.requestMethod'),
           value: 'GET',
           options: [
             { label: 'GET', value: 'GET' },
@@ -65,7 +65,7 @@ export default {
         {
           type: 'Struct',
           field: 'data',
-          title: i18n.t('legacyScript.attachedData'),
+          title: $('legacyScript.attachedData'),
           value: {},
           props: {
             defaultValue: {}
@@ -74,7 +74,7 @@ export default {
         {
           type: 'Struct',
           field: 'headers',
-          title: i18n.t('legacyScript.headerInformation'),
+          title: $('legacyScript.headerInformation'),
           value: {},
           props: {
             defaultValue: {}
@@ -83,7 +83,7 @@ export default {
         {
           type: 'input',
           field: '_parse',
-          title: i18n.t('legacyScript.parsingFunction'),
+          title: $('legacyScript.parsingFunction'),
           info: '解析接口数据，返回组件所需的数据结构',
           value: 'function (res){\n   return res.data;\n}',
           props: {
@@ -101,7 +101,7 @@ export default {
                 }
                 cb()
               },
-              message: i18n.t('legacyScript.pleaseEnterAValidParsingFunction')
+              message: $('legacyScript.pleaseEnterAValidParsingFunction')
             }
           ]
         }

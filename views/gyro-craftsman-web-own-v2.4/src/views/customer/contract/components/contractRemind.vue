@@ -1,54 +1,55 @@
+import { $ } from '@/lang'
 <!-- 订单-付款提醒页面组件 -->
 <template>
 <div class="station">
   <div class="mb10 btn-box1">
-    <div class="title-16">{{ $t("ui.customerContractContractRemindPaymentReminderList") }}</div>
-    <el-button size="small" type="primary" @click="handleContract(3, 1)"> {{ $t("ui.customerContractContractRemindAddPaymentReminder") }} </el-button>
+    <div class="title-16">{{ $("ui.customerContractContractRemindPaymentReminderList") }}</div>
+    <el-button size="small" type="primary" @click="handleContract(3, 1)"> {{ $("ui.customerContractContractRemindAddPaymentReminder") }} </el-button>
   </div>
   <el-table :data="debtData" style="width: 100%">
-    <el-table-column :label="$t('ui.customerContractContractRemindPaymentReminderDate')" min-width="150" prop="time"> </el-table-column>
-    <el-table-column :label="$t('ui.invoiceInvoiceDetailsBusinessType')" min-width="160" prop="">
+    <el-table-column :label="$('ui.customerContractContractRemindPaymentReminderDate')" min-width="150" prop="time"> </el-table-column>
+    <el-table-column :label="$('ui.invoiceInvoiceDetailsBusinessType')" min-width="160" prop="">
       <template slot-scope="scope">
-        <span v-if="scope.row.types == 0">{{ $t("ui.customerListApplyForPaymentOrderPayment") }}</span>
-        <span v-if="scope.row.types == 1">{{ $t("ui.customerContractContractRemindOrderRenewal") }}</span>
+        <span v-if="scope.row.types == 0">{{ $("ui.customerListApplyForPaymentOrderPayment") }}</span>
+        <span v-if="scope.row.types == 1">{{ $("ui.customerContractContractRemindOrderRenewal") }}</span>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.customerContractContractRemindAmountYuan')" min-width="100" prop="num"> </el-table-column>
-    <el-table-column :label="$t('ui.customerSetupDictionaryIndexStatus')" min-width="110" prop="num">
+    <el-table-column :label="$('ui.customerContractContractRemindAmountYuan')" min-width="100" prop="num"> </el-table-column>
+    <el-table-column :label="$('ui.customerSetupDictionaryIndexStatus')" min-width="110" prop="num">
       <template #default="{ row }">
-        <el-tag v-if="row.status === 1" type="danger">{{ $t("ui.customerContractContractRemindAbandoned") }}</el-tag>
-        <el-tag v-if="row.status === 2" type="info">{{ $t("ui.customerContractContractRemindProcessed") }}</el-tag>
-        <el-tag v-if="row.status === 0" type="warning">{{ $t("ui.customerContractContractRemindPending") }}</el-tag>
+        <el-tag v-if="row.status === 1" type="danger">{{ $("ui.customerContractContractRemindAbandoned") }}</el-tag>
+        <el-tag v-if="row.status === 2" type="info">{{ $("ui.customerContractContractRemindProcessed") }}</el-tag>
+        <el-tag v-if="row.status === 0" type="warning">{{ $("ui.customerContractContractRemindPending") }}</el-tag>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.customerContractContractRemindPaymentReminder')" min-width="150" prop="mark">
+    <el-table-column :label="$('ui.customerContractContractRemindPaymentReminder')" min-width="150" prop="mark">
       <template #default="{ row }">
         <el-popover :content="row.mark" placement="top-start" trigger="hover" width="250">
           <span v-show="row.mark" slot="reference" class="over-text hand"> {{ row.mark }} </span>
         </el-popover>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('hr.founder')" min-width="100" prop="card.name"> </el-table-column>
+    <el-table-column :label="$('hr.founder')" min-width="100" prop="card.name"> </el-table-column>
 
     <!-- 订单管理-编辑/删除 -->
-    <el-table-column :label="$t('public.operation')" fixed="right" min-width="180" prop="address">
+    <el-table-column :label="$('public.operation')" fixed="right" min-width="180" prop="address">
       <template slot-scope="scope">
         <el-button
           v-if="scope.row.types === 0"
           :disabled="scope.row.status !== 0"
           type="text"
           @click="handleBuild(scope.row, buildData.contract_refund_switch, 'contract_refund_switch')"
-          >{{ $t("ui.customerContractContractPaymentAddPayment") }}</el-button
+          >{{ $("ui.customerContractContractPaymentAddPayment") }}</el-button
         >
         <el-button
           v-if="scope.row.types === 1"
           :disabled="scope.row.status !== 0"
           type="text"
           @click="handleBuild(scope.row, buildData.contract_renew_switch, 'contract_renew_switch')"
-          >{{ $t("ui.customerContractContractPaymentAddRenewal") }}</el-button
+          >{{ $("ui.customerContractContractPaymentAddRenewal") }}</el-button
         >
         <el-button :disabled="scope.row.status !== 0" type="text" @click="handleContract(3, 2, scope.row)">{{
-          $t('public.edit')
+          $('public.edit')
         }}</el-button>
         <el-button
           v-if="scope.row.bill_id > 0"
@@ -56,18 +57,18 @@
           type="text"
           @click="giveUpFn(scope.row)"
         >
-          {{ $t("ui.customerContractContractRemindDiscard") }}</el-button
+          {{ $("ui.customerContractContractRemindDiscard") }}</el-button
         >
         <el-button v-if="scope.row.bill_id <= 0" type="text" @click="handleDelete(scope.row, 1)">{{
-          $t('public.delete')
+          $('public.delete')
         }}</el-button>
       </template>
     </el-table-column>
 
     <!-- 客户管理-修改备注 -->
-    <!-- <el-table-column v-else prop="address" min-width="120" :label="$t('public.operation')">
+    <!-- <el-table-column v-else prop="address" min-width="120" :label="$('public.operation')">
       <template slot-scope="scope">
-        <el-button @click="setRemarks(scope.row)" type="text">{{ $t('public.remarks') }}</el-button>
+        <el-button @click="setRemarks(scope.row)" type="text">{{ $('public.remarks') }}</el-button>
       </template>
     </el-table-column> -->
   </el-table>
@@ -91,7 +92,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { remindAbjureApi } from '@/api/enterprise'
 import { clientRemindDeleteApi, clientRemindListApi } from '@/api/client'
 import { configRuleApproveApi } from '@/api/config'
@@ -207,7 +207,7 @@ export default {
     },
     addContract(row) {
       this.configContract = {
-        title: i18n.t('customer.addcollection'),
+        title: $('customer.addcollection'),
         width: '480px',
         data: row,
         cid: row.cid,
@@ -248,7 +248,7 @@ export default {
     },
     setRemarks(row) {
       this.configMark = {
-        title: this.$t('customer.remarkinformation'),
+        title: this.$('customer.remarkinformation'),
         width: '480px',
         id: row.id,
         type: 3,
@@ -258,7 +258,7 @@ export default {
     },
     // 删除
     handleDelete(item, type) {
-      this.$modalSure(this.$t('customer.placeholder77')).then(() => {
+      this.$modalSure(this.$('customer.placeholder77')).then(() => {
         clientRemindDeleteApi(item.id).then((res) => {
           if (type === 1) {
             if (this.where.page > 1 && this.debtData.length <= 1) {

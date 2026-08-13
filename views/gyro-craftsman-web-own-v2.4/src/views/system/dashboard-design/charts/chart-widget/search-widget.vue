@@ -6,8 +6,8 @@
       </formList>
     </div>
     <div class="no-data" v-else>
-      {{ $ts("请通过右侧") }}
-      <span class="lh">{{ $ts("筛选组件设置") }}</span> {{ $ts("来添加数据") }}
+      {{ $("ui.scEchartsChartWidgetUseThe") }}
+      <span class="lh">{{ $("legacy.50dcc6c892372fac") }}</span> {{ $("legacy.838a6725a997436f") }}
     </div>
   </div>
 </template>

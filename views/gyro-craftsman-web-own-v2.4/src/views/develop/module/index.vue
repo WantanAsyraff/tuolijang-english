@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card class="normal-page" :body-style="{ padding: '0px 20px 20px 20px' }">
@@ -41,20 +42,20 @@
             </template>
           </el-table-column>
 
-          <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="130">
+          <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="130">
             <template slot-scope="scope">
-              <el-button class="mr10" type="text" @click="checkRow(scope.row)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+              <el-button class="mr10" type="text" @click="checkRow(scope.row)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
               <el-dropdown>
-                <span class="el-dropdown-link el-button--text el-button"> {{ $t("ui.layoutNavbarMore") }} <i class="el-icon-arrow-down" /></span>
+                <span class="el-dropdown-link el-button--text el-button"> {{ $("ui.layoutNavbarMore") }} <i class="el-icon-arrow-down" /></span>
                 <el-dropdown-menu>
-                  <el-dropdown-item @click.native="openShare(scope.row)"> {{ $t("ui.developCrudListSettingShareAndCollaborate") }} </el-dropdown-item>
+                  <el-dropdown-item @click.native="openShare(scope.row)"> {{ $("ui.developCrudListSettingShareAndCollaborate") }} </el-dropdown-item>
                   <el-dropdown-item v-if="scope.row.is_share" @click.native="cancelShare(scope.row)">
-                    {{ $t("ui.developCrudListSettingCancelCollaboration") }}
+                    {{ $("ui.developCrudListSettingCancelCollaboration") }}
                   </el-dropdown-item>
                   <el-dropdown-item @click.native="handleDropdown('transfer', scope.row)">
-                    {{ $t("ui.developCrudListSettingTransferOwner") }}
+                    {{ $("ui.developCrudListSettingTransferOwner") }}
                   </el-dropdown-item>
-                  <el-dropdown-item @click.native="deleteRow(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-dropdown-item>
+                  <el-dropdown-item @click.native="deleteRow(scope.row)">{{ $("ui.chatIndexDelete") }}</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </template>
@@ -134,7 +135,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import defaultPage from '@/components/common/defaultPage'
 import Commnt from '@/components/develop/commonData'
 import formBox from './components/formBox'
@@ -188,14 +188,14 @@ export default {
         user_id: ''
       },
       formRules: {
-        user_id: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'), trigger: 'blur' }],
-        user_ids: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'), trigger: 'blur' }],
-        role_type: [{ required: true, message: i18n.t('legacyScript.pleaseSelectASharingPermission'), trigger: 'blur' }]
+        user_id: [{ required: true, message: $('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'), trigger: 'blur' }],
+        user_ids: [{ required: true, message: $('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'), trigger: 'blur' }],
+        role_type: [{ required: true, message: $('legacyScript.pleaseSelectASharingPermission'), trigger: 'blur' }]
       },
       fromData: {
         width: '600px',
-        title: i18n.t('legacyScript.selectNewOwner'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.selectNewOwner'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },
@@ -259,7 +259,7 @@ export default {
           this.loading = false
         })
         .catch(() => {
-          this.$message.error(i18n.t('legacyScript.failedToLoadMore'))
+          this.$message.error($('legacyScript.failedToLoadMore'))
           this.loading = false
         })
     },
@@ -303,41 +303,41 @@ export default {
       switch (type) {
         case 'transfer':
           // 移交
-          if (this.multipleSelection.length == 0 && !row) return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem'))
-          this.fromData.title = i18n.t('legacyScript.selectNewOwner')
+          if (this.multipleSelection.length == 0 && !row) return this.$message.error($('legacyScript.pleaseSelectAtLeastOneItem'))
+          this.fromData.title = $('legacyScript.selectNewOwner')
           this.formConfig = [
             {
               type: 'user_id',
-              label: i18n.t('legacyScript.selectPersonnel'),
-              placeholder: i18n.t('legacyScript.pleaseSelectOnePerson'),
+              label: $('legacyScript.selectPersonnel'),
+              placeholder: $('legacyScript.pleaseSelectOnePerson'),
               key: 'user_id',
               only_one: true,
-              tips: i18n.t('legacyScript.afterTransferTheNewOwnerIsResponsibleForTheData')
+              tips: $('legacyScript.afterTransferTheNewOwnerIsResponsibleForTheData')
             }
           ]
           this.$refs.oaDialog.openBox()
           break
         case 'share':
           // 共享
-          if (this.multipleSelection.length == 0 && !row) return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem'))
-          this.fromData.title = i18n.t('ui.developModuleShareDataSharingAndCollaboration')
+          if (this.multipleSelection.length == 0 && !row) return this.$message.error($('legacyScript.pleaseSelectAtLeastOneItem'))
+          this.fromData.title = $('ui.developModuleShareDataSharingAndCollaboration')
           this.formConfig = [
             {
               type: 'user_id',
-              label: i18n.t('legacyScript.selectPersonnel'),
-              placeholder: i18n.t('legacyScript.pleaseSelectPersonnel'),
+              label: $('legacyScript.selectPersonnel'),
+              placeholder: $('legacyScript.pleaseSelectPersonnel'),
               key: 'user_ids',
               only_one: false
             },
             {
               type: 'select',
-              label: i18n.t('legacyScript.sharingPermission'),
-              placeholder: i18n.t('legacyScript.pleaseSelectASharingPermission'),
+              label: $('legacyScript.sharingPermission'),
+              placeholder: $('legacyScript.pleaseSelectASharingPermission'),
               key: 'role_type',
               options: [
-                { label: i18n.t('legacyScript.viewOnly'), value: '0' },
-                { label: i18n.t('legacyScript.viewAndEdit'), value: '1' },
-                { label: i18n.t('legacyScript.viewEditAndDelete'), value: '2' }
+                { label: $('legacyScript.viewOnly'), value: '0' },
+                { label: $('legacyScript.viewAndEdit'), value: '1' },
+                { label: $('legacyScript.viewEditAndDelete'), value: '2' }
               ]
             }
           ]
@@ -393,7 +393,7 @@ export default {
 
     handleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
+        this.$message.error($('legacyScript.selectAtLeastOneItem2'))
       } else {
         this.$modalSure('您确认要删除吗').then(() => {
           const ids = []

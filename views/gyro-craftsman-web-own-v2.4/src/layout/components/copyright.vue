@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="ivu-global-footer-copyright">
     <div class="mb14">
@@ -6,12 +7,11 @@
       }}</span>
       </div>
     
-    &copy;{{ $moment().format('YYYY') }} {{ $ts("陀螺匠. All Rights Reserved. Version") }} {{ title || 'v1.5' }}
+    &copy;{{ $moment().format('YYYY') }} {{ $("legacy.43483565d4471941") }} {{ title || 'v1.5' }}
   </div>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 export default {
   name: 'CrmebOaEntCopyright',
@@ -20,19 +20,19 @@ export default {
       title: '',
       links: [
         {
-          title: i18n.t('legacyScript.officialWebsite'),
+          title: $('legacyScript.officialWebsite'),
           key: '官网',
           href: 'https://tuoluojiang.com',
           blankTarget: true
         },
         {
-          title: i18n.t('legacyScript.community'),
+          title: $('legacyScript.community'),
           key: '社区',
           href: 'https://www.crmeb.com/ask/thread/list/157',
           blankTarget: true
         },
         {
-          title: i18n.t('file.document'),
+          title: $('file.document'),
           key: '文档',
           href: 'https://tuoluojiang.com/doc/own/0',
           blankTarget: true

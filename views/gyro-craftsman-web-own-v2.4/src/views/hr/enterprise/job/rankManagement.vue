@@ -1,4 +1,5 @@
-﻿<!-- 人事-职位管理-职级管理 -->
+import { $ } from '@/lang'
+<!-- 人事-职位管理-职级管理 -->
 <template>
 <div class="divBox">
   <el-card class="normal-page">
@@ -9,10 +10,10 @@
             <div class="rank-left v-height-flag">
               <el-row class="rank-left-header">
                 <el-col :span="18">
-                  <div class="title">{{ $t('hr.ranktypes') }}</div>
+                  <div class="title">{{ $('hr.ranktypes') }}</div>
                 </el-col>
                 <el-col :span="6" class="text-right">
-                  <el-tooltip effect="dark" :content="$t('ui.hrEnterpriseJobRankManagementAddCategory')" placement="top">
+                  <el-tooltip effect="dark" :content="$('ui.hrEnterpriseJobRankManagementAddCategory')" placement="top">
                     <span @click="addRankType()" class="iconfont icontianjia color-doc pointer"></span>
                   </el-tooltip>
                 </el-col>
@@ -39,9 +40,9 @@
                             @hide="handleHide"
                           >
                             <div class="right-item-list">
-                              <div class="right-item" @click.stop="editRankType(item)">{{ $t('public.edit') }}</div>
+                              <div class="right-item" @click.stop="editRankType(item)">{{ $('public.edit') }}</div>
                               <div class="right-item" @click.stop="deleteRankType(item)">
-                                {{ $t('public.delete') }}
+                                {{ $('public.delete') }}
                               </div>
                             </div>
                             <i
@@ -64,8 +65,8 @@
                 :dropdownList="dropdownList"
                 :isViewSearch="false"
                 :total="total"
-                :title="$t('ui.hrEnterpriseJobRankManagementRankList')"
-:btn-text="$t('ui.hrEnterpriseJobRankManagementAddRank')"
+      :title="$('ui.hrEnterpriseJobRankManagementRankList')"
+      :btnText="$('ui.hrEnterpriseJobRankManagementAddRank')"
                 :isAddBtn="true"
                 @addDataFn="addRank"
                 @dropdownFn="batchHandleDelete"
@@ -82,28 +83,28 @@
                   @selection-change="handleSelectionChange"
                 >
                   <el-table-column type="selection" width="55"></el-table-column>
-                  <el-table-column prop="name" :label="$t('hr.rankname')" min-width="150" />
-                  <el-table-column prop="alias" :label="$t('hr.ranktype')" min-width="100" />
-                  <el-table-column prop="info" :label="$t('ui.hrEnterpriseJobRankManagementJobLevelDescription')" min-width="200" show-overflow-tooltip>
+                  <el-table-column prop="name" :label="$('hr.rankname')" min-width="150" />
+                  <el-table-column prop="alias" :label="$('hr.ranktype')" min-width="100" />
+                  <el-table-column prop="info" :label="$('ui.hrEnterpriseJobRankManagementJobLevelDescription')" min-width="200" show-overflow-tooltip>
                     <template slot-scope="scope">
                       <div class="line1">{{ scope.row.info || '--' }}</div>
                     </template>
                   </el-table-column>
-                  <el-table-column prop="card.name" :label="$t('hr.founder')" min-width="120" />
-                  <el-table-column prop="sort" :label="$t('ui.businessExamineIndexSort')" min-width="120" />
-                  <el-table-column prop="address" :label="$t('public.operation')" width="140">
+                  <el-table-column prop="card.name" :label="$('hr.founder')" min-width="120" />
+                  <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')" min-width="120" />
+                  <el-table-column prop="address" :label="$('public.operation')" width="140">
                     <template slot-scope="scope">
                       <el-button
                         type="text"
                         @click="editRank(scope.row)"
                         v-hasPermi="['hr:enterprise:job:rankManagement:edit']"
-                        >{{ $t('public.edit') }}</el-button
+                        >{{ $('public.edit') }}</el-button
                       >
                       <el-button
                         type="text"
                         @click="deleteRank(scope.row)"
                         v-hasPermi="['hr:enterprise:job:rankManagement:delete']"
-                        >{{ $t('public.delete') }}</el-button
+                        >{{ $('public.delete') }}</el-button
                       >
                     </template>
                   </el-table-column>
@@ -131,7 +132,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import dialogForm from './components/index'
 import oaFromBox from '@/components/common/oaFromBox'
 import {
@@ -175,7 +175,7 @@ export default {
       formBoxConfig: {},
       dropdownList: [
         {
-          label: i18n.t('public.delete'),
+          label: $('public.delete'),
           value: 1
         }
       ],
@@ -251,7 +251,7 @@ export default {
     // 删除职级类别
     deleteRankType(item) {
       this.closePopover()
-      this.$modalSure(this.$ts('你确定要删除该职级类别吗')).then(() => {
+      this.$modalSure('你确定要删除该职级类别吗').then(() => {
         rankCateDeleteApi(item.id).then((res) => {
           this.rankIndex = 0
           this.getRankList()
@@ -264,7 +264,7 @@ export default {
     // 添加职级
     async addRank() {
       if (this.where.cate_id === 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseCreateAJobLevelCategoryFirstThenAddThe'))
+        this.$message.error($('legacyScript.pleaseCreateAJobLevelCategoryFirstThenAddThe'))
       } else {
         const result = await rankCreateApi({ cate_id: this.where.cate_id })
         this.formBoxConfig = {
@@ -290,19 +290,19 @@ export default {
       await this.$refs.dialogForm.openBox()
     },
     deleteRank(row) {
-      this.$modalSure(this.$ts('你确定要删除该职级吗')).then(() => {
+      this.$modalSure('你确定要删除该职级吗').then(() => {
         this.handleDelete(row.id)
       })
     },
     batchHandleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItemToDelete'))
+        this.$message.error($('legacyScript.pleaseSelectAtLeastOneItemToDelete'))
       } else {
         const ids = []
         this.multipleSelection.forEach((value) => {
           ids.push(value.id)
         })
-        this.$modalSure(this.$ts('确定要全部删除已选择的内容吗')).then(() => {
+        this.$modalSure('确定要全部删除已选择的内容吗').then(() => {
           this.handleDelete(ids.join(','))
         })
       }

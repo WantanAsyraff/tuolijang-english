@@ -1,4 +1,5 @@
-﻿<!-- 人事-职位管理-职位管理 -->
+import { $ } from '@/lang'
+<!-- 人事-职位管理-职位管理 -->
 <template>
 <div class="divBox">
   <div>
@@ -10,7 +11,7 @@
           :isAddBtn="true"
           :isViewSearch="false"
           :search="search"
-          :title="$t('ui.hrEnterpriseJobJobAdministrationPositionManagement')"
+          :title="$('ui.hrEnterpriseJobJobAdministrationPositionManagement')"
           :total="total"
           @addDataFn="addJob"
           @confirmData="confirmData"
@@ -27,35 +28,35 @@
             @selection-change="handleSelectionChange"
           >
             <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column :label="$t('hr.jobtitle')" min-width="150" prop="name" />
-            <el-table-column :label="$t('hr.immediatesuperior')" min-width="150" prop="cate.name" />
-            <el-table-column :label="$t('hr.positionlevel')" min-width="100" prop="rank.alias" />
-            <el-table-column :label="$t('ui.hrEnterpriseJobJobAdministrationJobDescription')" min-width="240" prop="describe" show-overflow-tooltip>
+            <el-table-column :label="$('hr.jobtitle')" min-width="150" prop="name" />
+            <el-table-column :label="$('hr.immediatesuperior')" min-width="150" prop="cate.name" />
+            <el-table-column :label="$('hr.positionlevel')" min-width="100" prop="rank.alias" />
+            <el-table-column :label="$('ui.hrEnterpriseJobJobAdministrationJobDescription')" min-width="240" prop="describe" show-overflow-tooltip>
               <template slot-scope="scope">
                 <div class="line1">{{ scope.row.describe || '--' }}</div>
               </template>
             </el-table-column>
 
-            <el-table-column :label="$t('hr.founder')" min-width="120" prop="card.name" />
-            <el-table-column :label="$t('public.operation')" prop="describe" show-overflow-tooltip width="200">
+            <el-table-column :label="$('hr.founder')" min-width="120" prop="card.name" />
+            <el-table-column :label="$('public.operation')" prop="describe" show-overflow-tooltip width="200">
               <template slot-scope="scope">
                 <el-button
                   v-hasPermi="['hr:enterprise:job:jobAdministration:check']"
                   type="text"
                   @click="handleDetail(scope.row)"
-                  >{{ $t('public.check') }}</el-button
+                  >{{ $('public.check') }}</el-button
                 >
                 <el-button
                   v-hasPermi="['hr:enterprise:job:jobAdministration:edit']"
                   type="text"
                   @click="handleEdit(scope.row)"
-                  >{{ $t('public.edit') }}</el-button
+                  >{{ $('public.edit') }}</el-button
                 >
                 <el-button
                   v-hasPermi="['hr:enterprise:job:jobAdministration:delete']"
                   type="text"
                   @click="handleDelete(scope.row, scope.$index)"
-                  >{{ $t('public.delete') }}</el-button
+                  >{{ $('public.delete') }}</el-button
                 >
               </template>
             </el-table-column>
@@ -78,7 +79,7 @@
         <el-drawer
           :before-close="handleDrawerClose"
           :modal="true"
-          :title="$t('hr.joboetails')"
+          :title="$('hr.joboetails')"
           :visible.sync="drawer"
           :wrapper-closable="true"
           direction="rtl"
@@ -86,23 +87,23 @@
         >
           <div v-if="detailData" class="detail-box">
             <div class="item-box">
-              <span>{{ $t('hr.jobtitle') }}:</span>
+              <span>{{ $('hr.jobtitle') }}:</span>
               <div>{{ detailData.name || '--' }}</div>
             </div>
             <div class="item-box">
-              <span>{{ $t('hr.numberPosts') }}:</span>
+              <span>{{ $('hr.numberPosts') }}:</span>
               <div>{{ detailData.job_count || '--' }}</div>
             </div>
             <div class="item-box">
-              <span>{{ $t('hr.jobdescriptiones') }}:</span>
+              <span>{{ $('hr.jobdescriptiones') }}:</span>
               <div>{{ detailData.describe || '--' }}</div>
             </div>
             <div class="item-box">
-              <span>{{ $t('hr.creationtime') }}:</span>
+              <span>{{ $('hr.creationtime') }}:</span>
               <div>{{ detailData.created_at || '--' }}</div>
             </div>
             <div class="item-box">
-              <span>{{ $t('hr.jobresponsibilities') }}:</span>
+              <span>{{ $('hr.jobresponsibilities') }}:</span>
               <div v-if="detailData.duty == '<p><br></p>'">--</div>
             </div>
 
@@ -128,7 +129,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import draweForm from '@/components/form-common/drawer-form'
 import { endJobApi, endJobStatusApi, endJobInfoApi, endJobDeleteApi, enterpriseEntInfoApi } from '@/api/enterprise'
@@ -144,7 +144,7 @@ export default {
       drawer: false,
       input: '',
       fromData: {
-        title: i18n.t('hr.addposition'),
+        title: $('hr.addposition'),
         width: '850px',
         type: 'add'
       },
@@ -152,46 +152,46 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: i18n.t('legacyScript.jobTitle'),
+          label: $('legacyScript.jobTitle'),
           maxlength: 20,
-          placeholder: i18n.t('hr.placeholder25'),
+          placeholder: $('hr.placeholder25'),
           key: 'name'
         },
         {
           type: 'select',
-          label: i18n.t('legacyScript.rankCategory'),
-          placeholder: i18n.t('legacyScript.pleaseSelectRankCategory'),
+          label: $('legacyScript.rankCategory'),
+          placeholder: $('legacyScript.pleaseSelectRankCategory'),
           key: 'cate_id',
           options: []
         },
         {
           type: 'select',
-          label: i18n.t('ui.hrEnterprisePromotionRank2'),
-          placeholder: i18n.t('hr.message9'),
+          label: $('ui.hrEnterprisePromotionRank2'),
+          placeholder: $('hr.message9'),
           key: 'rank_id',
           options: []
         },
         {
           type: 'textarea',
-          label: i18n.t('legacyScript.jobDescription'),
-          placeholder: i18n.t('legacyScript.pleaseEnterJobDescription'),
+          label: $('legacyScript.jobDescription'),
+          placeholder: $('legacyScript.pleaseEnterJobDescription'),
           key: 'describe'
         },
         {
           type: 'richText',
-          label: i18n.t('legacyScript.jobResponsibilities'),
-          placeholder: i18n.t('legacyScript.pleaseEnterJobResponsibilities'),
+          label: $('legacyScript.jobResponsibilities'),
+          placeholder: $('legacyScript.pleaseEnterJobResponsibilities'),
           key: 'duty'
         }
       ],
 
       formRules: {
         name: [
-          { required: true, message: i18n.t('hr.placeholder25'), trigger: 'blur' },
-          { min: 1, max: 20, message: i18n.t('legacyScript.lengthMustBeBetween1And20Characters'), trigger: 'blur' }
+          { required: true, message: $('hr.placeholder25'), trigger: 'blur' },
+          { min: 1, max: 20, message: $('legacyScript.lengthMustBeBetween1And20Characters'), trigger: 'blur' }
         ],
-        cate_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectRankCategory'), trigger: 'change' }],
-        rank_id: [{ required: true, message: i18n.t('hr.message9'), trigger: 'change' }]
+        cate_id: [{ required: true, message: $('legacyScript.pleaseSelectRankCategory'), trigger: 'change' }],
+        rank_id: [{ required: true, message: $('hr.message9'), trigger: 'change' }]
       },
 
       rolesConfig: [],
@@ -211,7 +211,7 @@ export default {
       search: [],
       dropdownList: [
         {
-          label: i18n.t('public.delete'),
+          label: $('public.delete'),
           value: 1
         }
       ],
@@ -248,12 +248,12 @@ export default {
       this.formConfig[1].options = this.rankDataList
       this.search = [
         {
-          field_name: this.$ts('职位名称'),
+          field_name: '职位名称',
           field_name_en: 'name',
           form_value: 'input'
         },
         {
-          field_name: this.$ts('职位类别'),
+          field_name: '职位类别',
           field_name_en: 'cate_id',
           form_value: 'select',
           data_dict: this.rankDataList
@@ -302,7 +302,7 @@ export default {
     },
     // 添加职位
     async addJob() {
-      this.fromData.title = i18n.t('hr.addposition')
+      this.fromData.title = $('hr.addposition')
       this.fromData.type = 'add'
       this.formDataInit = { name: '', cate_id: '', rank_id: '', describe: '', duty: '' }
       setTimeout(() => {
@@ -353,7 +353,7 @@ export default {
           this.formDataInit[key] = data[key]
         }
         this.getRankList(this.formDataInit.cate_id)
-        this.fromData.title = i18n.t('hr.editorialpost')
+        this.fromData.title = $('hr.editorialpost')
         this.fromData.type = 'edit'
         setTimeout(() => {
           this.$refs.draweForm.openBox()
@@ -364,19 +364,19 @@ export default {
     },
     // 删除
     handleDelete(item, index) {
-      this.$modalSure(this.$t('hr.message3')).then(() => {
+      this.$modalSure(this.$('hr.message3')).then(() => {
         this.endJobDelete(item.id)
       })
     },
     batchHandleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItemToDelete'))
+        this.$message.error($('legacyScript.pleaseSelectAtLeastOneItemToDelete'))
       } else {
         const ids = []
         this.multipleSelection.forEach((value) => {
           ids.push(value.id)
         })
-        this.$modalSure(this.$ts('确定要全部删除已选择的内容吗')).then(() => {
+        this.$modalSure('确定要全部删除已选择的内容吗').then(() => {
           this.endJobDelete(ids.join(','))
         })
       }

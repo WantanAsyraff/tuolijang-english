@@ -1,5 +1,5 @@
 <template>
-	<el-form-item :label='$ts("显示图标")'>
+	<el-form-item :label='$("legacy.39e0705286c07753")'>
 		<el-switch v-model="optionModel.showIcon"></el-switch>
 	</el-form-item>
 </template>

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 行政-企业动态页面 -->
 <template>
 <div class="divBox">
@@ -20,8 +21,8 @@
                 :total="total"
                 :dropdownList="dropdownList"
                 :isViewSearch="false"
-:title="$t('ui.customerQuickReplyIndexQuickRepliesList')"
-:btn-text="$t('ui.customerQuickReplyAddReplyAddQuickReplies')"
+      :title="$('ui.customerQuickReplyIndexQuickRepliesList')"
+      :btnText="$('ui.customerQuickReplyIndexAddQuickReply')"
                 @dropdownFn="dropdownFn"
                 @addDataFn="handleNews"
                 @confirmData="confirmData"
@@ -29,7 +30,7 @@
 
               <div class="mt14">
                 <el-table :data="tableData" :height="tableHeight" style="width: 100%" row-key="id" default-expand-all v-loading="loading">
-                  <el-table-column prop="name" :label="$t('ui.customerQuickReplyIndexMaterialContent')" min-width="180">
+                  <el-table-column prop="name" :label="$('ui.customerQuickReplyIndexMaterialContent')" min-width="180">
                     <template slot-scope="scope">
                       <div v-if="scope.row.types === 'image'" class="flex">
                         <img class="table-img" :src="scope.row.file_url" alt="" />
@@ -66,21 +67,21 @@
                       </div>
                     </template>
                   </el-table-column>
-                  <el-table-column prop="title" :label="$t('ui.customerQuickReplyIndexContentGroup')" min-width="150">
+                  <el-table-column prop="title" :label="$('ui.customerQuickReplyIndexContentGroup')" min-width="150">
                     <template slot-scope="scope">
                       {{ scope.row.group?.name || '--' }}
                     </template>
                   </el-table-column>
-                  <el-table-column prop="sort" :label="$t('ui.businessExamineIndexSort')" min-width="80" />
-                  <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="120" />
-                  <el-table-column prop="creator.name" :label="$t('ui.hrAssessCheckIndexCreator')" min-width="80" />
+                  <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')" min-width="80" />
+                  <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="120" />
+                  <el-table-column prop="creator.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="80" />
 
-                  <el-table-column prop="describe" :label="$t('public.operation')" fixed="right" width="120">
+                  <el-table-column prop="describe" :label="$('public.operation')" fixed="right" width="120">
                     <template slot-scope="scope">
-                      <el-button type="text" @click="handleEdit(scope.row)">{{ $t('public.edit') }}</el-button>
+                      <el-button type="text" @click="handleEdit(scope.row)">{{ $('public.edit') }}</el-button>
 
                       <el-button type="text" @click="handleDelete(scope.row)">
-                        {{ $t('public.delete') }}
+                        {{ $('public.delete') }}
                       </el-button>
                     </template>
                   </el-table-column>
@@ -116,7 +117,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   getWorkReplyListApi,
   workReplyDelApi,
@@ -162,8 +162,8 @@ export default {
       leftList: [],
       groupedData: [],
       dropdownList: [
-        { label: i18n.t('ui.developCrudEntityTableDownloadTemplate'), value: 1 },
-        { label: i18n.t('legacyScript.importQuickReplies'), value: 2 }
+        { label: $('ui.developCrudEntityTableDownloadTemplate'), value: 1 },
+        { label: $('legacyScript.importQuickReplies'), value: 2 }
       ],
       where: {
         page: 1,
@@ -179,32 +179,32 @@ export default {
       type: [
         {
           icon: 'iconwenben',
-          label: i18n.t('legacyScript.text'),
+          label: $('legacyScript.text'),
           value: 'text'
         },
         {
           icon: 'icontupian4',
-          label: i18n.t('file.picture'),
+          label: $('file.picture'),
           value: 'image'
         },
         {
           icon: 'iconshipin1',
-          label: i18n.t('legacyScript.video'),
+          label: $('legacyScript.video'),
           value: 'video'
         },
         {
           icon: 'iconwenjian4',
-          label: i18n.t('ui.userCloudfileLayoutCloudfileLeftFile'),
+          label: $('ui.userCloudfileLayoutCloudfileLeftFile'),
           value: 'file'
         },
         {
           icon: 'iconwangye-01',
-          label: i18n.t('legacyScript.webPage'),
+          label: $('legacyScript.webPage'),
           value: 'link'
         },
         {
           icon: 'iconxiaochengxu',
-          label: i18n.t('ui.customerWeChatMassAddGroupPostingMiniProgram'),
+          label: $('ui.customerWeChatMassAddGroupPostingMiniProgram'),
           value: 'mini_program'
         }
       ],
@@ -272,7 +272,7 @@ export default {
     async importExcelData(value) {
       const res = []
       if (value.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.batchImportContentIsEmpty'))
+        this.$message.error($('legacyScript.batchImportContentIsEmpty'))
         return false
       }
       for (let i = 0; i <= value.length - 1; i++) {

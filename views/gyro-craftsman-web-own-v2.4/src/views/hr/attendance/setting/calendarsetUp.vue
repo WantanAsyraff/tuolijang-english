@@ -1,3 +1,4 @@
+import { getLanguage } from '@/lang'
 <template>
   <!-- 日历配置页面 -->
   <div class="divBox">
@@ -7,7 +8,7 @@
           <span class="el-icon-arrow-left" @click="yearFn(1)" /><span class="year">{{ formatYear(year) }}</span
           ><span class="el-icon-arrow-right" @click="yearFn(2)" />
         </div>
-        <div class="right">{{ $ts('日历配置中黑色为上班日，红色为休息日') }}</div>
+        <div class="right">{{ $("legacy.918ecb5f4b01547b") }}</div>
       </div>
 
       <div :class="screenWidth < 1871 ? 'col-3' : 'col-4'" v-for="m in 12" :key="m">
@@ -60,7 +61,6 @@
 import calendar from './components/calendar'
 import veCalendar from 've-calendar'
 import { calendarYearApi } from '@/api/config'
-import { getLanguage } from '@/lang'
 export default {
   name: 'CrmebOaEntCalendarsetUp',
   components: {

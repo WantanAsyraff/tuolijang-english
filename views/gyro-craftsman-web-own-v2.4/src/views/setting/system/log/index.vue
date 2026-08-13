@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card class="card-head normal-page" shadow="never" :body-style="{ padding: '20px 20px 0 20px' }">
@@ -13,16 +14,16 @@
       <div class="table-box mt20">
         <el-table :data="tableData" style="width: 100%" :height="tableHeight">
           <el-table-column prop="id" label="ID" min-width="80" />
-          <el-table-column prop="user_name" :label="$t('toptable.operationuser')" min-width="100" />
-          <!-- <el-table-column prop="event_name" :label="$t('toptable.behavior')" min-width="120" /> -->
-          <el-table-column prop="event_name" :label="$ts('操作内容')" min-width="240" show-overflow-tooltip>
+          <el-table-column prop="user_name" :label="$('toptable.operationuser')" min-width="100" />
+          <!-- <el-table-column prop="event_name" :label="$('toptable.behavior')" min-width="120" /> -->
+          <el-table-column prop="event_name" :label="$("ui.developCrudEventAction")" min-width="240" show-overflow-tooltip>
             <template slot-scope="scope">
-              <span>{{ $ts(scope.row.event_name, scope.row.event_name_en) }}</span>
+              <span>{{ $(scope.row.event_name, scope.row.event_name_en) }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="terminal" :label="$t('toptable.loginterminal')" min-width="100" />
-          <el-table-column prop="last_ip" :label="$t('toptable.operationip')" min-width="100" />
-          <el-table-column prop="created_at" :label="$t('toptable.operationtime')" min-width="165" />
+          <el-table-column prop="terminal" :label="$('toptable.loginterminal')" min-width="100" />
+          <el-table-column prop="last_ip" :label="$('toptable.operationip')" min-width="100" />
+          <el-table-column prop="created_at" :label="$('toptable.operationtime')" min-width="165" />
         </el-table>
         <div class="page-fixed">
           <el-pagination
@@ -40,7 +41,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { enterpriseLogApi } from '@/api/enterprise'
 import oaFromBox from '@/components/common/oaFromBox'
 export default {
@@ -67,23 +67,23 @@ export default {
       methodOpts: [
         {
           value: '选项1',
-          label: i18n.t('legacyScript.goldenCake')
+          label: $('legacyScript.goldenCake')
         },
         {
           value: '选项2',
-          label: i18n.t('legacyScript.doubleSkinMilk')
+          label: $('legacyScript.doubleSkinMilk')
         },
         {
           value: '选项3',
-          label: i18n.t('legacyScript.oysterOmelette')
+          label: $('legacyScript.oysterOmelette')
         },
         {
           value: '选项4',
-          label: i18n.t('legacyScript.dragonBeardNoodles')
+          label: $('legacyScript.dragonBeardNoodles')
         },
         {
           value: '选项5',
-          label: i18n.t('legacyScript.beijingRoastDuck')
+          label: $('legacyScript.beijingRoastDuck')
         }
       ],
       tableData: [],

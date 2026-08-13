@@ -5,7 +5,7 @@
         :class="{ icontouming: item === 'transparent' }" :key="item" @click="clickColorItem(item)"></span>
     </div>
     <div class="moreColor">
-      <span>{{ $ts("更多颜色") }}</span>
+      <span>{{ $("legacy.c71ecb658ee6d5e0") }}</span>
       <el-color-picker size="mini" show-alpha v-model="selectColor" @change="changeColor"></el-color-picker>
     </div>
   </div>

@@ -9,7 +9,7 @@ export default {
     getWidgetRef(widgetName, showError = false) {
       let foundRef = this.refList[widgetName]
       if (!foundRef && !!showError) {
-        this.$message.error(this.i18nt('render.hint.refNotFound') + widgetName)
+        this.$message.error(this.$('render.hint.refNotFound') + widgetName)
       }
       return foundRef
     },

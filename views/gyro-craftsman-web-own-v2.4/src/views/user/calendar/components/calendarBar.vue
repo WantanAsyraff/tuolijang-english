@@ -15,8 +15,8 @@
     </div>
     <div class="dealt-list">
       <div class="el-submenu__title">
-        <span>{{ $t("ui.developToDoScheduleScheduleType") }}</span>
-        <el-tooltip effect="dark" :content="$t('ui.userCalendarCalendarBarAddScheduleType')" placement="top">
+        <span>{{ $("ui.developToDoScheduleScheduleType") }}</span>
+        <el-tooltip effect="dark" :content="$('ui.userCalendarCalendarBarAddScheduleType')" placement="top">
           <i @click="handleShow" class="iconfont icontianjia"></i>
         </el-tooltip>
       </div>
@@ -28,8 +28,8 @@
           <el-dropdown class="more" v-if="item.id >= 6">
             <i class="iconfont icongengduo" />
             <el-dropdown-menu style="text-align: center">
-              <el-dropdown-item v-if="item.id >= 6" @click.native="handleEdit(item)"> {{ $t("ui.formCommonOaLogEdit") }} </el-dropdown-item>
-              <el-dropdown-item v-if="item.id >= 6" @click.native="handleDelete(item)"> {{ $t("ui.chatIndexDelete") }} </el-dropdown-item>
+              <el-dropdown-item v-if="item.id >= 6" @click.native="handleEdit(item)"> {{ $("ui.formCommonOaLogEdit") }} </el-dropdown-item>
+              <el-dropdown-item v-if="item.id >= 6" @click.native="handleDelete(item)"> {{ $("ui.chatIndexDelete") }} </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="v-height-flag">
@@ -6,7 +7,7 @@
         v-if="search.length > 0"
         :isViewSearch="false"
         :search="search"
-        :title="$t('ui.developCrudEventSettingTriggerList')"
+        :title="$('ui.developCrudEventSettingTriggerList')"
         :total="total"
         :isAddBtn="false"
         @confirmData="confirmData"
@@ -17,7 +18,7 @@
             :isValueShow="false"
             :searchShow="false"
             :height="`340px`"
-            :title="$t('ui.developCrudEventSettingNewTrigger')"
+            :title="$('ui.developCrudEventSettingNewTrigger')"
             @handleClick="handleClick"
           ></oa-popover>
         </div>
@@ -26,31 +27,31 @@
       <!-- 表格数据 -->
       <div class="table-box mt10">
         <el-table :data="tableData" v-loading="loading" :height="tableHeight" row-key="id" style="width: 100%">
-          <el-table-column :label="$t('ui.developCrudEventSettingTriggerName')" prop="name">
+          <el-table-column :label="$('ui.developCrudEventSettingTriggerName')" prop="name">
             <template slot-scope="scope">
               <span class="color-doc pointer" @click="editFn(scope.row)"> {{ scope.row.name }}</span>
             </template>
           </el-table-column>
-          <el-table-column :min-width="150" :label="$t('ui.developCrudEventSettingTriggerType')" prop="field_name">
+          <el-table-column :min-width="150" :label="$('ui.developCrudEventSettingTriggerType')" prop="field_name">
             <template slot-scope="scope">
               {{ getEvent(scope.row.event) }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.developCrudEventTriggerAction')" prop="form_value">
+          <el-table-column :label="$('ui.developCrudEventTriggerAction')" prop="form_value">
             <template slot-scope="scope">
               <span v-if="scope.row.action && scope.row.action.length > 0">
                 {{ getAction(scope.row.action) }}
               </span>
-              <span v-else class="color-file">{{ $t("ui.developCrudEventSettingNoTriggerAction") }}</span>
+              <span v-else class="color-file">{{ $("ui.developCrudEventSettingNoTriggerAction") }}</span>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.developConditionDialogPriority')" prop="sort"> </el-table-column>
-          <el-table-column :label="$t('ui.developApproveIndexLinkedEntity')" min-width="140" prop="crud">
+          <el-table-column :label="$('ui.developConditionDialogPriority')" prop="sort"> </el-table-column>
+          <el-table-column :label="$('ui.developApproveIndexLinkedEntity')" min-width="140" prop="crud">
             <template slot-scope="scope">
               {{ scope.row.crud.table_name || '--' }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.developApproveIndexLinkedApplication')" min-width="140" prop="cate_item">
+          <el-table-column :label="$('ui.developApproveIndexLinkedApplication')" min-width="140" prop="cate_item">
             <template slot-scope="scope">
               <div v-if="scope.row.cate_item && scope.row.cate_item.length > 0">
                 <span>{{ getString(scope.row.cate_item) }}</span>
@@ -58,26 +59,26 @@
               <div v-else>--</div>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" prop="updated_at"> </el-table-column>
-          <el-table-column :label="$t('ui.customerSetupDictionaryIndexStatus')" prop="is_main">
+          <el-table-column :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" prop="updated_at"> </el-table-column>
+          <el-table-column :label="$('ui.customerSetupDictionaryIndexStatus')" prop="is_main">
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
                 :active-value="1"
                 :inactive-value="0"
                 :width="60"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                active-text="开启"
+                inactive-text="关闭"
                 @change="handleStatus(scope.row)"
               >
               </el-switch>
             </template>
           </el-table-column>
 
-          <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" prop="address" width="110">
+          <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" prop="address" width="110">
             <template slot-scope="scope">
-              <el-button type="text" @click="editFn(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-              <el-button type="text" @click="deleteFn(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" @click="editFn(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+              <el-button type="text" @click="deleteFn(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -98,7 +99,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import oaPopover from '@/components/form-common/oa-popover'
 import oaFromBox from '@/components/common/oaFromBox'
 import { roterPre } from '@/settings'
@@ -159,11 +159,11 @@ export default {
       total: 0,
       options: [
         {
-          label: i18n.t('public.enable'),
+          label: $('public.enable'),
           value: 1
         },
         {
-          label: i18n.t('hr.blockup'),
+          label: $('hr.blockup'),
           value: 0
         }
       ]

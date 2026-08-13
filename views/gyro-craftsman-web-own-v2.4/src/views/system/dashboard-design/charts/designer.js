@@ -645,7 +645,7 @@ export function createDesigner(vueInstance) {
         let wgType = evt.draggedContext.element.type
         if (!!evt.to) {
           if (evt.to.className === 'sub-form-table' && wgCategory === 'container') {
-            //this.$message.info(this.vueInstance.i18nt('designer.hint.onlyFieldWidgetAcceptable'))
+            //this.$message.info(this.vueInstance.$('designer.hint.onlyFieldWidgetAcceptable'))
             return false
           }
         }
@@ -660,7 +660,7 @@ export function createDesigner(vueInstance) {
         let wgType = evt.draggedContext.element.type + ''
         if (!!evt.to) {
           if (evt.to.className === 'sub-form-table' && wgType === 'slot') {
-            //this.$message.info(this.vueInstance.i18nt('designer.hint.onlyFieldWidgetAcceptable'))
+            //this.$message.info(this.vueInstance.$('designer.hint.onlyFieldWidgetAcceptable'))
             return false
           }
         }
@@ -940,7 +940,7 @@ export function createDesigner(vueInstance) {
         }
       }
       if (unmatchedFlag) {
-        this.vueInstance.$message.info(this.vueInstance.i18nt('designer.hint.rowspanNotConsistentForMergeEntireRow'))
+        this.vueInstance.$message.info(this.vueInstance.$('designer.hint.rowspanNotConsistentForMergeEntireRow'))
         return
       }
 
@@ -1013,7 +1013,7 @@ export function createDesigner(vueInstance) {
         }
       }
       if (unmatchedFlag) {
-        this.vueInstance.$message.info(this.vueInstance.i18nt('designer.hint.colspanNotConsistentForMergeEntireColumn'))
+        this.vueInstance.$message.info(this.vueInstance.$('designer.hint.colspanNotConsistentForMergeEntireColumn'))
         return
       }
 
@@ -1063,7 +1063,7 @@ export function createDesigner(vueInstance) {
       })
       //仅剩一列则不可删除！！
       if (onlyOneColFlag) {
-        this.vueInstance.$message.info(this.vueInstance.i18nt('designer.hint.lastColCannotBeDeleted'))
+        this.vueInstance.$message.info(this.vueInstance.$('designer.hint.lastColCannotBeDeleted'))
         return
       }
 
@@ -1078,7 +1078,7 @@ export function createDesigner(vueInstance) {
       }
       if (unmatchedFlag) {
         this.vueInstance.$message.info(
-          this.vueInstance.i18nt('designer.hint.colspanNotConsistentForDeleteEntireColumn')
+          this.vueInstance.$('designer.hint.colspanNotConsistentForDeleteEntireColumn')
         )
         return
       }
@@ -1100,7 +1100,7 @@ export function createDesigner(vueInstance) {
       })
       //仅剩一行则不可删除！！
       if (onlyOneRowFlag) {
-        this.vueInstance.$message.info(this.vueInstance.i18nt('designer.hint.lastRowCannotBeDeleted'))
+        this.vueInstance.$message.info(this.vueInstance.$('designer.hint.lastRowCannotBeDeleted'))
         return
       }
 
@@ -1114,7 +1114,7 @@ export function createDesigner(vueInstance) {
         }
       }
       if (unmatchedFlag) {
-        this.vueInstance.$message.info(this.vueInstance.i18nt('designer.hint.rowspanNotConsistentForDeleteEntireRow'))
+        this.vueInstance.$message.info(this.vueInstance.$('designer.hint.rowspanNotConsistentForDeleteEntireRow'))
         return
       }
 
@@ -1239,7 +1239,7 @@ export function createDesigner(vueInstance) {
     moveUpWidget(parentList, indexOfParentList) {
       if (!!parentList) {
         if (indexOfParentList === 0) {
-          this.vueInstance.$message(this.vueInstance.i18nt('designer.hint.moveUpFirstChildHint'))
+          this.vueInstance.$message(this.vueInstance.$('designer.hint.moveUpFirstChildHint'))
           return
         }
 
@@ -1252,7 +1252,7 @@ export function createDesigner(vueInstance) {
     moveDownWidget(parentList, indexOfParentList) {
       if (!!parentList) {
         if (indexOfParentList === parentList.length - 1) {
-          this.vueInstance.$message(this.vueInstance.i18nt('designer.hint.moveDownLastChildHint'))
+          this.vueInstance.$message(this.vueInstance.$('designer.hint.moveDownLastChildHint'))
           return
         }
 

@@ -4,7 +4,7 @@
       <div class="clearfix el-card__header">
         <el-input
           v-model="filterText"
-          :placeholder="$t('public.searchdepartment')"
+          :placeholder="$('public.searchdepartment')"
           clearable
           size="small"
           suffix-icon="el-icon-search"
@@ -39,12 +39,12 @@
                       @after-enter="handleShow(data.value)"
                     >
                       <div class="right-item-list">
-                        <div class="right-item" @click.stop="addDivsion(0)">{{ $t('public.Adddepartment') }}</div>
+                        <div class="right-item" @click.stop="addDivsion(0)">{{ $('public.Adddepartment') }}</div>
                         <div v-if="data.pid !== 0" class="right-item" @click.stop="addDivsion(1)">
-                          {{ $t('public.edit') }}
+                          {{ $('public.edit') }}
                         </div>
                         <div v-if="data.pid !== 0" class="right-item" @click.stop="hanleDelete(data)">
-                          {{ $t('public.delete') }}
+                          {{ $('public.delete') }}
                         </div>
                       </div>
                       <div slot="reference" class="iconfont icongengduo right-icon" />
@@ -172,8 +172,8 @@ export default {
         this.parentId.push(node.value)
       }
       this.drawerConfig.title = type
-        ? this.$t('setting.group.editorialdepartment')
-        : this.$t('setting.group.adddepartment')
+        ? this.$('setting.group.editorialdepartment')
+        : this.$('setting.group.adddepartment')
       this.drawerConfig.type = type
       this.drawerConfig.id = node.value
       this.drawerConfig.disabled = !!(this.topId === node.value && type)

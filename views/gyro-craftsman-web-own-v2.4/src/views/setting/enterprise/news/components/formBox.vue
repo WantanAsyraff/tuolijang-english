@@ -2,11 +2,11 @@
   <div class="news-form">
     <el-form :inline="true" class="from-s">
       <el-row class="flex-row">
-        <el-form-item :label='$ts("消息类型:")' class="select-bar">
+        <el-form-item :label='$("legacy.c810657ab3a552a9")' class="select-bar">
           <el-cascader
             v-model="types"
             :options="options"
-            :placeholder='$ts("请选择消息类型")'
+            :placeholder='$("legacy.f50ab9b0255f434c")'
             size="small"
             :props="{ checkStrictly: true }"
             clearable
@@ -22,11 +22,11 @@
             size="small"
             @change="handleConfirm"
             @keyup.native.stop.prevent.enter="handleConfirm"
-            :placeholder='$ts("请输入标题/内容")'
+            :placeholder='$("ui.layoutNoticeNoticeListPleaseEnterTitleAndContent")'
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-tooltip effect="dark" :content='$ts("重置搜索条件")' placement="top">
+          <el-tooltip effect="dark" :content='$("ui.administrationMaterialFixedRecordResetSearchConditions")' placement="top">
             <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
           </el-tooltip>
         </el-form-item>

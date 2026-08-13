@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 订单-添加订单页面 -->
 <template>
   <div class="station">
@@ -32,7 +33,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { oddsCreateEditApi } from '@/api/client'
 import { contractCreateApi, contractEditCreateApi } from '@/api/enterprise'
 import { clientContractSaveApi as contractAddApi, clientContractEditApi } from '@/api/client'
@@ -148,7 +148,7 @@ export default {
           const res = await oddsCreateEditApi(val);
           this.product = res.data.product;
         } catch (error) {
-          this.$message.error(i18n.t('legacyScript.failedToRetrieveOpportunityProductInformation'));
+          this.$message.error($('legacyScript.failedToRetrieveOpportunityProductInformation'));
         } finally {
           this.productLoading = false;
         }
@@ -258,7 +258,7 @@ export default {
                 data.eid = data.contract_customer
                 data.cid = this.row.id
                 this.fromData = {
-                  title: i18n.t('legacyScript.viewOrder'),
+                  title: $('legacyScript.viewOrder'),
                   width: '1000px',
                   data: data,
                   isClient: false,
@@ -294,7 +294,7 @@ export default {
                 data.eid = data.contract_customer
                 data.cid = res.data.id
                 this.fromData = {
-                  title: i18n.t('legacyScript.viewOrder'),
+                  title: $('legacyScript.viewOrder'),
                   width: '1000px',
                   data: data,
                   isClient: false,
@@ -332,7 +332,7 @@ export default {
       this.$refs.contractInfo.handleConfirm().then(() => {
         setTimeout(() => {
           this.fromData = {
-            title: this.$t('customer.viewcustomer'),
+            title: this.$('customer.viewcustomer'),
             width: '1000px',
             data: this.itemData,
             isClient: false,

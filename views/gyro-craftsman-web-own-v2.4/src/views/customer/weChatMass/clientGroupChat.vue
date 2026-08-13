@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 群发素材页面 -->
 <template>
 <div>
@@ -5,12 +6,12 @@
     <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page">
       <oaFromBox
         :search="search"
-        :title="$t('ui.customerWeChatMassClientGroupChatCustomerGroupMassSendList')"
+        :title="$('ui.customerWeChatMassClientGroupChatCustomerGroupMassSendList')"
         :total="total"
         :treeData="treeData"
         :isViewSearch="false"
-        ref="fromBox"
-:btn-text="$t('ui.customerWeChatMassClientGroupChatAddMassSend')"
+      ref="fromBox"
+      :btnText="$('ui.customerWeChatMassClientGroupChatAddMassSend')"
         @addDataFn="addDataFn"
         @treeChange="treeChange"
         @confirmData="confirmData"
@@ -24,49 +25,49 @@
           v-loading="loading"
           @selection-change="handleCheck"
         >
-          <el-table-column :label="$t('ui.customerWeChatMassClientGroupChatMassSendContent')" prop="temp_content" :show-overflow-tooltip="true"></el-table-column>
-          <el-table-column :label="$t('ui.customerWeChatMassClientGroupChatSendTime')" prop="send_time"></el-table-column>
-          <el-table-column :label="$t('ui.customerWeChatMassClientGroupChatTaskStatus')" prop="name">
+          <el-table-column :label="$('ui.customerWeChatMassClientGroupChatMassSendContent')" prop="temp_content" :show-overflow-tooltip="true"></el-table-column>
+          <el-table-column :label="$('ui.customerWeChatMassClientGroupChatSendTime')" prop="send_time"></el-table-column>
+          <el-table-column :label="$('ui.customerWeChatMassClientGroupChatTaskStatus')" prop="name">
             <template slot-scope="scope">
-              <el-tag size="small" v-if="scope.row.status == 1">{{ $t("ui.customerWeChatMassClientGroupChatScheduled") }}</el-tag>
-              <el-tag size="small" v-else-if="scope.row.status == 2" type="warning">{{ $t("ui.customerWeChatMassMassDetailsSending") }}</el-tag>
-              <el-tag size="small" v-else-if="scope.row.status == 0" type="info">{{ $t("ui.customerWeChatMassMassDetailsStopped") }}</el-tag>
-              <el-tag size="small" v-else-if="scope.row.status == 3" type="success">{{ $t("ui.customerWeChatMassMassDetailsCompleted") }}</el-tag>
+              <el-tag size="small" v-if="scope.row.status == 1">{{ $("ui.customerWeChatMassClientGroupChatScheduled") }}</el-tag>
+              <el-tag size="small" v-else-if="scope.row.status == 2" type="warning">{{ $("ui.customerWeChatMassMassDetailsSending") }}</el-tag>
+              <el-tag size="small" v-else-if="scope.row.status == 0" type="info">{{ $("ui.customerWeChatMassMassDetailsStopped") }}</el-tag>
+              <el-tag size="small" v-else-if="scope.row.status == 3" type="success">{{ $("ui.customerWeChatMassMassDetailsCompleted") }}</el-tag>
             </template></el-table-column
           >
-          <el-table-column :label="$t('ui.customerWeChatMassClientGroupChatDeliveredCustomerGroups')" prop="is_sent">
+          <el-table-column :label="$('ui.customerWeChatMassClientGroupChatDeliveredCustomerGroups')" prop="is_sent">
             <template slot-scope="scope">
               {{ scope.row.is_sent || 0 }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.customerWeChatMassClientGroupChatUndeliveredCustomerGroups')" prop="not_sent">
+          <el-table-column :label="$('ui.customerWeChatMassClientGroupChatUndeliveredCustomerGroups')" prop="not_sent">
             <template slot-scope="scope">
               {{ scope.row.not_sent || 0 }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.customerWeChatMassClientGroupChatSentGroupOwners')" prop="send_user_string">
+          <el-table-column :label="$('ui.customerWeChatMassClientGroupChatSentGroupOwners')" prop="send_user_string">
             <template slot-scope="scope">
               {{ scope.row.send_user_string || '--' }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.customerWeChatMassClientGroupChatUnsentGroupOwners')" prop="not_sent_user_string">
+          <el-table-column :label="$('ui.customerWeChatMassClientGroupChatUnsentGroupOwners')" prop="not_sent_user_string">
             <template slot-scope="scope">
               {{ scope.row.not_sent_user_string || '--' }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" prop="updated_at"></el-table-column>
-          <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="190">
+          <el-table-column :label="$('ui.invoiceInvoiceDetailsCreatedTime')" prop="updated_at"></el-table-column>
+          <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="190">
             <template slot-scope="scope">
-              <el-button type="text" size="mini" @click="handleCheck(scope.row)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+              <el-button type="text" size="mini" @click="handleCheck(scope.row)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
               <template v-if="scope.row.status === 1">
-                <el-button type="text" size="mini" @click="handleEdit(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
+                <el-button type="text" size="mini" @click="handleEdit(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
               </template>
               <template v-if="scope.row.status === 2">
-                <el-button type="text" size="mini" @click="handleRemind(scope.row)">{{ $t("ui.customerWeChatMassClientGroupChatSendReminder") }}</el-button>
-                <el-button type="text" size="mini" @click="handleStopped(scope.row)">{{ $t("ui.customerWeChatMassClientGroupChatStopSending") }}</el-button>
+                <el-button type="text" size="mini" @click="handleRemind(scope.row)">{{ $("ui.customerWeChatMassClientGroupChatSendReminder") }}</el-button>
+                <el-button type="text" size="mini" @click="handleStopped(scope.row)">{{ $("ui.customerWeChatMassClientGroupChatStopSending") }}</el-button>
               </template>
               <el-button v-if="scope.row.status != 2" type="text" size="mini" @click="handleDel(scope.row)"
-                >{{ $t("ui.chatIndexDelete") }}</el-button
+                >{{ $("ui.chatIndexDelete") }}</el-button
               >
             </template>
           </el-table-column>
@@ -92,7 +93,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getMassList, delWorkMass, getWorkMassStatus, getWorkMassRemind } from '@/api/weCom'
 import { roterPre } from '@/settings'
 export default {
@@ -111,27 +111,27 @@ export default {
         {
           options: [
             {
-              label: i18n.t('finance.all'),
+              label: $('finance.all'),
               id: '',
               value: ''
             },
             {
-              label: i18n.t('ui.customerWeChatMassClientGroupChatScheduled'),
+              label: $('ui.customerWeChatMassClientGroupChatScheduled'),
               id: 1,
               value: 1
             },
             {
-              label: i18n.t('ui.customerWeChatMassMassDetailsSending'),
+              label: $('ui.customerWeChatMassMassDetailsSending'),
               id: 2,
               value: 2
             },
             {
-              label: i18n.t('ui.customerWeChatMassMassDetailsCompleted'),
+              label: $('ui.customerWeChatMassMassDetailsCompleted'),
               id: 3,
               value: 3
             },
             {
-              label: i18n.t('ui.customerWeChatMassMassDetailsStopped'),
+              label: $('ui.customerWeChatMassMassDetailsStopped'),
               id: '0',
               value: '0'
             }

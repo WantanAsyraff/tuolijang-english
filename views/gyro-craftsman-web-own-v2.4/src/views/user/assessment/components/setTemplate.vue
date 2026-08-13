@@ -2,7 +2,7 @@
   <div class="station">
     <!--设置模板内容-->
     <el-dialog
-      :title="$t('access.settemplate')"
+      :title="$('access.settemplate')"
       :visible.sync="dialogTemplate"
       width="560px"
       :modal="true"
@@ -11,17 +11,17 @@
     >
       <el-form ref="form" :model="info" :rules="rules" label-width="90px">
         <el-form-item prop="name">
-          <span slot="label">{{ $t('access.templatename') }}：</span>
+          <span slot="label">{{ $('access.templatename') }}：</span>
           <el-input v-model="info.name" type="text" />
         </el-form-item>
         <el-form-item prop="info">
-          <span slot="label">{{ $t('access.templatecontent') }}：</span>
+          <span slot="label">{{ $('access.templatecontent') }}：</span>
           <el-input v-model="info.info" type="text" />
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="cancelTemplate">{{ $t('public.cancel') }}</el-button>
-        <el-button :loading="loading" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+        <el-button @click="cancelTemplate">{{ $('public.cancel') }}</el-button>
+        <el-button :loading="loading" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -64,8 +64,8 @@ export default {
       },
       tempLoading: false,
       rules: {
-        name: [{ required: true, message: this.$t('access.placeholder05'), trigger: 'blur' }],
-        info: [{ required: true, message: this.$t('access.placeholder06'), trigger: 'blur' }]
+        name: [{ required: true, message: this.$('access.placeholder05'), trigger: 'blur' }],
+        info: [{ required: true, message: this.$('access.placeholder06'), trigger: 'blur' }]
       }
     }
   },

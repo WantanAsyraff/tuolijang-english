@@ -1,11 +1,11 @@
 <template>
-  <el-dialog class="nodeNoteDialog" :title='$ts("备注")' :visible.sync="dialogVisible" :width="isMobile ? '90%' : '50%'"
+  <el-dialog class="nodeNoteDialog" :title='$("public.remarks")' :visible.sync="dialogVisible" :width="isMobile ? '90%' : '50%'"
     :top="isMobile ? '20px' : '15vh'">
     <div class="noteEditor" ref="noteEditor" @keyup.stop @keydown.stop></div>
     <!-- <div class="tip">换行请使用：Enter+Shift</div> -->
     <span slot="footer" class="dialog-footer">
-      <el-button @click="cancel">{{ $ts("取 消") }}</el-button>
-      <el-button type="primary" @click="confirm">{{ $ts("确 定") }}</el-button>
+      <el-button @click="cancel">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button type="primary" @click="confirm">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </span>
   </el-dialog>
 </template>

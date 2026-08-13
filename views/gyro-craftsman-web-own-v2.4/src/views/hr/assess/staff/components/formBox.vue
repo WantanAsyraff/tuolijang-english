@@ -1,20 +1,21 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <div class="flex-between">
-    <div class="title-16">{{ $t("ui.hrAssessStaffFormBoxAssessmentList") }}</div>
+    <div class="title-16">{{ $("ui.hrAssessStaffFormBoxAssessmentList") }}</div>
     <div class="lh-center">
       <el-dropdown>
         <span class="iconfont icongengduo2 fz32 pointer ml10"></span>
         <el-dropdown-menu style="text-align: left">
-          <el-dropdown-item @click.native="handleExport()"> {{ $t("ui.fdExamineIndexExport") }} </el-dropdown-item>
-          <el-dropdown-item @click.native="dropdownSearch()"> {{ $t("ui.hrAssessStaffFormBoxViewException") }} </el-dropdown-item>
+          <el-dropdown-item @click.native="handleExport()"> {{ $("ui.fdExamineIndexExport") }} </el-dropdown-item>
+          <el-dropdown-item @click.native="dropdownSearch()"> {{ $("ui.hrAssessStaffFormBoxViewException") }} </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
   </div>
   <div class="search mt20 mb10">
     <div class="flex">
-      <span class="total-16 mr10 mt10">{{ $t("ui.developModuleFormBoxTotal") }}{{ total }}{{ $t("ui.commonOaFromBoxItems") }}</span>
+      <span class="total-16 mr10 mt10">{{ $("ui.developModuleFormBoxTotal") }}{{ total }}{{ $("ui.commonOaFromBoxItems") }}</span>
       <el-form :inline="true">
         <div class="flex-row flex-col">
           <div class="flex">
@@ -23,7 +24,7 @@
               
                 <select-member
                   :selectIdData="userList || []"
-                  :placeholder="$t('access.placeholder18')"
+                  :placeholder="$('access.placeholder18')"
                   @getSelectList="getSelectList($event, 2)"
                   :is-search="true"
                   style="width: 200px"
@@ -32,7 +33,7 @@
               <el-form-item class="select-bar">
                 <el-select
                   v-model="tableFrom.period"
-                  :placeholder="$t('ui.hrAssessStaffFormBoxPleaseSelectAssessmentCycle')"
+                  :placeholder="$('ui.hrAssessStaffFormBoxPleaseSelectAssessmentCycle')"
                   clearable
                   size="small"
                   style="width: 160px"
@@ -86,11 +87,11 @@
               <el-form-item v-if="tableFrom.period === ''" class="select-bar">
                 <el-date-picker
                   v-model="timeVal"
-                  :end-placeholder="$t('toptable.endingdate')"
+                  :end-placeholder="$('toptable.endingdate')"
                   :picker-options="pickerOptions"
-                  :placeholder="$t('toptable.selecttime')"
-                  :range-separator="$t('toptable.to')"
-                  :start-placeholder="$t('toptable.startdate')"
+                  :placeholder="$('toptable.selecttime')"
+                  :range-separator="$('toptable.to')"
+                  :start-placeholder="$('toptable.startdate')"
                   class="time"
                   clearable
                   format="yyyy/MM/dd"
@@ -103,7 +104,7 @@
             </template>
 
             <el-form-item>
-              <el-tooltip :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
+              <el-tooltip :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
                 <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
               </el-tooltip>
             </el-form-item>
@@ -122,7 +123,7 @@
         <!-- 高级筛选 -->
         <div class="condition-box">
           <div class="flex-between">
-            <div class="title">{{ $t("ui.developModuleFormBoxFilterConditions") }}</div>
+            <div class="title">{{ $("ui.developModuleFormBoxFilterConditions") }}</div>
             <div class="el-icon-close pointer" @click="$store.state.business.conditionDialog = false"></div>
           </div>
           <condition-dialog
@@ -135,7 +136,7 @@
           ></condition-dialog>
         </div>
         <div slot="reference" class="pointer text-16 el-dropdown-link mr10" @click="onShow">
-          {{ $t("ui.developModuleTreeFilter") }} <span class="iconfont icona-bianzu8"></span>
+          {{ $("ui.developModuleTreeFilter") }} <span class="iconfont icona-bianzu8"></span>
           <span v-if="additional_search.length > 0" class="yuan">{{
             additional_search ? additional_search.length : 0
           }}</span>
@@ -173,7 +174,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Commnt from '@/components/user/accessCommon'
 export default {
   name: 'FormBox',
@@ -235,28 +235,28 @@ export default {
       viewSearch: [
         {
           field: 'frame',
-          title: i18n.t('customer.department'),
+          title: $('customer.department'),
           type: 'frame_id'
         },
         {
           field: 'check_uid',
-          title: i18n.t('user.work.assessor'),
+          title: $('user.work.assessor'),
           type: 'check_uid'
         },
         {
           field: 'status',
-          title: i18n.t('hr.assessmentstatus'),
+          title: $('hr.assessmentstatus'),
           type: 'select',
           options: Commnt.statusOptions
         }
       ],
       title: '',
       dateArray: [
-        { value: 1, type: 'week', text: i18n.t('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
-        { value: 2, type: 'month', text: i18n.t('legacyScript.selectMonth'), format: 'yyyy-MM' },
+        { value: 1, type: 'week', text: $('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
+        { value: 2, type: 'month', text: $('legacyScript.selectMonth'), format: 'yyyy-MM' },
         { value: 4, type: '' },
         { value: 5, type: '' },
-        { value: 3, type: 'year', text: i18n.t('legacyScript.selectYear'), format: 'yyyy' }
+        { value: 3, type: 'year', text: $('legacyScript.selectYear'), format: 'yyyy' }
       ],
       quarterBtn: false,
       halfYearBtn: false

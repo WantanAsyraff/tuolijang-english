@@ -5,7 +5,7 @@
   <el-table v-if="!type" :data="list" style="width: 100%" :row-class-name="iconHadler">
     <el-table-column prop="desc">
       <template slot-scope="scope">
-        【{{ scope.row.action_type == 1 ? $t('ui.formCommonOaLogEstablish') : $t('ui.formCommonOaLogEdit') }}】{{ scope.row.operator }}
+        【{{ scope.row.action_type == 1 ? $('ui.formCommonOaLogEstablish') : $('ui.formCommonOaLogEdit') }}】{{ scope.row.operator }}
         <span style="max-width: 550px" v-html="scope.row.title" @click="previewPicture($event)"></span>
         <span class="created-time">{{ scope.row.created_at }}</span>
       </template>
@@ -37,36 +37,36 @@
           <span class="name-text"> 【{{ getLogType(scope.row.log_type) }}】{{ scope.row.user.name }}</span>
 
           <template v-if="scope.row.log_type === 'share_delete'">
-            <span class="modify-text">&nbsp;{{ $t("ui.formCommonOaLogRemoveNbspCollaborator") }}</span>
+            <span class="modify-text">&nbsp;{{ $("ui.formCommonOaLogRemoveNbspCollaborator") }}</span>
             <span class="fwweight-bold">&nbsp;&nbsp;{{ scope.row.after_value }} </span>
           </template>
           <template v-else-if="scope.row.log_type === 'share_create'">
-            <span class="modify-text">&nbsp;{{ $t("ui.formCommonOaLogAddNbspCollaborator") }}</span>
+            <span class="modify-text">&nbsp;{{ $("ui.formCommonOaLogAddNbspCollaborator") }}</span>
             <span class="fwweight-bold"
-              >&nbsp;&nbsp;{{ scope.row.before_value }} <span class="modify-text">&nbsp;{{ $t("ui.formCommonOaLogCollaborationPermissions") }}&nbsp;</span>
+              >&nbsp;&nbsp;{{ scope.row.before_value }} <span class="modify-text">&nbsp;{{ $("ui.formCommonOaLogCollaborationPermissions") }}&nbsp;</span>
               {{ scope.row.after_value }}</span
             >
           </template>
           <template v-else-if="scope.row.log_type === 'create'">
-            <span class="modify-text">&nbsp;{{ $t("ui.formCommonOaLogAddedARecord") }}&nbsp;</span>
+            <span class="modify-text">&nbsp;{{ $("ui.formCommonOaLogAddedARecord") }}&nbsp;</span>
             <!-- <span class="fwweight-bold"> {{ keyName }}</span> -->
           </template>
           <template v-else-if="scope.row.log_type === 'share_update'">
-            <span class="modify-text">&nbsp;{{ $t("ui.formCommonOaLogChangedNbspCollaborator") }}</span>&nbsp;{{ scope.row.share_user.name }}&nbsp;<span
+            <span class="modify-text">&nbsp;{{ $("ui.formCommonOaLogChangedNbspCollaborator") }}</span>&nbsp;{{ scope.row.share_user.name }}&nbsp;<span
               class="modify-text"
-              >{{ $t("ui.formCommonOaLogSPermissions") }}</span
+              >{{ $("ui.formCommonOaLogSPermissions") }}</span
             >
-            <span class="modify-text"> &nbsp;{{ $t("ui.formCommonOaLogFrom") }}&nbsp;</span>
+            <span class="modify-text"> &nbsp;{{ $("ui.formCommonOaLogFrom") }}&nbsp;</span>
             <span class="fwweight-bold">{{ scope.row.before_value }}</span>
-            <span class="modify-tex m6t">{{ $t("ui.formCommonOaLogTo") }}</span>
+            <span class="modify-tex m6t">{{ $("ui.formCommonOaLogTo") }}</span>
             <span class="fwweight-bold">{{ scope.row.after_value }}</span>
           </template>
           <template v-else>
-            <span class="modify-text">&nbsp;{{ $t("ui.formCommonOaLogChanged") }}</span>
-            <span class="fwweight-bold">{{ scope.row.field_name || $t('ui.developModuleTreeOwner') }}</span>
-            <span class="modify-text mr6">{{ $t("ui.formCommonOaLogFrom2") }}</span>
+            <span class="modify-text">&nbsp;{{ $("ui.formCommonOaLogChanged") }}</span>
+            <span class="fwweight-bold">{{ scope.row.field_name || $('ui.developModuleTreeOwner') }}</span>
+            <span class="modify-text mr6">{{ $("ui.formCommonOaLogFrom2") }}</span>
             <span class="fwweight-bold max-width">{{ getValue(scope.row.before_value, scope.row.form_value) }}</span>
-            <span class="modify-text m6">{{ $t("ui.formCommonOaLogTo") }}</span>
+            <span class="modify-text m6">{{ $("ui.formCommonOaLogTo") }}</span>
             <span class="fwweight-bold max-width">{{ getValue(scope.row.after_value, scope.row.form_value) }} </span>
           </template>
           <span class="modify-text ml20">{{ scope.row.created_at }}</span>
@@ -74,7 +74,7 @@
 
         <div v-if="formValueType.includes(scope.row.form_value)">
           <span class="name-text"> 【{{ getLogType(scope.row.log_type) }}】{{ scope.row.user.name }}</span>
-          <span class="modify-text">{{ $t("ui.formCommonOaLogUpdated") }}</span>
+          <span class="modify-text">{{ $("ui.formCommonOaLogUpdated") }}</span>
           <span class="fwweight-bold">{{ scope.row.field_name }}</span>
           <span class="modify-text ml20">{{ scope.row.created_at }}</span>
         </div>
@@ -84,7 +84,7 @@
       <template slot-scope="scope">
         <div class="flex expand-describe">
           <div class="flex expand-left">
-            <span class="modify-text">{{ $t("ui.formCommonOaLogBefore") }}</span>
+            <span class="modify-text">{{ $("ui.formCommonOaLogBefore") }}</span>
 
             <!-- 图片 -->
             <template v-if="scope.row.form_value == 'image'">
@@ -109,7 +109,7 @@
           </div>
           <div class="line-short"></div>
           <div class="flex expand-right">
-            <span class="modify-text">{{ $t("ui.formCommonOaLogAfter") }}</span>
+            <span class="modify-text">{{ $("ui.formCommonOaLogAfter") }}</span>
             <template v-if="scope.row.form_value == 'image'">
               <div class="flex" v-for="(item, index) in scope.row.after_value">
                 <img :src="item.url" alt="" class="img" @click="filePreview(item)" />

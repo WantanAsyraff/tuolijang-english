@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <oaFromBox
       v-if="search.length > 0"
-:btn-text="$t('ui.fdExamineIndexExport')"
+      :btnText="$('ui.fdExamineIndexExport')"
       :dropdownList="dropdownList"
       :isAddBtn="false"
       :search="search"
@@ -20,35 +21,34 @@
     <!-- 导入组件 -->
     <import-excel v-show="false" ref="importExcel" @importExcelData="importExcelData"></import-excel>
     <!-- 企微同步 -->
-    <el-dialog :title='$ts("企微同步")' :visible.sync="dialogFormVisible" width="500px">
+    <el-dialog :title='$("legacyScript.weComSync")' :visible.sync="dialogFormVisible" width="500px">
       <el-form>
         <el-form-item label-width="90px">
-          <span slot="label"><span class="color-pdf">*</span> {{ $ts("打卡时间：") }}</span>
+          <span slot="label"><span class="color-pdf">*</span> {{ $("ui.hrAttendanceStatisticsDetailsDrawerClockInTime") }}</span>
           <el-date-picker
             size="small"
             v-model="clockInTime"
             type="daterange"
-:range-separator="$t('ui.commonFormListTo')"
-:start-placeholder="$t('ui.customerSigningIndexStartDate')"
-:end-placeholder="$t('ui.customerSigningIndexEndDate')"
+            :range-separator="$('ui.commonFormListTo')"
+            :start-placeholder="$('ui.customerSigningIndexStartDate')"
+            :end-placeholder="$('ui.customerSigningIndexEndDate')"
             format="yyyy/MM/dd"
             value-format="yyyy/MM/dd"
             :picker-options="pickerOptions"
             @change="handleDateChange"
           >
           </el-date-picker>
-          <div class="tips">{{ $ts("日期跨度不能超过30天!") }}</div>
+          <div class="tips">{{ $("legacy.2d97d49614064b9e") }}</div>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button size="small" @click="dialogFormVisible = false">{{ $ts("取 消") }}</el-button>
-        <el-button size="small" type="primary" @click="qiweiAsync">{{ $ts("确 定") }}</el-button>
+        <el-button size="small" @click="dialogFormVisible = false">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+        <el-button size="small" type="primary" @click="qiweiAsync">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
       </div>
     </el-dialog>
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import SettingMer from '@/libs/settingMer'
 import helper from '@/libs/helper'
@@ -74,23 +74,23 @@ export default {
       },
       dropdownList: [
         {
-          label: i18n.t('finance.batchupload'),
+          label: $('finance.batchupload'),
           value: 1
         },
         {
-          label: i18n.t('customer.export'),
+          label: $('customer.export'),
           value: 2
         },
         {
-          label: i18n.t('legacyScript.exportTemplate'),
+          label: $('legacyScript.exportTemplate'),
           value: 3
         },
         {
-          label: i18n.t('legacyScript.weComImport'),
+          label: $('legacyScript.weComImport'),
           value: 4
         },
         {
-          label: i18n.t('legacyScript.dingTalkImport'),
+          label: $('legacyScript.dingTalkImport'),
           value: 5
         }
       ],
@@ -185,27 +185,27 @@ export default {
       const diffDays = endDay.diff(startDay, 'days')
 
       if (diffDays > 30) {
-        this.$message.error(i18n.t('legacyScript.theDateRangeCannotExceed30DaysPleaseSelectAgain'))
+        this.$message.error($('legacyScript.theDateRangeCannotExceed30DaysPleaseSelectAgain'))
         this.clockInTime = [start, startDay.clone().add(30, 'days').format('YYYY/MM/DD')]
       } else if (diffDays < 0) {
-        this.$message.error(i18n.t('legacyScript.endDateCannotBeEarlierThanStartDate'))
+        this.$message.error($('legacyScript.endDateCannotBeEarlierThanStartDate'))
         this.clockInTime = []
       }
     },
     // 企微同步
     qiweiAsync() {
       if (this.clockInTime.length == 0) {
-        return this.$message.error(i18n.t('legacyScript.pleaseSelectATime'))
+        return this.$message.error($('legacyScript.pleaseSelectATime'))
       }
       const [start, end] = this.clockInTime
       const startDay = this.$moment(start)
       const endDay = this.$moment(end)
       const diffDays = endDay.diff(startDay, 'days')
       if (diffDays > 30) {
-        this.$message.error(i18n.t('legacyScript.theDateRangeCannotExceed30DaysPleaseSelectAgain'))
+        this.$message.error($('legacyScript.theDateRangeCannotExceed30DaysPleaseSelectAgain'))
         return false
       } else if (diffDays < 0) {
-        this.$message.error(i18n.t('legacyScript.endDateCannotBeEarlierThanStartDate'))
+        this.$message.error($('legacyScript.endDateCannotBeEarlierThanStartDate'))
         return false
       }
       attendanceWorkClockRecord({ date: this.clockInTime }).then((res) => {
@@ -237,13 +237,13 @@ export default {
       this.viewSearch = [
         {
           field: 'group_id',
-          title: i18n.t('ui.hrAttendanceStatisticsClockAttendanceGroup'),
+          title: $('ui.hrAttendanceStatisticsClockAttendanceGroup'),
           type: 'select',
           options: this.list
         },
         {
           field: 'scope',
-          title: i18n.t('legacyScript.data'),
+          title: $('legacyScript.data'),
           type: 'select',
           options: [
             {
@@ -262,7 +262,7 @@ export default {
         },
         {
           field: 'user_id',
-          title: i18n.t('ui.hrAttendanceSettingAddConentPersonnel'),
+          title: $('ui.hrAttendanceSettingAddConentPersonnel'),
           type: 'user_id',
           options: []
         }
@@ -288,7 +288,7 @@ export default {
         }
       ]
       if (type == 'clock') {
-        this.title = i18n.t('legacyScript.clockInRecords')
+        this.title = $('legacyScript.clockInRecords')
         let obj = {
           field_name_en: 'group_id',
           field_name: '考勤组',
@@ -296,7 +296,7 @@ export default {
           data_dict: this.list
         }
         this.dropdownList.push({
-          label: i18n.t('legacyScript.weComSync'),
+          label: $('legacyScript.weComSync'),
           value: 6
         })
         searchList.splice(1, 1)
@@ -304,11 +304,11 @@ export default {
         this.search.push(obj)
         this.viewSearch.splice(0, 1)
       } else if (type == 'month') {
-        this.title = i18n.t('legacyScript.monthlyStatistics')
+        this.title = $('legacyScript.monthlyStatistics')
         searchList[0].form_value = 'month'
         this.search = searchList
       } else {
-        this.title = i18n.t('legacyScript.dailyStatistics')
+        this.title = $('legacyScript.dailyStatistics')
         this.search = searchList
       }
     },

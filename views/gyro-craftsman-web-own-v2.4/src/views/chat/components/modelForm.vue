@@ -1,15 +1,16 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-form ref="form" :model="form" :rules="formRules" label-position="top">
     <div class="p20">
-      <div class="title">{{ $t("ui.chatModelFormModelSettings") }}</div>
+      <div class="title">{{ $("ui.chatModelFormModelSettings") }}</div>
       <el-form-item prop="models_id">
         <div slot="label" class="label">
-          {{ $t("ui.chatModelFormAiModel") }}
-          <popover :tips="$t('ui.chatModelFormSelectAnAiModelConfiguredUnderModelSettings')"></popover>
-          <div class="parameter" @click="openFn">{{ $t("ui.chatModelFormParameterSettings") }}</div>
+          {{ $("ui.chatModelFormAiModel") }}
+          <popover :tips="$('ui.chatModelFormSelectAnAiModelConfiguredUnderModelSettings')"></popover>
+          <div class="parameter" @click="openFn">{{ $("ui.chatModelFormParameterSettings") }}</div>
         </div>
-        <el-select v-model="form.models_id" :placeholder="$t('ui.chatModelFormSelectModel')" size="small" style="width: 100%">
+        <el-select v-model="form.models_id" :placeholder="$('ui.chatModelFormSelectModel')" size="small" style="width: 100%">
           <el-option v-for="item in options" :key="item.value" :label="item.lable" :value="item.value"></el-option>
         </el-select>
         <!-- <el-input v-model="form.name" size="small" maxlength="20" show-word-limit></el-input> -->
@@ -20,15 +21,15 @@
       <el-form-item>
         <div slot="label" class="label">
           <span class="el-icon-caret-right" :class="show4 ? 'rotating' : 'norotating'" @click="show4 = !show4"></span>
-          {{ $t("ui.chatModelFormOpeningMessage") }}
-          <popover :tips="$t('ui.chatModelFormShownWhenUsersStartAConversationToIntroduceThe')" :width="250"></popover>
+          {{ $("ui.chatModelFormOpeningMessage") }}
+          <popover :tips="$('ui.chatModelFormShownWhenUsersStartAConversationToIntroduceThe')" :width="250"></popover>
         </div>
         <el-collapse-transition>
           <div v-show="show4">
             <el-input
               type="textarea"
               class="textareaBox height90"
-              :placeholder="$t('ui.chatModelFormEnterContent')"
+              :placeholder="$('ui.chatModelFormEnterContent')"
               v-model="form.prologue_text"
               maxlength="200"
             >
@@ -43,8 +44,8 @@
       <el-form-item>
         <div slot="label" class="label">
           <span class="el-icon-caret-right" :class="show1 ? 'rotating' : 'norotating'" @click="show1 = !show1"></span>
-          {{ $t("ui.chatModelFormOpeningQuestions") }}
-          <popover :tips="$t('ui.chatModelFormAddAtLeastThreeQuestionsIfMoreAreAdded')"></popover>
+          {{ $("ui.chatModelFormOpeningQuestions") }}
+          <popover :tips="$('ui.chatModelFormAddAtLeastThreeQuestionsIfMoreAreAdded')"></popover>
         </div>
         <el-collapse-transition>
           <div v-show="show1">
@@ -54,7 +55,7 @@
                 class="parameter-input mb8"
                 size="small"
                 maxlength="50"
-                :placeholder="$t('ui.chatModelFormPleaseEnterOpeningQuestions')"
+                :placeholder="$('ui.chatModelFormPleaseEnterOpeningQuestions')"
               >
                 <div slot="suffix" class="del-text">
                   <span class="num-color">{{ form.prologue_list[index].length }}/50</span>
@@ -63,7 +64,7 @@
               </el-input>
             </div>
             <div class="parameter1">
-              <span @click.stop="addprologue"><span class="el-icon-circle-plus-outline" />{{ $t("ui.chatModelFormAddQuestion") }}</span>
+              <span @click.stop="addprologue"><span class="el-icon-circle-plus-outline" />{{ $("ui.chatModelFormAddQuestion") }}</span>
             </div>
           </div>
         </el-collapse-transition>
@@ -71,9 +72,9 @@
     </div>
     <el-divider style="width: 100%"></el-divider>
     <div class="p20">
-      <div class="title">{{ $t("ui.chatModelFormPlugin") }}</div>
+      <div class="title">{{ $("ui.chatModelFormPlugin") }}</div>
       <el-radio-group v-model="form.source_type" class="mb14">
-        <el-radio :label="0">{{ $t("ui.chatModelFormDatabase") }}</el-radio>
+        <el-radio :label="0">{{ $("ui.chatModelFormDatabase") }}</el-radio>
         <el-radio :label="1">MCP</el-radio>
       </el-radio-group>
 
@@ -86,20 +87,20 @@
                 :class="show5 ? 'rotating' : 'norotating'"
                 @click.prevent="show5 = !show5"
               ></span>
-              {{ $t("ui.chatModelFormDatabase") }}
+              {{ $("ui.chatModelFormDatabase") }}
               <popover
-                :tips="$t('ui.chatModelFormExpandTheAssistantSDatabaseKnowledgeToProvideMore')"
+                :tips="$('ui.chatModelFormExpandTheAssistantSDatabaseKnowledgeToProvideMore')"
               ></popover>
             </div>
             <div class="flex-center">
               <div class="json-text">
-                <span @click.prevent="addJson">{{ $t("ui.chatModelFormDatabaseSettings") }}</span>
+                <span @click.prevent="addJson">{{ $("ui.chatModelFormDatabaseSettings") }}</span>
               </div>
 
               <el-switch
                 v-model="form.is_table"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                active-text="开启"
+                inactive-text="关闭"
                 :active-value="1"
                 :inactive-value="0"
                 style="width: 60px"
@@ -109,7 +110,7 @@
           </div>
           <el-collapse-transition>
             <div v-show="show5 && form.is_table == 1">
-              <el-input type="textarea" class="textareaBox height90" :placeholder="$t('ui.chatModelFormEnterContent')" v-model="form.content">
+              <el-input type="textarea" class="textareaBox height90" :placeholder="$('ui.chatModelFormEnterContent')" v-model="form.content">
               </el-input>
               <div class="append">
                 <span class="iconfont iconzhankai2" @click="addJson"></span>
@@ -125,8 +126,8 @@
                 :class="show6 ? 'rotating' : 'norotating'"
                 @click.prevent="show6 = !show6"
               ></span>
-              {{ $t("ui.chatModelFormDataFormattingRules") }}
-              <popover :tips="$t('ui.chatModelFormDescribeHowTheContentReturnedFromADatabaseQuery')"></popover>
+              {{ $("ui.chatModelFormDataFormattingRules") }}
+              <popover :tips="$('ui.chatModelFormDescribeHowTheContentReturnedFromADatabaseQuery')"></popover>
             </div>
           </div>
           <el-collapse-transition>
@@ -134,7 +135,7 @@
               <el-input
                 type="textarea"
                 class="textareaBox height90"
-                :placeholder="$t('ui.chatModelFormEnterContent')"
+                :placeholder="$('ui.chatModelFormEnterContent')"
                 v-model="form.data_arrange_text"
                 maxlength="1000"
               >
@@ -157,8 +158,8 @@
               :class="show2 ? 'rotating' : 'norotating'"
               @click="show2 = !show2"
             ></span>
-            {{ $t("ui.chatModelFormKeywords") }}
-            <popover :tips="$t('ui.chatModelFormTheDatabaseIsQueriedOnlyWhenAUserS')"></popover>
+            {{ $("ui.chatModelFormKeywords") }}
+            <popover :tips="$('ui.chatModelFormTheDatabaseIsQueriedOnlyWhenAUserS')"></popover>
           </div>
           <el-collapse-transition>
             <div v-show="show2">
@@ -168,7 +169,7 @@
                   class="parameter-input mb8"
                   size="small"
                   maxlength="20"
-                  :placeholder="$t('ui.chatModelFormEnterKeywords')"
+                  :placeholder="$('ui.chatModelFormEnterKeywords')"
                 >
                   <div slot="suffix" class="del-text">
                     <span class="num-color">{{ form.keyword[index].length }}/20</span>
@@ -177,7 +178,7 @@
                 </el-input>
               </div>
               <div class="parameter1">
-                <span @click="addkeyWord"> <span class="el-icon-circle-plus-outline" />{{ $t("ui.chatModelFormAddKeyword") }} </span>
+                <span @click="addkeyWord"> <span class="el-icon-circle-plus-outline" />{{ $("ui.chatModelFormAddKeyword") }} </span>
               </div>
             </div>
           </el-collapse-transition>
@@ -195,12 +196,12 @@
               ></span>
               MCP
               <popover
-                :tips="$t('ui.chatModelFormExpandTheAssistantSDatabaseKnowledgeToProvideMore')"
+                :tips="$('ui.chatModelFormExpandTheAssistantSDatabaseKnowledgeToProvideMore')"
               ></popover>
             </div>
             <div class="flex-center">
               <div class="json-text">
-                <span @click="addMcpFn">{{ $t("ui.chatModelFormMcpSettings") }}</span>
+                <span @click="addMcpFn">{{ $("ui.chatModelFormMcpSettings") }}</span>
               </div>
             </div>
           </div>
@@ -225,8 +226,8 @@
       <el-form-item>
         <div slot="label" class="label">
           <span class="el-icon-caret-right" :class="show3 ? 'rotating' : 'norotating'" @click="show3 = !show3"></span>
-          {{ $t("ui.chatModelFormReferenceConversationRounds") }}
-          <popover :tips="$t('ui.chatModelFormThisResponseUsesTheMostRecentConversationTurnsAs')" :width="270"></popover>
+          {{ $("ui.chatModelFormReferenceConversationRounds") }}
+          <popover :tips="$('ui.chatModelFormThisResponseUsesTheMostRecentConversationTurnsAs')" :width="270"></popover>
         </div>
         <el-collapse-transition>
           <div v-show="show3" class="flex">
@@ -248,32 +249,32 @@
   <!-- 参数设置 -->
   <oa-dialog ref="oaDialog" :fromData="fromData" @submit="submit" @handleClose="handleClose">
     <el-table :data="tableList" style="width: 100%">
-      <el-table-column prop="date" :label="$t('ui.developModuleButtonDialogParameterName')" width="180">
+      <el-table-column prop="date" :label="$('ui.developModuleButtonDialogParameterName')" width="180">
         <template slot-scope="scope">
-          <el-input v-model="scope.row.name" size="small" :placeholder="$t('ui.chatModelFormPleaseEnterParameterName')"></el-input>
+          <el-input v-model="scope.row.name" size="small" :placeholder="$('ui.chatModelFormPleaseEnterParameterName')"></el-input>
         </template>
       </el-table-column>
-      <el-table-column prop="filed" :label="$t('ui.chatModelFormParameterKey')" width="180">
+      <el-table-column prop="filed" :label="$('ui.chatModelFormParameterKey')" width="180">
         <template slot-scope="scope">
-          <el-input v-model="scope.row.filed" size="small" :placeholder="$t('ui.chatModelFormPleaseEnterParameterKey')"></el-input> </template
+          <el-input v-model="scope.row.filed" size="small" :placeholder="$('ui.chatModelFormPleaseEnterParameterKey')"></el-input> </template
       ></el-table-column>
-      <el-table-column prop="value" :label="$t('ui.chatModelFormDefaultValue')" width="180">
+      <el-table-column prop="value" :label="$('ui.chatModelFormDefaultValue')" width="180">
         <template slot-scope="scope">
-          <el-input v-model="scope.row.value" size="small" :placeholder="$t('ui.chatModelFormEnterDefaultValue')"></el-input>
+          <el-input v-model="scope.row.value" size="small" :placeholder="$('ui.chatModelFormEnterDefaultValue')"></el-input>
         </template>
       </el-table-column>
-      <el-table-column prop="message" :label="$t('ui.workFlowDialogErrorDialogHint')"
+      <el-table-column prop="message" :label="$('ui.workFlowDialogErrorDialogHint')"
         ><template slot-scope="scope">
-          <el-input v-model="scope.row.message" size="small" :placeholder="$t('ui.chatModelFormPleaseEnterHint')"></el-input> </template
+          <el-input v-model="scope.row.message" size="small" :placeholder="$('ui.chatModelFormPleaseEnterHint')"></el-input> </template
       ></el-table-column>
-      <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="90">
+      <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="90">
         <template slot-scope="scope">
-          <el-button type="text" @click="handlerDelet(scope.row, scope.$index)">{{ $t("ui.chatIndexDelete") }}</el-button>
+          <el-button type="text" @click="handlerDelet(scope.row, scope.$index)">{{ $("ui.chatIndexDelete") }}</el-button>
         </template>
       </el-table-column>
     </el-table>
     <div class="addText">
-      <span @click="addJsonTable">{{ $t("ui.chatModelFormAddParameter") }}</span>
+      <span @click="addJsonTable">{{ $("ui.chatModelFormAddParameter") }}</span>
     </div>
   </oa-dialog>
   <!-- 选择MCP -->
@@ -285,7 +286,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import popover from './popover'
 import databaseTable from './databaseTable'
 import jsonDialog from './jsonDialog'
@@ -312,10 +312,10 @@ export default {
   data() {
     return {
       fromData: {
-        title: i18n.t('ui.chatModelFormParameterSettings'),
+        title: $('ui.chatModelFormParameterSettings'),
         width: '980px',
         type: 'slot',
-        btnText: i18n.t('ui.formCommonDialogFormOk')
+        btnText: '确定'
       },
       radio: '2',
 
@@ -339,7 +339,7 @@ export default {
       formRules: {
         models_id: {
           required: true,
-          message: i18n.t('legacyScript.selectModel'),
+          message: $('legacyScript.selectModel'),
           trigger: 'change'
         }
       },
@@ -351,7 +351,7 @@ export default {
       show4: true,
       show5: true,
       show6: true,
-      placeholder: i18n.t('legacyScript.pleaseEnterAPrompt')
+      placeholder: $('legacyScript.pleaseEnterAPrompt')
     }
   },
   computed: {
@@ -493,7 +493,7 @@ export default {
           } else if (obj.value === '' || obj.name === '' || obj.filed === '') {
             this.$message({
               type: 'error',
-              message: i18n.t('legacyScript.pleaseCompleteAllFieldsParameterSettingsCannotBeEmpty')
+              message: $('legacyScript.pleaseCompleteAllFieldsParameterSettingsCannotBeEmpty')
             })
             return false
           }

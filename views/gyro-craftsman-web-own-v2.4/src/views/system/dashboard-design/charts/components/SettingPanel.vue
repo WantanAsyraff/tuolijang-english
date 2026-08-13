@@ -1,3 +1,4 @@
+import { $, setLanguage } from '@/lang'
 <template>
   <!-- 右侧设置面板 -->
   <el-scrollbar class="setting-scrollbar" :style="{ height: scrollerHeight }">
@@ -9,7 +10,7 @@
 
           <el-collapse-item name="1"
             v-if="showCollapse(commonProps) && !['search', 'tab'].includes(designer.selectedWidget.type)"
-            :title="i18nt('designer.setting.commonSetting')">
+            :title="$('designer.setting.commonSetting')">
             <template v-for="(A, R) in commonProps">
 
               <component v-if="hasPropEditor(R, A)" :is="getPropEditor(R, A)" :designer="designer"
@@ -18,16 +19,16 @@
             </template>
           </el-collapse-item>
 
-          <el-collapse-item name="1" v-else-if="designer.selectedWidget.type === 'search'" :title="$t('ui.systemDashboardDesignChartsSettingPanelFilterSettings')">
+          <el-collapse-item name="1" v-else-if="designer.selectedWidget.type === 'search'" :title="$('ui.systemDashboardDesignChartsSettingPanelFilterSettings')">
 
             <search-editor :designer="designer" :selected-widget="selectedWidget" :option-model.sync="optionModel"
               @clearSearch="clearSearch" @optionModelChange="optionModelChange"></search-editor>
           </el-collapse-item>
-          <el-collapse-item name="1" v-else-if="designer.selectedWidget.type === 'tab'" :title="$t('ui.systemDashboardDesignChartsSettingPanelLabelStyle')">
+          <el-collapse-item name="1" v-else-if="designer.selectedWidget.type === 'tab'" :title="$('ui.systemDashboardDesignChartsSettingPanelLabelStyle')">
             <tab-style-editor :designer="designer" :selected-widget="selectedWidget" :option-model.sync="optionModel"
               @optionModelChange="optionModelChange"></tab-style-editor>
           </el-collapse-item>
-          <el-collapse-item name="3" v-if="designer.selectedWidget.type === 'tab'" :title="$t('ui.systemDashboardDesignChartsSettingPanelLabelSettings')">
+          <el-collapse-item name="3" v-if="designer.selectedWidget.type === 'tab'" :title="$('ui.systemDashboardDesignChartsSettingPanelLabelSettings')">
             <tab-editor :designer="designer" :selected-widget="selectedWidget" :option-model.sync="optionModel"
               @clearSearch="clearSearch" @optionModelChange="optionModelChange"></tab-editor>
           </el-collapse-item>
@@ -39,13 +40,12 @@
     <div v-else-if="!designer.selectedWidget">
       <div class="no-widget-selected">
         <img class="no-widget-selected-img" src="@/assets/images/defd-da.png" alt="" />
-        <div class="no-widget-selected-text">{{ $t("ui.formDesignerSettingPanelIndexNoComponentIsSelected") }}</div>
+        <div class="no-widget-selected-text">{{ $("ui.formDesignerSettingPanelIndexNoComponentIsSelected") }}</div>
       </div>
     </div>
   </el-scrollbar>
 </template>
 <script>
-import i18n, { changeLocale } from '@/utils/i18n'
 import emitter from '@/utils/emitter'
 import { COMMON_PROPERTIES$1, ADVANCED_PROPERTIES$1, EVENT_PROPERTIES$1 } from '../configData'
 import CodeEditor from '@/components/code-editor/index'
@@ -60,7 +60,7 @@ import PropertyEditors from '@/components/form-designer/setting-panel/property-e
 export default {
   name: 'SettingPanel',
   componentName: 'SettingPanel',
-  mixins: [i18n, emitter],
+  mixins: [emitter],
   components: { CodeEditor, FormSetting, ...PropertyEditors, ...comp, SearchEditor, TabEditor, TabStyleEditor },
   props: {
     designer: Object,
@@ -222,9 +222,9 @@ export default {
         }),
           e)
       ) {
-        this.$confirm(this.i18nt('designer.setting.syntaxCheckWarning'), this.i18nt('render.hint.prompt'), {
-          confirmButtonText: this.i18nt('render.hint.forcedSave'),
-          cancelButtonText: this.i18nt('render.hint.cancel')
+        this.$confirm(this.$('designer.setting.syntaxCheckWarning'), this.$('render.hint.prompt'), {
+          confirmButtonText: this.$('render.hint.forcedSave'),
+          cancelButtonText: this.$('render.hint.cancel')
         })
           .then(() => {
             ; (this.selectedWidget.options[this.curEventName] = this.eventHandlerCode),

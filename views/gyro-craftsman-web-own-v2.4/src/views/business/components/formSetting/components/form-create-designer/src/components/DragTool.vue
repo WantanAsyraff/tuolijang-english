@@ -2,19 +2,19 @@
   <div class="drag-tool" @click.stop="active" :class="{ active: state.active === id }">
     <!-- 编辑字段页面 -->
     <div class="drag-l">
-      <el-tooltip effect="dark" :content='$ts("拖拽")' placement="top">
+      <el-tooltip effect="dark" :content='$("legacy.7ea95d3b928c9945")' placement="top">
         <div class="drag-btn _fc-drag-btn" v-if="state.active === id && dragBtn !== false" style="cursor: move">
           <i class="iconfont icontuozhuai"></i>
         </div>
       </el-tooltip>
     </div>
     <div class="drag-r">
-      <el-tooltip effect="dark" :content='$ts("添加")' placement="top">
+      <el-tooltip effect="dark" :content='$("public.add")' placement="top">
         <div class="drag-btn" @click="$emit('add')" v-if="typeList.indexOf(type) == -1">
           <i class="iconfont icontianjia1"></i>
         </div>
       </el-tooltip>
-      <el-tooltip effect="dark" :content='$ts("复制")' placement="top">
+      <el-tooltip effect="dark" :content='$("setting.copy")' placement="top">
         <div class="drag-btn" @click="$emit('copy')" v-if="typeList.indexOf(type) == -1">
           <i class="iconfont iconfuzhi1"></i>
         </div>
@@ -22,7 +22,7 @@
       <div class="drag-btn" v-if="children" @click="$emit('addChild')">
         <i class="fc-icon icon-add-child"></i>
       </div>
-      <el-tooltip effect="dark" :content='$ts("删除")' placement="top">
+      <el-tooltip effect="dark" :content='$("public.delete")' placement="top">
         <div class="drag-btn drag-btn-danger" @click="$emit('delete')">
           <i class="iconfont iconshanchu1"></i>
         </div>

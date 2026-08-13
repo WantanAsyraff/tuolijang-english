@@ -10,7 +10,7 @@ import "./bootstrap/styles";
 import App from "./App";
 import store from "./store";
 import router from "./router";
-import i18n from "./lang";
+import "./lang";
 
 // Bootstrap registrations.
 import { registerPlugins } from "./bootstrap/plugins";
@@ -28,9 +28,8 @@ import "./bootstrap/third-party";
 
 // Notification bootstrap.
 import { initNotification } from "./bootstrap/notification";
-import { installDomI18nTranslator } from "@/utils/dom-i18n";
 
-registerPlugins(Vue, i18n);
+registerPlugins(Vue);
 registerComponents(Vue);
 registerFilters(Vue);
 registerPrototypes(Vue);
@@ -57,13 +56,9 @@ export default new Vue({
   created() {
     EventBus.$on("auth-token-updated", this.restartNotice);
   },
-  mounted() {
-    installDomI18nTranslator({ i18n, router, store });
-  },
   beforeDestroy() {
     EventBus.$off("auth-token-updated", this.restartNotice);
   },
   store,
-  i18n,
   render: (h) => h(App),
 });

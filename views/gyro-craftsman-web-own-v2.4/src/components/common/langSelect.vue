@@ -9,11 +9,11 @@
       {{ toggleLabel }}
     </el-button>
     <el-dropdown trigger="click" class="international" @command="handleSetLanguage">
-      <button type="button" class="lang-trigger" :title="$t('navbar.language') || 'Language'">
+      <button type="button" class="lang-trigger" :title="$('navbar.language') || 'Language'">
         <span class="iconfont icondiqiu" />
       </button>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item :disabled="language === 'zh-cn'" command="zh-cn">{{ $t('login.chinese') }}</el-dropdown-item>
+        <el-dropdown-item :disabled="language === 'zh-cn'" command="zh-cn">{{ $('login.chinese') }}</el-dropdown-item>
         <el-dropdown-item :disabled="language === 'en'" command="en">English</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -30,7 +30,7 @@ export default {
       return this.language === 'en' ? 'zh-cn' : 'en'
     },
     toggleLabel() {
-      return this.language === 'en' ? this.$t('navbar.translateToChinese') : this.$t('navbar.translateToEnglish')
+      return this.language === 'en' ? this.$('navbar.translateToChinese') : this.$('navbar.translateToEnglish')
     }
   },
   methods: {
@@ -39,11 +39,8 @@ export default {
     },
     handleSetLanguage(lang, force = false) {
       if (!force && lang === this.language) return
-      this.$i18n.locale = lang
       this.$store.dispatch('app/setLanguage', lang)
-      localStorage.setItem('language', lang)
       this.clearLanguageSensitiveCache()
-      this.$nextTick(() => window.location.reload())
     },
     clearLanguageSensitiveCache() {
       localStorage.removeItem('menuTabData')

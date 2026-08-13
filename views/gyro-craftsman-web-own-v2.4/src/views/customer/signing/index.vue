@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
 
     <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
-        <oaFromBox :title="$route.meta.title" :btn-text="$t('ui.customerListSignAddContract')" :isAddBtn="false" :treeData="treeDataGroup" :treeDefault="treeDefault"
+    <oaFromBox :title="$route.meta.title" :btnText="$('ui.customerListSignAddContract')" :isAddBtn="false" :treeData="treeDataGroup" :treeDefault="treeDefault"
             :search="search" :isViewSearch="false" :total="total" ref="fromBox" @addDataFn="addContract"
             @confirmData="confirmData" @treeChange="treeChange"></oaFromBox>
         <div class="flex-layout-table">
@@ -10,19 +11,19 @@
                 <div class="table-wrapper">
                     <div class="table-content">
                         <el-table :data="tableData" height="100%" style="width: 100%" v-loading="loading">
-                            <el-table-column prop="doc_name" :label="$t('ui.customerListSignContractName')" width="180" fixed="left">
+                            <el-table-column prop="doc_name" :label="$('ui.customerListSignContractName')" width="180" fixed="left">
                                 <template slot-scope="scope">
                                     <span class="point" @click="handleClick(1, scope.row)">
                                         {{ scope.row.doc_name || '--' }}
                                     </span>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="doc_no" :label="$t('ui.customerListSignContractNo')" width="180">
+                            <el-table-column prop="doc_no" :label="$('ui.customerListSignContractNo')" width="180">
                                 <template slot-scope="scope">
                                     {{ scope.row.doc_no || '--' }}
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="contract_no" :label="$t('ui.customerSigningIndexHandler')" width="130">
+                            <el-table-column prop="contract_no" :label="$('ui.customerSigningIndexHandler')" width="130">
                                 <template slot-scope="scope">
                                     <template v-if="scope.row.signatory && scope.row.signatory.length > 0">
                                         <div v-for="(value, index) in filterSignUser(scope.row.signatory, 0)" :key="index"
@@ -38,7 +39,7 @@
                                     </template>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="signing_time" :label="$t('ui.customerSigningIndexOtherSigners')" min-width="150">
+                            <el-table-column prop="signing_time" :label="$('ui.customerSigningIndexOtherSigners')" min-width="150">
                                 <template slot-scope="scope">
                                     <template v-if="scope.row.signatory && scope.row.signatory.length > 0">
                                         <div v-for="(value, index) in filterSignUser(scope.row.signatory, 1)" :key="index"
@@ -54,29 +55,29 @@
                                     </template>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="signing_time" :label="$t('ui.customerSigningIndexSigningMethod')" width="130">
+                            <el-table-column prop="signing_time" :label="$('ui.customerSigningIndexSigningMethod')" width="130">
                                 <template slot-scope="scope">
-                                    {{ scope.row.sign_type == 1 ? $t('ui.customerSigningInfoItemOfflineSigning') : $t('ui.customerSigningInfoItemESign') }}
+                                    {{ scope.row.sign_type == 1 ? $('ui.customerSigningInfoItemOfflineSigning') : $('ui.customerSigningInfoItemESign') }}
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="customer.customer_name" :label="$t('ui.developModuleTreeCustomerName')" width="130">
+                            <el-table-column prop="customer.customer_name" :label="$('ui.developModuleTreeCustomerName')" width="130">
                                 <template slot-scope="scope">
                                     <span class="point" @click="handleClickCustomer(scope.row)">
                                         {{ scope.row.customer?.customer_name || '--' }}
                                     </span>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="end_date" :label="$t('ui.customerSigningIndexStartDate')" width="180">
+                            <el-table-column prop="end_date" :label="$('ui.customerSigningIndexStartDate')" width="180">
                                 <template slot-scope="scope">
                                     {{ scope.row.start_date || '--' }}
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="end_date" :label="$t('ui.customerSigningIndexEndDate')" width="180">
+                            <el-table-column prop="end_date" :label="$('ui.customerSigningIndexEndDate')" width="180">
                                 <template slot-scope="scope">
                                     {{ scope.row.end_date || '--' }}
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="fail_status" :label="$t('ui.customerSigningIndexExpirationStatus')" width="180">
+                            <el-table-column prop="fail_status" :label="$('ui.customerSigningIndexExpirationStatus')" width="180">
                                 <template slot-scope="scope">
                                     <div v-if="failStatus[scope.row.fail_status]" :style="{
                                         color: failStatus[scope.row.fail_status].color || '#1890ff',
@@ -85,14 +86,14 @@
                                     }">{{ failStatus[scope.row.fail_status].name }}</div>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="fail_days" :label="$t('ui.customerSigningIndexExpirationDuration')" width="180">
+                            <el-table-column prop="fail_days" :label="$('ui.customerSigningIndexExpirationDuration')" width="180">
                                 <template slot-scope="scope">
-                                    <span v-if="scope.row.fail_days">{{ scope.row.fail_days }}{{ $t("ui.hrApprovaTimeDay") }} </span>
+                                    <span v-if="scope.row.fail_days">{{ scope.row.fail_days }}{{ $("ui.hrApprovaTimeDay") }} </span>
                                     <span v-else>--</span>
 
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="status" :label="$t('ui.customerListSignSigningStatus')" width="180">
+                            <el-table-column prop="status" :label="$('ui.customerListSignSigningStatus')" width="180">
                                 <template slot-scope="scope">
                                     <div v-if="statusList[scope.row.status]" class="dictionaries-tag" :style="{
                                         color: statusList[scope.row.status].color || '#1890ff',
@@ -102,43 +103,43 @@
                                     }">{{ statusList[scope.row.status].name }}</div>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="sign_date" :label="$t('ui.customerListSignSigningTime')" width="180">
+                            <el-table-column prop="sign_date" :label="$('ui.customerListSignSigningTime')" width="180">
                                 <template slot-scope="scope">
                                     {{ scope.row.sign_date || '--' }}
                                 </template>
 
                             </el-table-column>
-                            <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="210" fixed="right">
+                            <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="210" fixed="right">
                                 <template slot-scope="scope">
 
-                                    <el-button type="text" size="mini" @click="handleClick(1, scope.row)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+                                    <el-button type="text" size="mini" @click="handleClick(1, scope.row)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
                                     <template v-if="userId == scope.row.admin.id">
 
 
                                         <!-- 审核中 -->
                                         <template v-if="scope.row.status == 1">
-                                            <el-button type="text" size="mini" @click="handleClick(4, scope.row)">{{ $t("ui.customerListSignWithdrawApplication") }}</el-button>
-                                            <el-button type="text" size="mini" @click="handleClick(6, scope.row)">{{ $t("ui.customerListSignLinkOrder") }}</el-button>
+                                            <el-button type="text" size="mini" @click="handleClick(4, scope.row)">{{ $("ui.customerListSignWithdrawApplication") }}</el-button>
+                                            <el-button type="text" size="mini" @click="handleClick(6, scope.row)">{{ $("ui.customerListSignLinkOrder") }}</el-button>
                                         </template>
 
                                         <!-- 待签约 -->
                                         <template v-if="scope.row.status == 2">
                                             <el-button v-if="scope.row.sign_type == 1" type="text" size="mini"
-                                                @click="handleClick(7, scope.row)">{{ $t("ui.customerListSignSignEntry") }}</el-button>
+                                                @click="handleClick(7, scope.row)">{{ $("ui.customerListSignSignEntry") }}</el-button>
                                             <el-button v-else type="text" size="mini"
-                                                @click="handleClick(2, scope.row)">{{ $t("ui.customerSigningInfoItemESign") }}</el-button>
+                                                @click="handleClick(2, scope.row)">{{ $("ui.customerSigningInfoItemESign") }}</el-button>
                                         </template>
 
                                         <!-- 已签约 -->
                                         <template v-if="scope.row.status == 3">
-                                            <el-button type="text" size="mini" @click="handleClick(6, scope.row)">{{ $t("ui.customerListSignLinkOrder") }}</el-button>
-                                            <el-button type="text" size="mini" @click="handleClick(9, scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+                                            <el-button type="text" size="mini" @click="handleClick(6, scope.row)">{{ $("ui.customerListSignLinkOrder") }}</el-button>
+                                            <el-button type="text" size="mini" @click="handleClick(9, scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
                                         </template>
                                         <el-button v-if="scope.row.status >= 4" type="text" size="mini"
-                                            @click="handleClick(3, scope.row)">{{ $t("ui.customerListSignSignAgain") }}</el-button>
+                                            @click="handleClick(3, scope.row)">{{ $("ui.customerListSignSignAgain") }}</el-button>
                                         <el-dropdown v-if="scope.row.status != 1 && scope.row.status != 3">
                                             <span class="el-dropdown-link el-button--text el-button more ml10">
-                                                {{ $t("ui.layoutNavbarMore") }}
+                                                {{ $("ui.layoutNavbarMore") }}
                                                 <i class="el-icon-arrow-down" />
                                             </span>
                                             <el-dropdown-menu class="dropdown-menu-left" placement="top-start">
@@ -146,19 +147,19 @@
                                                 <el-dropdown-item
                                                     v-if="scope.row.status == 2 || scope.row.status == 6 || scope.row.status == 4"
                                                     @click.native="handleClick(8, scope.row)">
-                                                    {{ $t("ui.customerListSignChangeSigning") }}
+                                                    {{ $("ui.customerListSignChangeSigning") }}
                                                 </el-dropdown-item>
                                                 <el-dropdown-item v-if="scope.row.status != 6"
                                                     @click.native="handleClick(6, scope.row)">
-                                                    {{ $t("ui.customerListSignLinkOrder") }}
+                                                    {{ $("ui.customerListSignLinkOrder") }}
                                                 </el-dropdown-item>
                                                 <el-dropdown-item v-if="![6, 4, -1].includes(scope.row.status)"
                                                     @click.native="handleClick(4, scope.row)">
-                                                    {{ $t("ui.customerSigningIndexWithdrawSigning") }}
+                                                    {{ $("ui.customerSigningIndexWithdrawSigning") }}
                                                 </el-dropdown-item>
 
                                                 <el-dropdown-item @click.native="handleClick(9, scope.row)">
-                                                    {{ $t("ui.chatIndexDelete") }}
+                                                    {{ $("ui.chatIndexDelete") }}
                                                 </el-dropdown-item>
 
                                             </el-dropdown-menu>
@@ -193,7 +194,7 @@
     <!-- 签约录入 -->
     <oa-dialog ref="dialogForm" :fromData="fromData" @submit="submit">
         <div class="file-box">
-            <span class="box-label">{{ $t("ui.customerListSignUploadSignedFile") }}</span>
+            <span class="box-label">{{ $("ui.customerListSignUploadSignedFile") }}</span>
             <upload-file class="clip-box" :maxLength="3" @input="handleUploadFile" />
         </div>
 
@@ -202,7 +203,6 @@
 
 </template>
 <script>
-import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { getColor } from '@/utils/format'
 import { getContractDocListApi, contractDocDelApi, contractDocCancelApi, contractSignatoryApi, contractDocSignApi } from '@/api/contractSign'
@@ -224,8 +224,8 @@ export default {
             userId: getStorageJson('userInfo', {}).id,
             fromData: {
                 width: '500px',
-                title: i18n.t('ui.customerListSignSignEntry'),
-                btnText: i18n.t('ui.formCommonDialogFormOk'),
+                title: $('ui.customerListSignSignEntry'),
+                btnText: '确定',
                 labelWidth: '100px',
                 type: 'slot'
             },
@@ -338,13 +338,13 @@ export default {
                     field: 'repeat',
                     field_name_en: 'fail_status',
                     data_dict: [{
-                        label: i18n.t('customer.notstarted'),
+                        label: $('customer.notstarted'),
                         value: '1',
                     }, {
-                        label: i18n.t('customer.execution'),
+                        label: $('customer.execution'),
                         value: '0',
                     }, {
-                        label: i18n.t('setting.info.expired'),
+                        label: $('setting.info.expired'),
                         value: '2',
                     }
                     ]
@@ -355,26 +355,26 @@ export default {
                     field_name_en: 'status',
                     field: 'repeat',
                     data_dict: [{
-                        label: i18n.t('legacyScript.approvalRejected'),
+                        label: $('legacyScript.approvalRejected'),
                         value: '-1',
                     },
                     {
-                        label: i18n.t('customer.pendingApproval'),
+                        label: $('customer.pendingApproval'),
                         value: '1',
                     }, {
-                        label: i18n.t('ui.customerSigningInfoItemPendingSigning'),
+                        label: $('ui.customerSigningInfoItemPendingSigning'),
                         value: '2',
                     }, {
-                        label: i18n.t('ui.customerSigningInfoItemSigned'),
+                        label: $('ui.customerSigningInfoItemSigned'),
                         value: '3',
                     }, {
-                        label: i18n.t('ui.userExamineExamineRejected'),
+                        label: $('ui.userExamineExamineRejected'),
                         value: '4',
                     }, {
-                        label: i18n.t('setting.info.expired'),
+                        label: $('setting.info.expired'),
                         value: '5',
                     }, {
-                        label: i18n.t('customer.revoked'),
+                        label: $('customer.revoked'),
                         value: '6',
                     }
                     ],
@@ -386,11 +386,11 @@ export default {
                     options: [
                         {
                             value: 1,
-                            label: i18n.t('legacyScript.ownedByMe')
+                            label: $('legacyScript.ownedByMe')
                         },
                         {
                             value: 2,
-                            label: i18n.t('legacyScript.ownedBySubordinates')
+                            label: $('legacyScript.ownedBySubordinates')
                         }],
                 }
             ]
@@ -462,7 +462,7 @@ export default {
             item.eid = row.customer.id
             item.cid = 0
             this.fromCustomerData = {
-                title: this.$t('customer.editcustomer'),
+                title: this.$('customer.editcustomer'),
                 width: '1100px',
                 data: item,
                 link_type: 'customer',
@@ -505,7 +505,7 @@ export default {
 
         submit() {
             if (!this.file) {
-                this.$message.error(i18n.t('hr.placeholder24'))
+                this.$message.error($('hr.placeholder24'))
                 return false
             }
             let obj = {

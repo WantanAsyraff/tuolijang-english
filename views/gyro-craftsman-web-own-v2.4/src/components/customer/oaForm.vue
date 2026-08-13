@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!--
   @FileDescription: 客户/订单新增的动态表单组件
   功能：提供动态表单渲染，支持多种表单控件类型
@@ -50,7 +51,7 @@
                   v-model="ruleForm[val.key]"
                   :maxlength="val.max"
                   :min="val.min"
-                  :placeholder="val.placeholder ? val.placeholder : $t('ui.customerOaFormPleaseEnter') + val.key_name"
+                  :placeholder="val.placeholder ? val.placeholder : $('ui.customerOaFormPleaseEnter') + val.key_name"
                   clearable
                   size="small"
                   class="clickZone"
@@ -78,7 +79,7 @@
                   :controls="false"
                   :max="val.max"
                   :min="val.min"
-                  :placeholder="val.placeholder ? val.placeholder : $t('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
                   :precision="val.decimal_place"
                   size="small"
                   style="width: 100%"
@@ -104,7 +105,7 @@
                   v-model="ruleForm[val.key]"
                   :autosize="autosize"
                   :maxlength="val.max"
-                  :placeholder="val.placeholder ? val.placeholder : $t('ui.customerOaFormPleaseEnter') + val.key_name"
+                  :placeholder="val.placeholder ? val.placeholder : $('ui.customerOaFormPleaseEnter') + val.key_name"
                   clearable
                   show-word-limit
                   size="small"
@@ -132,8 +133,8 @@
                   v-if="!viewMode || editKey == val.key"
                   :ref="`input_${val.key}`"
                   v-model="ruleForm[val.key]"
-                  :options="localizedOptions(val.options, val.key)"
-                  :placeholder="val.placeholder ? val.placeholder : $t('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :options="val.options"
+                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
                   :props="{
                     checkStrictly: true,
                     label: 'label',
@@ -166,7 +167,7 @@
                   v-if="!viewMode || editKey == val.key"
                   v-model="ruleForm[val.key]"
                   :multiple="val.type !== 'single'"
-                  :placeholder="val.placeholder ? val.placeholder : $t('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
                   clearable
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
                   filterable
@@ -178,7 +179,7 @@
                   @keyup.enter.native="handlePopoverHide(ruleForm[val.key])"
                 >
                   <el-option
-                    v-for="el in localizedOptions(val.options, val.key)"
+                    v-for="el in val.options"
                     :key="el.value"
                     :disabled="el.disabled"
                     :label="el.label"
@@ -200,7 +201,7 @@
                 <el-select
                   v-if="!viewMode || editKey == val.key"
                   v-model="ruleForm[val.key]"
-                  :placeholder="$t('ui.customerOaFormPleaseSearchByLeadName')"
+                  :placeholder="$('ui.customerOaFormPleaseSearchByLeadName')"
                   filterable
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
                   remote
@@ -236,7 +237,7 @@
                   @click="handleLabel(val)"
                 >
                   <div v-if="labelList && labelList.length == 0" class="placeholder">
-                    {{ val.placeholder ? val.placeholder : $t('ui.developConditionGroupPleaseSelect') + val.key_name }}
+                    {{ val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name }}
                   </div>
                   <div ref="getHeight">
                     <span
@@ -297,7 +298,7 @@
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
                   @keyup.enter.native="handlePopoverHide(ruleForm[val.key])"
                 >
-                  <el-radio v-for="(el, index) in localizedOptions(val.options, val.key)" :key="index" :label="el.value">
+                  <el-radio v-for="(el, index) in val.options" :key="index" :label="el.value">
                     {{ el.label }}
                   </el-radio>
                 </el-radio-group>
@@ -319,7 +320,7 @@
                   class="clickZone"
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
                 >
-                  <el-checkbox v-for="(check, checkIndex) in localizedOptions(val.options, val.key)" :key="checkIndex" :label="check.value">
+                  <el-checkbox v-for="(check, checkIndex) in val.options" :key="checkIndex" :label="check.value">
                     {{ check.label }}
                   </el-checkbox>
                 </el-checkbox-group>
@@ -340,7 +341,7 @@
                   v-if="!viewMode || editKey == val.key"
                   v-model="ruleForm[val.key]"
                   :format="'yyyy-MM-dd'"
-                  :placeholder="val.placeholder ? val.placeholder : $t('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
                   :value-format="'yyyy-MM-dd'"
                   clearable
                   size="small"
@@ -365,7 +366,7 @@
                   v-if="!viewMode || editKey == val.key"
                   v-model="ruleForm[val.key]"
                   :format="'yyyy-MM-dd HH:mm:ss'"
-                  :placeholder="val.placeholder ? val.placeholder : $t('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
                   :value-format="'yyyy-MM-dd HH:mm:ss'"
                   clearable
                   size="small"
@@ -414,13 +415,13 @@
                     @input="(value) => ueditorEdit(val, value)"
                   />
                   <div class="mt14" v-if="viewMode">
-                    <el-button size="small" :disabled="!!savingKeyMap[val.key]" @click="editKey = ''">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
+                    <el-button size="small" :disabled="!!savingKeyMap[val.key]" @click="editKey = ''">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
                     <el-button
                       size="small"
                       type="primary"
                       :loading="!!savingKeyMap[val.key]"
                       @click="handlePopoverHide(ruleForm[val.key])"
-                      >{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button
+                      >{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button
                     >
                   </div>
                 </div>
@@ -444,14 +445,14 @@
 
   <!-- 表单操作按钮 -->
   <div v-if="isShowFooter" class="button from-foot-btn fix btn-shadow">
-    <el-button class="el-btn" size="small" @click="resetForm"> {{ $t("ui.formCommonSelectLabelCancel") }} </el-button>
+    <el-button class="el-btn" size="small" @click="resetForm"> {{ $("ui.formCommonSelectLabelCancel") }} </el-button>
 
     <el-button v-if="btnShow && types !== 3" :loading="addContractLoading" size="small" @click="addContract">
-      {{ type == 'contract' ? $t('ui.customerOaFormSaveAndAddPayment') : $t('ui.customerOaFormSaveAndAddOpportunity') }}
+      {{ type == 'contract' ? $('ui.customerOaFormSaveAndAddPayment') : $('ui.customerOaFormSaveAndAddOpportunity') }}
     </el-button>
 
     <el-button :loading="saveLoading" size="small" type="primary" @click="handleConfirm('ruleForm')">
-      {{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}
+      {{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}
     </el-button>
   </div>
   <!-- 客户标签弹窗 -->
@@ -459,7 +460,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { extractArrayIds } from '@/libs/public'
 import { pinyin } from 'pinyin-pro'
@@ -634,7 +634,7 @@ export default {
       }))
     },
     localizedOptionLabel(label, fieldKey) {
-      const translated = this.$ts(label)
+      const translated = this.$(label)
       if (translated !== label || fieldKey !== 'area_cascade' || !/[\u3400-\u9fff]/.test(label || '')) {
         return translated
       }
@@ -909,7 +909,7 @@ export default {
           } catch {
             throw {
               data: {
-                message: i18n.t('legacyScript.operationCanceled')
+                message: $('legacyScript.operationCanceled')
               }
             }
           }
@@ -940,7 +940,7 @@ export default {
       this.editKey = val.key
       this.itemData = val
       this.labelData = {
-        title: i18n.t('customer.customerlabel'),
+        title: $('customer.customerlabel'),
         width: '540px',
         label: this.labelList,
         edit: 1

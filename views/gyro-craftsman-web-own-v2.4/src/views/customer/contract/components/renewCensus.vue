@@ -10,8 +10,8 @@
   >
     <div class="table-box">
       <el-table :data="config.data" :height="420">
-        <el-table-column prop="renew.title" :label="$t('customer.renewaltype')" min-width="110"> </el-table-column>
-        <el-table-column prop="date" :label="$t('customer.renewaldate')" min-width="100">
+        <el-table-column prop="renew.title" :label="$('customer.renewaltype')" min-width="110"> </el-table-column>
+        <el-table-column prop="date" :label="$('customer.renewaldate')" min-width="100">
           <template slot-scope="scope">
             <span v-if="scope.row.end_date.slice(0, 4) !== '0000'">{{
               $moment(scope.row.end_date).format('YYYY-MM-DD')
@@ -19,11 +19,11 @@
             <span v-else>--</span>
           </template>
         </el-table-column>
-        <el-table-column prop="date" :label="$t('ui.customerContractRenewCensusRenewalStatus')" min-width="80">
+        <el-table-column prop="date" :label="$('ui.customerContractRenewCensusRenewalStatus')" min-width="80">
           <template slot-scope="scope">
-            <span v-if="scope.row.renew_status == 1" class="color-warning">{{ $t("ui.customerContractRenewCensusUrgentRenewal") }} </span>
-            <span v-if="scope.row.renew_status == 2" class="color-danger">{{ $t("ui.customerContractRenewCensusExpired") }} </span>
-            <span v-if="scope.row.renew_status == 0" class="color-success">{{ $t("ui.programProgramListDetailsProgramNormal") }}</span>
+            <span v-if="scope.row.renew_status == 1" class="color-warning">{{ $("ui.customerContractRenewCensusUrgentRenewal") }} </span>
+            <span v-if="scope.row.renew_status == 2" class="color-danger">{{ $("ui.customerContractRenewCensusExpired") }} </span>
+            <span v-if="scope.row.renew_status == 0" class="color-success">{{ $("ui.programProgramListDetailsProgramNormal") }}</span>
           </template>
         </el-table-column>
       </el-table>

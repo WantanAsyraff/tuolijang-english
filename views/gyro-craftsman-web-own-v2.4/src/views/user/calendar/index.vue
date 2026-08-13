@@ -3,7 +3,7 @@
   <div class="divBox">
     <el-card body-style="padding:0;" class="normal-page">
       <div class="page-header">
-        <div class="title-16">{{ $ts("我的日程") }}</div>
+        <div class="title-16">{{ $("systemText.mySchedule") }}</div>
         <!-- <div class="tab-bar">
           <div class="tab-item" :class="{ active: activeTab === 'calendar' }" @click="activeTab = 'calendar'">
             我的日程
@@ -19,7 +19,7 @@
           icon="el-icon-plus"
           @click="handleAddSchedule"
         >
-          {{ $ts("新建日程") }}
+          {{ $("calendar.newschedule") }}
         </el-button>
       </div>
       <my-calendar v-show="activeTab === 'calendar'" ref="calendarRef" />

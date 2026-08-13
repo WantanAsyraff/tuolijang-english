@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 import { makeRequiredRule } from '../../utils'
 
@@ -29,17 +29,17 @@ export default {
         type: 'select',
         field: 'timeType',
         symbol: 'leaveDuration',
-        title: i18n.t('legacyScript.timeScale'),
+        title: $('legacyScript.timeScale'),
         value: 'day',
         options: [
-          { label: i18n.t('ui.hrHolidaySettingByDay'), value: 'day' },
-          { label: i18n.t('ui.hrHolidaySettingByHour'), value: 'time' }
+          { label: $('ui.hrHolidaySettingByDay'), value: 'day' },
+          { label: $('ui.hrHolidaySettingByHour'), value: 'time' }
         ]
       },
       {
         type: 'input',
         field: 'titleIpt',
-        title: i18n.t('legacyScript.identifierName'),
+        title: $('legacyScript.identifierName'),
         value: '时长'
       },
       makeRequiredRule()

@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <div class="title">
       <span class="shu mr10"></span>
-      {{ $ts("留言") }}
+      {{ $("legacy.2335399f1fa89b9c") }}
     </div>
     <div v-for="(item, index) in reply" :key="index" class="acea-row mb10">
       <div style="width: 100%">
@@ -27,7 +28,7 @@
                   @click="del(item.id)"
                   class="el-icon-delete mr5 mt10"
                 >
-                  {{ $ts("删除") }}
+                  {{ $("public.delete") }}
                 </div>
               </div>
             </div>
@@ -43,7 +44,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { approveReplyApi, approveReplyDelApi } from '@/api/business'
 export default {
   name: 'MessageFrom',
@@ -75,7 +75,7 @@ export default {
   methods: {
     async add() {
       if (this.textarea == '') {
-        return this.$message.error(i18n.t('legacyScript.pleaseEnterComment'))
+        return this.$message.error($('legacyScript.pleaseEnterComment'))
       }
       await approveReplyApi({
         apply_id: this.examineData.id,

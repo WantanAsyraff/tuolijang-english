@@ -1,7 +1,7 @@
 <template>
 <div class="navigatorContainer">
   <div class="item">
-    <el-tooltip effect="dark" :content="$t('ui.xmindEditorNavigatorToolbarReturnToRootNode')" placement="top">
+    <el-tooltip effect="dark" :content="$('ui.xmindEditorNavigatorToolbarReturnToRootNode')" placement="top">
       <div class="nav-btn xmind-iconfont icondingwei" @click="backToRoot"></div>
     </el-tooltip>
   </div>
@@ -13,15 +13,15 @@
   </div>
   <div class="item">
     <el-tooltip effect="dark" :content="openMiniMap
-      ? $t('ui.xmindEditorNavigatorToolbarCloseMinimap') : $t('ui.xmindEditorNavigatorToolbarOpenMinimap')
+      ? $('ui.xmindEditorNavigatorToolbarCloseMinimap') : $('ui.xmindEditorNavigatorToolbarOpenMinimap')
       " placement="top">
       <div class="nav-btn xmind-iconfont icondaohang1" @click="toggleMiniMap"></div>
     </el-tooltip>
   </div>
   <div class="item">
     <el-tooltip effect="dark" :content="isReadonly
-      ? $t('ui.xmindEditorNavigatorToolbarSwitchToEditMode')
-      : $t('ui.xmindEditorNavigatorToolbarSwitchToReadOnlyMode')
+      ? $('ui.xmindEditorNavigatorToolbarSwitchToEditMode')
+      : $('ui.xmindEditorNavigatorToolbarSwitchToReadOnlyMode')
       " placement="top">
       <div class="nav-btn xmind-iconfont" :class="[isReadonly ? 'iconyanjing' : 'iconbianji1']"
         @click="readonlyChange"></div>

@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <template>
   <container-item-wrapper :widget="widget">
     <div :key="widget.id" class="sub-form-container" v-show="!widget.options.hidden">
       <el-row class="header-row">
         <div class="action-header-column">
-          <span class="action-label">{{ i18nt('render.hint.subFormAction') }}</span>
+          <span class="action-label">{{ $('render.hint.subFormAction') }}</span>
           <el-button
             :disabled="actionDisabled"
             round
@@ -11,9 +12,9 @@
             size="mini"
             class="action-button"
             @click="addSubFormRow"
-            :title="i18nt('render.hint.subFormAddActionHint')"
+            :title="$('render.hint.subFormAddActionHint')"
           >
-            {{ i18nt('render.hint.subFormAddAction') }}<i class="el-icon-plus el-icon-right"></i
+            {{ $('render.hint.subFormAddAction') }}<i class="el-icon-plus el-icon-right"></i
           ></el-button>
         </div>
         <template v-for="subWidget in widget.widgetList">
@@ -60,7 +61,7 @@
               type=""
               icon="el-icon-circle-plus-outline"
               @click="insertSubFormRow(sfrIdx)"
-              :title="i18nt('render.hint.insertSubFormRow')"
+              :title="$('render.hint.insertSubFormRow')"
             ></el-button>
             <el-button
               :disabled="actionDisabled"
@@ -68,7 +69,7 @@
               type=""
               icon="el-icon-delete"
               @click="deleteSubFormRow(sfrIdx)"
-              :title="i18nt('render.hint.deleteSubFormRow')"
+              :title="$('render.hint.deleteSubFormRow')"
             ></el-button>
             <span v-if="widget.options.showRowNumber" class="row-number-span">#{{ sfrIdx + 1 }}</span>
           </div>
@@ -100,9 +101,7 @@
 </template>
 
 <script>
-import appI18n from '@/lang'
 import emitter from '@/utils/emitter'
-import i18n from '../../../utils/i18n'
 import { deepClone, generateId } from '../../../utils/util'
 import refMixin from '../../../components/form-render/refMixin'
 import ContainerItemWrapper from './container-item-wrapper'
@@ -112,7 +111,7 @@ import FieldComponents from '@/components/form-designer/form-widget/field-widget
 export default {
   name: 'sub-form-item',
   componentName: 'ContainerItem',
-  mixins: [emitter, i18n, refMixin, containerItemMixin],
+  mixins: [emitter, refMixin, containerItemMixin],
   components: {
     ContainerItemWrapper,
     ...FieldComponents
@@ -298,7 +297,7 @@ export default {
     },
 
     deleteSubFormRow(formRowIndex) {
-      this.$confirm(this.i18nt('render.hint.deleteSubFormRow') + '?', appI18n.t('public.tips'), {
+      this.$confirm(this.$('render.hint.deleteSubFormRow') + '?', $('public.tips'), {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       })
@@ -453,4 +452,3 @@ div.sub-form-table-column.hide-label {
   }
 }
 </style>
-../../../utils/i18ns

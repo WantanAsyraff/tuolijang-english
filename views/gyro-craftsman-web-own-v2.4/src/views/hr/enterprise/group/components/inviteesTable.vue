@@ -2,7 +2,7 @@
   <div>
     <!-- 被邀请人列表弹窗  -->
     <el-dialog
-      :title="$t('public.list')"
+      :title="$('public.list')"
       :visible.sync="dialogFormVisible"
       width="920px"
       :modal="true"
@@ -10,40 +10,40 @@
       custom-class="person"
     >
       <el-table :data="dataTable" style="width: 100%">
-        <el-table-column :label="$t('setting.headportrait')" min-width="100" align="center">
+        <el-table-column :label="$('setting.headportrait')" min-width="100" align="center">
           <template slot-scope="scope">
             <img class="avatar" :src="scope.row.user.avatar" alt="" />
           </template>
         </el-table-column>
-        <el-table-column prop="user.real_name" :label="$t('toptable.name')" min-width="100" />
-        <el-table-column prop="user.phone" :label="$t('toptable.phone')" min-width="120" />
-        <el-table-column prop="created_at" :label="$t('toptable.invitationtime')" min-width="150" />
-        <el-table-column prop="user.phone" :label="$t('ui.hrEnterpriseGroupInviteesTableUserStatus')" min-width="100">
+        <el-table-column prop="user.real_name" :label="$('toptable.name')" min-width="100" />
+        <el-table-column prop="user.phone" :label="$('toptable.phone')" min-width="120" />
+        <el-table-column prop="created_at" :label="$('toptable.invitationtime')" min-width="150" />
+        <el-table-column prop="user.phone" :label="$('ui.hrEnterpriseGroupInviteesTableUserStatus')" min-width="100">
           <template slot-scope="scope">
-            <el-tag v-if="scope.row.status === -1" type="warning" size="mini"> {{ $t("ui.customerContractContractRemindPending") }} </el-tag>
-            <el-tag v-if="scope.row.status === 0" type="danger" size="mini"> {{ $t("ui.userExamineExamineRejected") }} </el-tag>
-            <el-tag v-if="scope.row.status === 1" type="info" size="mini"> {{ $t("ui.hrEnterpriseGroupInviteesTableApproved") }} </el-tag>
+            <el-tag v-if="scope.row.status === -1" type="warning" size="mini"> {{ $("ui.customerContractContractRemindPending") }} </el-tag>
+            <el-tag v-if="scope.row.status === 0" type="danger" size="mini"> {{ $("ui.userExamineExamineRejected") }} </el-tag>
+            <el-tag v-if="scope.row.status === 1" type="info" size="mini"> {{ $("ui.hrEnterpriseGroupInviteesTableApproved") }} </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="user.phone" :label="$t('ui.fdExamineFormBoxReviewStatus')" min-width="100">
+        <el-table-column prop="user.phone" :label="$('ui.fdExamineFormBoxReviewStatus')" min-width="100">
           <template slot-scope="scope" v-if="scope.row.status === 1">
-            <el-tag v-if="scope.row.verify === -1" type="danger" size="mini"> {{ $t("ui.userExamineExamineRejected") }} </el-tag>
-            <el-tag v-if="scope.row.verify === 0" type="danger" size="mini"> {{ $t("ui.customerListApplyForPaymentPendingReview") }} </el-tag>
-            <el-tag v-if="scope.row.verify === 1" type="info" size="mini"> {{ $t("ui.hrEnterpriseGroupInviteesTableApproved") }} </el-tag>
+            <el-tag v-if="scope.row.verify === -1" type="danger" size="mini"> {{ $("ui.userExamineExamineRejected") }} </el-tag>
+            <el-tag v-if="scope.row.verify === 0" type="danger" size="mini"> {{ $("ui.customerListApplyForPaymentPendingReview") }} </el-tag>
+            <el-tag v-if="scope.row.verify === 1" type="info" size="mini"> {{ $("ui.hrEnterpriseGroupInviteesTableApproved") }} </el-tag>
           </template>
         </el-table-column>
-        <el-table-column width="160" :label="$t('toptable.operation')">
+        <el-table-column width="160" :label="$('toptable.operation')">
           <template slot-scope="scope">
             <el-button type="text" size="small" @click="handleDelete(scope.row.id, scope.$index)">
-              {{ $t('public.delete') }}
+              {{ $('public.delete') }}
             </el-button>
             <template v-if="scope.row.status == 1 && scope.row.verify == 0">
               <el-button type="text" size="small" @click="handleAgree(scope.row.id)">
-                {{ $t('toptable.agree') }}
+                {{ $('toptable.agree') }}
               </el-button>
 
               <el-button type="text" size="small" @click="handleRefuse(scope.row.id)">
-                {{ $t('toptable.refuse') }}
+                {{ $('toptable.refuse') }}
               </el-button>
             </template>
           </template>
@@ -97,7 +97,7 @@ export default {
     },
     // 删除申请人
     handleDelete(id, index) {
-      this.$modalSure(this.$t('setting.group.deleapply')).then(() => {
+      this.$modalSure(this.$('setting.group.deleapply')).then(() => {
         applyDeleteApi(id).then((res) => {
           this.dataTable.splice(index, 1)
           this.getList()

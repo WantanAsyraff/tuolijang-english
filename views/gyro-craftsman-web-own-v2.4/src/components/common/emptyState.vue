@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 公共-空数据占位（展示图片 + 文案，类型/文案/尺寸动态传入） -->
 <template>
   <div class="empty-state" :style="rootStyle">
@@ -25,8 +26,6 @@
 
 <script>
 // 动态加载 @/assets/images/none 下的全部图片，以文件名（去扩展名）作为类型 key
-import { translateSystemText } from '@/utils/i18ns'
-
 const imageContext = require.context('@/assets/images/none', false, /\.(png|jpe?g|svg|gif)$/)
 const imageModules = {}
 imageContext.keys().forEach((key) => {
@@ -104,7 +103,7 @@ export default {
       }
     },
     displayText() {
-      return translateSystemText(this.text || 'common.noData', this)
+      return this.$(this.text || 'common.noData')
     },
     textStyle() {
       return {

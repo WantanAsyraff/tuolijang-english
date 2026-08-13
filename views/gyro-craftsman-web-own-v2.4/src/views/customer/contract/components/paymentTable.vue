@@ -3,37 +3,37 @@
 <div class="paymentTable">
   <el-table :data="table" @selection-change="handleSelectionChange" :key="edit" style="width: 100%">
     <el-table-column type="selection" width="55" v-if="edit === ''"> </el-table-column>
-    <el-table-column prop="bill_no" :label="$t('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="100"> </el-table-column>
-    <el-table-column prop="treaty.contract_name" :label="$t('ui.invoiceInvoiceDetailsOrderName')" min-width="100"> </el-table-column>
+    <el-table-column prop="bill_no" :label="$('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="100"> </el-table-column>
+    <el-table-column prop="treaty.contract_name" :label="$('ui.invoiceInvoiceDetailsOrderName')" min-width="100"> </el-table-column>
 
-    <el-table-column prop="types" :label="$t('ui.invoiceInvoiceDetailsBusinessType')" min-width="100">
+    <el-table-column prop="types" :label="$('ui.invoiceInvoiceDetailsBusinessType')" min-width="100">
       <template slot-scope="scope">
-        <span v-if="scope.row.types === 0">{{ $t("ui.invoiceInvoiceDetailsPaymentRecord") }}</span>
-        <span v-if="scope.row.types === 1">{{ $t("ui.invoiceInvoiceDetailsRenewalRecord") }} {{ scope.row.renew.title }}</span>
+        <span v-if="scope.row.types === 0">{{ $("ui.invoiceInvoiceDetailsPaymentRecord") }}</span>
+        <span v-if="scope.row.types === 1">{{ $("ui.invoiceInvoiceDetailsRenewalRecord") }} {{ scope.row.renew.title }}</span>
       </template>
     </el-table-column>
-    <el-table-column prop="num" :label="$t('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100"> </el-table-column>
-    <el-table-column prop="status" :label="$t('ui.invoicePaymentTableInvoiceStatus')" min-width="100">
+    <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100"> </el-table-column>
+    <el-table-column prop="status" :label="$('ui.invoicePaymentTableInvoiceStatus')" min-width="100">
       <template slot-scope="scope">
         <div v-if="scope.row.status">
-          <span v-if="scope.row.status === -1" class="table-btn blue"> {{ $t("ui.customerContractPaymentTableWithdrawInvoice") }} </span>
-          <span v-if="scope.row.status === 0" class="table-btn gray"> {{ $t("ui.customerInvoiceIndexPendingInvoicing") }} </span>
-          <span v-if="scope.row.status === 1" class="table-btn yellow"> {{ $t("ui.customerInvoiceIndexInvoiced") }} </span>
-          <span v-if="scope.row.status === 2" class="table-btn red"> {{ $t("ui.userExamineExamineRejected") }} </span>
-          <span v-if="scope.row.status === 3" class="table-btn green"> {{ $t("ui.customerInvoiceIndexApplyToVoid") }} </span>
-          <span v-if="scope.row.status === 4" class="table-btn red"> {{ $t("ui.customerContractPaymentTableApproveInvalidation") }} </span>
-          <span v-if="scope.row.status === 5" class="table-btn gray"> {{ $t("ui.customerContractPaymentTableRejectInvalidation") }} </span>
-          <span v-if="scope.row.status === 6" class="table-btn yellow"> {{ $t("ui.customerInvoiceIndexWithdrawVoidRequest") }} </span>
+          <span v-if="scope.row.status === -1" class="table-btn blue"> {{ $("ui.customerContractPaymentTableWithdrawInvoice") }} </span>
+          <span v-if="scope.row.status === 0" class="table-btn gray"> {{ $("ui.customerInvoiceIndexPendingInvoicing") }} </span>
+          <span v-if="scope.row.status === 1" class="table-btn yellow"> {{ $("ui.customerInvoiceIndexInvoiced") }} </span>
+          <span v-if="scope.row.status === 2" class="table-btn red"> {{ $("ui.userExamineExamineRejected") }} </span>
+          <span v-if="scope.row.status === 3" class="table-btn green"> {{ $("ui.customerInvoiceIndexApplyToVoid") }} </span>
+          <span v-if="scope.row.status === 4" class="table-btn red"> {{ $("ui.customerContractPaymentTableApproveInvalidation") }} </span>
+          <span v-if="scope.row.status === 5" class="table-btn gray"> {{ $("ui.customerContractPaymentTableRejectInvalidation") }} </span>
+          <span v-if="scope.row.status === 6" class="table-btn yellow"> {{ $("ui.customerInvoiceIndexWithdrawVoidRequest") }} </span>
         </div>
         <div v-else>--</div>
       </template>
     </el-table-column>
 
-    <el-table-column prop="card.name" :label="$t('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
-    <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="150"> </el-table-column>
-    <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="80" v-if="edit !== ''">
+    <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
+    <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="150"> </el-table-column>
+    <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="80" v-if="edit !== ''">
       <template slot-scope="scope">
-        <el-button @click="deleteFn(scope.row)" type="text" size="small">{{ $t("ui.invoicePaymentTableRemove") }}</el-button>
+        <el-button @click="deleteFn(scope.row)" type="text" size="small">{{ $("ui.invoicePaymentTableRemove") }}</el-button>
       </template>
     </el-table-column>
   </el-table>

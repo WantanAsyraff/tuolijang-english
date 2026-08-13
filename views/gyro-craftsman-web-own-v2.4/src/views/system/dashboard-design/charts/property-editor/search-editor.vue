@@ -1,34 +1,34 @@
+import { $ } from '@/lang'
 <template>
     <div v-if="optionModel">
         <!-- 1. 选择需要筛选的图表 -->
-        <div class="section-title">{{ $ts("选择需要筛选的图表") }}</div>
+        <div class="section-title">{{ $("legacy.b5c43ef86c23c14e") }}</div>
         <el-checkbox-group v-model="optionModel.entityIds" >
             <el-checkbox v-for="(item, index) in chartList" :key="index" :label="item.value"
                 :disabled="getDisabled(item)||!item.dataEntity" style="display: block; margin: 8px 0;">
-                {{ $ts(item.label, item.label_en) }} 
+                {{ $(item.label, item.label_en) }}
             </el-checkbox>
         </el-checkbox-group>
         <!-- 选择筛选字段 -->
         <div class="config-section mb14" v-for="(item, index) in optionModel.searchList" :key="index">
             <img src="@/assets/images/del.png" alt="" class="del-icon" @click="removeSearch(index)">
-            <div class="section-title">{{ $ts("选择筛选字段") }}</div>
-            <div class="mb10 mt10">{{ $ts("未命名表单") }}</div>
-            <el-select v-model="item.field_name_en" :placeholder='$ts("请选择")' style="width: 100%;" size="small" @change="changeField($event,item)">
-                <el-option v-for="value in options" :key="value.field" :label="$ts(value.title, value.title_en)" :value="value.field"></el-option>
+            <div class="section-title">{{ $("legacy.43d9b83b4dab595d") }}</div>
+            <div class="mb10 mt10">{{ $("legacy.d2409de8d74ace10") }}</div>
+            <el-select v-model="item.field_name_en" :placeholder='$("hr.placeholder11")' style="width: 100%;" size="small" @change="changeField($event,item)">
+                <el-option v-for="value in options" :key="value.field" :label="$(value.title, value.title_en)" :value="value.field"></el-option>
             </el-select>
-            <div class="mb10 mt10">{{ $ts("名称") }}</div>
-            <el-input v-model="item.field_name" size="small" :placeholder='$ts("请输入")'></el-input>
+            <div class="mb10 mt10">{{ $("hr.name") }}</div>
+            <el-input v-model="item.field_name" size="small" :placeholder='$("finance.pleaseinput")'></el-input>
 
-            <div class="mb10 mt10">{{ $ts("默认值") }}</div>
+            <div class="mb10 mt10">{{ $("ui.chatModelFormDefaultValue") }}</div>
              <fieldComponent v-if="item.field_name_en" :type="`dashboard`" :item="item" :index="index" :list="optionModel.searchList" :noRule="false" ></fieldComponent>
         </div>
         <!-- 添加板块按钮 -->
-        <div class="add-btn" @click="addSearch"><span class="el-icon-plus"  />{{ $ts("添加板块") }}</div>
+        <div class="add-btn" @click="addSearch"><span class="el-icon-plus"  />{{ $("ui.systemDashboardDesignChartsPropertyEditorTabEditorAddSection") }}</div>
     </div>
 </template>
 
 <script>
-import i18n from '@/lang'
     import { viewSearchApi } from '@/api/develop'
 export default {
     name: "ChartFilterConfig",
@@ -39,7 +39,7 @@ export default {
         designer: Object,
         selectedWidget: Object,
         optionModel: Object,
-      
+
     },
     data() {
         return {
@@ -107,10 +107,10 @@ getChartList() {
       // tab 类型：仅收集当前激活页下的组件
 
       if (el.type === 'tab') {
-        
+
         const activeTab = el.options.tabList.find(t => t.value === el.options.activeValue);
         (activeTab?.widgetList || []).forEach(collectWidget);
-      } 
+      }
 
       else if (el.type !== 'tab' && el.type !== 'search'&&!this.designer.isTabSelected) {
         collectWidget(el,1);
@@ -127,7 +127,7 @@ getChartList() {
 },
         // 添加板块
         addBlock() {
-            this.$message.success(i18n.t('legacyScript.newFilterSectionAdded'));
+            this.$message.success($('legacyScript.newFilterSectionAdded'));
             // 实际场景可在此处追加配置项
         },
         removeSearch(index){
@@ -162,7 +162,7 @@ getChartList() {
          if(number.includes(val.type)){
             item.form_value='number'
          }
-        
+
          item.type = val.type
          item.data_dict = val.options
          item.options = val.options
@@ -236,7 +236,7 @@ getChartList() {
         margin-right: 4px;
         line-height: 34px;
     }
-   
-    
+
+
 }
 </style>

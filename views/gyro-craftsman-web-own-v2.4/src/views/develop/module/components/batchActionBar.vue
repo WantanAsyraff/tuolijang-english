@@ -8,9 +8,9 @@
       :value="selectCount === listCount"
       @change="$emit('change')"
     />
-    <el-button size="small" @click="$emit('delete')">{{ $ts("批量删除") }}</el-button>
-    <el-button size="small" @click="$emit('share')">{{ $ts("共享协作") }}</el-button>
-    <el-button size="small" @click="$emit('transfer')">{{ $ts("批量移交") }}</el-button>
+    <el-button size="small" @click="$emit('delete')">{{ $("ui.customerSetupDictionaryManagementBatchDelete") }}</el-button>
+    <el-button size="small" @click="$emit('share')">{{ $("ui.developCrudListSettingShareAndCollaborate") }}</el-button>
+    <el-button size="small" @click="$emit('transfer')">{{ $("ui.developModuleTableStyleBatchTransfer") }}</el-button>
   </div>
 </template>
 

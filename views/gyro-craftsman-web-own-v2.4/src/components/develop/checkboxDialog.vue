@@ -24,11 +24,11 @@
 
         <!-- 实体选择区域 -->
         <div class="flex-between mb14" v-if="showCrud">
-          <div style="width: 90px">{{ $ts("引用实体：") }}</div>
+          <div style="width: 90px">{{ $("legacyScript.referencedEntity") }}</div>
           <el-select
             v-model="id"
             :disabled="edit"
-            :placeholder='$ts("请选择")'
+            :placeholder='$("hr.placeholder11")'
             size="small"
             style="width: 100%"
             filterable
@@ -70,7 +70,7 @@
             <!-- 模块/视图模式 -->
             <div class="molude-box" v-else>
               <div class="title-num">{{ name }}（{{ totalNumber }}）</div>
-              <div class="num mt14 mb10">{{ $ts("系统字段") }}</div>
+              <div class="num mt14 mb10">{{ $("ui.developCrudFieldSettingSystemField") }}</div>
               <div class="flex-wrap">
                 <div
                   v-for="(item, index) in min == 5 ? crudInfo.systemListField : crudInfo.systemField"
@@ -88,7 +88,7 @@
                 </div>
               </div>
 
-              <div class="num mt14 mb10">{{ $ts("自定义字段") }}</div>
+              <div class="num mt14 mb10">{{ $("legacy.7be80bff7cd801b2") }}</div>
               <div class="flex-wrap">
                 <div
                   v-for="(item, index) in min == 5 ? crudInfo.customListField : crudInfo.customField"
@@ -112,10 +112,10 @@
           <div class="select-box">
             <div class="title flex-between">
               <span class="title-num ">
-                {{ $ts("已展示字段（") }}<span class="doc">{{ selectList ? selectList.length : 0 }}</span>
+                {{ $("legacy.32e0e288ab459eaf") }}<span class="doc">{{ selectList ? selectList.length : 0 }}</span>
                 <span v-if="max > 0">/{{ max }}</span>）
               </span>
-              <span class="empty" @click="restFn">{{ $ts("清空") }}</span>
+              <span class="empty" @click="restFn">{{ $("ui.formDesignerToolbarPanelIndexClear") }}</span>
             </div>
 
             <!-- 可拖拽的已选字段列表 -->
@@ -150,8 +150,8 @@
 
         <!-- 底部按钮 -->
         <span slot="footer" class="dialog-footer">
-          <el-button size="small" @click="handleClose(1)">{{ $t('public.cancel') }}</el-button>
-          <el-button size="small" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+          <el-button size="small" @click="handleClose(1)">{{ $('public.cancel') }}</el-button>
+          <el-button size="small" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
         </span>
       </el-dialog>
     </div>

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '0px 20px 20px 20px' }" class="normal-page">
@@ -13,15 +14,15 @@
           <div class="table-container ml20">
             <div>
               <div class="header-16">
-                <div class="title-16">{{ $t("ui.userEntIndexCompanyContacts") }}</div>
+                <div class="title-16">{{ $("ui.userEntIndexCompanyContacts") }}</div>
               </div>
               <div class="seach-box">
-                <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+                <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
 
                 <el-input
                   v-model="where.search"
                   clearable
-                  :placeholder="$t('ui.userEntIndexEnterNameMobileNumber')"
+                  :placeholder="$('ui.userEntIndexEnterNameMobileNumber')"
                   prefix-icon="el-icon-search"
                   size="small"
                   style="width: 210px"
@@ -44,7 +45,7 @@
                     <div v-for="(item, index) in row.frames" :key="index">
                       <span class="icon-h"
                         >{{ item.name }}
-                        <span v-show="item.is_mastart === 1 && row.frames.length > 1" :title="$t('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $t("ui.formCommonSelectDepartmentMain") }}</span>
+                        <span v-show="item.is_mastart === 1 && row.frames.length > 1" :title="$('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $("ui.formCommonSelectDepartmentMain") }}</span>
                       </span>
                     </div>
                   </template>
@@ -59,7 +60,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 // 引入用户通讯录树和列表的API
 import { userAddBookTree, userAddBookeList } from '@/api/user'
 // 引入菜单树组件
@@ -101,26 +101,26 @@ export default {
       },
       tableOptions: [
         {
-          label: i18n.t('customer.name'),
+          label: $('customer.name'),
           prop: 'name'
         },
         {
-          label: i18n.t('customer.position'),
+          label: $('customer.position'),
           render: (row) => {
             return <span>{row.job ? row.job.name : '--'}</span>
           }
         },
         {
-          label: i18n.t('customer.department'),
+          label: $('customer.department'),
           type: 'slot',
           name: 'frames'
         },
         {
-          label: i18n.t('legacyScript.contactInformation'),
+          label: $('legacyScript.contactInformation'),
           prop: 'phone'
         },
         {
-          label: i18n.t('customer.customeremail'),
+          label: $('customer.customeremail'),
           render: (row) => {
             return <span>{row.info && row.info.email ? row.info.email : '--'}</span>
           }
@@ -141,7 +141,7 @@ export default {
         this.treeData = result.data
         this.getUserAddBookeList()
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToRetrieveUserContactTreeData'), error)
+        console.error($('legacyScript.failedToRetrieveUserContactTreeData'), error)
       }
     },
 
@@ -152,7 +152,7 @@ export default {
         this.tableData = result.data.list
         this.total = result.data.count
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToRetrieveUserContactListData'), error)
+        console.error($('legacyScript.failedToRetrieveUserContactListData'), error)
       }
     },
 

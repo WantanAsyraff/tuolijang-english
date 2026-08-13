@@ -5,61 +5,61 @@
       disabled: readonly || backEnd
     }" @click="$bus.$emit(EXEC_COMMAND, 'BACK')">
       <span class="icon xmind-iconfont iconhoutui-shi"></span>
-      <span class="text">{{ $t("ui.xmindEditorToolbarNodeBtnListUndo") }}</span>
+      <span class="text">{{ $("ui.xmindEditorToolbarNodeBtnListUndo") }}</span>
     </div>
     <div v-if="item === 'forward'" class="toolbarBtn" :class="{
       disabled: readonly || forwardEnd
     }" @click="$bus.$emit(EXEC_COMMAND, 'FORWARD')">
       <span class="icon xmind-iconfont iconqianjin1"></span>
-      <span class="text">{{ $t("ui.xmindEditorToolbarNodeBtnListRedo") }}</span>
+      <span class="text">{{ $("ui.xmindEditorToolbarNodeBtnListRedo") }}</span>
     </div>
     <div v-if="item === 'siblingNode'" class="toolbarBtn" :class="{
       disabled: activeNodes.length <= 0 || hasRoot || hasGeneralization
     }" @click="$bus.$emit(EXEC_COMMAND, 'INSERT_NODE')">
       <span class="icon xmind-iconfont iconjiedian"></span>
-      <span class="text">{{ $t("ui.xmindEditorToolbarNodeBtnListSiblingNode") }}</span>
+      <span class="text">{{ $("ui.xmindEditorToolbarNodeBtnListSiblingNode") }}</span>
     </div>
     <div v-if="item === 'childNode'" class="toolbarBtn" :class="{
       disabled: activeNodes.length <= 0 || hasGeneralization
     }" @click="$bus.$emit(EXEC_COMMAND, 'INSERT_CHILD_NODE')">
       <span class="icon xmind-iconfont icontianjiazijiedian"></span>
-      <span class="text">{{ $t("ui.xmindEditorToolbarNodeBtnListChildNode") }}</span>
+      <span class="text">{{ $("ui.xmindEditorToolbarNodeBtnListChildNode") }}</span>
     </div>
     <div v-if="item === 'deleteNode'" class="toolbarBtn" :class="{
       disabled: activeNodes.length <= 0
     }" @click="$bus.$emit(EXEC_COMMAND, 'REMOVE_NODE')">
       <span class="icon xmind-iconfont iconshanchu"></span>
-      <span class="text">{{ $t("ui.xmindEditorContextmenuDeleteNode") }}</span>
+      <span class="text">{{ $("ui.xmindEditorContextmenuDeleteNode") }}</span>
     </div>
     <div v-if="item === 'image'" class="toolbarBtn" :class="{
       disabled: activeNodes.length <= 0
     }" @click="$bus.$emit(SHOW_NODE_IMAGE)">
       <span class="icon xmind-iconfont iconimage"></span>
-      <span class="text">{{ $t("ui.xmindEditorToolbarNodeBtnListImage") }}</span>
+      <span class="text">{{ $("ui.xmindEditorToolbarNodeBtnListImage") }}</span>
     </div>
     <div v-if="item === 'link'" class="toolbarBtn" :class="{
       disabled: activeNodes.length <= 0
     }" @click="$bus.$emit(SHOW_NODE_LINK)">
       <span class="icon xmind-iconfont iconchaolianjie"></span>
-      <span class="text">{{ $t("ui.xmindEditorToolbarNodeBtnListHyperlink") }}</span>
+      <span class="text">{{ $("ui.xmindEditorToolbarNodeBtnListHyperlink") }}</span>
     </div>
     <div v-if="item === 'note'" class="toolbarBtn" :class="{
       disabled: activeNodes.length <= 0
     }" @click="$bus.$emit(SHOW_NODE_NOTE)">
       <span class="icon xmind-iconfont iconflow-Mark"></span>
-      <span class="text">{{ $t("ui.xmindEditorToolbarNodeBtnListRemarks") }}</span>
+      <span class="text">{{ $("ui.xmindEditorToolbarNodeBtnListRemarks") }}</span>
     </div>
     <div v-if="item === 'tag'" class="toolbarBtn" :class="{
       disabled: activeNodes.length <= 0
     }" @click="$bus.$emit(SHOW_NODE_TAG)">
       <span class="icon xmind-iconfont iconbiaoqian"></span>
-      <span class="text">{{ $t("ui.xmindEditorToolbarNodeBtnListLabel") }}</span>
+      <span class="text">{{ $("ui.xmindEditorToolbarNodeBtnListLabel") }}</span>
     </div>
     <div v-if="item === 'summary'" class="toolbarBtn" :class="{
       disabled: activeNodes.length <= 0 || hasRoot || hasGeneralization
     }" @click="$bus.$emit(EXEC_COMMAND, 'ADD_GENERALIZATION')">
       <span class="icon xmind-iconfont icongaikuozonglan"></span>
-      <span class="text">{{ $t("ui.xmindEditorToolbarNodeBtnListSummary") }}</span>
+      <span class="text">{{ $("ui.xmindEditorToolbarNodeBtnListSummary") }}</span>
     </div>
 
   </template>

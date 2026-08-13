@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!--
   @FileDescription: 全局筛选组件
   功能：提供统一的筛选、排序、新增等功能
@@ -69,14 +70,14 @@
         <!-- 视图更新 -->
         <el-popover placement="bottom" trigger="click" width="117">
           <div>
-            <div v-if="!systemId.includes(viewIndex)" class="view-item" @click="updateView">{{ $ts("更新当前视图") }}</div>
+            <div v-if="!systemId.includes(viewIndex)" class="view-item" @click="updateView">{{ $("ui.developModuleFormBoxUpdateCurrentView") }}</div>
             <div :class="!['0', '1', '2'].includes(viewIndex) ? 'mt14' : ''" class="view-item" @click="addViewFn">
-              {{ $ts("存为新视图") }}
+              {{ $("ui.developModuleFormBoxSaveAsNewView") }}
             </div>
           </div>
 
           <div slot="reference" v-show="advancedFilter" class="shitu">
-            {{ $ts("保存视图&nbsp;") }}<span class="el-icon-arrow-down"></span>
+            {{ $("legacy.d9958e02814455e5") }}<span class="el-icon-arrow-down"></span>
           </div>
         </el-popover>
         <!-- 高级筛选 -->
@@ -89,7 +90,7 @@
         >
           <div class="condition-box">
             <div class="flex-between">
-              <div class="title">{{ $ts("筛选条件") }}</div>
+              <div class="title">{{ $("ui.developModuleFormBoxFilterConditions") }}</div>
               <div class="el-icon-close pointer" @click="$store.state.business.conditionDialog = false" />
             </div>
             <condition-dialog
@@ -102,7 +103,7 @@
             />
           </div>
           <div v-if="isViewSearch" slot="reference" class="pointer text-16 el-dropdown-link" @click="onShow">
-            {{ $ts("筛选&nbsp;") }}<span class="iconfont iconshaixuan2"></span>
+            {{ $("legacy.d42ebe1a132326a6") }}<span class="iconfont iconshaixuan2"></span>
             <span v-if="additional_search.length > 0" class="yuan">
               {{ additional_search ? additional_search.length : 0 }}
             </span>
@@ -165,7 +166,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import viewManagement from '@/components/develop/viewManagement'
 import oaDialog from '@/components/form-common/dialog-form'
 import formList from '@/views/develop/module/components/formList'
@@ -370,8 +370,8 @@ export default {
       treeValue: '', // 树形选择值
       fromData: {
         width: '500px',
-        title: i18n.t('ui.developViewManagementCreateView'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.developViewManagementCreateView'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },
@@ -382,14 +382,14 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: i18n.t('legacyScript.viewName'),
-          placeholder: i18n.t('legacyScript.pleaseEnterAViewNameWithin10Characters'),
+          label: $('legacyScript.viewName'),
+          placeholder: $('legacyScript.pleaseEnterAViewNameWithin10Characters'),
           key: 'senior_title'
         },
         {
           type: 'radio',
-          label: i18n.t('legacyScript.viewType'),
-          placeholder: i18n.t('legacyScript.pleaseSelectViewType'),
+          label: $('legacyScript.viewType'),
+          placeholder: $('legacyScript.pleaseSelectViewType'),
           key: 'senior_type',
           options: [
             {
@@ -409,15 +409,15 @@ export default {
         senior_title: [
           {
             required: true,
-            message: i18n.t('ui.developViewManagementPleaseEnterViewName'),
+            message: $('ui.developViewManagementPleaseEnterViewName'),
             trigger: 'blur'
           },
-          { min: 0, max: 10, message: i18n.t('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
+          { min: 0, max: 10, message: $('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
         ],
         senior_type: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectViewType'),
+            message: $('legacyScript.pleaseSelectViewType'),
             trigger: 'change'
           }
         ]

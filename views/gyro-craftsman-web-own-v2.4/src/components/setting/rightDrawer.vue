@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 系统-新增菜单动态表单 -->
 <template>
   <div>
     <el-drawer
-      :title="$ts(config.title, config.title_en)"
+      :title="$(config.title, config.title_en)"
       :visible.sync="drawer"
       :direction="direction"
       size="700px"
@@ -14,8 +15,8 @@
       </div>
 
       <div class="from-foot-btn fix btn-shadow">
-        <el-button size="small" @click="drawer = false">{{ $ts("取消") }}</el-button>
-        <el-button size="small" type="primary" @click="onSubmit">{{ $ts('public.save') }}</el-button>
+        <el-button size="small" @click="drawer = false">{{ $("public.cancel") }}</el-button>
+        <el-button size="small" type="primary" @click="onSubmit">{{ $('public.save') }}</el-button>
       </div>
     </el-drawer>
   </div>
@@ -25,7 +26,6 @@
 import formCreate from '@form-create/element-ui'
 import request from '@/api/request'
 import { Message } from 'element-ui'
-import { translateMessage } from '@/lang'
 import { localizeFormSchema } from '@/libs/modal-form'
 export default {
   name: 'RightDrawer',
@@ -60,7 +60,7 @@ export default {
                 if (res.status === 200) {
                   file.url = res.data.src
                 } else {
-                  Message.error(translateMessage(res.msg))
+                  Message.error($(res.msg))
                 }
               }
             }
@@ -88,7 +88,7 @@ export default {
         ...this.option,
         form: {
           ...this.option.form,
-          labelWidth: this.$i18n && this.$i18n.locale === 'en' ? '190px' : '125px',
+          labelWidth: this.$language === 'en' ? '190px' : '125px',
           labelSuffix: ':'
         }
       }
@@ -114,7 +114,7 @@ export default {
           this.rules = res.data.rule
         })
         .catch((err) => {
-          this.$message.error(this.$ts(err.message || '获取失败'))
+          this.$message.error(this.$(err.message || '获取失败'))
         })
     },
     onSubmit() {

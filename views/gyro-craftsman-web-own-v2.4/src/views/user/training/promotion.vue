@@ -5,7 +5,7 @@
       <el-col v-bind="gridl">
         <div class="assess-left">
           <div class="el-card__header">
-            <span class="pull-left">{{ $t("ui.userTrainingPromotionPromotionTable") }}</span>
+            <span class="pull-left">{{ $("ui.userTrainingPromotionPromotionTable") }}</span>
           </div>
           <div class="v-height-flag">
             <div v-height>
@@ -30,31 +30,31 @@
       <el-col class="assess-right" v-bind="gridr">
         <div class="title">{{ title }}</div>
         <el-table ref="table" :data="list" class="table" row-key="id" style="width: 100%">
-          <el-table-column :label="$t('ui.hrEnterprisePromotionRank')" min-width="200" prop="position">
+          <el-table-column :label="$('ui.hrEnterprisePromotionRank')" min-width="200" prop="position">
             <template #default="{ row }">
               <div>
                 <span>{{ getText(row.ranks) }}</span>
               </div>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrEnterprisePromotionBaseSalary')">
-            <el-table-column :label="$t('ui.hrEnterprisePromotionBaseSalary2')" min-width="100" prop="benefit.basicSalary"> </el-table-column>
-            <el-table-column :label="$t('ui.hrEnterprisePromotionPerformancePay')" min-width="100" prop="benefit.performance"> </el-table-column>
+          <el-table-column :label="$('ui.hrEnterprisePromotionBaseSalary')">
+            <el-table-column :label="$('ui.hrEnterprisePromotionBaseSalary2')" min-width="100" prop="benefit.basicSalary"> </el-table-column>
+            <el-table-column :label="$('ui.hrEnterprisePromotionPerformancePay')" min-width="100" prop="benefit.performance"> </el-table-column>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrEnterprisePromotionTotal')" min-width="100" prop="total">
+          <el-table-column :label="$('ui.hrEnterprisePromotionTotal')" min-width="100" prop="total">
             <template slot-scope="scope">
               <span>{{ getTotal(scope.row.benefit) }}</span>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrEnterprisePromotionPerformanceBasedSalary')">
-            <el-table-column :label="$t('ui.hrEnterprisePromotionCommissionSalary')" min-width="100" prop="benefit.commission"> </el-table-column>
-            <el-table-column :label="$t('ui.hrEnterprisePromotionTeamBonus')" min-width="100" prop="benefit.teamAward"> </el-table-column>
-            <el-table-column :label="$t('ui.hrEnterprisePromotionProfitSharing')" min-width="100" prop="benefit.dividends"> </el-table-column>
+          <el-table-column :label="$('ui.hrEnterprisePromotionPerformanceBasedSalary')">
+            <el-table-column :label="$('ui.hrEnterprisePromotionCommissionSalary')" min-width="100" prop="benefit.commission"> </el-table-column>
+            <el-table-column :label="$('ui.hrEnterprisePromotionTeamBonus')" min-width="100" prop="benefit.teamAward"> </el-table-column>
+            <el-table-column :label="$('ui.hrEnterprisePromotionProfitSharing')" min-width="100" prop="benefit.dividends"> </el-table-column>
           </el-table-column>
 
-          <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180">
+          <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180">
             <template slot-scope="scope">
-              <el-button type="text" @click="handleCheck(scope.row)">{{ $t("ui.hrEnterprisePromotionPromotionCriteria") }}</el-button>
+              <el-button type="text" @click="handleCheck(scope.row)">{{ $("ui.hrEnterprisePromotionPromotionCriteria") }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -63,10 +63,10 @@
   </el-card>
 
   <!-- 晋升标准侧滑 -->
-  <el-drawer :before-close="handleClose" :visible.sync="editDrawer" direction="rtl" size="61%" :title="$t('ui.hrEnterprisePromotionPromotionCriteria')">
+  <el-drawer :before-close="handleClose" :visible.sync="editDrawer" direction="rtl" size="61%" :title="$('ui.hrEnterprisePromotionPromotionCriteria')">
     <div class="check-box">
       <div class="user-name mb20">
-        <span>{{ $t("ui.userTrainingPromotionPosition") }}</span>
+        <span>{{ $("ui.userTrainingPromotionPosition") }}</span>
         <span class="text">{{ positions.map((obj) => obj.name).join('、') }}</span>
       </div>
       <ueditorFrom

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 查看客户信息侧滑页面 -->
 <template>
 <div>
@@ -19,10 +20,10 @@
           <div class="txt1 over-text">
             {{ dataInfo.data ? dataInfo.data.customer_name : '--' }}
             <i class="el-icon-message-solid default-color pointer" @click="addRecord"></i>
-            <span class="default-color pointer txt3" @click="addRecord">{{ $t("ui.customerListEditCustomerAddReminder") }}</span>
+            <span class="default-color pointer txt3" @click="addRecord">{{ $("ui.customerListEditCustomerAddReminder") }}</span>
           </div>
           <div class="txt2">
-            <span class="title">{{ $t("ui.customerListEditCustomerCustomerStatus") }}</span>
+            <span class="title">{{ $("ui.customerListEditCustomerCustomerStatus") }}</span>
 
             <span
               v-if="dataInfo.data && dataInfo.data.customer_status"
@@ -30,9 +31,9 @@
             >
               {{ dataInfo.data ? dataInfo.data.customer_status.name : '--' }}
             </span>
-            <span class="title">{{ $t('customer.salesman') }}：</span
+            <span class="title">{{ $('customer.salesman') }}：</span
             ><span class="weight">{{ dataInfo.data ? dataInfo.data.salesman : '--' }}</span>
-            <span class="title">{{ $t("ui.customerListEditCustomerCustomerNumber") }}</span
+            <span class="title">{{ $("ui.customerListEditCustomerCustomerNumber") }}</span
             ><span class="weight">{{ dataInfo.data ? dataInfo.data.customer_no : '--' }}</span>
           </div>
         </el-col>
@@ -135,7 +136,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { chargeEditApi } from '@/api/enterprise';
 import { CUSTOMER_MODULE_KEYS } from '@/constants/customerModules';
 import { DRAWER_SIZE } from '@/constants/popupSize';
@@ -183,17 +183,17 @@ export default {
       const isCustomerModuleEnabled = this.$store.getters['appConfig/isCustomerModuleEnabled'];
 
       const config = [
-        { value: '1', label: this.$t('setting.info.essentialinformation') },
-        { value: '2', label: this.$t('customer.followrecord'), badgeKey: 'follow_count' },
-        { value: '8', label: this.$t('customer.contacts'), badgeKey: 'liaisons_count', moduleKey: CUSTOMER_MODULE_KEYS.LIAISON },
-        { value: '10', label: i18n.t('systemText.opportunities'), badgeKey: 'odds_count', moduleKey: CUSTOMER_MODULE_KEYS.OPPORTUNITY },
-        { value: '11', label: i18n.t('systemText.contracts'), badgeKey: 'contract_doc_count', moduleKey: CUSTOMER_MODULE_KEYS.CONTRACT },
-        { value: '3', label: i18n.t('customer.contract'), badgeKey: 'contract_count', moduleKey: CUSTOMER_MODULE_KEYS.ORDER },
-        { value: '4', label: i18n.t('legacyScript.accountRecords'), badgeKey: 'bill_count' },
-        { value: '5', label: this.$t('customer.paymentreminder'), badgeKey: 'remind_count' },
-        { value: '6', label: this.$t('customer.invoice'), badgeKey: 'invoice_count', moduleKey: CUSTOMER_MODULE_KEYS.INVOICE },
-        { value: '7', label: this.$t('customer.annexrelated'), badgeKey: 'file_count' },
-        { value: '9', label: i18n.t('ui.customerListDynamicRecordActivityRecords'), badgeKey: 'record_count' }
+        { value: '1', label: this.$('setting.info.essentialinformation') },
+        { value: '2', label: this.$('customer.followrecord'), badgeKey: 'follow_count' },
+        { value: '8', label: this.$('customer.contacts'), badgeKey: 'liaisons_count', moduleKey: CUSTOMER_MODULE_KEYS.LIAISON },
+        { value: '10', label: $('systemText.opportunities'), badgeKey: 'odds_count', moduleKey: CUSTOMER_MODULE_KEYS.OPPORTUNITY },
+        { value: '11', label: $('systemText.contracts'), badgeKey: 'contract_doc_count', moduleKey: CUSTOMER_MODULE_KEYS.CONTRACT },
+        { value: '3', label: $('customer.contract'), badgeKey: 'contract_count', moduleKey: CUSTOMER_MODULE_KEYS.ORDER },
+        { value: '4', label: $('legacyScript.accountRecords'), badgeKey: 'bill_count' },
+        { value: '5', label: this.$('customer.paymentreminder'), badgeKey: 'remind_count' },
+        { value: '6', label: this.$('customer.invoice'), badgeKey: 'invoice_count', moduleKey: CUSTOMER_MODULE_KEYS.INVOICE },
+        { value: '7', label: this.$('customer.annexrelated'), badgeKey: 'file_count' },
+        { value: '9', label: $('ui.customerListDynamicRecordActivityRecords'), badgeKey: 'record_count' }
       ];
 
       return config.filter(item => {

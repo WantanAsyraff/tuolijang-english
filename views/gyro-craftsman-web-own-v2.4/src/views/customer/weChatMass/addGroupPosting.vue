@@ -1,32 +1,33 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <div class="box-height">
       <el-card body-style="padding: 0">
         <!-- 头部返回按钮 -->
         <div class="header">
-          <span @click="backFn" class="el-icon-arrow-left"></span> {{ this.id ? $t('ui.customerWeChatMassAddGroupPostingEditMassSendPage') : $t('ui.customerWeChatMassAddGroupPostingAddMassSendPage') }}
+          <span @click="backFn" class="el-icon-arrow-left"></span> {{ this.id ? $('ui.customerWeChatMassAddGroupPostingEditMassSendPage') : $('ui.customerWeChatMassAddGroupPostingAddMassSendPage') }}
         </div>
         <!-- 表单内容 -->
         <div class="flex">
           <div style="width: 55%" class="p20">
-            <el-form ref="formRef" :model="formData" :rules="rules" :label-width="formLabelWidth">
-              <div class="title">{{ $t("ui.customerWeChatMassAddGroupPostingBasicInformation") }}</div>
+            <el-form ref="formRef" :model="formData" :rules="rules" label-width="auto">
+              <div class="title">{{ $("ui.customerWeChatMassAddGroupPostingBasicInformation") }}</div>
               <el-form-item>
                 <div slot="label">
-                  <span class="required">*</span>{{ formData.types == 1 ? $t('ui.customerWeChatMassAddGroupPostingSelectGroupOwner') : $t('ui.customerWeChatMassAddGroupPostingMassSendEmployees') }}
+                  <span class="required">*</span>{{ formData.types == 1 ? $('ui.customerWeChatMassAddGroupPostingSelectGroupOwner') : $('ui.customerWeChatMassAddGroupPostingMassSendEmployees') }}
                 </div>
                 <select-member :value="userList" @getSelectList="getSelectList" :isqiWeiWork="true"></select-member>
                 <div class="tips mt10">
-                  {{ $t("ui.customerWeChatMassAddGroupPostingSelectTheEmployeesWhoShouldReceiveThisMassSend") }}
+                  {{ $("ui.customerWeChatMassAddGroupPostingSelectTheEmployeesWhoShouldReceiveThisMassSend") }}
                 </div>
               </el-form-item>
-              <el-form-item :label="formData.types == 1 ? $t('ui.customerWeChatMassAddGroupPostingCustomerGroupScope') : $t('ui.customerWeChatMassAddGroupPostingCustomerScope')" prop="is_all">
+              <el-form-item :label="formData.types == 1 ? $('ui.customerWeChatMassAddGroupPostingCustomerGroupScope') : $('ui.customerWeChatMassAddGroupPostingCustomerScope')" prop="is_all">
                 <el-radio-group v-model="formData.is_all" @change="radioChange">
-                  <el-radio :label="1">{{ formData.types == 1 ? $t('ui.customerWeChatMassAddGroupPostingAllGroupChats') : $t('ui.customerWeChatMassAddGroupPostingAllCustomers') }}</el-radio>
-                  <el-radio v-if="formData.types == 0" :label="2">{{ $t("ui.customerWeChatMassAddGroupPostingWeComCustomer") }}</el-radio>
-                  <el-radio :label="0"> {{ formData.types == 1 ? $t('ui.customerWeChatMassAddGroupPostingFilterGroupChats') : $t('ui.customerWeChatMassAddGroupPostingFilteredCustomers') }}</el-radio>
+                  <el-radio :label="1">{{ formData.types == 1 ? $('ui.customerWeChatMassAddGroupPostingAllGroupChats') : $('ui.customerWeChatMassAddGroupPostingAllCustomers') }}</el-radio>
+                  <el-radio v-if="formData.types == 0" :label="2">{{ $("ui.customerWeChatMassAddGroupPostingWeComCustomer") }}</el-radio>
+                  <el-radio :label="0"> {{ formData.types == 1 ? $('ui.customerWeChatMassAddGroupPostingFilterGroupChats') : $('ui.customerWeChatMassAddGroupPostingFilteredCustomers') }}</el-radio>
                 </el-radio-group>
-                <div class="tips mb10">{{ $t("ui.customerWeChatMassAddGroupPostingChooseWhichCustomersReceiveThisMessageFiltersSendIt") }}</div>
+                <div class="tips mb10">{{ $("ui.customerWeChatMassAddGroupPostingChooseWhichCustomersReceiveThisMessageFiltersSendIt") }}</div>
                 <template v-if="formData.types == '0' && (formData.is_all == 0 || formData.is_all == 2)">
                   <div class="search-box">
                     <condition-dialog
@@ -38,15 +39,15 @@
                     />
                   </div>
                   <div class="tips mt10">
-                    {{ $t("ui.customerWeChatMassAddGroupPostingViewTheEstimatedNumberOfRecipientsForThisMessage") }}<span class="text1" @click="getCount">{{ $t("ui.customerWeChatMassAddGroupPostingCalculateNow") }}</span
-                    ><span class="text2" v-if="countShow"> {{ $t("ui.customerWeChatMassAddGroupPostingEstimated") }} {{ numberPeople }}{{ $t("ui.customerWeChatMassAddGroupPostingPeople") }}</span>
+                    {{ $("ui.customerWeChatMassAddGroupPostingViewTheEstimatedNumberOfRecipientsForThisMessage") }}<span class="text1" @click="getCount">{{ $("ui.customerWeChatMassAddGroupPostingCalculateNow") }}</span
+                    ><span class="text2" v-if="countShow"> {{ $("ui.customerWeChatMassAddGroupPostingEstimated") }} {{ numberPeople }}{{ $("ui.customerWeChatMassAddGroupPostingPeople") }}</span>
                   </div>
                 </template>
 
                 <!-- 选择标签 -->
                 <template v-if="formData.types == '2' && formData.is_all === 0">
                   <div class="select plan-footer-one mr10 mt10" @click="handleLabel(val)">
-                    <span v-if="labelList && labelList.length == 0" class="placeholder">{{ $t("ui.customerWeChatMassAddGroupPostingSelectLabels") }}</span>
+                    <span v-if="labelList && labelList.length == 0" class="placeholder">{{ $("ui.customerWeChatMassAddGroupPostingSelectLabels") }}</span>
                     <div ref="getHeight">
                       <span
                         v-for="(item, labelIndex) in labelList"
@@ -68,7 +69,7 @@
                   @click="groupChatFn"
                 >
                   <span class="el-icon-arrow-down"></span>
-                  <span v-if="groupList && groupList.length == 0" class="placeholder">{{ $t("ui.customerWeChatMassAddGroupPostingClickToSelectAGroupChat") }}</span>
+                  <span v-if="groupList && groupList.length == 0" class="placeholder">{{ $("ui.customerWeChatMassAddGroupPostingClickToSelectAGroupChat") }}</span>
                   <div class="flex-box" v-if="groupList.length > 0">
                     <span
                       v-for="(item, index) in groupList"
@@ -83,27 +84,27 @@
                 </div>
               </el-form-item>
 
-              <el-form-item :label="formData.types == 1 ? $t('ui.customerWeChatMassAddGroupPostingOwnerAdjustedSendingScope') : $t('ui.customerWeChatMassAddGroupPostingMemberAdjustedSendingScope')" prop="is_modify">
+              <el-form-item :label="formData.types == 1 ? $('ui.customerWeChatMassAddGroupPostingOwnerAdjustedSendingScope') : $('ui.customerWeChatMassAddGroupPostingMemberAdjustedSendingScope')" prop="is_modify">
                 <el-radio-group v-model="formData.is_modify">
-                  <el-radio :label="0">{{ $t("ui.customerWeChatMassAddGroupPostingNotAllowed") }}</el-radio>
-                  <el-radio :label="1">{{ $t("ui.customerWeChatMassAddGroupPostingAllowed") }}</el-radio>
+                  <el-radio :label="0">{{ $("ui.customerWeChatMassAddGroupPostingNotAllowed") }}</el-radio>
+                  <el-radio :label="1">{{ $("ui.customerWeChatMassAddGroupPostingAllowed") }}</el-radio>
                 </el-radio-group>
                 <div class="tips">
                   {{
                     formData.types == 1
-                      ? $t('ui.customerWeChatMassAddGroupPostingControlsWhetherTheOwnerMayChooseWhichGroupChats')
-                      : $t('ui.customerWeChatMassAddGroupPostingControlsWhetherEmployeesMayChooseWhichCustomersReceiveThe')
+                      ? $('ui.customerWeChatMassAddGroupPostingControlsWhetherTheOwnerMayChooseWhichGroupChats')
+                      : $('ui.customerWeChatMassAddGroupPostingControlsWhetherEmployeesMayChooseWhichCustomersReceiveThe')
                   }}
                 </div>
               </el-form-item>
 
               <!-- 群发内容区域 -->
               <div class="flex flex-between lh-center">
-                <div class="title">{{ $t("ui.customerWeChatMassClientGroupChatMassSendContent") }}</div>
-                <el-button type="text" @click="openLibrary">{{ $t("ui.customerQuickReplyAddReplySelectFromTheMaterialLibrary") }}</el-button>
+                <div class="title">{{ $("ui.customerWeChatMassClientGroupChatMassSendContent") }}</div>
+                <el-button type="text" @click="openLibrary">{{ $("ui.customerQuickReplyAddReplySelectFromTheMaterialLibrary") }}</el-button>
               </div>
               <el-form-item prop="temp_id">
-                <div slot="label"><span class="required">*</span>{{ $t("ui.customerWeChatMassAddGroupPostingMassSendContent") }}</div>
+                <div slot="label"><span class="required">*</span>{{ $("ui.customerWeChatMassAddGroupPostingMassSendContent") }}</div>
                 <materialContent
                   ref="materialContentRef"
                   @contentChange="handleContentChange"
@@ -111,34 +112,34 @@
                   :types="formData.types"
                 ></materialContent>
                 <div class="tips mt10" v-if="formData.types == 2">
-                  {{ $t("ui.customerWeChatMassAddGroupPostingSupportsUpTo9Images1VideoOr1") }}
+                  {{ $("ui.customerWeChatMassAddGroupPostingSupportsUpTo9Images1VideoOr1") }}
                 </div>
               </el-form-item>
 
               <!-- 群发时间设置 -->
-              <el-form-item :label="$t('ui.customerWeChatMassAddGroupPostingMassSendTime')" prop="is_timed">
+              <el-form-item :label="$('ui.customerWeChatMassAddGroupPostingMassSendTime')" prop="is_timed">
                 <el-radio-group v-model="formData.is_timed" @change="handleTimeChange">
-                  <el-radio :label="0">{{ $t("ui.customerWeChatMassAddGroupPostingSendImmediately") }}</el-radio>
-                  <el-radio :label="1">{{ $t("ui.customerWeChatMassAddGroupPostingScheduleSend") }}</el-radio>
+                  <el-radio :label="0">{{ $("ui.customerWeChatMassAddGroupPostingSendImmediately") }}</el-radio>
+                  <el-radio :label="1">{{ $("ui.customerWeChatMassAddGroupPostingScheduleSend") }}</el-radio>
                 </el-radio-group>
-                <div class="tips">{{ $t("ui.customerWeChatMassAddGroupPostingChooseWhenEmployeesAreNotifiedToSendThisMass") }}</div>
+                <div class="tips">{{ $("ui.customerWeChatMassAddGroupPostingChooseWhenEmployeesAreNotifiedToSendThisMass") }}</div>
 
                 <el-date-picker
                   v-if="formData.is_timed == 1"
                   v-model="formData.send_time"
                   size="small"
                   type="datetime"
-                  :placeholder="$t('ui.administrationNoticeAddNoticeSelectDateTime')"
+                  :placeholder="$('ui.administrationNoticeAddNoticeSelectDateTime')"
                   value-format="yyyy-MM-dd HH:mm:ss"
                   style="width: 200px; margin-top: 10px"
                 >
                 </el-date-picker>
 
                 <div class="attention mt10">
-                  {{ $t("ui.customerWeChatMassAddGroupPostingCustomersCanReceiveUpTo30MassMessagesFrom") }}
+                  {{ $("ui.customerWeChatMassAddGroupPostingCustomersCanReceiveUpTo30MassMessagesFrom") }}
                 </div>
 
-                <el-button type="primary" size="small" @click="submitFn" class="mt20"> {{ $t("ui.customerWeChatMassAddGroupPostingNotifyGroupMembersToMassSend") }} </el-button>
+                <el-button type="primary" size="small" @click="submitFn" class="mt20"> {{ $("ui.customerWeChatMassAddGroupPostingNotifyGroupMembersToMassSend") }} </el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -173,7 +174,7 @@
 
                         <img :src="item.file.url" alt="" style="width: 44px; height: 44px; border-radius: 4px" />
                       </div>
-                      <div class="size"><span class="iconfont iconxiaochengxu2" /> {{ $t("ui.customerWeChatMassAddGroupPostingMiniProgram") }}</div>
+                      <div class="size"><span class="iconfont iconxiaochengxu2" /> {{ $("ui.customerWeChatMassAddGroupPostingMiniProgram") }}</div>
                     </div>
                     <div v-if="item.types === 'file'" class="file-box">
                       <div class="left">
@@ -200,7 +201,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { workMassTempApi, workMassSave, getWorkMassEdit, getWorkMassCustomerCount, putWorkMassEdit } from '@/api/weCom'
 import { salesmanCustomApi } from '@/api/client'
 import { formatBytes } from '@/libs/public'
@@ -257,10 +257,10 @@ export default {
       userInfo: getStorageJson('userInfo', {}),
       labelData: {},
       rules: {
-        is_all: [{ required: true, message: i18n.t('legacyScript.pleaseSelectTheBroadcastScope'), trigger: 'change' }],
+        is_all: [{ required: true, message: $('legacyScript.pleaseSelectTheBroadcastScope'), trigger: 'change' }],
 
-        is_modify: [{ required: true, message: i18n.t('legacyScript.pleaseSelectWhetherToAllowAdjustments'), trigger: 'change' }],
-        is_timed: [{ required: true, message: i18n.t('legacyScript.pleaseSelectMassSendTimeType'), trigger: 'change' }]
+        is_modify: [{ required: true, message: $('legacyScript.pleaseSelectWhetherToAllowAdjustments'), trigger: 'change' }],
+        is_timed: [{ required: true, message: $('legacyScript.pleaseSelectMassSendTimeType'), trigger: 'change' }]
       }
     }
   },
@@ -274,16 +274,11 @@ export default {
       this.getInfo()
     }
   },
-  computed: {
-    formLabelWidth() {
-      return this.$i18n.locale === 'en' ? '230px' : '132px'
-    }
-  },
   methods: {
     getCount() {
       this.countShow = true
       if (this.formData.send_uid.length == 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectAnEmployeeFirst'))
+        this.$message.error($('legacyScript.pleaseSelectAnEmployeeFirst'))
         return false
       }
       let data = {
@@ -315,7 +310,7 @@ export default {
     // 打开客户标签
     handleLabel(val) {
       this.labelData = {
-        title: i18n.t('customer.customerlabel'),
+        title: $('customer.customerlabel'),
         width: '540px',
         label: this.labelList,
         edit: 1
@@ -339,13 +334,13 @@ export default {
     // 打开群聊选择弹窗
     groupChatFn() {
       if (this.formData.send_uid.length == 0) {
-        return this.$message.error(i18n.t('legacyScript.pleaseSelectTheGroupOwnerFirst'))
+        return this.$message.error($('legacyScript.pleaseSelectTheGroupOwnerFirst'))
       }
       if (this.$refs.groupChatRef) {
         // 检查组件实例是否存在
         this.$refs.groupChatRef.openBox(this.formData.send_uid)
       } else {
-        this.$message.error(i18n.t('legacyScript.failedToLoadGroupChatSelectionComponent'))
+        this.$message.error($('legacyScript.failedToLoadGroupChatSelectionComponent'))
       }
     },
 
@@ -366,7 +361,7 @@ export default {
       if (this.$refs.libraryRef) {
         this.$refs.libraryRef.openBox()
       } else {
-        this.$message.error(i18n.t('legacyScript.failedToLoadAssetLibraryComponent'))
+        this.$message.error($('legacyScript.failedToLoadAssetLibraryComponent'))
       }
     },
 
@@ -438,12 +433,12 @@ export default {
             return !item.value || item.value.toString().trim() === ''
           })
           if (hasEmptyValue) {
-            this.$message.error(i18n.t('legacyScript.pleaseSelectFilterConditions'))
+            this.$message.error($('legacyScript.pleaseSelectFilterConditions'))
             return false
           }
           this.formData.search = data
         } else {
-          this.$message.error(i18n.t('legacyScript.pleaseSelectFilterConditions'))
+          this.$message.error($('legacyScript.pleaseSelectFilterConditions'))
           return false
         }
       }
@@ -453,7 +448,7 @@ export default {
     submitFn() {
       this.$refs.formRef.validate((valid) => {
         if (valid) {
-          if (this.formData.send_uid.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectEmployee'))
+          if (this.formData.send_uid.length == 0) return this.$message.error($('legacyScript.pleaseSelectEmployee'))
           // 筛选客户校验
           this.filterData()
 
@@ -464,7 +459,7 @@ export default {
           }
 
           if (this.formData.types == '2' && this.formData.is_all == 0 && this.formData.send_group.length == 0) {
-            return this.$message.error(i18n.t('legacyScript.pleaseSelectFilterConditions'))
+            return this.$message.error($('legacyScript.pleaseSelectFilterConditions'))
           }
 
           if (this.formData.types == 1 && this.groupList.length > 0) {
@@ -473,10 +468,10 @@ export default {
             })
           }
           if (!this.formData.temp.content) {
-            return this.$message.error(i18n.t('legacyScript.pleaseEnterTheMessageContent'))
+            return this.$message.error($('legacyScript.pleaseEnterTheMessageContent'))
           }
           if (this.formData.is_timed == 1 && !this.formData.send_time) {
-            return this.$message.error(i18n.t('legacyScript.selectScheduledSendTime'))
+            return this.$message.error($('legacyScript.selectScheduledSendTime'))
           }
 
           if (this.$refs.materialContentRef) {

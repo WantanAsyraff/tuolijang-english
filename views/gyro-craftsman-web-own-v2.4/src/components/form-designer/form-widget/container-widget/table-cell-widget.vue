@@ -22,45 +22,44 @@
     </draggable>
 
     <div class="table-cell-action" v-if="designer.selectedId === widget.id && widget.type === 'table-cell'">
-      <i class="el-icon-back" :title="i18nt('designer.hint.selectParentWidget')"
+      <i class="el-icon-back" :title="$('designer.hint.selectParentWidget')"
          @click.stop="selectParentWidget()"></i>
       <el-dropdown trigger="click" @command="handleTableCellCommand" size="small">
-        <i class="el-icon-menu" :title="i18nt('designer.hint.cellSetting')"></i>
+        <i class="el-icon-menu" :title="$('designer.hint.cellSetting')"></i>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="insertLeftCol">{{i18nt('designer.setting.insertColumnToLeft')}}</el-dropdown-item>
-          <el-dropdown-item command="insertRightCol">{{i18nt('designer.setting.insertColumnToRight')}}</el-dropdown-item>
-          <el-dropdown-item command="insertAboveRow">{{i18nt('designer.setting.insertRowAbove')}}</el-dropdown-item>
-          <el-dropdown-item command="insertBelowRow">{{i18nt('designer.setting.insertRowBelow')}}</el-dropdown-item>
-          <el-dropdown-item command="mergeLeftCol" :disabled="mergeLeftColDisabled" divided>{{i18nt('designer.setting.mergeLeftColumn')}}</el-dropdown-item>
-          <el-dropdown-item command="mergeRightCol" :disabled="mergeRightColDisabled">{{i18nt('designer.setting.mergeRightColumn')}}</el-dropdown-item>
-          <el-dropdown-item command="mergeWholeRow" :disabled="mergeWholeRowDisabled">{{i18nt('designer.setting.mergeEntireRow')}}</el-dropdown-item>
-          <el-dropdown-item command="mergeAboveRow" :disabled="mergeAboveRowDisabled" divided>{{i18nt('designer.setting.mergeRowAbove')}}</el-dropdown-item>
-          <el-dropdown-item command="mergeBelowRow" :disabled="mergeBelowRowDisabled">{{i18nt('designer.setting.mergeRowBelow')}}</el-dropdown-item>
-          <el-dropdown-item command="mergeWholeCol" :disabled="mergeWholeColDisabled">{{i18nt('designer.setting.mergeEntireColumn')}}</el-dropdown-item>
-          <el-dropdown-item command="undoMergeRow" :disabled="undoMergeRowDisabled" divided>{{i18nt('designer.setting.undoMergeRow')}}</el-dropdown-item>
-          <el-dropdown-item command="undoMergeCol" :disabled="undoMergeColDisabled">{{i18nt('designer.setting.undoMergeCol')}}</el-dropdown-item>
-          <el-dropdown-item command="deleteWholeCol" :disabled="deleteWholeColDisabled" divided>{{i18nt('designer.setting.deleteEntireCol')}}</el-dropdown-item>
-          <el-dropdown-item command="deleteWholeRow" :disabled="deleteWholeRowDisabled">{{i18nt('designer.setting.deleteEntireRow')}}</el-dropdown-item>
+          <el-dropdown-item command="insertLeftCol">{{$('designer.setting.insertColumnToLeft')}}</el-dropdown-item>
+          <el-dropdown-item command="insertRightCol">{{$('designer.setting.insertColumnToRight')}}</el-dropdown-item>
+          <el-dropdown-item command="insertAboveRow">{{$('designer.setting.insertRowAbove')}}</el-dropdown-item>
+          <el-dropdown-item command="insertBelowRow">{{$('designer.setting.insertRowBelow')}}</el-dropdown-item>
+          <el-dropdown-item command="mergeLeftCol" :disabled="mergeLeftColDisabled" divided>{{$('designer.setting.mergeLeftColumn')}}</el-dropdown-item>
+          <el-dropdown-item command="mergeRightCol" :disabled="mergeRightColDisabled">{{$('designer.setting.mergeRightColumn')}}</el-dropdown-item>
+          <el-dropdown-item command="mergeWholeRow" :disabled="mergeWholeRowDisabled">{{$('designer.setting.mergeEntireRow')}}</el-dropdown-item>
+          <el-dropdown-item command="mergeAboveRow" :disabled="mergeAboveRowDisabled" divided>{{$('designer.setting.mergeRowAbove')}}</el-dropdown-item>
+          <el-dropdown-item command="mergeBelowRow" :disabled="mergeBelowRowDisabled">{{$('designer.setting.mergeRowBelow')}}</el-dropdown-item>
+          <el-dropdown-item command="mergeWholeCol" :disabled="mergeWholeColDisabled">{{$('designer.setting.mergeEntireColumn')}}</el-dropdown-item>
+          <el-dropdown-item command="undoMergeRow" :disabled="undoMergeRowDisabled" divided>{{$('designer.setting.undoMergeRow')}}</el-dropdown-item>
+          <el-dropdown-item command="undoMergeCol" :disabled="undoMergeColDisabled">{{$('designer.setting.undoMergeCol')}}</el-dropdown-item>
+          <el-dropdown-item command="deleteWholeCol" :disabled="deleteWholeColDisabled" divided>{{$('designer.setting.deleteEntireCol')}}</el-dropdown-item>
+          <el-dropdown-item command="deleteWholeRow" :disabled="deleteWholeRowDisabled">{{$('designer.setting.deleteEntireRow')}}</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
 
     <div class="table-cell-handler" v-if="designer.selectedId === widget.id && widget.type === 'table-cell'">
-      <i>{{i18nt('designer.widgetLabel.' + widget.type)}}</i>
+      <i>{{$('designer.widgetLabel.' + widget.type)}}</i>
     </div>
   </td>
 </template>
 
 <script>
   import Draggable from 'vuedraggable'
-  import i18n from "@/utils/i18n"
   import FieldComponents from '@/components/form-designer/form-widget/field-widget/index'
   import refMixinDesign from "@/components/form-designer/refMixinDesign"
 
   export default {
     name: "TableCellWidget",
     componentName: "TableCellWidget",
-    mixins: [i18n, refMixinDesign],
+    mixins: [refMixinDesign],
     inject: ['refList'],
     components: {
       Draggable,
@@ -344,4 +343,4 @@
   .table-cell.selected {
     outline: 2px solid #409EFF !important;
   }
-</style>@/utils/i18ns
+</style>

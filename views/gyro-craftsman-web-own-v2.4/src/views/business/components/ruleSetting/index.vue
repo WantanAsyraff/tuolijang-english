@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!--审批设置-规则配置 -->
 <template>
   <div class="ruleSetting">
@@ -7,10 +8,10 @@
           <el-col v-bind="grid1">&nbsp;</el-col>
           <el-col v-bind="grid2">
             <el-form ref="elForm" :model="examineFrom" :rules="rules" size="medium" label-width="150px">
-              <el-form-item :label="$t('business.handle')">
+              <el-form-item :label="$('business.handle')">
                 <el-radio-group v-model="examineFrom.abnormal">
-                  <el-radio :label="0">{{ $t('business.handle1') }}</el-radio>
-                  <el-radio :label="1">{{ $t('business.handle2') }}</el-radio>
+                  <el-radio :label="0">{{ $('business.handle1') }}</el-radio>
+                  <el-radio :label="1">{{ $('business.handle2') }}</el-radio>
                 </el-radio-group>
                 <select-member
                   v-if="examineFrom.abnormal === 1"
@@ -20,29 +21,29 @@
                   style="width: 250px"
                 ></select-member>
               </el-form-item>
-              <el-form-item :label="$t('business.automatic')">
-                <div>{{ $t('business.automatic1') }}</div>
+              <el-form-item :label="$('business.automatic')">
+                <div>{{ $('business.automatic1') }}</div>
                 <el-radio-group v-model="examineFrom.auto" class="shu">
-                  <el-radio :label="0">{{ $t('business.automatic2') }}</el-radio>
-                  <el-radio :label="1">{{ $t('business.automatic3') }}</el-radio>
-                  <el-radio :label="2">{{ $t('business.automatic4') }}</el-radio>
+                  <el-radio :label="0">{{ $('business.automatic2') }}</el-radio>
+                  <el-radio :label="1">{{ $('business.automatic3') }}</el-radio>
+                  <el-radio :label="2">{{ $('business.automatic4') }}</el-radio>
                 </el-radio-group>
               </el-form-item>
-              <el-form-item :label="$t('business.editAuthority')" class="shu">
+              <el-form-item :label="$('business.editAuthority')" class="shu">
                 <el-checkbox-group v-model="examineFrom.edit">
-                  <el-checkbox :label="1">{{ $t('business.editAuthority1') }}</el-checkbox>
-                  <el-checkbox :label="2">{{ $t('business.editAuthority2') }}</el-checkbox>
+                  <el-checkbox :label="1">{{ $('business.editAuthority1') }}</el-checkbox>
+                  <el-checkbox :label="2">{{ $('business.editAuthority2') }}</el-checkbox>
                 </el-checkbox-group>
               </el-form-item>
-              <el-form-item :label="$t('business.revokeAuthority')">
+              <el-form-item :label="$('business.revokeAuthority')">
                 <el-checkbox-group v-model="examineFrom.recall">
-                  <el-checkbox :label="1">{{ $t('business.revokeAuthority1') }}</el-checkbox>
+                  <el-checkbox :label="1">{{ $('business.revokeAuthority1') }}</el-checkbox>
                 </el-checkbox-group>
-                <div class="explain">{{ $t('business.revokeAuthority2') }}</div>
+                <div class="explain">{{ $('business.revokeAuthority2') }}</div>
               </el-form-item>
-              <el-form-item :label='$ts("加签权限：")'>
+              <el-form-item :label='$("legacy.a7e6308765a09468")'>
                 <el-checkbox-group v-model="examineFrom.is_sign">
-                  <el-checkbox :label="1">{{ $ts("允许在审批单中增加临时审批人") }}</el-checkbox>
+                  <el-checkbox :label="1">{{ $("legacy.9d6de97831335155") }}</el-checkbox>
                 </el-checkbox-group>
               </el-form-item>
             </el-form>
@@ -55,7 +56,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 export default {
   name: 'RuleSetting',
   components: {
@@ -142,7 +142,7 @@ export default {
           }
           if (this.examineFrom.abnormal === 1) {
             if (!this.checkedName) {
-              this.$message.warning(i18n.t('legacyScript.pleaseSelectTheDesignatedPersonnel'))
+              this.$message.warning($('legacyScript.pleaseSelectTheDesignatedPersonnel'))
               return
             }
             if (this.dataList.length > 0) {

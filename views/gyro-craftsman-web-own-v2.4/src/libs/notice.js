@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 import noticeHandle from '@/libs/noticeHandle'
 import ElementUI from 'element-ui'
 import { roterPre } from '@/settings'
@@ -8,7 +9,6 @@ import { EventBus } from '@/libs/bus'
 import { getMenus } from '@/utils/auth'
 import { broadcastMenuInvalidated, clearMenuCache } from '@/utils/menu-cache'
 import SettingMer from '@/libs/settingMer'
-import { translateMessage } from '@/lang'
 import { normalizeNotificationInput } from '@/lang/notification-text'
 let limitConnect = 40 // 断线重连次数
 let timeToken = ''
@@ -78,7 +78,7 @@ function generateMessageContent(message) {
 function showNotification(input) {
   const message = normalizeSocketNotification(input)
   const notify = ElementUI.Notification({
-    title: translateMessage('\u6d88\u606f'),
+    title: $('\u6d88\u606f'),
     dangerouslyUseHTMLString: true,
     message: generateMessageContent(message),
     duration: 10000,
@@ -239,7 +239,7 @@ function getMessage() {
     })
     .catch((error) => {
       ElementUI.Message({
-        message: translateMessage(error && error.message ? error.message : error),
+        message: $(error && error.message ? error.message : error),
         type: 'error'
       })
     })

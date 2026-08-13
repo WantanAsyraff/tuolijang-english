@@ -10,8 +10,8 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection" width="55" />
-    <el-table-column prop="odds_no" :label="$t('ui.customerSigningSignProductOpportunityNo')" width="180" />
-    <el-table-column :label="$t('ui.customerSigningSignProductOpportunityType')" width="120">
+    <el-table-column prop="odds_no" :label="$('ui.customerSigningSignProductOpportunityNo')" width="180" />
+    <el-table-column :label="$('ui.customerSigningSignProductOpportunityType')" width="120">
       <template slot-scope="scope">
         <div
           class="dictionaries-tag over-text"
@@ -26,9 +26,9 @@
         </div>
       </template>
     </el-table-column>
-    <el-table-column prop="odds_customer" :label="$t('ui.developModuleTreeCustomerName')" width="120" />
+    <el-table-column prop="odds_customer" :label="$('ui.developModuleTreeCustomerName')" width="120" />
     <!-- <el-table-column prop="total_amount" label="商机金额（元）" /> -->
-    <el-table-column prop="status" :label="$t('ui.customerSigningSignProductOpportunityStatus')" width="120">
+    <el-table-column prop="status" :label="$('ui.customerSigningSignProductOpportunityStatus')" width="120">
       <template slot-scope="scope">
         <div
           class="dictionaries-tag over-text"
@@ -43,8 +43,8 @@
         </div>
       </template>
     </el-table-column>
-    <el-table-column prop="salesman.name" :label="$t('ui.customerSigningSignProductSalesperson')" width="120" />
-    <el-table-column prop="created_at" :label="$t('ui.customerSigningSignProductCreatedDate')" />
+    <el-table-column prop="salesman.name" :label="$('ui.customerSigningSignProductSalesperson')" width="120" />
+    <el-table-column prop="created_at" :label="$('ui.customerSigningSignProductCreatedDate')" />
   </el-table>
 
   <el-table
@@ -57,12 +57,12 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection" width="55" />
-    <el-table-column prop="contract_no" :label="$t('ui.customerListContractOrderNo')" width="180" />
-    <el-table-column prop="contract_price" :label="$t('ui.customerSigningSignProductOrderAmountYuan')" />
-    <el-table-column prop="price" :label="$t('ui.customerListContractPaymentStatus')" width="120">
+    <el-table-column prop="contract_no" :label="$('ui.customerListContractOrderNo')" width="180" />
+    <el-table-column prop="contract_price" :label="$('ui.customerSigningSignProductOrderAmountYuan')" />
+    <el-table-column prop="price" :label="$('ui.customerListContractPaymentStatus')" width="120">
       <template slot-scope="scope">
-        <span class="pointer color-success" v-if="parseFloat(scope.row.surplus) === 0">{{ $t("ui.customerContractContractPaymentSettled") }}</span>
-        <span class="pointer color-warning" v-else>{{ $t("ui.customerContractContractPaymentUnsettled") }}</span>
+        <span class="pointer color-success" v-if="parseFloat(scope.row.surplus) === 0">{{ $("ui.customerContractContractPaymentSettled") }}</span>
+        <span class="pointer color-warning" v-else>{{ $("ui.customerContractContractPaymentUnsettled") }}</span>
         <!-- <div class="dictionaries-tag over-text" :style="{
                   color: scope.row.contract_status.color || '#1890ff',
                   background: scope.row.contract_status.color
@@ -73,15 +73,15 @@
               </div> -->
       </template>
     </el-table-column>
-    <el-table-column prop="contract_customer" :label="$t('ui.developModuleTreeCustomerName')" width="120" />
+    <el-table-column prop="contract_customer" :label="$('ui.developModuleTreeCustomerName')" width="120" />
 
-    <el-table-column prop="salesman.name" :label="$t('ui.hrAssessCheckIndexCreator')" width="120">
+    <el-table-column prop="salesman.name" :label="$('ui.hrAssessCheckIndexCreator')" width="120">
       <template slot-scope="scope">
         {{ scope.row.salesman ? scope.row.salesman.name : '--' }}
       </template>
     </el-table-column>
 
-    <el-table-column prop="created_at" :label="$t('ui.customerSigningSignProductCreatedDate')">
+    <el-table-column prop="created_at" :label="$('ui.customerSigningSignProductCreatedDate')">
       <template slot-scope="scope">
         {{ scope.row.created_at || '--' }}
       </template>

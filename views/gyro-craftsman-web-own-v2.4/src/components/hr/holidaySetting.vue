@@ -2,16 +2,16 @@
 <template>
 <div class="composite-selector">
   <el-table :data="tableData">
-    <el-table-column prop="name" :label="$t('ui.hrHolidaySettingLeaveTypes')" min-width="180">
+    <el-table-column prop="name" :label="$('ui.hrHolidaySettingLeaveTypes')" min-width="180">
       <template slot-scope="scope">
         <div class="flex">
           <div class="ml10">{{ scope.row.name }}</div>
         </div>
       </template>
     </el-table-column>
-    <el-table-column prop="refuse" :label="$t('ui.hrHolidaySettingLeaveUnit')" min-width="100">
+    <el-table-column prop="refuse" :label="$('ui.hrHolidaySettingLeaveUnit')" min-width="100">
       <template slot-scope="scope">
-        <span>{{ scope.row.duration_type == 1 ? $t('ui.hrHolidaySettingByHour') : $t('ui.hrHolidaySettingByDay') }}</span>
+        <span>{{ scope.row.duration_type == 1 ? $('ui.hrHolidaySettingByHour') : $('ui.hrHolidaySettingByDay') }}</span>
       </template>
     </el-table-column>
   </el-table>

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 人事-员工档案 -->
 <template>
   <div class="divBox">
@@ -23,10 +24,10 @@
     <!-- 邀请链接 -->
     <el-dialog :before-close="handleClose" :title="linkTitle" :visible.sync="linkShow" top="20%" width="560px">
       <span>{{ linkTable }}</span>
-      <div class="tips">{{ $ts("提示：") }}{{ linkContent }}</div>
+      <div class="tips">{{ $("legacyScript.hint") }}{{ linkContent }}</div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="linkShow = false">{{ $ts("取 消") }}</el-button>
-        <el-button type="primary" @click="copy">{{ $ts("复制邀请链接") }}</el-button>
+        <el-button @click="linkShow = false">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+        <el-button type="primary" @click="copy">{{ $("legacy.16b16e2e3cc4a368") }}</el-button>
       </span>
     </el-dialog>
 
@@ -43,7 +44,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { perfectCard, deleteCard, formalCard, quitCard, importCardApi, getTemp, getInterview } from '@/api/enterprise'
 import file from '@/utils/file'
 import { getStorageJson } from '@/utils/storage'
@@ -75,37 +75,37 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: i18n.t('ui.hrEnterpriseJobAnalysisPersonName'),
-          placeholder: i18n.t('ui.hrAttendanceSettingNotJoinPersonName'),
+          label: $('ui.hrEnterpriseJobAnalysisPersonName'),
+          placeholder: $('ui.hrAttendanceSettingNotJoinPersonName'),
           key: 'name',
           disabled: true
         },
         {
           type: 'date',
-          label: i18n.t('legacyScript.resignationTime'),
-          placeholder: i18n.t('toptable.selecttime'),
+          label: $('legacyScript.resignationTime'),
+          placeholder: $('toptable.selecttime'),
           key: 'quit_time',
           format: 'yyyy-MM-dd'
         },
         {
           type: 'input',
-          label: i18n.t('legacyScript.reasonsForLeaving'),
-          placeholder: i18n.t('legacyScript.pleaseEnterReasonsForLeaving'),
+          label: $('legacyScript.reasonsForLeaving'),
+          placeholder: $('legacyScript.pleaseEnterReasonsForLeaving'),
           key: 'info'
         },
         {
           type: 'textarea',
-          label: i18n.t('legacyScript.resignationNotes'),
-          placeholder: i18n.t('ui.customerProductListPleaseEnterRemarks'),
+          label: $('legacyScript.resignationNotes'),
+          placeholder: $('ui.customerProductListPleaseEnterRemarks'),
           key: 'mark'
         },
         {
           type: 'user_id',
-          label: i18n.t('legacyScript.handoverPersonnel'),
-          placeholder: i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'),
+          label: $('legacyScript.handoverPersonnel'),
+          placeholder: $('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'),
           only_one: true,
           key: 'user_id',
-          tips: i18n.t('legacyScript.noteAfterProcessingTheResignationTheSystemWillAutomaticallyDeactivate')
+          tips: $('legacyScript.noteAfterProcessingTheResignationTheSystemWillAutomaticallyDeactivate')
         }
       ],
       copyName: '',
@@ -122,24 +122,24 @@ export default {
       actionType: '',
       fromData: {
         width: '600px',
-        title: i18n.t('legacyScript.processResignation'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.processResignation'),
+        btnText: '确定',
         labelWidth: '90px',
         type: ''
       },
       formRules: {
-        quit_time: [{ required: true, message: i18n.t('legacyScript.pleaseSelectResignationTime'), trigger: 'blur' }],
+        quit_time: [{ required: true, message: $('legacyScript.pleaseSelectResignationTime'), trigger: 'blur' }],
         info: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseEnterReasonsForLeaving'),
+            message: $('legacyScript.pleaseEnterReasonsForLeaving'),
             trigger: 'blur'
           }
         ],
         user_id: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectTheHandoverPersonnel'),
+            message: $('legacyScript.pleaseSelectTheHandoverPersonnel'),
             trigger: 'blur'
           }
         ]
@@ -154,7 +154,7 @@ export default {
 
     // 删除: 单个
     onDelete(data) {
-      this.$modalSure(this.$t('business.message10')).then(() => {
+      this.$modalSure(this.$('business.message10')).then(() => {
         deleteCard(data.id).then((res) => {
           this.$refs.dynamic.getList()
         })
@@ -317,7 +317,7 @@ export default {
       document.execCommand('Copy')
       oInput.style.display = 'none'
       document.body.removeChild(oInput)
-      this.$message.success(i18n.t('setting.copytitle'))
+      this.$message.success($('setting.copytitle'))
       this.handleClose()
     },
 

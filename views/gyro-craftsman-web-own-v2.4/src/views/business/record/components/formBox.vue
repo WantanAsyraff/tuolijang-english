@@ -1,11 +1,12 @@
+import { $ } from '@/lang'
 <template>
 <div class="box">
   <oaFromBox
     v-if="search.length > 0"
-:btn-text="$t('ui.fdExamineIndexExport')"
+    :btnText="$('ui.fdExamineIndexExport')"
     :isAddBtn="true"
     :search="search"
-    :title="$t('ui.businessRecordFormBoxApprovalRecords')"
+    :title="$('ui.businessRecordFormBoxApprovalRecords')"
     :btnIcon="false"
     :total="total"
     :viewSearch="viewSearch"
@@ -15,7 +16,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import { approveConfigSearchApi } from '@/api/business'
 import 'animate.css'
@@ -49,10 +49,10 @@ export default {
       viewSearch: [
         {
           field: 'status',
-          title: i18n.t('business.approvalStatus'),
+          title: $('business.approvalStatus'),
           type: 'select',
           options: [
-            { name: this.$t('toptable.all'), value: '' },
+            { name: this.$('toptable.all'), value: '' },
             { name: '待审核', value: 0 },
             { name: '已通过', value: 1 },
             { name: '已拒绝', value: 2 },
@@ -61,7 +61,7 @@ export default {
         },
         {
           field: 'frame_id',
-          title: i18n.t('customer.department'),
+          title: $('customer.department'),
           type: 'frame_id',
           options: []
         }

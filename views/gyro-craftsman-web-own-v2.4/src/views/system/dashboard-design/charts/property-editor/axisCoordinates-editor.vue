@@ -1,8 +1,8 @@
 <template>
   <div class="chart-styles">
     <div class="c-s-t">
-      {{ $ts("Y轴坐标") }}
-      <el-tooltip effect="dark" :content='$ts("百分比堆积柱状图不可设置")' placement="top">
+      {{ $("legacy.224de7f93e29ca60") }}
+      <el-tooltip effect="dark" :content='$("legacy.cf2c8d3f8a2aa2d0")' placement="top">
         <span class="question-icon">
           <el-icon size="16">
             <ElIconQuestionFilled />
@@ -10,7 +10,7 @@
         </span>
       </el-tooltip>
     </div>
-    <el-form-item :label='$ts("最大值")'>
+    <el-form-item :label='$("legacyScript.maximumValue")'>
       <el-input-number
         :disabled="option.chartStyle == 3"
         style="width: 100%"
@@ -18,7 +18,7 @@
         :min="option.axisCoordinates.min"
       />
     </el-form-item>
-    <el-form-item :label='$ts("最小值")'>
+    <el-form-item :label='$("legacyScript.minimumValue")'>
       <el-input-number
         :disabled="option.chartStyle == 3"
         style="width: 100%"

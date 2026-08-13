@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
   <el-form-item label-width="0">
     <el-divider class="custom-divider-margin-top">
-      {{ i18nt('designer.setting.optionsSetting') }}
+      {{ $('designer.setting.optionsSetting') }}
     </el-divider>
     <!-- 选项类型 -->
     <!-- <div class="tab-header">
@@ -50,15 +51,12 @@
 </template>
 
 <script>
-import appI18n from '@/lang'
 import { getDictListApi, getDictTreeListApi } from '@/api/form'
-import i18n from '@/utils/i18n'
 import OptionItemsSetting from '@/components/form-designer/setting-panel/option-items-setting'
 import OptionCascsderSetting from '@/components/form-designer/setting-panel/option-cascsder-setting'
 
 export default {
   name: 'optionItems-editor',
-  mixins: [i18n],
   data() {
     return {
       activeIndex: '1',
@@ -67,7 +65,7 @@ export default {
       level1: ['radio', 'checkbox'],
       level4: ['cascader-radio', 'cascader', 'tag'],
       tabList: [
-        { label: appI18n.t('legacyScript.staticData'), value: '1' },
+        { label: $('legacyScript.staticData'), value: '1' },
         // { label: '数据字典', value: '0' }
       ]
     }
@@ -165,4 +163,3 @@ export default {
   }
 }
 </style>
-@/utils/i18ns

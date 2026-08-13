@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <form-item-wrapper
     :designer="designer"
@@ -23,8 +24,8 @@
       :editable="field.options.editable"
       :format="field.options.format"
       value-format="HH:mm:ss"
-      :start-placeholder="field.options.startPlaceholder || i18nt('render.hint.startTimePlaceholder')"
-      :end-placeholder="field.options.endPlaceholder || i18nt('render.hint.endTimePlaceholder')"
+      :start-placeholder="field.options.startPlaceholder || $('render.hint.startTimePlaceholder')"
+      :end-placeholder="field.options.endPlaceholder || $('render.hint.endTimePlaceholder')"
       @focus="handleFocusCustomEvent"
       @blur="handleBlurCustomEvent"
       @change="handleChangeEvent"
@@ -36,13 +37,12 @@
 <script>
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
-import i18n, { translate } from '@/utils/i18n'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'
 
 export default {
   name: 'time-range-widget',
   componentName: 'FieldWidget', //必须固定为FieldWidget，用于接收父级组件的broadcast事件
-  mixins: [emitter, fieldMixin, i18n],
+  mixins: [emitter, fieldMixin],
   props: {
     field: Object,
     parentWidget: Object,
@@ -114,4 +114,3 @@ export default {
   width: 100% !important;
 }
 </style>
-@/utils/i18ns

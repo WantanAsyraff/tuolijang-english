@@ -3,60 +3,6 @@ const path = require("path");
 const moment = require("moment");
 const defaultSettings = require("./src/settings.js");
 const webpack = require("webpack");
-const HAS_HAN = /[\u3400-\u9fff]/;
-const LOCALIZED_TEMPLATE_ATTRIBUTES = new Set([
-  "alt",
-  "aria-label",
-  "button-text",
-  "cancel-text",
-  "confirm-text",
-  "content",
-  "empty-text",
-  "label",
-  "loading-text",
-  "placeholder",
-  "text",
-  "title",
-]);
-const SKIPPED_LOCALIZATION_TAGS = new Set(["script", "style", "code", "pre"]);
-
-const templateI18nModule = {
-  transformNode(element) {
-    if (
-      !element ||
-      SKIPPED_LOCALIZATION_TAGS.has(element.tag) ||
-      (element.attrsMap && element.attrsMap["data-skip-i18n"] !== undefined)
-    ) {
-      return element;
-    }
-
-    (element.children || []).forEach((child) => {
-      if (child.type !== 3 || !HAS_HAN.test(child.text || "")) return;
-      child.type = 2;
-      child.expression = `_s($ts(${JSON.stringify(child.text)}))`;
-    });
-
-    (element.attrs || []).forEach((attribute) => {
-      if (
-        !LOCALIZED_TEMPLATE_ATTRIBUTES.has(attribute.name) ||
-        typeof attribute.value !== "string"
-      ) {
-        return;
-      }
-      try {
-        const source = JSON.parse(attribute.value);
-        if (HAS_HAN.test(source)) {
-          attribute.value = `_s($ts(${JSON.stringify(source)}))`;
-        }
-      } catch (error) {
-        // Dynamic attributes are already expressions and must remain untouched.
-      }
-    });
-
-    return element;
-  },
-};
-
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
@@ -184,10 +130,6 @@ module.exports = {
       .loader("vue-loader")
       .tap((options) => {
         options.compilerOptions.preserveWhitespace = false;
-        options.compilerOptions.modules = [
-          ...(options.compilerOptions.modules || []),
-          templateI18nModule,
-        ];
         return options;
       })
       .end();

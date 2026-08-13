@@ -6,9 +6,9 @@
         <div class="assessment-card-content">
           <div class="plan-tabs-content">
             <el-tabs v-model="tabCur">
-              <el-tab-pane :label='$ts("当前考核")' name="0" />
-              <el-tab-pane :label='$ts("我的自评")' name="1" />
-              <el-tab-pane :label='$ts("考核统计")' name="2" />
+              <el-tab-pane :label='$("access.currentassessment")' name="0" />
+              <el-tab-pane :label='$("user.work.assessment")' name="1" />
+              <el-tab-pane :label='$("access.assessmentstatistics")' name="2" />
             </el-tabs>
           </div>
           <div class="assessment-main">

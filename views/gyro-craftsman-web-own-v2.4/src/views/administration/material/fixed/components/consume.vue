@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 消耗物资-物资管理 -->
 <template>
 <div>
@@ -13,7 +14,7 @@
         :dropdownList="dropdownList"
         :isViewSearch="false"
         :total="total"
-        :title="$t('ui.administrationMaterialFixedConsumeMaterialManagement')"
+        :title="$('ui.administrationMaterialFixedConsumeMaterialManagement')"
         :isAddBtn="true"
         @addDataFn="handleManage"
         @dropdownFn="dropdownFn"
@@ -30,29 +31,29 @@
           @selection-change="handleSelectionChange"
         >
           <el-table-column type="selection" width="55"> </el-table-column>
-          <el-table-column prop="name" :label="$t('ui.administrationMaterialChartIndexMaterialName')" min-width="100" />
-          <el-table-column prop="units" :label="$t('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" />
-          <el-table-column prop="cate.cate_name" :label="$t('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" />
-          <el-table-column prop="specs" :label="$t('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
-          <el-table-column prop="stock" :label="$t('ui.administrationMaterialFixedConsumeInventoryQuantity')" min-width="80" />
-          <el-table-column prop="used" :label="$t('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="80" />
-          <el-table-column prop="describe" :label="$t('public.operation')" fixed="right" width="200">
+          <el-table-column prop="name" :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="100" />
+          <el-table-column prop="units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" />
+          <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" />
+          <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
+          <el-table-column prop="stock" :label="$('ui.administrationMaterialFixedConsumeInventoryQuantity')" min-width="80" />
+          <el-table-column prop="used" :label="$('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="80" />
+          <el-table-column prop="describe" :label="$('public.operation')" fixed="right" width="200">
             <template slot-scope="scope">
-              <el-button type="text" @click="handleRecord(scope.row)">{{ $t("ui.administrationMaterialFixedConsumeRecords") }}</el-button>
+              <el-button type="text" @click="handleRecord(scope.row)">{{ $("ui.administrationMaterialFixedConsumeRecords") }}</el-button>
 
-              <el-button type="text" @click="handleStock(scope.row)">{{ $t("ui.administrationMaterialChartIndexRestock") }}</el-button>
+              <el-button type="text" @click="handleStock(scope.row)">{{ $("ui.administrationMaterialChartIndexRestock") }}</el-button>
 
               <el-dropdown class="ml10">
                 <span class="el-dropdown-link el-button--text el-button">
-                  {{ $t('hr.more') }}
+                  {{ $('hr.more') }}
                   <i class="el-icon-arrow-down el-icon--right" />
                 </span>
                 <el-dropdown-menu style="text-align: center">
-                  <el-dropdown-item @click.native="handleCollection(scope.row)"> {{ $t("ui.administrationMaterialFixedConsumeIssue") }} </el-dropdown-item>
+                  <el-dropdown-item @click.native="handleCollection(scope.row)"> {{ $("ui.administrationMaterialFixedConsumeIssue") }} </el-dropdown-item>
                   <el-dropdown-item @click.native="handleEdit(scope.row)">
-                    {{ $t('public.edit') }}
+                    {{ $('public.edit') }}
                   </el-dropdown-item>
-                  <el-dropdown-item @click.native="handleDelete(scope.row.id)">{{ $t("ui.chatIndexDelete") }}</el-dropdown-item>
+                  <el-dropdown-item @click.native="handleDelete(scope.row.id)">{{ $("ui.chatIndexDelete") }}</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </template>
@@ -89,7 +90,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import tree from './tree'
 import addMaterial from './addMaterial'
 import receive from './receive'
@@ -126,8 +126,8 @@ export default {
       },
       fromData1: {
         width: '500px',
-        title: i18n.t('legacyScript.batchMoveMaterialCategories'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.batchMoveMaterialCategories'),
+        btnText: '确定',
         labelWidth: '80px',
         type: ''
       },
@@ -138,7 +138,7 @@ export default {
         cate_id: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectAMaterialCategory'),
+            message: $('legacyScript.pleaseSelectAMaterialCategory'),
             trigger: 'change'
           }
         ]
@@ -160,11 +160,11 @@ export default {
       ],
       dropdownList: [
         {
-          label: i18n.t('ui.administrationMaterialFixedConsumeIssue'),
+          label: $('ui.administrationMaterialFixedConsumeIssue'),
           value: 1
         },
         {
-          label: i18n.t('legacyScript.batchMove'),
+          label: $('legacyScript.batchMove'),
           value: 2
         }
       ],
@@ -209,8 +209,8 @@ export default {
         this.formConfig = [
           {
             type: 'cascaderNew',
-            label: i18n.t('legacyScript.materialCategory'),
-            placeholder: i18n.t('legacyScript.searchAndSelectAMaterialCategory'),
+            label: $('legacyScript.materialCategory'),
+            placeholder: $('legacyScript.searchAndSelectAMaterialCategory'),
             key: 'cate_id',
             options: this.treeData
           }
@@ -222,7 +222,7 @@ export default {
       if (data.value == '1') {
         this.handleReceive()
       } else {
-        if (this.multipleSelection.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectTheMaterialsToOperateOn'))
+        if (this.multipleSelection.length == 0) return this.$message.error($('legacyScript.pleaseSelectTheMaterialsToOperateOn'))
         this.$refs.oaDialog.openBox()
       }
     },
@@ -230,10 +230,10 @@ export default {
     // 领用
     handleCollection(item) {
       this.stockData = {
-        title: i18n.t('legacyScript.materialRequisitionConsumable'),
+        title: $('legacyScript.materialRequisitionConsumable'),
         width: '620px',
-        label: i18n.t('legacyScript.remarks'),
-        placeholder: i18n.t('ui.customerProductListPleaseEnterRemarks'),
+        label: $('legacyScript.remarks'),
+        placeholder: $('ui.customerProductListPleaseEnterRemarks'),
         data: item,
         type: 7
       }
@@ -306,7 +306,7 @@ export default {
     },
     handleManage() {
       this.fromData = {
-        title: i18n.t('legacyScript.newInboundEntryConsumable'),
+        title: $('legacyScript.newInboundEntryConsumable'),
         width: 720,
         treeData: this.treeData,
         selectData: this.selectData,
@@ -323,7 +323,7 @@ export default {
         row.cate.path.push(row.cid) // 添加当前分类
       }
       this.fromData = {
-        title: i18n.t('legacyScript.editInboundEntryConsumable'),
+        title: $('legacyScript.editInboundEntryConsumable'),
         width: 720,
         treeData: this.treeData,
         edit: true,
@@ -335,7 +335,7 @@ export default {
     },
     handleReceive() {
       this.receiveData = {
-        title: i18n.t('legacyScript.requisitionConsumable'),
+        title: $('legacyScript.requisitionConsumable'),
         width: 820,
         selectData: this.selectReceive,
         type: this.types
@@ -344,7 +344,7 @@ export default {
     },
     handleRecord(row) {
       this.recordData = {
-        title: i18n.t('legacyScript.recordDetailsConsumable'),
+        title: $('legacyScript.recordDetailsConsumable'),
         width: 820,
         data: row,
         type: this.types
@@ -355,11 +355,11 @@ export default {
     },
     handleStock(row) {
       this.stockData = {
-        title: i18n.t('ui.administrationMaterialChartIndexRestock'),
+        title: $('ui.administrationMaterialChartIndexRestock'),
         width: '520px',
         data: row,
-        label: i18n.t('legacyScript.stockInDescription'),
-        placeholder: i18n.t('legacyScript.pleaseEnterStockInDescription'),
+        label: $('legacyScript.stockInDescription'),
+        placeholder: $('legacyScript.pleaseEnterStockInDescription'),
         type: 4
       }
       this.$refs.materialDialog.handleOpen()

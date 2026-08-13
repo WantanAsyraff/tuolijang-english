@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import { enterpriseCardApi, enterpriseBatchApi } from '@/api/enterprise'
 let myMixins = {
   methods: {
@@ -199,7 +199,7 @@ let myMixins = {
       }
       if (type === 2) {
         if (this.selection.length <= 0) {
-          this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
+          this.$message.error($('legacyScript.selectAtLeastOneItem2'))
         } else {
           let ids = []
           this.$modalSure('删除后不可恢复,您确认要删除吗').then(() => {

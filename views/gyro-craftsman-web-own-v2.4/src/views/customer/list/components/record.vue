@@ -2,7 +2,7 @@
 <template>
   <div class="followUpRecord">
     <div class="btn-box1 mb10">
-      <div class="title-16">{{ $ts("跟进记录") }}</div>
+      <div class="title-16">{{ $("customer.followrecord") }}</div>
     </div>
     <record-upload :form-info="formInfo" @change="uploadChange"></record-upload>
     <div class="recordContent">
@@ -25,8 +25,8 @@
               <el-dropdown class="more">
                 <i class="el-icon-more" />
                 <el-dropdown-menu style="width: 100px; text-align: center">
-                  <el-dropdown-item @click.native="handleContract(activity)">{{ $ts("编辑") }} </el-dropdown-item>
-                  <el-dropdown-item @click.native="handleDelete(activity)"> {{ $ts("删除") }} </el-dropdown-item>
+                  <el-dropdown-item @click.native="handleContract(activity)">{{ $("public.edit") }} </el-dropdown-item>
+                  <el-dropdown-item @click.native="handleDelete(activity)"> {{ $("public.delete") }} </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>
@@ -34,7 +34,7 @@
               {{ activity.content }}
             </div>
             <div class="reminderTime" v-if="activity.time">
-              <img src="../../../../assets/images/zhong.png" alt="" class="zhong" /> {{ $ts("提醒时间：") }}{{ activity.time }}
+              <img src="../../../../assets/images/zhong.png" alt="" class="zhong" /> {{ $("ui.userCalendarAddTodoReminderTime") }}{{ activity.time }}
             </div>
           </div>
           <div v-else>
@@ -48,8 +48,8 @@
                 <el-dropdown class="more">
                   <i class="el-icon-more" />
                   <el-dropdown-menu style="width: 100px; text-align: center">
-                    <el-dropdown-item @click.native="handleEdit(activity, index)"> {{ $ts("编辑") }} </el-dropdown-item>
-                    <el-dropdown-item @click.native="handleDelete(activity)"> {{ $ts("删除") }} </el-dropdown-item>
+                    <el-dropdown-item @click.native="handleEdit(activity, index)"> {{ $("public.edit") }} </el-dropdown-item>
+                    <el-dropdown-item @click.native="handleDelete(activity)"> {{ $("public.delete") }} </el-dropdown-item>
                   </el-dropdown-menu>
                 </el-dropdown>
               </div>
@@ -215,7 +215,7 @@ export default {
 
     // 删除
     async handleDelete(row, index) {
-      await this.$modalSure(this.$t('customer.placeholder63'))
+      await this.$modalSure(this.$('customer.placeholder63'))
       await delClientFollowApi(row.id)
       if (this.liaison.page > 1 && this.liaisonData.length <= 1) {
         this.liaison.page--

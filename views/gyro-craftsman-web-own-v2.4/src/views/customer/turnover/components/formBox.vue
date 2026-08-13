@@ -2,34 +2,34 @@
   <div>
     <el-form :inline="true" class="from-s">
       <el-row>
-        <el-form-item :label="$t('finance.entrytime')" class="select-bar">
+        <el-form-item :label="$('finance.entrytime')" class="select-bar">
           <el-date-picker
             v-model="timeVal"
             type="daterange"
             class="time"
             size="small"
             :picker-options="pickerOptions"
-            :placeholder="$t('toptable.selecttime')"
+            :placeholder="$('toptable.selecttime')"
             format="yyyy/MM/dd"
             value-format="yyyy/MM/dd"
-            :range-separator="$t('toptable.to')"
-            :start-placeholder="$t('toptable.startdate')"
-            :end-placeholder="$t('toptable.endingdate')"
+            :range-separator="$('toptable.to')"
+            :start-placeholder="$('toptable.startdate')"
+            :end-placeholder="$('toptable.endingdate')"
             :clearable="false"
             @change="onchangeTime"
           />
         </el-form-item>
 
-        <el-form-item :label='$ts("管理范围")' class="select-bar">
+        <el-form-item :label='$("setting.admin.addresspermissions")' class="select-bar">
           <manage-range ref="manageRange" @change="changeMastart"></manage-range>
         </el-form-item>
 
         <!-- 订单分类 -->
 
-        <el-form-item :label='$ts("订单分类")' class="select-bar category_id">
+        <el-form-item :label='$("legacy.05c2ec073f7088ac")' class="select-bar category_id">
           <el-cascader
             size="small"
-            :placeholder='$ts("请选择订单分类")'
+            :placeholder='$("legacyScript.pleaseSelectOrderCategory")'
             v-model="tableFrom.category_id"
             :options="options"
             :props="{ checkStrictly: false, label: 'name', value: 'value', multiple: true }"
@@ -41,7 +41,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-tooltip effect="dark" :content='$ts("重置搜索条件")' placement="top">
+          <el-tooltip effect="dark" :content='$("ui.administrationMaterialFixedRecordResetSearchConditions")' placement="top">
             <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
           </el-tooltip>
         </el-form-item>

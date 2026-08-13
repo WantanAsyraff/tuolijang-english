@@ -9,12 +9,12 @@
         :isViewSearch="false"
         :search="search"
         :total="totalPage"
-        :title="$t('ui.userDailyMyMyReports')"
+        :title="$('ui.userDailyMyMyReports')"
         @confirmData="confirmData"
       >
         <template slot="rightBtn" class="box">
           <el-dropdown size="small" type="primary" @command="handleDaily">
-            <el-button size="small" type="primary">{{ $t('ui.userDailyMyWriteReport') }}</el-button>
+            <el-button size="small" type="primary">{{ $('ui.userDailyMyWriteReport') }}</el-button>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item v-for="(item, index) in dailyData" :key="item.id" :command="item.id">
                 {{ item.name }}
@@ -33,14 +33,14 @@
       </oaFromBox>
       <div v-loading="loading" class="mt-10">
         <el-table ref="elTable" :data="tableData" :height="tableHeight">
-          <el-table-column :label="$t('toptable.name')" prop="name" width="90" />
-          <el-table-column :label="$t('toptable.department')" min-width="100" prop="frame_name" />
-          <el-table-column :label="$t('toptable.worktoday')" min-width="250" prop="finish">
+          <el-table-column :label="$('toptable.name')" prop="name" width="90" />
+          <el-table-column :label="$('toptable.department')" min-width="100" prop="frame_name" />
+          <el-table-column :label="$('toptable.worktoday')" min-width="250" prop="finish">
             <template slot-scope="scope">
               <div v-for="(item, index) in scope.row.finish" :key="index" class="textover3">{{ item }}</div>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('toptable.tomorrowplan')" min-width="250" prop="plan">
+          <el-table-column :label="$('toptable.tomorrowplan')" min-width="250" prop="plan">
             <template slot-scope="scope">
               <div v-if="scope.row.types != 3">
                 <div v-for="(item, index) in scope.row.plan" :key="index" class="textover3">{{ item }}</div>
@@ -49,16 +49,16 @@
             </template>
           </el-table-column>
 
-          <el-table-column :label="$t('user.work.dailytype')" width="120">
+          <el-table-column :label="$('user.work.dailytype')" width="120">
             <template slot-scope="scope">
               {{ getDailyTypes(scope.row.types) }}
             </template>
           </el-table-column>
 
-          <el-table-column :label="$t('user.work.creationtime')" prop="created_at" width="160" />
+          <el-table-column :label="$('user.work.creationtime')" prop="created_at" width="160" />
 
           <el-table-column
-            :label="$t('public.operation')"
+            :label="$('public.operation')"
             :show-overflow-tooltip="true"
             :width="tableFrom.type == 0 ? 160 : 60"
             fixed="right"
@@ -69,7 +69,7 @@
                 type="text"
                 @click="onCheck(scope.row.daily_id, 'check', scope.row)"
               >
-                {{ $t('public.check') }}
+                {{ $('public.check') }}
               </el-button>
 
               <el-button
@@ -77,7 +77,7 @@
                 type="text"
                 @click="onEdit(scope.row.daily_id, 'edit', scope.row)"
               >
-                {{ $t('public.edit') }}
+                {{ $('public.edit') }}
               </el-button>
 
               <el-button
@@ -85,7 +85,7 @@
                 type="text"
                 @click="onDelete(scope.row.daily_id)"
               >
-                {{ $t("ui.chatIndexDelete") }}
+                {{ $("ui.chatIndexDelete") }}
               </el-button>
             </template>
           </el-table-column>
@@ -145,21 +145,21 @@ export default {
       totalSubmit: 0,
 
       fromList: [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('toptable.thisweek'), val: 'week' },
-        { text: this.$t('toptable.thismonth'), val: 'month' },
-        { text: this.$t('toptable.lastmonth'), val: 'last month' }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('toptable.thisweek'), val: 'week' },
+        { text: this.$('toptable.thismonth'), val: 'month' },
+        { text: this.$('toptable.lastmonth'), val: 'last month' }
       ],
       dailyData: [
-        { name: this.$t('user.work.writedaily'), id: 0 },
-        { name: this.$t('user.work.writedailyweek'), id: 1 },
-        { name: this.$t('user.work.writedailymonth'), id: 2 },
+        { name: this.$('user.work.writedaily'), id: 0 },
+        { name: this.$('user.work.writedailyweek'), id: 1 },
+        { name: this.$('user.work.writedailymonth'), id: 2 },
         { name: '填写汇报', id: 3 }
       ],
       options: [
-        { name: this.$t('user.work.dailyday'), id: 0 },
-        { name: this.$t('user.work.weekday'), id: 1 },
-        { name: this.$t('user.work.monthday'), id: 2 },
+        { name: this.$('user.work.dailyday'), id: 0 },
+        { name: this.$('user.work.weekday'), id: 1 },
+        { name: this.$('user.work.monthday'), id: 2 },
         { name: '汇报', id: 3 }
       ],
 
@@ -201,9 +201,9 @@ export default {
           field_name_en: 'types',
           form_value: 'select',
           data_dict: [
-            { name: this.$t('user.work.dailyday'), id: 0 },
-            { name: this.$t('user.work.weekday'), id: 1 },
-            { name: this.$t('user.work.monthday'), id: 2 },
+            { name: this.$('user.work.dailyday'), id: 0 },
+            { name: this.$('user.work.weekday'), id: 1 },
+            { name: this.$('user.work.monthday'), id: 2 },
             { name: '汇报', id: 3 }
           ],
           value: 0
@@ -328,10 +328,10 @@ export default {
 
     setOptions() {
       this.fromList = [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('toptable.thisweek'), val: 'week' },
-        { text: this.$t('toptable.thismonth'), val: 'month' },
-        { text: this.$t('toptable.lastmonth'), val: 'lastmonth' }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('toptable.thisweek'), val: 'week' },
+        { text: this.$('toptable.thismonth'), val: 'month' },
+        { text: this.$('toptable.lastmonth'), val: 'lastmonth' }
       ]
     },
 

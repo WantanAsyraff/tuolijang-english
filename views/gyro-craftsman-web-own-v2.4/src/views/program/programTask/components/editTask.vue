@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 编辑任务侧滑弹窗  -->
 <template>
   <div class="station">
@@ -13,7 +14,7 @@
       <template #title>
         <div class="flex between-header align-center">
           <div class="flex align-center">
-            <span class="ident copy" @click="copy" :title="$t('ui.programProgramTaskEditTaskClickToCopyTheWorkItemLink')" :data-clipboard-text="identAddress()"
+            <span class="ident copy" @click="copy" :title="$('ui.programProgramTaskEditTaskClickToCopyTheWorkItemLink')" :data-clipboard-text="identAddress()"
               >#{{ formData.ident }}</span
             >
             <el-select
@@ -22,7 +23,7 @@
               filterable
               :disabled="!isOperable"
               collapse-tags
-              :placeholder="$t('ui.customerSetupDictionaryIndexStatus')"
+              :placeholder="$('ui.customerSetupDictionaryIndexStatus')"
               style="width: 100px"
               @change="changeStatus"
             >
@@ -39,9 +40,9 @@
                 <i class="iconfont icongengduo2 fz30 pointer mb14"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item @click.native="addSubtasks(formData)">{{ $t("ui.programProgramTaskEditTaskNewSubtask") }}</el-dropdown-item>
-                <el-dropdown-item @click.native="copyTask">{{ $t("ui.programProgramTaskEditTaskCopyWorkItem") }}</el-dropdown-item>
-                <el-dropdown-item v-if="formData.operate" @click.native="deleteTask">{{ $t("ui.chatIndexDelete") }}</el-dropdown-item>
+                <el-dropdown-item @click.native="addSubtasks(formData)">{{ $("ui.programProgramTaskEditTaskNewSubtask") }}</el-dropdown-item>
+                <el-dropdown-item @click.native="copyTask">{{ $("ui.programProgramTaskEditTaskCopyWorkItem") }}</el-dropdown-item>
+                <el-dropdown-item v-if="formData.operate" @click.native="deleteTask">{{ $("ui.chatIndexDelete") }}</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
@@ -57,7 +58,7 @@
             v-model="formData.name"
             maxlength="100"
             show-word-limit
-            :placeholder="$t('ui.programProgramTaskAddTaskPleaseEnterTaskName')"
+            :placeholder="$('ui.programProgramTaskAddTaskPleaseEnterTaskName')"
             ref="name"
             @blur="handleName"
             @keyup.native.enter="nameShow = false"
@@ -66,7 +67,7 @@
         </div>
         <div class="creator">
           <span
-            >{{ formData.creator ? formData.creator[0].name : '' }} · {{ formData.created_at }}{{ $t("ui.programProgramTaskEditTaskLastUpdated") }}{{
+            >{{ formData.creator ? formData.creator[0].name : '' }} · {{ formData.created_at }}{{ $("ui.programProgramTaskEditTaskLastUpdated") }}{{
               formData.updated_at
             }}</span
           >
@@ -76,7 +77,7 @@
         <div class="left-card">
           <el-row class="ml20">
             <el-col :span="12">
-              <el-form-item :label="$t('ui.programProgramTaskAddTaskRelatedProject')" prop="program_id">
+              <el-form-item :label="$('ui.programProgramTaskAddTaskRelatedProject')" prop="program_id">
                 <div class="bg">
                   <span v-if="!programShow" @click.stop="handleToggle('programShow')" class="pointer p-l-12">{{
                     getProgramVal()
@@ -86,7 +87,7 @@
                   v-if="programShow"
                   v-model="formData.program_id"
                   size="small"
-                  :placeholder="$t('ui.programProgramTaskAddTaskPleaseSelectRelatedProject')"
+                  :placeholder="$('ui.programProgramTaskAddTaskPleaseSelectRelatedProject')"
                   @change="handleContract"
                   filterable
                 >
@@ -96,7 +97,7 @@
                       <span
                         v-if="item.status == 1 || item.status == 2"
                         :class="item.status == 1 ? 'program-stop' : 'program-close'"
-                        >{{ item.status == 1 ? $t('ui.programProgramTaskAddTaskPaused') : $t('ui.programProgramTaskAddTaskClosed') }}</span
+                        >{{ item.status == 1 ? $('ui.programProgramTaskAddTaskPaused') : $('ui.programProgramTaskAddTaskClosed') }}</span
                       >
                     </div>
                   </el-option>
@@ -104,9 +105,9 @@
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item :label="$t('ui.programProgramListAddProgramOwner')" class="select-bar">
+              <el-form-item :label="$('ui.programProgramListAddProgramOwner')" class="select-bar">
                 <div v-if="!adminsShow" @click.stop="handleToggle('adminsShow')" class="admins pointer bg flex">
-                  <div class="p-l-12" v-if="formData.admins && formData.admins.length == 0">{{ $t("ui.programProgramTaskEditTaskNotSet") }}</div>
+                  <div class="p-l-12" v-if="formData.admins && formData.admins.length == 0">{{ $("ui.programProgramTaskEditTaskNotSet") }}</div>
                   <div class="avatar-box p-l-12" v-for="(item, index) in formData.admins" :key="index">
                     <img v-default-avatar="item" class="mr4" :src="$getAvatarSrc(item)" alt="" />
                     <span>{{ item.name }}</span>
@@ -118,7 +119,7 @@
                   size="small"
                   filterable
                   clearable
-                  :placeholder="$t('ui.programProgramListAddProgramPleaseSelectOwner')"
+                  :placeholder="$('ui.programProgramListAddProgramPleaseSelectOwner')"
                   @change="selectAdmins"
                 >
                   <el-option v-for="item in programMemberOptions" :key="item.id" :label="item.name" :value="item.id">
@@ -129,12 +130,12 @@
           </el-row>
           <el-row class="ml20">
             <el-col :span="12">
-              <el-form-item :label="$t('ui.programProgramTaskAddTaskPlannedTime')" class="select-bar">
+              <el-form-item :label="$('ui.programProgramTaskAddTaskPlannedTime')" class="select-bar">
                 <div v-if="!timeValShow" class="bg pointer" @click.stop="handleToggle('timeValShow')">
                   <span class="p-l-12" v-if="formData.plan_start"
                     >{{ formData.plan_start }} - {{ formData.plan_end }}</span
                   >
-                  <span class="p-l-12" v-if="!formData.plan_start">{{ $t("ui.programProgramTaskEditTaskNotSet") }}</span>
+                  <span class="p-l-12" v-if="!formData.plan_start">{{ $("ui.programProgramTaskEditTaskNotSet") }}</span>
                 </div>
                 <el-date-picker
                   v-if="timeValShow"
@@ -144,19 +145,19 @@
                   clearable
                   :format="'yyyy-MM-dd'"
                   :value-format="'yyyy-MM-dd'"
-                  :placeholder="$t('ui.programProgramTaskEditTaskPleaseSelectProjectSchedule')"
-                  :range-separator="$t('toptable.to')"
-                  :start-placeholder="$t('toptable.startdate')"
-                  :end-placeholder="$t('toptable.endingdate')"
+                  :placeholder="$('ui.programProgramTaskEditTaskPleaseSelectProjectSchedule')"
+                  :range-separator="$('toptable.to')"
+                  :start-placeholder="$('toptable.startdate')"
+                  :end-placeholder="$('toptable.endingdate')"
                   @blur="timeValShow = false"
                   @change="onchangeTime"
                 ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item :label="$t('ui.programProgramTaskAddTaskCollaborators')" class="select-bar">
+              <el-form-item :label="$('ui.programProgramTaskAddTaskCollaborators')" class="select-bar">
                 <div v-if="!membersShow" @click.stop="handleToggle('membersShow')" class="admins pointer flex bg">
-                  <div class="p-l-12" v-if="formData.members && formData.members.length == 0">{{ $t("ui.programProgramTaskEditTaskNotSet") }}</div>
+                  <div class="p-l-12" v-if="formData.members && formData.members.length == 0">{{ $("ui.programProgramTaskEditTaskNotSet") }}</div>
                   <div class="avatar-box p-l-12" v-if="formData.members && formData.members.length <= 3">
                     <div class="members-box" v-for="(item, index) in formData.members.slice(0, 3)" :key="index">
                       <img v-default-avatar="item" class="mr4" :src="$getAvatarSrc(item)" alt="" />
@@ -166,7 +167,7 @@
                   <el-popover
                     v-if="formData.members && formData.members.length > 3"
                     placement="bottom-start"
-                    :title="$t('ui.programProgramTaskEditTaskOtherCollaborators')"
+                    :title="$('ui.programProgramTaskEditTaskOtherCollaborators')"
                     width="260"
                     trigger="hover"
                   >
@@ -195,7 +196,7 @@
                   multiple
                   filterable
                   collapse-tags
-                  :placeholder="$t('ui.programProgramTaskAddTaskAssignCollaborators')"
+                  :placeholder="$('ui.programProgramTaskAddTaskAssignCollaborators')"
                 >
                   <el-option v-for="item in programMemberOptions" :key="item.id" :label="item.name" :value="item.id">
                   </el-option>
@@ -206,7 +207,7 @@
 
           <div class="content ml20">
             <div v-if="!describeShow" class="flex describe between">
-              <span>{{ $t("ui.programProgramTaskEditTaskDescription") }}</span>
+              <span>{{ $("ui.programProgramTaskEditTaskDescription") }}</span>
               <i v-if="isOperable" class="iconfont iconbianji pointer" @click="describeShow = true"></i>
             </div>
             <div
@@ -227,19 +228,19 @@
                 type="notepad"
                 :content="formData.describe"
                 @input="ueditorEdit"
-                :placeholder="formData.describe ? '' : $t('ui.programProgramTaskEditTaskNoDescription')"
+                :placeholder="formData.describe ? '' : $('ui.programProgramTaskEditTaskNoDescription')"
               />
             </div>
 
             <div v-if="describeShow" class="ueditorBtn">
-              <el-button @click="cancelDescribe">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-              <el-button type="primary" @click="submitDescribe">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+              <el-button @click="cancelDescribe">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+              <el-button type="primary" @click="submitDescribe">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
             </div>
           </div>
           <!-- 评论 -->
           <div class="comment">
             <el-tabs v-model="activeName">
-              <el-tab-pane :label="`评论(${totalCount})`" name="reply">
+              <el-tab-pane :label="$('ui.shared.commentsCount', { count: totalCount })" name="reply">
                 <comment
                   ref="comment"
                   :pid="formData.pid"
@@ -247,17 +248,17 @@
                   @gettotalCount="gettotalCount"
                 ></comment>
               </el-tab-pane>
-              <el-tab-pane :label="`操作日志(${dynamicTotalCount})`" name="dynamic">
+              <el-tab-pane :label="$('ui.shared.operationLogsCount', { count: dynamicTotalCount })" name="dynamic">
                 <oa-log :list="dynamicTaskList"></oa-log>
               </el-tab-pane>
             </el-tabs>
           </div>
         </div>
         <div class="right-card">
-          <el-form-item :label="$t('ui.programProgramTaskAddTaskParentTask')" prop="path">
+          <el-form-item :label="$('ui.programProgramTaskAddTaskParentTask')" prop="path">
             <div v-if="!pathShow" @click.stop="handleToggle('pathShow')" class="flex bg pointer pointer p-l-12">
               <span v-if="formData.parent">{{ formData.parent.name }}</span>
-              <span class="" v-else>{{ $t("ui.programProgramTaskEditTaskNotSet") }}</span>
+              <span class="" v-else>{{ $("ui.programProgramTaskEditTaskNotSet") }}</span>
             </div>
 
             <el-cascader
@@ -272,7 +273,7 @@
             >
             </el-cascader>
           </el-form-item>
-          <el-form-item :label="$t('ui.programProgramTaskAddTaskPriority')" class="select-bar pointer">
+          <el-form-item :label="$('ui.programProgramTaskAddTaskPriority')" class="select-bar pointer">
             <div v-if="!priorityShow" class="flex align-center bg p-l-12" @click.stop="handleToggle('priorityShow')">
               <span class="circle" :class="getClass()"></span>
               <span>{{ getVal() }}</span>
@@ -282,30 +283,30 @@
               v-else
               v-model="formData.priority"
               size="small"
-              :placeholder="$t('ui.programProgramTaskAddTaskPleaseSelectPriority')"
+              :placeholder="$('ui.programProgramTaskAddTaskPleaseSelectPriority')"
             >
               <el-option v-for="item in priorityOptions" :key="item.value" :label="item.label" :value="item.value">
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item v-if="formData.program_id" :label="$t('ui.programProgramTaskAddTaskRelatedVersion')" prop="version_id">
+          <el-form-item v-if="formData.program_id" :label="$('ui.programProgramTaskAddTaskRelatedVersion')" prop="version_id">
             <div v-if="!versionShow" class="bg pointer set-version" @click.stop="handleToggle('versionShow')">
               <span class="pointer p-l-12">{{ getVersionVal() }}</span>
-              <span class="" v-if="programVersionList.length == 0 || !formData.version_id">{{ $t("ui.programProgramTaskEditTaskNotSet") }}</span>
+              <span class="" v-if="programVersionList.length == 0 || !formData.version_id">{{ $("ui.programProgramTaskEditTaskNotSet") }}</span>
             </div>
             <el-select
               v-if="versionShow"
               v-model="formData.version_id"
               size="small"
               clearable
-              :placeholder="$t('ui.programProgramTaskAddTaskPleaseSelectRelatedVersion')"
+              :placeholder="$('ui.programProgramTaskAddTaskPleaseSelectRelatedVersion')"
               @change="handleVersion"
               style="width: 80%"
               filterable
             >
               <el-option v-for="item in programVersionList" :key="item.id" :label="item.name" :value="item.id" />
             </el-select>
-            <span v-if="isOperable" class="pointer settings" @click="setVersion">{{ $t("ui.chatIndexSettings") }}</span>
+            <span v-if="isOperable" class="pointer settings" @click="setVersion">{{ $("ui.chatIndexSettings") }}</span>
           </el-form-item>
         </div>
       </el-form>
@@ -314,7 +315,7 @@
     <el-dialog
       :append-to-body="true"
       top="13%"
-      :title="$t('ui.programProgramTaskAddTaskVersionSettings')"
+      :title="$('ui.programProgramTaskAddTaskVersionSettings')"
       :visible.sync="dialogVisible"
       width="30%"
       :before-close="handleCloseVersion"
@@ -322,17 +323,17 @@
       <draggable v-model="inputs" class="drag-area" @start="dragging = true" @end="dragging = false">
         <div v-for="(input, index) in inputs" :key="index" class="input-row">
           <i class="iconfont icontuodong pointer"></i>
-          <el-input v-model="input.name" :placeholder="$t('ui.programProgramTaskAddTaskPleaseEnterVersionName')"></el-input>
+          <el-input v-model="input.name" :placeholder="$('ui.programProgramTaskAddTaskPleaseEnterVersionName')"></el-input>
           <span class="pointer" @click="removeInput(index)">-</span>
         </div>
       </draggable>
       <span class="add-input pointer" @click="addInput">
         <i class="el-icon-plus"></i>
-        <span>{{ $t("ui.programProgramTaskAddTaskAddVersion") }}</span>
+        <span>{{ $("ui.programProgramTaskAddTaskAddVersion") }}</span>
       </span>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="handleCloseVersion">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-        <el-button type="primary" @click="submitVersion">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+        <el-button @click="handleCloseVersion">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+        <el-button type="primary" @click="submitVersion">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
       </div>
     </el-dialog>
 
@@ -340,7 +341,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   putProgramTaskApi,
   getProgramTaskInfoApi,
@@ -411,54 +411,54 @@ export default {
       priorityOptions: [
         {
           value: 1,
-          label: i18n.t('ui.programProgramTaskTableDataUrgent')
+          label: $('ui.programProgramTaskTableDataUrgent')
         },
         {
           value: 2,
-          label: i18n.t('ui.programProgramTaskTableDataHeight')
+          label: $('ui.programProgramTaskTableDataHeight')
         },
         {
           value: 3,
-          label: i18n.t('ui.programProgramTaskTableDataCenter')
+          label: $('ui.programProgramTaskTableDataCenter')
         },
         {
           value: 4,
-          label: i18n.t('ui.programProgramTaskTableDataLow')
+          label: $('ui.programProgramTaskTableDataLow')
         },
         {
           value: 0,
-          label: i18n.t('ui.programProgramTaskTableDataNoPriority')
+          label: $('ui.programProgramTaskTableDataNoPriority')
         }
       ],
       statusOptions: [
         {
           value: 0,
-          label: i18n.t('ui.programProgramTaskTableDataUnprocessed')
+          label: $('ui.programProgramTaskTableDataUnprocessed')
         },
         {
           value: 1,
-          label: i18n.t('customer.execution')
+          label: $('customer.execution')
         },
         {
           value: 2,
-          label: i18n.t('ui.programProgramTaskTableDataResolved')
+          label: $('ui.programProgramTaskTableDataResolved')
         },
         {
           value: 3,
-          label: i18n.t('ui.programProgramTaskTableDataAccepted')
+          label: $('ui.programProgramTaskTableDataAccepted')
         },
         {
           value: 4,
-          label: i18n.t('ui.userExamineExamineRejected')
+          label: $('ui.userExamineExamineRejected')
         },
         {
           value: 5,
-          label: i18n.t('ui.programProgramTaskAddTaskClosed')
+          label: $('ui.programProgramTaskAddTaskClosed')
         }
       ],
       rule: {
-        name: [{ required: true, message: i18n.t('ui.programProgramListAddProgramPleaseEnterProjectName'), trigger: 'blur' }],
-        program_id: [{ required: true, message: i18n.t('ui.programProgramTaskAddTaskPleaseSelectRelatedProject'), trigger: 'change' }]
+        name: [{ required: true, message: $('ui.programProgramListAddProgramPleaseEnterProjectName'), trigger: 'blur' }],
+        program_id: [{ required: true, message: $('ui.programProgramTaskAddTaskPleaseSelectRelatedProject'), trigger: 'change' }]
       },
       nameShow: false,
       adminsShow: false,
@@ -485,7 +485,7 @@ export default {
   methods: {
     handleToggle(showProperty) {
       if (!this.formData.operate) {
-        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
+        return this.$message($('legacyScript.noOperationPermissions'))
       }
       this[showProperty] = true
     },
@@ -671,7 +671,7 @@ export default {
         this.nameShow = false
         this.putProgramTask('name', this.formData.name)
       } else {
-        this.$message(i18n.t('legacyScript.taskNameIsRequired'))
+        this.$message($('legacyScript.taskNameIsRequired'))
       }
     },
 
@@ -824,7 +824,7 @@ export default {
       this.$nextTick(() => {
         const clipboard = new ClipboardJS('.copy')
         clipboard.on('success', () => {
-          this.$message.success(this.$t('setting.copytitle'))
+          this.$message.success(this.$('setting.copytitle'))
           clipboard.destroy()
         })
         this.$store.commit('app/SET_CLICK_TAB', false)

@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '颜色选择器';
@@ -19,16 +19,16 @@ export default {
   },
   props() {
     return [
-      { type: 'switch', field: 'disabled', title: i18n.t('legacyScript.disable') },
+      { type: 'switch', field: 'disabled', title: $('legacyScript.disable') },
       {
         type: 'switch',
         field: 'showAlpha',
-        title: i18n.t('legacyScript.supportTransparencySelection'),
+        title: $('legacyScript.supportTransparencySelection'),
       },
       {
         type: 'select',
         field: 'colorFormat',
-        title: i18n.t('legacyScript.colorFormat'),
+        title: $('legacyScript.colorFormat'),
         options: [
           { label: 'hsl', value: 'hsl' },
           { label: 'hsv', value: 'hsv' },

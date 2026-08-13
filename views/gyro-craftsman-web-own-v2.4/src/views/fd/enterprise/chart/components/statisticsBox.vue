@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <oaFromBox
@@ -14,7 +15,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { billCateApi } from '@/api/enterprise'
 import oaFromBox from '@/components/common/oaFromBox'
 export default {
@@ -34,11 +34,11 @@ export default {
         type: '',
         cate_id: []
       },
-      statusOptions: [{ label: this.$t('toptable.all'), value: '' }],
+      statusOptions: [{ label: this.$('toptable.all'), value: '' }],
       sexOptions: [
-        { label: this.$t('finance.all'), value: '' },
-        { label: this.$t('finance.income'), value: '1' },
-        { label: this.$t('finance.pay'), value: '0' }
+        { label: this.$('finance.all'), value: '' },
+        { label: this.$('finance.income'), value: '1' },
+        { label: this.$('finance.pay'), value: '0' }
       ],
       search: [
         {
@@ -66,15 +66,15 @@ export default {
           options: [
             {
               value: '',
-              label: i18n.t('finance.all')
+              label: $('finance.all')
             },
             {
               value: '1',
-              label: i18n.t('customer.income')
+              label: $('customer.income')
             },
             {
               value: '0',
-              label: i18n.t('customer.expense')
+              label: $('customer.expense')
             }
           ]
         }
@@ -108,7 +108,7 @@ export default {
       const data = {
         types: type
       }
-      const list = [{ label: this.$t('toptable.all'), value: '' }]
+      const list = [{ label: this.$('toptable.all'), value: '' }]
       billCateApi(data).then((res) => {
         res.data === undefined ? (res.data = []) : res.data
         this.statusOptions = res.data

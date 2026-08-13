@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import XmindParse from 'simple-mind-map/src/parse/xmind';
 
 // 复制文本到剪贴板
@@ -55,7 +55,7 @@ export const fullScreen = element => {
 export const generateXmindFile = async (fileName) => {
   const XMIND_FILE_TEMPLATE_DATA = {
     "data": {
-      "text": i18n.t('legacyScript.centralTopicCentralTopicCentralTopicCentralTopicCentral'),
+      "text": $('legacyScript.centralTopicCentralTopicCentralTopicCentralTopicCentral'),
       "generalization": [],
       "expand": true,
       "richText": true,

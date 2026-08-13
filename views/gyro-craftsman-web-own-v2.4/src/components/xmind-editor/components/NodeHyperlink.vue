@@ -1,24 +1,24 @@
 <template>
-<el-dialog class="nodeHyperlinkDialog" :title="$t('ui.xmindEditorToolbarNodeBtnListHyperlink')" :visible.sync="dialogVisible" :width="isMobile ? '90%' : '50%'"
+<el-dialog class="nodeHyperlinkDialog" :title="$('ui.xmindEditorToolbarNodeBtnListHyperlink')" :visible.sync="dialogVisible" :width="isMobile ? '90%' : '50%'"
   :top="isMobile ? '20px' : '15vh'">
   <div class="item">
-    <span class="name">{{ $t("ui.xmindEditorNodeHyperlinkLink") }}</span>
-    <el-input v-model="link" size="mini" :placeholder="$t('ui.xmindEditorNodeHyperlinkEnterTheLinkAddress')" @keyup.native.stop @keydown.native.stop
+    <span class="name">{{ $("ui.xmindEditorNodeHyperlinkLink") }}</span>
+    <el-input v-model="link" size="mini" :placeholder="$('ui.xmindEditorNodeHyperlinkEnterTheLinkAddress')" @keyup.native.stop @keydown.native.stop
       @blur="handleUrl()">
       <el-select v-model="protocol" slot="prepend" style="width: 80px;">
         <el-option label="https" value="https"></el-option>
         <el-option label="http" value="http"></el-option>
-        <el-option :label="$t('ui.xmindEditorNodeHyperlinkNone')" value="none"></el-option>
+        <el-option :label="$('ui.xmindEditorNodeHyperlinkNone')" value="none"></el-option>
       </el-select>
     </el-input>
   </div>
   <div class="item">
-    <span class="name">{{ $t("ui.userCloudfileLayoutRecoveryFileName") }}</span>
+    <span class="name">{{ $("ui.userCloudfileLayoutRecoveryFileName") }}</span>
     <el-input v-model="linkTitle" size="mini" @keyup.native.stop @keydown.native.stop></el-input>
   </div>
   <span slot="footer" class="dialog-footer">
-    <el-button @click="cancel">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-    <el-button type="primary" @click="confirm">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+    <el-button @click="cancel">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+    <el-button type="primary" @click="confirm">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
   </span>
 </el-dialog>
 </template>

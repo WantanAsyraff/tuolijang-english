@@ -5,36 +5,36 @@
     <formBox :type="`month`" @confirmData="confirmData" :total="total"></formBox>
     <!-- 表格 -->
     <el-table class="mt10" v-loading="loading" :data="tableData" style="width: 100%" :height="tableHeight">
-      <el-table-column prop="card.name" :label="$t('ui.businessHolidayQueryIndexName')" fixed="left" min-width="120px"> </el-table-column>
-      <el-table-column prop="frame.name" :label="$t('ui.businessHolidayQueryIndexDepartment')"> </el-table-column>
-      <el-table-column :label="$t('ui.hrAttendanceStatisticsMonthlyAttendanceStatistics')">
-        <el-table-column prop="group" :label="$t('ui.hrAttendanceSettingTeamAttendanceGroupName')" width="120">
+      <el-table-column prop="card.name" :label="$('ui.businessHolidayQueryIndexName')" fixed="left" min-width="120px"> </el-table-column>
+      <el-table-column prop="frame.name" :label="$('ui.businessHolidayQueryIndexDepartment')"> </el-table-column>
+      <el-table-column :label="$('ui.hrAttendanceStatisticsMonthlyAttendanceStatistics')">
+        <el-table-column prop="group" :label="$('ui.hrAttendanceSettingTeamAttendanceGroupName')" width="120">
           <template slot-scope="scope">
             {{ scope.row.group || '--' }}
           </template>
         </el-table-column>
-        <el-table-column prop="required_days" :label="$t('ui.hrAttendanceStatisticsMonthlyRequiredAttendanceDays')" width="120"> </el-table-column>
-        <el-table-column prop="actual_days" :label="$t('ui.hrAttendanceStatisticsMonthlyActualAttendanceDays')" width="120"> </el-table-column>
+        <el-table-column prop="required_days" :label="$('ui.hrAttendanceStatisticsMonthlyRequiredAttendanceDays')" width="120"> </el-table-column>
+        <el-table-column prop="actual_days" :label="$('ui.hrAttendanceStatisticsMonthlyActualAttendanceDays')" width="120"> </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.hrAttendanceStatisticsMonthlyExceptionStatistics')">
-        <el-table-column prop="late" :label="$t('ui.hrAttendanceStatisticsMonthlyLateCount')" width="120"> </el-table-column>
-        <el-table-column prop="leave_early" :label="$t('ui.hrAttendanceStatisticsMonthlyEarlyLeaveCount')" width="120"> </el-table-column>
-        <el-table-column prop="late_card" :label="$t('ui.hrAttendanceStatisticsMonthlyClockInMissing')" width="120"> </el-table-column>
-        <el-table-column prop="early_card" :label="$t('ui.hrAttendanceStatisticsMonthlyClockOutMissing')" width="120"> </el-table-column>
-        <el-table-column prop="absenteeism" :label="$t('ui.hrAttendanceStatisticsMonthlyAbsenceDays')" width="120"> </el-table-column>
+      <el-table-column :label="$('ui.hrAttendanceStatisticsMonthlyExceptionStatistics')">
+        <el-table-column prop="late" :label="$('ui.hrAttendanceStatisticsMonthlyLateCount')" width="120"> </el-table-column>
+        <el-table-column prop="leave_early" :label="$('ui.hrAttendanceStatisticsMonthlyEarlyLeaveCount')" width="120"> </el-table-column>
+        <el-table-column prop="late_card" :label="$('ui.hrAttendanceStatisticsMonthlyClockInMissing')" width="120"> </el-table-column>
+        <el-table-column prop="early_card" :label="$('ui.hrAttendanceStatisticsMonthlyClockOutMissing')" width="120"> </el-table-column>
+        <el-table-column prop="absenteeism" :label="$('ui.hrAttendanceStatisticsMonthlyAbsenceDays')" width="120"> </el-table-column>
       </el-table-column>
-      <el-table-column prop="overtime_hours" :label="$t('ui.hrAttendanceStatisticsMonthlyOvertimeHours')" width="130">
+      <el-table-column prop="overtime_hours" :label="$('ui.hrAttendanceStatisticsMonthlyOvertimeHours')" width="130">
           <template #default="{ row }">
           <span :style="{ color: row.overtime_hours != 0.00 ? 'red' : '' }">{{ row.overtime_hours }}</span>
           </template>  
       </el-table-column>
-      <el-table-column prop="trip_hours" :label="$t('ui.hrAttendanceStatisticsMonthlyBusinessTripHours')" width="130"> </el-table-column>
-      <el-table-column prop="out_hours" :label="$t('ui.hrAttendanceStatisticsMonthlyOutOfOfficeHours')" width="130"> </el-table-column>
-      <el-table-column :label="$t('ui.userExamineDetailExamineLeave')">
+      <el-table-column prop="trip_hours" :label="$('ui.hrAttendanceStatisticsMonthlyBusinessTripHours')" width="130"> </el-table-column>
+      <el-table-column prop="out_hours" :label="$('ui.hrAttendanceStatisticsMonthlyOutOfOfficeHours')" width="130"> </el-table-column>
+      <el-table-column :label="$('ui.userExamineDetailExamineLeave')">
         <div v-for="(item, index) in holiday_type" :key="index">
           <el-table-column
             prop="holiday_data"
-            :label="item.name + (item.duration_type === 0 ? $t('ui.hrAttendanceStatisticsMonthlyDay') : $t('ui.hrAttendanceStatisticsMonthlyHours'))"
+            :label="item.name + (item.duration_type === 0 ? $('ui.hrAttendanceStatisticsMonthlyDay') : $('ui.hrAttendanceStatisticsMonthlyHours'))"
             width="120"
           >
             <template slot-scope="scope">

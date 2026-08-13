@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <div class="toolbar">
@@ -17,7 +18,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import '@wangeditor-next/editor/dist/css/style.css'
 import { Editor, Toolbar } from '@wangeditor-next/editor-for-vue2'
 import { uploader } from '@/utils/uploadCloud'
@@ -51,7 +51,7 @@ export default {
       vHtml: '',
       editor: null,
       toolbarConfig: {},
-      editorConfig: { MENU_CONF: {}, placeholder: i18n.t('legacyScript.enterContent') },
+      editorConfig: { MENU_CONF: {}, placeholder: $('legacyScript.enterContent') },
       mode: 'default' // or 'simple'
     }
   },
@@ -199,7 +199,7 @@ export default {
           }
         })
         .catch((error) => {
-          console.error(i18n.t('legacyScript.failedToConvertToBlob'), error)
+          console.error($('legacyScript.failedToConvertToBlob'), error)
           this.$emit('closeLoading') // 确保在错误情况下也关闭加载状态
         })
     },

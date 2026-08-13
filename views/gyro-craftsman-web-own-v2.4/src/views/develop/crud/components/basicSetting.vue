@@ -2,14 +2,14 @@
 <div class="main">
   <!-- <div class="title-16 mt20">属性信息</div> -->
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="90px" class="mt20">
-    <el-form-item :label="$t('ui.developCrudBasicSettingDisplayName')" prop="table_name">
+    <el-form-item :label="$('ui.developCrudBasicSettingDisplayName')" prop="table_name">
       <el-input v-model="ruleForm.table_name" size="small"></el-input>
     </el-form-item>
-    <el-form-item :label="$t('ui.developCrudBasicSettingEntityName')" prop="table_name_en">
+    <el-form-item :label="$('ui.developCrudBasicSettingEntityName')" prop="table_name_en">
       <el-input disabled v-model="ruleForm.table_name_en" size="small"></el-input>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.developCrudBasicSettingParentEntity')" prop="region" v-if="ruleForm.crud_id">
+    <el-form-item :label="$('ui.developCrudBasicSettingParentEntity')" prop="region" v-if="ruleForm.crud_id">
       <el-cascader
         disabled
         v-model="ruleForm.crud_id"
@@ -24,27 +24,27 @@
           <span> （{{ data.table_name_en }}）</span>
         </template>
       </el-cascader>
-      <div class="tips">{{ $t("ui.developCrudBasicSettingAfterLinkingAParentEntityThisEntityBecomesA") }}</div>
+      <div class="tips">{{ $("ui.developCrudBasicSettingAfterLinkingAParentEntityThisEntityBecomesA") }}</div>
     </el-form-item>
-    <el-form-item :label="$t('ui.developCrudBasicSettingOperationLogs')">
+    <el-form-item :label="$('ui.developCrudBasicSettingOperationLogs')">
       <el-switch
         v-model="ruleForm.show_log"
         active-value="1"
         inactive-value="0"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+        inactive-text="关闭"
+        active-text="开启"
         size="small"
       ></el-switch>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.developCrudBasicSettingComments')">
+    <el-form-item :label="$('ui.developCrudBasicSettingComments')">
       <div :class="ruleForm.show_comment == 1 ? 'flex-col-center' : ''">
         <el-switch
           v-model="ruleForm.show_comment"
           active-value="1"
           inactive-value="0"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+          inactive-text="关闭"
+          active-text="开启"
         ></el-switch>
         <el-input
           v-if="ruleForm.show_comment == 1"
@@ -52,24 +52,24 @@
           v-model="ruleForm.comment_title"
           maxlength="5"
           size="small"
-          :placeholder="$t('ui.developCrudBasicSettingRenameComments')"
+          :placeholder="$('ui.developCrudBasicSettingRenameComments')"
         ></el-input>
       </div>
     </el-form-item>
 
-    <el-form-item :label="$t('ui.developCrudBasicSettingLinkedApplication')" prop="region">
+    <el-form-item :label="$('ui.developCrudBasicSettingLinkedApplication')" prop="region">
       <el-select
         style="width: 100%"
         v-model="ruleForm.cate_ids"
         multiple
         filterable
         size="small"
-        :placeholder="$t('ui.developCrudBasicSettingSearchAndSelectApplicationsMultiple')"
+        :placeholder="$('ui.developCrudBasicSettingSearchAndSelectApplicationsMultiple')"
       >
         <el-option v-for="(v, index) in cateOptions" :key="v.id" :label="v.name" :value="v.id"> </el-option>
       </el-select>
     </el-form-item>
-    <el-form-item :label="$t('ui.developCrudBasicSettingParentMenu')" prop="region">
+    <el-form-item :label="$('ui.developCrudBasicSettingParentMenu')" prop="region">
       <el-cascader
         v-model="ruleForm.path"
         :options="menuList"
@@ -78,9 +78,9 @@
         style="width: 100%"
       ></el-cascader>
     </el-form-item>
-    <el-form-item :label="$t('ui.developCrudBasicSettingMenuIcon')" prop="region">
+    <el-form-item :label="$('ui.developCrudBasicSettingMenuIcon')" prop="region">
       <el-input
-        :placeholder="$t('ui.formCommonOaFormPleaseSelectAnIcon')"
+        :placeholder="$('ui.formCommonOaFormPleaseSelectAnIcon')"
         v-model="ruleForm.icon"
         readonly
         @click.native="showIconDialog = true"
@@ -96,10 +96,10 @@
         ></i>
       </el-input>
     </el-form-item>
-    <el-form-item :label="$t('ui.developCrudBasicSettingMobileIcon')" prop="region">
+    <el-form-item :label="$('ui.developCrudBasicSettingMobileIcon')" prop="region">
       <oa-systemImage ref="systemImageRef" @getImage="getImage"></oa-systemImage>
     </el-form-item>
-    <el-form-item :label="$t('ui.developCrudBasicSettingEntityDescription')" prop="region">
+    <el-form-item :label="$('ui.developCrudBasicSettingEntityDescription')" prop="region">
       <el-input
         type="textarea"
         v-model="ruleForm.info"
@@ -108,11 +108,11 @@
       ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" size="small" :loading="loading" @click="submit">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button type="primary" size="small" :loading="loading" @click="submit">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </el-form-item>
   </el-form>
   <!-- 选择图标 -->
-  <el-dialog :title="$t('ui.formCommonOaFormSelectMenuIcon')" :visible.sync="showIconDialog" :append-to-body="true" width="50%">
+  <el-dialog :title="$('ui.formCommonOaFormSelectMenuIcon')" :visible.sync="showIconDialog" :append-to-body="true" width="50%">
     <div class="icon-box">
       <select-icon ref="selectIconRef" :isEmit="true" @select="handleSelectIcon"></select-icon>
     </div>

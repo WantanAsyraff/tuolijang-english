@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <!-- 编辑审批 -->
@@ -6,7 +7,7 @@
         <div class="ex-content-con">
           <div class="acea-row mb20">
             <div class="shu mr10"></div>
-            <span class="title">{{ $ts("提交审批") }}</span>
+            <span class="title">{{ $("ui.userExamineDetailExamineSubmitApproval") }}</span>
           </div>
           <form-create
             class="edit-examine-form"
@@ -27,16 +28,15 @@
       </el-scrollbar>
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
       <el-button size="small" type="primary" :loading="loading" @click="handleConfirm('ruleForm')">
-        {{ $t('public.ok') }}
+        {{ $('public.ok') }}
       </el-button>
     </div>
   </div>
 </template>
 
 <script>
-import i18n from '@/lang'
 import request from '@/api/request'
 import {
   approveApplyEditApi,
@@ -373,7 +373,7 @@ export default {
     // 保存
     approveApplySave(id) {
       const FromData = {
-        title: this.$t('hr.addposition'),
+        title: this.$('hr.addposition'),
         method: 'post',
         action: `approve/apply/save/${id}`
       }
@@ -388,11 +388,11 @@ export default {
           for (let i = 0; i < processInfo.length; i++) {
             const value = processInfo[i]
             if (!this.approverDelete && value.types == 1 && value.users.length <= 0) {
-              this.$message.error(i18n.t('legacyScript.theOptionalNodeCannotBeEmpty'))
+              this.$message.error($('legacyScript.theOptionalNodeCannotBeEmpty'))
               return
             }
             if (!this.copyerDelete && value.types == 2 && value.users.length <= 0) {
-              this.$message.error(i18n.t('legacyScript.theOptionalNodeCannotBeEmpty'))
+              this.$message.error($('legacyScript.theOptionalNodeCannotBeEmpty'))
               return
             }
             if (
@@ -401,7 +401,7 @@ export default {
               (value.settype == 4 || value.settype == 1) &&
               value.users.length <= 0
             ) {
-              this.$message.error(i18n.t('legacyScript.theOptionalNodeCannotBeEmpty'))
+              this.$message.error($('legacyScript.theOptionalNodeCannotBeEmpty'))
               return
             }
             if (value.users.length <= 0) {
@@ -409,7 +409,7 @@ export default {
             }
           }
           if (len === processInfo.length) {
-            this.$message.error(i18n.t('legacyScript.theOptionalNodeCannotBeEmpty'))
+            this.$message.error($('legacyScript.theOptionalNodeCannotBeEmpty'))
             return
           }
           processInfo.forEach((value, index) => {

@@ -1,7 +1,7 @@
 <template>
   <div class="box-container">
     <el-drawer
-      :title='$ts("个人中心")'
+      :title='$("route.profile")'
       :visible.sync="drawer"
       direction="rtl"
       :before-close="handleClose"

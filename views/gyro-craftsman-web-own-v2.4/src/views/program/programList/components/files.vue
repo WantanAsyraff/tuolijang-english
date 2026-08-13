@@ -1,7 +1,7 @@
 <template>
 <div class="box">
   <div class="header">
-    <span>{{ $t("ui.programProgramListFilesFileList") }}</span>
+    <span>{{ $("ui.programProgramListFilesFileList") }}</span>
     <div class="btn-box">
       <el-upload
         :headers="myHeaders"
@@ -12,7 +12,7 @@
       >
         <el-button v-if="!percentShow" class="mb14" size="small" type="primary">
           <i class="el-icon-plus"></i>
-          {{ $t("ui.businessHolidayTypeIndexAdd") }}
+          {{ $("ui.businessHolidayTypeIndexAdd") }}
         </el-button>
         <div v-else class="addText">
           <img alt="" class="l_gif" src="../../../../assets/images/loading.gif" />
@@ -21,53 +21,53 @@
     </div>
   </div>
   <div class="flex-10">
-    <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }}{{ total }}{{ $t("ui.developModuleFormBoxItems") }}</div>
+    <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }}{{ total }}{{ $("ui.developModuleFormBoxItems") }}</div>
     <el-input
       v-model="where.name"
       clearable
-      :placeholder="$t('ui.programProgramListFilesPleaseEnterAFileName')"
+      :placeholder="$('ui.programProgramListFilesPleaseEnterAFileName')"
       prefix-icon="el-icon-search"
       size="small"
       style="width: 250px"
       @change="getList(1)"
     ></el-input>
     <el-date-picker
-      v-model="timeVal"
-:end-placeholder="$t('ui.uploadPictureIndexUploadTime')"
-      format=" yyyy/MM/dd"
-:range-separator="$t('ui.commonFormListTo')"
-      size="small"
-:start-placeholder="$t('ui.uploadPictureIndexUploadTime')"
+        v-model="timeVal"
+        :end-placeholder="$('ui.uploadPictureIndexUploadTime')"
+        format=" yyyy/MM/dd"
+        :range-separator="$('ui.commonFormListTo')"
+        size="small"
+        :start-placeholder="$('ui.uploadPictureIndexUploadTime')"
       style="width: 250px"
       type="daterange"
       value-format="yyyy/MM/dd"
       @change="timeChange"
     >
     </el-date-picker>
-    <el-tooltip :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
+    <el-tooltip :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
       <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
     </el-tooltip>
   </div>
   <!-- 表格 -->
   <div class="table-box mt20">
     <el-table :data="fileData">
-      <el-table-column :label="$t('ui.programProgramListFilesDocumentCover')" prop="name" width="120">
+      <el-table-column :label="$('ui.programProgramListFilesDocumentCover')" prop="name" width="120">
         <template slot-scope="scope">
           <div class="file" v-if="toSrcIcon(scope.row.name) !== 'img'">{{ getFileTypeFn(scope.row.name) }}</div>
           <img v-else :src="scope.row.att_dir" alt="" class="img" @click="filePreview(scope.row)" />
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerListImportRecordsFileName')" min-width="150" prop="real_name"> </el-table-column>
-      <el-table-column :label="$t('ui.programProgramListFilesSize')" min-width="180" prop="att_size">
+      <el-table-column :label="$('ui.customerListImportRecordsFileName')" min-width="150" prop="real_name"> </el-table-column>
+      <el-table-column :label="$('ui.programProgramListFilesSize')" min-width="180" prop="att_size">
         <template slot-scope="scope"> {{ formatBytesFn(scope.row.att_size) }} </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.programProgramListFilesUploadUser')" min-width="100" prop="card.name" />
-      <el-table-column :label="$t('ui.uploadPictureIndexUploadTime')" min-width="130" prop="created_at"> </el-table-column>
-      <el-table-column :label="$t('public.operation')" fixed="right" prop="address" width="180">
+      <el-table-column :label="$('ui.programProgramListFilesUploadUser')" min-width="100" prop="card.name" />
+      <el-table-column :label="$('ui.uploadPictureIndexUploadTime')" min-width="130" prop="created_at"> </el-table-column>
+      <el-table-column :label="$('public.operation')" fixed="right" prop="address" width="180">
         <template slot-scope="scope">
-          <el-button type="text" @click="filePreview(scope.row)"> {{ $t("ui.formDesignerToolbarPanelIndexPreview") }} </el-button>
-          <el-button type="text" @click="handleLabel(scope.row)"> {{ $t("ui.customerListFileRename") }} </el-button>
-          <el-button type="text" @click="handleFileDelete(scope.row, scope.$index)"> {{ $t("ui.chatIndexDelete") }}</el-button>
+          <el-button type="text" @click="filePreview(scope.row)"> {{ $("ui.formDesignerToolbarPanelIndexPreview") }} </el-button>
+          <el-button type="text" @click="handleLabel(scope.row)"> {{ $("ui.customerListFileRename") }} </el-button>
+          <el-button type="text" @click="handleFileDelete(scope.row, scope.$index)"> {{ $("ui.chatIndexDelete") }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -85,15 +85,15 @@
   </div>
 
   <!-- 重命名弹窗 -->
-  <el-dialog :append-to-body="true" :visible.sync="dialogFormVisible" :title="$t('ui.customerListFileRenameFile')" width="30%">
+  <el-dialog :append-to-body="true" :visible.sync="dialogFormVisible" :title="$('ui.customerListFileRenameFile')" width="30%">
     <el-form>
-      <el-form-item :label="$t('ui.customerListFileRename2')" label-width="80px">
+      <el-form-item :label="$('ui.customerListFileRename2')" label-width="80px">
         <el-input v-model="real_name" autocomplete="off" size="small"></el-input>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button size="small" @click="dialogFormVisible = false">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-      <el-button size="small" type="primary" @click="renameFn">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+      <el-button size="small" @click="dialogFormVisible = false">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button size="small" type="primary" @click="renameFn">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </div>
   </el-dialog>
   <!-- 打开文件 -->

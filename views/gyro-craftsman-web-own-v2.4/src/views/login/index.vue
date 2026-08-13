@@ -2,24 +2,24 @@
   <div class="page-account" :class="{ 'lang-en': language === 'en' }">
     <div class="login-language">
       <el-button size="small" :type="language === 'zh-cn' ? 'primary' : 'default'" plain @click="changeLanguage('zh-cn')">
-        {{ $t('login.chinese') }}
+        {{ $('login.chinese') }}
       </el-button>
       <el-button size="small" :type="language === 'en' ? 'primary' : 'default'" @click="changeLanguage('en')">
-        {{ $t('login.english') }}
+        {{ $('login.english') }}
       </el-button>
     </div>
     <div v-if="language === 'en'" class="login-hero-copy">
-      <div class="brand">{{ $t('login.brand') }}</div>
-      <h1>{{ $t('login.heroTitle') }}</h1>
-      <p>{{ $t('login.heroSubtitle') }}</p>
+      <div class="brand">{{ $('login.brand') }}</div>
+      <h1>{{ $('login.heroTitle') }}</h1>
+      <p>{{ $('login.heroSubtitle') }}</p>
     </div>
     <div :class="[fullWidth > 768 ? 'containerSamll' : 'containerBig']" class="container">
       <div class="index_from page-account-container">
         <template v-if="loginType == 1">
           <div class="page-account-top page-code-top">
             <el-tabs v-if="!codeShowLogin" v-model="activeName" @tab-click="tabChange">
-              <el-tab-pane :label="$t('login.passwordlogin')" name="passwordLogin" />
-              <el-tab-pane :label="$t('login.smslogin')" name="cmsLogin" />
+              <el-tab-pane :label="$('login.passwordlogin')" name="passwordLogin" />
+              <el-tab-pane :label="$('login.smslogin')" name="cmsLogin" />
             </el-tabs>
             <!-- <el-tabs v-if="codeShowLogin" v-model="codeName">
               <el-tab-pane label="APP扫码登录" name="codeLogin" />
@@ -40,7 +40,7 @@
                 <el-input
                   ref="account"
                   v-model="loginForm.account"
-                  :placeholder="$t('login.phone')"
+                  :placeholder="$('login.phone')"
                   autocomplete="on"
                   name="username"
                   prefix-icon="el-icon-user"
@@ -53,7 +53,7 @@
                   :key="passwordType"
                   ref="password"
                   v-model="loginForm.password"
-                  :placeholder="$t('login.password')"
+                  :placeholder="$('login.password')"
                   :type="passwordType"
                   auto-complete="on"
                   name="password"
@@ -61,7 +61,7 @@
                   tabindex="2"
                 />
                 <span class="pwd" @click="handelTabTagger(3)">
-                  <el-link :underline="false" type="primary">{{ $t('login.forgetpassword') }}</el-link>
+                  <el-link :underline="false" type="primary">{{ $('login.forgetpassword') }}</el-link>
                 </span>
               </el-form-item>
               <el-form-item class="captcha" prop="captcha">
@@ -69,7 +69,7 @@
                   <el-input
                     ref="username"
                     v-model="loginForm.captcha"
-                    :placeholder="$t('login.code')"
+                    :placeholder="$('login.code')"
                     autocomplete="on"
                     name="username"
                     prefix-icon="el-icon-message"
@@ -88,7 +88,7 @@
                 <el-input
                   ref="phone"
                   v-model="loginForm.phone"
-                  :placeholder="$t('login.phone')"
+                  :placeholder="$('login.phone')"
                   autocomplete="on"
                   name="phone"
                   prefix-icon="el-icon-mobile-phone"
@@ -103,7 +103,7 @@
                       :key="passwordType"
                       ref="password"
                       v-model="loginForm.verification_code"
-                      :placeholder="$t('login.codetitle')"
+                      :placeholder="$('login.codetitle')"
                       auto-complete="on"
                       name="password"
                       prefix-icon="el-icon-lock"
@@ -121,7 +121,7 @@
               type="primary"
               @click.native.prevent="handleLogin"
             >
-              {{ $t('login.logIn') }}
+              {{ $('login.logIn') }}
             </el-button>
           </el-form>
           <div v-if="codeShowLogin" class="code-content">
@@ -131,27 +131,27 @@
                 <img v-if="sitedata.site_logo" :src="sitedata.site_logo" alt="" class="image-code-logo" />
                 <img v-else alt="" class="image-code-logo" src="../../assets/images/code-logo.png" />
                 <div v-if="codeButton" class="code-model">
-                  <div class="text">{{ $t('login.qrExpired') }}</div>
-                  <el-button round size="mini" type="primary" @click="getUserKey">{{ $t('login.refreshQr') }}</el-button>
+                  <div class="text">{{ $('login.qrExpired') }}</div>
+                  <el-button round size="mini" type="primary" @click="getUserKey">{{ $('login.refreshQr') }}</el-button>
                 </div>
               </div>
-              <div class="code-tip">{{ $t('login.scanWithApp') }}</div>
+              <div class="code-tip">{{ $('login.scanWithApp') }}</div>
             </div>
 
             <div v-else class="success-code">
               <i class="el-icon-circle-check icon"></i>
-              <div class="success-text">{{ $t('login.scanSuccess') }}</div>
-              <div class="success-text1 code-tip">{{ $t('login.confirmOnPhone') }}</div>
+              <div class="success-text">{{ $('login.scanSuccess') }}</div>
+              <div class="success-text1 code-tip">{{ $('login.confirmOnPhone') }}</div>
             </div>
           </div>
-          <div v-if="activeName === 'passwordLogin' && !codeShowLogin" class="text">{{ $t('login.unregisteredContactAdmin') }}</div>
-          <div v-if="activeName === 'cmsLogin' && !codeShowLogin" class="text">{{ $t('login.unregisteredContactAdmin') }}</div>
+          <div v-if="activeName === 'passwordLogin' && !codeShowLogin" class="text">{{ $('login.unregisteredContactAdmin') }}</div>
+          <div v-if="activeName === 'cmsLogin' && !codeShowLogin" class="text">{{ $('login.unregisteredContactAdmin') }}</div>
 
           <div class="wwlogin" v-if="corpid && corpid.length > 0 && !codeShowLogin" @click="openqiweiFn">
-            <img src="../../assets/images/qiweiLogo.png" alt="" style="width: 16px" />{{ $t('login.wechatLogin') }}
+            <img src="../../assets/images/qiweiLogo.png" alt="" style="width: 16px" />{{ $('login.wechatLogin') }}
           </div>
           <el-button class="btn-login-code" size="small" @click="imageCode">{{
-            codeShowLogin ? $t('login.accountLogin') : $t('login.scanLogin')
+            codeShowLogin ? $('login.accountLogin') : $('login.scanLogin')
           }}</el-button>
           <img
             :src="codeShowLogin ? loginAccountImg : loginCodeImg"
@@ -162,7 +162,7 @@
         </template>
         <template v-if="loginType == 2">
           <div class="page-account-top">
-            <div class="title-box">{{ $t('login.zhuce') }}</div>
+            <div class="title-box">{{ $('login.zhuce') }}</div>
             <el-form
               ref="loginForm"
               :model="loginForm"
@@ -177,7 +177,7 @@
                   <el-input
                     ref="phone"
                     v-model="loginForm.phone"
-                    :placeholder="$t('login.title1')"
+                    :placeholder="$('login.title1')"
                     autocomplete="on"
                     name="phone"
                     prefix-icon="el-icon-mobile-phone"
@@ -192,7 +192,7 @@
                         :key="passwordType"
                         ref="password"
                         v-model.number="loginForm.verification_code"
-                        :placeholder="$t('login.codetitle')"
+                        :placeholder="$('login.codetitle')"
                         auto-complete="on"
                         name="password"
                         prefix-icon="el-icon-lock"
@@ -208,7 +208,7 @@
                     :key="passwordType"
                     ref="password"
                     v-model="loginForm.password"
-                    :placeholder="$t('login.title2')"
+                    :placeholder="$('login.title2')"
                     :type="passwordType"
                     auto-complete="on"
                     name="password"
@@ -226,25 +226,25 @@
                 type="primary"
                 @click.native.prevent="handleRegister"
               >
-                {{ $t('login.register') }}
+                {{ $('login.register') }}
               </el-button>
             </el-form>
             <div class="tips-btn">
-              {{ $t('login.title3') }}
+              {{ $('login.title3') }}
               <el-link
                 :underline="false"
                 style="margin-top: -3px; margin-left: 5px"
                 type="primary"
                 @click="handelTabTagger(1)"
               >
-                {{ $t('login.logIn') }}
+                {{ $('login.logIn') }}
               </el-link>
             </div>
           </div>
         </template>
         <template v-if="loginType == 3">
           <div class="page-account-top">
-            <div class="title-box">{{ $t('login.title4') }}</div>
+            <div class="title-box">{{ $('login.title4') }}</div>
             <el-form
               ref="loginForm"
               :model="loginForm"
@@ -259,7 +259,7 @@
                   <el-input
                     ref="phone"
                     v-model="loginForm.phone"
-                    :placeholder="$t('login.title1')"
+                    :placeholder="$('login.title1')"
                     autocomplete="on"
                     name="phone"
                     prefix-icon="el-icon-mobile-phone"
@@ -274,7 +274,7 @@
                         :key="passwordType"
                         ref="password"
                         v-model.number="loginForm.verification_code"
-                        :placeholder="$t('login.codetitle')"
+                        :placeholder="$('login.codetitle')"
                         auto-complete="on"
                         name="password"
                         prefix-icon="el-icon-lock"
@@ -290,7 +290,7 @@
                     :key="passwordType"
                     ref="password"
                     v-model="loginForm.password"
-                    :placeholder="$t('login.title2')"
+                    :placeholder="$('login.title2')"
                     :type="passwordType"
                     auto-complete="on"
                     name="password"
@@ -308,18 +308,18 @@
                 type="primary"
                 @click.native.prevent="handleResetPwd"
               >
-                {{ $t('login.ok') }}
+                {{ $('login.ok') }}
               </el-button>
             </el-form>
             <div class="tips-btn">
-              {{ $t('login.title3') }}
+              {{ $('login.title3') }}
               <el-link
                 :underline="false"
                 style="margin-top: -3px; margin-left: 5px"
                 type="primary"
                 @click="handelTabTagger(1)"
               >
-                {{ $t('login.logIn') }}
+                {{ $('login.logIn') }}
               </el-link>
             </div>
           </div>
@@ -328,7 +328,7 @@
     </div>
     <div class="foot-bar">
       <p>
-        {{ $t('login.contactnumber') }}: {{ sitedata.site_tel }} {{ $t('login.addresss') }}: {{ sitedata.site_address }}
+        {{ $('login.contactnumber') }}: {{ sitedata.site_tel }} {{ $('login.addresss') }}: {{ sitedata.site_address }}
       </p>
       <a href="https://beian.miit.gov.cn" target="_blank">{{ sitedata.site_record_number }}</a>
     </div>
@@ -371,28 +371,28 @@ export default {
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!value) {
-        callback(new Error(this.$t('login.phone')))
+        callback(new Error(this.$('login.phone')))
       } else {
         callback()
       }
     }
     const validatePassword = (rule, value, callback) => {
       if (!value) {
-        callback(new Error(this.$t('login.title2')))
+        callback(new Error(this.$('login.title2')))
       } else {
         callback()
       }
     }
     const checkPhone = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error(this.$t('customer.placeholder09')))
+        return callback(new Error(this.$('customer.placeholder09')))
       }
       setTimeout(() => {
         const phone = helper.normalizePhone(value)
         if (helper.phoneReg.test(phone)) {
           callback()
         } else {
-          callback(new Error(this.$t('customer.placeholder71')))
+          callback(new Error(this.$('customer.placeholder71')))
         }
       }, 150)
     }
@@ -428,8 +428,8 @@ export default {
       loginRules: {
         account: [{ required: true, trigger: 'blur', validator: validateUsername }],
         password: [{ required: true, trigger: 'blur', validator: validatePassword }],
-        captcha: [{ required: true, message: this.$t('login.title5'), trigger: 'blur' }],
-        verification_code: [{ required: true, message: this.$t('login.title6'), trigger: 'blur' }],
+        captcha: [{ required: true, message: this.$('login.title5'), trigger: 'blur' }],
+        verification_code: [{ required: true, message: this.$('login.title6'), trigger: 'blur' }],
         phone: [{ required: true, validator: checkPhone, trigger: 'change' }]
       },
       passwordType: 'password',
@@ -523,7 +523,6 @@ export default {
   methods: {
     changeLanguage(lang) {
       if (lang === this.language) return
-      this.$i18n.locale = lang
       this.$store.dispatch('app/setLanguage', lang)
       this.refreshValidationMessages()
       this.$nextTick(() => {
@@ -533,8 +532,8 @@ export default {
       })
     },
     refreshValidationMessages() {
-      this.loginRules.captcha[0].message = this.$t('login.title5')
-      this.loginRules.verification_code[0].message = this.$t('login.title6')
+      this.loginRules.captcha[0].message = this.$('login.title5')
+      this.loginRules.verification_code[0].message = this.$('login.title6')
     },
     normalizeLoginPhone() {
       if (this.loginForm.phone) {
@@ -588,8 +587,8 @@ export default {
         this.cmsKey = res.data
         const exp = helper.phoneReg
         const phone = helper.normalizePhone(this.loginForm.phone)
-        if (!phone) return this.$message.error(this.$t('login.title1'))
-        if (!exp.test(phone)) return this.$message.error(this.$t('login.title9'))
+        if (!phone) return this.$message.error(this.$('login.title1'))
+        if (!exp.test(phone)) return this.$message.error(this.$('login.title9'))
         this.loginForm.phone = phone
         await getCmsApi({
           phone,

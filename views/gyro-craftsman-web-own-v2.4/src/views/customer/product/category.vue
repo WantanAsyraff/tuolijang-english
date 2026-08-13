@@ -3,12 +3,12 @@
   <el-card class="normal-page">
     <oaFromBox
       :search="search"
-      :title="$t('ui.customerProductCategoryProductCategoryList')"
+      :title="$('ui.customerProductCategoryProductCategoryList')"
       :isTotal="false"
       :isViewSearch="false"
       :btnIcon="true"
       :isAddBtn="true"
-:btn-text="$t('ui.uploadPictureIndexAddCategory')"
+      :btnText="$('ui.uploadPictureIndexAddCategory')"
       :sortSearch="false"
       @addDataFn="addFinance"
       @confirmData="confirmData"
@@ -22,12 +22,12 @@
       lazy
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
     >
-      <el-table-column prop="name" :label="$t('ui.customerProductCategoryCategoryName')"> </el-table-column>
-      <el-table-column prop="status" :label="$t('ui.customerProductCategoryEnabledStatus')">
+      <el-table-column prop="name" :label="$('ui.customerProductCategoryCategoryName')"> </el-table-column>
+      <el-table-column prop="status" :label="$('ui.customerProductCategoryEnabledStatus')">
         <template slot-scope="scope">
           <el-tooltip
             :disabled="!scope.row.parentDisabled"
-            :content="$t('ui.customerProductCategoryTheParentCategoryIsDisabledEnableItFirst')"
+            :content="$('ui.customerProductCategoryTheParentCategoryIsDisabledEnableItFirst')"
             placement="top"
           >
             <span>
@@ -35,8 +35,8 @@
                 v-model="scope.row.status"
                 :active-value="1"
                 :inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                active-text="开启"
+                inactive-text="关闭"
                 :disabled="scope.row.parentDisabled"
                 @change="changeStatus(scope.row)"
               >
@@ -45,13 +45,13 @@
           </el-tooltip>
         </template>
       </el-table-column>
-      <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')"> </el-table-column>
-      <el-table-column prop="sort" :label="$t('ui.businessExamineIndexSort')" width="180"> </el-table-column>
-      <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="220">
+      <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')"> </el-table-column>
+      <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')" width="180"> </el-table-column>
+      <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="220">
         <template slot-scope="scope">
-          <el-button type="text" @click="handleAdd(scope.row)" v-if="scope.row.level <= 5">{{ $t("ui.customerProductCategoryAddChild") }}</el-button>
-          <el-button type="text" @click="handleEdit(scope.row)">{{ $t('public.edit') }}</el-button>
-          <el-button type="text" @click="handleDelete(scope.row, 1)">{{ $t('public.delete') }}</el-button>
+          <el-button type="text" @click="handleAdd(scope.row)" v-if="scope.row.level <= 5">{{ $("ui.customerProductCategoryAddChild") }}</el-button>
+          <el-button type="text" @click="handleEdit(scope.row)">{{ $('public.edit') }}</el-button>
+          <el-button type="text" @click="handleDelete(scope.row, 1)">{{ $('public.delete') }}</el-button>
         </template>
       </el-table-column>
     </el-table>

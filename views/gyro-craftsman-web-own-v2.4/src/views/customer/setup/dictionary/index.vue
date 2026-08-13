@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="v-height-flag">
@@ -59,37 +60,37 @@
         >
           <el-table-column type="selection" width="55"> </el-table-column>
           <el-table-column prop="id" label="ID" type=""></el-table-column>
-          <el-table-column prop="name" :label="$t('ui.customerSetupDictionaryIndexDictionaryName')" show-overflow-tooltip> </el-table-column>
-          <el-table-column prop="ident" :label="$t('ui.customerSetupDictionaryIndexDictionaryIdentifier')" show-overflow-tooltip> </el-table-column>
-          <el-table-column prop="type" :label="$t('ui.customerSetupDictionaryIndexStatus')" show-overflow-tooltip>
+          <el-table-column prop="name" :label="$('ui.customerSetupDictionaryIndexDictionaryName')" show-overflow-tooltip> </el-table-column>
+          <el-table-column prop="ident" :label="$('ui.customerSetupDictionaryIndexDictionaryIdentifier')" show-overflow-tooltip> </el-table-column>
+          <el-table-column prop="type" :label="$('ui.customerSetupDictionaryIndexStatus')" show-overflow-tooltip>
             <template slot-scope="scope">
               <el-switch
                 :disabled="scope.row.is_default === 1"
                 v-model="scope.row.status"
-:active-text="$t('ui.settingAuthAdminIndexEnabled2')"
-:inactive-text="$t('ui.customerSetupCustomFormIndexDisabled')"
+                active-text="启用"
+                inactive-text="停用"
                 :active-value="1"
                 :inactive-value="0"
                 @change="handleStatus(scope.row)"
               />
             </template>
           </el-table-column>
-          <el-table-column prop="mark" :label="$t('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="150" show-overflow-tooltip>
+          <el-table-column prop="mark" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="150" show-overflow-tooltip>
             <template slot-scope="scope">
               <span>{{ scope.row.mark || '--' }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" show-overflow-tooltip>
+          <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" show-overflow-tooltip>
             <template slot-scope="scope">
               <span>{{ scope.row.created_at || '--' }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="address" :label="$t('public.operation')" width="250">
+          <el-table-column prop="address" :label="$('public.operation')" width="250">
             <template slot-scope="scope">
-              <el-button type="text" v-if="scope.row.is_default !== 1" @click="editFn(scope.row.id)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-              <el-button type="text" @click="dataFn(scope.row)">{{ $t("ui.customerSetupDictionaryIndexDataManagement") }}</el-button>
+              <el-button type="text" v-if="scope.row.is_default !== 1" @click="editFn(scope.row.id)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+              <el-button type="text" @click="dataFn(scope.row)">{{ $("ui.customerSetupDictionaryIndexDataManagement") }}</el-button>
               <el-button type="text" v-if="scope.row.is_default !== 1" @click="handleDelete(scope.row)"
-                >{{ $t("ui.chatIndexDelete") }}</el-button
+                >{{ $("ui.chatIndexDelete") }}</el-button
               >
             </template>
           </el-table-column>
@@ -112,7 +113,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import { getDictListApi, getDictCreateApi, getDictEditApi, getDictPutShowApi, getDictDeleteShowApi } from '@/api/form'
 export default {
@@ -134,11 +134,11 @@ export default {
       total: 0,
       options: [
         {
-          label: i18n.t('public.enable'),
+          label: $('public.enable'),
           value: 1
         },
         {
-          label: i18n.t('hr.blockup'),
+          label: $('hr.blockup'),
           value: 0
         }
       ],
@@ -167,7 +167,7 @@ export default {
       dropdownList: [
         {
           value: 1,
-          label: i18n.t('ui.customerSetupDictionaryManagementBatchDelete')
+          label: $('ui.customerSetupDictionaryManagementBatchDelete')
         }
       ]
     }
@@ -192,7 +192,7 @@ export default {
     // 批量删除
     async batchDelete() {
       if (this.ids.length === 0) {
-        return this.$message.error(i18n.t('legacyScript.selectDataToDeleteFirst'))
+        return this.$message.error($('legacyScript.selectDataToDeleteFirst'))
       }
       let id = this.ids.join(',')
       await this.$modalSure('你确定要批量删除这条内容吗')

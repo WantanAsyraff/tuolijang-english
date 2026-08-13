@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div :class="{ 'flex-layout-table': flexLayout }">
     <div class="mt10 table-box" :style="selectionCountStyle">
@@ -19,14 +20,14 @@
             <el-table-column
               v-for="header in tableHeaders"
               :key="header.field"
-              :label="translateText(header.name)"
+              :label="$(header.name)"
               :min-width="getWidth(header)"
               :prop="header.field"
               show-overflow-tooltip
             >
               <template #header="scope">
                 <div class="header-content">
-                  <span>{{ translateText(header.name) }}</span>
+                  <span>{{ $(header.name) }}</span>
 
                   <!-- 拖拽图标（使用 el-icon-drag） -->
                   <i class="iconfont icontuozhuaitubiao"></i>
@@ -135,7 +136,7 @@
                     {{ scope.row[header.field].name }}
 
                     <span>
-                      <span v-if="scope.row[header.field].type == 1" class="color-excel ml4">{{ $t("ui.customerCustomizeTableWeChat") }}</span>
+                      <span v-if="scope.row[header.field].type == 1" class="color-excel ml4">{{ $("ui.customerCustomizeTableWeChat") }}</span>
                       <span
                         v-if="scope.row[header.field].type == 2 && scope.row[header.field].corp_name"
                         class="color-ppt ml4"
@@ -216,16 +217,16 @@
                   class="over-text2"
                   :class="{ success: scope.row[header.field] === 1, waiting: scope.row[header.field] === 0 }"
                 >
-                  {{ scope.row[header.field] === 1 ? $t('ui.customerContractContractPaymentSettled') : $t('ui.customerContractContractPaymentUnsettled') }}
+                  {{ scope.row[header.field] === 1 ? $('ui.customerContractContractPaymentSettled') : $('ui.customerContractContractPaymentUnsettled') }}
                 </span>
                 <span v-else class="over-text2">
                   {{ getValue(scope.row[header.field], header) }}
                 </span>
               </template>
             </el-table-column>
-            <el-table-column fixed="right" :label="translateText($t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation'))" width="180" prop="address">
+            <el-table-column fixed="right" :label="$($('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation'))" width="180" prop="address">
               <template slot="header">
-                {{ translateText($t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')) }}
+                {{ $($('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')) }}
                 <!-- <i class="el-icon-setting pointer" @click="customSearchEvt"></i> -->
               </template>
               <template slot-scope="scope">
@@ -233,7 +234,7 @@
               </template>
             </el-table-column>
             <template #empty>
-              <div class="empty-text">{{ translateText($t('ui.scEchartsChartWidgetNoData')) }}</div>
+              <div class="empty-text">{{ $($('ui.scEchartsChartWidgetNoData')) }}</div>
             </template>
           </el-table>
         </div>
@@ -266,7 +267,6 @@
 import { getStorageJson } from '@/utils/storage'
 import { getColor } from '@/utils/format'
 import { customerSubscribeApi, contractSubscribeApi } from '@/api/enterprise'
-import { translateRuntimeText } from '@/utils/i18ns'
 import {
   salesmanCustomApi,
   saveSalesmanCustomApi,
@@ -395,9 +395,6 @@ export default {
   },
 
   methods: {
-    translateText(text) {
-      return translateRuntimeText(text, this)
-    },
     scheduleTableLayout() {
       if (this.tableLayoutTimer) {
         clearTimeout(this.tableLayoutTimer)

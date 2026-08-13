@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 添加付款记录/付款提醒弹窗页面 以config.type来区分 type=1:回款记录和续费记录/ type=3 回款提醒和续费提醒 -->
 <template>
 <el-dialog
@@ -10,16 +11,16 @@
 >
   <el-form ref="form" :label-width="labelWidth + 'px'" :model="rules" :rules="rule" class="mt15">
     <el-form-item v-if="config.type == 1 && config.formType" prop="cid">
-      <span slot="label">{{ $t("ui.customerContractContractDialogSelectOrder") }} </span>
-      <el-select v-model="rules.cid" :placeholder="$t('ui.customerContractContractDialogSelectOrder2')" size="small">
+      <span slot="label">{{ $("ui.customerContractContractDialogSelectOrder") }} </span>
+      <el-select v-model="rules.cid" :placeholder="$('ui.customerContractContractDialogSelectOrder2')" size="small">
         <el-option v-for="item in contractData" :key="item.id" :label="item.title" :value="item.id" />
       </el-select>
     </el-form-item>
     <el-form-item prop="radio">
-      <span slot="label">{{ config.type !== 3 ? $t('ui.invoiceInvoiceDetailsBusinessType') : $t('ui.customerContractContractDialogReminderType') }}： </span>
+      <span slot="label">{{ config.type !== 3 ? $('ui.invoiceInvoiceDetailsBusinessType') : $('ui.customerContractContractDialogReminderType') }}： </span>
       <el-radio-group v-model="rules.radio" @change="radioChange">
-        <el-radio :label="1"> {{ config.type !== 3 ? $t('ui.customerContractContractDialogPaymentCollection') : $t('ui.customerContractContractDialogPaymentReminder') }}</el-radio>
-        <el-radio :label="2"> {{ config.type !== 3 ? $t('ui.customerContractContractDialogRenewal') : $t('ui.customerContractContractDialogRenewalReminder') }}</el-radio>
+        <el-radio :label="1"> {{ config.type !== 3 ? $('ui.customerContractContractDialogPaymentCollection') : $('ui.customerContractContractDialogPaymentReminder') }}</el-radio>
+        <el-radio :label="2"> {{ config.type !== 3 ? $('ui.customerContractContractDialogRenewal') : $('ui.customerContractContractDialogRenewalReminder') }}</el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item prop="amount">
@@ -47,15 +48,15 @@
     </el-form-item>
     <!-- 支付方式 -->
     <el-form-item v-if="config.type !== 3" prop="type_id">
-      <span slot="label">{{ $t("ui.customerListApplyForPaymentPaymentMethod") }}</span>
-      <el-select v-model="rules.type_id" :placeholder="$t('ui.customerContractContractDialogSelectPaymentMethod')" size="small">
+      <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentMethod") }}</span>
+      <el-select v-model="rules.type_id" :placeholder="$('ui.customerContractContractDialogSelectPaymentMethod')" size="small">
         <el-option v-for="item in paymentOptions" :key="item.id" :label="item.name" :value="item.id" />
       </el-select>
     </el-form-item>
 
     <!-- 付款时间 -->
     <el-form-item v-if="config.type !== 3" prop="dateTime">
-      <span slot="label">{{ $t("ui.customerListApplyForPaymentPaymentTime") }}</span>
+      <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentTime") }}</span>
       <el-date-picker
         v-model="rules.dateTime"
         :picker-options="pickerOptions"
@@ -69,7 +70,7 @@
 
     <!-- 付款凭证 -->
     <el-form-item v-if="config.type !== 3">
-      <span slot="label">{{ $t("ui.customerListApplyForPaymentPaymentProof") }}</span>
+      <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentProof") }}</span>
       <div class="avatar">
         <el-upload
           :headers="myHeaders"
@@ -81,24 +82,23 @@
           <img v-if="imageUrl" :src="imageUrl" class="img" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
-        <p class="clew">{{ $t("ui.customerContractContractDialogJpgJpegAndPngAreSupported") }} <br />{{ $t("ui.customerContractContractDialogRecommended7341034") }} <br />{{ $t("ui.customerContractContractDialogNoLargerThan2Mb") }}</p>
+        <p class="clew">{{ $("ui.customerContractContractDialogJpgJpegAndPngAreSupported") }} <br />{{ $("ui.customerContractContractDialogRecommended7341034") }} <br />{{ $("ui.customerContractContractDialogNoLargerThan2Mb") }}</p>
       </div>
     </el-form-item>
 
     <el-form-item :prop="config.type == 3 ? 'remarks' : ''">
-      <span slot="label">{{ config.type !== 3 ? $t('ui.xmindEditorToolbarNodeBtnListRemarks') : $t('ui.customerContractContractDialogReminderContent') }}：</span>
+      <span slot="label">{{ config.type !== 3 ? $('ui.xmindEditorToolbarNodeBtnListRemarks') : $('ui.customerContractContractDialogReminderContent') }}：</span>
       <el-input v-model="rules.remarks" maxlength="255" show-word-limit type="textarea" />
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
-    <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-    <el-button :loading="loading" size="small" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+    <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+    <el-button :loading="loading" size="small" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
   </div>
 </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import {
   clientBillEditApi,
   clientBillSaveApi,
@@ -125,13 +125,13 @@ export default {
   data() {
     const checkAmount = (rule, value, callback) => {
       if (this.rules.radio == 1 && !value) {
-        return callback(new Error(this.$t('customer.placeholder33')))
+        return callback(new Error(this.$('customer.placeholder33')))
       } else if (this.rules.radio == 2 && !value) {
-        return callback(new Error(this.$t('customer.placeholder35')))
+        return callback(new Error(this.$('customer.placeholder35')))
       } else if (this.config.type === 3 && !value) {
-        return callback(new Error(this.$t('customer.placeholder37')))
+        return callback(new Error(this.$('customer.placeholder37')))
       } else if (this.config.type === 4 && !value) {
-        return callback(new Error(this.$t('customer.placeholder35')))
+        return callback(new Error(this.$('customer.placeholder35')))
       } else {
         callback()
       }
@@ -139,23 +139,23 @@ export default {
     const checkDateTime = (rule, value, callback) => {
       if (this.rules.radio == 1 && !value) {
         if (this.config.type == 3) {
-          return callback(new Error(this.$t('customer.placeholder38')))
+          return callback(new Error(this.$('customer.placeholder38')))
         } else {
-          return callback(new Error(this.$t('customer.placeholder34')))
+          return callback(new Error(this.$('customer.placeholder34')))
         }
       } else if (this.rules.radio == 2 && !value) {
-        return callback(new Error(this.$t('customer.placeholder36')))
+        return callback(new Error(this.$('customer.placeholder36')))
       } else if (this.config.type === 4 && !value) {
-        return callback(new Error(this.$t('customer.placeholder39')))
+        return callback(new Error(this.$('customer.placeholder39')))
       } else if (this.config.type === 5 && !value) {
-        return callback(new Error(this.$t('customer.placeholder41')))
+        return callback(new Error(this.$('customer.placeholder41')))
       } else {
         callback()
       }
     }
     const checkType = (rule, value, callback) => {
       if ((this.rules.radio == 2 || this.config.type === 4) && !value) {
-        return callback(new Error(this.$t('customer.placeholder31')))
+        return callback(new Error(this.$('customer.placeholder31')))
       } else {
         callback()
       }
@@ -163,7 +163,7 @@ export default {
 
     const checkRemark = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error(this.$t('customer.placeholder40')))
+        return callback(new Error(this.$('customer.placeholder40')))
       } else {
         callback()
       }
@@ -171,7 +171,7 @@ export default {
 
     const checkContent = (rule, value, callback) => {
       if (this.config.type === 5 && !value) {
-        return callback(new Error(this.$t('customer.placeholder40')))
+        return callback(new Error(this.$('customer.placeholder40')))
       } else {
         callback()
       }
@@ -205,41 +205,41 @@ export default {
         }
       },
       rule: {
-        cid: [{ required: true, message: i18n.t('ui.customerContractContractDialogSelectOrder2'), trigger: 'change' }],
+        cid: [{ required: true, message: $('ui.customerContractContractDialogSelectOrder2'), trigger: 'change' }],
         amount: [{ required: true, validator: checkAmount, trigger: 'blur' }],
         dateTime: [{ required: true, validator: checkDateTime, trigger: 'change' }],
         type: [{ required: true, validator: checkType, trigger: 'change' }],
-        type_id: { required: true, message: i18n.t('ui.customerContractContractDialogSelectPaymentMethod'), trigger: 'change' }, // 支付方式
+        type_id: { required: true, message: $('ui.customerContractContractDialogSelectPaymentMethod'), trigger: 'change' }, // 支付方式
         remarks: [{ required: true, validator: checkRemark, trigger: 'blur' }],
         content: [{ required: true, validator: checkContent, trigger: 'blur' }],
-        radio: [{ required: true, message: i18n.t('legacyScript.pleaseSelectBusinessType'), trigger: 'change' }],
-        endDate: [{ required: true, message: i18n.t('legacyScript.selectReminderTime'), trigger: 'change' }]
+        radio: [{ required: true, message: $('legacyScript.pleaseSelectBusinessType'), trigger: 'change' }],
+        endDate: [{ required: true, message: $('legacyScript.selectReminderTime'), trigger: 'change' }]
       },
       title01: '回款金额(元)',
       title02: '',
       placeholder01: '请输入回款金额',
-      placeholder02: this.$t('customer.placeholder33'),
+      placeholder02: this.$('customer.placeholder33'),
       labelWidth: 120,
       payText: '',
       sourceOptions: [],
       paymentOptions: [],
       typeOptions: [
-        { value: 0, label: this.$t('access.day') },
-        { value: 1, label: this.$t('user.work.week') },
-        { value: 2, label: this.$t('user.work.month') },
-        { value: 3, label: this.$t('calendar.year') }
+        { value: 0, label: this.$('access.day') },
+        { value: 1, label: this.$('user.work.week') },
+        { value: 2, label: this.$('user.work.month') },
+        { value: 3, label: this.$('calendar.year') }
       ],
       loading: false,
       pickerOptions: {
         shortcuts: [
           {
-            text: i18n.t('toptable.today'),
+            text: $('toptable.today'),
             onClick(picker) {
               picker.$emit('pick', new Date())
             }
           },
           {
-            text: i18n.t('toptable.yesterday'),
+            text: $('toptable.yesterday'),
             onClick(picker) {
               const date = new Date()
               date.setTime(date.getTime() - 3600 * 1000 * 24)
@@ -247,7 +247,7 @@ export default {
             }
           },
           {
-            text: i18n.t('legacyScript.dayBeforeYesterday'),
+            text: $('legacyScript.dayBeforeYesterday'),
             onClick(picker) {
               const date = new Date()
               date.setTime(date.getTime() - 3600 * 1000 * 24 * 2)
@@ -273,7 +273,7 @@ export default {
             this.rules.radio = 2
             this.title01 = '续费金额(元)'
             this.title02 = '续费结束日期'
-            this.placeholder02 = this.$t('customer.placeholder36')
+            this.placeholder02 = this.$('customer.placeholder36')
           } else {
             this.rules.radio = 1
             this.title01 = '回款金额(元)'
@@ -312,8 +312,8 @@ export default {
           }
           this.title01 = '续费金额(元)'
           this.title02 = '续费结束日期'
-          this.placeholder01 = this.$t('customer.placeholder35')
-          this.placeholder02 = this.$t('customer.placeholder36')
+          this.placeholder01 = this.$('customer.placeholder35')
+          this.placeholder02 = this.$('customer.placeholder36')
         }
         if (nVal.type == 3) {
           this.rules.amount = nVal.data.num
@@ -330,10 +330,10 @@ export default {
           } else {
             this.rules.radio = 1
             this.title02 = '回款提醒日期' // 回款提醒日期
-            this.placeholder02 = this.$t('customer.placeholder38')
+            this.placeholder02 = this.$('customer.placeholder38')
             this.rules.endDate = nVal.data.time
-            this.title01 = this.$t('customer.collectionamount01') // 预计回款金额
-            this.placeholder01 = this.$t('customer.placeholder37') //
+            this.title01 = this.$('customer.collectionamount01') // 预计回款金额
+            this.placeholder01 = this.$('customer.placeholder37') //
           }
           this.rules.remarks = nVal.data.mark
         }
@@ -372,10 +372,10 @@ export default {
   methods: {
     setOptions() {
       this.typeOptions = [
-        { value: 0, label: this.$t('access.day') },
-        { value: 1, label: this.$t('user.work.week') },
-        { value: 2, label: this.$t('user.work.month') },
-        { value: 3, label: this.$t('calendar.year') }
+        { value: 0, label: this.$('access.day') },
+        { value: 1, label: this.$('user.work.week') },
+        { value: 2, label: this.$('user.work.month') },
+        { value: 3, label: this.$('calendar.year') }
       ]
     },
 
@@ -400,19 +400,19 @@ export default {
           this.title01 = '回款金额(元)'
           this.title02 = '回款提醒日期'
         }
-        this.placeholder02 = this.$t('customer.placeholder34')
-        this.placeholder01 = this.$t('customer.placeholder33')
+        this.placeholder02 = this.$('customer.placeholder34')
+        this.placeholder01 = this.$('customer.placeholder33')
       } else if (e == 2) {
         if (this.config.type == 3) {
-          this.title01 = this.$t('customer.renewalamount')
-          this.placeholder01 = this.$t('customer.placeholder35')
-          this.title02 = this.$t('customer.renewaldate01')
-          this.placeholder02 = this.$t('customer.placeholder39')
+          this.title01 = this.$('customer.renewalamount')
+          this.placeholder01 = this.$('customer.placeholder35')
+          this.title02 = this.$('customer.renewaldate01')
+          this.placeholder02 = this.$('customer.placeholder39')
         } else {
           this.title01 = '续费金额(元)'
           this.title02 = '续费结束日期'
-          this.placeholder01 = this.$t('customer.placeholder35')
-          this.placeholder02 = this.$t('customer.placeholder36')
+          this.placeholder01 = this.$('customer.placeholder35')
+          this.placeholder02 = this.$('customer.placeholder36')
         }
       }
     },

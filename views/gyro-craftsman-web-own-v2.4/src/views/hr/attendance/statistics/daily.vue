@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="employees-card-bottom">
@@ -5,35 +6,35 @@
     <formBox @confirmData="confirmData" :total="total"></formBox>
     <!-- 表格 -->
     <el-table class="mt10" :data="tableData" v-loading="loading" style="width: 100%" :height="tableHeight">
-      <el-table-column prop="card.name" :label="$t('ui.businessHolidayQueryIndexName')" fixed="left" min-width="120px"> </el-table-column>
-       <el-table-column prop="created_at" :label="$t('ui.hrAttendanceStatisticsDailyDate')" width="120" fixed="left">
+      <el-table-column prop="card.name" :label="$('ui.businessHolidayQueryIndexName')" fixed="left" min-width="120px"> </el-table-column>
+       <el-table-column prop="created_at" :label="$('ui.hrAttendanceStatisticsDailyDate')" width="120" fixed="left">
           <template #default="{ row }">
             {{ $moment(row.created_at).format('YYYY-MM-DD') }}
           </template>
         </el-table-column>
-      <el-table-column prop="frame.name" :label="$t('ui.businessHolidayQueryIndexDepartment')" min-width="140px"> </el-table-column>
-      <el-table-column :label="$t('ui.hrAttendanceStatisticsRecordDrawerShiftInformation')">
-        <el-table-column prop="group" :label="$t('ui.hrAttendanceSettingTeamAttendanceGroupName')" width="120">
+      <el-table-column prop="frame.name" :label="$('ui.businessHolidayQueryIndexDepartment')" min-width="140px"> </el-table-column>
+      <el-table-column :label="$('ui.hrAttendanceStatisticsRecordDrawerShiftInformation')">
+        <el-table-column prop="group" :label="$('ui.hrAttendanceSettingTeamAttendanceGroupName')" width="120">
           <template #default="{ row }">
             {{ row.group || '--' }}
           </template>
         </el-table-column>
-       
-        <el-table-column prop="name" :label="$t('ui.hrAttendanceSettingAddConentAttendanceShift')" min-width="150px">
+
+        <el-table-column prop="name" :label="$('ui.hrAttendanceSettingAddConentAttendanceShift')" min-width="150px">
           <template #default="{ row }">
             <div>{{ row.shift_data.name || '--' }}</div>
             <span>{{ getShift(row.shift_data) }}</span>
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyClockIn1')">
-        <el-table-column prop="province" :label="$t('ui.hrAttendanceStatisticsDailyEarliestClockIn')" width="95">
+      <el-table-column :label="$('ui.hrAttendanceStatisticsDailyClockIn1')">
+        <el-table-column prop="province" :label="$('ui.hrAttendanceStatisticsDailyEarliestClockIn')" width="95">
           <template #default="{ row }">
-            <div v-if="row.one_shift_time">{{ row.one_shift_is_after ? $t('ui.hrAttendanceSettingAddConentNextDay') : $t('ui.hrAttendanceSettingAddConentToday') }}</div>
+            <div v-if="row.one_shift_time">{{ row.one_shift_is_after ? $('ui.hrAttendanceSettingAddConentNextDay') : $('ui.hrAttendanceSettingAddConentToday') }}</div>
             {{ formatTime(row.one_shift_time) }}
           </template>
         </el-table-column>
-        <el-table-column prop="city" :label="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="140">
+        <el-table-column prop="city" :label="$('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="140">
           <template #default="{ row }">
             <div @click="openFn(row.one_shift_status, row.one_shift_location_status, 1, row.id)">
               <span :class="row.one_shift_status > 1 || row.one_shift_location_status > 1 ? 'red' : 'pointer'">
@@ -43,14 +44,14 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyClockOut1')">
-        <el-table-column prop="province" :label="$t('ui.hrAttendanceStatisticsDailyLatestClockIn')" width="95">
+      <el-table-column :label="$('ui.hrAttendanceStatisticsDailyClockOut1')">
+        <el-table-column prop="province" :label="$('ui.hrAttendanceStatisticsDailyLatestClockIn')" width="95">
           <template #default="{ row }">
-            <div v-if="row.two_shift_time">{{ row.two_shift_is_after ? $t('ui.hrAttendanceSettingAddConentNextDay') : $t('ui.hrAttendanceSettingAddConentToday') }}</div>
+            <div v-if="row.two_shift_time">{{ row.two_shift_is_after ? $('ui.hrAttendanceSettingAddConentNextDay') : $('ui.hrAttendanceSettingAddConentToday') }}</div>
             {{ formatTime(row.two_shift_time) }}
           </template>
         </el-table-column>
-        <el-table-column prop="city" :label="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="140">
+        <el-table-column prop="city" :label="$('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="140">
           <template #default="{ row }">
             <div @click="openFn(row.two_shift_status, row.two_shift_location_status, 2, row.id)">
               <span :class="row.two_shift_status > 1 || row.two_shift_location_status > 0 ? 'red' : 'pointer'">
@@ -61,14 +62,14 @@
         </el-table-column>
       </el-table-column>
 
-      <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyClockIn2')">
-        <el-table-column prop="province" :label="$t('ui.hrAttendanceStatisticsDailyEarliestClockIn')" width="95">
+      <el-table-column :label="$('ui.hrAttendanceStatisticsDailyClockIn2')">
+        <el-table-column prop="province" :label="$('ui.hrAttendanceStatisticsDailyEarliestClockIn')" width="95">
           <template #default="{ row }">
-            <div v-if="row.three_shift_time">{{ row.three_shift_is_after ? $t('ui.hrAttendanceSettingAddConentNextDay') : $t('ui.hrAttendanceSettingAddConentToday') }}</div>
+            <div v-if="row.three_shift_time">{{ row.three_shift_is_after ? $('ui.hrAttendanceSettingAddConentNextDay') : $('ui.hrAttendanceSettingAddConentToday') }}</div>
             {{ formatTime(row.three_shift_time) }}
           </template>
         </el-table-column>
-        <el-table-column prop="city" :label="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="140">
+        <el-table-column prop="city" :label="$('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="140">
           <template #default="{ row }">
             <div @click="openFn(row.three_shift_status, row.three_shift_location_status, 3, row.id)">
               <span :class="row.three_shift_status > 1 || row.three_shift_location_status > 0 ? 'red' : 'pointer'">
@@ -78,14 +79,14 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyClockOut2')">
-        <el-table-column prop="province" :label="$t('ui.hrAttendanceStatisticsDailyLatestClockIn')" width="95">
+      <el-table-column :label="$('ui.hrAttendanceStatisticsDailyClockOut2')">
+        <el-table-column prop="province" :label="$('ui.hrAttendanceStatisticsDailyLatestClockIn')" width="95">
           <template #default="{ row }">
-            <div v-if="row.four_shift_time">{{ row.four_shift_is_after ? $t('ui.hrAttendanceSettingAddConentNextDay') : $t('ui.hrAttendanceSettingAddConentToday') }}</div>
+            <div v-if="row.four_shift_time">{{ row.four_shift_is_after ? $('ui.hrAttendanceSettingAddConentNextDay') : $('ui.hrAttendanceSettingAddConentToday') }}</div>
             {{ formatTime(row.four_shift_time) }}
           </template>
         </el-table-column>
-        <el-table-column prop="city" :label="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="140">
+        <el-table-column prop="city" :label="$('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="140">
           <template #default="{ row }">
             <div @click="openFn(row.four_shift_status, row.four_shift_location_status, 4, row.id)">
               <span :class="row.four_shift_status > 1 || row.four_shift_location_status > 0 ? 'red' : 'pointer'">
@@ -95,23 +96,23 @@
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyDurationStatisticsHours')">
-        <el-table-column prop="required_work_hours" :label="$t('ui.hrAttendanceStatisticsDailyRequiredAttendance')" width="120"> </el-table-column>
-        <el-table-column prop="actual_work_hours" :label="$t('ui.hrAttendanceStatisticsDailyActualAttendance')" width="120"> </el-table-column>
-        <el-table-column prop="overtime_work_hours" :label="$t('ui.hrAttendanceStatisticsDailyOvertimeHours')" width="120"> 
+      <el-table-column :label="$('ui.hrAttendanceStatisticsDailyDurationStatisticsHours')">
+        <el-table-column prop="required_work_hours" :label="$('ui.hrAttendanceStatisticsDailyRequiredAttendance')" width="120"> </el-table-column>
+        <el-table-column prop="actual_work_hours" :label="$('ui.hrAttendanceStatisticsDailyActualAttendance')" width="120"> </el-table-column>
+        <el-table-column prop="overtime_work_hours" :label="$('ui.hrAttendanceStatisticsDailyOvertimeHours')" width="120">
           <template #default="{ row }">
           <span :style="{ color: row.overtime_work_hours != 0.00 ? 'red' : '' }">{{ row.overtime_work_hours }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="leave_time" :label="$t('ui.hrAttendanceStatisticsDailyLeaveHours')" width="120"> 
+        <el-table-column prop="leave_time" :label="$('ui.hrAttendanceStatisticsDailyLeaveHours')" width="120">
           <template #default="{ row }">
             <span :style="{ color: row.leave_time != 0.00 ? '#19BE6B' : '' }">{{ row.leave_time }}</span>
           </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right">
+      <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right">
         <template #default="{ row }">
-          <el-button type="text" @click="openRecord(row)">{{ $t("ui.hrAttendanceStatisticsDailyProcessingRecords") }}</el-button>
+          <el-button type="text" @click="openRecord(row)">{{ $("ui.hrAttendanceStatisticsDailyProcessingRecords") }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -134,29 +135,29 @@
     <el-form>
       <el-form-item :label="form.name" label-width="60px">
         <div class="flex lh-center">
-          <el-select size="small" v-model="form.dis_status" :placeholder="$t('ui.developConditionGroupPleaseSelect')" disabled>
+          <el-select size="small" v-model="form.dis_status" :placeholder="$('ui.developConditionGroupPleaseSelect')" disabled>
             <el-option v-for="item in salesmanList" :key="item.id" :label="item.name" :value="item.id"> </el-option>
           </el-select>
           <span class="el-icon-d-arrow-right"></span>
-          <el-select size="small" v-model="form.status" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+          <el-select size="small" v-model="form.status" :placeholder="$('ui.developConditionGroupPleaseSelect')">
             <el-option v-for="item in salesmanList" :key="item.id" :label="item.name" :value="item.id"> </el-option>
           </el-select>
         </div>
       </el-form-item>
       <el-form-item label-width="60px" v-if="form.dis_locationStatus !== 0">
         <div>
-          <el-select size="small" v-model="form.dis_locationStatus" :placeholder="$t('ui.developConditionGroupPleaseSelect')" disabled>
+          <el-select size="small" v-model="form.dis_locationStatus" :placeholder="$('ui.developConditionGroupPleaseSelect')" disabled>
             <el-option v-for="item in placeList" :key="item.id" :label="item.name" :value="item.id"> </el-option>
           </el-select>
           <span class="el-icon-d-arrow-right"></span>
-          <el-select size="small" v-model="form.location_status" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+          <el-select size="small" v-model="form.location_status" :placeholder="$('ui.developConditionGroupPleaseSelect')">
             <el-option v-for="item in placeList" :key="item.id" :label="item.name" :value="item.id"> </el-option>
           </el-select>
         </div>
       </el-form-item>
-      <el-form-item :label="$t('ui.fdEnterpriseListViewDetailsRemarks')" label-width="60px">
+      <el-form-item :label="$('ui.fdEnterpriseListViewDetailsRemarks')" label-width="60px">
         <div class="flex">
-          <el-input type="textarea" :placeholder="$t('ui.chatModelFormEnterContent')" v-model="form.remark"> </el-input>
+          <el-input type="textarea" :placeholder="$('ui.chatModelFormEnterContent')" v-model="form.remark"> </el-input>
         </div>
       </el-form-item>
     </el-form>
@@ -167,7 +168,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { dailyStatisticsApi, putStatisticsApi } from '@/api/config'
 export default {
   name: 'CrmebOaEntDaily',
@@ -246,8 +246,8 @@ export default {
       val: '',
       fromData: {
         with: '700px',
-        title: i18n.t('legacyScript.changeClockInResult'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.changeClockInResult'),
+        btnText: '确定',
         labelWidth: '90px',
         type: 'slot'
       },
@@ -468,9 +468,9 @@ export default {
       }
       if (tip == 0) {
       } else if (tip == 1) {
-        tips = i18n.t('legacyScript.fieldClockIn')
+        tips = $('legacyScript.fieldClockIn')
       } else if (tip == 2) {
-        tips = i18n.t('legacyScript.locationException')
+        tips = $('legacyScript.locationException')
       }
 
       if (time !== 0) {

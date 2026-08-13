@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 查看客户信息侧滑页面 -->
 <template>
 <div class="station">
@@ -71,7 +72,7 @@
 
           <!-- 规格售价 -->
           <div class="from-item-title mb15">
-            <span>{{ $t("ui.customerProductAddProductSpecPrice") }}</span>
+            <span>{{ $("ui.customerProductAddProductSpecPrice") }}</span>
           </div>
 
           <!-- 单规格 -->
@@ -150,7 +151,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getProductInfoApi } from '@/api/client'
 export default {
   name: 'details',
@@ -176,17 +176,17 @@ export default {
       manyTabTit: {},
 
       formThead: [
-        { title: i18n.t('file.picture'), key: 'image' },
+        { title: $('file.picture'), key: 'image' },
         {
-          title: i18n.t('legacyScript.productPriceYuan'),
+          title: $('legacyScript.productPriceYuan'),
           key: 'price'
         },
         {
-          title: i18n.t('legacyScript.productCostYuan'),
+          title: $('legacyScript.productCostYuan'),
           key: 'cost'
         },
         {
-          title: i18n.t('legacyScript.productSpecNo'),
+          title: $('legacyScript.productSpecNo'),
           key: 'bar_code'
         }
       ],

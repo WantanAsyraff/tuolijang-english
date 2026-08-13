@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="assess">
   <el-scrollbar style="height: 100%; width: 100%">
@@ -6,8 +7,8 @@
         <el-row class="assess-item-top">
           <el-col :span="22" class="top-left">
             <div class="name over-text1">{{ item.name }}</div>
-            <div class="ratio" :title="assessInfo.types == 1 ? $t('ui.userWorkbenchEchartTotalScore') + item.ratio : $t('ui.userWorkbenchAssessTargetWeight') + item.ratio + '%'">
-              ({{ item.ratio }}{{ assessInfo.types == 1 ? $t('ui.developCrudEventMinute') : '%' }})
+            <div class="ratio" :title="assessInfo.types == 1 ? $('ui.userWorkbenchEchartTotalScore') + item.ratio : $('ui.userWorkbenchAssessTargetWeight') + item.ratio + '%'">
+              ({{ item.ratio }}{{ assessInfo.types == 1 ? $('ui.developCrudEventMinute') : '%' }})
             </div>
           </el-col>
           <el-col :span="2" class="text-right">
@@ -27,8 +28,8 @@
           >
             <el-col :span="22" class="top-left">
               <div class="name over-text1 hover-text">{{ items.name }}</div>
-              <div class="ratio" :title="assessInfo.types == 1 ? $t('ui.userWorkbenchEchartTotalScore') + items.ratio : $t('ui.userWorkbenchAssessTargetWeight') + items.ratio + '%'">
-                ({{ items.ratio }}{{ assessInfo.types == 1 ? $t('ui.developCrudEventMinute') : '%' }})
+              <div class="ratio" :title="assessInfo.types == 1 ? $('ui.userWorkbenchEchartTotalScore') + items.ratio : $('ui.userWorkbenchAssessTargetWeight') + items.ratio + '%'">
+                ({{ items.ratio }}{{ assessInfo.types == 1 ? $('ui.developCrudEventMinute') : '%' }})
               </div>
             </el-col>
             <el-col :span="2" class="text-right">
@@ -50,7 +51,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { userAssessInfo } from '@/api/user'
 export default {
   name: 'AssessInfo',
@@ -92,7 +92,7 @@ export default {
     },
     targetItem(item, tItem) {
       this.configData = {
-        title: i18n.t('ui.userAssessmentSelfSelfAssessment'),
+        title: $('ui.userAssessmentSelfSelfAssessment'),
         width: '600px',
         assessId: this.id,
         spaceId: item.id,

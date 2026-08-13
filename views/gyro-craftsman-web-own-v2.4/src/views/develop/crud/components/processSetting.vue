@@ -1,18 +1,18 @@
 <template>
 <div>
   <div class="flex-between">
-    <div class="title-16">{{ $t("ui.developApproveIndexWorkflowList") }}</div>
-    <el-button size="small" type="primary" icon="el-icon-plus" @click="openBox">{{ $t("ui.developCrudProcessSettingNewWorkflow") }}</el-button>
+    <div class="title-16">{{ $("ui.developApproveIndexWorkflowList") }}</div>
+    <el-button size="small" type="primary" icon="el-icon-plus" @click="openBox">{{ $("ui.developCrudProcessSettingNewWorkflow") }}</el-button>
   </div>
   <!-- 筛选 -->
   <div class="flex mb10 h32">
-    <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ tableData.length }} {{ $t("ui.developModuleFormBoxItems") }}</div>
+    <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ tableData.length }} {{ $("ui.developModuleFormBoxItems") }}</div>
     <div class="ml14">
       <el-input
         v-model="where.name"
         prefix-icon="el-icon-search"
         size="small"
-        :placeholder="$t('ui.commonFormListPleaseEnterKeyword')"
+        :placeholder="$('ui.commonFormListPleaseEnterKeyword')"
         clearable
         style="width: 250px"
         @change="getList"
@@ -24,7 +24,7 @@
   <!-- 表格 -->
   <div class="table-box" v-loading="loading">
     <el-table row-key="id" :data="tableData" :height="height" style="width: 100%">
-      <el-table-column prop="name" :label="$t('business.businessType')" min-width="230">
+      <el-table-column prop="name" :label="$('business.businessType')" min-width="230">
         <template slot-scope="scope">
           <div class="flex">
             <div class="selIcon" :style="{ backgroundColor: scope.row.color }">
@@ -34,24 +34,24 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column prop="refuse" :label="$t('ui.developApproveIndexSponsorScope')" min-width="200" show-overflow-tooltip>
+      <el-table-column prop="refuse" :label="$('ui.developApproveIndexSponsorScope')" min-width="200" show-overflow-tooltip>
         <template #default="{ row }">
-          <span>{{ row.userList ? row.userList : $t('ui.workFlowNodeWrapEveryone') }}</span>
+          <span>{{ row.userList ? row.userList : $('ui.workFlowNodeWrapEveryone') }}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="info" :label="$t('ui.developApproveIndexApprovalDescription')" min-width="200" show-overflow-tooltip>
+      <el-table-column prop="info" :label="$('ui.developApproveIndexApprovalDescription')" min-width="200" show-overflow-tooltip>
         <template #default="{ row }">
           {{ row.info || '--' }}
         </template>
       </el-table-column>
 
-      <el-table-column prop="updated_at" :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="140" />
-      <el-table-column :label="$t('ui.customerSetupDictionaryIndexStatus')" width="160">
+      <el-table-column prop="updated_at" :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="140" />
+      <el-table-column :label="$('ui.customerSetupDictionaryIndexStatus')" width="160">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"
-            :active-text="$t('hr.open')"
-            :inactive-text="$t('hr.close')"
+            :active-text="$('hr.open')"
+            :inactive-text="$('hr.close')"
             :active-value="1"
             :inactive-value="0"
             :width="60"
@@ -60,10 +60,10 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="170">
+      <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="170">
         <template slot-scope="scope">
-          <el-button type="text" @click="editFn(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-          <el-button type="text" @click="deleteFn(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+          <el-button type="text" @click="editFn(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+          <el-button type="text" @click="deleteFn(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
         </template>
       </el-table-column>
     </el-table>

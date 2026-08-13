@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 import { makeRequiredRule } from '../../utils'
 
@@ -13,7 +13,7 @@ export default {
       type: name,
       field: uniqueId(),
       props: { maxLength: 5 },
-      title: i18n.t('ui.userDailyAddBoxAttachment'),
+      title: $('ui.userDailyAddBoxAttachment'),
       info: ''
     }
   },

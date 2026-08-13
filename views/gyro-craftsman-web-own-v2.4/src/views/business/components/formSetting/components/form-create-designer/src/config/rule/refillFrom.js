@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 import { makeRequiredRule } from '../../utils'
 
@@ -22,7 +22,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('legacyScript.exceptionDate'),
+          title: $('legacyScript.exceptionDate'),
           type: 'select',
           _fc_drag_tag: 'select',
           symbol: 'attendanceExceptionDate',
@@ -36,7 +36,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('legacyScript.exceptionRecords'),
+          title: $('legacyScript.exceptionRecords'),
           type: 'select',
           _fc_drag_tag: 'select',
           symbol: 'attendanceExceptionRecord',
@@ -62,8 +62,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: i18n.t('legacyScript.pleaseEnterTheReasonForCardReplacement') },
-          title: i18n.t('legacyScript.reasonForCardReplacement'),
+          props: { type: 'textarea', placeholder: $('legacyScript.pleaseEnterTheReasonForCardReplacement') },
+          title: $('legacyScript.reasonForCardReplacement'),
           _fc_drag_tag: 'textarea'
         }
       ]
@@ -120,7 +120,7 @@ export default {
         props: {
           value:
             '1.是否需要补卡，根据考勤组规则自动判断<br>2. 补卡次数与时间限制，可在考勤组-打卡规则中修改<br>3. 补卡数据将自动同步至考勤报表',
-          title: i18n.t('legacyScript.clockCorrectionRules')
+          title: $('legacyScript.clockCorrectionRules')
         },
         input: false,
         title: '',

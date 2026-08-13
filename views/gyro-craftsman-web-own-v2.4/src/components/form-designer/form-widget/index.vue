@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="form-widget-container">
     <el-form
@@ -8,7 +9,7 @@
       :validate-on-rule-change="false"
     >
       <div v-if="designer.widgetList.length === 0" class="no-widget-hint">
-        <i class="el-icon-rank"></i> {{ i18nt('designer.noWidgetHint') }}
+        <i class="el-icon-rank"></i> {{ $('designer.noWidgetHint') }}
       </div>
 
       <draggable
@@ -53,17 +54,14 @@
 </template>
 
 <script>
-import appI18n from '@/lang'
 import Draggable from 'vuedraggable'
 import '@/components/form-designer/form-widget/container-widget/index'
 import FieldComponents from '@/components/form-designer/form-widget/field-widget/index'
-import i18n from '@/utils/i18n'
 import { containers } from '@/components/form-designer/widget-panel/widgetsConfig'
 
 export default {
   name: 'VFormWidget',
   componentName: 'VFormWidget',
-  mixins: [i18n],
   components: {
     Draggable,
 
@@ -180,7 +178,7 @@ export default {
         this.designer.widgetList.map((item) => {
           if (item.type === 'details' && widget.options.name.indexOf('@') !== -1) {
             this.designer.widgetList.splice(newIndex, 1)
-            this.$message.error(appI18n.t('legacyScript.childEntityFieldsCanOnlyBeDraggedIntoA'))
+            this.$message.error($('legacyScript.childEntityFieldsCanOnlyBeDraggedIntoA'))
             return false
           }
         })
@@ -211,7 +209,7 @@ export default {
     getWidgetRef(widgetName, showError = false) {
       let foundRef = this.widgetRefList[widgetName]
       if (!foundRef && !!showError) {
-        this.$message.error(this.i18nt('render.hint.refNotFound') + widgetName)
+        this.$message.error(this.$('render.hint.refNotFound') + widgetName)
       }
       return foundRef
     },
@@ -378,4 +376,3 @@ export default {
   opacity: 0;
 }
 </style>
-@/utils/i18ns

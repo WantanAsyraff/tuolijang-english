@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-dialog
-    :title="$t('ui.developCrudFieldSettingAiGeneratedFields')"
+    :title="$('ui.developCrudFieldSettingAiGeneratedFields')"
     :visible.sync="dialogVisible"
     :close-on-click-modal="false"
     width="1000px"
@@ -16,22 +17,22 @@
       <!-- 右侧区域 -->
       <div class="right-panel">
         <el-table :data="fields" style="width: 100%" height="400px">
-          <el-table-column prop="field_name" :label="$t('ui.developCrudFieldSettingFieldName')">
+          <el-table-column prop="field_name" :label="$('ui.developCrudFieldSettingFieldName')">
             <template slot-scope="scope">
               <el-input
                 size="small"
                 v-model="scope.row.field_name"
                 @change="handleFieldNameChange(scope.row)"
-                :placeholder="$t('ui.developCrudFieldSettingFieldName')"
+                :placeholder="$('ui.developCrudFieldSettingFieldName')"
               />
             </template>
           </el-table-column>
-          <el-table-column prop="form_value" :label="$t('ui.developForeignDocumentFieldType')" size="small">
+          <el-table-column prop="form_value" :label="$('ui.developForeignDocumentFieldType')" size="small">
             <template slot-scope="scope">
               <div class="flex">
                 <el-select
                   v-model="scope.row.value"
-                  :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                  :placeholder="$('ui.developConditionGroupPleaseSelect')"
                   @change="handleTypeChange(scope.row)"
                   size="small"
                 >
@@ -54,7 +55,7 @@
                 <el-select
                   v-if="dictTypes.includes(scope.row.value)"
                   v-model="scope.row.data_dict_id"
-                  :placeholder="$t('ui.customerSetupCustomFormIndexLinkedDictionary')"
+                  :placeholder="$('ui.customerSetupCustomFormIndexLinkedDictionary')"
                   size="small"
                   @change="selectChange(scope.row)"
                 >
@@ -90,11 +91,11 @@
           </el-table-column>
         </el-table>
 
-        <el-button class="add-text" type="text" icon="el-icon-plus" @click="handleAddField"> {{ $t("ui.developUpdateContentAddField") }} </el-button>
+        <el-button class="add-text" type="text" icon="el-icon-plus" @click="handleAddField"> {{ $("ui.developUpdateContentAddField") }} </el-button>
 
         <div class="footer-buttons">
-          <el-button size="small" @click="dialogVisible = false">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-          <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+          <el-button size="small" @click="dialogVisible = false">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+          <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $("ui.formCommonDialogFormOk") }}</el-button>
         </div>
       </div>
     </div>
@@ -104,7 +105,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { pinyin } from 'pinyin-pro'
 import Mobile from './mobile.vue'
 import { getDictListApi } from '@/api/form'
@@ -315,12 +315,12 @@ export default {
     handleConfirm() {
       for (const item of this.fields) {
         if (/^[\u4e00-\u9fa5a-zA-Z][\u4e00-\u9fa5a-zA-Z_]{0,15}$/.test(item.field_name) == false) {
-          this.$message.error(i18n.t('legacyScript.theFieldNameMustStartWithAChineseCharacterOr'))
+          this.$message.error($('legacyScript.theFieldNameMustStartWithAChineseCharacterOr'))
           return false
         }
 
         if (!item.value) {
-          this.$message.error(i18n.t('ui.developConditionGroupPleaseSelectFieldType'))
+          this.$message.error($('ui.developConditionGroupPleaseSelectFieldType'))
           return
         }
       }

@@ -1,10 +1,11 @@
+import { $ } from '@/lang'
 <template>
     <oa-dialog ref="oaDialog" :fromData="fromData" :visible.sync="visible" :isFooter="false" @handleClose="closeDialog" >
         <div class="sign-code-container">
            <div ref="qrcode" class="qrcode" />
             <div class="sign-info">
-                <span class="scan-tip">{{ $ts("请用手机微信扫描二维码进行签约") }}</span>
-                <span @click="saveQrcode" class="save-btn">{{ $ts("保存图片") }}</span>
+                <span class="scan-tip">{{ $("legacy.868a62f1855f981d") }}</span>
+                <span @click="saveQrcode" class="save-btn">{{ $("legacy.850de13a01d9b482") }}</span>
             </div>
             <!-- <div class="pc-link-wrapper">
                 <span class="link-label">PC端签约链接：</span>
@@ -16,7 +17,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
     import QRCode from 'qrcodejs2'
 export default {
     name: 'SignCode',
@@ -30,8 +30,8 @@ export default {
             linkUrl: 'https://tuoluojiang.com',
             fromData: {
                 width: '500px',
-                title: i18n.t('legacyScript.signerSigning'),
-                btnText: i18n.t('ui.formCommonDialogFormOk'),
+                title: $('legacyScript.signerSigning'),
+                btnText: '确定',
                 labelWidth: '100px',
                 type: 'slot'
             },
@@ -68,14 +68,14 @@ export default {
             // 获取二维码 canvas
             const qrcodeCanvas = this.$refs.qrcode.querySelector('canvas');
             if (!qrcodeCanvas) {
-                this.$message.error(i18n.t('legacyScript.theQRCodeHasNotBeenGeneratedYetPleaseTry'));
+                this.$message.error($('legacyScript.theQRCodeHasNotBeenGeneratedYetPleaseTry'));
                 return;
             }
 
             // 将 canvas 转为 blob 并下载
             qrcodeCanvas.toBlob((blob) => {
                 if (!blob) {
-                    this.$message.error(i18n.t('legacyScript.failedToGenerateImage'));
+                    this.$message.error($('legacyScript.failedToGenerateImage'));
                     return;
                 }
                 const url = URL.createObjectURL(blob);
@@ -86,7 +86,7 @@ export default {
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                this.$message.success(i18n.t('legacyScript.qRCodeImageSaved'));
+                this.$message.success($('legacyScript.qRCodeImageSaved'));
             });
         },
 
@@ -94,10 +94,10 @@ export default {
         copyLink() {
             // 使用Clipboard API复制链接
             navigator.clipboard.writeText(this.linkUrl).then(() => {
-                this.$message.success(i18n.t('legacyScript.linkCopiedToClipboard'));
+                this.$message.success($('legacyScript.linkCopiedToClipboard'));
             }).catch(err => {
-                console.error(i18n.t('legacyScript.copyFail'), err);
-                this.$message.error(i18n.t('legacyScript.copyFailedPleaseCopyManually'));
+                console.error($('legacyScript.copyFail'), err);
+                this.$message.error($('legacyScript.copyFailedPleaseCopyManually'));
             });
         }
     }

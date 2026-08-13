@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <div class="content-con">
@@ -24,34 +25,34 @@
             </div>
             <div class="panel-box">
               <div class="panel-title acea-row row-middle row-between">
-                <div class="title">{{ $ts("基本信息") }}</div>
+                <div class="title">{{ $("setting.info.essentialinformation") }}</div>
                 <div>
-                  <el-button v-if="!isEdit" type="text" icon="el-icon-edit" @click="onEdit">{{ $ts("编辑") }}</el-button>
-                  <el-button v-if="isEdit" @click="onCancel">{{ $ts("取消") }}</el-button>
-                  <el-button v-if="isEdit" type="primary" @click="handleSubmit">{{ $ts("保存") }}</el-button>
+                  <el-button v-if="!isEdit" type="text" icon="el-icon-edit" @click="onEdit">{{ $("public.edit") }}</el-button>
+                  <el-button v-if="isEdit" @click="onCancel">{{ $("public.cancel") }}</el-button>
+                  <el-button v-if="isEdit" type="primary" @click="handleSubmit">{{ $("public.save") }}</el-button>
                 </div>
               </div>
               <div class="panel-content">
                 <el-form ref="ruleForm" :model="ruleForm" :rules="rules">
                   <el-row :gutter="30">
                     <el-col :span="12">
-                      <el-form-item :label='$ts("企业名称")' prop="enterprise_name">
+                      <el-form-item :label='$("toptable.enterprisename")' prop="enterprise_name">
                         <el-input
                           v-show="isEdit"
                           v-model="ruleForm.enterprise_name"
-                          :placeholder="$t('setting.info.title1')"
+                          :placeholder="$('setting.info.title1')"
                           clearable
                         ></el-input>
                         <div v-show="!isEdit" class="value">{{ ruleForm.enterprise_name }}</div>
                       </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                      <el-form-item :label='$ts("企业简称")' prop="short_name">
+                      <el-form-item :label='$("setting.info.enterpriseabbreviation")' prop="short_name">
                         <el-input
                           v-show="isEdit"
                           v-model="ruleForm.short_name"
                           :maxlength="6"
-                          :placeholder='$ts("请填写企业简称")'
+                          :placeholder='$("legacyScript.pleaseEnterEnterpriseAbbreviation")'
                           show-word-limit
                           clearable
                         ></el-input>
@@ -61,7 +62,7 @@
                   </el-row>
                   <el-row :gutter="30">
                     <el-col :span="12">
-                      <el-form-item :label="$t('setting.info.enterprisecity')">
+                      <el-form-item :label="$('setting.info.enterprisecity')">
                         <el-cascader
                           v-show="isEdit"
                           v-model="cityVal"
@@ -74,11 +75,11 @@
                       </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                      <el-form-item :label="$t('setting.info.businessaddress')" prop="address">
+                      <el-form-item :label="$('setting.info.businessaddress')" prop="address">
                         <el-input
                           v-show="isEdit"
                           v-model="ruleForm.address"
-                          :placeholder="$t('setting.info.title2')"
+                          :placeholder="$('setting.info.title2')"
                           clearable
                         ></el-input>
                         <div v-show="!isEdit" class="value">{{ ruleForm.address }}</div>
@@ -87,11 +88,11 @@
                   </el-row>
                   <el-row :gutter="30">
                     <el-col :span="12">
-                      <el-form-item :label="$t('setting.info.contactnumber')" prop="phone">
+                      <el-form-item :label="$('setting.info.contactnumber')" prop="phone">
                         <el-input
                           v-show="isEdit"
                           v-model="ruleForm.phone"
-                          :placeholder="$t('setting.info.title3')"
+                          :placeholder="$('setting.info.title3')"
                           clearable
                           readonly
                         ></el-input>
@@ -104,36 +105,36 @@
             </div>
             <div class="panel-box" :class="{ gray: isEdit }">
               <div class="panel-title acea-row row-middle row-between">
-                <div class="title">{{ $ts("企业信息") }}</div>
+                <div class="title">{{ $("setting.info.enterpriseinformation") }}</div>
               </div>
               <div class="panel-content">
                 <el-form ref="ruleForm" :model="ruleForm">
                   <el-row :gutter="30">
                     <el-col :span="12">
-                      <el-form-item :label='$ts("企业成员")'>
-                        <div class="value">{{ pageData.enterprises }}{{ $ts("个成员") }}</div>
+                      <el-form-item :label='$("setting.info.enterprisemembers")'>
+                        <div class="value">{{ pageData.enterprises }}{{ $("setting.info.members") }}</div>
                       </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                      <el-form-item :label='$ts("企业部门")'>
-                        <div class="value">{{ pageData.frames }}{{ $ts("个部门") }}</div>
+                      <el-form-item :label='$("setting.info.businesssector")'>
+                        <div class="value">{{ pageData.frames }}{{ $("setting.info.departments") }}</div>
                       </el-form-item>
                     </el-col>
                   </el-row>
                   <el-row :gutter="30">
                     <el-col :span="12">
-                      <el-form-item :label='$ts("创建人")'>
+                      <el-form-item :label='$("hr.founder")'>
                         <div class="value">{{ pageData.lead }}</div>
                       </el-form-item>
                     </el-col>
 
                     <el-col :span="12">
-                      <el-form-item :label='$ts("企业状态")'>
+                      <el-form-item :label='$("setting.info.enterprisestatus")'>
                         <div class="value">
-                          <span v-if="pageData.status == 0" class="txt">{{ $t('setting.info.disabled') }}</span>
-                          <span v-if="pageData.status == 1" class="txt">{{ $t('setting.info.normal') }}</span>
-                          <span v-if="pageData.status == 2" class="txt">{{ $t('setting.info.behalfpayment') }}</span>
-                          <span v-if="pageData.status == 3" class="txt">{{ $t('setting.info.expired') }}</span>
+                          <span v-if="pageData.status == 0" class="txt">{{ $('setting.info.disabled') }}</span>
+                          <span v-if="pageData.status == 1" class="txt">{{ $('setting.info.normal') }}</span>
+                          <span v-if="pageData.status == 2" class="txt">{{ $('setting.info.behalfpayment') }}</span>
+                          <span v-if="pageData.status == 3" class="txt">{{ $('setting.info.expired') }}</span>
                         </div>
                       </el-form-item>
                     </el-col>
@@ -149,7 +150,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { getCityListApi } from '@/api/public'
 import { mapGetters } from 'vuex'
 import { enterpriseEntInfoApi, entInfoUpdateApi } from '@/api/enterprise'
@@ -191,10 +191,10 @@ export default {
         business_license: ''
       },
       rules: {
-        enterprise_name: [{ required: true, message: this.$t('setting.info.title1'), trigger: 'blur' }],
-        short_name: [{ required: true, message: i18n.t('legacyScript.pleaseEnterEnterpriseAbbreviation'), trigger: 'blur' }],
-        address: [{ required: true, message: this.$t('setting.info.title2'), trigger: 'blur' }],
-        phone: [{ required: true, message: this.$t('setting.info.title3'), trigger: 'blur' }]
+        enterprise_name: [{ required: true, message: this.$('setting.info.title1'), trigger: 'blur' }],
+        short_name: [{ required: true, message: $('legacyScript.pleaseEnterEnterpriseAbbreviation'), trigger: 'blur' }],
+        address: [{ required: true, message: this.$('setting.info.title2'), trigger: 'blur' }],
+        phone: [{ required: true, message: this.$('setting.info.title3'), trigger: 'blur' }]
       },
       pageData: {},
       upLoadData: {},

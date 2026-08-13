@@ -1,33 +1,33 @@
 <template>
 <div class="station">
   <div class="btn-box1 mb10">
-    <div class="title-16">{{ $t("ui.customerListContractOrderList") }}</div>
-    <el-button size="small" type="primary" @click="addContract">{{ $t("ui.customerListContractAddOrder") }}</el-button>
+    <div class="title-16">{{ $("ui.customerListContractOrderList") }}</div>
+    <el-button size="small" type="primary" @click="addContract">{{ $("ui.customerListContractAddOrder") }}</el-button>
   </div>
   <el-table :data="contractData" fit style="width: 100%">
-    <el-table-column prop="contract_no" :label="$t('ui.customerListContractOrderNo')"> </el-table-column>
-    <el-table-column prop="contract_price" min-width="100px" :label="$t('customer.contractpay')"> </el-table-column>
-    <el-table-column prop="surplus" :label="$t('ui.customerListContractPaymentStatus')">
+    <el-table-column prop="contract_no" :label="$('ui.customerListContractOrderNo')"> </el-table-column>
+    <el-table-column prop="contract_price" min-width="100px" :label="$('customer.contractpay')"> </el-table-column>
+    <el-table-column prop="surplus" :label="$('ui.customerListContractPaymentStatus')">
       <template slot-scope="scope">
-        <span class="pointer color-success" v-if="parseFloat(scope.row.surplus) === 0">{{ $t("ui.customerContractContractPaymentSettled") }}</span>
-        <span class="pointer color-warning" v-else>{{ $t("ui.customerContractContractPaymentUnsettled") }}</span>
+        <span class="pointer color-success" v-if="parseFloat(scope.row.surplus) === 0">{{ $("ui.customerContractContractPaymentSettled") }}</span>
+        <span class="pointer color-warning" v-else>{{ $("ui.customerContractContractPaymentUnsettled") }}</span>
       </template>
     </el-table-column>
-    <el-table-column prop="contract_status" :label="$t('ui.customerListContractOrderStatus')">
+    <el-table-column prop="contract_status" :label="$('ui.customerListContractOrderStatus')">
       <template slot-scope="scope">
         <div :style="{ color: scope.row.contract_status.color || '#1890ff' }">
           {{ scope.row.contract_status.name }}
         </div>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.hrAssessCheckIndexCreator')">
+    <el-table-column :label="$('ui.hrAssessCheckIndexCreator')">
       <template slot-scope="scope">
         {{ getCreatorName(scope.row) }}
       </template>
     </el-table-column>
-    <el-table-column prop="address" :label="$t('public.operation')">
+    <el-table-column prop="address" :label="$('public.operation')">
       <template slot-scope="scope">
-        <el-button @click="handleCheck(scope.row)" type="text">{{ $t('public.check') }}</el-button>
+        <el-button @click="handleCheck(scope.row)" type="text">{{ $('public.check') }}</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -132,7 +132,7 @@ export default {
     // 添加订单
     addContract() {
       this.contractFromData = {
-        title: this.$t('customer.addcontract'),
+        title: this.$('customer.addcontract'),
         id: this.formInfo.data.eid,
         name: this.formInfo.data.name,
         edit: false,
@@ -149,7 +149,7 @@ export default {
       // 解构赋值获取id，避免直接修改传入的item对象
       const { id } = item
       this.fromData = {
-        title: this.$t('customer.viewcustomer'),
+        title: this.$('customer.viewcustomer'),
         width: '1000px',
         data: { ...item, cid: id }, // 使用展开运算符创建新对象并添加cid属性
         isClient: false,

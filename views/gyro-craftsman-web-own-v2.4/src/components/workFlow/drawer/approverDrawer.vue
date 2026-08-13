@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <el-drawer
   :append-to-body="true"
-  :title="$t('ui.workFlowDrawerApproverDrawerApproverSettings')"
+  :title="$('ui.workFlowDrawerApproverDrawerApproverSettings')"
   :visible.sync="$store.state.business.approverDrawer"
   direction="rtl"
   class="set_promoter"
@@ -12,17 +13,17 @@
     <div class="drawer_content">
       <div class="approver_content">
         <el-radio-group v-model="approverConfig.settype" class="clear" @change="changeType">
-          <el-radio label="1">{{ $t("ui.workFlowDrawerApproverDrawerSpecifiedMembers") }}</el-radio>
-          <el-radio label="2">{{ $t("ui.workFlowDrawerApproverDrawerSpecifiedSupervisor") }}</el-radio>
-          <el-radio label="7">{{ $t("ui.workFlowDrawerApproverDrawerConsecutiveSupervisors") }}</el-radio>
-          <el-radio label="5">{{ $t("ui.workFlowDrawerApproverDrawerApplicant") }}</el-radio>
-          <el-radio label="4" v-if="typeStr !== 'lowCode'">{{ $t("ui.workFlowDrawerApproverDrawerSelectedByApplicant") }}</el-radio>
+          <el-radio label="1">{{ $("ui.workFlowDrawerApproverDrawerSpecifiedMembers") }}</el-radio>
+          <el-radio label="2">{{ $("ui.workFlowDrawerApproverDrawerSpecifiedSupervisor") }}</el-radio>
+          <el-radio label="7">{{ $("ui.workFlowDrawerApproverDrawerConsecutiveSupervisors") }}</el-radio>
+          <el-radio label="5">{{ $("ui.workFlowDrawerApproverDrawerApplicant") }}</el-radio>
+          <el-radio label="4" v-if="typeStr !== 'lowCode'">{{ $("ui.workFlowDrawerApproverDrawerSelectedByApplicant") }}</el-radio>
         </el-radio-group>
       </div>
       <div class="approver_node_user" v-if="approverConfig.settype == 1">
         <p class="title mt15">
-          {{ $t("ui.workFlowDrawerApproverDrawerSpecifiedMembers") }}
-          <span>{{ $t("ui.workFlowDrawerApproverDrawerNoMoreThan100People") }}</span>
+          {{ $("ui.workFlowDrawerApproverDrawerSpecifiedMembers") }}
+          <span>{{ $("ui.workFlowDrawerApproverDrawerNoMoreThan100People") }}</span>
         </p>
         <select-member
           :value="approverConfig.nodeUserList || []"
@@ -31,16 +32,16 @@
         ></select-member>
 
         <div v-if="approverConfig.nodeUserList.length > 1">
-          <p class="title mt15">{{ $t("ui.workFlowDrawerApproverDrawerMultipleApproverMethod") }}</p>
+          <p class="title mt15">{{ $("ui.workFlowDrawerApproverDrawerMultipleApproverMethod") }}</p>
           <el-radio-group v-model="approverConfig.examineMode" class="more-content" style="width: 100%">
-            <el-radio label="1">{{ $t("ui.workFlowDrawerApproverDrawerAnyApproverOneApprovalIsSufficient") }}</el-radio>
-            <el-radio label="2">{{ $t("ui.workFlowDrawerApproverDrawerAllApproversEveryoneMustApprove") }}</el-radio>
-            <el-radio label="3">{{ $t("ui.workFlowDrawerApproverDrawerSequentialApprovalApproveInOrder") }}</el-radio>
+            <el-radio label="1">{{ $("ui.workFlowDrawerApproverDrawerAnyApproverOneApprovalIsSufficient") }}</el-radio>
+            <el-radio label="2">{{ $("ui.workFlowDrawerApproverDrawerAllApproversEveryoneMustApprove") }}</el-radio>
+            <el-radio label="3">{{ $("ui.workFlowDrawerApproverDrawerSequentialApprovalApproveInOrder") }}</el-radio>
           </el-radio-group>
           <div v-if="approverConfig.examineMode === '1'">
             <p class="title mt15">
-              {{ $t("ui.workFlowDrawerApproverDrawerApprovalRatio") }}
-              <span style="color: #999; font-size: 12px; font-weight: normal;">{{ $t("ui.workFlowDrawerApproverDrawerThisStepIsApprovedWhenTheApprovalRatioIs") }}</span>
+              {{ $("ui.workFlowDrawerApproverDrawerApprovalRatio") }}
+              <span style="color: #999; font-size: 12px; font-weight: normal;">{{ $("ui.workFlowDrawerApproverDrawerThisStepIsApprovedWhenTheApprovalRatioIs") }}</span>
             </p>
             <div class="approval-rate-input">
               <el-input-number
@@ -58,19 +59,19 @@
         </div>
       </div>
       <div class="approver_manager" v-if="approverConfig.settype == 2">
-        <p class="title">{{ $t("ui.workFlowDrawerApproverDrawerSpecifiedLevel") }}</p>
+        <p class="title">{{ $("ui.workFlowDrawerApproverDrawerSpecifiedLevel") }}</p>
         <el-row>
           <el-col :span="11">
             <el-select v-model="approverConfig.directorOrder">
-              <el-option value="0" :label="$t('ui.workFlowDrawerApproverDrawerTopToBottom')"></el-option>
-              <el-option value="1" :label="$t('ui.workFlowDrawerApproverDrawerBottomToTop')"></el-option>
+              <el-option value="0" :label="$('ui.workFlowDrawerApproverDrawerTopToBottom')"></el-option>
+              <el-option value="1" :label="$('ui.workFlowDrawerApproverDrawerBottomToTop')"></el-option>
             </el-select>
           </el-col>
           <el-col :span="11" class="pull-right">
             <el-select v-model="approverConfig.directorLevel">
               <el-option
                 v-for="item in directorMaxLevel"
-                :label="item == 1 ? $t('ui.workFlowDrawerApproverDrawerDirectSuperior') : $t('ui.workFlowDrawerApproverDrawerThe') + item + $t('ui.workFlowDrawerApproverDrawerLevelSAbove')"
+                :label="item == 1 ? $('ui.workFlowDrawerApproverDrawerDirectSuperior') : $('ui.workFlowDrawerApproverDrawerThe') + item + $('ui.workFlowDrawerApproverDrawerLevelSAbove')"
                 :value="item.toString()"
                 :key="item"
               ></el-option>
@@ -80,21 +81,21 @@
       </div>
       <div class="approver_manager" v-if="approverConfig.settype == 7">
         <p class="title">
-          {{ $t("ui.workFlowDrawerApproverDrawerSpecifiedEndpoint") }}
-          <span>{{ $t("ui.workFlowDrawerApproverDrawerApproveSequentiallyFromTheApplicantSDirectSupervisorThrough") }}</span>
+          {{ $("ui.workFlowDrawerApproverDrawerSpecifiedEndpoint") }}
+          <span>{{ $("ui.workFlowDrawerApproverDrawerApproveSequentiallyFromTheApplicantSDirectSupervisorThrough") }}</span>
         </p>
         <el-row>
           <el-col :span="11">
             <el-select v-model="approverConfig.directorOrder">
-              <el-option value="0" :label="$t('ui.workFlowDrawerApproverDrawerTopToBottom')"></el-option>
-              <el-option value="1" :label="$t('ui.workFlowDrawerApproverDrawerBottomToTop')"></el-option>
+              <el-option value="0" :label="$('ui.workFlowDrawerApproverDrawerTopToBottom')"></el-option>
+              <el-option value="1" :label="$('ui.workFlowDrawerApproverDrawerBottomToTop')"></el-option>
             </el-select>
           </el-col>
           <el-col :span="11" class="pull-right">
             <el-select v-model="approverConfig.directorLevel">
               <el-option
                 v-for="item in directorMaxLevel"
-                :label="item === 1 ? $t('ui.workFlowDrawerApproverDrawerDirectSuperior') : $t('ui.workFlowDrawerApproverDrawerThe') + item + $t('ui.workFlowDrawerApproverDrawerLevelSAbove')"
+                :label="item === 1 ? $('ui.workFlowDrawerApproverDrawerDirectSuperior') : $('ui.workFlowDrawerApproverDrawerThe') + item + $('ui.workFlowDrawerApproverDrawerLevelSAbove')"
                 :value="item.toString()"
                 :key="item"
               ></el-option>
@@ -103,13 +104,13 @@
         </el-row>
       </div>
       <div class="approver_self" v-if="approverConfig.settype == 5">
-        <p>{{ $t("ui.workFlowDrawerApproverDrawerWhenThisStepIsSetToTheInitiatorThe") }}</p>
+        <p>{{ $("ui.workFlowDrawerApproverDrawerWhenThisStepIsSetToTheInitiatorThe") }}</p>
       </div>
       <div class="approver_self_select" v-show="approverConfig.settype == 4">
-        <h3>{{ $t("ui.workFlowDrawerApproverDrawerSelectableRange") }}</h3>
+        <h3>{{ $("ui.workFlowDrawerApproverDrawerSelectableRange") }}</h3>
         <el-radio-group v-model="approverConfig.selectRange" style="width: 100%" @change="changeRange">
-          <el-radio label="1">{{ $t("ui.workFlowDrawerApproverDrawerNoRangeLimit") }}</el-radio>
-          <el-radio label="2">{{ $t("ui.workFlowDrawerApproverDrawerSpecifiedMembers") }}</el-radio>
+          <el-radio label="1">{{ $("ui.workFlowDrawerApproverDrawerNoRangeLimit") }}</el-radio>
+          <el-radio label="2">{{ $("ui.workFlowDrawerApproverDrawerSpecifiedMembers") }}</el-radio>
         </el-radio-group>
         <select-member
           v-if="approverConfig.selectRange == 2"
@@ -118,22 +119,22 @@
           style="width: 100%"
         ></select-member>
 
-        <h3>{{ $t("ui.workFlowDrawerApproverDrawerSelectionMethod") }}</h3>
+        <h3>{{ $("ui.workFlowDrawerApproverDrawerSelectionMethod") }}</h3>
         <el-radio-group v-model="approverConfig.selectMode" style="width: 100%">
-          <el-radio label="1">{{ $t("ui.workFlowDrawerApproverDrawerSingleSelect") }}</el-radio>
-          <el-radio label="2">{{ $t("ui.workFlowDrawerApproverDrawerMultipleSelection") }}</el-radio>
+          <el-radio label="1">{{ $("ui.workFlowDrawerApproverDrawerSingleSelect") }}</el-radio>
+          <el-radio label="2">{{ $("ui.workFlowDrawerApproverDrawerMultipleSelection") }}</el-radio>
         </el-radio-group>
         <div v-if="approverConfig.selectMode == 2">
-          <h3>{{ $t("ui.workFlowDrawerApproverDrawerMultipleApproverMethod") }}</h3>
+          <h3>{{ $("ui.workFlowDrawerApproverDrawerMultipleApproverMethod") }}</h3>
           <el-radio-group v-model="approverConfig.examineMode" class="more-content" style="width: 100%">
-            <el-radio label="1">{{ $t("ui.workFlowDrawerApproverDrawerAnyApproverOneApprovalIsSufficient") }}</el-radio>
-            <el-radio label="2">{{ $t("ui.workFlowDrawerApproverDrawerAllApproversEveryoneMustApprove") }}</el-radio>
-            <el-radio label="3">{{ $t("ui.workFlowDrawerApproverDrawerSequentialApprovalApproveInOrder") }}</el-radio>
+            <el-radio label="1">{{ $("ui.workFlowDrawerApproverDrawerAnyApproverOneApprovalIsSufficient") }}</el-radio>
+            <el-radio label="2">{{ $("ui.workFlowDrawerApproverDrawerAllApproversEveryoneMustApprove") }}</el-radio>
+            <el-radio label="3">{{ $("ui.workFlowDrawerApproverDrawerSequentialApprovalApproveInOrder") }}</el-radio>
           </el-radio-group>
           <div v-if="approverConfig.examineMode === '1'">
             <p class="title mt15">
-              {{ $t("ui.workFlowDrawerApproverDrawerApprovalRatio") }}
-              <span style="color: #999; font-size: 12px; font-weight: normal;">{{ $t("ui.workFlowDrawerApproverDrawerThisStepIsApprovedWhenTheApprovalRatioIs") }}</span>
+              {{ $("ui.workFlowDrawerApproverDrawerApprovalRatio") }}
+              <span style="color: #999; font-size: 12px; font-weight: normal;">{{ $("ui.workFlowDrawerApproverDrawerThisStepIsApprovedWhenTheApprovalRatioIs") }}</span>
             </p>
             <div class="approval-rate-input">
               <el-input-number
@@ -151,22 +152,21 @@
         </div>
       </div>
       <div class="approver_some" v-if="approverConfig.settype == 2 || approverConfig.settype == 7">
-        <p class="title">{{ $t("ui.workFlowDrawerApproverDrawerWhenTheCurrentLevelHasNoDepartmentManager") }}</p>
+        <p class="title">{{ $("ui.workFlowDrawerApproverDrawerWhenTheCurrentLevelHasNoDepartmentManager") }}</p>
         <el-radio-group class="person" v-model="approverConfig.noHanderAction">
-          <el-radio label="1">{{ $t("ui.workFlowDrawerApproverDrawerUseTheManagerOfTheParentDepartment") }}</el-radio>
-          <el-radio label="2">{{ $t("ui.workFlowDrawerApproverDrawerSkipThisStepWhenItHasNoApprover") }}</el-radio>
+          <el-radio label="1">{{ $("ui.workFlowDrawerApproverDrawerUseTheManagerOfTheParentDepartment") }}</el-radio>
+          <el-radio label="2">{{ $("ui.workFlowDrawerApproverDrawerSkipThisStepWhenItHasNoApprover") }}</el-radio>
         </el-radio-group>
       </div>
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button size="small" @click="closeDrawer">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" type="primary" @click="saveApprover">{{ $t('public.ok') }}</el-button>
+      <el-button size="small" @click="closeDrawer">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" type="primary" @click="saveApprover">{{ $('public.ok') }}</el-button>
     </div>
   </div>
 </el-drawer>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   props: {
     directorMaxLevel: {
@@ -224,7 +224,7 @@ export default {
         (this.approverConfig.settype == 4 && this.approverConfig.selectRange == 2)
       ) {
         if (this.approverConfig.nodeUserList.length <= 0) {
-          this.$message.warning(i18n.t('legacyScript.selectAtLeastOneSpecifiedMember'))
+          this.$message.warning($('legacyScript.selectAtLeastOneSpecifiedMember'))
           return false
         }
       }

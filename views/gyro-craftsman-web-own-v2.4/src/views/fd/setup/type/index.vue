@@ -7,36 +7,36 @@
       :title="$route.meta.title"
       :isViewSearch="false"
       :sortSearch="false"
-:btn-text="$t('ui.fdSetupTypeIndexAddPaymentMethod')"
+      :btnText="$('ui.fdSetupTypeIndexAddPaymentMethod')"
       @addDataFn="addFinance"
     ></oaFromBox>
 
     <div class="table-box mt10">
       <el-table :data="tableData" :height="tableHeight" style="width: 100%" row-key="id" default-expand-all>
-        <el-table-column prop="name" :label="$t('ui.fdSetupTypeIndexPaymentName')" min-width="100" />
-        <el-table-column prop="info" :label="$t('ui.fdSetupTypeIndexPaymentDescription')" min-width="140">
+        <el-table-column prop="name" :label="$('ui.fdSetupTypeIndexPaymentName')" min-width="100" />
+        <el-table-column prop="info" :label="$('ui.fdSetupTypeIndexPaymentDescription')" min-width="140">
           <template slot-scope="scope">
             {{ scope.row.info || '--' }}
           </template>
         </el-table-column>
-        <el-table-column prop="status" :label="$t('ui.customerProductCategoryEnabledStatus')" min-width="140">
+        <el-table-column prop="status" :label="$('ui.customerProductCategoryEnabledStatus')" min-width="140">
           <template slot-scope="scope">
-            <el-tag v-if="scope.row.status == 1" type="success">{{ $t("ui.customerWeChatMassGroupDetailsEnable") }}</el-tag>
-            <el-tag v-else type="danger">{{ $t("ui.customerWeChatMassGroupDetailsClose") }}</el-tag>
+            <el-tag v-if="scope.row.status == 1" type="success">{{ $("ui.customerWeChatMassGroupDetailsEnable") }}</el-tag>
+            <el-tag v-else type="danger">{{ $("ui.customerWeChatMassGroupDetailsClose") }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="sort" :label="$t('ui.businessExamineIndexSort')" min-width="140" />
-        <el-table-column prop="info" :label="$t('public.operation')" fixed="right" width="120">
+        <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')" min-width="140" />
+        <el-table-column prop="info" :label="$('public.operation')" fixed="right" width="120">
           <template slot-scope="scope">
             <el-button type="text" @click="handleEdit(scope.row)" v-hasPermi="['fd:setup:type:edit']">
-              {{ $t('public.edit') }}
+              {{ $('public.edit') }}
             </el-button>
             <el-button
               type="text"
               @click="handleDelete(scope.row, scope.$index)"
               v-hasPermi="['fd:setup:type:delete']"
             >
-              {{ $t('public.delete') }}
+              {{ $('public.delete') }}
             </el-button>
           </template>
         </el-table-column>
@@ -116,7 +116,7 @@ export default {
       })
     },
     handleDelete(row) {
-      this.$modalSure(this.$ts('你确定要删除这条分类吗')).then(() => {
+      this.$modalSure('你确定要删除这条分类吗').then(() => {
         enterprisePayTypeDeleteApi(row.id).then((res) => {
           if (this.tableData.length == 1) {
             this.getTableData(1)

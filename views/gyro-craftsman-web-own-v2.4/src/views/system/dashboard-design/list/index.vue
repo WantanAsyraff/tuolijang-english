@@ -1,17 +1,18 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="v-height-flag">
     <el-card class="mb14 normal-page" :body-style="{ padding: '20px 20px 20px 20px' }">
       <div class="flex-between">
-        <div class="title-16">{{ $t("ui.systemDashboardDesignListIndexChartList") }}</div>
+        <div class="title-16">{{ $("ui.systemDashboardDesignListIndexChartList") }}</div>
         <div class="flex">
-          <el-button type="primary" size="small" icon="el-icon-plus" @click="addFinance">{{ $t("ui.systemDashboardDesignListIndexNewChart") }}</el-button>
+          <el-button type="primary" size="small" icon="el-icon-plus" @click="addFinance">{{ $("ui.systemDashboardDesignListIndexNewChart") }}</el-button>
         </div>
       </div>
 
       <el-form :inline="true" class="from-s mt14" @submit.native.prevent>
         <div class="flex">
-          <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.developModuleFormBoxItems") }}</div>
+          <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.developModuleFormBoxItems") }}</div>
           <el-form-item label="" class="select-bar">
             <el-input
               v-model="where.name"
@@ -20,11 +21,11 @@
               clearable
               style="width: 250px"
               @change="getList"
-              :placeholder="$t('ui.commonFormListPleaseEnterKeyword')"
+              :placeholder="$('ui.commonFormListPleaseEnterKeyword')"
             />
           </el-form-item>
           <el-form-item>
-            <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+            <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
               <div class="reset" @click="restData"><i class="iconfont iconqingchu"></i></div>
             </el-tooltip>
           </el-form-item>
@@ -34,17 +35,17 @@
       <!-- 表格数据 -->
       <div class="table-box" v-loading="loading">
         <el-table :data="tableData" :height="tableHeight" style="width: 100%" row-key="id">
-          <el-table-column prop="name" :label="$t('ui.systemDashboardDesignListIndexChartName')">
+          <el-table-column prop="name" :label="$('ui.systemDashboardDesignListIndexChartName')">
             <template slot-scope="scope">
               <span class="color-doc pointer" @click="designFn(scope.row)"> {{ scope.row.name }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="updated_at" :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')"> </el-table-column>
-          <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="150">
+          <el-table-column prop="updated_at" :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')"> </el-table-column>
+          <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="150">
             <template slot-scope="scope">
-              <el-button type="text" @click="designFn(scope.row)">{{ $t("ui.developModuleFormBoxDesign") }}</el-button>
-              <el-button type="text" @click="editFn(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-              <el-button type="text" @click="deleteFn(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" @click="designFn(scope.row)">{{ $("ui.developModuleFormBoxDesign") }}</el-button>
+              <el-button type="text" @click="editFn(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+              <el-button type="text" @click="deleteFn(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -74,7 +75,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import oaDialog from '@/components/form-common/dialog-form'
 import { roterPre } from '@/settings'
 import { menuListApi } from '@/api/system'
@@ -96,8 +96,8 @@ export default {
       ids: [],
       fromData: {
         width: '600px',
-        title: i18n.t('ui.systemDashboardDesignListIndexNewChart'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.systemDashboardDesignListIndexNewChart'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },
@@ -105,25 +105,25 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: i18n.t('legacyScript.chartName'),
-          placeholder: i18n.t('legacyScript.pleaseEnterChartName'),
+          label: $('legacyScript.chartName'),
+          placeholder: $('legacyScript.pleaseEnterChartName'),
           key: 'name',
           value: '',
           options: []
         },
           {
     type: 'cascader',
-    label: i18n.t('legacyScript.parentMenu'),
-    placeholder: i18n.t('legacyScript.selectTheParentMenu'),
+    label: $('legacyScript.parentMenu'),
+    placeholder: $('legacyScript.selectTheParentMenu'),
     key: 'path',
     props: {label: 'menu_name', value: 'id', children: 'children' ,checkStrictly: true},
     options: [],
-    tips: i18n.t('legacyScript.noMenuWillBeGeneratedUnlessAParentMenu')
+    tips: $('legacyScript.noMenuWillBeGeneratedUnlessAParentMenu')
   },
    {
     type: 'icon',
-    label: i18n.t('legacyScript.menuIcon'),
-    placeholder: i18n.t('legacyScript.selectAMenuIcon'),
+    label: $('legacyScript.menuIcon'),
+    placeholder: $('legacyScript.selectAMenuIcon'),
     key: 'icon',
   },
       ],
@@ -131,7 +131,7 @@ export default {
         name: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseEnterChartName'),
+            message: $('legacyScript.pleaseEnterChartName'),
             trigger: 'blur'
           }
         ]
@@ -152,11 +152,11 @@ export default {
       total: 0,
       options: [
         {
-          label: i18n.t('public.enable'),
+          label: $('public.enable'),
           value: 1
         },
         {
-          label: i18n.t('hr.blockup'),
+          label: $('hr.blockup'),
           value: 0
         }
       ]
@@ -210,7 +210,7 @@ export default {
     async addFinance() {
       this.id = 0
       this.formDataInit.name = ''
-      this.fromData.title = i18n.t('ui.systemDashboardDesignListIndexNewChart')
+      this.fromData.title = $('ui.systemDashboardDesignListIndexNewChart')
         const result = await menuListApi()
         this.formConfig[1].options = result.data
     
@@ -220,7 +220,7 @@ export default {
     // 编辑
     async editFn(row) {
       this.id = row.id
-      this.fromData.title = i18n.t('legacyScript.editChart')
+      this.fromData.title = $('legacyScript.editChart')
         const result = await menuListApi()
         this.formConfig[1].options = result.data
       this.formDataInit.name = row.name

@@ -1,12 +1,13 @@
+import { $ } from '@/lang'
 <!-- 订单发票-关联付款单表格组件 -->
 <template>
 <div class="paymentTable">
   <div class="mb10" v-if="!type">
-    <span class="select-label">{{ $t("ui.customerDetailsCustomerName") }}</span>
-    <el-select v-model="eid" :placeholder="$t('ui.customerSigningPaymentTableSelectCustomer')" filterable size="small" style="width: 250px" @change="changeFn">
+    <span class="select-label">{{ $("ui.customerDetailsCustomerName") }}</span>
+    <el-select v-model="eid" :placeholder="$('ui.customerSigningPaymentTableSelectCustomer')" filterable size="small" style="width: 250px" @change="changeFn">
       <el-option v-for="item in optionsList" :key="item.id" :label="item.customer_name" :value="item.id" />
     </el-select>
-    <span class="select-tips">{{ $t("ui.customerSigningPaymentTableYouCanSkipTheOrderAndSignTheContract") }}</span>
+    <span class="select-tips">{{ $("ui.customerSigningPaymentTableYouCanSkipTheOrderAndSignTheContract") }}</span>
   </div>
   <el-table :data="table" ref="multipleTable" @selection-change="handleSelectionChange" style="width: 100%">
     <el-table-column v-if="selectionIsShow" type="selection" width="55"> </el-table-column>
@@ -20,16 +21,16 @@
         <span v-else>--</span>
       </template>
     </el-table-column> -->
-    <el-table-column prop="contract_name" :label="$t('ui.invoiceInvoiceDetailsOrderName')" min-width="100"> </el-table-column>
-    <el-table-column prop="contract_price" :label="$t('ui.customerSigningPaymentTableOrderAmountYuan')" min-width="100"> </el-table-column>
-    <el-table-column prop="status" :label="$t('ui.customerListContractPaymentStatus')" min-width="100">
+    <el-table-column prop="contract_name" :label="$('ui.invoiceInvoiceDetailsOrderName')" min-width="100"> </el-table-column>
+    <el-table-column prop="contract_price" :label="$('ui.customerSigningPaymentTableOrderAmountYuan')" min-width="100"> </el-table-column>
+    <el-table-column prop="status" :label="$('ui.customerListContractPaymentStatus')" min-width="100">
       <template slot-scope="scope">
         <span :class="{ success: scope.row.payment_status === 1, waiting: scope.row.payment_status === 0 }">{{
-          scope.row.payment_status === 1 ? $t('ui.customerContractContractPaymentSettled') : $t('ui.customerContractContractPaymentUnsettled')
+          scope.row.payment_status === 1 ? $('ui.customerContractContractPaymentSettled') : $('ui.customerContractContractPaymentUnsettled')
         }}</span>
       </template>
     </el-table-column>
-    <el-table-column prop="contract_status.name" :label="$t('ui.customerListContractOrderStatus')" min-width="100">
+    <el-table-column prop="contract_status.name" :label="$('ui.customerListContractOrderStatus')" min-width="100">
       <template slot-scope="scope">
         <div
           class="dictionaries-tag over-text"
@@ -44,21 +45,21 @@
         </div>
       </template>
     </el-table-column>
-    <el-table-column prop="salesman.name" :label="$t('ui.developModuleTreeOwner')" min-width="90">
+    <el-table-column prop="salesman.name" :label="$('ui.developModuleTreeOwner')" min-width="90">
       <template slot-scope="scope">
         {{ scope.row.salesman ? scope.row.salesman.name : '--' }}
       </template>
     </el-table-column>
-    <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="150">
+    <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="150">
       <template slot-scope="scope">
         {{ scope.row.created_at || '--' }}
       </template>
     </el-table-column>
 
-    <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="150" v-if="!selectionIsShow">
+    <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="150" v-if="!selectionIsShow">
       <template slot-scope="scope">
-        <el-button @click="checkFn(scope.row)" type="text" size="small">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
-        <el-button @click="deleteFn(scope.row, scope.$index)" type="text" size="small">{{ $t("ui.chatIndexDelete") }}</el-button>
+        <el-button @click="checkFn(scope.row)" type="text" size="small">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
+        <el-button @click="deleteFn(scope.row, scope.$index)" type="text" size="small">{{ $("ui.chatIndexDelete") }}</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -67,7 +68,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getColor } from '@/utils/format'
 import { customerViewApi, clientContractListApi } from '@/api/enterprise'
 export default {
@@ -144,7 +144,7 @@ export default {
     checkFn(item) {
       item.cid = item.id
       this.fromData = {
-        title: i18n.t('legacyScript.viewOrder'),
+        title: $('legacyScript.viewOrder'),
         width: '1000px',
         data: item,
         isClient: false,

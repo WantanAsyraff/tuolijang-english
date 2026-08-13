@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
@@ -11,8 +12,8 @@
         :whereData="where"
         :timeSearchObj="timeSearchObj"
         :category="keyword"
-        ref="fromBox"
-:btn-text="$t('ui.customerLiaisonIndexAddContact')"
+      ref="fromBox"
+      :btnText="$('ui.customerLiaisonIndexAddContact')"
         :isAddBtn="false"
         @dropdownFn="dropdownFn"
         @addDataFn="addDataFn"
@@ -32,8 +33,8 @@
         @getTableData="getTableData"
       >
         <template #options="{ data }">
-          <el-button type="text" @click="handleCheck(data)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
-          <el-button type="text" @click="handleDel(data)">{{ $t("ui.chatIndexDelete") }}</el-button>
+          <el-button type="text" @click="handleCheck(data)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
+          <el-button type="text" @click="handleDel(data)">{{ $("ui.chatIndexDelete") }}</el-button>
         </template>
       </customizeTable>
     </el-card>
@@ -49,7 +50,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { clientExportApi, clientLiaisonDeleteApi, clientLiaisonListApi as liaisonViewApi } from '@/api/client'
 import { DRAWER_SIZE } from '@/constants/popupSize'
 import { roterPre } from '@/settings'
@@ -69,11 +69,11 @@ export default {
     return {
       treeData: [
         {
-          label: i18n.t('legacyScript.ownedByMe'),
+          label: $('legacyScript.ownedByMe'),
           id: 1
         },
         {
-          label: i18n.t('legacyScript.ownedBySubordinates'),
+          label: $('legacyScript.ownedBySubordinates'),
           id: 2
         }
       ],
@@ -86,12 +86,12 @@ export default {
         view_search: 1
       },
       dropdownList: [
-        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 1 },
-        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 2 },
-        { label: i18n.t('customer.export'), value: 3 },
-        { label: i18n.t('finance.batchupload'), value: 4 },
-        { label: i18n.t('legacyScript.importExportRecords'), value: 5 },
-        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 6 }
+        { label: $('ui.developModuleTableStyleFilterSettings'), value: 1 },
+        { label: $('ui.developModuleTableStyleColumnDisplaySettings'), value: 2 },
+        { label: $('customer.export'), value: 3 },
+        { label: $('finance.batchupload'), value: 4 },
+        { label: $('legacyScript.importExportRecords'), value: 5 },
+        { label: $('legacyScript.fieldOptionSettings'), value: 6 }
       ],
       keyword: 'liaison',
       total: 0,
@@ -116,7 +116,7 @@ export default {
     //添加联系人
     addDataFn() {
       this.liaisonConfig = {
-        title: i18n.t('legacyScript.addContact'),
+        title: $('legacyScript.addContact'),
         width: '570px'
       }
       this.$refs.liaisonDialog.openBox('', this.customInfo, '')
@@ -133,7 +133,7 @@ export default {
 
     handleCheck(item) {
       this.detailsFromData = {
-        title: i18n.t('legacyScript.viewContact'),
+        title: $('legacyScript.viewContact'),
         width: DRAWER_SIZE.LG,
         data: item,
         types: 'liaison',

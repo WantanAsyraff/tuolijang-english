@@ -28,11 +28,11 @@
           >
             <template #options="{ data }">
               <el-button v-hasPermi="['hr:archives:check']" type="text" @click="hanldeOptions(data, 'edit')"
-                >{{ $t("ui.layoutNoticeNoticeListView") }}
+                >{{ $("ui.layoutNoticeNoticeListView") }}
               </el-button>
 
               <el-button v-if="data.status !== 0 && data.type !== 1" type="text" @click="hanldeOptions(data, 'worker')"
-                >{{ $t("ui.hrArchivesIndexEmployeesConfirmEmployment") }}</el-button
+                >{{ $("ui.hrArchivesIndexEmployeesConfirmEmployment") }}</el-button
               >
 
               <el-button
@@ -40,27 +40,27 @@
                 type="text"
                 @click.native="hanldeOptions(data, 'quit')"
               >
-                {{ $t("ui.hrArchivesIndexEmployeesResigned") }}
+                {{ $("ui.hrArchivesIndexEmployeesResigned") }}
               </el-button>
 
               <el-button v-if="data.status == 0" type="text" @click.native="hanldeOptions(data, 'inviteToJoin')">
-                {{ $t("ui.hrArchivesIndexEmployeesInviteToCompleteInformation") }}
+                {{ $("ui.hrArchivesIndexEmployeesInviteToCompleteInformation") }}
               </el-button>
 
               <el-dropdown v-if="data.type !== 1 && data.status !== 1">
                 <span class="el-dropdown-link el-button--text el-button">
-                  {{ $t('hr.more') }}
+                  {{ $('hr.more') }}
                 </span>
                 <el-dropdown-menu>
                   <el-dropdown-item v-if="data.type !== 1" @click.native="hanldeOptions(data, 'worker')">
-                    {{ $t("ui.hrArchivesIndexEmployeesConfirmEmployment") }}
+                    {{ $("ui.hrArchivesIndexEmployeesConfirmEmployment") }}
                   </el-dropdown-item>
                   <el-dropdown-item v-if="data.type !== 1" @click.native="hanldeOptions(data, 'quit')">
-                    {{ $t("ui.hrArchivesIndexEmployeesResigned") }}
+                    {{ $("ui.hrArchivesIndexEmployeesResigned") }}
                   </el-dropdown-item>
 
                   <el-dropdown-item v-if="data.status !== 1" @click.native="hanldeOptions(data, 'delete')"
-                    >{{ $t("ui.chatIndexDelete") }}</el-dropdown-item
+                    >{{ $("ui.chatIndexDelete") }}</el-dropdown-item
                   >
                 </el-dropdown-menu>
               </el-dropdown>

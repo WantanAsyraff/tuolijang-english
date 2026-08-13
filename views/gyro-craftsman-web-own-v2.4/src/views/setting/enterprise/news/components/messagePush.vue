@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
-    :title="isBatch ? $t('ui.settingEnterpriseNewsMessagePushSetPushChannelsInBulk') : $t('ui.settingEnterpriseNewsMessagePushDeliveryChannelSettings')"
+    :title="isBatch ? $('ui.settingEnterpriseNewsMessagePushSetPushChannelsInBulk') : $('ui.settingEnterpriseNewsMessagePushDeliveryChannelSettings')"
     :visible.sync="drawer"
     direction="rtl"
     size="600px"
@@ -16,8 +17,8 @@
               v-model="ruleForm[item.status]"
               active-value="1"
               inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+              active-text="开启"
+              inactive-text="关闭"
             >
             </el-switch>
           </el-form-item>
@@ -27,15 +28,14 @@
         </div>
       </el-form>
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button class="el-btn" size="small" @click="handleClose">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button :loading="saveLoading" size="small" type="primary" @click="handleConfirm()">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+        <el-button class="el-btn" size="small" @click="handleClose">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button :loading="saveLoading" size="small" type="primary" @click="handleConfirm()">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
       </div>
     </div>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getMessageDetailsApi, upDateMessageApi, batchUpdateMessageApi } from '@/api/setting'
 
 const defaultForm = () => ({
@@ -65,46 +65,46 @@ export default {
       ruleForm: defaultForm(),
       list: [
         {
-          title: i18n.t('workbench.systemNotice'),
+          title: $('workbench.systemNotice'),
           statusName: '通知状态：',
           status: 'status'
         },
         {
-          title: i18n.t('ui.settingEnterpriseNewsIndexSms'),
+          title: $('ui.settingEnterpriseNewsIndexSms'),
           statusName: '通知状态：',
           status: 'sms_status',
           keyName: '模板编号：',
           key: 'template_id',
-          placeholder: i18n.t('legacyScript.enterTheSMSTemplateIDFromYihaotong')
+          placeholder: $('legacyScript.enterTheSMSTemplateIDFromYihaotong')
         },
          {
-          title: i18n.t('ui.settingEnterpriseNewsIndexWeComMessage'),
+          title: $('ui.settingEnterpriseNewsIndexWeComMessage'),
           statusName: '通知状态：',
           status: 'wework_status',
         },
         {
-          title: i18n.t('ui.settingEnterpriseNewsIndexWeComBot'),
+          title: $('ui.settingEnterpriseNewsIndexWeComBot'),
           statusName: '通知状态：',
           status: 'work_status',
           keyName: '推送地址：',
           key: 'work_webhook_url',
-          placeholder: i18n.t('legacyScript.enterTheWebhookURLGeneratedByTheWeComBot')
+          placeholder: $('legacyScript.enterTheWebhookURLGeneratedByTheWeComBot')
         },
         {
-          title: i18n.t('ui.settingEnterpriseNewsIndexDingTalkBot'),
+          title: $('ui.settingEnterpriseNewsIndexDingTalkBot'),
           statusName: '通知状态：',
           status: 'ding_status',
           keyName: '推送地址：',
           key: 'ding_webhook_url',
-          placeholder: i18n.t('legacyScript.enterTheWebhookURLGeneratedByTheDingTalkBot')
+          placeholder: $('legacyScript.enterTheWebhookURLGeneratedByTheDingTalkBot')
         },
         {
-          title: i18n.t('ui.settingEnterpriseNewsIndexOtherBot'),
+          title: $('ui.settingEnterpriseNewsIndexOtherBot'),
           statusName: '通知状态：',
           status: 'other_status',
           keyName: '推送地址：',
           key: 'other_webhook_url',
-          placeholder: i18n.t('legacyScript.enterTheWebhookURLGeneratedByTheThirdPartyBot')
+          placeholder: $('legacyScript.enterTheWebhookURLGeneratedByTheThirdPartyBot')
         }
       ],
       rules: {}

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '20px 20px 0 20px' }" class="normal-page">
@@ -19,13 +20,13 @@
         </oaFromBox>
         <div class="table-box">
           <el-table ref="table" :data="tableData" :height="tableHeight">
-            <el-table-column prop="title" :label="$t('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip />
-            <el-table-column prop="user.name" :label="$t('ui.settingEnterpriseNewsRecordRecipients')" min-width="100" />
-            <el-table-column prop="message" :label="$t('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip />
-            <el-table-column prop="cate_name" :label="$t('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" show-overflow-tooltip />
-            <el-table-column prop="created_at" :label="$t('ui.customerWeChatMassClientGroupChatSendTime')" min-width="100" />
+            <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip />
+            <el-table-column prop="user.name" :label="$('ui.settingEnterpriseNewsRecordRecipients')" min-width="100" />
+            <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip />
+            <el-table-column prop="cate_name" :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" show-overflow-tooltip />
+            <el-table-column prop="created_at" :label="$('ui.customerWeChatMassClientGroupChatSendTime')" min-width="100" />
 
-            <el-table-column :label="$t('toptable.operation')" width="100" fixed="right">
+            <el-table-column :label="$('toptable.operation')" width="100" fixed="right">
               <template slot-scope="scope">
                 <el-button
                   type="text"
@@ -58,7 +59,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getCompanyMessageApi, messageCateApi } from '@/api/setting'
 export default {
   name: 'Apply',
@@ -165,7 +165,7 @@ export default {
 
     getMessageCate() {
       messageCateApi().then((res) => {
-        this.options = [{ label: i18n.t('finance.all'), value: '' }, ...res.data]
+        this.options = [{ label: $('finance.all'), value: '' }, ...res.data]
         for (let i = 0; i < res.data.length; i++) {
           res.data[i].name = res.data[i].label
         }

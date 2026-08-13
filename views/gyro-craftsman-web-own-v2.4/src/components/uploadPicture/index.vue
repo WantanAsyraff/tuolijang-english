@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="Modal">
   <div class="colLeft">
@@ -5,7 +6,7 @@
       <div class="trees-coadd">
         <div v-if="isPage" class="tree_tit" @click="addSort">
           <i class="el-icon-circle-plus"></i>
-          {{ $t("ui.uploadPictureIndexAddCategory") }}
+          {{ $("ui.uploadPictureIndexAddCategory") }}
         </div>
         <div class="scollhide">
           <div :class="isPage ? 'tree' : 'isTree'">
@@ -28,9 +29,9 @@
                     <i class="el-icon-more el-icon--right"></i>
                     <template slot="dropdown">
                       <el-dropdown-menu>
-                        <el-dropdown-item command="1">{{ $t("ui.uploadPictureIndexAddSubcategory") }}</el-dropdown-item>
-                        <el-dropdown-item v-if="data.id" command="2">{{ $t("ui.uploadPictureIndexEditClassification") }}</el-dropdown-item>
-                        <el-dropdown-item v-if="data.id" command="3">{{ $t("ui.chatIndexDelete") }}</el-dropdown-item>
+                        <el-dropdown-item command="1">{{ $("ui.uploadPictureIndexAddSubcategory") }}</el-dropdown-item>
+                        <el-dropdown-item v-if="data.id" command="2">{{ $("ui.uploadPictureIndexEditClassification") }}</el-dropdown-item>
+                        <el-dropdown-item v-if="data.id" command="3">{{ $("ui.chatIndexDelete") }}</el-dropdown-item>
                       </el-dropdown-menu>
                     </template>
                   </el-dropdown>
@@ -50,7 +51,7 @@
             size="small"
             type="primary"
             @click="checkPics"
-            >{{ $t("ui.uploadPictureIndexUseSelectedImage") }}</el-button
+            >{{ $("ui.uploadPictureIndexUseSelectedImage") }}</el-button
           >
           <el-upload
             ref="upload"
@@ -65,7 +66,7 @@
             :show-file-list="false"
             class="upload-demo mr10 mb12 upload-btn"
           >
-            <el-button size="small" type="primary">{{ $t("ui.uploadPictureIndexUploadImage") }}</el-button>
+            <el-button size="small" type="primary">{{ $("ui.uploadPictureIndexUploadImage") }}</el-button>
           </el-upload>
           <el-button
             :disabled="!checkPicList.length && !ids.length"
@@ -73,7 +74,7 @@
             size="small"
             type="error"
             @click.stop="editPicList()"
-            >{{ $t("ui.uploadPictureIndexDeleteImage") }}</el-button
+            >{{ $("ui.uploadPictureIndexDeleteImage") }}</el-button
           >
           <el-cascader
             v-model="pids"
@@ -81,7 +82,7 @@
             :props="{ checkStrictly: true, emitPath: false, label: 'cate_name', value: 'id' }"
             class="treeSel"
             clearable
-            :placeholder="$t('ui.uploadPictureIndexMoveImageTo')"
+            :placeholder="$('ui.uploadPictureIndexMoveImageTo')"
             size="small"
             style="width: 150px"
             @visible-change="moveImg"
@@ -91,7 +92,7 @@
           <el-input
             v-model="fileData.real_name"
             class="mr10"
-            :placeholder="$t('ui.uploadPictureIndexPleaseEnterImageName')"
+            :placeholder="$('ui.uploadPictureIndexPleaseEnterImageName')"
             size="small"
             style="width: 150px"
           >
@@ -112,7 +113,7 @@
         <div v-if="lietStyle == 'list'" style="width: 100%">
           <div v-show="isShowPic" class="imagesNo">
             <i class="el-icon-picture" style="color: #dbdbdb; font-size: 60px"></i>
-            <span class="imagesNo_sp">{{ $t("ui.uploadPictureIndexTheImageLibraryIsEmpty") }}</span>
+            <span class="imagesNo_sp">{{ $("ui.uploadPictureIndexTheImageLibraryIsEmpty") }}</span>
           </div>
           <div ref="imgListBox" class="acea-row mb10">
             <div
@@ -138,9 +139,9 @@
                 </p>
                 <el-input v-else v-model="item.real_name" size="small" type="text" @blur="bindTxt(item)" />
                 <div class="operate-height">
-                  <span v-if="item.isShowEdit" class="operate mr10" @click="editPicList(item.id)">{{ $t("ui.chatIndexDelete") }}</span>
-                  <span v-if="item.isShowEdit" class="operate mr10" @click="item.isEdit = !item.isEdit">{{ $t("ui.uploadPictureIndexRename") }}</span>
-                  <span v-if="item.isShowEdit" class="operate" @click="handlePictureCardPreview(item)">{{ $t("ui.layoutNoticeNoticeListView") }}</span>
+                  <span v-if="item.isShowEdit" class="operate mr10" @click="editPicList(item.id)">{{ $("ui.chatIndexDelete") }}</span>
+                  <span v-if="item.isShowEdit" class="operate mr10" @click="item.isEdit = !item.isEdit">{{ $("ui.uploadPictureIndexRename") }}</span>
+                  <span v-if="item.isShowEdit" class="operate" @click="handlePictureCardPreview(item)">{{ $("ui.layoutNoticeNoticeListView") }}</span>
                 </div>
               </div>
             </div>
@@ -153,12 +154,12 @@
           :data="pictrueList"
           :row-key="getRowKey"
           highlight-row
-:no-data-text="$t('ui.scEchartsChartWidgetNoData')"
-:no-filtered-data-text="$t('ui.uploadPictureIndexNoFilterResult')"
+          no-data-text="暂无数据"
+          no-filtered-data-text="暂无筛选结果"
           @selection-change="handleSelectRow"
         >
           <el-table-column :reserve-selection="true" type="selection" width="60"> </el-table-column>
-          <el-table-column :label="$t('ui.uploadPictureIndexImageName')" min-width="190">
+          <el-table-column :label="$('ui.uploadPictureIndexImageName')" min-width="190">
             <template slot-scope="scope">
               <div class="df-aic">
                 <div v-viewer class="tabBox_img mr10">
@@ -176,18 +177,18 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.uploadPictureIndexUploadTime')" min-width="100">
+          <el-table-column :label="$('ui.uploadPictureIndexUploadTime')" min-width="100">
             <template slot-scope="scope">
               <span>{{ scope.row.time }}</span>
             </template>
           </el-table-column>
-          <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="170">
+          <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="170">
             <template slot-scope="scope">
-              <a @click="editPicList(scope.row)">{{ $t("ui.chatIndexDelete") }}</a>
+              <a @click="editPicList(scope.row)">{{ $("ui.chatIndexDelete") }}</a>
               <el-divider direction="vertical"></el-divider>
-              <a @click="scope.row.isEdit = !scope.row.isEdit">{{ scope.row.isEdit ? $t('ui.formCommonDialogFormOk') : $t('ui.uploadPictureIndexRename2') }}</a>
+              <a @click="scope.row.isEdit = !scope.row.isEdit">{{ scope.row.isEdit ? $('ui.formCommonDialogFormOk') : $('ui.uploadPictureIndexRename2') }}</a>
               <el-divider direction="vertical"></el-divider>
-              <a @click="handlePictureCardPreview(scope.row)">{{ $t("ui.layoutNoticeNoticeListView") }}</a>
+              <a @click="handlePictureCardPreview(scope.row)">{{ $("ui.layoutNoticeNoticeListView") }}</a>
             </template>
           </el-table-column>
         </el-table>
@@ -209,7 +210,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   formatLstApi,
   attachmentCreateApi,
@@ -349,8 +349,8 @@ export default {
     onDel(node) {
       let method = node.cate_id ? routeDel : routeCateDel
       this.$msgbox({
-        title: i18n.t('public.tips'),
-        message: i18n.t('legacyScript.areYouSureYouWantToDeleteThisMenu'),
+        title: $('public.tips'),
+        message: $('legacyScript.areYouSureYouWantToDeleteThisMenu'),
         showCancelButton: true,
         cancelButtonText: '取消',
         confirmButtonText: '删除',
@@ -404,13 +404,13 @@ export default {
     moveImg(status) {
       if (!status) {
         if (!this.pids) {
-          this.$message.warning(i18n.t('legacyScript.selectACategoryFirst'))
+          this.$message.warning($('legacyScript.selectACategoryFirst'))
           return
         }
         this.getMove()
       } else {
         if (!this.ids.toString()) {
-          this.$message.warning(i18n.t('legacyScript.selectAnImageFirst'))
+          this.$message.warning($('legacyScript.selectAnImageFirst'))
           return
         }
       }
@@ -434,7 +434,7 @@ export default {
         ids: id
       }
       let delfromData = {
-        title: i18n.t('legacyScript.deleteSelectedImages'),
+        title: $('legacyScript.deleteSelectedImages'),
         url: `file/file/delete`,
         method: 'POST',
         ids: ids
@@ -454,7 +454,7 @@ export default {
       let ids = {
         ids: id || this.ids.toString()
       }
-      await Tips.confirm({ message: i18n.t('legacyScript.thisWillPermanentlyDeleteTheFileContinue') })
+      await Tips.confirm({ message: $('legacyScript.thisWillPermanentlyDeleteTheFileContinue') })
       await picDeleteApi(ids)
       const deleteCount = id ? 1 : this.ids.length
       if (deleteCount === this.pictrueList.length && this.fileData.page > 1) {
@@ -631,7 +631,7 @@ export default {
     // 上传之前
     beforeUpload(file) {
       if (!/image\/\w+/.test(file.type)) {
-        this.$message.error(i18n.t('legacyScript.uploadAnImageFileWithAJPGJPEGPNG')) //FileExt.toLowerCase()
+        this.$message.error($('legacyScript.uploadAnImageFileWithAJPGJPEGPNG')) //FileExt.toLowerCase()
         return false
       }
       this.uploadData = {
@@ -685,7 +685,7 @@ export default {
     checkPics() {
       if (this.$route && this.$route.query.field) {
         if (this.checkPicList.length > 1) {
-          return this.$message.warning(i18n.t('legacyScript.youCanSelectOnlyOneImage'))
+          return this.$message.warning($('legacyScript.youCanSelectOnlyOneImage'))
         }
 
         form_create_helper.set(this.$route.query.field, this.checkPicList[0].att_dir)
@@ -700,7 +700,7 @@ export default {
           return this.$message.warning('最多只能选' + maxLength + '张图片')
         this.$emit('getImage', this.checkPicList)
       } else {
-        if (this.checkPicList.length > 1) return this.$message.warning(i18n.t('legacyScript.youCanSelectOnlyOneImage'))
+        if (this.checkPicList.length > 1) return this.$message.warning($('legacyScript.youCanSelectOnlyOneImage'))
         this.$emit('getImage', this.checkPicList[0])
       }
     },
@@ -713,7 +713,7 @@ export default {
     // 修改图片名称
     async bindTxt(item) {
       if (!item.real_name) {
-        this.$message.error(i18n.t('legacyScript.enterAName'))
+        this.$message.error($('legacyScript.enterAName'))
       }
       await picNameEditApi(item.id, { real_name: item.real_name })
       await this.editName(item)

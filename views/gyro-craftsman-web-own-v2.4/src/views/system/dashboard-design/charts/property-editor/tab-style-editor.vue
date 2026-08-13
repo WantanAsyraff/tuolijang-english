@@ -1,9 +1,9 @@
 <template>
   <div class="tab-style-editor">
     <el-radio-group v-model="optionModel.tabStyle" size="small">
-      <el-radio label="trapezoid">{{ $ts("梯形") }}</el-radio>
-      <el-radio label="rectangle">{{ $ts("矩形") }}</el-radio>
-      <el-radio label="linear">{{ $ts("线性") }}</el-radio>
+      <el-radio label="trapezoid">{{ $("legacy.45538f127d6fa103") }}</el-radio>
+      <el-radio label="rectangle">{{ $("legacy.88b75a101595a23a") }}</el-radio>
+      <el-radio label="linear">{{ $("legacy.078e4caeda5cffbc") }}</el-radio>
     </el-radio-group>
   </div>
 </template>

@@ -4,7 +4,6 @@
 
 ```
 .
-├── smart-vue-i18n/           # 智能国际化工具
 ├── auth.js                   # 认证相关工具
 ├── authDialog.js             # 认证弹窗工具
 ├── beautifierLoader.js       # 代码美化加载器

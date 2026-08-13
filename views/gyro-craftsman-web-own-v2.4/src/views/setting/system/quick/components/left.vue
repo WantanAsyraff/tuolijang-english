@@ -1,8 +1,8 @@
 <template>
   <div class="assess-left">
     <div class="el-card__header">
-      <span class="">{{ $ts("分类类型") }}</span>
-      <el-tooltip effect="dark" :content='$ts("添加分类")' placement="top">
+      <span class="">{{ $("legacy.4c5d3f5c54ee37d3") }}</span>
+      <el-tooltip effect="dark" :content='$("hr.addcategory")' placement="top">
         <span @click="addCategory" class="iconfont icontianjia color-doc pointer"></span>
       </el-tooltip>
     </div>
@@ -15,7 +15,7 @@
             :class="index == tabIndex ? 'active' : ''"
             @click="clickDepart(index, item.id)"
           >
-            <div class="over-text1">{{ $ts(item.cate_name, item.cate_name_en) }}</div>
+            <div class="over-text1">{{ $(item.cate_name, item.cate_name_en) }}</div>
             <el-popover
               :ref="`pop-${item.id}`"
               placement="bottom-end"
@@ -25,8 +25,8 @@
               @hide="handleHide"
             >
               <div class="right-item-list">
-                <div class="right-item" @click.stop="addDivsion(item.id)">{{ $t('public.edit') }}</div>
-                <div class="right-item" @click.stop="handleDelete(item.id)">{{ $t('public.delete') }}</div>
+                <div class="right-item" @click.stop="addDivsion(item.id)">{{ $('public.edit') }}</div>
+                <div class="right-item" @click.stop="handleDelete(item.id)">{{ $('public.delete') }}</div>
               </div>
               <i slot="reference" class="icon iconfont icongengduo pointer rank-icon" @click.stop></i>
             </el-popover>

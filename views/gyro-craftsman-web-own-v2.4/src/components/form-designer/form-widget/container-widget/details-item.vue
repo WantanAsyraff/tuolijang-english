@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <!-- 明细表详情 -->
 <container-item-wrapper :widget="widget">
@@ -15,19 +16,19 @@
     v-show="!widget.options.hidden"
   >
     <div class="title mb10">
-      {{ $t("ui.formDesignerFormWidgetContainerWidgetDetailsItemDetailTable") }}
+      {{ $("ui.formDesignerFormWidgetContainerWidgetDetailsItemDetailTable") }}
       <span v-if="previewState && !isShow" class="iconfont iconbianji3 ml10" @click="isShow = true"></span>
     </div>
     <el-table :data="tableData" :key="refreshKey" size="mini" border style="width: 100%; margin-top: 10px">
       <!-- 操作列 -->
-      <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180" fixed="left" align="center">
+      <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180" fixed="left" align="center">
         <template #default="scope">
           <template v-if="(previewState && isShow) || !previewState">
-            <span :title="$t('ui.businessHolidayTypeIndexAdd')" class="el-icon-circle-plus-outline" @click.stop="handleAdd(scope.$index)"></span>
+            <span :title="$('ui.businessHolidayTypeIndexAdd')" class="el-icon-circle-plus-outline" @click.stop="handleAdd(scope.$index)"></span>
             <span
               class="el-icon-delete"
               v-if="tableData.length > 1"
-              :title="$t('ui.chatIndexDelete')"
+              :title="$('ui.chatIndexDelete')"
               @click.stop="handleDelete(scope.$index)"
             ></span>
           </template>
@@ -71,17 +72,15 @@
       </template>
     </el-table>
     <div class="mt14" v-if="previewState && isShow">
-      <el-button size="small" @click="isShow = false">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button size="small" type="primary" @click="handlDetailsHideFn">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button size="small" @click="isShow = false">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button size="small" type="primary" @click="handlDetailsHideFn">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </el-row>
 </container-item-wrapper>
 </template>
 <script>
-import appI18n from '@/lang'
 import { putUpdateFieldApi } from '@/api/develop'
 import emitter from '@/utils/emitter'
-import i18n from '@/utils/i18n'
 import refMixin from '@/components/form-render/refMixin'
 import ContainerItemWrapper from '@/components/form-render/container-item/container-item-wrapper'
 import containerItemMixin from '@/components/form-render/container-item/containerItemMixin'
@@ -90,7 +89,7 @@ import FieldComponents from '@/components/form-designer/form-widget/field-widget
 export default {
   name: 'details-item',
   componentName: 'ContainerItem',
-  mixins: [emitter, i18n, refMixin, containerItemMixin],
+  mixins: [emitter, refMixin, containerItemMixin],
   components: {
     ContainerItemWrapper,
     ...FieldComponents
@@ -177,7 +176,7 @@ export default {
     },
     handleDelete(index) {
       if (this.tableData.length <= 1) {
-        this.$message.warning(appI18n.t('legacyScript.keepAtLeastOneRowOfData'))
+        this.$message.warning($('legacyScript.keepAtLeastOneRowOfData'))
         return
       }
 

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 客户管理 -->
 <template>
 <div class="divBox">
@@ -13,7 +14,7 @@
       :viewSearch="viewSearch"
       :timeSearchObj="timeSearchObj"
       :category="keyword"
-:btn-text="$t('ui.customerListIndexAddCustomer')"
+      :btnText="$('ui.customerListIndexAddCustomer')"
       :whereData="where"
       ref="fromBox"
       @addDataFn="addDataFn"
@@ -38,15 +39,15 @@
       @getTableData="getTableData"
     >
       <template #options="{ data }">
-        <el-button v-hasPermi="['customer:list:check']" type="text" @click="handleCheck(data)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+        <el-button v-hasPermi="['customer:list:check']" type="text" @click="handleCheck(data)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
         <!-- <el-button v-if="types == 'customer'" type="text" @click="addOdds(data)">添加商机</el-button>
           <el-button v-if="types == 'customer'" type="text" @click="addContract(data)">添加订单</el-button> -->
-        <el-button v-if="types == 'customer'" type="text" @click="handleLabel(data)">{{ $t("ui.formCommonSelectLabelSetLabel") }}</el-button>
+        <el-button v-if="types == 'customer'" type="text" @click="handleLabel(data)">{{ $("ui.formCommonSelectLabelSetLabel") }}</el-button>
 
-        <el-button v-else type="text" @click="receive(2, data)">{{ $t("ui.customerClueIndexIssue") }}</el-button>
+        <el-button v-else type="text" @click="receive(2, data)">{{ $("ui.customerClueIndexIssue") }}</el-button>
         <el-dropdown>
           <span class="el-dropdown-link el-button--text el-button more">
-            {{ $t("ui.layoutNavbarMore") }}
+            {{ $("ui.layoutNavbarMore") }}
             <i class="el-icon-arrow-down" />
           </span>
           <el-dropdown-menu style="text-align: center">
@@ -55,14 +56,14 @@
               </el-dropdown-item> -->
 
             <el-dropdown-item v-if="types == 'customer_seas'" @click.native="handleTransfer(2, data)">
-              {{ $t("ui.customerClueIndexAssign") }}
+              {{ $("ui.customerClueIndexAssign") }}
             </el-dropdown-item>
             <el-dropdown-item
               style="border-top: 1px solid #f5f5f5"
               v-if="types == 'customer_seas'"
               @click.native="markedLoss(data, 1)"
             >
-              {{ data.customer_status.value == 2 ? $t('ui.customerListIndexCancelLost') : $t('ui.customerListIndexMarkAsLost') }}
+              {{ data.customer_status.value == 2 ? $('ui.customerListIndexCancelLost') : $('ui.customerListIndexMarkAsLost') }}
             </el-dropdown-item>
 
             <el-dropdown-item
@@ -70,18 +71,18 @@
               v-if="types == 'customer'"
               @click.native="handleFollowUp(data)"
             >
-              {{ $t("ui.customerClueIndexWriteFollowUp") }}
+              {{ $("ui.customerClueIndexWriteFollowUp") }}
             </el-dropdown-item>
             <el-dropdown-item
               v-if="types == 'customer' && userId == data.creator_uid"
               @click.native="handleTransfer(2, data)"
             >
-              {{ $t("ui.customerClueIndexTransferToColleague") }}
+              {{ $("ui.customerClueIndexTransferToColleague") }}
             </el-dropdown-item>
             <el-dropdown-item v-if="types !== 'customer_seas'" @click.native="handleReturn(0, data)">
-              {{ $t("ui.customerListIndexReturnToPool") }}
+              {{ $("ui.customerListIndexReturnToPool") }}
             </el-dropdown-item>
-            <el-dropdown-item @click.native="handleDelete(data)">{{ $t("ui.chatIndexDelete") }} </el-dropdown-item>
+            <el-dropdown-item @click.native="handleDelete(data)">{{ $("ui.chatIndexDelete") }} </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </template>
@@ -93,21 +94,21 @@
     :before-close="handleClose"
     :close-on-click-modal="false"
     :visible.sync="dialogVisible"
-    :title="$t('ui.customerListIndexEditCustomerStatus')"
+    :title="$('ui.customerListIndexEditCustomerStatus')"
     width="30%"
   >
     <el-form class="mt20" label-width="80px">
-      <el-form-item :label="$t('ui.customerListEditCustomerCustomerStatus')" prop="resource">
+      <el-form-item :label="$('ui.customerListEditCustomerCustomerStatus')" prop="resource">
         <el-radio-group v-model="resource">
-          <el-radio label="0">{{ $t("ui.customerListIndexFollowingUp") }}</el-radio>
-          <el-radio label="1">{{ $t("ui.customerSetupRuleSettingsFollowRulesClosed") }}</el-radio>
-          <el-radio label="2">{{ $t("ui.customerContractContractRemindAbandoned") }}</el-radio>
+          <el-radio label="0">{{ $("ui.customerListIndexFollowingUp") }}</el-radio>
+          <el-radio label="1">{{ $("ui.customerSetupRuleSettingsFollowRulesClosed") }}</el-radio>
+          <el-radio label="2">{{ $("ui.customerContractContractRemindAbandoned") }}</el-radio>
         </el-radio-group>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button size="small" @click="dialogVisible = false">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-      <el-button size="small" type="primary" @click="followFn">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+      <el-button size="small" @click="dialogVisible = false">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button size="small" type="primary" @click="followFn">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </span>
   </el-dialog>
 
@@ -117,25 +118,25 @@
   <add-contract ref="addContract" :form-data="contractFromData"></add-contract>
   <transfer-dialog ref="transferDialog" :from-data="transferData" @handleTransfer="getTable"></transfer-dialog>
   <!-- 跟进弹窗 -->
-  <el-dialog :visible.sync="dialogShow" class="record" :title="$t('ui.customerClueIndexAddFollowUpRecord')" width="40%">
+  <el-dialog :visible.sync="dialogShow" class="record" :title="$('ui.customerClueIndexAddFollowUpRecord')" width="40%">
     <recordUpload :form-info="formInfo" @change="recordChange"></recordUpload>
   </el-dialog>
   <!-- 退回公海 -->
-  <el-dialog :append-to-body="true" :visible.sync="returnShow" :title="$t('ui.customerListIndexReturnCustomerToPool')" width="540px">
+  <el-dialog :append-to-body="true" :visible.sync="returnShow" :title="$('ui.customerListIndexReturnCustomerToPool')" width="540px">
     <el-form ref="returnForm" :model="returnForm" :rules="rule">
-      <el-form-item :label="$t('ui.customerListIndexReason')" label-width="90px" prop="reason">
+      <el-form-item :label="$('ui.customerListIndexReason')" label-width="90px" prop="reason">
         <el-input
           v-model="returnForm.reason"
           :autosize="{ minRows: 4, maxRows: 10 }"
           :maxlength="100"
-          :placeholder="$t('ui.customerListIndexEnterRemarksUpTo100Characters')"
+          :placeholder="$('ui.customerListIndexEnterRemarksUpTo100Characters')"
           type="textarea"
         ></el-input>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="cancel">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-      <el-button type="primary" @click="submit()">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+      <el-button @click="cancel">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button type="primary" @click="submit()">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </div>
   </el-dialog>
   <!-- 客户标签弹窗 -->
@@ -154,10 +155,10 @@
   <!-- 导入客户 -->
   <dragUpload ref="dragUpload" @getTableData="getTableData()"></dragUpload>
   <!-- 合并客户 -->
-  <el-dialog :append-to-body="true" :visible.sync="mergeCustomerShow" :title="$t('ui.customerListIndexMergeCustomerData')" width="30%">
+  <el-dialog :append-to-body="true" :visible.sync="mergeCustomerShow" :title="$('ui.customerListIndexMergeCustomerData')" width="30%">
     <el-form ref="returnForm" :model="returnForm" :rules="rule">
-      <el-form-item :label="$t('ui.customerListIndexPrimaryCustomer')" prop="reason" label-width="80px">
-        <el-select v-model="mergeCustomerId" :placeholder="$t('ui.customerListIndexSelectPrimaryCustomer')" style="width: 80%">
+      <el-form-item :label="$('ui.customerListIndexPrimaryCustomer')" prop="reason" label-width="80px">
+        <el-select v-model="mergeCustomerId" :placeholder="$('ui.customerListIndexSelectPrimaryCustomer')" style="width: 80%">
           <el-option
             v-for="item in mergeCustomerList"
             :key="item.id"
@@ -170,19 +171,18 @@
             <span class="ml10" v-if="item.salesman">{{ item.salesman }}</span>
           </el-option>
         </el-select>
-        <div class="tips">{{ $t("ui.customerListIndexAfterCustomersAreMergedThisCannotBeUndonePlease") }}</div>
+        <div class="tips">{{ $("ui.customerListIndexAfterCustomersAreMergedThisCannotBeUndonePlease") }}</div>
       </el-form-item>
     </el-form>
 
     <div slot="footer" class="dialog-footer">
-      <el-button size="small" @click="cancel">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-      <el-button size="small" type="primary" @click="mergeCustomerSubmit">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+      <el-button size="small" @click="cancel">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button size="small" type="primary" @click="mergeCustomerSubmit">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </div>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import {
   customerViewApi,
@@ -274,49 +274,49 @@ export default {
       transferDataList: [],
       timeSearchObj: {},
       rule: {
-        reason: [{ required: true, message: i18n.t('finance.pleaseremark'), trigger: 'blur' }]
+        reason: [{ required: true, message: $('finance.pleaseremark'), trigger: 'blur' }]
       },
       checkedId: [],
       treeDataGroup: [
         {
           id: 1,
-          label: i18n.t('legacyScript.ownedByMe')
+          label: $('legacyScript.ownedByMe')
         },
         {
           id: 2,
-          label: i18n.t('legacyScript.ownedBySubordinates')
+          label: $('legacyScript.ownedBySubordinates')
         },
         {
           id: 9,
-          label: i18n.t('legacyScript.myCollaborations')
+          label: $('legacyScript.myCollaborations')
         },
         {
           id: 3,
-          label: i18n.t('legacyScript.followedByMe')
+          label: $('legacyScript.followedByMe')
         },
 
         {
           id: 6,
-          label: i18n.t('legacyScript.needsUrgentFollowUp'),
+          label: $('legacyScript.needsUrgentFollowUp'),
           line: true
         }
       ],
 
       search: [],
       dropdownList: [
-        { label: i18n.t('customer.selectlabel'), value: 1 },
-        { label: i18n.t('ui.customerClueIndexTransferToColleague'), value: 2 },
-        { label: i18n.t('ui.customerClueIndexAssign'), value: 5 },
-        { label: i18n.t('ui.customerClueIndexIssue'), value: 6 },
-        { label: i18n.t('ui.customerListIndexMarkAsLost'), value: 7 },
-        { label: i18n.t('ui.customerListIndexReturnToPool'), value: 3 },
-        { label: i18n.t('legacyScript.mergeCustomers'), value: 9 },
-        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 11 },
-        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 10 },
-        { label: i18n.t('customer.export'), value: 4 },
-        { label: i18n.t('finance.batchupload'), value: 8 },
-        { label: i18n.t('legacyScript.importExportRecords'), value: 12 },
-        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 13 }
+        { label: $('customer.selectlabel'), value: 1 },
+        { label: $('ui.customerClueIndexTransferToColleague'), value: 2 },
+        { label: $('ui.customerClueIndexAssign'), value: 5 },
+        { label: $('ui.customerClueIndexIssue'), value: 6 },
+        { label: $('ui.customerListIndexMarkAsLost'), value: 7 },
+        { label: $('ui.customerListIndexReturnToPool'), value: 3 },
+        { label: $('legacyScript.mergeCustomers'), value: 9 },
+        { label: $('ui.developModuleTableStyleFilterSettings'), value: 11 },
+        { label: $('ui.developModuleTableStyleColumnDisplaySettings'), value: 10 },
+        { label: $('customer.export'), value: 4 },
+        { label: $('finance.batchupload'), value: 8 },
+        { label: $('legacyScript.importExportRecords'), value: 12 },
+        { label: $('legacyScript.fieldOptionSettings'), value: 13 }
       ],
       viewSearch: []
     }
@@ -356,7 +356,7 @@ export default {
     // 添加商机
     addOdds(data) {
       this.formBoxConfig = {
-        title: i18n.t('legacyScript.addOpportunity'),
+        title: $('legacyScript.addOpportunity'),
         width: '1000px',
         types: 'odds'
       }
@@ -441,7 +441,7 @@ export default {
       item.eid = item.id
       item.cid = 0
       this.fromData = {
-        title: this.$t('customer.editcustomer'),
+        title: this.$('customer.editcustomer'),
         width: DRAWER_SIZE.XL,
         data: item,
         link_type: 'customer',
@@ -456,7 +456,7 @@ export default {
 
     handleTransfer(type, row = []) {
       if (this.ids.length <= 0 && type === 1) {
-        this.$message.error(this.$t('customer.placeholder22'))
+        this.$message.error(this.$('customer.placeholder22'))
       } else {
         let ids = []
         if (type === 1) {
@@ -471,7 +471,7 @@ export default {
           ids.push(row.id)
         }
         this.transferData = {
-          title: type === 1 ? '移交其他同事' : this.$t('customer.transfersettings'),
+          title: type === 1 ? '移交其他同事' : this.$('customer.transfersettings'),
           width: '520px',
           type: 1,
           ids
@@ -509,7 +509,7 @@ export default {
     },
     // 删除
     async handleDelete(item) {
-      await this.$modalSure(this.$t('customer.message06'))
+      await this.$modalSure(this.$('customer.message06'))
       await clientDataDeleteApi(item.id)
       if (this.where.page > 1 && this.tableData.length <= 1) {
         this.where.page--
@@ -538,7 +538,7 @@ export default {
     handleLabel(row) {
       this.rowData = row
       this.labelData = {
-        title: i18n.t('customer.customerlabel'),
+        title: $('customer.customerlabel'),
         width: '540px',
         label: row.customer_label,
         edit: 1
@@ -548,7 +548,7 @@ export default {
     // 退回公海
     handleReturn(type, row) {
       if (this.ids.length <= 0 && type === 1) {
-        this.$message.error(this.$t('customer.placeholder22'))
+        this.$message.error(this.$('customer.placeholder22'))
       } else {
         if (row) {
           this.id = [row.id]
@@ -560,7 +560,7 @@ export default {
     // 合并客户
     mergeCustomerFn() {
       if (this.ids.length < 2) {
-        this.$message.error(i18n.t('legacyScript.selectAtLeastTwoCustomers'))
+        this.$message.error($('legacyScript.selectAtLeastTwoCustomers'))
         return
       } else {
         this.mergeCustomerShow = true
@@ -586,7 +586,7 @@ export default {
 
     mergeCustomerSubmit() {
       if (this.mergeCustomerId == '') {
-        this.$message.error(i18n.t('ui.customerListIndexSelectPrimaryCustomer'))
+        this.$message.error($('ui.customerListIndexSelectPrimaryCustomer'))
         return
       }
       let data = {
@@ -628,20 +628,20 @@ export default {
     // 标为流失
     markedLoss(row, val) {
       if (this.checkedId.length == 0 && val !== 1) {
-        return this.$message.error(i18n.t('customer.placeholder22'))
+        return this.$message.error($('customer.placeholder22'))
       }
 
       let checkedId = Array.from(this.checkedId)
       let id = checkedId.length && val !== 1 ? checkedId : [row.id]
       if (row && row.customer_status.value == 2) {
-        this.$modalSure(this.$ts('您确定要将此客户取消流失吗')).then(() => {
+        this.$modalSure(this.$("legacy.ed2e25071c83feab")).then(() => {
           customerCancelLostApi(row.id)
           setTimeout(() => {
             this.getTableData()
           }, 300)
         })
       } else {
-        this.$modalSure(this.$ts('您确定要将此客户标为流失吗')).then(() => {
+        this.$modalSure(this.$("legacy.e2b85c7f1fdecb5e")).then(() => {
           customerLostApi({ data: id })
           setTimeout(() => {
             this.getTableData()
@@ -652,11 +652,11 @@ export default {
     //领取客户
     receive(type, row) {
       if (this.ids.length <= 0 && type === 1) {
-        this.$message.error(this.$t('customer.placeholder22'))
+        this.$message.error(this.$('customer.placeholder22'))
       } else {
         let checkedId = Array.from(this.checkedId)
         let id = checkedId.length ? checkedId : [row.id]
-        this.$modalSure(this.$ts('您确定要领取此客户吗')).then(async () => {
+        this.$modalSure(this.$("legacy.e9da6c9700e70947")).then(async () => {
           await customerClaimApi({ data: id })
           await this.getTableData()
         })
@@ -675,11 +675,11 @@ export default {
     // 批量设置标签
     labelGroup(val) {
       if (this.ids.length <= 0) {
-        return this.$message.error(this.$t('customer.placeholder22'))
+        return this.$message.error(this.$('customer.placeholder22'))
       }
 
       this.labelData = {
-        title: i18n.t('customer.customerlabel'),
+        title: $('customer.customerlabel'),
         width: '540px',
         label: [],
         edit: 1
@@ -728,7 +728,7 @@ export default {
     // 添加订单
     addContract(row) {
       this.contractFromData = {
-        title: this.$t('customer.addcontract'),
+        title: this.$('customer.addcontract'),
         id: row.id,
         name: row.name,
         eid: row.id,

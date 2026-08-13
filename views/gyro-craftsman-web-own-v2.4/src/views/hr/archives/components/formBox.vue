@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <oaFromBox
@@ -8,7 +9,7 @@
     :timeSearch="timeSearch"
     :isViewSearch="isViewSearch"
     :total="total"
-    :title="$t('ui.hrArchivesFormBoxEmployeeList')"
+    :title="$('ui.hrArchivesFormBoxEmployeeList')"
     @addDataFn="openDrawer"
     @dropdownFn="dropdownFn"
     @confirmData="confirmData"
@@ -25,7 +26,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import 'element-ui/lib/theme-chalk/display.css'
 import { getTemp, importCardApi } from '@/api/enterprise'
 import exportExcel from '@/components/common/exportExcel'
@@ -68,34 +68,34 @@ export default {
       isViewSearch: true,
       dropdownList: [
         {
-          label: i18n.t('customer.export'),
+          label: $('customer.export'),
           value: 1
         },
         {
-          label: i18n.t('finance.batchupload'),
+          label: $('finance.batchupload'),
           value: 2
         },
         {
-          label: i18n.t('ui.developCrudEntityTableDownloadTemplate'),
+          label: $('ui.developCrudEntityTableDownloadTemplate'),
           value: 3
         }
       ],
       search: [],
       sexOptions: [
         {
-          name: this.$t('toptable.all'),
+          name: this.$('toptable.all'),
           value: ''
         },
         {
-          name: this.$t('toptable.unknown'),
+          name: this.$('toptable.unknown'),
           value: '0'
         },
         {
-          name: this.$t('toptable.male'),
+          name: this.$('toptable.male'),
           value: '1'
         },
         {
-          name: this.$t('toptable.female'),
+          name: this.$('toptable.female'),
           value: '2'
         }
       ],
@@ -131,27 +131,27 @@ export default {
       viewSearch: [
         {
           field: 'sex',
-          title: i18n.t('toptable.gender'),
+          title: $('toptable.gender'),
           type: 'select',
           options: []
         },
         {
           field: 'education',
-          title: i18n.t('hr.education'),
+          title: $('hr.education'),
           type: 'select',
           options: this.educationOptions
         },
         {
           field: 'status',
-          title: i18n.t('hr.accountstatus'),
+          title: $('hr.accountstatus'),
           type: 'select',
           options: [
             {
-              name: this.$t('toptable.all'),
+              name: this.$('toptable.all'),
               value: ''
             },
             {
-              name: this.$t('toptable.normal'),
+              name: this.$('toptable.normal'),
               value: 1
             },
             {
@@ -166,7 +166,7 @@ export default {
         },
         {
           field: 'type',
-          title: i18n.t('hr.employeestatus'),
+          title: $('hr.employeestatus'),
           type: 'select',
           options: [
             {
@@ -200,15 +200,15 @@ export default {
       // 员工类型
       identityOptions: [
         {
-          label: i18n.t('finance.all'),
+          label: $('finance.all'),
           value: ''
         },
         {
-          label: i18n.t('hr.formal'),
+          label: $('hr.formal'),
           value: 1
         },
         {
-          label: i18n.t('hr.ontrial'),
+          label: $('hr.ontrial'),
           value: 2
         }
       ],
@@ -310,7 +310,7 @@ export default {
       let tabtypes = localStorage.getItem('tabTypes')
       const res = []
       if (value.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.batchImportContentIsEmpty'))
+        this.$message.error($('legacyScript.batchImportContentIsEmpty'))
       } else {
         for (let i = 3; i <= value.length - 1; i++) {
           if (value[i][0] === '') {

@@ -39,7 +39,7 @@
                             v-model="item.value.title"
                             :maxlength="16"
                             :minlength="2"
-                            :placeholder="$t('customer.placeholder06')"
+                            :placeholder="$('customer.placeholder06')"
                             clearable
                             show-word-limit
                           />
@@ -48,7 +48,7 @@
                       </transition-group>
                     </draggable>
                     <el-button class="add-type mt14" type="text" @click="handleAddType"
-                      >{{ $t('customer.addmodel') }} <i class="el-icon-plus"></i
+                      >{{ $('customer.addmodel') }} <i class="el-icon-plus"></i
                     ></el-button>
                   </el-scrollbar>
                 </div>
@@ -56,7 +56,7 @@
                 <!--发票 -->
                 <div v-if="tabName == '发票类目'" class="v-height-flag">
                   <el-button class="mb14" size="small" type="primary" @click="addFinance">{{
-                    $t('customer.addtype')
+                    $('customer.addtype')
                   }}</el-button>
                   <div class="v-height-flag table-box">
                     <div v-height>
@@ -67,14 +67,14 @@
                         row-key="id"
                         style="width: 100%"
                       >
-                        <el-table-column :label="$t('customer.typename')" min-width="220" prop="name">
+                        <el-table-column :label="$('customer.typename')" min-width="220" prop="name">
                         </el-table-column>
-                        <el-table-column :label="$t('toptable.sort')" min-width="100" prop="sort" />
-                        <el-table-column :label="$t('public.operation')" prop="address" width="200">
+                        <el-table-column :label="$('toptable.sort')" min-width="100" prop="sort" />
+                        <el-table-column :label="$('public.operation')" prop="address" width="200">
                           <template slot-scope="scope">
-                            <el-button type="text" @click="handleEdit(scope.row)">{{ $t('public.edit') }}</el-button>
+                            <el-button type="text" @click="handleEdit(scope.row)">{{ $('public.edit') }}</el-button>
 
-                            <el-button type="text" @click="deleteFn(scope.row)">{{ $t('public.delete') }}</el-button>
+                            <el-button type="text" @click="deleteFn(scope.row)">{{ $('public.delete') }}</el-button>
                           </template>
                         </el-table-column>
                       </el-table>
@@ -101,7 +101,7 @@
             size="small"
             type="primary"
             @click="handleConfirm"
-            >{{ $t('public.ok') }}</el-button
+            >{{ $('public.ok') }}</el-button
           >
         </div>
       </div>
@@ -146,12 +146,12 @@ export default {
       },
       total: 0,
       department: [
-        { id: 1, name: this.$t('customer.customersource') },
-        { id: 2, name: this.$t('customer.renewaltype') }
+        { id: 1, name: this.$('customer.customersource') },
+        { id: 2, name: this.$('customer.renewaltype') }
       ],
       tabIndex: 0,
       tabId: 1,
-      tabName: this.$t('customer.customersource'),
+      tabName: this.$('customer.customersource'),
       drag: false,
       dataArray: [],
       deleteArray: [],
@@ -169,8 +169,8 @@ export default {
   methods: {
     setOptions() {
       this.department = [
-        { id: 1, name: this.$t('customer.customersource') },
-        { id: 2, name: this.$t('customer.renewaltype') }
+        { id: 1, name: this.$('customer.customersource') },
+        { id: 2, name: this.$('customer.renewaltype') }
       ]
     },
 
@@ -193,7 +193,7 @@ export default {
     // 编辑分类
     async handleEdit(item) {
       this.repeatData = {
-        title: this.$t('customer.edittype'),
+        title: this.$('customer.edittype'),
         width: '480px',
         label: 3,
         type: 2,
@@ -204,7 +204,7 @@ export default {
 
     // 删除发票分类
     async deleteFn(item) {
-      await this.$modalSure(this.$t('customer.message01'))
+      await this.$modalSure(this.$('customer.message01'))
       await deleteInvoiceCategory(item.id)
 
       this.getTableData()
@@ -220,7 +220,7 @@ export default {
     // 添加分类
     async addFinance() {
       this.repeatData = {
-        title: this.$t('customer.addtype'),
+        title: this.$('customer.addtype'),
         width: '480px',
         label: 3,
         type: 1,
@@ -240,11 +240,11 @@ export default {
       this.tabIndex = index
       this.tabId = id
       if (this.tabId == 1) {
-        this.tabName = this.$t('customer.customersource')
+        this.tabName = this.$('customer.customersource')
       } else if (this.tabId == 2) {
-        this.tabName = this.$t('customer.renewaltype')
+        this.tabName = this.$('customer.renewaltype')
       } else {
-        this.tabName = this.$ts('发票类目')
+        this.tabName = '发票类目'
         this.invoiceCategoryList()
       }
       this.getClientList()
@@ -258,13 +258,13 @@ export default {
     handleConfirm() {
       const data = []
       if (this.dataArray.length <= 0) {
-        this.$message.warning(this.$t('customer.message05'))
+        this.$message.warning(this.$('customer.message05'))
       } else {
         const status = this.dataArray.some((el, index) => {
           return el.value.title === ''
         })
         if (status) {
-          this.$message.warning(this.$t('customer.message05'))
+          this.$message.warning(this.$('customer.message05'))
         } else {
           const len = this.dataArray.length
           this.dataArray.map((value, index) => {
@@ -283,7 +283,7 @@ export default {
         })
 
         if (status) {
-          this.$message.warning(this.$t('customer.message05'))
+          this.$message.warning(this.$('customer.message05'))
         } else {
           this.dataArray.push({ sort: '', id: 0, value: { title: '' } })
         }

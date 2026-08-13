@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div class="station">
   <el-drawer
-    :title="id > 0 ? $t('ui.developDataManagementAddDataEditApi') : $t('ui.developDataManagementAddDataAddApi')"
+    :title="id > 0 ? $('ui.developDataManagementAddDataEditApi') : $('ui.developDataManagementAddDataAddApi')"
     :visible.sync="drawer"
     direction="rtl"
     :modal="true"
@@ -11,24 +12,24 @@
   >
     <div class="form-box">
       <el-form :model="form" :rules="rules" ref="ruleForm" label-width="110px">
-        <el-form-item :label="$t('ui.developDataManagementAddDataApiTitle')" prop="title">
-          <el-input v-model="form.title" size="small" :placeholder="$t('ui.developDataManagementAddDataPleaseEnterAnApiTitle')"></el-input>
+        <el-form-item :label="$('ui.developDataManagementAddDataApiTitle')" prop="title">
+          <el-input v-model="form.title" size="small" :placeholder="$('ui.developDataManagementAddDataPleaseEnterAnApiTitle')"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('ui.developDataManagementAddDataAuthorizationRequest')" prop="is_pre">
+        <el-form-item :label="$('ui.developDataManagementAddDataAuthorizationRequest')" prop="is_pre">
           <el-switch
             v-model="form.is_pre"
             :active-value="`1`"
             :inactive-value="`0`"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+            active-text="开启"
+            inactive-text="关闭"
           >
           </el-switch>
         </el-form-item>
         <template v-if="form.is_pre == '1'">
-          <el-form-item :label="$t('ui.developDataManagementAddDataAuthorizationUrl')" prop="pre_url">
-            <el-input v-model="form.pre_url" size="small" :placeholder="$t('ui.developDataManagementAddDataPleaseEnterPrecedingUrl')"></el-input>
+          <el-form-item :label="$('ui.developDataManagementAddDataAuthorizationUrl')" prop="pre_url">
+            <el-input v-model="form.pre_url" size="small" :placeholder="$('ui.developDataManagementAddDataPleaseEnterPrecedingUrl')"></el-input>
           </el-form-item>
-          <el-form-item :label="$t('ui.developDataManagementAddDataRequestMethod')" prop="pre_method">
+          <el-form-item :label="$('ui.developDataManagementAddDataRequestMethod')" prop="pre_method">
             <el-select v-model="form.pre_method" size="small" style="width: 100%">
               <el-option
                 v-for="item in requestMethod"
@@ -39,17 +40,17 @@
             </el-select>
           </el-form-item>
           <!-- 请求头 -->
-          <el-form-item :label="$t('ui.developDataManagementAddDataAuthorizationHeaders')">
+          <el-form-item :label="$('ui.developDataManagementAddDataAuthorizationHeaders')">
             <div class="table-box">
               <el-table :data="form.pre_headers" style="width: 100%">
-                <el-table-column prop="name" :label="$t('ui.developDataManagementAddDataParameterName')">
+                <el-table-column prop="name" :label="$('ui.developDataManagementAddDataParameterName')">
                   <template slot-scope="scope">
-                    <el-input v-model="scope.row.name" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')"></el-input>
+                    <el-input v-model="scope.row.name" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')"></el-input>
                   </template>
                 </el-table-column>
-                <el-table-column prop="value" :label="$t('ui.developDataManagementAddDataParameterValue')">
+                <el-table-column prop="value" :label="$('ui.developDataManagementAddDataParameterValue')">
                   <template slot-scope="scope">
-                    <el-input v-model="scope.row.value" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')"></el-input>
+                    <el-input v-model="scope.row.value" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')"></el-input>
                   </template>
                 </el-table-column>
                 <el-table-column width="40px">
@@ -59,22 +60,22 @@
                 </el-table-column>
               </el-table>
               <div class="addBtn">
-                <el-button type="text" icon="el-icon-plus" @click="addFn('pre_headers')">{{ $t("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
+                <el-button type="text" icon="el-icon-plus" @click="addFn('pre_headers')">{{ $("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
               </div>
             </div>
           </el-form-item>
           <!-- 请求体 -->
-          <el-form-item :label="$t('ui.developDataManagementAddDataAuthorizationFormData')">
+          <el-form-item :label="$('ui.developDataManagementAddDataAuthorizationFormData')">
             <div class="table-box">
               <el-table :data="form.pre_data" style="width: 100%">
-                <el-table-column prop="name" :label="$t('ui.developDataManagementAddDataParameterName')">
+                <el-table-column prop="name" :label="$('ui.developDataManagementAddDataParameterName')">
                   <template slot-scope="scope">
-                    <el-input v-model="scope.row.name" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')"></el-input>
+                    <el-input v-model="scope.row.name" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')"></el-input>
                   </template>
                 </el-table-column>
-                <el-table-column prop="value" :label="$t('ui.developDataManagementAddDataParameterValue')">
+                <el-table-column prop="value" :label="$('ui.developDataManagementAddDataParameterValue')">
                   <template slot-scope="scope">
-                    <el-input v-model="scope.row.value" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')"></el-input>
+                    <el-input v-model="scope.row.value" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')"></el-input>
                   </template>
                 </el-table-column>
                 <el-table-column width="40px">
@@ -84,22 +85,22 @@
                 </el-table-column>
               </el-table>
               <div class="addBtn">
-                <el-button type="text" icon="el-icon-plus" @click="addFn('pre_data')">{{ $t("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
+                <el-button type="text" icon="el-icon-plus" @click="addFn('pre_data')">{{ $("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
               </div>
             </div>
           </el-form-item>
-          <el-form-item :label="$t('ui.developDataManagementAddDataCacheDuration')">
-            <el-input v-model="form.pre_cache_time" size="small" :placeholder="$t('ui.developDataManagementAddDataPleaseEnterACacheDuration')" type="number">
-              <span slot="suffix" class="text-16">{{ $t("ui.developCrudEventSecond") }}</span>
+          <el-form-item :label="$('ui.developDataManagementAddDataCacheDuration')">
+            <el-input v-model="form.pre_cache_time" size="small" :placeholder="$('ui.developDataManagementAddDataPleaseEnterACacheDuration')" type="number">
+              <span slot="suffix" class="text-16">{{ $("ui.developCrudEventSecond") }}</span>
             </el-input>
-            <el-button type="primary" size="small" class="mt14" @click="requestFn">{{ $t("ui.developDataManagementAddDataTestRequest") }}</el-button>
+            <el-button type="primary" size="small" class="mt14" @click="requestFn">{{ $("ui.developDataManagementAddDataTestRequest") }}</el-button>
           </el-form-item>
         </template>
 
-        <el-form-item :label="$t('ui.developDataManagementAddDataLinkUrl')" prop="url">
-          <el-input v-model="form.url" size="small" :placeholder="$t('ui.developDataManagementAddDataPleaseEnterALinkUrl')"></el-input>
+        <el-form-item :label="$('ui.developDataManagementAddDataLinkUrl')" prop="url">
+          <el-input v-model="form.url" size="small" :placeholder="$('ui.developDataManagementAddDataPleaseEnterALinkUrl')"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('ui.developDataManagementAddDataRequestMethod')" prop="method">
+        <el-form-item :label="$('ui.developDataManagementAddDataRequestMethod')" prop="method">
           <el-select v-model="form.method" size="small" style="width: 100%">
             <el-option
               v-for="item in requestMethod"
@@ -113,31 +114,31 @@
         <el-form-item label="Headers：">
           <div class="table-box">
             <el-table :data="form.headers" style="width: 100%">
-              <el-table-column prop="name" :label="$t('ui.developDataManagementAddDataParameterName')">
+              <el-table-column prop="name" :label="$('ui.developDataManagementAddDataParameterName')">
                 <template slot-scope="scope">
-                  <el-input v-model="scope.row.name" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')"></el-input>
+                  <el-input v-model="scope.row.name" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')"></el-input>
                 </template>
               </el-table-column>
-              <el-table-column prop="type" :label="$t('ui.developModuleButtonDialogParameterSource')" v-if="form.is_pre == 1">
+              <el-table-column prop="type" :label="$('ui.developModuleButtonDialogParameterSource')" v-if="form.is_pre == 1">
                 <template slot-scope="scope">
-                  <el-select v-model="scope.row.type" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-model="scope.row.type" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
                 </template>
               </el-table-column>
-              <el-table-column prop="name" :label="$t('ui.developDataManagementAddDataPrefix')">
+              <el-table-column prop="name" :label="$('ui.developDataManagementAddDataPrefix')">
                 <template slot-scope="scope">
-                  <el-input v-model="scope.row.prefix" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')"></el-input>
+                  <el-input v-model="scope.row.prefix" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')"></el-input>
                 </template>
               </el-table-column>
-              <el-table-column prop="value" :label="$t('ui.developDataManagementAddDataParameterValue')">
+              <el-table-column prop="value" :label="$('ui.developDataManagementAddDataParameterValue')">
                 <template slot-scope="scope">
-                  <el-select v-if="scope.row.type == '1'" v-model="scope.row.value" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-if="scope.row.type == '1'" v-model="scope.row.value" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option v-for="item in fieldValue" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-input v-else v-model="scope.row.value" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')"></el-input>
+                  <el-input v-else v-model="scope.row.value" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')"></el-input>
                 </template>
               </el-table-column>
               <el-table-column width="40px">
@@ -147,7 +148,7 @@
               </el-table-column>
             </el-table>
             <div class="addBtn">
-              <el-button type="text" icon="el-icon-plus" @click="addFn('headers')">{{ $t("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
+              <el-button type="text" icon="el-icon-plus" @click="addFn('headers')">{{ $("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
             </div>
           </div>
         </el-form-item>
@@ -155,14 +156,14 @@
         <el-form-item label="form-data：">
           <div class="table-box">
             <el-table :data="form.data" style="width: 100%">
-              <el-table-column prop="name" :label="$t('ui.developDataManagementAddDataParameterName')">
+              <el-table-column prop="name" :label="$('ui.developDataManagementAddDataParameterName')">
                 <template slot-scope="scope">
-                  <el-input v-model="scope.row.name" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')"></el-input>
+                  <el-input v-model="scope.row.name" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')"></el-input>
                 </template>
               </el-table-column>
-              <el-table-column prop="type" :label="$t('ui.developModuleButtonDialogParameterSource')" v-if="form.is_pre == 1">
+              <el-table-column prop="type" :label="$('ui.developModuleButtonDialogParameterSource')" v-if="form.is_pre == 1">
                 <template slot-scope="scope">
-                  <el-select v-model="scope.row.type" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')" @change="changeFn(scope.row)">
+                  <el-select v-model="scope.row.type" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')" @change="changeFn(scope.row)">
                     <el-option
                       v-for="item in options"
                       :key="item.value"
@@ -174,19 +175,19 @@
                   </el-select>
                 </template>
               </el-table-column>
-              <el-table-column prop="value" :label="$t('ui.developDataManagementAddDataParameterValue')">
+              <el-table-column prop="value" :label="$('ui.developDataManagementAddDataParameterValue')">
                 <template slot-scope="scope">
-                  <el-select v-if="scope.row.type == '1'" v-model="scope.row.value" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-if="scope.row.type == '1'" v-model="scope.row.value" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option v-for="item in fieldValue" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-input v-else-if="0" v-model="scope.row.value" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')"></el-input>
+                  <el-input v-else-if="0" v-model="scope.row.value" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')"></el-input>
                   <el-input
                     v-else-if="2"
                     v-model="scope.row.value"
                     type="number"
                     size="small"
-                    :placeholder="$t('ui.developDataManagementAddDataPleaseEnterNumber')"
+                    :placeholder="$('ui.developDataManagementAddDataPleaseEnterNumber')"
                   ></el-input>
                 </template>
               </el-table-column>
@@ -197,23 +198,22 @@
               </el-table-column>
             </el-table>
             <div class="addBtn">
-              <el-button type="text" icon="el-icon-plus" @click="addFn('data')">{{ $t("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
+              <el-button type="text" icon="el-icon-plus" @click="addFn('data')">{{ $("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
             </div>
           </div>
         </el-form-item>
       </el-form>
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
       <el-button :loading="loading" size="small" type="primary" @click="handleConfirm('ruleForm')">{{
-        $t('public.ok')
+        $('public.ok')
       }}</el-button>
     </div>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { crudTestSendApi, crudAddCurlApi, crudGetCurlEditApi, crudPutCurlApi } from '@/api/develop'
 export default {
   name: '',
@@ -257,26 +257,26 @@ export default {
         }
       ],
       rules: {
-        title: [{ required: true, message: i18n.t('ui.developDataManagementAddDataPleaseEnterAnApiTitle'), trigger: 'blur' }],
-        is_pre: [{ required: true, message: i18n.t('legacyScript.pleaseSelectARequestType'), trigger: 'blur' }],
-        url: [{ required: true, message: i18n.t('ui.developDataManagementAddDataPleaseEnterALinkUrl'), trigger: 'blur' }],
-        method: [{ required: true, message: i18n.t('legacyScript.pleaseSelectARequestMethod'), trigger: 'blur' }],
-        pre_method: [{ required: true, message: i18n.t('legacyScript.pleaseSelectARequestMethod'), trigger: 'blur' }],
-        pre_url: [{ required: true, message: i18n.t('legacyScript.pleaseEnterAddress'), trigger: 'blur' }]
+        title: [{ required: true, message: $('ui.developDataManagementAddDataPleaseEnterAnApiTitle'), trigger: 'blur' }],
+        is_pre: [{ required: true, message: $('legacyScript.pleaseSelectARequestType'), trigger: 'blur' }],
+        url: [{ required: true, message: $('ui.developDataManagementAddDataPleaseEnterALinkUrl'), trigger: 'blur' }],
+        method: [{ required: true, message: $('legacyScript.pleaseSelectARequestMethod'), trigger: 'blur' }],
+        pre_method: [{ required: true, message: $('legacyScript.pleaseSelectARequestMethod'), trigger: 'blur' }],
+        pre_url: [{ required: true, message: $('legacyScript.pleaseEnterAddress'), trigger: 'blur' }]
       },
       fieldValue: [],
       options: [
         {
           value: '0',
-          label: i18n.t('legacyScript.fixedValue')
+          label: $('legacyScript.fixedValue')
         },
         {
           value: '1',
-          label: i18n.t('legacyScript.responseValue')
+          label: $('legacyScript.responseValue')
         },
         {
           value: '2',
-          label: i18n.t('legacyScript.autoIncrementValue')
+          label: $('legacyScript.autoIncrementValue')
         }
       ]
     }

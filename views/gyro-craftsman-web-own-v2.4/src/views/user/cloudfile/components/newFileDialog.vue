@@ -1,31 +1,31 @@
+import { $ } from '@/lang'
 <template>
 <!--  新建文件或文件夹弹窗-->
 <el-dialog :before-close="handleClose" :title="config.title" :visible.sync="dialogVisible" width="480px">
   <div class="mt15">
     <div v-if="config.command !== 5" class="current-dialog mb15">
-      <span>{{ $t("ui.userCloudfileNewFileDialogFileType") }}</span>
-      <el-select v-model="info.type" :placeholder="$t('ui.userCloudfileNewFileDialogPleaseSelectFileType')">
+      <span>{{ $("ui.userCloudfileNewFileDialogFileType") }}</span>
+      <el-select v-model="info.type" :placeholder="$('ui.userCloudfileNewFileDialogPleaseSelectFileType')">
         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
       </el-select>
     </div>
     <div class="current-dialog mb15">
-      <span>{{ $t("ui.userCloudfileNewFileDialogFileName") }}</span>
+      <span>{{ $("ui.userCloudfileNewFileDialogFileName") }}</span>
       <el-input
         v-model="info.name"
-        :placeholder="config.command === 5 ? $t('ui.userCloudfileNewFileDialogEnterFolderName') : $t('ui.userCloudfileNewFileDialogEnterFileName')"
+        :placeholder="config.command === 5 ? $('ui.userCloudfileNewFileDialogEnterFolderName') : $('ui.userCloudfileNewFileDialogEnterFileName')"
         maxlength="20"
         type="text"
       />
     </div>
   </div>
   <div slot="footer" class="dialog-footer">
-    <el-button :loading="loading" size="small" type="primary" @click="handleAdd">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+    <el-button :loading="loading" size="small" type="primary" @click="handleAdd">{{ $("ui.formCommonDialogFormOk") }}</el-button>
   </div>
 </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { folderCreateApi, folderMakeApi, folderSpaceEntCreateApi, folderSpaceEntMakeApi } from '@/api/cloud'
 export default {
   name: 'MyFileDialog',
@@ -45,9 +45,9 @@ export default {
         type: ''
       },
       options: [
-        { label: i18n.t('file.document'), value: 'word' },
-        { label: i18n.t('file.table'), value: 'excel' },
-        { label: i18n.t('legacyScript.mindMap'), value: 'mindmap' }
+        { label: $('file.document'), value: 'word' },
+        { label: $('file.table'), value: 'excel' },
+        { label: $('legacyScript.mindMap'), value: 'mindmap' }
         // { label: '幻灯片', value: 'ppt' }
       ],
       loading: false
@@ -76,7 +76,7 @@ export default {
       // 创建文件夹
       if (this.config.command === 5) {
         if (this.info.name === '') {
-          this.$message.error(i18n.t('legacyScript.folderNameCannotBeEmpty'))
+          this.$message.error($('legacyScript.folderNameCannotBeEmpty'))
         } else {
           const data = {
             pid: this.config.pid,
@@ -110,7 +110,7 @@ export default {
         }
       } else {
         if (this.info.name === '') {
-          this.$message.error(i18n.t('legacyScript.fileNameCannotBeEmpty'))
+          this.$message.error($('legacyScript.fileNameCannotBeEmpty'))
         } else {
           const data = {
             pid: this.config.pid,

@@ -7,14 +7,14 @@
             {{ scope.row[item.prop] }}
           </template>
           <template v-else>
-            <span v-if="item.name == '任职状态'">{{ scope.row.status ? $t('hr.onob') : $t('hr.dimission') }}</span>
+            <span v-if="item.name == '任职状态'">{{ scope.row.status ? $('hr.onob') : $('hr.dimission') }}</span>
           </template>
         </template>
       </el-table-column>
-      <el-table-column prop="address" :label="$t('public.operation')">
+      <el-table-column prop="address" :label="$('public.operation')">
         <template slot-scope="scope">
-          <el-button type="text" @click="handlePut(scope.row, scope.$index)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-          <el-button type="text" @click="handleDelete(scope.row, scope.$index)">{{ $t('public.delete') }}</el-button>
+          <el-button type="text" @click="handlePut(scope.row, scope.$index)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+          <el-button type="text" @click="handleDelete(scope.row, scope.$index)">{{ $('public.delete') }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -78,7 +78,7 @@ export default {
   methods: {
     // 删除
     handleDelete(row, index) {
-      this.$modalSure(this.$t('hr.deletetitle')).then(() => {
+      this.$modalSure(this.$('hr.deletetitle')).then(() => {
         if (this.user == '个人简历') {
           if (this.tableName === 'works') {
             userDeleteWork(row.id).then((res) => {

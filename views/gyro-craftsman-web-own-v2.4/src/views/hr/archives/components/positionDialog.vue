@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <el-dialog
     :title="config.title"
@@ -9,31 +10,30 @@
     :close-on-click-modal="false"
   >
     <el-form ref="form" class="mt15" :model="ruleForm" :rules="rules" label-width="90px">
-      <el-form-item :label="$t('hr.jobtitle') + '：'" prop="name">
-        <el-input size="small" type="text" v-model="ruleForm.name" :placeholder="$t('hr.message')"></el-input>
+      <el-form-item :label="$('hr.jobtitle') + '：'" prop="name">
+        <el-input size="small" type="text" v-model="ruleForm.name" :placeholder="$('hr.message')"></el-input>
       </el-form-item>
-      <el-form-item :label='$ts("职级类别：")' prop="cateId">
-        <el-select v-model="ruleForm.cateId" size="small" clearable :placeholder='$ts("请选择职级类别")' @change="handleCate">
+      <el-form-item :label='$("legacyScript.rankCategory")' prop="cateId">
+        <el-select v-model="ruleForm.cateId" size="small" clearable :placeholder='$("legacyScript.pleaseSelectRankCategory")' @change="handleCate">
           <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('hr.rank') + '：'" prop="rankId">
-        <el-select v-model="ruleForm.rankId" size="small" clearable :placeholder="$t('hr.message9')">
+      <el-form-item :label="$('hr.rank') + '：'" prop="rankId">
+        <el-select v-model="ruleForm.rankId" size="small" clearable :placeholder="$('hr.message9')">
           <el-option v-for="item in rankData" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
       <el-button size="small" class="mr20" :loading="loading" type="primary" @click="handleConfirm">{{
-        $t('public.ok')
+        $('public.ok')
       }}</el-button>
     </div>
   </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { endJobSaveApi } from '@/api/enterprise'
 import { rankCateListApi, rankListApi } from '@/api/setting'
 
@@ -56,9 +56,9 @@ export default {
         rankId: ''
       },
       rules: {
-        name: [{ required: true, message: this.$t('hr.message'), trigger: 'blur' }],
-        cateId: [{ required: true, message: i18n.t('legacyScript.pleaseSelectRankCategory'), trigger: 'change' }],
-        rankId: [{ required: true, message: i18n.t('hr.message9'), trigger: 'change' }]
+        name: [{ required: true, message: this.$('hr.message'), trigger: 'blur' }],
+        cateId: [{ required: true, message: $('legacyScript.pleaseSelectRankCategory'), trigger: 'change' }],
+        rankId: [{ required: true, message: $('hr.message9'), trigger: 'change' }]
       },
       loading: false,
       propsPos: { value: 'id', label: 'name', multiple: false, checkStrictly: true },

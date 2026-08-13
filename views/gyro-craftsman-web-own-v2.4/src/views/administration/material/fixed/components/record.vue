@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 物资记录详情弹窗 -->
 <template>
 <div class="station">
@@ -21,12 +22,12 @@
             {{ formData.title }}
           </div>
           <div class="txt2">
-            <span class="title">{{ $t("ui.administrationMaterialFixedMaterialDialogMaterialName") }}</span>
+            <span class="title">{{ $("ui.administrationMaterialFixedMaterialDialogMaterialName") }}</span>
             <span>{{ formData.data.name || '-' }}</span>
 
-            <span class="title">{{ $t("ui.administrationMaterialFixedRecordSpecificationModel") }}</span> <span>{{ formData.data.units || '--' }}</span>
-            <span class="title">{{ $t("ui.administrationMaterialFixedMaterialDialogMaterialCategory") }}</span><span>{{ formData.data.cate.cate_name || '--' }}</span>
-            <span class="title">{{ $t("ui.administrationMaterialFixedRecordUnitOfMeasure") }}</span><span>{{ formData.data.specs || '--' }}</span>
+            <span class="title">{{ $("ui.administrationMaterialFixedRecordSpecificationModel") }}</span> <span>{{ formData.data.units || '--' }}</span>
+            <span class="title">{{ $("ui.administrationMaterialFixedMaterialDialogMaterialCategory") }}</span><span>{{ formData.data.cate.cate_name || '--' }}</span>
+            <span class="title">{{ $("ui.administrationMaterialFixedRecordUnitOfMeasure") }}</span><span>{{ formData.data.specs || '--' }}</span>
           </div>
         </el-col>
       </el-row>
@@ -36,20 +37,20 @@
       <el-form ref="form" class="mt14" label-width="80px">
         <el-row :gutter="14">
           <el-col :span="9">
-            <el-form-item :label="$t('ui.administrationMaterialFixedRecordBusinessType')">
-              <el-select v-model="where.types" @change="getSearch" size="small" clearable :placeholder="$t('ui.invoiceInvoiceDetailsBusinessType')">
+            <el-form-item :label="$('ui.administrationMaterialFixedRecordBusinessType')">
+              <el-select v-model="where.types" @change="getSearch" size="small" clearable :placeholder="$('ui.invoiceInvoiceDetailsBusinessType')">
                 <el-option v-for="(item, index) in option" :key="index" :label="item.label" :value="item.value" />
               </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="9">
-            <el-form-item :label="$t('ui.administrationMaterialFixedRecordDepartmentEmployee')">
+            <el-form-item :label="$('ui.administrationMaterialFixedRecordDepartmentEmployee')">
               <el-select
                 v-model="index"
                 filterable
                 size="small"
                 clearable
-                :placeholder="$t('ui.administrationMaterialFixedRecordPleaseSelectDepartmentEmployee')"
+                :placeholder="$('ui.administrationMaterialFixedRecordPleaseSelectDepartmentEmployee')"
                 @change="getSearch"
               >
                 <el-option
@@ -62,7 +63,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="6">
-            <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+            <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
               <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
             </el-tooltip>
           </el-col>
@@ -70,24 +71,24 @@
       </el-form>
       <div class="table-box v-height-flag">
         <el-table :data="tableData" style="width: 100%" row-key="id" default-expand-all>
-          <el-table-column prop="id" :label="$t('ui.formCommonOaTableSerialNumber')" min-width="45">
+          <el-table-column prop="id" :label="$('ui.formCommonOaTableSerialNumber')" min-width="45">
             <template slot-scope="scope">{{ scope.$index + 1 }}</template>
           </el-table-column>
-          <el-table-column prop="types" :label="$t('ui.invoiceInvoiceDetailsBusinessType')" min-width="80">
+          <el-table-column prop="types" :label="$('ui.invoiceInvoiceDetailsBusinessType')" min-width="80">
             <template slot-scope="scope">
-              <span v-if="scope.row.types === 0">{{ $t("ui.administrationMaterialFixedMaterialDialogStockIn") }}</span>
-              <span v-if="scope.row.types === 1">{{ $t("ui.administrationMaterialFixedConsumeIssue") }}</span>
-              <span v-if="scope.row.types === 2">{{ $t("ui.administrationMaterialFixedFixedReturn") }}</span>
-              <span v-if="scope.row.types === 3">{{ $t("ui.administrationMaterialFixedFixedRepair") }}</span>
-              <span v-if="scope.row.types === 4">{{ $t("ui.administrationMaterialFixedFixedDisposal") }}</span>
-              <span v-if="scope.row.types === 5">{{ $t("ui.administrationMaterialFixedRecordRepairHandling") }}</span>
+              <span v-if="scope.row.types === 0">{{ $("ui.administrationMaterialFixedMaterialDialogStockIn") }}</span>
+              <span v-if="scope.row.types === 1">{{ $("ui.administrationMaterialFixedConsumeIssue") }}</span>
+              <span v-if="scope.row.types === 2">{{ $("ui.administrationMaterialFixedFixedReturn") }}</span>
+              <span v-if="scope.row.types === 3">{{ $("ui.administrationMaterialFixedFixedRepair") }}</span>
+              <span v-if="scope.row.types === 4">{{ $("ui.administrationMaterialFixedFixedDisposal") }}</span>
+              <span v-if="scope.row.types === 5">{{ $("ui.administrationMaterialFixedRecordRepairHandling") }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="info" :label="$t('ui.administrationMaterialFixedFixedImportantInformation')" min-width="130"></el-table-column>
-          <el-table-column prop="num" :label="$t('ui.administrationMaterialFixedRecordMaterialQuantity')" min-width="80" />
-          <el-table-column prop="creater.name" :label="$t('ui.administrationMaterialChartIndexOperator')" min-width="80" />
-          <el-table-column prop="created_at" :label="$t('ui.administrationMaterialFixedLogOperationTime')" min-width="130" />
-          <el-table-column prop="mark" :label="$t('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="130">
+          <el-table-column prop="info" :label="$('ui.administrationMaterialFixedFixedImportantInformation')" min-width="130"></el-table-column>
+          <el-table-column prop="num" :label="$('ui.administrationMaterialFixedRecordMaterialQuantity')" min-width="80" />
+          <el-table-column prop="creater.name" :label="$('ui.administrationMaterialChartIndexOperator')" min-width="80" />
+          <el-table-column prop="created_at" :label="$('ui.administrationMaterialFixedLogOperationTime')" min-width="130" />
+          <el-table-column prop="mark" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="130">
             <template slot-scope="scope">
               <span>{{ scope.row.mark || '--' }}</span>
             </template>
@@ -108,7 +109,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { storageRecordApi, storageRecordUsersApi } from '@/api/administration'
 
 export default {
@@ -155,19 +155,19 @@ export default {
       handler(nVal) {
         if (nVal.type === 0) {
           this.option = [
-            { value: '', label: i18n.t('finance.all') },
-            { value: 0, label: i18n.t('ui.administrationMaterialFixedMaterialDialogStockIn') },
-            { value: 1, label: i18n.t('ui.administrationMaterialFixedConsumeIssue') }
+            { value: '', label: $('finance.all') },
+            { value: 0, label: $('ui.administrationMaterialFixedMaterialDialogStockIn') },
+            { value: 1, label: $('ui.administrationMaterialFixedConsumeIssue') }
           ]
         } else {
           this.option = [
-            { value: '', label: i18n.t('finance.all') },
-            { value: 0, label: i18n.t('ui.administrationMaterialFixedMaterialDialogStockIn') },
-            { value: 1, label: i18n.t('ui.administrationMaterialFixedConsumeIssue') },
-            { value: 2, label: i18n.t('ui.administrationMaterialFixedFixedReturn') },
-            { value: 3, label: i18n.t('ui.administrationMaterialFixedFixedRepair') },
-            { value: 4, label: i18n.t('ui.administrationMaterialFixedFixedDisposal') },
-            { value: 5, label: i18n.t('ui.administrationMaterialFixedRecordRepairHandling') }
+            { value: '', label: $('finance.all') },
+            { value: 0, label: $('ui.administrationMaterialFixedMaterialDialogStockIn') },
+            { value: 1, label: $('ui.administrationMaterialFixedConsumeIssue') },
+            { value: 2, label: $('ui.administrationMaterialFixedFixedReturn') },
+            { value: 3, label: $('ui.administrationMaterialFixedFixedRepair') },
+            { value: 4, label: $('ui.administrationMaterialFixedFixedDisposal') },
+            { value: 5, label: $('ui.administrationMaterialFixedRecordRepairHandling') }
           ]
         }
       },

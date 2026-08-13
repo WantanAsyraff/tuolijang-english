@@ -1,11 +1,12 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-触发器更新规则-日程待办组件-->
 <template>
 <div>
-  <el-form-item :label="$t('ui.developToDoScheduleToDoTitle')">
-    <el-input class="textPosition" size="small" :placeholder="$t('ui.developToDoSchedulePleaseEnterPushTitle')" @input="onInput" v-model="form.title">
+  <el-form-item :label="$('ui.developToDoScheduleToDoTitle')">
+    <el-input class="textPosition" size="small" :placeholder="$('ui.developToDoSchedulePleaseEnterPushTitle')" @input="onInput" v-model="form.title">
     </el-input>
     <span class="prompt"
-      >{{ $t("ui.developToDoScheduleTheTitleSupportsFieldVariablesForExample") }} <span class="color-file">{createdOn} </span>{{ $t("ui.developToDoScheduleCreatedOnIsTheInternalFieldIdentifierOfThe") }}</span
+      >{{ $("ui.developToDoScheduleTheTitleSupportsFieldVariablesForExample") }} <span class="color-file">{createdOn} </span>{{ $("ui.developToDoScheduleCreatedOnIsTheInternalFieldIdentifierOfThe") }}</span
     >
     <el-popover placement="left" width="100" trigger="hover">
       <div class="field-box">
@@ -21,12 +22,12 @@
       <span class="el-icon-chat-dot-square icon" slot="reference"></span>
     </el-popover>
   </el-form-item>
-  <el-form-item :label="$t('ui.developToDoScheduleParticipants')" class="mt14">
+  <el-form-item :label="$('ui.developToDoScheduleParticipants')" class="mt14">
     <div class="flex-between">
       <el-select
         size="small"
         v-model="form.schedule_user.operator"
-        :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+        :placeholder="$('ui.developConditionGroupPleaseSelect')"
         style="width: 200px"
         filterable
       >
@@ -43,7 +44,7 @@
         size="small"
         class="ml14"
         v-model="form.schedule_user.form_field_uniqid"
-        :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+        :placeholder="$('ui.developConditionGroupPleaseSelect')"
         style="width: 100%"
         filterable
       >
@@ -52,7 +53,7 @@
       </el-select>
       <select-member
         v-if="form.schedule_user.operator == 'value'"
-        :placeholder="$t('ui.developToDoScheduleSelectParticipants')"
+        :placeholder="$('ui.developToDoScheduleSelectParticipants')"
         :value="form.schedule_user.useList || []"
         @getSelectList="getSelectList"
         style="width: 100%"
@@ -61,12 +62,12 @@
       ></select-member>
     </div>
   </el-form-item>
-  <el-form-item :label="$t('ui.developToDoScheduleScheduleCycle')" class="mt14">
-    <el-checkbox v-model="form.schedule_cycle" true-label="1" false-label="0">{{ $t("ui.userCalendarAddTodoAllDay") }}</el-checkbox>
+  <el-form-item :label="$('ui.developToDoScheduleScheduleCycle')" class="mt14">
+    <el-checkbox v-model="form.schedule_cycle" true-label="1" false-label="0">{{ $("ui.userCalendarAddTodoAllDay") }}</el-checkbox>
   </el-form-item>
-  <el-form-item :label="$t('ui.programProgramTaskIndexStartTime')" class="mt14">
+  <el-form-item :label="$('ui.programProgramTaskIndexStartTime')" class="mt14">
     <div class="flex-between">
-      <el-select size="small" v-model="form.start_time.operator" :placeholder="$t('ui.developConditionGroupPleaseSelect')" style="width: 200px" filterable>
+      <el-select size="small" v-model="form.start_time.operator" :placeholder="$('ui.developConditionGroupPleaseSelect')" style="width: 200px" filterable>
         <el-option
           v-for="item in options.update_type.slice(0, 2)"
           :key="item.value"
@@ -80,7 +81,7 @@
         size="small"
         class="ml14"
         v-model="form.start_time.form_field_uniqid"
-        :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+        :placeholder="$('ui.developConditionGroupPleaseSelect')"
         style="width: 100%"
         filterable
       >
@@ -96,14 +97,14 @@
         size="small"
         :format="form.schedule_cycle == 1 ? 'yyyy/MM/dd' : 'yyyy/MM/dd HH:mm:ss'"
         :value-format="form.schedule_cycle == 1 ? 'yyyy/MM/dd' : 'yyyy/MM/dd HH:mm:ss'"
-        :placeholder="$t('ui.developToDoScheduleSelectStartTime')"
+        :placeholder="$('ui.developToDoScheduleSelectStartTime')"
       >
       </el-date-picker>
     </div>
   </el-form-item>
-  <el-form-item :label="$t('ui.programProgramTaskIndexEndTime')" class="mt14">
+  <el-form-item :label="$('ui.programProgramTaskIndexEndTime')" class="mt14">
     <div class="flex-between">
-      <el-select size="small" v-model="form.end_time.operator" :placeholder="$t('ui.developConditionGroupPleaseSelect')" style="width: 200px" filterable>
+      <el-select size="small" v-model="form.end_time.operator" :placeholder="$('ui.developConditionGroupPleaseSelect')" style="width: 200px" filterable>
         <el-option
           v-for="item in options.update_type.slice(0, 2)"
           :key="item.value"
@@ -117,7 +118,7 @@
         size="small"
         class="ml14"
         v-model="form.end_time.form_field_uniqid"
-        :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+        :placeholder="$('ui.developConditionGroupPleaseSelect')"
         style="width: 100%"
         filterable
       >
@@ -133,22 +134,22 @@
         size="small"
         :format="form.schedule_cycle == 1 ? 'yyyy/MM/dd' : 'yyyy/MM/dd HH:mm:ss'"
         :value-format="form.schedule_cycle == 1 ? 'yyyy/MM/dd' : 'yyyy/MM/dd HH:mm:ss'"
-        :placeholder="$t('ui.developToDoScheduleSelectEndTime')"
+        :placeholder="$('ui.developToDoScheduleSelectEndTime')"
       >
       </el-date-picker>
     </div>
   </el-form-item>
-  <el-form-item :label="$t('ui.developToDoScheduleReminderTime')" class="mt14">
-    <el-select size="small" v-model="form.remind_time" :placeholder="$t('ui.developConditionGroupPleaseSelect')" style="width: 100%">
+  <el-form-item :label="$('ui.developToDoScheduleReminderTime')" class="mt14">
+    <el-select size="small" v-model="form.remind_time" :placeholder="$('ui.developConditionGroupPleaseSelect')" style="width: 100%">
       <el-option v-for="item in remindOptions" :key="item.value" :label="item.label" :value="item.value"> </el-option>
     </el-select>
   </el-form-item>
-  <el-form-item :label="$t('ui.developToDoScheduleScheduleType')" class="mt14"> {{ $t("ui.developToDoSchedulePersonalReminder") }}</el-form-item>
-  <el-form-item :label="$t('ui.developToDoScheduleToDoDescription')" class="mt14">
-    <el-input class="textPosition" type="textarea" :rows="3" :placeholder="$t('ui.developToDoSchedulePleaseEnterPushContent')" v-model="form.template">
+  <el-form-item :label="$('ui.developToDoScheduleScheduleType')" class="mt14"> {{ $("ui.developToDoSchedulePersonalReminder") }}</el-form-item>
+  <el-form-item :label="$('ui.developToDoScheduleToDoDescription')" class="mt14">
+    <el-input class="textPosition" type="textarea" :rows="3" :placeholder="$('ui.developToDoSchedulePleaseEnterPushContent')" v-model="form.template">
     </el-input>
     <span class="prompt"
-      >{{ $t("ui.developToDoScheduleContentSupportsFieldVariablesSuchAs") }} <span class="color-file">{createdOn} </span>{{ $t("ui.developToDoScheduleCreatedOnIsTheInternalFieldIdentifierOfThe") }}</span
+      >{{ $("ui.developToDoScheduleContentSupportsFieldVariablesSuchAs") }} <span class="color-file">{createdOn} </span>{{ $("ui.developToDoScheduleCreatedOnIsTheInternalFieldIdentifierOfThe") }}</span
     >
 
     <el-popover placement="left" width="100" trigger="hover">
@@ -168,7 +169,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   props: {
     field: {
@@ -201,43 +201,43 @@ export default {
       remindOptions: [
         {
           value: -1,
-          label: i18n.t('legacyScript.noReminder')
+          label: $('legacyScript.noReminder')
         },
         {
           value: 0,
-          label: i18n.t('legacyScript.atTaskStart')
+          label: $('legacyScript.atTaskStart')
         },
         {
           value: 1,
-          label: i18n.t('legacyScript.text5MinutesBefore')
+          label: $('legacyScript.text5MinutesBefore')
         },
         {
           value: 2,
-          label: i18n.t('legacyScript.text15MinutesBefore')
+          label: $('legacyScript.text15MinutesBefore')
         },
         {
           value: 3,
-          label: i18n.t('legacyScript.text30MinutesBefore')
+          label: $('legacyScript.text30MinutesBefore')
         },
         {
           value: 4,
-          label: i18n.t('legacyScript.text1HourBefore')
+          label: $('legacyScript.text1HourBefore')
         },
         {
           value: 5,
-          label: i18n.t('legacyScript.text2HoursBefore')
+          label: $('legacyScript.text2HoursBefore')
         },
         {
           value: 6,
-          label: i18n.t('legacyScript.text1DayBefore')
+          label: $('legacyScript.text1DayBefore')
         },
         {
           value: 7,
-          label: i18n.t('legacyScript.text2DaysBefore')
+          label: $('legacyScript.text2DaysBefore')
         },
         {
           value: 8,
-          label: i18n.t('legacyScript.text1WeekBefore')
+          label: $('legacyScript.text1WeekBefore')
         }
       ]
     }

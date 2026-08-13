@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 const label = '栅格布局';
 const name = 'row';
 
@@ -16,17 +16,17 @@ export default {
   children: 'col',
   props() {
     return [
-      { type: 'inputNumber', field: 'gutter', title: i18n.t('legacyScript.gridSpacing') },
+      { type: 'inputNumber', field: 'gutter', title: $('legacyScript.gridSpacing') },
       {
         type: 'switch',
         field: 'type',
-        title: i18n.t('legacyScript.flexLayoutMode'),
+        title: $('legacyScript.flexLayoutMode'),
         props: { activeValue: 'flex', inactiveValue: 'default' },
       },
       {
         type: 'select',
         field: 'justify',
-        title: i18n.t('legacyScript.horizontalAlignmentInFlexLayout'),
+        title: $('legacyScript.horizontalAlignmentInFlexLayout'),
         options: [
           { label: 'start', value: 'start' },
           { label: 'end', value: 'end' },
@@ -41,7 +41,7 @@ export default {
       {
         type: 'select',
         field: 'align',
-        title: i18n.t('legacyScript.verticalAlignmentInFlexLayout'),
+        title: $('legacyScript.verticalAlignmentInFlexLayout'),
         options: [
           { label: 'top', value: 'top' },
           { label: 'middle', value: 'middle' },

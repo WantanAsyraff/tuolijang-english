@@ -7,7 +7,7 @@
         v-model="search"
         prefix-icon="el-icon-search"
         size="small"
-        :placeholder='$ts("请输入关键字")'
+        :placeholder='$("ui.commonFormListPleaseEnterKeyword")'
         clearable
         style="width: 100%"
         class="input"

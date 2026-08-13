@@ -1,12 +1,12 @@
 <template>
   <div>
-    <el-dialog :title='$ts("新增消息类型")' :visible.sync="show" width="600px" :before-close="handleClose">
+    <el-dialog :title='$("legacy.b3e25edcf518047a")' :visible.sync="show" width="600px" :before-close="handleClose">
       <div>
         <el-form :model="formData" label-width="80px">
-          <el-form-item :label='$ts("类型名称：")'>
-            <el-input v-model="formData.name" size="small" :placeholder='$ts("请输入消息类型名称")'></el-input>
+          <el-form-item :label='$("legacy.40048b35fdc511b5")'>
+            <el-input v-model="formData.name" size="small" :placeholder='$("legacy.d9ed24c8c019af81")'></el-input>
           </el-form-item>
-          <el-form-item :label='$ts("类型图标：")'>
+          <el-form-item :label='$("legacy.4b276cf5f96c8a6b")'>
             <div v-if="imageUrl" class="avatar">
               <img :src="imageUrl" class="img" />
               <div class="avatar-upload">
@@ -18,22 +18,22 @@
             </div>
             <i v-else class="el-icon-plus avatar-uploader-icon" @click="beforeUpload"></i>
           </el-form-item>
-          <el-form-item :label='$ts("排序：")'>
+          <el-form-item :label='$("ui.businessHolidayTypeIndexSort")'>
             <el-input-number v-model="formData.sort" :min="0" :max="999999"></el-input-number>
           </el-form-item>
         </el-form>
       </div>
 
       <span slot="footer" class="dialog-footer">
-        <el-button @click="handleClose" size="small">{{ $ts("取 消") }}</el-button>
-        <el-button type="primary" size="small">{{ $ts("确 定") }}</el-button>
+        <el-button @click="handleClose" size="small">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+        <el-button type="primary" size="small">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
       </span>
     </el-dialog>
 
     <el-dialog
       :before-close="handleImgClose"
       :visible.sync="dialogVisible"
-      :title='$ts("选择图片")'
+      :title='$("ui.administrationNoticeAddNoticeSelectImage")'
       v-bind="$attrs"
       width="850px"
     >

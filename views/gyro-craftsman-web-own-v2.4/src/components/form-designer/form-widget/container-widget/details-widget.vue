@@ -62,7 +62,6 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
 import containerMixin from '@/components/form-designer/form-widget/container-widget/containerMixin'
 import Draggable from 'vuedraggable'
 import ContainerWrapper from '@/components/form-designer/form-widget/container-widget/container-wrapper'
@@ -72,7 +71,7 @@ import refMixinDesign from '@/components/form-designer/refMixinDesign'
 export default {
   name: 'details-widget',
   componentName: 'DetailsWidget',
-  mixins: [i18n, containerMixin, refMixinDesign],
+  mixins: [containerMixin, refMixinDesign],
   inject: ['refList'],
   components: {
     Draggable,

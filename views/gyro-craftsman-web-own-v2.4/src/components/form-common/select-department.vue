@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 下拉选择部门组件 -->
 <template>
 <el-popover
@@ -14,7 +15,7 @@
         <el-input
           v-model="filterText"
           style="width: 218px"
-          :placeholder="$t('ui.formCommonSelectDepartmentPleaseSearchDepartments')"
+          :placeholder="$('ui.formCommonSelectDepartmentPleaseSearchDepartments')"
           prefix-icon="el-icon-search"
           size="small"
         >
@@ -55,7 +56,7 @@
               class="main-department"
               @click.stop="isMastart(data)"
             >
-              {{ data.id == is_mastartId ? $t('ui.formCommonSelectDepartmentPrimaryDepartment') : $t('ui.formCommonSelectDepartmentSetUpMainDepartment') }}
+              {{ data.id == is_mastartId ? $('ui.formCommonSelectDepartmentPrimaryDepartment') : $('ui.formCommonSelectDepartmentSetUpMainDepartment') }}
             </div>
           </div>
         </span>
@@ -77,7 +78,7 @@
           @click.stop=""
         >
           {{ item.label || item.name }}
-          <span v-if="isSite && item.id == is_mastartId">{{ $t("ui.formCommonSelectDepartmentMain") }} </span>
+          <span v-if="isSite && item.id == is_mastartId">{{ $("ui.formCommonSelectDepartmentMain") }} </span>
           <i class="el-tag__close el-icon-close" @click.stop="cardTag(index)" />
         </span>
       </div>
@@ -103,7 +104,6 @@
 </el-popover>
 </template>
 <script>
-import i18n from '@/lang'
 import { extractArrayIds, isInArray, removeDuplicateObjects, getArrayDifference } from '@/libs/public'
 import isFullScreen from '@/components/isFullScreen/index'
 
@@ -320,7 +320,7 @@ export default {
         data = rest
       }
       if (this.isDisabledDepartment(data)) {
-        return this.$message.warning(i18n.t('legacyScript.thisDepartmentHasAlreadyJoinedAnotherAttendanceGroup'))
+        return this.$message.warning($('legacyScript.thisDepartmentHasAlreadyJoinedAnotherAttendanceGroup'))
       }
       const arr = this.getDepartmentDataById(data, data.id)
       // 点击选中
@@ -347,13 +347,13 @@ export default {
     //选择部门单选
     append(node, data) {
       if (this.isDisabledDepartment(data)) {
-        return this.$message.warning(i18n.t('legacyScript.thisDepartmentHasAlreadyJoinedAnotherAttendanceGroup'))
+        return this.$message.warning($('legacyScript.thisDepartmentHasAlreadyJoinedAnotherAttendanceGroup'))
       }
       if (!this.onlyOne) {
         return false
       }
       if (this.departmentIds.some((id) => this.isSameId(id, data.id))) {
-        return this.$message.warning(i18n.t('legacyScript.thisDepartmentIsAlreadySelected'))
+        return this.$message.warning($('legacyScript.thisDepartmentIsAlreadySelected'))
       }
 
       data.is_mastart = false

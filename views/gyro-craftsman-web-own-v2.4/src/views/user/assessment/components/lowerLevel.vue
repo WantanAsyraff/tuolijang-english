@@ -19,86 +19,86 @@
         row-key="id"
         style="width: 100%"
       >
-        <el-table-column :label="$t('toptable.name')" min-width="100" prop="test.name" />
-        <el-table-column :label="$t('toptable.department')" min-width="160" prop="frame.name" />
-        <el-table-column :label="$t('user.work.assessmentname')" min-width="120" prop="name" />
-        <el-table-column :label="$t('toptable.assessmentcycle')" min-width="100" prop="period">
+        <el-table-column :label="$('toptable.name')" min-width="100" prop="test.name" />
+        <el-table-column :label="$('toptable.department')" min-width="160" prop="frame.name" />
+        <el-table-column :label="$('user.work.assessmentname')" min-width="120" prop="name" />
+        <el-table-column :label="$('toptable.assessmentcycle')" min-width="100" prop="period">
           <template slot-scope="scope">
             <span>{{ getPeriodText(scope.row.period) }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('user.work.qssessmentscore')" min-width="80" prop="score" />
-        <el-table-column :label="$t('access.assessmentgrade')" min-width="100" prop="level" />
-        <el-table-column :label="$t('access.openstatus')" min-width="80" prop="is_show">
+        <el-table-column :label="$('user.work.qssessmentscore')" min-width="80" prop="score" />
+        <el-table-column :label="$('access.assessmentgrade')" min-width="100" prop="level" />
+        <el-table-column :label="$('access.openstatus')" min-width="80" prop="is_show">
           <template slot-scope="scope">
             <el-switch
               v-if="scope.row.status !== 5"
-              :active-text="$t('access.enabled')"
+              :active-text="$('access.enabled')"
               :disabled="scope.row.is_show === 1"
-              :inactive-text="$t('access.notenabled')"
+              :inactive-text="$('access.notenabled')"
               :value="!(scope.row.is_show === 0)"
               :width="70"
               @change="handleIsShow(scope.row, 1)"
             />
             <el-switch
               v-else
-              :active-text="$t('access.enabled')"
-              :inactive-text="$t('access.notenabled')"
+              :active-text="$('access.enabled')"
+              :inactive-text="$('access.notenabled')"
               :value="!(scope.row.is_show === 0)"
               :width="70"
               @change="handleIsShow(scope.row, 2)"
             />
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.userAssessmentLowerLevelAssessmentStatus')" min-width="110" prop="status">
+        <el-table-column :label="$('ui.userAssessmentLowerLevelAssessmentStatus')" min-width="110" prop="status">
           <template slot-scope="scope">
             <el-tag :type="getStatusTag(scope.row.status).type">
               {{ getStatusTag(scope.row.status).text }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('access.starttime')" min-width="100" prop="start_time">
+        <el-table-column :label="$('access.starttime')" min-width="100" prop="start_time">
           <template slot-scope="scope">
             {{ $moment(scope.row.start_time).format('yyyy-MM-DD') }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('access.endtime')" min-width="100" prop="end_time">
+        <el-table-column :label="$('access.endtime')" min-width="100" prop="end_time">
           <template slot-scope="scope">
             {{ $moment(scope.row.end_time).format('yyyy-MM-DD') }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('public.operation')" fixed="right" prop="address" width="220">
+        <el-table-column :label="$('public.operation')" fixed="right" prop="address" width="220">
           <template slot-scope="scope">
             <el-button v-if="scope.row.status !== 0" type="text" @click="handleCheck(scope.row, 'check')">
-              {{ $t("ui.layoutNoticeNoticeListView") }}
+              {{ $("ui.layoutNoticeNoticeListView") }}
             </el-button>
             <el-button
               v-if="userInfoUid == scope.row.check.uid && scope.row.status == 2"
               type="text"
               @click="handleCheck(scope.row, scope.$index)"
             >
-              {{ $t("ui.hrToolHaishAssessmentIndexScore") }}
+              {{ $("ui.hrToolHaishAssessmentIndexScore") }}
             </el-button>
             <el-button v-if="userInfoUid == scope.row.check.uid" type="text" @click="handleCheck(scope.row, 'edit')">
-              {{ $t("ui.userAssessmentLowerLevelEditAssessment") }}
+              {{ $("ui.userAssessmentLowerLevelEditAssessment") }}
             </el-button>
             <!-- {{ scope.row.check.uid }} -->
             <el-button v-if="userInfoUid !== scope.row.check.uid" type="text" @click="handleScore(scope.row)">
-              {{ $t("ui.hrAssessStaffMentStaffScoringRecords") }}
+              {{ $("ui.hrAssessStaffMentStaffScoringRecords") }}
             </el-button>
             <el-dropdown class="ml10">
               <span class="el-dropdown-link el-button--text el-button">
-                {{ $t('hr.more') }}
+                {{ $('hr.more') }}
                 <i class="el-icon-arrow-down el-icon--right" />
               </span>
               <el-dropdown-menu>
-                <el-dropdown-item @click.native="copy(scope.row, scope.$index)"> {{ $t("ui.settingWecomIndexCopy") }} </el-dropdown-item>
-                <el-dropdown-item @click.native="handleDelete(scope.row)"> {{ $t("ui.chatIndexDelete") }} </el-dropdown-item>
+                <el-dropdown-item @click.native="copy(scope.row, scope.$index)"> {{ $("ui.settingWecomIndexCopy") }} </el-dropdown-item>
+                <el-dropdown-item @click.native="handleDelete(scope.row)"> {{ $("ui.chatIndexDelete") }} </el-dropdown-item>
                 <el-dropdown-item
                   v-if="(scope.row.status == 3 || scope.row.status == 4) && userInfoUid == scope.row.check.uid"
                   @click.native="handleScore(scope.row)"
                 >
-                  {{ $t("ui.hrAssessStaffMentStaffScoringRecords") }}
+                  {{ $("ui.hrAssessStaffMentStaffScoringRecords") }}
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -259,7 +259,7 @@ export default {
     },
     handleScore(row) {
       this.config = {
-        title: this.$t('access.scoringrecord'),
+        title: this.$('access.scoringrecord'),
         width: '720px',
         id: row.id
       }
@@ -275,7 +275,7 @@ export default {
           str = '确定开启考核吗'
         }
       } else {
-        str = this.$t('access.tips16')
+        str = this.$('access.tips16')
       }
       this.$modalSure(str).then(() => {
         userAssessSetShow(row.id, { status }).then((res) => {

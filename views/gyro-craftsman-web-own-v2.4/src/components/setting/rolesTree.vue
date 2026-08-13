@@ -24,7 +24,7 @@
         </div>
         <div class="check-box">
           <div class="check_list">
-            <span class="text"> {{ $ts("按钮/接口权限") }}</span>
+            <span class="text"> {{ $("ui.settingAuthAdminIndexButtonAndApiPermissions") }}</span>
             <div class="list">
               <el-checkbox-group v-model="checkValue">
                 <el-row :gutter="20">
@@ -36,7 +36,7 @@
                       :checked="item.is_default"
                       @change="(checked) => handelCheckChange(checked, item)"
                     >
-                      {{ $ts(item.label, item.label_en) }}
+                      {{ $(item.label, item.label_en) }}
                     </el-checkbox>
                   </el-col>
                 </el-row>
@@ -125,7 +125,7 @@ export default {
   },
   methods: {
     renderTreeLabel(h, { data }) {
-      return h('span', this.$ts(data.label, data.label_en))
+      return h('span', this.$(data.label, data.label_en))
     },
     handelCheck(checkedNode, checkedKeys) {
       if (checkedKeys.checkedKeys.indexOf(checkedNode.value) != -1) {

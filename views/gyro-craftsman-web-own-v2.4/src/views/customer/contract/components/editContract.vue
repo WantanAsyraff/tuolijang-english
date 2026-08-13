@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 查看订单信息页面 -->
 <template>
 <div class="contract">
@@ -21,7 +22,7 @@
         <el-col v-if="drawer" class="invoice-right">
           <div class="txt1 over-text">{{ dataInfo.data ? dataInfo.data.contract_no : '--' }}</div>
           <div class="txt2">
-            <span class="title">{{ $t("ui.customerContractEditContractOrderStatus") }}</span
+            <span class="title">{{ $("ui.customerContractEditContractOrderStatus") }}</span
             ><span
               :style="{
                 color:
@@ -29,11 +30,11 @@
               }"
               >{{ dataInfo.data && dataInfo.data.contract_status ? dataInfo.data.contract_status.name : '--' }}</span
             >
-            <span class="title">{{ $t("ui.customerContractEditContractOrderAmountYuan") }}</span
+            <span class="title">{{ $("ui.customerContractEditContractOrderAmountYuan") }}</span
             ><span class="info1">{{ dataInfo.data ? dataInfo.data.price : '--' }}</span>
-            <span class="title">{{ $t('customer.customer') }}：</span
+            <span class="title">{{ $('customer.customer') }}：</span
             ><span class="weight">{{ dataInfo.data ? dataInfo.data.customer_name : '--' }}</span>
-            <span class="title"> {{ $t("ui.customerContractEditContractSalesperson") }}</span
+            <span class="title"> {{ $("ui.customerContractEditContractSalesperson") }}</span
             ><span class="weight">{{ dataInfo.data ? dataInfo.data.salesman : '--' }}</span>
           </div>
         </el-col>
@@ -70,22 +71,22 @@
         >
           <template v-slot:product="slotProps">
             <div class="from-item-title mb20 flex-between" style="width: 100%">
-              <span>{{ $t("ui.customerSpecificationsProductInformation") }}</span>
+              <span>{{ $("ui.customerSpecificationsProductInformation") }}</span>
               <div
                 v-if="slotProps.type == '' || slotProps.type == 'edit'"
                 class="addColor iconfont iconbianji3"
-                :title="$t('ui.customerDetailsEditProductList')"
+                :title="$('ui.customerDetailsEditProductList')"
                 @click="editProduct"
               >
-                {{ $t("ui.formCommonOaLogEdit") }}
+                {{ $("ui.formCommonOaLogEdit") }}
               </div>
             </div>
 
             <productList ref="productList" :type="slotProps.type" :product="dataInfo.product"></productList>
 
             <div v-if="slotProps.type == 'add'" class="mb10 flex-end">
-              <el-button size="small" @click="productFn(1)">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-              <el-button size="small" type="primary" @click="productFn(2)">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+              <el-button size="small" @click="productFn(1)">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+              <el-button size="small" type="primary" @click="productFn(2)">{{ $("ui.formCommonDialogFormOk") }}</el-button>
             </div>
           </template>
         </oaForm>
@@ -99,7 +100,7 @@
         <template v-else>
           <default-page :textShow="false" imgWidth="128px" :index="17" :min-height="400" :top="`40px`">
             <el-button class="ml10" type="text" size="small" @click="openContract"
-              >{{ $t("ui.customerDetailsGenerateContract") }}<span class="el-icon-arrow-right"
+              >{{ $("ui.customerDetailsGenerateContract") }}<span class="el-icon-arrow-right"
             /></el-button>
           </default-page>
         </template>
@@ -150,7 +151,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { contractDocDetailApi } from '@/api/contractSign'
 import { contractEditCreateApi } from '@/api/enterprise'
 import { clientDataInfoApi, clientContractDetailApi as contractDetailApi } from '@/api/client'
@@ -208,14 +208,14 @@ export default {
       tabIndex: '1',
       tabNumber: 1,
       tabData: [
-        { value: '1', label: this.$t('setting.info.essentialinformation') },
-        { value: '8', label: i18n.t('legacyScript.contractInformation') },
-        { value: '2', label: i18n.t('legacyScript.accountRecords'), badgeKey: 'bill_count' },
+        { value: '1', label: this.$('setting.info.essentialinformation') },
+        { value: '8', label: $('legacyScript.contractInformation') },
+        { value: '2', label: $('legacyScript.accountRecords'), badgeKey: 'bill_count' },
         // { value: '6', label: '订单续费' },
-        { value: '3', label: this.$t('customer.paymentreminder'), badgeKey: 'remind_count' },
-        { value: '4', label: this.$t('customer.invoice'), badgeKey: 'invoice_count' },
-        { value: '5', label: i18n.t('ui.administrationMaterialFixedConsumeRecords'), badgeKey: 'file_count' },
-        { value: '6', label: i18n.t('ui.customerListDynamicRecordActivityRecords'), badgeKey: 'record_count' }
+        { value: '3', label: this.$('customer.paymentreminder'), badgeKey: 'remind_count' },
+        { value: '4', label: this.$('customer.invoice'), badgeKey: 'invoice_count' },
+        { value: '5', label: $('ui.administrationMaterialFixedConsumeRecords'), badgeKey: 'file_count' },
+        { value: '6', label: $('ui.customerListDynamicRecordActivityRecords'), badgeKey: 'record_count' }
       ],
       configContract: {},
       formBoxConfig: {},
@@ -245,13 +245,13 @@ export default {
     },
     setOptions() {
       this.tabData = [
-        { value: '1', label: this.$t('setting.info.essentialinformation') },
-        { value: '8', label: i18n.t('legacyScript.contractInformation') },
-        { value: '2', label: this.$t('customer.paymentrecord'), badgeKey: 'bill_count' },
-        { value: '3', label: this.$t('customer.paymentreminder'), badgeKey: 'remind_count' },
-        { value: '4', label: this.$t('customer.invoice'), badgeKey: 'invoice_count' },
-        { value: '5', label: this.$t('customer.annexrelated'), badgeKey: 'file_count' },
-        { value: '6', label: i18n.t('ui.customerListDynamicRecordActivityRecords'), badgeKey: 'record_count' }
+        { value: '1', label: this.$('setting.info.essentialinformation') },
+        { value: '8', label: $('legacyScript.contractInformation') },
+        { value: '2', label: this.$('customer.paymentrecord'), badgeKey: 'bill_count' },
+        { value: '3', label: this.$('customer.paymentreminder'), badgeKey: 'remind_count' },
+        { value: '4', label: this.$('customer.invoice'), badgeKey: 'invoice_count' },
+        { value: '5', label: this.$('customer.annexrelated'), badgeKey: 'file_count' },
+        { value: '6', label: $('ui.customerListDynamicRecordActivityRecords'), badgeKey: 'record_count' }
       ]
     },
     handleClose() {
@@ -275,7 +275,7 @@ export default {
     },
     openContract() {
       if (!this.formData.data.eid) {
-        this.$message.error(i18n.t('legacyScript.invalidCustomer'))
+        this.$message.error($('legacyScript.invalidCustomer'))
         return false
       }
       this.formData.data.link_type = '2'
@@ -365,7 +365,7 @@ export default {
         }
 
         this.newForm = {
-          title: this.$t('customer.editcustomer'),
+          title: this.$('customer.editcustomer'),
           width: '1100px',
           data: res.data,
           isClient: true,

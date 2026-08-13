@@ -5,7 +5,7 @@
     <div class="mr15 ml15">
       <div v-if="searchFlag" class="search-association">
         <template v-if="searchList.length > 0">
-          <div>{{ $t("ui.userCloudfileLayoutCloudfileLeftFile") }}</div>
+          <div>{{ $("ui.userCloudfileLayoutCloudfileLeftFile") }}</div>
           <div
             v-for="(item, index) in searchList"
             :key="index"
@@ -17,15 +17,15 @@
             <div class="keyword" v-html="item.name"></div>
           </div>
         </template>
-        <el-empty v-if="searchList.length <= 0" :description="$t('ui.scEchartsChartWidgetNoData')"></el-empty>
+        <el-empty v-if="searchList.length <= 0" :description="$('ui.scEchartsChartWidgetNoData')"></el-empty>
       </div>
     </div>
 
     <div class="tab-name mr20 ml20">
-      <span class="name">{{ $t("ui.userCloudfileLayoutCloudfileLeftEnterpriseSpace") }}</span>
+      <span class="name">{{ $("ui.userCloudfileLayoutCloudfileLeftEnterpriseSpace") }}</span>
 
       <span class="number p0">
-        <el-tooltip :content="$t('ui.userCloudfileLayoutCloudfileLeftCreateEnterpriseSpace')" effect="dark" placement="top">
+        <el-tooltip :content="$('ui.userCloudfileLayoutCloudfileLeftCreateEnterpriseSpace')" effect="dark" placement="top">
           <span class="iconfont icontianjia p0" @click="addName" />
         </el-tooltip>
       </span>
@@ -37,7 +37,7 @@
       style="margin-inline: 10px"
       @click="entClick('recently', 0, 'recently')"
     >
-      <i class="icon iconfont iconzuijin" /> <span>{{ $t("ui.userCloudfileLayoutFormBoxRecentlyOpened") }}</span>
+      <i class="icon iconfont iconzuijin" /> <span>{{ $("ui.userCloudfileLayoutFormBoxRecentlyOpened") }}</span>
     </div>
     <div class="box">
       <el-scrollbar style="height: 100%" class="reset-scroll-bar">
@@ -64,14 +64,14 @@
               >
                 <div class="right-item-list">
                   <div class="right-item" @click.stop="addEdit(item)">
-                    {{ $store.state.user.userInfo.uid === item.uid ? $t('public.edit') : $t('public.check') }}
+                    {{ $store.state.user.userInfo.uid === item.uid ? $('public.edit') : $('public.check') }}
                   </div>
                   <div
                     v-if="$store.state.user.userInfo.uid === item.uid"
                     class="right-item"
                     @click.stop="handleDelete(item)"
                   >
-                    {{ $t('public.delete') }}
+                    {{ $('public.delete') }}
                   </div>
                 </div>
                 <div slot="reference" class="icon iconfont icongengduo right-icon" />
@@ -86,84 +86,10 @@
     <!--回收站文件-->
 
     <div class="border-bottom" />
-    <div class="recovery" @click="recoveryFn()"><i class="iconfont iconshanchu1"></i>{{ $t("ui.userCloudfileLayoutRecoveryFileRecycleBin") }}</div>
+    <div class="recovery" @click="recoveryFn()"><i class="iconfont iconshanchu1"></i>{{ $("ui.userCloudfileLayoutRecoveryFileRecycleBin") }}</div>
   </div>
   <space-dialog ref="spaceDialog" :from-data="fromData" @isOk="getEntList" />
 </div>
-</template>
-          <el-empty v-if="searchList.length <= 0" description="暂无数据"></el-empty>
-        </div>
-      </div>
-
-      <div class="tab-name mr20 ml20">
-        <span class="name">企业空间</span>
-
-        <span class="number p0">
-          <el-tooltip content="创建企业空间" effect="dark" placement="top">
-            <span class="iconfont icontianjia p0" @click="addName" />
-          </el-tooltip>
-        </span>
-      </div>
-
-      <div
-        :class="entIndex == 'recently' ? 'activeText' : ''"
-        class="name over-text m20"
-        style="margin-inline: 10px"
-        @click="entClick('recently', 0, 'recently')"
-      >
-        <i class="icon iconfont iconzuijin" /> <span>最近打开</span>
-      </div>
-      <div class="box">
-        <el-scrollbar style="height: 100%" class="reset-scroll-bar">
-          <ul v-show="showEntBtn" class="cloudfile-left-list">
-            <li
-              v-for="(item, index) in entArray"
-              :key="index"
-              :class="entIndex === index ? 'active' : ''"
-              @click="entClick(index, item.id, item)"
-            >
-              <div class="name over-text">
-                <i class="icon iconfont iconrenshi-huibaoguanli-cebian" />
-                <span>{{ item.name }}</span>
-              </div>
-              <div class="number">
-                <el-popover
-                  v-if="entIndex === index"
-                  :ref="`pop-${item.id}`"
-                  :offset="10"
-                  placement="bottom-end"
-                  trigger="click"
-                  @hide="handleHide"
-                  @after-enter="handleShow(item.id)"
-                >
-                  <div class="right-item-list">
-                    <div class="right-item" @click.stop="addEdit(item)">
-                      {{ $store.state.user.userInfo.uid === item.uid ? $t('public.edit') : $t('public.check') }}
-                    </div>
-                    <div
-                      v-if="$store.state.user.userInfo.uid === item.uid"
-                      class="right-item"
-                      @click.stop="handleDelete(item)"
-                    >
-                      {{ $t('public.delete') }}
-                    </div>
-                  </div>
-                  <div slot="reference" class="icon iconfont icongengduo right-icon" />
-                </el-popover>
-              </div>
-            </li>
-          </ul>
-        </el-scrollbar>
-      </div>
-      <!-- </div> -->
-
-      <!--回收站文件-->
-
-      <div class="border-bottom" />
-      <div class="recovery" @click="recoveryFn()"><i class="iconfont iconshanchu1"></i>回收站</div>
-    </div>
-    <space-dialog ref="spaceDialog" :from-data="fromData" @isOk="getEntList" />
-  </div>
 </template>
 <script>
 import { folderSpaceDeleteApi, folderSpaceListApi, folderTotalApi, folderMatchtListApi } from '@/api/cloud'
@@ -191,22 +117,22 @@ export default {
       searchList: [],
       shareArray: [
         { name: '最近浏览', type: 1, icon: 'iconzuijin' } //最近访问
-        // { name: this.$t('file.collection'), type: 2, icon: 'iconshoucang1', number: 0 }, //收藏
-        // { name: this.$t('file.share'), type: 3, icon: 'iconchangyongwenjianjia', number: 0 } //分享
+        // { name: this.$('file.collection'), type: 2, icon: 'iconshoucang1', number: 0 }, //收藏
+        // { name: this.$('file.share'), type: 3, icon: 'iconchangyongwenjianjia', number: 0 } //分享
       ],
       commonlyArray: [
-        { name: this.$t('file.myfiles'), type: 4, icon: 'iconquanbuwendang' }, //我的文件
-        { name: this.$t('file.commonfolders'), type: 5, icon: 'iconchangyongwenjianjia' } //常用文件夹
+        { name: this.$('file.myfiles'), type: 4, icon: 'iconquanbuwendang' }, //我的文件
+        { name: this.$('file.commonfolders'), type: 5, icon: 'iconchangyongwenjianjia' } //常用文件夹
       ],
-      recoveryArray: [{ name: this.$t('file.recyclebin'), type: 7, icon: 'iconhuishouzhan' }],
+      recoveryArray: [{ name: this.$('file.recyclebin'), type: 7, icon: 'iconhuishouzhan' }],
       fileSortData: [
-        { name: this.$t('file.filename'), id: 1 }, //文件名
-        { name: this.$t('file.creationtime'), id: 2 }, //创建时间
-        { name: this.$t('file.updatetime'), id: 3 }, //图片
-        { name: this.$t('file.filesize'), id: 4 }, //大小
-        { name: this.$t('file.deletetime'), id: 5 }, //删除时间
-        { name: this.$t('file.order'), id: 6 }, //升序
-        { name: this.$t('file.desc'), id: 7 } //降序
+        { name: this.$('file.filename'), id: 1 }, //文件名
+        { name: this.$('file.creationtime'), id: 2 }, //创建时间
+        { name: this.$('file.updatetime'), id: 3 }, //图片
+        { name: this.$('file.filesize'), id: 4 }, //大小
+        { name: this.$('file.deletetime'), id: 5 }, //删除时间
+        { name: this.$('file.order'), id: 6 }, //升序
+        { name: this.$('file.desc'), id: 7 } //降序
       ],
       shareIndex: 0,
       entIndex: 'recently',
@@ -234,15 +160,15 @@ export default {
   methods: {
     setOptions() {
       this.shareArray = [
-        { name: this.$t('file.lately'), type: 1, icon: 'iconzuijin' }, //最近访问
-        { name: this.$t('file.collection'), type: 2, icon: 'iconshoucang1', number: 0 }, //收藏
-        { name: this.$t('file.share'), type: 3, icon: 'iconchangyongwenjianjia', number: 0 } //分享
+        { name: this.$('file.lately'), type: 1, icon: 'iconzuijin' }, //最近访问
+        { name: this.$('file.collection'), type: 2, icon: 'iconshoucang1', number: 0 }, //收藏
+        { name: this.$('file.share'), type: 3, icon: 'iconchangyongwenjianjia', number: 0 } //分享
       ]
       this.commonlyArray = [
-        { name: this.$t('file.myfiles'), type: 4, icon: 'iconquanbuwendang' }, //我的文件
-        { name: this.$t('file.commonfolders'), type: 5, icon: 'iconchangyongwenjianjia' } //常用文件夹
+        { name: this.$('file.myfiles'), type: 4, icon: 'iconquanbuwendang' }, //我的文件
+        { name: this.$('file.commonfolders'), type: 5, icon: 'iconchangyongwenjianjia' } //常用文件夹
       ]
-      this.recoveryArray = [{ name: this.$t('file.recyclebin'), type: 7, icon: 'iconhuishouzhan' }] //回收站文件
+      this.recoveryArray = [{ name: this.$('file.recyclebin'), type: 7, icon: 'iconhuishouzhan' }] //回收站文件
       this.getFolderTotal()
     },
     // 展示常用文件夹和我的文件
@@ -343,8 +269,8 @@ export default {
 
     addName() {
       this.fromData = {
-        title: this.$t('file.spacesettings'),
-        name: this.$t('setting.edit.selectmembers1'),
+        title: this.$('file.spacesettings'),
+        name: this.$('setting.edit.selectmembers1'),
         edit: 1
       }
       this.$refs.spaceDialog.dialogVisible = true
@@ -361,7 +287,7 @@ export default {
     addEdit(item) {
       this.fromData = {
         title: `空间${this.$store.state.user.userInfo.uid === item.uid ? '编辑' : '查看'}`,
-        name: this.$t('setting.edit.selectmembers1'),
+        name: this.$('setting.edit.selectmembers1'),
         edit: 2,
         data: item
       }
@@ -369,7 +295,7 @@ export default {
     },
     // 删除
     async handleDelete(item) {
-      await this.$modalSure(this.$t('file.placeholder02'))
+      await this.$modalSure(this.$('file.placeholder02'))
       await folderSpaceDeleteApi(item.id)
       this.getEntList()
     }

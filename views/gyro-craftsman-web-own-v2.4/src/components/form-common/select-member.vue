@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 下拉选择人员组件 -->
 <template>
 <el-popover
@@ -12,7 +13,7 @@
     <!-- 人员数据 -->
     <div class="tree-box">
       <div class="input">
-        <el-input size="small" prefix-icon="el-icon-search" :placeholder="$t('ui.formCommonSelectMemberPleaseSearchPersonnel')" v-model="filterText" />
+        <el-input size="small" prefix-icon="el-icon-search" :placeholder="$('ui.formCommonSelectMemberPleaseSearchPersonnel')" v-model="filterText" />
       </div>
       <el-tree
         highlight-current
@@ -85,7 +86,6 @@
 </el-popover>
 </template>
 <script>
-import i18n from '@/lang'
 import { getArrayDifference, isInArray, removeDuplicateObjects } from '@/libs/public'
 import isFullScreen from '@/components/isFullScreen/index'
 
@@ -284,7 +284,7 @@ export default {
       }
 
       if (this.isDisabledUser(data)) {
-        return this.$message.warning(i18n.t('legacyScript.thisPersonCannotBeSelected'))
+        return this.$message.warning($('legacyScript.thisPersonCannotBeSelected'))
       }
 
       // 选择成员
@@ -319,7 +319,7 @@ export default {
       if (user.type === 0) return false
 
       if (this.isDisabledUser(user)) {
-        return this.$message.warning(i18n.t('legacyScript.thisPersonCannotBeSelected'))
+        return this.$message.warning($('legacyScript.thisPersonCannotBeSelected'))
       }
 
       if (!this.onlyOne) {
@@ -327,7 +327,7 @@ export default {
       }
 
       if (this.userIds.some((id) => this.isSameId(id, this.getUserValue(user)))) {
-        return this.$message.warning(i18n.t('legacyScript.thisMemberIsAlreadySelected'))
+        return this.$message.warning($('legacyScript.thisMemberIsAlreadySelected'))
       }
 
       this.userList = [user]

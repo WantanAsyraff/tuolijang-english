@@ -1,27 +1,28 @@
+import { $ } from '@/lang'
 <template>
 <div class="station">
   <div class="btn-box1 mb10">
-    <div class="title-16">{{ $t("ui.customerListSignContractList") }}</div>
-    <el-button size="small" type="primary" @click="addContract">{{ $t("ui.customerListSignAddContract") }}</el-button>
+    <div class="title-16">{{ $("ui.customerListSignContractList") }}</div>
+    <el-button size="small" type="primary" @click="addContract">{{ $("ui.customerListSignAddContract") }}</el-button>
   </div>
   <el-table :data="contractData" fit style="width: 100%">
-    <el-table-column prop="doc_name" :label="$t('ui.customerListSignContractName')"> </el-table-column>
-    <el-table-column prop="doc_no" :label="$t('ui.customerListSignContractNo')"> </el-table-column>
-    <el-table-column :label="$t('ui.customerListSignAllSigners')" min-width="200">
+    <el-table-column prop="doc_name" :label="$('ui.customerListSignContractName')"> </el-table-column>
+    <el-table-column prop="doc_no" :label="$('ui.customerListSignContractNo')"> </el-table-column>
+    <el-table-column :label="$('ui.customerListSignAllSigners')" min-width="200">
       <template slot-scope="scope">
         <div v-for="item in scope.row.signatory" :key="item.id">
           <span v-if="item.types == 0">{{ item.company_name }}
             <template v-if="item.name">({{ item.name }})</template>
-            <span class="company-icon">{{ $t("ui.customerSigningInfoItemOurCompany") }}</span>
+            <span class="company-icon">{{ $("ui.customerSigningInfoItemOurCompany") }}</span>
           </span>
           <span v-else-if="item.types == 2">{{ item.company_name }}
-            <span class="company-icon">{{ $t("ui.customerSigningInfoItemEnterprise") }}</span>
+            <span class="company-icon">{{ $("ui.customerSigningInfoItemEnterprise") }}</span>
           </span>
-          <span  v-else>{{ item.name }} <span class="company-icon individual">{{ $t("ui.commonOaFromBoxPersonal") }}</span></span>
+          <span  v-else>{{ item.name }} <span class="company-icon individual">{{ $("ui.commonOaFromBoxPersonal") }}</span></span>
         </div>
       </template>
     </el-table-column>
-    <el-table-column prop="status" :label="$t('ui.customerListSignSigningStatus')">
+    <el-table-column prop="status" :label="$('ui.customerListSignSigningStatus')">
       <template slot-scope="scope">
         <div v-if="statusList[scope.row.status]" class="dictionaries-tag" :style="{
           color: statusList[scope.row.status].color || '#1890ff',
@@ -31,51 +32,51 @@
         }">{{ statusList[scope.row.status].name }}</div>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.customerListSignSigningTime')">
+    <el-table-column :label="$('ui.customerListSignSigningTime')">
       <template slot-scope="scope">
         <div>{{ scope.row.sign_date || '--' }}</div>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="230" fixed="right">
+    <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="230" fixed="right">
       <template slot-scope="scope">
-        <el-button type="text" size="mini" @click="handleClick(1, scope.row)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+        <el-button type="text" size="mini" @click="handleClick(1, scope.row)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
         <!-- 审核中 -->
         <template v-if="scope.row.status == 1">
-          <el-button type="text" size="mini" @click="handleClick(4, scope.row)">{{ $t("ui.customerListSignWithdrawApplication") }}</el-button>
-          <el-button type="text" size="mini" @click="handleClick(6, scope.row)">{{ $t("ui.customerListSignLinkOrder") }}</el-button>
+          <el-button type="text" size="mini" @click="handleClick(4, scope.row)">{{ $("ui.customerListSignWithdrawApplication") }}</el-button>
+          <el-button type="text" size="mini" @click="handleClick(6, scope.row)">{{ $("ui.customerListSignLinkOrder") }}</el-button>
         </template>
 
         <!-- 待签约 -->
         <template v-if="scope.row.status == 2">
           <el-button v-if="scope.row.sign_type == 1" type="text" size="mini"
-            @click="handleClick(7, scope.row)">{{ $t("ui.customerListSignSignEntry") }}</el-button>
-          <el-button v-else type="text" size="mini" @click="handleClick(2, scope.row)">{{ $t("ui.customerSigningInfoItemESign") }}</el-button>
+            @click="handleClick(7, scope.row)">{{ $("ui.customerListSignSignEntry") }}</el-button>
+          <el-button v-else type="text" size="mini" @click="handleClick(2, scope.row)">{{ $("ui.customerSigningInfoItemESign") }}</el-button>
         </template>
 
         <!-- 已签约 -->
         <template v-if="scope.row.status == 3">
-          <el-button type="text" size="mini" @click="handleClick(6, scope.row)">{{ $t("ui.customerListSignLinkOrder") }}</el-button>
-          <el-button type="text" size="mini" @click="handleClick(9, scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+          <el-button type="text" size="mini" @click="handleClick(6, scope.row)">{{ $("ui.customerListSignLinkOrder") }}</el-button>
+          <el-button type="text" size="mini" @click="handleClick(9, scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
         </template>
         <el-button v-if="scope.row.status >= 4" type="text" size="mini"
-          @click="handleClick(3, scope.row)">{{ $t("ui.customerListSignSignAgain") }}</el-button>
+          @click="handleClick(3, scope.row)">{{ $("ui.customerListSignSignAgain") }}</el-button>
         <el-dropdown v-if="scope.row.status != 1 && scope.row.status != 3" class="ml10">
           <span class="el-dropdown-link el-button--text el-button more">
-            {{ $t("ui.layoutNavbarMore") }}
+            {{ $("ui.layoutNavbarMore") }}
             <i class="el-icon-arrow-down" />
           </span>
           <el-dropdown-menu class="dropdown-menu-left" placement="top-start">
             <!-- 待签约 -->
             <el-dropdown-item v-if="scope.row.status == 2 || scope.row.status == 6"
               @click.native="handleClick(8, scope.row)">
-              {{ $t("ui.customerListSignChangeSigning") }}
+              {{ $("ui.customerListSignChangeSigning") }}
             </el-dropdown-item>
             <el-dropdown-item v-if="scope.row.status != 6" @click.native="handleClick(6, scope.row)">
-              {{ $t("ui.customerListSignLinkOrder") }}
+              {{ $("ui.customerListSignLinkOrder") }}
             </el-dropdown-item>
 
             <el-dropdown-item @click.native="handleClick(9, scope.row)">
-              {{ $t("ui.chatIndexDelete") }}
+              {{ $("ui.chatIndexDelete") }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -100,7 +101,7 @@
   <!-- 签约录入 -->
   <oa-dialog ref="dialogForm" :fromData="fromData" @submit="submit">
     <div class="file-box">
-      <span class="box-label">{{ $t("ui.customerListSignUploadSignedFile") }}</span>
+      <span class="box-label">{{ $("ui.customerListSignUploadSignedFile") }}</span>
       <upload-file :maxLength="1" @getVal="getVal" />
     </div>
 
@@ -108,8 +109,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
-
 import { getStorageJson } from '@/utils/storage'
 import { getColor } from '@/utils/format'
 import {
@@ -158,8 +157,8 @@ export default {
       contractData: [],
       fromData: {
         width: '500px',
-        title: i18n.t('ui.customerListSignSignEntry'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.customerListSignSignEntry'),
+        btnText: '确定',
         labelWidth: '100px',
         type: 'slot'
       },
@@ -253,7 +252,7 @@ export default {
 
     submit() {
       if (!this.file) {
-        this.$message.error(i18n.t('hr.placeholder24'))
+        this.$message.error($('hr.placeholder24'))
         return false
       }
       let obj = {
@@ -299,7 +298,7 @@ export default {
       // 解构赋值获取id，避免直接修改传入的item对象
       const { id } = item
       this.fromData = {
-        title: this.$t('customer.viewcustomer'),
+        title: this.$('customer.viewcustomer'),
         width: '1000px',
         data: { ...item, cid: id }, // 使用展开运算符创建新对象并添加cid属性
         isClient: false,

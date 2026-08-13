@@ -1,6 +1,7 @@
+import { $ } from '@/lang'
 <template>
 <!-- Element UI 的 Dialog 弹窗组件 -->
-<el-dialog :title="tabCur == 1 ? $t('ui.customerKpiAddKpiSetDepartmentTargets') : $t('ui.customerKpiAddKpiSetSalespersonTargets')" :visible.sync="dialogVisible" width="660px">
+<el-dialog :title="tabCur == 1 ? $('ui.customerKpiAddKpiSetDepartmentTargets') : $('ui.customerKpiAddKpiSetSalespersonTargets')" :visible.sync="dialogVisible" width="660px">
   <div class="flex" style="display: flex; gap: 10px" v-if="dialogVisible">
     <select-department
       :onlyOne="false"
@@ -24,19 +25,19 @@
       size="small"
       format="yyyy"
       value-format="yyyy"
-      :placeholder="$t('ui.customerKpiIndexSelectYear')"
+      :placeholder="$('ui.customerKpiIndexSelectYear')"
     >
     </el-date-picker>
-    <el-input v-model="monthData.annual" size="small" style="width: 250px" :placeholder="$t('ui.customerKpiAddKpiEnterAnnualTarget')" suffix="元" />
-    <el-button type="primary" size="small" @click="averageAllocateToMonthly"> {{ $t("ui.customerKpiAddKpiDistributeTargetEvenlyByMonth") }} </el-button>
+    <el-input v-model="monthData.annual" size="small" style="width: 250px" :placeholder="$('ui.customerKpiAddKpiEnterAnnualTarget')" suffix="元" />
+    <el-button type="primary" size="small" @click="averageAllocateToMonthly"> {{ $("ui.customerKpiAddKpiDistributeTargetEvenlyByMonth") }} </el-button>
   </div>
   <!-- 季度、月度目标输入区域 -->
   <el-row :gutter="10" class="mt20">
     <el-col :span="6" v-for="(quarter, index) in quarters" :key="index">
       <div class="quarter-box">
-        <div class="title">{{ quarter }}{{ $t("ui.customerKpiAddKpiQuarter") }}</div>
+        <div class="title">{{ quarter }}{{ $("ui.customerKpiAddKpiQuarter") }}</div>
         <div v-for="(month, monthIndex) in month[index]" :key="monthIndex">
-          <div v-if="month.title" class="title">{{ month.title }}{{ $t("ui.customerKpiAddKpiMonth2") }}</div>
+          <div v-if="month.title" class="title">{{ month.title }}{{ $("ui.customerKpiAddKpiMonth2") }}</div>
           <el-input-number
             v-model="monthData[month.key]"
             :controls="false"
@@ -56,14 +57,13 @@
 
   <!-- 底部操作按钮 -->
   <div slot="footer" class="dialog-footer">
-    <el-button @click="reset()">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-    <el-button type="primary" @click="confirm">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+    <el-button @click="reset()">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+    <el-button type="primary" @click="confirm">{{ $("ui.formCommonDialogFormOk") }}</el-button>
   </div>
 </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { clientTargetPutApi } from '@/api/client'
 export default {
   name: 'addKpi',
@@ -191,7 +191,7 @@ export default {
         isNaN(Number(this.monthData.annual)) ||
         Number(this.monthData.annual) <= 0
       ) {
-        this.$message.error(i18n.t('legacyScript.pleaseEnterAValidAnnualTargetPositiveNumber'))
+        this.$message.error($('legacyScript.pleaseEnterAValidAnnualTargetPositiveNumber'))
         return
       }
 

@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.widgetSize')">
+  <el-form-item :label="$('designer.setting.widgetSize')">
     <el-select v-model="optionModel.size">
       <el-option v-for="item in widgetSizes" :key="item.value" :label="item.label"
                  :value="item.value">
@@ -9,11 +9,8 @@
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
-
   export default {
     name: "size-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -36,4 +33,3 @@
 <style scoped>
 
 </style>
-@/utils/i18ns

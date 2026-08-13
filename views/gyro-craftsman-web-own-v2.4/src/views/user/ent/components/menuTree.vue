@@ -1,7 +1,7 @@
 <template>
   <div class="tree-box">
     <div class="el-card__header clearfix">
-      <el-input size="small" v-model="filterText" clearable :placeholder='$ts("搜索部门")' prefix-icon="el-icon-search" />
+      <el-input size="small" v-model="filterText" clearable :placeholder='$("public.searchdepartment")' prefix-icon="el-icon-search" />
     </div>
     <div v-height>
       <el-scrollbar style="height: 100%" class="reset-scroll-bar">

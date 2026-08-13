@@ -9,10 +9,10 @@
         <div class="right">
           <span class="title">{{ info.name || '--' }}</span>
           <el-tabs v-model="activeName" class="tab" @tab-click="tabChange">
-            <el-tab-pane :label='$ts("任务详情")' name="1" />
-            <el-tab-pane :label='$ts("项目资料")' name="2" />
-            <el-tab-pane :label='$ts("项目动态")' name="3" />
-            <el-tab-pane :label='$ts("项目设置")' name="4" />
+            <el-tab-pane :label='$("legacy.56b3909705f355fc")' name="1" />
+            <el-tab-pane :label='$("legacy.d0a787af6e273e39")' name="2" />
+            <el-tab-pane :label='$("legacyScript.projectActivity")' name="3" />
+            <el-tab-pane :label='$("legacy.a2923487e0ae0a54")' name="4" />
           </el-tabs>
         </div>
       </div>

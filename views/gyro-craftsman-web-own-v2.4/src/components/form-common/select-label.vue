@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 下拉选择标签组件 -->
 <template>
 <div class="">
@@ -5,7 +6,7 @@
     popper-class="popover" ref="treePopover">
     <div class="tree-box" id="treePopover">
       <div class="input">
-        <el-input size="small" prefix-icon="el-icon-search" :placeholder="$t('ui.formCommonSelectLabelPleaseEnterLabelSearch')" v-model="filterText">
+        <el-input size="small" prefix-icon="el-icon-search" :placeholder="$('ui.formCommonSelectLabelPleaseEnterLabelSearch')" v-model="filterText">
         </el-input>
       </div>
       <el-tree highlight-current :props="props" :indent="4" :data="treeData" ref="tree" node-key="id"
@@ -17,15 +18,15 @@
             }" :default-expanded-keys="treeExpandData">{{ node.label }}</span>
 
             <span class="all-text" v-if="data.pid == 0" @click.stop="selectAllFn(node, data)">{{
-              allIds.includes(data[valType]) ? $t('ui.formCommonSelectLabelDeselectAll') : $t('ui.formCommonSelectLabelAll')
+              allIds.includes(data[valType]) ? $('ui.formCommonSelectLabelDeselectAll') : $('ui.formCommonSelectLabelAll')
             }}</span>
             <span v-if="data.pid != 0 && labelIds.includes(data[valType])" class="el-icon-check"></span>
           </div>
         </div>
       </el-tree>
       <div class="btn">
-        <span class="left" @click="handlePopoverHide">{{ $t("ui.formCommonSelectLabelCancel") }}</span>
-        <span class="right" @click="submitFn">{{ $t("ui.formCommonDialogFormOk") }}</span>
+        <span class="left" @click="handlePopoverHide">{{ $("ui.formCommonSelectLabelCancel") }}</span>
+        <span class="right" @click="submitFn">{{ $("ui.formCommonDialogFormOk") }}</span>
       </div>
     </div>
     <!-- 标签数据 -->
@@ -87,7 +88,7 @@
         <span class="el-icon-arrow-down" v-if="selectList.length == 0"></span>
         <span class="el-icon-error" v-else @click.stop="clearSelect"></span>
       </div>
-      <div v-if="slotType == 'customer'" @click.stop="handlePopoverShow">{{ $t("ui.formCommonSelectLabelSetLabel") }}</div>
+      <div v-if="slotType == 'customer'" @click.stop="handlePopoverShow">{{ $("ui.formCommonSelectLabelSetLabel") }}</div>
     </template>
   </el-popover>
 </div>
@@ -96,7 +97,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { clientConfigLabelApi } from '@/api/enterprise'
 import { extractArrayIds, isInArray, removeDuplicateObjects, getArrayDifference } from '@/libs/public'
 export default {
@@ -427,7 +427,7 @@ export default {
     },
     handlePopoverShow() {
       if (this.ids && this.ids.length == 0) {
-        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem'))
+        this.$message.error($('legacyScript.selectAtLeastOneItem'))
         return false
       }
       if (this.list.length == 0 && this.treeData.length == 0) {
@@ -503,7 +503,7 @@ export default {
     //  选择标签多选
     selectAllFn(node, data) {
       if (data.children.length == 0) {
-        this.$message.error(i18n.t('legacyScript.noChildLabelsAreAvailable'))
+        this.$message.error($('legacyScript.noChildLabelsAreAvailable'))
         return false
       }
       if (isInArray(this.allIds, data[this.valType])) {

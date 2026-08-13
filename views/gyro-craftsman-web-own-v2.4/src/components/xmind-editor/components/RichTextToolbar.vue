@@ -1,30 +1,30 @@
 <template>
   <div class="richTextToolbar" ref="richTextToolbar" :style="style" @click.stop.passive v-show="showRichTextToolbar">
-    <el-tooltip :content='$ts("加粗")' placement="top">
+    <el-tooltip :content='$("legacy.5ceac65ed8ee2ca6")' placement="top">
       <div class="btn" :class="{ active: formatInfo.bold }" @click="toggleBold">
         <span class="icon xmind-iconfont iconzitijiacu"></span>
       </div>
     </el-tooltip>
 
-    <el-tooltip :content='$ts("斜体")' placement="top">
+    <el-tooltip :content='$("legacy.217901c51a44d8b1")' placement="top">
       <div class="btn" :class="{ active: formatInfo.italic }" @click="toggleItalic">
         <span class="icon xmind-iconfont iconzitixieti"></span>
       </div>
     </el-tooltip>
 
-    <el-tooltip :content='$ts("下划线")' placement="top">
+    <el-tooltip :content='$("legacy.d3b4a22b47250c5e")' placement="top">
       <div class="btn" :class="{ active: formatInfo.underline }" @click="toggleUnderline">
         <span class="icon xmind-iconfont iconzitixiahuaxian"></span>
       </div>
     </el-tooltip>
 
-    <el-tooltip :content='$ts("删除线")' placement="top">
+    <el-tooltip :content='$("legacy.5b050892a8d5f07f")' placement="top">
       <div class="btn" :class="{ active: formatInfo.strike }" @click="toggleStrike">
         <span class="icon xmind-iconfont iconshanchuxian"></span>
       </div>
     </el-tooltip>
 
-    <el-tooltip :content='$ts("字体")' placement="top">
+    <el-tooltip :content='$("legacy.078838da4218490b")' placement="top">
       <el-popover placement="bottom" trigger="hover">
         <div class="fontOptionsList">
           <div class="fontOptionItem" v-for="item in fontFamilyList" :key="item.value"
@@ -39,7 +39,7 @@
       </el-popover>
     </el-tooltip>
 
-    <el-tooltip :content='$ts("字号")' placement="top">
+    <el-tooltip :content='$("legacy.f71561b5af0abced")' placement="top">
       <el-popover placement="bottom" trigger="hover">
         <div class="fontOptionsList">
           <div class="fontOptionItem" v-for="item in fontSizeList" :key="item" :style="{
@@ -55,7 +55,7 @@
       </el-popover>
     </el-tooltip>
 
-    <el-tooltip :content='$ts("字体颜色")' placement="top">
+    <el-tooltip :content='$("legacy.fcaea50f314c1baa")' placement="top">
       <el-popover placement="bottom" trigger="hover">
         <Color :color="fontColor" @change="changeFontColor"></Color>
         <div class="btn" slot="reference" :style="{ color: formatInfo.color }">
@@ -64,7 +64,7 @@
       </el-popover>
     </el-tooltip>
 
-    <el-tooltip :content='$ts("背景颜色")' placement="top">
+    <el-tooltip :content='$("legacy.882fe2e842417cdd")' placement="top">
       <el-popover placement="bottom" trigger="hover">
         <Color :color="fontBackgroundColor" @change="changeFontBackgroundColor"></Color>
         <div class="btn" slot="reference">
@@ -73,7 +73,7 @@
       </el-popover>
     </el-tooltip>
 
-    <el-tooltip :content='$ts("清除样式")' placement="top">
+    <el-tooltip :content='$("legacy.384fbf428d23e323")' placement="top">
       <div class="btn" @click="removeFormat">
         <span class="icon xmind-iconfont iconqingchu"></span>
       </div>

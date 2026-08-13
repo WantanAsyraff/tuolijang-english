@@ -3,51 +3,51 @@
     <el-timeline v-if="tabsName === 'personnelChange'">
       <div class="default" v-if="list.length == 0">
         <img src="../../../../assets/images/emptyState.png" alt="" class="img" />
-        <div class="text">{{ $ts("暂无人事异动数据~") }}</div>
+        <div class="text">{{ $("legacy.6859e9fd91e0d29e") }}</div>
       </div>
       <el-timeline-item v-for="(item, index) in list" :key="index">
         <!-- 离职 -->
         <div class="quit" v-if="item.types === 3">
           <div class="time">
-            {{ item.date ? item.date : item.created_at }} <el-tag type="warning" size="mini" class="ml15">{{ $ts("离职") }}</el-tag>
+            {{ item.date ? item.date : item.created_at }} <el-tag type="warning" size="mini" class="ml15">{{ $("hr.dimission") }}</el-tag>
           </div>
-          <div>{{ $ts("离职时部门：") }} {{ item.o_frame ? item.o_frame.name : '' }}</div>
-          <div>{{ $ts("离职时职位：") }}{{ item.o_position ? item.o_position.name : '' }}</div>
-          <div>{{ $ts("离职原因：") }} {{ item.info }}</div>
-          <div>{{ $ts("离职备注：") }} {{ item.mark }}</div>
+          <div>{{ $("legacy.c99ee0bfc0ab5570") }} {{ item.o_frame ? item.o_frame.name : '' }}</div>
+          <div>{{ $("legacy.e5b99942c5cffdd1") }}{{ item.o_position ? item.o_position.name : '' }}</div>
+          <div>{{ $("legacyScript.reasonsForLeaving") }} {{ item.info }}</div>
+          <div>{{ $("legacyScript.resignationNotes") }} {{ item.mark }}</div>
         </div>
         <!-- 转正 -->
         <div class="quit" v-if="item.types === 1">
           <div class="time">
             {{ item.date ? item.date : item.created_at }}
-            <el-tag type="warning" size="mini" class="ml15">{{ $ts("转正") }}</el-tag>
+            <el-tag type="warning" size="mini" class="ml15">{{ $("ui.hrArchivesIndexEmployeesConfirmEmployment") }}</el-tag>
           </div>
-          <div>{{ $ts("转正备注：") }} {{ item.mark || '--' }}</div>
+          <div>{{ $("legacy.ec0b8969a5aec13c") }} {{ item.mark || '--' }}</div>
         </div>
 
         <!-- 调岗 -->
         <div class="post-transfer quit" v-if="item.types === 2">
-          <div class="time">{{ item.created_at }} <el-tag type="success" size="mini" class="ml15">{{ $ts("调岗") }}</el-tag></div>
-          <div>{{ $ts("新部门职位： 产品研发部") }}</div>
-          <div>{{ $ts("原部门职位： 研发工程师；p8，职等3") }}</div>
-          <div>{{ $ts("调岗备注： 由于特殊原因进行调岗操作，已经得到上级领导批准") }}</div>
+          <div class="time">{{ item.created_at }} <el-tag type="success" size="mini" class="ml15">{{ $("legacy.57f915235dd9963e") }}</el-tag></div>
+          <div>{{ $("legacy.34e01784752a551a") }}</div>
+          <div>{{ $("legacy.9f5ae46bc0e62190") }}</div>
+          <div>{{ $("legacy.6352f99c4a7e1af0") }}</div>
         </div>
         <!-- 入职 -->
         <div class="post-transfer quit" v-if="item.types === 0">
           <div class="time">
-            {{ item.date ? item.date : item.created_at }} <el-tag size="mini" class="ml15">{{ $ts("入职") }}</el-tag>
+            {{ item.date ? item.date : item.created_at }} <el-tag size="mini" class="ml15">{{ $("ui.hrArchivesUserDetailsOnboard") }}</el-tag>
           </div>
 
-          <div>{{ $ts("员工类型：") }} {{ item.is_part || '--' }}</div>
-          <div>{{ $ts("入职时部门：") }}{{ item.n_frame ? item.n_frame.name : '--' }}</div>
-          <div>{{ $ts("职位：") }} {{ item.n_position ? item.n_position.name : '--' }}</div>
+          <div>{{ $("legacyScript.employmentType") }} {{ item.is_part || '--' }}</div>
+          <div>{{ $("legacy.e8a7a0d864f0f990") }}{{ item.n_frame ? item.n_frame.name : '--' }}</div>
+          <div>{{ $("ui.userTrainingPromotionPosition") }} {{ item.n_position ? item.n_position.name : '--' }}</div>
         </div>
       </el-timeline-item>
     </el-timeline>
     <el-timeline v-if="tabsName == 'salaryAdjustmentRecord'">
       <div class="default" v-if="list.length == 0">
         <img src="../../../../assets/images/emptyState.png" alt="" class="img" />
-        <div class="text">{{ $ts("暂无调薪数据~") }}</div>
+        <div class="text">{{ $("legacy.8afdee6e56cc99ba") }}</div>
       </div>
       <el-timeline-item
         v-for="(activity, index) in list"
@@ -61,18 +61,18 @@
         <div class="quit">
           <div class="time">
             {{ activity.take_date }}
-            <el-tag type="success" size="mini" class="ml15" v-if="index + 1 !== list.length">{{ $ts("调薪") }}</el-tag>
-            <el-tag size="mini" class="ml15" v-else>{{ $ts("定薪") }}</el-tag>
+            <el-tag type="success" size="mini" class="ml15" v-if="index + 1 !== list.length">{{ $("legacy.c0f8f9b95322edae") }}</el-tag>
+            <el-tag size="mini" class="ml15" v-else>{{ $("legacyScript.setSalary") }}</el-tag>
           </div>
           <div class="icon"></div>
-          <div>{{ $ts("薪资合计(元)：") }} {{ activity.total }}</div>
+          <div>{{ $("legacy.a6a39a5d14328f8a") }} {{ activity.total }}</div>
           <div class="salary">
             <span v-for="(item, id) in activity.content" :key="id"
               >{{ item.label }}&nbsp;&nbsp;&nbsp;{{ item.value }}</span
             >
           </div>
 
-          <div>{{ $ts("操作日期：") }} {{ activity.created_at }}</div>
+          <div>{{ $("legacy.440b3849620dc018") }} {{ activity.created_at }}</div>
         </div>
       </el-timeline-item>
     </el-timeline>

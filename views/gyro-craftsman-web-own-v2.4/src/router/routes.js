@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import Layout from '@/layout'
 
@@ -12,7 +12,7 @@ const defaultRoutes = [
         path: `${roterPre}/user/work`,
         component: () => import('@/views/user/workbench/index'),
         name: 'dashboard-admin',
-        meta: { title: i18n.t('systemText.workbench'), icon: 'dashboard', affix: true }
+        meta: { title: $('systemText.workbench'), icon: 'dashboard', affix: true }
       }
     ]
   },
@@ -25,7 +25,7 @@ const defaultRoutes = [
         path: `${roterPre}/user/work`,
         component: () => import('@/views/user/workbench/index'),
         name: 'dashboard',
-        meta: { title: i18n.t('systemText.workbench'), icon: 'dashboard', affix: true }
+        meta: { title: $('systemText.workbench'), icon: 'dashboard', affix: true }
       },
       // {
       //   path: `${roterPre}/search`,
@@ -44,7 +44,7 @@ const defaultRoutes = [
         path: `${roterPre}/user/notice/index`,
         name: 'notice',
         component: () => import('@/views/user/notice/index'),
-        meta: { title: i18n.t('workbench.enterpriseNews') }
+        meta: { title: $('workbench.enterpriseNews') }
       }
     ]
   },
@@ -86,7 +86,7 @@ const defaultRoutes = [
     path: roterPre + '/openFile',
     component: () => import('@/components/openFile/index.vue'),
     name: 'previewPage',
-    meta: { title: i18n.t('legacyScript.filePreview') }
+    meta: { title: $('legacyScript.filePreview') }
   },
 
   // {
@@ -105,7 +105,7 @@ const defaultRoutes = [
     path: roterPre + '/dashboard-design',
     component: () => import('@/views/system/dashboard-design/charts/index.vue'),
     name: 'dashboardDesign',
-    meta: { title: i18n.t('legacyScript.chartDesign') }
+    meta: { title: $('legacyScript.chartDesign') }
   },
   {
     path: roterPre + '/event',

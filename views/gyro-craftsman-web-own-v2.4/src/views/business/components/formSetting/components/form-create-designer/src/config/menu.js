@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import radio from './rule/radio'
 import checkbox from './rule/checkbox'
 import input from './rule/input'
@@ -50,7 +50,7 @@ export default function createMenu() {
   return [
     {
       name: 'main',
-      title: i18n.t('legacyScript.fieldLibrary'),
+      title: $('legacyScript.fieldLibrary'),
       list: [
         input,
         textarea,

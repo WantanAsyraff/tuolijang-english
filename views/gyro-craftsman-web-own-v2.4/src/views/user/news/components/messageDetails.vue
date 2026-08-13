@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog
@@ -60,7 +61,6 @@ import { noticeMessageReadApi } from '@/api/user'
 import { messageListApi } from '@/api/public'
 import { roterPre } from '@/settings'
 import messageHandlePopup from '@/components/common/messageHandlePopup'
-import { translateMessage } from '@/lang'
 export default {
   name: 'MessageDetails',
   components: {
@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     localizedText(value) {
-      return translateMessage(value)
+      return $(value)
     },
     handleClose() {
       noticeHandle(this.messageData.data, 0)

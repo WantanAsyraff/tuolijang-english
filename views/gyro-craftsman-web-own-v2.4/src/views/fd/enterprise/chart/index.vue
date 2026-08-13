@@ -1,4 +1,5 @@
-﻿<!-- 财务-账目记录-收支统计页面 -->
+import { $ } from '@/lang'
+<!-- 财务-账目记录-收支统计页面 -->
 <template>
   <div class="box">
     <div class="box-height">
@@ -7,7 +8,7 @@
       </el-card>
       <el-card class="mb12">
         <div class="statistics-title">
-          {{ $t('finance.businesstrends') }}
+          {{ $('finance.businesstrends') }}
         </div>
         <echartBox :option-data="optionData" :styles="styles1" />
       </el-card>
@@ -17,7 +18,7 @@
             <div class="pie-tab">
               <el-row>
                 <el-col :span="12" class="pie-title">
-                  {{ $t('finance.incometrends') }}
+                  {{ $('finance.incometrends') }}
                 </el-col>
                 <el-col :span="12" class="text-right pie-select">
                   <el-button
@@ -27,7 +28,7 @@
                     size="mini"
                     @click="clickTab(1)"
                   >
-                    {{ $t('finance.switchstyles') }}
+                    {{ $('finance.switchstyles') }}
                   </el-button>
                 </el-col>
               </el-row>
@@ -64,7 +65,7 @@
             <div class="pie-tab">
               <el-row>
                 <el-col :span="12" class="pie-title">
-                  {{ $t('finance.expendtrends') }}
+                  {{ $('finance.expendtrends') }}
                 </el-col>
                 <el-col :span="12" class="text-right pie-select">
                   <el-button
@@ -74,7 +75,7 @@
                     size="mini"
                     @click="clickTab(2)"
                   >
-                    {{ $t('finance.switchstyles') }}
+                    {{ $('finance.switchstyles') }}
                   </el-button>
                 </el-col>
               </el-row>
@@ -114,7 +115,6 @@
 <script>
 import { billChartApi, billChangeBie } from '@/api/enterprise'
 import { numberFormat } from '@/utils/numberFormat'
-import { translateRuntimeText } from '@/utils/i18ns'
 export default {
   name: 'FinanceChart',
   components: {
@@ -136,19 +136,19 @@ export default {
         width: '100%'
       },
       expenditureId: '',
-      expenditure: this.$ts('支出'),
+      expenditure: '支出',
       expenditureList: [
         {
-          name: this.$ts('支出'),
+          name: '支出',
           cate_id: 0,
           types: 2
         }
       ],
       activeId: '',
-      active: this.$ts('收入'),
+      active: '收入',
       incomeList: [
         {
-          name: this.$ts('收入'),
+          name: '收入',
           cate_id: 0,
           types: 1
         }
@@ -163,11 +163,8 @@ export default {
   },
   mounted() {},
   methods: {
-    translateChartText(text) {
-      return translateRuntimeText(text, this)
-    },
     moneySuffix() {
-      return this.$i18n && this.$i18n.locale === 'en' ? ' CNY' : '元'
+      return this.$language === 'en' ? ' CNY' : '元'
     },
     // 点击切换饼状图
     pieChange(data) {
@@ -198,10 +195,10 @@ export default {
       this.active = row.name
       this.incomeList.splice(index + 1)
 
-      if (row.name == this.$ts('收入')) {
+      if (row.name == '收入') {
         this.incomeList = [
           {
-            name: this.$ts('收入'),
+            name: '收入',
             cate_id: 0,
             types: 1
           }
@@ -215,10 +212,10 @@ export default {
     changeExpenditure(row, index) {
       this.expenditure = row.name
       this.expenditureList.splice(index + 1)
-      if (row.name == this.$ts('支出')) {
+      if (row.name == '支出') {
         this.expenditureList = [
           {
-            name: this.$ts('支出'),
+            name: '支出',
             cate_id: 0,
             types: 2
           }
@@ -280,7 +277,7 @@ export default {
           trigger: 'axis'
         },
         legend: {
-          data: [this.$t('finance.revenueamount'), this.$t('finance.expenditureamount')],
+          data: [this.$('finance.revenueamount'), this.$('finance.expenditureamount')],
           show: true,
           right: 10,
           top: 0
@@ -313,7 +310,7 @@ export default {
         },
         yAxis: {
           type: 'value',
-          name: this.$t('finance.amountmoney'),
+          name: this.$('finance.amountmoney'),
           nameTextStyle: {
             color: '#CCCCCC'
           },
@@ -333,7 +330,7 @@ export default {
         },
         series: [
           {
-            name: this.$t('finance.totalrevenue'),
+            name: this.$('finance.totalrevenue'),
             type: 'line',
             itemStyle: {
               normal: {
@@ -347,7 +344,7 @@ export default {
             data: []
           },
           {
-            name: this.$t('finance.totalexpenditure'),
+            name: this.$('finance.totalexpenditure'),
             type: 'line',
             itemStyle: {
               normal: {
@@ -363,14 +360,14 @@ export default {
         ]
       }
       this.optionData.xAxis.data = data.xAxis
-      this.optionData.series[0].name = this.translateChartText(data.series[0].name)
+      this.optionData.series[0].name = this.$(data.series[0].name)
       this.optionData.series[0].data = data.series[0].data
-      this.optionData.series[1].name = this.translateChartText(data.series[1].name)
+      this.optionData.series[1].name = this.$(data.series[1].name)
       this.optionData.series[1].data = data.series[1].data
     },
     // 收入饼状图
     shouruChart(data) {
-      const chartRows = Array.isArray(data) ? data.map((val) => ({ ...val, name: this.translateChartText(val.name) })) : []
+      const chartRows = Array.isArray(data) ? data.map((val) => ({ ...val, name: this.$(val.name) })) : []
       const moneySuffix = this.moneySuffix()
       const incomeLegendData = []
       const incomeSeriesData = []
@@ -441,7 +438,7 @@ export default {
         ],
         series: [
           {
-            name: this.$t('finance.sourceincome'),
+            name: this.$('finance.sourceincome'),
             type: 'pie',
             radius: '55%',
             right: '40%',
@@ -475,7 +472,7 @@ export default {
     },
     // 支出饼状图
     zhichuChart(data) {
-      const chartRows = Array.isArray(data) ? data.map((val) => ({ ...val, name: this.translateChartText(val.name) })) : []
+      const chartRows = Array.isArray(data) ? data.map((val) => ({ ...val, name: this.$(val.name) })) : []
       this.tableDataExpend = chartRows
       const moneySuffix = this.moneySuffix()
       const expendLegendData = []
@@ -534,7 +531,7 @@ export default {
         ],
         series: [
           {
-            name: this.$t('finance.sourceexpenditure'),
+            name: this.$('finance.sourceexpenditure'),
             type: 'pie',
             radius: '55%',
             right: '40%',
@@ -580,14 +577,14 @@ export default {
       this.cateIds = data.cate_id
       this.expenditureList = [
         {
-          name: this.ts('支出'),
+          name: '支出',
           cate_id: 0,
           types: 2
         }
       ]
       this.incomeList = [
         {
-          name: this.$ts('收入'),
+          name: '收入',
           cate_id: 0,
           types: 1
         }

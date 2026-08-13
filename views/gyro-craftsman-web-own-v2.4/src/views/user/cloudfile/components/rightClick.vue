@@ -3,51 +3,51 @@
 <div v-show="menuVisible" id="contextmenu" class="menu">
   <div v-if="configData.type === 1" class="right-item-list">
     <div v-if="configData.data.type !== 1" class="right-item" @click="fileDownLoad(configData.data)">
-      {{ $t('public.download') }}
+      {{ $('public.download') }}
     </div>
 
     <el-divider />
     <div class="right-item" @click="rightItemClick(8)">
-      {{ configData.data.is_collect === 0 ? $t('file.collection') : $t('file.cancelcollection') }}
+      {{ configData.data.is_collect === 0 ? $('file.collection') : $('file.cancelcollection') }}
     </div>
   </div>
   <div v-if="configData.type === 2" class="right-item-list">
     <div v-if="configData.data.type === 1" class="right-item" @click="rightItemClick(1)">
-      {{ configData.data.is_shortcut === 0 ? $t('file.setcommon') : $t('file.cancelcommon') }}
+      {{ configData.data.is_shortcut === 0 ? $('file.setcommon') : $('file.cancelcommon') }}
     </div>
     <div v-if="configData.data.type !== 1" class="right-item" @click="fileDownLoad(configData.data)">
-      {{ $t('public.download') }}
+      {{ $('public.download') }}
     </div>
     <el-divider />
     <div class="right-item" @click="rightItemClick(8)">
-      {{ configData.data.is_collect === 0 ? $t('file.collection') : $t('file.cancelcollection') }}
+      {{ configData.data.is_collect === 0 ? $('file.collection') : $('file.cancelcollection') }}
     </div>
   </div>
   <div v-if="configData.type === 3" class="right-item-list">
-    <div v-if="configData.share == 2" class="right-item" @click="fileDownLoad(item)">{{ $t('public.download') }}</div>
+    <div v-if="configData.share == 2" class="right-item" @click="fileDownLoad(item)">{{ $('public.download') }}</div>
     <div
       v-if="configData.share == 1 && configData.data.auth.download === 1"
       class="right-item"
       @click="fileDownLoad(item)"
     >
-      {{ $t('public.download') }}
+      {{ $('public.download') }}
     </div>
     <el-divider v-if="configData.share == 1 && configData.data.auth.download === 1" />
     <div v-if="configData.share == 2" class="right-item" @click="rightItemClick(1)">
-      {{ $t('file.sharingsettings') }}
+      {{ $('file.sharingsettings') }}
     </div>
     <div v-if="configData.share == 2" class="right-item" @click="rightItemClick(2)">
-      {{ $t('file.cancelsharing') }}
+      {{ $('file.cancelsharing') }}
     </div>
     <el-divider v-if="configData.share == 2" />
-    <div v-if="configData.share == 2" class="right-item" @click="rightItemClick(3)">{{ $t('public.delete') }}</div>
+    <div v-if="configData.share == 2" class="right-item" @click="rightItemClick(3)">{{ $('public.delete') }}</div>
   </div>
   <div v-if="configData.type === 4 || configData.type === 5" class="right-item-list">
     <div v-if="configData.data.type === 1" class="right-item" @click="rightItemClick(1)">
-      {{ configData.data.is_shortcut === 0 ? $t('file.setcommon') : $t('file.cancelcommon') }}
+      {{ configData.data.is_shortcut === 0 ? $('file.setcommon') : $('file.cancelcommon') }}
     </div>
     <div v-if="configData.data.type !== 1" class="right-item" @click="fileDownLoad(configData.data)">
-      {{ $t('public.download') }}
+      {{ $('public.download') }}
     </div>
     <el-divider />
     <div
@@ -55,43 +55,43 @@
       class="right-item"
       @click="rightItemClick(7)"
     >
-      {{ configData.data.is_share === 0 ? $t('ui.userCloudfileRightClickShare') : $t('ui.userCloudfileRightClickCancelSharing') }}
+      {{ configData.data.is_share === 0 ? $('ui.userCloudfileRightClickShare') : $('ui.userCloudfileRightClickCancelSharing') }}
     </div>
     <div class="right-item" @click="rightItemClick(8)">
-      {{ configData.data.is_collect === 0 ? $t('file.collection') : $t('file.cancelcollection') }}
+      {{ configData.data.is_collect === 0 ? $('file.collection') : $('file.cancelcollection') }}
     </div>
     <el-divider />
-    <div class="right-item" @click="rightItemClick(2)">{{ $t('file.moveto') }}</div>
-    <div v-if="configData.data.type !== 1" class="right-item" @click="rightItemClick(3)">{{ $t('file.copyto') }}</div>
-    <div class="right-item" v-if="!latelyFile" @click="rightItemClick(4)">{{ $t('file.rename') }}</div>
+    <div class="right-item" @click="rightItemClick(2)">{{ $('file.moveto') }}</div>
+    <div v-if="configData.data.type !== 1" class="right-item" @click="rightItemClick(3)">{{ $('file.copyto') }}</div>
+    <div class="right-item" v-if="!latelyFile" @click="rightItemClick(4)">{{ $('file.rename') }}</div>
     <el-divider />
-    <div class="right-item" @click="rightItemClick(6)">{{ $t('public.delete') }}</div>
-    <div class="right-item" @click="rightItemClick(5)">{{ $t('file.attribute') }}</div>
+    <div class="right-item" @click="rightItemClick(6)">{{ $('public.delete') }}</div>
+    <div class="right-item" @click="rightItemClick(5)">{{ $('file.attribute') }}</div>
   </div>
   <div v-if="configData.type === 6" class="right-item-list">
-    <div class="right-item" v-if="openTypes.includes(configData.data.file_ext)" @click="rightItemClick(1)">{{ $t("ui.userCloudfileRightClickOpen") }}</div>
+    <div class="right-item" v-if="openTypes.includes(configData.data.file_ext)" @click="rightItemClick(1)">{{ $("ui.userCloudfileRightClickOpen") }}</div>
     <div v-if="configData.data.type !== 1" class="right-item" @click="fileDownLoad(configData.data)">
-      {{ $t('public.download') }}
+      {{ $('public.download') }}
     </div>
-    <div v-if="configData.data.type !== 1" class="right-item" @click="rightItemClick(10)">{{ $t("ui.userCloudfileRightClickShare2") }}</div>
+    <div v-if="configData.data.type !== 1" class="right-item" @click="rightItemClick(10)">{{ $("ui.userCloudfileRightClickShare2") }}</div>
     <el-divider v-if="configData.data.type !== 1" />
-    <div class="right-item" @click="rightItemClick(2)">{{ $t('file.moveto') }}</div>
+    <div class="right-item" @click="rightItemClick(2)">{{ $('file.moveto') }}</div>
     <div
       v-if="configData.data.type === 1 && configData.data.is_admin == 1"
       class="right-item"
       @click="rightItemClick(9)"
     >
-      {{ $t('file.directory') }}
+      {{ $('file.directory') }}
     </div>
-    <div v-if="configData.data.type !== 1" class="right-item" @click="rightItemClick(3)">{{ $t('file.copyto') }}</div>
-    <div class="right-item" v-if="!latelyFile" @click="rightItemClick(4)">{{ $t('file.rename') }}</div>
+    <div v-if="configData.data.type !== 1" class="right-item" @click="rightItemClick(3)">{{ $('file.copyto') }}</div>
+    <div class="right-item" v-if="!latelyFile" @click="rightItemClick(4)">{{ $('file.rename') }}</div>
     <el-divider />
-    <div class="right-item" @click="rightItemClick(6)">{{ $t('public.delete') }}</div>
-    <div class="right-item" @click="rightItemClick(5)">{{ $t('file.attribute') }}</div>
+    <div class="right-item" @click="rightItemClick(6)">{{ $('public.delete') }}</div>
+    <div class="right-item" @click="rightItemClick(5)">{{ $('file.attribute') }}</div>
   </div>
   <div v-if="configData.type === 7" class="right-item-list">
-    <div class="right-item" @click="rightItemClick(2)">{{ $t('file.completelydelete') }}</div>
-    <div class="right-item" @click="rightItemClick(1)">{{ $t('file.restorefile') }}</div>
+    <div class="right-item" @click="rightItemClick(2)">{{ $('file.completelydelete') }}</div>
+    <div class="right-item" @click="rightItemClick(1)">{{ $('file.restorefile') }}</div>
   </div>
 </div>
 </template>

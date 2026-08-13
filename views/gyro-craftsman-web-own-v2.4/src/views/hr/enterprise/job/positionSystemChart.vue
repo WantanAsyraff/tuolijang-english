@@ -7,21 +7,21 @@
           <div class="flex-between">
             <div class="text-right">
               <div class="title-16">
-                {{ $t("ui.hrEnterpriseJobPositionSystemChartJobLevelSystemChart") }}
+                {{ $("ui.hrEnterpriseJobPositionSystemChartJobLevelSystemChart") }}
                 <el-popover placement="right" trigger="hover" popper-class="monitor-yt-popover">
-                  <div class="prompt-bag">{{ $t("ui.hrEnterpriseJobPositionSystemChartClickARankOrGradeCellToAddOr") }}</div>
+                  <div class="prompt-bag">{{ $("ui.hrEnterpriseJobPositionSystemChartClickARankOrGradeCellToAddOr") }}</div>
                   <i class="el-icon-question" slot="reference"></i>
                 </el-popover>
               </div>
             </div>
             <div class="flex lh-center">
               <el-button type="primary" class="mr10 h32" size="small" icon="el-icon-plus" @click="addLevel(1)"
-                >{{ $t("ui.hrEnterpriseJobPositionSystemChartAddGrade") }}</el-button
+                >{{ $("ui.hrEnterpriseJobPositionSystemChartAddGrade") }}</el-button
               >
               <el-dropdown>
                 <span class="iconfont icongengduo2 pointer"></span>
                 <el-dropdown-menu style="text-align: left">
-                  <el-dropdown-item @click.native="addLevel(2)"> {{ $t("ui.hrEnterpriseJobPositionSystemChartBatchEditGradeRanges") }} </el-dropdown-item>
+                  <el-dropdown-item @click.native="addLevel(2)"> {{ $("ui.hrEnterpriseJobPositionSystemChartBatchEditGradeRanges") }} </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>
@@ -31,13 +31,13 @@
             <div class="table-box mt14">
               <div v-if="tableData.length > 0" v-height>
                 <el-table :data="tableData" border row-key="id">
-                  <el-table-column prop="salary" :label="$t('ui.hrEnterpriseJobPositionSystemChartSalaryRange')" width="120" fixed="left" />
-                  <el-table-column prop="rankMax" :label="$t('ui.hrEnterpriseJobPositionSystemChartGrade')" width="80" fixed="left">
+                  <el-table-column prop="salary" :label="$('ui.hrEnterpriseJobPositionSystemChartSalaryRange')" width="120" fixed="left" />
+                  <el-table-column prop="rankMax" :label="$('ui.hrEnterpriseJobPositionSystemChartGrade')" width="80" fixed="left">
                     <template slot-scope="scope">
                       <el-popover :ref="`pop-${scope.row.$index}`" placement="bottom-end" trigger="click" :offset="10">
                         <div class="right-item-list">
-                          <div class="right-item" @click.stop="editLevel(1, scope.row)">{{ $t("ui.hrEnterpriseJobPositionSystemChartEditGrade") }}</div>
-                          <div class="right-item" @click.stop="deleteLevel(scope.row)">{{ $t("ui.hrEnterpriseJobPositionSystemChartDeleteGrade") }}</div>
+                          <div class="right-item" @click.stop="editLevel(1, scope.row)">{{ $("ui.hrEnterpriseJobPositionSystemChartEditGrade") }}</div>
+                          <div class="right-item" @click.stop="deleteLevel(scope.row)">{{ $("ui.hrEnterpriseJobPositionSystemChartDeleteGrade") }}</div>
                         </div>
                         <div slot="reference" class="default-color rank-title">
                           <span>{{ scope.row.min_level }}</span>
@@ -48,7 +48,7 @@
                     </template>
                   </el-table-column>
                   <div v-for="info in tableHeader" :key="info.id">
-                    <el-table-column :label="$t('ui.hrEnterprisePromotionRank')" width="110px">
+                    <el-table-column :label="$('ui.hrEnterprisePromotionRank')" width="110px">
                       <template slot-scope="scope">
                         <div @click.stop="addRankColumn($event, scope.row, info.id)">
                           <div
@@ -58,18 +58,18 @@
                             class="pointer"
                           >
                             {{
-                              item.info && item.info.rank ? $ts(item.info.rank.alias) + ' (' + $ts(item.info.rank.name) + ')' : ''
+                              item.info && item.info.rank ? item.info.rank.alias + ' (' + item.info.rank.name + ')' : ''
                             }}
                           </div>
                         </div>
                       </template>
                     </el-table-column>
-                    <el-table-column :label="$ts(info.name)">
+                    <el-table-column :label="info.name">
                       <template slot-scope="scope">
                         <div v-for="item in scope.row.info" v-show="info.id === item.id" :key="item.id">
                           <span v-if="item.info && item.info.job.length > 0">
                             <span v-for="(col, index) in item.info.job" :key="index">
-                              {{ $ts(col.name) }}
+                              {{ col.name }}
                               {{ item.info.job.length - 1 !== index ? '、' : '' }}
                             </span>
                           </span>
@@ -132,9 +132,9 @@ export default {
     addLevel(type) {
       let title = ''
       if (type === 1) {
-        title = this.$ts('添加职等区间')
+        title = this.$("legacy.3dc297f717f42f6c")
       } else if (type === 2) {
-        title = this.$ts('批量修改职等区间')
+        title = this.$("ui.hrEnterpriseJobPositionSystemChartBatchEditGradeRanges")
       }
       this.config = {
         title: title,
@@ -148,7 +148,7 @@ export default {
     editLevel(type, row) {
       let title = ''
       if (type === 1) {
-        title = this.$ts('编辑职等区间')
+        title = this.$("legacy.89a912a50e031812")
       }
       this.config = {
         title: title,
@@ -182,7 +182,7 @@ export default {
     },
     // 删除职级类别
     deleteLevel(item) {
-      this.$modalSure(this.$ts('你确定要删除该职等吗')).then(() => {
+      this.$modalSure(this.$("legacy.fc56d14b761723f2")).then(() => {
         rankLevelDeleteApi(item.id)
           .then((res) => {
             this.getTableData()
@@ -215,7 +215,7 @@ export default {
             }
             this.$refs.rightClick.rightClick(this.event)
           } else {
-            this.$message.error(this.$ts('暂无可用职级'))
+            this.$message.error(this.$("legacy.9f014e8f3f116436"))
             this.$refs.rightClick.menuVisible = false
           }
         })

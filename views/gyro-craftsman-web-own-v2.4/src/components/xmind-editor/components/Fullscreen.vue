@@ -1,9 +1,9 @@
 <template>
   <div class="fullscreenContainer">
-    <el-tooltip class="item" effect="dark" :content='$ts("全屏查看")' placement="top">
+    <el-tooltip class="item" effect="dark" :content='$("legacy.11423aad226b0482")' placement="top">
       <div class="nav-btn xmind-iconfont iconquanping" @click="toFullscreenShow"></div>
     </el-tooltip>
-    <el-tooltip class="item" effect="dark" :content='$ts("全屏编辑")' placement="top">
+    <el-tooltip class="item" effect="dark" :content='$("legacy.978ec3846aa48964")' placement="top">
       <div class="nav-btn xmind-iconfont iconquanping1" @click="toFullscreenEdit"></div>
     </el-tooltip>
   </div>

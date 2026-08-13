@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="v-height-flag">
@@ -6,7 +7,7 @@
         v-if="search.length > 0"
         :isViewSearch="false"
         :search="search"
-        :title="$t('ui.developForeignIndexAuthorizationKeys')"
+        :title="$('ui.developForeignIndexAuthorizationKeys')"
         :total="total"
         @addDataFn="addFinance"
         @confirmData="confirmData"
@@ -15,7 +16,7 @@
       <!-- 表格数据 -->
       <div v-loading="loading" class="table-box mt10">
         <el-table :data="tableData" :height="tableHeight" row-key="id" style="width: 100%">
-          <el-table-column :label="$t('ui.developForeignIndexKeyName')" prop="title" min-width="100px">
+          <el-table-column :label="$('ui.developForeignIndexKeyName')" prop="title" min-width="100px">
             <template #default="{ row }">
               <span>{{ row.title || '--' }}</span>
             </template>
@@ -42,29 +43,29 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.developForeignIndexLastLoginTime')" prop="last_time">
+          <el-table-column :label="$('ui.developForeignIndexLastLoginTime')" prop="last_time">
             <template slot-scope="scope">
               <span>{{ scope.row.last_time || '--' }}</span>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.customerSetupDictionaryIndexStatus')" prop="status">
+          <el-table-column :label="$('ui.customerSetupDictionaryIndexStatus')" prop="status">
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
                 :active-value="1"
                 :inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                active-text="开启"
+                inactive-text="关闭"
                 @change="changeStatus(scope.row)"
               >
               </el-switch>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" prop="created_at" min-width="110px"> </el-table-column>
-          <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" min-width="80px">
+          <el-table-column :label="$('ui.invoiceInvoiceDetailsCreatedTime')" prop="created_at" min-width="110px"> </el-table-column>
+          <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" min-width="80px">
             <template slot-scope="scope">
-              <el-button type="text" @click="editFn(scope.row.id)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-              <el-button type="text" @click="deleteFn(scope.row.id)">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" @click="editFn(scope.row.id)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+              <el-button type="text" @click="deleteFn(scope.row.id)">{{ $("ui.chatIndexDelete") }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -85,16 +86,15 @@
   <!-- 新建授权信息 -->
   <addForeign ref="addForeign" @submitOk="getList"></addForeign>
   <!-- 复制密钥 -->
-  <el-dialog :title="$t('ui.developForeignIndexViewKey')" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+  <el-dialog :title="$('ui.developForeignIndexViewKey')" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
     <span>{{ sk || '--' }}</span>
     <span slot="footer" class="dialog-footer">
-      <el-button type="primary" @click="copy()">{{ $t("ui.customerInvoiceIndexClickToCopy") }}</el-button>
+      <el-button type="primary" @click="copy()">{{ $("ui.customerInvoiceIndexClickToCopy") }}</el-button>
     </span>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import addForeign from './components/addForeign'
 import { deleteOpenKeyApi, getOpenKeyApi, getOpenKeyStatusApi, getFindskApi } from '@/api/develop'
@@ -162,7 +162,7 @@ export default {
 
     copy(val) {
       clipboard.writeText(val)
-      this.$message.success(i18n.t('setting.copytitle'))
+      this.$message.success($('setting.copytitle'))
     },
 
     // 修改状态

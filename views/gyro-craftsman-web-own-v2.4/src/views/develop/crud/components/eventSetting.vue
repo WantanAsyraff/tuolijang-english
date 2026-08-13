@@ -1,25 +1,25 @@
 <template>
 <div>
   <div class="flex-between">
-    <div class="title-16">{{ $t("ui.developCrudEventSettingTriggerList") }}</div>
+    <div class="title-16">{{ $("ui.developCrudEventSettingTriggerList") }}</div>
     <oa-popover
       :list="typesList"
       :isValueShow="false"
       :searchShow="false"
       :height="`340px`"
-      :title="$t('ui.developCrudEventSettingNewTrigger')"
+      :title="$('ui.developCrudEventSettingNewTrigger')"
       @handleClick="handleClick"
     ></oa-popover>
   </div>
   <!-- 筛选 -->
   <div class="flex mb10 h32">
-    <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.developModuleFormBoxItems") }}</div>
+    <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.developModuleFormBoxItems") }}</div>
     <div class="ml14">
       <el-input
         v-model="where.name"
         prefix-icon="el-icon-search"
         size="small"
-        :placeholder="$t('ui.developTableDialogPleaseEnterInvoiceNameCustomerNameContractName')"
+        :placeholder="$('ui.developTableDialogPleaseEnterInvoiceNameCustomerNameContractName')"
         clearable
         style="width: 250px"
         @change="getList"
@@ -31,23 +31,23 @@
   <!-- 表格 -->
   <div class="table-box" v-loading="loading">
     <el-table row-key="id" :data="tableData" :height="height" style="width: 100%">
-      <el-table-column prop="name" :label="$t('ui.developCrudEventSettingTriggerName')" />
-      <el-table-column prop="field_name" :label="$t('ui.developCrudEventSettingTriggerType')">
+      <el-table-column prop="name" :label="$('ui.developCrudEventSettingTriggerName')" />
+      <el-table-column prop="field_name" :label="$('ui.developCrudEventSettingTriggerType')">
         <template slot-scope="scope">
           {{ getEvent(scope.row.event) }}
         </template>
       </el-table-column>
-      <el-table-column prop="form_value" :label="$t('ui.developCrudEventTriggerAction')">
+      <el-table-column prop="form_value" :label="$('ui.developCrudEventTriggerAction')">
         <template slot-scope="scope">
           <span v-if="scope.row.action && scope.row.action.length > 0">
             {{ getAction(scope.row.action) }}
           </span>
-          <span v-else class="color-file">{{ $t("ui.developCrudEventSettingNoTriggerAction") }}</span>
+          <span v-else class="color-file">{{ $("ui.developCrudEventSettingNoTriggerAction") }}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="sort" :label="$t('ui.developConditionDialogPriority')"> </el-table-column>
-      <el-table-column prop="updated_at" :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')"> </el-table-column>
-      <el-table-column prop="is_main" :label="$t('ui.customerSetupDictionaryIndexStatus')">
+      <el-table-column prop="sort" :label="$('ui.developConditionDialogPriority')"> </el-table-column>
+      <el-table-column prop="updated_at" :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')"> </el-table-column>
+      <el-table-column prop="is_main" :label="$('ui.customerSetupDictionaryIndexStatus')">
         <template slot-scope="scope">
           <el-switch
             @change="handleStatus(scope.row)"
@@ -55,17 +55,17 @@
             :active-value="1"
             :inactive-value="0"
             :width="60"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+            active-text="开启"
+            inactive-text="关闭"
           >
           </el-switch>
         </template>
       </el-table-column>
 
-      <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="170">
+      <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="170">
         <template slot-scope="scope">
-          <el-button type="text" @click="editFn(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-          <el-button type="text" @click="deleteFn(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+          <el-button type="text" @click="editFn(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+          <el-button type="text" @click="deleteFn(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
         </template>
       </el-table-column>
     </el-table>

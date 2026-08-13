@@ -19,8 +19,8 @@
                 :disabled="item.disabled"
                 active-color="#1890ff"
                 inactive-color="#dcdfe6"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                active-text="开启"
+                inactive-text="关闭"
               />
             </div>
           </li>
@@ -28,7 +28,7 @@
       </div>
     </el-card>
     <div class="cr-bottom-button">
-      <el-button type="primary" size="small" @click="saveEvt">{{ $ts("保存") }}</el-button>
+      <el-button type="primary" size="small" @click="saveEvt">{{ $("public.save") }}</el-button>
     </div>
   </div>
 </template>

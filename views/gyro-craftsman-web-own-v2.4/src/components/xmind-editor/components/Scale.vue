@@ -3,7 +3,7 @@
     <el-tooltip
       class="item"
       effect="dark"
-      :content='$ts("缩小")'
+      :content='$("legacy.290f68030501cd9c")'
       placement="top"
     >
       <div class="nav-btn el-icon-minus" @click="narrow"></div>
@@ -23,7 +23,7 @@
     <el-tooltip
       class="item"
       effect="dark"
-      :content='$ts("放大")'
+      :content='$("legacy.80f8fbcfa0117633")'
       placement="top"
     >
       <div class="nav-btn el-icon-plus" @click="enlarge"></div>

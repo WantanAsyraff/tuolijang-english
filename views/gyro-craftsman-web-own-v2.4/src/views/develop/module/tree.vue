@@ -1,41 +1,42 @@
+import { $ } from '@/lang'
 <template>
 <div class="customer-management">
   <el-card :body-style="{ padding: '20px' }" class="normal-page">
     <!-- 头部区域 -->
     <div class="header-section">
       <div class="header-left">
-        <h2 class="page-title">{{ $t("ui.businessFormSettingFormCreateDesignerFcDesignerCustomerManagement") }}</h2>
-        <div class="total-count">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.developModuleFormBoxItems") }}</div>
+        <h2 class="page-title">{{ $("ui.businessFormSettingFormCreateDesignerFcDesignerCustomerManagement") }}</h2>
+        <div class="total-count">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.developModuleFormBoxItems") }}</div>
       </div>
       <div class="header-right">
         <el-input
           v-model="searchKeyword"
-          :placeholder="$t('ui.developModuleTreeSearchCustomerName')"
+          :placeholder="$('ui.developModuleTreeSearchCustomerName')"
           prefix-icon="el-icon-search"
           style="width: 200px; margin-right: 10px;"
           @keyup.enter.native="handleSearch"
         />
-        <el-button type="primary" icon="el-icon-plus" @click="handleAdd">{{ $t("ui.businessHolidayTypeIndexAdd") }}</el-button>
+        <el-button type="primary" icon="el-icon-plus" @click="handleAdd">{{ $("ui.businessHolidayTypeIndexAdd") }}</el-button>
         <el-button
           v-if="selectedRows.length > 0"
           class="ml10"
           @click="handleBatchDelete"
         >
-          {{ $t("ui.developModuleTreeBulkDelete") }}{{ selectedRows.length }})
+          {{ $("ui.developModuleTreeBulkDelete") }}{{ selectedRows.length }})
         </el-button>
-        <el-button class="ml10">{{ $t("ui.developModuleTreeGroup") }}</el-button>
+        <el-button class="ml10">{{ $("ui.developModuleTreeGroup") }}</el-button>
 
         <!-- 筛选下拉菜单 -->
         <el-dropdown class="ml10" @command="handleFilterCommand">
           <el-button>
-            {{ $t("ui.developModuleTreeFilter") }} <i class="el-icon-arrow-down el-icon--right"></i>
+            {{ $("ui.developModuleTreeFilter") }} <i class="el-icon-arrow-down el-icon--right"></i>
           </el-button>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="customer_name">{{ $t("ui.developModuleTreeCustomerName") }}</el-dropdown-item>
-            <el-dropdown-item command="salesman">{{ $t("ui.developModuleTreeOwner") }}</el-dropdown-item>
-            <el-dropdown-item command="customer_category">{{ $t("ui.developModuleTreeCustomerCategory") }}</el-dropdown-item>
-            <el-dropdown-item command="customer_status">{{ $t("ui.developModuleTreeCustomerStatus") }}</el-dropdown-item>
-            <el-dropdown-item command="last_follow_time">{{ $t("ui.developModuleTreeLastFollowUpTime") }}</el-dropdown-item>
+            <el-dropdown-item command="customer_name">{{ $("ui.developModuleTreeCustomerName") }}</el-dropdown-item>
+            <el-dropdown-item command="salesman">{{ $("ui.developModuleTreeOwner") }}</el-dropdown-item>
+            <el-dropdown-item command="customer_category">{{ $("ui.developModuleTreeCustomerCategory") }}</el-dropdown-item>
+            <el-dropdown-item command="customer_status">{{ $("ui.developModuleTreeCustomerStatus") }}</el-dropdown-item>
+            <el-dropdown-item command="last_follow_time">{{ $("ui.developModuleTreeLastFollowUpTime") }}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -66,14 +67,14 @@
         <el-table-column type="selection" width="55" reserve-selection></el-table-column>
             
         <!-- 客户名称列 -->
-        <el-table-column prop="customer_name" :label="$t('ui.developModuleTreeCustomerName')" min-width="150">
+        <el-table-column prop="customer_name" :label="$('ui.developModuleTreeCustomerName')" min-width="150">
           <template slot-scope="scope">
             <div class="customer-info" v-if="scope.row.rowType === 'data'">
               <img
                 v-if="scope.row.avatar"
                 :src="scope.row.avatar"
                 class="customer-avatar"
-                :alt="$t('ui.developModuleTreeHeadPortrait')"
+                :alt="$('ui.developModuleTreeHeadPortrait')"
               />
               <span class="customer-name">{{ scope.row.customer_name }}</span>
             </div>
@@ -85,28 +86,28 @@
                   @click="toggleGroup(scope.row.groupIndex)"
                 ></i>
                 <span class="group-name">{{ scope.row.groupName }}</span>
-                <el-tag type="info" size="mini">{{ scope.row.totalCount }}{{ $t("ui.developModuleTreeCustomers") }}</el-tag>
+                <el-tag type="info" size="mini">{{ scope.row.totalCount }}{{ $("ui.developModuleTreeCustomers") }}</el-tag>
               </div>
             </div>
           </template>
         </el-table-column>
             
         <!-- 客户来源列 -->
-        <el-table-column prop="source" :label="$t('ui.developModuleTreeCustomerSource')" width="120">
+        <el-table-column prop="source" :label="$('ui.developModuleTreeCustomerSource')" width="120">
           <template slot-scope="scope">
             <span v-if="scope.row.rowType === 'data'">{{ scope.row.source || '--' }}</span>
           </template>
         </el-table-column>
             
         <!-- 企业电话列 -->
-        <el-table-column prop="phone" :label="$t('ui.developModuleTreeBusinessPhone')" width="120">
+        <el-table-column prop="phone" :label="$('ui.developModuleTreeBusinessPhone')" width="120">
           <template slot-scope="scope">
             <span v-if="scope.row.rowType === 'data'">{{ scope.row.phone || '--' }}</span>
           </template>
         </el-table-column>
             
         <!-- 客户标签列 -->
-        <el-table-column prop="tags" :label="$t('ui.developModuleTreeCustomerLabels')" width="150">
+        <el-table-column prop="tags" :label="$('ui.developModuleTreeCustomerLabels')" width="150">
           <template slot-scope="scope">
             <div class="tags-container" v-if="scope.row.rowType === 'data'">
               <el-tag
@@ -123,14 +124,14 @@
         </el-table-column>
             
         <!-- 最后跟进时间列 -->
-        <el-table-column prop="last_follow_time" :label="$t('ui.developModuleTreeLastFollowUpTime')" width="150">
+        <el-table-column prop="last_follow_time" :label="$('ui.developModuleTreeLastFollowUpTime')" width="150">
           <template slot-scope="scope">
             <span v-if="scope.row.rowType === 'data'">{{ scope.row.last_follow_time || '--' }}</span>
           </template>
         </el-table-column>
             
         <!-- 客户状态列 -->
-        <el-table-column prop="status" :label="$t('ui.developModuleTreeCustomerStatus')" width="100">
+        <el-table-column prop="status" :label="$('ui.developModuleTreeCustomerStatus')" width="100">
           <template slot-scope="scope">
             <el-tag
               v-if="scope.row.rowType === 'data'"
@@ -143,13 +144,13 @@
         </el-table-column>
             
         <!-- 业务人员列 -->
-        <el-table-column prop="business_staff" :label="$t('ui.developModuleTreeBusinessPersonnel')" width="120">
+        <el-table-column prop="business_staff" :label="$('ui.developModuleTreeBusinessPersonnel')" width="120">
           <template slot-scope="scope">
             <div class="staff-info" v-if="scope.row.rowType === 'data' && scope.row.business_staff">
               <img
                 :src="scope.row.business_staff.avatar"
                 class="staff-avatar"
-                :alt="$t('ui.developModuleTreeHeadPortrait')"
+                :alt="$('ui.developModuleTreeHeadPortrait')"
               />
               <span>{{ scope.row.business_staff.name }}</span>
             </div>
@@ -158,19 +159,19 @@
         </el-table-column>
             
         <!-- 创建时间列 -->
-        <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" width="160">
+        <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" width="160">
           <template slot-scope="scope">
             <span v-if="scope.row.rowType === 'data'">{{ scope.row.created_at || '--' }}</span>
           </template>
         </el-table-column>
             
         <!-- 操作列 -->
-        <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="220">
+        <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="220">
           <template slot-scope="scope">
             <div v-if="scope.row.rowType === 'data'" class="action-buttons">
-              <el-button type="text" size="small" @click="handleCopy(scope.row)">{{ $t("ui.settingWecomIndexCopy") }}</el-button>
-              <el-button type="text" size="small" @click="handleDelete(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
-              <el-button type="text" size="small" @click="handleRegenerate(scope.row)">{{ $t("ui.developModuleTreeRegenerate") }}</el-button>
+              <el-button type="text" size="small" @click="handleCopy(scope.row)">{{ $("ui.settingWecomIndexCopy") }}</el-button>
+              <el-button type="text" size="small" @click="handleDelete(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" size="small" @click="handleRegenerate(scope.row)">{{ $("ui.developModuleTreeRegenerate") }}</el-button>
             </div>
             <!-- 加载更多行 -->
             <div v-else-if="scope.row.rowType === 'loadmore'" class="load-more-row">
@@ -181,7 +182,7 @@
                 @click.stop="loadMoreGroupData(scope.row.groupIndex)"
                 :loading="scope.row.loading"
               >
-                <i class="el-icon-arrow-down"></i> {{ $t("ui.developModuleTreeLoadMore") }}
+                <i class="el-icon-arrow-down"></i> {{ $("ui.developModuleTreeLoadMore") }}
               </el-button>
             </div>
           </template>
@@ -209,7 +210,7 @@
           @click="loadMore"
           :loading="loadingMore"
         >
-          <i class="el-icon-arrow-down"></i> {{ $t("ui.developModuleTreeLoadMore") }}
+          <i class="el-icon-arrow-down"></i> {{ $("ui.developModuleTreeLoadMore") }}
         </el-button>
       </div>
     </div>
@@ -217,7 +218,7 @@
 
   <!-- 筛选对话框 -->
   <el-dialog
-    :title="`筛选 - ${getFilterLabel(activeFilter)}`"
+    :title="$('ui.shared.filterLabel', { label: getFilterLabel(activeFilter) })"
     :visible.sync="filterDialogVisible"
     width="400px"
     @close="handleFilterDialogClose"
@@ -228,31 +229,30 @@
           <el-input
             v-if="activeFilter !== 'customer_status'"
             v-model="filterForm.value"
-            :placeholder="$t('ui.developModuleTreePleaseEnterFilterConditions')"
+            :placeholder="$('ui.developModuleTreePleaseEnterFilterConditions')"
           />
           <el-select
             v-else
             v-model="filterForm.value"
-            :placeholder="$t('ui.developModuleTreePleaseSelectCustomerStatus')"
+            :placeholder="$('ui.developModuleTreePleaseSelectCustomerStatus')"
             style="width: 100%"
           >
-            <el-option :label="$t('ui.layoutNoticeNoticeListAll')" value=""></el-option>
-            <el-option :label="$t('ui.customerListIndexFollowingUp')" value="following"></el-option>
-            <el-option :label="$t('ui.customerSetupRuleSettingsFollowRulesClosed')" value="deal"></el-option>
-            <el-option :label="$t('ui.customerContractContractRemindAbandoned')" value="abandoned"></el-option>
+            <el-option :label="$('ui.layoutNoticeNoticeListAll')" value=""></el-option>
+            <el-option :label="$('ui.customerListIndexFollowingUp')" value="following"></el-option>
+            <el-option :label="$('ui.customerSetupRuleSettingsFollowRulesClosed')" value="deal"></el-option>
+            <el-option :label="$('ui.customerContractContractRemindAbandoned')" value="abandoned"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
     </div>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="filterDialogVisible = false">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button type="primary" @click="applyFilter">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+      <el-button @click="filterDialogVisible = false">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button type="primary" @click="applyFilter">{{ $("ui.formCommonDialogFormOk") }}</el-button>
     </span>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   name: 'CustomerManagement',
   data() {
@@ -320,7 +320,7 @@ export default {
         // 检查是否还有更多数据
         this.hasMore = this.pagination.currentPage * this.pagination.pageSize < this.total
       } catch (error) {
-        this.$message.error(i18n.t('legacyScript.failedToLoadData'))
+        this.$message.error($('legacyScript.failedToLoadData'))
       } finally {
         this.loading = false
       }
@@ -548,7 +548,7 @@ export default {
         
         this.$message.success(`已加载更多${group.groupName}的客户数据`)
       } catch (error) {
-        this.$message.error(i18n.t('legacyScript.failedToLoadMoreData'))
+        this.$message.error($('legacyScript.failedToLoadMoreData'))
       } finally {
         group.loading = false
       }
@@ -700,20 +700,20 @@ export default {
       return [
         {
           time: '2023-06-15 14:30',
-          title: i18n.t('legacyScript.phoneFollowUp'),
-          content: i18n.t('legacyScript.communicatedWithTheClientRegardingProductUsageTheClientExpressed'),
+          title: $('legacyScript.phoneFollowUp'),
+          content: $('legacyScript.communicatedWithTheClientRegardingProductUsageTheClientExpressed'),
           staff: row.business_staff ? row.business_staff.name : '系统'
         },
         {
           time: '2023-06-10 10:15',
-          title: i18n.t('legacyScript.onSiteVisit'),
-          content: i18n.t('legacyScript.understandCustomerNeedsOnSiteAndDiscussFollowUpCooperation'),
+          title: $('legacyScript.onSiteVisit'),
+          content: $('legacyScript.understandCustomerNeedsOnSiteAndDiscussFollowUpCooperation'),
           staff: row.business_staff ? row.business_staff.name : '系统'
         },
         {
           time: '2023-06-05 16:45',
-          title: i18n.t('legacyScript.emailCommunication'),
-          content: i18n.t('legacyScript.sendProductMaterialsAndTechnicalDocuments'),
+          title: $('legacyScript.emailCommunication'),
+          content: $('legacyScript.sendProductMaterialsAndTechnicalDocuments'),
           staff: row.business_staff ? row.business_staff.name : '系统'
         }
       ]
@@ -785,13 +785,13 @@ export default {
 
     // 新增客户
     handleAdd() {
-      this.$message.info(i18n.t('legacyScript.newFeaturesToBeImplemented'))
+      this.$message.info($('legacyScript.newFeaturesToBeImplemented'))
     },
 
     // 批量删除
     async handleBatchDelete() {
       try {
-        await this.$confirm(`确定要删除选中的 ${this.selectedRows.length} 个客户吗?`, i18n.t('legacyScript.confirmBatchDeletion'), {
+        await this.$confirm(`确定要删除选中的 ${this.selectedRows.length} 个客户吗?`, $('legacyScript.confirmBatchDeletion'), {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -815,12 +815,12 @@ export default {
     // 删除客户
     async handleDelete(row) {
       try {
-        await this.$confirm(i18n.t('legacyScript.areYouSureYouWantToDeleteThisCustomer'), i18n.t('public.tips'), {
+        await this.$confirm($('legacyScript.areYouSureYouWantToDeleteThisCustomer'), $('public.tips'), {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         })
-        this.$message.success(i18n.t('hr.deleteok'))
+        this.$message.success($('hr.deleteok'))
         // 重新加载数据
         this.loadCustomerData()
       } catch (error) {
@@ -859,7 +859,7 @@ export default {
         this.tableData = [...this.tableData, ...newData]
         this.hasMore = this.pagination.currentPage * this.pagination.pageSize < this.total
       } catch (error) {
-        this.$message.error(i18n.t('legacyScript.failedToLoadMoreData'))
+        this.$message.error($('legacyScript.failedToLoadMoreData'))
       } finally {
         this.loadingMore = false
       }

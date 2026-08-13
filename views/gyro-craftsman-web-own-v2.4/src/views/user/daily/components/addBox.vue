@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer :append-to-body="true" :before-close="handleClose" :modal="true" :title="newTitle" :visible.sync="drawer"
@@ -12,12 +13,12 @@
       class="form-box mt20">
       <!-- 汇报人 -->
       <div class="report">
-        <div class="title">{{ $t("ui.userDailyAddBoxReportTo") }}</div>
+        <div class="title">{{ $("ui.userDailyAddBoxReportTo") }}</div>
         <select-member ref="selectMember" :value="examineData" style="width: 100%" @getSelectList="getSelectList">
           <template v-slot:custom>
             <div class="flex-user">
               <div v-if="!disabled" class="addPeople" @click="handlesuperiorOpen">
-                <span class="iconfont icontianjia"></span>{{ $t("ui.userDailyAddBoxAdd") }}
+                <span class="iconfont icontianjia"></span>{{ $("ui.userDailyAddBoxAdd") }}
               </div>
               <div v-for="(item, index) in examineData" :key="index" class="user">
                 <img :src="item ? item.avatar : item.avatar" alt="" class="img" />
@@ -40,8 +41,8 @@
                   resize="none" show-word-limit type="textarea" @change="changeSize" @input="changeSize" />
                 <div class="todo">
                   <div class="title">
-                    {{ $t("ui.userDailyAddBoxUnfinishedToDos") }}
-                    <span>{{ $t("ui.userDailyAddBoxClickToGenerateTodayCompletedItems") }}</span>
+                    {{ $("ui.userDailyAddBoxUnfinishedToDos") }}
+                    <span>{{ $("ui.userDailyAddBoxClickToGenerateTodayCompletedItems") }}</span>
                   </div>
                   <div class="todo-list">
                     <div v-for="(item, index) in needList" :key="index" class="item">
@@ -69,11 +70,11 @@
           </el-col>
         </el-row>
         <!-- 备注 -->
-        <el-form-item :label="$t('public.remarks')" class="m-b-30 m-t-20">
+        <el-form-item :label="$('public.remarks')" class="m-b-30 m-t-20">
           <el-input v-model="ruleForm.mark" :disabled="disabled" :rows="4" resize="none" type="textarea"
             @change="updateValue" />
         </el-form-item>
-        <el-form-item :label="attachList.length || !attachList.length ? $t('ui.userDailyAddBoxAttachment') : ''" class="m-b-30">
+        <el-form-item :label="attachList.length || !attachList.length ? $('ui.userDailyAddBoxAttachment') : ''" class="m-b-30">
           <!-- 附件上传-->
           <upload-file v-model="attachList" :maxLength="9" :disabled="editType == 'check' ? true : false"
             :options="fileParams" :only-image="false" :value="attachList"></upload-file>
@@ -89,7 +90,7 @@
               <div v-if="item.paent_user">
                 {{ item.card.name }}<span class="created-at">{{ item.created_at }}</span>
                 <div class="acea-row reply">
-                  <span class="keyword">{{ $t('public.reply') }}{{ item.paent_user.card.name }}:</span>
+                  <span class="keyword">{{ $('public.reply') }}{{ item.paent_user.card.name }}:</span>
                   <span class="reply-text">{{ item.content }}</span>
                 </div>
               </div>
@@ -100,9 +101,9 @@
             <div class="text acea-row between-box">
               <div v-if="!item.paent_user" class="textCon">{{ item.content }}</div>
               <div v-if="item.card.uid === uid" class="reply" @click="deleteReply(item.id, item.daily_id, index)">
-                {{ $t('public.delete') }}
+                {{ $('public.delete') }}
               </div>
-              <div v-else class="reply" @click="replyBnt(item)">{{ $t('public.reply') }}</div>
+              <div v-else class="reply" @click="replyBnt(item)">{{ $('public.reply') }}</div>
             </div>
           </div>
         </div>
@@ -118,19 +119,19 @@
           <el-input ref="replyInput" v-model="reply.content" :placeholder="textPla" class="replyText" resize="none"
             type="textarea" />
           <div class="bnt">
-            <el-button size="small" @click="cancel">{{ $t('public.cancel') }}</el-button>
-            <el-button size="small" type="primary" @click="submitReply">{{ $t("ui.shareSubmit") }}</el-button>
+            <el-button size="small" @click="cancel">{{ $('public.cancel') }}</el-button>
+            <el-button size="small" type="primary" @click="submitReply">{{ $("ui.shareSubmit") }}</el-button>
           </div>
         </div>
       </div>
       <template v-else>
-        <el-button v-if="!disabled" size="small" @click="closeBtn">{{ $t('public.cancel') }}</el-button>
+        <el-button v-if="!disabled" size="small" @click="closeBtn">{{ $('public.cancel') }}</el-button>
         <div v-if="editId && disabled" class="flex" @click="evaluate">
           <img :src="avatar" alt="" class="avatar" />
-          <div class="replyCon-no">{{ $t("ui.userDailyAddBoxAddComment") }}</div>
+          <div class="replyCon-no">{{ $("ui.userDailyAddBoxAddComment") }}</div>
         </div>
         <el-button v-else :loading="saveLoading" size="small" type="primary" @click="submitForm('ruleForm')">
-          {{ $t('public.save') }}
+          {{ $('public.save') }}
         </el-button>
       </template>
     </div>
@@ -138,13 +139,11 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { enterpriseDaily, getEnterpriseEdit, dailyReply, dailydel, getDailyEdit, getCompleted } from '@/api/enterprise'
 import file from '@/utils/file'
 import { dailyReportMemberApi } from '@/api/business'
 import { scheduleStatusApi } from '@/api/user'
 import Vue from 'vue'
-import { translateRuntimeText } from '@/utils/i18ns'
 Vue.use(file)
 
 const SUB_TITLE_MAP = {
@@ -181,7 +180,7 @@ export default {
   data() {
     const checkFinish = (rule, value, callback) => {
       if (!value && this.dailyId === 1) {
-        return callback(new Error(this.$t('user.work.title')))
+        return callback(new Error(this.$('user.work.title')))
       } else if (!value && this.dailyId === 2) {
         return callback(new Error('请填写本周工作'))
       } else if (!value && this.dailyId === 3) {
@@ -192,7 +191,7 @@ export default {
     }
     const checkPlan = (rule, value, callback) => {
       if (!value && this.dailyId === 1) {
-        return callback(new Error(this.$t('user.work.tilte1')))
+        return callback(new Error(this.$('user.work.tilte1')))
       } else if (!value && this.dailyId === 2) {
         return callback(new Error('请填写下周计划'))
       } else if (!value && this.dailyId === 3) {
@@ -230,7 +229,7 @@ export default {
       ids: [],
       rollHeight: '',
       editType: 'add', // 是否可以编辑
-      textPla: this.$t('user.work.title2'),
+      textPla: this.$('user.work.title2'),
       disabled: false,
       minHeight: 420,
       loading: false,
@@ -282,9 +281,6 @@ export default {
     }
   },
   methods: {
-    translateText(text) {
-      return translateRuntimeText(text, this)
-    },
     async scheduleStatus() {
       await scheduleStatusApi()
     },
@@ -439,7 +435,7 @@ export default {
       }
     },
     deleteReply(id, dailyId, index) {
-      this.$modalSure(this.$t('user.work.title4')).then(() => {
+      this.$modalSure(this.$('user.work.title4')).then(() => {
         dailydel(id, dailyId).then((res) => {
           this.replyList.splice(index, 1)
         })
@@ -448,7 +444,7 @@ export default {
 
     // 评论
     replyBnt(item) {  
-      this.textPla = this.$t('public.reply') + ': ' + `${item.card.name}`
+      this.textPla = this.$('public.reply') + ': ' + `${item.card.name}`
       this.reply.content = ''
       this.id = item.id
       this.isShow = true
@@ -461,7 +457,7 @@ export default {
       this.reply.content = ''
       this.id = 0
       this.isShow = true
-      this.textPla = this.$t('user.work.writecomment')
+      this.textPla = this.$('user.work.writecomment')
       this.$nextTick(() => {
         this.$refs.rollBottom.scroll(0, this.rollHeight)
       })
@@ -473,7 +469,7 @@ export default {
     cancel() {
       this.isShow = false
       this.report_show = false
-      this.textPla = this.$t('user.work.writedaily')
+      this.textPla = this.$('user.work.writedaily')
     },
 
     handleClose() {
@@ -516,7 +512,7 @@ export default {
           this.ruleForm.attach_ids = ids.join(',')
           let members = []
           if (processInfo.length == 0) {
-            this.$message.error(i18n.t('legacyScript.pleaseSelectTheReporter'))
+            this.$message.error($('legacyScript.pleaseSelectTheReporter'))
             return
           }
           if (processInfo.length > 0) {
@@ -557,7 +553,7 @@ export default {
     },
     resetForm() {
       this.isShow = false
-      this.textPla = this.$t('user.work.writedaily')
+      this.textPla = this.$('user.work.writedaily')
       this.ruleForm = {
         finish: '',
         plan: '',

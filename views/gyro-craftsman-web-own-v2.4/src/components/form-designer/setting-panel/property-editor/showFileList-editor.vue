@@ -1,15 +1,12 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.showFileList')">
+  <el-form-item :label="$('designer.setting.showFileList')">
     <el-switch v-model="optionModel.showFileList"></el-switch>
   </el-form-item>
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
-
   export default {
     name: "showFileList-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -21,4 +18,3 @@
 <style scoped>
 
 </style>
-@/utils/i18ns

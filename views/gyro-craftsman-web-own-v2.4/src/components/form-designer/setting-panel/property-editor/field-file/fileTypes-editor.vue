@@ -1,8 +1,8 @@
 <template>
   <el-form-item>
     <span slot="label"
-      >{{ i18nt('designer.setting.fileTypes') }}
-      <el-tooltip effect="light" :content="i18nt('designer.setting.fileTypesHelp')">
+      >{{ $('designer.setting.fileTypes') }}
+      <el-tooltip effect="light" :content="$('designer.setting.fileTypesHelp')">
         <i class="el-icon-info"></i
       ></el-tooltip>
     </span>
@@ -20,11 +20,8 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
-
 export default {
   name: 'file-fileTypes-editor',
-  mixins: [i18n],
   props: {
     designer: Object,
     selectedWidget: Object,
@@ -45,4 +42,3 @@ export default {
 
 <style scoped>
 </style>
-@/utils/i18ns

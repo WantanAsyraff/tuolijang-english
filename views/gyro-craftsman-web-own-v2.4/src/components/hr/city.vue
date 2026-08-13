@@ -12,7 +12,7 @@
         class="color-tab"
         >*</span
       >
-      <span>{{ $t("ui.hrCityProvinceCityDistrict") }}</span>
+      <span>{{ $("ui.hrCityProvinceCityDistrict") }}</span>
     </label>
     <div class="el-form-item__content" style="margin-left: 120px">
       <template v-if="!check">

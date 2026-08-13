@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 
   @FileDescription: 公共ECharts图表组件
   功能：封装ECharts图表基础功能，支持动态配置、响应式调整和事件交互
@@ -11,8 +12,27 @@
 
 <script>
 import echarts from 'echarts'
-import { localizeChartOption } from '@/utils/i18ns'
 
+const FORMATTER_KEYS = new Set(['formatter', 'labelFormatter', 'tooltipFormatter', 'valueFormatter'])
+function mapDisplayValues(value, translate, seen = new WeakMap(), key = '') {
+  if (typeof value === 'string') return $(value)
+  if (typeof value === 'function' && FORMATTER_KEYS.has(key)) {
+    const original = value.__displayOriginal || value
+    const wrapped = function (...args) {
+      return mapDisplayValues(original.apply(this, args), translate)
+    }
+    Object.defineProperty(wrapped, '__displayOriginal', { value: original })
+    return wrapped
+  }
+  if (!value || typeof value !== 'object' || value instanceof Date || value instanceof RegExp) return value
+  if (seen.has(value)) return seen.get(value)
+  const result = Array.isArray(value) ? [] : {}
+  seen.set(value, result)
+  Object.keys(value).forEach((childKey) => {
+    result[childKey] = mapDisplayValues(value[childKey], translate, seen, childKey)
+  })
+  return result
+}
 export default {
   name: 'Index',
   props: {
@@ -52,7 +72,7 @@ export default {
       },
       deep: true // 对象内部属性的监听，关键。
     },
-    '$i18n.locale'() {
+    '$language'() {
       this.handleSetVisitChart()
     }
   },
@@ -84,7 +104,7 @@ export default {
     handleSetVisitChart() {
       // 初始化图表实例
       if (!this.myChart) this.myChart = echarts.init(document.getElementById(this.echarts))
-      const option = localizeChartOption(this.optionData, this)
+      const option = mapDisplayValues(this.optionData || {}, this.$)
       // Apply a localized clone so API values and formatter output switch languages without mutating source data.
       this.myChart.setOption(option, true)
 

@@ -3,7 +3,7 @@
 <template>
   <el-container class="panel-container">
     <el-tabs :active-name="activeTab" style="height: 100%; overflow: hidden">
-      <el-tab-pane :label="i18nt('designer.hint.widgetSetting')" name="1">
+      <el-tab-pane :label="$('designer.hint.widgetSetting')" name="1">
         <el-scrollbar class="setting-scrollbar" :style="{ height: scrollerHeight }">
           <template v-if="!!designer.selectedWidget && !designer.selectedWidget.category">
             <el-form
@@ -18,7 +18,7 @@
                 <el-collapse-item
                   name="1"
                   v-if="showCollapse(commonProps)"
-                  :title="i18nt('designer.setting.commonSetting')"
+                  :title="$('designer.setting.commonSetting')"
                 >
                   <template v-for="(editorName, propName) in commonProps">
                     <component
@@ -34,7 +34,7 @@
                 <el-collapse-item
                   name="2"
                   v-if="showCollapse(advProps)"
-                  :title="i18nt('designer.setting.advancedSetting')"
+                  :title="$('designer.setting.advancedSetting')"
                 >
                   <template v-for="(editorName, propName) in advProps">
                     <component
@@ -52,7 +52,7 @@
           <div v-else-if="!designer.selectedWidget">
             <div class="no-widget-selected">
               <img class="no-widget-selected-img" src="@/assets/images/defd.png" alt="" />
-              <div class="no-widget-selected-text">{{ $t("ui.formDesignerSettingPanelIndexNoComponentIsSelected") }}</div>
+              <div class="no-widget-selected-text">{{ $("ui.formDesignerSettingPanelIndexNoComponentIsSelected") }}</div>
             </div>
           </div>
           <template v-if="!!designer.selectedWidget && !!designer.selectedWidget.category">
@@ -68,7 +68,7 @@
                 <el-collapse-item
                   name="1"
                   v-if="showCollapse(commonProps)"
-                  :title="i18nt('designer.setting.commonSetting')"
+                  :title="$('designer.setting.commonSetting')"
                 >
                   <template v-for="(editorName, propName) in commonProps">
                     <component
@@ -84,7 +84,7 @@
                 <el-collapse-item
                   name="2"
                   v-if="showCollapse(advProps)"
-                  :title="i18nt('designer.setting.advancedSetting')"
+                  :title="$('designer.setting.advancedSetting')"
                 >
                   <template v-for="(editorName, propName) in advProps">
                     <component
@@ -102,7 +102,7 @@
         </el-scrollbar>
       </el-tab-pane>
 
-      <el-tab-pane v-if="!!designer" :label="i18nt('designer.hint.formSetting')" name="2">
+      <el-tab-pane v-if="!!designer" :label="$('designer.hint.formSetting')" name="2">
         <el-scrollbar class="setting-scrollbar" :style="{ height: scrollerHeight }">
           <form-setting :designer="designer" :form-config="formConfig"></form-setting>
         </el-scrollbar>
@@ -110,7 +110,7 @@
     </el-tabs>
 
     <el-dialog
-      :title="i18nt('designer.setting.editWidgetEventHandler')"
+      :title="$('designer.setting.editWidgetEventHandler')"
       :visible.sync="showWidgetEventDialogFlag"
       v-if="showWidgetEventDialogFlag"
       :show-close="true"
@@ -124,8 +124,8 @@
       <el-alert type="info" :closable="false" :title="eventHeader"></el-alert>
       <el-alert type="info" :closable="false" title="}"></el-alert>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="showWidgetEventDialogFlag = false"> {{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button type="primary" @click="saveEventHandler"> {{ i18nt('designer.hint.confirm') }}</el-button>
+        <el-button @click="showWidgetEventDialogFlag = false"> {{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button type="primary" @click="saveEventHandler"> {{ $('designer.hint.confirm') }}</el-button>
       </div>
     </el-dialog>
   </el-container>
@@ -135,7 +135,6 @@ import PropertyEditors from './property-editor/index'
 import FormSetting from './form-setting'
 import WidgetProperties from './propertyRegister'
 import { addWindowResizeHandler } from '@/utils/formDesignerUtils'
-import i18n from '@/utils/i18n'
 import { propertyRegistered } from '@/components/form-designer/setting-panel/propertyRegister'
 
 const { COMMON_PROPERTIES, ADVANCED_PROPERTIES, EVENT_PROPERTIES } = WidgetProperties
@@ -143,7 +142,6 @@ const { COMMON_PROPERTIES, ADVANCED_PROPERTIES, EVENT_PROPERTIES } = WidgetPrope
 export default {
   name: 'SettingPanel',
   componentName: 'SettingPanel',
-  mixins: [i18n],
   components: {
     FormSetting,
     ...PropertyEditors
@@ -319,7 +317,7 @@ export default {
         })
 
         if (syntaxErrorFlag) {
-          this.$message.error(this.i18nt('designer.setting.syntaxCheckWarning'))
+          this.$message.error(this.$('designer.setting.syntaxCheckWarning'))
           return
         }
       }
@@ -407,4 +405,3 @@ export default {
   }
 }
 </style>
-@/utils/i18ns

@@ -1,37 +1,38 @@
+import { $ } from '@/lang'
 <!-- 人事-考勤管理-白名单设置 -->
 <template>
 <div class="divBox">
   <el-card class="employees-card">
     <div class="main">
-      <div class="title-16 mb20">{{ $t("ui.hrAttendanceSettingWhiteWhitelistSettings") }}</div>
+      <div class="title-16 mb20">{{ $("ui.hrAttendanceSettingWhiteWhitelistSettings") }}</div>
 
       <!-- 白名单 -->
       <el-form style="width: 460px;">
         <div class="form-box">
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t("ui.hrAttendanceSettingWhiteWhitelistedEmployees") }}</span>
+              <span slot="label">{{ $("ui.hrAttendanceSettingWhiteWhitelistedEmployees") }}</span>
 
               <select-member
                 :value="departmentObj.userList || []"
-                :placeholder="$t('ui.hrAttendanceSettingWhiteSelectWhitelistedEmployees')"
+                :placeholder="$('ui.hrAttendanceSettingWhiteSelectWhitelistedEmployees')"
                 @getSelectList="getSelectList($event, 1)"
                 style="width: 100%"
               ></select-member>
             </el-form-item>
             <el-form-item>
-              <span slot="label">{{ $t("ui.hrAttendanceSettingWhiteSuperAdministrator") }}</span>
+              <span slot="label">{{ $("ui.hrAttendanceSettingWhiteSuperAdministrator") }}</span>
               <select-member
                 :value="departmentObj.adminList || []"
-                :placeholder="$t('ui.hrAttendanceSettingWhiteSelectAttendanceSuperAdministrators')"
+                :placeholder="$('ui.hrAttendanceSettingWhiteSelectAttendanceSuperAdministrators')"
                 @getSelectList="getSelectList($event, 2)"
                 style="width: 100%"
               ></select-member>
 
-              <span class="tips">{{ $t("ui.hrAttendanceSettingWhiteSuperAdministratorsCanManageEveryAttendanceGroupAndView") }}</span>
+              <span class="tips">{{ $("ui.hrAttendanceSettingWhiteSuperAdministratorsCanManageEveryAttendanceGroupAndView") }}</span>
             </el-form-item>
             <el-form-item >
-              <el-button size="small" :loading="loading" type="primary" @click="submit">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+              <el-button size="small" :loading="loading" type="primary" @click="submit">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
             </el-form-item>
           </div>
         </div>
@@ -41,7 +42,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { putWhitelistApi, getWhitelistApi } from '@/api/config'
 export default {
   name: '',
@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       loading: false,
-      title: i18n.t('legacyScript.selectWhitelistedEmployees'),
+      title: $('legacyScript.selectWhitelistedEmployees'),
       departmentObj: {
         userList: [], // 选择成员
         adminList: []

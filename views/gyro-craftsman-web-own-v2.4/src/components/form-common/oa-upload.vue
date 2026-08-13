@@ -13,7 +13,7 @@
       >
         <el-button v-if="!percentShow" :disabled="disabled" size="small">
           <span class="iconfont iconshangchuan" />
-          {{ $ts("上传文件") }}
+          {{ $("hr.uploadfile") }}
         </el-button>
 
         <div class="addText" v-else>
@@ -34,12 +34,10 @@
 
 <script>
 import { uploader } from '@/utils/uploadCloud'
-import i18n from '@/utils/i18n'
 import helper from '@/libs/helper'
 
 export default {
   name: 'OaUpload',
-  mixins: [i18n],
   props: {
     value: {
       type: Array,
@@ -146,7 +144,7 @@ export default {
       if (this.maxSize) {
         let fileSizeCheckResult = params.file.size / 1024 / 1024 <= this.maxSize
         if (!fileSizeCheckResult) {
-          this.$message.error(this.i18nt('render.hint.fileSizeExceed') + this.maxSize + 'MB')
+          this.$message.error(this.$('render.hint.fileSizeExceed') + this.maxSize + 'MB')
           return false
         }
       }

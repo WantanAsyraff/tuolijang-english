@@ -2,8 +2,8 @@
 <template>
   <div class="assess-left">
     <div class="el-card__header">
-      <span class="pull-left">{{ $ts("公告类型") }}</span>
-      <el-tooltip :content='$ts("添加公告类型")' effect="dark" placement="top">
+      <span class="pull-left">{{ $("legacy.e9673382c4ec93d7") }}</span>
+      <el-tooltip :content='$("legacy.0df0244aea1cb42c")' effect="dark" placement="top">
         <span class="iconfont icontianjia pull-right pointer" @click="addCategory"></span>
       </el-tooltip>
     </div>
@@ -27,8 +27,8 @@
               @after-enter="handleShow(item.id)"
             >
               <div class="right-item-list">
-                <div class="right-item" @click.stop="addDivsion(item.id)">{{ $t('public.edit') }}</div>
-                <div class="right-item" @click.stop="handleDelete(item.id)">{{ $t('public.delete') }}</div>
+                <div class="right-item" @click.stop="addDivsion(item.id)">{{ $('public.edit') }}</div>
+                <div class="right-item" @click.stop="handleDelete(item.id)">{{ $('public.delete') }}</div>
               </div>
               <div
                 slot="reference"

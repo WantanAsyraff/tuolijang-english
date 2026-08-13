@@ -1,3 +1,4 @@
+import { $, setLanguage } from '@/lang'
 <template>
   <div class="form-widget-container" @click="handleCanvasClick">
     <el-form
@@ -58,13 +59,11 @@
 <script>
 import Draggable from 'vuedraggable'
 // import FieldComponents from '../charts-widget/index'
-import i18n, { changeLocale } from '@/utils/i18n'
 import EmptyPlaceholder from './EmptyPlaceholder.vue'
 
 export default {
   name: 'VFormWidget',
   componentName: 'VFormWidget',
-  mixins: [i18n],
   components: {
     Draggable,
     EmptyPlaceholder
@@ -218,7 +217,7 @@ export default {
     },
     getWidgetRef(o, e = !1) {
       let n = this.widgetRefList[o]
-      return !n && !!e && this.$message.error(this.i18nt('designer.hint.refNotFound') + o), n
+      return !n && !!e && this.$message.error(this.$('designer.hint.refNotFound') + o), n
     },
     getSelectedWidgetRef() {
       let o = this.designer.selectedWidgetName

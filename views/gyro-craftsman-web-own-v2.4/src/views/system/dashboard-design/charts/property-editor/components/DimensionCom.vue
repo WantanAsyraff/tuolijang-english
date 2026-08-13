@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <div class="item-tag" v-for="(tag, inx) of list" :key="inx" ref="buttonRef">
@@ -24,19 +25,19 @@
         <template #reference v-if="chartType !== 'statistic'">
           <div class="popover-item">
             <!-- <i class="el-icon-edit-outline"></i> -->
-            <el-tooltip class="item" effect="dark" :content="$t('ui.systemDashboardDesignChartsPropertyEditorDimensionComEditDisplayName')" placement="top">
+            <el-tooltip class="item" effect="dark" :content="$('ui.systemDashboardDesignChartsPropertyEditorDimensionComEditDisplayName')" placement="top">
               <SvgIcon class="svg-icon" icon-class="iconbianji3" @click="openVisible(inx)"></SvgIcon>
             </el-tooltip>
           </div>
         </template>
         <div class="popover-div" style="padding: 10px">
-          <div class="popover-name">{{ $t("ui.systemDashboardDesignChartsPropertyEditorDimensionComEditDisplayName") }}</div>
+          <div class="popover-name">{{ $("ui.systemDashboardDesignChartsPropertyEditorDimensionComEditDisplayName") }}</div>
           <div class="w-100">
             <el-input v-model="tag.editAlias" size="small"></el-input>
           </div>
           <div class="w-100 mt-10" style="text-align: right">
-            <el-button size="small" @click="cannerAlias(inx)">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-            <el-button size="small" type="primary" @click="confirmAlias(tag, inx)">{{ $t("ui.settingEnterpriseUpgradeIndexOk") }}</el-button>
+            <el-button size="small" @click="cannerAlias(inx)">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+            <el-button size="small" type="primary" @click="confirmAlias(tag, inx)">{{ $("ui.settingEnterpriseUpgradeIndexOk") }}</el-button>
           </div>
         </div>
       </el-popover>
@@ -49,7 +50,7 @@
         popper-class="fields-popover"
         ref="summaryPopoverRefs"
       >
-        <div class="popover-name">{{ $t("ui.systemDashboardDesignChartsPropertyEditorDimensionComAggregationMethod") }}</div>
+        <div class="popover-name">{{ $("ui.systemDashboardDesignChartsPropertyEditorDimensionComAggregationMethod") }}</div>
         <div class="popover-div">
           <template v-for="(summary, summaryInx) of modeValue(tag)">
             <div
@@ -65,7 +66,7 @@
         <template #reference>
           <div class="popover-item">
             <!-- <i class="el-icon-document-checked"></i> -->
-            <el-tooltip class="item" effect="dark" :content="$t('ui.systemDashboardDesignChartsPropertyEditorDimensionComAggregationMethod')" placement="top">
+            <el-tooltip class="item" effect="dark" :content="$('ui.systemDashboardDesignChartsPropertyEditorDimensionComAggregationMethod')" placement="top">
               <SvgIcon class="svg-icon" icon-class="iconhuizong"></SvgIcon>
             </el-tooltip>
           </div>
@@ -80,20 +81,20 @@
         popper-class="fields-popover"
         ref="sortPopoverRefs"
       >
-        <div class="popover-name">{{ $t("ui.businessExamineIndexSort") }}</div>
+        <div class="popover-name">{{ $("ui.businessExamineIndexSort") }}</div>
         <div class="popover-div">
-          <div class="popover-item" :class="{ 'is-active': !tag.sort }" @click="onSort(tag, '', inx)">{{ $t("ui.systemDashboardDesignChartsPropertyEditorDimensionComDefault") }}</div>
+          <div class="popover-item" :class="{ 'is-active': !tag.sort }" @click="onSort(tag, '', inx)">{{ $("ui.systemDashboardDesignChartsPropertyEditorDimensionComDefault") }}</div>
           <div class="popover-item" :class="{ 'is-active': tag.sort == 'asc' }" @click="onSort(tag, 'asc', inx)">
-            {{ $t("ui.systemDashboardDesignChartsPropertyEditorDimensionComAscending") }}
+            {{ $("ui.systemDashboardDesignChartsPropertyEditorDimensionComAscending") }}
           </div>
           <div class="popover-item" :class="{ 'is-active': tag.sort == 'desc' }" @click="onSort(tag, 'desc', inx)">
-            {{ $t("ui.systemDashboardDesignChartsPropertyEditorDimensionComDescending") }}
+            {{ $("ui.systemDashboardDesignChartsPropertyEditorDimensionComDescending") }}
           </div>
         </div>
         <template #reference v-if="chartType !== 'statistic'">
           <div class="popover-item">
             <!-- <i class="el-icon-sort"></i> -->
-            <el-tooltip class="item" effect="dark" :content="$t('ui.systemDashboardDesignChartsPropertyEditorDimensionComSortMethod')" placement="top">
+            <el-tooltip class="item" effect="dark" :content="$('ui.systemDashboardDesignChartsPropertyEditorDimensionComSortMethod')" placement="top">
               <SvgIcon class="svg-icon" icon-class="iconpaixu2"></SvgIcon>
             </el-tooltip>
           </div>
@@ -109,18 +110,18 @@
         ref="summaryPopoverRefs"
       >
         <div class="pr-20 thousands-separator-div">
-          <div class="popover-name">{{ $t("ui.systemDashboardDesignChartsPropertyEditorDimensionComDataFormat") }}</div>
+          <div class="popover-name">{{ $("ui.systemDashboardDesignChartsPropertyEditorDimensionComDataFormat") }}</div>
           <el-form label-width="120">
             <el-form-item label="">
               <div class="w-100">
                 <el-checkbox
                   :disabled="needDisabledType()"
                   v-model="dialogConf.data.thousandsSeparator"
-                  :label="$t('ui.systemDashboardDesignChartsPropertyEditorDimensionComThousandsSeparator')"
+                  :label="$('ui.systemDashboardDesignChartsPropertyEditorDimensionComThousandsSeparator')"
                 />
               </div>
               <div class="w-100">
-                <el-checkbox v-model="dialogConf.data.showDecimalPlaces" :label="$t('ui.systemDashboardDesignChartsPropertyEditorDimensionComDecimalPlaces')" />
+                <el-checkbox v-model="dialogConf.data.showDecimalPlaces" :label="$('ui.systemDashboardDesignChartsPropertyEditorDimensionComDecimalPlaces')" />
                 <span class="decimal-places" v-if="dialogConf.data.showDecimalPlaces">
                   <el-input-number
                     style="width: 150px"
@@ -134,7 +135,7 @@
               <div class="w-100">
                 <el-checkbox
                   v-model="dialogConf.data.showNumericUnits"
-                  :label="$t('ui.systemDashboardDesignChartsPropertyEditorDimensionComNumberScale')"
+                  :label="$('ui.systemDashboardDesignChartsPropertyEditorDimensionComNumberScale')"
                   :disabled="needDisabledType()"
                 />
                 <span class="decimal-places" v-if="dialogConf.data.showNumericUnits">
@@ -153,7 +154,7 @@
                 </span>
               </div>
             </el-form-item>
-            <el-form-item :label="$t('ui.systemDashboardDesignChartsPropertyEditorDimensionComPreview')">
+            <el-form-item :label="$('ui.systemDashboardDesignChartsPropertyEditorDimensionComPreview')">
               <div
                 class="show-preview yichu"
                 :title="getPreviewNum() + (dialogConf.data.numericUnits == '无' ? '' : dialogConf.data.numericUnits)"
@@ -165,15 +166,15 @@
               </div>
             </el-form-item>
             <el-form-item label=" ">
-              <el-button @click="confirmDataFormat" type="primary">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
-              <el-button @click="dialogConf.isShow = false">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
+              <el-button @click="confirmDataFormat" type="primary">{{ $("ui.formCommonDialogFormOk") }}</el-button>
+              <el-button @click="dialogConf.isShow = false">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
             </el-form-item>
           </el-form>
         </div>
         <template #reference>
           <div class="popover-item">
             <!-- <i class="el-icon-finished"></i> -->
-            <el-tooltip class="item" effect="dark" :content="$t('ui.systemDashboardDesignChartsPropertyEditorDimensionComDataFormat')" placement="top">
+            <el-tooltip class="item" effect="dark" :content="$('ui.systemDashboardDesignChartsPropertyEditorDimensionComDataFormat')" placement="top">
               <SvgIcon class="svg-icon" icon-class="iconshuju2" @click="showDataFormat(tag, inx)"></SvgIcon>
             </el-tooltip>
           </div>
@@ -188,7 +189,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { mapGetters } from 'vuex'
 import SvgIcon from '@/components/svg-icon-nc'
 export default {
@@ -238,16 +238,16 @@ export default {
       visibles: [],
       list: this.modelValue,
       calcMode: [
-        { label: i18n.t('legacyScript.sum'), type: 'N', code: 'sum' },
-        { label: i18n.t('legacyScript.count'), type: 'N|T', code: 'count' },
-        { label: i18n.t('legacyScript.deduplicatedCount'), type: 'N|T', code: 'uniqid_count' },
-        { label: i18n.t('legacyScript.average'), type: 'N', code: 'avg' },
-        { label: i18n.t('legacyScript.maximumValue'), type: 'N', code: 'max' },
-        { label: i18n.t('legacyScript.minimumValue'), type: 'N', code: 'min' }
+        { label: $('legacyScript.sum'), type: 'N', code: 'sum' },
+        { label: $('legacyScript.count'), type: 'N|T', code: 'count' },
+        { label: $('legacyScript.deduplicatedCount'), type: 'N|T', code: 'uniqid_count' },
+        { label: $('legacyScript.average'), type: 'N', code: 'avg' },
+        { label: $('legacyScript.maximumValue'), type: 'N', code: 'max' },
+        { label: $('legacyScript.minimumValue'), type: 'N', code: 'min' }
       ],
       textMode: [
-        { label: i18n.t('legacyScript.count'), type: 'N|T', code: 'count' },
-        { label: i18n.t('legacyScript.deduplicatedCount'), type: 'N|T', code: 'uniqid_count' }
+        { label: $('legacyScript.count'), type: 'N|T', code: 'count' },
+        { label: $('legacyScript.deduplicatedCount'), type: 'N|T', code: 'uniqid_count' }
       ],
       CalcMode: {
         sum: '求和',
@@ -259,15 +259,15 @@ export default {
       },
       numType: ['Integer', 'Decimal', 'Percent', 'Money'],
       options: [
-        { value: i18n.t('ui.xmindEditorNodeHyperlinkNone'), label: i18n.t('ui.xmindEditorNodeHyperlinkNone') },
+        { value: $('ui.xmindEditorNodeHyperlinkNone'), label: $('ui.xmindEditorNodeHyperlinkNone') },
         { value: '%', label: '%' },
-        { value: i18n.t('legacyScript.yuan'), label: i18n.t('legacyScript.yuan') },
-        { value: i18n.t('legacyScript.tenThousandYuan'), label: i18n.t('legacyScript.tenThousandYuan') },
-        { value: i18n.t('legacyScript.hundredMillion'), label: i18n.t('legacyScript.hundredMillion') },
-        { value: i18n.t('legacyScript.uSD'), label: i18n.t('legacyScript.uSD') },
-        { value: i18n.t('file.individual'), label: i18n.t('file.individual') },
-        { value: i18n.t('legacyScript.text1Position'), label: i18n.t('legacyScript.text1Position') },
-        { value: i18n.t('access.day'), label: i18n.t('access.day') }
+        { value: $('legacyScript.yuan'), label: $('legacyScript.yuan') },
+        { value: $('legacyScript.tenThousandYuan'), label: $('legacyScript.tenThousandYuan') },
+        { value: $('legacyScript.hundredMillion'), label: $('legacyScript.hundredMillion') },
+        { value: $('legacyScript.uSD'), label: $('legacyScript.uSD') },
+        { value: $('file.individual'), label: $('file.individual') },
+        { value: $('legacyScript.text1Position'), label: $('legacyScript.text1Position') },
+        { value: $('access.day'), label: $('access.day') }
       ],
       sortPopoverRefs: null,
       dialogConf: {

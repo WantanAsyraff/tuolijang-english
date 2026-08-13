@@ -1,7 +1,7 @@
 <template>
 <div class="room-content">
   <el-form ref="ruleForm" :model="ruleForm" class="form-box" label-width="140px">
-    <el-form-item :label="$t('setting.headportrait') + '：'" prop="business_license">
+    <el-form-item :label="$('setting.headportrait') + '：'" prop="business_license">
       <el-row class="upload-content">
         <el-col :span="8" class="left">
           <el-upload
@@ -26,61 +26,61 @@
           </div>
         </el-col>
         <el-col :span="8" class="right">
-          <p>{{ $t("ui.settingUserRoomIndexRecommendedImageResolutionIs8080AndTheFile") }}</p>
-          <p>{{ $t("ui.settingUserRoomIndexSupportsJpgJpegGifAndPngImages") }}</p></el-col
+          <p>{{ $("ui.settingUserRoomIndexRecommendedImageResolutionIs8080AndTheFile") }}</p>
+          <p>{{ $("ui.settingUserRoomIndexSupportsJpgJpegGifAndPngImages") }}</p></el-col
         >
       </el-row>
     </el-form-item>
-    <el-form-item :label="$t('setting.name') + '：'" prop="enterprise_name">
-      <el-input v-model="ruleForm.name" :placeholder="$t('setting.title')" clearable size="small" />
+    <el-form-item :label="$('setting.name') + '：'" prop="enterprise_name">
+      <el-input v-model="ruleForm.name" :placeholder="$('setting.title')" clearable size="small" />
     </el-form-item>
-    <el-form-item :label="$t('setting.userid') + '：'" prop="enterprise_name">
+    <el-form-item :label="$('setting.userid') + '：'" prop="enterprise_name">
       <div class="flex-item">
-        <el-input v-model="ruleForm.uid" :placeholder="$t('setting.useridtitle')" disabled size="small" />
+        <el-input v-model="ruleForm.uid" :placeholder="$('setting.useridtitle')" disabled size="small" />
         <el-button :data-clipboard-text="ruleForm.uid" class="btns text-action copy-data" type="text" @click="copy">
-          {{ $t('setting.copy') }}
+          {{ $('setting.copy') }}
         </el-button>
       </div>
     </el-form-item>
-    <el-form-item :label="$t('setting.phone') + '：'" prop="enterprise_name">
+    <el-form-item :label="$('setting.phone') + '：'" prop="enterprise_name">
       <div v-show="isEditPhone" class="flex-item">
-        <el-input v-model="ruleForm.phone" :placeholder="$t('setting.phonetitle')" disabled size="small" />
+        <el-input v-model="ruleForm.phone" :placeholder="$('setting.phonetitle')" disabled size="small" />
         <el-button class="btns text-action" type="text" @click="isEditPhone = false">
-          {{ $t('setting.changephone') }}
+          {{ $('setting.changephone') }}
         </el-button>
       </div>
       <div v-show="isEditPhone === false" class="flex-item">
-        <el-input v-model="newPhone" :placeholder="$t('setting.phonetitle')" size="small" />
+        <el-input v-model="newPhone" :placeholder="$('setting.phonetitle')" size="small" />
         <el-button :disabled="disabled" class="button ml10" size="small" type="primary" @click="getCode">{{
           text
         }}</el-button>
       </div>
     </el-form-item>
-    <el-form-item v-show="isEditPhone === false" :label="$t('login.code') + '：'" prop="enterprise_name">
-      <el-input v-model="verification_code" :placeholder="$t('login.codetitle')" size="small" type="text" />
+    <el-form-item v-show="isEditPhone === false" :label="$('login.code') + '：'" prop="enterprise_name">
+      <el-input v-model="verification_code" :placeholder="$('login.codetitle')" size="small" type="text" />
 
       <el-button class="btns text-action" type="text" @click="isEditPhone = true">
-        {{ $t('public.cancel') }}
+        {{ $('public.cancel') }}
       </el-button>
     </el-form-item>
-    <el-form-item :label="$t('ui.settingUserRoomIndexPassword')" prop="password">
+    <el-form-item :label="$('ui.settingUserRoomIndexPassword')" prop="password">
       <div v-show="isEditPassword" class="flex-item">
         <el-input
           v-model="ruleForm.password"
-          :placeholder="$t('login.title2')"
+          :placeholder="$('login.title2')"
           auto-complete="on"
           disabled
           size="small"
           type="password"
         />
         <el-button class="btns text-action" type="text" @click="replacePwd">
-          {{ $t('login.changepassword') }}
+          {{ $('login.changepassword') }}
         </el-button>
       </div>
       <div v-show="isEditPassword === false" class="flex-item" prop="newPassword">
         <el-input
           v-model="newPassword"
-          :placeholder="$t('login.title2')"
+          :placeholder="$('login.title2')"
           auto-complete="on"
           size="small"
           show-password
@@ -89,43 +89,43 @@
         />
       </div>
     </el-form-item>
-    <el-form-item v-show="isEditPassword === false" :label="$t('ui.settingUserRoomIndexConfirmPassword')" prop="enterprise_name">
-      <el-input v-model="password_confirm" :placeholder="$t('ui.settingUserRoomIndexPleaseEnterAPassword')" size="small" type="password" show-password />
+    <el-form-item v-show="isEditPassword === false" :label="$('ui.settingUserRoomIndexConfirmPassword')" prop="enterprise_name">
+      <el-input v-model="password_confirm" :placeholder="$('ui.settingUserRoomIndexPleaseEnterAPassword')" size="small" type="password" show-password />
       <el-button class="btns text-action" type="text" @click="cancelPwd">
-        {{ $t('public.cancel') }}
+        {{ $('public.cancel') }}
       </el-button>
     </el-form-item>
-    <el-form-item :label="$t('setting.mailbox') + '：'" prop="enterprise_name">
-      <el-input v-model="ruleForm.email" :placeholder="$t('setting.mailboxtitle')" clearable size="small" />
+    <el-form-item :label="$('setting.mailbox') + '：'" prop="enterprise_name">
+      <el-input v-model="ruleForm.email" :placeholder="$('setting.mailboxtitle')" clearable size="small" />
     </el-form-item>
-    <el-form-item :label="$t('ui.settingUserRoomIndexWeCom')" prop="enterprise_name">
+    <el-form-item :label="$('ui.settingUserRoomIndexWeCom')" prop="enterprise_name">
       <el-input v-model="work_member_id" disabled size="small" />
 
       <template v-if="userInfo.work_member_id != 0">
-        <el-button class="btns text-action" type="text" @click="bindChangeWork()">{{ $t("ui.settingUserRoomIndexReplace") }} </el-button>
-        <el-button class="btns text-action" type="text" @click="unbindWork()">{{ $t("ui.settingUserRoomIndexUnbind") }} </el-button>
+        <el-button class="btns text-action" type="text" @click="bindChangeWork()">{{ $("ui.settingUserRoomIndexReplace") }} </el-button>
+        <el-button class="btns text-action" type="text" @click="unbindWork()">{{ $("ui.settingUserRoomIndexUnbind") }} </el-button>
       </template>
-      <el-button v-else class="btns text-action" type="text" @click="bindWork()">{{ $t("ui.settingUserRoomIndexBind") }} </el-button>
+      <el-button v-else class="btns text-action" type="text" @click="bindWork()">{{ $("ui.settingUserRoomIndexBind") }} </el-button>
     </el-form-item>
     <el-form-item label="McpKey：" prop="mcpKey">
       <div class="flex-item">
         <el-input v-model="ruleForm.mcpKey" disabled size="small" />
-        <el-button class="btns text-action" type="text" @click="refreshMcpKey">{{ $t("ui.settingUserRoomIndexUpdate") }}</el-button>
+        <el-button class="btns text-action" type="text" @click="refreshMcpKey">{{ $("ui.settingUserRoomIndexUpdate") }}</el-button>
         <el-button
           :data-clipboard-text="ruleForm.mcpKey"
           class="btns text-action copy-mcp-data"
           type="text"
           @click="copyMcpKey"
         >
-          {{ $t('setting.copy') }}
+          {{ $('setting.copy') }}
         </el-button>
       </div>
     </el-form-item>
   </el-form>
   <div class="room-footer btn-shadow">
-    <el-button size="small" @click="cancel">{{ $t('public.cancel') }}</el-button>
+    <el-button size="small" @click="cancel">{{ $('public.cancel') }}</el-button>
     <el-button size="small" type="primary" @click="preserve">
-      {{ $t('public.save') }}
+      {{ $('public.save') }}
     </el-button>
   </div>
   <!-- 企微登录 -->
@@ -236,7 +236,7 @@ export default {
       this.$nextTick(() => {
         const clipboard = new ClipboardJS('.copy-data')
         clipboard.on('success', () => {
-          this.$message.success(this.$t('setting.copytitle'))
+          this.$message.success(this.$('setting.copytitle'))
           clipboard.destroy()
         })
         this.$store.commit('app/SET_CLICK_TAB', false)
@@ -246,7 +246,7 @@ export default {
       this.$nextTick(() => {
         const clipboard = new ClipboardJS('.copy-mcp-data')
         clipboard.on('success', () => {
-          this.$message.success(this.$t('setting.copytitle'))
+          this.$message.success(this.$('setting.copytitle'))
           clipboard.destroy()
         })
         this.$store.commit('app/SET_CLICK_TAB', false)
@@ -313,7 +313,7 @@ export default {
       }
 
       if (!this.newPassword) {
-        this.$message.error(this.$t('login.title2'))
+        this.$message.error(this.$('login.title2'))
         return false
       }
       const data = { password: this.newPassword, password_confirm: this.password_confirm }
@@ -329,9 +329,9 @@ export default {
       getCmsKeyApi().then((res) => {
         const cmsKey = res.data.key
         const exp = helper.phoneReg
-        if (!this.newPhone) return this.$message.error(this.$t('login.title1'))
+        if (!this.newPhone) return this.$message.error(this.$('login.title1'))
         if (!exp.test(this.newPhone)) {
-          return this.$message.error(this.$t('login.title9'))
+          return this.$message.error(this.$('login.title9'))
         }
         getCmsApi({
           phone: this.newPhone,
@@ -349,15 +349,15 @@ export default {
     confirmBnt() {
       const exp = helper.phoneReg
       if (!this.verification_code || !this.newPhone) {
-        this.$message.error(this.$t('login.rules'))
+        this.$message.error(this.$('login.rules'))
         return false
       }
       if (!exp.test(this.newPhone)) {
-        this.$message.error(this.$t('login.title9'))
+        this.$message.error(this.$('login.title9'))
         return false
       }
       if (!/^\d{6}$/.test(this.verification_code)) {
-        this.$message.error(this.$t('login.title5'))
+        this.$message.error(this.$('login.title5'))
         return false
       }
       this.ruleForm.phone = this.newPhone

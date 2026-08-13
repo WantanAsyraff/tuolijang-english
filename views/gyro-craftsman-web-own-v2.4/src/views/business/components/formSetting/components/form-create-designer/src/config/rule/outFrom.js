@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 import { makeRequiredRule } from '../../utils'
 
@@ -37,8 +37,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: i18n.t('legacyScript.pleaseEnterTheReasonForGoingOut') },
-          title: i18n.t('legacyScript.reasonForGoingOut'),
+          props: { type: 'textarea', placeholder: $('legacyScript.pleaseEnterTheReasonForGoingOut') },
+          title: $('legacyScript.reasonForGoingOut'),
           _fc_drag_tag: 'textarea'
         }
       ]
@@ -86,7 +86,7 @@ export default {
         info: '',
         props: {
           value: '1.外出数据将自动同步至考勤报表',
-          title: i18n.t('legacyScript.outOfOfficeRules')
+          title: $('legacyScript.outOfOfficeRules')
         },
         input: false,
         title: '',

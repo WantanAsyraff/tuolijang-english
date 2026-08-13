@@ -1,4 +1,5 @@
-﻿<!-- 财务-账目记录-收支记账页面 -->
+import { $ } from '@/lang'
+<!-- 财务-账目记录-收支记账页面 -->
 <template>
   <div class="divBox">
     <el-card class="normal-page">
@@ -22,42 +23,42 @@
           style="width: 100%"
           @sort-change="sortChange"
         >
-          <el-table-column :label="$t('finance.entrytime')" min-width="160" prop="edit_time" sortable />
-          <el-table-column :label="$t('finance.accounttype')" min-width="100" prop="types">
+          <el-table-column :label="$('finance.entrytime')" min-width="160" prop="edit_time" sortable />
+          <el-table-column :label="$('finance.accounttype')" min-width="100" prop="types">
             <template slot-scope="scope">
-              <el-tag v-if="scope.row.types == 0" plain size="small" type="warning">{{ $t("ui.customerContractContractPaymentExpense") }}</el-tag>
-              <el-tag v-else plain size="small" type="success">{{ $t("ui.customerContractContractPaymentIncome") }}</el-tag>
+              <el-tag v-if="scope.row.types == 0" plain size="small" type="warning">{{ $("ui.customerContractContractPaymentExpense") }}</el-tag>
+              <el-tag v-else plain size="small" type="success">{{ $("ui.customerContractContractPaymentIncome") }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.fdEnterpriseListIndexIncomeExpenseAmountYuan')" min-width="120" prop="num" show-overflow-tooltip>
+          <el-table-column :label="$('ui.fdEnterpriseListIndexIncomeExpenseAmountYuan')" min-width="120" prop="num" show-overflow-tooltip>
             <template slot-scope="scope">
               <div v-if="scope.row.types !== 10">
                 {{ scope.row.num }}
               </div>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('finance.mode')" min-width="120" prop="pay_type" />
-          <el-table-column :label="$t('finance.accounttabtype')" min-width="120" prop="cate.name" />
-          <el-table-column :label="$t('ui.administrationMaterialFixedLogOperationTime')" min-width="180" prop="updated_at" sortable />
-          <el-table-column :label="$t('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="180" prop="mark" show-overflow-tooltip>
+          <el-table-column :label="$('finance.mode')" min-width="120" prop="pay_type" />
+          <el-table-column :label="$('finance.accounttabtype')" min-width="120" prop="cate.name" />
+          <el-table-column :label="$('ui.administrationMaterialFixedLogOperationTime')" min-width="180" prop="updated_at" sortable />
+          <el-table-column :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="180" prop="mark" show-overflow-tooltip>
             <template slot-scope="scope">{{
               scope.row.client_bill ? scope.row.client_bill.mark||'--' : scope.row.mark||'--'
             }}</template>
           </el-table-column>
-          <el-table-column :label="$t('public.operation')" prop="types" width="200">
+          <el-table-column :label="$('public.operation')" prop="types" width="200">
             <template slot-scope="scope">
               <div v-if="scope.row.types !== 10">
                 <el-button v-hasPermi="['fd:enterprise:list:check']" type="text" @click="handleCheck(scope.row)"
-                  >{{ $t("ui.layoutNoticeNoticeListView") }}</el-button
+                  >{{ $("ui.layoutNoticeNoticeListView") }}</el-button
                 >
                 <el-button v-hasPermi="['fd:enterprise:list:edit']" type="text" @click="handleEdit(scope.row)">{{
-                  $t('public.edit')
+                  $('public.edit')
                 }}</el-button>
                 <el-button
                   v-hasPermi="['fd:enterprise:list:delete']"
                   type="text"
                   @click="handleDelete(scope.row, scope.$index)"
-                  >{{ $t('public.delete') }}</el-button
+                  >{{ $('public.delete') }}</el-button
                 >
               </div>
             </template>
@@ -66,23 +67,23 @@
         <div class="footer flex">
           <div v-if="where.types === ''" class="expend ml14">
             <span
-              >{{ $t("ui.fdEnterpriseListIndexInflow") }} <span class="income">{{ totalIncome }} </span>
+              >{{ $("ui.fdEnterpriseListIndexInflow") }} <span class="income">{{ totalIncome }} </span>
             </span>
 
             <span
-              >{{ $t("ui.fdEnterpriseListIndexOutflow") }} <span class="expend-color">{{ totalExpend }} </span>
+              >{{ $("ui.fdEnterpriseListIndexOutflow") }} <span class="expend-color">{{ totalExpend }} </span>
             </span>
 
             <span>
-              {{ $t("ui.fdEnterpriseListIndexNet") }} <span :class="getNum() > 0 ? 'positive' : 'positiveF'">{{ getNum() }}</span></span
+              {{ $("ui.fdEnterpriseListIndexNet") }} <span :class="getNum() > 0 ? 'positive' : 'positiveF'">{{ getNum() }}</span></span
             >
           </div>
           <div v-else class="expend ml14">
             <span v-if="where.types == 1"
-              >{{ $t('finance.totalrevenue') }}: <span class="income">{{ totalIncome }}</span></span
+              >{{ $('finance.totalrevenue') }}: <span class="income">{{ totalIncome }}</span></span
             >
             <span v-if="where.types == 0"
-              >{{ $t('finance.totalexpenditure') }}: <span class="expend-color">{{ totalExpend }}</span></span
+              >{{ $('finance.totalexpenditure') }}: <span class="expend-color">{{ totalExpend }}</span></span
             >
           </div>
           <div class="page-fixed">
@@ -109,7 +110,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   billListApi,
   billListEditApi,
@@ -143,7 +143,7 @@ export default {
         data: [],
         cols: [{ wpx: 70 }, { wpx: 70 }, { wpx: 120 }, { wpx: 140 }, { wpx: 120 }]
       },
-      saveName: 'Export Income and Expense Recording Template.xlsx',
+      saveName: '导出收支记账模板.xlsx',
       where: {
         page: 1,
         limit: 15,
@@ -212,23 +212,8 @@ export default {
       this.$refs.importExcel.btnClick()
     },
     normalizeImportType(value) {
-  const prefixes = [
-    this.$ts('示例'),
-    this.$ts('示例')
-  ]
-
-  const escapedPrefixes = [...new Set(prefixes)]
-    .map(text => String(text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-
-  const pattern = new RegExp(
-    `^(?:${escapedPrefixes.join('|')})\\s*[:：]\\s*`,
-    'i'
-  )
-
-  return String(value ?? '')
-    .replace(pattern, '')
-    .trim()
-  },
+      return String(value || '').replace(/^示例[:：]/, '').trim()
+    },
     parseImportDate(value) {
       if (value instanceof Date) {
         return this.$moment(value).isValid() ? this.$moment(value).format('YYYY-MM-DD HH:mm:ss') : ''
@@ -252,7 +237,6 @@ export default {
     },
     buildImportRow(row, rowIndex) {
       const rawType = String(row[0] || '').trim()
-      // This does not need localization because it is checking imported data, not showing text to the user.
       if (/^示例[:：]/.test(rawType)) {
         return null
       }
@@ -260,24 +244,15 @@ export default {
       if (!types || types.includes('账目类型')) {
         return null
       }
-
       if (!['收入', '支出'].includes(types)) {
-        const message = this
-          .$ts('第{row}行账目类型只能填写收入或支出')
-          .replace('{row}', String(rowIndex + 1))
-
-        throw new Error(message)
+        throw new Error(`第${rowIndex + 1}行账目类型只能填写收入或支出`)
       }
       const dateAtColumn4 = this.parseImportDate(row[3])
       const dateAtColumn5 = this.parseImportDate(row[4])
       const useTemplateOrder = !dateAtColumn4 && !!dateAtColumn5
       const editTime = useTemplateOrder ? dateAtColumn5 : dateAtColumn4
-            if (!editTime) {
-        const message = this
-          .$ts('第{row}行收支时间格式不正确')
-          .replace('{row}', String(rowIndex + 1))
-
-        throw new Error(message)
+      if (!editTime) {
+        throw new Error(`第${rowIndex + 1}行收支时间格式不正确`)
       }
       return {
         types,
@@ -292,7 +267,7 @@ export default {
     importExcelData(data) {
       const res = []
       if (data.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.batchImportContentIsEmpty'))
+        this.$message.error($('legacyScript.batchImportContentIsEmpty'))
       } else {
         try {
           for (let i = 0; i <= data.length - 1; i++) {
@@ -306,7 +281,7 @@ export default {
           return
         }
         if (!res.length) {
-          this.$message.error(i18n.t('legacyScript.noValidImportDataRead'))
+          this.$message.error($('legacyScript.noValidImportDataRead'))
           return
         }
         const data_s = {
@@ -352,12 +327,12 @@ export default {
       this.saveName = '导出账目模板.xlsx'
       let aoaData = [
         [
-          this.$t('finance.accounttabtitle'),
-          this.$t('finance.accounttabtype'),
-          this.$t('finance.accounttabmoney'),
-          this.$t('finance.entrytime'),
-          this.$t('finance.accountpay'),
-          this.$t('finance.accounttabremark')
+          this.$('finance.accounttabtitle'),
+          this.$('finance.accounttabtype'),
+          this.$('finance.accounttabmoney'),
+          this.$('finance.entrytime'),
+          this.$('finance.accountpay'),
+          this.$('finance.accounttabremark')
         ]
       ]
 
@@ -375,12 +350,12 @@ export default {
       this.saveName = '导出账目_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
       let aoaData = [
         [
-          this.$t('finance.accounttabtitle'),
-          this.$t('finance.accounttabtype'),
-          this.$t('finance.accounttabmoney'),
-          this.$t('finance.entrytime'),
-          this.$t('finance.accountpay'),
-          this.$t('finance.accounttabremark')
+          this.$('finance.accounttabtitle'),
+          this.$('finance.accounttabtype'),
+          this.$('finance.accounttabmoney'),
+          this.$('finance.entrytime'),
+          this.$('finance.accountpay'),
+          this.$('finance.accounttabremark')
         ]
       ]
 
@@ -396,7 +371,7 @@ export default {
         if (data.length > 0) {
           data.forEach((value) => {
             aoaData.push([
-              value.types == 0 ? this.$t('finance.pay') : this.$t('finance.income'),
+              value.types == 0 ? this.$('finance.pay') : this.$('finance.income'),
               value.cate ? value.cate.name : '',
               value.num,
               value.edit_time,
@@ -460,7 +435,7 @@ export default {
     },
     // 删除
     async handleDelete(item, index) {
-      await this.$modalSure(this.$t('finance.message4'))
+      await this.$modalSure(this.$('finance.message4'))
       await billListDeleteApi(item.id)
       this.getTableData()
     },

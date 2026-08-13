@@ -1,24 +1,24 @@
 <template>
   <div class="errPage-container">
-    <el-button icon="el-icon-arrow-left" type="primary" @click="$router.back()"> {{ $ts("返回") }} </el-button>
+    <el-button icon="el-icon-arrow-left" type="primary" @click="$router.back()"> {{ $("access.return") }} </el-button>
     <el-row>
       <el-col :span="12">
         <h1 class="text-jumbo text-ginormous">Oops!</h1>
-        <h2>{{ $ts("你没有权限访问该页面") }}</h2>
-        <h6>{{ $ts("如有不满请联系你领导") }}</h6>
+        <h2>{{ $("legacy.92a9abf2f57b9c19") }}</h2>
+        <h6>{{ $("legacy.43d16dc5680e51e8") }}</h6>
         <ul class="list-unstyled">
-          <li>{{ $ts("或者你可以去:") }}</li>
+          <li>{{ $("legacy.e4910bef1623948d") }}</li>
           <li class="link-type">
-            <p @click="back(1)">{{ $ts("回首页") }}</p>
+            <p @click="back(1)">{{ $("legacy.32a05626b83cf41c") }}</p>
           </li>
-          <li><a href="#" @click.prevent="dialogVisible = true">{{ $ts("点我看图") }}</a></li>
+          <li><a href="#" @click.prevent="dialogVisible = true">{{ $("legacy.ae844dd13514b784") }}</a></li>
         </ul>
       </el-col>
       <el-col :span="12">
         <img :src="errGif" width="313" height="428" alt="Girl has dropped her ice cream." />
       </el-col>
     </el-row>
-    <el-dialog :visible.sync="dialogVisible" :title='$ts("随便看")'>
+    <el-dialog :visible.sync="dialogVisible" :title='$("legacy.575e09714ad8ed99")'>
       <img :src="ewizardClap" class="pan-img" />
     </el-dialog>
   </div>

@@ -1,3 +1,4 @@
+import { $, setLanguage } from '@/lang'
 <!-- @FileDescription: 低代码-表单设计页面 -->
 <template>
   <el-container class="main full-height">
@@ -53,14 +54,12 @@ import {
   getQueryParam,
   traverseAllWidgets
 } from '@/utils/formDesignerUtils'
-import i18n, { changeLocale } from '@/utils/i18n'
 import axios from 'axios'
 // import SvgIcon from '@/components/svg-icon'
 
 export default {
   name: 'VFormDesigner',
   componentName: 'VFormDesigner',
-  mixins: [i18n],
   components: {
     WidgetPanel,
     ToolbarPanel,
@@ -174,14 +173,7 @@ export default {
     loadCase() {},
 
     initLocale() {
-      let curLocale = localStorage.getItem('form_cache')
-      if (!!this.vsCodeFlag) {
-        curLocale = curLocale || 'en-US'
-      } else {
-        curLocale = curLocale || 'zh-CN'
-      }
-      this.curLangName = this.i18nt('application.' + curLocale)
-      this.changeLanguage(curLocale)
+      this.curLangName = this.$language === 'en' ? 'English' : this.$('login.chinese')
     },
 
     loadFieldListFromServer() {
@@ -211,11 +203,11 @@ export default {
 
     handleLanguageChanged(command) {
       this.changeLanguage(command)
-      this.curLangName = this.i18nt('application.' + command)
+      this.curLangName = this.$language === 'en' ? 'English' : this.$('login.chinese')
     },
 
     changeLanguage(langName) {
-      changeLocale(langName)
+      setLanguage(langName)
     },
 
     setFormJson(formJson) {

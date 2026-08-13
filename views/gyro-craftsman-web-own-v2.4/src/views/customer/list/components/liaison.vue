@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <!-- 客户-联系人页面组件 -->
 <template>
 <div class="station">
   <div class="btn-box1 mb10">
-    <div class="title-16">{{ $t("ui.customerListLiaisonContactsList") }}</div>
-    <el-button @click="addLiaison()" size="small" type="primary">{{ $t('customer.addliaison') }}</el-button>
+    <div class="title-16">{{ $("ui.customerListLiaisonContactsList") }}</div>
+    <el-button @click="addLiaison()" size="small" type="primary">{{ $('customer.addliaison') }}</el-button>
   </div>
   <customizeTable
     keyword="liaison"
@@ -14,8 +15,8 @@
     @getTableData="getTableData"
   >
     <template #options="{ data }">
-      <el-button type="text" @click="handleCheck( data)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
-      <el-button type="text" @click="deleteLiaison(data)">{{ $t("ui.chatIndexDelete") }}</el-button>
+      <el-button type="text" @click="handleCheck( data)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
+      <el-button type="text" @click="deleteLiaison(data)">{{ $("ui.chatIndexDelete") }}</el-button>
     </template>
   </customizeTable>
    <!-- 详情 -->
@@ -24,7 +25,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import liaisonDialog from '@/views/customer/list/components/liaisonDialog'
 import detailsDrawer from '@/views/customer/components/details'
 import { clientLiaisonDeleteApi, clientLiaisonListApi as liaisonViewApi } from '@/api/client'
@@ -91,7 +91,7 @@ export default {
      // 添加编辑联系人
     addLiaison(edit, row) {
       this.liaisonConfig = {
-        title: edit !== 'edit' ? this.$t('customer.addliaison') : this.$t('customer.editliaison'),
+        title: edit !== 'edit' ? this.$('customer.addliaison') : this.$('customer.editliaison'),
         width: '570px'
       }
       this.$refs.liaisonDialog.openBox(row, this.customInfo, edit)
@@ -105,7 +105,7 @@ export default {
     // 添加编辑联系人
     handleCheck(item) {
           this.detailsFromData = {
-        title: i18n.t('legacyScript.viewContact'),
+        title: $('legacyScript.viewContact'),
         width: '1000px',
         data: item,
         types: 'liaison',
@@ -114,14 +114,14 @@ export default {
 
       this.$refs.details.openBox(item.id, 'liaison')
       // this.liaisonConfig = {
-      //   title: edit !== 'edit' ? this.$t('customer.addliaison') : this.$t('customer.editliaison'),
+      //   title: edit !== 'edit' ? this.$('customer.addliaison') : this.$('customer.editliaison'),
       //   width: '570px'
       // }
       // this.$refs.liaisonDialog.openBox(row, this.customInfo, edit)
     },
 
     async deleteLiaison(row) {
-      await this.$modalSure(this.$t('customer.message07'))
+      await this.$modalSure(this.$('customer.message07'))
       await clientLiaisonDeleteApi(row.id)
       await this.getTableData()
       this.$emit('refresh-detail')

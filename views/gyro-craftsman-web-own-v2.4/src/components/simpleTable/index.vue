@@ -27,7 +27,7 @@
           </el-table-column>
         </template>
         <template v-if="showOperationColumn">
-          <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="150">
+          <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="150">
             <template #default="scope">
               <slot name="table_operation" :scope="scope" />
             </template>

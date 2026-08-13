@@ -1,11 +1,11 @@
 <template>
     <div>
-        <el-drawer :title='$ts("关联订单")' :visible.sync="show" size="1000px"  :append-to-body="true">
+        <el-drawer :title='$("customer.relatedcontract")' :visible.sync="show" size="1000px"  :append-to-body="true">
             <div class="p20">
                 <paymentTable ref="paymentTable" type="check"  @handleSelectionFn="handleSelectionFn"></paymentTable>
                 <div class="button from-foot-btn fix btn-shadow">
-                    <el-button size="small" @click="handleClose">{{ $ts("取消") }}</el-button>
-                    <el-button type="primary" size="small" @click="submit">{{ $ts("确定") }}</el-button>
+                    <el-button size="small" @click="handleClose">{{ $("public.cancel") }}</el-button>
+                    <el-button type="primary" size="small" @click="submit">{{ $("public.ok") }}</el-button>
                 </div>
             </div>
         </el-drawer>

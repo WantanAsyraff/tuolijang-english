@@ -3,18 +3,18 @@
   <el-card class="normal-page">
     <form-box ref="formBox" @confirmData="confirmData" />
     <div class="table-box">
-      <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }}{{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+      <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }}{{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
       <el-table ref="table" :data="tableData" :height="tableHeight">
-        <el-table-column prop="title" :label="$t('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" />
-        <el-table-column prop="content" :label="$t('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" />
-        <el-table-column prop="cate_name" :label="$t('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" />
-        <el-table-column prop="verify" :label="$t('ui.userNewsSubscribeNotifications')" min-width="100">
+        <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" />
+        <el-table-column prop="content" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" />
+        <el-table-column prop="cate_name" :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" />
+        <el-table-column prop="verify" :label="$('ui.userNewsSubscribeNotifications')" min-width="100">
           <template slot-scope="scope">
             <el-switch
               v-if="scope.row.is_subscribe === 2"
               :value="1"
-:active-text="$t('ui.userNewsSubscribeSubscribe')"
-:inactive-text="$t('ui.formCommonSelectLabelCancel')"
+              active-text="订阅"
+              inactive-text="取消"
               :disabled="true"
               :active-value="1"
               :inactive-value="0"
@@ -22,8 +22,8 @@
             <el-switch
               v-else
               v-model="scope.row.is_subscribe"
-:active-text="$t('ui.userNewsSubscribeSubscribe')"
-:inactive-text="$t('ui.formCommonSelectLabelCancel')"
+              active-text="订阅"
+              inactive-text="取消"
               @change="messageSubscribe(scope.row)"
               :active-value="1"
               :inactive-value="0"

@@ -1,24 +1,24 @@
 <template>
 <div>
-  <el-drawer :title="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResultProcessingRecords')" :visible.sync="drawer" size="800px" :before-close="handleClose">
+  <el-drawer :title="$('ui.hrAttendanceStatisticsRecordDrawerClockInResultProcessingRecords')" :visible.sync="drawer" size="800px" :before-close="handleClose">
     <div class="box">
       <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%;">
-        <el-table-column prop="shift_number" :label="$t('ui.hrAttendanceStatisticsRecordDrawerShiftInformation')" width="80">
+        <el-table-column prop="shift_number" :label="$('ui.hrAttendanceStatisticsRecordDrawerShiftInformation')" width="80">
           <template slot-scope="{ row }">
             {{ getShift(row.shift_number) }}
           </template>
         </el-table-column>
-        <el-table-column prop="result" :label="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="150"> </el-table-column>
-        <el-table-column prop="name" :label="$t('ui.xmindEditorToolbarNodeBtnListRemarks')" width="210" show-overflow-tooltip>
+        <el-table-column prop="result" :label="$('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" width="150"> </el-table-column>
+        <el-table-column prop="name" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" width="210" show-overflow-tooltip>
           <template slot-scope="{ row }"> {{ row.remark }}</template>
         </el-table-column>
-        <el-table-column prop="name" :label="$t('ui.hrAttendanceStatisticsRecordDrawerDataSource')" width="90">
+        <el-table-column prop="name" :label="$('ui.hrAttendanceStatisticsRecordDrawerDataSource')" width="90">
           <template slot-scope="{ row }">
-            {{ row.source == 0 ? $t('ui.hrAttendanceStatisticsRecordDrawerManualEdit') : $t('ui.hrAttendanceStatisticsRecordDrawerClockInCorrectionRequest') }}
+            {{ row.source == 0 ? $('ui.hrAttendanceStatisticsRecordDrawerManualEdit') : $('ui.hrAttendanceStatisticsRecordDrawerClockInCorrectionRequest') }}
           </template>
         </el-table-column>
-        <el-table-column prop="card.name" :label="$t('ui.administrationMaterialChartIndexOperator')" width="80"> </el-table-column>
-        <el-table-column prop="created_at" :label="$t('ui.administrationMaterialFixedLogOperationTime')" width="150"> </el-table-column>
+        <el-table-column prop="card.name" :label="$('ui.administrationMaterialChartIndexOperator')" width="80"> </el-table-column>
+        <el-table-column prop="created_at" :label="$('ui.administrationMaterialFixedLogOperationTime')" width="150"> </el-table-column>
       </el-table>
       <div class="paginationClass">
         <el-pagination

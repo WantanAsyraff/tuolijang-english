@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 图表设计-echarts组件 -->
 <template>
   <div @click="sizechange" ref="scEcharts" :style="{ height: height, width: width }"></div>
@@ -10,8 +11,26 @@ import 'echarts-liquidfill'
 echarts.registerTheme('T', T)
 const unwarp = (obj) => obj && (obj.__v_raw || obj.valueOf() || obj)
 import { EventBus } from '@/libs/bus'
-import { localizeChartOption } from '@/utils/i18ns'
-
+const FORMATTER_KEYS = new Set(['formatter', 'labelFormatter', 'tooltipFormatter', 'valueFormatter'])
+function mapDisplayValues(value, translate, seen = new WeakMap(), key = '') {
+  if (typeof value === 'string') return $(value)
+  if (typeof value === 'function' && FORMATTER_KEYS.has(key)) {
+    const original = value.__displayOriginal || value
+    const wrapped = function (...args) {
+      return mapDisplayValues(original.apply(this, args), translate)
+    }
+    Object.defineProperty(wrapped, '__displayOriginal', { value: original })
+    return wrapped
+  }
+  if (!value || typeof value !== 'object' || value instanceof Date || value instanceof RegExp) return value
+  if (seen.has(value)) return seen.get(value)
+  const result = Array.isArray(value) ? [] : {}
+  seen.set(value, result)
+  Object.keys(value).forEach((childKey) => {
+    result[childKey] = mapDisplayValues(value[childKey], translate, seen, childKey)
+  })
+  return result
+}
 export default {
   ...echarts,
   name: 'scEcharts',
@@ -36,7 +55,7 @@ export default {
       deep: true,
       handler(v) {
         unwarp(this.myChart)?.clear()
-        unwarp(this.myChart)?.setOption(localizeChartOption(v, this))
+        unwarp(this.myChart)?.setOption(mapDisplayValues(v || {}, this.$))
       }
     },
     field: {
@@ -45,7 +64,7 @@ export default {
         this.draw()
       }
     },
-    '$i18n.locale'() {
+    '$language'() {
       this.draw()
     },
     injectId(val) {
@@ -58,7 +77,7 @@ export default {
   },
   computed: {
     myOptions: function () {
-      return localizeChartOption(this.option || {}, this)
+      return mapDisplayValues(this.option || {}, this.$)
     },
     injectId() {
       return this.getScreenWidth()

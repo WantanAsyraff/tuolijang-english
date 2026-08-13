@@ -1,4 +1,5 @@
-﻿<template>
+import { $ } from '@/lang'
+<template>
 <div>
   <div class="v-height-flag">
     <el-row class="plan-title">
@@ -17,25 +18,25 @@
     <div class="box">
       <el-row :span="24" class="mb20">
         <div class="form-list">
-          <label for="" style="margin-top: 0"><span class="color-tab">*</span> {{ $t('access.openstatus') }}：</label>
+          <label for="" style="margin-top: 0"><span class="color-tab">*</span> {{ $('access.openstatus') }}：</label>
           <el-col :span="12" class="form-list-con">
             <el-switch
               v-model="from.status"
-              :active-text="$t('hr.open')"
+              :active-text="$('hr.open')"
               :active-value="1"
-              :inactive-text="$t('hr.close')"
+              :inactive-text="$('hr.close')"
               :inactive-value="0"
             />
           </el-col>
         </div>
         <div class="form-list">
-          <label for=""><span class="color-tab">*</span> {{ $t("ui.hrAssessConfigPlanAssessmentCreationReminder") }}</label>
+          <label for=""><span class="color-tab">*</span> {{ $("ui.hrAssessConfigPlanAssessmentCreationReminder") }}</label>
           <el-row :gutter="14">
             <el-col :span="12" class="form-list-con">
               <el-select
                 v-if="planIndex == 1"
                 v-model="from.remindDays"
-                :placeholder="$t('ui.hrAssessConfigPlanSelectTheAssessmentCreationReminderDate')"
+                :placeholder="$('ui.hrAssessConfigPlanSelectTheAssessmentCreationReminderDate')"
                 size="small"
                 style="flex: 100%"
               >
@@ -53,18 +54,18 @@
                   :max="28"
                   :min="1"
                   :precision="0"
-                  :placeholder="$t('ui.hrAssessConfigPlanSelectTheAssessmentCreationReminderDate')"
+                  :placeholder="$('ui.hrAssessConfigPlanSelectTheAssessmentCreationReminderDate')"
                   size="small"
                 />
-                <p class="days">{{ $t("ui.hrAssessConfigPlanDay") }}</p>
+                <p class="days">{{ $("ui.hrAssessConfigPlanDay") }}</p>
               </div>
               <div v-if="planIndex >= 3" class="flex">
                 <!-- <el-col :span="12" > -->
-                <el-select v-model="from.remindMonth" class="plan-add" :placeholder="$t('ui.hrAssessConfigPlanSelectAMonth')" size="small">
+                <el-select v-model="from.remindMonth" class="plan-add" :placeholder="$('ui.hrAssessConfigPlanSelectAMonth')" size="small">
                   <el-option
                     v-for="(item, index) in months"
                     :key="'month' + index"
-                    :label="$t('ui.workFlowDrawerApproverDrawerThe') + item + $t('ui.hrAssessConfigPlanMonths')"
+                    :label="$('ui.workFlowDrawerApproverDrawerThe') + item + $('ui.hrAssessConfigPlanMonths')"
                     :value="item"
                   />
                 </el-select>
@@ -76,25 +77,25 @@
                     :max="28"
                     :min="1"
                     :precision="0"
-                    :placeholder="$t('ui.hrAssessConfigPlanSelectTheAssessmentCreationReminderDate')"
+                    :placeholder="$('ui.hrAssessConfigPlanSelectTheAssessmentCreationReminderDate')"
                     size="small"
                   ></el-input-number>
-                  <p class="days">{{ $t("ui.hrAssessConfigPlanDay") }}</p>
+                  <p class="days">{{ $("ui.hrAssessConfigPlanDay") }}</p>
                 </div>
               </div>
             </el-col>
-            <el-col :span="24" class="assess-info">{{ $t("ui.hrAssessConfigPlanRemindsTheAssessorToSetAssessmentGoals") }}</el-col>
+            <el-col :span="24" class="assess-info">{{ $("ui.hrAssessConfigPlanRemindsTheAssessorToSetAssessmentGoals") }}</el-col>
           </el-row>
         </div>
         <div class="form-list">
-          <label for=""><span class="color-tab">*</span> {{ $t("ui.hrAssessConfigPlanSelfEvaluationReminder") }}</label>
+          <label for=""><span class="color-tab">*</span> {{ $("ui.hrAssessConfigPlanSelfEvaluationReminder") }}</label>
           <el-row :gutter="14">
             <el-col :span="12">
               <el-row class="width100">
                 <el-col :span="12">
                   <el-select
                     v-model="from.make"
-                    :placeholder="$t('finance.pleaseselect')"
+                    :placeholder="$('finance.pleaseselect')"
                     size="small"
                     style="flex: 100%"
                     @change="handleMake"
@@ -113,27 +114,27 @@
                     :controls="false"
                     :max="3650"
                     :min="0"
-                    :placeholder="$t('access.numberofdays')"
+                    :placeholder="$('access.numberofdays')"
                     :precision="0"
                     size="small"
                   >
                   </el-input-number>
-                  <p class="days">{{ $t('access.day') }}</p>
+                  <p class="days">{{ $('access.day') }}</p>
                 </el-col>
               </el-row>
             </el-col>
-            <el-col :span="24" class="assess-info">{{ $t("ui.hrAssessConfigPlanRemindsTheEmployeeToCompleteTheSelfEvaluation") }}</el-col>
+            <el-col :span="24" class="assess-info">{{ $("ui.hrAssessConfigPlanRemindsTheEmployeeToCompleteTheSelfEvaluation") }}</el-col>
           </el-row>
         </div>
         <div class="form-list">
-          <label for=""><span class="color-tab">*</span> {{ $t("ui.hrAssessConfigPlanManagerEvaluationReminder") }}</label>
+          <label for=""><span class="color-tab">*</span> {{ $("ui.hrAssessConfigPlanManagerEvaluationReminder") }}</label>
           <el-row :gutter="14">
             <el-col :span="12">
               <el-row class="width100">
                 <el-col :span="12">
                   <el-select
                     v-model="from.eval"
-                    :placeholder="$t('finance.pleaseselect')"
+                    :placeholder="$('finance.pleaseselect')"
                     size="small"
                     style="flex: 100%"
                   >
@@ -151,21 +152,21 @@
                     :controls="false"
                     :max="100"
                     :min="0"
-                    :placeholder="$t('access.numberofdays')"
+                    :placeholder="$('access.numberofdays')"
                     :precision="0"
                     size="small"
                   />
-                  <p class="days">{{ $t('access.day') }}</p>
+                  <p class="days">{{ $('access.day') }}</p>
                 </el-col>
               </el-row>
             </el-col>
             <el-col :span="24" class="assess-info"
-              >{{ $t("ui.hrAssessConfigPlanRemindsTheAssessorToScoreTheManagerEvaluation") }}</el-col
+              >{{ $("ui.hrAssessConfigPlanRemindsTheAssessorToScoreTheManagerEvaluation") }}</el-col
             >
           </el-row>
         </div>
         <div class="form-list">
-          <label for=""><span class="color-tab">*</span> {{ $t("ui.hrAssessConfigPlanAutomaticAssessmentCompletion") }}</label>
+          <label for=""><span class="color-tab">*</span> {{ $("ui.hrAssessConfigPlanAutomaticAssessmentCompletion") }}</label>
           <el-row :gutter="14">
             <el-col :span="12">
               <el-row class="width100">
@@ -173,7 +174,7 @@
                   <el-input
                     v-model="from.verify"
                     :disabled="true"
-                    :placeholder="$t('access.superiorevaluation')"
+                    :placeholder="$('access.superiorevaluation')"
                     size="small"
                   />
                 </el-col>
@@ -183,50 +184,50 @@
                     :controls="false"
                     :max="100"
                     :min="0"
-                    :placeholder="$t('access.numberofdays')"
+                    :placeholder="$('access.numberofdays')"
                     :precision="0"
                     size="small"
                   />
-                  <p class="days">{{ $t('access.day') }}</p>
+                  <p class="days">{{ $('access.day') }}</p>
                 </el-col>
               </el-row>
             </el-col>
-            <el-col :span="24" class="assess-info">{{ $t("ui.hrAssessConfigPlanSetsWhenTheAssessmentEndsAfterTheManagerEvaluation") }}</el-col>
+            <el-col :span="24" class="assess-info">{{ $("ui.hrAssessConfigPlanSetsWhenTheAssessmentEndsAfterTheManagerEvaluation") }}</el-col>
           </el-row>
         </div>
         <div class="form-list" style="align-items: normal">
-          <label for=""><span class="color-tab">*</span> {{ $t("ui.hrAssessConfigPlanAppraisee") }}</label>
+          <label for=""><span class="color-tab">*</span> {{ $("ui.hrAssessConfigPlanAppraisee") }}</label>
           <el-row :gutter="14">
             <el-col :span="12" class="resource-check">
               <el-radio-group v-model="from.resource">
-                <el-radio label="1">{{ $t("ui.hrAttendanceSettingAddConentAddByDepartment") }}</el-radio>
-                <el-radio label="0">{{ $t("ui.hrAttendanceSettingAddConentAddByEmployee") }}</el-radio>
+                <el-radio label="1">{{ $("ui.hrAttendanceSettingAddConentAddByDepartment") }}</el-radio>
+                <el-radio label="0">{{ $("ui.hrAttendanceSettingAddConentAddByEmployee") }}</el-radio>
               </el-radio-group>
             </el-col>
 
             <el-col :span="24">
               <div class="assess-info">
-                {{ $t("ui.hrAssessConfigPlanAddByDepartmentWhenEveryoneParticipatesOrAddIndividuals") }}
+                {{ $("ui.hrAssessConfigPlanAddByDepartmentWhenEveryoneParticipatesOrAddIndividuals") }}
               </div>
             </el-col>
           </el-row>
         </div>
         <div class="form-list">
           <label for=""
-            ><span class="color-tab">*</span> {{ from.resource == 0 ? $t('access.assessee') : $t('ui.hrAssessConfigPlanAssessedDepartment') }}：</label
+            ><span class="color-tab">*</span> {{ from.resource == 0 ? $('access.assessee') : $('ui.hrAssessConfigPlanAssessedDepartment') }}：</label
           >
           <el-col :span="22" class="form-list-con" style="width: 40%">
             <select-member
               v-if="from.resource == 0"
               :value="departmentObj.userList || []"
-              :placeholder="$t('access.tips15')"
+              :placeholder="$('access.tips15')"
               @getSelectList="getSelectList"
               style="width: 100%"
             ></select-member>
             <select-department
               v-if="from.resource == 1"
               :value="departmentObj.frames || []"
-              :placeholder="$t('access.tips15')"
+              :placeholder="$('access.tips15')"
               @changeMastart="changeMastart"
               style="width: 100%"
             ></select-department>
@@ -234,13 +235,13 @@
         </div>
         <div class="form-list" style="margin-top: 10px">
           <label for=""></label>
-          <el-button type="text" @click="handlePreserve(2)">{{ $t("ui.hrAssessConfigPlanSaveToViewAssessedEmployeeDetails") }}</el-button>
+          <el-button type="text" @click="handlePreserve(2)">{{ $("ui.hrAssessConfigPlanSaveToViewAssessedEmployeeDetails") }}</el-button>
         </div>
       </el-row>
     </div>
     <div class="cr-bottom-button">
       <el-button :loading="loading" size="small" type="primary" @click="handlePreserve(1)">{{
-        $t('public.save')
+        $('public.save')
       }}</el-button>
     </div>
   </div>
@@ -250,7 +251,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import Common from '@/components/user/accessCommon'
 import { assessPlanGetApi, assessPlanPutApi } from '@/api/enterprise'
 export default {
@@ -281,23 +281,23 @@ export default {
       },
       afterMaxDay: 3650,
       makeOptions: [
-        { value: 'start', label: i18n.t('access.aftertheexaminationbegins') },
-        { value: 'before', label: i18n.t('access.beforetheendofassessment') },
-        { value: 'after', label: i18n.t('access.aftertheexamination') }
+        { value: 'start', label: $('access.aftertheexaminationbegins') },
+        { value: 'before', label: $('access.beforetheendofassessment') },
+        { value: 'after', label: $('access.aftertheexamination') }
       ],
       evalOptions: [
-        { value: 'start', label: i18n.t('access.aftertheexaminationbegins') },
-        { value: 'before', label: i18n.t('access.beforetheendofassessment') },
-        { value: 'after', label: i18n.t('access.aftertheexamination') }
+        { value: 'start', label: $('access.aftertheexaminationbegins') },
+        { value: 'before', label: $('access.beforetheendofassessment') },
+        { value: 'after', label: $('access.aftertheexamination') }
       ],
       remindDaysData: [
-        { value: 1, label: i18n.t('hr.monday') },
-        { value: 2, label: i18n.t('hr.tuesday') },
-        { value: 3, label: i18n.t('hr.wednesday') },
-        { value: 4, label: i18n.t('hr.thursday') },
-        { value: 5, label: i18n.t('hr.friday') },
-        { value: 6, label: i18n.t('hr.saturday') },
-        { value: 7, label: i18n.t('legacyScript.day7') }
+        { value: 1, label: $('hr.monday') },
+        { value: 2, label: $('hr.tuesday') },
+        { value: 3, label: $('hr.wednesday') },
+        { value: 4, label: $('hr.thursday') },
+        { value: 5, label: $('hr.friday') },
+        { value: 6, label: $('hr.saturday') },
+        { value: 7, label: $('legacyScript.day7') }
       ],
 
       departmentObj: {
@@ -392,16 +392,16 @@ export default {
 
     handlePreserve(type) {
       if (this.from.name == '') {
-        this.$message.error(this.$t('access.tips06'))
+        this.$message.error(this.$('access.tips06'))
       } else if (this.days.makeDays == '') {
-        this.$message.error(this.$t('access.tips07'))
+        this.$message.error(this.$('access.tips07'))
       } else if (this.days.evalDays == '') {
-        this.$message.error(this.$t('access.tips08'))
+        this.$message.error(this.$('access.tips08'))
       } else if (this.days.verifyDays == '') {
-        this.$message.error(this.$t('access.tips09'))
+        this.$message.error(this.$('access.tips09'))
       } else if (this.days.makeDays > this.afterMaxDay) {
         this.days.makeDays = this.afterMaxDay
-        this.$message.error(i18n.t('legacyScript.theGoalSettingPeriodExceedsTheMaximumNumberOfDays'))
+        this.$message.error($('legacyScript.theGoalSettingPeriodExceedsTheMaximumNumberOfDays'))
       } else {
         let check = []
         let frame = []

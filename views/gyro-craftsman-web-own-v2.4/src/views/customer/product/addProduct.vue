@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <!-- <el-card :body-style="{ padding: '14px' }" class="station-header">
@@ -15,10 +16,10 @@
   <el-card class="card-box">
     <el-row>
       <el-col :span="24">
-        <el-page-header :content="id > 0 ? $t('ui.customerProductAddProductEditProductPage') : $t('ui.customerProductAddProductAddProductPage')">
+        <el-page-header :content="id > 0 ? $('ui.customerProductAddProductEditProductPage') : $('ui.customerProductAddProductAddProductPage')">
           <div slot="title" @click="backFn">
             <i class="el-icon-arrow-left"></i>
-            {{ $t("ui.customerProductAddProductResponse") }}
+            {{ $("ui.customerProductAddProductResponse") }}
           </div>
         </el-page-header>
       </el-col>
@@ -26,17 +27,17 @@
     <div class="main">
       <oaForm :form-info="fromInfo" ref="oaForm" :isShowFooter="false" @submitOk="submitOk"></oaForm>
       <div class="from-item-title mb20">
-        <span>{{ $t("ui.customerProductAddProductSpecPrice") }}</span>
+        <span>{{ $("ui.customerProductAddProductSpecPrice") }}</span>
       </div>
 
       <el-form ref="form" label-width="auto" style="margin-bottom: 80px">
-        <el-form-item :label="$t('ui.customerProductAddProductSpec')">
+        <el-form-item :label="$('ui.customerProductAddProductSpec')">
           <el-radio-group v-model="form.spec_type">
-            <el-radio :label="0" class="radio">{{ $t("ui.customerProductAddProductSingleSpec") }}</el-radio>
-            <el-radio :label="1">{{ $t("ui.customerProductAddProductMultipleSpecs") }}</el-radio>
+            <el-radio :label="0" class="radio">{{ $("ui.customerProductAddProductSingleSpec") }}</el-radio>
+            <el-radio :label="1">{{ $("ui.customerProductAddProductMultipleSpecs") }}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item :label="$t('ui.customerProductAddProductProductSpecs')" required v-if="form.spec_type == 1">
+        <el-form-item :label="$('ui.customerProductAddProductProductSpecs')" required v-if="form.spec_type == 1">
           <div class="specifications">
             <draggable
               group="specifications"
@@ -62,7 +63,7 @@
                     <el-input
                       size="small"
                       v-model="item.value"
-                      :placeholder="$t('ui.customerProductAddProductSpecName')"
+                      :placeholder="$('ui.customerProductAddProductSpecName')"
                       @change="attrChangeValue(index, item.value)"
                       @focus="handleFocus(item.value, item)"
                       class="specifications-item-name-input"
@@ -84,7 +85,7 @@
                           style="width: 120px"
                           size="small"
                           v-model="det.value"
-                          :placeholder="$t('ui.customerProductAddProductSpecValue')"
+                          :placeholder="$('ui.customerProductAddProductSpecValue')"
                           @change="attrDetailChangeValue(det.value, index)"
                           @focus="handleFocus(det.value)"
                           maxlength="30"
@@ -118,7 +119,7 @@
                           style="min-width: 80px; width: 210"
                           :ref="'inputRef_' + index"
                           size="small"
-                          :placeholder="$t('ui.customerProductAddProductEnterSpecValueAndPressEnter')"
+                          :placeholder="$('ui.customerProductAddProductEnterSpecValueAndPressEnter')"
                           v-model="formDynamic.attrsVal"
                           @keyup.enter.native="createAttr(formDynamic.attrsVal, index)"
                           @blur="createAttr(formDynamic.attrsVal, index)"
@@ -126,7 +127,7 @@
                           show-word-limit
                         >
                         </el-input>
-                        <div class="addfont" slot="reference">{{ $t("ui.customerProductAddProductAddSpecValue") }}</div>
+                        <div class="addfont" slot="reference">{{ $("ui.customerProductAddProductAddSpecValue") }}</div>
                       </el-popover>
                     </draggable>
                   </div>
@@ -138,7 +139,7 @@
               size="small"
               type="text"
               @click="handleAddRole()"
-              >{{ $t("ui.customerProductAddProductAddNewSpec") }}</el-button
+              >{{ $("ui.customerProductAddProductAddNewSpec") }}</el-button
             >
           </div>
         </el-form-item>
@@ -146,7 +147,7 @@
         <!-- 单规格列表 -->
         <el-form-item v-if="form.spec_type === 0">
           <el-table :data="OneattrValue" class="tabNumWidth" size="mini">
-            <el-table-column align="center" :label="$t('ui.xmindEditorToolbarNodeBtnListImage')" min-width="80">
+            <el-table-column align="center" :label="$('ui.xmindEditorToolbarNodeBtnListImage')" min-width="80">
               <template slot-scope="scope">
                 <div class="upLoadPicBox specPictrue" @click="modalPicTap('1', 'dan')">
                   <div v-if="scope.row.image" class="pictrue tabPic">
@@ -190,7 +191,7 @@
         </el-form-item>
 
         <!-- 多规格表格-->
-        <el-form-item v-if="form.spec_type == 1" class="labeltop" :label="$t('ui.customerProductAddProductSpecList')">
+        <el-form-item v-if="form.spec_type == 1" class="labeltop" :label="$('ui.customerProductAddProductSpecList')">
           <el-table
             :data="ManyAttrValue"
             style="width: 100%"
@@ -210,7 +211,7 @@
                 <template v-if="item.key">
                   <template v-if="scope.$index == 0">
                     <div v-if="attrs.length && attrs[scope.column.index] && ManyAttrValue.length">
-                      <el-select v-model="oneFormBatch[0][item.title]" :placeholder="$t('ui.developConditionGroupPleaseSelect')" size="small" clearable>
+                      <el-select v-model="oneFormBatch[0][item.title]" :placeholder="$('ui.developConditionGroupPleaseSelect')" size="small" clearable>
                         <el-option
                           v-for="val in attrs[scope.column.index].detail"
                           :key="val.value"
@@ -253,8 +254,8 @@
                 </template>
 
                 <template v-else-if="item.slot === 'action' && scope.$index == 0">
-                  <el-button type="text" size="mini" @click="batchAdd">{{ $t("ui.customerProductAddProductBatchEdit") }}</el-button>
-                  <el-button type="text" size="mini" @click="batchDel">{{ $t("ui.formDesignerToolbarPanelIndexClear") }}</el-button>
+                  <el-button type="text" size="mini" @click="batchAdd">{{ $("ui.customerProductAddProductBatchEdit") }}</el-button>
+                  <el-button type="text" size="mini" @click="batchDel">{{ $("ui.formDesignerToolbarPanelIndexClear") }}</el-button>
                 </template>
               </template>
             </el-table-column>
@@ -265,13 +266,12 @@
   </el-card>
   <!-- 底部按钮 -->
   <div class="cr-bottom-button">
-    <el-button size="small" @click="backFn">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-    <el-button size="small" type="primary" @click="submit()">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+    <el-button size="small" @click="backFn">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+    <el-button size="small" type="primary" @click="submit()">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
   </div>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import vuedraggable from 'vuedraggable'
 import { productCreateApi, productSaveApi, productInfoApi, putProductApi } from '@/api/client'
@@ -319,33 +319,33 @@ export default {
       },
       formThead: {
         price: {
-          title: i18n.t('legacyScript.productPriceYuan')
+          title: $('legacyScript.productPriceYuan')
         },
         cost: {
-          title: i18n.t('legacyScript.productCostYuan')
+          title: $('legacyScript.productCostYuan')
         },
         bar_code: {
-          title: i18n.t('legacyScript.productSpecNo'),
+          title: $('legacyScript.productSpecNo'),
           type: 'text'
         }
       },
       id: 0,
       GoodsTableHead: [
         {
-          title: i18n.t('file.picture'),
+          title: $('file.picture'),
           slot: 'image',
           align: 'center',
           minWidth: '80px'
         },
         {
-          title: i18n.t('legacyScript.productPriceYuan'),
+          title: $('legacyScript.productPriceYuan'),
           slot: 'price',
           align: 'center',
           type: 'num',
           minWidth: '120px'
         },
         {
-          title: i18n.t('legacyScript.productCostYuan2'),
+          title: $('legacyScript.productCostYuan2'),
           slot: 'cost',
           align: 'center',
           type: 'num',
@@ -353,14 +353,14 @@ export default {
         },
 
         {
-          title: i18n.t('legacyScript.productSpecCode'),
+          title: $('legacyScript.productSpecCode'),
           slot: 'bar_code',
           align: 'center',
           type: 'text',
           minWidth: '120px'
         },
         {
-          title: i18n.t('toptable.operation'),
+          title: $('toptable.operation'),
           slot: 'action',
           align: 'center',
           minWidth: '120px',
@@ -486,7 +486,7 @@ export default {
         }
       }
       if (isHas) {
-        this.$confirm(i18n.t('legacyScript.youCanAlsoUpdateTheImageForThisSpecificationBelow'), i18n.t('public.tips'), {
+        this.$confirm($('legacyScript.youCanAlsoUpdateTheImageForThisSpecificationBelow'), $('public.tips'), {
           confirmButtonText: '替换',
           cancelButtonText: '暂不',
           type: 'warning'
@@ -633,7 +633,7 @@ export default {
         // 判断是否存在同样熟悉
         const isExist = this.attrs[idx].detail.some((item) => item.value === num)
         if (isExist) {
-          this.$message.error(i18n.t('legacyScript.specificationValueAlreadyExists'))
+          this.$message.error($('legacyScript.specificationValueAlreadyExists'))
           return
         }
         this.attrs[idx].detail.push({ value: num, image: '' })
@@ -683,7 +683,7 @@ export default {
       if (this.form.spec_type == 0) {
         this.form.attrValue = this.OneattrValue
       } else {
-        if (this.ManyAttrValue.length < 2) return this.$message.warning(i18n.t('legacyScript.productSpecificationsMinimumOf1SpecificationRequired'))
+        if (this.ManyAttrValue.length < 2) return this.$message.warning($('legacyScript.productSpecificationsMinimumOf1SpecificationRequired'))
 
         let newData = JSON.parse(JSON.stringify(this.ManyAttrValue))
 

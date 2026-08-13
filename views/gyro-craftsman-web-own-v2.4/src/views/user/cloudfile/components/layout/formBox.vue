@@ -3,18 +3,18 @@
 <div class="header" draggable="false" ref="showboxRef">
   <div>
     <div v-if="switchIndex == 2" class="header-left">
-      <el-button size="small" @click="allMove">{{ $t("ui.userCloudfileLayoutFormBoxMoveTo") }}</el-button>
-      <el-button size="small" @click="allDelete(1)">{{ $t("ui.chatIndexDelete") }}</el-button>
+      <el-button size="small" @click="allMove">{{ $("ui.userCloudfileLayoutFormBoxMoveTo") }}</el-button>
+      <el-button size="small" @click="allDelete(1)">{{ $("ui.chatIndexDelete") }}</el-button>
     </div>
     <div v-if="switchIndex == 3" class="header-left">
       <el-tabs v-model="type" class="tab-share" @tab-click="handleClick">
-        <el-tab-pane :label="$t('ui.userCloudfileLayoutFormBoxShareItWithMe')" name="1" />
-        <el-tab-pane :label="$t('ui.userCloudfileLayoutFormBoxMyShare')" name="2" />
+        <el-tab-pane :label="$('ui.userCloudfileLayoutFormBoxShareItWithMe')" name="1" />
+        <el-tab-pane :label="$('ui.userCloudfileLayoutFormBoxMyShare')" name="2" />
       </el-tabs>
     </div>
     <div v-if="switchIndex == 4 || switchIndex == 5" class="header-left">
       <el-dropdown v-if="switchIndex == 4" trigger="click" @command="handleScreen">
-        <el-button type="primary" icon="el-icon-plus" size="small">{{ $t('file.newlybuild') }}</el-button>
+        <el-button type="primary" icon="el-icon-plus" size="small">{{ $('file.newlybuild') }}</el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item
             v-for="item in newlyBuildData"
@@ -40,15 +40,15 @@
         :before-upload="handleUpload"
         multiple
       >
-        <el-button plain size="small" class="ml10 mr10">{{ $t('file.upload') }}</el-button>
+        <el-button plain size="small" class="ml10 mr10">{{ $('file.upload') }}</el-button>
       </el-upload>
-      <el-button plain size="small" @click="allMove">{{ $t('file.moveto') }}</el-button>
-      <el-button plain size="small" @click="allDelete(1)">{{ $t('public.delete') }}</el-button>
+      <el-button plain size="small" @click="allMove">{{ $('file.moveto') }}</el-button>
+      <el-button plain size="small" @click="allDelete(1)">{{ $('public.delete') }}</el-button>
     </div>
 
     <div v-if="switchIndex == 6 || switchIndex == 1" class="header-16 mt20">
       <div class="title-16">
-        <div v-if="breadcrumbArray.length == 0">{{ $t("ui.userCloudfileLayoutFormBoxRecentlyOpened") }}</div>
+        <div v-if="breadcrumbArray.length == 0">{{ $("ui.userCloudfileLayoutFormBoxRecentlyOpened") }}</div>
         <el-breadcrumb separator-class="el-icon-arrow-right" v-else>
           <el-breadcrumb-item
             v-for="(item, indexJ) in breadcrumbArray"
@@ -65,7 +65,7 @@
       <div class="flex" v-if="spaceId && breadcrumbArray.length != 0">
         <!-- 新建 -->
         <el-dropdown trigger="click" @command="handleScreen" class="mr10 ml14">
-          <el-button type="primary" icon="el-icon-plus" size="small">{{ $t('file.newlybuild') }}</el-button>
+          <el-button type="primary" icon="el-icon-plus" size="small">{{ $('file.newlybuild') }}</el-button>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item
               v-for="item in newlyBuildData"
@@ -104,28 +104,28 @@
             <i class="iconfont icongengduo2 pointer"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item @click.native="allMove">{{ $t("ui.userCloudfileLayoutFormBoxMoveTo") }}</el-dropdown-item>
+            <el-dropdown-item @click.native="allMove">{{ $("ui.userCloudfileLayoutFormBoxMoveTo") }}</el-dropdown-item>
             <!-- <el-dropdown-item @click.native="recoveryBtn">回收站</el-dropdown-item> -->
-            <el-dropdown-item @click.native="allDelete(3)">{{ $t("ui.chatIndexDelete") }}</el-dropdown-item>
+            <el-dropdown-item @click.native="allDelete(3)">{{ $("ui.chatIndexDelete") }}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
     </div>
 
     <div v-if="switchIndex == 7" class="header-left mt20">
-      <el-button plain size="small" @click="allDestroy">{{ $t('file.restorefile') }}</el-button>
-      <el-button plain size="small" @click="allDelete(2)">{{ $t('file.completelydelete') }}</el-button>
+      <el-button plain size="small" @click="allDestroy">{{ $('file.restorefile') }}</el-button>
+      <el-button plain size="small" @click="allDelete(2)">{{ $('file.completelydelete') }}</el-button>
       <el-button v-if="entButton" plain size="small" @click="returnSpace">
-        {{ $t('file.returnspace') }}
+        {{ $('file.returnspace') }}
       </el-button>
     </div>
   </div>
   <div>
     <div class="header-16">
       <div :class="breadcrumbArray.length > 0 ? 'mt8' : 'mt14'">
-        <span class="total-16">{{ $t("ui.developModuleFormBoxTotal") }}{{ total }}{{ $t("ui.developModuleFormBoxItems") }}</span>
+        <span class="total-16">{{ $("ui.developModuleFormBoxTotal") }}{{ total }}{{ $("ui.developModuleFormBoxItems") }}</span>
         <el-input
-          :placeholder="$t('ui.userCloudfileLayoutFormBoxSearchFileName')"
+          :placeholder="$('ui.userCloudfileLayoutFormBoxSearchFileName')"
           style="width: 250px"
           prefix-icon="el-icon-search"
           size="small"
@@ -263,31 +263,31 @@ export default {
         sortBy: 6
       },
       fileSortData: [
-        { name: this.$t('file.filename'), id: 1 },
-        { name: this.$t('file.creationtime'), id: 2 },
-        { name: this.$t('file.updatetime'), id: 3 },
-        { name: this.$t('file.filesize'), id: 4 },
-        { name: this.$t('file.deletetime'), id: 5 }
+        { name: this.$('file.filename'), id: 1 },
+        { name: this.$('file.creationtime'), id: 2 },
+        { name: this.$('file.updatetime'), id: 3 },
+        { name: this.$('file.filesize'), id: 4 },
+        { name: this.$('file.deletetime'), id: 5 }
       ],
       fileSort: [
-        { name: this.$t('file.order'), id: 6 },
-        { name: this.$t('file.desc'), id: 7 }
+        { name: this.$('file.order'), id: 6 },
+        { name: this.$('file.desc'), id: 7 }
       ],
       fileScreenData: [
-        { name: this.$t('file.type'), id: 1 },
-        { name: this.$t('file.document'), id: 2 },
-        { name: this.$t('file.ppt'), id: 3 },
-        { name: this.$t('file.picture'), id: 4 },
-        { name: this.$t('file.table'), id: 5 }
+        { name: this.$('file.type'), id: 1 },
+        { name: this.$('file.document'), id: 2 },
+        { name: this.$('file.ppt'), id: 3 },
+        { name: this.$('file.picture'), id: 4 },
+        { name: this.$('file.table'), id: 5 }
       ],
       newlyBuildData: [
-        { name: this.$t('file.usetemplate'), id: 7, icon: 'iconshiyongmoban color-doc' },
-        { name: this.$t('file.uploadFile'), id: 6, icon: ' iconwenjianshangchuan color-file', divided: true },
-        { name: this.$t('file.newdocument'), id: 1, icon: 'iconwendang1 color-doc', divided: false },
-        { name: this.$t('file.newtable'), id: 2, icon: 'iconbiaoge color-excel', divided: false },
-        { name: this.$t('file.newmindmap'), id: 9, icon: 'iconxmind color-mindmap', divided: false },
-        // { name: this.$t('file.newslide'), id: 3, icon: 'iconppt color-ppt', divided: false },
-        { name: this.$t('file.newfolder'), id: 5, icon: 'iconwenjianjia color-file', divided: true }
+        { name: '使用模版', id: 7, icon: 'iconshiyongmoban color-doc' },
+        { name: '上传文件', id: 6, icon: ' iconwenjianshangchuan color-file', divided: true },
+        { name: this.$('file.newdocument'), id: 1, icon: 'iconwendang1 color-doc', divided: false },
+        { name: this.$('file.newtable'), id: 2, icon: 'iconbiaoge color-excel', divided: false },
+        { name: this.$('file.newmindmap'), id: 9, icon: 'iconxmind color-mindmap', divided: false },
+        // { name: this.$('file.newslide'), id: 3, icon: 'iconppt color-ppt', divided: false },
+        { name: this.$('file.newfolder'), id: 5, icon: 'iconwenjianjia color-file', divided: true }
       ],
       screenIndex: 1,
       screenName: '',

@@ -6,7 +6,6 @@
     <!-- <vue-office-excel :src="urlExcel" @rendered="rendered" /> -->
   </div>
 </template>
-预览
 
 <script>
 //引入相关样式

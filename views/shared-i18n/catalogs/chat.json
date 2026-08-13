@@ -1,0 +1,262 @@
+{
+  "chat.chat.clearConversation": {
+    "zh-cn": "清空对话",
+    "en": "Clear conversation"
+  },
+  "chat.chat.conversationCleared": {
+    "zh-cn": "对话已清空",
+    "en": "Conversation cleared"
+  },
+  "chat.chat.conversationNotFound": {
+    "zh-cn": "对话不存在",
+    "en": "Conversation not found"
+  },
+  "chat.chat.dataTable": {
+    "zh-cn": "数据表格",
+    "en": "Data table"
+  },
+  "chat.chat.deleteConversationConfirm": {
+    "zh-cn": "确定要删除此对话吗？",
+    "en": "Delete this conversation?"
+  },
+  "chat.chat.errorLabel": {
+    "zh-cn": "错误：",
+    "en": "Error:"
+  },
+  "chat.chat.inputPlaceholder": {
+    "zh-cn": "很高兴为您服务，请输入您的问题",
+    "en": "Type your question here"
+  },
+  "chat.chat.moreData": {
+    "zh-cn": "更多数据",
+    "en": "More data"
+  },
+  "chat.chat.noApps": {
+    "zh-cn": "暂无应用",
+    "en": "No apps available"
+  },
+  "chat.chat.reasoning": {
+    "zh-cn": "思考过程",
+    "en": "Reasoning"
+  },
+  "chat.chat.regenerate": {
+    "zh-cn": "重新生成",
+    "en": "Regenerate"
+  },
+  "chat.chat.send": {
+    "zh-cn": "发送",
+    "en": "Send"
+  },
+  "chat.chat.stopGenerating": {
+    "zh-cn": "停止生成",
+    "en": "Stop generating"
+  },
+  "chat.chat.thinking": {
+    "zh-cn": "思考中",
+    "en": "Thinking"
+  },
+  "chat.chat.upload": {
+    "zh-cn": "上传",
+    "en": "Upload"
+  },
+  "chat.chat.welcome": {
+    "zh-cn": "今天有什么可以帮您？",
+    "en": "How can I help you today?"
+  },
+  "chat.common.cancel": {
+    "zh-cn": "取消",
+    "en": "Cancel"
+  },
+  "chat.common.chinese": {
+    "zh-cn": "中文",
+    "en": "Chinese"
+  },
+  "chat.common.clear": {
+    "zh-cn": "清空",
+    "en": "Clear"
+  },
+  "chat.common.confirm": {
+    "zh-cn": "确定",
+    "en": "Confirm"
+  },
+  "chat.common.copied": {
+    "zh-cn": "复制成功",
+    "en": "Copied successfully"
+  },
+  "chat.common.copy": {
+    "zh-cn": "复制",
+    "en": "Copy"
+  },
+  "chat.common.delete": {
+    "zh-cn": "删除",
+    "en": "Delete"
+  },
+  "chat.common.deleteSuccess": {
+    "zh-cn": "删除成功",
+    "en": "Deleted successfully"
+  },
+  "chat.common.english": {
+    "zh-cn": "English",
+    "en": "English"
+  },
+  "chat.common.language": {
+    "zh-cn": "语言",
+    "en": "Language"
+  },
+  "chat.common.pin": {
+    "zh-cn": "置顶",
+    "en": "Pin"
+  },
+  "chat.common.pinSuccess": {
+    "zh-cn": "置顶成功",
+    "en": "Conversation pinned"
+  },
+  "chat.common.recentConversations": {
+    "zh-cn": "最近对话",
+    "en": "Recent conversations"
+  },
+  "chat.common.rename": {
+    "zh-cn": "重命名",
+    "en": "Rename"
+  },
+  "chat.common.siteName": {
+    "zh-cn": "陀螺匠小助手",
+    "en": "Tuoluojiang Assistant"
+  },
+  "chat.common.tips": {
+    "zh-cn": "提示",
+    "en": "Tips"
+  },
+  "chat.common.translateToEnglish": {
+    "zh-cn": "翻译成英文",
+    "en": "English"
+  },
+  "chat.common.unpin": {
+    "zh-cn": "取消置顶",
+    "en": "Unpin"
+  },
+  "chat.common.unpinSuccess": {
+    "zh-cn": "取消置顶成功",
+    "en": "Conversation unpinned"
+  },
+  "chat.error.appNotFound": {
+    "zh-cn": "应用不存在",
+    "en": "App not found"
+  },
+  "chat.error.connectionFailed": {
+    "zh-cn": "连接失败",
+    "en": "Connection failed."
+  },
+  "chat.error.internalError": {
+    "zh-cn": "内部错误",
+    "en": "Internal error"
+  },
+  "chat.error.loginExpired": {
+    "zh-cn": "登录过期",
+    "en": "Login expired."
+  },
+  "chat.error.loginRequired": {
+    "zh-cn": "请先登录",
+    "en": "Please log in first."
+  },
+  "chat.error.requestFailed": {
+    "zh-cn": "请求失败",
+    "en": "Request failed."
+  },
+  "chat.error.unknownDataType": {
+    "zh-cn": "未知数据类型",
+    "en": "Unknown data type"
+  },
+  "chat.login.captcha": {
+    "zh-cn": "请输入验证码",
+    "en": "Please enter captcha"
+  },
+  "chat.login.forgotPassword": {
+    "zh-cn": "忘记密码？",
+    "en": "Forgot password?"
+  },
+  "chat.login.formLogin": {
+    "zh-cn": "密码登录",
+    "en": "Use password login"
+  },
+  "chat.login.login": {
+    "zh-cn": "登录",
+    "en": "Log in"
+  },
+  "chat.login.loginSuccess": {
+    "zh-cn": "登录成功",
+    "en": "Logged in successfully"
+  },
+  "chat.login.password": {
+    "zh-cn": "请输入密码",
+    "en": "Please enter password"
+  },
+  "chat.login.passwordLogin": {
+    "zh-cn": "密码登录",
+    "en": "Password login"
+  },
+  "chat.login.phone": {
+    "zh-cn": "请输入手机号",
+    "en": "Please enter phone number"
+  },
+  "chat.login.qrExpired": {
+    "zh-cn": "二维码失效",
+    "en": "QR code expired"
+  },
+  "chat.login.refreshQr": {
+    "zh-cn": "刷新二维码",
+    "en": "Refresh QR code"
+  },
+  "chat.login.scanLogin": {
+    "zh-cn": "扫码登录",
+    "en": "Scan to log in"
+  },
+  "chat.login.scanPrompt": {
+    "zh-cn": "请使用陀螺匠APP扫码",
+    "en": "Scan with the Tuoluojiang app"
+  },
+  "chat.login.sendCode": {
+    "zh-cn": "获取验证码",
+    "en": "Get code"
+  },
+  "chat.login.smsCode": {
+    "zh-cn": "请输入验证码",
+    "en": "Please enter verification code"
+  },
+  "chat.login.smsLogin": {
+    "zh-cn": "短信登录",
+    "en": "SMS login"
+  },
+  "chat.login.smsSent": {
+    "zh-cn": "验证码发送成功",
+    "en": "Verification code sent"
+  },
+  "chat.login.validCaptcha": {
+    "zh-cn": "请输入正确的验证码",
+    "en": "Please enter a valid captcha"
+  },
+  "chat.login.validPhone": {
+    "zh-cn": "请输入正确的手机号",
+    "en": "Please enter a valid phone number"
+  },
+  "chat.login.validSmsCode": {
+    "zh-cn": "请输入正确的验证码",
+    "en": "Please enter a valid verification code"
+  },
+  "chat.login.welcome": {
+    "zh-cn": "欢迎登录陀螺匠",
+    "en": "Welcome to Tuoluojiang"
+  },
+  "chat.sidebar.login": {
+    "zh-cn": "登录",
+    "en": "Log in"
+  },
+  "chat.sidebar.logoutConfirm": {
+    "zh-cn": "确定退出登录吗？",
+    "en": "Are you sure you want to log out?"
+  },
+  "chat.sidebar.newChat": {
+    "zh-cn": "新建对话",
+    "en": "New chat"
+  }
+}

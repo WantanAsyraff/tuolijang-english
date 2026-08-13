@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 查看客户信息侧滑页面 -->
 <template>
   <div class="station">
@@ -14,7 +15,7 @@
             </div>
 
             <div class="txt2">
-              <span class="title"> {{ $ts("签约状态：") }}</span>
+              <span class="title"> {{ $("legacy.a651e7e4349b756a") }}</span>
               <div v-if="statusList[dataInfo.status]" class="dictionaries-tag" :style="{
                 color: statusList[dataInfo.status].color || '#1890ff',
                 background:
@@ -23,9 +24,9 @@
               }" >{{ statusList[dataInfo.status].name }}</div>
 
 
-              <span class="title ml20">{{ $ts("业务员：") }}</span><span class="weight mr20">{{ dataInfo.admin ? dataInfo.admin.name : '--'
+              <span class="title ml20">{{ $("ui.customerContractEditContractSalesperson") }}</span><span class="weight mr20">{{ dataInfo.admin ? dataInfo.admin.name : '--'
               }}</span>
-              <span class="title">{{ $ts("合同编号：") }}</span><span class="weight mr20">{{ dataInfo.doc_no || '--' }}</span>
+              <span class="title">{{ $("legacy.70155bc3deb9c212") }}</span><span class="weight mr20">{{ dataInfo.doc_no || '--' }}</span>
             </div>
           </el-col>
         </el-row>
@@ -44,8 +45,8 @@
         </div>
         <div v-show="tabIndex === '2'">
           <div class="title-box">
-            <div class="title-16">{{ $ts("关联订单") }}</div>
-            <el-button type="primary" size="small" class="mb10 mt10 pointer" @click="openOrderList">{{ $ts("关联订单") }}</el-button>
+            <div class="title-16">{{ $("customer.relatedcontract") }}</div>
+            <el-button type="primary" size="small" class="mb10 mt10 pointer" @click="openOrderList">{{ $("customer.relatedcontract") }}</el-button>
           </div>
           <paymentTable ref="paymentTable" :list="list" :type="`check`" :selectionIsShow="false" @deleteFn="deleteFn">
           </paymentTable>
@@ -61,7 +62,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getColor } from '@/utils/format'
 import { contractDocDetailApi, contractDocOrdersApi,contractLinkOrderApi } from '@/api/contractSign'
 export default {
@@ -98,9 +98,9 @@ export default {
       tabIndex: '1',
       tabNumber: 1,
       tabData: [
-        { value: '1', label: i18n.t('setting.info.essentialinformation') },
-        { value: '2', label: i18n.t('legacyScript.orderRecords') },
-        { value: '3', label: i18n.t('ui.customerListDynamicRecordActivityRecords') }
+        { value: '1', label: $('setting.info.essentialinformation') },
+        { value: '2', label: $('legacyScript.orderRecords') },
+        { value: '3', label: $('ui.customerListDynamicRecordActivityRecords') }
       ],
       statusList: {
         '-1': {

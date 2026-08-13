@@ -1,0 +1,16 @@
+{
+  "name": "@tuoluojiang/shared-i18n-tooling",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node cli.cjs generate --app all",
+    "check": "node cli.cjs check --app all",
+    "audit": "node cli.cjs audit --app all",
+    "test": "node cli.cjs test"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.28.0",
+    "@vue/compiler-dom": "^3.5.18",
+    "vue-template-compiler": "2.7.16"
+  }
+}

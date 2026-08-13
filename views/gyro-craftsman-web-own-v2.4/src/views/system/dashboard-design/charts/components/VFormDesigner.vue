@@ -1,3 +1,4 @@
+import { $, getLanguage, setLanguage } from '@/lang'
 <template>
   <div class="form-designer-container">
     <el-header class="toolbar-header">
@@ -39,7 +40,7 @@
       </el-container>
     </el-container>
     <el-dialog
-      :title="$ts('预览')"
+      :title="$("ui.formDesignerToolbarPanelIndexPreview")"
       :visible.sync="showPreviewDialogFlag"
       v-if="showPreviewDialogFlag"
       :show-close="true"
@@ -82,9 +83,7 @@
 </template>
 
 <script>
-import appI18n from '@/lang'
-import i18n, { changeLocale } from '@/utils/i18n'
-import { getLanguage } from '@/lang'
+
 import SvgIcon from '@/components/svg-icon-nc'
 import { createDesigner } from '../designer'
 import VFormRender from '@/components/form-render/index'
@@ -107,7 +106,6 @@ import { changeDashboard } from '@/api/chart'
 export default {
   name: 'VFormDesigner',
   componentName: 'VFormDesigner',
-  mixins: [i18n],
   components: {
     SvgIcon,
     FieldPanel,
@@ -144,7 +142,7 @@ export default {
         productName: '',
         productTitle: '',
         presetCssCode: '',
-        languageName: 'zh-CN',
+        languageName: 'zh-cn',
         resetFormJson: !1
       })
     },
@@ -175,16 +173,16 @@ export default {
       scrollerHeight: 0,
       fromData: {
         width: '600px',
-        title: appI18n.t('legacyScript.editName'),
-        btnText: appI18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.editName'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },
       formConfig: [
         {
           type: 'input',
-          label: appI18n.t('legacyScript.chartName'),
-          placeholder: appI18n.t('legacyScript.pleaseEnterChartName'),
+          label: $('legacyScript.chartName'),
+          placeholder: $('legacyScript.pleaseEnterChartName'),
           key: 'name',
           options: []
         }
@@ -194,7 +192,7 @@ export default {
         name: [
           {
             required: true,
-            message: appI18n.t('legacyScript.pleaseEnterChartName'),
+            message: $('legacyScript.pleaseEnterChartName'),
             trigger: 'blur'
           }
         ]
@@ -221,7 +219,7 @@ export default {
       return (this.designerConfig && this.designerConfig.productName) || ''
     },
     vfProductTitle() {
-      return (this.designerConfig && this.designerConfig.productTitle) || this.i18nt('application.productTitle')
+      return (this.designerConfig && this.designerConfig.productTitle) || this.$('application.productTitle')
     }
   },
   created() {},
@@ -279,20 +277,19 @@ export default {
           .get(MOCK_CASE_URL + this.caseName + '.txt')
           .then((o) => {
             if (o.data.code) {
-              this.$message.error(this.i18nt('designer.hint.sampleLoadedFail'))
+              this.$message.error(this.$('designer.hint.sampleLoadedFail'))
               return
             }
-            this.setFormJson(o.data), this.$message.success(this.i18nt('designer.hint.sampleLoadedSuccess'))
+            this.setFormJson(o.data), this.$message.success(this.$('designer.hint.sampleLoadedSuccess'))
           })
           .catch((o) => {
-            this.$message.error(this.i18nt('designer.hint.sampleLoadedFail') + ':' + o)
+            this.$message.error(this.$('designer.hint.sampleLoadedFail') + ':' + o)
           })
     },
     initLocale() {
-      ;(this.curLocale = getLanguage() === 'en' ? 'en-US' : 'zh-CN'),
-        this.vsCodeFlag ? (this.curLocale = this.curLocale || 'en-US') : (this.curLocale = this.curLocale || 'zh-CN'),
-        (this.curLangName = this.i18nt('application.' + this.curLocale)),
-        this.changeLanguage(this.curLocale)
+      this.curLocale = getLanguage()
+      this.curLangName = this.curLocale === 'en' ? 'English' : this.$('login.chinese')
+      this.changeLanguage(this.curLocale)
     },
     initFormTemplates() {
       this.formTemplates &&
@@ -338,10 +335,10 @@ export default {
         o.subFormList && this.subFormList.splice(0, this.subFormList.length, ...o.subFormList))
     },
     handleLanguageChanged(o) {
-      this.changeLanguage(o), (this.curLangName = this.i18nt('application.' + o))
+      this.changeLanguage(o), (this.curLangName = this.$('application.' + o))
     },
     changeLanguage(o) {
-      changeLocale(o)
+      setLanguage(o)
     },
     setFormJson(o) {
       let e = !1

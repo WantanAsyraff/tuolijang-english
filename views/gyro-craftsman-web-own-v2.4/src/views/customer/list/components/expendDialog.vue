@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 客户-账目记录-添加/编辑弹窗支出页面 -->
 <template>
 <el-dialog
@@ -14,8 +15,8 @@
       type="info"
       :description="
         this.config.type == 'edit'
-          ? $t('ui.customerListExpendDialogAfterSavingTheIncomeAndExpenseEntryAndThe')
-          : $t('ui.customerListExpendDialogAfterApprovalTheSystemWillAutomaticallyGenerateAnIncome')
+          ? $('ui.customerListExpendDialogAfterSavingTheIncomeAndExpenseEntryAndThe')
+          : $('ui.customerListExpendDialogAfterApprovalTheSystemWillAutomaticallyGenerateAnIncome')
       "
       show-icon
     >
@@ -23,14 +24,14 @@
   </div>
   <el-form ref="form" :model="rules" :rules="rule" :label-width="labelWidth + 'px'" class="mt15">
     <el-form-item prop="cid" v-if="config.formType == 'list'">
-      <span slot="label">{{ $t("ui.customerContractContractDialogSelectOrder") }} </span>
-      <el-select size="small" v-model="rules.cid" :placeholder="$t('ui.customerContractContractDialogSelectOrder2')">
+      <span slot="label">{{ $("ui.customerContractContractDialogSelectOrder") }} </span>
+      <el-select size="small" v-model="rules.cid" :placeholder="$('ui.customerContractContractDialogSelectOrder2')">
         <el-option v-for="item in contractData" :key="item.id" :label="item.title" :value="item.id" />
       </el-select>
     </el-form-item>
     <!-- 支付方式 -->
     <el-form-item prop="bill_cate_id">
-      <span slot="label">{{ $t("ui.customerListExpendDialogExpenseType") }}</span>
+      <span slot="label">{{ $("ui.customerListExpendDialogExpenseType") }}</span>
       <el-cascader
         v-model="rules.bill_cate_id"
         :options="billList"
@@ -40,35 +41,35 @@
     </el-form-item>
 
     <el-form-item prop="num">
-      <span slot="label">{{ $t("ui.customerListApplyForPaymentExpenseAmountYuan") }}</span>
+      <span slot="label">{{ $("ui.customerListApplyForPaymentExpenseAmountYuan") }}</span>
       <el-input-number
         size="small"
         v-model="rules.num"
         :controls="false"
         :min="0"
         :precision="2"
-        :placeholder="$t('ui.customerListExpendDialogPleaseEnterExpenseAmount')"
+        :placeholder="$('ui.customerListExpendDialogPleaseEnterExpenseAmount')"
       ></el-input-number>
     </el-form-item>
 
     <!-- 支付方式 -->
     <el-form-item prop="type_id">
-      <span slot="label">{{ $t("ui.customerListApplyForPaymentPaymentMethod") }}</span>
-      <el-select size="small" v-model="rules.type_id" :placeholder="$t('ui.customerContractContractDialogSelectPaymentMethod')">
+      <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentMethod") }}</span>
+      <el-select size="small" v-model="rules.type_id" :placeholder="$('ui.customerContractContractDialogSelectPaymentMethod')">
         <el-option v-for="item in paymentOptions" :key="item.id" :label="item.name" :value="item.id" />
       </el-select>
     </el-form-item>
 
     <!-- 支出时间 -->
     <el-form-item prop="date">
-      <span slot="label">{{ $t("ui.customerListApplyForPaymentExpenseTime") }}</span>
+      <span slot="label">{{ $("ui.customerListApplyForPaymentExpenseTime") }}</span>
       <el-date-picker v-model="rules.date" size="small" picker-options="expireTimeOption" type="datetime">
       </el-date-picker>
     </el-form-item>
 
     <!-- 付款凭证 -->
     <el-form-item>
-      <span slot="label">{{ $t("ui.customerListApplyForPaymentExpenseVoucher") }}</span>
+      <span slot="label">{{ $("ui.customerListApplyForPaymentExpenseVoucher") }}</span>
       <div class="avatar">
         <el-upload
           class="upload-demo mr10"
@@ -81,30 +82,29 @@
 
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
-        <p class="clew">{{ $t("ui.customerContractContractDialogJpgJpegAndPngAreSupported") }} <br />{{ $t("ui.customerContractContractDialogRecommended7341034") }} <br />{{ $t("ui.customerContractContractDialogNoLargerThan2Mb") }}</p>
+        <p class="clew">{{ $("ui.customerContractContractDialogJpgJpegAndPngAreSupported") }} <br />{{ $("ui.customerContractContractDialogRecommended7341034") }} <br />{{ $("ui.customerContractContractDialogNoLargerThan2Mb") }}</p>
       </div>
     </el-form-item>
 
     <el-form-item>
-      <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsRemarks") }}</span>
+      <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsRemarks") }}</span>
       <el-input
         type="textarea"
         v-model="rules.mark"
         maxlength="255"
-        :placeholder="$t('ui.customerListExpendDialogEnterRemarksUpTo255Characters')"
+        :placeholder="$('ui.customerListExpendDialogEnterRemarksUpTo255Characters')"
         show-word-limit
       />
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
-    <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-    <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+    <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+    <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
   </div>
 </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import {
   selectContractListApi,
   enterprisePayTypeApi,
@@ -154,11 +154,11 @@ export default {
         }
       },
       rule: {
-        cid: [{ required: true, message: i18n.t('ui.customerContractContractDialogSelectOrder2'), trigger: 'change' }],
-        num: [{ required: true, message: i18n.t('legacyScript.pleaseEnterExpenseAmount'), trigger: 'blur' }],
-        date: [{ required: true, message: i18n.t('legacyScript.pleaseSelectTime'), trigger: 'change' }],
-        bill_cate_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectExpenseType'), trigger: 'change' }],
-        type_id: { required: true, message: i18n.t('ui.customerContractContractDialogSelectPaymentMethod'), trigger: 'change' } // 支付方式
+        cid: [{ required: true, message: $('ui.customerContractContractDialogSelectOrder2'), trigger: 'change' }],
+        num: [{ required: true, message: $('legacyScript.pleaseEnterExpenseAmount'), trigger: 'blur' }],
+        date: [{ required: true, message: $('legacyScript.pleaseSelectTime'), trigger: 'change' }],
+        bill_cate_id: [{ required: true, message: $('legacyScript.pleaseSelectExpenseType'), trigger: 'change' }],
+        type_id: { required: true, message: $('ui.customerContractContractDialogSelectPaymentMethod'), trigger: 'change' } // 支付方式
       },
 
       labelWidth: 120,

@@ -4,18 +4,18 @@
     <el-dialog :before-close="handleClose" :title="fromData.title" :visible.sync="dialogVisible" width="480px">
       <div class="body">
         <div class="add-button">
-          <el-button type="text" @click="openDepartment">{{ $t('file.addsharedmembers') }}</el-button>
+          <el-button type="text" @click="openDepartment">{{ $('file.addsharedmembers') }}</el-button>
         </div>
         <div class="content">
           <ul class="content-title">
             <li>
-              <p class="text-left">{{ $t('file.spacemember') }}</p>
-              <p>{{ $t('public.download') }}</p>
-              <p>{{ $t('public.edit') }}</p>
-              <p>{{ $t('public.operation') }}</p>
+              <p class="text-left">{{ $('file.spacemember') }}</p>
+              <p>{{ $('public.download') }}</p>
+              <p>{{ $('public.edit') }}</p>
+              <p>{{ $('public.operation') }}</p>
             </li>
             <li>
-              <p class="text-left">{{ $t('file.batchsettings') }}</p>
+              <p class="text-left">{{ $('file.batchsettings') }}</p>
               <p><el-checkbox v-model="downloadCheck" :disabled="userList.length <= 0" @change="downloadChange" /></p>
               <p><el-checkbox v-model="editCheck" :disabled="userList.length <= 0" @change="editChange" /></p>
               <p />
@@ -30,15 +30,15 @@
               <p><el-checkbox :key="index" v-model="item.downloadCheck" :label="item.downloadCheck" /></p>
               <p><el-checkbox :key="index" v-model="item.editCheck" :label="item.editCheck" /></p>
               <p>
-                <el-button type="text" @click="deleteShare(index)">{{ $t('public.delete') }}</el-button>
+                <el-button type="text" @click="deleteShare(index)">{{ $('public.delete') }}</el-button>
               </p>
             </li>
           </ul>
         </div>
       </div>
       <div slot="footer" class="dialog-footer text-center">
-        <el-button @click="handleClose">{{ $t('public.cancel') }}</el-button>
-        <el-button type="primary" @click="handleAdd">{{ $t('public.ok') }}</el-button>
+        <el-button @click="handleClose">{{ $('public.cancel') }}</el-button>
+        <el-button type="primary" @click="handleAdd">{{ $('public.ok') }}</el-button>
       </div>
     </el-dialog>
     <!-- <department
@@ -120,7 +120,7 @@ export default {
     },
     handleAdd() {
       if (this.userList.length <= 0) {
-        this.$message.error(this.$t('file.placeholder04'))
+        this.$message.error(this.$('file.placeholder04'))
       } else {
         var list = []
         this.userList.forEach((value) => {

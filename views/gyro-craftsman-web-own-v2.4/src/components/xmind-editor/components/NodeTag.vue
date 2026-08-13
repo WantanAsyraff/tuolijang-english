@@ -1,8 +1,8 @@
 <template>
-  <el-dialog class="nodeTagDialog" :title='$ts("标签")' :visible.sync="dialogVisible" :width="isMobile ? '90%' : '50%'"
+  <el-dialog class="nodeTagDialog" :title='$("customer.label")' :visible.sync="dialogVisible" :width="isMobile ? '90%' : '50%'"
     :top="isMobile ? '20px' : '15vh'">
     <el-input v-model="tag" @keyup.native.enter="add" @keyup.native.stop @keydown.native.stop
-      :disabled="tagArr.length >= max" :placeholder='$ts("请按回车键添加")'>
+      :disabled="tagArr.length >= max" :placeholder='$("legacy.e3d22b6dac079cab")'>
     </el-input>
     <div class="tagList">
       <div class="tagItem" v-for="(item, index) in tagArr" :key="index" :style="{
@@ -15,8 +15,8 @@
       </div>
     </div>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="cancel">{{ $ts("取 消") }}</el-button>
-      <el-button type="primary" @click="confirm">{{ $ts("确 定") }}</el-button>
+      <el-button @click="cancel">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button type="primary" @click="confirm">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </span>
   </el-dialog>
 </template>

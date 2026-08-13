@@ -2,8 +2,8 @@
 <template>
   <div class="assess-left">
     <div class="el-card__header">
-      <span class="title-16">{{ $ts("素材分类") }}</span>
-      <el-popover placement="top" trigger="hover" :content='$ts("添加素材分类")' popper-class="popoverStyle">
+      <span class="title-16">{{ $("ui.customerWeChatMassMassMaterialCategory") }}</span>
+      <el-popover placement="top" trigger="hover" :content='$("legacy.3af212915ea28bed")' popper-class="popoverStyle">
         <span
           @click="addCategory"
           class="iconfont icontianjia pull-right pointer custom-tooltip"
@@ -32,8 +32,8 @@
               @after-enter="handleShow(item.id)"
             >
               <div class="right-item-list">
-                <div class="right-item" @click.stop="addDivsion(item.id)">{{ $t('public.edit') }}</div>
-                <div class="right-item" @click.stop="handleDelete(item.id)">{{ $t('public.delete') }}</div>
+                <div class="right-item" @click.stop="addDivsion(item.id)">{{ $('public.edit') }}</div>
+                <div class="right-item" @click.stop="handleDelete(item.id)">{{ $('public.delete') }}</div>
               </div>
               <div
                 slot="reference"

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 收支记账列表条件筛选组件 -->
 <template>
   <div>
@@ -10,7 +11,7 @@
       :sortSearch="false"
       :total="total"
       :title="$route.meta.title"
-:btn-text="$t('ui.fdEnterpriseListFormBoxNewAccounts')"
+      :btnText="$('ui.fdEnterpriseListFormBoxNewAccounts')"
       :isAddBtn="true"
       @addDataFn="addFinance"
       @dropdownFn="dropdownFn"
@@ -22,7 +23,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import file from '@/utils/file'
 import Vue from 'vue'
 Vue.use(file)
@@ -55,11 +55,11 @@ export default {
       payData: [],
       exportFileUrl: '',
       sexOptions: [
-        { label: this.$t('finance.all'), value: '' },
-        { label: this.$t('finance.income'), value: '1' },
-        { label: this.$t('finance.pay'), value: '0' }
+        { label: this.$('finance.all'), value: '' },
+        { label: this.$('finance.income'), value: '1' },
+        { label: this.$('finance.pay'), value: '0' }
       ],
-      statusOptions: [{ label: this.$t('toptable.all'), value: '' }],
+      statusOptions: [{ label: this.$('toptable.all'), value: '' }],
       saveName: '',
       exportData: {
         data: [],
@@ -68,15 +68,15 @@ export default {
       columnNumber: 2,
       dropdownList: [
         {
-          label: i18n.t('customer.export'),
+          label: $('customer.export'),
           value: 1
         },
         {
-          label: i18n.t('finance.batchupload'),
+          label: $('finance.batchupload'),
           value: 2
         },
         {
-          label: i18n.t('ui.developCrudEntityTableDownloadTemplate'),
+          label: $('ui.developCrudEntityTableDownloadTemplate'),
           value: 3
         }
       ],
@@ -118,15 +118,15 @@ export default {
           options: [
             {
               value: '',
-              label: i18n.t('finance.all')
+              label: $('finance.all')
             },
             {
               value: '1',
-              label: i18n.t('customer.income')
+              label: $('customer.income')
             },
             {
               value: '0',
-              label: i18n.t('customer.expense')
+              label: $('customer.expense')
             }
           ]
         }
@@ -171,21 +171,21 @@ export default {
     setOptions() {
       this.sexOptions = [
         {
-          label: this.$t('finance.all'),
+          label: this.$('finance.all'),
           value: ''
         },
         {
-          label: this.$t('finance.income'),
+          label: this.$('finance.income'),
           value: '0'
         },
         {
-          label: this.$t('finance.pay'),
+          label: this.$('finance.pay'),
           value: '1'
         }
       ]
       this.statusOptions = [
         {
-          label: this.$t('toptable.all'),
+          label: this.$('toptable.all'),
           value: ''
         }
       ]
@@ -199,7 +199,7 @@ export default {
       const data = {
         types: type
       }
-      const list = [{ label: this.$t('toptable.all'), value: '' }]
+      const list = [{ label: this.$('toptable.all'), value: '' }]
       billCateApi(data).then((res) => {
         res.data === undefined ? (res.data = []) : res.data
         this.statusOptions = res.data
@@ -217,7 +217,7 @@ export default {
         const data = res.data.list ? res.data.list : []
         this.exportFileUrl = res.data.import_temp
         this.payData = data
-        this.payData.unshift({ name: this.$t('toptable.all'), id: '' })
+        this.payData.unshift({ name: this.$('toptable.all'), id: '' })
         this.setDataDict('type_id', this.payData)
       })
     },
@@ -271,7 +271,7 @@ export default {
       }
       const res = []
       if (data.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.batchExportContentIsEmpty'))
+        this.$message.error($('legacyScript.batchExportContentIsEmpty'))
       } else {
         for (let i = 0; i <= data.length - 1; i++) {
           if (data[i][0] === '') {
@@ -301,7 +301,7 @@ export default {
     exportTemplate() {
       this.gettime = this.$moment().format('YYYY-MM-DD HH:mm:ss')
       if (!this.exportFileUrl) {
-        this.$message.error(i18n.t('legacyScript.noImportTemplateAvailablePleaseContactTheAdministrator'))
+        this.$message.error($('legacyScript.noImportTemplateAvailablePleaseContactTheAdministrator'))
       } else {
         this.fileLinkDownLoad(this.exportFileUrl, '收支记账导入模板' + this.gettime + '.xlsx')
       }

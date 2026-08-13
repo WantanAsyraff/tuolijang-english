@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div
   class="contextmenuContainer listBox"
@@ -11,84 +12,84 @@
       @click="handleExecCommand('INSERT_NODE', insertNodeBtnDisabled)"
       :class="{ disabled: insertNodeBtnDisabled }"
     >
-      <span class="name">{{ $t("ui.xmindEditorContextmenuInsertSiblingNode") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuInsertSiblingNode") }}</span>
       <span class="desc">Enter</span>
     </div>
     <div class="item" @click="handleExecCommand('INSERT_CHILD_NODE')" :class="{ disabled: isGeneralization }">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuInsertChildNode") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuInsertChildNode") }}</span>
       <span class="desc">Tab</span>
     </div>
     <div class="item" @click="handleExecCommand('INSERT_PARENT_NODE')" :class="{ disabled: insertNodeBtnDisabled }">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuInsertParentNode") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuInsertParentNode") }}</span>
       <span class="desc">Shift + Tab</span>
     </div>
     <div class="item" @click="handleExecCommand('ADD_GENERALIZATION')" :class="{ disabled: insertNodeBtnDisabled }">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuInsertSummary") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuInsertSummary") }}</span>
       <span class="desc">Ctrl + G</span>
     </div>
     <div class="splitLine"></div>
     <div class="item" @click="handleExecCommand('UP_NODE')" :class="{ disabled: upNodeBtnDisabled }">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuMoveNodeUp") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuMoveNodeUp") }}</span>
       <span class="desc">Ctrl + ↑</span>
     </div>
     <div class="item" @click="handleExecCommand('DOWN_NODE')" :class="{ disabled: downNodeBtnDisabled }">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuMoveNodeDown") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuMoveNodeDown") }}</span>
       <span class="desc">Ctrl + ↓</span>
     </div>
     <div class="item" @click="handleExecCommand('EXPAND_ALL')">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuExpandAllChildNodes") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuExpandAllChildNodes") }}</span>
     </div>
     <div class="splitLine"></div>
     <div class="item danger" @click="handleExecCommand('REMOVE_NODE')">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuDeleteNode") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuDeleteNode") }}</span>
       <span class="desc">Delete</span>
     </div>
     <div class="item danger" @click="handleExecCommand('REMOVE_CURRENT_NODE')">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuDeleteCurrentNodeOnly") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuDeleteCurrentNodeOnly") }}</span>
       <span class="desc">Shift + Backspace</span>
     </div>
     <div class="splitLine"></div>
     <div class="item" @click="handleExecCommand('COPY_NODE')" :class="{ disabled: isGeneralization }">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuCopyNode") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuCopyNode") }}</span>
       <span class="desc">Ctrl + C</span>
     </div>
     <div class="item" @click="handleExecCommand('CUT_NODE')" :class="{ disabled: isGeneralization }">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuCutNode") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuCutNode") }}</span>
       <span class="desc">Ctrl + X</span>
     </div>
     <div class="item" @click="handleExecCommand('PASTE_NODE')">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuPasteNode") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuPasteNode") }}</span>
       <span class="desc">Ctrl + V</span>
     </div>
     <div class="splitLine"></div>
     <div class="item" @click="handleExecCommand('REMOVE_HYPERLINK')" v-if="hasHyperlink">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuRemoveHyperlink") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuRemoveHyperlink") }}</span>
     </div>
     <div class="item" @click="handleExecCommand('REMOVE_NOTE')" v-if="hasNote">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuRemoveNote") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuRemoveNote") }}</span>
     </div>
     <!-- 样式无法保留，暂时隐藏 -->
     <!-- <div class="item" @click="handleExecCommand('REMOVE_CUSTOM_STYLES')">
       <span class="name">一键去除自定义样式</span>
     </div> -->
     <div class="item" @click="handleExecCommand('EXPORT_CUR_NODE_TO_PNG')">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuExportThisNodeAsAnImage") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuExportThisNodeAsAnImage") }}</span>
     </div>
   </template>
   <template v-if="type === 'svg'">
     <div class="item" @click="handleExecCommand('RETURN_CENTER')">
-      <span class="name">{{ $t("ui.xmindEditorNavigatorToolbarReturnToRootNode") }}</span>
+      <span class="name">{{ $("ui.xmindEditorNavigatorToolbarReturnToRootNode") }}</span>
       <span class="desc">Ctrl + Enter</span>
     </div>
     <div class="splitLine"></div>
     <div class="item" @click="handleExecCommand('EXPAND_ALL')">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuExpandAll") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuExpandAll") }}</span>
     </div>
     <div class="item" @click="handleExecCommand('UNEXPAND_ALL')">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuCollapseAll") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuCollapseAll") }}</span>
     </div>
     <div class="item">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuExpandTo") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuExpandTo") }}</span>
       <span class="el-icon-arrow-right"></span>
       <div class="subItems listBox" :class="{ showLeft: subItemsShowLeft }" style="top: -10px">
         <div
@@ -103,15 +104,15 @@
     </div>
     <div class="splitLine"></div>
     <div class="item" @click="handleExecCommand('RESET_LAYOUT')">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuAutoArrangeLayout") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuAutoArrangeLayout") }}</span>
       <span class="desc">Ctrl + L</span>
     </div>
     <div class="item" @click="handleExecCommand('FIT_CANVAS')">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuFitToCanvas") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuFitToCanvas") }}</span>
       <span class="desc">Ctrl + i</span>
     </div>
     <div class="item" @click="handleExecCommand(TOGGLE_ZEN_MODE)">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuZenMode") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuZenMode") }}</span>
       {{ isZenMode ? '√' : '' }}
     </div>
     <div class="splitLine"></div>
@@ -120,7 +121,7 @@
       <span class="name">一键去除所有节点自定义样式</span>
     </div> -->
     <div class="item">
-      <span class="name">{{ $t("ui.xmindEditorContextmenuCopyToClipboard") }}</span>
+      <span class="name">{{ $("ui.xmindEditorContextmenuCopyToClipboard") }}</span>
       <span class="el-icon-arrow-right"></span>
       <div class="subItems listBox" :class="{ showLeft: subItemsShowLeft }" style="top: -100px">
         <div class="item" v-for="item in copyTypeList" :key="item.value" @click="copyToClipboard(item.value)">
@@ -132,7 +133,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getTextFromHtml, imgToDataUrl } from 'simple-mind-map/src/utils'
 import { transformToMarkdown } from 'simple-mind-map/src/parse/toMarkdown'
 import { transformToTxt } from 'simple-mind-map/src/parse/toTxt'
@@ -411,9 +411,9 @@ export default {
             copy(str)
           }
         }
-        this.$message.success(i18n.t('setting.copytitle'))
+        this.$message.success($('setting.copytitle'))
       } catch (error) {
-        this.$message.error(i18n.t('legacyScript.copyFailed'))
+        this.$message.error($('legacyScript.copyFailed'))
       }
     }
   }

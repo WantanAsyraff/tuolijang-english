@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="textDialog">
     <el-dialog
@@ -13,7 +14,7 @@
           type="textarea"
           class="textareaBox"
           :class="type == 'tooltip_text' ? 'height540' : 'height307'"
-          :placeholder='$ts("请输入内容")'
+          :placeholder='$("access.placeholder16")'
           v-model="value"
           :maxlength="maxlength"
           show-word-limit
@@ -21,14 +22,13 @@
         </el-input>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="handleClose" size="small">{{ $ts("取消") }}</el-button>
-        <el-button type="primary" @click="submitFn" size="small">{{ $ts("确定") }}</el-button>
+        <el-button @click="handleClose" size="small">{{ $("public.cancel") }}</el-button>
+        <el-button type="primary" @click="submitFn" size="small">{{ $("public.ok") }}</el-button>
       </span>
     </el-dialog>
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   props: {},
   data() {
@@ -45,11 +45,11 @@ export default {
   methods: {
     openBox(obj) {
       if (obj.type === 'tooltip_text') {
-        this.title = i18n.t('legacyScript.prompt')
+        this.title = $('legacyScript.prompt')
       } else if (obj.type === 'prologue_text') {
-        this.title = i18n.t('ui.chatModelFormOpeningMessage')
+        this.title = $('ui.chatModelFormOpeningMessage')
       } else if (obj.type === 'data_arrange_text') {
-        this.title = i18n.t('ui.chatModelFormDataFormattingRules')
+        this.title = $('ui.chatModelFormDataFormattingRules')
       }
       this.type = obj.type
       this.maxlength = obj.max

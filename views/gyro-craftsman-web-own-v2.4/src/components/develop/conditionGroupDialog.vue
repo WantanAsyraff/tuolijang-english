@@ -6,25 +6,25 @@
     width="80%"
     :show-close="false"
     :append-to-body="true"
-    :title="$t('ui.developConditionGroupDialogDataLinkage')"
+    :title="$('ui.developConditionGroupDialogDataLinkage')"
     :close-on-click-modal="false"
   >
-    <div class="title">{{ $t("ui.developConditionGroupDialogSetConditions") }}</div>
+    <div class="title">{{ $("ui.developConditionGroupDialogSetConditions") }}</div>
     <div class="condition-box">
       <ConditionGroup :item="rootCondition" :widgetList="widgetList" :on-remove="() => {}" />
     </div>
-    <div class="title mt30">{{ $t("ui.developConditionGroupDialogTriggerTheFollowingAction") }}</div>
+    <div class="title mt30">{{ $("ui.developConditionGroupDialogTriggerTheFollowingAction") }}</div>
     <div class="box mt14">
-      {{ $t("ui.developConditionGroupDialogCurrentComponentLinkageDisplay") }}
+      {{ $("ui.developConditionGroupDialogCurrentComponentLinkageDisplay") }}
       <el-select v-model="value" class="mlr6">
-        <el-option :label="$t('ui.developConditionGroupDialogHide')" value="hide"></el-option>
-        <el-option :label="$t('ui.developConditionGroupDialogDisabled')" value="disable"></el-option>
+        <el-option :label="$('ui.developConditionGroupDialogHide')" value="hide"></el-option>
+        <el-option :label="$('ui.developConditionGroupDialogDisabled')" value="disable"></el-option>
       </el-select>
-      {{ $t("ui.developConditionGroupDialogValue") }}
+      {{ $("ui.developConditionGroupDialogValue") }}
     </div>
     <span slot="footer" class="dialog-footer">
-      <el-button size="small" @click="handleCancel">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button size="small" type="primary" @click="handleCreate">{{ $t("ui.formCommonOaLogEstablish") }}</el-button>
+      <el-button size="small" @click="handleCancel">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button size="small" type="primary" @click="handleCreate">{{ $("ui.formCommonOaLogEstablish") }}</el-button>
     </span>
   </el-dialog>
 </div>

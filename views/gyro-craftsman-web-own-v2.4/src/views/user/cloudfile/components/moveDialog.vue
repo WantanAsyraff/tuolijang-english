@@ -4,8 +4,8 @@
     <el-dialog :visible.sync="dialogVisible" width="480px" :before-close="handleClose">
       <div slot="title">
         <el-tabs v-model="name" class="tab-move" @tab-click="handleTabClick">
-          <!--<el-tab-pane :label="$t('file.myfiles')" name="1" />-->
-          <el-tab-pane :label="$t('file.enterprisespace')" name="2" />
+          <!--<el-tab-pane :label="$('file.myfiles')" name="1" />-->
+          <el-tab-pane :label="$('file.enterprisespace')" name="2" />
         </el-tabs>
       </div>
       <div class="tree-box">
@@ -31,8 +31,8 @@
         </el-scrollbar>
       </div>
       <div slot="footer" class="dialog-footer text-right">
-        <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-        <el-button size="small" type="primary" @click="handleSave">{{ $t('public.ok') }}</el-button>
+        <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+        <el-button size="small" type="primary" @click="handleSave">{{ $('public.ok') }}</el-button>
       </div>
     </el-dialog>
   </div>

@@ -10,7 +10,7 @@
           <ToolbarNodeBtnList dir="v" :list="verticalList" @click.native="popoverShow = false"></ToolbarNodeBtnList>
           <div slot="reference" class="toolbarBtn">
             <span class="icon xmind-iconfont icongongshi"></span>
-            <span class="text">{{ $ts("更多") }}</span>
+            <span class="text">{{ $("hr.more") }}</span>
           </div>
         </el-popover>
       </div>

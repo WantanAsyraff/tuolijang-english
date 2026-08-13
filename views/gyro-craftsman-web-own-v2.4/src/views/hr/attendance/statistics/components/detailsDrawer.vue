@@ -1,50 +1,50 @@
 <template>
 <div>
-  <el-drawer :title="$t('ui.hrAttendanceStatisticsDetailsDrawerClockInRecordDetails')" :visible.sync="drawer" size="600px" :before-close="handleClose">
+  <el-drawer :title="$('ui.hrAttendanceStatisticsDetailsDrawerClockInRecordDetails')" :visible.sync="drawer" size="600px" :before-close="handleClose">
     <div class="contract-body">
       <div class="mt20">
         <el-form label-width="110px">
           <div class="form-box">
             <div class="form-item">
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceStatisticsDetailsDrawerName") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceStatisticsDetailsDrawerName") }}</span>
                 <p>{{ info.card ? info.card.name : '--' }}</p>
               </el-form-item>
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceStatisticsDetailsDrawerDepartment") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceStatisticsDetailsDrawerDepartment") }}</span>
                 <p>{{ (info.frame && info.frame.name) || '--' }}</p>
               </el-form-item>
 
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentAttendanceGroupName") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceSettingAddConentAttendanceGroupName") }}</span>
                 <p>{{ info.group || '--' }}</p>
               </el-form-item>
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceStatisticsDetailsDrawerAttendanceDate") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceStatisticsDetailsDrawerAttendanceDate") }}</span>
                 <p>{{ $moment(info.created_at).format('YYYY-MM-DD') }}</p>
               </el-form-item>
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceStatisticsDetailsDrawerWeekday") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceStatisticsDetailsDrawerWeekday") }}</span>
                 <p>{{ getWeek(info.created_at) }}</p>
               </el-form-item>
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceStatisticsDetailsDrawerShift") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceStatisticsDetailsDrawerShift") }}</span>
                 <p>{{ getShift(info.shift_data) }}</p>
               </el-form-item>
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceStatisticsDetailsDrawerClockInTime") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceStatisticsDetailsDrawerClockInTime") }}</span>
                 <p>{{ info.created_at }}</p>
               </el-form-item>
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceStatisticsDetailsDrawerClockInAddress") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceStatisticsDetailsDrawerClockInAddress") }}</span>
                 <p>{{ info.address }}</p>
               </el-form-item>
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceStatisticsDetailsDrawerClockInRemarks") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceStatisticsDetailsDrawerClockInRemarks") }}</span>
                 <p>{{ info.remark || '--' }}</p>
               </el-form-item>
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceStatisticsDetailsDrawerClockInPhoto") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceStatisticsDetailsDrawerClockInPhoto") }}</span>
                 <template v-if="info.image && info.image.length > 0">
                   <p v-for="(item, index) in info.image" :key="index">
                     <img class="image" :src="item" alt="" @click="lookViewer(item, '')" />

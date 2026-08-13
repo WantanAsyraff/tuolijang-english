@@ -23,23 +23,23 @@
                 <el-col class="table-title-right">
                   <div class="title" v-if="item.approve">{{ item.approve.name }}</div>
                   <div class="tag">
-                    <el-tag v-if="item.status === -1" type="info" size="mini"> {{ $t("ui.customerListApplyForPaymentRevoked") }} </el-tag>
-                    <el-tag v-if="item.status === 0" type="warning" size="mini"> {{ $t("ui.userExamineExamineUnderReview") }} </el-tag>
-                    <el-tag v-if="item.status === 1 && !item.recall" type="info" size="mini"> {{ $t("ui.customerListApplyForPaymentApproved") }} </el-tag>
-                    <el-tag v-if="item.status === 2" type="danger" size="mini"> {{ $t("ui.userExamineExamineRejected") }} </el-tag>
-                    <el-tag v-if="item.status === 1 && item.recall" type="danger" size="mini"> {{ $t("ui.userExamineExamineWithdrawing") }} </el-tag>
+                    <el-tag v-if="item.status === -1" type="info" size="mini"> {{ $("ui.customerListApplyForPaymentRevoked") }} </el-tag>
+                    <el-tag v-if="item.status === 0" type="warning" size="mini"> {{ $("ui.userExamineExamineUnderReview") }} </el-tag>
+                    <el-tag v-if="item.status === 1 && !item.recall" type="info" size="mini"> {{ $("ui.customerListApplyForPaymentApproved") }} </el-tag>
+                    <el-tag v-if="item.status === 2" type="danger" size="mini"> {{ $("ui.userExamineExamineRejected") }} </el-tag>
+                    <el-tag v-if="item.status === 1 && item.recall" type="danger" size="mini"> {{ $("ui.userExamineExamineWithdrawing") }} </el-tag>
                   </div>
                 </el-col>
               </el-row>
             </el-col>
             <el-col :span="12" class="text-right">
-              <el-button size="mini" @click="handleDetail(item)">{{ $t("ui.userExamineExamineViewDetails") }}</el-button>
+              <el-button size="mini" @click="handleDetail(item)">{{ $("ui.userExamineExamineViewDetails") }}</el-button>
               <template v-if="item.status == 0">
                 <el-button v-if="item.verify_status === 0" type="danger" size="mini" @click="handleRefuse(item)">
-                  {{ $t("ui.settingEnterpriseUpgradeIndexRefuse") }}
+                  {{ $("ui.settingEnterpriseUpgradeIndexRefuse") }}
                 </el-button>
                 <el-button v-if="item.verify_status === 0" type="primary" size="mini" @click="handleAgree(item)">
-                  {{ $t("ui.settingEnterpriseUpgradeIndexAgree") }}
+                  {{ $("ui.settingEnterpriseUpgradeIndexAgree") }}
                 </el-button>
               </template>
             </el-col>
@@ -53,7 +53,7 @@
               <el-col class="table-body-right">
                 <div class="title">
                   <span>{{ item.card ? item.card.name : '' }}</span>
-                  <span class="time">{{ $t("ui.userExamineExamineCreatedAt") }}{{ item.created_at }}</span>
+                  <span class="time">{{ $("ui.userExamineExamineCreatedAt") }}{{ item.created_at }}</span>
                 </div>
                 <div class="mt15 table-body-body">
                   <div class="over-text" v-html="getValue(item.content)"></div>

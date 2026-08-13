@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '0px' }">
@@ -10,71 +11,71 @@
 
         <!-- 1 -->
         <div class="mt20">
-          <div class="name">{{ $t("ui.developForeignDocument1AddApiCall") }}</div>
+          <div class="name">{{ $("ui.developForeignDocument1AddApiCall") }}</div>
           <div class="bg-grey mt10 flex-center">
             {{ jsonData.method }} {{ host }}{{ jsonData.url }}
             <span class="iconfont iconfuzhi-01" @click="copy(host + jsonData.url)"></span>
           </div>
         </div>
         <div class="mt30">
-          <div class="name">{{ $t("ui.developForeignDocument2RequestHeaders") }}</div>
+          <div class="name">{{ $("ui.developForeignDocument2RequestHeaders") }}</div>
           <div class="mt10 table-box">
             <el-table :data="headerData" style="width: 100%" :row-class-name="tableRowNone">
-              <el-table-column prop="name" :label="$t('ui.developCrudFieldSettingFieldName')"> </el-table-column>
-              <el-table-column prop="form_type" :label="$t('ui.developForeignDocumentFieldType')"> </el-table-column>
+              <el-table-column prop="name" :label="$('ui.developCrudFieldSettingFieldName')"> </el-table-column>
+              <el-table-column prop="form_type" :label="$('ui.developForeignDocumentFieldType')"> </el-table-column>
               <!-- <el-table-column prop="default" label="默认值"> </el-table-column> -->
-              <el-table-column prop="is_must" :label="$t('ui.developForeignDocumentRequired')">
+              <el-table-column prop="is_must" :label="$('ui.developForeignDocumentRequired')">
                 <template slot-scope="scope">
-                  {{ scope.row.is_must ? $t('ui.developFieldComponentYes') : $t('ui.developFieldComponentNo') }}
+                  {{ scope.row.is_must ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}
                 </template>
               </el-table-column>
-              <el-table-column prop="message" :label="$t('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
             </el-table>
           </div>
         </div>
         <div class="mt30">
-          <div class="name">{{ $t("ui.developForeignDocument3RequestParameters") }}</div>
+          <div class="name">{{ $("ui.developForeignDocument3RequestParameters") }}</div>
           <div class="mt10 table-box">
             <el-table v-if="jsonData.path_prams" :data="jsonData.path_prams" style="width: 100%">
-              <el-table-column prop="name" :label="$t('ui.developCrudFieldSettingFieldName')"> </el-table-column>
-              <el-table-column prop="form_type" :label="$t('ui.developForeignDocumentFieldType')"> </el-table-column>
-              <el-table-column prop="is_must" :label="$t('ui.developForeignDocumentRequired')">
+              <el-table-column prop="name" :label="$('ui.developCrudFieldSettingFieldName')"> </el-table-column>
+              <el-table-column prop="form_type" :label="$('ui.developForeignDocumentFieldType')"> </el-table-column>
+              <el-table-column prop="is_must" :label="$('ui.developForeignDocumentRequired')">
                 <template slot-scope="scope">
-                  {{ scope.row.is_must ? $t('ui.developFieldComponentYes') : $t('ui.developFieldComponentNo') }}
+                  {{ scope.row.is_must ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}
                 </template>
               </el-table-column>
-              <el-table-column prop="message" :label="$t('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
             </el-table>
           </div>
           <div class="mt10 table-box">
             <el-table v-if="jsonData.get_prams" :data="jsonData.get_prams" style="width: 100%">
-              <el-table-column prop="name" :label="$t('ui.developCrudFieldSettingFieldName')"> </el-table-column>
-              <el-table-column prop="form_type" :label="$t('ui.developForeignDocumentFieldType')"> </el-table-column>
+              <el-table-column prop="name" :label="$('ui.developCrudFieldSettingFieldName')"> </el-table-column>
+              <el-table-column prop="form_type" :label="$('ui.developForeignDocumentFieldType')"> </el-table-column>
               <!-- <el-table-column prop="default" label="默认值"> </el-table-column> -->
-              <el-table-column prop="is_must" :label="$t('ui.developForeignDocumentRequired')">
+              <el-table-column prop="is_must" :label="$('ui.developForeignDocumentRequired')">
                 <template slot-scope="scope">
-                  {{ scope.row.is_must ? $t('ui.developFieldComponentYes') : $t('ui.developFieldComponentNo') }}
+                  {{ scope.row.is_must ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}
                 </template>
               </el-table-column>
-              <el-table-column prop="message" :label="$t('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
             </el-table>
           </div>
           <div class="mt10 table-box">
             <el-table v-if="jsonData.post_prams" :data="jsonData.post_prams" style="width: 100%">
-              <el-table-column prop="name" :label="$t('ui.developCrudFieldSettingFieldName')"> </el-table-column>
-              <el-table-column prop="form_type" :label="$t('ui.developForeignDocumentFieldType')"> </el-table-column>
+              <el-table-column prop="name" :label="$('ui.developCrudFieldSettingFieldName')"> </el-table-column>
+              <el-table-column prop="form_type" :label="$('ui.developForeignDocumentFieldType')"> </el-table-column>
 
-              <el-table-column prop="is_must" :label="$t('ui.developForeignDocumentRequired')">
+              <el-table-column prop="is_must" :label="$('ui.developForeignDocumentRequired')">
                 <template slot-scope="scope">
-                  {{ scope.row.is_must ? $t('ui.developFieldComponentYes') : $t('ui.developFieldComponentNo') }}
+                  {{ scope.row.is_must ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}
                 </template>
               </el-table-column>
-              <el-table-column prop="message" :label="$t('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
             </el-table>
           </div>
         </div>
         <div class="mt30">
-          <div class="name">{{ $t("ui.developForeignDocument4ResponseParameters") }}</div>
+          <div class="name">{{ $("ui.developForeignDocument4ResponseParameters") }}</div>
           <div class="mt10 table-box">
             <el-table
               :data="jsonData.response_data"
@@ -83,20 +84,20 @@
               default-expand-all
               style="width: 100%"
             >
-              <el-table-column prop="name" :label="$t('ui.developCrudFieldSettingFieldName')"> </el-table-column>
-              <el-table-column prop="form_type" :label="$t('ui.developForeignDocumentFieldType')"> </el-table-column>
-              <el-table-column prop="message" :label="$t('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column prop="name" :label="$('ui.developCrudFieldSettingFieldName')"> </el-table-column>
+              <el-table-column prop="form_type" :label="$('ui.developForeignDocumentFieldType')"> </el-table-column>
+              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
             </el-table>
           </div>
         </div>
         <div class="mt30">
-          <div class="name">{{ $t("ui.developForeignDocument5RequestDataExample") }}</div>
+          <div class="name">{{ $("ui.developForeignDocument5RequestDataExample") }}</div>
           <div class="mt10">
             <json-viewer :value="jsonData.request_json" :expand-depth="8" copyable></json-viewer>
           </div>
         </div>
         <div class="mt30">
-          <div class="name">{{ $t("ui.developForeignDocument6ResponseDataExample") }}</div>
+          <div class="name">{{ $("ui.developForeignDocument6ResponseDataExample") }}</div>
           <div class="mt10">
             <json-viewer
               style="height: 300px; width: 100%"
@@ -112,7 +113,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getDocsApi } from '@/api/develop'
 import JsonViewer from 'vue-json-viewer'
 export default {
@@ -143,7 +143,7 @@ export default {
           name: 'Authorization',
           form_type: 'string',
           is_must: true,
-          message: i18n.t('legacyScript.bearerHtml')
+          message: $('legacyScript.bearerHtml')
         }
       ],
       gridr: {
@@ -174,7 +174,7 @@ export default {
     },
     copy(val) {
       clipboard.writeText(val)
-      this.$message.success(i18n.t('setting.copytitle'))
+      this.$message.success($('setting.copytitle'))
     },
     async getData() {
       const res = await getDocsApi()

@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog
       :visible.sync="dialogVisible"
-      :title='$ts("移动到")'
+      :title='$("legacy.f3d717f55911acb8")'
       width="480px"
       :append-to-body="true"
       :before-close="handleClose"
@@ -30,9 +31,9 @@
         </el-scrollbar>
       </div>
       <div slot="footer" class="dialog-footer text-right">
-        <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
+        <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
         <el-button size="small" type="primary" :loading="saveLoading" @click="handleSave">{{
-          $t('public.ok')
+          $('public.ok')
         }}</el-button>
       </div>
     </el-dialog>
@@ -40,7 +41,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { memorialCateListApi, memorialEditApi } from '@/api/user'
 
 export default {
@@ -91,7 +91,7 @@ export default {
     },
     handleSave() {
       if (!this.fileId) {
-        this.$message.error(i18n.t('legacyScript.selectTheFolderToMove'))
+        this.$message.error($('legacyScript.selectTheFolderToMove'))
       } else {
         const data = {
           title: this.moveData.data.title,

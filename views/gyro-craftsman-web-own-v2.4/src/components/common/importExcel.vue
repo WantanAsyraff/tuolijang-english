@@ -9,7 +9,7 @@
     @change="exportData"
   />
   <el-button v-show="false" size="small" @click="btnClick">{{
-    distinguish == 2 ? $t('ui.commonImportExcelImport') : $t('finance.batchupload')
+    distinguish == 2 ? $('ui.commonImportExcelImport') : $('finance.batchupload')
   }}</el-button>
 </div>
 </template>

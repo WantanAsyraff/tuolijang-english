@@ -8,7 +8,7 @@
         </div>
         <el-input
           v-model="item.label"
-          :placeholder='$ts("请输入内容")'
+          :placeholder='$("access.placeholder16")'
           class="mr5"
           @input="setOptionValue(item, $event)"
         ></el-input>
@@ -19,7 +19,7 @@
     </draggable>
     <div style="margin-left: 20px">
       <el-button style="padding-bottom: 0" icon="el-icon-circle-plus-outline" type="text" @click="addSelectItem"
-        >{{ $ts("添加选项") }}</el-button
+        >{{ $("legacy.d063937855cf99a7") }}</el-button
       >
     </div>
   </div>

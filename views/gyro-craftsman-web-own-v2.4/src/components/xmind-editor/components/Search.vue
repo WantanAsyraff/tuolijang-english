@@ -6,7 +6,7 @@
     <div class="searchInputBox">
       <el-input
         ref="searchInputRef"
-        :placeholder='$ts("请输入查找内容")'
+        :placeholder='$("legacy.083bb67ab5a1a7ce")'
         size="small"
         v-model="searchText"
         @keyup.native.enter.stop="onSearchNext"
@@ -16,7 +16,7 @@
       >
         <i slot="prefix" class="el-input__icon el-icon-search"></i>
         <el-button size="small" slot="append" v-if="!isUndef(searchText)" @click="showReplaceInput = true"
-          >{{ $ts("替换") }}</el-button
+          >{{ $("legacy.131b13aa265996df") }}</el-button
         >
       </el-input>
       <div class="searchInfo" v-if="showSearchInfo">{{ currentIndex }} / {{ total }}</div>
@@ -24,7 +24,7 @@
     <el-input
       v-if="showReplaceInput"
       ref="replaceInputRef"
-      :placeholder='$ts("请输入替换内容")'
+      :placeholder='$("legacy.5bcf2a3a9ac87307")'
       size="small"
       v-model="replaceText"
       style="margin: 12px 0"
@@ -33,11 +33,11 @@
       @blur="onBlur"
     >
       <i slot="prefix" class="el-input__icon el-icon-edit"></i>
-      <el-button size="small" slot="append" @click="hideReplaceInput">{{ $ts("取消") }}</el-button>
+      <el-button size="small" slot="append" @click="hideReplaceInput">{{ $("public.cancel") }}</el-button>
     </el-input>
     <div class="btnList" v-if="showReplaceInput">
-      <el-button size="small" :disabled="isReadonly" @click="replace">{{ $ts("替换") }}</el-button>
-      <el-button size="small" :disabled="isReadonly" @click="replaceAll">{{ $ts("全部替换") }}</el-button>
+      <el-button size="small" :disabled="isReadonly" @click="replace">{{ $("legacy.131b13aa265996df") }}</el-button>
+      <el-button size="small" :disabled="isReadonly" @click="replaceAll">{{ $("legacy.2357445f30da54fb") }}</el-button>
     </div>
     <div class="searchResultList" :style="{ height: searchResultListHeight + 'px' }" v-if="showSearchResultList">
       <div
@@ -50,7 +50,7 @@
       ></div>
       <div class="empty" v-if="searchResultList.length <= 0">
         <span class="xmind-iconfont iconwushuju"></span>
-        <span class="text">{{ $ts("暂无结果") }}</span>
+        <span class="text">{{ $("legacy.dc568bcb3a175d90") }}</span>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     formattedTips() {
-      const translated = this.$ts(this.tips)
+      const translated = this.$(this.tips)
       if (!translated || /[。！？.!?]$/.test(translated)) {
         return translated
       }

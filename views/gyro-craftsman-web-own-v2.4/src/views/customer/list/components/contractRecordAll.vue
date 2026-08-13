@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <!-- 客户-账目记录页面组件 -->
 <template>
 <div class="station">
   <div class="btn-box1">
-    <div class="title-16">{{ $t("ui.customerContractContractPaymentAccountRecordsList") }}</div>
+    <div class="title-16">{{ $("ui.customerContractContractPaymentAccountRecordsList") }}</div>
 
     <div>
       <el-button
@@ -10,7 +11,7 @@
         size="small"
         @click="handleBuild(0, buildData.contract_renew_switch, 'contract_renew_switch')"
       >
-        {{ $t("ui.customerContractContractPaymentAddRenewal") }}
+        {{ $("ui.customerContractContractPaymentAddRenewal") }}
       </el-button>
 
       <el-button
@@ -18,7 +19,7 @@
         size="small"
         @click="handleBuild(0, buildData.contract_disburse_switch, 'contract_disburse_switch')"
       >
-        {{ $t("ui.customerContractContractPaymentAddExpense") }}
+        {{ $("ui.customerContractContractPaymentAddExpense") }}
       </el-button>
 
       <el-button
@@ -27,49 +28,49 @@
         type="primary"
         @click="handleBuild(0, buildData.contract_refund_switch, 'contract_refund_switch')"
       >
-        {{ $t("ui.customerContractContractPaymentAddPayment") }}
+        {{ $("ui.customerContractContractPaymentAddPayment") }}
       </el-button>
     </div>
   </div>
 
   <el-table class="mt10" :data="debtData" :class="debtData.length > 0 ? '' : 'mb15'" style="width: 100%">
-    <el-table-column prop="date" :label="$t('ui.customerContractContractPaymentPaymentTime')" min-width="150"> </el-table-column>
-    <el-table-column prop="bill_types" :label="$t('ui.customerContractContractPaymentRecordType')" min-width="150">
+    <el-table-column prop="date" :label="$('ui.customerContractContractPaymentPaymentTime')" min-width="150"> </el-table-column>
+    <el-table-column prop="bill_types" :label="$('ui.customerContractContractPaymentRecordType')" min-width="150">
       <template slot-scope="scope">
         <el-tag :type="scope.row.types == 2 ? 'warning' : 'success'">{{
-          scope.row.types == 2 ? $t('ui.customerContractContractPaymentExpense') : $t('ui.customerContractContractPaymentIncome')
+          scope.row.types == 2 ? $('ui.customerContractContractPaymentExpense') : $('ui.customerContractContractPaymentIncome')
         }}</el-tag>
       </template>
     </el-table-column>
-    <el-table-column prop="num" :label="$t('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100"> </el-table-column>
-    <el-table-column prop="pay_type" :label="$t('ui.customerContractContractPaymentPaymentMethod')" min-width="90">
+    <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100"> </el-table-column>
+    <el-table-column prop="pay_type" :label="$('ui.customerContractContractPaymentPaymentMethod')" min-width="90">
       <template slot-scope="scope">
         <span>{{ scope.row.pay_type !== '' ? scope.row.pay_type : '--' }}</span>
       </template>
     </el-table-column>
-    <el-table-column prop="bill_no" :label="$t('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="110"> </el-table-column>
-    <el-table-column prop="status" :label="$t('ui.customerContractContractPaymentPaymentReviewStatus')" min-width="110">
+    <el-table-column prop="bill_no" :label="$('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="110"> </el-table-column>
+    <el-table-column prop="status" :label="$('ui.customerContractContractPaymentPaymentReviewStatus')" min-width="110">
       <template slot-scope="scope">
-        <el-tag v-if="scope.row.status === 0" type="warning" size="mini"> {{ $t('customer.audit') }}</el-tag>
+        <el-tag v-if="scope.row.status === 0" type="warning" size="mini"> {{ $('customer.audit') }}</el-tag>
         <el-tag v-if="scope.row.status === 1 && !scope.row.recall" type="info" size="mini">
-          {{ $t('customer.passed') }}</el-tag
+          {{ $('customer.passed') }}</el-tag
         >
-        <el-tag v-if="scope.row.status === -1" type="info" size="mini">{{ $t("ui.customerListApplyForPaymentRevoked") }}</el-tag>
-        <el-tag v-if="scope.row.status === 1 && scope.row.recall" type="info" size="mini">{{ $t("ui.userExamineExamineWithdrawing") }}</el-tag>
+        <el-tag v-if="scope.row.status === -1" type="info" size="mini">{{ $("ui.customerListApplyForPaymentRevoked") }}</el-tag>
+        <el-tag v-if="scope.row.status === 1 && scope.row.recall" type="info" size="mini">{{ $("ui.userExamineExamineWithdrawing") }}</el-tag>
         <el-popover v-if="scope.row.status === 2" trigger="hover" placement="top">
-          <p>{{ $t('customer.reason') }}:</p>
+          <p>{{ $('customer.reason') }}:</p>
           <p>{{ scope.row.fail_msg }}</p>
           <div slot="reference">
-            <el-tag type="danger" size="mini"> {{ $t('customer.fail') }}</el-tag>
+            <el-tag type="danger" size="mini"> {{ $('customer.fail') }}</el-tag>
           </div>
         </el-popover>
       </template>
     </el-table-column>
 
-    <el-table-column prop="address" min-width="100" :label="$t('public.operation')">
+    <el-table-column prop="address" min-width="100" :label="$('public.operation')">
       <template slot-scope="scope">
         <div class="flex">
-          <el-button type="text" @click="handleCheck(scope.row)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+          <el-button type="text" @click="handleCheck(scope.row)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
           <template v-if="userId == scope.row.card.id">
             <el-button
               type="text"
@@ -82,9 +83,9 @@
                 scope.row.status === 0 ||
                 (!scope.row.approve_rule && scope.row.status != -1)
               "
-              >{{ $t("ui.formDesignerToolbarPanelIndexRevoke") }}</el-button
+              >{{ $("ui.formDesignerToolbarPanelIndexRevoke") }}</el-button
             >
-            <el-button type="text" v-if="scope.row.status == -1" @click="handleDelete(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+            <el-button type="text" v-if="scope.row.status == -1" @click="handleDelete(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
           </template>
         </div>
       </template>
@@ -93,19 +94,19 @@
   <div class="mt10 flex-between">
     <div class="amount mt10">
       <div v-if="paymentPrice.payment_price != '0.00'" class="mr36">
-        <span class="amount-label">{{ $t("ui.customerContractContractInvoiceTotalReceivedAmountYuan") }}</span
+        <span class="amount-label">{{ $("ui.customerContractContractInvoiceTotalReceivedAmountYuan") }}</span
         ><span class="amount-val incomeColor">{{ paymentPrice.payment_price }}</span>
       </div>
       <div v-if="paymentPrice.expense_price != '0.00'" class="mr36">
-        <span class="amount-label">{{ $t("ui.customerContractContractPaymentTotalExpenseAmountYuan") }}</span
+        <span class="amount-label">{{ $("ui.customerContractContractPaymentTotalExpenseAmountYuan") }}</span
         ><span class="expendColor">{{ paymentPrice.expense_price }}</span>
       </div>
       <div v-if="paymentPrice.audit_income_price != '0.00' || paymentPrice.audit_expense_price != '0.00'">
-        <span class="amount-label">{{ $t("ui.customerListContractRecordAllAmountUnderReviewYuan") }}</span>
+        <span class="amount-label">{{ $("ui.customerListContractRecordAllAmountUnderReviewYuan") }}</span>
         <span class="amount-val">
-          <span class="incomeColor"> {{ paymentPrice.audit_income_price }}{{ $t("ui.customerListContractRecordAllIncome") }} </span>
+          <span class="incomeColor"> {{ paymentPrice.audit_income_price }}{{ $("ui.customerListContractRecordAllIncome") }} </span>
 
-          <span class="expendColor ml10"> {{ paymentPrice.audit_expense_price }}{{ $t("ui.customerListContractRecordAllExpense") }}</span>
+          <span class="expendColor ml10"> {{ paymentPrice.audit_expense_price }}{{ $("ui.customerListContractRecordAllExpense") }}</span>
         </span>
       </div>
     </div>
@@ -135,7 +136,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { mapGetters } from 'vuex'
 import { clientBillAllListApi, clientBillDeleteApi, getCustomerStatisticsApi } from '@/api/enterprise'
@@ -176,18 +176,18 @@ export default {
       formConfig: [
         {
           type: 'textarea',
-          label: i18n.t('legacyScript.reasonForReversal'),
-          placeholder: i18n.t('legacyScript.enterWithdrawalReason'),
+          label: $('legacyScript.reasonForReversal'),
+          placeholder: $('legacyScript.enterWithdrawalReason'),
           key: 'info'
         }
       ],
       formRules: {
-        info: [{ required: true, message: i18n.t('legacyScript.enterWithdrawalReason'), trigger: 'blur' }]
+        info: [{ required: true, message: $('legacyScript.enterWithdrawalReason'), trigger: 'blur' }]
       },
       oaFromData: {
         width: '600px',
-        title: i18n.t('ui.formDesignerToolbarPanelIndexRevoke'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.formDesignerToolbarPanelIndexRevoke'),
+        btnText: '确定',
         labelWidth: 'auto',
         type: ''
       },
@@ -248,7 +248,7 @@ export default {
     // 查看
     async handleCheck(item) {
       this.fromData = {
-        title: this.$t('customer.viewcustomer'),
+        title: this.$('customer.viewcustomer'),
         width: '500px',
         data: item,
         isClient: false,
@@ -268,7 +268,7 @@ export default {
     withdraw(row) {
       this.rowData = row
       if (row.status === 0) {
-        this.$modalSure(this.$ts('你确定要撤销申请吗')).then(() => {
+        this.$modalSure(this.$("legacy.11accb9f68551eb7")).then(() => {
           this.getApplyRevoke()
         })
       } else {

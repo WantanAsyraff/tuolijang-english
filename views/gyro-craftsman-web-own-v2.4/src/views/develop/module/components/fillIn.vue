@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
-    :title="$t('ui.developModuleFillInInvitationLinkRecords')"
+    :title="$('ui.developModuleFillInInvitationLinkRecords')"
     :visible.sync="drawer"
     direction="rtl"
     :show-close="true"
@@ -12,11 +13,11 @@
   >
     <div class="table-box">
       <div class="mb10 flex-between">
-        <div class="title-16">{{ $t("ui.developModuleFillInInvitationLinkRecords2") }}</div>
-        <el-button type="primary" size="small" @click="addShare">{{ $t("ui.developModuleFillInInviteToComplete") }}</el-button>
+        <div class="title-16">{{ $("ui.developModuleFillInInvitationLinkRecords2") }}</div>
+        <el-button type="primary" size="small" @click="addShare">{{ $("ui.developModuleFillInInviteToComplete") }}</el-button>
       </div>
       <el-table :data="tableData" style="width: 100%" :height="height">
-        <el-table-column prop="user.name" :label="$t('ui.developModuleFillInInvitationLink')" min-width="100px">
+        <el-table-column prop="user.name" :label="$('ui.developModuleFillInInvitationLink')" min-width="100px">
           <template slot-scope="scope">
             <div class="flex">
               <div class="over-text w-180">{{ scope.row.url || '--' }}</div>
@@ -24,30 +25,30 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="name" :label="$t('ui.developModuleFillInPersonnelScope')" width="90">
+        <el-table-column prop="name" :label="$('ui.developModuleFillInPersonnelScope')" width="90">
           <template slot-scope="scope">
-            {{ scope.row.role_type == 0 ? $t('ui.developModuleFillInCompanyEmployeesOnly') : $t('ui.developModuleFillInEveryone') }}
+            {{ scope.row.role_type == 0 ? $('ui.developModuleFillInCompanyEmployeesOnly') : $('ui.developModuleFillInEveryone') }}
           </template>
         </el-table-column>
-        <el-table-column prop="invalid_time" :label="$t('ui.developModuleFillInExpirationTime')" width="180"> </el-table-column>
-        <el-table-column prop="updated_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" width="180"> </el-table-column>
-        <el-table-column prop="user.name" :label="$t('ui.hrAssessCheckIndexCreator')" width="80"> </el-table-column>
-        <el-table-column :label="$t('ui.developModuleFillInLinkStatus')" width="110">
+        <el-table-column prop="invalid_time" :label="$('ui.developModuleFillInExpirationTime')" width="180"> </el-table-column>
+        <el-table-column prop="updated_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" width="180"> </el-table-column>
+        <el-table-column prop="user.name" :label="$('ui.hrAssessCheckIndexCreator')" width="80"> </el-table-column>
+        <el-table-column :label="$('ui.developModuleFillInLinkStatus')" width="110">
           <template slot-scope="scope">
             <el-switch
               v-model="scope.row.status"
               :active-value="1"
               :inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+              active-text="开启"
+              inactive-text="关闭"
               @change="changeStatus(scope.row)"
             >
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="80">
+        <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="80">
           <template slot-scope="scope">
-            <el-button type="text" @click="delModuleShare(scope.row.id)">{{ $t("ui.chatIndexDelete") }}</el-button>
+            <el-button type="text" @click="delModuleShare(scope.row.id)">{{ $("ui.chatIndexDelete") }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -69,7 +70,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import fillInDialog from './fillInDialog'
 import { getModuleQuestionnaireApi, delModuleQuestionnaireApi, putModuleQuestionnaireApi } from '@/api/develop'
 export default {
@@ -137,7 +137,7 @@ export default {
     },
     copy(val) {
       clipboard.writeText(val)
-      this.$message.success(i18n.t('setting.copytitle'))
+      this.$message.success($('setting.copytitle'))
     }
   }
 }

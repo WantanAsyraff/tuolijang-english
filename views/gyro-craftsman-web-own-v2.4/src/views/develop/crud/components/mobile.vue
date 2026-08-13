@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="assistant-dialog">
     <div class="dialog-item">
@@ -5,8 +6,8 @@
         <img :src="logo" alt="assistant-avatar" />
       </div>
       <div class="content">
-        <div class="title">{{ $ts("陀螺匠应用搭建小助手") }}</div>
-        <div class="desc">{{ $ts("您好，欢迎使用陀螺匠，我是陀螺匠应用搭建小助手，您可以向我提出字段设置相关问题。") }}</div>
+        <div class="title">{{ $("legacy.d1aba05ef0abf232") }}</div>
+        <div class="desc">{{ $("legacy.7176125672b0ba68") }}</div>
       </div>
     </div>
 
@@ -35,7 +36,7 @@
         maxlength="50"
         ref="userMessage"
         @keyup.enter="handleSend"
-        :placeholder='$ts("很高兴为您服务，有什么需要帮助的吗？")'
+        :placeholder='$("legacy.ca97e8410e0ced6c")'
       >
       </el-input>
 
@@ -47,7 +48,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 export default {
   name: 'AssistantDialog',
@@ -81,7 +81,7 @@ export default {
     },
     handleSend() {
       if (this.list.length > 0 && this.list[this.list.length - 1].loading) {
-        this.$message.error(i18n.t('legacyScript.processingPleaseTryAgainShortly'))
+        this.$message.error($('legacyScript.processingPleaseTryAgainShortly'))
         return
       }
       if (this.userMessage) {

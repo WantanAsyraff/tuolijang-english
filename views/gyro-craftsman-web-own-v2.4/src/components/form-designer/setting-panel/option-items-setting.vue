@@ -19,7 +19,7 @@
                 style="width: 160px"
               ></el-input>
               <el-color-picker v-model="option.color" class="ml5 mr5 color"></el-color-picker>
-              <span class="iconfont icontuodong iconadd" :title="$t('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')"></span>
+              <span class="iconfont icontuodong iconadd" :title="$('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')"></span>
 
               <span class="el-icon-delete iconadd" @click.stop="deleteOption(option, idx)"></span>
             </div>
@@ -27,7 +27,7 @@
         </li>
       </draggable>
     </el-radio-group>
-    <el-button type="text" class="mt10" @click="addOption">{{ $t("ui.formDesignerSettingPanelOptionItemsSettingAddOption") }}</el-button>
+    <el-button type="text" class="mt10" @click="addOption">{{ $("ui.formDesignerSettingPanelOptionItemsSettingAddOption") }}</el-button>
   </template>
 
   <!-- 支持复选框 下方添加 checkbox -->
@@ -49,7 +49,7 @@
                 style="width: 160px"
               ></el-input>
               <el-color-picker v-model="option.color" class="ml5 mr5 color"></el-color-picker>
-              <span class="iconfont icontuodong iconadd" :title="$t('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')"></span>
+              <span class="iconfont icontuodong iconadd" :title="$('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')"></span>
 
               <span class="el-icon-delete iconadd" @click.stop="deleteOption(option, idx)"></span>
             </div>
@@ -57,21 +57,19 @@
         </li>
       </draggable>
     </el-checkbox-group>
-    <el-button type="text" class="mt10" @click="addOption">{{ $t("ui.formDesignerSettingPanelOptionItemsSettingAddOption") }}</el-button>
+    <el-button type="text" class="mt10" @click="addOption">{{ $("ui.formDesignerSettingPanelOptionItemsSettingAddOption") }}</el-button>
   </template>
 
 </div>
 </template>
 <script>
 import Draggable from 'vuedraggable'
-import i18n from '@/utils/i18n'
 import { delCrudSaveApi, delCrudSortPutApi } from '@/api/develop'
 import { getDictDataDeleteApi } from '@/api/form'
 import CodeEditor from '@/components/code-editor/index'
 import color from '@/views/business/components/formSetting/components/form-create-designer/src/config/rule/color'
 export default {
   name: 'OptionItemsSetting',
-  mixins: [i18n],
   components: {
     Draggable,
     CodeEditor
@@ -253,7 +251,7 @@ export default {
 
         this.showImportCascaderDialogFlag = false
       } catch (ex) {
-        this.$message.error(this.i18nt('designer.hint.invalidOptionsData') + ex.message)
+        this.$message.error(this.$('designer.hint.invalidOptionsData') + ex.message)
       }
     }
   }
@@ -312,4 +310,3 @@ export default {
   width: 100px;
 }
 </style>
-@/utils/i18ns

@@ -5,8 +5,8 @@
     effect="dark"
     :content="
       useLeftKeySelectionRightKeyDrag
-        ? $t('ui.xmindEditorMouseActionCurrentDragTheCanvasWithTheLeftMouseButton')
-        : $t('ui.xmindEditorMouseActionCurrentSelectNodesWithTheLeftMouseButtonAnd')
+        ? $('ui.xmindEditorMouseActionCurrentDragTheCanvasWithTheLeftMouseButton')
+        : $('ui.xmindEditorMouseActionCurrentSelectNodesWithTheLeftMouseButtonAnd')
     "
     placement="top"
   >

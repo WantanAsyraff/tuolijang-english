@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <!-- 排班管理列表页面 -->
@@ -8,7 +9,7 @@
         :isAddBtn="true"
         :isViewSearch="false"
         :search="search"
-        :title="$t('ui.hrAttendanceSettingSchedulScheduleManagement')"
+        :title="$('ui.hrAttendanceSettingSchedulScheduleManagement')"
         :total="total"
         @addDataFn="addFn"
         @confirmData="confirmData"
@@ -16,13 +17,13 @@
       <!-- 表格 -->
       <div class="table-box mt10">
         <el-table :data="tableData" :height="tableHeight" style="width: 100%">
-          <el-table-column :label="$t('ui.hrAttendanceSettingSchedulScheduleMonth')">
+          <el-table-column :label="$('ui.hrAttendanceSettingSchedulScheduleMonth')">
             <template slot-scope="scope">
-              {{ $moment(scope.row.date).format($t('ui.hrAttendanceSettingSchedulMmmYyyy')) }}
+              {{ $moment(scope.row.date).format($('ui.hrAttendanceSettingSchedulMmmYyyy')) }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrAttendanceSettingTeamAttendanceGroupName')" prop="group.name"> </el-table-column>
-          <el-table-column :label="$t('ui.hrAttendanceSettingTeamAttendanceGroupMembers')" prop="position" show-overflow-tooltip>
+          <el-table-column :label="$('ui.hrAttendanceSettingTeamAttendanceGroupName')" prop="group.name"> </el-table-column>
+          <el-table-column :label="$('ui.hrAttendanceSettingTeamAttendanceGroupMembers')" prop="position" show-overflow-tooltip>
             <template #default="{ row }">
               <span v-if="row.group.members.length <= 3">
                 {{ row.group.members.map((obj) => obj.name).join('、') }}
@@ -33,27 +34,27 @@
                     .slice(0, 3)
                     .map((obj) => obj.name)
                     .join('、')
-                }}&nbsp;{{ $t("ui.hrAttendanceSettingSchedulEtc") }}{{ row.group.members.length }} {{ $t("ui.customerWeChatMassAddGroupPostingPeople") }}</span
+                }}&nbsp;{{ $("ui.hrAttendanceSettingSchedulEtc") }}{{ row.group.members.length }} {{ $("ui.customerWeChatMassAddGroupPostingPeople") }}</span
               >
             </template>
           </el-table-column>
 
-          <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180">
+          <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180">
             <template slot-scope="scope">
               <el-button
                 v-if="scope.row.group.is_delete !== 1"
                 v-hasPermi="['hr:attendance:schedul:edit']"
                 type="text"
                 @click="editFn(scope.row)"
-                >{{ $t("ui.hrAttendanceSettingSchedulScheduleShifts") }}</el-button
+                >{{ $("ui.hrAttendanceSettingSchedulScheduleShifts") }}</el-button
               >
               <!-- v-if="$moment(scope.row.date).format('YYYY-MM') >= $moment().format('YYYY-MM')" -->
               <el-button v-if="scope.row.group.is_delete == 1" type="text" @click="checkFn(scope.row)"
-                >{{ $t("ui.layoutNoticeNoticeListView") }}</el-button
+                >{{ $("ui.layoutNoticeNoticeListView") }}</el-button
               >
 
               <el-button v-hasPermi="['hr:attendance:schedul:copy']" type="text" @click="copyFn(scope.row)"
-                >{{ $t("ui.settingWecomIndexCopy") }}</el-button
+                >{{ $("ui.settingWecomIndexCopy") }}</el-button
               >
             </template>
           </el-table-column>
@@ -88,7 +89,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { attendanceGroupListApi, attendanceArrangeApi, attendanceArrangeListApi } from '@/api/config'
 import oaFromBox from '@/components/common/oaFromBox'
 
@@ -125,8 +125,8 @@ export default {
 
       fromData: {
         with: '600px',
-        title: i18n.t('legacyScript.addJinShift'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.addJinShift'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },
@@ -135,20 +135,20 @@ export default {
         groups: []
       },
       formRules: {
-        date: { required: true, message: i18n.t('legacyScript.pleaseSelectAttendanceTime'), trigger: 'blur' },
-        groups: { required: true, message: i18n.t('legacyScript.selectAnAttendanceGroup'), trigger: 'change' }
+        date: { required: true, message: $('legacyScript.pleaseSelectAttendanceTime'), trigger: 'blur' },
+        groups: { required: true, message: $('legacyScript.selectAnAttendanceGroup'), trigger: 'change' }
       },
       formConfig: [
         {
           type: 'month',
-          label: i18n.t('legacyScript.attendanceTime'),
-          placeholder: i18n.t('legacyScript.pleaseEnterPromotionTableName'),
+          label: $('legacyScript.attendanceTime'),
+          placeholder: $('legacyScript.pleaseEnterPromotionTableName'),
           key: 'date'
         },
         {
           type: 'multipleSelect',
-          label: i18n.t('ui.hrAttendanceSettingAddConentAttendanceGroupName'),
-          placeholder: i18n.t('legacyScript.pleaseSelectAttendanceGroupsMultiple'),
+          label: $('ui.hrAttendanceSettingAddConentAttendanceGroupName'),
+          placeholder: $('legacyScript.pleaseSelectAttendanceGroupsMultiple'),
           key: 'groups',
           options: []
         }
@@ -230,7 +230,7 @@ export default {
         groups: []
       }
       this.fromData.type = 'add'
-      this.fromData.title = i18n.t('legacyScript.addSchedule')
+      this.fromData.title = $('legacyScript.addSchedule')
       this.$refs.oaDialog.openBox()
     },
     checkFn(data) {
@@ -241,7 +241,7 @@ export default {
     copyFn(data) {
       this.getTeamList()
       this.formDataInit.groups = []
-      this.fromData.title = i18n.t('legacyScript.copySchedule')
+      this.fromData.title = $('legacyScript.copySchedule')
       this.fromData.type = 'edit'
       this.formDataInit.groups.push(data.group.id)
       this.$refs.oaDialog.openBox()

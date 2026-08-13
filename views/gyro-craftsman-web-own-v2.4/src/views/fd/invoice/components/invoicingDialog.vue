@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 查看发票详情弹窗 -->
 <template>
 <div>
@@ -5,37 +6,37 @@
     :append-to-body="true" :before-close="handleClose">
     <el-form ref="form" :model="rules" :rules="rule" :label-width="labelWidth + 'px'" class="mt15">
       <el-form-item prop="remark" v-if="rules.status == 2">
-        <span slot="label">{{ $t("ui.fdInvoiceInvoicingDialogRejectionReason") }}</span>
+        <span slot="label">{{ $("ui.fdInvoiceInvoicingDialogRejectionReason") }}</span>
         <el-input v-model="rules.remark" type="textarea"></el-input>
       </el-form-item>
 
       <div v-if="rules.status == 1">
         <el-form-item prop="invoice_type">
-          <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewSendMethod") }}</span>
-          <el-select v-model="rules.invoice_type" :placeholder="$t('ui.fdInvoiceInvoicingDialogPleaseSelectSendMethod')">
-            <el-option :label="$t('ui.customerInvoiceInvoiceViewEmail')" value="mail"></el-option>
-            <el-option :label="$t('ui.customerInvoiceInvoiceViewExpress')" value="express"></el-option>
+          <span slot="label">{{ $("ui.customerInvoiceInvoiceViewSendMethod") }}</span>
+          <el-select v-model="rules.invoice_type" :placeholder="$('ui.fdInvoiceInvoicingDialogPleaseSelectSendMethod')">
+            <el-option :label="$('ui.customerInvoiceInvoiceViewEmail')" value="mail"></el-option>
+            <el-option :label="$('ui.customerInvoiceInvoiceViewExpress')" value="express"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item prop="collect_name" v-if="rules.invoice_type !== 'mail'">
-          <span slot="label">{{ $t("ui.fdInvoiceInvoicingDialogContacts") }}</span>
-          <el-input v-model="rules.collect_name" :placeholder="$t('ui.fdInvoiceInvoicingDialogPleaseEnterContact')"></el-input>
+          <span slot="label">{{ $("ui.fdInvoiceInvoicingDialogContacts") }}</span>
+          <el-input v-model="rules.collect_name" :placeholder="$('ui.fdInvoiceInvoicingDialogPleaseEnterContact')"></el-input>
         </el-form-item>
         <el-form-item prop="collect_tel" v-if="rules.invoice_type !== 'mail'">
-          <span slot="label">{{ $t("ui.customerSigningAddContractSignContactPhone") }}</span>
-          <el-input v-model="rules.collect_tel" :placeholder="$t('ui.fdInvoiceInvoicingDialogEnterContactPhone')"></el-input>
+          <span slot="label">{{ $("ui.customerSigningAddContractSignContactPhone") }}</span>
+          <el-input v-model="rules.collect_tel" :placeholder="$('ui.fdInvoiceInvoicingDialogEnterContactPhone')"></el-input>
         </el-form-item>
         <el-form-item :prop="propType">
-          <span slot="label">{{ rules.invoice_type == 'mail' ? $t('ui.fdInvoiceInvoicingDialogEmailAddress') : $t('ui.fdInvoiceInvoicingDialogMailingAddress') }}：</span>
-          <el-input v-if="rules.invoice_type == 'mail'" v-model="rules.invoice_mail" :placeholder="$t('ui.fdInvoiceInvoicingDialogEnterEmailAddress')"></el-input>
-          <el-input v-else v-model="rules.invoice_address" :placeholder="$t('ui.fdInvoiceInvoicingDialogPleaseEnterMailingAddress')"></el-input>
+          <span slot="label">{{ rules.invoice_type == 'mail' ? $('ui.fdInvoiceInvoicingDialogEmailAddress') : $('ui.fdInvoiceInvoicingDialogMailingAddress') }}：</span>
+          <el-input v-if="rules.invoice_type == 'mail'" v-model="rules.invoice_mail" :placeholder="$('ui.fdInvoiceInvoicingDialogEnterEmailAddress')"></el-input>
+          <el-input v-else v-model="rules.invoice_address" :placeholder="$('ui.fdInvoiceInvoicingDialogPleaseEnterMailingAddress')"></el-input>
         </el-form-item>
         <el-form-item>
-          <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsRemarks") }}</span>
+          <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsRemarks") }}</span>
           <el-input v-model="rules.remark" type="textarea"></el-input>
         </el-form-item>
         <el-form-item>
-          <span slot="label">{{ $t("ui.fdInvoiceInvoicingDialogInvoiceVoucher") }}</span>
+          <span slot="label">{{ $("ui.fdInvoiceInvoicingDialogInvoiceVoucher") }}</span>
           <div class="avatar">
             <oa-upload :maxLength="1" :only-image="false" :value="imageUrl" @getVal="getVal"></oa-upload>
             <!-- <el-upload
@@ -55,17 +56,15 @@
       </div>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
       <el-button size="small" type="primary" :loading="loading" @click="handleConfirm">{{
-        $t('public.ok')
+        $('public.ok')
       }}</el-button>
     </div>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
-
 import { clientInvoiceStatusApi } from '@/api/client'
 import { getToken } from '@/utils/auth'
 import { uploader } from '@/utils/uploadCloud'
@@ -104,13 +103,13 @@ export default {
         file: ''
       },
       rule: {
-        status: [{ required: true, message: i18n.t('legacyScript.pleaseSelectInvoiceResult'), trigger: 'change' }],
-        invoice_type: [{ required: true, message: i18n.t('ui.fdInvoiceInvoicingDialogPleaseSelectSendMethod'), trigger: 'change' }],
-        invoice_address: [{ required: true, message: i18n.t('ui.fdInvoiceInvoicingDialogPleaseEnterMailingAddress'), trigger: 'blur' }],
-        invoice_mail: [{ required: true, message: i18n.t('customer.placeholder55'), trigger: 'blur' }],
-        collect_name: [{ required: true, message: i18n.t('customer.placeholder52'), trigger: 'blur' }],
-        collect_tel: [{ required: true, message: i18n.t('customer.placeholder53'), trigger: 'blur' }],
-        remark: [{ required: true, message: i18n.t('legacyScript.pleaseEnterARejectionReason'), trigger: 'blur' }]
+        status: [{ required: true, message: $('legacyScript.pleaseSelectInvoiceResult'), trigger: 'change' }],
+        invoice_type: [{ required: true, message: $('ui.fdInvoiceInvoicingDialogPleaseSelectSendMethod'), trigger: 'change' }],
+        invoice_address: [{ required: true, message: $('ui.fdInvoiceInvoicingDialogPleaseEnterMailingAddress'), trigger: 'blur' }],
+        invoice_mail: [{ required: true, message: $('customer.placeholder55'), trigger: 'blur' }],
+        collect_name: [{ required: true, message: $('customer.placeholder52'), trigger: 'blur' }],
+        collect_tel: [{ required: true, message: $('customer.placeholder53'), trigger: 'blur' }],
+        remark: [{ required: true, message: $('legacyScript.pleaseEnterARejectionReason'), trigger: 'blur' }]
       },
       loading: false
     }

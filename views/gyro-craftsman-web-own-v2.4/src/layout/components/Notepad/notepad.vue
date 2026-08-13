@@ -1,10 +1,10 @@
 <template>
   <div class="notepad">
-    <el-tooltip :content='$ts("记事本")' effect="dark" placement="bottom">
+    <el-tooltip :content='$("calendar.memorandum")' effect="dark" placement="bottom">
       <i class="iconfont iconjishiben3 pointer notepad" @click="handleNotepad"></i>
     </el-tooltip>
     <el-drawer
-      :title='$ts("记事本")'
+      :title='$("calendar.memorandum")'
       :with-header="false"
       :visible.sync="drawer"
       direction="rtl"

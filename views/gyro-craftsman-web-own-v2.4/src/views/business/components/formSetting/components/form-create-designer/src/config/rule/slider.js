@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '滑块';
@@ -19,36 +19,36 @@ export default {
   },
   props() {
     return [
-      { type: 'inputNumber', field: 'min', title: i18n.t('legacyScript.minimumValue') },
+      { type: 'inputNumber', field: 'min', title: $('legacyScript.minimumValue') },
       {
         type: 'inputNumber',
         field: 'max',
-        title: i18n.t('legacyScript.maximumValue'),
+        title: $('legacyScript.maximumValue'),
       },
-      { type: 'switch', field: 'disabled', title: i18n.t('legacyScript.disable') },
+      { type: 'switch', field: 'disabled', title: $('legacyScript.disable') },
       {
         type: 'inputNumber',
         field: 'step',
-        title: i18n.t('legacyScript.stepSize'),
+        title: $('legacyScript.stepSize'),
       },
-      { type: 'switch', field: 'showInput', title: i18n.t('legacyScript.showInputBoxOnlyValidForNonRangeSelection') },
+      { type: 'switch', field: 'showInput', title: $('legacyScript.showInputBoxOnlyValidForNonRangeSelection') },
       {
         type: 'switch',
         field: 'showInputControls',
-        title: i18n.t('legacyScript.showControlButtonsForTheInputFieldWhenVisible'),
+        title: $('legacyScript.showControlButtonsForTheInputFieldWhenVisible'),
         value: true,
       },
-      { type: 'switch', field: 'showStops', title: i18n.t('legacyScript.showDiscontinuityPoints') },
+      { type: 'switch', field: 'showStops', title: $('legacyScript.showDiscontinuityPoints') },
       {
         type: 'switch',
         field: 'range',
-        title: i18n.t('legacyScript.enableRangeSelection'),
+        title: $('legacyScript.enableRangeSelection'),
       },
-      { type: 'switch', field: 'vertical', title: i18n.t('legacyScript.useVerticalOrientation') },
+      { type: 'switch', field: 'vertical', title: $('legacyScript.useVerticalOrientation') },
       {
         type: 'input',
         field: 'height',
-        title: i18n.t('legacyScript.sliderHeightRequiredInVerticalMode'),
+        title: $('legacyScript.sliderHeightRequiredInVerticalMode'),
       },
     ];
   },

@@ -10,35 +10,35 @@
         <div class="table-box ml20">
           <div class="header-16">
             <div class="title-16">
-              {{ $t("ui.hrArchivesFormBoxEmployeeList") }}
+              {{ $("ui.hrArchivesFormBoxEmployeeList") }}
               <el-popover placement="right" trigger="hover" popper-class="monitor-yt-popover">
                 <div class="prompt-bag">
                   <p>
-                    {{ $t('setting.group.text') }}
+                    {{ $('setting.group.text') }}
                     <span @click="goTheJob" style="color: #1890ff; cursor: pointer">{{
-                      $t('setting.group.text2')
+                      $('setting.group.text2')
                     }}</span>
-                    {{ $t('setting.group.text3') }}
+                    {{ $('setting.group.text3') }}
                   </p>
                   <p>
-                    {{ $t('setting.group.title2') }}
-                    <span @click="goTheEnterprise" style="color: #1890ff; cursor: pointer">{{ $t("ui.hrEnterpriseGroupIndexEnterpriseInformation") }} </span>{{ $t("ui.hrEnterpriseGroupIndexToMakeChanges") }}
+                    {{ $('setting.group.title2') }}
+                    <span @click="goTheEnterprise" style="color: #1890ff; cursor: pointer">{{ $("ui.hrEnterpriseGroupIndexEnterpriseInformation") }} </span>{{ $("ui.hrEnterpriseGroupIndexToMakeChanges") }}
                   </p>
-                  <p>{{ $t('setting.group.title3') }}</p>
+                  <p>{{ $('setting.group.title3') }}</p>
                 </div>
                 <i class="el-icon-question" slot="reference"></i>
               </el-popover>
             </div>
             <el-button type="primary" size="small" icon="el-icon-plus" @click="openBox('addDrawerIsShow', 'add')"
-              >{{ $t("ui.businessHolidayTypeIndexAdd") }}</el-button
+              >{{ $("ui.businessHolidayTypeIndexAdd") }}</el-button
             >
           </div>
           <div class="flex lh-center mt16">
-            <div class="total-16">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+            <div class="total-16">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
             <el-input
               prefix-icon="el-icon-search"
               clearable
-              :placeholder="$t('ui.hrEnterpriseGroupIndexPleaseEnterNameOrPhoneNumber')"
+              :placeholder="$('ui.hrEnterpriseGroupIndexPleaseEnterNameOrPhoneNumber')"
               v-model="formData.name"
               @change="handleSearch"
               style="width: 250px"
@@ -56,7 +56,7 @@
               :height="tableHeight"
               @selection-change="handleSelectionChange"
             >
-              <el-table-column prop="name" :label="$t('toptable.name')" min-width="100">
+              <el-table-column prop="name" :label="$('toptable.name')" min-width="100">
                 <template slot-scope="scope">
                   <div class="flex lh-center">
                     <img :src="scope.row.avatar" alt="" class="img" />
@@ -73,32 +73,32 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="frame.name" :label="$t('toptable.department')" min-width="140">
+              <el-table-column prop="frame.name" :label="$('toptable.department')" min-width="140">
                 <template slot-scope="scope">
                   <div class="frame-name over-text" v-for="(item, index) in scope.row.frames" :key="index">
                     <span class="icon-h">
                       {{ item.name
-                      }}<span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$t('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $t("ui.formCommonSelectDepartmentMain") }}</span>
-                      <span v-show="item.is_admin == 1" :title="$t('ui.hrEnterpriseGroupIndexExecutiveDirector')" class="guan">{{ $t("ui.hrEnterpriseGroupIndexManager") }}</span>
+                      }}<span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $("ui.formCommonSelectDepartmentMain") }}</span>
+                      <span v-show="item.is_admin == 1" :title="$('ui.hrEnterpriseGroupIndexExecutiveDirector')" class="guan">{{ $("ui.hrEnterpriseGroupIndexManager") }}</span>
                     </span>
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="job.name" :label="$t('toptable.post')" min-width="110">
+              <el-table-column prop="job.name" :label="$('toptable.post')" min-width="110">
                 <template #default="scope">
                   <div class="over-text">{{ scope.row.job && scope.row.job.name ? scope.row.job.name : '--' }}</div>
                 </template>
               </el-table-column>
-              <el-table-column prop="phone" :label="$t('toptable.phone')" min-width="110" />
-              <el-table-column prop="join_time" :label="$t('toptable.jointime')" min-width="100" />
-              <el-table-column :label="$t('public.operation')" width="120">
+              <el-table-column prop="phone" :label="$('toptable.phone')" min-width="110" />
+              <el-table-column prop="join_time" :label="$('toptable.jointime')" min-width="100" />
+              <el-table-column :label="$('public.operation')" width="120">
                 <template slot-scope="scope">
                   <el-button type="text" @click="onEdit(scope.row.id)" v-hasPermi="['hr:enterprise:group:edit']">
-                    {{ $t('public.edit') }}
+                    {{ $('public.edit') }}
                   </el-button>
 
                   <el-button type="text" @click="onDelete(scope.row.id, scope.$index)" v-if="!scope.row.uid">
-                    {{ $t('public.delete') }}
+                    {{ $('public.delete') }}
                   </el-button>
                 </template>
               </el-table-column>
@@ -180,7 +180,7 @@ export default {
       },
       rolesConfig: [],
       formBoxConfig: {
-        title: this.$t('setting.box1'),
+        title: this.$('setting.box1'),
         width: '500px',
         method: 'post',
         action: '/user/create'
@@ -246,40 +246,34 @@ export default {
     },
     roleChange() {},
     isOk(data) {
-  if (data) {
-    this.rolesConfig[0].control[0].rule[1].value = data.url
-
-    const oInput = document.createElement('input')
-
-    const enterpriseName =
-      this.$store.state.user.enterprise.enterprise_name
-
-    const value = this
-      .$ts(
-        '【{name}】邀请你加入【{enterprise}】办公系统，请点击链接使用手机号验证登录 {url} 链接有效期为7天，请尽快登录加入团队！'
-      )
-      .replace('{name}', data.name)
-      .replace('{enterprise}', enterpriseName)
-      .replace('{url}', data.url)
-
-    oInput.value = value
-    document.body.appendChild(oInput)
-    oInput.select()
-    document.execCommand('copy')
-    oInput.style.display = 'none'
-    document.body.removeChild(oInput)
-  }
-
-  this.$refs.dialogForm.handleClose()
-},
+      if (data) {
+        this.rolesConfig[0].control[0].rule[1].value = data.url
+        const oInput = document.createElement('input')
+        const value =
+          '【' +
+          data.name +
+          '】邀请你加入【' +
+          this.$store.state.user.enterprise.enterprise_name +
+          '】办公系统，请点击链接使用手机号验证登录 ' +
+          data.url +
+          ' 链接有效期为7天，请尽快登录加入团队！'
+        oInput.value = value
+        document.body.appendChild(oInput)
+        oInput.select()
+        document.execCommand('Copy')
+        oInput.style.display = 'none'
+        document.body.removeChild(oInput)
+      }
+      this.$refs.dialogForm.handleClose()
+    },
     // 添加人员
     // addPerson(type) {
     //   switch (type) {
     //     case 1:
-    //       this.personConfig.title = this.$t('setting.group.addpersonnel')
+    //       this.personConfig.title = this.$('setting.group.addpersonnel')
     //       break
     //     case 2:
-    //       this.personConfig.title = this.$t('setting.group.batchpersonnel')
+    //       this.personConfig.title = this.$('setting.group.batchpersonnel')
     //       break
     //   }
     //   this.personConfig.type = type
@@ -344,7 +338,7 @@ export default {
         this.isSite = true
         this.onlyDepartment = false
         const selection = this.$refs.multipleTable.selection
-        if (!selection.length) return this.$message.error(this.$t('setting.group.selectmember'))
+        if (!selection.length) return this.$message.error(this.$('setting.group.selectmember'))
       } else {
         this.isSite = false
         this.onlyDepartment = true
@@ -360,7 +354,7 @@ export default {
     },
     //  删除人员
     onDelete(id, index) {
-      this.$modalSure(this.$t('setting.group.deletitle')).then(() => {
+      this.$modalSure(this.$('setting.group.deletitle')).then(() => {
         enterpriseCardDeleteApi(id).then((res) => {
           this.tableData.splice(index, 1)
         })

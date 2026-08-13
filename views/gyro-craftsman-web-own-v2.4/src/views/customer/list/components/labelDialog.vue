@@ -1,7 +1,7 @@
 <!-- 客户-选择客户标签弹窗组件 -->
 <template>
 <el-dialog
-  :title="$t('ui.customerListLabelDialogSelectLabel')"
+  :title="$('ui.customerListLabelDialogSelectLabel')"
   :append-to-body="true"
   :visible.sync="dialogVisible"
   width="50%"
@@ -9,7 +9,7 @@
 >
   <div class="label-content">
     <div>
-      <el-input v-model="searchName"  :placeholder="$t('ui.customerListLabelDialogPleaseEnterCustomerLabels')" size="small" clearable style="width: 250px" @change="searchFn" />
+      <el-input v-model="searchName"  :placeholder="$('ui.customerListLabelDialogPleaseEnterCustomerLabels')" size="small" clearable style="width: 250px" @change="searchFn" />
     </div>
     <el-scrollbar style="height: calc(100% - 47px)">
       <el-checkbox-group v-model="checkGroup" size="small">
@@ -21,7 +21,7 @@
                 type="text"
                 v-if="config.label && config.label.length > 0"
                 @click="checkAll(child, child.child ? 'child' : 'children')"
-                >{{ child.checked ? $t('ui.formCommonSelectLabelDeselectAll') : $t('ui.formCommonSelectLabelAll') }}</el-button
+                >{{ child.checked ? $('ui.formCommonSelectLabelDeselectAll') : $('ui.formCommonSelectLabelAll') }}</el-button
               >
             </div>
             <template v-if="child.children">
@@ -44,8 +44,8 @@
   </div>
 
   <div slot="footer" class="dialog-footer">
-    <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-    <el-button size="small" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+    <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+    <el-button size="small" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
   </div>
 </el-dialog>
 </template>

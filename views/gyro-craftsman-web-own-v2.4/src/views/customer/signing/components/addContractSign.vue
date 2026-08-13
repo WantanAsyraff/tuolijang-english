@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div class="contract-signing-slide">
   <el-drawer
-    :title="$t('ui.customerSigningAddContractSignAddContract')"
+    :title="$('ui.customerSigningAddContractSignAddContract')"
     :visible.sync="drawer"
     direction="rtl"
     size="1071px"
@@ -20,24 +21,24 @@
       >
         <!-- 客户信息 -->
         <div class="form-section customer-info">
-          <div class="section-title">{{ $t("ui.customerSigningAddContractSignCustomerInformation") }}</div>
+          <div class="section-title">{{ $("ui.customerSigningAddContractSignCustomerInformation") }}</div>
           <el-row :gutter="30">
             <el-col :span="8">
-              <el-form-item :label="$t('ui.customerDetailsCustomerName')">
+              <el-form-item :label="$('ui.customerDetailsCustomerName')">
                 <span class="info-text">{{
                   customerInfo && customerInfo.customer_name ? customerInfo.customer_name : '--'
                 }}</span>
               </el-form-item>
             </el-col>
             <el-col :span="8">
-              <el-form-item :label="$t('ui.customerSigningAddContractSignContactPhone')">
+              <el-form-item :label="$('ui.customerSigningAddContractSignContactPhone')">
                 <span class="info-text">{{
                   customerInfo && customerInfo.customer_tel ? customerInfo.customer_tel : '--'
                 }}</span>
               </el-form-item>
             </el-col>
             <el-col :span="8">
-              <el-form-item :label="$t('ui.customerSigningAddContractSignProvinceCityDistrict')">
+              <el-form-item :label="$('ui.customerSigningAddContractSignProvinceCityDistrict')">
                 <span class="info-text">
                   <span v-if="customerInfo && customerInfo.area_cascade">{{ customerInfo.area_cascade }}</span>
                   <span v-else>--</span>
@@ -51,23 +52,23 @@
         <div class="step">
           <div class="step-item" @click="prevStep(1)">
             <span class="public" :class="activeIndex == 1 ? 'active' : ''">1</span>
-            <span class="step-text mr30 ml8" :class="activeIndex == 1 ? 'activeText' : ''">{{ $t("ui.customerSigningAddContractSignEnterProductList") }}</span>
+            <span class="step-text mr30 ml8" :class="activeIndex == 1 ? 'activeText' : ''">{{ $("ui.customerSigningAddContractSignEnterProductList") }}</span>
           </div>
           <span class="line-title" />
           <div class="step-item" @click="activeIndex = 2">
             <span class="public ml30" :class="activeIndex == 2 ? 'active' : ''">2</span>
-            <span class="step-text ml8" :class="activeIndex == 2 ? 'activeText' : ''">{{ $t("ui.customerSigningAddContractSignEnterSigningInformation") }}</span>
+            <span class="step-text ml8" :class="activeIndex == 2 ? 'activeText' : ''">{{ $("ui.customerSigningAddContractSignEnterSigningInformation") }}</span>
           </div>
         </div>
 
         <!-- 产品清单 -->
         <template v-if="activeIndex == 1">
           <div class="form-section" v-if="isShow">
-            <h4 class="section-title">{{ $t("ui.customerSigningAddContractSignRelatedData") }}</h4>
+            <h4 class="section-title">{{ $("ui.customerSigningAddContractSignRelatedData") }}</h4>
 
             <el-radio-group v-model="contractForm.link_type" @change="radioChange">
-              <el-radio label="5">{{ $t("ui.customerSigningAddContractSignLinkAnOpportunityAndConvertItToAContract") }}</el-radio>
-              <el-radio label="2">{{ $t("ui.customerSigningAddContractSignLinkAnOrderAndAddAContract") }}</el-radio>
+              <el-radio label="5">{{ $("ui.customerSigningAddContractSignLinkAnOpportunityAndConvertItToAContract") }}</el-radio>
+              <el-radio label="2">{{ $("ui.customerSigningAddContractSignLinkAnOrderAndAddAContract") }}</el-radio>
             </el-radio-group>
 
             <signProduct
@@ -81,7 +82,7 @@
           </div>
 
           <div class="form-section">
-            <h4 class="section-title">{{ $t("ui.customerSigningAddContractSignProductList") }}</h4>
+            <h4 class="section-title">{{ $("ui.customerSigningAddContractSignProductList") }}</h4>
 
             <productList
               ref="productList"
@@ -95,65 +96,65 @@
 
         <template v-if="activeIndex == 2">
           <div class="form-section">
-            <h4 class="section-title">{{ $t("ui.customerSigningInfoItemSigningInformation") }}</h4>
-            <el-form-item :label="$t('ui.customerSigningInfoItemContractName')" prop="doc_name">
+            <h4 class="section-title">{{ $("ui.customerSigningInfoItemSigningInformation") }}</h4>
+            <el-form-item :label="$('ui.customerSigningInfoItemContractName')" prop="doc_name">
               <el-input
                 v-model="contractForm.doc_name"
                 size="small"
-                :placeholder="$t('ui.customerSigningAddContractSignEnterContractName')"
+                :placeholder="$('ui.customerSigningAddContractSignEnterContractName')"
                 style="width: 370px"
                 @change="getProcess"
               ></el-input>
             </el-form-item>
             <!-- 签约方式 -->
-            <el-form-item :label="$t('ui.customerSigningInfoItemSigningMethod')" prop="sign_type">
+            <el-form-item :label="$('ui.customerSigningInfoItemSigningMethod')" prop="sign_type">
               <el-radio-group v-model="contractForm.sign_type" @change="getProcess">
-                <el-radio label="2" :disabled="webConfig.e_signature == 0">{{ $t("ui.customerSigningAddContractSignESigning") }}</el-radio>
-                <el-radio label="1">{{ $t("ui.customerSigningInfoItemOfflineSigning") }}</el-radio>
+                <el-radio label="2" :disabled="webConfig.e_signature == 0">{{ $("ui.customerSigningAddContractSignESigning") }}</el-radio>
+                <el-radio label="1">{{ $("ui.customerSigningInfoItemOfflineSigning") }}</el-radio>
               </el-radio-group>
             </el-form-item>
 
             <!-- 合同期限 -->
-            <el-form-item :label="$t('ui.customerSigningAddContractSignContractTerm')" prop="term_type">
+            <el-form-item :label="$('ui.customerSigningAddContractSignContractTerm')" prop="term_type">
               <el-radio-group v-model="contractForm.term_type" @change="getProcess">
-                <el-radio label="2">{{ $t("ui.customerSigningAddContractSignStartFromSigningDate") }}</el-radio>
-                <el-radio label="1">{{ $t("ui.customerSigningAddContractSignFixedTerm") }}</el-radio>
-                <el-radio label="0">{{ $t("ui.customerSigningAddContractSignNoFixedTerm") }}</el-radio>
+                <el-radio label="2">{{ $("ui.customerSigningAddContractSignStartFromSigningDate") }}</el-radio>
+                <el-radio label="1">{{ $("ui.customerSigningAddContractSignFixedTerm") }}</el-radio>
+                <el-radio label="0">{{ $("ui.customerSigningAddContractSignNoFixedTerm") }}</el-radio>
               </el-radio-group>
             </el-form-item>
 
             <!-- 合同时期 -->
-            <el-form-item :label="$t('ui.customerSigningAddContractSignContractDuration')" v-if="contractForm.term_type == 2" prop="date_count" class="mb10 mt10">
+            <el-form-item :label="$('ui.customerSigningAddContractSignContractDuration')" v-if="contractForm.term_type == 2" prop="date_count" class="mb10 mt10">
               <el-input
                 v-model="contractForm.date_count"
                 type="number"
                 min="0"
                 size="small"
-                :placeholder="$t('ui.customerOaFormPleaseEnter')"
+                :placeholder="$('ui.customerOaFormPleaseEnter')"
                 style="width: 370px"
               >
-                <template slot="append">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                <template slot="append">{{ $("ui.hrApprovaTimeDay") }}</template>
               </el-input>
             </el-form-item>
 
             <div class="flex" v-if="contractForm.term_type == 1">
-              <el-form-item :label="$t('ui.customerSigningAddContractSignStartDate')" prop="start_date">
+              <el-form-item :label="$('ui.customerSigningAddContractSignStartDate')" prop="start_date">
                 <el-date-picker
                   v-model="contractForm.start_date"
                   type="date"
                   size="small"
-                  :placeholder="$t('ui.userCalendarAddTodoSelectDate')"
+                  :placeholder="$('ui.userCalendarAddTodoSelectDate')"
                   format="yyyy-MM-dd"
                   value-format="yyyy-MM-dd"
                 >
                 </el-date-picker>
               </el-form-item>
-              <el-form-item :label="$t('ui.customerSigningAddContractSignEndDate')" prop="end_date">
+              <el-form-item :label="$('ui.customerSigningAddContractSignEndDate')" prop="end_date">
                 <el-date-picker
                   v-model="contractForm.end_date"
                   type="date"
                   size="small"
-                  :placeholder="$t('ui.userCalendarAddTodoSelectDate')"
+                  :placeholder="$('ui.userCalendarAddTodoSelectDate')"
                   format="yyyy-MM-dd"
                   value-format="yyyy-MM-dd"
                 >
@@ -164,7 +165,7 @@
             <!-- 上传签约文件 -->
 
             <el-form-item class="mb10 mt10 upload-field">
-              <div slot="label"><span class="required">*</span>{{ $t("ui.customerSigningAddContractSignUploadSignedFile") }}</div>
+              <div slot="label"><span class="required">*</span>{{ $("ui.customerSigningAddContractSignUploadSignedFile") }}</div>
 
               <div class="flex lh-32" v-if="fileLoading">
                 <img src="../../../../assets/images/loading-ai.gif" alt="" style="width: 30px; height: 30px" />{{
@@ -196,14 +197,14 @@
                       <!-- 企业信息 -->
                       <div class="mb8">
                         <span class="company-name">{{ webConfig.enterprise_name || '--' }}</span>
-                        <el-tag size="mini" type="primary">{{ $t("ui.customerSigningInfoItemOurCompany") }}</el-tag>
+                        <el-tag size="mini" type="primary">{{ $("ui.customerSigningInfoItemOurCompany") }}</el-tag>
                       </div>
 
                       <!-- 经办人 & 手机号 -->
                       <el-row :gutter="20" class="mt10">
                         <el-col :span="8">
                           <!-- 经办人必填 -->
-                          <el-form-item label-width="70px" :label="$t('ui.customerSigningInfoItemHandler')">
+                          <el-form-item label-width="70px" :label="$('ui.customerSigningInfoItemHandler')">
                             <select-member
                               only-one
                               @getSelectList="getSelectList($event, item)"
@@ -216,12 +217,12 @@
                         <el-col :span="8">
                           <!-- 手机号必填 + 格式校验 -->
                           <el-form-item
-                            :label="$t('ui.customerSigningInfoItemPhoneNumber')"
+                            :label="$('ui.customerSigningInfoItemPhoneNumber')"
                             label-width="70px"
                             :prop="`signatory.${idx}.phone`"
                             :rules="[{ required: true, message: '请输入手机号', trigger: 'blur' }]"
                           >
-                            <el-input v-model="item.phone" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')" />
+                            <el-input v-model="item.phone" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')" />
                           </el-form-item>
                         </el-col>
                       </el-row>
@@ -231,15 +232,15 @@
                   <!-- 外部企业 / 个人 -->
                   <div class="signatory-item" v-else>
                     <span class="el-icon-error" v-if="contractForm.signatory.length > 2" @click="handleDelete(idx)" />
-                    <span class="iconfont icontuodong iconadd left" :title="$t('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')" />
+                    <span class="iconfont icontuodong iconadd left" :title="$('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')" />
                     <div class="right">
                       <!-- 签署方类型 -->
                       <div class="mb8">
                         <el-form-item label-width="70px">
-                          <div slot="label"><span class="required">*</span>{{ $t("ui.customerSigningInfoItemSigner") }}</div>
+                          <div slot="label"><span class="required">*</span>{{ $("ui.customerSigningInfoItemSigner") }}</div>
                           <el-radio-group v-model="item.types">
-                            <el-radio :label="2">{{ $t("ui.customerSigningInfoItemEnterprise") }}</el-radio>
-                            <el-radio :label="1">{{ $t("ui.commonOaFromBoxPersonal") }}</el-radio>
+                            <el-radio :label="2">{{ $("ui.customerSigningInfoItemEnterprise") }}</el-radio>
+                            <el-radio :label="1">{{ $("ui.commonOaFromBoxPersonal") }}</el-radio>
                           </el-radio-group>
                         </el-form-item>
                       </div>
@@ -249,14 +250,14 @@
                         <el-col :span="8">
                           <el-form-item
                             v-if="item.types == 2"
-                            :label="$t('ui.customerSigningAddContractSignEnterpriseName')"
+                            :label="$('ui.customerSigningAddContractSignEnterpriseName')"
                             label-width="86px"
                             :prop="`signatory.${idx}.company_name`"
                             :rules="[{ required: true, message: '请输入企业名称', trigger: 'blur' }]"
                           >
                             <el-input
                               v-model="item.company_name"
-                              :placeholder="$t('ui.customerOaFormPleaseEnter')"
+                              :placeholder="$('ui.customerOaFormPleaseEnter')"
                               size="small"
                               style="width: 100%"
                             />
@@ -268,10 +269,10 @@
                           <el-form-item
                             label-width="70px"
                             :prop="`signatory.${idx}.name`"
-                            :label="$t('ui.customerSigningInfoItemHandler')"
+                            :label="$('ui.customerSigningInfoItemHandler')"
                             :rules="[{ required: true, message: '请输入经办人', trigger: 'blur' }]"
                           >
-                            <el-input v-model="item.name" :placeholder="$t('ui.customerOaFormPleaseEnter')" size="small" style="width: 100%" />
+                            <el-input v-model="item.name" :placeholder="$('ui.customerOaFormPleaseEnter')" size="small" style="width: 100%" />
                           </el-form-item>
                         </el-col>
 
@@ -280,10 +281,10 @@
                           <el-form-item
                             label-width="70px"
                             :prop="`signatory.${idx}.phone`"
-                            :label="$t('ui.customerSigningInfoItemPhoneNumber')"
+                            :label="$('ui.customerSigningInfoItemPhoneNumber')"
                             :rules="[{ required: true, message: '请输入手机号', trigger: 'blur' }]"
                           >
-                            <el-input v-model="item.phone" :placeholder="$t('ui.customerOaFormPleaseEnter')" size="small" style="width: 100%" />
+                            <el-input v-model="item.phone" :placeholder="$('ui.customerOaFormPleaseEnter')" size="small" style="width: 100%" />
                           </el-form-item>
                         </el-col>
                       </el-row>
@@ -291,20 +292,20 @@
                   </div>
                 </div>
               </draggable>
-              <el-button type="text" icon="el-icon-plus" @click="addSignatory">{{ $t("ui.customerSigningAddContractSignAddSigner") }}</el-button>
+              <el-button type="text" icon="el-icon-plus" @click="addSignatory">{{ $("ui.customerSigningAddContractSignAddSigner") }}</el-button>
             </el-form-item>
           </div>
 
           <!-- 备注信息 -->
           <div class="form-section">
-            <h4 class="section-title">{{ $t("ui.xmindEditorToolbarNodeBtnListRemarks") }}</h4>
-            <el-form-item :label="$t('ui.fdEnterpriseListViewDetailsRemarks')">
+            <h4 class="section-title">{{ $("ui.xmindEditorToolbarNodeBtnListRemarks") }}</h4>
+            <el-form-item :label="$('ui.fdEnterpriseListViewDetailsRemarks')">
               <el-input
                 v-model="contractForm.mark"
                 type="textarea"
                 resize="none"
                 :rows="3"
-                :placeholder="$t('ui.customerSigningAddContractSignPleaseEnterTheRemarkInformation')"
+                :placeholder="$('ui.customerSigningAddContractSignPleaseEnterTheRemarkInformation')"
               ></el-input>
             </el-form-item>
           </div>
@@ -317,18 +318,17 @@
       </el-form>
     </div>
     <div class="button from-foot-btn fix btn-shadow" v-if="!infoLoading">
-      <el-button size="small" @click="handleClose" v-show="activeIndex == 1">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button size="small" @click="prevStep(1)" v-show="activeIndex == 2">{{ $t("ui.invoiceMergeInvoicePrevious") }}</el-button>
-      <el-button type="primary" size="small" @click="nextStep" v-show="activeIndex == 1">{{ $t("ui.invoiceMergeInvoiceNext") }}</el-button>
+      <el-button size="small" @click="handleClose" v-show="activeIndex == 1">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button size="small" @click="prevStep(1)" v-show="activeIndex == 2">{{ $("ui.invoiceMergeInvoicePrevious") }}</el-button>
+      <el-button type="primary" size="small" @click="nextStep" v-show="activeIndex == 1">{{ $("ui.invoiceMergeInvoiceNext") }}</el-button>
       <el-button type="primary" size="small" :loading="loading" @click="handleSubmit" v-show="activeIndex == 2"
-        >{{ $t("ui.shareSubmit") }}</el-button
+        >{{ $("ui.shareSubmit") }}</el-button
       >
     </div>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { oddsListApi, clientCustomerBaseApi } from '@/api/client'
 import { clientContractListApi } from '@/api/enterprise'
 import {
@@ -422,7 +422,7 @@ export default {
           }
         ]
       },
-      tips: i18n.t('legacyScript.fileIsBeingProcessed'),
+      tips: $('legacyScript.fileIsBeingProcessed'),
       fileLoading: false,
       timer: null,
       examineData: {},
@@ -442,13 +442,13 @@ export default {
         remark: ''
       },
       rules: {
-        doc_name: [{ required: true, message: i18n.t('ui.customerSigningAddContractSignEnterContractName'), trigger: 'blur' }],
-        sign_type: [{ required: true, message: i18n.t('legacyScript.pleaseSelectSigningMethod'), trigger: 'blur' }],
-        term_type: [{ required: true, message: i18n.t('legacyScript.pleaseSelectTheContractPeriodType'), trigger: 'blur' }],
-        date_count: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheContractPeriodDays'), trigger: 'blur' }],
-        enableQuery: [{ required: true, message: i18n.t('legacyScript.pleaseSelectWhetherToEnableTheQuery'), trigger: 'change' }],
-        start_date: [{ required: true, message: i18n.t('legacyScript.pleaseSelectStartDate'), trigger: 'change' }],
-        end_date: [{ required: true, message: i18n.t('calendar.placeholder14'), trigger: 'change' }]
+        doc_name: [{ required: true, message: $('ui.customerSigningAddContractSignEnterContractName'), trigger: 'blur' }],
+        sign_type: [{ required: true, message: $('legacyScript.pleaseSelectSigningMethod'), trigger: 'blur' }],
+        term_type: [{ required: true, message: $('legacyScript.pleaseSelectTheContractPeriodType'), trigger: 'blur' }],
+        date_count: [{ required: true, message: $('legacyScript.pleaseEnterTheContractPeriodDays'), trigger: 'blur' }],
+        enableQuery: [{ required: true, message: $('legacyScript.pleaseSelectWhetherToEnableTheQuery'), trigger: 'change' }],
+        start_date: [{ required: true, message: $('legacyScript.pleaseSelectStartDate'), trigger: 'change' }],
+        end_date: [{ required: true, message: $('calendar.placeholder14'), trigger: 'change' }]
       },
       fileList: [],
 
@@ -734,11 +734,11 @@ export default {
       // 提交表单
 
       if (Object.keys(this.contractForm.sign_file).length === 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseUploadTheSignedDocument'))
+        this.$message.error($('legacyScript.pleaseUploadTheSignedDocument'))
         return
       }
       if (this.contractForm.sign_type == 2 && !this.contractForm.file_id) {
-        this.$message.error(i18n.t('legacyScript.pleaseUploadTheContractFile'))
+        this.$message.error($('legacyScript.pleaseUploadTheContractFile'))
         return
       }
       // 使用 find 提前中断循环，避免无效遍历
@@ -791,7 +791,7 @@ export default {
       // 添加签约方
       if (this.contractForm.signatory.length >= 4) {
         this.$message({
-          message: i18n.t('legacyScript.aMaximumOf3SignersCanBeAdded'),
+          message: $('legacyScript.aMaximumOf3SignersCanBeAdded'),
           type: 'warning'
         })
         return

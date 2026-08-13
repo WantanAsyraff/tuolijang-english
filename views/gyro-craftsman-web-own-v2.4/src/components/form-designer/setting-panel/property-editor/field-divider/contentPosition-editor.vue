@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.contentPosition')">
+  <el-form-item :label="$('designer.setting.contentPosition')">
     <el-select v-model="optionModel.contentPosition">
       <el-option label="center" value="center"></el-option>
       <el-option label="left" value="left"></el-option>
@@ -9,11 +9,8 @@
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
-
   export default {
     name: "contentPosition-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -25,4 +22,3 @@
 <style scoped>
 
 </style>
-@/utils/i18ns

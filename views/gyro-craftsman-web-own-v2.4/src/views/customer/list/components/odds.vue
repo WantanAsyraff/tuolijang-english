@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <!-- 客户-商机页面组件 -->
 <template>
 <div class="station odds-station">
   <div class="btn-box1 mb10">
-    <div class="title-16">{{ $t("ui.customerListOddsOpportunityList") }}</div>
-    <el-button @click="addLiaison()" size="small" type="primary">{{ $t("ui.customerListOddsAddOpportunity") }}</el-button>
+    <div class="title-16">{{ $("ui.customerListOddsOpportunityList") }}</div>
+    <el-button @click="addLiaison()" size="small" type="primary">{{ $("ui.customerListOddsAddOpportunity") }}</el-button>
   </div>
   <customizeTable
     flexLayout
@@ -15,9 +16,9 @@
     @getTableData="getTableData"
   >
     <template #options="{ data }">
-      <el-button type="text" @click="openDetails(data)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
-      <el-button type="text" v-if="!data.is_sign" @click="createContract(data)">{{ $t("ui.customerDetailsGenerateContract") }}</el-button>
-      <el-button type="text" @click="createOrder(data)">{{ $t("ui.customerListOddsGenerateOrder") }}</el-button>
+      <el-button type="text" @click="openDetails(data)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
+      <el-button type="text" v-if="!data.is_sign" @click="createContract(data)">{{ $("ui.customerDetailsGenerateContract") }}</el-button>
+      <el-button type="text" @click="createOrder(data)">{{ $("ui.customerListOddsGenerateOrder") }}</el-button>
     </template>
   </customizeTable>
   <div>
@@ -40,7 +41,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { oddsCreateApi, oddsListApi } from '@/api/client'
 export default {
   name: 'Liaison',
@@ -135,7 +135,7 @@ export default {
       this.product = item.product || []
      
    this.orderFromData = {
-        title: i18n.t('customer.addcontract'),
+        title: $('customer.addcontract'),
         id: this.where.eid,
         name: this.formInfo.data.name,
         edit: false,
@@ -151,7 +151,7 @@ export default {
     // 查看
     async openDetails(item) {
       this.detailsFromData = {
-        title: i18n.t('legacyScript.viewOpportunity'),
+        title: $('legacyScript.viewOpportunity'),
         width: '1000px',
         data: item,
         eid: item.id,
@@ -169,7 +169,7 @@ export default {
     // 添加商机
     addLiaison(edit, row) {
       this.formBoxConfig = {
-        title: i18n.t('legacyScript.addOpportunity'),
+        title: $('legacyScript.addOpportunity'),
         width: '1000px',
         types: 'odds'
       }

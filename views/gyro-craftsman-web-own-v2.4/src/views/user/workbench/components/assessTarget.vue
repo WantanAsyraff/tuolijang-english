@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <el-dialog
   :title="config.title"
@@ -7,30 +8,30 @@
   :before-close="handleClose"
 >
   <el-form ref="form" :model="rules" label-width="90px" :rules="rule" v-if="config.data">
-    <el-form-item :label="$t('ui.userWorkbenchAssessTargetIndicatorName')" class="assess-item">
+    <el-form-item :label="$('ui.userWorkbenchAssessTargetIndicatorName')" class="assess-item">
       <div class="info">
         {{ config.data.name }}
         <font color="#f90"
-          >({{ config.types == 1 ? $t('ui.userWorkbenchAssessTargetFullScore') + config.data.ratio + $t('ui.developCrudEventMinute') : $t('ui.userWorkbenchAssessTargetWeight') + config.data.ratio + '%' }})</font
+          >({{ config.types == 1 ? $('ui.userWorkbenchAssessTargetFullScore') + config.data.ratio + $('ui.developCrudEventMinute') : $('ui.userWorkbenchAssessTargetWeight') + config.data.ratio + '%' }})</font
         >
       </div>
     </el-form-item>
-    <el-form-item :label="$t('ui.userWorkbenchAssessTargetIndicatorDescription')" style="margin-bottom: 6px">
+    <el-form-item :label="$('ui.userWorkbenchAssessTargetIndicatorDescription')" style="margin-bottom: 6px">
       <div class="info">{{ config.data.content }}</div>
     </el-form-item>
-    <el-form-item :label="$t('ui.userWorkbenchAssessTargetCompletionStatus')">
+    <el-form-item :label="$('ui.userWorkbenchAssessTargetCompletionStatus')">
       <el-input
         type="textarea"
         :rows="4"
         v-model="config.data.finish_info"
         resize="none"
-        :placeholder="$t('ui.userWorkbenchAssessTargetPleaseEnterTheCompletionStatus')"
+        :placeholder="$('ui.userWorkbenchAssessTargetPleaseEnterTheCompletionStatus')"
       />
     </el-form-item>
     <el-form-item
-      :label="config.types == 1 ? $t('ui.userWorkbenchAssessTargetSelfScorePoints') : $t('ui.userWorkbenchAssessTargetCompletion')"
+      :label="config.types == 1 ? $('ui.userWorkbenchAssessTargetSelfScorePoints') : $('ui.userWorkbenchAssessTargetCompletion')"
       class="assess-item"
-      :title="config.types == 1 ? $t('ui.userWorkbenchAssessTargetMaximum') + config.data.ratio + $t('ui.developCrudEventMinute') : $t('ui.userWorkbenchAssessTargetMaximumCompletion100')"
+      :title="config.types == 1 ? $('ui.userWorkbenchAssessTargetMaximum') + config.data.ratio + $('ui.developCrudEventMinute') : $('ui.userWorkbenchAssessTargetMaximumCompletion100')"
     >
       <el-input-number
         v-model="finishRatio"
@@ -41,18 +42,17 @@
         :precision="0"
         :max="config.types == 1 ? config.data.ratio : 100"
       />
-      <span class="ml8">{{ config.types == 1 ? $t('ui.userWorkbenchAssessTargetMaximum') + config.data.ratio + $t('ui.developCrudEventMinute') : $t('ui.userWorkbenchAssessTargetMaximum100') }}</span>
+      <span class="ml8">{{ config.types == 1 ? $('ui.userWorkbenchAssessTargetMaximum') + config.data.ratio + $('ui.developCrudEventMinute') : $('ui.userWorkbenchAssessTargetMaximum100') }}</span>
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
-    <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-    <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+    <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+    <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
   </div>
 </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { userAssessEvalApi } from '@/api/user'
 export default {
   name: 'MarkDialog',
@@ -92,7 +92,7 @@ export default {
     },
     handleConfirm() {
       if (this.config.data.finish_ratio === undefined) {
-        this.$message.error(i18n.t('legacyScript.selfScoringSelfEvaluationIsRequired'))
+        this.$message.error($('legacyScript.selfScoringSelfEvaluationIsRequired'))
       } else {
         const data = {
           assess_id: this.config.assessId,

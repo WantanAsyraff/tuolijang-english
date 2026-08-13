@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 // 该文件是cascader-radio-widget组件的定义文件，用于渲染cascader-radio类型的字段。 //
 该组件继承自fieldMixin，fieldMixin提供了字段的基本功能，如校验、数据绑定等。 //
 该组件还提供了一些自定义功能，如单选框隐藏下拉框、任意级节点可选等。
@@ -34,7 +35,7 @@
       }"
       @visible-change="hideDropDownOnClick"
       @expand-change="hideDropDownOnClick"
-      :placeholder="field.options.placeholder || i18nt('render.hint.selectPlaceholder')"
+      :placeholder="field.options.placeholder || $('render.hint.selectPlaceholder')"
       @focus="handleFocusCustomEvent"
       @blur="handleBlurCustomEvent"
       @change="handleChangeEvent"
@@ -49,13 +50,12 @@
 <script>
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
-import i18n, { translate } from '@/utils/i18n'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'
 
 export default {
   name: 'cascader-radio-widget',
   componentName: 'FieldWidget', //必须固定为FieldWidget，用于接收父级组件的broadcast事件
-  mixins: [emitter, fieldMixin, i18n],
+  mixins: [emitter, fieldMixin],
   props: {
     field: Object,
     parentWidget: Object,
@@ -180,4 +180,3 @@ export default {
   width: 100% !important;
 }
 </style>
-@/utils/i18ns

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 
   @FileDescription: 高德地图组件
   功能：封装高德地图功能，支持地址搜索、标记点拖拽、范围显示等
@@ -9,7 +10,7 @@
       <el-input
         style="width: 350px"
         id="tipinput"
-        :placeholder='$ts("请输入搜索地址")'
+        :placeholder='$("legacy.13fa530f62a42c7c")'
         v-model="address"
         @change="searchKeyWord"
       >
@@ -32,7 +33,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import AMapLoader from '@amap/amap-jsapi-loader'
 
 // 高德地图安全配置
@@ -158,7 +158,7 @@ export default {
         if (status === 'complete' && result.regeocode) {
           this.address = result.regeocode.formattedAddress
         } else {
-          this.$message.error(i18n.t('legacyScript.failedToLookUpTheAddressByCoordinates'))
+          this.$message.error($('legacyScript.failedToLookUpTheAddressByCoordinates'))
         }
       })
     },
@@ -206,7 +206,7 @@ export default {
         if (status === 'complete') {
           this.showLocation(result.position)
         } else {
-          this.$message.error(i18n.t('legacyScript.failedToGetTheAddress'))
+          this.$message.error($('legacyScript.failedToGetTheAddress'))
         }
       })
     },
@@ -270,7 +270,7 @@ export default {
         } else {
           this.show = false
           this.poiList = []
-          this.$message.warning(i18n.t('legacyScript.noResultsFound'))
+          this.$message.warning($('legacyScript.noResultsFound'))
         }
       })
     },

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <v-form-designer
     ref="dbDesignerRef"
@@ -13,20 +14,19 @@
     </div>
     <div>
       <el-button class="view-btn" @click="previewDesign">
-        <el-icon> <View /> </el-icon>{{ $ts("预览") }}
+        <el-icon> <View /> </el-icon>{{ $("ui.formDesignerToolbarPanelIndexPreview") }}
       </el-button>
       <el-button class="clear-btn" @click="clearCanvas">
-        <el-icon> <ElIconDelete /> </el-icon>{{ $ts("清空") }}
+        <el-icon> <ElIconDelete /> </el-icon>{{ $("ui.formDesignerToolbarPanelIndexClear") }}
       </el-button>
       <el-button type="primary" @click="saveDesign">
-        <el-icon> <Finished /> </el-icon>{{ $ts("保存") }}
+        <el-icon> <Finished /> </el-icon>{{ $("public.save") }}
       </el-button>
     </div>
   </v-form-designer>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { dashboard_container_schema } from '@/views/system/dashboard-design/charts/charts-schema'
 import { deepClone, mlShortcutkeys } from '@/utils/formDesignerUtils'
 import { getDashboardDesign, changeDashboardDesign } from '@/api/chart'
@@ -59,7 +59,7 @@ export default {
         chartLib: true
       },
       isMobile: false,
-      title: i18n.t('legacyScript.dashboardDesign')
+      title: $('legacyScript.dashboardDesign')
     }
   },
   mounted() {
@@ -149,31 +149,19 @@ export default {
       this.loading = false
     },
     copyCanvas() {
-    const message = this.isMobile
-      ? '从PC复制图表将会清空当前配置，是否确认复制？'
-      : '从移动端复制图表将会清空当前配置，是否确认复制？'
-
-    this.$message
-      .confirm(
-        this.$ts(message),
-        i18n.t('legacyScript.hint'),
-        {
-          confirmButtonText: this.$ts('确认'),
-          cancelButtonText: this.$ts('取消'),
+      this.$message
+        .confirm('从' + (this.isMobile ? 'PC' : '移动端') + '复制图表将会清空当前配置，是否确认复制?', $('legacyScript.hint'), {
+          confirmButtonText: '确认',
+          cancelButtonText: '取消',
           type: 'warning'
-        }
-      )
-      .then(async () => {
-        this.clearCanvas()
-
-        const key = this.isMobile
-          ? 'chartData'
-          : 'mobileChartData'
-
-        this.initFormConfig(key)
-      })
-      .catch(() => {})
-  },
+        })
+        .then(async () => {
+          this.clearCanvas()
+          let key = this.isMobile ? 'chartData' : 'mobileChartData'
+          this.initFormConfig(key)
+        })
+        .catch(() => {})
+    },
     clearCanvas() {
       const newDashboardCon = deepClone(dashboard_container_schema)
       newDashboardCon.id = 'dbCon' + generateId()

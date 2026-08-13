@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 // 一对一引用组件，用于选择一组数据中的一个值，并显示该值对应的名称。 //
 该组件依赖于ReferenceSearchTable组件，该组件用于搜索并选择一组数据中的一个值。
 
@@ -21,7 +22,7 @@
         :automatic-dropdown="field.options.automaticDropdown"
         :multiple="field.options.multiple"
         :multiple-limit="field.options.multipleLimit"
-        :placeholder="field.options.placeholder || i18nt('render.hint.selectPlaceholder')"
+        :placeholder="field.options.placeholder || $('render.hint.selectPlaceholder')"
         :remote="field.options.remote"
         :remote-method="remoteMethod"
         @focus="handleFocusCustomEvent"
@@ -45,7 +46,7 @@
             :placeholder="field.options.placeholder" :prefix-icon="field.options.prefixIcon"
             :suffix-icon="field.options.suffixIcon" @click.native="onAppendButtonClick">
             <template #suffix>
-              <i :title="$t('ui.formDesignerFormWidgetFieldWidgetInputSelectWidgetClear')" v-if="!!displayValue && !field.options.disabled" class="el-input__icon el-icon-circle-close"
+              <i :title="$('ui.formDesignerFormWidgetFieldWidgetInputSelectWidgetClear')" v-if="!!displayValue && !field.options.disabled" class="el-input__icon el-icon-circle-close"
                 @click.stop="handleClearEvent">
               </i>
             </template>
@@ -71,13 +72,12 @@ import ReferenceSearchTable from '@/components/mlReferenceSearch/reference-searc
 // const { FormItemWrapper, emitter, i18n, fieldMixin } = VisualDesign.VFormSDK
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
-import i18n, { translate } from '@/utils/i18n'
 import { putUpdateFieldApi } from '@/api/develop'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'
 export default {
   name: 'input-select-widget',
   componentName: 'FieldWidget', //必须固定为FieldWidget，用于接收父级组件的broadcast事件
-  mixins: [emitter, fieldMixin, i18n],
+  mixins: [emitter, fieldMixin],
   props: {
     field: Object,
     parentWidget: Object,

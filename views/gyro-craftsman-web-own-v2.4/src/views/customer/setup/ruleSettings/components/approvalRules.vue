@@ -6,7 +6,7 @@
           <!-- <el-col v-bind="grid1">&nbsp;</el-col> -->
 
           <div class="card-list">
-            <div class="tips mb20">{{ $ts("请前往人事>审批设置中增加审批流程，请关联对应控件组进行添加") }}</div>
+            <div class="tips mb20">{{ $("legacy.772e95fb077d1908") }}</div>
             <form-create
               v-if="fromData"
               :option="fromData.rule"

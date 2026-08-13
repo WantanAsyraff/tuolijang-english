@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 申请发票填写信息组件 -->
 <template>
 <div class="station">
@@ -20,22 +21,22 @@
         <el-col v-if="drawer">
           <div class="txt1">{{ delData.title }}</div>
           <div class="txt2">
-            <span class="title1">{{ $t("ui.invoiceInvoiceDetailsInvoiceStatus") }}</span>
+            <span class="title1">{{ $("ui.invoiceInvoiceDetailsInvoiceStatus") }}</span>
             <span class="tab-btn" :class="getInvoiceColor(delData.status)">
               {{ getInvoiceStatus(delData.status) }}
             </span>
-            <span class="title">{{ $t('customer.invoicingpay') }}：</span
+            <span class="title">{{ $('customer.invoicingpay') }}：</span
             ><span class="info2">{{ delData.amount }}</span>
-            <span class="title">{{ $t('customer.actualdate') }}：</span
+            <span class="title">{{ $('customer.actualdate') }}：</span
             ><span class="info3">{{ delData.real_date }}</span>
           </div>
         </el-col>
       </el-row>
     </div>
     <el-tabs v-model="tabIndex" type="border-card" @tab-click="handleClick" :tab-position="tabPosition">
-      <el-tab-pane :label="$t('ui.invoiceInvoiceDetailsInvoiceInformation')" name="1"></el-tab-pane>
-      <el-tab-pane :label="$t('ui.invoiceInvoiceDetailsRelatedPaymentOrder')" name="2"></el-tab-pane>
-      <el-tab-pane :label="$t('ui.invoiceInvoiceDetailsOperationRecords')" name="3"></el-tab-pane>
+      <el-tab-pane :label="$('ui.invoiceInvoiceDetailsInvoiceInformation')" name="1"></el-tab-pane>
+      <el-tab-pane :label="$('ui.invoiceInvoiceDetailsRelatedPaymentOrder')" name="2"></el-tab-pane>
+      <el-tab-pane :label="$('ui.invoiceInvoiceDetailsOperationRecords')" name="3"></el-tab-pane>
     </el-tabs>
     <div class="contract-body">
       <!-- 发票信息 -->
@@ -44,22 +45,22 @@
       <!-- 关联付款单 -->
       <div v-if="tabIndex == 2" class="invoice-body mr20">
         <div class="flex-end mb10">
-          <el-button  type="primary" size="small" @click="handleOpenPaymentDrawer">{{ $t("ui.invoiceInvoiceDetailsRelatedPaymentOrder") }}</el-button>
+          <el-button  type="primary" size="small" @click="handleOpenPaymentDrawer">{{ $("ui.invoiceInvoiceDetailsRelatedPaymentOrder") }}</el-button>
           </div>
         <el-table :data="tableData" style="width: 100%">
-          <el-table-column prop="bill_no" :label="$t('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="180"> </el-table-column>
-          <el-table-column prop="treaty.contract_name" :label="$t('ui.invoiceInvoiceDetailsOrderName')" min-width="150"> </el-table-column>
+          <el-table-column prop="bill_no" :label="$('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="180"> </el-table-column>
+          <el-table-column prop="treaty.contract_name" :label="$('ui.invoiceInvoiceDetailsOrderName')" min-width="150"> </el-table-column>
 
-          <el-table-column prop="types" :label="$t('ui.invoiceInvoiceDetailsBusinessType')" min-width="200">
+          <el-table-column prop="types" :label="$('ui.invoiceInvoiceDetailsBusinessType')" min-width="200">
             <template slot-scope="scope">
-              <span v-if="scope.row.types === 0">{{ $t("ui.invoiceInvoiceDetailsPaymentRecord") }}</span>
-              <span v-if="scope.row.types === 1">{{ $t("ui.invoiceInvoiceDetailsRenewalRecord") }} {{ scope.row.renew.title }}</span>
+              <span v-if="scope.row.types === 0">{{ $("ui.invoiceInvoiceDetailsPaymentRecord") }}</span>
+              <span v-if="scope.row.types === 1">{{ $("ui.invoiceInvoiceDetailsRenewalRecord") }} {{ scope.row.renew.title }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="num" :label="$t('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="150"> </el-table-column>
+          <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="150"> </el-table-column>
 
-          <el-table-column prop="card.name" :label="$t('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
-          <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="180"> </el-table-column>
+          <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
+          <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="180"> </el-table-column>
         </el-table>
       </div>
 
@@ -67,7 +68,7 @@
       <div class="invoice-body1" v-show="tabIndex == 3">
         <div class="default" v-if="recordList.length == 0">
           <img src="../../assets/images/defd.png" alt="" class="img" />
-          <div class="text">{{ $t("ui.fdEnterpriseListViewDetailsNoOperationRecords") }}</div>
+          <div class="text">{{ $("ui.fdEnterpriseListViewDetailsNoOperationRecords") }}</div>
         </div>
         <el-steps direction="vertical" space="100" class="set" :active="1" v-if="recordList.length !== 0">
           <el-step v-for="(item, index) in recordList" :key="index">
@@ -104,28 +105,27 @@
       class="button from-foot-btn fix btn-shadow"
       v-if="formData.follType && formData.follType === 'fd' && delData.status === 0"
     >
-      <el-button size="small" type="primary" @click="handleInvoicing">{{ $t("ui.invoiceInvoiceDetailsReview") }}</el-button>
+      <el-button size="small" type="primary" @click="handleInvoicing">{{ $("ui.invoiceInvoiceDetailsReview") }}</el-button>
     </div>
     <el-image-viewer v-if="isImage" :on-close="closeImageViewer" :url-list="srcList" />
   </el-drawer>
   <invoicing-dialog ref="invoicingDialog" :config="invoicingDialog" @isOk="isOk" />
 
       <!-- 关联付款侧滑 -->
-  <el-drawer :title="$t('ui.invoiceInvoiceDetailsRelatedPaymentOrder')" class="paymentDrawer" :visible.sync="paymentDrawer" direction="rtl" :append-to-body="true"
+  <el-drawer :title="$('ui.invoiceInvoiceDetailsRelatedPaymentOrder')" class="paymentDrawer" :visible.sync="paymentDrawer" direction="rtl" :append-to-body="true"
     :before-close="paymentHandleClose" size="60%">
    <div class="paymentTable-box">
      <paymentTable ref="paymentTable" :edit="''" :tableData="tableData1" @handleSelectionFn="handleSelectionChange">
     </paymentTable>
    </div>
    <div class="button from-foot-btn fix btn-shadow" >
-      <el-button class="el-btn" size="small" @click="paymentHandleClose">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button size="small" type="primary" @click="submit">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+      <el-button class="el-btn" size="small" @click="paymentHandleClose">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button size="small" type="primary" @click="submit">{{ $("ui.formCommonDialogFormOk") }}</el-button>
     </div>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import file from '@/utils/file'
 import { paymentRecordApi, operationRecordApi,uninvoicedListApi ,invoiceBillApi} from '@/api/enterprise'
 import Vue from 'vue'
@@ -230,7 +230,7 @@ export default {
     // 开票
     handleInvoicing() {
       this.invoicingDialog = {
-        title: i18n.t('customer.invoicingapproval'),
+        title: $('customer.invoicingapproval'),
         data: this.formData.data
       }
       this.$refs.invoicingDialog.openBox()

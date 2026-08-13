@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <!-- 新增任务侧滑弹窗  -->
 <template>
 <div class="station">
   <el-drawer
-    :title="$t('ui.programProgramTaskAddTaskNewTask')"
+    :title="$('ui.programProgramTaskAddTaskNewTask')"
     :visible.sync="drawer"
     :modal="true"
     :wrapper-closable="false"
@@ -12,23 +13,23 @@
   >
     <el-form ref="formData" :model="formData" label-width="110px" :rules="rule">
       <div class="left-card">
-        <el-form-item :label="$t('ui.programProgramTaskAddTaskTaskName')" prop="name">
+        <el-form-item :label="$('ui.programProgramTaskAddTaskTaskName')" prop="name">
           <el-input
             v-model="formData.name"
             maxlength="100"
             show-word-limit
             class="input-item"
-            :placeholder="$t('ui.programProgramTaskAddTaskPleaseEnterTaskName')"
+            :placeholder="$('ui.programProgramTaskAddTaskPleaseEnterTaskName')"
           />
         </el-form-item>
         <el-row>
           <el-col :span="12">
-            <el-form-item :label="$t('ui.programProgramTaskAddTaskRelatedProject')" prop="program_id">
+            <el-form-item :label="$('ui.programProgramTaskAddTaskRelatedProject')" prop="program_id">
               <el-select
                 v-model="formData.program_id"
                 size="small"
                 clearable
-                :placeholder="$t('ui.programProgramTaskAddTaskPleaseSelectRelatedProject')"
+                :placeholder="$('ui.programProgramTaskAddTaskPleaseSelectRelatedProject')"
                 filterable
                 @change="handleContract(formData.program_id, formData)"
               >
@@ -38,7 +39,7 @@
                     <span
                       v-if="item.status == 1 || item.status == 2"
                       :class="item.status == 1 ? 'program-stop' : 'program-close'"
-                      >{{ item.status == 1 ? $t('ui.programProgramTaskAddTaskPaused') : $t('ui.programProgramTaskAddTaskClosed') }}</span
+                      >{{ item.status == 1 ? $('ui.programProgramTaskAddTaskPaused') : $('ui.programProgramTaskAddTaskClosed') }}</span
                     >
                   </div>
                 </el-option>
@@ -46,8 +47,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item :label="$t('ui.programProgramListAddProgramOwner')" class="select-bar">
-              <el-select v-model="formData.uid" size="small" filterable :placeholder="$t('ui.programProgramListAddProgramPleaseSelectOwner')">
+            <el-form-item :label="$('ui.programProgramListAddProgramOwner')" class="select-bar">
+              <el-select v-model="formData.uid" size="small" filterable :placeholder="$('ui.programProgramListAddProgramPleaseSelectOwner')">
                 <el-option v-for="item in programMemberOptions" :key="item.id" :label="item.name" :value="item.id">
                 </el-option>
               </el-select>
@@ -56,7 +57,7 @@
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item :label="$t('ui.programProgramTaskAddTaskPlannedTime')" class="select-bar">
+            <el-form-item :label="$('ui.programProgramTaskAddTaskPlannedTime')" class="select-bar">
               <el-date-picker
                 v-model="timeVal"
                 size="small"
@@ -64,23 +65,23 @@
                 clearable
                 :format="'yyyy-MM-dd'"
                 :value-format="'yyyy-MM-dd'"
-                :placeholder="$t('ui.programProgramListAddProgramSelectThePlannedProjectEndDate')"
-                :range-separator="$t('toptable.to')"
-                :start-placeholder="$t('toptable.startdate')"
-                :end-placeholder="$t('toptable.endingdate')"
+                :placeholder="$('ui.programProgramListAddProgramSelectThePlannedProjectEndDate')"
+                :range-separator="$('toptable.to')"
+                :start-placeholder="$('toptable.startdate')"
+                :end-placeholder="$('toptable.endingdate')"
                 @change="onchangeTime"
               ></el-date-picker>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item :label="$t('ui.programProgramTaskAddTaskCollaborators')" class="select-bar">
+            <el-form-item :label="$('ui.programProgramTaskAddTaskCollaborators')" class="select-bar">
               <el-select
                 v-model="formData.members"
                 size="small"
                 multiple
                 filterable
                 collapse-tags
-                :placeholder="$t('ui.programProgramTaskAddTaskAssignCollaborators')"
+                :placeholder="$('ui.programProgramTaskAddTaskAssignCollaborators')"
               >
                 <el-option v-for="item in programMemberOptions" :key="item.id" :label="item.name" :value="item.id">
                 </el-option>
@@ -101,7 +102,7 @@
         </div>
       </div>
       <div class="right-card">
-        <el-form-item :label="$t('ui.programProgramTaskAddTaskParentTask')" prop="path">
+        <el-form-item :label="$('ui.programProgramTaskAddTaskParentTask')" prop="path">
           <el-cascader
             v-model="formData.path"
             :options="programOptions"
@@ -113,37 +114,37 @@
           >
           </el-cascader>
         </el-form-item>
-        <el-form-item :label="$t('ui.programProgramTaskAddTaskPriority')" class="select-bar">
-          <el-select v-model="formData.priority" size="small" :placeholder="$t('ui.programProgramTaskAddTaskPleaseSelectPriority')">
+        <el-form-item :label="$('ui.programProgramTaskAddTaskPriority')" class="select-bar">
+          <el-select v-model="formData.priority" size="small" :placeholder="$('ui.programProgramTaskAddTaskPleaseSelectPriority')">
             <el-option v-for="item in priorityOptions" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('ui.programProgramTaskAddTaskRelatedVersion')" prop="version_id">
+        <el-form-item :label="$('ui.programProgramTaskAddTaskRelatedVersion')" prop="version_id">
           <el-select
             v-model="formData.version_id"
             size="small"
             clearable
-            :placeholder="$t('ui.programProgramTaskAddTaskPleaseSelectRelatedVersion')"
+            :placeholder="$('ui.programProgramTaskAddTaskPleaseSelectRelatedVersion')"
             style="width: 80%"
             filterable
           >
             <el-option v-for="item in programVersionList" :key="item.id" :label="item.name" :value="item.id" />
           </el-select>
-          <span class="pointer settings" @click="setVersion">{{ $t("ui.chatIndexSettings") }}</span>
+          <span class="pointer settings" @click="setVersion">{{ $("ui.chatIndexSettings") }}</span>
         </el-form-item>
       </div>
     </el-form>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" @click="handleConfirm(1)">{{ $t("ui.programProgramTaskAddTaskSaveAndCreateAnother") }}</el-button>
-      <el-button size="small" type="primary" @click="handleConfirm()">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" @click="handleConfirm(1)">{{ $("ui.programProgramTaskAddTaskSaveAndCreateAnother") }}</el-button>
+      <el-button size="small" type="primary" @click="handleConfirm()">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </el-drawer>
   <!-- 设置关联版本 -->
   <el-dialog
     top="13%"
-    :title="$t('ui.programProgramTaskAddTaskVersionSettings')"
+    :title="$('ui.programProgramTaskAddTaskVersionSettings')"
     :append-to-body="true"
     :visible.sync="dialogVisible"
     width="30%"
@@ -152,25 +153,24 @@
     <draggable v-model="inputs" class="drag-area" @start="dragging = true" @end="dragging = false">
       <div v-for="(input, index) in inputs" :key="index" class="input-row">
         <i class="iconfont icontuodong pointer"></i>
-        <el-input v-model="input.name" :placeholder="$t('ui.programProgramTaskAddTaskPleaseEnterVersionName')"></el-input>
+        <el-input v-model="input.name" :placeholder="$('ui.programProgramTaskAddTaskPleaseEnterVersionName')"></el-input>
         <span class="el-icon-remove"  @click="removeInput(index)"></span>
         <!-- <span class="pointer">-</span> -->
       </div>
     </draggable>
     <span class="add-input pointer" @click="addInput">
       <i class="el-icon-plus"></i>
-      <span>{{ $t("ui.programProgramTaskAddTaskAddVersion") }}</span>
+      <span>{{ $("ui.programProgramTaskAddTaskAddVersion") }}</span>
     </span>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="handleCloseVersion">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-      <el-button type="primary" @click="submitVersion">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+      <el-button @click="handleCloseVersion">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button type="primary" @click="submitVersion">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </div>
   </el-dialog>
 </div>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { saveProgramTaskApi, getProgramTaskInfoApi, getProgramVersionApi, setProgramVersionApi } from '@/api/program'
 import draggable from 'vuedraggable'
 export default {
@@ -222,28 +222,28 @@ export default {
       priorityOptions: [
         {
           value: 1,
-          label: i18n.t('ui.programProgramTaskTableDataUrgent')
+          label: $('ui.programProgramTaskTableDataUrgent')
         },
         {
           value: 2,
-          label: i18n.t('ui.programProgramTaskTableDataHeight')
+          label: $('ui.programProgramTaskTableDataHeight')
         },
         {
           value: 3,
-          label: i18n.t('ui.programProgramTaskTableDataCenter')
+          label: $('ui.programProgramTaskTableDataCenter')
         },
         {
           value: 4,
-          label: i18n.t('ui.programProgramTaskTableDataLow')
+          label: $('ui.programProgramTaskTableDataLow')
         },
         {
           value: 0,
-          label: i18n.t('ui.programProgramTaskTableDataNoPriority')
+          label: $('ui.programProgramTaskTableDataNoPriority')
         }
       ],
       rule: {
-        name: [{ required: true, message: i18n.t('ui.programProgramTaskAddTaskPleaseEnterTaskName'), trigger: 'blur' }],
-        program_id: [{ required: true, message: i18n.t('ui.programProgramTaskAddTaskPleaseSelectRelatedProject'), trigger: 'change' }]
+        name: [{ required: true, message: $('ui.programProgramTaskAddTaskPleaseEnterTaskName'), trigger: 'blur' }],
+        program_id: [{ required: true, message: $('ui.programProgramTaskAddTaskPleaseSelectRelatedProject'), trigger: 'change' }]
       },
       programId: '',
       currentPid: 0,

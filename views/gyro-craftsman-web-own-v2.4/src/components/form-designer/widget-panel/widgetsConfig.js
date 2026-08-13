@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 /**
  * 容器组件数组
  * @type {Container[]}
@@ -669,7 +669,7 @@ export const basicFields = [
       validationHint: '',
       //-------------------
       showType:1,
-      buttonText: i18n.t('ui.developTableDialogSelect'),
+      buttonText: $('ui.developTableDialogSelect'),
       dataLink:'', // 数据联动
       labelIconPosition: 'rear',
       prefixIcon: '',
@@ -712,7 +712,7 @@ export const basicFields = [
       name: '',
       keyNameEnabled: false,
       keyName: '',
-      label: i18n.t('legacyScript.regionSelection'),
+      label: $('legacyScript.regionSelection'),
       labelAlign: '',
       defaultValue: '',
       placeholder: '',
@@ -758,7 +758,7 @@ export const basicFields = [
       name: 'zhengshuziduan',
       keyNameEnabled: false,
       keyName: '',
-      label: i18n.t('legacyScript.integerField'),
+      label: $('legacyScript.integerField'),
       labelAlign: '',
       defaultValue: 0,
       placeholder: '',
@@ -803,7 +803,7 @@ export const basicFields = [
       name: 'jingquexiaoshu',
       keyNameEnabled: false,
       keyName: '',
-      label: i18n.t('legacyScript.preciseDecimal'),
+      label: $('legacyScript.preciseDecimal'),
       labelAlign: '',
       defaultValue: 0,
       placeholder: '',
@@ -847,7 +847,7 @@ export const basicFields = [
       name: 'jine',
       keyNameEnabled: false,
       keyName: '',
-      label: i18n.t('finance.amountmoney'),
+      label: $('finance.amountmoney'),
       labelAlign: '',
       defaultValue: 0,
       placeholder: '',

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <el-drawer
@@ -18,15 +19,15 @@
         </div>
         <div v-show="activeName == 0" class="card-box">
           <el-form ref="form" :model="formData" :rules="rules" label-width="100px" size="small">
-            <el-form-item :label="$t('setting.edit.departmentname') + '：'" prop="name">
+            <el-form-item :label="$('setting.edit.departmentname') + '：'" prop="name">
               <el-input
                 v-model="formData.name"
-                :placeholder="$t('setting.edit.inputcontent')"
+                :placeholder="$('setting.edit.inputcontent')"
                 class="input-item"
                 size="small"
               />
             </el-form-item>
-            <el-form-item :label='$ts("父级部门：")'>
+            <el-form-item :label='$("legacy.29c6bbbe9c4692aa")'>
               <el-cascader
                 v-model="formData.path"
                 :disabled="config.disabled"
@@ -37,16 +38,16 @@
                 @change="handleChange"
               />
             </el-form-item>
-            <el-form-item :label='$ts("默认角色：")' prop="role_id">
-              <el-select v-model="formData.role_id" :placeholder='$ts("请选择默认角色")'>
+            <el-form-item :label='$("legacy.35e52534963b1bb9")' prop="role_id">
+              <el-select v-model="formData.role_id" :placeholder='$("legacyScript.pleaseSelectADefaultRole")'>
                 <el-option v-for="item in roleList" :key="item.id" :label="item.role_name" :value="item.id">
                 </el-option>
               </el-select>
             </el-form-item>
-            <el-form-item :label='$ts("部门主管：")'>
+            <el-form-item :label='$("legacy.0bf40a99fb472d37")'>
               <el-select
                 v-model="frameValue"
-                :placeholder="$t('setting.edit.selectmembers')"
+                :placeholder="$('setting.edit.selectmembers')"
                 disabled
                 multiple
                 size="small"
@@ -55,7 +56,7 @@
                 <el-option v-for="item in frameOptions" :key="item.id" :label="item.name" :value="item.id" />
               </el-select>
             </el-form-item>
-            <el-form-item :label='$ts("部门排序：")'>
+            <el-form-item :label='$("legacy.43fed5728bcaa966")'>
               <el-input-number
                 v-model="formData.sort"
                 :min="0"
@@ -65,12 +66,12 @@
                 @change="handleChange"
               ></el-input-number>
             </el-form-item>
-            <el-form-item :label="$t('setting.edit.departmentintroduction') + '：'">
+            <el-form-item :label="$('setting.edit.departmentintroduction') + '：'">
               <el-input
                 v-model="formData.introduce"
                 :autosize="{ minRows: 6 }"
                 maxlength="250"
-                :placeholder='$ts("请输入部门简介")'
+                :placeholder='$("legacy.6c3b36dc9c680a15")'
                 resize="none"
                 show-word-limit
                 type="textarea"
@@ -81,15 +82,14 @@
         </div>
       </div>
       <div class="from-foot-btn fix btn-shadow">
-        <el-button size="small" @click="close">{{ $t('public.cancel') }}</el-button>
-        <el-button size="small" type="primary" @click="onSubmit">{{ $t('public.save') }}</el-button>
+        <el-button size="small" @click="close">{{ $('public.cancel') }}</el-button>
+        <el-button size="small" type="primary" @click="onSubmit">{{ $('public.save') }}</el-button>
       </div>
     </el-drawer>
   </div>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { configFrameCreateApi, configFrameUpdataApi, configFrameEditApi, frameUpdataApi } from '@/api/setting'
 import { systemRoleListApi } from '@/api/config'
 export default {
@@ -145,8 +145,8 @@ export default {
         }
       },
       rules: {
-        role_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectADefaultRole'), trigger: 'change' }],
-        name: [{ required: true, message: i18n.t('legacyScript.pleaseEnterDepartmentName'), trigger: 'blur' }]
+        role_id: [{ required: true, message: $('legacyScript.pleaseSelectADefaultRole'), trigger: 'change' }],
+        name: [{ required: true, message: $('legacyScript.pleaseEnterDepartmentName'), trigger: 'blur' }]
       },
       treeList: [],
       treeRoleData: null, // 权限数据

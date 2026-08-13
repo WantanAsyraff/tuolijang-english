@@ -1,26 +1,26 @@
 <template>
 <div>
   <el-table :data="treeData">
-    <el-table-column :label="$t('ui.settingModulePermissionsModule')" width="200">
+    <el-table-column :label="$('ui.settingModulePermissionsModule')" width="200">
       <template slot-scope="scope">
         <span @click="getData()"> {{ scope.row.module_name }} </span></template
       >
     </el-table-column>
-    <el-table-column :label="$t('ui.settingModulePermissionsDataPermissions')" width="auto">
+    <el-table-column :label="$('ui.settingModulePermissionsDataPermissions')" width="auto">
       <template slot-scope="scope">
         <div class="flex">
           <el-select
             v-model="scope.row.data_level"
             size="small"
             @change="dataLevelFn($event, scope.row)"
-            :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+            :placeholder="$('ui.developConditionGroupPleaseSelect')"
           >
             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
           </el-select>
           <select-department
             v-if="scope.row.data_level == '4'"
             :selectId="scope.row.frame_id || []"
-            :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+            :placeholder="$('ui.developConditionGroupPleaseSelect')"
             @changeMastart="changeMastart($event, scope.row)"
             style="width: 400px; margin-left: 20px"
           ></select-department>
@@ -46,23 +46,23 @@ export default {
       options: [
         {
           value: 1,
-          label: this.$t('customer.meOnly')
+          label: this.$('customer.meOnly')
         },
         {
           value: 2,
-          label: this.$t('customer.directSubordinates')
+          label: this.$('customer.directSubordinates')
         },
         {
           value: 3,
-          label: this.$t('customer.thisDept')
+          label: this.$('customer.thisDept')
         },
         {
           value: 4,
-          label: this.$t('customer.custDept')
+          label: this.$('customer.custDept')
         },
         {
           value: 5,
-          label: this.$t('customer.allData')
+          label: this.$('customer.allData')
         }
       ]
     }

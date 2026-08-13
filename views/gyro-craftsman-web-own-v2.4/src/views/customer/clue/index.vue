@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 客户管理 -->
 <template>
   <div class="divBox">
@@ -13,8 +14,8 @@
         :category="keyword"
         :whereData="where"
         :timeSearchObj="timeSearchObj"
-        ref="fromBox"
-:btn-text="$t('ui.customerClueIndexAddLead')"
+      ref="fromBox"
+      :btnText="$('ui.customerClueIndexAddLead')"
         @addDataFn="addDataFn"
         @confirmData="confirmData"
         @dropdownFn="dropdownFn"
@@ -34,35 +35,35 @@
         @getTableData="getTableData"
       >
         <template #options="{ data }">
-          <el-button type="text" @click="openDetails(data)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+          <el-button type="text" @click="openDetails(data)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
           <el-button type="text" v-if="keyword == 'clue'" @click="transferCustomers(data)">
-            {{ $t('customer.convertToCustomer') }}
+            {{ $('customer.convertToCustomer') }}
           </el-button>
-          <el-button type="text" v-else @click="handleCollection(2, data)">{{ $t("ui.customerClueIndexIssue") }}</el-button>
+          <el-button type="text" v-else @click="handleCollection(2, data)">{{ $("ui.customerClueIndexIssue") }}</el-button>
           <el-dropdown>
             <span class="el-dropdown-link el-button--text el-button more">
-              {{ $t("ui.layoutNavbarMore") }}
+              {{ $("ui.layoutNavbarMore") }}
               <i class="el-icon-arrow-down" />
             </span>
             <el-dropdown-menu class="dropdown-menu-left" placement="top-start">
               <el-dropdown-item v-if="keyword === 'clue_seas'" @click.native="handleTransfer(2, data)">
-                {{ $t("ui.customerClueIndexAssign") }}</el-dropdown-item
+                {{ $("ui.customerClueIndexAssign") }}</el-dropdown-item
               >
               <el-dropdown-item v-if="keyword === 'clue_seas'" @click.native="transferCustomers(data)">
-                {{ $t('customer.convertToCustomer') }}</el-dropdown-item
+                {{ $('customer.convertToCustomer') }}</el-dropdown-item
               >
               <el-dropdown-item style="border-bottom: 1px solid #f5f5f5" @click.native="handleFollowUp(data)">
-                {{ $t("ui.customerClueIndexWriteFollowUp") }}</el-dropdown-item
+                {{ $("ui.customerClueIndexWriteFollowUp") }}</el-dropdown-item
               >
 
               <el-dropdown-item v-if="keyword === 'clue'" @click.native="handleTransfer(2, data)">
-                {{ $t("ui.customerClueIndexTransferToColleague") }}</el-dropdown-item
+                {{ $("ui.customerClueIndexTransferToColleague") }}</el-dropdown-item
               >
               <el-dropdown-item v-if="keyword === 'clue'" @click.native="handleReturn(2, data)">
-                {{ $t("ui.customerClueIndexReturnToLeadPool") }}</el-dropdown-item
+                {{ $("ui.customerClueIndexReturnToLeadPool") }}</el-dropdown-item
               >
 
-              <el-dropdown-item @click.native="handleDelete(data)"> {{ $t("ui.chatIndexDelete") }}</el-dropdown-item>
+              <el-dropdown-item @click.native="handleDelete(data)"> {{ $("ui.chatIndexDelete") }}</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </template>
@@ -74,7 +75,7 @@
     <addForm ref="addForm" :form-data="formBoxConfig" :keyword="keyword" @getTableData="getTableData"></addForm>
     <dialog-form ref="dialogForm" :form-data="config" @isOkEdit="getTableData()" />
     <!-- 跟进弹窗 -->
-    <el-dialog :visible.sync="dialogShow" class="record" :title="$t('ui.customerClueIndexAddFollowUpRecord')" width="40%">
+    <el-dialog :visible.sync="dialogShow" class="record" :title="$('ui.customerClueIndexAddFollowUpRecord')" width="40%">
       <recordUpload :form-info="formInfo" @change="recordChange"></recordUpload>
     </el-dialog>
     <!-- 导入线索 -->
@@ -96,7 +97,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import imageViewer from '@/components/common/imageViewer'
 import { getWorkCorpConfigApi } from '@/api/setting'
@@ -138,19 +138,19 @@ export default {
         reason: ''
       },
       fromData: {
-        title: i18n.t('ui.customerClueIndexReturnToLeadPool'),
+        title: $('ui.customerClueIndexReturnToLeadPool'),
         width: '540px'
       },
       formDataInit: { reason: '' },
       formRules: {
-        reason: [{ required: true, message: i18n.t('legacyScript.pleaseEnterReturnReason'), trigger: 'blur' }]
+        reason: [{ required: true, message: $('legacyScript.pleaseEnterReturnReason'), trigger: 'blur' }]
       },
       client_switch: null,
       formConfig: [
         {
           type: 'textarea',
-          label: i18n.t('ui.customerListIndexReason'),
-          placeholder: i18n.t('legacyScript.pleaseEnterReason'),
+          label: $('ui.customerListIndexReason'),
+          placeholder: $('legacyScript.pleaseEnterReason'),
           key: 'reason'
         }
       ],
@@ -181,7 +181,7 @@ export default {
       total: 0,
       loading: false,
       rule: {
-        reason: [{ required: true, message: i18n.t('finance.pleaseremark'), trigger: 'blur' }]
+        reason: [{ required: true, message: $('finance.pleaseremark'), trigger: 'blur' }]
       },
       checkedId: [],
       detailsFromData: {},
@@ -200,28 +200,28 @@ export default {
     },
     dropdownList() {
       let clue = [
-        { label: i18n.t('ui.customerClueIndexTransferToColleague'), value: 2 },
-        { label: i18n.t('ui.customerClueIndexReturnToLeadPool'), value: 3 },
-        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 6 },
-        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 7 },
-        { label: i18n.t('customer.export'), value: 8 },
-        { label: i18n.t('finance.batchupload'), value: 9 },
-        { label: i18n.t('legacyScript.importExportRecords'), value: 10 },
-        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 11 }
+        { label: $('ui.customerClueIndexTransferToColleague'), value: 2 },
+        { label: $('ui.customerClueIndexReturnToLeadPool'), value: 3 },
+        { label: $('ui.developModuleTableStyleFilterSettings'), value: 6 },
+        { label: $('ui.developModuleTableStyleColumnDisplaySettings'), value: 7 },
+        { label: $('customer.export'), value: 8 },
+        { label: $('finance.batchupload'), value: 9 },
+        { label: $('legacyScript.importExportRecords'), value: 10 },
+        { label: $('legacyScript.fieldOptionSettings'), value: 11 }
       ]
       if (this.client_switch) {
-        clue.unshift({ label: i18n.t('legacyScript.syncWeComCustomers'), value: 5 })
+        clue.unshift({ label: $('legacyScript.syncWeComCustomers'), value: 5 })
       }
 
       let clue_seas = [
-        { label: i18n.t('ui.customerClueIndexAssign'), value: 2 },
-        { label: i18n.t('ui.customerClueIndexIssue'), value: 4 },
-        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 6 },
-        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 7 },
-        { label: i18n.t('customer.export'), value: 8 },
-        { label: i18n.t('finance.batchupload'), value: 9 },
-        { label: i18n.t('legacyScript.importExportRecords'), value: 10 },
-        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 11 }
+        { label: $('ui.customerClueIndexAssign'), value: 2 },
+        { label: $('ui.customerClueIndexIssue'), value: 4 },
+        { label: $('ui.developModuleTableStyleFilterSettings'), value: 6 },
+        { label: $('ui.developModuleTableStyleColumnDisplaySettings'), value: 7 },
+        { label: $('customer.export'), value: 8 },
+        { label: $('finance.batchupload'), value: 9 },
+        { label: $('legacyScript.importExportRecords'), value: 10 },
+        { label: $('legacyScript.fieldOptionSettings'), value: 11 }
       ]
       return this.types == 'clue' ? clue : clue_seas
     },
@@ -229,20 +229,20 @@ export default {
     treeData() {
       let list = [
         {
-          label: i18n.t('legacyScript.ownedByMe'),
+          label: $('legacyScript.ownedByMe'),
           id: 1
         },
         {
-          label: i18n.t('legacyScript.ownedBySubordinates'),
+          label: $('legacyScript.ownedBySubordinates'),
           id: 2
         },
         {
-          label: i18n.t('legacyScript.followedByMe'),
+          label: $('legacyScript.followedByMe'),
           id: 3
         },
 
         {
-          label: i18n.t('legacyScript.needsUrgentFollowUp'),
+          label: $('legacyScript.needsUrgentFollowUp'),
           id: 4,
           line: true
         }
@@ -251,7 +251,7 @@ export default {
         ? list
         : [
             {
-              label: i18n.t('finance.all'),
+              label: $('finance.all'),
               id: '5'
             }
           ]
@@ -276,7 +276,7 @@ export default {
     }, // 编辑线索
     handleEdit(item) {
       this.formBoxConfig = {
-        title: i18n.t('legacyScript.editLead'),
+        title: $('legacyScript.editLead'),
         width: '570px'
       }
       getCluesEditApi(item.id).then((res) => {
@@ -286,12 +286,12 @@ export default {
     //转客户
     async transferCustomers(item) {
       if (item.customer) {
-        await this.$modalSure(this.$t('customer.convertWeComCustomerConfirm'))
+        await this.$modalSure(this.$('customer.convertWeComCustomerConfirm'))
         await clientToCustomerApi(item.id)
         await this.getTableData()
       } else {
         this.config = {
-          title: i18n.t('legacyScript.addCustomer'),
+          title: $('legacyScript.addCustomer'),
           width: '570px',
           linkId: item.id
         }
@@ -317,7 +317,7 @@ export default {
     // 查看
     async openDetails(item) {
       this.detailsFromData = {
-        title: i18n.t('legacyScript.viewLeads'),
+        title: $('legacyScript.viewLeads'),
         width: DRAWER_SIZE.LG,
         data: item,
         types: this.types,
@@ -389,7 +389,7 @@ export default {
     handleReturn(type, row) {
       if (type === 1) {
         if (this.ids.length <= 0) {
-          return this.$message.error(this.$t('customer.placeholder22'))
+          return this.$message.error(this.$('customer.placeholder22'))
         }
       } else {
         this.ids = [row.id]
@@ -470,11 +470,11 @@ export default {
     // 转移
     handleTransfer(type, row = []) {
       if (this.ids.length <= 0 && type === 1) {
-        this.$message.error(this.$t('customer.placeholder22'))
+        this.$message.error(this.$('customer.placeholder22'))
       } else {
         const ids = type === 1 ? this.ids : [row.id]
         this.transferData = {
-          title: i18n.t('legacyScript.transferToAnotherColleague'),
+          title: $('legacyScript.transferToAnotherColleague'),
           width: '520px',
           type: 5,
           ids
@@ -485,10 +485,10 @@ export default {
     // 领取
     handleCollection(type, row = []) {
       if (this.ids.length <= 0 && type === 1) {
-        this.$message.error(this.$t('customer.placeholder22'))
+        this.$message.error(this.$('customer.placeholder22'))
       } else {
         const ids = type === 1 ? this.ids : [row.id]
-        this.$modalSure(this.$ts('您确定要领取此线索吗')).then(async () => {
+        this.$modalSure(this.$("legacy.3978cb9ac8b2eb7f")).then(async () => {
           await cluesClaimApi({ data: ids })
           await this.getTableData()
         })

@@ -1,14 +1,14 @@
 <template>
-<el-dialog :title="$t('ui.customerListImportRecordsImportExportRecords')" :visible.sync="dialogVisible" width="1100px" @close="handleClose">
+<el-dialog :title="$('ui.customerListImportRecordsImportExportRecords')" :visible.sync="dialogVisible" width="1100px" @close="handleClose">
   <template v-if="recordList.length>0">
   <el-table :data="recordList" size="small" style="width: 100%;" height="400px" >
-    <el-table-column :label="$t('ui.customerListImportRecordsFileName')" prop="name" min-width="200">
+    <el-table-column :label="$('ui.customerListImportRecordsFileName')" prop="name" min-width="200">
       <template slot-scope="scope">
         <el-tooltip v-if="scope.row.name" effect="dark" :content="scope.row.name" placement="top-start">
           <div class="lh-center">
             <i class="iconfont iconExcelgeshi"></i>
             <span class="name over-text">{{ scope.row.name }}</span>
-            <i :title="$t('ui.customerListImportRecordsDownloadFile')" class="iconfont iconxiazai" v-if="scope.row.file_path"
+            <i :title="$('ui.customerListImportRecordsDownloadFile')" class="iconfont iconxiazai" v-if="scope.row.file_path"
               @click="downloadFile(scope.row)"></i>
           </div>
         </el-tooltip>
@@ -16,14 +16,14 @@
 
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.administrationMaterialChartIndexOperator')" prop="admin.name" />
-    <el-table-column :label="$t('ui.administrationMaterialFixedLogOperationTime')" prop="created_at" width="180" />
-    <el-table-column :label="$t('ui.developViewManagementType')" prop="created_at" width="130" >
+    <el-table-column :label="$('ui.administrationMaterialChartIndexOperator')" prop="admin.name" />
+    <el-table-column :label="$('ui.administrationMaterialFixedLogOperationTime')" prop="created_at" width="180" />
+    <el-table-column :label="$('ui.developViewManagementType')" prop="created_at" width="130" >
       <template slot-scope="scope">
-        {{scope.row.types == 1 ? $t('ui.commonImportExcelImport') : $t('ui.fdExamineIndexExport')}}
+        {{scope.row.types == 1 ? $('ui.commonImportExcelImport') : $('ui.fdExamineIndexExport')}}
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.customerListImportRecordsOperationResult')" prop="fail_msg">
+    <el-table-column :label="$('ui.customerListImportRecordsOperationResult')" prop="fail_msg">
       <template slot-scope="scope">
         <!-- 失败时显示带提示的文本 -->
         <el-tooltip v-if="scope.row.status === 2" class="item" effect="dark" :content="scope.row.fail_msg"
@@ -34,10 +34,10 @@
         <span v-else v-html="getStatusText(scope.row, scope.row.status)"></span>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="80">
+    <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="80">
       <template slot-scope="scope">
         <el-button type="text" size="mini" @click="deleteRecord(scope.row)">
-          {{ $t("ui.chatIndexDelete") }}
+          {{ $("ui.chatIndexDelete") }}
         </el-button>
       </template>
     </el-table-column>

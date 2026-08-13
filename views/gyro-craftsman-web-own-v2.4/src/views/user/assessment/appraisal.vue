@@ -5,8 +5,8 @@
       <el-card class="employees-card-bottom">
         <div class="plan-tabs-content mb20">
           <el-tabs v-model="tabCur" @tab-click="tapClick">
-            <el-tab-pane :label='$ts("待处理")' name="6" />
-            <el-tab-pane :label='$ts("考核记录")' name="7" />
+            <el-tab-pane :label='$("toptable.pending")' name="6" />
+            <el-tab-pane :label='$("legacy.ccd4bfc16e72804c")' name="7" />
           </el-tabs>
         </div>
         <merits ref="merits" :tabCur="tabCur" :handle="handle" @meritsHandleCheck="meritsHandleCheck" />

@@ -5,7 +5,7 @@
         <el-select
           v-model="tableFrom.types"
           size="small"
-          :placeholder='$ts("请选择消息类型")'
+          :placeholder='$("legacy.f50ab9b0255f434c")'
           @change="handleTypes"
           style="width: 220px"
           clearable
@@ -31,19 +31,19 @@
           size="small"
           @change="handleConfirm"
           @keyup.native.stop.prevent.enter="handleConfirm"
-          :placeholder='$ts("请输入标题/内容")'
+          :placeholder='$("ui.layoutNoticeNoticeListPleaseEnterTitleAndContent")'
         ></el-input>
       </el-form-item>
 
       <el-form-item>
-        <el-tooltip effect="dark" :content='$ts("重置搜索条件")' placement="top">
+        <el-tooltip effect="dark" :content='$("ui.administrationMaterialFixedRecordResetSearchConditions")' placement="top">
           <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
         </el-tooltip>
       </el-form-item>
 
       <!-- <el-col :span="8">
           <el-button type="primary" size="small" @click="handleConfirm">搜索</el-button>
-          <el-button size="small" @click="reset">{{ $t('public.reset') }}</el-button>
+          <el-button size="small" @click="reset">{{ $('public.reset') }}</el-button>
         </el-col> -->
     </el-row>
   </el-form>

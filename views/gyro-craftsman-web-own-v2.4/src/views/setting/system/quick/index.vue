@@ -13,65 +13,65 @@
               :title="$route.meta.title"
               :total="total"
               :isViewSearch="false"
-              :sortSearch="false"
-:btn-text="$t('ui.settingSystemQuickIndexNewShortcut')"
+      :sortSearch="false"
+      :btnText="$('ui.settingSystemQuickIndexNewShortcut')"
               @addDataFn="handleNews"
               @confirmData="confirmData"
             ></oaFromBox>
           </div>
           <div class="mt14 table-box">
             <el-table :data="tableData" style="width: 100%" row-key="id" :height="tableHeight" default-expand-all>
-              <el-table-column prop="name" :label="$t('ui.settingSystemQuickIndexTitle')" min-width="100">
+              <el-table-column prop="name" :label="$('ui.settingSystemQuickIndexTitle')" min-width="100">
                 <template slot-scope="scope">
                   <div class="over-text2">{{ scope.row.name }}</div>
                 </template>
               </el-table-column>
-              <el-table-column prop="pc_url" :label="$t('ui.settingSystemQuickIndexDesktopUrl')" min-width="120">
+              <el-table-column prop="pc_url" :label="$('ui.settingSystemQuickIndexDesktopUrl')" min-width="120">
                 <template slot-scope="scope">
                   <div class="over-text2">{{ scope.row.pc_url }}</div>
                 </template>
               </el-table-column>
-              <el-table-column prop="uni_url" :label="$t('ui.settingSystemQuickIndexMobileUrl')" min-width="120">
+              <el-table-column prop="uni_url" :label="$('ui.settingSystemQuickIndexMobileUrl')" min-width="120">
                 <template slot-scope="scope">
                   <div class="over-text2">{{ scope.row.uni_url }}</div>
                 </template>
               </el-table-column>
-              <el-table-column prop="name" :label="$t('ui.administrationNoticeIndexCover')" min-width="80">
+              <el-table-column prop="name" :label="$('ui.administrationNoticeIndexCover')" min-width="80">
                 <template slot-scope="scope">
                   <img v-if="scope.row.image" class="table-img" :src="scope.row.image" alt="" />
                   <span v-else>--</span>
                   <!-- <img v-else class="table-img" src="../../../../assets/images/index/quick-icon-09.png" alt="" /> -->
                 </template>
               </el-table-column>
-              <el-table-column prop="card.name" :label="$t('ui.settingSystemQuickIndexShowOnDesktop')" min-width="80">
+              <el-table-column prop="card.name" :label="$('ui.settingSystemQuickIndexShowOnDesktop')" min-width="80">
                 <template slot-scope="scope">
-                  <span>{{ scope.row.pc_show === 1 ? $t('ui.userWorkDealtIndexDisplay') : $t('ui.developConditionGroupDialogHide') }}</span>
+                  <span>{{ scope.row.pc_show === 1 ? $('ui.userWorkDealtIndexDisplay') : $('ui.developConditionGroupDialogHide') }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="card.name" :label="$t('ui.settingSystemQuickIndexShowOnMobile')" min-width="90">
+              <el-table-column prop="card.name" :label="$('ui.settingSystemQuickIndexShowOnMobile')" min-width="90">
                 <template slot-scope="scope">
-                  <span>{{ scope.row.uni_show === 1 ? $t('ui.userWorkDealtIndexDisplay') : $t('ui.developConditionGroupDialogHide') }}</span>
+                  <span>{{ scope.row.uni_show === 1 ? $('ui.userWorkDealtIndexDisplay') : $('ui.developConditionGroupDialogHide') }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="status" :label="$t('ui.customerSetupDictionaryIndexStatus')" min-width="80">
+              <el-table-column prop="status" :label="$('ui.customerSetupDictionaryIndexStatus')" min-width="80">
                 <template slot-scope="scope">
                   <el-switch
                     v-model="scope.row.status"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                    active-text="开启"
+                    inactive-text="关闭"
                     :active-value="1"
                     :inactive-value="0"
                     @change="handleStatus(scope.row)"
                   />
                 </template>
               </el-table-column>
-              <el-table-column prop="describe" :label="$t('public.operation')" fixed="right" width="120">
+              <el-table-column prop="describe" :label="$('public.operation')" fixed="right" width="120">
                 <template slot-scope="scope">
                   <el-button type="text" @click="handleEdit(scope.row)" v-hasPermi="['system:quick:edit']">{{
-                    $t('public.edit')
+                    $('public.edit')
                   }}</el-button>
                   <el-button type="text" @click="handleDelete(scope.row.id)" v-hasPermi="['system:quick:delete']">
-                    {{ $t('public.delete') }}
+                    {{ $('public.delete') }}
                   </el-button>
                 </template>
               </el-table-column>

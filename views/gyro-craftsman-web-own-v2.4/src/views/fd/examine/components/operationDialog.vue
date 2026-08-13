@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 通过付款审核记录弹窗 -->
 <template>
 <div>
@@ -13,8 +14,8 @@
         <el-alert
           :description="
             this.config.type == 'edit'
-              ? $t('ui.customerListExpendDialogAfterSavingTheIncomeAndExpenseEntryAndThe')
-              : $t('ui.customerListExpendDialogAfterApprovalTheSystemWillAutomaticallyGenerateAnIncome')
+              ? $('ui.customerListExpendDialogAfterSavingTheIncomeAndExpenseEntryAndThe')
+              : $('ui.customerListExpendDialogAfterApprovalTheSystemWillAutomaticallyGenerateAnIncome')
           "
           class="cr-alert"
           show-icon
@@ -24,7 +25,7 @@
       </div>
       <!-- 账目分类 -->
       <el-form-item v-if="config.type !== 'edit'" prop="bill_cate_id">
-        <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsAccountCategory") }}</span>
+        <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsAccountCategory") }}</span>
         <el-cascader
           v-model="rules.bill_cate_id"
           :options="statusOption"
@@ -34,8 +35,8 @@
       </el-form-item>
       <!-- 续费类型 -->
       <el-form-item v-if="types !== 0" prop="cate_id">
-        <span slot="label">{{ $t("ui.fdExamineOperationDialogRenewalType") }} </span>
-        <el-select v-model="rules.cate_id" :placeholder="$t('customer.placeholder31')" size="small">
+        <span slot="label">{{ $("ui.fdExamineOperationDialogRenewalType") }} </span>
+        <el-select v-model="rules.cate_id" :placeholder="$('customer.placeholder31')" size="small">
           <el-option v-for="item in sourceOptions" :key="item.id" :label="item.value.title" :value="item.id" />
         </el-select>
       </el-form-item>
@@ -54,32 +55,32 @@
 
       <!-- 续费结束时间 -->
       <el-form-item v-if="types == 1">
-        <span slot="label">{{ $t("ui.customerListApplyForPaymentRenewalDate") }}</span>
+        <span slot="label">{{ $("ui.customerListApplyForPaymentRenewalDate") }}</span>
         <el-date-picker
           v-model="rules.end_date"
           :picker-options="config.type > 2 ? expireTimeOption : ''"
           :type="'date'"
-          :placeholder="$t('ui.fdExamineOperationDialogPleaseSelectARenewalDate')"
+          :placeholder="$('ui.fdExamineOperationDialogPleaseSelectARenewalDate')"
           size="small"
         >
         </el-date-picker>
       </el-form-item>
       <!-- 支付方式 -->
       <el-form-item v-if="config.type !== 3" prop="type_id">
-        <span slot="label">{{ $t("ui.customerListApplyForPaymentPaymentMethod") }}</span>
-        <el-select v-model="rules.type_id" :placeholder="$t('ui.customerContractContractDialogSelectPaymentMethod')" size="small">
+        <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentMethod") }}</span>
+        <el-select v-model="rules.type_id" :placeholder="$('ui.customerContractContractDialogSelectPaymentMethod')" size="small">
           <el-option v-for="item in paymentOptions" :key="item.id" :label="item.name" :value="item.id" />
         </el-select>
       </el-form-item>
 
       <!-- 付款时间 -->
       <el-form-item v-if="config.type !== 3" prop="dateTime">
-        <span slot="label">{{ $t("ui.customerListApplyForPaymentPaymentTime") }}</span>
+        <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentTime") }}</span>
         <el-date-picker
           v-model="rules.dateTime"
           format="yyyy/MM/dd HH:mm:ss"
           picker-options="expireTimeOption"
-          :placeholder="$t('ui.fdExamineOperationDialogPleaseSelectPaymentTime')"
+          :placeholder="$('ui.fdExamineOperationDialogPleaseSelectPaymentTime')"
           size="small"
           type="datetime"
         >
@@ -88,7 +89,7 @@
 
       <!-- 付款凭证 -->
       <el-form-item v-if="config.type !== 3">
-        <span slot="label">{{ $t("ui.customerListApplyForPaymentPaymentProof") }}</span>
+        <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentProof") }}</span>
         <div class="avatar">
           <el-upload
             :headers="myHeaders"
@@ -102,25 +103,24 @@
           </el-upload>
 
           <span class="clew">
-            {{ $t("ui.customerContractContractDialogJpgJpegAndPngAreSupported") }}<br />
-            {{ $t("ui.customerContractContractDialogRecommended7341034") }} <br />{{ $t("ui.customerContractContractDialogNoLargerThan2Mb") }}
+            {{ $("ui.customerContractContractDialogJpgJpegAndPngAreSupported") }}<br />
+            {{ $("ui.customerContractContractDialogRecommended7341034") }} <br />{{ $("ui.customerContractContractDialogNoLargerThan2Mb") }}
           </span>
         </div>
       </el-form-item>
       <el-form-item prop="remarks">
-        <span slot="label"> {{ $t("ui.xmindEditorToolbarNodeBtnListRemarks") }}</span>
+        <span slot="label"> {{ $("ui.xmindEditorToolbarNodeBtnListRemarks") }}</span>
         <el-input v-model="rules.remarks" maxlength="50" show-word-limit type="textarea" />
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
     </div>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { enterprisePayTypeApi, clientConfigListApi, billFinanceApi } from '@/api/enterprise'
 import { clientBillStatusApi } from '@/api/client'
 import { getToken } from '@/utils/auth'
@@ -143,9 +143,9 @@ export default {
   data() {
     const checkAmount = (rule, value, callback) => {
       if (this.types == 0 && !value) {
-        return callback(new Error(this.$t('customer.placeholder33')))
+        return callback(new Error(this.$('customer.placeholder33')))
       } else if (this.types == 1 && !value) {
-        return callback(new Error(this.$t('customer.placeholder35')))
+        return callback(new Error(this.$('customer.placeholder35')))
       } else {
         callback()
       }
@@ -201,9 +201,9 @@ export default {
         amount: [{ required: true, validator: checkAmount, trigger: 'blur' }],
         dateTime: [{ required: true, validator: checkDateTime, trigger: 'change' }],
         type: [{ required: true, validator: checkType, trigger: 'change' }],
-        cate_id: [{ required: true, message: i18n.t('customer.placeholder31'), trigger: 'change' }],
-        bill_cate_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectAccountCategory'), trigger: 'blur' }],
-        type_id: { required: true, message: i18n.t('ui.customerContractContractDialogSelectPaymentMethod'), trigger: 'change' } // 支付方式
+        cate_id: [{ required: true, message: $('customer.placeholder31'), trigger: 'change' }],
+        bill_cate_id: [{ required: true, message: $('legacyScript.pleaseSelectAccountCategory'), trigger: 'blur' }],
+        type_id: { required: true, message: $('ui.customerContractContractDialogSelectPaymentMethod'), trigger: 'change' } // 支付方式
       }
     }
   },

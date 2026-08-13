@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!--
   @FileDescription: 全局筛选组件
   功能：提供统一的筛选、排序、新增等功能
@@ -77,7 +78,7 @@
               @click="typeClick(item, index)"
             >
               <span class="over-text">{{ item.label }} </span>
-              <span class="tips">{{ $t("ui.commonOaFromBoxSystem") }}</span>
+              <span class="tips">{{ $("ui.commonOaFromBoxSystem") }}</span>
             </div>
 
             <div
@@ -88,11 +89,11 @@
               @click="viewClick(itemT, indexT)"
             >
               <span class="over-text">{{ itemT.title }}</span>
-              <span class="tips">{{ itemT.is_public == 0 ? $t('ui.commonOaFromBoxPersonal') : $t('ui.commonOaFromBoxPublic') }}</span>
+              <span class="tips">{{ itemT.is_public == 0 ? $('ui.commonOaFromBoxPersonal') : $('ui.commonOaFromBoxPublic') }}</span>
             </div>
           </div>
           <div class="view-text" v-if="category && isCategory" @click="openViewBox">
-            <div><span class="iconfont iconshituguanli"></span>{{ $t("ui.commonHeaderSearchViewManagement") }}</div>
+            <div><span class="iconfont iconshituguanli"></span>{{ $("ui.commonHeaderSearchViewManagement") }}</div>
           </div>
 
           <div slot="reference" class="view-box mr10">
@@ -107,7 +108,7 @@
         v-if="treeData.length && !category"
         v-model="treeValue"
         class="grey-bga mr10"
-        :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+        :placeholder="$('ui.developConditionGroupPleaseSelect')"
         popper-class="tree-select"
         size="small"
         style="width: 120px"
@@ -118,7 +119,7 @@
         </el-option-group>
       </el-select>
       <!-- 总数显示 -->
-      <div v-if="isTotal" class="total-16">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+      <div v-if="isTotal" class="total-16">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
       <!-- 表单筛选 -->
       <formList
         v-show="seniorSearch.length > 0"
@@ -137,14 +138,14 @@
       <!-- 视图更新 -->
       <el-popover placement="bottom" trigger="click" popper-class="view-popover">
         <div>
-          <div v-if="!systemId.includes(viewIndex)" class="view-item mb14" @click="updateView">{{ $t("ui.developModuleFormBoxUpdateCurrentView") }}</div>
+          <div v-if="!systemId.includes(viewIndex)" class="view-item mb14" @click="updateView">{{ $("ui.developModuleFormBoxUpdateCurrentView") }}</div>
           <div :class="!['0', '1', '2'].includes(viewIndex) ? '' : ''" class="view-item" @click="addViewFn">
-            {{ $t("ui.developModuleFormBoxSaveAsNewView") }}
+            {{ $("ui.developModuleFormBoxSaveAsNewView") }}
           </div>
         </div>
 
         <div slot="reference" v-show="advancedFilter && isCategory" class="shitu">
-          {{ $t("ui.developModuleFormBoxSaveView") }}&nbsp;<span class="el-icon-arrow-down"></span>
+          {{ $("ui.developModuleFormBoxSaveView") }}&nbsp;<span class="el-icon-arrow-down"></span>
         </div>
       </el-popover>
       <!-- 高级筛选 -->
@@ -157,7 +158,7 @@
       >
         <div class="condition-box">
           <div class="flex-between">
-            <div class="title">{{ $t("ui.developModuleFormBoxFilterConditions") }}</div>
+            <div class="title">{{ $("ui.developModuleFormBoxFilterConditions") }}</div>
             <div class="el-icon-close pointer" @click="$store.state.business.conditionDialog = false" />
           </div>
           <condition-dialog
@@ -170,7 +171,7 @@
           />
         </div>
         <div v-if="isViewSearch" slot="reference" class="pointer text-16 el-dropdown-link" @click="onShow">
-          {{ $t("ui.developModuleTreeFilter") }}&nbsp;<span class="iconfont iconshaixuan2"></span>
+          {{ $("ui.developModuleTreeFilter") }}&nbsp;<span class="iconfont iconshaixuan2"></span>
           <span v-if="additional_search.length > 0" class="yuan">
             {{ additional_search ? additional_search.length : 0 }}
           </span>
@@ -240,7 +241,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import viewManagement from '@/components/develop/viewManagement'
 import oaDialog from '@/components/form-common/dialog-form'
 import formList from './formList'
@@ -249,8 +249,6 @@ import selectLabel from '@/components/form-common/select-label'
 import { getViewSeachApi, putViewSeachInfoApi, saveViewSeachApi } from '@/api/client'
 import { clientConfigLabelApi } from '@/api/enterprise'
 import { getStorageJson } from '@/utils/storage'
-import { translateRuntimeText } from '@/utils/i18ns'
-
 export default {
   name: 'OaFromBox',
   components: {
@@ -438,8 +436,8 @@ export default {
       treeValue: '', // 树形选择值
       fromData: {
         width: '500px',
-        title: i18n.t('ui.developViewManagementCreateView'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.developViewManagementCreateView'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },
@@ -450,14 +448,14 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: i18n.t('legacyScript.viewName'),
-          placeholder: i18n.t('legacyScript.pleaseEnterAViewNameWithin10Characters'),
+          label: $('legacyScript.viewName'),
+          placeholder: $('legacyScript.pleaseEnterAViewNameWithin10Characters'),
           key: 'senior_title'
         },
         {
           type: 'radio',
-          label: i18n.t('legacyScript.viewType'),
-          placeholder: i18n.t('legacyScript.pleaseSelectViewType'),
+          label: $('legacyScript.viewType'),
+          placeholder: $('legacyScript.pleaseSelectViewType'),
           key: 'senior_type',
           options: [
             {
@@ -477,15 +475,15 @@ export default {
         senior_title: [
           {
             required: true,
-            message: i18n.t('ui.developViewManagementPleaseEnterViewName'),
+            message: $('ui.developViewManagementPleaseEnterViewName'),
             trigger: 'blur'
           },
-          { min: 0, max: 10, message: i18n.t('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
+          { min: 0, max: 10, message: $('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
         ],
         senior_type: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectViewType'),
+            message: $('legacyScript.pleaseSelectViewType'),
             trigger: 'change'
           }
         ]
@@ -546,9 +544,6 @@ export default {
     }, 500)
   },
   methods: {
-    translateText(text) {
-      return translateRuntimeText(text, this)
-    },
     handleSortPopoverShow() {
       this.$store.commit('updateConditionDialog', false)
     },

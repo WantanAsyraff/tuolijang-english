@@ -1,5 +1,5 @@
+import { $ } from '@/lang'
 import { Message, MessageBox, Alert, Notification } from 'element-ui'
-import { translateMessage } from '@/lang/index'
 import { normalizeNotificationInput } from '@/lang/notification-text'
 
 const normalizeTip = (input) => normalizeNotificationInput(input, translateMessage)
@@ -39,7 +39,7 @@ class msgTips {
 
   // 弹出提示
   alert(msg) {
-    Alert(translateMessage(msg), translateMessage('系统提示'))
+    Alert($(msg), $('系统提示'))
   }
 
   // 通知提示
@@ -65,10 +65,10 @@ class msgTips {
   // 确认窗体
   confirm(options) {
     return new Promise((resolve, reject) => {
-      MessageBox.confirm(translateMessage(options.message), translateMessage(options.title || '温馨提示'), {
-        confirmButtonText: translateMessage(options.confirmButtonText || '确定'),
+      MessageBox.confirm($(options.message), $(options.title || '温馨提示'), {
+        confirmButtonText: $(options.confirmButtonText || '确定'),
         confirmButtonClass: options.confirmButtonClass || '',
-        cancelButtonText: translateMessage(options.cancelButtonText || '取消'),
+        cancelButtonText: $(options.cancelButtonText || '取消'),
         cancelButtonClass: options.cancelButtonClass || '',
         type: options.type || 'warning'
       })

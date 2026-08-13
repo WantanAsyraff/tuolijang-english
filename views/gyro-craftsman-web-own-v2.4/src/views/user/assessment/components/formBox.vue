@@ -1,11 +1,12 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-form :inline="true" class="from-s">
     <el-row class="flex-row">
-      <el-form-item :label="$t('toptable.assessmentcycle')" class="select-bar">
+      <el-form-item :label="$('toptable.assessmentcycle')" class="select-bar">
         <el-select
           v-model="tableFrom.period"
-          :placeholder="$t('finance.pleaseselect')"
+          :placeholder="$('finance.pleaseselect')"
           size="small"
           clearable
           @change="selectPeriod"
@@ -15,7 +16,7 @@
       </el-form-item>
 
       <div v-if="tableFrom.period">
-        <el-form-item :label="$t('access.assessmenttime')" class="select-bar">
+        <el-form-item :label="$('access.assessmenttime')" class="select-bar">
           <el-date-picker
             class="time"
             v-if="tableFrom.period === 1 || tableFrom.period === 2"
@@ -45,29 +46,29 @@
         </el-form-item>
       </div>
 
-      <el-form-item v-if="!tableFrom.period" :label="$t('access.assessmenttime')" class="select-bar">
+      <el-form-item v-if="!tableFrom.period" :label="$('access.assessmenttime')" class="select-bar">
         <el-date-picker
           class="time"
           v-model="timeVal"
           type="daterange"
           :picker-options="pickerOptions"
-          :placeholder="$t('toptable.selecttime')"
+          :placeholder="$('toptable.selecttime')"
           format="yyyy/MM/dd"
           size="small"
           clearable
           value-format="yyyy/MM/dd"
-          :range-separator="$t('toptable.to')"
-          :start-placeholder="$t('toptable.startdate')"
-          :end-placeholder="$t('toptable.endingdate')"
+          :range-separator="$('toptable.to')"
+          :start-placeholder="$('toptable.startdate')"
+          :end-placeholder="$('toptable.endingdate')"
           @change="onchangeTime"
         />
       </el-form-item>
 
-      <el-form-item :label="$t('ui.userAssessmentFormBoxAppraisee')" class="select-bar">
+      <el-form-item :label="$('ui.userAssessmentFormBoxAppraisee')" class="select-bar">
         <select-member
           :value="userList || []"
           :is-search="true"
-          :placeholder="$t('ui.userAssessmentFormBoxPleaseSelectTheAppraisee')"
+          :placeholder="$('ui.userAssessmentFormBoxPleaseSelectTheAppraisee')"
           @getSelectList="getSelectList"
           class="mr10"
           style="width: 200px"
@@ -75,10 +76,10 @@
       </el-form-item>
 
       <div v-if="handle === ''">
-        <el-form-item :label="$t('hr.assessmentstatus')" class="select-bar">
+        <el-form-item :label="$('hr.assessmentstatus')" class="select-bar">
           <el-select
             v-model="tableFrom.cycle"
-            :placeholder="$t('access.placeholder19')"
+            :placeholder="$('access.placeholder19')"
             size="small"
             clearable
             @change="changeCycle"
@@ -87,11 +88,11 @@
           </el-select>
         </el-form-item>
       </div>
-      <el-form-item :label="$t('ui.fdExamineFormBoxManagementScope')" class="select-bar" v-if="handle === '' && frameUserType !== 0">
+      <el-form-item :label="$('ui.fdExamineFormBoxManagementScope')" class="select-bar" v-if="handle === '' && frameUserType !== 0">
         <manage-range ref="manageRange" @change="changeMastart"></manage-range>
       </el-form-item>
       <el-form-item>
-        <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+        <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
           <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
         </el-tooltip>
       </el-form-item>
@@ -100,7 +101,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Common from '@/components/user/accessCommon'
 import { frameUserApi } from '@/api/setting'
 export default {
@@ -123,9 +123,9 @@ export default {
   data() {
     return {
       fromList: [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('user.work.backlog'), val: 0 },
-        { text: this.$t('user.work.done'), val: 1 }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('user.work.backlog'), val: 0 },
+        { text: this.$('user.work.done'), val: 1 }
       ],
       pickerOptions: this.$pickerOptionsTimeEle,
       timeVal: [],
@@ -148,11 +148,11 @@ export default {
       frameUserArray: [],
       frameUserOption: [],
       dateArray: [
-        { value: 1, type: 'week', text: i18n.t('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
-        { value: 2, type: 'month', text: i18n.t('legacyScript.selectMonth'), format: 'yyyy-MM' },
+        { value: 1, type: 'week', text: $('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
+        { value: 2, type: 'month', text: $('legacyScript.selectMonth'), format: 'yyyy-MM' },
         { value: 4, type: '' },
         { value: 5, type: '' },
-        { value: 3, type: 'year', text: i18n.t('legacyScript.selectYear'), format: 'yyyy' }
+        { value: 3, type: 'year', text: $('legacyScript.selectYear'), format: 'yyyy' }
       ],
       quarterBtn: false,
       halfYearBtn: false
@@ -175,9 +175,9 @@ export default {
   methods: {
     setOptions() {
       this.fromList = [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('user.work.backlog'), val: 0 },
-        { text: this.$t('user.work.done'), val: 1 }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('user.work.backlog'), val: 0 },
+        { text: this.$('user.work.done'), val: 1 }
       ]
     },
 

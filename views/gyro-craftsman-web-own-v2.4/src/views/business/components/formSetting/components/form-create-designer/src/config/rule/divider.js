@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 const label = '分割线';
 const name = 'el-divider';
 
@@ -20,7 +20,7 @@ export default {
       {
         type: 'select',
         field: 'direction',
-        title: i18n.t('legacyScript.setDividerDirection'),
+        title: $('legacyScript.setDividerDirection'),
         options: [
           { label: 'horizontal', value: 'horizontal' },
           { label: 'vertical', value: 'vertical' },
@@ -29,12 +29,12 @@ export default {
       {
         type: 'input',
         field: 'formCreateChild',
-        title: i18n.t('legacyScript.setDividerText'),
+        title: $('legacyScript.setDividerText'),
       },
       {
         type: 'select',
         field: 'contentPosition',
-        title: i18n.t('legacyScript.setDividerTextPosition'),
+        title: $('legacyScript.setDividerTextPosition'),
         options: [
           { label: 'left', value: 'left' },
           { label: 'right', value: 'right' },

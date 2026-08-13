@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 公共-缺省页 -->
 <template>
   <div class="default-page">
@@ -20,8 +21,6 @@ import viewImg from '@/assets/images/view.png'
 import def1 from '@/assets/images/none-009.png'
 import none012 from '@/assets/images/none-012.png'
 import dkSuccess from '@/assets/images/empty/dk-success.png'
-import { translateSystemText } from '@/utils/i18ns'
-
 // 动态图片导入 - 使用 webpack require.context
 const imageContext = require.context('@/assets/images/', false, /none-.*\.png$/)
 const imageModules = {}
@@ -91,7 +90,7 @@ export default {
     },
     displayText() {
       if (!this.currentContent?.text) return ''
-      return `${translateSystemText(this.currentContent.text, this)}~`
+      return `${this.$(this.currentContent.text)}~`
     },
     contentStyle() {
       return {
@@ -108,7 +107,7 @@ export default {
     i18nContents() {
       return Array.from({ length: 18 }, (_, i) => ({
         url: getImageUrl(this.getImageType(i)),
-        text: this.$t(`public.message${i.toString().padStart(2, '0')}`)
+        text: this.$(`public.message${i.toString().padStart(2, '0')}`)
       }))
     },
     contentList() {

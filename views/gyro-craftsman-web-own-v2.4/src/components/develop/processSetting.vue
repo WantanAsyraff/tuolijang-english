@@ -22,7 +22,7 @@
           ></nodeWrap>
           <div class="end-node">
             <div class="end-node-circle"></div>
-            <div class="end-node-text">{{ $ts("流程结束") }}</div>
+            <div class="end-node-text">{{ $("legacy.13e0d072cf100184") }}</div>
           </div>
         </div>
       </section>
@@ -34,7 +34,7 @@
     <!-- 条件设置 -->
     <el-drawer
       :append-to-body="true"
-      :title='$ts("条件设置")'
+      :title='$("ui.workFlowDrawerConditionDrawerConditionSettings")'
       :visible.sync="$store.state.business.conditionDialog"
       :wrapperClosable="false"
       direction="rtl"

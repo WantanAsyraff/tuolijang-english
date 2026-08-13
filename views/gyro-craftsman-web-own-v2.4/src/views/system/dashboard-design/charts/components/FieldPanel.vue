@@ -1,7 +1,7 @@
 <template>
   <!-- 左侧字段面板 -->
   <div class="main" :style="{ height: scrollerHeight }">
-    <div class="title mb10">{{ $ts("图表组件") }}</div>
+    <div class="title mb10">{{ $("legacy.519ccb00791b0b9f") }}</div>
     <draggable
       class="chart-container-widget-list"
       :list="designer.chartWidgets"
@@ -28,7 +28,7 @@
 
 
     <!-- framework widgets -->
-    <div class="title mt10 mb10 ">{{ $ts("框架组件") }}</div>
+    <div class="title mt10 mb10 ">{{ $("legacy.52823f53abb38369") }}</div>
     <draggable
       class="chart-container-widget-list"
       :list="designer.chartContainers"
@@ -58,7 +58,6 @@
 
 <script>
 import draggable from 'vuedraggable'
-import i18n from '@/utils/i18n'
 import axios from 'axios'
 import SvgIcon from '@/components/svg-icon-nc'
 import { ext_charts_widgets, dashboard_container_schema } from '../charts-schema.js'
@@ -96,7 +95,6 @@ var ze = (o, e, n) =>
 var je = (o, e, n) => (ze(o, typeof e != 'symbol' ? e + '' : e, n), n)
 export default {
   name: 'FieldPanel',
-  mixins: [i18n],
   components: { SvgIcon, draggable },
   props: { designer: Object },
   inject: ['getBannedWidgets', 'getDesignerConfig'],
@@ -205,7 +203,7 @@ export default {
       return e.substring(e.indexOf('.') + 1, e.length)
     },
     getWidgetLabel(o) {
-      return this.i18nt(`extension.widgetLabel.${o.type}`)
+      return this.$(`extension.widgetLabel.${o.type}`)
     },
     isBanned(o) {
       return this.getBannedWidgets().indexOf(o) > -1
@@ -221,7 +219,7 @@ export default {
       ;(this.containers = containers
         .map((o) =>
           We(Ie({ key: generateId() }, o), {
-            displayName: this.i18nt(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
+            displayName: this.$(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
           })
         )
         .filter((o) => !o.internal && !this.isBanned(o.type))),
@@ -229,35 +227,35 @@ export default {
         (this.basicFields = basicFields
           .map((o) =>
             We(Ie({ key: generateId() }, o), {
-              displayName: this.i18nt(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
+              displayName: this.$(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
             })
           )
           .filter((o) => !this.isBanned(o.type))),
         (this.advancedFields = advancedFields
           .map((o) =>
             We(Ie({ key: generateId() }, o), {
-              displayName: this.i18nt(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
+              displayName: this.$(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
             })
           )
           .filter((o) => !this.isBanned(o.type))),
         (this.customFields = customFields
           .map((o) =>
             We(Ie({ key: generateId() }, o), {
-              displayName: this.i18nt(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
+              displayName: this.$(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
             })
           )
           .filter((o) => !this.isBanned(o.type))),
         (this.chartContainers = this.designer.chartContainers
           .map((o) =>
             We(Ie({ key: generateId() }, o), {
-              displayName: this.i18nt(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
+              displayName: this.$(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
             })
           )
           .filter((o) => !o.internal && !this.isBanned(o.type))),
         (this.chartWidgets = this.designer.chartWidgets
           .map((o) =>
             We(Ie({ key: generateId() }, o), {
-              displayName: this.i18nt(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
+              displayName: this.$(`designer.widgetLabel.${o.type}`, `extension.widgetLabel.${o.type}`)
             })
           )
           .filter((o) => !this.isBanned(o.type)))
@@ -291,14 +289,14 @@ export default {
       this.designer.addChartByDbClick(o)
     },
     loadFormTemplate(o, e) {
-      this.$confirm(this.i18nt('designer.hint.loadFormTemplateHint'), this.i18nt('render.hint.prompt'), {
-        confirmButtonText: this.i18nt('render.hint.confirm'),
-        cancelButtonText: this.i18nt('render.hint.cancel')
+      this.$confirm(this.$('designer.hint.loadFormTemplateHint'), this.$('render.hint.prompt'), {
+        confirmButtonText: this.$('render.hint.confirm'),
+        cancelButtonText: this.$('render.hint.cancel')
       })
         .then(() => {
           if (e) {
             this.designer.loadFormJson(JSON.parse(e)),
-              this.$message.success(this.i18nt('designer.hint.loadFormTemplateSuccess'))
+              this.$message.success(this.$('designer.hint.loadFormTemplateSuccess'))
             return
           }
           axios
@@ -309,10 +307,10 @@ export default {
                 ? (l = this.designer.loadFormJson(JSON.parse(n.data)))
                 : n.data.constructor === Object && (l = this.designer.loadFormJson(n.data)),
                 l && this.designer.emitHistoryChange(),
-                this.$message.success(this.i18nt('designer.hint.loadFormTemplateSuccess'))
+                this.$message.success(this.$('designer.hint.loadFormTemplateSuccess'))
             })
             .catch((n) => {
-              this.$message.error(this.i18nt('designer.hint.loadFormTemplateFailed') + ':' + n)
+              this.$message.error(this.$('designer.hint.loadFormTemplateFailed') + ':' + n)
             })
         })
         .catch((n) => {

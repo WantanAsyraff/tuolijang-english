@@ -3,8 +3,8 @@
   <div class="acea-row mb25">
     <div class="shu mr10"></div>
     <span class="title">
-      {{ $t("ui.userExamineProcessApprovalProcess") }}
-      <i class="tit1" v-if="approverDelete || copyerDelete">{{ $t("ui.userExamineProcessPresetByTheAdministratorCannot") }}{{ title01.substring(1) }}）</i>
+      {{ $("ui.userExamineProcessApprovalProcess") }}
+      <i class="tit1" v-if="approverDelete || copyerDelete">{{ $("ui.userExamineProcessPresetByTheAdministratorCannot") }}{{ title01.substring(1) }}）</i>
     </span>
   </div>
   <el-steps direction="vertical">

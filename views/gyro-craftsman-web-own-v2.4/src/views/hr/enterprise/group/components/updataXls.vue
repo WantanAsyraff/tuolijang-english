@@ -23,17 +23,17 @@
           accept=".xls,.xlsx"
           :before-upload="beforeUpload"
         >
-          <el-button slot="trigger" size="small" type="primary">{{ $t('public.selectfile') }}</el-button>
+          <el-button slot="trigger" size="small" type="primary">{{ $('public.selectfile') }}</el-button>
         </el-upload>
         <a
           ><el-button slot="trigger" size="small" type="text" @click="handleDownLoad">{{
-            $t('public.down')
+            $('public.down')
           }}</el-button></a
         >
       </div>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="close">{{ $t('public.cancel') }}</el-button>
-        <el-button type="primary" @click="determine">{{ $t('public.ok') }}</el-button>
+        <el-button @click="close">{{ $('public.cancel') }}</el-button>
+        <el-button type="primary" @click="determine">{{ $('public.ok') }}</el-button>
       </div>
     </div>
   </el-dialog>
@@ -96,7 +96,7 @@ export default {
             placeholder: 'asdasd'
           },
           value: '',
-          validate: [{ type: 'string', required: true, message: this.$t('public.tipstext') }]
+          validate: [{ type: 'string', required: true, message: this.$('public.tipstext') }]
         },
         {
           type: 'div',
@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     determine() {
-      if (!this.excelFail.url) return this.$message.error(this.$t('public.tipstext1'))
+      if (!this.excelFail.url) return this.$message.error(this.$('public.tipstext1'))
       const data = {
         frame_id: this.frameId,
         file: this.excelFail.url
@@ -138,7 +138,7 @@ export default {
     // 上传成功
     handleSuccess(response) {
       if (response.status === 200) {
-        this.$message.success(this.$t('public.tipstext2'))
+        this.$message.success(this.$('public.tipstext2'))
         this.excelFail = response.data
       } else {
         this.$message.error(response.message)
@@ -150,7 +150,7 @@ export default {
       const extension2 = testmsg === 'xlsx'
       if (!extension && !extension2) {
         this.$message({
-          message: this.$t('public.tipstext3'),
+          message: this.$('public.tipstext3'),
           type: 'warning'
         })
       }

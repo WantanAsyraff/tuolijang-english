@@ -1,7 +1,7 @@
 <template>
   <div class="divBox">
     <div class="main box-height">
-      <div class="title">{{ $ts("组织架构图") }}</div>
+      <div class="title">{{ $("legacy.2c30822b429cc824") }}</div>
       <div v-html="content" @click="replayImgShow($event)"></div>
     </div>
     <image-viewer ref="imageViewer" :srcList="srcList"></image-viewer>

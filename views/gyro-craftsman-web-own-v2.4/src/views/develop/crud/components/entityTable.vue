@@ -1,25 +1,26 @@
+import { $ } from '@/lang'
 <template>
 <div>
     <div class="header">
-        <div class="title"><span class="el-icon-arrow-left" @click="goBack"></span>{{ $t("ui.developCrudEntityTableEntityList") }} </div>
+        <div class="title"><span class="el-icon-arrow-left" @click="goBack"></span>{{ $("ui.developCrudEntityTableEntityList") }} </div>
         <div class="right lh-center ">
             <el-button type="primary" icon="el-icon-plus" size="small" @click="createEntity('', 'add')">
-                {{ $t("ui.developCrudEntityTableNewEntity") }}</el-button>
+                {{ $("ui.developCrudEntityTableNewEntity") }}</el-button>
             <el-dropdown>
                 <span class="iconfont icongengduo2 pointer ml10"></span>
                 <el-dropdown-menu style="text-align: left">
-                    <el-dropdown-item @click.native="importEntity"> {{ $t("ui.developCrudEntityTableImportEntities") }}</el-dropdown-item>
+                    <el-dropdown-item @click.native="importEntity"> {{ $("ui.developCrudEntityTableImportEntities") }}</el-dropdown-item>
                   
-                    <el-dropdown-item @click.native="downloadFile"> {{ $t("ui.developCrudEntityTableDownloadTemplate") }}</el-dropdown-item>
+                    <el-dropdown-item @click.native="downloadFile"> {{ $("ui.developCrudEntityTableDownloadTemplate") }}</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
     </div>
 
     <div class="flex h32 lh-center  mb10">
-        <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+        <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
         <div class="ml20">
-            <el-input v-model="where.table_name" prefix-icon="el-icon-search" size="small" :placeholder="$t('ui.commonFormListPleaseEnterKeyword')"
+            <el-input v-model="where.table_name" prefix-icon="el-icon-search" size="small" :placeholder="$('ui.commonFormListPleaseEnterKeyword')"
                 clearable style="width: 250px" @change="getList(1)" @keyup.native.stop.prevent.enter="getList(1)"
                 class="input"></el-input>
         </div>
@@ -28,55 +29,55 @@
     <div class="table-box">
         <el-table v-loading="loading" row-key="id" :data="tableData" :height="height" style="width: 100%"
             :tree-props="{ children: 'children' }">
-            <el-table-column prop="table_name_en" :label="$t('ui.developCrudEntityTableEntityName')" min-width="180">
+            <el-table-column prop="table_name_en" :label="$('ui.developCrudEntityTableEntityName')" min-width="180">
                 <template slot-scope="scope">
                     <span class="color-doc pointer" @click="designFn(scope.row)">{{ scope.row.table_name_en
                         }}</span>
                 </template>
             </el-table-column>
-            <el-table-column prop="table_name" :label="$t('ui.developCrudEntityTableDisplayName')" min-width="150">
+            <el-table-column prop="table_name" :label="$('ui.developCrudEntityTableDisplayName')" min-width="150">
                 <template slot-scope="scope">
                     {{ scope.row.table_name }}
                     <span :class="scope.row.crud_id == 0 ? 'zhu' : 'cong'">{{
-                        scope.row.crud_id == 0 ? $t('ui.formCommonSelectDepartmentMain') : $t('ui.developCrudEntityTableFrom')
+                        scope.row.crud_id == 0 ? $('ui.formCommonSelectDepartmentMain') : $('ui.developCrudEntityTableFrom')
                         }}</span>
                 </template>
             </el-table-column>
-            <el-table-column prop="info" :label="$t('ui.developApproveIndexLinkedApplication')" min-width="250" show-overflow-tooltip>
+            <el-table-column prop="info" :label="$('ui.developApproveIndexLinkedApplication')" min-width="250" show-overflow-tooltip>
                 <template slot-scope="scope">
                     <span v-if="scope.row.cate && scope.row.cate.length > 0">{{ scope.row.cate.join('、') }}</span>
                     <span v-else>--</span>
                 </template>
             </el-table-column>
 
-            <el-table-column prop="info" :label="$t('ui.developCrudEntityTableEntityDescription')" min-width="250" show-overflow-tooltip>
+            <el-table-column prop="info" :label="$('ui.developCrudEntityTableEntityDescription')" min-width="250" show-overflow-tooltip>
                 <template slot-scope="scope">{{ scope.row.info || '--' }}</template>
             </el-table-column>
-            <el-table-column prop="user.name" :label="$t('ui.hrAssessCheckIndexCreator')" width="230"> </el-table-column>
-            <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" width="230"> </el-table-column>
-            <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="150">
+            <el-table-column prop="user.name" :label="$('ui.hrAssessCheckIndexCreator')" width="230"> </el-table-column>
+            <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" width="230"> </el-table-column>
+            <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="150">
                 <template slot-scope="scope">
-                    <el-button type="text" @click="designFn(scope.row)">{{ $t("ui.developCrudEntityTableEntityDesign") }}</el-button>
+                    <el-button type="text" @click="designFn(scope.row)">{{ $("ui.developCrudEntityTableEntityDesign") }}</el-button>
                     <el-dropdown>
                         <span class="el-dropdown-link el-button--text el-button more">
-                            {{ $t("ui.layoutNavbarMore") }}
+                            {{ $("ui.layoutNavbarMore") }}
                             <i class="el-icon-arrow-down" />
                         </span>
                         <el-dropdown-menu style="text-align: left">
-                            <el-dropdown-item @click.native="designFn(scope.row,1)"> {{ $t("ui.developCrudEntityTableEntityProperties") }} </el-dropdown-item>
-                            <el-dropdown-item @click.native="designFn(scope.row, 2)"> {{ $t("ui.developCrudEntityTableFieldDesign") }} </el-dropdown-item>
+                            <el-dropdown-item @click.native="designFn(scope.row,1)"> {{ $("ui.developCrudEntityTableEntityProperties") }} </el-dropdown-item>
+                            <el-dropdown-item @click.native="designFn(scope.row, 2)"> {{ $("ui.developCrudEntityTableFieldDesign") }} </el-dropdown-item>
                             <template v-if="scope.row.crud_id == 0">
-                                <el-dropdown-item @click.native="designFn(scope.row, 3)"> {{ $t("ui.developCrudEntityTableFormDesign") }} </el-dropdown-item>
-                                <el-dropdown-item @click.native="designFn(scope.row, 4)"> {{ $t("ui.developCrudEntityTableListDesign") }} </el-dropdown-item>
-                                <el-dropdown-item @click.native="designFn(scope.row, 5)"> {{ $t("ui.workFlowDialogErrorDialogWorkflowDesign") }} </el-dropdown-item>
-                                <el-dropdown-item @click.native="designFn(scope.row, 6)"> {{ $t("ui.developCrudEntityTableTriggerDesign") }} </el-dropdown-item>
+                                <el-dropdown-item @click.native="designFn(scope.row, 3)"> {{ $("ui.developCrudEntityTableFormDesign") }} </el-dropdown-item>
+                                <el-dropdown-item @click.native="designFn(scope.row, 4)"> {{ $("ui.developCrudEntityTableListDesign") }} </el-dropdown-item>
+                                <el-dropdown-item @click.native="designFn(scope.row, 5)"> {{ $("ui.workFlowDialogErrorDialogWorkflowDesign") }} </el-dropdown-item>
+                                <el-dropdown-item @click.native="designFn(scope.row, 6)"> {{ $("ui.developCrudEntityTableTriggerDesign") }} </el-dropdown-item>
                             </template>
                             <el-dropdown-item divided
                                 v-if="scope.row.children && scope.row.children.length == 0 && scope.row.crud_id == 0"
                                 @click.native="createEntity(scope.row)">
-                                {{ $t("ui.developCrudEntityTableAddChildEntity") }}
+                                {{ $("ui.developCrudEntityTableAddChildEntity") }}
                             </el-dropdown-item>
-                            <el-dropdown-item divided @click.native="deleteEntity(scope.row)"> {{ $t("ui.developCrudEntityTableDeleteEntity") }}
+                            <el-dropdown-item divided @click.native="deleteEntity(scope.row)"> {{ $("ui.developCrudEntityTableDeleteEntity") }}
                             </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
@@ -103,7 +104,6 @@
 
 </template>
 <script>
-import i18n from '@/lang'
 import {
     databaseSaveApi,
     databaseListApi,
@@ -164,8 +164,8 @@ export default {
             loading:false,
             fromData: {
                 width: '663px',
-                title: i18n.t('ui.developCrudEntityTableNewEntity'),
-                btnText: i18n.t('ui.formCommonDialogFormOk'),
+                title: $('ui.developCrudEntityTableNewEntity'),
+                btnText: '确定',
                 labelWidth: '100px',
                 type: ''
             },
@@ -225,7 +225,7 @@ export default {
 
             const header = data[0] || [];
             if (!header.length || header.every(v => !v)) {
-                return this.$message.error(i18n.t('legacyScript.importedDataCannotBeEmpty'));
+                return this.$message.error($('legacyScript.importedDataCannotBeEmpty'));
             }
 
             // 生成字段列表
@@ -294,7 +294,7 @@ setTimeout(() => {
 
             // 复制模式或编辑模式
             if (type === 'copy') {
-                this.fromData = { title: i18n.t('legacyScript.duplicateEntity'), type: 'copy' }
+                this.fromData = { title: $('legacyScript.duplicateEntity'), type: 'copy' }
                 this.formDataInit.info = row.info
                 this.formDataInit.cate_ids = row.cate_ids
             } else {

@@ -13,10 +13,10 @@
         </template>
       </el-calendar>
       <div v-if="activeVal !== '4'" class="tips">
-        <span class="iconfont icontishi2" /> {{ $t("ui.userDailyCalendarRedDotsIndicateDaysWhenYouDidNotSubmit") }}
+        <span class="iconfont icontishi2" /> {{ $("ui.userDailyCalendarRedDotsIndicateDaysWhenYouDidNotSubmit") }}
       </div>
       <div v-else class="tips">
-        <span class="iconfont icontishi2" /> {{ $t("ui.userDailyCalendarARedDotIndicatesThatASubordinateHasNot") }}{{ typeText[type] }}
+        <span class="iconfont icontishi2" /> {{ $("ui.userDailyCalendarARedDotIndicatesThatASubordinateHasNot") }}{{ typeText[type] }}
       </div>
     </div>
   </div>

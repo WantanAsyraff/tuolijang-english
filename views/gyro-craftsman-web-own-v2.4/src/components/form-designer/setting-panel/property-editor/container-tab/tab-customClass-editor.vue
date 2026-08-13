@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <el-form-item :label="i18nt('designer.setting.tabPaneSetting')"></el-form-item>
+    <el-form-item :label="$('designer.setting.tabPaneSetting')"></el-form-item>
     <el-form-item label-width="0" class="panes-setting">
       <draggable
         tag="ul"
@@ -12,7 +12,7 @@
         v-bind="{ group: 'panesGroup', ghostClass: 'ghost', handle: '.drag-option' }"
       >
         <li v-for="(tpItem, tpIdx) in selectedWidget.tabs" :key="tpIdx" class="col-item">
-          <span style="margin-right: 12px">{{ $ts("标签:") }}{{ tpIdx + 1 }}</span>
+          <span style="margin-right: 12px">{{ $("legacy.596e85c0537dd625") }}{{ tpIdx + 1 }}</span>
 
           <el-input type="text" v-model="tpItem.options.label" style="width: 155px"></el-input>
           <i class="iconfont icon-drag drag-option"></i>
@@ -28,7 +28,7 @@
         </li>
         <div>
           <el-button type="text" @click="addTabPane(selectedWidget)">{{
-            i18nt('designer.setting.addTabPane')
+            $('designer.setting.addTabPane')
           }}</el-button>
         </div>
       </draggable>
@@ -37,14 +37,12 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
 import Draggable from 'vuedraggable'
 import { deepClone } from '@/utils/util'
 
 export default {
   name: 'tab-customClass-editor',
   componentName: 'PropertyEditor',
-  mixins: [i18n],
   components: {
     Draggable
   },
@@ -77,7 +75,7 @@ export default {
 
     deleteTabPane(curTabs, tpIdx) {
       if (curTabs.tabs.length === 1) {
-        this.$message.info(this.i18nt('designer.hint.lastPaneCannotBeDeleted'))
+        this.$message.info(this.$('designer.hint.lastPaneCannotBeDeleted'))
         return
       }
 
@@ -120,4 +118,3 @@ li.col-item {
   }
 }
 </style>
-@/utils/i18ns

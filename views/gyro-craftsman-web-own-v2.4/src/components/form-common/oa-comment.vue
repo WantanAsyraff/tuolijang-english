@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 公共-全局-评论组件 应用举例：低代码评论功能、任务评论功能 -->
 <template>
 <div>
@@ -9,7 +10,7 @@
         tabindex="0"
         contenteditable="true"
         spellcheck="false"
-        :placeholder="$t('ui.formCommonOaCommentPleaseEnterYourComment')"
+        :placeholder="$('ui.formCommonOaCommentPleaseEnterYourComment')"
         class="reply-input pointer"
         @click="handleComment()"
         @focus="showReplyBtn"
@@ -25,13 +26,13 @@
         :type="`simple`"
         :headers="true"
         :content="formData.describe"
-        :placeholder="$t('ui.formCommonOaCommentShareYourThoughts')"
+        :placeholder="$('ui.formCommonOaCommentShareYourThoughts')"
         @input="ueditorEdit"
       />
     </div>
     <div class="reply-btn-box" v-show="showReply">
-      <el-button class="reply-btn" @click="cancelComment">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button size="medium" @click="sendComment" type="primary">{{ $t("ui.developModuleCheckDrawerComments") }}</el-button>
+      <el-button class="reply-btn" @click="cancelComment">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button size="medium" @click="sendComment" type="primary">{{ $("ui.developModuleCheckDrawerComments") }}</el-button>
     </div>
   </div>
 
@@ -45,16 +46,16 @@
       <div class="icon-btn icon-btn-header">
         <div v-if="myId !== item.user.id" class="pointer lh-center" @click="showReplyEvt(item)">
           <i class="iconfont iconcebianlan-luntanzhongxin"></i>
-          <span>{{ $t("ui.formCommonOaCommentEvaluate") }}</span>
+          <span>{{ $("ui.formCommonOaCommentEvaluate") }}</span>
         </div>
         <div v-else class="flex">
           <div class="edit-name pointer lh-center" @click="eidtReply(item)">
             <i class="iconfont iconbianji"></i>
-            <span>{{ $t("ui.formCommonOaLogEdit") }}</span>
+            <span>{{ $("ui.formCommonOaLogEdit") }}</span>
           </div>
           <div class="pointer lh-center" @click="deleteReply(item)">
             <i class="iconfont iconshanchu1"></i>
-            <span>{{ $t("ui.chatIndexDelete") }}</span>
+            <span>{{ $("ui.chatIndexDelete") }}</span>
           </div>
         </div>
       </div>
@@ -73,16 +74,16 @@
           <div class="icon-btn">
             <div v-if="myId !== reply.user.id" class="pointer lh-center" @click="showReplyEvt(item)">
               <i class="iconfont iconcebianlan-luntanzhongxin"></i>
-              <span>{{ $t("ui.formCommonOaCommentEvaluate") }}</span>
+              <span>{{ $("ui.formCommonOaCommentEvaluate") }}</span>
             </div>
             <div v-else class="flex">
               <div class="edit-name pointer lh-center" @click="eidtReply(reply)">
                 <i class="iconfont iconbianji"></i>
-                <span>{{ $t("ui.formCommonOaLogEdit") }}</span>
+                <span>{{ $("ui.formCommonOaLogEdit") }}</span>
               </div>
               <div class="pointer lh-center" @click="deleteReply(reply)">
                 <i class="iconfont iconshanchu1"></i>
-                <span>{{ $t("ui.chatIndexDelete") }}</span>
+                <span>{{ $("ui.chatIndexDelete") }}</span>
               </div>
             </div>
           </div>
@@ -100,14 +101,14 @@
             tabindex="0"
             contenteditable="true"
             spellcheck="false"
-            :placeholder="$t('ui.formCommonOaCommentEnterAComment')"
+            :placeholder="$('ui.formCommonOaCommentEnterAComment')"
             @input="onDivInput($event)"
             class="reply-input reply-comment-input"
           ></div>
         </div>
         <div class="reply-btn-box">
           <el-button class="reply-btn" size="medium" @click="sendCommentReply(i, j)" type="primary"
-            >{{ $t("ui.formCommonOaCommentPostComment") }}</el-button
+            >{{ $("ui.formCommonOaCommentPostComment") }}</el-button
           >
         </div>
       </div>
@@ -120,7 +121,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import imageViewer from '@/components/common/imageViewer'
 
@@ -269,7 +269,7 @@ export default {
         this.$message({
           showClose: true,
           type: 'warning',
-          message: i18n.t('legacyScript.commentCannotBeEmpty')
+          message: $('legacyScript.commentCannotBeEmpty')
         })
       }
     },

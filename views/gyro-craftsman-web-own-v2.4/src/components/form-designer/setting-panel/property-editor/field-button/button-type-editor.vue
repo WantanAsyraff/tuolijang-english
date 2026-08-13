@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.displayType')">
+  <el-form-item :label="$('designer.setting.displayType')">
     <el-select v-model="optionModel.type">
       <el-option label="default" value=""></el-option>
       <el-option label="primary" value="primary"></el-option>
@@ -13,12 +13,11 @@
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
   import propertyMixin from "@/components/form-designer/setting-panel/property-editor/propertyMixin"
 
   export default {
     name: "button-type-editor",
-    mixins: [i18n, propertyMixin],
+    mixins: [propertyMixin],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -30,4 +29,3 @@
 <style lang="scss" scoped>
 
 </style>
-@/utils/i18ns

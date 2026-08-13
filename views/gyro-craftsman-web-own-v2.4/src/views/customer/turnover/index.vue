@@ -20,10 +20,10 @@
               <el-card>
                 <div class="item">
                   <div class="item-top">
-                    <div class="tit over-text">{{ $t('customer.totalincome') }}</div>
+                    <div class="tit over-text">{{ $('customer.totalincome') }}</div>
                     <el-popover placement="top-start" trigger="hover" width="150">
                       <div class="text-align">
-                        {{ $t('customer.periodComparison') }} {{ income.ratio > 0 ? $t('customer.increase') : $t('customer.decrease') }}
+                        {{ $('customer.periodComparison') }} {{ income.ratio > 0 ? $('customer.increase') : $('customer.decrease') }}
                         <span v-if="income.ratio > 0">{{ income.ratio }}%</span>
                         <span v-else-if="income.ratio < 0">{{ income.ratio | absNum }}%</span>
                         <span v-else>0%</span>
@@ -49,10 +49,10 @@
               <el-card>
                 <div class="item">
                   <div class="item-top">
-                    <div class="tit over-text">{{ $t('customer.newcustomer') }}</div>
+                    <div class="tit over-text">{{ $('customer.newcustomer') }}</div>
                     <el-popover placement="top-start" trigger="hover" width="150">
                       <div class="text-align">
-                        {{ $t('customer.periodComparison') }} {{ new_customer.ratio > 0 ? $t('customer.increase') : $t('customer.decrease') }}
+                        {{ $('customer.periodComparison') }} {{ new_customer.ratio > 0 ? $('customer.increase') : $('customer.decrease') }}
                         <span v-if="new_customer.ratio > 0">{{ new_customer.ratio }}%</span>
                         <span v-else-if="new_customer.ratio < 0">{{ new_customer.ratio | absNum }}%</span>
                         <span v-else>0%</span>
@@ -79,12 +79,12 @@
                 <div class="item">
                   <div class="item-top">
                     <el-popover placement="top-start" trigger="hover">
-                      <div class="text-align">{{ $t('customer.statisticsByStartDate') }}</div>
-                      <div slot="reference" class="tit over-text hand">{{ $t('customer.newcontract') }}</div>
+                      <div class="text-align">{{ $('customer.statisticsByStartDate') }}</div>
+                      <div slot="reference" class="tit over-text hand">{{ $('customer.newcontract') }}</div>
                     </el-popover>
                     <el-popover placement="top-start" trigger="hover" width="150">
                       <div class="text-align">
-                        {{ $t('customer.periodComparison') }} {{ new_contract.ratio > 0 ? $t('customer.increase') : $t('customer.decrease') }}
+                        {{ $('customer.periodComparison') }} {{ new_contract.ratio > 0 ? $('customer.increase') : $('customer.decrease') }}
                         <span v-if="new_contract.ratio > 0">{{ new_contract.ratio }}%</span>
                         <span v-else-if="new_contract.ratio < 0">{{ new_contract.ratio | absNum }}%</span>
                         <span v-else>0%</span>
@@ -111,12 +111,12 @@
                 <div class="item">
                   <div class="item-top">
                     <el-popover placement="top-start" trigger="hover">
-                      <div class="text-align">{{ $t('customer.statisticsByStartDate') }}</div>
-                      <div slot="reference" class="tit hand over-text">{{ $t('customer.newamount') }}</div>
+                      <div class="text-align">{{ $('customer.statisticsByStartDate') }}</div>
+                      <div slot="reference" class="tit hand over-text">{{ $('customer.newamount') }}</div>
                     </el-popover>
                     <el-popover placement="top-start" trigger="hover" width="150">
                       <div class="text-align">
-                        {{ $t('customer.periodComparison') }} {{ new_contract_price.ratio > 0 ? $t('customer.increase') : $t('customer.decrease') }}
+                        {{ $('customer.periodComparison') }} {{ new_contract_price.ratio > 0 ? $('customer.increase') : $('customer.decrease') }}
 
                         <span v-if="new_contract_price.ratio > 0">{{ new_contract_price.ratio }}%</span>
                         <span v-else-if="new_contract_price.ratio < 0">{{ new_contract_price.ratio | absNum }}%</span>
@@ -143,10 +143,10 @@
               <el-card>
                 <div class="item">
                   <div class="item-top">
-                    <div class="tit over-text">{{ $t('customer.contractrenewal') }}</div>
+                    <div class="tit over-text">{{ $('customer.contractrenewal') }}</div>
                     <el-popover placement="top-start" trigger="hover" width="150">
                       <div class="text-align">
-                        {{ $t('customer.periodComparison') }} {{ renew.ratio > 0 ? $t('customer.increase') : $t('customer.decrease') }}
+                        {{ $('customer.periodComparison') }} {{ renew.ratio > 0 ? $('customer.increase') : $('customer.decrease') }}
                         <span v-if="renew.ratio > 0">{{ renew.ratio }}%</span>
                         <span v-else-if="renew.ratio < 0">{{ renew.ratio | absNum }}%</span>
                         <span v-else>0%</span>
@@ -173,7 +173,7 @@
               <el-card>
                 <div class="item">
                   <div class="item-top">
-                    <div class="tit over-text">{{ $t('customer.uncollectedamount') }}</div>
+                    <div class="tit over-text">{{ $('customer.uncollectedamount') }}</div>
                   </div>
                   <div class="num">
                     {{ uncollected_price.price || 0 }}
@@ -187,7 +187,7 @@
       <el-row :gutter="24" class="equal-height-row row-chart">
         <el-col :lg="12">
           <el-card class="stat-card">
-            <div class="statistics-title">{{ $t('customer.performanceTrend') }}</div>
+            <div class="statistics-title">{{ $('customer.performanceTrend') }}</div>
             <div class="card-body">
               <echartBox :option-data="optionData1" :styles="styles1" />
             </div>
@@ -196,7 +196,7 @@
         <el-col :lg="12">
           <el-card class="stat-card">
             <div class="statistics-title">
-              {{ $t('customer.departmentperformance') }}
+              {{ $('customer.departmentperformance') }}
             </div>
             <div class="card-body">
               <div v-if="frame_rank.length > 0" class="statistics-department">
@@ -205,7 +205,7 @@
               </div>
               <div v-else class="default">
                 <!-- <img alt="" src="../../../assets/images/def1.png" /> -->
-                <span>{{ $t('public.message14') + '~' }}</span>
+                <span>{{ $('public.message14') + '~' }}</span>
               </div>
               <echartBox v-if="frame_rank.length > 0" :option-data="optionData" :styles="styles1" />
             </div>
@@ -217,7 +217,7 @@
         <el-col v-if="contractCategoryEnabled" :lg="12">
           <el-card class="stat-card">
             <div class="statistics-title">
-              {{ $t('customer.contracttype') }}
+              {{ $('customer.contracttype') }}
             </div>
             <div class="card-body">
               <div v-if="contract_rank.length > 0" class="ml10">
@@ -236,14 +236,14 @@
               </div>
               <div v-else class="default">
                 <!-- <img alt="" src="../../../assets/images/def1.png" style="width: 200px; height: 150px" /> -->
-                <span>{{ $t('public.message14') + '~' }}</span>
+                <span>{{ $('public.message14') + '~' }}</span>
               </div>
             </div>
           </el-card>
         </el-col>
         <el-col :lg="contractCategoryEnabled ? 12 : 24">
           <el-card class="stat-card">
-            <div class="statistics-title">{{ $t('customer.productCategory') }}</div>
+            <div class="statistics-title">{{ $('customer.productCategory') }}</div>
             <div class="card-body">
               <div v-if="product_rank.length > 0" class="ml10">
                 <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -260,7 +260,7 @@
               </div>
               <div v-else class="default">
                 <!-- <img alt="" src="../../../assets/images/def1.png" style="width: 200px; height: 150px" /> -->
-                <span>{{ $t('public.message14') + '~' }}</span>
+                <span>{{ $('public.message14') + '~' }}</span>
               </div>
             </div>
           </el-card>
@@ -271,17 +271,17 @@
         <el-col :lg="12">
           <el-card class="stat-card">
             <el-tabs v-model="activeName" class="rank-tabs" @tab-click="handleClick">
-              <el-tab-pane :label="$t('customer.salespersonRanking')" name="1" />
-              <el-tab-pane :label="$t('customer.departmentRanking')" name="2" />
+              <el-tab-pane :label="$('customer.salespersonRanking')" name="1" />
+              <el-tab-pane :label="$('customer.departmentRanking')" name="2" />
             </el-tabs>
             <div class="card-body">
               <div v-loading="rankLoading" class="table-box">
                 <el-table ref="table" :data="tableData" height="340" row-key="id" style="width: 100%" :key="activeName">
-                  <el-table-column type="index" :label="$t('customer.ranking')" width="50" />
-                  <el-table-column :label="activeName == 1 ? $t('customer.name') : $t('customer.department')" min-width="80" prop="name" />
+                  <el-table-column type="index" :label="$('customer.ranking')" width="50" />
+                  <el-table-column :label="activeName == 1 ? $('customer.name') : $('customer.department')" min-width="80" prop="name" />
                   <el-table-column
                     v-if="activeName == 1"
-                    :label="$t('toptable.department')"
+                    :label="$('toptable.department')"
                     min-width="90"
                     prop="frame_name"
                   >
@@ -291,14 +291,14 @@
                       </el-tooltip>
                     </template>
                   </el-table-column>
-                  <el-table-column :label="$t('customer.completeproportion')" min-width="160" prop="ratio">
+                  <el-table-column :label="$('customer.completeproportion')" min-width="160" prop="ratio">
                     <template slot-scope="scope">
                       <el-progress color="#1890ff" :percentage="scope.row.ratio" :show-text="true"></el-progress>
                     </template>
                   </el-table-column>
-                  <el-table-column :label="$t('customer.completeamount')" min-width="120" prop="price" />
-                  <el-table-column :label="$t('customer.expenseAmountYuan')" min-width="140" prop="expend" />
-                  <el-table-column :label="$t('customer.netAmountYuan')" min-width="120" prop="net_amount" v-if="activeName == 1" />
+                  <el-table-column :label="$('customer.completeamount')" min-width="120" prop="price" />
+                  <el-table-column :label="$('customer.expenseAmountYuan')" min-width="140" prop="expend" />
+                  <el-table-column :label="$('customer.netAmountYuan')" min-width="120" prop="net_amount" v-if="activeName == 1" />
                 </el-table>
               </div>
             </div>
@@ -306,12 +306,12 @@
         </el-col>
         <el-col :lg="12">
           <el-card class="stat-card">
-            <div class="statistics-title">{{ $t('customer.productPerformanceRanking') }}</div>
+            <div class="statistics-title">{{ $('customer.productPerformanceRanking') }}</div>
             <div class="card-body">
               <div class="table-box">
                 <el-table :data="productRankData" height="340" style="width: 100%">
-                  <el-table-column type="index" :label="$t('customer.ranking')" width="50" :index="indexMethod" />
-                  <el-table-column :label="$t('customer.product')" min-width="180">
+                  <el-table-column type="index" :label="$('customer.ranking')" width="50" :index="indexMethod" />
+                  <el-table-column :label="$('customer.product')" min-width="180">
                     <template #default="{ row }">
                       <div class="product-cell">
                         <el-image v-if="row.image" :src="row.image" fit="cover" class="product-image" />
@@ -319,13 +319,13 @@
                       </div>
                     </template>
                   </el-table-column>
-                  <el-table-column :label="$t('customer.specification')" min-width="110" prop="order_count">
+                  <el-table-column :label="$('customer.specification')" min-width="110" prop="order_count">
                     <template #default="{ row }">
                       <span>{{ row.sku || '--' }}</span>
                     </template>
                   </el-table-column>
-                  <el-table-column :label="$t('customer.salesVolume')" min-width="100" prop="order_count" />
-                  <el-table-column :label="$t('customer.salesAmountYuan')" min-width="140" prop="total_price" />
+                  <el-table-column :label="$('customer.salesVolume')" min-width="100" prop="order_count" />
+                  <el-table-column :label="$('customer.salesAmountYuan')" min-width="140" prop="total_price" />
                 </el-table>
               </div>
               <el-pagination
@@ -761,7 +761,7 @@ export default {
         tooltip: {
           trigger: 'axis',
           formatter: (option) => {
-            const english = this.$ts('流入') === 'Inflow'
+            const english = this.$("legacy.9777d0053cdf6234") === 'Inflow'
             const date = this.$moment(option[0].axisValue).format(english ? 'MMMM D, YYYY' : 'YYYY年MM月DD日')
             const formatValue = (value) => (english ? `CNY ${value}` : `${value}元`)
             return `${date}<br/>${option[0].seriesName}: ${formatValue(option[0].value)}<br/>${
@@ -812,7 +812,7 @@ export default {
         },
         series: [
           {
-            name: this.$ts('流入'),
+            name: this.$("legacy.9777d0053cdf6234"),
             type: 'line',
             itemStyle: {
               normal: {
@@ -823,7 +823,7 @@ export default {
             data: data.series[0].data
           },
           {
-            name: this.$ts('流出'),
+            name: this.$("legacy.522d65c98381d854"),
             type: 'line',
             itemStyle: {
               normal: {
@@ -834,7 +834,7 @@ export default {
             data: data.series[1].data
           },
           {
-            name: this.$t('finance.totalexpenditure'),
+            name: this.$('finance.totalexpenditure'),
             type: 'line',
             symbol: 'circle',
             // symbolSize: 5, // 圆点大小
@@ -868,7 +868,7 @@ export default {
             data: data.series[0].data
           },
           {
-            name: this.$t('finance.totalexpenditure'),
+            name: this.$('finance.totalexpenditure'),
             type: 'line',
             symbol: 'circle',
             // symbolSize: 5, // 圆点大小
@@ -1258,7 +1258,7 @@ export default {
               }
             },
             right: '40%',
-            name: this.$t(`customer.contracttype`),
+            name: this.$(`customer.contracttype`),
             radius: ['55%', '70%'],
             center: ['40%', '50%']
           }

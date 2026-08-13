@@ -5,10 +5,10 @@
       <div ref="editor" v-if="visible"></div>
       <span slot="footer" class="dialog-footer">
         <span style="color: red; float: left; text-align: left" v-if="err">
-          {{ $ts("输入内容格式有误") }}{{ err !== true ? err : '' }}
+          {{ $("legacy.26fb01953d238a4b") }}{{ err !== true ? err : '' }}
         </span>
-        <ElButton @click="visible = false" size="small">{{ $ts("取 消") }}</ElButton>
-        <ElButton type="primary" @click="onOk" size="small">{{ $ts("确 定") }}</ElButton>
+        <ElButton @click="visible = false" size="small">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</ElButton>
+        <ElButton type="primary" @click="onOk" size="small">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</ElButton>
       </span>
     </ElDialog>
   </div>

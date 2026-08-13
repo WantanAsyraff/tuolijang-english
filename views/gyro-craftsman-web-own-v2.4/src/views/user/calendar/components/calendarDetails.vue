@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-dialog
@@ -26,9 +27,9 @@
           getYear(dateInfo.start, 'MM-DD') !== getYear(dateInfo.end, 'MM-DD')
         "
       >
-        {{ getYear(dateInfo.start, $t('ui.userCalendarCalendarDetailsMmmDd')) }}({{ getWeek(dateInfo.start) }})
+        {{ getYear(dateInfo.start, $('ui.userCalendarCalendarDetailsMmmDd')) }}({{ getWeek(dateInfo.start) }})
         <template v-if="info.all_day == 0">{{ $moment(dateInfo.start).format('HH:mm:ss') }}</template>
-        - {{ getYear(dateInfo.end, $t('ui.userCalendarCalendarDetailsMmmDd')) }}({{ getWeek(dateInfo.end) }})
+        - {{ getYear(dateInfo.end, $('ui.userCalendarCalendarDetailsMmmDd')) }}({{ getWeek(dateInfo.end) }})
         <template v-if="info.all_day == 0">{{ getYear(info.end_time, 'HH:mm:ss') }}</template>
       </div>
       <div class="time" v-else-if="getYear(dateInfo.start, 'yyyy') !== getYear(dateInfo.end, 'yyyy')">
@@ -37,7 +38,7 @@
         {{ getYear(dateInfo.end, 'yyyy-MM-DD HH:mm:ss') }}
       </div>
       <div class="time" v-else>
-        {{ getYear(dateInfo.start, $t('ui.userCalendarCalendarDetailsMmmDd')) }} ({{ getWeek(dateInfo.start) }})
+        {{ getYear(dateInfo.start, $('ui.userCalendarCalendarDetailsMmmDd')) }} ({{ getWeek(dateInfo.start) }})
         {{ getYear(dateInfo.start, 'HH:mm') }} -
         {{ getYear(dateInfo.end, 'HH:mm') }}
       </div>
@@ -45,14 +46,14 @@
 
     <div class="content" v-loading="loading">
       <el-form>
-        <el-form-item :label="$t('ui.userCalendarCalendarDetailsOrganizer')">
+        <el-form-item :label="$('ui.userCalendarCalendarDetailsOrganizer')">
           <div class="flex">
             <img :src="info.master ? info.master.avatar : ''" alt="" class="img" />
             <span class="name">{{ info.master ? info.master.name : '--' }}</span>
           </div>
         </el-form-item>
 
-        <el-form-item :label="$t('ui.userCalendarCalendarDetailsParticipants')" v-if="info.user && info.user.length !== 0">
+        <el-form-item :label="$('ui.userCalendarCalendarDetailsParticipants')" v-if="info.user && info.user.length !== 0">
           <div class="user-flex">
             <div class="flex mr10 finish" v-for="(item, index) in info.user" :key="index">
               <img :src="item.avatar" alt="" class="img" />
@@ -65,29 +66,29 @@
             </div>
           </div>
         </el-form-item>
-        <el-form-item :label="$t('ui.userCalendarCalendarDetailsParticipants')" v-else>
+        <el-form-item :label="$('ui.userCalendarCalendarDetailsParticipants')" v-else>
           <div class="flex finish">
             <img :src="info.master ? info.master.avatar : ''" alt="" class="img" />
             <img src="../../../../assets/images/accept.png" alt="" class="finish-ab" />
             <span class="name b-color">{{ info.master ? info.master.name : '--' }}</span>
           </div>
         </el-form-item>
-        <el-form-item :label="$t('ui.customerInvoiceInvoiceViewOrderName')" v-if="info.cid == 3 || info.cid == 4">
+        <el-form-item :label="$('ui.customerInvoiceInvoiceViewOrderName')" v-if="info.cid == 3 || info.cid == 4">
           <span class="name b-color cursor" @click="openContract()">{{ info.linkName }}</span>
         </el-form-item>
-        <el-form-item :label="$t('ui.customerDetailsCustomerName')" v-if="info.cid == 2">
+        <el-form-item :label="$('ui.customerDetailsCustomerName')" v-if="info.cid == 2">
           <span class="name b-color cursor" @click="openCustomer">{{ info.linkName }}</span>
         </el-form-item>
-        <el-form-item :label="$t('ui.userCalendarCalendarDetailsScheduleDescription')">
+        <el-form-item :label="$('ui.userCalendarCalendarDetailsScheduleDescription')">
           <div v-if="info.content" class="name" v-html="info.content"></div>
           <div class="name" v-else>--</div>
         </el-form-item>
-        <el-form-item :label="$t('ui.userCalendarAddTodoScheduleType')">
+        <el-form-item :label="$('ui.userCalendarAddTodoScheduleType')">
           <span class="name b-color">{{ info.type ? info.type.name : '--' }}</span>
         </el-form-item>
-        <el-form-item :label="$t('ui.userCalendarAddTodoReminderTime')">
+        <el-form-item :label="$('ui.userCalendarAddTodoReminderTime')">
           <span v-if="[2, 3, 4, 5].includes(info.cid)"
-            >{{ $moment(info.remind.remind_day).format($t('ui.userCalendarCalendarDetailsMmmDd')) }}
+            >{{ $moment(info.remind.remind_day).format($('ui.userCalendarCalendarDetailsMmmDd')) }}
             {{ info.remind ? info.remind.remind_time : '09:00:00' }}</span
           >
           <span class="name" v-else>{{ info.remindInfo ? info.remindInfo.text : '--' }}</span>
@@ -97,21 +98,21 @@
       <div class="splitLine mt20" v-if="commentList.length !== 0" />
       <!-- 评论回复功能 -->
       <div class="comment" v-if="commentList.length !== 0">
-        {{ $t("ui.userCalendarCalendarDetailsScheduleComments") }}
+        {{ $("ui.userCalendarCalendarDetailsScheduleComments") }}
         <comment-list :commentList="commentList" @replyFn="replyFn" @commentDel="commentDel"></comment-list>
       </div>
     </div>
 
     <!-- 底部编辑删除按钮 -->
     <div class="mt20 footer" v-if="infoId == userId">
-      <el-button plain size="small" style="width: 100%" @click="onDelete(info)">{{ $t("ui.chatIndexDelete") }}</el-button>
+      <el-button plain size="small" style="width: 100%" @click="onDelete(info)">{{ $("ui.chatIndexDelete") }}</el-button>
       <el-button
         plain
         v-if="info.cid !== 2 && info.cid !== 3 && info.cid !== 4 && info.cid !== 5"
         size="small"
         style="width: 100%"
         @click="onEdit(info)"
-        >{{ $t("ui.formCommonOaLogEdit") }}</el-button
+        >{{ $("ui.formCommonOaLogEdit") }}</el-button
       >
       <el-button
         size="small"
@@ -119,10 +120,10 @@
         style="width: 100%"
         @click="putStatus('完成', 3)"
         v-if="isShow(info)"
-        >{{ info.finish == 3 ? $t('ui.customerWeChatMassMassDetailsCompleted') : $t('ui.customerTargetStatisticsIndexCompleted') }}</el-button
+        >{{ info.finish == 3 ? $('ui.customerWeChatMassMassDetailsCompleted') : $('ui.customerTargetStatisticsIndexCompleted') }}</el-button
       >
 
-      <el-tooltip class="item" effect="dark" :content="$t('ui.developModuleCheckDrawerComments')" placement="top">
+      <el-tooltip class="item" effect="dark" :content="$('ui.developModuleCheckDrawerComments')" placement="top">
         <img src="../../../../assets/images/comment.png" @click="openComment" alt="" class="commentImg" />
       </el-tooltip>
     </div>
@@ -134,14 +135,14 @@
         :class="info.finish == 1 ? 'success' : 'btn'"
         style="width: 148px"
         @click="putStatus('已接受', 1)"
-        >{{ info.finish == 1 ? $t('ui.userCalendarCalendarDetailsAccepted') : $t('ui.userCalendarCalendarDetailsAccept') }}</el-button
+        >{{ info.finish == 1 ? $('ui.userCalendarCalendarDetailsAccepted') : $('ui.userCalendarCalendarDetailsAccept') }}</el-button
       >
       <el-button
         size="small"
         :class="info.finish == 2 ? 'danger' : 'btn'"
         style="width: 148px"
         @click="putStatus('拒绝', 2)"
-        >{{ info.finish == 2 ? $t('ui.userExamineExamineRejected') : $t('ui.settingEnterpriseUpgradeIndexRefuse') }}</el-button
+        >{{ info.finish == 2 ? $('ui.userExamineExamineRejected') : $('ui.settingEnterpriseUpgradeIndexRefuse') }}</el-button
       >
 
       <el-button
@@ -149,52 +150,52 @@
         :class="info.finish == 0 ? 'warning' : 'btn'"
         style="width: 148px"
         @click="putStatus('待定', 0)"
-        >{{ info.finish == 0 ? $t('ui.userCalendarCalendarDetailsTentative') : $t('ui.userCalendarCalendarDetailsTentative2') }}</el-button
+        >{{ info.finish == 0 ? $('ui.userCalendarCalendarDetailsTentative') : $('ui.userCalendarCalendarDetailsTentative2') }}</el-button
       >
       <el-button
         size="small"
         :class="info.finish == 3 ? 'primary' : 'btn'"
         style="width: 148px"
         @click="putStatus('完成', 3)"
-        >{{ info.finish == 3 ? $t('ui.customerWeChatMassMassDetailsCompleted') : $t('ui.customerTargetStatisticsIndexCompleted') }}</el-button
+        >{{ info.finish == 3 ? $('ui.customerWeChatMassMassDetailsCompleted') : $('ui.customerTargetStatisticsIndexCompleted') }}</el-button
       >
       <img src="../../../../assets/images/comment.png" @click="openComment" alt="" class="commentImg" />
     </div>
     <div class="mt20 footer" v-if="false">
       <el-button type="text" size="small" style="width: 148px; font-size: 16px" @click="onDelete(info)"
-        >{{ $t("ui.userCalendarCalendarDetailsJoinSchedule") }}</el-button
+        >{{ $("ui.userCalendarCalendarDetailsJoinSchedule") }}</el-button
       >
     </div>
   </el-dialog>
 
   <!-- 删除弹窗 -->
   <el-dialog
-    :title="deleteText == 1 ? $t('ui.userCalendarCalendarDetailsDeleteRecurringSchedule') : $t('ui.userCalendarCalendarDetailsEditRecurringSchedule')"
+    :title="deleteText == 1 ? $('ui.userCalendarCalendarDetailsDeleteRecurringSchedule') : $('ui.userCalendarCalendarDetailsEditRecurringSchedule')"
     :visible.sync="deleteVisible"
     width="20%"
     top="20vh"
     :before-close="handleClose"
   >
     <el-radio-group v-model="type" class="radio">
-      <el-radio label="0">{{ $t("ui.userCalendarCalendarDetailsThisSchedule") }}</el-radio>
-      <el-radio label="1">{{ $t("ui.userCalendarCalendarDetailsThisAndFollowingSchedules") }}</el-radio>
-      <el-radio label="2">{{ $t("ui.userCalendarCalendarDetailsAllSchedules") }}</el-radio>
+      <el-radio label="0">{{ $("ui.userCalendarCalendarDetailsThisSchedule") }}</el-radio>
+      <el-radio label="1">{{ $("ui.userCalendarCalendarDetailsThisAndFollowingSchedules") }}</el-radio>
+      <el-radio label="2">{{ $("ui.userCalendarCalendarDetailsAllSchedules") }}</el-radio>
     </el-radio-group>
 
     <span slot="footer" class="dialog-footer">
-      <el-button size="small" @click="returnFn">{{ $t("ui.customerProductAddProductResponse") }}</el-button>
-      <el-button size="small" type="danger" @click="deleteFn">{{ deleteText == 1 ? $t('ui.chatIndexDelete') : $t('ui.formCommonOaLogEdit') }}</el-button>
+      <el-button size="small" @click="returnFn">{{ $("ui.customerProductAddProductResponse") }}</el-button>
+      <el-button size="small" type="danger" @click="deleteFn">{{ deleteText == 1 ? $('ui.chatIndexDelete') : $('ui.formCommonOaLogEdit') }}</el-button>
     </span>
   </el-dialog>
   <message-handle-popup ref="messageHandlePopup" :detail="detail"></message-handle-popup>
   <!-- 跟进弹窗 -->
-  <el-dialog :title="$t('ui.customerClueIndexAddFollowUpRecord')" class="record" :visible.sync="dialogShow" width="40%">
+  <el-dialog :title="$('ui.customerClueIndexAddFollowUpRecord')" class="record" :visible.sync="dialogShow" width="40%">
     <recordUpload :form-info="formInfo" @change="recordChange"></recordUpload>
   </el-dialog>
   <!-- 评论回复弹窗 -->
   <el-dialog :visible.sync="commentShow" top="25vh" :title="commentTitle" width="400px" :close-on-click-modal="false">
     <div class="mt14 comment-box">
-      <el-input type="textarea" autosize :placeholder="$t('ui.chatModelFormEnterContent')" resize="none" maxlength="256" v-model="textarea">
+      <el-input type="textarea" autosize :placeholder="$('ui.chatModelFormEnterContent')" resize="none" maxlength="256" v-model="textarea">
       </el-input>
 
       <div class="uploadBox" v-if="uploadList.length > 0">
@@ -219,14 +220,14 @@
         action="##"
         class="mr10 upload-real"
       >
-        <div v-if="!percentShow" class="addText"><span class="iconfont iconfujian"></span> {{ $t("ui.customerWeChatMassMaterialContentAddAttachment") }}</div>
+        <div v-if="!percentShow" class="addText"><span class="iconfont iconfujian"></span> {{ $("ui.customerWeChatMassMaterialContentAddAttachment") }}</div>
         <div v-else class="addText">
           <img alt="" class="l_gif" src="@/assets/images/loading.gif" />
         </div>
       </el-upload>
       <div>
-        <el-button size="small" @click="commentCancel">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-        <el-button type="primary" @click="commentSubmit">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+        <el-button size="small" @click="commentCancel">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+        <el-button type="primary" @click="commentSubmit">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
       </div>
     </span>
   </el-dialog>
@@ -236,7 +237,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 // 集中导入用户相关的日程API
 import {
   scheduleInfoApi,
@@ -411,7 +411,7 @@ export default {
           this.infoId = masterId
         })
         .catch((error) => {
-          console.error(i18n.t('legacyScript.failedToRetrieveScheduleInformation'), error)
+          console.error($('legacyScript.failedToRetrieveScheduleInformation'), error)
           this.loading = false
         })
     },
@@ -437,7 +437,7 @@ export default {
     },
     // 删除评论
     async commentDel(data) {
-      await Tips.confirm({ message: i18n.t('legacyScript.areYouSureYouWantToDeleteThisComment') })
+      await Tips.confirm({ message: $('legacyScript.areYouSureYouWantToDeleteThisComment') })
       await scheduleReplyDelApi(data.id)
       await this.getReplyList(this.extendedProps)
     },
@@ -458,7 +458,7 @@ export default {
     // 提交评论/回复
     async commentSubmit() {
       if (this.textarea == '') {
-        return this.$message.error(i18n.t('legacyScript.pleaseEnterCommentsContent'))
+        return this.$message.error($('legacyScript.pleaseEnterCommentsContent'))
       }
       const ids = []
       if (this.uploadList.length > 0) {

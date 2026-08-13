@@ -2,7 +2,7 @@
 <template>
 <div class="station">
   <div class="mb10 btn-box1">
-    <div class="title-16">{{ $t("ui.customerListFileAttachmentList") }}</div>
+    <div class="title-16">{{ $("ui.customerListFileAttachmentList") }}</div>
     <el-upload
       :headers="myHeaders"
       :http-request="uploadServerLog"
@@ -12,7 +12,7 @@
     >
       <el-button v-if="!percentShow" size="small" type="primary">
         <i class="el-icon-plus"></i>
-        {{ $t("ui.customerListFileAddFile") }}
+        {{ $("ui.customerListFileAddFile") }}
       </el-button>
       <div v-else class="addText">
         <img alt="" class="l_gif" src="../../../../assets/images/loading.gif" />
@@ -20,7 +20,7 @@
     </el-upload>
   </div>
   <el-table :data="fileData">
-    <el-table-column :label="$t('hr.documentcover')" prop="name" width="80">
+    <el-table-column :label="$('hr.documentcover')" prop="name" width="80">
       <template slot-scope="scope">
         <span class="file" v-if="toSrcIcon(scope.row.name) !== 'img'">
           {{ getFileTypeFn(scope.row.name) }}
@@ -29,41 +29,41 @@
         <img v-else :src="scope.row.att_dir" alt="" class="img" @click="filePreview(scope.row)" />
       </template>
     </el-table-column>
-    <el-table-column :label="$t('customer.filename')" min-width="180" prop="real_name">
+    <el-table-column :label="$('customer.filename')" min-width="180" prop="real_name">
       <template slot-scope="scope">
         <span class="over-text">{{ scope.row.real_name }}</span>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.customerListFileAttachmentSize')" min-width="180" prop="att_size">
+    <el-table-column :label="$('ui.customerListFileAttachmentSize')" min-width="180" prop="att_size">
       <template slot-scope="scope">
         <span class="over-text">{{ formatBytesFn(scope.row.att_size) }}</span>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('customer.uploaduser')" min-width="100" prop="card.name" />
-    <el-table-column :label="$t('customer.uploaddate')" min-width="130" prop="created_at">
+    <el-table-column :label="$('customer.uploaduser')" min-width="100" prop="card.name" />
+    <el-table-column :label="$('customer.uploaddate')" min-width="130" prop="created_at">
       <template slot-scope="scope">
         <span class="over-text">{{ $moment(scope.row.created_at).format('YYYY-MM-DD') }}</span>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('public.operation')" fixed="right" prop="address" width="180">
+    <el-table-column :label="$('public.operation')" fixed="right" prop="address" width="180">
       <template slot-scope="scope">
         <el-button type="text" @click="filePreview(scope.row)">
-          {{ $t('public.check') }}
+          {{ $('public.check') }}
         </el-button>
 
         <el-button type="text" @click="getFileLinkDownLoad(scope.row.att_dir, scope.row.name)">
-          {{ $t('public.download') }}
+          {{ $('public.download') }}
         </el-button>
 
         <el-dropdown>
           <span class="el-dropdown-link el-button--text el-button ml10">
-            {{ $t('hr.more') }}
+            {{ $('hr.more') }}
             <i class="el-icon-arrow-down" />
           </span>
           <el-dropdown-menu style="text-align: center">
-            <el-dropdown-item @click.native="handleLabel(scope.row)"> {{ $t("ui.customerListFileRename") }} </el-dropdown-item>
+            <el-dropdown-item @click.native="handleLabel(scope.row)"> {{ $("ui.customerListFileRename") }} </el-dropdown-item>
             <el-dropdown-item @click.native="handleFileDelete(scope.row, scope.$index)">
-              {{ $t('public.delete') }}</el-dropdown-item
+              {{ $('public.delete') }}</el-dropdown-item
             >
           </el-dropdown-menu>
         </el-dropdown>
@@ -82,15 +82,15 @@
   </div>
 
   <!-- 重命名弹窗 -->
-  <el-dialog :append-to-body="true" :visible.sync="dialogFormVisible" :title="$t('ui.customerListFileRenameFile')" width="40%">
+  <el-dialog :append-to-body="true" :visible.sync="dialogFormVisible" :title="$('ui.customerListFileRenameFile')" width="40%">
     <el-form>
-      <el-form-item :label="$t('ui.customerListFileRename2')" label-width="100px">
+      <el-form-item :label="$('ui.customerListFileRename2')" label-width="100px">
         <el-input v-model="real_name" autocomplete="off"></el-input>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="dialogFormVisible = false">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-      <el-button type="primary" @click="putRealName">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+      <el-button @click="dialogFormVisible = false">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button type="primary" @click="putRealName">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </div>
   </el-dialog>
   <!-- 打开文件 -->

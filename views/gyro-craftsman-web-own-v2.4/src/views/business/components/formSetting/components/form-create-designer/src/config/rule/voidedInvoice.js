@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 const label = '作废发票'
 const name = 'voidedInvoice'
@@ -20,7 +20,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('customer.invoiceheader'),
+          title: $('customer.invoiceheader'),
           symbol: 'invoiceList',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -33,8 +33,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: i18n.t('finance.pleaseinput') },
-          title: i18n.t('customer.remark'),
+          props: { type: 'textarea', placeholder: $('finance.pleaseinput') },
+          title: $('customer.remark'),
           symbol: 'remark',
           _fc_drag_tag: 'textarea'
         }
@@ -83,7 +83,7 @@ export default {
         info: '',
         props: {
           value: '1.作废发票是否需要审批流，在客户规格设置中配置<br>2.作废发票关联的付款单，支持重新开具发票',
-          title: i18n.t('legacyScript.voidInvoiceRules')
+          title: $('legacyScript.voidInvoiceRules')
         },
         input: false,
         title: '',

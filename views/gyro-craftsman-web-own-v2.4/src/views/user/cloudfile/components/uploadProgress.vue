@@ -4,7 +4,7 @@
   <div class="title flex-between">
     <!-- 上传中 -->
     <div v-if="!isAllSuccess && errorFileList === 0">
-      <img src="../../../../assets/images/cloud-icon1.png" alt="" class="img" /> {{ $t("ui.userCloudfileUploadProgressUploadCenter") }} {{ successNum }}/{{
+      <img src="../../../../assets/images/cloud-icon1.png" alt="" class="img" /> {{ $("ui.userCloudfileUploadProgressUploadCenter") }} {{ successNum }}/{{
         fileList.length
       }}
     </div>
@@ -12,13 +12,13 @@
     <!-- 上传成功 -->
     <div v-else-if="isAllSuccess" class="flex-center">
       <img src="../../../../assets/images/cloud-icon2.png" alt="" class="img mr6" />
-      {{ $t("ui.userCloudfileUploadProgressAllFilesUploadedSuccessfully") }}
+      {{ $("ui.userCloudfileUploadProgressAllFilesUploadedSuccessfully") }}
     </div>
 
     <!-- 部分文件上传失败 -->
     <div v-else>
       <img src="../../../../assets/images/cloud-icon3.png" alt="" class="img" />
-      {{ $t("ui.userCloudfileUploadProgressSomeFilesFailedToUpload") }}
+      {{ $("ui.userCloudfileUploadProgressSomeFilesFailedToUpload") }}
     </div>
 
     <div class="pointer">
@@ -29,15 +29,15 @@
 
   <div class="tips-box" v-show="takeShow">
     <template v-if="!isAllSuccess">
-      <span>{{ $t("ui.userCloudfileUploadProgressUploaded") }}{{ successNum }}/{{ uploadFileList.length }}{{ $t("ui.userCloudfileUploadProgressTasks") }}</span></template
+      <span>{{ $("ui.userCloudfileUploadProgressUploaded") }}{{ successNum }}/{{ uploadFileList.length }}{{ $("ui.userCloudfileUploadProgressTasks") }}</span></template
     >
 
     <template v-else-if="successNum == fileList.length">
-      <span>{{ $t("ui.userCloudfileUploadProgressUploaded") }}{{ successNum }}{{ $t("ui.userCloudfileUploadProgressTasksTotal") }} {{ toSizeFile(totalSize) }}</span>
+      <span>{{ $("ui.userCloudfileUploadProgressUploaded") }}{{ successNum }}{{ $("ui.userCloudfileUploadProgressTasksTotal") }} {{ toSizeFile(totalSize) }}</span>
     </template>
 
     <template v-else>
-      <span>{{ $t("ui.userCloudfileUploadProgressUploaded") }}{{ successNum }}/{{ fileList.length }}{{ $t("ui.userCloudfileUploadProgressTasks") }}</span>
+      <span>{{ $("ui.userCloudfileUploadProgressUploaded") }}{{ successNum }}/{{ fileList.length }}{{ $("ui.userCloudfileUploadProgressTasks") }}</span>
     </template>
   </div>
 
@@ -46,7 +46,7 @@
       <div class="flex-center">
         <div class="file">W</div>
         <div class="file-item">
-          <span class="file-size" v-if="item.status === 'pending'">{{ $t("ui.userCloudfileUploadProgressUploading") }}</span>
+          <span class="file-size" v-if="item.status === 'pending'">{{ $("ui.userCloudfileUploadProgressUploading") }}</span>
           <span class="file-name over-text">{{ item.name }}</span>
           <span class="file-size" v-if="item.status === 'error'">{{ item.errorMsg }}</span>
           <span class="file-size" v-else-if="item.status === 'success'"> {{ toSizeFile(item.size) }}</span>

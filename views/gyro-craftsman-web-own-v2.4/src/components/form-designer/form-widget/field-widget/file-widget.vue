@@ -28,7 +28,6 @@
 <script>
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
-import i18n from '@/utils/i18n'
 import { deepClone } from '@/utils/util'
 import { evalFn } from '@/utils/formDesignerUtils'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'
@@ -41,7 +40,7 @@ let selectFileText = '选择文本'
 export default {
   name: 'file-widget',
   componentName: 'FieldWidget', //必须固定为FieldWidget，用于接收父级组件的broadcast事件
-  mixins: [emitter, fieldMixin, i18n],
+  mixins: [emitter, fieldMixin],
   props: {
     field: Object,
     parentWidget: Object,
@@ -148,7 +147,7 @@ export default {
 
     handleFileExceed() {
       let uploadLimit = this.field.options.limit
-      this.$message.warning(this.i18nt('render.hint.uploadExceed').replace('${uploadLimit}', uploadLimit))
+      this.$message.warning(this.$('render.hint.uploadExceed').replace('${uploadLimit}', uploadLimit))
     },
 
     beforeFileUpload(file) {
@@ -163,7 +162,7 @@ export default {
         }
       }
       if (!fileTypeCheckResult) {
-        this.$message.error(this.i18nt('render.hint.unsupportedFileType') + extFileName)
+        this.$message.error(this.$('render.hint.unsupportedFileType') + extFileName)
         return false
       }
 
@@ -174,7 +173,7 @@ export default {
       }
       fileSizeCheckResult = file.size / 1024 / 1024 <= uploadFileMaxSize
       if (!fileSizeCheckResult) {
-        this.$message.error(this.i18nt('render.hint.fileSizeExceed') + uploadFileMaxSize + 'MB')
+        this.$message.error(this.$('render.hint.fileSizeExceed') + uploadFileMaxSize + 'MB')
         return false
       }
 
@@ -275,7 +274,7 @@ export default {
         customFn.call(this, err, file, fileList)
       } else {
         this.$message({
-          message: this.i18nt('render.hint.uploadError') + err,
+          message: this.$('render.hint.uploadError') + err,
           duration: 3000,
           type: 'error'
         })
@@ -328,4 +327,3 @@ export default {
   }
 }
 </style>
-@/utils/i18ns

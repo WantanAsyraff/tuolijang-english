@@ -1,11 +1,11 @@
 <template>
   <div class="countContainer">
     <div class="item">
-      <span class="name">{{ $ts("字数") }}</span>
+      <span class="name">{{ $("legacy.b1a816c5770275a1") }}</span>
       <span class="value">{{ words }}</span>
     </div>
     <div class="item">
-      <span class="name">{{ $ts("节点") }}</span>
+      <span class="name">{{ $("legacy.2410d860f093b767") }}</span>
       <span class="value">{{ num }}</span>
     </div>
   </div>

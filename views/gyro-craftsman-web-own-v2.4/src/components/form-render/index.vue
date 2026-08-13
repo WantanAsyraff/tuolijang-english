@@ -1,3 +1,4 @@
+import { $, setLanguage } from '@/lang'
 <!-- @FileDescription: 低代码-动态表单渲染页面 -->
 <template>
   <el-form
@@ -70,12 +71,10 @@ import {
   traverseFieldWidgets,
   buildDefaultFormJson
 } from '@/utils/formDesignerUtils'
-import i18n, { changeLocale } from '../../utils/i18n'
-
 export default {
   name: 'VFormRender',
   componentName: 'VFormRender',
-  mixins: [emitter, i18n],
+  mixins: [emitter],
   components: {
     //ElForm,
     ...FieldComponents
@@ -233,8 +232,7 @@ export default {
     },
 
     initLocale() {
-      let curLocale = localStorage.getItem('form_cache') || 'zh-CN'
-      this.changeLanguage(curLocale)
+      this.changeLanguage(this.$language)
     },
 
     insertCustomStyleAndScriptNode() {
@@ -449,7 +447,7 @@ export default {
     /* 提示：用户可自行扩充这些方法！！！ */
 
     changeLanguage(langName) {
-      changeLocale(langName)
+      setLanguage(langName)
     },
 
     getNativeForm() {
@@ -464,7 +462,7 @@ export default {
     getWidgetRef(widgetName, showError = false) {
       let foundRef = this.widgetRefList[widgetName]
       if (!foundRef && !!showError) {
-        this.$message.error(this.i18nt('render.hint.refNotFound') + widgetName)
+        this.$message.error(this.$('render.hint.refNotFound') + widgetName)
       }
       return foundRef
     },
@@ -567,7 +565,7 @@ export default {
         if (valid) {
           callback(this.formDataModel)
         } else {
-          callback(this.formDataModel, this.i18nt('render.hint.validationFailed'))
+          callback(this.formDataModel, this.$('render.hint.validationFailed'))
         }
       })
 

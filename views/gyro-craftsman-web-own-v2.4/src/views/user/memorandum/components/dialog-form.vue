@@ -12,8 +12,8 @@
     >
       <formCreate v-if="rules.length > 0 && dialogFormVisible" :key="formKey" ref="fc" :option="option" :rule="rules" />
       <div slot="footer" class="dialog-footer">
-        <el-button @click="handleClose">{{ $t('public.cancel') }}</el-button>
-        <el-button type="primary" @click="handleConfirm('ruleForm')">{{ $t('public.ok') }}</el-button>
+        <el-button @click="handleClose">{{ $('public.cancel') }}</el-button>
+        <el-button type="primary" @click="handleConfirm('ruleForm')">{{ $('public.ok') }}</el-button>
       </div>
     </el-dialog>
   </div>

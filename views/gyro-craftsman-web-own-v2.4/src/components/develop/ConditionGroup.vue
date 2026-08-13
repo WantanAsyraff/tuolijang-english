@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-表单设计-数据联动组件-->
 <template>
 <div class="condition-group-wrapper">
@@ -6,7 +7,7 @@
   <div class="condition-group">
     <div class="condition-group-header" v-if="item.type === 'group'">
       <div class="condition-group-left">
-        <el-select v-model="item.relation" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')" class="center-select first-select">
+        <el-select v-model="item.relation" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')" class="center-select first-select">
           <el-option v-for="opt in relationOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
         </el-select>
       </div>
@@ -23,7 +24,7 @@
           <div class="field-row mb14" v-if="child.type === 'condition'">
             <el-select
               v-model="child.field"
-              :placeholder="$t('ui.developConditionGroupPleaseSelectFieldType')"
+              :placeholder="$('ui.developConditionGroupPleaseSelectFieldType')"
               size="small"
               style="width: 80px"
               class="field-select"
@@ -35,14 +36,14 @@
               <el-input
                 v-if="child.field == 1"
                 v-model="child.value"
-                :placeholder="$t('ui.developConditionGroupPleaseEnterValue')"
+                :placeholder="$('ui.developConditionGroupPleaseEnterValue')"
                 size="small"
                 style="width: 210px"
               />
               <el-select
                 v-if="child.field == 2"
                 v-model="child.dataKey"
-                :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                :placeholder="$('ui.developConditionGroupPleaseSelect')"
                 size="small"
                 class="operator-select"
               >
@@ -54,7 +55,7 @@
             <el-select
               v-if="child.field == 2 && child.dataKey"
               v-model="child.operator"
-              :placeholder="$t('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')"
+              :placeholder="$('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')"
               size="small"
               style="width: 120px"
             >
@@ -67,7 +68,7 @@
               <el-input
                 v-if="!item.checked"
                 v-model="child.value"
-                :placeholder="$t('ui.developConditionGroupPleaseEnterValue')"
+                :placeholder="$('ui.developConditionGroupPleaseEnterValue')"
                 size="small"
                 style="width: 210px"
               />
@@ -75,13 +76,13 @@
               <el-select
                 v-if="item.checked"
                 v-model="child.value"
-                :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                :placeholder="$('ui.developConditionGroupPleaseSelect')"
                 size="small"
                 class="operator-select"
               >
                 <el-option v-for="opt in widgetList" :key="opt.id" :label="opt.name" :value="opt.id" />
               </el-select>
-              <el-checkbox v-model="item.checked">{{ $t("ui.developConditionGroupField") }}</el-checkbox>
+              <el-checkbox v-model="item.checked">{{ $("ui.developConditionGroupField") }}</el-checkbox>
             </template>
 
             <el-button type="text" icon="el-icon-delete" @click="removeItem(index)" class="delete-btn" />
@@ -104,7 +105,7 @@
         icon="el-icon-circle-plus-outline"
         @click="addItem('condition')"
         class="action-btn"
-        >{{ $t("ui.developConditionDialogAddCondition") }}</el-button
+        >{{ $("ui.developConditionDialogAddCondition") }}</el-button
       >
       <el-button
         size="small"
@@ -112,14 +113,13 @@
         icon="el-icon-circle-plus-outline"
         @click="addItem('group')"
         class="action-btn"
-        >{{ $t("ui.developConditionGroupAddConditionGroup") }}</el-button
+        >{{ $("ui.developConditionGroupAddConditionGroup") }}</el-button
       >
     </div>
   </div>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   name: 'ConditionGroup', // 递归组件必须声明name
   props: {
@@ -147,41 +147,41 @@ export default {
       ],
       fieldOptions: [
         // { label: '字段', value: '1' },
-        { label: i18n.t('legacyScript.variable'), value: '2' }
+        { label: $('legacyScript.variable'), value: '2' }
       ],
       operatorOptions: [
         {
           value: 'gt',
-          label: i18n.t('legacyScript.greaterThan')
+          label: $('legacyScript.greaterThan')
         },
         {
           value: 'lt',
-          label: i18n.t('ui.workFlowDrawerConditionDrawerLessThan')
+          label: $('ui.workFlowDrawerConditionDrawerLessThan')
         },
         {
           value: 'eq',
-          label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
+          label: $('ui.workFlowDrawerConditionDrawerEqualTo')
         },
         {
           value: 'not_eq',
-          label: i18n.t('legacyScript.notEqualTo')
+          label: $('legacyScript.notEqualTo')
         },
         {
           value: 'in',
-          label: i18n.t('legacyScript.contains')
+          label: $('legacyScript.contains')
         },
         {
           value: 'not_in',
-          label: i18n.t('legacyScript.doesNotContain')
+          label: $('legacyScript.doesNotContain')
         },
 
         {
           value: 'is_empty',
-          label: i18n.t('legacyScript.isEmpty')
+          label: $('legacyScript.isEmpty')
         },
         {
           value: 'not_empty',
-          label: i18n.t('legacyScript.isNotEmpty')
+          label: $('legacyScript.isNotEmpty')
         }
       ]
     }

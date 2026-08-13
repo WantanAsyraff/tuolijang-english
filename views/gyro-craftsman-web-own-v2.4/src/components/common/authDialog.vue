@@ -1,16 +1,16 @@
+import { $ } from '@/lang'
 <template>
   <el-dialog :visible.sync="visible" width="330px" :append-to-body="true" custom-class="no-header-dialog">
     <div class="box" v-loading="loading">
       <div ref="weChatCodeLogin" style="width: 330px; height: 430px">
         <span class="el-icon-close" v-if="!forced_build" @click="handleClosed"></span>
       </div>
-      <div class="btn" v-if="!forced_build" @click="handleClosed">{{ $ts("下次绑定") }}</div>
+      <div class="btn" v-if="!forced_build" @click="handleClosed">{{ $("legacy.824975d2000bfd6a") }}</div>
     </div>
   </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import * as ww from '@wecom/jssdk'
 import { workBinding, workAuthLogin } from '@/api/user'
 import { getWorkCorpConfigApi } from '@/api/setting'
@@ -35,7 +35,7 @@ export default {
       const config = (await this.getData()) || getStorageJson('wxConfig', {})
       if (!config.corpid || !config.agentid) {
         this.loading = false
-        this.$message.error(i18n.t('legacyScript.failedToRetrieveWeComConfigurationPleaseTryAgainLater'))
+        this.$message.error($('legacyScript.failedToRetrieveWeComConfigurationPleaseTryAgainLater'))
         return
       }
       let that = this
@@ -68,7 +68,7 @@ export default {
           }
         },
         onLoginFail(err) {
-          console.error(i18n.t('legacyScript.weComLoginFailed'), err)
+          console.error($('legacyScript.weComLoginFailed'), err)
         }
       })
       setTimeout(() => {

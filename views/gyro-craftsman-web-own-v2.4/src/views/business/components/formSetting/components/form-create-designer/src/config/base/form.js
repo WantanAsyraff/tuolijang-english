@@ -1,11 +1,11 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 export default function form() {
   return [
     {
       type: 'radio',
       field: 'labelPosition',
       value: 'left',
-      title: i18n.t('legacyScript.labelPosition'),
+      title: $('legacyScript.labelPosition'),
       options: [
         { value: 'right', label: 'right' },
         { value: 'left', label: 'left' },
@@ -16,7 +16,7 @@ export default function form() {
       type: 'radio',
       field: 'size',
       value: 'mini',
-      title: i18n.t('legacyScript.labelPosition'),
+      title: $('legacyScript.labelPosition'),
       options: [
         { value: 'medium', label: 'medium' },
         { value: 'small', label: 'small' },
@@ -27,25 +27,25 @@ export default function form() {
       type: 'input',
       field: 'labelWidth',
       value: '125px',
-      title: i18n.t('legacyScript.labelWidth'),
+      title: $('legacyScript.labelWidth'),
     },
     {
       type: 'switch',
       field: 'hideRequiredAsterisk',
       value: false,
-      title: i18n.t('legacyScript.hideTheRedAsteriskNextToTheRequiredFieldLabel'),
+      title: $('legacyScript.hideTheRedAsteriskNextToTheRequiredFieldLabel'),
     },
     {
       type: 'switch',
       field: 'showMessage',
       value: true,
-      title: i18n.t('legacyScript.displayValidationErrorMessage'),
+      title: $('legacyScript.displayValidationErrorMessage'),
     },
     {
       type: 'switch',
       field: 'inlineMessage',
       value: false,
-      title: i18n.t('legacyScript.displayValidationInformationInline'),
+      title: $('legacyScript.displayValidationInformationInline'),
     },
   ];
 }

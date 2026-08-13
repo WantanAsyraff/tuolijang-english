@@ -1,21 +1,22 @@
+import { $ } from '@/lang'
 <template>
     <div>
         <oa-dialog :fromData="fromData" ref="oaDialog" @submit="submit">
             <el-form ref="form" :model="form" :rules="rules" label-width="auto" @submit.native.prevent>
-                <el-form-item :label='$ts("显示名称：")' prop="field_name">
-                    <el-input v-model="form.field_name" :placeholder='$ts("请输入显示名称")' />
+                <el-form-item :label='$("legacyScript.displayName")' prop="field_name">
+                    <el-input v-model="form.field_name" :placeholder='$("legacyScript.pleaseEnterDisplayName")' />
                 </el-form-item>
-                <el-form-item :label='$ts("实体名称：")' prop="field_name_en">
+                <el-form-item :label='$("legacyScript.entityName")' prop="field_name_en">
                     <el-input :disabled="fromData.type == 'edit' ? true : false" v-model="form.field_name_en"
-                        :placeholder='$ts("英文小写字母开头，不可包含中文，空格，中间可输入下划线")' size="small" class="refresh-input"
+                        :placeholder='$("legacyScript.startWithALowercaseLetterChineseCharactersAndSpaces")' size="small" class="refresh-input"
                         @focus="refreshFn()">
                         <el-button type="primary" class="refresh" :disabled="fromData.type == 'edit' ? true : false"
                             slot="suffix" size="small" @click.stop="refreshFn()">
-                            {{ $ts("刷新生成") }}</el-button>
+                            {{ $("ui.formCommonOaFormRegenerate") }}</el-button>
                     </el-input>
                 </el-form-item>
-                <el-form-item :label='$ts("选项类型：")' prop="value">
-                    <el-select v-model="form.value" :placeholder='$ts("请选择选项类型")' size="small" style="width: 100%;">
+                <el-form-item :label='$("legacy.4442acbc50093bbe")' prop="value">
+                    <el-select v-model="form.value" :placeholder='$("legacy.b821a8be08bf0719")' size="small" style="width: 100%;">
                         <el-option v-for="item in textTypes" :key="item.value" :label="item.label"
                             :value="item.value" />
                     </el-select>
@@ -27,14 +28,14 @@
                     </el-radio-group>
                 </el-form-item> -->
 
-                <el-form-item :label='$ts("关联字典：")' prop="data_dict_id" v-if="form.data_type == '0'">
-                    <el-select v-model="form.data_dict_id" :placeholder='$ts("请搜索选择数据字典")' size="small" style="width: 100%;">
+                <el-form-item :label='$("legacyScript.linkedDictionary")' prop="data_dict_id" v-if="form.data_type == '0'">
+                    <el-select v-model="form.data_dict_id" :placeholder='$("legacyScript.searchForAndSelectADataDictionary")' size="small" style="width: 100%;">
                         <el-option v-for="item in dictListData" :key="item.id" :label="item.name" :value="item.id" />
                     </el-select>
                 </el-form-item>
 
                 <!-- 一对一引用 -->
-                <el-form-item :label='$ts("引用实体：")' v-if="form.value == 'input_select'">
+                <el-form-item :label='$("legacyScript.referencedEntity")' v-if="form.value == 'input_select'">
                     <div class="el-input__inner select plan-footer-on flex-between h32" @click="checkboxDialogOpen()">
                         <div class="over-text1" @click="checkboxDialogOpen()">
                             <span @click="checkboxDialogOpen()" v-for="(items, indexs) in fieldList" :key="indexs"
@@ -45,19 +46,19 @@
                         <i class="el-tag__close el-icon-arrow-down" />
                     </div>
                 </el-form-item>
-                <el-form-item :label='$ts("字段唯一：")' prop="is_uniqid" v-if="form.value == 'input'">
+                <el-form-item :label='$("legacyScript.uniqueField")' prop="is_uniqid" v-if="form.value == 'input'">
                     <el-switch v-model="form.is_uniqid" size="small" active-value="1" inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
+                        active-text="开启" inactive-text="关闭">
                     </el-switch>
                 </el-form-item>
-                <el-form-item :label='$ts("新增时：")' prop="create_modify">
+                <el-form-item :label='$("legacyScript.whenAdding")' prop="create_modify">
                     <el-radio-group v-model="form.create_modify" class="vertical">
                         <el-radio v-for="(itemOption, index) in options" :key="index" :label="itemOption.label">{{
                             itemOption.value
                         }}</el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item :label='$ts("编辑时：")' prop="update_modify">
+                <el-form-item :label='$("legacyScript.whenEditing")' prop="update_modify">
                     <el-radio-group v-model="form.update_modify" class="vertical">
                         <el-radio v-for="(itemOption, index) in options" :key="index" :label="itemOption.label">{{
                             itemOption.value
@@ -71,7 +72,6 @@
     </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { pinyin } from 'pinyin-pro'
 import oaDialog from '@/components/form-common/dialog-form.vue'
 import checkboxDialog from '@/components/develop/checkboxDialog'
@@ -100,8 +100,8 @@ export default {
             visible: false,
             fromData: {
                 width: '600px',
-                title: i18n.t('ui.developCrudFieldSettingNewField'),
-                btnText: i18n.t('ui.formCommonDialogFormOk'),
+                title: $('ui.developCrudFieldSettingNewField'),
+                btnText: '确定',
                 labelWidth: '100px',
                 type: 'slot'
             },
@@ -140,7 +140,7 @@ export default {
                 field_name: [
                     {
                         required: true,
-                        message: i18n.t('legacyScript.pleaseEnterDisplayName'),
+                        message: $('legacyScript.pleaseEnterDisplayName'),
                         trigger: 'blur'
                     },
                     {
@@ -157,7 +157,7 @@ export default {
                 field_name_en: [
                     {
                         required: true,
-                        message: i18n.t('legacyScript.enterTheFieldName'),
+                        message: $('legacyScript.enterTheFieldName'),
                         trigger: 'blur'
                     },
                     {
@@ -174,14 +174,14 @@ export default {
                 value: [
                     {
                         required: true,
-                        message: i18n.t('legacyScript.pleaseSelectTextType'),
+                        message: $('legacyScript.pleaseSelectTextType'),
                         trigger: 'change'
                     }
                 ],
                 data_dict_id: [
                     {
                         required: true,
-                        message: i18n.t('ui.customerSetupCustomFormIndexSelectLinkedDictionary'),
+                        message: $('ui.customerSetupCustomFormIndexSelectLinkedDictionary'),
                         trigger: 'change'
                     }
                 ]
@@ -210,7 +210,7 @@ export default {
                 }
             }
             if (data && data.id) {
-                this.fromData.title = i18n.t('ui.businessFormSettingFormCreateDesignerFcDesignerEditField')
+                this.fromData.title = $('ui.businessFormSettingFormCreateDesignerFcDesignerEditField')
             } else {
                 this.textTypes = this.typesObj[this.rowData.value]
                 this.fromData.title = '新建字段' + '-' + this.rowData.label

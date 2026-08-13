@@ -1,10 +1,11 @@
+import { $ } from '@/lang'
 <!-- 人事-办公审批-审批设置 checkBtn：审批列表/审批设置 -->
 <template>
 <div :class="!checkBtn ? 'box' : 'divBox'">
   <div v-if="checkBtn">
     <el-card class="normal-page p20" style="padding-bottom: 0">
       <div class="flex-between">
-        <div class="title-16">{{ $t("ui.businessExamineIndexApprovalList") }}</div>
+        <div class="title-16">{{ $("ui.businessExamineIndexApprovalList") }}</div>
         <el-button
           type="primary"
           size="small"
@@ -15,13 +16,13 @@
             activeName = 'basicSetting'
           "
         >
-          {{ $t('business.addBusiness') }}
+          {{ $('business.addBusiness') }}
         </el-button>
       </div>
-      <div class="total-16 mb10 mt20">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+      <div class="total-16 mb10 mt20">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
       <div v-if="tableData.length > 0">
         <el-table :data="tableData" v-loading="loading" :height="tableHeight1">
-          <el-table-column prop="name" :label="$t('business.businessType')" min-width="230" show-overflow-tooltip>
+          <el-table-column prop="name" :label="$('business.businessType')" min-width="230" show-overflow-tooltip>
             <template slot-scope="scope">
               <div class="flex">
                 <div class="selIcon" :style="{ backgroundColor: scope.row.color }">
@@ -31,7 +32,7 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="refuse" :label="$t('business.Range')" min-width="200" show-overflow-tooltip>
+          <el-table-column prop="refuse" :label="$('business.Range')" min-width="200" show-overflow-tooltip>
             <template slot-scope="scope">
               <span
                 v-if="
@@ -40,7 +41,7 @@
                   scope.row.process.info.userList.length <= 0
                 "
               >
-                {{ $t("ui.workFlowNodeWrapEveryone") }}
+                {{ $("ui.workFlowNodeWrapEveryone") }}
               </span>
               <div v-else class="refuse-info">
                 <div v-if="scope.row.process">
@@ -52,37 +53,37 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="sort" :label="$t('ui.businessExamineIndexSort')" min-width="110" show-overflow-tooltip />
+          <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')" min-width="110" show-overflow-tooltip />
 
           <el-table-column
             prop="updated_at"
-            :label="$t('toptable.updatetime')"
+            :label="$('toptable.updatetime')"
             min-width="110"
             show-overflow-tooltip
           />
-          <el-table-column :label="$t('hr.state')" width="160" show-overflow-tooltip>
+          <el-table-column :label="$('hr.state')" width="160" show-overflow-tooltip>
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
-                :active-text="$t('hr.open')"
-                :inactive-text="$t('hr.close')"
+                :active-text="$('hr.open')"
+                :inactive-text="$('hr.close')"
                 :active-value="1"
                 :inactive-value="0"
                 @change="handleStatus(scope.row)"
               />
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="200" show-overflow-tooltip>
+          <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="200" show-overflow-tooltip>
             <template slot-scope="scope">
               <el-button type="text" @click="handleEdit(scope.row)" v-hasPermi="['business:examine:index:edit']">{{
-                $t('public.edit')
+                $('public.edit')
               }}</el-button>
 
               <el-button
                 type="text"
                 @click="handleDelete(scope.row)"
                 v-hasPermi="['business:examine:index:delete']"
-                >{{ $t('public.delete') }}</el-button
+                >{{ $('public.delete') }}</el-button
               >
             </template>
           </el-table-column>
@@ -111,10 +112,10 @@
     <el-card class="examineCard background-card">
       <el-row>
         <el-col :span="8">
-          <el-page-header :content="$t('ui.businessExamineIndexAddApprovalProcessPage')">
+          <el-page-header :content="$('ui.businessExamineIndexAddApprovalProcessPage')">
             <div slot="title" @click="backFn">
               <i class="el-icon-arrow-left"></i>
-              {{ $t("ui.customerProductAddProductResponse") }}
+              {{ $("ui.customerProductAddProductResponse") }}
             </div>
           </el-page-header>
         </el-col>
@@ -162,14 +163,13 @@
     </div>
   </div>
   <div class="cr-bottom-button" v-if="!checkBtn">
-    <el-button size="small" @click="previousStep" v-if="activeName !== 'basicSetting'">{{ $t("ui.invoiceMergeInvoicePrevious") }}</el-button>
-    <el-button size="small" @click="nextStep" v-if="activeName !== 'ruleSetting'">{{ $t("ui.invoiceMergeInvoiceNext") }}</el-button>
-    <el-button type="primary" size="small" @click="publish">{{ $t("ui.chatIndexRelease") }}</el-button>
+    <el-button size="small" @click="previousStep" v-if="activeName !== 'basicSetting'">{{ $("ui.invoiceMergeInvoicePrevious") }}</el-button>
+    <el-button size="small" @click="nextStep" v-if="activeName !== 'ruleSetting'">{{ $("ui.invoiceMergeInvoiceNext") }}</el-button>
+    <el-button type="primary" size="small" @click="publish">{{ $("ui.chatIndexRelease") }}</el-button>
   </div>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { entAddApi, entListApi, entInfoApi, entEditApi, entDeleteApi, entChangeApi } from '@/api/business'
 export default {
   name: 'BusinessExamine',
@@ -195,10 +195,10 @@ export default {
       key: 'cate',
       activeName: 'basicSetting',
       tabArray: [
-        { label: this.$t('business.basicConfiguration'), value: 'basicSetting', number: 1 },
-        { label: this.$t('business.formConfiguration'), value: 'formSetting', number: 2 },
-        { label: this.$t('business.processSetting'), value: 'processSetting', number: 3 },
-        { label: this.$t('business.ruleConfiguration'), value: 'ruleSetting', number: 4 }
+        { label: this.$('business.basicConfiguration'), value: 'basicSetting', number: 1 },
+        { label: this.$('business.formConfiguration'), value: 'formSetting', number: 2 },
+        { label: this.$('business.processSetting'), value: 'processSetting', number: 3 },
+        { label: this.$('business.ruleConfiguration'), value: 'ruleSetting', number: 4 }
       ],
       id: 0,
       conditions: ['inputNumber', 'radio', 'checkbox', 'select', 'departmentTree', 'timeFrom', 'moneyFrom'],
@@ -246,7 +246,7 @@ export default {
       } else if (this.activeName == 'processSetting') {
         this.activeName = 'ruleSetting'
       } else if (this.activeName == 'ruleSetting') {
-        this.$message.error(i18n.t('legacyScript.noNextStep'))
+        this.$message.error($('legacyScript.noNextStep'))
         this.activeName = 'ruleSetting'
       }
     },
@@ -363,7 +363,7 @@ export default {
               props: {
                 member: false
               },
-              title: i18n.t('access.applicant'),
+              title: $('access.applicant'),
               type: 'departmentTree'
             })
             this.$store.commit('upDateFormSetting', formConfig)
@@ -424,7 +424,7 @@ export default {
     },
     // 删除
     handleDelete(item) {
-      this.$modalSure(this.$t('business.message01')).then(() => {
+      this.$modalSure(this.$('business.message01')).then(() => {
         entDeleteApi(item.id)
           .then((res) => {
             if (this.where.page > 1 && this.tableData.length <= 1) {

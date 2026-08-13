@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 物资归还弹窗 -->
 <template>
   <div class="station">
@@ -13,13 +14,13 @@
     >
       <div class="invoice">
         <el-form ref="form" label-width="80px">
-          <el-form-item :label='$ts("归还对象:")'>
+          <el-form-item :label='$("legacy.6270242b31f0bea1")'>
             <el-select
               v-model="index"
               filterable
               size="small"
               clearable
-              :placeholder='$ts("请选择归还部门/人员")'
+              :placeholder='$("legacyScript.pleaseSelectTheReturningDepartmentPersonnel")'
               @change="handleSearch"
               @clear="handleClear"
             >
@@ -41,15 +42,15 @@
             @selection-change="handleSelectionChange"
           >
             <el-table-column type="selection" width="55" />
-            <el-table-column prop="name" :label='$ts("物资名称")' min-width="100"></el-table-column>
-            <el-table-column prop="number" :label='$ts("物资编号")' min-width="100" />
-            <el-table-column prop="units" :label='$ts("规格型号")' min-width="80" />
-            <el-table-column prop="cate.cate_name" :label='$ts("物资分类")' min-width="100" />
-            <el-table-column prop="specs" :label='$ts("计量单位")' min-width="80" />
-            <el-table-column prop="remark" :label='$ts("重要信息")' min-width="200" />
+            <el-table-column prop="name" :label='$("ui.administrationMaterialChartIndexMaterialName")' min-width="100"></el-table-column>
+            <el-table-column prop="number" :label='$("ui.administrationMaterialFixedFixedMaterialNumber")' min-width="100" />
+            <el-table-column prop="units" :label='$("ui.administrationMaterialChartIndexSpecificationModel")' min-width="80" />
+            <el-table-column prop="cate.cate_name" :label='$("ui.administrationMaterialChartIndexMaterialCategory")' min-width="100" />
+            <el-table-column prop="specs" :label='$("ui.administrationMaterialFixedConsumeUnitOfMeasure")' min-width="80" />
+            <el-table-column prop="remark" :label='$("ui.administrationMaterialFixedFixedImportantInformation")' min-width="200" />
           </el-table>
           <el-form ref="form" class="mt14" label-width="80px">
-            <el-form-item :label='$ts("归还备注:")' class="el-input--small">
+            <el-form-item :label='$("legacy.7739396fd9422014")' class="el-input--small">
               <el-input
                 v-model="mark"
                 type="textarea"
@@ -57,16 +58,16 @@
                 show-word-limit
                 :rows="2"
                 resize="none"
-                :placeholder="$t('customer.placeholder18')"
+                :placeholder="$('customer.placeholder18')"
               />
             </el-form-item>
           </el-form>
         </div>
         <default-page v-else :min-height="520" :index="14"></default-page>
         <div class="button from-foot-btn fix btn-shadow">
-          <el-button @click="handleClose" size="small">{{ $t('public.cancel') }}</el-button>
+          <el-button @click="handleClose" size="small">{{ $('public.cancel') }}</el-button>
           <el-button :loading="loading" size="small" type="primary" @click="handleConfirm('ruleForm')">
-            {{ $t('public.ok') }}
+            {{ $('public.ok') }}
           </el-button>
         </div>
       </div>
@@ -75,7 +76,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { storageListApi, storageRecordUserApi, storageRecordSaveApi } from '@/api/administration'
 export default {
   name: 'Return',
@@ -158,9 +158,9 @@ export default {
     // 提交
     handleConfirm() {
       if (typeof this.index !== 'number') {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectTheReturningDepartmentPersonnel'))
+        this.$message.error($('legacyScript.pleaseSelectTheReturningDepartmentPersonnel'))
       } else if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectTheMaterialsToReturn'))
+        this.$message.error($('legacyScript.pleaseSelectTheMaterialsToReturn'))
       } else {
         let res = []
         this.multipleSelection.map((value) => {
@@ -188,7 +188,7 @@ export default {
           }
 
           this.loading = false
-          this.$message.success(i18n.t('legacyScript.materialReturnedSuccessfully'))
+          this.$message.success($('legacyScript.materialReturnedSuccessfully'))
         })
         .catch((error) => {
           this.loading = false

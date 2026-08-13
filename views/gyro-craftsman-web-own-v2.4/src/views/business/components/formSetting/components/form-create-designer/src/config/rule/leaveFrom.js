@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 const label = '请假'
 const name = 'leaveFrom'
@@ -20,7 +20,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('ui.hrHolidaySettingLeaveTypes'),
+          title: $('ui.hrHolidaySettingLeaveTypes'),
           symbol: 'holidayType',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -46,8 +46,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: i18n.t('legacyScript.pleaseEnterTheReasonForLeave') },
-          title: i18n.t('legacyScript.reasonForLeave'),
+          props: { type: 'textarea', placeholder: $('legacyScript.pleaseEnterTheReasonForLeave') },
+          title: $('legacyScript.reasonForLeave'),
           _fc_drag_tag: 'textarea'
         }
       ]
@@ -95,7 +95,7 @@ export default {
         info: '',
         props: {
           value: '根据假期类型设置的规则进行计算/手动填写',
-          title: i18n.t('ui.hrHolidaySettingLeaveTypes')
+          title: $('ui.hrHolidaySettingLeaveTypes')
         },
         input: false,
         title: '',

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog
@@ -9,9 +10,9 @@
       :show-close="false"
     >
       <div slot="title" class="dialog-title">
-        <div class="dialog-title-title">{{ $ts("选择封面") }}</div>
+        <div class="dialog-title-title">{{ $("ui.hrAssessCheckIndexSelectCover") }}</div>
         <div class="dialog-title-upload">
-          <span v-if="deleteButton" @click="deleteImage"><i class="el-icon-delete" />{{ $ts("删除") }}</span>
+          <span v-if="deleteButton" @click="deleteImage"><i class="el-icon-delete" />{{ $("public.delete") }}</span>
           <el-upload
             class="upload"
             :action="fileUrl"
@@ -22,7 +23,7 @@
             :data="uploadData"
             multiple
           >
-            <i class="el-icon-upload2" />{{ $ts("上传封面图") }}
+            <i class="el-icon-upload2" />{{ $("legacy.22e96bf140d40429") }}
           </el-upload>
         </div>
       </div>
@@ -85,15 +86,14 @@
         </el-col>
       </el-col>
       <div slot="footer" class="dialog-footer">
-        <el-button size="small" @click="closeDialog">{{ $t('public.cancel') }}</el-button>
-        <el-button size="small" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+        <el-button size="small" @click="closeDialog">{{ $('public.cancel') }}</el-button>
+        <el-button size="small" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
       </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import i18n from '@/lang'
 import RGBaster from '@/utils/rgbaster'
 import { attachCoverDeleteApi, attachCoverListApi, attachCoverSetApi } from '@/api/enterprise'
 import SettingMer from '@/libs/settingMer'
@@ -213,7 +213,7 @@ export default {
     },
     handleConfirm() {
       if (this.id == 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectACoverImage'))
+        this.$message.error($('legacyScript.pleaseSelectACoverImage'))
       } else {
         this.setImagePreview()
       }
@@ -240,7 +240,7 @@ export default {
     // 上传成功
     handleSuccess(response) {
       if (response.status === 200) {
-        this.$message.success(i18n.t('public.tipstext2'))
+        this.$message.success($('public.tipstext2'))
         this.where.page = 1
         this.getTableData()
       } else {

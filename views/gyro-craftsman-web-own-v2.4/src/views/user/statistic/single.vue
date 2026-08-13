@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <!-- 个人统计 -->
@@ -16,14 +17,14 @@
       <div class="flex-box mt14">
         <div class="left">
           <div class="title">
-            {{ $t("ui.userStatisticSingleAverageWorkingHoursHours") }} <span class="num">{{ work_hours || 0 }}</span>
+            {{ $("ui.userStatisticSingleAverageWorkingHoursHours") }} <span class="num">{{ work_hours || 0 }}</span>
           </div>
 
           <echartBox :option-data="optionData" :styles="styles" />
         </div>
         <div class="right">
           <div class="top">
-            <div class="title">{{ $t("ui.userStatisticSingleAttendanceExceptionSummary") }}</div>
+            <div class="title">{{ $("ui.userStatisticSingleAttendanceExceptionSummary") }}</div>
             <div class="right-box">
               <div v-for="(item, index) in attendanceList" :key="index" class="attendance">
                 <img :src="item.img" alt="" />
@@ -35,7 +36,7 @@
             </div>
           </div>
           <div class="lower">
-            <div class="title">{{ $t("ui.userStatisticSingleClockInExceptionSummary") }}</div>
+            <div class="title">{{ $("ui.userStatisticSingleClockInExceptionSummary") }}</div>
             <div class="right-box">
               <div v-for="(item, index) in clockInList" :key="index" class="attendance">
                 <img :src="item.img" alt="" />
@@ -52,71 +53,71 @@
     <!-- 考勤表格 -->
     <el-card class="mt14">
       <div class="mb10 flex">
-        <span class="title-k">{{ $t("ui.userStatisticSinglePersonalClockInStatistics") }}</span>
-        <el-select v-model="where.status" clearable :placeholder="$t('ui.userStatisticSingleSelectClockInResult')" @change="getDataList">
+        <span class="title-k">{{ $("ui.userStatisticSinglePersonalClockInStatistics") }}</span>
+        <el-select v-model="where.status" clearable :placeholder="$('ui.userStatisticSingleSelectClockInResult')" @change="getDataList">
           <el-option v-for="item in options" :key="item.id" :label="item.name" :value="item.id"> </el-option>
         </el-select>
       </div>
       <!-- 表格 -->
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column :label="$t('ui.businessHolidayQueryIndexName')" prop="card.name"> </el-table-column>
-        <el-table-column :label="$t('ui.hrAttendanceSettingAddConentAttendanceShift')" min-width="150px" prop="name">
+        <el-table-column :label="$('ui.businessHolidayQueryIndexName')" prop="card.name"> </el-table-column>
+        <el-table-column :label="$('ui.hrAttendanceSettingAddConentAttendanceShift')" min-width="150px" prop="name">
           <template #default="{ row }">
             <div>{{ row.shift_data.name }}</div>
             <span>{{ getShift(row.shift_data) }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyDate')" prop="created_at" width="160">
+        <el-table-column :label="$('ui.hrAttendanceStatisticsDailyDate')" prop="created_at" width="160">
           <template #default="{ row }">
             {{ formatDate(row.created_at) }}
           </template>
         </el-table-column>
 
-        <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyClockIn1')">
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyEarliestClockIn')" min-width="150" prop="province">
+        <el-table-column :label="$('ui.hrAttendanceStatisticsDailyClockIn1')">
+          <el-table-column :label="$('ui.hrAttendanceStatisticsDailyEarliestClockIn')" min-width="150" prop="province">
             <template #default="{ row }">
-              <div v-if="row.one_shift_time">{{ row.one_shift_is_after ? $t('ui.hrAttendanceSettingAddConentNextDay') : $t('ui.hrAttendanceSettingAddConentToday') }}</div>
+              <div v-if="row.one_shift_time">{{ row.one_shift_is_after ? $('ui.hrAttendanceSettingAddConentNextDay') : $('ui.hrAttendanceSettingAddConentToday') }}</div>
               {{ formatTime(row.one_shift_time) }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" prop="city" width="120">
+          <el-table-column :label="$('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" prop="city" width="120">
             <template #default="{ row }">
               <span :class="row.one_shift_status > 1 || row.one_shift_location_status > 1 ? 'red' : ''">
                 {{ getStatus(row.one_shift_status, row.one_shift_location_status) }}
                 <span v-if="1 < row.one_shift_status < 5 && row.one_shift_normal !== 0"
-                  >-{{ row.one_shift_normal }}{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span
+                  >-{{ row.one_shift_normal }}{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span
                 >
               </span>
             </template>
           </el-table-column>
         </el-table-column>
-        <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyClockOut1')">
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyLatestClockIn')" prop="province" width="120">
+        <el-table-column :label="$('ui.hrAttendanceStatisticsDailyClockOut1')">
+          <el-table-column :label="$('ui.hrAttendanceStatisticsDailyLatestClockIn')" prop="province" width="120">
             <template #default="{ row }">
-              <div v-if="row.two_shift_time">{{ row.two_shift_is_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}</div>
+              <div v-if="row.two_shift_time">{{ row.two_shift_is_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}</div>
               {{ formatTime(row.two_shift_time) }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" prop="city" width="120">
+          <el-table-column :label="$('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" prop="city" width="120">
             <template #default="{ row }">
               <span :class="row.two_shift_status > 1 || row.two_shift_location_status > 0 ? 'red' : ''">
                 {{ getStatus(row.two_shift_status, row.two_shift_location_status) }}
                 <span v-if="1 < row.two_shift_status < 5 && row.two_shift_normal !== 0"
-                  >-{{ row.two_shift_normal }}{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span
+                  >-{{ row.two_shift_normal }}{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span
                 >
               </span>
             </template>
           </el-table-column>
         </el-table-column>
 
-        <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyClockIn2')">
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyEarliestClockIn')" prop="province" width="120">
+        <el-table-column :label="$('ui.hrAttendanceStatisticsDailyClockIn2')">
+          <el-table-column :label="$('ui.hrAttendanceStatisticsDailyEarliestClockIn')" prop="province" width="120">
             <template #default="{ row }">
-              <div v-if="row.three_shift_time">{{ row.three_shift_is_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}</div>
+              <div v-if="row.three_shift_time">{{ row.three_shift_is_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}</div>
               {{ formatTime(row.three_shift_time) }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" prop="city" width="120">
+          <el-table-column :label="$('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" prop="city" width="120">
             <template #default="{ row }">
               <span
                 v-if="row.three_shift_status"
@@ -124,21 +125,21 @@
               >
                 {{ getStatus(row.three_shift_status, row.three_shift_location_status) }}
                 <span v-if="1 < row.one_shift_status < 5 && row.three_shift_normal !== 0"
-                  >-{{ row.three_shift_normal }}{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span
+                  >-{{ row.three_shift_normal }}{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span
                 >
               </span>
               <span v-else>--</span>
             </template>
           </el-table-column>
         </el-table-column>
-        <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyClockOut2')">
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyLatestClockIn')" prop="province" width="120">
+        <el-table-column :label="$('ui.hrAttendanceStatisticsDailyClockOut2')">
+          <el-table-column :label="$('ui.hrAttendanceStatisticsDailyLatestClockIn')" prop="province" width="120">
             <template #default="{ row }">
-              <div v-if="row.four_shift_time">{{ row.four_shift_is_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}</div>
+              <div v-if="row.four_shift_time">{{ row.four_shift_is_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}</div>
               {{ formatTime(row.four_shift_time) }}
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" prop="city" width="120">
+          <el-table-column :label="$('ui.hrAttendanceStatisticsRecordDrawerClockInResult')" prop="city" width="120">
             <template #default="{ row }">
               <span
                 v-if="row.four_shift_status"
@@ -146,18 +147,18 @@
               >
                 {{ getStatus(row.four_shift_status, row.four_shift_location_status) }}
                 <span v-if="1 < row.one_shift_status < 5 && row.four_shift_normal !== 0"
-                  >-{{ row.four_shift_normal }}{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span
+                  >-{{ row.four_shift_normal }}{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span
                 >
               </span>
               <span v-else>--</span>
             </template>
           </el-table-column>
         </el-table-column>
-        <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyDurationStatisticsHours')">
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyRequiredAttendance')" prop="required_work_hours" width="120"> </el-table-column>
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyActualAttendance')" prop="actual_work_hours" width="120"> </el-table-column>
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyOvertimeHours')" prop="overtime_work_hours" width="120"> </el-table-column>
-          <el-table-column :label="$t('ui.hrAttendanceStatisticsDailyLeaveHours')" prop="leave_time" width="120"> </el-table-column>
+        <el-table-column :label="$('ui.hrAttendanceStatisticsDailyDurationStatisticsHours')">
+          <el-table-column :label="$('ui.hrAttendanceStatisticsDailyRequiredAttendance')" prop="required_work_hours" width="120"> </el-table-column>
+          <el-table-column :label="$('ui.hrAttendanceStatisticsDailyActualAttendance')" prop="actual_work_hours" width="120"> </el-table-column>
+          <el-table-column :label="$('ui.hrAttendanceStatisticsDailyOvertimeHours')" prop="overtime_work_hours" width="120"> </el-table-column>
+          <el-table-column :label="$('ui.hrAttendanceStatisticsDailyLeaveHours')" prop="leave_time" width="120"> </el-table-column>
         </el-table-column>
       </el-table>
 
@@ -175,7 +176,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { attendanceStatistics, individualStatistics } from '@/api/user'
 
 // 预加载图片资源，避免在渲染时多次加载
@@ -190,8 +190,6 @@ import single3 from '../../../assets/images/single3.png'
 import single4 from '../../../assets/images/single4.png'
 import single5 from '../../../assets/images/single5.png'
 import { divTime } from '@/utils'
-import { translateRuntimeText } from '@/utils/i18ns'
-
 const clockImages = {
   clock1,
   clock2,
@@ -244,18 +242,18 @@ export default {
         { id: 6, name: '地点异常' }
       ],
       clockInList: [
-        { num: 0, img: clockImages.clock1, title: i18n.t('legacyScript.lateTimes') },
-        { num: 0, img: clockImages.clock2, title: i18n.t('legacyScript.earlyLeaveTimes') },
-        { num: 0, img: clockImages.clock3, title: i18n.t('legacyScript.missingClockInTimes') },
-        { num: 0, img: clockImages.clock5, title: i18n.t('legacyScript.locationExceptionsTimes') },
-        { num: 0, img: clockImages.clock4, title: i18n.t('legacyScript.absenceDays') }
+        { num: 0, img: clockImages.clock1, title: $('legacyScript.lateTimes') },
+        { num: 0, img: clockImages.clock2, title: $('legacyScript.earlyLeaveTimes') },
+        { num: 0, img: clockImages.clock3, title: $('legacyScript.missingClockInTimes') },
+        { num: 0, img: clockImages.clock5, title: $('legacyScript.locationExceptionsTimes') },
+        { num: 0, img: clockImages.clock4, title: $('legacyScript.absenceDays') }
       ],
       attendanceList: [
-        { num: 0, img: clockImages.single1, title: i18n.t('legacyScript.leaveHours') },
-        { num: 0, img: clockImages.single2, title: i18n.t('legacyScript.businessTripDays') },
-        { num: 0, img: clockImages.single3, title: i18n.t('legacyScript.outOfOfficeHours') },
-        { num: 0, img: clockImages.single4, title: i18n.t('legacyScript.overtimeHours') },
-        { num: 0, img: clockImages.single5, title: i18n.t('legacyScript.clockInCorrectionsTimes') }
+        { num: 0, img: clockImages.single1, title: $('legacyScript.leaveHours') },
+        { num: 0, img: clockImages.single2, title: $('legacyScript.businessTripDays') },
+        { num: 0, img: clockImages.single3, title: $('legacyScript.outOfOfficeHours') },
+        { num: 0, img: clockImages.single4, title: $('legacyScript.overtimeHours') },
+        { num: 0, img: clockImages.single5, title: $('legacyScript.clockInCorrectionsTimes') }
       ],
 
       where: {
@@ -306,9 +304,6 @@ export default {
     this.initializeComponent()
   },
   methods: {
-    translateText(text) {
-      return translateRuntimeText(text, this)
-    },
     // 初始化组件
     initializeComponent() {
       const userInfo = this.getUserInfo()
@@ -335,7 +330,7 @@ export default {
         const userInfoStr = localStorage.getItem('userInfo')
         return userInfoStr ? JSON.parse(userInfoStr) : null
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToRetrieveUserInformation'), error)
+        console.error($('legacyScript.failedToRetrieveUserInformation'), error)
         return null
       }
     },
@@ -407,7 +402,7 @@ export default {
         this.tableData = result.data?.list || []
         this.totalPage = result.data?.count || 0
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToRetrievePersonalStatistics'), error)
+        console.error($('legacyScript.failedToRetrievePersonalStatistics'), error)
         this.tableData = []
         this.totalPage = 0
       }
@@ -449,7 +444,7 @@ export default {
           }
         })
         .catch((error) => {
-          console.error(i18n.t('legacyScript.failedToRetrieveAttendanceStatistics'), error)
+          console.error($('legacyScript.failedToRetrieveAttendanceStatistics'), error)
         })
     },
 
@@ -534,8 +529,8 @@ export default {
       const days = this.required_days || 0
 
       const dataArr = [
-        { value: normalDays, name: this.translateText('实际出勤(天)') },
-        { value: absenteeism, name: this.translateText('未出勤(天)') }
+        { value: normalDays, name: this.$('实际出勤(天)') },
+        { value: absenteeism, name: this.$('未出勤(天)') }
       ]
 
       this.optionData = {
@@ -567,7 +562,7 @@ export default {
             label: {
               show: true,
               position: 'center',
-              formatter: `${days}\n{name|${this.translateText('应出勤天数')}}`,
+              formatter: `${days}\n{name|${this.$('应出勤天数')}}`,
               color: '#333',
               textStyle: {
                 fontSize: 18,

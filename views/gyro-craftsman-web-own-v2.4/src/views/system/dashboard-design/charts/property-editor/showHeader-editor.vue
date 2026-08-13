@@ -1,5 +1,5 @@
 <template>
-	<el-form-item :label='$ts("显示标题栏")'>
+	<el-form-item :label='$("legacy.ea333f3119567b1f")'>
 		<el-switch v-model="optionModel.showHeader"></el-switch>
 	</el-form-item>
 </template>

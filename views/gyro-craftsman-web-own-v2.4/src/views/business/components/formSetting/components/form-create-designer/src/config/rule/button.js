@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 const label = '按钮';
 const name = 'el-button';
 
@@ -18,12 +18,12 @@ export default {
       {
         type: 'input',
         field: 'formCreateChild',
-        title: i18n.t('legacyScript.content'),
+        title: $('legacyScript.content'),
       },
       {
         type: 'select',
         field: 'size',
-        title: i18n.t('legacyScript.size'),
+        title: $('legacyScript.size'),
         options: [
           { label: 'medium', value: 'medium' },
           { label: 'small', value: 'small' },
@@ -36,7 +36,7 @@ export default {
       {
         type: 'select',
         field: 'type',
-        title: i18n.t('file.type'),
+        title: $('file.type'),
         options: [
           { label: 'primary', value: 'primary' },
           {
@@ -52,23 +52,23 @@ export default {
           { label: 'text', value: 'text' },
         ],
       },
-      { type: 'switch', field: 'plain', title: i18n.t('legacyScript.plainButton') },
+      { type: 'switch', field: 'plain', title: $('legacyScript.plainButton') },
       {
         type: 'switch',
         field: 'round',
-        title: i18n.t('legacyScript.roundedButton'),
+        title: $('legacyScript.roundedButton'),
       },
-      { type: 'switch', field: 'circle', title: i18n.t('legacyScript.circleButton') },
+      { type: 'switch', field: 'circle', title: $('legacyScript.circleButton') },
       {
         type: 'switch',
         field: 'loading',
-        title: i18n.t('legacyScript.loadingState'),
+        title: $('legacyScript.loadingState'),
       },
-      { type: 'switch', field: 'disabled', title: i18n.t('legacyScript.disabledState') },
+      { type: 'switch', field: 'disabled', title: $('legacyScript.disabledState') },
       {
         type: 'input',
         field: 'icon',
-        title: i18n.t('legacyScript.iconClassName'),
+        title: $('legacyScript.iconClassName'),
       },
     ];
   },

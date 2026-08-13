@@ -1,17 +1,18 @@
-﻿<!-- 财务-付款审核页面 -->
+import { $ } from '@/lang'
+<!-- 财务-付款审核页面 -->
 <template>
 <div class="divBox">
   <el-card class="mb14 normal-page">
     <div class="from-s">
       <div class="flex-row flex-col">
-        <el-button class="mb20" size="small" @click="getExportData"> {{ $t("ui.fdExamineIndexExport") }} </el-button>
+        <el-button class="mb20" size="small" @click="getExportData"> {{ $("ui.fdExamineIndexExport") }} </el-button>
         <formBox ref="formBox" :activeName="activeName" @confirmData="confirmData" />
       </div>
     </div>
 
     <div class="splitLine"></div>
     <div class="mt10">
-      <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+      <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
 
       <el-table
         :data="tableData"
@@ -21,34 +22,34 @@
         default-expand-all
         @sort-change="sortChange"
       >
-        <el-table-column prop="date" min-width="150" sortable :label="$t('ui.customerContractContractPaymentPaymentTime')" />
-        <el-table-column prop="bill_types" :label="$t('ui.customerContractContractPaymentRecordType')" min-width="90">
+        <el-table-column prop="date" min-width="150" sortable :label="$('ui.customerContractContractPaymentPaymentTime')" />
+        <el-table-column prop="bill_types" :label="$('ui.customerContractContractPaymentRecordType')" min-width="90">
           <template slot-scope="scope">
             <el-tag :type="scope.row.types == 2 ? 'warning' : 'success'">{{
-              scope.row.types == 2 ? $t('ui.customerContractContractPaymentExpense') : $t('ui.customerContractContractPaymentIncome')
+              scope.row.types == 2 ? $('ui.customerContractContractPaymentExpense') : $('ui.customerContractContractPaymentIncome')
             }}</el-tag>
           </template>
         </el-table-column>
 
-        <el-table-column prop="num" min-width="90" :label="$t('ui.invoiceInvoiceDetailsPaymentAmountYuan')" />
-        <el-table-column prop="pay_type" min-width="100" :label="$t('ui.customerContractContractPaymentPaymentMethod')">
+        <el-table-column prop="num" min-width="90" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" />
+        <el-table-column prop="pay_type" min-width="100" :label="$('ui.customerContractContractPaymentPaymentMethod')">
           <template slot-scope="scope">
             <span>{{ scope.row.pay_type !== '' ? scope.row.pay_type : '--' }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="treaty.contract_name" :label="$t('ui.invoiceInvoiceDetailsOrderName')" min-width="120"> </el-table-column>
-        <el-table-column prop="treaty.contract_no" :label="$t('ui.customerListContractOrderNo')" min-width="100"> </el-table-column>
-        <el-table-column prop="created_at" :label="$t('ui.customerContractContractInvoiceApplicationTime')" min-width="140"> </el-table-column>
+        <el-table-column prop="treaty.contract_name" :label="$('ui.invoiceInvoiceDetailsOrderName')" min-width="120"> </el-table-column>
+        <el-table-column prop="treaty.contract_no" :label="$('ui.customerListContractOrderNo')" min-width="100"> </el-table-column>
+        <el-table-column prop="created_at" :label="$('ui.customerContractContractInvoiceApplicationTime')" min-width="140"> </el-table-column>
 
-        <el-table-column prop="status" min-width="120" :label="$t('ui.customerContractContractPaymentPaymentReviewStatus')">
+        <el-table-column prop="status" min-width="120" :label="$('ui.customerContractContractPaymentPaymentReviewStatus')">
           <template slot-scope="scope">
-            <el-tag v-if="scope.row.status === 0" type="warning" size="mini"> {{ $t('customer.audit') }}</el-tag>
-            <el-tag v-if="scope.row.status === 1" type="info" size="mini"> {{ $t('customer.passed') }}</el-tag>
+            <el-tag v-if="scope.row.status === 0" type="warning" size="mini"> {{ $('customer.audit') }}</el-tag>
+            <el-tag v-if="scope.row.status === 1" type="info" size="mini"> {{ $('customer.passed') }}</el-tag>
             <el-popover v-if="scope.row.status === 2" trigger="hover" placement="top">
-              <p>{{ $t('customer.reason') }}:</p>
+              <p>{{ $('customer.reason') }}:</p>
               <p>{{ scope.row.fail_msg }}</p>
               <div slot="reference">
-                <el-tag type="danger" size="mini"> {{ $t('customer.fail') }}</el-tag>
+                <el-tag type="danger" size="mini"> {{ $('customer.fail') }}</el-tag>
               </div>
             </el-popover>
           </template>
@@ -58,47 +59,47 @@
           prop="address"
           fixed="right"
           v-if="activeName == '1'"
-          :label="$t('public.operation')"
+          :label="$('public.operation')"
           min-width="160"
         >
           <template slot-scope="scope">
-            <el-button type="text" @click="handleCheck(scope.row)" v-hasPermi="['fd:examine:check']">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+            <el-button type="text" @click="handleCheck(scope.row)" v-hasPermi="['fd:examine:check']">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
 
-            <el-button type="text" @click="handleContract(scope.row, '')">{{ $t("ui.customerListApplyForPaymentApprove") }}</el-button>
-            <el-button type="text" @click="refuse(scope.row)">{{ $t("ui.settingEnterpriseUpgradeIndexRefuse") }}</el-button>
+            <el-button type="text" @click="handleContract(scope.row, '')">{{ $("ui.customerListApplyForPaymentApprove") }}</el-button>
+            <el-button type="text" @click="refuse(scope.row)">{{ $("ui.settingEnterpriseUpgradeIndexRefuse") }}</el-button>
           </template>
         </el-table-column>
         <el-table-column
           prop="address"
           fixed="right"
           v-if="activeName == '2'"
-          :label="$t('public.operation')"
+          :label="$('public.operation')"
           min-width="180"
         >
           <template slot-scope="scope">
-            <el-button type="text" @click="handleCheck(scope.row)" v-hasPermi="['fd:examine:check']">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+            <el-button type="text" @click="handleCheck(scope.row)" v-hasPermi="['fd:examine:check']">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
             <el-button
               type="text"
               v-if="scope.row.status !== 0"
               @click="handleContract(scope.row, 'edit')"
               v-hasPermi="['fd:examine:edit']"
-              >{{ $t("ui.formCommonOaLogEdit") }}</el-button
+              >{{ $("ui.formCommonOaLogEdit") }}</el-button
             >
             <el-dropdown v-if="scope.row.status !== 0 && scope.row.invoice_id == 0">
               <span class="el-dropdown-link el-button--text el-button">
-                {{ $t('hr.more') }}
+                {{ $('hr.more') }}
               </span>
               <el-dropdown-menu>
-                <el-dropdown-item @click.native="withdraw(scope.row)">{{ $t("ui.fdExamineIndexRecallApproval") }} </el-dropdown-item>
-                <el-dropdown-item @click.native="handleDelete(scope.row)">{{ $t("ui.chatIndexDelete") }} </el-dropdown-item>
+                <el-dropdown-item @click.native="withdraw(scope.row)">{{ $("ui.fdExamineIndexRecallApproval") }} </el-dropdown-item>
+                <el-dropdown-item @click.native="handleDelete(scope.row)">{{ $("ui.chatIndexDelete") }} </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
             <template v-else>
-              <el-button type="text" v-if="scope.row.status !== 0" @click="handleDelete(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" v-if="scope.row.status !== 0" @click="handleDelete(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
             </template>
 
-            <el-button v-if="scope.row.status == 0" type="text" @click="handleContract(scope.row)">{{ $t("ui.customerListApplyForPaymentApprove") }}</el-button>
-            <el-button type="text" v-if="scope.row.status == 0" @click="refuse(scope.row)">{{ $t("ui.settingEnterpriseUpgradeIndexRefuse") }}</el-button>
+            <el-button v-if="scope.row.status == 0" type="text" @click="handleContract(scope.row)">{{ $("ui.customerListApplyForPaymentApprove") }}</el-button>
+            <el-button type="text" v-if="scope.row.status == 0" @click="refuse(scope.row)">{{ $("ui.settingEnterpriseUpgradeIndexRefuse") }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -132,8 +133,8 @@
         <el-input type="textarea" v-model="form.remarks"></el-input>
       </el-form-item>
       <div class="footer">
-        <el-button size="small" class="btn" @click="cancelFn">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button size="small" type="primary" @click="submitFn" class="btn">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+        <el-button size="small" class="btn" @click="cancelFn">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button size="small" type="primary" @click="submitFn" class="btn">{{ $("ui.formCommonDialogFormOk") }}</el-button>
       </div>
     </el-form>
   </el-dialog>
@@ -162,7 +163,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { clientBillListApi, getbillCate, billCateApi, billDelFinanceApi } from '@/api/enterprise'
 import { clientBillStatusApi } from '@/api/client'
 
@@ -191,8 +191,8 @@ export default {
     return {
       tableData: [],
       dialogVisible: false,
-      reason: this.$ts('拒绝原因'),
-      title: i18n.t('ui.settingAuthAuthIndexReviewRejected'),
+      reason: '拒绝原因',
+      title: $('ui.settingAuthAuthIndexReviewRejected'),
       paymentType: '',
       form: {
         remarks: ''
@@ -214,7 +214,7 @@ export default {
       statusOptions: [],
       catePath: [],
       rules: {
-        remarks: [{ required: true, message: i18n.t('legacyScript.pleaseEnterRefuseReason'), trigger: 'blur' }]
+        remarks: [{ required: true, message: $('legacyScript.pleaseEnterRefuseReason'), trigger: 'blur' }]
       },
 
       where: {
@@ -280,7 +280,7 @@ export default {
         this.paymentType = ''
       }
       this.fromData = {
-        title: this.$t('customer.viewcustomer'),
+        title: this.$('customer.viewcustomer'),
         width: '500px',
         data: item,
         isClient: false,
@@ -294,7 +294,7 @@ export default {
       let data = {
         status: -1
       }
-      await this.$modalSure(this.$ts('确认撤回审核状态吗'))
+      await this.$modalSure('确认撤回审核状态吗')
       await clientBillStatusApi(row.id, data)
       this.getTableData()
     },
@@ -320,51 +320,44 @@ export default {
         no_withdraw: this.where.no_withdraw
       }
       clientBillListApi(where).then((res) => {
-  const data = res.data.list
+        let data = res.data.list
+        let aoaData = [
+          ['付款时间', '付款金额', '支付方式', '备注', '业务类型', '客户名称', '订单名称', '订单编号', '业务员']
+        ]
+        if (data.length > 0) {
+          data.forEach((value) => {
+            if (value.types == 0) {
+              value.types = '回款记录'
+            } else {
+              if (value.renew) {
+                value.types = '续费记录' + '-' + value.renew
+              } else {
+                value.types = '续费记录'
+              }
+            }
 
-  const aoaData = [
-    [
-      this.$ts('付款时间'),
-      this.$ts('付款金额'),
-      this.$ts('支付方式'),
-      this.$ts('备注'),
-      this.$ts('业务类型'),
-      this.$ts('客户名称'),
-      this.$ts('订单名称'),
-      this.$ts('订单编号'),
-      this.$ts('业务员')
-    ]
-  ]
+            aoaData.push([
+              value.date,
+              value.num,
+              value.pay_type,
+              value.mark,
+              value.types,
+              value.client ? value.client.name : '',
+              value.treaty ? value.treaty.title : '',
+              value.treaty ? value.treaty.contract_no : '',
+              value.card ? value.card.name : ''
+            ])
+          })
 
-  if (data.length > 0) {
-    data.forEach((value) => {
-      let typeText
+          this.exportData.data = aoaData
+          this.$refs.exportExcel.exportExcel()
+        }
+      })
 
-      if (value.types === 0) {
-        typeText = this.$ts('回款记录')
-      } else if (value.renew) {
-        typeText = `${this.$ts('续费记录')}-${value.renew}`
-      } else {
-        typeText = this.$ts('续费记录')
-      }
-
-      aoaData.push([
-        value.date,
-        value.num,
-        value.pay_type,
-        value.mark,
-        typeText,
-        value.client ? value.client.name : '',
-        value.treaty ? value.treaty.title : '',
-        value.treaty ? value.treaty.contract_no : '',
-        value.card ? value.card.name : ''
-      ])
-    })
-
-    this.exportData.data = aoaData
-    this.$refs.exportExcel.exportExcel()
-  }
-})
+      this.where.page = 1
+      this.where.limit = 10
+      this.getTableData()
+    },
 
     submitFn() {
       let data = {
@@ -397,9 +390,9 @@ export default {
     handleContract(row, type) {
       this.catePath = []
       this.getbillCate(row.cid)
-      let str = this.$ts('审核通过')
+      let str = '审核通过'
       if (type === 'edit') {
-        str = this.$ts('编辑账目记录')
+        str = '编辑账目记录'
       }
       setTimeout(() => {
         this.operationDialog = {
@@ -434,11 +427,11 @@ export default {
     getStatus(id) {
       let str = ''
       if (id === 0) {
-        str = this.$t('customer.audit')
+        str = this.$('customer.audit')
       } else if (id === 1) {
-        str = this.$t('customer.passed')
+        str = this.$('customer.passed')
       } else {
-        str = this.$t('customer.fail')
+        str = this.$('customer.fail')
       }
       return str
     },
@@ -451,7 +444,7 @@ export default {
 
     // 删除
     async handleDelete(item) {
-      await this.$modalSure(this.$t('finance.message5'))
+      await this.$modalSure(this.$('finance.message5'))
       await billDelFinanceApi(item.id)
       this.getTableData()
     },
@@ -459,7 +452,7 @@ export default {
     // 编辑
     async handleEdit(item) {
       this.config = {
-        title: this.$t('customer.fundaudit'),
+        title: this.$('customer.fundaudit'),
         width: '480px',
         type: 1,
         data: item

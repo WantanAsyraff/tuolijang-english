@@ -8,16 +8,16 @@
     >
       <el-form ref="form" :model="rules" :rules="rule" label-width="100px">
         <el-form-item prop="title">
-          <span v-if="repeatData.title == '添加类目' || repeatData.title == '编辑类目'" slot="label">{{ $ts("类目名称：") }}</span>
+          <span v-if="repeatData.title == '添加类目' || repeatData.title == '编辑类目'" slot="label">{{ $("legacy.2b05e9c1a3c2ba22") }}</span>
           <span v-else slot="label"
-            >{{ repeatData.label === 1 ? $t('customer.typename') : $t('customer.labelename') }}：</span
+            >{{ repeatData.label === 1 ? $('customer.typename') : $('customer.labelename') }}：</span
           >
           <el-input
             v-if="repeatData.title == '添加分类'"
             v-model="rules.title"
             maxlength="16"
             show-word-limit
-            :placeholder='$ts("请输入分类名称")'
+            :placeholder='$("customer.placeholder03")'
           />
           <el-input
             v-else
@@ -28,21 +28,21 @@
           />
         </el-form-item>
         <el-form-item>
-          <span slot="label">{{ $t('toptable.sort') }}：</span>
+          <span slot="label">{{ $('toptable.sort') }}：</span>
           <el-input-number
             :controls="false"
             :min="0"
             :max="999999"
             v-model="rules.sort"
-            :placeholder="$t('customer.placeholder04')"
+            :placeholder="$('customer.placeholder04')"
           />
         </el-form-item>
       </el-form>
 
       <div slot="footer" class="dialog-footer">
-        <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
+        <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
         <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{
-          $t('public.ok')
+          $('public.ok')
         }}</el-button>
       </div>
     </el-dialog>
@@ -77,7 +77,7 @@ export default {
         sort: 0
       },
       rule: {
-        title: [{ required: true, message: this.$t('customer.message02'), trigger: 'blur' }]
+        title: [{ required: true, message: this.$('customer.message02'), trigger: 'blur' }]
       },
       key: 'cate',
       loading: false
@@ -112,11 +112,11 @@ export default {
     },
     placeholderFn(type) {
       if (type == 1) {
-        return this.$t('customer.placeholder03')
+        return this.$('customer.placeholder03')
       } else if (type == 3) {
         return '请输入类目名称'
       } else {
-        return this.$t('customer.placeholder05')
+        return this.$('customer.placeholder05')
       }
     },
 

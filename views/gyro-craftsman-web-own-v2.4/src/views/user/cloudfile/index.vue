@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox" @click="isSortShow = false">
     <!-- 云盘主页面 -->
@@ -121,7 +122,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 // 导入辅助工具库
 import helper from '@/libs/helper'
 // 导入云存储上传工具
@@ -210,7 +210,7 @@ export default {
       fileData: {},
       fileTemp: {
         type: 1,
-        title: this.$t('file.selecttemplate'),
+        title: this.$('file.selecttemplate'),
         width: '820px'
       },
       isSortShow: false,
@@ -247,7 +247,7 @@ export default {
         const xmindFile = await generateXmindFile(data.name + '.xmind')
         const res = await this.handleUpload(xmindFile, true)
         if (res.status === 200) {
-          this.$message.success(i18n.t('legacyScript.createSuccess'))
+          this.$message.success($('legacyScript.createSuccess'))
           success()
         } else {
           error()
@@ -411,7 +411,7 @@ export default {
       document.execCommand('Copy')
       oInput.style.display = 'none'
       document.body.removeChild(oInput)
-      this.$message.success(i18n.t('legacyScript.shareLinkCopiedSuccessfullyPleasePasteAndUseIt'))
+      this.$message.success($('legacyScript.shareLinkCopiedSuccessfullyPleasePasteAndUseIt'))
     },
 
     formBoxClick(type, val, index) {
@@ -574,7 +574,7 @@ export default {
           this.entButton = true
           setTimeout(() => {
             this.$refs.spaceFile.where.pid = ''
-            this.$refs.spaceFile.breadcrumbArray = [{ name: this.$t('file.allfiles'), pid: '' }]
+            this.$refs.spaceFile.breadcrumbArray = [{ name: this.$('file.allfiles'), pid: '' }]
             this.$refs.spaceFile.checked = false
             this.$refs.spaceFile.menuIds = []
             this.$refs.spaceFile.where.page = 1
@@ -622,7 +622,7 @@ export default {
     handleScreen(command) {
       if (command == 5) {
         this.configMyFile = {
-          title: this.$t('file.newfolder'),
+          title: this.$('file.newfolder'),
           pid: this.pid,
           command: command,
           switch: this.switchIndex,
@@ -636,16 +636,16 @@ export default {
         var title = ''
         var type = ''
         if (command == 1) {
-          title = this.$t('file.newdocument')
+          title = this.$('file.newdocument')
           type = 'word'
         } else if (command == 2) {
-          title = this.$t('file.newtable')
+          title = this.$('file.newtable')
           type = 'excel'
         } else if (command == 9) {
-          title = this.$t('file.newmindmap')
+          title = this.$('file.newmindmap')
           type = 'mindmap'
         } else {
-          title = this.$t('file.newslide')
+          title = this.$('file.newslide')
           type = 'ppt'
         }
         this.configMyFile = {
@@ -708,7 +708,7 @@ export default {
 
     allDelete(type) {
       if (this.ids.length <= 0) {
-        this.$message.error(this.$t('file.placeholder05'))
+        this.$message.error(this.$('file.placeholder05'))
       } else {
         const uids = this.ids
         if (uids.length > 0 && uids[0] === 0) {
@@ -737,7 +737,7 @@ export default {
 
     allDestroy() {
       if (this.ids.length <= 0) {
-        this.$message.error(this.$t('file.placeholder06'))
+        this.$message.error(this.$('file.placeholder06'))
       } else {
         const uids = this.ids
         if (uids.length > 0 && uids[0] === 0) {
@@ -754,7 +754,7 @@ export default {
 
     allMove() {
       if (this.ids.length <= 0) {
-        this.$message.error(this.$t('file.placeholder07'))
+        this.$message.error(this.$('file.placeholder07'))
       } else {
         const uids = this.ids
         if (uids.length > 0 && uids[0] === 0) {

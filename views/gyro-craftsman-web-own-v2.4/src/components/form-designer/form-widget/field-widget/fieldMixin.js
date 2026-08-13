@@ -281,7 +281,7 @@ export default {
             'blur'
           ]
           /* 去掉change事件触发校验，change事件触发时formModel数据尚未更新，导致radio/checkbox必填校验出错！！ */,
-          message: this.field.options.requiredHint || this.field.options.label + this.i18nt('render.hint.fieldRequired')
+          message: this.field.options.requiredHint || this.field.options.label + this.$('render.hint.fieldRequired')
         }
         if(this.field.type == 'cascader-radio') d.trigger.push('change')
         this.rules.push(d)
@@ -550,7 +550,7 @@ return false
     getWidgetRef(widgetName, showError) {
       let foundRef = this.refList[widgetName]
       if (!foundRef && !!showError) {
-        this.$message.error(this.i18nt('render.hint.refNotFound') + widgetName)
+        this.$message.error(this.$('render.hint.refNotFound') + widgetName)
       }
       return foundRef
     },

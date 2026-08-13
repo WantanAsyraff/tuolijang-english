@@ -1,7 +1,6 @@
+import { $ } from '@/lang'
 import request from '@/api/request'
 import Vue from 'vue'
-import { translateRuntimeText } from '@/utils/i18ns'
-
 const TRANSLATABLE_SCHEMA_KEYS = new Set([
   'title',
   'label',
@@ -19,7 +18,7 @@ export function localizeFormSchema(value, ctx, parentKey = '', englishValue) {
   if (Array.isArray(value)) return value.map((item) => localizeFormSchema(item, ctx, parentKey))
   if (!value || typeof value !== 'object') {
     return typeof value === 'string' && TRANSLATABLE_SCHEMA_KEYS.has(parentKey)
-      ? translateRuntimeText(value, ctx, englishValue)
+      ? (ctx && ctx.$ ? ctx.$(value, englishValue) : $(value, englishValue))
       : value
   }
   return Object.keys(value).reduce((result, key) => {
@@ -46,8 +45,8 @@ export default function modalForm(formRequestPromise, config = {}) {
         data.config.submitBtn = false
         data.config.resetBtn = false
         if (!data.config.form) data.config.form = {}
-        data.config.form.labelSuffix = this.$i18n && this.$i18n.locale === 'en' ? ':' : '：'
-        data.config.form.labelWidth = this.$i18n && this.$i18n.locale === 'en' ? '190px' : '90px'
+        data.config.form.labelSuffix = this.$language === 'en' ? ':' : '：'
+        data.config.form.labelWidth = this.$language === 'en' ? '190px' : '90px'
         if (!data.config.formData) data.config.formData = {}
         data.config.formData = { ...data.config.formData, ...config.formData }
         data.config.global = {
@@ -131,7 +130,7 @@ export default function modalForm(formRequestPromise, config = {}) {
         })
       })
       .catch((e) => {
-        this.$message.error(this.$ts(e.message || '获取表单配置失败'))
+        this.$message.error(this.$(e.message || '获取表单配置失败'))
       })
   })
 }

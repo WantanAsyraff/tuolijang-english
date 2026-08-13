@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 订单-添加订单记录附件弹窗组件 -->
 <template>
   <div class="followUpRecord">
@@ -8,7 +9,7 @@
       <div class="right">
         <div class="box" @click="focusFn">
           <el-input
-            :placeholder='$ts("填写备注信息吧")'
+            :placeholder='$("legacy.5df2d21475e12922")'
             ref="inoutFocus"
             autosize
             type="textarea"
@@ -39,15 +40,15 @@
               :headers="myHeaders"
               :http-request="uploadServerLog"
             >
-              <div class="addText" v-if="!percentShow"><span class="iconfont iconfujian"></span> {{ $ts("添加附件") }}</div>
+              <div class="addText" v-if="!percentShow"><span class="iconfont iconfujian"></span> {{ $("ui.customerWeChatMassMaterialContentAddAttachment") }}</div>
               <div class="addText" v-else>
                 <img src="../../../../assets/images/loading.gif" alt="" class="l_gif" />
               </div>
             </el-upload>
           </el-col>
           <el-col :span="12" class="text-right">
-            <el-button size="small" v-if="formInfo.type === 'edit'" @click="clientCancel">{{ $ts("取消") }}</el-button>
-            <el-button type="primary" size="small" @click="clientFollowSave">{{ $ts("确定") }}</el-button>
+            <el-button size="small" v-if="formInfo.type === 'edit'" @click="clientCancel">{{ $("public.cancel") }}</el-button>
+            <el-button type="primary" size="small" @click="clientFollowSave">{{ $("public.ok") }}</el-button>
           </el-col>
         </el-row>
       </div>
@@ -56,7 +57,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { contracFileEditApi, contracFileSaveApi } from '@/api/client'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
 import { uploader } from '@/utils/uploadCloud'
@@ -97,7 +97,7 @@ export default {
       },
 
       rules: {
-        content: [{ required: true, message: i18n.t('legacyScript.pleaseEnterRecordDescription'), trigger: 'blur' }]
+        content: [{ required: true, message: $('legacyScript.pleaseEnterRecordDescription'), trigger: 'blur' }]
       },
       uploadData: {},
 
@@ -171,7 +171,7 @@ export default {
     clientFollowSave() {
       this.form.attach_ids = []
       if (!this.form.content) {
-        return this.$message.error(i18n.t('legacyScript.recordDescriptionCannotBeEmpty'))
+        return this.$message.error($('legacyScript.recordDescriptionCannotBeEmpty'))
       }
       if (this.uploadList.length > 0) {
         this.uploadList.map((value) => {

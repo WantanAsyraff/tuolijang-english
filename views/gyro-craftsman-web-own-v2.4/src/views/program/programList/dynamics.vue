@@ -1,13 +1,14 @@
+import { $ } from '@/lang'
 <!-- 项目-我的项目-项目动态页面 -->
 <template>
 <div>
   <div class="divBox bill-type">
-    <div class="title">{{ $t("ui.programProgramListDynamicsActivityList") }}</div>
+    <div class="title">{{ $("ui.programProgramListDynamicsActivityList") }}</div>
     <el-form :inline="true">
       <div class="flex">
         <template>
           <el-form-item class="grey-bg" style="border: none; margin-left: 0; width: 150px"
-            ><el-select v-model="type" size="small" :placeholder="$t('finance.pleaseselect')">
+            ><el-select v-model="type" size="small" :placeholder="$('finance.pleaseselect')">
               <el-option
                 v-for="(item, index) in typesOptions"
                 :key="index"
@@ -16,7 +17,7 @@
               /> </el-select
           ></el-form-item>
           <el-form-item
-            ><span class="num">{{ $t("ui.developModuleFormBoxTotal") }} {{ type == 1 ? projectTotal : taskTotal }} {{ $t("ui.developModuleFormBoxItems") }}</span></el-form-item
+            ><span class="num">{{ $("ui.developModuleFormBoxTotal") }} {{ type == 1 ? projectTotal : taskTotal }} {{ $("ui.developModuleFormBoxItems") }}</span></el-form-item
           >
           <el-form-item class="select-bar">
             <el-date-picker
@@ -26,9 +27,9 @@
               clearable
               :format="'yyyy/MM/dd'"
               :value-format="'yyyy/MM/dd'"
-              :range-separator="$t('toptable.to')"
-              :start-placeholder="$t('toptable.startdate')"
-              :end-placeholder="$t('toptable.endingdate')"
+              :range-separator="$('toptable.to')"
+              :start-placeholder="$('toptable.startdate')"
+              :end-placeholder="$('toptable.endingdate')"
               @change="selectChange"
             ></el-date-picker>
           </el-form-item>
@@ -37,14 +38,14 @@
               <select-member
                 :value="userList || []"
                 :is-search="true"
-                :placeholder="$t('ui.programProgramListDynamicsPleaseSelectOperator')"
+                :placeholder="$('ui.programProgramListDynamicsPleaseSelectOperator')"
                 @getSelectList="getSelectList"
               ></select-member>
             </div>
           </el-form-item>
         </template>
         <el-form-item>
-          <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+          <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
             <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
           </el-tooltip>
         </el-form-item>
@@ -60,13 +61,13 @@
         :header-cell-style="{ background: '#f7fbff' }"
         :row-class-name="iconHadler"
       >
-        <el-table-column prop="created_at" :label="$t('ui.administrationMaterialFixedLogOperationTime')" min-width="150" />
-        <el-table-column prop="operator" :label="$t('ui.administrationMaterialChartIndexOperator')" min-width="100" />
-        <el-table-column prop="title" :label="$t('ui.programProgramListDynamicsOperationDescription')" min-width="600">
+        <el-table-column prop="created_at" :label="$('ui.administrationMaterialFixedLogOperationTime')" min-width="150" />
+        <el-table-column prop="operator" :label="$('ui.administrationMaterialChartIndexOperator')" min-width="100" />
+        <el-table-column prop="title" :label="$('ui.programProgramListDynamicsOperationDescription')" min-width="600">
           <template slot-scope="scope">
             <span v-html="scope.row.title"></span>
             <span v-if="type == 2 && scope.row.task" class="pointer click-info" @click="taskInfo(scope.row)">
-              #{{ scope.row.task.ident }} {{ scope.row.task.name }}{{ $t("ui.programProgramListDynamicsClickToViewDetails") }}
+              #{{ scope.row.task.ident }} {{ scope.row.task.name }}{{ $("ui.programProgramListDynamicsClickToViewDetails") }}
             </span>
           </template>
         </el-table-column>
@@ -140,7 +141,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   getDynamicApi,
   getDynamicTaskApi,
@@ -193,11 +193,11 @@ export default {
       activeName: '1',
       typesOptions: [
         {
-          label: i18n.t('legacyScript.projectActivity'),
+          label: $('legacyScript.projectActivity'),
           value: 1
         },
         {
-          label: i18n.t('legacyScript.taskUpdates'),
+          label: $('legacyScript.taskUpdates'),
           value: 2
         }
       ]

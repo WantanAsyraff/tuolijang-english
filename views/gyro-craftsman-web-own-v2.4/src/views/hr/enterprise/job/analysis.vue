@@ -10,7 +10,7 @@
             <el-input
               v-model="filterText"
               clearable
-              :placeholder="$t('ui.hrEnterpriseJobAnalysisSearchDepartment')"
+              :placeholder="$('ui.hrEnterpriseJobAnalysisSearchDepartment')"
               prefix-icon="el-icon-search"
               size="small"
             />
@@ -43,7 +43,7 @@
           :isAddBtn="false"
           :isViewSearch="false"
           :search="search"
-          :title="$t('ui.hrEnterpriseJobAnalysisWorkAnalysis')"
+          :title="$('ui.hrEnterpriseJobAnalysisWorkAnalysis')"
           :total="totalSubmit"
           @confirmData="confirmData"
         ></oaFromBox>
@@ -51,34 +51,34 @@
         <div v-loading="loading" class="mt10">
           <el-table :data="tableData" :height="tableHeight" class="table" style="width: 100%">
             <el-table-column type="index" width="50"> </el-table-column>
-            <el-table-column :label="$t('ui.hrAttendanceSettingNotJoinPersonName')" prop="name"> </el-table-column>
-            <el-table-column :label="$t('ui.hrAssessConfigAssessBoxPosition')" prop="job.name"> </el-table-column>
-            <el-table-column :label="$t('ui.businessHolidayQueryIndexDepartment')" prop="frame.name">
+            <el-table-column :label="$('ui.hrAttendanceSettingNotJoinPersonName')" prop="name"> </el-table-column>
+            <el-table-column :label="$('ui.hrAssessConfigAssessBoxPosition')" prop="job.name"> </el-table-column>
+            <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" prop="frame.name">
               <template slot-scope="scope">
                 <div v-for="(item, index) in scope.row.frames" :key="index" class="frame-name over-text">
                   <span class="icon-h">
                     {{ item.name
-                    }}<span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$t('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $t("ui.formCommonSelectDepartmentMain") }}</span>
+                    }}<span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $("ui.formCommonSelectDepartmentMain") }}</span>
                   </span>
                 </div>
               </template>
             </el-table-column>
-            <el-table-column :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" prop="updated_at"> </el-table-column>
-            <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="130">
+            <el-table-column :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" prop="updated_at"> </el-table-column>
+            <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="130">
               <template slot-scope="scope">
                 <el-button
                   v-hasPermi="['hr:enterprise:analysis:check']"
                   size="small"
                   type="text"
                   @click="onCheck(scope.row)"
-                  >{{ $t("ui.layoutNoticeNoticeListView") }}</el-button
+                  >{{ $("ui.layoutNoticeNoticeListView") }}</el-button
                 >
                 <el-button
                   v-hasPermi="['hr:enterprise:analysis:edit']"
                   size="small"
                   type="text"
                   @click="onEdit(scope.row)"
-                  >{{ $t("ui.formCommonOaLogEdit") }}</el-button
+                  >{{ $("ui.formCommonOaLogEdit") }}</el-button
                 >
               </template>
             </el-table-column>
@@ -100,7 +100,7 @@
   </el-card>
 
   <!-- 查看 -->
-  <el-drawer :before-close="handleClose" :visible.sync="checkDrawer" direction="rtl" size="60%" :title="$t('ui.hrEnterpriseJobAnalysisWorkAnalysis')">
+  <el-drawer :before-close="handleClose" :visible.sync="checkDrawer" direction="rtl" size="60%" :title="$('ui.hrEnterpriseJobAnalysisWorkAnalysis')">
     <div v-if="detailData" class="check-box">
       <div class="content mt14">
         <ueditorFrom :content="detailData" :readOnly="true" height="88vh" type="notepad" border />
@@ -118,11 +118,11 @@
     :wrapperClosable="false"
     direction="rtl"
     size="61%"
-    :title="$t('ui.hrEnterpriseJobAnalysisEditWorkAnalysisForm')"
+    :title="$('ui.hrEnterpriseJobAnalysisEditWorkAnalysisForm')"
   >
     <div class="check-box">
       <div class="user-name">
-        <span>{{ $t("ui.hrEnterpriseJobAnalysisPersonName") }}</span>
+        <span>{{ $("ui.hrEnterpriseJobAnalysisPersonName") }}</span>
         <span class="text">{{ userName }}</span>
       </div>
 
@@ -138,8 +138,8 @@
       </div>
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button size="small" @click="editDrawer = false">{{ $t('public.cancel') }}</el-button>
-      <el-button :loading="saveLoading" size="small" type="primary" @click="handleConfirm">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button size="small" @click="editDrawer = false">{{ $('public.cancel') }}</el-button>
+      <el-button :loading="saveLoading" size="small" type="primary" @click="handleConfirm">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </el-drawer>
 </div>

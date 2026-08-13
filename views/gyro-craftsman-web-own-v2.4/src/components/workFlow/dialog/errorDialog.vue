@@ -1,16 +1,16 @@
 <template>
-<el-dialog :title="$t('ui.workFlowDialogErrorDialogHint')" :visible.sync="visibleDialog">
+<el-dialog :title="$('ui.workFlowDialogErrorDialogHint')" :visible.sync="visibleDialog">
   <div class="ant-confirm-body">
     <i class="anticon anticon-close-circle" style="color: #f00"></i>
-    <span class="ant-confirm-title">{{ $t("ui.workFlowDialogErrorDialogCannotPublishNow") }}</span>
+    <span class="ant-confirm-title">{{ $("ui.workFlowDialogErrorDialogCannotPublishNow") }}</span>
     <div class="ant-confirm-content">
       <div>
-        <p class="error-modal-desc">{{ $t("ui.workFlowDialogErrorDialogTheFollowingContentIsIncompleteAndMustBeUpdated") }}</p>
+        <p class="error-modal-desc">{{ $("ui.workFlowDialogErrorDialogTheFollowingContentIsIncompleteAndMustBeUpdated") }}</p>
         <div class="error-modal-list">
           <div class="error-modal-item" v-for="(item, index) in list" :key="index">
-            <div class="error-modal-item-label">{{ $t("ui.workFlowDialogErrorDialogWorkflowDesign") }}</div>
+            <div class="error-modal-item-label">{{ $("ui.workFlowDialogErrorDialogWorkflowDesign") }}</div>
             <div class="error-modal-item-content">
-              {{ item.name }} {{ item.type === 1 ? $t('ui.workFlowDialogErrorDialogNotSelected') : $t('ui.workFlowDialogErrorDialogNotAdded') }}{{ item.type }}
+              {{ item.name }} {{ item.type === 1 ? $('ui.workFlowDialogErrorDialogNotSelected') : $('ui.workFlowDialogErrorDialogNotAdded') }}{{ item.type }}
             </div>
           </div>
         </div>
@@ -18,8 +18,8 @@
     </div>
   </div>
   <span slot="footer" class="dialog-footer">
-    <el-button @click="visibleDialog = false">{{ $t("ui.workFlowDialogErrorDialogIGotIt") }}</el-button>
-    <el-button type="primary" @click="visibleDialog = false">{{ $t("ui.workFlowDialogErrorDialogUpdateNow") }}</el-button>
+    <el-button @click="visibleDialog = false">{{ $("ui.workFlowDialogErrorDialogIGotIt") }}</el-button>
+    <el-button type="primary" @click="visibleDialog = false">{{ $("ui.workFlowDialogErrorDialogUpdateNow") }}</el-button>
   </span>
 </el-dialog>
 </template>

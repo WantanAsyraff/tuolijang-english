@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <template>
 <div class="flex">
   <template v-if="type">
     <el-input
       v-model="ruleForm.keyword_default"
-      :placeholder="$t('ui.commonFormListPleaseEnterKeyword')"
+      :placeholder="$('ui.commonFormListPleaseEnterKeyword')"
       class="search-form search-width"
       clearable
       prefix-icon="el-icon-search"
@@ -35,7 +36,7 @@
       <el-input
         v-if="isInputType(val.form_value)"
         v-model="ruleForm[val.field_name_en]"
-        :placeholder="`请输入${val.field_name}`"
+        :placeholder="$('ui.shared.enterField', { field: $(val.field_name) })"
         class="mr10"
         clearable
         prefix-icon="el-icon-search"
@@ -82,8 +83,8 @@
         :style="{ width: elementWidth + 'px' }"
         @change="handleEmit(val)"
       >
-        <el-option :label="$t('ui.developFieldComponentYes')" value="1"></el-option>
-        <el-option :label="$t('ui.developFieldComponentNo')" value="0"></el-option>
+        <el-option :label="$('ui.developFieldComponentYes')" value="1"></el-option>
+        <el-option :label="$('ui.developFieldComponentNo')" value="0"></el-option>
       </el-select>
 
       <!-- 数字类型 -->
@@ -106,7 +107,7 @@
           :show-all-levels="false"
           clearable
           filterable
-          :placeholder="$t('ui.developCrudEventPleaseSelectEntity')"
+          :placeholder="$('ui.developCrudEventPleaseSelectEntity')"
           size="small"
           :style="{ width: elementWidth + 'px' }"
           @change="handleEmit(val)"
@@ -150,7 +151,7 @@
         :clearable="val.data_dict && !val.data_dict.length > 0"
         :end-placeholder="`${val.field_name_end ? val.field_name_end : val.field_name}`"
         :picker-options="val.pickerOptions || pickerOptions"
-        :range-separator="$t('toptable.to')"
+        :range-separator="$('toptable.to')"
         :start-placeholder="`${val.field_name}`"
         class="time mr10"
         format="yyyy/MM/dd"
@@ -184,7 +185,7 @@
         :start-placeholder="`${val.field_name}`"
         class="time mr10"
         format="yyyy/MM"
-:range-separator="$t('ui.commonFormListTo')"
+        :range-separator="$('ui.commonFormListTo')"
         size="small"
         type="monthrange"
         value-format="yyyy/MM"
@@ -247,7 +248,7 @@
     </div>
   </div>
   <div>
-    <el-tooltip :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
+    <el-tooltip :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
       <div class="reset" @click="resetSearch()"><i class="iconfont iconqingchu"></i></div>
     </el-tooltip>
   </div>
@@ -255,10 +256,7 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { getDictTreeListApi } from '@/api/form'
-import { translateRuntimeText } from '@/utils/i18ns'
-
 // 表单类型分组配置
 const FORM_TYPE_GROUPS = {
   input: ['input', 'input_number', 'textarea', 'input_float', 'input_price', 'input_percentage'],
@@ -376,9 +374,6 @@ export default {
   },
 
   methods: {
-    translateText(text) {
-      return translateRuntimeText(text, this)
-    },
     // 判断是否为输入框类型
     isInputType(formValue) {
       return FORM_TYPE_GROUPS.input.includes(formValue)
@@ -729,7 +724,7 @@ export default {
           this.addressList = this.normalizeAddressOptions(data)
         })
         .catch((error) => {
-          console.error(i18n.t('legacyScript.failedToRetrieveTheCityList'), error)
+          console.error($('legacyScript.failedToRetrieveTheCityList'), error)
         })
         .finally(() => {
           this.addressLoading = false

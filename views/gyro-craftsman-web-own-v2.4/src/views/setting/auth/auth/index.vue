@@ -5,39 +5,39 @@
       <div class="acea-row row-middle">
         <img alt="" class="img" src="../../../../assets/images/deng.png" />
         <div v-if="status === -1 || status === -9" class="text">
-          <div>{{ $t("ui.settingAuthAuthIndexTrialTimeRemaining") }} {{ dayNum }}{{ $t("ui.hrApprovaTimeDay") }}</div>
-          <div class="code">{{ $t("ui.settingAuthAuthIndexTheMobileAppWillStopWorkingAfterExpirationPlease") }}</div>
+          <div>{{ $("ui.settingAuthAuthIndexTrialTimeRemaining") }} {{ dayNum }}{{ $("ui.hrApprovaTimeDay") }}</div>
+          <div class="code">{{ $("ui.settingAuthAuthIndexTheMobileAppWillStopWorkingAfterExpirationPlease") }}</div>
         </div>
         <div v-else-if="status === 2" class="text">
-          <div>{{ $t("ui.settingAuthAuthIndexTrialTimeRemaining") }} {{ dayNum }}{{ $t("ui.hrApprovaTimeDay") }}</div>
-          <div class="code red">{{ $t("ui.settingAuthAuthIndexReviewRejected") }}</div>
+          <div>{{ $("ui.settingAuthAuthIndexTrialTimeRemaining") }} {{ dayNum }}{{ $("ui.hrApprovaTimeDay") }}</div>
+          <div class="code red">{{ $("ui.settingAuthAuthIndexReviewRejected") }}</div>
         </div>
         <div v-else-if="status === 1" class="text">
-          <div>{{ $t("ui.settingAuthAuthIndexBusinessAuthorization") }}</div>
-          <div class="code">{{ $t("ui.settingAuthAuthIndexAuthorizationCode") }}{{ authCode || '--' }}</div>
+          <div>{{ $("ui.settingAuthAuthIndexBusinessAuthorization") }}</div>
+          <div class="code">{{ $("ui.settingAuthAuthIndexAuthorizationCode") }}{{ authCode || '--' }}</div>
           <div class="code block">
-            {{ $t("ui.settingAuthAuthIndexAuthorizationDate") }}<span v-if="authTime !== 99999">
-              {{ $t("ui.settingAuthAuthIndexSurplus") }}{{ authTime || '0' }} {{ $t("ui.hrApprovaTimeDay") }}
-              <span v-if="authTime <= 15" class="tips">{{ $t("ui.settingAuthAuthIndexTheSystemWillBeUnavailableAfterAuthorizationExpires") }}</span>
+            {{ $("ui.settingAuthAuthIndexAuthorizationDate") }}<span v-if="authTime !== 99999">
+              {{ $("ui.settingAuthAuthIndexSurplus") }}{{ authTime || '0' }} {{ $("ui.hrApprovaTimeDay") }}
+              <span v-if="authTime <= 15" class="tips">{{ $("ui.settingAuthAuthIndexTheSystemWillBeUnavailableAfterAuthorizationExpires") }}</span>
             </span>
-            <span v-else>{{ $t("ui.settingAuthAuthIndexPermanent") }}</span>
+            <span v-else>{{ $("ui.settingAuthAuthIndexPermanent") }}</span>
           </div>
         </div>
         <div v-else-if="status === 0" class="text">
-          <div>{{ $t("ui.settingAuthAuthIndexTrialTimeRemaining") }} {{ dayNum || '--' }}{{ $t("ui.hrApprovaTimeDay") }}</div>
-          <div class="code blue">{{ $t("ui.settingAuthAuthIndexTheAuthorizationRequestWasSubmittedPleaseWaitForReview") }}</div>
+          <div>{{ $("ui.settingAuthAuthIndexTrialTimeRemaining") }} {{ dayNum || '--' }}{{ $("ui.hrApprovaTimeDay") }}</div>
+          <div class="code blue">{{ $("ui.settingAuthAuthIndexTheAuthorizationRequestWasSubmittedPleaseWaitForReview") }}</div>
         </div>
       </div>
       <div>
         <template>
-          <el-button @click="toCrmeb()">{{ $t("ui.settingAuthAuthIndexOpenOfficialWebsite") }}</el-button>
-          <el-button type="primary" @click="payment('oa')">{{ $t("ui.settingAuthAuthIndexRequestAuthorization") }} </el-button>
+          <el-button @click="toCrmeb()">{{ $("ui.settingAuthAuthIndexOpenOfficialWebsite") }}</el-button>
+          <el-button type="primary" @click="payment('oa')">{{ $("ui.settingAuthAuthIndexRequestAuthorization") }} </el-button>
         </template>
       </div>
     </div>
   </el-card>
   <!-- 商业授权 -->
-  <el-dialog :visible.sync="isTemplate" :z-index="1" center :title="$t('ui.settingAuthAuthIndexBusinessAuthorization')" @on-cancel="cancel">
+  <el-dialog :visible.sync="isTemplate" :z-index="1" center :title="$('ui.settingAuthAuthIndexBusinessAuthorization')" @on-cancel="cancel">
     <iframe :src="iframeUrl" frameborder="0" height="550" width="100%"></iframe>
   </el-dialog>
 </div>

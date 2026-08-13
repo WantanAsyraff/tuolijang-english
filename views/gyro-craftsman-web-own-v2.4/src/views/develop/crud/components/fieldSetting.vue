@@ -1,21 +1,22 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <div class="flex-between">
-    <div class="title-16">{{ $t("ui.developCrudFieldSettingFieldList") }}</div>
+    <div class="title-16">{{ $("ui.developCrudFieldSettingFieldList") }}</div>
     <div class="flex">
-      <el-button size="small" @click="handleAdd" class="mr10">{{ $t("ui.developCrudFieldSettingAiGeneratedFields") }}</el-button>
-      <field-popover  :title="$t('ui.developCrudFieldSettingNewField')" :infoData="infoData" :typesObj="typesList" @getInfo="getList" ></field-popover>
+      <el-button size="small" @click="handleAdd" class="mr10">{{ $("ui.developCrudFieldSettingAiGeneratedFields") }}</el-button>
+      <field-popover  :title="$('ui.developCrudFieldSettingNewField')" :infoData="infoData" :typesObj="typesList" @getInfo="getList" ></field-popover>
     </div>
   </div>
   <!-- 筛选 -->
   <div class="flex mb10 h32">
-    <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ tableData.length }} {{ $t("ui.developModuleFormBoxItems") }}</div>
+    <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ tableData.length }} {{ $("ui.developModuleFormBoxItems") }}</div>
     <div class="ml14">
       <el-input
         v-model="where.name"
         prefix-icon="el-icon-search"
         size="small"
-        :placeholder="$t('ui.commonFormListPleaseEnterKeyword')"
+        :placeholder="$('ui.commonFormListPleaseEnterKeyword')"
         clearable
         style="width: 250px"
         @change="getList"
@@ -27,39 +28,39 @@
   <!-- 表格 -->
   <div class="table-box" v-loading="loading">
     <el-table row-key="id" :data="tableData" style="width: 100%">
-      <el-table-column prop="field_name_en" :label="$t('ui.developCrudFieldSettingFieldName')" :min-width="150">
+      <el-table-column prop="field_name_en" :label="$('ui.developCrudFieldSettingFieldName')" :min-width="150">
         <template slot-scope="scope">
           <span class="mr10"> {{ scope.row.field_name_en }}</span>
-          <el-tooltip class="item" effect="dark" :content="$t('ui.developCrudFieldSettingPrimaryKeyField')" placement="top-start">
-            <el-tag class="ml4" size="mini" v-if="scope.row.field_name_en == 'id'">{{ $t("ui.developCrudFieldSettingMain") }}</el-tag>
+          <el-tooltip class="item" effect="dark" :content="$('ui.developCrudFieldSettingPrimaryKeyField')" placement="top-start">
+            <el-tag class="ml4" size="mini" v-if="scope.row.field_name_en == 'id'">{{ $("ui.developCrudFieldSettingMain") }}</el-tag>
           </el-tooltip>
-          <el-tooltip class="item" effect="dark" :content="$t('ui.developCrudFieldSettingSystemField')" placement="top-start">
-            <el-tag class="ml4" size="mini" type="warning" v-if="scope.row.is_default == 1">{{ $t("ui.developCrudFieldSettingDepartment") }}</el-tag>
+          <el-tooltip class="item" effect="dark" :content="$('ui.developCrudFieldSettingSystemField')" placement="top-start">
+            <el-tag class="ml4" size="mini" type="warning" v-if="scope.row.is_default == 1">{{ $("ui.developCrudFieldSettingDepartment") }}</el-tag>
           </el-tooltip>
-          <el-tooltip class="item" effect="dark" :content="$t('ui.developCrudFieldSettingParentChildField')" placement="top-start">
-            <el-tag class="ml4" size="mini" type="info" v-if="scope.row.is_re_table > 0">{{ $t("ui.formCommonOaLogFrom2") }}</el-tag>
+          <el-tooltip class="item" effect="dark" :content="$('ui.developCrudFieldSettingParentChildField')" placement="top-start">
+            <el-tag class="ml4" size="mini" type="info" v-if="scope.row.is_re_table > 0">{{ $("ui.formCommonOaLogFrom2") }}</el-tag>
           </el-tooltip>
         </template>
       </el-table-column>
-      <el-table-column prop="field_name" :label="$t('ui.developCrudEntityTableDisplayName')" />
-      <el-table-column prop="form_value" :label="$t('ui.developForeignDocumentFieldType')" />
-      <el-table-column prop="is_default_value_not_null" :label="$t('ui.customerSetupCustomFormIndexRequired')">
+      <el-table-column prop="field_name" :label="$('ui.developCrudEntityTableDisplayName')" />
+      <el-table-column prop="form_value" :label="$('ui.developForeignDocumentFieldType')" />
+      <el-table-column prop="is_default_value_not_null" :label="$('ui.customerSetupCustomFormIndexRequired')">
         <template slot-scope="scope">
-          {{ scope.row.is_default_value_not_null > 0 ? '--' : $t('ui.developFieldComponentYes') }}
+          {{ scope.row.is_default_value_not_null > 0 ? '--' : $('ui.developFieldComponentYes') }}
         </template>
       </el-table-column>
-      <el-table-column prop="data_dict_name" :label="$t('ui.customerSetupCustomFormIndexLinkedDictionary')">
+      <el-table-column prop="data_dict_name" :label="$('ui.customerSetupCustomFormIndexLinkedDictionary')">
         <template slot-scope="scope">
           {{ scope.row.data_dict_name || '--' }}
         </template>
       </el-table-column>
-      <el-table-column prop="association_crud_table_name" :label="$t('ui.developCrudFieldSettingReferencedEntity')">
+      <el-table-column prop="association_crud_table_name" :label="$('ui.developCrudFieldSettingReferencedEntity')">
         <template slot-scope="scope">
           {{ getValue(scope.row.association_crud_table_name) }}
         </template>
       </el-table-column>
 
-      <el-table-column prop="is_main" :label="$t('ui.developCrudFieldSettingDisplayParentField')">
+      <el-table-column prop="is_main" :label="$('ui.developCrudFieldSettingDisplayParentField')">
         <template slot-scope="scope">
           <el-switch
             v-if="scope.row.form_value == 'input'"
@@ -69,17 +70,17 @@
             v-model="scope.row.is_main"
             :active-value="1"
             :inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+            active-text="开启"
+            inactive-text="关闭"
           >
           </el-switch>
         </template>
       </el-table-column>
 
-      <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="170">
+      <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="170">
         <template slot-scope="scope">
-          <el-button v-if="scope.row.is_default !== 1" type="text" @click="editFn(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-          <el-button v-if="scope.row.is_default !== 1" type="text" @click="deleteFn(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+          <el-button v-if="scope.row.is_default !== 1" type="text" @click="editFn(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+          <el-button v-if="scope.row.is_default !== 1" type="text" @click="deleteFn(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -97,7 +98,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Commnt from '@/components/develop/commonData'
 import oaDialog from '@/components/form-common/dialog-form'
 import fieldPopover from './fieldPopover'
@@ -132,8 +132,8 @@ export default {
       info: this.infoData,
       fromData: {
         width: '600px',
-        title: i18n.t('ui.developCrudFieldSettingNewField'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.developCrudFieldSettingNewField'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },
@@ -250,7 +250,7 @@ export default {
 
       let typeObj = {
         type: 'select',
-        label: i18n.t('legacyScript.fieldType'),
+        label: $('legacyScript.fieldType'),
         key: 'value',
         options: fieldList
       }
