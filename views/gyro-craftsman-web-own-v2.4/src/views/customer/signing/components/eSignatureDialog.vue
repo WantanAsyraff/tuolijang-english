@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
     <div>
         <oaDialog ref="oaDialog" :fromData="fromData" :isFooter="false" @submit="submit">
@@ -5,26 +6,26 @@
             
             <div v-for="(item,index) in signatory" :key="index">
             <div class="signer-info" v-if="item.types == 0">
-                <span class="status" @click="signCodeFn(item)" v-if="item.sign_status == 0">{{ $ts("去签约") }}</span>
-                <span class="status success" v-if="item.sign_status == 1">{{ $ts("已签约") }}</span>
-                <span class="status gray" v-if="item.sign_status == 2">{{ $ts("已拒绝") }}</span>
+                <span class="status" @click="signCodeFn(item)" v-if="item.sign_status == 0">{{ $("legacy.221415c608354c1c") }}</span>
+                <span class="status success" v-if="item.sign_status == 1">{{ $("ui.customerSigningInfoItemSigned") }}</span>
+                <span class="status gray" v-if="item.sign_status == 2">{{ $("ui.userExamineExamineRejected") }}</span>
                 <div class="signer-name">{{ item.company_name||'--' }}
-                    <span class="company-icon">{{ $ts("本企业") }}</span>
+                    <span class="company-icon">{{ $("ui.customerSigningInfoItemOurCompany") }}</span>
                 </div>
                 <div class="signer-name mt6">
-                    <span class="mr25">{{ $ts("经办人：") }}{{ item.name||'--' }}</span>
-                    <span>{{ $ts("手机号：") }}{{ item.phone||'--' }}</span>
+                    <span class="mr25">{{ $("ui.customerSigningInfoItemHandler") }}{{ item.name||'--' }}</span>
+                    <span>{{ $("ui.customerSigningInfoItemPhoneNumber") }}{{ item.phone||'--' }}</span>
                 </div>
             </div>
             <div v-else class="signer-info mt10">
-                <span class="status"  v-if="item.sign_status == 0" @click="signCodeFn(item)">{{ $ts("邀请签约") }}</span>
-                <span class="status success" v-if="item.sign_status == 1">{{ $ts("已签约") }}</span>
-                <span class="status gray" v-if="item.sign_status == 2">{{ $ts("已拒绝") }}</span>
+                <span class="status"  v-if="item.sign_status == 0" @click="signCodeFn(item)">{{ $("legacy.6b0c2655082e7bfc") }}</span>
+                <span class="status success" v-if="item.sign_status == 1">{{ $("ui.customerSigningInfoItemSigned") }}</span>
+                <span class="status gray" v-if="item.sign_status == 2">{{ $("ui.userExamineExamineRejected") }}</span>
                 <div class="signer-name">{{ item.name||'--' }}
-                    <span class="company-icon individual">{{ $ts("个人") }}</span>
+                    <span class="company-icon individual">{{ $("ui.commonOaFromBoxPersonal") }}</span>
                 </div>
                 <div class="signer-name mt6">
-                    <span>{{ $ts("手机号：") }}{{ item.phone||'--' }}</span>
+                    <span>{{ $("ui.customerSigningInfoItemPhoneNumber") }}{{ item.phone||'--' }}</span>
                 </div>
             </div>
             <div>
@@ -38,7 +39,6 @@
     </div>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
     name: 'eSignatureDialog',
     components: {
@@ -49,8 +49,8 @@ export default {
         return {
             fromData: {
                 width: '500px',
-                title: i18n.t('ui.customerSigningInfoItemESign'),
-                btnText: i18n.t('ui.formCommonDialogFormOk'),
+                title: $('ui.customerSigningInfoItemESign'),
+                btnText: '确定',
                 labelWidth: '100px',
                 type: 'slot'
             },

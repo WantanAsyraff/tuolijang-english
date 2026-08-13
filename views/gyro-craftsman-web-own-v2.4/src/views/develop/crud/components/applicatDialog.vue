@@ -8,38 +8,38 @@
     <el-dialog :close-on-click-modal="false" :show-close="false" :visible.sync="show" :width="`516px`">
       <!-- 弹窗标题 -->
       <div slot="title" class="header">
-        <span class="title">{{ id ? $ts('编辑') : $ts('新建') }} {{ $ts("应用管理") }}</span>
+        <span class="title">{{ id ? $("public.edit") : $("file.newlybuild") }} {{ $("ui.developCrudIndexApplicationManagement") }}</span>
         <span class="el-icon-close" @click="handleClose"></span>
       </div>
       <div class="pl20 pr20 mt20">
         <el-form :model="fromItem" :rules="rules" ref="formRef" label-width="auto">
-          <el-form-item :label='$ts("应用名称：")' prop="name">
-            <el-input v-model="fromItem.name" :placeholder='$ts("请填写应用名称")' size="small" />
+          <el-form-item :label='$("legacyScript.applicationName")' prop="name">
+            <el-input v-model="fromItem.name" :placeholder='$("legacy.1eeabd1ffe2a1a0a")' size="small" />
           </el-form-item>
-          <el-form-item :label='$ts("应用图标：")' prop="icon">
-            <el-input :placeholder='$ts("请选择图标")' v-model="fromItem.icon" readonly @click.native="showIconDialog = true"
+          <el-form-item :label='$("legacy.c36ae26f005e3fdf")' prop="icon">
+            <el-input :placeholder='$("ui.formCommonOaFormPleaseSelectAnIcon")' v-model="fromItem.icon" readonly @click.native="showIconDialog = true"
               clearable>
               <i v-if="!fromItem.icon" slot="suffix" class="el-icon-circle-plus-outline" style="cursor: pointer;"></i>
               <i v-else slot="suffix" class="el-icon-circle-close" style="cursor: pointer;"
                 @click.stop="handleClearIcon"></i>
             </el-input>
           </el-form-item>
-          <el-form-item :label='$ts("应用简介：")' prop="info">
-            <el-input v-model="fromItem.info" type="textarea" rows="4" resize="none" :placeholder='$ts("请填写应用简介")'
+          <el-form-item :label='$("legacyScript.applicationDescription")' prop="info">
+            <el-input v-model="fromItem.info" type="textarea" rows="4" resize="none" :placeholder='$("legacy.8197186e83d662d3")'
               size="small" />
           </el-form-item>
-          <el-form-item :label='$ts("排序：")' prop="sort">
-            <el-input v-model="fromItem.sort" :placeholder='$ts("请填写排序")' size="small" />
+          <el-form-item :label='$("ui.businessHolidayTypeIndexSort")' prop="sort">
+            <el-input v-model="fromItem.sort" :placeholder='$("hr.placeholder15")' size="small" />
           </el-form-item>
-          <el-form-item :label='$ts("上级菜单：")' prop="menu">
+          <el-form-item :label='$("legacyScript.parentMenu")' prop="menu">
             <el-cascader v-model="fromItem.path" size="small" :options="menuList"
               :props="{ checkStrictly: true, label: 'menu_name', value: 'id', children: 'children' }" clearable
               style="width: 100%;">
               <template slot-scope="{ data }">
-                <span>{{ $ts(data.menu_name, data.menu_name_en) }}</span>
+                <span>{{ $(data.menu_name, data.menu_name_en) }}</span>
               </template>
             </el-cascader>
-            <span class="tips">{{ $ts("若不选择上级菜单，则不生成菜单") }}</span>
+            <span class="tips">{{ $("legacyScript.noMenuWillBeGeneratedUnlessAParentMenu") }}</span>
           </el-form-item>
         </el-form>
       </div>
@@ -47,14 +47,14 @@
 
       <div slot="footer">
         <div class="dialog-footer">
-          <el-button size="small" @click="handleClose">{{ $ts("取消") }}</el-button>
-          <el-button size="small" type="primary" @click="submit">{{ $ts("确定") }}</el-button>
+          <el-button size="small" @click="handleClose">{{ $("public.cancel") }}</el-button>
+          <el-button size="small" type="primary" @click="submit">{{ $("public.ok") }}</el-button>
 
         </div>
       </div>
     </el-dialog>
     <!-- 选择图标 -->
-    <el-dialog :title='$ts("选择菜单图标")' :visible.sync="showIconDialog" width="50%">
+    <el-dialog :title='$("ui.formCommonOaFormSelectMenuIcon")' :visible.sync="showIconDialog" width="50%">
       <div class="icon-box">
         <select-icon ref="selectIconRef" :isEmit="true" @select="handleSelectIcon"></select-icon>
       </div>
@@ -93,13 +93,13 @@ export default {
       menuList: [],
       rules: {
         name: [
-          { required: true, message: this.$ts('请填写应用名称'), trigger: 'blur' }
+          { required: true, message: this.$("legacy.1eeabd1ffe2a1a0a"), trigger: 'blur' }
         ],
         icon: [
-          { required: true, message: this.$ts('请选择应用图标'), trigger: 'blur' }
+          { required: true, message: this.$("legacy.8a89a993327e2997"), trigger: 'blur' }
         ],
         info: [
-          { required: true, message: this.$ts('请填写应用简介'), trigger: 'blur' }
+          { required: true, message: this.$("legacy.8197186e83d662d3"), trigger: 'blur' }
         ],
 
       }
@@ -192,7 +192,7 @@ export default {
               this.$message.error(err.message)
             })
         } else {
-          this.$message.error(this.$ts('请填写完整信息'))
+          this.$message.error(this.$("legacy.47c728a9f3ef01de"))
         }
       })
     },

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <!--  最近打开文件-->
   <div class="content">
@@ -15,7 +16,7 @@
           class="mt10"
         >
           <!-- 文件名称列 -->
-          <el-table-column prop="name" :label="$t('file.filename')" min-width="320">
+          <el-table-column prop="name" :label="$('file.filename')" min-width="320">
             <template slot-scope="scope">
               <div
                 class="file-name-cell"
@@ -40,14 +41,14 @@
           </el-table-column>
 
           <!-- 文件大小列 -->
-          <el-table-column prop="file_size" :label="$t('file.filesize')" min-width="120">
+          <el-table-column prop="file_size" :label="$('file.filesize')" min-width="120">
             <template slot-scope="scope">
               {{ formatBytesFn(scope.row.file_size) }}
             </template>
           </el-table-column>
 
           <!-- 创建人列 -->
-          <el-table-column :label="$t('ui.hrAssessCheckIndexCreator')" min-width="150">
+          <el-table-column :label="$('ui.hrAssessCheckIndexCreator')" min-width="150">
             <template slot-scope="scope">
               <div class="creator-cell">
                 <img :src="scope.row.user ? scope.row.user.avatar : ''" alt="" class="avatar" />
@@ -57,10 +58,10 @@
           </el-table-column>
 
           <!-- 更新时间列 -->
-          <el-table-column prop="updated_at" :label="$t('file.updatetime')" min-width="180" />
+          <el-table-column prop="updated_at" :label="$('file.updatetime')" min-width="180" />
 
           <!-- 操作列 -->
-          <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="150">
+          <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="150">
             <template slot-scope="scope">
               <div class="operation-cell">
                 <el-popover
@@ -77,24 +78,24 @@
                       class="right-item"
                       @click="getItemFile(scope.row)"
                     >
-                      {{ $t("ui.userCloudfileRightClickOpen") }}
+                      {{ $("ui.userCloudfileRightClickOpen") }}
                     </div>
                     <div v-if="scope.row.type !== 1" class="right-item" @click="fileDownLoad(scope.row)">
-                      {{ $t('public.download') }}
+                      {{ $('public.download') }}
                     </div>
-                    <div v-if="scope.row.type !== 1" class="right-item" @click="shareOther(scope.row)">{{ $t("ui.userCloudfileRightClickShare2") }}</div>
+                    <div v-if="scope.row.type !== 1" class="right-item" @click="shareOther(scope.row)">{{ $("ui.userCloudfileRightClickShare2") }}</div>
                     <el-divider v-if="scope.row.type !== 1" />
-                    <div class="right-item" @click="getMoveDialog(scope.row, 1)">{{ $t('file.moveto') }}</div>
+                    <div class="right-item" @click="getMoveDialog(scope.row, 1)">{{ $('file.moveto') }}</div>
                     <div v-if="scope.row.type === 1" class="right-item" @click="addAuthor(scope.row)">
-                      {{ $t('file.directory') }}
+                      {{ $('file.directory') }}
                     </div>
                     <div v-if="scope.row.type !== 1" class="right-item" @click="getMoveDialog(scope.row, 2)">
-                      {{ $t('file.copyto') }}
+                      {{ $('file.copyto') }}
                     </div>
-                    <!-- <div class="right-item" @click="setRenameItem(scope.row, scope.$index)">{{ $t('file.rename') }}</div> -->
+                    <!-- <div class="right-item" @click="setRenameItem(scope.row, scope.$index)">{{ $('file.rename') }}</div> -->
                     <el-divider />
-                    <div class="right-item" @click="getFolderDelete(scope.row)">{{ $t('public.delete') }}</div>
-                    <div class="right-item" @click="getFileAttribute(scope.row)">{{ $t('file.attribute') }}</div>
+                    <div class="right-item" @click="getFolderDelete(scope.row)">{{ $('public.delete') }}</div>
+                    <div class="right-item" @click="getFileAttribute(scope.row)">{{ $('file.attribute') }}</div>
                   </div>
                   <i slot="reference" class="icon iconfont icongengduo1 pointer" />
                 </el-popover>
@@ -136,7 +137,7 @@
                       <input
                         :id="'input' + index"
                         v-model="item.name"
-                        :placeholder="$t('file.placeholder10')"
+                        :placeholder="$('file.placeholder10')"
                         autofocus="autofocus"
                         class="rename-input"
                         maxlength="30"
@@ -160,25 +161,25 @@
                             class="right-item"
                             @click="getItemFile(item)"
                           >
-                            {{ $t("ui.userCloudfileRightClickOpen") }}
+                            {{ $("ui.userCloudfileRightClickOpen") }}
                           </div>
 
                           <div v-if="item.type !== 1" class="right-item" @click="fileDownLoad(item)">
-                            {{ $t('public.download') }}
+                            {{ $('public.download') }}
                           </div>
-                          <div v-if="item.type !== 1" class="right-item" @click="shareOther(item)">{{ $t("ui.userCloudfileRightClickShare2") }}</div>
+                          <div v-if="item.type !== 1" class="right-item" @click="shareOther(item)">{{ $("ui.userCloudfileRightClickShare2") }}</div>
                           <el-divider v-if="item.type !== 1" />
-                          <div class="right-item" @click="getMoveDialog(item, 1)">{{ $t('file.moveto') }}</div>
+                          <div class="right-item" @click="getMoveDialog(item, 1)">{{ $('file.moveto') }}</div>
                           <div v-if="item.type === 1" class="right-item" @click="addAuthor(item)">
-                            {{ $t('file.directory') }}
+                            {{ $('file.directory') }}
                           </div>
                           <div v-if="item.type !== 1" class="right-item" @click="getMoveDialog(item, 2)">
-                            {{ $t('file.copyto') }}
+                            {{ $('file.copyto') }}
                           </div>
-                          <!-- <div class="right-item" @click="setRenameItem(item, index)">{{ $t('file.rename') }}</div> -->
+                          <!-- <div class="right-item" @click="setRenameItem(item, index)">{{ $('file.rename') }}</div> -->
                           <el-divider />
-                          <div class="right-item" @click="getFolderDelete(item)">{{ $t('public.delete') }}</div>
-                          <div class="right-item" @click="getFileAttribute(item)">{{ $t('file.attribute') }}</div>
+                          <div class="right-item" @click="getFolderDelete(item)">{{ $('public.delete') }}</div>
+                          <div class="right-item" @click="getFileAttribute(item)">{{ $('file.attribute') }}</div>
                         </div>
                         <i slot="reference" class="icon iconfont icongengduo1" />
                       </el-popover>
@@ -218,7 +219,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { formatBytes } from '@/libs/public'
 import helper from '@/libs/helper'
 import {
@@ -285,7 +285,7 @@ export default {
       },
       total: 0,
       openTypes: helper.openType,
-      breadcrumbArray: [{ name: this.$t('file.allfiles'), pid: '' }],
+      breadcrumbArray: [{ name: this.$('file.allfiles'), pid: '' }],
       id: 0,
       isImage: false,
       srcList: [],
@@ -342,7 +342,7 @@ export default {
   },
   methods: {
     setOptions() {
-      this.breadcrumbArray[0].name = this.$t('file.allfiles')
+      this.breadcrumbArray[0].name = this.$('file.allfiles')
     },
     pageChange(page) {
       this.where.page = page
@@ -481,7 +481,7 @@ export default {
     },
     addAuthor(row) {
       this.fromData = {
-        title: this.$t('file.setdirectory'),
+        title: this.$('file.setdirectory'),
         fid: this.spaceId,
         id: row.id,
         edit: 1
@@ -491,7 +491,7 @@ export default {
     // 浏览文件
     handleSeeFil(item) {
       folderSpaceEntViewApi(item.pid, item.id).then((res) => {
-        if (!res.data.url) return this.$message.error(i18n.t('legacyScript.youCurrentlyDoNotHavePermissionToViewThisFile'))
+        if (!res.data.url) return this.$message.error($('legacyScript.youCurrentlyDoNotHavePermissionToViewThisFile'))
         window.open(res.data.url, '_blank')
       })
     },
@@ -545,7 +545,7 @@ export default {
     },
     getFileAttribute(item) {
       this.formBoxConfig = {
-        title: this.$t('file.fileattribute'),
+        title: this.$('file.fileattribute'),
         is_file: false,
         fid: item.pid,
         id: item.id,

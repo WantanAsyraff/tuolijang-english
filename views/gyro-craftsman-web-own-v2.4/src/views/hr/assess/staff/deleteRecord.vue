@@ -2,23 +2,23 @@
 <div class="divBox">
   <div class="form-wrapper">
     <el-card class="employees-card-bottom">
-      <div class="title-16 mb20">{{ $t("ui.hrAssessStaffDeleteRecordDeleteRecord") }}</div>
-      <div class="total-16 mb10">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+      <div class="title-16 mb20">{{ $("ui.hrAssessStaffDeleteRecordDeleteRecord") }}</div>
+      <div class="total-16 mb10">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
       <div v-loading="loading">
         <el-table :data="tableData" :height="tableHeight1" style="width: 100%" row-key="id" default-expand-all>
           <el-table-column prop="id" label="ID" min-width="55" />
-          <el-table-column prop="mark" :label="$t('access.deletereason')" min-width="150" />
-          <el-table-column prop="info.name" :label="$t('user.work.assessmentname')" min-width="140" />
-          <el-table-column prop="card.name" :label="$t('access.deleteperson')" min-width="160" />
-          <el-table-column prop="check.name" :label="$t('user.work.assessor')" min-width="160" />
-          <el-table-column prop="test.name" :label="$t('access.examinee')" min-width="160" />
-          <el-table-column prop="address" :label="$t('public.operation')" fixed="right" width="100">
+          <el-table-column prop="mark" :label="$('access.deletereason')" min-width="150" />
+          <el-table-column prop="info.name" :label="$('user.work.assessmentname')" min-width="140" />
+          <el-table-column prop="card.name" :label="$('access.deleteperson')" min-width="160" />
+          <el-table-column prop="check.name" :label="$('user.work.assessor')" min-width="160" />
+          <el-table-column prop="test.name" :label="$('access.examinee')" min-width="160" />
+          <el-table-column prop="address" :label="$('public.operation')" fixed="right" width="100">
             <template slot-scope="scope">
               <el-button
                 type="text"
                 @click="handleScore(scope.row)"
                 v-hasPermi="['hr:assessStaff:deleteRecord:details']"
-                >{{ $t('access.assessmentdetails') }}</el-button
+                >{{ $('access.assessmentdetails') }}</el-button
               >
             </template>
           </el-table-column>
@@ -86,7 +86,7 @@ export default {
     },
     handleScore(row) {
       this.config = {
-        title: this.$t('access.assessmentdetails'),
+        title: this.$('access.assessmentdetails'),
         width: '1100px',
         data: row.info
       }

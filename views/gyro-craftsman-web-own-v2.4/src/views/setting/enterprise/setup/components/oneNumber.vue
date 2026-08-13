@@ -3,10 +3,10 @@
     <el-form ref="form" :model="form" class="mt20" label-width="150px">
       <el-row>
         <el-col :span="14">
-          <el-form-item :label='$ts("一号通AppId：")' prop="appId">
+          <el-form-item :label='$("legacy.42af76a61074ee44")' prop="appId">
             <el-input
               v-model="form.yihaotong_appid"
-              :placeholder='$ts("请输入APPID（从一号通平台申请）")'
+              :placeholder='$("legacy.7cab71861dec7f20")'
               show-password
               size="small"
             ></el-input>
@@ -14,16 +14,16 @@
         </el-col>
         <el-col :span="8">
           <el-button class="ml14 copy-data" type="text"
-            ><a href="https://api.crmeb.com" target="_blank">{{ $ts("进入一号通平台") }} </a></el-button
+            ><a href="https://api.crmeb.com" target="_blank">{{ $("legacy.ad036fd6d83938b8") }} </a></el-button
           >
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="14">
-          <el-form-item :label='$ts("一号通AppSecret：")' prop="appKey">
+          <el-form-item :label='$("legacy.8051cee3eca958c9")' prop="appKey">
             <el-input
               v-model="form.yihaotong_appsecret"
-              :placeholder='$ts("请输入APPKEY（从一号通平台申请）")'
+              :placeholder='$("legacy.7ad3264e39e8f320")'
               show-password
               size="small"
             ></el-input>
@@ -31,7 +31,7 @@
         </el-col>
       </el-row>
       <el-form-item>
-        <el-button :loading="loading" size="small" type="primary" @click="submitForm()">{{ $ts("立即提交") }}</el-button>
+        <el-button :loading="loading" size="small" type="primary" @click="submitForm()">{{ $("ui.settingEnterpriseSetupCloudfileSubmitNow") }}</el-button>
       </el-form-item>
     </el-form>
   </div>

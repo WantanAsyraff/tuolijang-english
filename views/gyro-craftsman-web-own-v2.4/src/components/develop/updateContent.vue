@@ -1,16 +1,17 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-触发器更新规则-动态内容组件-->
 <template>
 <div>
   <div>
-    <el-form-item v-if="type === 'group_aggregate'" :label="$t('ui.developUpdateContentGroupFieldMapping')" class="mt14">
+    <el-form-item v-if="type === 'group_aggregate'" :label="$('ui.developUpdateContentGroupFieldMapping')" class="mt14">
       <div v-for="(item, index) in groupList" :key="index">
         <div class="flex">
           <div>
-            <div class="prompt">{{ $t("ui.developUpdateContentTargetField") }}</div>
+            <div class="prompt">{{ $("ui.developUpdateContentTargetField") }}</div>
             <el-select
               size="small"
               v-model="item.form_field_uniqid"
-              :placeholder="$t('ui.developUpdateContentPleaseSearchSelectTargetField')"
+              :placeholder="$('ui.developUpdateContentPleaseSearchSelectTargetField')"
               style="width: 300px"
               filterable
             >
@@ -26,12 +27,12 @@
           </div>
 
           <div class="ml14">
-            <div class="prompt">{{ $t("ui.developUpdateContentSourceField") }}</div>
+            <div class="prompt">{{ $("ui.developUpdateContentSourceField") }}</div>
             <!-- 源字段选择 -->
             <el-select
               size="small"
               v-model="item.to_form_field_uniqid"
-              :placeholder="$t('ui.developUpdateContentPleaseSearchSelectSourceField')"
+              :placeholder="$('ui.developUpdateContentPleaseSearchSelectSourceField')"
               style="width: 300px"
               filterable
             >
@@ -42,7 +43,7 @@
         </div>
       </div>
       <span @click.stop="addNewGroup()" class="pointer default-color fz-12"
-        ><span class="el-icon-plus mr5"></span>{{ $t("ui.developUpdateContentAddField") }}</span
+        ><span class="el-icon-plus mr5"></span>{{ $("ui.developUpdateContentAddField") }}</span
       >
     </el-form-item>
 
@@ -55,11 +56,11 @@
         <el-row :gutter="0">
           <el-col :span="type == 'push_data' ? 10 : 5">
             <div>
-              <div class="prompt">{{ $t("ui.developUpdateContentTargetField") }}</div>
+              <div class="prompt">{{ $("ui.developUpdateContentTargetField") }}</div>
               <el-select
                 size="small"
                 v-model="item.form_field_uniqid"
-                :placeholder="$t('ui.developUpdateContentPleaseSearchSelectTargetField')"
+                :placeholder="$('ui.developUpdateContentPleaseSearchSelectTargetField')"
                 style="width: 100%"
                 filterable
                 @change="changeTargetField($event, item)"
@@ -71,7 +72,7 @@
                   :disabled="listIds.includes(item.form_field_uniqid)"
                   :value="item.form_field_uniqid"
                 >
-                  <span>{{ item.field_name }} <span v-if="item.is_uniqid == 1"> {{ $t("ui.developUpdateContentUnique") }}</span></span>
+                  <span>{{ item.field_name }} <span v-if="item.is_uniqid == 1"> {{ $("ui.developUpdateContentUnique") }}</span></span>
                 </el-option>
               </el-select>
             </div>
@@ -79,13 +80,13 @@
           <el-col :span="5" v-if="type !== 'push_data'">
             <div class="mr14 ml14" v-if="!isUniqidFn(item.form_field_uniqid, targetField)">
               <div class="prompt">
-                {{ type == 'field_aggregate' || type == 'group_aggregate' ? $t('ui.developUpdateContentAggregationMethod') : $t('ui.developUpdateContentUpdateMethod') }}
+                {{ type == 'field_aggregate' || type == 'group_aggregate' ? $('ui.developUpdateContentAggregationMethod') : $('ui.developUpdateContentUpdateMethod') }}
               </div>
 
               <el-select
                 size="small"
                 v-model="item.operator"
-                :placeholder="$t('ui.developUpdateContentPleaseSelectUpdateMethod')"
+                :placeholder="$('ui.developUpdateContentPleaseSelectUpdateMethod')"
                 style="width: 100%"
                 filterable
               >
@@ -100,11 +101,11 @@
               </el-select>
             </div>
             <div class="mr14 ml14" v-else>
-              <div class="prompt">{{ $t("ui.developUpdateContentUpdateMethod") }}</div>
+              <div class="prompt">{{ $("ui.developUpdateContentUpdateMethod") }}</div>
               <el-select
                 size="small"
                 v-model="item.operator"
-                :placeholder="$t('ui.developUpdateContentPleaseSelectUpdateMethod')"
+                :placeholder="$('ui.developUpdateContentPleaseSelectUpdateMethod')"
                 style="width: 100%"
                 filterable
               >
@@ -124,7 +125,7 @@
                 "
                 size="small"
                 v-model="item.to_form_field_uniqid"
-                :placeholder="$t('ui.developUpdateContentPleaseSearchSelectSourceField')"
+                :placeholder="$('ui.developUpdateContentPleaseSearchSelectSourceField')"
                 style="width: 100%"
                 filterable
               >
@@ -136,7 +137,7 @@
               <div v-else-if="item.operator === 'formula_value'" class="textPosition">
                 <template v-if="numBerList.includes(getType(item.form_field_uniqid))">
                   <el-input
-                    :placeholder="$t('ui.developUpdateContentPleaseEnterACalculationFormula')"
+                    :placeholder="$('ui.developUpdateContentPleaseEnterACalculationFormula')"
                     size="small"
                     @focus="openDialog(index, item.value)"
                     v-model="item.value"
@@ -167,8 +168,8 @@
                   style="width: 100%"
                   v-if="getType(item.form_field_uniqid) === 'switch'"
                 >
-                  <el-option value="1" :label="$t('ui.developFieldComponentYes')"></el-option>
-                  <el-option value="0" :label="$t('ui.developFieldComponentNo')"></el-option>
+                  <el-option value="1" :label="$('ui.developFieldComponentYes')"></el-option>
+                  <el-option value="0" :label="$('ui.developFieldComponentNo')"></el-option>
                 </el-select>
 
                 <!-- 输入框类型 -->
@@ -210,13 +211,13 @@
 
                 <!-- 日期选择 -->
                 <div v-if="getType(item.form_field_uniqid) === 'date_picker'">
-                  <el-date-picker style="width: 100%" v-model="item.value" type="date" :placeholder="$t('ui.administrationNoticeAddNoticeSelectDateTime')">
+                  <el-date-picker style="width: 100%" v-model="item.value" type="date" :placeholder="$('ui.administrationNoticeAddNoticeSelectDateTime')">
                   </el-date-picker>
                 </div>
 
                 <!-- 日期时间选择 -->
                 <div v-if="getType(item.form_field_uniqid) === 'date_time_picker'">
-                  <el-date-picker style="width: 100%" v-model="item.value" type="datetime" :placeholder="$t('ui.administrationNoticeAddNoticeSelectDateTime')">
+                  <el-date-picker style="width: 100%" v-model="item.value" type="datetime" :placeholder="$('ui.administrationNoticeAddNoticeSelectDateTime')">
                   </el-date-picker>
                 </div>
                 <!-- 人员 -->
@@ -271,10 +272,10 @@
         </el-row>
       </div>
       <span @click.stop="addNewLine()" class="pointer default-color fz-12"
-        ><span class="el-icon-plus mr5"></span>{{ $t("ui.developUpdateContentAddField") }}</span
+        ><span class="el-icon-plus mr5"></span>{{ $("ui.developUpdateContentAddField") }}</span
       >
       <template v-if="type == 'push_data'">
-        <div class="prompt">{{ $t("ui.developUpdateContentFieldMappingExample") }}</div>
+        <div class="prompt">{{ $("ui.developUpdateContentFieldMappingExample") }}</div>
         <div class="up-box">
           {"action":"{{ action[action.length - 1] || '' }}","data":{{ getUpdateObj(updateList) }}}
         </div>
@@ -283,7 +284,7 @@
   </div>
   <!-- 计算公式 -->
   <oa-dialog :fromData="fromData" ref="oaDialog" @submit="submit">
-    <el-input class="textPosition" type="textarea" :rows="5" :placeholder="$t('ui.developUpdateContentPleaseEnterFormula')" v-model="value"> </el-input>
+    <el-input class="textPosition" type="textarea" :rows="5" :placeholder="$('ui.developUpdateContentPleaseEnterFormula')" v-model="value"> </el-input>
     <el-popover placement="left" trigger="hover">
       <div class="field-box">
         <div class="field-text over-text" v-for="(val, index) in numfieldList" :key="index" @click="handleClick(val)">
@@ -296,7 +297,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getDictTreeListApi } from '@/api/form'
 export default {
   props: {
@@ -356,8 +356,8 @@ export default {
     return {
       fromData: {
         width: '550px',
-        title: i18n.t('legacyScript.formula'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.formula'),
+        btnText: '确定',
         labelWidth: '90px',
         type: 'slot'
       },
@@ -406,7 +406,7 @@ export default {
     submit(data) {
       var reg = new RegExp('[\\u4E00-\\u9FFF]+', 'g')
       if (reg.test(this.value)) {
-        this.$message.error(i18n.t('legacyScript.enterACalculationFormulaInTheCorrectFormat'))
+        this.$message.error($('legacyScript.enterACalculationFormulaInTheCorrectFormat'))
         return false
       }
       this.updateList[this.activeIndex].value = this.value

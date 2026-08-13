@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div
   v-box-selection="{
@@ -16,19 +17,19 @@
         <p>
           <el-checkbox :key="0" v-model="checked" :disabled="fileData.length <= 0" :label="0"
             @change="checkChange(1)">
-            {{ checked ? $t('file.reverse') : $t('file.all') }}
+            {{ checked ? $('file.reverse') : $('file.all') }}
           </el-checkbox>
         </p>
-        <p>{{ $t("ui.userCloudfileLayoutSpaceFileFileSize") }}</p>
-        <p>{{ $t("ui.hrAssessCheckIndexCreator") }}</p>
-        <p>{{ $t("ui.hrToolHaishAssessmentHistoryListUpdatedTime") }}</p>
-        <p>{{ $t("ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation") }}</p>
+        <p>{{ $("ui.userCloudfileLayoutSpaceFileFileSize") }}</p>
+        <p>{{ $("ui.hrAssessCheckIndexCreator") }}</p>
+        <p>{{ $("ui.hrToolHaishAssessmentHistoryListUpdatedTime") }}</p>
+        <p>{{ $("ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation") }}</p>
       </div>
       <div v-else class="first-header">
         <p>
           <el-checkbox :key="0" v-model="checked" :disabled="fileData.length <= 0" :label="0"
             @change="checkChange(1)">
-            {{ checked ? $t('file.reverse') : $t('file.all') }}
+            {{ checked ? $('file.reverse') : $('file.all') }}
           </el-checkbox>
         </p>
       </div>
@@ -96,7 +97,7 @@
 
                       <i v-else-if="fileStyle.style == 1" :class="getFileTypeIconfont(item.type, item.file_ext)"
                         class="icon iconfont" />
-                      <input :id="'input' + index" v-model="item.name" :placeholder="$t('file.placeholder10')"
+                      <input :id="'input' + index" v-model="item.name" :placeholder="$('file.placeholder10')"
                         autofocus="autofocus" class="rename-input" maxlength="30" @blur="renameBlur(item)" />
                     </p>
                   </div>
@@ -118,25 +119,25 @@
                         <div class="right-item-list">
                           <div v-if="item.type !== 1 && openTypes.includes(item.file_ext)" class="right-item"
                             @click="getItemFile(item)">
-                            {{ $t("ui.userCloudfileRightClickOpen") }}
+                            {{ $("ui.userCloudfileRightClickOpen") }}
                           </div>
                           <div v-if="item.type !== 1" class="right-item" @click="fileDownLoad(item)">
-                            {{ $t('public.download') }}
+                            {{ $('public.download') }}
                           </div>
-                          <div v-if="item.type !== 1" class="right-item" @click="shareOther(item)">{{ $t("ui.userCloudfileRightClickShare2") }}</div>
+                          <div v-if="item.type !== 1" class="right-item" @click="shareOther(item)">{{ $("ui.userCloudfileRightClickShare2") }}</div>
                           <el-divider v-if="item.type !== 1" />
-                          <div class="right-item" @click="getMoveDialog(item, 1)">{{ $t('file.moveto') }}</div>
+                          <div class="right-item" @click="getMoveDialog(item, 1)">{{ $('file.moveto') }}</div>
                           <div v-if="item.type === 1 && item.user_id === $store.state.user.userInfo.id"
                             class="right-item" @click="addAuthor(item)">
-                            {{ $t('file.directory') }}
+                            {{ $('file.directory') }}
                           </div>
                           <div v-if="item.type !== 1" class="right-item" @click="getMoveDialog(item, 2)">
-                            {{ $t('file.copyto') }}
+                            {{ $('file.copyto') }}
                           </div>
-                          <div class="right-item" @click="setRenameItem(item, index)">{{ $t('file.rename') }}</div>
+                          <div class="right-item" @click="setRenameItem(item, index)">{{ $('file.rename') }}</div>
                           <el-divider />
-                          <div class="right-item" @click="getFolderDelete(item.id)">{{ $t('public.delete') }}</div>
-                          <div class="right-item" @click="getFileAttribute(item)">{{ $t('file.attribute') }}</div>
+                          <div class="right-item" @click="getFolderDelete(item.id)">{{ $('public.delete') }}</div>
+                          <div class="right-item" @click="getFileAttribute(item)">{{ $('file.attribute') }}</div>
                       </div>
                       <i slot="reference" class="icon iconfont icongengduo1" />
                     </el-popover>
@@ -167,7 +168,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   folderSpaceEntAllMoveApi,
   folderSpaceEntDeleteApi,
@@ -290,7 +290,7 @@ export default {
       this.handlerEmit()
     },
     setOptions() {
-      this.breadcrumbArray[0].name = this.$t('file.allfiles')
+      this.breadcrumbArray[0].name = this.$('file.allfiles')
     },
     pageChange(page) {
       this.where.page = page;
@@ -456,7 +456,7 @@ export default {
         return;
       }
       if (moveIds.length === 1 && String(dragItem.pid || "") === String(item.id)) {
-        this.$message.warning(i18n.t('legacyScript.thisFileAlreadyExistsInTheCurrentFolder'));
+        this.$message.warning($('legacyScript.thisFileAlreadyExistsInTheCurrentFolder'));
         this.resetDragState();
         return;
       }
@@ -634,7 +634,7 @@ export default {
     },
     addAuthor(row) {
       this.fromData = {
-        title: this.$t('file.setdirectory'),
+        title: this.$('file.setdirectory'),
         fid: this.spaceId,
         id: row.id,
         edit: 1
@@ -691,7 +691,7 @@ export default {
     },
     getFileAttribute(item) {
       this.formBoxConfig = {
-        title: this.$t('file.fileattribute'),
+        title: this.$('file.fileattribute'),
         is_file: false,
         fid: this.spaceType == 'recently' ? item.pid : this.spaceId,
         id: item.id,

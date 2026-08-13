@@ -1,41 +1,42 @@
+import { $ } from '@/lang'
 <!-- 客户列表/订单管理：查看-发票页面  contractInvoice：来区分订单管理还是客户管理 -->
 <template>
 <div class="station-invoice">
   <div class="btn-box1">
-    <div class="title-16">{{ $t("ui.customerContractContractInvoiceInvoiceList") }}</div>
+    <div class="title-16">{{ $("ui.customerContractContractInvoiceInvoiceList") }}</div>
     <el-button type="primary" size="small" @click="handleBuild(0, buildData.invoicing_switch, 'invoicing_switch')">
-      {{ $t("ui.customerContractContractInvoiceApplyForInvoice") }}
+      {{ $("ui.customerContractContractInvoiceApplyForInvoice") }}
     </el-button>
   </div>
   <div class="amount mt10">
     <div>
-      <span class="amount-label">{{ $t("ui.customerContractContractInvoiceTotalInvoicedAmountYuan") }}</span>
+      <span class="amount-label">{{ $("ui.customerContractContractInvoiceTotalInvoicedAmountYuan") }}</span>
       <span class="amount-val">{{ cumulative_invoiced_price }}</span>
     </div>
     <div>
-      <span class="amount-label ml36">{{ $t("ui.customerContractContractInvoiceAmountUnderInvoiceReviewYuan") }}</span>
+      <span class="amount-label ml36">{{ $("ui.customerContractContractInvoiceAmountUnderInvoiceReviewYuan") }}</span>
       <span class="amount-val">{{ audit_invoiced_price }}</span>
     </div>
     <div>
-      <span class="amount-label ml36">{{ $t("ui.customerContractContractInvoiceTotalReceivedAmountYuan") }}</span>
+      <span class="amount-label ml36">{{ $("ui.customerContractContractInvoiceTotalReceivedAmountYuan") }}</span>
       <span class="amount-val"> {{ cumulative_payment_price }}</span>
     </div>
   </div>
   <el-table :data="tableData" style="width: 100%; height: 100%">
-    <el-table-column prop="created_at" :label="$t('ui.customerContractContractInvoiceApplicationTime')" sortable min-width="150"> </el-table-column>
-    <el-table-column prop="title" :label="$t('ui.customerContractContractInvoiceInvoiceHeader')" min-width="150"> </el-table-column>
-    <el-table-column prop="amount" :label="$t('customer.invoicingpay')" min-width="100">
+    <el-table-column prop="created_at" :label="$('ui.customerContractContractInvoiceApplicationTime')" sortable min-width="150"> </el-table-column>
+    <el-table-column prop="title" :label="$('ui.customerContractContractInvoiceInvoiceHeader')" min-width="150"> </el-table-column>
+    <el-table-column prop="amount" :label="$('customer.invoicingpay')" min-width="100">
       <template slot-scope="scope">
         <span :class="scope.row.price == scope.row.amount ? '' : 'active'">{{ scope.row.amount }}</span>
       </template>
     </el-table-column>
-    <el-table-column prop="price" :label="$t('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100">
+    <el-table-column prop="price" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100">
       <template slot-scope="scope">
         <span :class="scope.row.price == scope.row.amount ? '' : 'active'">{{ scope.row.price }}</span>
       </template>
     </el-table-column>
 
-    <el-table-column prop="status" :label="$t('ui.customerContractContractInvoiceInvoiceReviewStatus')" min-width="110">
+    <el-table-column prop="status" :label="$('ui.customerContractContractInvoiceInvoiceReviewStatus')" min-width="110">
       <template slot-scope="scope">
         <el-tag :type="scope.row.status == -1 ? 'danger' : scope.row.status == -1 ? 'warning' : ''">
           {{ getInvoiceStatus(scope.row.status) }}
@@ -44,21 +45,21 @@
     </el-table-column>
 
     <!-- 操作 -->
-    <el-table-column prop="address" min-width="240" :label="$t('public.operation')">
+    <el-table-column prop="address" min-width="240" :label="$('public.operation')">
       <template slot-scope="scope">
-        <el-button @click="handleCheck(scope.row)" type="text">{{ $t('public.check') }}</el-button>
+        <el-button @click="handleCheck(scope.row)" type="text">{{ $('public.check') }}</el-button>
 
-        <el-button @click="setRemarks(scope.row)" type="text">{{ $t("ui.xmindEditorToolbarNodeBtnListRemarks") }}</el-button>
+        <el-button @click="setRemarks(scope.row)" type="text">{{ $("ui.xmindEditorToolbarNodeBtnListRemarks") }}</el-button>
 
         <el-button v-if="scope.row.status === 0" @click="invoiceWithdrawal(scope.row)" type="text">
-          {{ $t("ui.customerContractContractInvoiceRecallInvoice") }}
+          {{ $("ui.customerContractContractInvoiceRecallInvoice") }}
         </el-button>
         <el-button v-if="scope.row.status === 5"
           @click="handleBuild(scope.row, buildData.void_invoice_switch, 'void_invoice_switch')" type="text">
-          {{ $t("ui.customerInvoiceIndexApplyToVoid") }}
+          {{ $("ui.customerInvoiceIndexApplyToVoid") }}
         </el-button>
-        <el-button v-if="scope.row.status === 4" @click="invoiceWithdrawal(scope.row, 1)" type="text">{{ $t("ui.customerInvoiceIndexWithdrawVoidRequest") }}</el-button>
-        <el-button @click="handleRelatePayment(scope.row, 1)" type="text">{{ $t("ui.invoiceInvoiceDetailsRelatedPaymentOrder") }}</el-button>
+        <el-button v-if="scope.row.status === 4" @click="invoiceWithdrawal(scope.row, 1)" type="text">{{ $("ui.customerInvoiceIndexWithdrawVoidRequest") }}</el-button>
+        <el-button @click="handleRelatePayment(scope.row, 1)" type="text">{{ $("ui.invoiceInvoiceDetailsRelatedPaymentOrder") }}</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -78,11 +79,11 @@
     <div class="line" />
     <el-form :model="form" :rules="rules" class="from">
       <el-form-item :label="reason + '：'" label-width="90px" prop="remarks">
-        <el-input type="textarea" v-model="form.remarks" :placeholder="$t('ui.customerInvoiceIndexPleaseEnterReason')"></el-input>
+        <el-input type="textarea" v-model="form.remarks" :placeholder="$('ui.customerInvoiceIndexPleaseEnterReason')"></el-input>
       </el-form-item>
       <div class="footer">
-        <el-button size="small" class="btn" @click="cancelFn">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button size="small" type="primary" @click="submitFn" class="btn">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+        <el-button size="small" class="btn" @click="cancelFn">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button size="small" type="primary" @click="submitFn" class="btn">{{ $("ui.formCommonDialogFormOk") }}</el-button>
       </div>
     </el-form>
   </el-dialog>
@@ -100,7 +101,7 @@
   </mergeInvoice>
   <!--审批开票 -->
   <!-- 关联付款侧滑 -->
-  <el-drawer :title="$t('ui.invoiceInvoiceDetailsRelatedPaymentOrder')" :visible.sync="paymentDrawer" direction="rtl" :append-to-body="true"
+  <el-drawer :title="$('ui.invoiceInvoiceDetailsRelatedPaymentOrder')" :visible.sync="paymentDrawer" direction="rtl" :append-to-body="true"
     :before-close="handleClose" size="60%">
 
    <div class="paymentTable-box">
@@ -108,8 +109,8 @@
     </paymentTable>
    </div>
    <div class="button from-foot-btn fix btn-shadow" >
-      <el-button class="el-btn" size="small" @click="handleClose">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button size="small" type="primary" @click="submit">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+      <el-button class="el-btn" size="small" @click="handleClose">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button size="small" type="primary" @click="submit">{{ $("ui.formCommonDialogFormOk") }}</el-button>
     </div>
 
   </el-drawer>
@@ -119,7 +120,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getInvoiceText, getInvoiceClassName } from '@/libs/customer'
 import { approveApplyRevokeApi } from '@/api/business'
 import {
@@ -183,7 +183,7 @@ export default {
         remarks: ''
       },
       rules: {
-        remarks: [{ required: true, message: i18n.t('legacyScript.pleaseProvideAReasonForWithdrawal'), trigger: 'blur' }]
+        remarks: [{ required: true, message: $('legacyScript.pleaseProvideAReasonForWithdrawal'), trigger: 'blur' }]
       },
       tableData: [],
       where: {
@@ -334,7 +334,7 @@ export default {
     },
     // 作废撤回
     withdraw(val) {
-      this.$modalSure(this.$t('customer.message08')).then(() => {
+      this.$modalSure(this.$('customer.message08')).then(() => {
         let data = {
           invalid: -1
         }
@@ -347,7 +347,7 @@ export default {
     },
     // 申请作废
     apply(val) {
-      this.title = i18n.t('legacyScript.invoiceVoidRequest')
+      this.title = $('legacyScript.invoiceVoidRequest')
       this.reason = '作废原因'
       this.dialogVisible = true
       this.withdrawId = val.id
@@ -415,7 +415,7 @@ export default {
       if (type == '') {
         this.mergeOpenFn(val, type).then(() => {
           this.formBoxConfig = {
-            title: i18n.t('ui.customerContractContractInvoiceApplyForInvoice'),
+            title: $('ui.customerContractContractInvoiceApplyForInvoice'),
             width: '1000px',
             edit: false,
             data: this.formInfo.data,
@@ -438,7 +438,7 @@ export default {
         this.mergeOpenFn(val, type).then(() => {
           if (this.mergeOpen) {
             this.formBoxConfig = {
-              title: i18n.t('legacyScript.editInvoiceApplication'),
+              title: $('legacyScript.editInvoiceApplication'),
               width: '1000px',
               edit: true,
               rowData: val,
@@ -448,7 +448,7 @@ export default {
             this.$refs.mergeInvoice.openBox()
           } else {
             this.formBoxConfig = {
-              title: i18n.t('legacyScript.editInvoiceApplication'),
+              title: $('legacyScript.editInvoiceApplication'),
               width: '1000px',
               edit: true,
               data: this.formInfo.data,
@@ -465,7 +465,7 @@ export default {
     },
     handleEdit(row) {
       this.formBoxConfig = {
-        title: this.$t('customer.invoiceedit'),
+        title: this.$('customer.invoiceedit'),
         width: '820px',
         edit: true,
         data: row
@@ -474,7 +474,7 @@ export default {
     },
     handleCheck(row) {
       this.invoiceData = {
-        title: i18n.t('legacyScript.viewInvoice'),
+        title: $('legacyScript.viewInvoice'),
         width: '1000px',
         data: row
       }
@@ -486,7 +486,7 @@ export default {
     },
     setRemarks(row) {
       this.configMark = {
-        title: this.$t('customer.remarkinformation'),
+        title: this.$('customer.remarkinformation'),
         width: '480px',
         id: row.id,
         type: 2,
@@ -496,7 +496,7 @@ export default {
     },
     // 删除
     handleDelete(item) {
-      this.$modalSure(this.$t('customer.placeholder23')).then(() => {
+      this.$modalSure(this.$('customer.placeholder23')).then(() => {
         clientInvoiceDeleteApi(item.id).then((res) => {
           if (this.where.page > 1 && this.tableData.length <= 1) {
             this.where.page--

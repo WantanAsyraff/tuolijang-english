@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="oa-dialog">
   <el-drawer
@@ -11,16 +12,16 @@
   >
     <div class="invite">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="auto">
-        <el-form-item :label="$t('ui.developForeignAddForeignKeyName')" prop="title">
-          <el-input :placeholder="$t('ui.customerSpecificationsPleaseEnterAName')" v-model="ruleForm.title" size="small"> </el-input>
+        <el-form-item :label="$('ui.developForeignAddForeignKeyName')" prop="title">
+          <el-input :placeholder="$('ui.customerSpecificationsPleaseEnterAName')" v-model="ruleForm.title" size="small"> </el-input>
         </el-form-item>
-        <el-form-item :label="$t('ui.developForeignAddForeignKeyDescription')">
-          <el-input type="textarea" v-model="ruleForm.info" :rows="2" size="small" :placeholder="$t('ui.chatModelFormEnterContent')">
+        <el-form-item :label="$('ui.developForeignAddForeignKeyDescription')">
+          <el-input type="textarea" v-model="ruleForm.info" :rows="2" size="small" :placeholder="$('ui.chatModelFormEnterContent')">
           </el-input>
         </el-form-item>
       </el-form>
       <div class="mt30">
-        <span class="name"> {{ $t("ui.developForeignAddForeignKeyPermissions") }}</span>
+        <span class="name"> {{ $("ui.developForeignAddForeignKeyPermissions") }}</span>
         <div class="tree-box mt10">
           <el-table
             :data="treeData"
@@ -29,7 +30,7 @@
             default-expand-all
             :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
           >
-            <el-table-column prop="name" :label="$t('ui.developForeignAddForeignApplicationsAndMenus')" width="300">
+            <el-table-column prop="name" :label="$('ui.developForeignAddForeignApplicationsAndMenus')" width="300">
               <template slot-scope="scope">
                 <div class="flex-center">
                   <span
@@ -46,7 +47,7 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column prop="date" :label="$t('ui.developForeignAddForeignApiPermissions')">
+            <el-table-column prop="date" :label="$('ui.developForeignAddForeignApiPermissions')">
               <template slot-scope="scope">
                 <el-checkbox-group v-model="auth">
                   <el-checkbox v-for="(item, index) in scope.row.opitons" :label="item.id" :key="index">{{
@@ -60,14 +61,13 @@
       </div>
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button class="el-btn" size="small" @click="handleClose()">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button size="small" type="primary" @click="submit">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button class="el-btn" size="small" @click="handleClose()">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button size="small" type="primary" @click="submit">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { extractArrayIds } from '@/libs/public'
 import { getOenapiApi, saveOpenKeyApi, getOpenKeyInfoApi, putOpenKeyApi } from '@/api/develop'
 export default {
@@ -77,13 +77,13 @@ export default {
   data() {
     return {
       show: false,
-      title: i18n.t('legacyScript.newAuthorizationKey'),
+      title: $('legacyScript.newAuthorizationKey'),
       ruleForm: {
         title: '',
         info: ''
       },
       rules: {
-        title: [{ required: true, message: i18n.t('legacyScript.pleaseEnterAKeyName'), trigger: 'blur' }]
+        title: [{ required: true, message: $('legacyScript.pleaseEnterAKeyName'), trigger: 'blur' }]
       },
       info: '',
       id: 0,
@@ -166,7 +166,7 @@ export default {
 
     submit() {
       if (this.auth.length == 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectKeyPermissions'))
+        this.$message.error($('legacyScript.pleaseSelectKeyPermissions'))
         return false
       }
       let obj = {
@@ -225,7 +225,7 @@ export default {
     openBox(id) {
       this.show = true
       if (id) {
-        this.title = i18n.t('legacyScript.editAuthorizationKey')
+        this.title = $('legacyScript.editAuthorizationKey')
         this.id = id
         getOpenKeyInfoApi(id).then((res) => {
           this.ruleForm.info = res.data.info
@@ -235,7 +235,7 @@ export default {
           this.getidsFn(this.auth)
         })
       } else {
-        this.title = i18n.t('legacyScript.newAuthorizationKey')
+        this.title = $('legacyScript.newAuthorizationKey')
       }
     },
 

@@ -1,5 +1,5 @@
 <template>
-	<el-form-item :label='$ts("可刷新")' v-if="optionModel.showHeader">
+	<el-form-item :label='$("legacy.ddc135979a39b3ac")' v-if="optionModel.showHeader">
 		<el-switch v-model="optionModel.showRefresh"></el-switch>
 	</el-form-item>
 </template>

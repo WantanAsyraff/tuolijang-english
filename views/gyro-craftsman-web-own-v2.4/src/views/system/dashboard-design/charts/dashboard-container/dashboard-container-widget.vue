@@ -24,7 +24,7 @@
           <div class="title-box">
             <span>{{ item.options.label }}</span>
             <el-popover placement="top-start" width="200" trigger="hover">
-              <div>{{ item.options.tips || $t('ui.systemDashboardDesignChartsDashboardContainerDashboardContainerItemSetTooltipText') }}</div>
+              <div>{{ item.options.tips || $('ui.systemDashboardDesignChartsDashboardContainerDashboardContainerItemSetTooltipText') }}</div>
 
               <span slot="reference" v-show="item.options.isShowTips" class="el-icon-warning-outline"></span>
             </el-popover>

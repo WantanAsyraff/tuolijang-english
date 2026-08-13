@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="card-box">
@@ -8,7 +9,7 @@
             v-model="period"
             style="width: 160px"
             size="small"
-            :placeholder="$t('finance.pleaseselect')"
+            :placeholder="$('finance.pleaseselect')"
             @change="handlePeriod"
           >
             <el-option v-for="(item, index) in periodOptions" :key="index" :label="item.label" :value="item.value" />
@@ -21,12 +22,12 @@
             type="daterange"
             size="small"
             :picker-options="pickerOptions"
-            :placeholder="$t('toptable.selecttime')"
+            :placeholder="$('toptable.selecttime')"
             format="yyyy/MM/dd"
             value-format="yyyy/MM/dd"
-            :range-separator="$t('toptable.to')"
-            :start-placeholder="$t('toptable.startdate')"
-            :end-placeholder="$t('toptable.endingdate')"
+            :range-separator="$('toptable.to')"
+            :start-placeholder="$('toptable.startdate')"
+            :end-placeholder="$('toptable.endingdate')"
             :clearable="false"
             style="width: 250px"
             @change="onchangeTime"
@@ -37,7 +38,7 @@
           <el-form-item class="select-bar">
             <select-department
               :value="departmentList || []"
-              :placeholder="$t('ui.hrAssessStaffMentStatisticsSelectDepartment')"
+              :placeholder="$('ui.hrAssessStaffMentStatisticsSelectDepartment')"
               @changeMastart="changeMastart"
               class="mr10"
               :is-search="true"
@@ -49,7 +50,7 @@
           <el-form-item class="select-bar">
             <select-member
               :value="userList || []"
-              :placeholder="$t('ui.hrAssessStaffMentStatisticsSelectPersonnel')"
+              :placeholder="$('ui.hrAssessStaffMentStatisticsSelectPersonnel')"
               @getSelectList="getSelectList"
               class="mr10"
               :is-search="true"
@@ -58,7 +59,7 @@
           </el-form-item>
         </div>
         <el-form-item>
-          <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+          <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
             <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
           </el-tooltip>
         </el-form-item>
@@ -69,7 +70,7 @@
         <li v-for="(item, index) in tableData" :key="index">
           <span class="icon" :style="{ backgroundColor: colorList[index] }" />
           <span>{{ item.name }}:</span>
-          <span>{{ item.min }}-{{ item.max }}{{ $t("ui.developCrudEventMinute") }} </span>
+          <span>{{ item.min }}-{{ item.max }}{{ $("ui.developCrudEventMinute") }} </span>
           <span class="ml4">{{ item.mark }}</span>
         </li>
       </ul>
@@ -86,7 +87,6 @@
 import { assessCensusApi } from '@/api/enterprise'
 import Commnt from '@/components/user/accessCommon'
 import echarts from 'echarts'
-import { localizeChartOption } from '@/utils/i18ns'
 export default {
   name: 'AssessStatistics',
   components: {
@@ -128,16 +128,16 @@ export default {
       ],
       periodOptions: Commnt.periodOptions,
       fromList: [
-        { label: this.$t('toptable.all'), value: '' },
-        { label: this.$t('toptable.today'), value: 'today' },
-        { label: this.$t('toptable.yesterday'), value: 'yesterday' },
-        { label: this.$t('toptable.day7'), value: 'lately7' },
-        { label: this.$t('toptable.day30'), value: 'lately30' },
-        { label: this.$t('toptable.thismonth'), value: 'month' },
-        { label: this.$t('toptable.thisyear'), value: 'year' }
+        { label: this.$('toptable.all'), value: '' },
+        { label: this.$('toptable.today'), value: 'today' },
+        { label: this.$('toptable.yesterday'), value: 'yesterday' },
+        { label: this.$('toptable.day7'), value: 'lately7' },
+        { label: this.$('toptable.day30'), value: 'lately30' },
+        { label: this.$('toptable.thismonth'), value: 'month' },
+        { label: this.$('toptable.thisyear'), value: 'year' }
       ],
-      frameArray: [{ name: this.$t('setting.selectdepartment'), id: '' }],
-      userArray: [{ label: this.$t('access.selectpersonnel'), value: '' }],
+      frameArray: [{ name: this.$('setting.selectdepartment'), id: '' }],
+      userArray: [{ label: this.$('access.selectpersonnel'), value: '' }],
       tableData: [],
       frame: [],
       period: 2,
@@ -167,11 +167,22 @@ export default {
     this.getTableData()
   },
   watch: {
-    '$i18n.locale'() {
-      if (this.myChart) this.myChart.setOption(localizeChartOption(this.optionData, this), true)
+    '$language'() {
+      if (this.myChart) this.myChart.setOption(this.mapDisplayValues(this.optionData), true)
     }
   },
   methods: {
+    mapDisplayValues(value, seen = new WeakMap()) {
+      if (typeof value === 'string') return this.$(value)
+      if (!value || typeof value !== 'object' || value instanceof Date || value instanceof RegExp) return value
+      if (seen.has(value)) return seen.get(value)
+      const result = Array.isArray(value) ? [] : {}
+      seen.set(value, result)
+      Object.keys(value).forEach((key) => {
+        result[key] = this.mapDisplayValues(value[key], seen)
+      })
+      return result
+    },
     // 选择成员回调
     getSelectList(data) {
       const testUid = []
@@ -208,7 +219,7 @@ export default {
       this.init()
       this.frame = result.data.frame ? result.data.frame : []
       this.frameArray = this.frame
-      this.frameArray.unshift({ name: this.$t('setting.selectdepartment'), id: '' })
+      this.frameArray.unshift({ name: this.$('setting.selectdepartment'), id: '' })
     },
 
     reset() {
@@ -370,7 +381,7 @@ export default {
       if (this.tableData.length > 0) {
         this.tableData.forEach((value) => {
           xAxisName.push(value.name)
-          xAxisCount.push(!this.test_uid ? value.count + this.$t('access.ren') : value.count + this.$t('access.ci'))
+          xAxisCount.push(!this.test_uid ? value.count + this.$('access.ren') : value.count + this.$('access.ci'))
           seriesData.push(value.count)
         })
         this.optionData.xAxis[0].data = xAxisName
@@ -379,7 +390,7 @@ export default {
       }
       this.myChart = echarts.init(document.getElementById('statistics-con'))
       let option = null
-      option = localizeChartOption(this.optionData, this)
+      option = this.mapDisplayValues(this.optionData)
       // 基于准备好的dom，初始化echarts实例
       this.myChart.setOption(option, true)
     }

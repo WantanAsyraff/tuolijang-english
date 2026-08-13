@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="employees-card-bottom">
@@ -5,8 +6,8 @@
     <div class="flex-row flex-col">
       <div>
         <el-tabs v-model="activeVal" class="tabs" @tab-click="activeClick">
-          <el-tab-pane :label="$t('ui.userDutyAnalyseMyWorkAnalysis')" name="1" />
-          <el-tab-pane :label="$t('ui.userDutyAnalyseSubordinateWorkAnalysis')" name="2" />
+          <el-tab-pane :label="$('ui.userDutyAnalyseMyWorkAnalysis')" name="1" />
+          <el-tab-pane :label="$('ui.userDutyAnalyseSubordinateWorkAnalysis')" name="2" />
         </el-tabs>
       </div>
       <div v-if="activeVal == 2" class="flex pt10"></div>
@@ -15,7 +16,7 @@
     <!-- 我的工作分析 -->
     <div v-if="activeVal == 1" class="main">
       <div v-if="mineContent" class="detail-box">
-        <div class="title">{{ $t("ui.userDutyAnalyseWorkAnalysis") }}</div>
+        <div class="title">{{ $("ui.userDutyAnalyseWorkAnalysis") }}</div>
         <div class="content" v-html="mineContent" @click="replayImgShow($event)" />
       </div>
       <div v-else>
@@ -26,13 +27,13 @@
     <!-- 下级工作分析表 -->
     <div v-if="activeVal == 2" class="table-box">
       <div class="inTotal">
-        {{ $t("ui.developModuleFormBoxTotal") }} {{ totalSubmit }} {{ $t("ui.commonOaFromBoxItems") }}
+        {{ $("ui.developModuleFormBoxTotal") }} {{ totalSubmit }} {{ $("ui.commonOaFromBoxItems") }}
         <el-form :inline="true" class="from-s" @submit.native.prevent>
           <el-form-item class="select-bar">
             <el-input
               v-model="where.name"
               clearable
-              :placeholder="$t('ui.userDutyAnalyseEnterNameToSearch')"
+              :placeholder="$('ui.userDutyAnalyseEnterNameToSearch')"
               prefix-icon="el-icon-search"
               size="small"
               @change="getList(1)"
@@ -44,7 +45,7 @@
               v-model="where.job_id"
               clearable
               filterable
-              :placeholder="$t('ui.userDutyAnalyseSelectPosition')"
+              :placeholder="$('ui.userDutyAnalyseSelectPosition')"
               size="small"
               @change="getList(1)"
               @keyup.native.stop.prevent.enter="getList(1)"
@@ -53,7 +54,7 @@
             </el-select>
           </el-form-item>
           <el-form-item class="select-bar">
-            <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+            <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
               <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
             </el-tooltip>
           </el-form-item>
@@ -71,7 +72,7 @@
       >
         <template #options="{ row }">
           <el-button v-hasPermi="['user:duty:analyse:check']" size="small" type="text" @click="onCheck(row)"
-            >{{ $t("ui.layoutNoticeNoticeListView") }}</el-button
+            >{{ $("ui.layoutNoticeNoticeListView") }}</el-button
           >
           <el-button
             v-if="row.operate"
@@ -79,7 +80,7 @@
             size="small"
             type="text"
             @click="onEdit(row)"
-            >{{ $t("ui.formCommonOaLogEdit") }}</el-button
+            >{{ $("ui.formCommonOaLogEdit") }}</el-button
           >
         </template>
       </oa-table>
@@ -99,7 +100,7 @@
   </el-card>
 
   <!-- 查看 -->
-  <el-drawer :before-close="handleClose" :visible.sync="checkDrawer" direction="rtl" size="60%" :title="$t('ui.hrEnterpriseJobAnalysisWorkAnalysis')">
+  <el-drawer :before-close="handleClose" :visible.sync="checkDrawer" direction="rtl" size="60%" :title="$('ui.hrEnterpriseJobAnalysisWorkAnalysis')">
     <div v-if="detailData" class="check-box">
       <div class="content mt14" v-html="detailData" @click="replayImgShow($event)" />
     </div>
@@ -114,11 +115,11 @@
     :wrapperClosable="false"
     direction="rtl"
     size="60%"
-    :title="$t('ui.hrEnterpriseJobAnalysisEditWorkAnalysisForm')"
+    :title="$('ui.hrEnterpriseJobAnalysisEditWorkAnalysisForm')"
   >
     <div class="check-box">
       <div class="user-name">
-        <span>{{ $t("ui.hrEnterpriseJobAnalysisPersonName") }}</span>
+        <span>{{ $("ui.hrEnterpriseJobAnalysisPersonName") }}</span>
         <span class="text">{{ userName }}</span>
       </div>
       <div class="boder">
@@ -134,15 +135,14 @@
       </div>
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button size="small" @click="editDrawer = false">{{ $t('public.cancel') }}</el-button>
-      <el-button :loading="loading" size="small" type="primary" @click="handleConfirm">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button size="small" @click="editDrawer = false">{{ $('public.cancel') }}</el-button>
+      <el-button :loading="loading" size="small" type="primary" @click="handleConfirm">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </el-drawer>
   <image-viewer ref="imageViewer" :srcList="srcList"></image-viewer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 import oaTable from '@/components/form-common/oa-table'
 import defaultPage from '@/components/common/defaultPage'
@@ -182,31 +182,31 @@ export default {
       options: [],
       tableOptions: [
         {
-          label: i18n.t('finance.serialnumber'),
+          label: $('finance.serialnumber'),
           type: 'index'
         },
         {
-          label: i18n.t('ui.hrAttendanceSettingNotJoinPersonName'),
+          label: $('ui.hrAttendanceSettingNotJoinPersonName'),
           prop: 'name'
         },
         {
-          label: i18n.t('customer.position'),
+          label: $('customer.position'),
           render: (row) => {
             return <span>{row.job ? row.job.name : '--'}</span>
           }
         },
         {
-          label: i18n.t('customer.department'),
+          label: $('customer.department'),
           render: (row) => {
             return <span>{row.frame ? row.frame.name : '--'}</span>
           }
         },
         {
-          label: i18n.t('file.updatetime'),
+          label: $('file.updatetime'),
           prop: 'updated_at'
         },
         {
-          label: i18n.t('toptable.operation'),
+          label: $('toptable.operation'),
           slot: 'options',
           fixed: 'right',
           width: '130'

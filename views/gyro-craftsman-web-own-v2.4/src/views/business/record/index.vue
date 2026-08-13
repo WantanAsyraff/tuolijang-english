@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="normal-page">
@@ -11,7 +12,7 @@
         row-key="id"
         style="width: 100%"
       >
-        <el-table-column :label="$t('ui.businessRecordPrintPreviewApplicant')" min-width="120" prop="card.name" show-overflow-tooltip>
+        <el-table-column :label="$('ui.businessRecordPrintPreviewApplicant')" min-width="120" prop="card.name" show-overflow-tooltip>
           <template #default="{ row }">
             <div class="flex" v-if="row.card">
               <img :src="row.card.avatar" alt="" class="img" />
@@ -19,29 +20,29 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.businessHolidayQueryIndexDepartment')" min-width="150" prop="frame.name" show-overflow-tooltip />
-        <el-table-column :label="$t('ui.businessRecordIndexApprovalType')" min-width="150" prop="approve.name" show-overflow-tooltip />
-        <el-table-column :label="$t('ui.businessRecordIndexApprovalStatus')" min-width="120" prop="name" show-overflow-tooltip>
+        <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" min-width="150" prop="frame.name" show-overflow-tooltip />
+        <el-table-column :label="$('ui.businessRecordIndexApprovalType')" min-width="150" prop="approve.name" show-overflow-tooltip />
+        <el-table-column :label="$('ui.businessRecordIndexApprovalStatus')" min-width="120" prop="name" show-overflow-tooltip>
           <template slot-scope="scope">
-            <el-tag effect="plain" v-if="scope.row.status === -1" size="mini" type="info"> {{ $t("ui.customerListApplyForPaymentRevoked") }} </el-tag>
-            <el-tag effect="plain" v-if="scope.row.status === 0" size="mini" type="warning"> {{ $t("ui.customerListApplyForPaymentPendingReview") }} </el-tag>
-            <el-tag effect="plain" v-if="scope.row.status === 1" size="mini" type="info"> {{ $t("ui.customerListApplyForPaymentApproved") }} </el-tag>
-            <el-tag effect="plain" v-if="scope.row.status === 2" size="mini" type="danger"> {{ $t("ui.userExamineExamineRejected") }} </el-tag>
+            <el-tag effect="plain" v-if="scope.row.status === -1" size="mini" type="info"> {{ $("ui.customerListApplyForPaymentRevoked") }} </el-tag>
+            <el-tag effect="plain" v-if="scope.row.status === 0" size="mini" type="warning"> {{ $("ui.customerListApplyForPaymentPendingReview") }} </el-tag>
+            <el-tag effect="plain" v-if="scope.row.status === 1" size="mini" type="info"> {{ $("ui.customerListApplyForPaymentApproved") }} </el-tag>
+            <el-tag effect="plain" v-if="scope.row.status === 2" size="mini" type="danger"> {{ $("ui.userExamineExamineRejected") }} </el-tag>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.businessRecordPrintPreviewSubmissionTime')" min-width="150" prop="created_at" show-overflow-tooltip />
-        <el-table-column :label="$t('public.operation')" prop="name" show-overflow-tooltip width="180">
+        <el-table-column :label="$('ui.businessRecordPrintPreviewSubmissionTime')" min-width="150" prop="created_at" show-overflow-tooltip />
+        <el-table-column :label="$('public.operation')" prop="name" show-overflow-tooltip width="180">
           <template slot-scope="scope">
             <el-button v-hasPermi="['business:record:index:details']" type="text" @click="handleDetail(scope.row)"
-              >{{ $t("ui.developModuleCheckDrawerDetails") }}</el-button
+              >{{ $("ui.developModuleCheckDrawerDetails") }}</el-button
             >
 
             <el-button v-hasPermi="['business:record:index:delete']" type="text" @click="handleDelete(scope.row)"
-              >{{ $t("ui.chatIndexDelete") }}</el-button
+              >{{ $("ui.chatIndexDelete") }}</el-button
             >
 
             <el-button type="text" @click="handlePrint(scope.row)">
-              {{ $t("ui.businessRecordPrintPreviewPrint") }}
+              {{ $("ui.businessRecordPrintPreviewPrint") }}
             </el-button>
           </template>
         </el-table-column>
@@ -69,7 +70,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { approveApplyApi, approveApplyDeleteApi, approveApplyExportApi, approveApplyEditApi } from '@/api/business'
 import func from '@/utils/preload'
 export default {
@@ -155,7 +155,7 @@ export default {
       })
     },
     getExportData() {
-      if (this.where.approve_id == '') return this.$message.error(i18n.t('legacyScript.pleaseSelectApprovalType'))
+      if (this.where.approve_id == '') return this.$message.error($('legacyScript.pleaseSelectApprovalType'))
       this.saveName = '审批导出_' + this.$moment(new Date()).format('HH_mm_ss') + '.xlsx'
       const where = JSON.parse(JSON.stringify(this.where))
       where.limit = 0

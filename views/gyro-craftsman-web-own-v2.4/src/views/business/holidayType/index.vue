@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <!-- 假期类型表格 -->
@@ -5,36 +6,36 @@
     <el-card class="normal-page p20">
       <div>
         <div class="flex-between">
-          <div class="title-16">{{ $t("ui.hrHolidaySettingLeaveTypes") }}</div>
-          <el-button type="primary" icon="el-icon-plus" size="small" @click="addType()">{{ $t("ui.businessHolidayTypeIndexAdd") }}</el-button>
+          <div class="title-16">{{ $("ui.hrHolidaySettingLeaveTypes") }}</div>
+          <el-button type="primary" icon="el-icon-plus" size="small" @click="addType()">{{ $("ui.businessHolidayTypeIndexAdd") }}</el-button>
         </div>
-        <div class="total-16 mt20">{{ $t("ui.businessHolidayQueryIndexTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+        <div class="total-16 mt20">{{ $("ui.businessHolidayQueryIndexTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
         <div class="mt14" v-if="tableData.length > 0">
           <el-table :data="tableData" :height="tableHeight">
-            <el-table-column prop="name" :label="$t('ui.hrHolidaySettingLeaveTypes')" min-width="120">
+            <el-table-column prop="name" :label="$('ui.hrHolidaySettingLeaveTypes')" min-width="120">
               <template slot-scope="scope">
                 <div class="flex">
                   <div class="ml10">{{ scope.row.name }}</div>
                 </div>
               </template>
             </el-table-column>
-            <el-table-column prop="refuse" :label="$t('ui.hrHolidaySettingLeaveUnit')" min-width="100">
+            <el-table-column prop="refuse" :label="$('ui.hrHolidaySettingLeaveUnit')" min-width="100">
               <template slot-scope="scope">
-                <span>{{ scope.row.duration_type == 1 ? $t('ui.hrHolidaySettingByHour') : $t('ui.hrHolidaySettingByDay') }}</span>
+                <span>{{ scope.row.duration_type == 1 ? $('ui.hrHolidaySettingByHour') : $('ui.hrHolidaySettingByDay') }}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="sort" :label="$t('ui.businessExamineIndexSort')"></el-table-column>
-            <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="200">
+            <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')"></el-table-column>
+            <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="200">
               <template slot-scope="scope">
                 <el-button type="text" @click="handleEdit(scope.row)" v-hasPermi="['business:examine:index:edit']">{{
-                  $t('public.edit')
+                  $('public.edit')
                 }}</el-button>
 
                 <el-button
                   type="text"
                   @click="handleDelete(scope.row)"
                   v-hasPermi="['business:examine:index:delete']"
-                  >{{ $t('public.delete') }}</el-button
+                  >{{ $('public.delete') }}</el-button
                 >
               </template>
             </el-table-column>
@@ -65,10 +66,10 @@
     <el-card :body-style="{ padding: '14px' }" class="station-header">
       <el-row>
         <el-col :span="24">
-          <el-page-header :content="this.id > 0 ? $t('ui.businessHolidayTypeIndexEditLeaveTypes') : $t('ui.businessHolidayTypeIndexAddLeaveTypes')">
+          <el-page-header :content="this.id > 0 ? $('ui.businessHolidayTypeIndexEditLeaveTypes') : $('ui.businessHolidayTypeIndexAddLeaveTypes')">
             <div slot="title" @click="back">
               <i class="el-icon-arrow-left"></i>
-              {{ $t("ui.customerProductAddProductResponse") }}
+              {{ $("ui.customerProductAddProductResponse") }}
             </div>
           </el-page-header>
         </el-col>
@@ -83,53 +84,53 @@
             <el-form ref="elForm" :model="form" :rules="rules" label-width="100px" size="medium">
               <div class="card-list">
                 <div class="head">
-                  <span class="title">{{ $t("ui.businessHolidayTypeIndexBasicInformationSettings") }}</span>
+                  <span class="title">{{ $("ui.businessHolidayTypeIndexBasicInformationSettings") }}</span>
                 </div>
-                <el-form-item :label="$t('ui.businessHolidayTypeIndexLeaveTypes')" prop="name">
+                <el-form-item :label="$('ui.businessHolidayTypeIndexLeaveTypes')" prop="name">
                   <el-input
                     size="small"
                     style="width: 350px"
                     v-model="form.name"
                     show-word-limit
-                    :placeholder="$t('ui.businessHolidayTypeIndexPleaseEnterLeaveTypes')"
+                    :placeholder="$('ui.businessHolidayTypeIndexPleaseEnterLeaveTypes')"
                     clearable
                   >
                   </el-input>
                 </el-form-item>
-                <el-form-item style="margin-bottom: 0" :label="$t('ui.businessHolidayTypeIndexNewEmployeeLeave')" prop="new_employee_limit">
+                <el-form-item style="margin-bottom: 0" :label="$('ui.businessHolidayTypeIndexNewEmployeeLeave')" prop="new_employee_limit">
                   <el-select v-model="form.new_employee_limit" style="width: 350px" size="small">
-                    <el-option :label="$t('ui.businessHolidayTypeIndexRestricted')" :value="1"></el-option>
-                    <el-option :label="$t('ui.businessHolidayTypeIndexNoRestriction')" :value="0"></el-option>
+                    <el-option :label="$('ui.businessHolidayTypeIndexRestricted')" :value="1"></el-option>
+                    <el-option :label="$('ui.businessHolidayTypeIndexNoRestriction')" :value="0"></el-option>
                   </el-select>
                 </el-form-item>
                 <div class="infos">
-                  <span v-if="form.new_employee_limit == 0" class="info">{{ $t("ui.businessHolidayTypeIndexLeaveAvailableImmediatelyAfterJoining") }}</span>
+                  <span v-if="form.new_employee_limit == 0" class="info">{{ $("ui.businessHolidayTypeIndexLeaveAvailableImmediatelyAfterJoining") }}</span>
                   <div v-else class="info">
-                    {{ $t("ui.businessHolidayTypeIndexWhenEmploymentDurationIsLessThan") }}
+                    {{ $("ui.businessHolidayTypeIndexWhenEmploymentDurationIsLessThan") }}
                     <el-select v-model="form.new_employee_limit_month" style="width: 100px" size="small">
                       <el-option v-for="month in months" :key="month" :label="month" :value="month"></el-option>
                     </el-select>
-                    {{ $t("ui.businessHolidayTypeIndexMonthsThisLeaveTypeCannotBeRequested") }}
+                    {{ $("ui.businessHolidayTypeIndexMonthsThisLeaveTypeCannotBeRequested") }}
                   </div>
                 </div>
               </div>
 
               <div class="card-list mt20">
                 <div class="head">
-                  <span class="title">{{ $t("ui.businessHolidayTypeIndexLeaveDurationCalculationRules") }}</span>
+                  <span class="title">{{ $("ui.businessHolidayTypeIndexLeaveDurationCalculationRules") }}</span>
                 </div>
-                <el-form-item :label="$t('ui.businessHolidayTypeIndexLeaveHours')" prop="duration_type">
+                <el-form-item :label="$('ui.businessHolidayTypeIndexLeaveHours')" prop="duration_type">
                   <el-select v-model="form.duration_type" style="width: 350px" size="small">
-                    <el-option :label="$t('ui.hrHolidaySettingByDay')" :value="0"></el-option>
-                    <el-option :label="$t('ui.hrHolidaySettingByHour')" :value="1"></el-option>
+                    <el-option :label="$('ui.hrHolidaySettingByDay')" :value="0"></el-option>
+                    <el-option :label="$('ui.hrHolidaySettingByHour')" :value="1"></el-option>
                   </el-select>
                   <div class="infos">
-                    <span v-if="form.duration_type == 1" class="info">{{ $t("ui.businessHolidayTypeIndexApprovalRequestsCalculateLeaveInMinutesMonthlyAttendanceReports") }}</span>
-                    <span v-else class="info">{{ $t("ui.businessHolidayTypeIndexLeaveRequestsUseHalfDayIncrementsAttendanceMonthlyReports") }}</span>
+                    <span v-if="form.duration_type == 1" class="info">{{ $("ui.businessHolidayTypeIndexApprovalRequestsCalculateLeaveInMinutesMonthlyAttendanceReports") }}</span>
+                    <span v-else class="info">{{ $("ui.businessHolidayTypeIndexLeaveRequestsUseHalfDayIncrementsAttendanceMonthlyReports") }}</span>
                   </div>
                 </el-form-item>
 
-                <el-form-item :label="$t('ui.businessHolidayTypeIndexSort')" prop="sort">
+                <el-form-item :label="$('ui.businessHolidayTypeIndexSort')" prop="sort">
                   <el-input-number
                     v-model="form.sort"
                     :precision="0"
@@ -148,13 +149,12 @@
     <!-- </div> -->
   </div>
   <div class="cr-bottom-button btn-shadow" v-if="!checkBtn">
-    <el-button size="small" @click="checkBtn = true">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-    <el-button type="primary" size="small" @click="save">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+    <el-button size="small" @click="checkBtn = true">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+    <el-button type="primary" size="small" @click="save">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
   </div>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   saveHolidayTypeApi,
   approveHolidayTypeApi,
@@ -177,7 +177,7 @@ export default {
       },
       months: [],
       rules: {
-        name: [{ required: true, message: i18n.t('ui.businessHolidayTypeIndexPleaseEnterLeaveTypes') }]
+        name: [{ required: true, message: $('ui.businessHolidayTypeIndexPleaseEnterLeaveTypes') }]
       },
       form: {
         name: '',
@@ -191,9 +191,9 @@ export default {
       repeatData: {},
       key: 'cate',
       tabArray: [
-        { label: this.$t('business.formConfiguration'), value: 'formSetting', number: 2 },
-        { label: this.$t('business.processSetting'), value: 'processSetting', number: 3 },
-        { label: this.$t('business.ruleConfiguration'), value: 'ruleSetting', number: 4 }
+        { label: this.$('business.formConfiguration'), value: 'formSetting', number: 2 },
+        { label: this.$('business.processSetting'), value: 'processSetting', number: 3 },
+        { label: this.$('business.ruleConfiguration'), value: 'ruleSetting', number: 4 }
       ],
       id: 0,
       grid1: {

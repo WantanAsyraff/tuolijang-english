@@ -2,8 +2,8 @@
 <template>
   <div class="assess-left">
     <div class="el-card__header">
-      <span class="pull-left">{{ $ts("内容分组") }}</span>
-      <el-popover placement="top" trigger="hover" popper-class="popoverStyle" :content='$ts("添加内容分组")'>
+      <span class="pull-left">{{ $("ui.customerQuickReplyIndexContentGroup") }}</span>
+      <el-popover placement="top" trigger="hover" popper-class="popoverStyle" :content='$("legacy.88be069362448792")'>
         <span
           @click="addCategory"
           class="iconfont icontianjia pull-right pointer custom-tooltip"
@@ -32,8 +32,8 @@
               @after-enter="handleShow(item.id)"
             >
               <div class="right-item-list">
-                <div class="right-item" @click.stop="addDivsion(item.id)">{{ $t('public.edit') }}</div>
-                <div class="right-item" @click.stop="handleDelete(item.id)">{{ $t('public.delete') }}</div>
+                <div class="right-item" @click.stop="addDivsion(item.id)">{{ $('public.edit') }}</div>
+                <div class="right-item" @click.stop="handleDelete(item.id)">{{ $('public.delete') }}</div>
               </div>
 
               <div

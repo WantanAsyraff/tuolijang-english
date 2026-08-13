@@ -1,12 +1,13 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card class="normal-page" body-style="padding: 0">
       <el-row>
         <el-col v-bind="gridl">
-          <div class="title-16 mt20 ml20">{{ $ts("供应商") }}</div>
+          <div class="title-16 mt20 ml20">{{ $("legacy.033ed59452549c51") }}</div>
           <div class="leftBox">
             <div class="all-text" :class="activeVal === '' ? 'activeText' : ''" @click="handleAll">
-              <span class="iconfont iconshanghu"></span> {{ $ts("全部模型") }}
+              <span class="iconfont iconshanghu"></span> {{ $("legacy.0164f80178a2f12a") }}
             </div>
             <div
               v-for="item in optionList"
@@ -23,8 +24,8 @@
           <div class="p20" v-loading="loading">
             <oaFromBox
               :title="title"
-              :total="total"
-:btn-text="$t('ui.chatModelAddModel')"
+      :total="total"
+      :btnText="$('ui.chatModelAddModel')"
               :search="search"
               :isViewSearch="false"
               :sortSearch="false"
@@ -36,8 +37,8 @@
               <div class="list" ref="container">
                 <div class="item" v-for="item in listData" :key="item.id">
                   <div class="operate">
-                    <span @click="handleInfo(item)">{{ $ts("设置") }}</span> <el-divider direction="vertical"></el-divider
-                    ><span @click="handleDel(item.id)">{{ $ts("删除") }}</span>
+                    <span @click="handleInfo(item)">{{ $("systemText.settings") }}</span> <el-divider direction="vertical"></el-divider
+                    ><span @click="handleDel(item.id)">{{ $("public.delete") }}</span>
                   </div>
                   <div class="title">
                     <img v-if="item.json && item.json.pic" :src="getChatImg(item.json.pic)" alt="" class="img" />
@@ -45,16 +46,16 @@
                     <div style="width: 70%" class="over-text">{{ item.name }}</div>
                   </div>
                   <div class="flex mt14">
-                    <div class="left-text">{{ $ts("模型类型") }}</div>
+                    <div class="left-text">{{ $("ui.chatModelDialogModelType") }}</div>
                     <div class="right-text">{{ item.models_type }}</div>
                   </div>
                   <div class="flex">
-                    <div class="left-text">{{ $ts("基础模型") }}</div>
+                    <div class="left-text">{{ $("legacy.eadf0934709d61bf") }}</div>
                     <div class="right-text">{{ item.is_model }}</div>
                   </div>
                   <div class="flex flex-between">
                     <div class="flex">
-                      <div class="left-text">{{ $ts("创建者") }}</div>
+                      <div class="left-text">{{ $("ui.customerRecordIndexCreator") }}</div>
                       <div class="right-text">{{ item.user ? item.user.name : '--' }}</div>
                     </div>
                     <div class="time">{{ item.created_at }}</div>
@@ -86,7 +87,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import supplierDialog from './components/supplierDialog'
 import defaultPage from '@/components/common/defaultPage'
@@ -112,7 +112,7 @@ export default {
   data() {
     return {
       total: 0,
-      title: i18n.t('finance.all'),
+      title: $('finance.all'),
       loading: false,
       optionList: [],
       activeVal: '',
@@ -182,7 +182,7 @@ export default {
       })
     },
     handleAll() {
-      this.title = i18n.t('finance.all')
+      this.title = $('finance.all')
       this.activeVal = ''
       this.where.provider = ''
       this.getList(1)

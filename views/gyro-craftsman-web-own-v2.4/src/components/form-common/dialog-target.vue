@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 指标模板库弹窗页面 -->
 <template>
   <div>
@@ -20,15 +21,15 @@
         <el-col :span="20">
           <div class="dialog-box">
             <span class="info"
-              >{{ $ts("共") }}{{ total }}{{ $ts("条指标") }}<span v-if="multipleSelection.length !== 0"
-                >{{ $ts("，已选中") }} {{ multipleSelection.length }} {{ $ts("条指标") }}</span
+              >{{ $("file.total") }}{{ total }}{{ $("legacy.0d56e4c3a3c98d9b") }}<span v-if="multipleSelection.length !== 0"
+                >{{ $("legacy.4689290d0e7f5d77") }} {{ multipleSelection.length }} {{ $("legacy.0d56e4c3a3c98d9b") }}</span
               ></span
             >
             <div class="dialog-title-search">
               <el-input
                 v-model="where.name"
                 clearable
-                :placeholder='$ts("根据关键字搜索")'
+                :placeholder='$("legacy.5a6962f8d4a1708a")'
                 prefix-icon="el-icon-search"
                 size="small"
                 style="width: 300px"
@@ -50,9 +51,9 @@
                 @selection-change="handleSelectionChange"
               >
                 <el-table-column type="selection" width="55" />
-                <el-table-column :label='$ts("指标名称")' prop="name" />
-                <el-table-column :label='$ts("指标内容")' prop="content" />
-                <el-table-column :label='$ts("评分标准")' prop="info" />
+                <el-table-column :label='$("access.targetname")' prop="name" />
+                <el-table-column :label='$("ui.hrAssessQuotaIndexIndicatorContent")' prop="content" />
+                <el-table-column :label='$("ui.userAssessmentExecutionScoringCriteria")' prop="info" />
               </el-table>
             </div>
           </div>
@@ -69,15 +70,14 @@
         </el-col>
       </el-row>
       <div slot="footer" class="dialog-footer">
-        <el-button size="small" @click="closeDialog">{{ $ts("取消") }}</el-button>
-        <el-button size="small" type="primary" @click="handleConfirm">{{ $ts("确定") }}</el-button>
+        <el-button size="small" @click="closeDialog">{{ $("public.cancel") }}</el-button>
+        <el-button size="small" type="primary" @click="handleConfirm">{{ $("public.ok") }}</el-button>
       </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { assessTargetListApi } from '@/api/enterprise'
 export default {
   name: 'SelectTarget',
@@ -119,7 +119,7 @@ export default {
     },
     handleConfirm() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.noSelectionMade'))
+        this.$message.error($('legacyScript.noSelectionMade'))
       } else {
         this.$emit('dialogChangeDada', this.multipleSelection)
         this.closeDialog()

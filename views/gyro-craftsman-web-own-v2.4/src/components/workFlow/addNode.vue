@@ -7,19 +7,19 @@
             <div class="item-wrapper">
               <i class="iconfont iconshenpi"></i>
             </div>
-            <p>{{ $ts("审批人") }}</p>
+            <p>{{ $("legacy.13fec5c6bac26d4a") }}</p>
           </a>
           <a class="add-node-popover-item notifier" @click="addType(2)">
             <div class="item-wrapper">
               <span class="iconfont iconchaosong"></span>
             </div>
-            <p>{{ $ts("抄送人") }}</p>
+            <p>{{ $("legacy.6641938384028e27") }}</p>
           </a>
           <a class="add-node-popover-item condition" @click="addType(4)">
             <div class="item-wrapper">
               <span class="iconfont icontiaojian"></span>
             </div>
-            <p>{{ $ts("条件") }}</p>
+            <p>{{ $("legacy.16bb1d2b098c2b2f") }}</p>
           </a>
         </div>
         <button slot="reference" class="btn" type="button">

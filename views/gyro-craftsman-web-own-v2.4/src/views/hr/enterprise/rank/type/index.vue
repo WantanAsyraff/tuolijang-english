@@ -2,29 +2,29 @@
   <div class="divBox">
     <el-card>
       <div class="btn-box">
-        <el-button type="primary" @click="addtype">{{ $t('hr.addtype') }}</el-button>
+        <el-button type="primary" @click="addtype">{{ $('hr.addtype') }}</el-button>
       </div>
       <div class="table-box mt20">
         <el-table :data="tableData" style="width: 100%;" :header-cell-style="{ background: '#F2F2F2' }">
           <el-table-column prop="id" label="ID" width="50" style="padding-left: 20px;" />
-          <el-table-column prop="name" :label="$t('hr.rankcategoryname')" min-width="180" />
-          <el-table-column prop="number" :label="$t('hr.ranknumber')" min-width="180" />
-          <el-table-column :label="$t('hr.state')" width="180">
+          <el-table-column prop="name" :label="$('hr.rankcategoryname')" min-width="180" />
+          <el-table-column prop="number" :label="$('hr.ranknumber')" min-width="180" />
+          <el-table-column :label="$('hr.state')" width="180">
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
-                :active-text="$t('hr.open')"
-                :inactive-text="$t('hr.close')"
+                :active-text="$('hr.open')"
+                :inactive-text="$('hr.close')"
                 :active-value="1"
                 :inactive-value="0"
                 @change="handleStatus(scope.row)"
               />
             </template>
           </el-table-column>
-          <el-table-column prop="address" :label="$t('public.operation')" fixed="right" width="160">
+          <el-table-column prop="address" :label="$('public.operation')" fixed="right" width="160">
             <template slot-scope="scope">
-              <el-button type="text" @click="deit(scope.row)">{{ $t('public.edit') }}</el-button>
-              <el-button type="text" @click="delet(scope.row)">{{ $t('public.delete') }}</el-button>
+              <el-button type="text" @click="deit(scope.row)">{{ $('public.edit') }}</el-button>
+              <el-button type="text" @click="delet(scope.row)">{{ $('public.delete') }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -78,7 +78,7 @@ export default {
     },
     // 删除
     delet(data) {
-      this.$modalSure(this.$t('hr.message7')).then(() => {
+      this.$modalSure(this.$('hr.message7')).then(() => {
         this.tableData.splice(data.id, 1)
         rankTypeDelet(data.id).then((res) => {
           this.Info()

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="box-height">
@@ -7,17 +8,16 @@
       :training="true"
       :editor-border="false"
       ref="ueditorFrom"
-      :placeholder="$t('ui.hrTrainingPlanDevelopTheStrategicPlanAcrossRevenueProfitScaleTalent')"
+      :placeholder="$('ui.hrTrainingPlanDevelopTheStrategicPlanAcrossRevenueProfitScaleTalent')"
       :content="content"
     />
     <div class="cr-bottom-button btn-shadow">
-      <el-button size="small" :loading="loading" type="primary" @click="handleConfirm()">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button size="small" :loading="loading" type="primary" @click="handleConfirm()">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </div>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 import { employeeTrainApi, getEmployeeTrainApi } from '@/api/config.js'
 export default {
@@ -44,7 +44,7 @@ export default {
     handleConfirm() {
       this.content = this.$refs.ueditorFrom.getValue()
       if (!this.content) {
-        return this.$message.error(i18n.t('customer.message02'))
+        return this.$message.error($('customer.message02'))
       }
 
       this.loading = true

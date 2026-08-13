@@ -2,9 +2,9 @@
   <div class="left">
     <div class="el-card__header clearfix">
       <el-row class="title">
-        <el-col :span="12" class="material"> {{ $ts("物资分类") }} </el-col>
+        <el-col :span="12" class="material"> {{ $("ui.administrationMaterialChartIndexMaterialCategory") }} </el-col>
         <el-col :span="12" class="text-right">
-          <el-tooltip effect="dark" :content='$ts("添加物资分类")' placement="top">
+          <el-tooltip effect="dark" :content='$("legacy.1251d44dde900a03")' placement="top">
             <span class="iconfont icontianjia pointer" @click="addDivsion()"></span>
           </el-tooltip>
         </el-col>
@@ -37,14 +37,14 @@
                   @hide="handleHide"
                 >
                   <div class="right-item-list">
-                    <div class="right-item" @click.stop="addDivsion(data)">{{ $ts("添加子类") }}</div>
+                    <div class="right-item" @click.stop="addDivsion(data)">{{ $("legacy.97ec8bc2c8c32d42") }}</div>
                     <!-- v-if="data.value !== topId" -->
                     <div class="right-item" @click.stop="editDivsion(data.value)">
-                      {{ $t('public.edit') }}
+                      {{ $('public.edit') }}
                     </div>
                     <!-- v-if="data.value !== topId"  -->
                     <div class="right-item" @click.stop="handleDelete(data)">
-                      {{ $t('public.delete') }}
+                      {{ $('public.delete') }}
                     </div>
                   </div>
                   <div slot="reference" v-if="data.value > 0" class="iconfont icongengduo right-icon" @click.stop />

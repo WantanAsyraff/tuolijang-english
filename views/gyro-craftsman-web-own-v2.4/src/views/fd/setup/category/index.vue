@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 财务-财务设置-发票类目 -->
 <template>
 <div class="divBox table-box">
@@ -6,7 +7,7 @@
       :isViewSearch="false"
       :title="$route.meta.title"
       :total="total"
-:btn-text="$t('ui.fdSetupCategoryIndexAddCategory')"
+      :btnText="$('ui.fdSetupCategoryIndexAddCategory')"
       @addDataFn="addFinance"
     ></oaFromBox>
     <el-table
@@ -17,15 +18,15 @@
       row-key="id"
       style="width: 100%"
     >
-      <el-table-column :label="$t('ui.fdSetupCategoryIndexCategoryName')" min-width="220" prop="name"> </el-table-column>
-      <el-table-column :label="$t('toptable.sort')" min-width="100" prop="sort" />
-      <el-table-column :label="$t('public.operation')" prop="address" width="200">
+      <el-table-column :label="$('ui.fdSetupCategoryIndexCategoryName')" min-width="220" prop="name"> </el-table-column>
+      <el-table-column :label="$('toptable.sort')" min-width="100" prop="sort" />
+      <el-table-column :label="$('public.operation')" prop="address" width="200">
         <template slot-scope="scope">
           <el-button v-hasPermi="['fd:setup:category:edit']" type="text" @click="handleEdit(scope.row)">{{
-            $t('public.edit')
+            $('public.edit')
           }}</el-button>
           <el-button v-hasPermi="['fd:setup:category:delete']" type="text" @click="deleteFn(scope.row)">{{
-            $t('public.delete')
+            $('public.delete')
           }}</el-button>
         </template>
       </el-table-column>
@@ -48,7 +49,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { invoiceCategoryList, deleteInvoiceCategory } from '@/api/enterprise'
 import dialogForm from '@/views/customer/setup/type/components/addDialog'
 import oaFromBox from '@/components/common/oaFromBox'
@@ -101,7 +101,7 @@ export default {
     // 添加分类
     async addFinance() {
       this.repeatData = {
-        title: i18n.t('legacyScript.addCategory'),
+        title: $('legacyScript.addCategory'),
         width: '480px',
         label: 3,
         type: 1,
@@ -113,7 +113,7 @@ export default {
     // 编辑分类
     async handleEdit(item) {
       this.repeatData = {
-        title: i18n.t('legacyScript.editCategory'),
+        title: $('legacyScript.editCategory'),
         width: '480px',
         label: 3,
         type: 2,
@@ -123,7 +123,7 @@ export default {
     },
     // 删除发票分类
     async deleteFn(item) {
-      await this.$modalSure(this.$t('customer.message01'))
+      await this.$modalSure(this.$('customer.message01'))
       await deleteInvoiceCategory(item.id)
       if (this.tableData.length == 1) {
         this.invoiceCategoryList(1)

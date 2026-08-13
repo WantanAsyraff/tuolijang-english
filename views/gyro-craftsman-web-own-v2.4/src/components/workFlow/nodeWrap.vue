@@ -12,7 +12,7 @@
         >
           <span class="iconfont iconshenpi mr10" v-show="nodeConfig.type == 1"> </span>
           <span class="iconfont iconchaosong mr10" v-show="nodeConfig.type == 2"></span>
-          <span v-if="nodeConfig.type == 0">{{ $ts(nodeConfig.nodeName) }}</span>
+          <span v-if="nodeConfig.type == 0">{{ nodeConfig.nodeName }}</span>
           <input
             type="text"
             class="ant-input editable-title-input"
@@ -24,25 +24,25 @@
             :placeholder="placeholderList[nodeConfig.type]"
           />
           <span class="editable-title" @click="clickEvent()" v-if="nodeConfig.type != 0 && !isInput">
-            {{ $ts(nodeConfig.nodeName) }}
+            {{ nodeConfig.nodeName }}
           </span>
           <i class="anticon anticon-close close" v-if="nodeConfig.type != 0" @click="delNode()"></i>
         </div>
         <div class="content" @click="setPerson">
           <div class="text" v-if="nodeConfig.type == 0">
-            {{ $func.conditionDepartment(flowPermission) ? $func.conditionDepartment(flowPermission) : $t('ui.workFlowNodeWrapEveryone') }}
+            {{ $func.conditionDepartment(flowPermission) ? $func.conditionDepartment(flowPermission) : $('ui.workFlowNodeWrapEveryone') }}
           </div>
           <div class="text" v-if="nodeConfig.type == 1">
             <span class="placeholder" v-if="!$func.setApproverStr(nodeConfig)">
-              {{ $t("ui.developConditionGroupPleaseSelect") }}{{ placeholderList[nodeConfig.type] }}
+              {{ $("ui.developConditionGroupPleaseSelect") }}{{ placeholderList[nodeConfig.type] }}
             </span>
-            {{ $ts($func.setApproverStr(nodeConfig)) }}
+            {{ $func.setApproverStr(nodeConfig) }}
           </div>
           <div class="text" v-if="nodeConfig.type == 2">
             <span class="placeholder" v-if="!$func.copyerStr(nodeConfig)">
-              {{ $t("ui.developConditionGroupPleaseSelect") }}{{ placeholderList[nodeConfig.type] }}
+              {{ $("ui.developConditionGroupPleaseSelect") }}{{ placeholderList[nodeConfig.type] }}
             </span>
-            {{ $ts($func.copyerStr(nodeConfig)) }}
+            {{ $func.copyerStr(nodeConfig) }}
           </div>
           <i class="anticon anticon-right arrow"></i>
         </div>
@@ -56,7 +56,7 @@
   <div class="branch-wrap" v-if="nodeConfig.type == 4">
     <div class="branch-box-wrap">
       <div class="branch-box">
-        <button class="add-branch" @click="addTerm">{{ $t("ui.developConditionDialogAddCondition") }}</button>
+        <button class="add-branch" @click="addTerm">{{ $("ui.developConditionDialogAddCondition") }}</button>
         <div class="col-box" v-for="(item, index) in nodeConfig.conditionNodes" :key="index">
           <div class="condition-node">
             <div class="condition-node-box">
@@ -80,7 +80,7 @@
                     {{ item.nodeName }}
                   </span>
                   <span class="priority-title" @click="setPerson(item.priorityLevel)">
-                    {{ $t("ui.developConditionDialogPriority") }}{{ item.priorityLevel }}
+                    {{ $("ui.developConditionDialogPriority") }}{{ item.priorityLevel }}
                   </span>
                   <i class="anticon anticon-close close" @click="delTerm(index)"></i>
                 </div>

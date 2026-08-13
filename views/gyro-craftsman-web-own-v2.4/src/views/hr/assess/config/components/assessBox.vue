@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="box-container">
   <el-drawer
@@ -34,23 +35,23 @@
       </el-form-item>
 
       <el-form-item class="select-bar">
-        <el-input v-model="where.name" @change="handleOk" :placeholder="$t('ui.hrAssessConfigAssessBoxPleaseEnterAppraiseeName')" size="small"></el-input>
+        <el-input v-model="where.name" @change="handleOk" :placeholder="$('ui.hrAssessConfigAssessBoxPleaseEnterAppraiseeName')" size="small"></el-input>
       </el-form-item>
 
-      <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+      <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
         <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
       </el-tooltip>
     </el-form>
     <div class="table-box">
       <el-table ref="table" :data="tableData">
-        <el-table-column prop="name" :label="$t('ui.hrAssessConfigAssessBoxMemberName')" min-width="140"></el-table-column>
-        <el-table-column prop="frame.name" :label="$t('ui.businessHolidayQueryIndexDepartment')" min-width="140" />
-        <el-table-column prop="job.name" :label="$t('ui.hrAssessConfigAssessBoxPosition')" min-width="140">
+        <el-table-column prop="name" :label="$('ui.hrAssessConfigAssessBoxMemberName')" min-width="140"></el-table-column>
+        <el-table-column prop="frame.name" :label="$('ui.businessHolidayQueryIndexDepartment')" min-width="140" />
+        <el-table-column prop="job.name" :label="$('ui.hrAssessConfigAssessBoxPosition')" min-width="140">
           <template slot-scope="scope">
             <span>{{ scope.row.job ? scope.row.job.name : '-' }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="verify" :label="$t('ui.hrAssessConfigAssessBoxDirectManager')" min-width="140">
+        <el-table-column prop="verify" :label="$('ui.hrAssessConfigAssessBoxDirectManager')" min-width="140">
           <template slot-scope="scope">
             <span>{{ scope.row.super && scope.row.super ? scope.row.super.name : '-' }}</span>
           </template>
@@ -71,7 +72,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { assessPlanUserListApi } from '@/api/enterprise'
 
 export default {
@@ -84,8 +84,8 @@ export default {
       drawer: false,
       tabCur: 0,
       tabList: [
-        { title: i18n.t('legacyScript.notSet'), id: 0 },
-        { title: i18n.t('legacyScript.assignedPerson'), id: 1 }
+        { title: $('legacyScript.notSet'), id: 0 },
+        { title: $('legacyScript.assignedPerson'), id: 1 }
       ],
       where: {
         page: 1,

@@ -1,9 +1,9 @@
 <template>
-<el-form-item :label="i18nt('designer.setting.format')">
+<el-form-item :label="$('designer.setting.format')">
   <el-select v-model="optionModel.format" filterable allow-create>
     <el-option label="yyyy-MM-dd" value="yyyy-MM-dd"></el-option>
     <el-option label="yyyy/MM/dd" value="yyyy/MM/dd"></el-option>
-    <el-option :label="$t('ui.formDesignerSettingPanelPropertyEditorFieldDateTimePickerDateTimePickerFormatEditorYyyyMmDd')" value="yyyy年MM月dd日"></el-option>
+    <el-option :label="$('ui.formDesignerSettingPanelPropertyEditorFieldDateTimePickerDateTimePickerFormatEditorYyyyMmDd')" value="yyyy年MM月dd日"></el-option>
     <el-option label="yyyy-MM-DD HH:mm:ss" value="yyyy-MM-DD HH:mm:ss"></el-option>
     <el-option label="yyyy-MM-DD hh:mm:ss" value="yyyy-MM-DD hh:mm:ss"></el-option>
   </el-select>
@@ -11,10 +11,8 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
 export default {
   name: 'date-time-picker-format-editor',
-  mixins: [i18n],
   props: {
     designer: Object,
     selectedWidget: Object,
@@ -24,4 +22,3 @@ export default {
 </script>
 
 <style scoped></style>
-@/utils/i18ns

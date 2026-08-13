@@ -19,31 +19,31 @@
                 :search="search"
                 :total="total"
                 :isViewSearch="false"
-                :title="$t('ui.customerWeChatMassMassMassSendMaterialList')"
-:btn-text="$t('ui.customerWeChatMassAddmassAddMaterial')"
+      :title="$('ui.customerWeChatMassMassMassSendMaterialList')"
+      :btnText="$('ui.customerWeChatMassAddmassAddMaterial')"
                 @addDataFn="handleNews"
                 @confirmData="confirmData"
               ></oaFromBox>
 
               <div class="mt14">
                 <el-table :data="tableData" :height="tableHeight" style="width: 100%" row-key="id" default-expand-all>
-                  <el-table-column prop="name" :label="$t('ui.customerQuickReplyIndexMaterialContent')" min-width="180" :show-overflow-tooltip="true">
+                  <el-table-column prop="name" :label="$('ui.customerQuickReplyIndexMaterialContent')" min-width="180" :show-overflow-tooltip="true">
                     <template slot-scope="scope">
                       {{ scope.row.content }}
                     </template>
                   </el-table-column>
-                  <el-table-column prop="title" :label="$t('ui.customerWeChatMassMassMaterialCategory')" min-width="150">
+                  <el-table-column prop="title" :label="$('ui.customerWeChatMassMassMaterialCategory')" min-width="150">
                     <template slot-scope="scope">
                       {{ scope.row.group.name || '--' }}
                     </template>
                   </el-table-column>
-                  <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="120" />
-                  <el-table-column prop="creator.name" :label="$t('ui.hrAssessCheckIndexCreator')" min-width="80" />
-                  <el-table-column prop="describe" :label="$t('public.operation')" fixed="right" width="120">
+                  <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="120" />
+                  <el-table-column prop="creator.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="80" />
+                  <el-table-column prop="describe" :label="$('public.operation')" fixed="right" width="120">
                     <template slot-scope="scope">
-                      <el-button type="text" @click="handleEdit(scope.row)">{{ $t('public.edit') }}</el-button>
+                      <el-button type="text" @click="handleEdit(scope.row)">{{ $('public.edit') }}</el-button>
                       <el-button type="text" @click="handleDelete(scope.row)">
-                        {{ $t('public.delete') }}
+                        {{ $('public.delete') }}
                       </el-button>
                     </template>
                   </el-table-column>

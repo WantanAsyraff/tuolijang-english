@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-dialog
@@ -8,37 +9,37 @@
     :append-to-body="true"
   >
     <el-form ref="form" :model="form" :rules="rules" class="mt20" label-width="90px">
-      <el-form-item :label="$t('ui.userCalendarAddTodoReminderTime')" prop="date" v-if="messageData.type !== 1">
+      <el-form-item :label="$('ui.userCalendarAddTodoReminderTime')" prop="date" v-if="messageData.type !== 1">
         <el-time-picker
           format="HH:mm"
           value-format="HH:mm"
           v-model="form.date"
           size="small"
           clearable
-          :placeholder="$t('ui.settingEnterpriseNewsMessageTimesSelectReminderTime')"
+          :placeholder="$('ui.settingEnterpriseNewsMessageTimesSelectReminderTime')"
         >
         </el-time-picker>
       </el-form-item>
-      <el-form-item :label="$t('ui.userCalendarAddTodoReminderTime')" v-if="messageData.type == 1">
+      <el-form-item :label="$('ui.userCalendarAddTodoReminderTime')" v-if="messageData.type == 1">
         <div class="item">
-          {{ messageData.data.template_type == 'clock_remind' ? $t('ui.settingEnterpriseNewsMessageTimesBeforeWork') : $t('ui.settingEnterpriseNewsMessageTimesAfterWork') }}
+          {{ messageData.data.template_type == 'clock_remind' ? $('ui.settingEnterpriseNewsMessageTimesBeforeWork') : $('ui.settingEnterpriseNewsMessageTimesAfterWork') }}
 
           <div class="mo-input--number">
             <el-input-number v-model="hour" controls-position="right" size="small" :min="0"> </el-input-number>
-            <div class="define-append">{{ $t("ui.hrApprovaTimeHours") }}</div>
+            <div class="define-append">{{ $("ui.hrApprovaTimeHours") }}</div>
           </div>
           <div class="mo-input--number">
             <el-input-number v-model="minute" controls-position="right" size="small" :min="0"></el-input-number>
-            <div class="define-append">{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
+            <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
           </div>
-          {{ messageData.data.template_type == 'clock_remind' ? $t('ui.settingEnterpriseNewsMessageTimesClockIn') : $t('ui.settingEnterpriseNewsMessageTimesClockOut') }}
+          {{ messageData.data.template_type == 'clock_remind' ? $('ui.settingEnterpriseNewsMessageTimesClockIn') : $('ui.settingEnterpriseNewsMessageTimesClockOut') }}
         </div>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button size="small" @click="handleClose()">{{ $t('public.cancel') }}</el-button>
+      <el-button size="small" @click="handleClose()">{{ $('public.cancel') }}</el-button>
       <el-button type="primary" :loading="loading" size="small" @click="handleConfirm()">{{
-        $t('public.ok')
+        $('public.ok')
       }}</el-button>
     </div>
   </el-dialog>
@@ -46,7 +47,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { messageUpdateApi, upDateMessageApi } from '@/api/setting'
 
 export default {
@@ -70,7 +70,7 @@ export default {
         date: ''
       },
       rules: {
-        date: [{ required: true, message: i18n.t('legacyScript.selectReminderTime'), trigger: 'change' }]
+        date: [{ required: true, message: $('legacyScript.selectReminderTime'), trigger: 'change' }]
       }
     }
   },

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <div class="v-height-flag">
@@ -8,7 +9,7 @@
           :dropdownList="dropdownList"
           :viewSearch="viewSearch"
           :total="total"
-          :title="$ts('字典列表')"
+          :title="$("legacy.8567df9eb80c1011")"
           @addDataFn="addFinance"
           @dropdownFn="batchDelete"
           @confirmData="confirmData"
@@ -25,41 +26,41 @@
           >
             <el-table-column type="selection" width="55"> </el-table-column>
             <el-table-column prop="id" label="ID" width="55" type=""></el-table-column>
-            <el-table-column prop="name" :label="$ts('字典名称')" min-width="100" show-overflow-tooltip>
+            <el-table-column prop="name" :label="$("ui.customerSetupDictionaryIndexDictionaryName")" min-width="100" show-overflow-tooltip>
               <template slot-scope="scope">
-                <span>{{ $ts(scope.row.name) }}</span>
+                <span>{{ $(scope.row.name) }}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="crud_name" min-width="100" :label="$ts('关联实体')">
+            <el-table-column prop="crud_name" min-width="100" :label="$("ui.developApproveIndexLinkedEntity")">
               <template slot-scope="scope">
                 <div v-if="scope.row.crud_name.length > 0">
                   <span v-for="(item, index) in scope.row.crud_name" :key="`${scope.row.id}-${index}`">
-                    {{ $ts(item) }}
+                    {{ $(item) }}
                   </span>
                 </div>
                 <span v-else>--</span>
               </template>
             </el-table-column>
-            <el-table-column prop="ident" :label="$ts('字典标识')" min-width="100" show-overflow-tooltip />
-            <el-table-column prop="level" :label="$ts('层级')" min-width="80" />
+            <el-table-column prop="ident" :label="$("ui.customerSetupDictionaryIndexDictionaryIdentifier")" min-width="100" show-overflow-tooltip />
+            <el-table-column prop="level" :label="$("legacy.ab033612a2daa62e")" min-width="80" />
 
-            <el-table-column prop="mark" :label="$ts('备注')" min-width="150" show-overflow-tooltip>
+            <el-table-column prop="mark" :label="$("public.remarks")" min-width="150" show-overflow-tooltip>
               <template slot-scope="scope">
-                <span>{{ $ts(scope.row.mark) || '--' }}</span>
+                <span>{{ $(scope.row.mark) || '--' }}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="created_at" :label="$ts('创建时间')" min-width="150" show-overflow-tooltip>
+            <el-table-column prop="created_at" :label="$("hr.creationtime")" min-width="150" show-overflow-tooltip>
               <template slot-scope="scope">
                 <span>{{ scope.row.created_at || '--' }}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="type" :label="$ts('状态')">
+            <el-table-column prop="type" :label="$("hr.state")">
               <template slot-scope="scope">
                 <el-switch
                   :disabled="scope.row.is_default === 1"
                   v-model="scope.row.status"
-                  :active-text="$ts('启用')"
-                  :inactive-text="$ts('停用')"
+                  :active-text="$("public.enable")"
+                  :inactive-text="$("hr.blockup")"
                   :active-value="1"
                   :inactive-value="0"
                   :width="60"
@@ -67,12 +68,12 @@
                 />
               </template>
             </el-table-column>
-            <el-table-column prop="address" :label="$t('public.operation')" width="200">
+            <el-table-column prop="address" :label="$('public.operation')" width="200">
               <template slot-scope="scope">
-                <el-button type="text" v-if="scope.row.is_default !== 1" @click="editFn(scope.row.id)">{{ $ts('编辑') }}</el-button>
-                <el-button type="text" @click="dataFn(scope.row)">{{ $ts('数据管理') }}</el-button>
+                <el-button type="text" v-if="scope.row.is_default !== 1" @click="editFn(scope.row.id)">{{ $("public.edit") }}</el-button>
+                <el-button type="text" @click="dataFn(scope.row)">{{ $("ui.customerSetupDictionaryIndexDataManagement") }}</el-button>
                 <el-button type="text" v-if="scope.row.is_default !== 1" @click="handleDelete(scope.row)"
-                  >{{ $ts('删除') }}</el-button
+                  >{{ $("public.delete") }}</el-button
                 >
               </template>
             </el-table-column>
@@ -94,7 +95,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import oaFromBox from '@/components/common/oaFromBox'
 import { getcrudCateListApi, getDatabaseApi } from '@/api/develop'
@@ -116,11 +116,11 @@ export default {
           form_value: 'select',
           data_dict: [
             {
-              label: i18n.t('public.enable'),
+              label: $('public.enable'),
               value: '1'
             },
             {
-              label: i18n.t('hr.blockup'),
+              label: $('hr.blockup'),
               value: '0'
             }
           ]
@@ -135,7 +135,7 @@ export default {
       ],
       dropdownList: [
         {
-          label: i18n.t('ui.customerSetupDictionaryManagementBatchDelete'),
+          label: $('ui.customerSetupDictionaryManagementBatchDelete'),
           value: 1
         }
       ],
@@ -152,11 +152,11 @@ export default {
       application: [], // 应用数据
       options: [
         {
-          label: i18n.t('public.enable'),
+          label: $('public.enable'),
           value: 1
         },
         {
-          label: i18n.t('hr.blockup'),
+          label: $('hr.blockup'),
           value: 0
         }
       ]
@@ -195,7 +195,7 @@ export default {
       this.viewSearch = [
         {
           field: 'cate_id',
-          title: i18n.t('ui.developApproveIndexLinkedApplication'),
+          title: $('ui.developApproveIndexLinkedApplication'),
           type: 'select',
           options: this.application
         }
@@ -205,7 +205,7 @@ export default {
     // 批量删除
     async batchDelete() {
       if (this.ids.length === 0) {
-        return this.$message.error(i18n.t('legacyScript.selectDataToDeleteFirst'))
+        return this.$message.error($('legacyScript.selectDataToDeleteFirst'))
       }
       let id = this.ids.join(',')
       await this.$modalSure('你确定要批量删除这条内容吗')

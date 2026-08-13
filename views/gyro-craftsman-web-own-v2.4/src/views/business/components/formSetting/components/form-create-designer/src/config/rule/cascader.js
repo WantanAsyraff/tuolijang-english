@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule } from '../../utils/index';
 
@@ -22,41 +22,41 @@ export default {
         options: [
           {
             value: 'zhinan',
-            label: i18n.t('legacyScript.guide'),
+            label: $('legacyScript.guide'),
             children: [
               {
                 value: 'shejiyuanze',
-                label: i18n.t('legacyScript.designPrinciples'),
+                label: $('legacyScript.designPrinciples'),
                 children: [
                   {
                     value: 'yizhi',
-                    label: i18n.t('legacyScript.consistency'),
+                    label: $('legacyScript.consistency'),
                   },
                   {
                     value: 'fankui',
-                    label: i18n.t('legacyScript.feedback'),
+                    label: $('legacyScript.feedback'),
                   },
                   {
                     value: 'xiaolv',
-                    label: i18n.t('legacyScript.efficiency'),
+                    label: $('legacyScript.efficiency'),
                   },
                   {
                     value: 'kekong',
-                    label: i18n.t('legacyScript.controllability'),
+                    label: $('legacyScript.controllability'),
                   },
                 ],
               },
               {
                 value: 'daohang',
-                label: i18n.t('legacyScript.navigation'),
+                label: $('legacyScript.navigation'),
                 children: [
                   {
                     value: 'cexiangdaohang',
-                    label: i18n.t('legacyScript.sidebarNavigation'),
+                    label: $('legacyScript.sidebarNavigation'),
                   },
                   {
                     value: 'dingbudaohang',
-                    label: i18n.t('legacyScript.topNavigation'),
+                    label: $('legacyScript.topNavigation'),
                   },
                 ],
               },
@@ -64,7 +64,7 @@ export default {
           },
           {
             value: 'zujian',
-            label: i18n.t('legacyScript.components'),
+            label: $('legacyScript.components'),
             children: [
               {
                 value: 'basic',
@@ -72,23 +72,23 @@ export default {
                 children: [
                   {
                     value: 'layout',
-                    label: i18n.t('legacyScript.layout'),
+                    label: $('legacyScript.layout'),
                   },
                   {
                     value: 'color',
-                    label: i18n.t('legacyScript.color'),
+                    label: $('legacyScript.color'),
                   },
                   {
                     value: 'typography',
-                    label: i18n.t('legacyScript.typography'),
+                    label: $('legacyScript.typography'),
                   },
                   {
                     value: 'icon',
-                    label: i18n.t('legacyScript.icon'),
+                    label: $('legacyScript.icon'),
                   },
                   {
                     value: 'button',
-                    label: i18n.t('legacyScript.button'),
+                    label: $('legacyScript.button'),
                   },
                 ],
               },
@@ -98,59 +98,59 @@ export default {
                 children: [
                   {
                     value: 'radio',
-                    label: i18n.t('legacyScript.radio'),
+                    label: $('legacyScript.radio'),
                   },
                   {
                     value: 'checkbox',
-                    label: i18n.t('legacyScript.checkbox'),
+                    label: $('legacyScript.checkbox'),
                   },
                   {
                     value: 'input',
-                    label: i18n.t('legacyScript.input'),
+                    label: $('legacyScript.input'),
                   },
                   {
                     value: 'input-number',
-                    label: i18n.t('legacyScript.inputNumber'),
+                    label: $('legacyScript.inputNumber'),
                   },
                   {
                     value: 'select',
-                    label: i18n.t('legacyScript.select'),
+                    label: $('legacyScript.select'),
                   },
                   {
                     value: 'cascader',
-                    label: i18n.t('legacyScript.cascader'),
+                    label: $('legacyScript.cascader'),
                   },
                   {
                     value: 'switch',
-                    label: i18n.t('legacyScript.switch'),
+                    label: $('legacyScript.switch'),
                   },
                   {
                     value: 'slider',
-                    label: i18n.t('legacyScript.slider'),
+                    label: $('legacyScript.slider'),
                   },
                   {
                     value: 'time-picker',
-                    label: i18n.t('legacyScript.timePicker'),
+                    label: $('legacyScript.timePicker'),
                   },
                   {
                     value: 'date-picker',
-                    label: i18n.t('legacyScript.datePicker'),
+                    label: $('legacyScript.datePicker'),
                   },
                   {
                     value: 'datetime-picker',
-                    label: i18n.t('legacyScript.dateTimePicker'),
+                    label: $('legacyScript.dateTimePicker'),
                   },
                   {
                     value: 'upload',
-                    label: i18n.t('legacyScript.upload'),
+                    label: $('legacyScript.upload'),
                   },
                   {
                     value: 'rate',
-                    label: i18n.t('legacyScript.rate'),
+                    label: $('legacyScript.rate'),
                   },
                   {
                     value: 'form',
-                    label: i18n.t('legacyScript.form'),
+                    label: $('legacyScript.form'),
                   },
                 ],
               },
@@ -166,51 +166,51 @@ export default {
       {
         type: 'Object',
         field: 'props',
-        title: i18n.t('legacyScript.configurationOptions'),
+        title: $('legacyScript.configurationOptions'),
         props: {
           rule: [
             {
               type: 'select',
               field: 'expandTrigger',
-              title: i18n.t('legacyScript.submenuExpandMode'),
+              title: $('legacyScript.submenuExpandMode'),
               options: [
                 { label: 'click', value: 'click' },
                 { label: 'hover', value: 'hover' },
               ],
             },
-            { type: 'switch', field: 'multiple', title: i18n.t('legacyScript.allowMultipleSelection') },
+            { type: 'switch', field: 'multiple', title: $('legacyScript.allowMultipleSelection') },
             {
               type: 'switch',
               field: 'checkStrictly',
-              title: i18n.t('legacyScript.strictlyEnforceParentChildNodeIndependence'),
+              title: $('legacyScript.strictlyEnforceParentChildNodeIndependence'),
             },
             {
               type: 'switch',
               field: 'emitPath',
               title:
-                i18n.t('legacyScript.returnAnArrayOfValuesFromAllAncestorMenuLevels'),
+                $('legacyScript.returnAnArrayOfValuesFromAllAncestorMenuLevels'),
               value: true,
             },
-            { type: 'input', field: 'value', title: i18n.t('legacyScript.specifyOptionValueAsAPropertyOfTheOptionObject') },
+            { type: 'input', field: 'value', title: $('legacyScript.specifyOptionValueAsAPropertyOfTheOptionObject') },
             {
               type: 'input',
               field: 'label',
-              title: i18n.t('legacyScript.specifyTheOptionLabelAsAPropertyValueOfThe'),
+              title: $('legacyScript.specifyTheOptionLabelAsAPropertyValueOfThe'),
             },
-            { type: 'input', field: 'children', title: i18n.t('legacyScript.specifyTheSubOptionsAsAPropertyValueOfThe') },
+            { type: 'input', field: 'children', title: $('legacyScript.specifyTheSubOptionsAsAPropertyValueOfThe') },
             {
               type: 'input',
               field: 'disabled',
-              title: i18n.t('legacyScript.specifyWhetherTheOptionIsDisabledViaAPropertyValue'),
+              title: $('legacyScript.specifyWhetherTheOptionIsDisabledViaAPropertyValue'),
             },
-            { type: 'input', field: 'leaf', title: i18n.t('legacyScript.specifyTheLeafNodeFlagForTheOptionAsA') },
+            { type: 'input', field: 'leaf', title: $('legacyScript.specifyTheLeafNodeFlagForTheOptionAsA') },
           ],
         },
       },
       {
         type: 'select',
         field: 'size',
-        title: i18n.t('legacyScript.size'),
+        title: $('legacyScript.size'),
         options: [
           { label: 'medium', value: 'medium' },
           { label: 'small', value: 'small' },
@@ -220,24 +220,24 @@ export default {
           },
         ],
       },
-      { type: 'input', field: 'placeholder', title: i18n.t('legacyScript.inputPlaceholderText') },
+      { type: 'input', field: 'placeholder', title: $('legacyScript.inputPlaceholderText') },
       {
         type: 'switch',
         field: 'disabled',
-        title: i18n.t('legacyScript.disable'),
+        title: $('legacyScript.disable'),
       },
-      { type: 'switch', field: 'clearable', title: i18n.t('legacyScript.supportClearOption') },
+      { type: 'switch', field: 'clearable', title: $('legacyScript.supportClearOption') },
       {
         type: 'switch',
         field: 'showAllLevels',
-        title: i18n.t('legacyScript.showFullPathOfSelectedValueInInputBox'),
+        title: $('legacyScript.showFullPathOfSelectedValueInInputBox'),
         value: true,
       },
-      { type: 'switch', field: 'collapseTags', title: i18n.t('legacyScript.collapseTagsInMultiSelectMode') },
+      { type: 'switch', field: 'collapseTags', title: $('legacyScript.collapseTagsInMultiSelectMode') },
       {
         type: 'input',
         field: 'separator',
-        title: i18n.t('legacyScript.optionSeparator'),
+        title: $('legacyScript.optionSeparator'),
       },
     ];
   },

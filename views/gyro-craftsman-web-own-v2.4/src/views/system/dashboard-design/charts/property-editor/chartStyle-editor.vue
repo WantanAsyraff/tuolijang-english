@@ -1,6 +1,7 @@
+import { $ } from '@/lang'
 <template>
 <div class="chart-styles">
-  <div class="c-s-t">{{ $t("ui.systemDashboardDesignChartsPropertyEditorChartStyleEditorChartStyle") }}</div>
+  <div class="c-s-t">{{ $("ui.systemDashboardDesignChartsPropertyEditorChartStyleEditorChartStyle") }}</div>
   <template v-for="(style, styleInx) of stylesList">
     <div class="c-s-c" v-if="style.type == selectedWidget.type" :key="styleInx">
       <div
@@ -21,7 +22,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import SvgIcon from '@/components/svg-icon-nc'
 
 export default {
@@ -43,17 +43,17 @@ export default {
           list: [
             {
               type: 1,
-              label: i18n.t('legacyScript.standardBarChart'),
+              label: $('legacyScript.standardBarChart'),
               icon: 'icona-zu10206'
             },
             {
               type: 2,
-              label: i18n.t('legacyScript.accumulationStatusChart'),
+              label: $('legacyScript.accumulationStatusChart'),
               icon: 'icona-zu10212'
             },
             {
               type: 3,
-              label: i18n.t('legacyScript.percentageStackedStatusChart'),
+              label: $('legacyScript.percentageStackedStatusChart'),
               icon: 'icona-zu10210'
             }
           ]
@@ -63,17 +63,17 @@ export default {
           list: [
             {
               type: 1,
-              label: i18n.t('legacyScript.standardBarChart2'),
+              label: $('legacyScript.standardBarChart2'),
               icon: 'icona-zu10218'
             },
             {
               type: 2,
-              label: i18n.t('legacyScript.stackedBarChart'),
+              label: $('legacyScript.stackedBarChart'),
               icon: 'icona-zu10220'
             },
             {
               type: 3,
-              label: i18n.t('legacyScript.percentStackedBarChart'),
+              label: $('legacyScript.percentStackedBarChart'),
               icon: 'icona-zu10222'
             }
           ]
@@ -83,12 +83,12 @@ export default {
           list: [
             {
               type: 1,
-              label: i18n.t('legacyScript.lineChart'),
+              label: $('legacyScript.lineChart'),
               icon: 'icona-zu10205'
             },
             {
               type: 2,
-              label: i18n.t('legacyScript.lineChart2'),
+              label: $('legacyScript.lineChart2'),
               icon: 'icona-zu10202'
             }
           ]
@@ -98,12 +98,12 @@ export default {
           list: [
             {
               type: 1,
-              label: i18n.t('legacyScript.solid'),
+              label: $('legacyScript.solid'),
               icon: 'icona-zu10087'
             },
             {
               type: 2,
-              label: i18n.t('legacyScript.ring'),
+              label: $('legacyScript.ring'),
               icon: 'icona-zu10083'
             }
           ]
@@ -113,17 +113,17 @@ export default {
           list: [
             {
               type: 1,
-              label: i18n.t('legacyScript.ring'),
+              label: $('legacyScript.ring'),
               icon: 'icona-zu10087'
             },
             {
               type: 2,
-              label: i18n.t('legacyScript.progressBar'),
+              label: $('legacyScript.progressBar'),
               icon: 'icona-zu10216-01'
             },
             {
               type: 3,
-              label: i18n.t('legacyScript.waveChart'),
+              label: $('legacyScript.waveChart'),
               icon: 'icona-zu10086-2'
             }
           ]

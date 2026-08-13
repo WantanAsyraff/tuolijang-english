@@ -1,14 +1,15 @@
+import { $ } from '@/lang'
 <template>
   <div class="current-list">
     <!-- 创建考核页面 -->
     <div class="current-main">
       <div class="current-header">
         <div class="flex-between h32">
-          <div class="title-16">{{ $t("ui.userAssessmentAuditProcessPerformanceAssessment") }}</div>
+          <div class="title-16">{{ $("ui.userAssessmentAuditProcessPerformanceAssessment") }}</div>
           <div class="flex">
-            <el-button size="small" @click="selectTemplate">{{ $t('access.addtarget') }}</el-button>
+            <el-button size="small" @click="selectTemplate">{{ $('access.addtarget') }}</el-button>
             <el-button :disabled="dimensionMax <= 0" size="small" type="primary" @click="addAssess">
-              {{ $t('access.adddimension') }}
+              {{ $('access.adddimension') }}
             </el-button>
           </div>
         </div>
@@ -19,7 +20,7 @@
               v-model="tableFrom.period"
               :disabled="isEdit && strType !== 'copy'"
               class="mr10"
-              :placeholder="$t('ui.userAssessmentGoalSettingAssessmentType')"
+              :placeholder="$('ui.userAssessmentGoalSettingAssessmentType')"
               size="small"
               style="width: 160px"
               @change="changePeriod"
@@ -55,7 +56,7 @@
             <el-select
               v-model="tableFrom.testUid"
               :disabled="isEdit && strType !== 'copy'"
-              :placeholder="$t('access.selectexaminee')"
+              :placeholder="$('access.selectexaminee')"
               multiple
               size="small"
               style="width: 160px"
@@ -70,7 +71,7 @@
           </div>
           <div class="flex">
             <div v-if="enterprise.compute_mode === 0" class="current-button-left text-right">
-              <span>{{ $t("ui.userAssessmentGoalSettingTotalWeight") }}</span><span> 100% </span> <span class="pl15"> {{ $t("ui.userAssessmentGoalSettingCurrentTotalWeight") }} </span
+              <span>{{ $("ui.userAssessmentGoalSettingTotalWeight") }}</span><span> 100% </span> <span class="pl15"> {{ $("ui.userAssessmentGoalSettingCurrentTotalWeight") }} </span
               ><span :class="handleTotalWeight() !== 100 ? 'color-danger' : 'color-default'">{{
                 handleTotalWeight()
               }}</span>
@@ -78,7 +79,7 @@
             </div>
 
             <div v-else class="current-button-left text-right">
-              <span>{{ $t("ui.userAssessmentGoalSettingTotalScore") }}</span><span> {{ enterprise.maxScore }}</span> <span class="pl15"> {{ $t("ui.userAssessmentExecutionCurrentTotalScore") }} </span
+              <span>{{ $("ui.userAssessmentGoalSettingTotalScore") }}</span><span> {{ enterprise.maxScore }}</span> <span class="pl15"> {{ $("ui.userAssessmentExecutionCurrentTotalScore") }} </span
               ><span :class="handleTotalWeight() !== enterprise.maxScore ? 'color-danger' : 'color-default'">{{
                 handleTotalWeight()
               }}</span>
@@ -103,13 +104,13 @@
                 </span>
                 <span>
                   <span>
-                    {{ enterprise.compute_mode ? $t('access.dimensionscore') : $t('access.dimensionweight') }}
+                    {{ enterprise.compute_mode ? $('access.dimensionscore') : $('access.dimensionweight') }}
                   </span>
                   <el-input-number v-model="itm.ratio" :controls="false" :max="itm.weight" :min="0" />
                   <span v-if="!enterprise.compute_mode">%</span>
                 </span>
                 <span v-if="!enterprise.compute_mode">
-                  <span> {{ $t("ui.userAssessmentGoalSettingCurrentWeight") }} </span>
+                  <span> {{ $("ui.userAssessmentGoalSettingCurrentWeight") }} </span>
                   <span :class="handleWeight(itm.target) !== 100 ? 'color-danger' : 'color-default'">{{
                     handleWeight(itm.target)
                   }}</span>
@@ -124,12 +125,12 @@
 
             <el-table :data="itm.target" default-expand-all row-key="id" style="width: 100%">
               <el-table-column min-width="160" prop="name">
-                <template slot="header"> {{ $t("ui.hrAssessQuotaIndexIndicatorName") }} <span class="red">*</span></template>
+                <template slot="header"> {{ $("ui.hrAssessQuotaIndexIndicatorName") }} <span class="red">*</span></template>
                 <template slot-scope="scope">
                   <el-input
                     v-if="strType !== 'check'"
                     v-model="scope.row.name"
-                    :placeholder="$t('access.placeholder01')"
+                    :placeholder="$('access.placeholder01')"
                     autosize
                     maxlength="255"
                     type="textarea"
@@ -138,12 +139,12 @@
                 </template>
               </el-table-column>
               <el-table-column min-width="330" prop="content">
-                <template slot="header"> {{ $t("ui.userAssessmentGoalSettingIndicatorDescription") }} <span class="red">*</span></template>
+                <template slot="header"> {{ $("ui.userAssessmentGoalSettingIndicatorDescription") }} <span class="red">*</span></template>
                 <template slot-scope="scope">
                   <el-input
                     v-if="strType !== 'check'"
                     v-model="scope.row.content"
-                    :placeholder="$t('access.placeholder02')"
+                    :placeholder="$('access.placeholder02')"
                     autosize
                     maxlength="255"
                     type="textarea"
@@ -152,14 +153,14 @@
                 </template>
               </el-table-column>
               <el-table-column min-width="330" prop="info">
-                <template slot="header"> {{ $t("ui.userAssessmentExecutionScoringCriteria") }} <span class="red">*</span></template>
+                <template slot="header"> {{ $("ui.userAssessmentExecutionScoringCriteria") }} <span class="red">*</span></template>
                 <template slot-scope="scope">
                   <el-input
                     v-if="strType !== 'check'"
                     v-model="scope.row.info"
                     autosize
                     maxlength="255"
-                    :placeholder="$t('ui.userAssessmentExecutionEnterScoringCriteria')"
+                    :placeholder="$('ui.userAssessmentExecutionEnterScoringCriteria')"
                     type="textarea"
                   />
                   <span v-else>{{ scope.row.info }}</span>
@@ -167,7 +168,7 @@
               </el-table-column>
               <el-table-column prop="weight" width="180">
                 <template slot="header"
-                  >{{ enterprise.compute_mode ? $t('ui.userAssessmentExecutionScore') : $t('ui.userAssessmentGoalSettingWeight') }}
+                  >{{ enterprise.compute_mode ? $('ui.userAssessmentExecutionScore') : $('ui.userAssessmentGoalSettingWeight') }}
                   <span class="red">*</span>
                 </template>
                 <template slot-scope="scope">
@@ -185,7 +186,7 @@
                   <span v-else>{{ scope.row.ratio }}</span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('public.operation')" fixed="right" prop="address" width="120">
+              <el-table-column :label="$('public.operation')" fixed="right" prop="address" width="120">
                 <template slot-scope="scope">
                   <el-button
                     class="current-delete"
@@ -199,8 +200,8 @@
             <div class="current-bottom">
               <el-row>
                 <el-col :lg="12">
-                  <el-button type="text" @click="addTarget(index)">{{ $t('access.addTarget02') }}</el-button>
-                  <el-button type="text" @click="selectTarget(index)">{{ $t('access.addTarget01') }}</el-button>
+                  <el-button type="text" @click="addTarget(index)">{{ $('access.addTarget02') }}</el-button>
+                  <el-button type="text" @click="selectTarget(index)">{{ $('access.addTarget01') }}</el-button>
                 </el-col>
               </el-row>
             </div>
@@ -210,28 +211,28 @@
 
       <div v-if="strType !== 'check'" class="current-footer text-center">
         <el-button v-if="addButton" size="small" @click="addTemp">
-          {{ tempButton === 1 ? $t('ui.userAssessmentGoalSettingSetTheTemplate') : $t('ui.userAssessmentGoalSettingEditTheTemplate') }}
+          {{ tempButton === 1 ? $('ui.userAssessmentGoalSettingSetTheTemplate') : $('ui.userAssessmentGoalSettingEditTheTemplate') }}
         </el-button>
         <el-button v-if="!addButton" size="small" @click="addTemplate">
-          {{ tempButton === 1 ? $t('ui.userAssessmentGoalSettingSetTheTemplate') : $t('ui.userAssessmentGoalSettingEditTheTemplate') }}
+          {{ tempButton === 1 ? $('ui.userAssessmentGoalSettingSetTheTemplate') : $('ui.userAssessmentGoalSettingEditTheTemplate') }}
         </el-button>
-        <el-button :loading="saveLoading" size="small" type="primary" @click="addPreserve()"> {{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }} </el-button>
+        <el-button :loading="saveLoading" size="small" type="primary" @click="addPreserve()"> {{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }} </el-button>
       </div>
     </div>
     <!--添加考核维度-->
     <el-dialog
       :before-close="handleClose"
-      :title="$t('access.adddimension')"
+      :title="$('access.adddimension')"
       :visible.sync="dialogVisible"
       :close-on-click-modal="false"
       width="560px"
     >
       <div class="current-dialog mb15">
-        <span>{{ $t('access.dimensionname') }}：</span>
+        <span>{{ $('access.dimensionname') }}：</span>
         <el-input v-model="from.name" size="small" type="text" />
       </div>
       <div v-if="!enterprise.compute_mode" class="current-dialog">
-        <span>{{ $t('access.dimensionweight') }}：</span>
+        <span>{{ $('access.dimensionweight') }}：</span>
         <div>
           <el-input-number
             v-model="from.ratio"
@@ -246,46 +247,44 @@
       </div>
 
       <span slot="footer" class="dialog-footer">
-        <el-button size="small" @click="clickCancel">{{ $t('public.cancel') }}</el-button>
-        <el-button size="small" type="primary" @click="addOk">{{ $t('public.ok') }}</el-button>
+        <el-button size="small" @click="clickCancel">{{ $('public.cancel') }}</el-button>
+        <el-button size="small" type="primary" @click="addOk">{{ $('public.ok') }}</el-button>
       </span>
     </el-dialog>
     <!--设置模板内容-->
     <el-dialog
       :before-close="templateClose"
-      :title="$t('access.settemplate')"
+      :title="$('access.settemplate')"
       :close-on-click-modal="false"
       :visible.sync="dialogTemplate"
       width="560px"
     >
       <div class="current-dialog mb15">
-        <span>{{ $t('access.templatename') }}：</span>
+        <span>{{ $('access.templatename') }}：</span>
         <el-input v-model="info.name" size="small" type="text" />
       </div>
       <div class="current-dialog mb15">
-        <span>{{ $t('access.templatecontent') }}：</span>
+        <span>{{ $('access.templatecontent') }}：</span>
         <el-input v-model="info.info" size="small" type="text" />
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button size="small" @click="cancelTemplate">{{ $t('public.cancel') }}</el-button>
+        <el-button size="small" @click="cancelTemplate">{{ $('public.cancel') }}</el-button>
         <el-button :loading="tempLoading" size="small" type="primary" @click="templateOk">{{
-          $t('public.ok')
+          $('public.ok')
         }}</el-button>
       </span>
     </el-dialog>
-    <selectTarget ref="selectTarget" :title="$t('access.targetibrary')" @dialogChangeDada="dialogChangeDada" />
+    <selectTarget ref="selectTarget" :title="$('access.targetibrary')" @dialogChangeDada="dialogChangeDada" />
     <selectTemplate
       ref="selectTemplate"
       :remind-button="remindButton"
-      :title="$t('access.appraisallibrary')"
+      :title="$('access.appraisallibrary')"
       @templateChange="templateChange"
     />
   </div>
 </template>
 
 <script>
-import i18n from '@/lang'
-import { translateRuntimeText } from '@/utils/i18ns'
 import Common from '@/components/user/accessCommon'
 import { userAssessEditApi, userAssessInfo, userAssessCreateApi } from '@/api/user'
 import { assessPlanPeriodApi, assessTargetCateListApi, assessTemplatePutApi } from '@/api/enterprise'
@@ -342,13 +341,13 @@ export default {
       editDimensionIndex: -1,
       remindButton: false,
       periodOptions: Common.periodOptions,
-      periodOption: [{ value: '', label: this.$t('access.selecteassessmenttype') }],
+      periodOption: [{ value: '', label: this.$('access.selecteassessmenttype') }],
       dateArray: [
-        { value: 1, type: 'week', text: i18n.t('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
-        { value: 2, type: 'month', text: i18n.t('legacyScript.selectMonth'), format: 'yyyy-MM' },
+        { value: 1, type: 'week', text: $('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
+        { value: 2, type: 'month', text: $('legacyScript.selectMonth'), format: 'yyyy-MM' },
         { value: 4, type: '' },
         { value: 5, type: '' },
-        { value: 3, type: 'year', text: i18n.t('legacyScript.selectYear'), format: 'yyyy' }
+        { value: 3, type: 'year', text: $('legacyScript.selectYear'), format: 'yyyy' }
       ],
       quarterBtn: false,
       halfYearBtn: false,
@@ -425,23 +424,20 @@ export default {
     this.getTableData()
   },
   methods: {
-    translateText(text) {
-      return translateRuntimeText(text, this)
-    },
     setOptions() {
-      this.periodOption = [{ value: '', label: this.$t('access.selecteassessmenttype') }]
+      this.periodOption = [{ value: '', label: this.$('access.selecteassessmenttype') }]
     },
     localizeAssessmentDetails(details) {
       if (!Array.isArray(details)) return []
       return details.map((dimension) => ({
         ...dimension,
-        name: this.$ts(dimension.name),
+        name: this.$(dimension.name),
         target: Array.isArray(dimension.target)
           ? dimension.target.map((indicator) => ({
               ...indicator,
-              name: this.$ts(indicator.name),
-              content: this.$ts(indicator.content),
-              info: this.$ts(indicator.info)
+              name: this.$(indicator.name),
+              content: this.$(indicator.content),
+              info: this.$(indicator.info)
             }))
           : []
       }))
@@ -479,7 +475,7 @@ export default {
       assessPlanPeriodApi().then((res) => {
         res.data == undefined ? (this.assessPlan = []) : (this.assessPlan = res.data)
         if (this.assessPlan.length === 0) {
-          this.$message.error(i18n.t('access.openassessmenttype'))
+          this.$message.error($('access.openassessmenttype'))
         } else {
           for (let i = 0; i < this.assessPlan.length; i++) {
             var index = this.periodOptions.findIndex((item) => {
@@ -498,7 +494,7 @@ export default {
       const result = await assessTargetCateListApi(data)
       result.data == undefined ? (this.department = []) : (this.department = result.data)
       this.department.forEach((value) => {
-        this.options.push({ value: value.id, label: this.$ts(value.name) })
+        this.options.push({ value: value.id, label: this.$(value.name) })
       })
     },
     handleClose() {
@@ -506,9 +502,9 @@ export default {
     },
     addOk() {
       if (this.from.name == '') {
-        this.$message.error(this.$t('access.placeholder03'))
+        this.$message.error(this.$('access.placeholder03'))
       } else if (this.from.ratio == '') {
-        this.$message.error(this.$t('access.placeholder04'))
+        this.$message.error(this.$('access.placeholder04'))
       } else {
         if (this.editDimension == 1) {
           this.tableData.push({
@@ -558,9 +554,9 @@ export default {
     },
     templateOk() {
       if (this.info.name === '') {
-        this.$message.error(this.$t('access.placeholder05'))
+        this.$message.error(this.$('access.placeholder05'))
       } else if (this.info.info === '') {
-        this.$message.error(this.$t('access.placeholder06'))
+        this.$message.error(this.$('access.placeholder06'))
       } else {
         if (this.tempButton === 1) {
           if (this.isEdit) {
@@ -587,11 +583,11 @@ export default {
         this.handleScore(index)
       } else {
         if (this.tableData[index].target[len].name == '') {
-          this.$message.error(this.$t('access.placeholder09'))
+          this.$message.error(this.$('access.placeholder09'))
         } else if (this.tableData[index].target[len].content == '') {
-          this.$message.error(this.$t('access.placeholder10'))
+          this.$message.error(this.$('access.placeholder10'))
         } else if (this.tableData[index].target[len].ratio == '') {
-          this.$message.error(this.$t('access.placeholder11'))
+          this.$message.error(this.$('access.placeholder11'))
         } else {
           this.tableData[index].target.push({ name: '', content: '', ratio: 10 })
           this.handleScore(index)
@@ -609,9 +605,9 @@ export default {
     dialogChangeDada(data) {
       data.forEach((res) => {
         this.tableData[this.index].target.push({
-          name: this.$ts(res.name),
-          content: this.$ts(res.content),
-          info: this.$ts(res.info),
+          name: this.$(res.name),
+          content: this.$(res.content),
+          info: this.$(res.info),
           ratio: ''
         })
       })
@@ -650,7 +646,7 @@ export default {
     // 添加保存绩效
     preserve(status) {
       if (this.handleTotalWeight() != this.enterprise.maxScore) {
-        this.$message.error(i18n.t('legacyScript.currentTotalScoreDoesNotMatchTheTotalScore'))
+        this.$message.error($('legacyScript.currentTotalScoreDoesNotMatchTheTotalScore'))
         return false
       }
       const res = this.judge()
@@ -774,48 +770,48 @@ export default {
       var res = []
       if (type !== 2) {
         if (this.tableData.length <= 0) {
-          this.$message.error(this.$t('access.placeholder12'))
+          this.$message.error(this.$('access.placeholder12'))
         } else if (this.dimensionMax > 0 && this.is_draft === 0 && this.is_temp === 0) {
-          this.$message.error(this.$t('access.placeholder13'))
+          this.$message.error(this.$('access.placeholder13'))
         } else if (this.tableFrom.period === '' && this.is_temp === 0) {
-          this.$message.error(this.$t('access.placeholder14'))
+          this.$message.error(this.$('access.placeholder14'))
         } else if (this.tableFrom.date === '' && !this.isEdit && this.is_temp === 0) {
-          this.$message.error(this.$t('access.placeholder15'))
+          this.$message.error(this.$('access.placeholder15'))
         } else if (this.tableFrom.testUid.length === 0 && this.is_temp === 0) {
-          this.$message.error(i18n.t('legacyScript.appraiseeIsRequired'))
+          this.$message.error($('legacyScript.appraiseeIsRequired'))
         }
       }
       if (this.tableData.length > 0) {
         for (let i = 0; i < this.tableData.length; i++) {
           if (this.tableData[i].name == '') {
-            this.$message.error(i18n.t('legacyScript.assessmentDimensionNameCannotBeEmpty'))
+            this.$message.error($('legacyScript.assessmentDimensionNameCannotBeEmpty'))
             break
           }
           if (this.tableData[i].ratio <= 0 && this.is_draft === 0) {
-            this.$message.error(i18n.t('legacyScript.assessmentDimensionWeightCannotBeZero'))
+            this.$message.error($('legacyScript.assessmentDimensionWeightCannotBeZero'))
             break
           }
           if (this.tableData[i].target.length <= 0) {
-            this.$message.error(i18n.t('legacyScript.assessmentIndicatorsCannotBeEmpty'))
+            this.$message.error($('legacyScript.assessmentIndicatorsCannotBeEmpty'))
             break
           }
           const target = []
           for (let j = 0; j < this.tableData[i].target.length; j++) {
             if (this.tableData[i].target[j].name == '') {
-              this.$message.error(i18n.t('legacyScript.indicatorNameIsRequired'))
+              this.$message.error($('legacyScript.indicatorNameIsRequired'))
               break
             }
             if (this.tableData[i].target[j].content == '') {
-              this.$message.error(i18n.t('legacyScript.indicatorContentIsRequired'))
+              this.$message.error($('legacyScript.indicatorContentIsRequired'))
               break
             }
             const info = this.tableData[i].target[j].info
             if (info == '' || info == undefined) {
-              this.$message.error(i18n.t('legacyScript.scoringCriteriaIsRequired'))
+              this.$message.error($('legacyScript.scoringCriteriaIsRequired'))
               break
             }
             if (this.tableData[i].target[j].ratio <= 0 && this.is_draft === 0) {
-              this.$message.error(i18n.t('legacyScript.indicatorWeightCannotBeZero'))
+              this.$message.error($('legacyScript.indicatorWeightCannotBeZero'))
               break
             }
 

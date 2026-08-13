@@ -25,8 +25,8 @@
         ></oaForm>
       </div>
       <div class="button from-foot-btn fix btn-shadow" v-if="fromData.type != 'slot'">
-        <el-button class="el-btn" size="small" @click="handleClose">{{ $ts("取消") }}</el-button>
-        <el-button size="small" type="primary" @click="submit">{{ $ts("保存") }}</el-button>
+        <el-button class="el-btn" size="small" @click="handleClose">{{ $("public.cancel") }}</el-button>
+        <el-button size="small" type="primary" @click="submit">{{ $("public.save") }}</el-button>
       </div>
     </el-drawer>
   </div>

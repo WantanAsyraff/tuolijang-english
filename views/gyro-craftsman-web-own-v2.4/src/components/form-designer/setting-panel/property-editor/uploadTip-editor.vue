@@ -1,15 +1,12 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.uploadTip')">
+  <el-form-item :label="$('designer.setting.uploadTip')">
     <el-input type="text" v-model="optionModel.uploadTip"></el-input>
   </el-form-item>
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
-
   export default {
     name: "uploadTip-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -22,4 +19,3 @@
 <style scoped>
 
 </style>
-@/utils/i18ns

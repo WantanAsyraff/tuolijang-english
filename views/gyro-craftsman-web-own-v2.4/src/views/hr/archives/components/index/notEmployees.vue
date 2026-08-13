@@ -25,12 +25,12 @@
           >
             <template #options="{ data }">
               <el-button type="text" @click="hanldeOptions(data, 'edit')" v-hasPermi="['hr:archives:check']"
-                >{{ $t("ui.layoutNoticeNoticeListView") }}</el-button
+                >{{ $("ui.layoutNoticeNoticeListView") }}</el-button
               >
 
-              <el-button type="text" @click="hanldeOptions(data, 'delete')">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" @click="hanldeOptions(data, 'delete')">{{ $("ui.chatIndexDelete") }}</el-button>
 
-              <el-button type="text" @click="hanldeOptions(data, 'entry')">{{ $t("ui.hrArchivesUserDetailsOnboard") }}</el-button>
+              <el-button type="text" @click="hanldeOptions(data, 'entry')">{{ $("ui.hrArchivesUserDetailsOnboard") }}</el-button>
             </template>
           </Table>
         </div>

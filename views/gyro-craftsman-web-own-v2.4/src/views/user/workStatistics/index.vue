@@ -3,8 +3,8 @@
     <div class="v-height-flag">
       <div class="plan-tabs-content">
         <el-tabs v-model="tabCur" @tab-click="handleClick">
-          <el-tab-pane :label="$t('access.selfassessment01')" name="0" />
-          <el-tab-pane :label="$t('access.mydepartment')" name="1" />
+          <el-tab-pane :label="$('access.selfassessment01')" name="0" />
+          <el-tab-pane :label="$('access.mydepartment')" name="1" />
         </el-tabs>
       </div>
       <div class="mt20">

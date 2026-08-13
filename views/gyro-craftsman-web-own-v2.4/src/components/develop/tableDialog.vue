@@ -10,18 +10,18 @@
     :close-on-click-modal="false"
   >
     <div slot="title" class="header flex-between">
-      <span class="title">{{ $t("ui.developTableDialogSelectReferencedContent") }}</span>
+      <span class="title">{{ $("ui.developTableDialogSelectReferencedContent") }}</span>
       <span class="el-icon-close" @click="handleClose"></span>
     </div>
 
     <div class="flex mb20">
-      <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.developModuleFormBoxItems") }}</div>
+      <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.developModuleFormBoxItems") }}</div>
       <div class="ml14">
         <el-input
           v-model="where.keyword"
           prefix-icon="el-icon-search"
           size="small"
-          :placeholder="$t('ui.developTableDialogPleaseEnterInvoiceNameCustomerNameContractName')"
+          :placeholder="$('ui.developTableDialogPleaseEnterInvoiceNameCustomerNameContractName')"
           clearable
           style="width: 250px"
           @change="getList"
@@ -96,8 +96,8 @@
                 v-model="scope.row[item.field_name_en]"
                 :active-value="1"
                 :inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                active-text="开启"
+                inactive-text="关闭"
               >
               </el-switch>
             </div>
@@ -119,9 +119,9 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')">
+        <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')">
           <template slot-scope="scope">
-            <el-button type="text" @click="selectClick(scope.row)">{{ $t("ui.developTableDialogSelect") }}</el-button>
+            <el-button type="text" @click="selectClick(scope.row)">{{ $("ui.developTableDialogSelect") }}</el-button>
           </template>
         </el-table-column>
       </el-table>

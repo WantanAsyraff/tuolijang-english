@@ -1,15 +1,12 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.maxValue')">
+  <el-form-item :label="$('designer.setting.maxValue')">
     <el-input-number v-model="maxValue" class="hide-spin-button" style="width: 100%"></el-input-number>
   </el-form-item>
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
-
   export default {
     name: "max-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -37,4 +34,3 @@
 <style scoped>
 
 </style>
-@/utils/i18ns

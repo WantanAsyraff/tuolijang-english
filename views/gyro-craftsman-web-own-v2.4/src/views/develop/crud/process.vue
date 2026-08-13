@@ -1,25 +1,26 @@
+import { $ } from '@/lang'
 <!-- 低代码-流程设计页面 -->
 <template>
   <div>
     <el-card class="examineCard">
       <el-row>
         <el-col :span="9">
-          <div class="title-16 mt23">{{ $ts("流程设计") }}</div>
+          <div class="title-16 mt23">{{ $("ui.workFlowDialogErrorDialogWorkflowDesign") }}</div>
         </el-col>
         <el-col :span="12">
           <el-tabs v-model="activeName" class="examineTabs" @tab-click="handleClick(activeName)">
             <el-tab-pane v-for="(item, index) in tabArray" :key="index" :name="item.value">
               <div slot="label">
                 <span class="sp1">{{ item.number }}</span>
-                <span>{{ $ts(item.label, item.label_en) }}</span>
+                <span>{{ $(item.label, item.label_en) }}</span>
               </div>
             </el-tab-pane>
           </el-tabs>
         </el-col>
         <el-col :span="3">
           <div class="flex-end">
-            <el-button class="mt14" size="small" @click="submit">{{ $ts("仅保存") }}</el-button>
-            <el-button class="mt14" type="primary" size="small" @click="submit(1)">{{ $ts("保存并关闭") }}</el-button>
+            <el-button class="mt14" size="small" @click="submit">{{ $("ui.developCrudEventSaveOnly") }}</el-button>
+            <el-button class="mt14" type="primary" size="small" @click="submit(1)">{{ $("ui.developCrudEventSaveAndClose") }}</el-button>
           </div>
         </el-col>
       </el-row>
@@ -28,10 +29,10 @@
       <!-- 基础设置 -->
       <div class="main" v-show="activeName === 'basicSetting'">
         <el-form ref="elForm" class="mt30" :model="baseConfig" :rules="rules" label-width="110px">
-          <el-form-item :label='$ts("应用实体：")' prop="crud_id">
+          <el-form-item :label='$("legacy.8bc07fb2ec77bd28")' prop="crud_id">
             <el-cascader
               v-model="baseConfig.crud_id"
-              :placeholder='$ts("请选择应用实体")'
+              :placeholder='$("legacyScript.pleaseSelectAnApplicationEntity")'
               :options="options"
               :show-all-levels="false"
               filterable
@@ -43,14 +44,14 @@
             >
             </el-cascader>
           </el-form-item>
-          <el-form-item :label='$ts("流程名称：")' prop="name">
+          <el-form-item :label='$("legacy.c0690c872504b613")' prop="name">
             <el-input
-              :value="$ts(baseConfig.name)"
-              :placeholder='$ts("请输入流程名称")'
+              :value="$(baseConfig.name)"
+              :placeholder='$("legacy.0e14059ca54c0281")'
               @input="baseConfig.name = $event"
             ></el-input>
           </el-form-item>
-          <el-form-item :label='$ts("审批流图标：")' prop="icon">
+          <el-form-item :label='$("business.businessPic1")' prop="icon">
             <div
               v-if="baseConfig.icon"
               class="selIcon mr15"
@@ -63,26 +64,26 @@
               <div v-for="(i, index) in iconList" :key="index" class="icon-item" @click="itemChose(i)">
                 <i class="icon iconfont" :class="i.icon" :style="{ color: i.color }"></i>
               </div>
-              <el-button slot="reference">{{ $t('business.changeIcon') }}</el-button>
+              <el-button slot="reference">{{ $('business.changeIcon') }}</el-button>
             </el-popover>
           </el-form-item>
-          <el-form-item :label='$ts("审批说明：")' prop="flowRemark">
+          <el-form-item :label='$("legacy.9926a78d344a9a46")' prop="flowRemark">
             <el-input
-              :value="$ts(baseConfig.info)"
+              :value="$(baseConfig.info)"
               @input="baseConfig.info = $event"
               type="textarea"
-              :placeholder="$t('business.message3')"
+              :placeholder="$('business.message3')"
               :maxlength="100"
               show-word-limit
               :autosize="{ minRows: 4, maxRows: 4 }"
               :style="{ width: '100%' }"
             ></el-input>
           </el-form-item>
-          <el-form-item :label='$ts("排序：")' prop="flowRemark">
+          <el-form-item :label='$("ui.businessHolidayTypeIndexSort")' prop="flowRemark">
             <el-input
               v-model="baseConfig.sort"
               type="number"
-              :placeholder='$ts("请输入排序")'
+              :placeholder='$("customer.placeholder04")'
               :style="{ width: '100%' }"
             ></el-input>
           </el-form-item>
@@ -95,10 +96,10 @@
       <!-- 规则设置 -->
       <div class="main" v-show="activeName === 'ruleSetting'">
         <el-form ref="elForm" class="mt30" :model="ruleConfig" :rules="rules" size="medium" label-width="150px">
-          <el-form-item :label='$ts("异常处理：")' prop="abnormal">
+          <el-form-item :label='$("business.handle")' prop="abnormal">
             <el-radio-group v-model="ruleConfig.abnormal" size="small">
-              <el-radio :label="0">{{ $ts("自动同意") }}</el-radio>
-              <el-radio :label="1">{{ $ts("转交给指定人员处理") }}</el-radio>
+              <el-radio :label="0">{{ $("business.handle1") }}</el-radio>
+              <el-radio :label="1">{{ $("business.handle2") }}</el-radio>
             </el-radio-group>
             <select-member
               v-if="ruleConfig.abnormal !== 0"
@@ -109,34 +110,34 @@
             ></select-member>
           </el-form-item>
 
-          <el-form-item :label='$ts("自动审批：")'>
-            <div class="auto-text">{{ $t('business.automatic1') }}</div>
+          <el-form-item :label='$("business.automatic")'>
+            <div class="auto-text">{{ $('business.automatic1') }}</div>
             <el-radio-group v-model="ruleConfig.auto" class="shu" size="small">
-              <el-radio :label="0">{{ $t('business.automatic2') }}</el-radio>
-              <el-radio :label="1">{{ $t('business.automatic3') }}</el-radio>
-              <el-radio :label="2">{{ $t('business.automatic4') }}</el-radio>
+              <el-radio :label="0">{{ $('business.automatic2') }}</el-radio>
+              <el-radio :label="1">{{ $('business.automatic3') }}</el-radio>
+              <el-radio :label="2">{{ $('business.automatic4') }}</el-radio>
             </el-radio-group>
           </el-form-item>
 
-          <el-form-item :label='$ts("修改权限：")' class="shu">
+          <el-form-item :label='$("business.editAuthority")' class="shu">
             <el-checkbox-group v-model="ruleConfig.edit">
-              <el-checkbox :label="1">{{ $t('business.editAuthority1') }}</el-checkbox>
-              <el-checkbox :label="2">{{ $t('business.editAuthority2') }}</el-checkbox>
+              <el-checkbox :label="1">{{ $('business.editAuthority1') }}</el-checkbox>
+              <el-checkbox :label="2">{{ $('business.editAuthority2') }}</el-checkbox>
             </el-checkbox-group>
           </el-form-item>
 
-          <el-form-item :label="$t('business.revokeAuthority')">
-            <div slot="label">{{ $ts("撤销审批：") }}</div>
+          <el-form-item :label="$('business.revokeAuthority')">
+            <div slot="label">{{ $("legacy.13c7a99b3679d08a") }}</div>
 
             <el-checkbox-group v-model="ruleConfig.recall">
-              <el-checkbox :label="1">{{ $t('business.revokeAuthority1') }}</el-checkbox>
+              <el-checkbox :label="1">{{ $('business.revokeAuthority1') }}</el-checkbox>
             </el-checkbox-group>
-            <span class="tips">{{ $t('business.revokeAuthority2') }}</span>
+            <span class="tips">{{ $('business.revokeAuthority2') }}</span>
             <div class="explain"></div>
           </el-form-item>
-          <el-form-item :label='$ts("加签权限：")'>
+          <el-form-item :label='$("legacy.a7e6308765a09468")'>
             <el-checkbox-group v-model="ruleConfig.is_sign">
-              <el-checkbox :label="1">{{ $ts("允许在审批单中增加临时审批人") }}</el-checkbox>
+              <el-checkbox :label="1">{{ $("legacy.9d6de97831335155") }}</el-checkbox>
             </el-checkbox-group>
           </el-form-item>
         </el-form>
@@ -146,7 +147,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import selectMember from '@/components/form-common/select-member'
 import processSetting from '@/components/develop/processSetting'
 import iconfontList from '@/views/business/components/basicSetting/iconfontList.js'
@@ -166,9 +166,9 @@ export default {
       userList: [], // 选择指定人员
       activeName: 'basicSetting',
       tabArray: [
-        { label: this.$t('business.basicConfiguration'), value: 'basicSetting', number: 1 },
-        { label: this.$t('business.processSetting'), value: 'processSetting', number: 2 },
-        { label: this.$t('business.ruleConfiguration'), value: 'ruleSetting', number: 3 }
+        { label: this.$('business.basicConfiguration'), value: 'basicSetting', number: 1 },
+        { label: this.$('business.processSetting'), value: 'processSetting', number: 2 },
+        { label: this.$('business.ruleConfiguration'), value: 'ruleSetting', number: 3 }
       ],
       baseConfig: {
         // 基础设置
@@ -197,35 +197,35 @@ export default {
         crud_id: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectAnApplicationEntity'),
+            message: $('legacyScript.pleaseSelectAnApplicationEntity'),
             trigger: 'change'
           }
         ],
         name: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseEnterAWorkflowName'),
+            message: $('legacyScript.pleaseEnterAWorkflowName'),
             trigger: 'blur'
           }
         ],
         icon: [
           {
             required: true,
-            message: this.$t('business.message2'),
+            message: this.$('business.message2'),
             trigger: 'change'
           }
         ],
         abnormal: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectAnApplicationEntity'),
+            message: $('legacyScript.pleaseSelectAnApplicationEntity'),
             trigger: 'change'
           }
         ],
         auto: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectAnApplicationEntity'),
+            message: $('legacyScript.pleaseSelectAnApplicationEntity'),
             trigger: 'change'
           }
         ]
@@ -253,7 +253,7 @@ export default {
     localizedOptions(options) {
       return (options || []).map((item) => ({
         ...item,
-        label: this.$ts(item.label),
+        label: this.$(item.label),
         children: item.children ? this.localizedOptions(item.children) : item.children
       }))
     },
@@ -309,8 +309,8 @@ export default {
             this.ruleConfig.abnormal = this.userList[0].value ? this.userList[0].value : this.userList[0].id
           }
 
-          if (!this.baseConfig.name) return this.$message(i18n.t('legacyScript.workflowNameIsRequired'))
-          if (!this.baseConfig.icon) return this.$message(i18n.t('legacyScript.workflowIconIsRequired'))
+          if (!this.baseConfig.name) return this.$message($('legacyScript.workflowNameIsRequired'))
+          if (!this.baseConfig.icon) return this.$message($('legacyScript.workflowIconIsRequired'))
           this.loading = true
           this.sendToServer(param, val)
         })
@@ -387,7 +387,7 @@ export default {
       } else if (this.activeName == 'processSetting') {
         this.activeName = 'ruleSetting'
       } else if (this.activeName == 'ruleSetting') {
-        this.$message.error(i18n.t('legacyScript.noNextStep'))
+        this.$message.error($('legacyScript.noNextStep'))
         this.activeName = 'ruleSetting'
       }
     }

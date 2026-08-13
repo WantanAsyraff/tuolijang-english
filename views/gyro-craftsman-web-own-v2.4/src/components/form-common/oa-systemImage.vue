@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <el-dialog :append-to-body="true" :before-close="handleClose" :visible.sync="dialogVisible" :title='$ts("选择图片")'
+    <el-dialog :append-to-body="true" :before-close="handleClose" :visible.sync="dialogVisible" :title='$("ui.administrationNoticeAddNoticeSelectImage")'
       width="850px">
       <upload-picture ref="uploadPicture" :check-button="true" @getImage="getImage"></upload-picture>
     </el-dialog>

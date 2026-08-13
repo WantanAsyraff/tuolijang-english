@@ -18,27 +18,27 @@
       <div class="field-action" v-if="designer.selectedId === field.id">
         <i
           class="el-icon-back"
-          :title="i18nt('designer.hint.selectParentWidget')"
+          :title="$('designer.hint.selectParentWidget')"
           @click.stop="selectParentWidget(field)"
         ></i>
         <i
           class="el-icon-top"
           v-if="!!parentList && parentList.length > 1"
-          :title="i18nt('designer.hint.moveUpWidget')"
+          :title="$('designer.hint.moveUpWidget')"
           @click.stop="moveUpWidget(field)"
         ></i>
         <i
           class="el-icon-bottom"
           v-if="!!parentList && parentList.length > 1"
-          :title="i18nt('designer.hint.moveDownWidget')"
+          :title="$('designer.hint.moveDownWidget')"
           @click.stop="moveDownWidget(field)"
         ></i>
-        <i class="el-icon-delete" :title="i18nt('designer.hint.remove')" @click.stop="removeFieldWidget"></i>
+        <i class="el-icon-delete" :title="$('designer.hint.remove')" @click.stop="removeFieldWidget"></i>
       </div>
 
       <div class="drag-handler background-opacity" v-if="designer.selectedId === field.id">
-        <i class="el-icon-rank" :title="i18nt('designer.hint.dragHandler')"></i>
-        <i>{{ i18n2t(`designer.widgetLabel.${field.type}`, `extension.widgetLabel.${field.type}`) }}</i>
+        <i class="el-icon-rank" :title="$('designer.hint.dragHandler')"></i>
+        <i>{{ $(`extension.widgetLabel.${field.type}`) }}</i>
         <i v-if="field.options.hidden === true" class="iconfont icon-hide"></i>
       </div>
     </template>
@@ -46,11 +46,8 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
-
 export default {
   name: 'static-content-wrapper',
-  mixins: [i18n],
   props: {
     field: Object,
     designer: Object,
@@ -214,4 +211,3 @@ export default {
   outline: 2px solid #409eff;
 }
 </style>
-@/utils/i18ns

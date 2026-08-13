@@ -3,7 +3,7 @@
   <template v-if="isShowEmpty || (myOption.isNoData && previewState)">
     <div class="empty-div">
       <img src="../../assets/images/empty/statistics.png" alt="" class="img" />
-      <span>{{ $t("ui.scEchartsChartWidgetNoData") }}</span>
+      <span>{{ $("ui.scEchartsChartWidgetNoData") }}</span>
     </div>
   </template>
   <template v-else>
@@ -16,8 +16,8 @@
       v-if="!myOption.isNoData"
     ></scEcharts>
     <div class="no-data" v-else>
-      {{ $t("ui.scEchartsChartWidgetUseThe") }}
-      <span class="lh">{{ $t("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimensionAndMetricSettings") }}</span> {{ $t("ui.scEchartsChartWidgetDimensionAndMetricPanelsOnTheRightToAdd") }}
+      {{ $("ui.scEchartsChartWidgetUseThe") }}
+      <span class="lh">{{ $("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimensionAndMetricSettings") }}</span> {{ $("ui.scEchartsChartWidgetDimensionAndMetricPanelsOnTheRightToAdd") }}
     </div>
   </template>
 </div>

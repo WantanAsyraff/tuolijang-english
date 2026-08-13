@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <div class="card-box">
@@ -7,62 +8,62 @@
           <div class="card-list">
             <div class="head">
               <span class="line">|</span>
-              <span class="title">{{ $t("ui.customerSetupRuleSettingsReturnRuleAutomaticReturnToCustomerPool") }}</span>
+              <span class="title">{{ $("ui.customerSetupRuleSettingsReturnRuleAutomaticReturnToCustomerPool") }}</span>
             </div>
-            <el-form-item :label="$t('ui.customerSetupRuleSettingsReturnRuleAutomaticReturnToCustomerPool2')" prop="return_high_seas_switch">
+            <el-form-item :label="$('ui.customerSetupRuleSettingsReturnRuleAutomaticReturnToCustomerPool2')" prop="return_high_seas_switch">
               <el-switch
                 v-model="formData.return_high_seas_switch"
                 :active-value="1"
                 :inactive-value="0"
                 active-color="#1890ff"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+                active-text="开启"
                 inactive-color="#cccccc"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                inactive-text="关闭"
               >
               </el-switch>
             </el-form-item>
             <template v-if="formData.return_high_seas_switch">
-              <el-form-item :label="$t('ui.customerSetupRuleSettingsReturnRuleReturnOpenDeals')" prop="unsettled_cycle">
+              <el-form-item :label="$('ui.customerSetupRuleSettingsReturnRuleReturnOpenDeals')" prop="unsettled_cycle">
                 <el-input
                   v-model="formData.unsettled_cycle"
                   clearable
-:placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+:placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                   show-word-limit
                   size="small"
                   style="width: 350px"
                   type="number"
                 >
-                  <template slot="suffix">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                  <template slot="suffix">{{ $("ui.hrApprovaTimeDay") }}</template>
                 </el-input>
-                <div class="info">{{ $t("ui.customerSetupRuleSettingsReturnRuleUsedToSetHowManyDaysBeforeUnsettledCustomers") }}</div>
+                <div class="info">{{ $("ui.customerSetupRuleSettingsReturnRuleUsedToSetHowManyDaysBeforeUnsettledCustomers") }}</div>
               </el-form-item>
-              <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigReturnIfNotFollowedUp')" prop="unfollowed_cycle">
+              <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigReturnIfNotFollowedUp')" prop="unfollowed_cycle">
                 <el-input
                   v-model="formData.unfollowed_cycle"
                   clearable
-:placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+:placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                   show-word-limit
                   size="small"
                   style="width: 350px"
                   type="number"
                 >
-                  <template slot="suffix">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                  <template slot="suffix">{{ $("ui.hrApprovaTimeDay") }}</template>
                 </el-input>
-                <div class="info">{{ $t("ui.customerSetupRuleSettingsReturnRuleUsedToSetHowManyDaysBeforeUnfollowedUnsettled") }}</div>
+                <div class="info">{{ $("ui.customerSetupRuleSettingsReturnRuleUsedToSetHowManyDaysBeforeUnfollowedUnsettled") }}</div>
               </el-form-item>
-              <el-form-item :label="$t('ui.customerSetupRuleSettingsReturnRuleCustomerPoolReturnReminder')" prop="advance_cycle">
+              <el-form-item :label="$('ui.customerSetupRuleSettingsReturnRuleCustomerPoolReturnReminder')" prop="advance_cycle">
                 <el-input
                   v-model="formData.advance_cycle"
                   clearable
-:placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+:placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                   show-word-limit
                   size="small"
                   style="width: 350px"
                   type="number"
                 >
-                  <template slot="suffix">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                  <template slot="suffix">{{ $("ui.hrApprovaTimeDay") }}</template>
                 </el-input>
-                <div class="info">{{ $t("ui.customerSetupRuleSettingsReturnRuleUsedToSetHowManyDaysBeforeReturnTo") }}</div>
+                <div class="info">{{ $("ui.customerSetupRuleSettingsReturnRuleUsedToSetHowManyDaysBeforeReturnTo") }}</div>
               </el-form-item>
             </template>
           </div>
@@ -70,34 +71,34 @@
           <div class="card-list mt30">
             <div class="head">
               <span class="line">|</span>
-              <span class="title">{{ $t("ui.customerSetupRuleSettingsReturnRuleCustomerPolicyRule") }}</span>
+              <span class="title">{{ $("ui.customerSetupRuleSettingsReturnRuleCustomerPolicyRule") }}</span>
             </div>
-            <el-form-item :label="$t('ui.customerSetupRuleSettingsReturnRuleCustomerPolicyRule2')" prop="client_policy_switch">
+            <el-form-item :label="$('ui.customerSetupRuleSettingsReturnRuleCustomerPolicyRule2')" prop="client_policy_switch">
               <el-switch
                 v-model="formData.client_policy_switch"
                 :active-value="1"
                 :inactive-value="0"
                 active-color="#1890ff"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+                active-text="开启"
                 inactive-color="#cccccc"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                inactive-text="关闭"
               >
               </el-switch>
             </el-form-item>
             <template v-if="formData.client_policy_switch">
-              <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigPolicyCount')" prop="unsettled_client_number">
+              <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigPolicyCount')" prop="unsettled_client_number">
                 <el-input
                   v-model="formData.unsettled_client_number"
                   clearable
-:placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+:placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                   show-word-limit
                   size="small"
                   style="width: 350px"
                   type="number"
                 >
-                  <template slot="suffix">{{ $t("ui.settingAuthAdminIndexIndividual") }}</template>
+                  <template slot="suffix">{{ $("ui.settingAuthAdminIndexIndividual") }}</template>
                 </el-input>
-                <div class="info">{{ $t("ui.customerSetupRuleSettingsReturnRuleUsedToSetHowManyUnsettledCustomersEachSalesperson") }}</div>
+                <div class="info">{{ $("ui.customerSetupRuleSettingsReturnRuleUsedToSetHowManyUnsettledCustomersEachSalesperson") }}</div>
               </el-form-item>
             </template>
           </div>
@@ -105,58 +106,12 @@
       </div>
     </el-card>
     <div class="cr-bottom-button">
-      <el-button size="small" type="primary" @click="saveEvt">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button size="small" type="primary" @click="saveEvt">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </div>
 </div>
 </template>
-            </div>
-            <!-- <div class="dash-line"></div> -->
-            <div class="card-list mt30">
-              <div class="head">
-                <span class="line">|</span>
-                <span class="title">客户保单规则</span>
-              </div>
-              <el-form-item label="客户保单规则：" prop="client_policy_switch">
-                <el-switch
-                  v-model="formData.client_policy_switch"
-                  :active-value="1"
-                  :inactive-value="0"
-                  active-color="#1890ff"
-                  active-text="开启"
-                  inactive-color="#cccccc"
-                  inactive-text="关闭"
-                >
-                </el-switch>
-              </el-form-item>
-              <template v-if="formData.client_policy_switch">
-                <el-form-item label="保单数量：" prop="unsettled_client_number">
-                  <el-input
-                    v-model="formData.unsettled_client_number"
-                    clearable
-                    placeholder="请输入正整数"
-                    show-word-limit
-                    size="small"
-                    style="width: 350px"
-                    type="number"
-                  >
-                    <template slot="suffix">个</template>
-                  </el-input>
-                  <div class="info">用于设置每个销售员最多可以拥有多少个暂未成交状态的客户</div>
-                </el-form-item>
-              </template>
-            </div>
-          </el-form>
-        </div>
-      </el-card>
-      <div class="cr-bottom-button">
-        <el-button size="small" type="primary" @click="saveEvt">保存</el-button>
-      </div>
-    </div>
-  </div>
-</template>
 <script>
-import i18n from '@/lang'
 export default {
   name: 'ReturnRule',
   props: {
@@ -182,10 +137,10 @@ export default {
         xs: 24
       },
       rules: {
-        unsettled_cycle: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheCustomerReturnCycleToThePublicPool') }],
+        unsettled_cycle: [{ required: true, message: $('legacyScript.pleaseEnterTheCustomerReturnCycleToThePublicPool') }],
         advance_cycle: [{ required: true, validator: this.checkAdvanceCycle }],
-        unsettled_client_number: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheNumberOfUnconvertedCustomers') }],
-        unfollowed_cycle: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheNumberOfUnfollowedItemsReturnedToThe') }]
+        unsettled_client_number: [{ required: true, message: $('legacyScript.pleaseEnterTheNumberOfUnconvertedCustomers') }],
+        unfollowed_cycle: [{ required: true, message: $('legacyScript.pleaseEnterTheNumberOfUnfollowedItemsReturnedToThe') }]
       }
     }
   },

@@ -1,36 +1,36 @@
 <template>
 
-  <el-dialog :title="$t('ui.businessRecordPrintPreviewPrintPreview')" top="8vh" :visible.sync="visible" :append-to-body="true" width="800px">
+  <el-dialog :title="$('ui.businessRecordPrintPreviewPrintPreview')" top="8vh" :visible.sync="visible" :append-to-body="true" width="800px">
     <div class="print-preview">
       <div class="print-content" ref="printContent">
         <div class="print-inner">
           <div class="header">
-            <div class="title">{{ printData.approve ? printData.approve.name : $t('ui.businessRecordPrintPreviewApproval') }}</div>
+            <div class="title">{{ printData.approve ? printData.approve.name : $('ui.businessRecordPrintPreviewApproval') }}</div>
 
           </div>
           <div class="flex flex-between mb10">
             <span>{{ enterpriseInfo.enterprise_name || '--' }}</span>
-            <span>{{ $t('ui.businessRecordPrintPreviewApprovalNumber') }}{{ printData.node_id }}</span>
+            <span>{{ $('ui.businessRecordPrintPreviewApprovalNumber') }}{{ printData.node_id }}</span>
           </div>
           <div class="info-table">
             <table>
               <tr>
-                <td class="label">{{ $t('ui.businessRecordPrintPreviewApplicant') }}</td>
+                <td class="label">{{ $('ui.businessRecordPrintPreviewApplicant') }}</td>
                 <td class="value">{{ printData.card ? printData.card.name : '--' }}</td>
-                <td class="label">{{ $t('ui.businessRecordPrintPreviewApplicantDepartment') }}</td>
+                <td class="label">{{ $('ui.businessRecordPrintPreviewApplicantDepartment') }}</td>
                 <td class="value">{{ printData.frame ? printData.frame.name : '--' }}</td>
               </tr>
               <tr>
-                <td class="label">{{ $t('ui.businessRecordPrintPreviewSubmissionTime') }}</td>
+                <td class="label">{{ $('ui.businessRecordPrintPreviewSubmissionTime') }}</td>
                 <td class="value">{{ printData.created_at ? formatDate(printData.created_at) : '--' }}</td>
-                <td class="label">{{ $t('ui.businessRecordPrintPreviewCurrentApprovalStatus') }}</td>
+                <td class="label">{{ $('ui.businessRecordPrintPreviewCurrentApprovalStatus') }}</td>
                 <td class="value">{{ getStatusText(printData.status) }}</td>
               </tr>
             </table>
           </div>
 
           <div class="content-section">
-            <div class="section-title">{{ $t('ui.businessRecordPrintPreviewApplicationDetails') }}</div>
+            <div class="section-title">{{ $('ui.businessRecordPrintPreviewApplicationDetails') }}</div>
             <div class="content-table">
               <table>
                 <tr v-for="i in Math.ceil(printData.content.length / 2)" :key="i">
@@ -80,14 +80,14 @@
           </div>
 
           <div class="process-section">
-            <div class="section-title">{{ $t('ui.businessRecordPrintPreviewApprovalProcess') }}{{ getStatusText(printData.status) }}</div>
+            <div class="section-title">{{ $('ui.businessRecordPrintPreviewApprovalProcess') }}{{ getStatusText(printData.status) }}</div>
             <div class="process-table">
               <table>
                 <thead>
                   <tr>
-                    <th class="label">{{ $t('ui.businessRecordPrintPreviewApprovalStep') }}</th>
-                    <th class="label">{{ $t('ui.businessRecordPrintPreviewProcessor') }}</th>
-                    <th class="label">{{ $t('ui.invoiceInvoiceDetailsOperationRecords') }}</th>
+                    <th class="label">{{ $('ui.businessRecordPrintPreviewApprovalStep') }}</th>
+                    <th class="label">{{ $('ui.businessRecordPrintPreviewProcessor') }}</th>
+                    <th class="label">{{ $('ui.invoiceInvoiceDetailsOperationRecords') }}</th>
                   </tr>
                 </thead>
                 <tbody v-if="printData.users && printData.users.length > 0">
@@ -117,16 +117,16 @@
 
           <div class="footer">
             <div class="print-info">
-              <div class="mb10">{{ $t('ui.businessRecordPrintPreviewPrintDate') }}{{ formatDate(new Date()) }}</div>
-              <div>{{ $t('ui.businessRecordPrintPreviewPrintedBy') }}{{ userinfo.name ? userinfo.name : '--' }}</div>
+              <div class="mb10">{{ $('ui.businessRecordPrintPreviewPrintDate') }}{{ formatDate(new Date()) }}</div>
+              <div>{{ $('ui.businessRecordPrintPreviewPrintedBy') }}{{ userinfo.name ? userinfo.name : '--' }}</div>
             </div>
           </div>
         </div>
       </div>
 
       <div slot="footer" class="dialog-footer">
-        <el-button @click="visible = false">{{ $t('ui.formCommonSelectLabelCancel') }}</el-button>
-        <el-button type="primary" @click="handlePrint">{{ $t('ui.businessRecordPrintPreviewPrint') }}</el-button>
+        <el-button @click="visible = false">{{ $('ui.formCommonSelectLabelCancel') }}</el-button>
+        <el-button type="primary" @click="handlePrint">{{ $('ui.businessRecordPrintPreviewPrint') }}</el-button>
       </div>
     </div>
   </el-dialog>

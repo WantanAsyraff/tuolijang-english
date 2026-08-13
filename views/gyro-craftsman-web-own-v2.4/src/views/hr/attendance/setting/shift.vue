@@ -7,7 +7,7 @@
       :search="search"
       :isViewSearch="false"
       :total="total"
-      :title="$t('ui.hrAttendanceSettingShiftShiftList')"
+      :title="$('ui.hrAttendanceSettingShiftShiftList')"
       :isAddBtn="true"
       @addDataFn="addFn"
       @confirmData="confirmData"
@@ -15,31 +15,31 @@
 
     <div class="table-box mt10">
       <el-table :data="tableData" :height="tableHeight" style="width: 100%">
-        <el-table-column prop="name" :label="$t('ui.hrAttendanceSettingShiftListShiftName')" width="200"> </el-table-column>
-        <el-table-column prop="position" :label="$t('ui.hrAttendanceSettingShiftListAttendanceTime')" width="340">
+        <el-table-column prop="name" :label="$('ui.hrAttendanceSettingShiftListShiftName')" width="200"> </el-table-column>
+        <el-table-column prop="position" :label="$('ui.hrAttendanceSettingShiftListAttendanceTime')" width="340">
           <template slot-scope="scope">
-            {{ scope.row.times[0].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }} {{ scope.row.times[0].work_hours }} -
-            {{ scope.row.times[0].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}{{ scope.row.times[0].off_hours }}
+            {{ scope.row.times[0].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }} {{ scope.row.times[0].work_hours }} -
+            {{ scope.row.times[0].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}{{ scope.row.times[0].off_hours }}
             <span v-if="scope.row.times.length > 1"
-              >、 {{ scope.row.times[1].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}
-              {{ scope.row.times[1].work_hours }} - {{ scope.row.times[1].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay')
+              >、 {{ scope.row.times[1].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}
+              {{ scope.row.times[1].work_hours }} - {{ scope.row.times[1].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
               }}{{ scope.row.times[1].off_hours }}
             </span>
           </template>
         </el-table-column>
-        <el-table-column prop="card.name" :label="$t('ui.hrAssessCheckIndexCreator')">
+        <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')">
           <template slot-scope="scope">{{ scope.row.card ? scope.row.card.name : '--' }}</template>
         </el-table-column>
-        <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')"> </el-table-column>
-        <el-table-column prop="updated_at" :label="$t('ui.hrAttendanceSettingShiftLastUpdated')"> </el-table-column>
-        <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180" fixed="right">
+        <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')"> </el-table-column>
+        <el-table-column prop="updated_at" :label="$('ui.hrAttendanceSettingShiftLastUpdated')"> </el-table-column>
+        <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180" fixed="right">
           <template slot-scope="scope">
             <el-button type="text" @click="checkFn(scope.row)" v-hasPermi="['hr:attendance:shift:check']"
-              >{{ $t("ui.layoutNoticeNoticeListView") }}</el-button
+              >{{ $("ui.layoutNoticeNoticeListView") }}</el-button
             >
 
             <el-button type="text" @click="editFn(scope.row)" v-hasPermi="['hr:attendance:shift:edit']"
-              >{{ $t("ui.formCommonOaLogEdit") }}</el-button
+              >{{ $("ui.formCommonOaLogEdit") }}</el-button
             >
 
             <el-button
@@ -47,7 +47,7 @@
               v-if="scope.row.id !== 2"
               @click="deleteFn(scope.row)"
               v-hasPermi="['hr:attendance:shift:delete']"
-              >{{ $t("ui.chatIndexDelete") }}</el-button
+              >{{ $("ui.chatIndexDelete") }}</el-button
             >
           </template>
         </el-table-column>

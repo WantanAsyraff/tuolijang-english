@@ -27,12 +27,12 @@
           @focus="refreshFn(item.refresh, item.key)">
           <el-button type="primary" class="refresh" :disabled="fromData.type == 'edit' ? true : false" slot="suffix"
             size="small" @click.stop="refreshFn(item.refresh, item.key)">
-            {{ $t("ui.formCommonOaFormRegenerate") }}</el-button>
+            {{ $("ui.formCommonOaFormRegenerate") }}</el-button>
         </el-input>
         <!-- 文本域 -->
         <el-input class="textarea" v-if="item.type == 'textarea'" type="textarea"
           :maxlength="item.maxlength" v-model="form[item.key]" style=" height:70px "
-          :placeholder="item.placeholder || $t('ui.chatModelFormEnterContent')" :show-word-limit="item.showWordLimit" size="small">
+          :placeholder="item.placeholder || $('ui.chatModelFormEnterContent')" :show-word-limit="item.showWordLimit" size="small">
         </el-input>
 
         <!-- 富文本 -->
@@ -56,7 +56,7 @@
         </el-switch>
         <!-- 选择时间（月） -->
         <el-date-picker v-if="item.type == 'month'" style="width: 100%" v-model="form[item.key]" type="month"
-          size="small" :picker-options="pickerOptions" :placeholder="$t('ui.hrAttendanceSettingAddSchedulSelectMonth')">
+          size="small" :picker-options="pickerOptions" :placeholder="$('ui.hrAttendanceSettingAddSchedulSelectMonth')">
         </el-date-picker>
         <!-- 选择（单选） -->
         <div v-if="item.type == 'select'">
@@ -68,7 +68,7 @@
               </el-option>
             </el-select>
             <div v-if="item.sign == 'dict'" class="fang">
-              <el-button size="small" @click="goDict(item)">{{ $t("ui.userDailyAddBoxAdd") }}</el-button>
+              <el-button size="small" @click="goDict(item)">{{ $("ui.userDailyAddBoxAdd") }}</el-button>
             </div>
           </div>
         </div>
@@ -94,14 +94,14 @@
         <!-- 选择（多选） -->
         <el-select style="width: 100%" v-if="item.type == 'multipleSelect'" v-model="form[item.key]"
           :disabled="fromData.type == 'edit'" multiple size="small" filterable
-          :placeholder="item.placeholder ? item.placeholder : $t('ui.developConditionGroupPleaseSelect')">
+          :placeholder="item.placeholder ? item.placeholder : $('ui.developConditionGroupPleaseSelect')">
           <el-option v-for="(v, index) in item.options" :key="v.id" :label="v.name" :value="v.id"> </el-option>
         </el-select>
 
         <!--低代码选择应用-实体 -->
         <div v-if="item.type == 'cascaderSelect'">
           <el-cascader v-model="form[item.key]" :options="item.options" :show-all-levels="false" filterable size="small"
-            style="width: 100%" clearable :placeholder="item.placeholder ? item.placeholder : $t('ui.developConditionGroupPleaseSelect')">
+            style="width: 100%" clearable :placeholder="item.placeholder ? item.placeholder : $('ui.developConditionGroupPleaseSelect')">
           </el-cascader>
         </div>
 
@@ -109,7 +109,7 @@
         <div v-if="item.type == 'cascader'">
           <el-cascader v-model="form[item.key]" :options="item.options" filterable size="small" style="width: 100%"
             :show-all-levels="false" :props="item.props" clearable
-            :placeholder="item.placeholder ? item.placeholder : $t('ui.developConditionGroupPleaseSelect')">
+            :placeholder="item.placeholder ? item.placeholder : $('ui.developConditionGroupPleaseSelect')">
             <template slot-scope="{ node, data }" v-if="data.table_name">
               <span>{{ data.table_name }}</span>
               <span> （{{ data.table_name_en }}）</span>
@@ -121,7 +121,7 @@
             filterable style="width: 100%"></el-cascader>
         </template>
         <template v-if="item.type == 'icon'">
-          <el-input :placeholder="$t('ui.formCommonOaFormPleaseSelectAnIcon')" v-model="form[item.key]" readonly @click.native="showIconDialog = true"
+          <el-input :placeholder="$('ui.formCommonOaFormPleaseSelectAnIcon')" v-model="form[item.key]" readonly @click.native="showIconDialog = true"
             clearable>
             <i v-if="!form[item.key]" slot="suffix" class="el-icon-circle-plus-outline" style="cursor: pointer;"></i>
             <i v-else slot="suffix" class="el-icon-circle-close" style="cursor: pointer;"
@@ -139,7 +139,7 @@
 
     </el-form>
     <!-- 选择图标 -->
-    <el-dialog :title="$t('ui.formCommonOaFormSelectMenuIcon')" :visible.sync="showIconDialog" :append-to-body="true" width="50%">
+    <el-dialog :title="$('ui.formCommonOaFormSelectMenuIcon')" :visible.sync="showIconDialog" :append-to-body="true" width="50%">
       <div class="icon-box">
         <select-icon ref="selectIconRef" :isEmit="true" @select="handleSelectIcon"></select-icon>
       </div>

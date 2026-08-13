@@ -1,10 +1,11 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="mb14 normal-page">
     <oaFromBox
       :isViewSearch="false"
       :search="search"
-      :title="$t('ui.developEventLogTriggerLogs')"
+      :title="$('ui.developEventLogTriggerLogs')"
       :total="total"
       :isAddBtn="false"
       @confirmData="confirmData"
@@ -18,41 +19,41 @@
       class="mt10"
       style="width: 100%"
     >
-      <el-table-column :label="$t('ui.developCrudEventSettingTriggerName')" prop="name" />
-      <el-table-column :min-width="100" :label="$t('ui.developCrudEventSettingTriggerType')" prop="field_name">
+      <el-table-column :label="$('ui.developCrudEventSettingTriggerName')" prop="name" />
+      <el-table-column :min-width="100" :label="$('ui.developCrudEventSettingTriggerType')" prop="field_name">
         <template slot-scope="scope">
           {{ getEvent(scope.row.event) }}
         </template>
       </el-table-column>
 
-      <el-table-column :label="$t('ui.developCrudEventTriggerAction')" prop="name">
+      <el-table-column :label="$('ui.developCrudEventTriggerAction')" prop="name">
         <template slot-scope="scope">
           <span v-if="scope.row.action && scope.row.action.length > 0">
             {{ getAction(scope.row.action) }}
           </span>
-          <span v-else class="color-file">{{ $t("ui.developCrudEventSettingNoTriggerAction") }}</span>
+          <span v-else class="color-file">{{ $("ui.developCrudEventSettingNoTriggerAction") }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.developApproveIndexLinkedEntity')" prop="name">
+      <el-table-column :label="$('ui.developApproveIndexLinkedEntity')" prop="name">
         <template slot-scope="scope">
           {{ scope.row.crud.table_name || '--' }}
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.developEventLogExecutionResult')" prop="log" min-width="100">
+      <el-table-column :label="$('ui.developEventLogExecutionResult')" prop="log" min-width="100">
         <template slot-scope="scope">
           <el-tag size="small" :type="scope.row.result === 'success' ? 'success' : 'danger'" effect="plain">
-            {{ scope.row.result === 'success' ? $t('ui.developEventLogSuccess') : $t('ui.developEventLogFail') }}
+            {{ scope.row.result === 'success' ? $('ui.developEventLogSuccess') : $('ui.developEventLogFail') }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" prop="name">
+      <el-table-column :label="$('ui.invoiceInvoiceDetailsCreatedTime')" prop="name">
         <template slot-scope="scope">
           <span> {{ scope.row.created_at }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="100">
+      <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="100">
         <template slot-scope="scope">
-          <el-button type="text" @click="editFn(scope.row)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+          <el-button type="text" @click="editFn(scope.row)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -77,7 +78,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { dataEventLogApi, dataEventTypeApi, dataEventActionApi, getDatabaseApi } from '@/api/develop'
 import JsonViewer from 'vue-json-viewer'
 import oaDialog from '@/components/form-common/drawer-form'
@@ -110,7 +110,7 @@ export default {
       ],
       tableData: [],
       fromData: {
-        title: i18n.t('customer.view'),
+        title: $('customer.view'),
         type: 'slot',
         width: '40%'
       },

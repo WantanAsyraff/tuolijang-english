@@ -2,8 +2,8 @@
 <template>
   <div class="followUpRecord">
     <div class="mb10 btn-box1">
-      <div class="title-16">{{ $ts("订单记录") }}</div>
-      <el-button type="primary" size="small" @click="addRecord">{{ $ts("添加订单记录") }}</el-button>
+      <div class="title-16">{{ $("legacyScript.orderRecords") }}</div>
+      <el-button type="primary" size="small" @click="addRecord">{{ $("legacy.4789de5a384fa407") }}</el-button>
     </div>
     <file-upload :formInfo="formInfo" v-if="addRecordShow" @change="uploadChange"></file-upload>
     <div class="recordContent">
@@ -26,8 +26,8 @@
               <el-dropdown class="more">
                 <i class="el-icon-more" />
                 <el-dropdown-menu style="text-align: center; width: 100px">
-                  <el-dropdown-item @click.native="handleEdit(activity, index)"> {{ $ts("编辑") }} </el-dropdown-item>
-                  <el-dropdown-item @click.native="handleDelete(activity)"> {{ $ts("删除") }} </el-dropdown-item>
+                  <el-dropdown-item @click.native="handleEdit(activity, index)"> {{ $("public.edit") }} </el-dropdown-item>
+                  <el-dropdown-item @click.native="handleDelete(activity)"> {{ $("public.delete") }} </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>
@@ -55,7 +55,7 @@
     </div>
     <div v-if="liaisonData.length == 0" class="default">
       <img src="../../../../assets/images/def1.png" alt="" class="img" />
-      <span class="text">{{ $t('public.message14') + '~' }}</span>
+      <span class="text">{{ $('public.message14') + '~' }}</span>
     </div>
     <!-- 打开文件 -->
     <fileDialog ref="viewFile"></fileDialog>

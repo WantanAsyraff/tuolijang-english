@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="mlset-conditions" v-loading="loading">
   <div class="mlconditions-list-box">
@@ -15,7 +16,7 @@
           v-model="item.fieldName"
           @change="fieldChange(item)"
           filterable
-:no-match-text="$t('ui.zbSetConditionsIndexNoMatchingText')"
+          no-match-text="无匹配文本"
           size="default"
         >
           <el-option v-for="op in fieldList" :key="op.fieldName" :label="op.label" :value="op.fieldName" />
@@ -120,8 +121,8 @@
             @focus="clearError(item)"
             placeholder=" "
           >
-            <el-option :label="$t('ui.developFieldComponentYes')" value="1" />
-            <el-option :label="$t('ui.developFieldComponentNo')" value="0" />
+            <el-option :label="$('ui.developFieldComponentYes')" value="1" />
+            <el-option :label="$('ui.developFieldComponentNo')" value="0" />
           </el-select>
         </div>
         <!-- 用户下拉框 -->
@@ -134,7 +135,7 @@
             @focus="clearError(item)"
             placeholder=" "
             filterable
-:no-match-text="$t('ui.zbSetConditionsIndexNoMatchingText')"
+            no-match-text="无匹配文本"
           >
             <el-option
               v-for="(userOp, userInx) of userList"
@@ -155,7 +156,7 @@
             @focus="clearError(item)"
             placeholder=" "
             filterable
-:no-match-text="$t('ui.zbSetConditionsIndexNoMatchingText')"
+            no-match-text="无匹配文本"
           >
             <el-option
               v-for="(departmentOp, departmentInx) of departmentList"
@@ -194,7 +195,7 @@
             </template>
           </el-input>
           <el-dialog
-            :title="$t('ui.developConditionGroupPleaseSelect')"
+            :title="$('ui.developConditionGroupPleaseSelect')"
             class="reference-dialog"
             v-model="showReferenceDialogFlag"
             append-to-body
@@ -216,14 +217,14 @@
       <el-icon size="18" class="add-icon">
         <ElIconCirclePlusFilled />
       </el-icon>
-      <span class="ml-8">{{ $t("ui.developConditionDialogAddCondition") }}</span>
+      <span class="ml-8">{{ $("ui.developConditionDialogAddCondition") }}</span>
     </span>
   </div>
   <div class="mlconditions-mode mt-10">
     <el-radio-group v-model="conditionConf.type" @change="conditionTypeChange" size="default">
-      <el-radio :label="1">{{ $t("ui.developConditionDialogMatchAny") }}</el-radio>
-      <el-radio :label="2">{{ $t("ui.developConditionDialogMatchAll") }}</el-radio>
-      <el-radio :label="3">{{ $t("ui.zbSetConditionsIndexAdvancedExpression") }}</el-radio>
+      <el-radio :label="1">{{ $("ui.developConditionDialogMatchAny") }}</el-radio>
+      <el-radio :label="2">{{ $("ui.developConditionDialogMatchAll") }}</el-radio>
+      <el-radio :label="3">{{ $("ui.zbSetConditionsIndexAdvancedExpression") }}</el-radio>
     </el-radio-group>
     <el-input
       class="mt-5"
@@ -236,13 +237,12 @@
     ></el-input>
   </div>
   <div class="mlconditions-footer mt-10" v-if="footer">
-    <el-button type="primary" @click="confirm" size="default">{{ $t("ui.settingEnterpriseUpgradeIndexOk") }}</el-button>
-    <el-button @click="cancel" size="default">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
+    <el-button type="primary" @click="confirm" size="default">{{ $("ui.settingEnterpriseUpgradeIndexOk") }}</el-button>
+    <el-button @click="cancel" size="default">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
   </div>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import conditionsConfig from '@/config/conditionsConfig'
 import ReferenceSearchTable from '@/components/mlReferenceSearch/reference-search-table.vue'
 import useCommonStore from '@/store/modules/common'
@@ -409,7 +409,7 @@ export default {
     // 添加条件
     addConditions() {
       if (this.fieldList.length < 1) {
-        this.$message.error(i18n.t('legacyScript.conditionFieldsCouldNotBeRetrievedRefreshThePage'))
+        this.$message.error($('legacyScript.conditionFieldsCouldNotBeRetrievedRefreshThePage'))
         return
       }
       if (this.conditionConf.items.length > this.maxConditionsLength - 1) {
@@ -445,7 +445,7 @@ export default {
           if (notNeedMsg) {
             return
           }
-          this.$message.error(i18n.t('legacyScript.someConditionSettingsAreInvalidPleaseCheckThem'))
+          this.$message.error($('legacyScript.someConditionSettingsAreInvalidPleaseCheckThem'))
           return
         }
       }
@@ -468,7 +468,7 @@ export default {
       if (type === 3 && equation) {
         await this.checkEquation()
         if (this.errorEquation) {
-          this.$message.error(i18n.t('legacyScript.invalidAdvancedExpression'))
+          this.$message.error($('legacyScript.invalidAdvancedExpression'))
           return
         }
       }

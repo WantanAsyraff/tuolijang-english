@@ -1,5 +1,5 @@
+import { $ } from '@/lang'
 <script>
-import i18n from '@/lang'
 // 新建实体表单数配置
 const formDataInit = {
   table_name: '',
@@ -19,7 +19,7 @@ const formRules = {
   table_name: [
     {
       required: true,
-      message: i18n.t('legacyScript.pleaseEnterDisplayName'),
+      message: $('legacyScript.pleaseEnterDisplayName'),
       trigger: 'blur'
     },
     {
@@ -36,7 +36,7 @@ const formRules = {
   table_name_en: [
     {
       required: true,
-      message: i18n.t('ui.settingEnterpriseAddAdminRolePleaseEnterEntityName'),
+      message: $('ui.settingEnterpriseAddAdminRolePleaseEnterEntityName'),
       trigger: 'blur'
     },
     {
@@ -56,20 +56,20 @@ const formRules = {
 const formConfig = [
   {
     type: 'input',
-    label: i18n.t('legacyScript.displayName'),
-    placeholder: i18n.t('legacyScript.startWithAChineseCharacterOrLetterUnderscoresAre'),
+    label: $('legacyScript.displayName'),
+    placeholder: $('legacyScript.startWithAChineseCharacterOrLetterUnderscoresAre'),
     key: 'table_name'
   },
   {
     type: 'inputEn',
-    label: i18n.t('legacyScript.entityName'),
-    placeholder: i18n.t('legacyScript.startWithALowercaseEnglishLetterChineseCharactersNumbers'),
+    label: $('legacyScript.entityName'),
+    placeholder: $('legacyScript.startWithALowercaseEnglishLetterChineseCharactersNumbers'),
     key: 'table_name_en',
     refresh: 'table_name'
   },
   {
     type: 'radio',
-    label: i18n.t('legacyScript.entityType'),
+    label: $('legacyScript.entityType'),
     placeholder: '',
     key: 'crud_type',
     options: [
@@ -82,12 +82,12 @@ const formConfig = [
         value: '明细实体'
       }
     ],
-    tips: i18n.t('legacyScript.aDetailEntityIsAChildTableAndHas')
+    tips: $('legacyScript.aDetailEntityIsAChildTableAndHas')
   },
   {
     type: 'cascaderSelect',
-    label: i18n.t('legacyScript.parentEntity'),
-    placeholder: i18n.t('legacyScript.searchForAndSelectTheMainEntity'),
+    label: $('legacyScript.parentEntity'),
+    placeholder: $('legacyScript.searchForAndSelectTheMainEntity'),
     key: 'crud_id',
     isShow: 'crud_type',
     props: { emitPath: false, label: 'label', value: 'value', children: 'children' },
@@ -95,64 +95,64 @@ const formConfig = [
   },
   {
     type: 'switch',
-    label: i18n.t('legacyScript.operationLogs'),
+    label: $('legacyScript.operationLogs'),
     key: 'show_log',
     activeValue: '1',
     inactiveValue: '0',
-    inactiveText: i18n.t('ui.customerWeChatMassGroupDetailsClose'),
-    activeText: i18n.t('ui.customerWeChatMassGroupDetailsEnable')
+    inactiveText: '关闭',
+    activeText: '开启'
   },
   {
     type: 'switch',
-    label: i18n.t('legacyScript.comments'),
+    label: $('legacyScript.comments'),
     key: 'show_comment',
     activeValue: 1,
     inactiveValue: 0,
-    inactiveText: i18n.t('ui.customerWeChatMassGroupDetailsClose'),
-    activeText: i18n.t('ui.customerWeChatMassGroupDetailsEnable')
+    inactiveText: '关闭',
+    activeText: '开启'
   },
   {
     type: 'input',
-    label: i18n.t('legacyScript.renameComments'),
+    label: $('legacyScript.renameComments'),
     key: 'comment_title',
-    placeholder: i18n.t('legacyScript.enterTheCommentModuleName'),
+    placeholder: $('legacyScript.enterTheCommentModuleName'),
     maxlength: 5,
     isShow: 'show_comment'
   },
 
   {
       type: 'multipleSelect',
-    label: i18n.t('legacyScript.linkedApplication'),
-    placeholder: i18n.t('legacyScript.searchForAndSelectApplicationsMultipleSelectionsAllowed'),
+    label: $('legacyScript.linkedApplication'),
+    placeholder: $('legacyScript.searchForAndSelectApplicationsMultipleSelectionsAllowed'),
     key: 'cate_ids',
     options: []
   },
   {
     type: 'cascader',
-    label: i18n.t('legacyScript.parentMenu'),
-    placeholder: i18n.t('legacyScript.selectTheParentMenu'),
+    label: $('legacyScript.parentMenu'),
+    placeholder: $('legacyScript.selectTheParentMenu'),
     key: 'path',
     props: {label: 'menu_name', value: 'id', children: 'children' ,checkStrictly: true},
     options: [],
-    tips: i18n.t('legacyScript.noMenuWillBeGeneratedUnlessAParentMenu')
+    tips: $('legacyScript.noMenuWillBeGeneratedUnlessAParentMenu')
   },
    {
     type: 'icon',
-    label: i18n.t('legacyScript.menuIcon'),
-    placeholder: i18n.t('legacyScript.selectAMenuIcon'),
+    label: $('legacyScript.menuIcon'),
+    placeholder: $('legacyScript.selectAMenuIcon'),
     key: 'icon',
   },
   {
     type: 'uni_img',
-    label: i18n.t('legacyScript.mobileIcon'),
-    placeholder: i18n.t('legacyScript.selectAMobileIcon'),
+    label: $('legacyScript.mobileIcon'),
+    placeholder: $('legacyScript.selectAMobileIcon'),
     key: 'uni_img',
     options: []
   },
   {
     type: 'textarea',
-    label: i18n.t('legacyScript.entityDescription'),
-    placeholder: i18n.t('legacyScript.enterTheEntityDescription'),
+    label: $('legacyScript.entityDescription'),
+    placeholder: $('legacyScript.enterTheEntityDescription'),
     key: 'info'
   }
 ]
@@ -183,7 +183,7 @@ const fieldRules = {
   field_name: [
     {
       required: true,
-      message: i18n.t('legacyScript.pleaseEnterDisplayName'),
+      message: $('legacyScript.pleaseEnterDisplayName'),
       trigger: 'blur'
     },
     {
@@ -200,7 +200,7 @@ const fieldRules = {
   field_name_en: [
     {
       required: true,
-      message: i18n.t('legacyScript.enterTheFieldName'),
+      message: $('legacyScript.enterTheFieldName'),
       trigger: 'blur'
     },
     {
@@ -217,7 +217,7 @@ const fieldRules = {
   data_dict_id: [
     {
       required: true,
-      message: i18n.t('ui.customerSetupCustomFormIndexSelectLinkedDictionary'),
+      message: $('ui.customerSetupCustomFormIndexSelectLinkedDictionary'),
       trigger: 'change'
     }
   ]
@@ -247,9 +247,9 @@ const optionsEdit = [
 const dictMax = [
   {
     type: 'radio',
-    label: i18n.t('legacyScript.dataOptions'),
+    label: $('legacyScript.dataOptions'),
     key: 'data_type',
-    tips: i18n.t('legacyScript.maintainStaticDataInTheFormDesigner'),
+    tips: $('legacyScript.maintainStaticDataInTheFormDesigner'),
 
     options: [
       {
@@ -264,8 +264,8 @@ const dictMax = [
   },
   {
     type: 'select',
-    label: i18n.t('legacyScript.linkedDictionary'),
-    placeholder: i18n.t('legacyScript.searchForAndSelectADataDictionary'),
+    label: $('legacyScript.linkedDictionary'),
+    placeholder: $('legacyScript.searchForAndSelectADataDictionary'),
     key: 'data_dict_id',
     sign: 'dict',
     isShow: 'data_type',
@@ -279,12 +279,12 @@ const keyValue = {
     // ...inputMax,
     {
       type: 'switch',
-      label: i18n.t('legacyScript.uniqueField'),
+      label: $('legacyScript.uniqueField'),
       key: 'is_uniqid',
       activeValue: 1,
       inactiveValue: 0,
-      activeText: i18n.t('ui.customerWeChatMassGroupDetailsEnable'),
-      inactiveText: i18n.t('ui.customerWeChatMassGroupDetailsClose')
+      activeText: '开启',
+      inactiveText: '关闭'
     }
   ],
   input_percentage: [],
@@ -329,7 +329,7 @@ const keyValue = {
   cascader_address: [
     {
       type: 'radio',
-      label: i18n.t('legacyScript.regionSelectionData'),
+      label: $('legacyScript.regionSelectionData'),
       key: 'is_city_show',
       options: [
         {
@@ -351,7 +351,7 @@ const keyValue = {
   input_select: [
     {
       type: 'input_select',
-      label: i18n.t('legacyScript.referencedEntity'),
+      label: $('legacyScript.referencedEntity'),
       key: 'association_field_names'
     }
   ],
@@ -365,15 +365,15 @@ const conditionConfig = {
   input: [
     {
       value: 'in',
-      label: i18n.t('legacyScript.contains')
+      label: $('legacyScript.contains')
     },
     {
       value: 'not_in',
-      label: i18n.t('legacyScript.doesNotContain')
+      label: $('legacyScript.doesNotContain')
     },
     {
       value: 'eq',
-      label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
+      label: $('ui.workFlowDrawerConditionDrawerEqualTo')
     },
     // {
     //   value: 'regex',
@@ -381,46 +381,46 @@ const conditionConfig = {
     // },
     {
       value: 'not_eq',
-      label: i18n.t('legacyScript.notEqualTo')
+      label: $('legacyScript.notEqualTo')
     },
     {
       value: 'is_empty',
-      label: i18n.t('legacyScript.isEmpty')
+      label: $('legacyScript.isEmpty')
     },
     {
       value: 'not_empty',
-      label: i18n.t('legacyScript.isNotEmpty')
+      label: $('legacyScript.isNotEmpty')
     }
   ],
   switch: [
     // 布尔
     {
       value: 'eq',
-      label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
+      label: $('ui.workFlowDrawerConditionDrawerEqualTo')
     },
 
     {
       value: 'is_empty',
-      label: i18n.t('legacyScript.isEmpty')
+      label: $('legacyScript.isEmpty')
     },
     {
       value: 'not_empty',
-      label: i18n.t('legacyScript.isNotEmpty')
+      label: $('legacyScript.isNotEmpty')
     }
   ],
   number: [
     // 整数、精度小数、百分比、金额
     {
       value: 'eq',
-      label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
+      label: $('ui.workFlowDrawerConditionDrawerEqualTo')
     },
     {
       value: 'gt',
-      label: i18n.t('legacyScript.greaterThan')
+      label: $('legacyScript.greaterThan')
     },
     {
       value: 'lt',
-      label: i18n.t('ui.workFlowDrawerConditionDrawerLessThan')
+      label: $('ui.workFlowDrawerConditionDrawerLessThan')
     },
     // {
     //   value: 'regex',
@@ -428,15 +428,15 @@ const conditionConfig = {
     // },
     {
       value: 'gt_eq',
-      label: i18n.t('ui.workFlowDrawerConditionDrawerGreaterThanOrEqualTo')
+      label: $('ui.workFlowDrawerConditionDrawerGreaterThanOrEqualTo')
     },
     {
       value: 'lt_eq',
-      label: i18n.t('ui.workFlowDrawerConditionDrawerLessThanOrEqualTo')
+      label: $('ui.workFlowDrawerConditionDrawerLessThanOrEqualTo')
     },
     {
       value: 'between',
-      label: i18n.t('legacyScript.range')
+      label: $('legacyScript.range')
     }
   ],
   select: [
@@ -444,91 +444,91 @@ const conditionConfig = {
 
     {
       value: 'in',
-      label: i18n.t('legacyScript.contains')
+      label: $('legacyScript.contains')
     },
     {
       value: 'not_in',
-      label: i18n.t('legacyScript.doesNotContain')
+      label: $('legacyScript.doesNotContain')
     },
     {
       value: 'is_empty',
-      label: i18n.t('legacyScript.isEmpty')
+      label: $('legacyScript.isEmpty')
     },
     {
       value: 'not_empty',
-      label: i18n.t('legacyScript.isNotEmpty')
+      label: $('legacyScript.isNotEmpty')
     }
   ],
   date: [
     {
       value: 'eq',
-      label: i18n.t('ui.workFlowDrawerConditionDrawerEqualTo')
+      label: $('ui.workFlowDrawerConditionDrawerEqualTo')
     },
     {
       value: 'gt',
-      label: i18n.t('legacyScript.greaterThan')
+      label: $('legacyScript.greaterThan')
     },
     {
       value: 'lt',
-      label: i18n.t('ui.workFlowDrawerConditionDrawerLessThan')
+      label: $('ui.workFlowDrawerConditionDrawerLessThan')
     },
     {
       value: 'between',
-      label: i18n.t('legacyScript.range')
+      label: $('legacyScript.range')
     },
     {
       value: 'n_day',
-      label: i18n.t('legacyScript.nDaysAgo')
+      label: $('legacyScript.nDaysAgo')
     },
     {
       value: 'last_day',
-      label: i18n.t('legacyScript.lastNDays')
+      label: $('legacyScript.lastNDays')
     },
     {
       value: 'next_day',
-      label: i18n.t('legacyScript.nextNDays')
+      label: $('legacyScript.nextNDays')
     },
     {
       value: 'today',
-      label: i18n.t('toptable.today')
+      label: $('toptable.today')
     },
     {
       value: 'week',
-      label: i18n.t('toptable.thisweek')
+      label: $('toptable.thisweek')
     },
     {
       value: 'month',
-      label: i18n.t('hr.month')
+      label: $('hr.month')
     },
     {
       value: 'quarter',
-      label: i18n.t('legacyScript.thisQuarter')
+      label: $('legacyScript.thisQuarter')
     },
     {
       value: 'year',
-      label: i18n.t('toptable.thisyear')
+      label: $('toptable.thisyear')
     },
     {
       value: 'last_year',
-      label: i18n.t('legacyScript.lastYear')
+      label: $('legacyScript.lastYear')
     }
   ],
   input_select: [
     {
       value: 'in',
-      label: i18n.t('legacyScript.contains')
+      label: $('legacyScript.contains')
     },
     {
       value: 'not_in',
-      label: i18n.t('legacyScript.doesNotContain')
+      label: $('legacyScript.doesNotContain')
     },
     {
       value: 'is_empty',
-      label: i18n.t('legacyScript.isEmpty')
+      label: $('legacyScript.isEmpty')
     },
     {
       value: 'not_empty',
-      label: i18n.t('legacyScript.isNotEmpty')
+      label: $('legacyScript.isNotEmpty')
     }
   ]
 }
@@ -536,27 +536,27 @@ const conditionConfig = {
 const fieldConfig = [
   {
     type: 'input',
-    label: i18n.t('legacyScript.displayName'),
-    placeholder: i18n.t('legacyScript.startWithAChineseCharacterOrLetterUnderscoresAre'),
+    label: $('legacyScript.displayName'),
+    placeholder: $('legacyScript.startWithAChineseCharacterOrLetterUnderscoresAre'),
     key: 'field_name'
   },
   {
     type: 'inputEn',
-    label: i18n.t('legacyScript.fieldName'),
-    placeholder: i18n.t('legacyScript.startWithALowercaseLetterChineseCharactersAndSpaces'),
+    label: $('legacyScript.fieldName'),
+    placeholder: $('legacyScript.startWithALowercaseLetterChineseCharactersAndSpaces'),
     key: 'field_name_en',
     refresh: 'field_name'
   },
 
   {
     type: 'radio',
-    label: i18n.t('legacyScript.whenAdding'),
+    label: $('legacyScript.whenAdding'),
     key: 'create_modify',
     options: optionsAdd
   },
   {
     type: 'radio',
-    label: i18n.t('legacyScript.whenEditing'),
+    label: $('legacyScript.whenEditing'),
     key: 'update_modify',
     options: optionsEdit
   }
@@ -567,23 +567,23 @@ const fieldConfig = [
 const searchTypeOptions = [
   {
     value: '0',
-    label: i18n.t('legacyScript.recordsICanView')
+    label: $('legacyScript.recordsICanView')
   },
   {
     value: '1',
-    label: i18n.t('legacyScript.ownedByMe')
+    label: $('legacyScript.ownedByMe')
   },
   {
     value: '2',
-    label: i18n.t('legacyScript.createdByMe')
+    label: $('legacyScript.createdByMe')
   },
   {
     value: '3',
-    label: i18n.t('legacyScript.sharedWithMe')
+    label: $('legacyScript.sharedWithMe')
   },
   {
     value: '4',
-    label: i18n.t('legacyScript.sharedByMe')
+    label: $('legacyScript.sharedByMe')
   }
 ]
 export default {

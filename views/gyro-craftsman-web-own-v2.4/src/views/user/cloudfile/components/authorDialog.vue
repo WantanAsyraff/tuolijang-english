@@ -5,21 +5,21 @@
         <div class="content">
           <ul class="content-title">
             <li>
-              <p class="text-left">{{ $t('file.spacemember') }}</p>
+              <p class="text-left">{{ $('file.spacemember') }}</p>
               <p>
-                <el-checkbox v-model="lookCheck" @change="handleChange(1)">{{ $t('public.check') }}</el-checkbox>
+                <el-checkbox v-model="lookCheck" @change="handleChange(1)">{{ $('public.check') }}</el-checkbox>
               </p>
               <p>
-                <el-checkbox v-model="createCheck" @change="handleChange(2)">{{ $t('public.establish') }}</el-checkbox>
+                <el-checkbox v-model="createCheck" @change="handleChange(2)">{{ $('public.establish') }}</el-checkbox>
               </p>
               <p>
-                <el-checkbox v-model="editCheck" @change="handleChange(3)">{{ $t('public.edit') }}</el-checkbox>
+                <el-checkbox v-model="editCheck" @change="handleChange(3)">{{ $('public.edit') }}</el-checkbox>
               </p>
               <p>
-                <el-checkbox v-model="downloadCheck" @change="handleChange(4)">{{ $t('public.download') }}</el-checkbox>
+                <el-checkbox v-model="downloadCheck" @change="handleChange(4)">{{ $('public.download') }}</el-checkbox>
               </p>
               <p>
-                <el-checkbox v-model="deleteCheck" @change="handleChange(5)">{{ $t('public.delete') }}</el-checkbox>
+                <el-checkbox v-model="deleteCheck" @change="handleChange(5)">{{ $('public.delete') }}</el-checkbox>
               </p>
             </li>
           </ul>
@@ -54,8 +54,8 @@
         </div>
       </div>
       <div slot="footer" class="dialog-footer text-right">
-        <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-        <el-button :loading="loading" size="small" type="primary" @click="handleAdd">{{ $t('public.ok') }}</el-button>
+        <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+        <el-button :loading="loading" size="small" type="primary" @click="handleAdd">{{ $('public.ok') }}</el-button>
       </div>
     </el-dialog>
   </div>
@@ -105,7 +105,7 @@ export default {
     },
     handleAdd() {
       if (this.userList.length <= 0) {
-        this.$message.error(this.$t('file.placeholder04'))
+        this.$message.error(this.$('file.placeholder04'))
       } else {
         var list = []
         var data = {}

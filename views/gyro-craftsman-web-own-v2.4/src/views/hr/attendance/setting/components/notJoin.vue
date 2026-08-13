@@ -2,14 +2,14 @@
 <div>
   <!-- 未加入此考勤组人员 -->
   <el-drawer
-    :title="$t('ui.hrAttendanceSettingNotJoinAddToThisAttendanceGroup')"
+    :title="$('ui.hrAttendanceSettingNotJoinAddToThisAttendanceGroup')"
     :visible.sync="drawer"
     size="700px"
     :wrapperClosable="false"
     :before-close="handleClose"
   >
     <div class="box">
-      <div class="tips mb20">{{ $t("ui.hrAttendanceSettingNotJoinTheFollowingMembersAlreadyBelongToAnotherAttendanceGroup") }}</div>
+      <div class="tips mb20">{{ $("ui.hrAttendanceSettingNotJoinTheFollowingMembersAlreadyBelongToAnotherAttendanceGroup") }}</div>
       <!-- 表格 -->
       <el-table
         ref="multipleTable"
@@ -19,24 +19,24 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="55"> </el-table-column>
-        <el-table-column prop="name" :label="$t('ui.hrAttendanceSettingNotJoinPersonName')" width="120"> </el-table-column>
-        <el-table-column prop="position" :label="$t('ui.businessHolidayQueryIndexDepartment')" width="180">
+        <el-table-column prop="name" :label="$('ui.hrAttendanceSettingNotJoinPersonName')" width="120"> </el-table-column>
+        <el-table-column prop="position" :label="$('ui.businessHolidayQueryIndexDepartment')" width="180">
           <template slot-scope="scope">
             <div class="frame-name over-text" v-for="(item, index) in scope.row.frames" :key="index">
               <span class="icon-h">
                 {{ item.name
-                }}<span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$t('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $t("ui.formCommonSelectDepartmentMain") }}</span>
+                }}<span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $("ui.formCommonSelectDepartmentMain") }}</span>
               </span>
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="job.name" :label="$t('ui.hrAssessConfigAssessBoxPosition')" show-overflow-tooltip> </el-table-column>
-        <el-table-column prop="group.name" :label="$t('ui.hrAttendanceSettingNotJoinCurrentAttendanceGroup')" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="job.name" :label="$('ui.hrAssessConfigAssessBoxPosition')" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="group.name" :label="$('ui.hrAttendanceSettingNotJoinCurrentAttendanceGroup')" show-overflow-tooltip> </el-table-column>
       </el-table>
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button @click="handleClose" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button type="primary" size="small" @click="submitForm">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button @click="handleClose" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button type="primary" size="small" @click="submitForm">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </el-drawer>
 </div>

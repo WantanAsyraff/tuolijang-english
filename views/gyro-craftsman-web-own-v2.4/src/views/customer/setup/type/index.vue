@@ -1,9 +1,9 @@
 ﻿<template>
   <div class="divBox">
     <el-card class="normal-page">
-      <el-button type="primary" class="mb14" size="small" @click="addFinance">{{ $t('customer.addtype') }}</el-button>
+      <el-button type="primary" class="mb14" size="small" @click="addFinance">{{ $('customer.addtype') }}</el-button>
       <div class="splitLine mt10"></div>
-      <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+      <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
       <el-table
         :data="tableData"
         style="width: 100%"
@@ -11,12 +11,12 @@
         default-expand-all
         :tree-props="{ children: 'children' }"
       >
-        <el-table-column prop="value.title" :label="$t('customer.typename')" min-width="220"> </el-table-column>
-        <el-table-column prop="sort" :label="$t('toptable.sort')" min-width="100" />
-        <el-table-column prop="address" :label="$t('public.operation')" width="200">
+        <el-table-column prop="value.title" :label="$('customer.typename')" min-width="220"> </el-table-column>
+        <el-table-column prop="sort" :label="$('toptable.sort')" min-width="100" />
+        <el-table-column prop="address" :label="$('public.operation')" width="200">
           <template slot-scope="scope">
-            <el-button type="text" @click="handleEdit(scope.row)">{{ $t('public.edit') }}</el-button>
-            <el-button type="text" @click="handleDelete(scope.row)">{{ $t('public.delete') }}</el-button>
+            <el-button type="text" @click="handleEdit(scope.row)">{{ $('public.edit') }}</el-button>
+            <el-button type="text" @click="handleDelete(scope.row)">{{ $('public.delete') }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -84,7 +84,7 @@ export default {
     // 添加分类
     async addFinance() {
       this.repeatData = {
-        title: this.$t('customer.addtype'),
+        title: this.$('customer.addtype'),
         width: '480px',
         label: 1,
         type: 1,
@@ -95,7 +95,7 @@ export default {
     // 编辑分类
     async handleEdit(item) {
       this.repeatData = {
-        title: this.$t('customer.edittype'),
+        title: this.$('customer.edittype'),
         width: '480px',
         label: 1,
         type: 2,
@@ -105,7 +105,7 @@ export default {
     },
     // 删除
     handleDelete(item) {
-      this.$modalSure(this.$t('customer.message01')).then(() => {
+      this.$modalSure(this.$('customer.message01')).then(() => {
         const deleteArr = []
         deleteArr.push(item.id)
         this.clientConfigSave({ key: this.key, delete: deleteArr })

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="assess-left v-height-flag">
   <!-- 个人头像 -->
@@ -20,9 +21,9 @@
     </div>
 
     <div class="updata-text">
-      <span class="certificates">{{ userInfo && userInfo.name ? userInfo.name : $t('ui.hrArchivesLeftNavigationIdPhoto') }}</span>
+      <span class="certificates">{{ userInfo && userInfo.name ? userInfo.name : $('ui.hrArchivesLeftNavigationIdPhoto') }}</span>
       <span class="certificates-text">
-        {{ userInfo && userInfo.position ? userInfo.position : $t('ui.hrArchivesLeftNavigationRecommended7341034NoLargerThan2Mb') }}</span
+        {{ userInfo && userInfo.position ? userInfo.position : $('ui.hrArchivesLeftNavigationRecommended7341034NoLargerThan2Mb') }}</span
       >
       <!-- 使用计算属性或对象映射来减少 v-if 的使用，提高代码可读性 -->
       <span v-if="userInfo">
@@ -31,7 +32,7 @@
     </div>
   </div>
   <div class="line" />
-  <div class="catalogue">{{ $t("ui.hrArchivesLeftNavigationResumeDirectory") }}</div>
+  <div class="catalogue">{{ $("ui.hrArchivesLeftNavigationResumeDirectory") }}</div>
   <div>
     <ul class="assess-left-ul">
       <li
@@ -52,7 +53,7 @@
     :append-to-body="true"
     :before-close="handleClose"
     :visible.sync="dialogVisible"
-    :title="$t('ui.administrationNoticeAddNoticeSelectImage')"
+    :title="$('ui.administrationNoticeAddNoticeSelectImage')"
     width="850px"
   >
     <upload-picture ref="uploadPicture" :check-button="true" @getImage="getImage"></upload-picture>
@@ -61,7 +62,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { putCardApi } from '@/api/enterprise'
 import { getToken } from '@/utils/auth'
 import { uploader } from '@/utils/uploadCloud'
@@ -169,7 +169,7 @@ export default {
             this.$emit('getImageUrl', res.data.url)
           }
         })
-        .catch((err) => console.error(i18n.t('legacyScript.uploadFail'), err))
+        .catch((err) => console.error($('legacyScript.uploadFail'), err))
     },
 
     // 获取选择的图片

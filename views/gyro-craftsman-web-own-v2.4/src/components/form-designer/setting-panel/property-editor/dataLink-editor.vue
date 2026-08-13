@@ -2,8 +2,8 @@
   <div>
     <el-form-item label-width="0">
         <div class="display-center mb14">
-            <el-button  @click="openFormCssEditor()">{{ $ts("设置数据联动") }}</el-button>
-            <el-button  @click="openFormCssEditor()">{{ $ts("设置隐藏条件") }}</el-button>
+            <el-button  @click="openFormCssEditor()">{{ $("legacy.ea75efba899bfcfa") }}</el-button>
+            <el-button  @click="openFormCssEditor()">{{ $("legacy.c2bb5ff7647f6451") }}</el-button>
         </div>
     </el-form-item>
     <conditionGroupDialog ref="conditionGroup"></conditionGroupDialog>
@@ -11,14 +11,12 @@
   </template>
   
   <script>
-    import i18n from "@/utils/i18n";
     import {deepClone} from "@/utils/util";
   import conditionGroupDialog from '@/components/develop/conditionGroupDialog'
     export default {
       name: "dataLink-editor",
       componentName: 'PropertyEditor',
       components: {conditionGroupDialog},
-      mixins: [i18n],
       props: {
         designer: Object,
         selectedWidget: Object,
@@ -81,5 +79,3 @@ openFormCssEditor() {
   <style scoped>
   
   </style>
-  @/utils/i18ns
-  

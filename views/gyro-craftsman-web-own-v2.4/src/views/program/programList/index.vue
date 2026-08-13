@@ -1,4 +1,5 @@
-﻿<!-- 项目-我的项目-项目列表页面 -->
+import { $ } from '@/lang'
+<!-- 项目-我的项目-项目列表页面 -->
 <template>
   <div class="divBox bill-type">
     <el-card class="normal-page">
@@ -8,8 +9,8 @@
         :title="$route.meta.title"
         :total="total"
         :treeData="treeData"
-        :treeDefault="treeDefault"
-:btn-text="$t('ui.programProgramListIndexCreateProject')"
+      :treeDefault="treeDefault"
+      :btnText="$('ui.programProgramListIndexCreateProject')"
         @addDataFn="addProgram"
         @confirmData="confirmData"
         @treeChange="treeChange"
@@ -41,13 +42,13 @@
           </template>
 
           <template #status="{ row }">
-            <el-tag v-if="row.status == 1" effect="plain" type="warning">{{ $t("ui.programProgramTaskAddTaskPaused") }}</el-tag>
-            <el-tag v-else-if="row.status == 2" effect="plain" type="info">{{ $t("ui.programProgramTaskAddTaskClosed") }}</el-tag>
-            <el-tag v-else-if="row.end_date && nowTime() > row.end_date" effect="plain" type="danger">{{ $t("ui.programProgramListIndexDelayed") }}</el-tag>
+            <el-tag v-if="row.status == 1" effect="plain" type="warning">{{ $("ui.programProgramTaskAddTaskPaused") }}</el-tag>
+            <el-tag v-else-if="row.status == 2" effect="plain" type="info">{{ $("ui.programProgramTaskAddTaskClosed") }}</el-tag>
+            <el-tag v-else-if="row.end_date && nowTime() > row.end_date" effect="plain" type="danger">{{ $("ui.programProgramListIndexDelayed") }}</el-tag>
             <el-tag v-else-if="row.start_date && nowTime() < row.start_date" effect="plain" type="success"
-              >{{ $t("ui.programProgramListIndexNotStarted") }}</el-tag
+              >{{ $("ui.programProgramListIndexNotStarted") }}</el-tag
             >
-            <el-tag v-else effect="plain">{{ $t("ui.programProgramListIndexInProgress") }}</el-tag>
+            <el-tag v-else effect="plain">{{ $("ui.programProgramListIndexInProgress") }}</el-tag>
           </template>
 
           <template #admins="{ row }">
@@ -72,7 +73,7 @@
       :visible.sync="taskDrawer"
       :wrapper-closable="false"
       size="1120px"
-      :title="$t('ui.programProgramListIndexCreateProject')"
+      :title="$('ui.programProgramListIndexCreateProject')"
     >
       <add-program
         v-if="taskDrawer"
@@ -86,7 +87,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getProgramListApi, deleteProgramApi } from '@/api/program'
 import { customerSelectApi } from '@/api/enterprise'
 import { roterPre } from '@/settings'
@@ -125,31 +125,31 @@ export default {
           options: [
             {
               value: 0,
-              label: i18n.t('legacyScript.allProjects')
+              label: $('legacyScript.allProjects')
             },
             {
               value: 1,
-              label: i18n.t('legacyScript.ownedByMe')
+              label: $('legacyScript.ownedByMe')
             },
             {
               value: 2,
-              label: i18n.t('legacyScript.myParticipations')
+              label: $('legacyScript.myParticipations')
             },
             {
               value: 3,
-              label: i18n.t('legacyScript.createdByMe')
+              label: $('legacyScript.createdByMe')
             }
           ]
         }
       ],
       search: [
         {
-          field_name: this.$ts('项目名称'),
+          field_name: '项目名称',
           field_name_en: 'name',
           form_value: 'input'
         },
         {
-          field_name: this.$ts('状态'),
+          field_name: '状态',
           field_name_en: 'status',
           form_value: 'select',
           multiple: true,
@@ -159,33 +159,33 @@ export default {
           data_dict: [
             {
               value: 5,
-              name: this.$ts('已延期')
+              name: '已延期'
             },
             {
               value: 4,
-              name: this.$ts('进行中')
+              name: '进行中'
             },
             {
               value: 3,
-              name: this.$ts('待开始')
+              name: '待开始'
             },
             {
               value: 1,
-              name: this.$ts('已暂停')
+              name: '已暂停'
             },
             {
               value: 2,
-              name: this.$ts('已关闭')
+              name: '已关闭'
             }
           ]
         },
         {
-          field_name: this.$ts('关联客户'),
+          field_name: '关联客户',
           field_name_en: 'eid',
           form_value: 'input'
         },
         {
-          field_name: this.$ts('关联订单'),
+          field_name: '关联订单',
           field_name_en: 'cid',
           form_value: 'input'
         },
@@ -195,45 +195,45 @@ export default {
       ],
       tableOptions: [
         {
-          label: i18n.t('legacyScript.projectNumber'),
+          label: $('legacyScript.projectNumber'),
           prop: 'ident',
           width: '120px'
         },
         {
-          label: i18n.t('legacyScript.projectName'),
+          label: $('legacyScript.projectName'),
           type: 'slot',
           name: 'name'
           // width: '450px'
         },
         {
-          label: i18n.t('hr.state'),
+          label: $('hr.state'),
           type: 'slot',
           name: 'status'
           // width: '120px'
         },
         {
-          label: i18n.t('ui.developModuleTreeOwner'),
+          label: $('ui.developModuleTreeOwner'),
           type: 'slot',
           name: 'admins'
           // width: '150px'
         },
         {
-          label: i18n.t('ui.programProgramTaskTableDataPlannedStart'),
+          label: $('ui.programProgramTaskTableDataPlannedStart'),
           prop: 'start_date'
           // width: '140px'
         },
         {
-          label: i18n.t('ui.programProgramTaskTableDataPlannedEnd'),
+          label: $('ui.programProgramTaskTableDataPlannedEnd'),
           prop: 'end_date'
           // width: '140px'
         },
         {
-          label: i18n.t('legacyScript.projectProgress'),
+          label: $('legacyScript.projectProgress'),
           type: 'slot',
           name: 'progress'
         },
         {
-          label: i18n.t('legacyScript.uncompletedTotalTasks'),
+          label: $('legacyScript.uncompletedTotalTasks'),
           // width: '120px',
           render: (row) => {
             return (
@@ -318,7 +318,7 @@ export default {
     },
     // 删除项目
     handleDelete(row) {
-      this.$modalSure(this.$ts('删除项目，同时会删除项目中的工作项！你确定要删除该项目吗？')).then(() => {
+      this.$modalSure('删除项目，同时会删除项目中的工作项！你确定要删除该项目吗').then(() => {
         deleteProgramApi(row.id).then((res) => {
           this.getTableData()
           this.$refs.addProgram.handleClose()

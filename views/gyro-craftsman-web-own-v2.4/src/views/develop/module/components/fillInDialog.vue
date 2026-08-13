@@ -1,28 +1,28 @@
+import { $ } from '@/lang'
 <template>
   <div class="oa-dialog">
-    <el-dialog :title='$ts("邀请填写")' :visible.sync="show" width="600px" :before-close="handleClose">
+    <el-dialog :title='$("ui.developModuleFillInInviteToComplete")' :visible.sync="show" width="600px" :before-close="handleClose">
       <div>
-        <div class="mb20">{{ $ts("通过链接邀请：") }}</div>
+        <div class="mb20">{{ $("legacy.2de9e6bd259f1973") }}</div>
         <div class="flex">
           <el-select v-model="form.role_type" style="width: 100%" size="small">
             <el-option v-for="item in roleOptions" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
-          <el-button class="ml10" type="primary" size="small" @click="submitFn">{{ $ts("复制链接") }}</el-button>
+          <el-button class="ml10" type="primary" size="small" @click="submitFn">{{ $("setting.invitationcopy") }}</el-button>
         </div>
         <div class="mt20 day">
-          {{ $ts("链接有效期：") }}<el-select style="width: 50px" v-model="form.invalid_type" size="small">
+          {{ $("legacy.13c1bce842d19eae") }}<el-select style="width: 50px" v-model="form.invalid_type" size="small">
             <el-option v-for="item in invalidOptions" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
-          {{ $ts("到期后通过此链接无法进行表单提交。") }}
+          {{ $("legacy.f80eae70ced2d71e") }}
         </div>
       </div>
     </el-dialog>
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { moduleQuestionnaireApi } from '@/api/develop'
 import { roterPre } from '@/settings'
 import { mapMutations } from 'vuex'
@@ -39,29 +39,29 @@ export default {
       roleOptions: [
         {
           value: '0',
-          label: i18n.t('legacyScript.visibleToCompanyEmployeesOnly')
+          label: $('legacyScript.visibleToCompanyEmployeesOnly')
         },
         {
           value: '1',
-          label: i18n.t('ui.workFlowNodeWrapEveryone')
+          label: $('ui.workFlowNodeWrapEveryone')
         }
       ],
       invalidOptions: [
         {
           value: '1',
-          label: i18n.t('legacyScript.text1Day')
+          label: $('legacyScript.text1Day')
         },
         {
           value: '7',
-          label: i18n.t('legacyScript.text7Days')
+          label: $('legacyScript.text7Days')
         },
         {
           value: '30',
-          label: i18n.t('legacyScript.text30Days')
+          label: $('legacyScript.text30Days')
         },
         {
           value: '0',
-          label: i18n.t('ui.settingAuthAuthIndexPermanent')
+          label: $('ui.settingAuthAuthIndexPermanent')
         }
       ],
       keyName: ''
@@ -96,7 +96,7 @@ export default {
           document.execCommand('Copy')
           oInput.style.display = 'none'
           document.body.removeChild(oInput)
-          this.$message.success(i18n.t('setting.copytitle'))
+          this.$message.success($('setting.copytitle'))
           setTimeout(() => {
             this.handleClose()
           }, 300)

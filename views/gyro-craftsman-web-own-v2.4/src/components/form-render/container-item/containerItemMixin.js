@@ -169,7 +169,7 @@ export default {
         //TODO: 逐行校验子表单！暂未实现！！
         return this.formModel[this.widget.options.name]
       } else {
-        this.$message.error(this.i18nt('render.hint.nonSubFormType'))
+        this.$message.error(this.$('render.hint.nonSubFormType'))
       }
     },
 

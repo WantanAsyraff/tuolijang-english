@@ -15,7 +15,7 @@
             v-model="where.keyword"
             prefix-icon="el-icon-search"
             size="small"
-            :placeholder="$t('ui.developTableDialogPleaseEnterInvoiceNameCustomerNameContractName')"
+            :placeholder="$('ui.developTableDialogPleaseEnterInvoiceNameCustomerNameContractName')"
             clearable
             style="width: 100%"
             @change="getList"
@@ -88,8 +88,8 @@
                       v-model="scope.row[item.field_name_en]"
                       :active-value="1"
                       :inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                      active-text="开启"
+                      inactive-text="关闭"
                     >
                     </el-switch>
                   </div>
@@ -118,9 +118,9 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')">
+              <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')">
                 <template slot-scope="scope">
-                  <el-button type="text" @click="selectClick(scope.row)">{{ $t("ui.developTableDialogSelect") }}</el-button>
+                  <el-button type="text" @click="selectClick(scope.row)">{{ $("ui.developTableDialogSelect") }}</el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -154,7 +154,7 @@
   <el-select
     v-else
     v-model="selectValue"
-    :placeholder="`请选择${placeholder}`"
+          :placeholder="$('ui.shared.selectField', { field: $(placeholder) })"
     class="mr10"
     clearable
     filterable

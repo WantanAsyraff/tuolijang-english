@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <el-drawer
   :append-to-body="true"
-  :title="$t('ui.workFlowDrawerConditionDrawerConditionSettings')"
+  :title="$('ui.workFlowDrawerConditionDrawerConditionSettings')"
   :visible.sync="$store.state.business.conditionDrawer"
   direction="rtl"
   class="condition_copyer"
@@ -13,7 +14,7 @@
       <div class="condition_content">
         <el-row :gutter="20">
           <el-col :span="16">
-            <el-form-item :label="$t('ui.developConditionDialogConditionSettings')">
+            <el-form-item :label="$('ui.developConditionDialogConditionSettings')">
               <el-input type="text" v-model="conditionConfig.nodeName"></el-input>
             </el-form-item>
           </el-col>
@@ -22,7 +23,7 @@
               <el-option
                 v-for="item in conditionLen"
                 :value="item.toString()"
-                :label="$t('ui.developConditionDialogPriority') + item"
+                :label="$('ui.developConditionDialogPriority') + item"
                 :key="item"
               ></el-option>
             </el-select>
@@ -35,47 +36,47 @@
                 <select-member
                   v-if="item.type === 'departmentTree' && item.category == 1"
                   :value="item.options.userList || []"
-                  :placeholder="$t('ui.workFlowDrawerConditionDrawerSelectApplicant')"
+                  :placeholder="$('ui.workFlowDrawerConditionDrawerSelectApplicant')"
                   @getSelectList="getSelectList($event, item)"
                   style="width: 100%"
                 >
                 </select-member>
 
-                <el-select v-model="item.value" v-if="item.type === 'radio'" :placeholder="$t('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')">
-                  <el-option value="0" :label="$t('ui.workFlowDrawerConditionDrawerBelongsTo')"></el-option>
+                <el-select v-model="item.value" v-if="item.type === 'radio'" :placeholder="$('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')">
+                  <el-option value="0" :label="$('ui.workFlowDrawerConditionDrawerBelongsTo')"></el-option>
                 </el-select>
-                <el-select v-model="item.value" v-if="item.type === 'datePicker'" :placeholder="$t('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')">
-                  <el-option value="0" :label="$t('ui.workFlowDrawerConditionDrawerLessThan')"></el-option>
-                  <el-option value="1" :label="$t('ui.workFlowDrawerConditionDrawerEqualTo')"></el-option>
-                  <el-option value="2" :label="$t('ui.workFlowDrawerConditionDrawerLessThanOrEqualTo')"></el-option>
-                  <el-option value="3" :label="$t('ui.workFlowDrawerConditionDrawerGreaterThanOrEqualTo')"></el-option>
+                <el-select v-model="item.value" v-if="item.type === 'datePicker'" :placeholder="$('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')">
+                  <el-option value="0" :label="$('ui.workFlowDrawerConditionDrawerLessThan')"></el-option>
+                  <el-option value="1" :label="$('ui.workFlowDrawerConditionDrawerEqualTo')"></el-option>
+                  <el-option value="2" :label="$('ui.workFlowDrawerConditionDrawerLessThanOrEqualTo')"></el-option>
+                  <el-option value="3" :label="$('ui.workFlowDrawerConditionDrawerGreaterThanOrEqualTo')"></el-option>
                 </el-select>
                 <el-select
                   v-model="item.value"
                   v-if="item.type === 'select' || item.type === 'checkbox'"
-                  :placeholder="$t('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')"
+                  :placeholder="$('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')"
                 >
-                  <el-option value="0" :label="$t('ui.workFlowDrawerConditionDrawerExactlyEqualTo')"></el-option>
-                  <el-option value="1" :label="$t('ui.workFlowDrawerConditionDrawerContainsAny')"></el-option>
+                  <el-option value="0" :label="$('ui.workFlowDrawerConditionDrawerExactlyEqualTo')"></el-option>
+                  <el-option value="1" :label="$('ui.workFlowDrawerConditionDrawerContainsAny')"></el-option>
                 </el-select>
                 <el-select
                   v-model="item.value"
                   v-if="item.type === 'inputNumber' || item.type === 'moneyFrom' || item.type === 'timeFrom'"
-                  :placeholder="$t('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')"
+                  :placeholder="$('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')"
                 >
-                  <el-option value="0" :label="$t('ui.workFlowDrawerConditionDrawerLessThan')"></el-option>
-                  <el-option value="1" :label="$t('ui.workFlowDrawerConditionDrawerEqualTo')"></el-option>
-                  <el-option value="2" :label="$t('ui.workFlowDrawerConditionDrawerLessThanOrEqualTo')"></el-option>
-                  <el-option value="3" :label="$t('ui.workFlowDrawerConditionDrawerGreaterThanOrEqualTo')"></el-option>
-                  <el-option value="4" :label="$t('ui.workFlowDrawerConditionDrawerBetweenTwoNumbers')"></el-option>
+                  <el-option value="0" :label="$('ui.workFlowDrawerConditionDrawerLessThan')"></el-option>
+                  <el-option value="1" :label="$('ui.workFlowDrawerConditionDrawerEqualTo')"></el-option>
+                  <el-option value="2" :label="$('ui.workFlowDrawerConditionDrawerLessThanOrEqualTo')"></el-option>
+                  <el-option value="3" :label="$('ui.workFlowDrawerConditionDrawerGreaterThanOrEqualTo')"></el-option>
+                  <el-option value="4" :label="$('ui.workFlowDrawerConditionDrawerBetweenTwoNumbers')"></el-option>
                 </el-select>
                 <el-select
                   v-model="item.value"
                   v-if="item.type === 'departmentTree' && item.category != 1"
-                  :placeholder="$t('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')"
+                  :placeholder="$('ui.workFlowDrawerConditionDrawerPleaseSelectCondition')"
                 >
-                  <el-option value="0" :label="$t('ui.workFlowDrawerConditionDrawerAllBelongTo')"></el-option>
-                  <el-option value="1" :label="$t('ui.workFlowDrawerConditionDrawerAnyBelongsTo')"></el-option>
+                  <el-option value="0" :label="$('ui.workFlowDrawerConditionDrawerAllBelongTo')"></el-option>
+                  <el-option value="1" :label="$('ui.workFlowDrawerConditionDrawerAnyBelongsTo')"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
@@ -89,7 +90,7 @@
                 v-if="item.type === 'datePicker'"
                 v-model="item.option"
                 type="date"
-                :placeholder="$t('ui.userCalendarAddTodoSelectTime')"
+                :placeholder="$('ui.userCalendarAddTodoSelectTime')"
                 style="width: 100%"
                 format=" yyyy/MM/dd"
                 value-format="yyyy/MM/dd"
@@ -115,7 +116,7 @@
                 v-if="['inputNumber', 'moneyFrom', 'timeFrom'].includes(item.type) && item.value < 4"
               ></el-input-number>
               <span class="time-from-tip" v-if="item.type === 'timeFrom'">
-                {{ item.timeType === 'day' ? $t('ui.hrApprovaTimeDay') : $t('ui.hrApprovaTimeHours') }}
+                {{ item.timeType === 'day' ? $('ui.hrApprovaTimeDay') : $('ui.hrApprovaTimeHours') }}
               </span>
               <el-row
                 class="display-flex"
@@ -125,11 +126,11 @@
                   <el-input-number
                     v-model="item.min"
                     :controls="false"
-                    :placeholder="$t('ui.workFlowDrawerConditionDrawerEnterTheMinimumValue')"
+                    :placeholder="$('ui.workFlowDrawerConditionDrawerEnterTheMinimumValue')"
                     :min="0"
                   ></el-input-number>
                   <span class="time-from-tip" v-if="item.type === 'timeFrom'">
-                    {{ item.timeType === 'day' ? $t('ui.hrApprovaTimeDay') : $t('ui.hrApprovaTimeHours') }}
+                    {{ item.timeType === 'day' ? $('ui.hrApprovaTimeDay') : $('ui.hrApprovaTimeHours') }}
                   </span>
                 </el-col>
                 <el-col class="text-center" :span="2">-</el-col>
@@ -137,11 +138,11 @@
                   <el-input-number
                     v-model="item.max"
                     :controls="false"
-                    :placeholder="$t('ui.workFlowDrawerConditionDrawerEnterTheMaximumValue')"
+                    :placeholder="$('ui.workFlowDrawerConditionDrawerEnterTheMaximumValue')"
                     :min="item.min"
                   ></el-input-number>
                   <span class="time-from-tip" v-if="item.type === 'timeFrom'">
-                    {{ item.timeType === 'day' ? $t('ui.hrApprovaTimeDay') : $t('ui.hrApprovaTimeHours') }}
+                    {{ item.timeType === 'day' ? $('ui.hrApprovaTimeDay') : $('ui.hrApprovaTimeHours') }}
                   </span>
                 </el-col>
               </el-row>
@@ -168,7 +169,7 @@
         </div>
         <div class="conditions">
           <el-button @click="addCondition" type="text" :disabled="conditionButton" icon="el-icon-plus"
-            >{{ $t("ui.developConditionDialogAddCondition") }}</el-button
+            >{{ $("ui.developConditionDialogAddCondition") }}</el-button
           >
           <div class="el-popover conditions-popover" v-show="conditionsPopover">
             <el-button
@@ -185,15 +186,14 @@
         </div>
       </div>
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button @click="closeCondition">{{ $t('public.cancel') }}</el-button>
-        <el-button type="primary" @click="saveCondition">{{ $t('public.ok') }}</el-button>
+        <el-button @click="closeCondition">{{ $('public.cancel') }}</el-button>
+        <el-button type="primary" @click="saveCondition">{{ $('public.ok') }}</el-button>
       </div>
     </div>
   </el-form>
 </el-drawer>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   components: {
     selectMember: () => import('@/components/form-common/select-member'),
@@ -295,7 +295,7 @@ export default {
         }
         this.conditionsPopover = this.conditionsPopover !== true
       } else {
-        this.$message.warning(i18n.t('legacyScript.theFormConfigurationIsEmpty'))
+        this.$message.warning($('legacyScript.theFormConfigurationIsEmpty'))
       }
     },
     itemConditions(row, index) {

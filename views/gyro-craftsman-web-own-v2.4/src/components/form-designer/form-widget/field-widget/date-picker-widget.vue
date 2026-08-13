@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <form-item-wrapper
     :designer="designer"
@@ -25,7 +26,7 @@
       :editable="field.options.editable"
       :format="field.options.format"
       :value-format="field.options.valueFormat"
-      :placeholder="field.options.placeholder || i18nt('render.hint.datePlaceholder')"
+      :placeholder="field.options.placeholder || $('render.hint.datePlaceholder')"
       @focus="handleFocusCustomEvent"
       @blur="handleBlurCustomEvent"
       @change="handleChangeEvent"
@@ -40,13 +41,12 @@
 <script>
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
-import i18n, { translate } from '@/utils/i18n'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'
 
 export default {
   name: 'date-picker-widget',
   componentName: 'FieldWidget', //必须固定为FieldWidget，用于接收父级组件的broadcast事件
-  mixins: [emitter, fieldMixin, i18n],
+  mixins: [emitter, fieldMixin],
   props: {
     field: Object,
     parentWidget: Object,
@@ -135,4 +135,3 @@ export default {
   width: 100% !important;
 }
 </style>
-@/utils/i18ns

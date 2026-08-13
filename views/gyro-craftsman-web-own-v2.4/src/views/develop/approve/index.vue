@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="v-height-flag">
@@ -7,7 +8,7 @@
         :search="search"
         :total="total"
         :isViewSearch="false"
-        :title="$t('ui.developApproveIndexWorkflowList')"
+        :title="$('ui.developApproveIndexWorkflowList')"
         @addDataFn="addFinance"
         @confirmData="confirmData"
       ></oaFromBox>
@@ -15,7 +16,7 @@
       <!-- 表格数据 -->
       <div class="table-box mt10" v-loading="loading">
         <el-table row-key="id" :height="tableHeight" :data="tableData" style="width: 100%">
-          <el-table-column prop="name" :label="$t('business.businessType')" min-width="150">
+          <el-table-column prop="name" :label="$('business.businessType')" min-width="150">
             <template #default="{ row }">
               <div class="flex" @click="editFn(row)">
                 <div class="selIcon" :style="{ backgroundColor: row.color }">
@@ -25,34 +26,34 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="refuse" :label="$t('ui.developApproveIndexSponsorScope')" min-width="200" show-overflow-tooltip>
+          <el-table-column prop="refuse" :label="$('ui.developApproveIndexSponsorScope')" min-width="200" show-overflow-tooltip>
             <template #default="{ row }">
-              <span>{{ row.userList ? row.userList : $t('ui.workFlowNodeWrapEveryone') }}</span>
+              <span>{{ row.userList ? row.userList : $('ui.workFlowNodeWrapEveryone') }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="info" :label="$t('ui.developApproveIndexApprovalDescription')" min-width="200" show-overflow-tooltip>
+          <el-table-column prop="info" :label="$('ui.developApproveIndexApprovalDescription')" min-width="200" show-overflow-tooltip>
             <template #default="{ row }">
               {{ row.info || '--' }}
             </template>
           </el-table-column>
-          <el-table-column prop="crud" :label="$t('ui.developApproveIndexLinkedEntity')" min-width="140">
+          <el-table-column prop="crud" :label="$('ui.developApproveIndexLinkedEntity')" min-width="140">
             <template #default="{ row }">
               {{ row.crud.table_name || '--' }}
             </template>
           </el-table-column>
-          <el-table-column prop="cate_name" :label="$t('ui.developApproveIndexLinkedApplication')" min-width="140">
+          <el-table-column prop="cate_name" :label="$('ui.developApproveIndexLinkedApplication')" min-width="140">
             <template #default="{ row }">
               <span>{{ row.cate_name ? row.cate_name : '--' }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="sort" :label="$t('ui.businessExamineIndexSort')" />
-          <el-table-column prop="updated_at" :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="150" />
-          <el-table-column :label="$t('ui.customerSetupDictionaryIndexStatus')" width="120">
+          <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')" />
+          <el-table-column prop="updated_at" :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="150" />
+          <el-table-column :label="$('ui.customerSetupDictionaryIndexStatus')" width="120">
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
-                :active-text="$t('hr.open')"
-                :inactive-text="$t('hr.close')"
+                :active-text="$('hr.open')"
+                :inactive-text="$('hr.close')"
                 :active-value="1"
                 :inactive-value="0"
                 :width="50"
@@ -61,10 +62,10 @@
             </template>
           </el-table-column>
 
-          <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="110">
+          <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="110">
             <template slot-scope="scope">
-              <el-button type="text" @click="editFn(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-              <el-button type="text" @click="deleteFn(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" @click="editFn(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+              <el-button type="text" @click="deleteFn(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -85,7 +86,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import { roterPre } from '@/settings'
 import {
@@ -140,11 +140,11 @@ export default {
       total: 0,
       options: [
         {
-          label: i18n.t('public.enable'),
+          label: $('public.enable'),
           value: 1
         },
         {
-          label: i18n.t('hr.blockup'),
+          label: $('hr.blockup'),
           value: 0
         }
       ]

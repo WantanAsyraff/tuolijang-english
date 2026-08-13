@@ -6,7 +6,7 @@
           <el-tab-pane
             v-for="item in tabData"
             :key="'id' + item.key"
-            :label="$ts(item.label, item.label_en)"
+            :label="$(item.label, item.label_en)"
             :name="String(item.key)"
           ></el-tab-pane>
         </el-tabs>

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 编辑付款记录弹窗 -->
 <template>
 <el-dialog
@@ -11,41 +12,41 @@
     <el-form-item>
       <span slot="label"><span class="color-tab">*</span>{{ config.title }}：</span>
       <el-radio-group v-model="radio">
-        <el-radio :label="1">{{ config.type === 3 ? $t('customer.invoiced') : $t('customer.passed') }}</el-radio>
-        <el-radio :label="2">{{ config.type === 3 ? $t('customer.notinvoiced') : $t('customer.fail') }}</el-radio>
+        <el-radio :label="1">{{ config.type === 3 ? $('customer.invoiced') : $('customer.passed') }}</el-radio>
+        <el-radio :label="2">{{ config.type === 3 ? $('customer.notinvoiced') : $('customer.fail') }}</el-radio>
       </el-radio-group>
     </el-form-item>
     <template v-if="config.type === 3 && radio === 1">
       <el-form-item>
-        <span slot="label"><span class="color-tab">*</span>{{ $t("ui.fdExamineExamineDialogInvoiceNumber") }}</span>
-        <el-input type="text" v-model="num" size="small" :placeholder="$t('ui.fdExamineExamineDialogPleaseEnterInvoiceNumber')" />
+        <span slot="label"><span class="color-tab">*</span>{{ $("ui.fdExamineExamineDialogInvoiceNumber") }}</span>
+        <el-input type="text" v-model="num" size="small" :placeholder="$('ui.fdExamineExamineDialogPleaseEnterInvoiceNumber')" />
       </el-form-item>
       <el-form-item>
-        <span slot="label"><span class="color-tab">*</span>{{ $t("ui.customerInvoiceInvoiceViewSendMethod") }}</span>
+        <span slot="label"><span class="color-tab">*</span>{{ $("ui.customerInvoiceInvoiceViewSendMethod") }}</span>
         <el-select
           v-model="invoice_type"
           size="small"
           @change="handleMethod"
-          :placeholder="$t('customer.placeholder54')"
+          :placeholder="$('customer.placeholder54')"
         >
           <el-option v-for="(item, index) in methodOptions" :key="index" :label="item.label" :value="item.value" />
         </el-select>
       </el-form-item>
       <el-form-item>
         <span slot="label"
-          ><span class="color-tab">*</span>{{ invoice_type === 'express' ? $t('ui.fdExamineExamineDialogDeliveryAddress') : $t('ui.fdExamineExamineDialogReceivingEmail') }}：</span
+          ><span class="color-tab">*</span>{{ invoice_type === 'express' ? $('ui.fdExamineExamineDialogDeliveryAddress') : $('ui.fdExamineExamineDialogReceivingEmail') }}：</span
         >
         <el-input
           type="text"
           v-model="invoice_address"
           size="small"
-          :placeholder="invoice_type === 'express' ? $t('ui.fdExamineExamineDialogPleaseEnterTheDeliveryAddress') : $t('ui.fdExamineExamineDialogPleaseEnterTheReceivingEmail')"
+          :placeholder="invoice_type === 'express' ? $('ui.fdExamineExamineDialogPleaseEnterTheDeliveryAddress') : $('ui.fdExamineExamineDialogPleaseEnterTheReceivingEmail')"
         />
       </el-form-item>
     </template>
 
     <el-form-item>
-      <span slot="label"><span v-if="radio === 2" class="color-tab">*</span>{{ $t('public.remarks') }}：</span>
+      <span slot="label"><span v-if="radio === 2" class="color-tab">*</span>{{ $('public.remarks') }}：</span>
       <el-input
         type="textarea"
         :rows="3"
@@ -53,12 +54,12 @@
         :maxlength="200"
         show-word-limit
         :placeholder="
-          config.type === 3 && radio === 1 ? $t('ui.fdExamineExamineDialogForInvoiceInformationSuchAsTrackingNumbersAndEmail') : $t('customer.placeholder18')
+          config.type === 3 && radio === 1 ? $('ui.fdExamineExamineDialogForInvoiceInformationSuchAsTrackingNumbersAndEmail') : $('customer.placeholder18')
         "
       />
     </el-form-item>
     <el-form-item v-if="config.type === 3 && radio === 1">
-      <span slot="label">{{ $t('customer.billingdocuments') }}:</span>
+      <span slot="label">{{ $('customer.billingdocuments') }}:</span>
       <div class="examine-card">
         <ul class="el-upload-list el-upload-list--picture-card">
           <li class="el-upload-list__item" v-for="(item, index) in uploadList" :key="index">
@@ -95,13 +96,12 @@
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
-    <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-    <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+    <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+    <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
   </div>
 </el-dialog>
 </template>
 <script>
-import i18n from '@/lang'
 import { clientBillStatusApi, clientFileDeleteApi, clientInvoiceStatusApi, putInvalid, clientInvoiceStatus } from '@/api/client'
 import SettingMer from '@/libs/settingMer'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
@@ -138,8 +138,8 @@ export default {
         authorization: 'Bearer ' + getToken()
       },
       methodOptions: [
-        { value: 'express', label: this.$t('customer.express') },
-        { value: 'mail', label: this.$t('customer.mail') }
+        { value: 'express', label: this.$('customer.express') },
+        { value: 'mail', label: this.$('customer.mail') }
       ],
       uploadData: {},
       uploadList: [],
@@ -158,16 +158,16 @@ export default {
     config: {
       handler(nVal) {
         if (nVal.type === 1) {
-          this.title1 = this.$t('customer.fundaudit')
+          this.title1 = this.$('customer.fundaudit')
         } else if (nVal.type === 2) {
-          this.title1 = this.$t('customer.invoicereview')
+          this.title1 = this.$('customer.invoicereview')
         } else {
           if (nVal.data.num) {
             this.radio = 1
           } else {
             this.radio = 2
           }
-          this.title1 = this.$t('customer.invoicingapproval')
+          this.title1 = this.$('customer.invoicingapproval')
         }
       },
       deep: true
@@ -184,14 +184,14 @@ export default {
     handleConfirm() {
       const file = []
       if (this.radio === 2 && !this.remarks) {
-        this.$message.error(this.$t('customer.placeholder18'))
+        this.$message.error(this.$('customer.placeholder18'))
       } else if (this.config.type === 3 && this.radio === 1 && !this.num) {
-        this.$message.error(i18n.t('ui.fdExamineExamineDialogPleaseEnterInvoiceNumber'))
+        this.$message.error($('ui.fdExamineExamineDialogPleaseEnterInvoiceNumber'))
       } else if (this.config.type === 3 && this.radio === 1 && !this.invoice_address) {
         if (this.invoice_type === 'express') {
-          this.$message.error(i18n.t('ui.fdInvoiceInvoicingDialogPleaseEnterMailingAddress'))
+          this.$message.error($('ui.fdInvoiceInvoicingDialogPleaseEnterMailingAddress'))
         } else {
-          this.$message.error(i18n.t('customer.placeholder55'))
+          this.$message.error($('customer.placeholder55'))
         }
       } else {
         let data = {
@@ -207,7 +207,7 @@ export default {
             }
           } else {
             if (this.config.data.treaty) {
-              mark = this.config.data.treaty.title + '-' + this.$t('customer.Contractpayment')
+              mark = this.config.data.treaty.title + '-' + this.$('customer.Contractpayment')
             }
           }
           data.mark = mark
@@ -269,7 +269,7 @@ export default {
     // 上传前
     handleUpload(file) {
       if (!this.config.data || !this.config.data.eid) {
-        this.$message.error(i18n.t('legacyScript.missingCustomerInformationUnableToUploadInvoiceProof'))
+        this.$message.error($('legacyScript.missingCustomerInformationUnableToUploadInvoiceProof'))
         return false
       }
       const types = [

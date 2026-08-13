@@ -1,17 +1,18 @@
+import { $ } from '@/lang'
 <!-- 办公-我的待办 Tab 内容 -->
 <template>
 <div class="my-todo">
   <!-- 左侧：分类 -->
   <div class="todo-side">
     <div class="category-header">
-      <span class="category-title">{{ $t("ui.userCalendarMyTodoCategory") }}</span>
+      <span class="category-title">{{ $("ui.userCalendarMyTodoCategory") }}</span>
     </div>
     <ul class="category-list">
       <!-- 全部待办 -->
       <li class="category-item" :class="{ active: activeCategory === 'all' }" @click="handleCategoryChange('all')">
         <span class="category-label">
           <i class="category-icon iconfont iconquanbu" />
-          <span class="category-text">{{ $t("ui.userCalendarMyTodoAllToDos") }}</span>
+          <span class="category-text">{{ $("ui.userCalendarMyTodoAllToDos") }}</span>
         </span>
         <span v-if="totalCount > 0" class="category-count">{{ totalCount }}</span>
       </li>
@@ -42,10 +43,10 @@
         <li v-for="item in todoList" :key="item.id" class="todo-item" @click="handleItemClick(item)">
           <div class="todo-content">
             <div class="todo-title">{{ item.title }}</div>
-            <div class="todo-meta">{{ $t("ui.fdEnterpriseListViewDetailsCreatedTime") }}{{ item.source_created_at }}</div>
+            <div class="todo-meta">{{ $("ui.fdEnterpriseListViewDetailsCreatedTime") }}{{ item.source_created_at }}</div>
           </div>
         </li>
-        <li v-if="todoList.length === 0 && pendingFinished && !listLoading" class="todo-empty mb14">{{ $t("ui.userCalendarMyTodoNoToDoItems") }}</li>
+        <li v-if="todoList.length === 0 && pendingFinished && !listLoading" class="todo-empty mb14">{{ $("ui.userCalendarMyTodoNoToDoItems") }}</li>
       </ul>
 
       <!-- 已完成 -->
@@ -62,7 +63,7 @@
               <li v-for="item in completedList" :key="item.id" class="todo-item" @click="handleItemClick(item)">
                 <div class="todo-content">
                   <div class="todo-title">{{ item.title }}</div>
-                  <div class="todo-meta">{{ $t("ui.fdEnterpriseListViewDetailsCreatedTime") }}{{ item.source_created_at }}</div>
+                  <div class="todo-meta">{{ $("ui.fdEnterpriseListViewDetailsCreatedTime") }}{{ item.source_created_at }}</div>
                 </div>
               </li>
             </ul>
@@ -70,7 +71,7 @@
         </el-collapse-item>
       </el-collapse>
 
-      <div v-if="pendingLoading || completedLoading" class="load-more-tip">{{ $t("ui.userCalendarMyTodoLoading") }}</div>
+      <div v-if="pendingLoading || completedLoading" class="load-more-tip">{{ $("ui.userCalendarMyTodoLoading") }}</div>
       <!-- <div v-if="todoList.length > 0 || completedList.length > 0" class="load-more-tip">没有更多数据</div> -->
     </div>
   </div>
@@ -96,7 +97,6 @@
 </div>
 </template>
 <script setup>
-import i18n from '@/lang'
 import { ref, computed, onMounted, getCurrentInstance } from 'vue'
 import { todoOverviewApi, todoListApi } from '@/api/user'
 import CalendarDetails from './calendarDetails.vue'
@@ -184,12 +184,12 @@ const activeCategory = ref('all')
 
 const currentCategory = computed(() => {
   if (activeCategory.value === 'all') {
-    return { key: 'all', label: i18n.t('ui.userCalendarMyTodoAllToDos'), count: totalCount.value }
+    return { key: 'all', label: $('ui.userCalendarMyTodoAllToDos'), count: totalCount.value }
   }
   return (
     categories.value.find((c) => c.key === activeCategory.value) || {
       key: 'all',
-      label: i18n.t('ui.userCalendarMyTodoAllToDos'),
+      label: $('ui.userCalendarMyTodoAllToDos'),
       count: totalCount.value
     }
   )
@@ -223,7 +223,7 @@ async function fetchOverview() {
       }))
     }
   } catch (e) {
-    console.error(i18n.t('legacyScript.failedToGetThePendingTaskOverview'), e)
+    console.error($('legacyScript.failedToGetThePendingTaskOverview'), e)
   }
 }
 
@@ -271,7 +271,7 @@ async function loadPending(reset = false) {
       pendingPage.value = page + 1
     }
   } catch (e) {
-    console.error(i18n.t('legacyScript.failedToRetrievePendingTasks'), e)
+    console.error($('legacyScript.failedToRetrievePendingTasks'), e)
   } finally {
     pendingLoading.value = false
   }
@@ -296,7 +296,7 @@ async function loadCompleted(reset = false) {
       completedPage.value = page + 1
     }
   } catch (e) {
-    console.error(i18n.t('legacyScript.failedToRetrieveCompletedToDos'), e)
+    console.error($('legacyScript.failedToRetrieveCompletedToDos'), e)
   } finally {
     completedLoading.value = false
   }
@@ -309,7 +309,7 @@ async function fetchList() {
   try {
     await loadPending(true)
   } catch (e) {
-    console.error(i18n.t('legacyScript.failedToRetrieveThePendingTaskList'), e)
+    console.error($('legacyScript.failedToRetrieveThePendingTaskList'), e)
   } finally {
     listLoading.value = false
   }

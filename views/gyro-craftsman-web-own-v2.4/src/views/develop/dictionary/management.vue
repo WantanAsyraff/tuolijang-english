@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="card-box" v-loading="loadingBox">
@@ -14,7 +15,7 @@
       >
         <div slot="title" class="station-header" @click="backFn">
           <i class="el-icon-arrow-left"></i>
-          {{ $t("ui.developDictionaryManagementDataManagementList") }}
+          {{ $("ui.developDictionaryManagementDataManagementList") }}
         </div>
       </oaFromBox>
 
@@ -31,19 +32,19 @@
           :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
         >
           <el-table-column type="selection" width="55" v-if="is_Show !== 1"> </el-table-column>
-          <el-table-column prop="name" :label="$t('ui.developDictionaryManagementDataName')" show-overflow-tooltip> </el-table-column>
-          <el-table-column prop="value" :label="$t('ui.customerSetupDictionaryManagementDataValue')" show-overflow-tooltip></el-table-column>
-          <el-table-column prop="value" :label="$t('ui.developDictionaryManagementDataColor')">
+          <el-table-column prop="name" :label="$('ui.developDictionaryManagementDataName')" show-overflow-tooltip> </el-table-column>
+          <el-table-column prop="value" :label="$('ui.customerSetupDictionaryManagementDataValue')" show-overflow-tooltip></el-table-column>
+          <el-table-column prop="value" :label="$('ui.developDictionaryManagementDataColor')">
             <template slot-scope="scope">
               <div class="color-box" :style="{ background: scope.row.color }"></div>
             </template>
           </el-table-column>
-          <el-table-column prop="status" :label="$t('ui.customerSetupDictionaryIndexStatus')">
+          <el-table-column prop="status" :label="$('ui.customerSetupDictionaryIndexStatus')">
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
-:active-text="$t('ui.settingAuthAdminIndexEnabled2')"
-:inactive-text="$t('ui.customerSetupCustomFormIndexDisabled')"
+                active-text="启用"
+                inactive-text="停用"
                 :active-value="1"
                 :inactive-value="0"
                 :width="60"
@@ -51,26 +52,26 @@
               />
             </template>
           </el-table-column>
-          <el-table-column prop="mark" :label="$t('ui.xmindEditorToolbarNodeBtnListRemarks')" show-overflow-tooltip>
+          <el-table-column prop="mark" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" show-overflow-tooltip>
             <template slot-scope="scope">
               <span>{{ scope.row.mark || '--' }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="sort" :label="$t('ui.businessExamineIndexSort')"> </el-table-column>
-          <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')">
+          <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')"> </el-table-column>
+          <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')">
             <template slot-scope="scope">
               <span>{{ scope.row.created_at || '--' }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="address" :label="$t('public.operation')" width="250">
+          <el-table-column prop="address" :label="$('public.operation')" width="250">
             <template slot-scope="scope">
               <el-button type="text" v-if="scope.row.level < level" @click="childLevel(scope.row)"
-                >{{ $t("ui.customerProductCategoryAddChild") }}</el-button
+                >{{ $("ui.customerProductCategoryAddChild") }}</el-button
               >
-              <el-button type="text" @click="editFn(scope.row)" >{{ $t("ui.formCommonOaLogEdit") }}</el-button>
+              <el-button type="text" @click="editFn(scope.row)" >{{ $("ui.formCommonOaLogEdit") }}</el-button>
               <template>
                 <el-button type="text" @click="handleDelete(scope.row)" >{{
-                  $t('public.delete')
+                  $('public.delete')
                 }}</el-button>
               </template>
             </template>
@@ -82,7 +83,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import {
   getDictDataListApi,
@@ -108,7 +108,7 @@ export default {
       ],
       dropdownList: [
         {
-          label: i18n.t('ui.customerSetupDictionaryManagementBatchDelete'),
+          label: $('ui.customerSetupDictionaryManagementBatchDelete'),
           value: 1
         }
       ],
@@ -162,7 +162,7 @@ export default {
     // 批量删除
     async batchDelete() {
       if (this.ids.length === 0) {
-        return this.$message.error(i18n.t('legacyScript.selectDataToDeleteFirst'))
+        return this.$message.error($('legacyScript.selectDataToDeleteFirst'))
       }
       let id = this.ids.join(',')
       await this.$modalSure('你确定要批量删除这条内容吗')

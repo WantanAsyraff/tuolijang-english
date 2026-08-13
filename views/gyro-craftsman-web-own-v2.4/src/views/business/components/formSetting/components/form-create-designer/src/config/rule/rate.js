@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
 const label = '评分';
@@ -19,35 +19,35 @@ export default {
   },
   props() {
     return [
-      { type: 'inputNumber', field: 'max', title: i18n.t('legacyScript.maximumScore') },
+      { type: 'inputNumber', field: 'max', title: $('legacyScript.maximumScore') },
       {
         type: 'switch',
         field: 'disabled',
-        title: i18n.t('legacyScript.isReadOnly'),
+        title: $('legacyScript.isReadOnly'),
       },
-      { type: 'switch', field: 'allowHalf', title: i18n.t('legacyScript.allowPartialSelection') },
+      { type: 'switch', field: 'allowHalf', title: $('legacyScript.allowPartialSelection') },
       {
         type: 'input',
         field: 'voidColor',
-        title: i18n.t('legacyScript.colorOfUnselectedIcon'),
+        title: $('legacyScript.colorOfUnselectedIcon'),
       },
-      { type: 'input', field: 'disabledVoidColor', title: i18n.t('legacyScript.colorOfUnselectedIconInReadOnlyMode') },
+      { type: 'input', field: 'disabledVoidColor', title: $('legacyScript.colorOfUnselectedIconInReadOnlyMode') },
       {
         type: 'input',
         field: 'voidIconClass',
-        title: i18n.t('legacyScript.classNameOfUnselectedIcon'),
+        title: $('legacyScript.classNameOfUnselectedIcon'),
       },
-      { type: 'input', field: 'disabledVoidIconClass', title: i18n.t('legacyScript.classNameOfUnselectedIconInReadOnlyMode') },
+      { type: 'input', field: 'disabledVoidIconClass', title: $('legacyScript.classNameOfUnselectedIconInReadOnlyMode') },
       {
         type: 'switch',
         field: 'showScore',
-        title: i18n.t('legacyScript.whetherToDisplayTheCurrentScoreShowScoreAndShow'),
+        title: $('legacyScript.whetherToDisplayTheCurrentScoreShowScoreAndShow'),
       },
-      { type: 'input', field: 'textColor', title: i18n.t('legacyScript.colorOfAuxiliaryText') },
+      { type: 'input', field: 'textColor', title: $('legacyScript.colorOfAuxiliaryText') },
       {
         type: 'input',
         field: 'scoreTemplate',
-        title: i18n.t('legacyScript.scoreDisplayTemplate'),
+        title: $('legacyScript.scoreDisplayTemplate'),
       },
     ];
   },

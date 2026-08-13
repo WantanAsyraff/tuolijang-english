@@ -11,10 +11,10 @@
     >
       <template slot="title">
         <div class="password-dialog-title">
-          <span>{{ $t('passwordDialog.title') }}</span>
+          <span>{{ $('passwordDialog.title') }}</span>
           <div class="password-dialog-lang">
             <el-button size="mini" :type="language === 'zh-cn' ? 'primary' : 'default'" plain @click="changeLanguage('zh-cn')">
-              {{ $t('login.chinese') }}
+              {{ $('login.chinese') }}
             </el-button>
             <el-button size="mini" :type="language === 'en' ? 'primary' : 'default'" @click="changeLanguage('en')">
               English
@@ -27,32 +27,32 @@
           <el-form-item class="info">
             <el-alert class="cr-alert" title="" :closable="false" type="info" :show-icon="true">
               <template slot="title">
-                <p>{{ $t('passwordDialog.initialPasswordTip') }}</p>
+                <p>{{ $('passwordDialog.initialPasswordTip') }}</p>
               </template>
             </el-alert>
           </el-form-item>
-          <el-form-item :label="$t('passwordDialog.password')" prop="password">
+          <el-form-item :label="$('passwordDialog.password')" prop="password">
             <el-input
               v-model="tableFrom.password"
               size="small"
               type="password"
               auto-complete="on"
-              :placeholder="$t('passwordDialog.passwordPlaceholder')"
+              :placeholder="$('passwordDialog.passwordPlaceholder')"
             />
           </el-form-item>
-          <el-form-item :label="$t('passwordDialog.confirmPassword')" prop="password_confirm">
+          <el-form-item :label="$('passwordDialog.confirmPassword')" prop="password_confirm">
             <el-input
               v-model="tableFrom.password_confirm"
               size="small"
               type="password"
               auto-complete="on"
-              :placeholder="$t('passwordDialog.confirmPasswordPlaceholder')"
+              :placeholder="$('passwordDialog.confirmPasswordPlaceholder')"
             />
           </el-form-item>
         </el-form>
         <div class="text-right">
-          <el-button size="small" @click="handleClose()">{{ $t('public.cancel') }}</el-button>
-          <el-button type="primary" size="small" @click="handleConfirm()">{{ $t('public.ok') }}</el-button>
+          <el-button size="small" @click="handleClose()">{{ $('public.cancel') }}</el-button>
+          <el-button type="primary" size="small" @click="handleConfirm()">{{ $('public.ok') }}</el-button>
         </div>
       </div>
     </el-dialog>
@@ -88,9 +88,9 @@ export default {
     },
     rules() {
       return {
-        password: [{ required: true, message: this.$t('passwordDialog.passwordRequired'), trigger: 'blur' }],
+        password: [{ required: true, message: this.$('passwordDialog.passwordRequired'), trigger: 'blur' }],
         password_confirm: [
-          { required: true, message: this.$t('passwordDialog.confirmPasswordRequired'), trigger: 'blur' }
+          { required: true, message: this.$('passwordDialog.confirmPasswordRequired'), trigger: 'blur' }
         ]
       }
     }
@@ -98,7 +98,6 @@ export default {
   methods: {
     changeLanguage(lang) {
       if (lang === this.language) return
-      this.$i18n.locale = lang
       this.$store.dispatch('app/setLanguage', lang)
       this.$nextTick(() => {
         if (this.$refs.form) {

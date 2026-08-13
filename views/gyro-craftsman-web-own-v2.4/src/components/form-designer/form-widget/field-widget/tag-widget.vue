@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <form-item-wrapper
     :designer="designer"
@@ -30,7 +31,7 @@
           :size="field.options.size"
           :default-first-option="allowDefaultFirstOption"
           :multiple="true"
-          :placeholder="field.options.placeholder || i18nt('render.hint.selectPlaceholder')"
+          :placeholder="field.options.placeholder || $('render.hint.selectPlaceholder')"
           :remote="field.options.remote"
           :remote-method="remoteMethod"
           @focus="handleFocusCustomEvent"
@@ -54,7 +55,6 @@
 <script>
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
-import i18n, { translate } from '@/utils/i18n'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'
 import { clientConfigLabelApi } from '@/api/enterprise'
 import { deepClone } from '@/utils/util'
@@ -62,7 +62,7 @@ import { deepClone } from '@/utils/util'
 export default {
   name: 'tag-widget',
   componentName: 'FieldWidget', //必须固定为FieldWidget，用于接收父级组件的broadcast事件
-  mixins: [emitter, fieldMixin, i18n],
+  mixins: [emitter, fieldMixin],
   props: {
     field: Object,
     parentWidget: Object,
@@ -285,4 +285,3 @@ export default {
   display: none;
 }
 </style>
-@/utils/i18ns

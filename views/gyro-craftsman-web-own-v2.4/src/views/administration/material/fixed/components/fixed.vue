@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 固定物资管理 -->
 <template>
 <div ref="bodyRef">
@@ -14,7 +15,7 @@
           :dropdownList="dropdownList"
           :isViewSearch="false"
           :total="total"
-          :title="$t('ui.administrationMaterialFixedConsumeMaterialManagement')"
+          :title="$('ui.administrationMaterialFixedConsumeMaterialManagement')"
           :isAddBtn="true"
           @addDataFn="handleManage"
           @dropdownFn="dropdownFn"
@@ -31,77 +32,77 @@
           @selection-change="handleSelectionChange"
         >
           <el-table-column type="selection" width="55"> </el-table-column>
-          <el-table-column prop="number" :label="$t('ui.administrationMaterialFixedFixedMaterialNumber')" min-width="150" show-overflow-tooltip />
-          <el-table-column prop="name" :label="$t('ui.administrationMaterialChartIndexMaterialName')" min-width="100" show-overflow-tooltip />
-          <el-table-column prop="units" :label="$t('ui.administrationMaterialFixedFixedMaterialModel')" min-width="100" show-overflow-tooltip>
+          <el-table-column prop="number" :label="$('ui.administrationMaterialFixedFixedMaterialNumber')" min-width="150" show-overflow-tooltip />
+          <el-table-column prop="name" :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="100" show-overflow-tooltip />
+          <el-table-column prop="units" :label="$('ui.administrationMaterialFixedFixedMaterialModel')" min-width="100" show-overflow-tooltip>
             <template slot-scope="scope">
               {{ scope.row.units || '--' }}
             </template>
           </el-table-column>
-          <el-table-column prop="cate.cate_name" :label="$t('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" show-overflow-tooltip />
-          <el-table-column prop="record[0].price" :label="$t('ui.administrationMaterialFixedFixedMaterialUnitPriceYuan')" min-width="100" show-overflow-tooltip />
-          <el-table-column prop="specs" :label="$t('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" show-overflow-tooltip>
+          <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" show-overflow-tooltip />
+          <el-table-column prop="record[0].price" :label="$('ui.administrationMaterialFixedFixedMaterialUnitPriceYuan')" min-width="100" show-overflow-tooltip />
+          <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" show-overflow-tooltip>
             <template slot-scope="scope">
               {{ scope.row.specs || '--' }}
             </template>
           </el-table-column>
-          <el-table-column pstatus :label="$t('ui.customerSetupDictionaryIndexStatus')" min-width="80" show-overflow-tooltip>
+          <el-table-column pstatus :label="$('ui.customerSetupDictionaryIndexStatus')" min-width="80" show-overflow-tooltip>
             <template slot-scope="scope">
-              <el-tag v-if="scope.row.status === 0" type="success" size="mini">{{ $t("ui.administrationMaterialFixedFixedUnused") }}</el-tag>
-              <el-tag v-if="scope.row.status === 1" size="mini">{{ $t("ui.administrationMaterialFixedFixedIssued") }}</el-tag>
-              <el-tag v-if="scope.row.status === 2" type="success" size="mini">{{ $t("ui.administrationMaterialFixedFixedReturned") }}</el-tag>
-              <el-tag v-if="scope.row.status === 3" type="warning" size="mini">{{ $t("ui.administrationMaterialFixedFixedUnderRepair") }}</el-tag>
-              <el-tag v-if="scope.row.status === 4" type="danger" size="mini">{{ $t("ui.administrationMaterialFixedFixedScrapped") }}</el-tag>
+              <el-tag v-if="scope.row.status === 0" type="success" size="mini">{{ $("ui.administrationMaterialFixedFixedUnused") }}</el-tag>
+              <el-tag v-if="scope.row.status === 1" size="mini">{{ $("ui.administrationMaterialFixedFixedIssued") }}</el-tag>
+              <el-tag v-if="scope.row.status === 2" type="success" size="mini">{{ $("ui.administrationMaterialFixedFixedReturned") }}</el-tag>
+              <el-tag v-if="scope.row.status === 3" type="warning" size="mini">{{ $("ui.administrationMaterialFixedFixedUnderRepair") }}</el-tag>
+              <el-tag v-if="scope.row.status === 4" type="danger" size="mini">{{ $("ui.administrationMaterialFixedFixedScrapped") }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="remark" :label="$t('ui.administrationMaterialFixedFixedImportantInformation')" min-width="180" show-overflow-tooltip>
+          <el-table-column prop="remark" :label="$('ui.administrationMaterialFixedFixedImportantInformation')" min-width="180" show-overflow-tooltip>
             <template slot-scope="scope">
               <div v-if="scope.row.status === 1">
-                {{ $t("ui.administrationMaterialFixedReceiveRecipient") }}{{
+                {{ $("ui.administrationMaterialFixedReceiveRecipient") }}{{
                   scope.row.receive_frame ? scope.row.receive_frame.name : scope.row.receive_user.name
                 }}
-                {{ $t("ui.administrationMaterialFixedFixedIssueTime") }}{{
+                {{ $("ui.administrationMaterialFixedFixedIssueTime") }}{{
                   scope.row.receive_frame ? scope.row.receive_frame.created_at : scope.row.receive_user.created_at
                 }}
               </div>
               <div v-else>{{ scope.row.remark }}</div>
             </template>
           </el-table-column>
-          <el-table-column prop="describe" :label="$t('public.operation')" fixed="right" width="200">
+          <el-table-column prop="describe" :label="$('public.operation')" fixed="right" width="200">
             <template slot-scope="scope">
               <el-button type="text" @click="handleRecord(scope.row)" v-hasPermi="['material:fixed:manage:record']"
-                >{{ $t("ui.administrationMaterialFixedConsumeRecords") }}</el-button
+                >{{ $("ui.administrationMaterialFixedConsumeRecords") }}</el-button
               >
 
               <el-button type="text" @click="handleEdit(scope.row)" v-hasPermi="['material:fixed:manage:edit']">{{
-                $t('public.edit')
+                $('public.edit')
               }}</el-button>
 
               <el-dropdown class="ml10">
                 <span class="el-dropdown-link el-button--text el-button">
-                  {{ $t('hr.more') }}
+                  {{ $('hr.more') }}
                   <i class="el-icon-arrow-down el-icon--right" />
                 </span>
                 <el-dropdown-menu style="text-align: center">
                   <el-dropdown-item v-if="scope.row.status === 0" @click.native="handleMaterialData(5, scope.row)"
-                    >{{ $t("ui.administrationMaterialFixedConsumeIssue") }}</el-dropdown-item
+                    >{{ $("ui.administrationMaterialFixedConsumeIssue") }}</el-dropdown-item
                   >
                   <el-dropdown-item v-if="scope.row.status === 1" @click.native="handleMaterialData(6, scope.row)"
-                    >{{ $t("ui.administrationMaterialFixedFixedReturn") }}</el-dropdown-item
+                    >{{ $("ui.administrationMaterialFixedFixedReturn") }}</el-dropdown-item
                   >
                   <el-dropdown-item v-if="scope.row.status <= 2" @click.native="handleMaterialData(2, scope.row)"
-                    >{{ $t("ui.administrationMaterialFixedFixedRepair") }}</el-dropdown-item
+                    >{{ $("ui.administrationMaterialFixedFixedRepair") }}</el-dropdown-item
                   >
                   <el-dropdown-item v-if="scope.row.status === 3" @click.native="handleMaterialData(3, scope.row)"
-                    >{{ $t("ui.administrationMaterialFixedFixedDispose") }}</el-dropdown-item
+                    >{{ $("ui.administrationMaterialFixedFixedDispose") }}</el-dropdown-item
                   >
                   <el-dropdown-item v-if="scope.row.status !== 4" @click.native="handleMaterialData(1, scope.row)"
-                    >{{ $t("ui.administrationMaterialFixedFixedDisposal") }}</el-dropdown-item
+                    >{{ $("ui.administrationMaterialFixedFixedDisposal") }}</el-dropdown-item
                   >
                   <el-dropdown-item
                     v-if="scope.row.status === 0 || scope.row.status === 4"
                     @click.native="handleDelete(scope.row.id)"
-                    >{{ $t("ui.chatIndexDelete") }}</el-dropdown-item
+                    >{{ $("ui.chatIndexDelete") }}</el-dropdown-item
                   >
                 </el-dropdown-menu>
               </el-dropdown>
@@ -141,7 +142,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { storageCateApi, storageDeleteApi, storageListApi, storageListCateApi } from '@/api/administration'
 export default {
   name: 'Consume',
@@ -176,8 +176,8 @@ export default {
       },
       fromData1: {
         width: '500px',
-        title: i18n.t('legacyScript.batchMoveMaterialCategories'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.batchMoveMaterialCategories'),
+        btnText: '确定',
         labelWidth: '80px',
         type: ''
       },
@@ -186,7 +186,7 @@ export default {
         cate_id: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectAMaterialCategory'),
+            message: $('legacyScript.pleaseSelectAMaterialCategory'),
             trigger: 'change'
           }
         ]
@@ -226,14 +226,14 @@ export default {
         }
       ],
       dropdownList: [
-        { label: i18n.t('legacyScript.batchMove'), value: '4' },
-        { label: i18n.t('customer.export'), value: '1' },
+        { label: $('legacyScript.batchMove'), value: '4' },
+        { label: $('customer.export'), value: '1' },
         {
-          label: i18n.t('ui.administrationMaterialFixedConsumeIssue'),
+          label: $('ui.administrationMaterialFixedConsumeIssue'),
           value: '2'
         },
         {
-          label: i18n.t('ui.administrationMaterialFixedFixedReturn'),
+          label: $('ui.administrationMaterialFixedFixedReturn'),
           value: '3'
         }
       ],
@@ -300,8 +300,8 @@ export default {
           this.formConfig = [
             {
               type: 'cascaderNew',
-              label: i18n.t('legacyScript.materialCategory'),
-              placeholder: i18n.t('legacyScript.searchAndSelectAMaterialCategory'),
+              label: $('legacyScript.materialCategory'),
+              placeholder: $('legacyScript.searchAndSelectAMaterialCategory'),
               key: 'cate_id',
 
               options: this.treeData
@@ -327,7 +327,7 @@ export default {
       } else if (item.value == 3) {
         this.handleReturn()
       } else if (item.value == 4) {
-        if (this.multipleSelection.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectTheMaterialsToOperateOn'))
+        if (this.multipleSelection.length == 0) return this.$message.error($('legacyScript.pleaseSelectTheMaterialsToOperateOn'))
         this.$refs.oaDialog.openBox()
       }
     },
@@ -351,7 +351,7 @@ export default {
         .then((res) => {
           let data = res.data.list
           if (data.length <= 0) {
-            this.$message.error(this.$t('access.placeholder24'))
+            this.$message.error(this.$('access.placeholder24'))
           } else {
             const aoaData = [
               [
@@ -420,7 +420,7 @@ export default {
     handleManage() {
       this.getSelectTableData('')
       this.fromData = {
-        title: i18n.t('legacyScript.newInboundEntryFixedAsset'),
+        title: $('legacyScript.newInboundEntryFixedAsset'),
         width: 720,
         treeData: this.treeData,
         selectData: this.selectData,
@@ -432,7 +432,7 @@ export default {
     handleReceive() {
       this.getSelectTableData(0)
       this.receiveData = {
-        title: i18n.t('legacyScript.requisitionFixedAsset'),
+        title: $('legacyScript.requisitionFixedAsset'),
         width: 820,
         selectData: this.selectData,
         type: this.types
@@ -441,7 +441,7 @@ export default {
     },
     handleReturn() {
       this.returnData = {
-        title: i18n.t('legacyScript.returnFixedAsset'),
+        title: $('legacyScript.returnFixedAsset'),
         width: 820,
         type: this.types
       }
@@ -449,7 +449,7 @@ export default {
     },
     handleRecord(row) {
       this.recordData = {
-        title: i18n.t('legacyScript.recordDetailsFixedAsset'),
+        title: $('legacyScript.recordDetailsFixedAsset'),
         width: 820,
         data: row,
         type: this.types
@@ -481,7 +481,7 @@ export default {
         row.cate.path.push(row.cid) // 添加当前分类
       }
       this.fromData = {
-        title: i18n.t('legacyScript.editInboundEntryFixedAsset'),
+        title: $('legacyScript.editInboundEntryFixedAsset'),
         width: 720,
         treeData: this.treeData,
         edit: true,
@@ -503,25 +503,25 @@ export default {
       let label = ''
       let placeholder = ''
       if (type === 1) {
-        title = i18n.t('ui.administrationMaterialFixedFixedDisposal')
-        label = i18n.t('legacyScript.disposalReason')
-        placeholder = i18n.t('legacyScript.pleaseEnterDisposalReason')
+        title = $('ui.administrationMaterialFixedFixedDisposal')
+        label = $('legacyScript.disposalReason')
+        placeholder = $('legacyScript.pleaseEnterDisposalReason')
       } else if (type === 2) {
-        title = i18n.t('ui.administrationMaterialFixedFixedRepair')
-        label = i18n.t('legacyScript.repairReason')
-        placeholder = i18n.t('legacyScript.pleaseEnterRepairReason')
+        title = $('ui.administrationMaterialFixedFixedRepair')
+        label = $('legacyScript.repairReason')
+        placeholder = $('legacyScript.pleaseEnterRepairReason')
       } else if (type === 3) {
-        title = i18n.t('ui.administrationMaterialFixedRecordRepairHandling')
-        label = i18n.t('legacyScript.remarks')
-        placeholder = i18n.t('ui.customerProductListPleaseEnterRemarks')
+        title = $('ui.administrationMaterialFixedRecordRepairHandling')
+        label = $('legacyScript.remarks')
+        placeholder = $('ui.customerProductListPleaseEnterRemarks')
       } else if (type === 5) {
-        title = i18n.t('legacyScript.materialRequisitionFixedAsset')
-        label = i18n.t('legacyScript.remarks')
-        placeholder = i18n.t('ui.customerProductListPleaseEnterRemarks')
+        title = $('legacyScript.materialRequisitionFixedAsset')
+        label = $('legacyScript.remarks')
+        placeholder = $('ui.customerProductListPleaseEnterRemarks')
       } else if (type === 6) {
-        title = i18n.t('legacyScript.materialReturnFixedAsset')
-        label = i18n.t('legacyScript.remarks')
-        placeholder = i18n.t('ui.customerProductListPleaseEnterRemarks')
+        title = $('legacyScript.materialReturnFixedAsset')
+        label = $('legacyScript.remarks')
+        placeholder = $('ui.customerProductListPleaseEnterRemarks')
       }
       this.materialData = {
         title: title,

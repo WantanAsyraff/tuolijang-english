@@ -4,8 +4,8 @@
       <el-card :body-style="{ padding: '20px' }">
         <el-row>
           <el-col>
-            <el-page-header :content='$ts("文章详情")' @click.native="handleEmit">
-              <div slot="title">{{ $ts("返回") }}</div>
+            <el-page-header :content='$("legacy.238e91ae9a0a4c0b")' @click.native="handleEmit">
+              <div slot="title">{{ $("access.return") }}</div>
             </el-page-header>
           </el-col>
         </el-row>

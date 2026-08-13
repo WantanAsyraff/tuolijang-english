@@ -5,7 +5,7 @@
       <div class="ex-content-con">
         <div class="acea-row mb20">
           <div class="shu mr10"></div>
-          <div class="title">{{ $ts("提交审批") }}</div>
+          <div class="title">{{ $("ui.userExamineDetailExamineSubmitApproval") }}</div>
         </div>
         <el-form label-width="auto" >
           <el-form-item v-for="(item, index) in form.rule" :key="index">

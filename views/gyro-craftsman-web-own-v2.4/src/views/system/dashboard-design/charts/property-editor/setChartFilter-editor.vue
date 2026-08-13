@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <div>
-      <el-form-item :label='$ts("过滤条件")'>
+      <el-form-item :label='$("legacy.c97f16deca110110")'>
         <el-button @click="setCondition">{{ setConditionText }}</el-button>
         <!-- <div class="ml-a-span" @click="setCondition" v-else></div> -->
       </el-form-item>
@@ -17,7 +18,7 @@
       </zbDialog> -->
       <el-drawer
         :append-to-body="true"
-        :title='$ts("条件设置")'
+        :title='$("ui.workFlowDrawerConditionDrawerConditionSettings")'
         :visible.sync="dialogIsShow"
         :wrapperClosable="false"
         direction="rtl"
@@ -38,7 +39,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { mapState } from 'vuex'
 import zbDialog from '@/components/zbDialog'
 import zbSetConditions from '@/components/zbSetConditions'
@@ -130,7 +130,7 @@ export default {
     },
     setCondition() {
       if (!this.optionModel.dataEntity) {
-        this.$message.warning(i18n.t('legacyScript.pleaseSelectAnIconDataEntityFirst'))
+        this.$message.warning($('legacyScript.pleaseSelectAnIconDataEntityFirst'))
         return
       }
       let actionFilter = this.initFilter({ ...this.cutOption.setChartFilter })

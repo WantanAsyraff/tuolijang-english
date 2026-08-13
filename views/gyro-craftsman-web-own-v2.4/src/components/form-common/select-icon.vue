@@ -1,24 +1,25 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 选择图标组件 例：菜单管理选择图标 -->
 <template>
   <div class="iconBox">
     <div class="toolbar">
-      <span class="toolbar__count">{{ $ts("共") }} {{ displayList.length }} {{ $ts("项") }}</span>
+      <span class="toolbar__count">{{ $("file.total") }} {{ displayList.length }} {{ $("ui.developModuleFormBoxItems") }}</span>
       <el-input
         v-model="keyword"
         class="toolbar__search"
-        :placeholder='$ts("请输入图标名称")'
+        :placeholder='$("legacy.cab4c2781bc9d407")'
         prefix-icon="el-icon-search"
         clearable
       />
       <el-select v-model="source" class="toolbar__category">
-        <el-option v-for="opt in sourceOptions" :key="opt.value" :label="$ts(opt.label)" :value="opt.value" />
+        <el-option v-for="opt in sourceOptions" :key="opt.value" :label="$(opt.label)" :value="opt.value" />
       </el-select>
       <el-button class="toolbar__clear" :disabled="!hasFilter" @click="resetFilter">
         <i class="iconfont iconqingchu" />
       </el-button>
       <el-radio-group v-if="source === 'crmeb'" v-model="iconType" class="toolbar__segmented">
-        <el-radio-button label="outlined">{{ $ts("线性") }}</el-radio-button>
-        <el-radio-button label="filled">{{ $ts("面性") }}</el-radio-button>
+        <el-radio-button label="outlined">{{ $("legacy.078e4caeda5cffbc") }}</el-radio-button>
+        <el-radio-button label="filled">{{ $("legacy.b2096a7125ba6235") }}</el-radio-button>
       </el-radio-group>
     </div>
 
@@ -39,7 +40,6 @@
 </template>
 
 <script setup>
-import i18n from '@/lang'
 import { ref, computed, onMounted, getCurrentInstance } from 'vue'
 import iconfontIcons from '../../libs/iconfont-icons'
 
@@ -55,7 +55,7 @@ const emit = defineEmits(['select'])
 const { proxy } = getCurrentInstance()
 
 const sourceOptions = [
-  { label: i18n.t('legacyScript.officialIconLibrary'), value: 'crmeb' },
+  { label: $('legacyScript.officialIconLibrary'), value: 'crmeb' },
   { label: 'ELEMENT', value: 'element' }
 ]
 
@@ -104,7 +104,7 @@ const hasFilter = computed(
 )
 
 function localizedIconName(name) {
-  return proxy.$ts(name)
+  return proxy.$(name)
 }
 
 function resetFilter() {

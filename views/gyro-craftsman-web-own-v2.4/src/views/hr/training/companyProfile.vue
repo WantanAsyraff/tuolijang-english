@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="box-height">
@@ -7,18 +8,17 @@
       :training="true"
       ref="ueditorFrom"
       :editor-border="false"
-      :placeholder="$t('ui.hrTrainingCompanyProfilePleaseEnterCompanyProfile')"
+      :placeholder="$('ui.hrTrainingCompanyProfilePleaseEnterCompanyProfile')"
       :content="content"
     />
 
     <div class="cr-bottom-button btn-shadow">
-      <el-button size="small" :loading="loading" type="primary" @click="handleConfirm()">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button size="small" :loading="loading" type="primary" @click="handleConfirm()">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </div>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { employeeTrainApi, getEmployeeTrainApi } from '@/api/config.js'
 export default {
   name: '',
@@ -43,7 +43,7 @@ export default {
     handleConfirm() {
       this.content = this.$refs.ueditorFrom.getValue()
       if (this.content == '') {
-        return this.$message.error(i18n.t('customer.message02'))
+        return this.$message.error($('customer.message02'))
       }
       this.loading = true
       let type = 'company_profile'

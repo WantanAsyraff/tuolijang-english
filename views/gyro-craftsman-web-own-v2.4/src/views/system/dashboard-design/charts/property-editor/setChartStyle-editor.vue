@@ -1,10 +1,10 @@
 <template>
   <div class="chart-styles">
-    <div class="c-s-t">{{ $ts("图表样式") }}</div>
-    <el-form-item :label='$ts("颜色选择")'>
+    <div class="c-s-t">{{ $("ui.systemDashboardDesignChartsPropertyEditorChartStyleEditorChartStyle") }}</div>
+    <el-form-item :label='$("legacy.58ea19646d75335b")'>
       <el-color-picker v-model="optionModel.setChartStyle.useTextColor" />
     </el-form-item>
-    <el-form-item :label='$ts("货币符号")'>
+    <el-form-item :label='$("legacy.426287e7495c1843")'>
       <div class="w-100 currency-symbol">
         <div class="user-left">
           <el-select
@@ -18,7 +18,7 @@
             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
           </el-select>
         </div>
-        <el-tooltip effect="dark" :content='$ts("显示在数值前")' placement="top">
+        <el-tooltip effect="dark" :content='$("legacy.a38b3f0fc0d4b460")' placement="top">
           <span class="question-icon">
             <el-icon size="16">
               <ElIconQuestionFilled />
@@ -27,7 +27,7 @@
         </el-tooltip>
       </div>
     </el-form-item>
-    <el-form-item :label='$ts("货币符号尺寸")'>
+    <el-form-item :label='$("legacy.859e2c0ee54f58e0")'>
       <el-input-number class="w-100" v-model="optionModel.setChartStyle.currencySymbolSize" :min="14" />
     </el-form-item>
   </div>

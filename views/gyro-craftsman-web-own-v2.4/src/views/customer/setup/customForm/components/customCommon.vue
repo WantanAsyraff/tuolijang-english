@@ -1,75 +1,75 @@
+import { $ } from '@/lang'
 <script>
-import i18n from '@/lang'
 // 自定义表单-字段类型选项
 const typeOptions = [
   {
-    label: i18n.t('legacyScript.text2'),
+    label: $('legacyScript.text2'),
     value: 'text',
     type: 'input'
   },
   {
-    label: i18n.t('legacyScript.number'),
+    label: $('legacyScript.number'),
     value: 'number',
     type: 'input'
   },
   {
-    label: i18n.t('legacyScript.textArea'),
+    label: $('legacyScript.textArea'),
     value: 'textarea',
     type: 'input'
   },
   {
-    label: i18n.t('legacyScript.personSingleSelect'),
+    label: $('legacyScript.personSingleSelect'),
     value: 'singleMember',
     type: 'member'
   },
   {
-    label: i18n.t('legacyScript.personnelMultipleSelect'),
+    label: $('legacyScript.personnelMultipleSelect'),
     value: 'multipleMember',
     type: 'member'
   },
 
   {
-    label: i18n.t('legacyScript.dropdownSingleSelect'),
+    label: $('legacyScript.dropdownSingleSelect'),
     value: 'single',
     type: 'select'
   },
   {
-    label: i18n.t('legacyScript.multiSelectDropdown'),
+    label: $('legacyScript.multiSelectDropdown'),
     value: 'multiple',
     type: 'select'
   },
   {
-    label: i18n.t('legacyScript.radioButtons'),
+    label: $('legacyScript.radioButtons'),
     value: 'radio',
     type: 'radio'
   },
   {
-    label: i18n.t('legacyScript.checkboxGroup'),
+    label: $('legacyScript.checkboxGroup'),
     value: 'checked',
     type: 'checked'
   },
   {
-    label: i18n.t('legacyScript.datePicker2'),
+    label: $('legacyScript.datePicker2'),
     value: 'date',
     type: 'date'
   },
   {
-    label: i18n.t('legacyScript.dateAndTimePicker'),
+    label: $('legacyScript.dateAndTimePicker'),
     value: 'datetime',
     type: 'datetime'
   },
   {
-    label: i18n.t('legacyScript.imagePicker'),
+    label: $('legacyScript.imagePicker'),
     value: 'images',
     type: 'images'
   },
   {
-    label: i18n.t('legacyScript.attachmentUploader'),
+    label: $('legacyScript.attachmentUploader'),
     value: 'file',
     type: 'file'
   },
   {
-    label: i18n.t('legacyScript.richText'),
+    label: $('legacyScript.richText'),
     value: 'oaWangeditor',
     type: 'oaWangeditor'
   }

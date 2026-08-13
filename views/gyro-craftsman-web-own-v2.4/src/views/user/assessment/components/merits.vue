@@ -18,44 +18,44 @@
         style="width: 100%"
       >
         <template #empty>
-          <empty-state type="performance" :text="$t('ui.scEchartsChartWidgetNoData')" :min-height="220" />
+          <empty-state type="performance" :text="$('ui.scEchartsChartWidgetNoData')" :min-height="220" />
         </template>
 
-        <el-table-column :label="$t('toptable.name')" min-width="100" prop="test.name" />
-        <el-table-column :label="$t('toptable.department')" min-width="160" prop="frame.name" />
-        <el-table-column :label="$t('user.work.assessmentname')" min-width="100" prop="name" />
-        <el-table-column :label="$t('toptable.assessmentcycle')" align="center" min-width="100" prop="period">
+        <el-table-column :label="$('toptable.name')" min-width="100" prop="test.name" />
+        <el-table-column :label="$('toptable.department')" min-width="160" prop="frame.name" />
+        <el-table-column :label="$('user.work.assessmentname')" min-width="100" prop="name" />
+        <el-table-column :label="$('toptable.assessmentcycle')" align="center" min-width="100" prop="period">
           <template slot-scope="scope">
             <span>{{ getPeriodText(scope.row.period) }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('user.work.qssessmentscore')" align="center" min-width="100" prop="score" />
-        <el-table-column :label="$t('access.assessmentgrade')" align="center" min-width="100" prop="level" />
-        <el-table-column :label="$t('hr.assessmentstatus')" min-width="100" prop="status">
+        <el-table-column :label="$('user.work.qssessmentscore')" align="center" min-width="100" prop="score" />
+        <el-table-column :label="$('access.assessmentgrade')" align="center" min-width="100" prop="level" />
+        <el-table-column :label="$('hr.assessmentstatus')" min-width="100" prop="status">
           <template slot-scope="scope">
             <el-tag :type="getStatusTag(scope.row.status).type">
               {{ getStatusTag(scope.row.status).text }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('access.starttime')" align="center" min-width="100" prop="start_time">
+        <el-table-column :label="$('access.starttime')" align="center" min-width="100" prop="start_time">
           <template slot-scope="scope">
             {{ $moment(scope.row.start_time).format('yyyy-MM-DD') }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('access.endtime')" align="center" min-width="100" prop="end_time">
+        <el-table-column :label="$('access.endtime')" align="center" min-width="100" prop="end_time">
           <template slot-scope="scope">
             {{ $moment(scope.row.end_time).format('yyyy-MM-DD') }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('public.operation')" fixed="right" prop="address" width="160">
+        <el-table-column :label="$('public.operation')" fixed="right" prop="address" width="160">
           <template slot-scope="scope">
             <el-button v-if="scope.row.status >= 0" type="text" @click="handleCheck(scope.row, 'check')">
-              {{ $t("ui.layoutNoticeNoticeListView") }}
+              {{ $("ui.layoutNoticeNoticeListView") }}
             </el-button>
-            <el-button v-if="scope.row.status === 3" type="text" @click="handleCheck(scope.row, '')"> {{ $t("ui.invoiceInvoiceDetailsReview") }} </el-button>
+            <el-button v-if="scope.row.status === 3" type="text" @click="handleCheck(scope.row, '')"> {{ $("ui.invoiceInvoiceDetailsReview") }} </el-button>
             <el-button v-if="scope.row.status == 4" type="text" @click="handleCheck(scope.row, scope.$index)">
-              {{ $t("ui.userAssessmentMeritsEditScore") }}
+              {{ $("ui.userAssessmentMeritsEditScore") }}
             </el-button>
           </template>
         </el-table-column>

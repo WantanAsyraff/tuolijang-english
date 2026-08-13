@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 客户-订单转移弹窗组件 -->
 <template>
 <div>
@@ -10,11 +11,11 @@
   >
     <div class="body">
       <div class="mt14 el-input--small flex">
-        <span class="label">{{ $t("ui.customerListTransferDialogRecipient") }}</span>
+        <span class="label">{{ $("ui.customerListTransferDialogRecipient") }}</span>
         <select-member
           :only-one="true"
           :value="userList || []"
-          :placeholder="$t('ui.customerListTransferDialogSelectCompanyMember')"
+          :placeholder="$('ui.customerListTransferDialogSelectCompanyMember')"
           @getSelectList="getSelectList"
           style="width: 100%"
         ></select-member>
@@ -33,14 +34,13 @@
       </div>
     </div>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="handleClose" size="small">{{ $t('public.cancel') }}</el-button>
-      <el-button :loading="loading" size="small" type="primary" @click="handleAdd">{{ $t('public.ok') }}</el-button>
+      <el-button @click="handleClose" size="small">{{ $('public.cancel') }}</el-button>
+      <el-button :loading="loading" size="small" type="primary" @click="handleAdd">{{ $('public.ok') }}</el-button>
     </div>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { customerShiftApi, clientInvoiceShiftApi, cluesShiftApi } from '@/api/enterprise'
 import { clientContractShiftApi, oddsShiftApi } from '@/api/client'
 export default {
@@ -63,9 +63,9 @@ export default {
       checkList: [],
       keyword: '',
       transfer: [
-        { value: 1, label: this.$t('customer.customertransfer') },
-        { value: 2, label: this.$t('customer.contracttransfer') },
-        { value: 3, label: this.$t('customer.invoicetransfer') }
+        { value: 1, label: this.$('customer.customertransfer') },
+        { value: 2, label: this.$('customer.contracttransfer') },
+        { value: 3, label: this.$('customer.invoicetransfer') }
       ],
       loading: false
     }
@@ -92,9 +92,9 @@ export default {
     handleOpen(keyword) {
       this.keyword = keyword
       if (keyword == 'clue' || keyword === 'clue_seas') {
-        this.transfer.push({ value: 5, label: i18n.t('legacyScript.transferLead') })
+        this.transfer.push({ value: 5, label: $('legacyScript.transferLead') })
       } else if (keyword === 'odds') {
-        this.transfer[0].label = i18n.t('legacyScript.transferOpportunity')
+        this.transfer[0].label = $('legacyScript.transferOpportunity')
       }
 
       this.dialogVisible = true
@@ -106,7 +106,7 @@ export default {
 
     handleAdd() {
       if (this.userList.length <= 0) {
-        this.$message.error(this.$t('customer.placeholder25'))
+        this.$message.error(this.$('customer.placeholder25'))
       } else {
         const data = {
           to_uid: this.userList[0].value,

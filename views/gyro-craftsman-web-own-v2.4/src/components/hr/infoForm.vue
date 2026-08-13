@@ -3,7 +3,7 @@
   <div class="composite-selector">
     <div class="label">
       <span>{{ title }}</span>
-      <span v-if="title == '假期类型'" class="cursor" @click="goUrl()" style="color: #1890ff">{{ $ts("修改") }}</span>
+      <span v-if="title == '假期类型'" class="cursor" @click="goUrl()" style="color: #1890ff">{{ $("public.modify") }}</span>
     </div>
     <div class="info" v-html="value"></div>
   </div>

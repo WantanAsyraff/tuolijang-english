@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.valueFormat')">
+  <el-form-item :label="$('designer.setting.valueFormat')">
     <el-select v-model="optionModel.valueFormat" filterable allow-create>
       <el-option label="yyyy-MM-DD" value="yyyy-MM-DD"></el-option>
       <el-option label="yyyy-MM-dd HH:mm:ss" value="yyyy-MM-dd HH:mm:ss"></el-option>
@@ -9,11 +9,8 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
-
 export default {
   name: 'date-time-picker-valueFormat-editor',
-  mixins: [i18n],
   props: {
     designer: Object,
     selectedWidget: Object,
@@ -23,4 +20,3 @@ export default {
 </script>
 
 <style scoped></style>
-@/utils/i18ns

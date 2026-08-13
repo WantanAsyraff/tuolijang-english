@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 const label = '合同签约'
 const name = 'contractSigning'
@@ -21,7 +21,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('customer.customerName'),
+          title: $('customer.customerName'),
           symbol: 'eid',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -31,29 +31,29 @@ export default {
           effect: { fetch: '', required: true },
           field: uniqueId(),
           props: { type: 'radio' },
-          title: i18n.t('ui.customerSigningIndexSigningMethod'),
+          title: $('ui.customerSigningIndexSigningMethod'),
           symbol: 'signType',
           value: '2',
           type: 'radio',
           _fc_drag_tag: 'radio',
           options: [
-            { value: '2', label: i18n.t('ui.customerSigningInfoItemESign') },
-            { value: '1', label: i18n.t('ui.customerSigningInfoItemOfflineSigning') }
+            { value: '2', label: $('ui.customerSigningInfoItemESign') },
+            { value: '1', label: $('ui.customerSigningInfoItemOfflineSigning') }
           ]
         },
         {
           effect: { fetch: '', required: true },
           field: uniqueId(),
           props: { type: 'radio' },
-          title: i18n.t('legacyScript.contractTerm'),
+          title: $('legacyScript.contractTerm'),
           symbol: 'termType',
           value: '2',
           type: 'radio',
           _fc_drag_tag: 'radio',
           options: [
-            { value: '2', label: i18n.t('ui.customerSigningAddContractSignStartFromSigningDate') },
-            { value: '1', label: i18n.t('ui.customerSigningAddContractSignFixedTerm') },
-            { value: '0', label: i18n.t('ui.customerSigningAddContractSignNoFixedTerm') }
+            { value: '2', label: $('ui.customerSigningAddContractSignStartFromSigningDate') },
+            { value: '1', label: $('ui.customerSigningAddContractSignFixedTerm') },
+            { value: '0', label: $('ui.customerSigningAddContractSignNoFixedTerm') }
           ]
         },
         {
@@ -63,8 +63,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { placeholder: i18n.t('legacyScript.pleaseEnterContractDuration') },
-          title: i18n.t('legacyScript.contractDurationDays'),
+          props: { placeholder: $('legacyScript.pleaseEnterContractDuration') },
+          title: $('legacyScript.contractDurationDays'),
           symbol: 'dateCount',
           _fc_drag_tag: 'input'
         },
@@ -75,8 +75,8 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          props: { placeholder: i18n.t('legacyScript.pleaseSelectTheContractStartDate') },
-          title: i18n.t('legacyScript.contractStartDate'),
+          props: { placeholder: $('legacyScript.pleaseSelectTheContractStartDate') },
+          title: $('legacyScript.contractStartDate'),
           symbol: 'startDate',
           type: 'datePicker',
           _fc_drag_tag: 'datePicker'
@@ -88,8 +88,8 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          props: { placeholder: i18n.t('legacyScript.pleaseSelectTheContractEndDate') },
-          title: i18n.t('legacyScript.contractEndDate'),
+          props: { placeholder: $('legacyScript.pleaseSelectTheContractEndDate') },
+          title: $('legacyScript.contractEndDate'),
           symbol: 'endDate',
           type: 'datePicker',
           _fc_drag_tag: 'datePicker'
@@ -100,7 +100,7 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          title: i18n.t('ui.userDailyAddBoxAttachment'),
+          title: $('ui.userDailyAddBoxAttachment'),
           symbol: 'signFile', // 合同附件
           type: 'uploadFrom',
           _fc_drag_tag: 'uploadFrom'
@@ -112,8 +112,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: i18n.t('customer.placeholder18') },
-          title: i18n.t('customer.remark'),
+          props: { type: 'textarea', placeholder: $('customer.placeholder18') },
+          title: $('customer.remark'),
           symbol: 'mark',
           _fc_drag_tag: 'textarea'
         },
@@ -121,8 +121,8 @@ export default {
           field: uniqueId(),
           display: true,
           hidden: false,
-          title: i18n.t('legacyScript.signer'),
-          label: i18n.t('legacyScript.signer'),
+          title: $('legacyScript.signer'),
+          label: $('legacyScript.signer'),
           props: { member: false },
           type: 'approvalBill',
           symbol: 'signatory',
@@ -134,8 +134,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: i18n.t('setting.info.title1') },
-              title: i18n.t('toptable.enterprisename'),
+              props: { placeholder: $('setting.info.title1') },
+              title: $('toptable.enterprisename'),
               symbol: 'companyName',
               _fc_drag_tag: 'input'
             },
@@ -145,7 +145,7 @@ export default {
               hidden: false,
               info: '',
               props: { member: true, range: ['oneself'], placeholder: '' },
-              title: i18n.t('ui.customerSigningIndexHandler'),
+              title: $('ui.customerSigningIndexHandler'),
               symbol: 'name',
               type: 'departmentTree',
               _fc_drag_tag: 'memberTree'
@@ -156,8 +156,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: i18n.t('setting.info.title3') },
-              title: i18n.t('customer.tel'),
+              props: { placeholder: $('setting.info.title3') },
+              title: $('customer.tel'),
               symbol: 'phone',
               _fc_drag_tag: 'input'
             }
@@ -167,8 +167,8 @@ export default {
           field: uniqueId(),
           display: true,
           hidden: false,
-          title: i18n.t('ui.customerSigningAddContractSignProductList'),
-          label: i18n.t('ui.customerSigningAddContractSignProductList'),
+          title: $('ui.customerSigningAddContractSignProductList'),
+          label: $('ui.customerSigningAddContractSignProductList'),
           props: { member: false },
           type: 'approvalBill',
           symbol: 'productInfo',
@@ -180,8 +180,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: i18n.t('legacyScript.pleaseEnterProductName') },
-              title: i18n.t('legacyScript.productName'),
+              props: { placeholder: $('legacyScript.pleaseEnterProductName') },
+              title: $('legacyScript.productName'),
               symbol: 'product_name',
               _fc_drag_tag: 'input'
             },
@@ -191,8 +191,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: i18n.t('legacyScript.pleaseEnterSpec') },
-              title: i18n.t('customer.specification'),
+              props: { placeholder: $('legacyScript.pleaseEnterSpec') },
+              title: $('customer.specification'),
               symbol: 'sku',
               _fc_drag_tag: 'input'
             },
@@ -203,8 +203,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: i18n.t('legacyScript.pleaseEnterQuantity') },
-              title: i18n.t('legacyScript.quantity'),
+              props: { placeholder: $('legacyScript.pleaseEnterQuantity') },
+              title: $('legacyScript.quantity'),
               symbol: 'count',
               _fc_drag_tag: 'input'
             },
@@ -215,8 +215,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: i18n.t('legacyScript.pleaseEnterDiscount') },
-              title: i18n.t('legacyScript.discount'),
+              props: { placeholder: $('legacyScript.pleaseEnterDiscount') },
+              title: $('legacyScript.discount'),
               symbol: 'discount',
               _fc_drag_tag: 'input'
             },
@@ -226,8 +226,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: i18n.t('legacyScript.pleaseEnterTotalPrice') },
-              title: i18n.t('legacyScript.totalPrice'),
+              props: { placeholder: $('legacyScript.pleaseEnterTotalPrice') },
+              title: $('legacyScript.totalPrice'),
               symbol: 'total_price',
               _fc_drag_tag: 'input'
             },
@@ -237,8 +237,8 @@ export default {
               display: true,
               hidden: false,
               info: '',
-              props: { placeholder: i18n.t('legacyScript.pleaseEnterRemarks') },
-              title: i18n.t('customer.remark'),
+              props: { placeholder: $('legacyScript.pleaseEnterRemarks') },
+              title: $('customer.remark'),
               symbol: 'remark',
               _fc_drag_tag: 'input'
             }
@@ -258,7 +258,7 @@ export default {
         info: '',
         props: {
           value: '1.开具发票是否需要审批流，在客户规格设置中配置<br>2.支持财务进行发票开具/拒绝开票',
-          title: i18n.t('legacyScript.issueInvoiceRules')
+          title: $('legacyScript.issueInvoiceRules')
         },
         input: false,
         title: '',

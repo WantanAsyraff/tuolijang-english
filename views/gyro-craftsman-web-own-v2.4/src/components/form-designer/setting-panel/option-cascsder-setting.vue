@@ -7,7 +7,7 @@
           size="small"
           v-model="data.name"
           @change="changeCard(data)"
-          :placeholder="$t('ui.customerSetupDictionaryManagementDataValue')"
+          :placeholder="$('ui.customerSetupDictionaryManagementDataValue')"
           style="width: 150px; margin-bottom: 5px"
         >
         </el-input>
@@ -27,7 +27,7 @@
         </template>
       </div>
     </el-tree>
-    <el-button type="text" class="mt10" @click="addRowFn()">{{ $t("ui.formDesignerSettingPanelOptionItemsSettingAddOption") }}</el-button>
+    <el-button type="text" class="mt10" @click="addRowFn()">{{ $("ui.formDesignerSettingPanelOptionItemsSettingAddOption") }}</el-button>
   </div>
 </template>
 <script>
@@ -195,4 +195,3 @@ export default {
   color: #1890ff !important;
 }
 </style>
-@/utils/i18ns

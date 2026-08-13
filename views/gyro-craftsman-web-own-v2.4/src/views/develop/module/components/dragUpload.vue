@@ -1,15 +1,15 @@
 <template>
   <div class="oa-dialog">
     <el-dialog
-      :title="$t('ui.customerDragUploadImportData')"
+      :title="$('ui.customerDragUploadImportData')"
       :visible.sync="show"
       width="789px"
       :before-close="handleClose"
       :close-on-click-modal="false"
     >
       <div class="tips-box">
-        {{ $t("ui.customerDragUploadEditTheContentUsingTheTemplateFormatThenUpload") }}<img src="@/assets/images/excel.png" alt="" class="img" />
-        <span class="download" @click="download">{{ $t("ui.developModuleDragUploadDownloadBlankTemplate") }}</span>
+        {{ $("ui.customerDragUploadEditTheContentUsingTheTemplateFormatThenUpload") }}<img src="@/assets/images/excel.png" alt="" class="img" />
+        <span class="download" @click="download">{{ $("ui.developModuleDragUploadDownloadBlankTemplate") }}</span>
       </div>
       <div class="upload-box">
         <el-upload
@@ -24,38 +24,38 @@
           <!-- 导入 -->
           <template v-if="loading === 1">
             <img src="@/assets/images/upload.png" alt="" class="img" />
-            <div class="el-upload__text">{{ $t("ui.customerDragUploadDragAFileHereToUploadOr") }} <em>{{ $t("ui.customerDragUploadClickToAdd") }}</em></div>
-            <div class="el-upload__type">{{ $t("ui.customerDragUploadSupportsXlsAndXlsxFilesUpTo10000") }}</div>
+            <div class="el-upload__text">{{ $("ui.customerDragUploadDragAFileHereToUploadOr") }} <em>{{ $("ui.customerDragUploadClickToAdd") }}</em></div>
+            <div class="el-upload__type">{{ $("ui.customerDragUploadSupportsXlsAndXlsxFilesUpTo10000") }}</div>
           </template>
           <!-- 导入中 -->
           <template v-if="loading == 2">
             <img src="@/assets/images/loading.gif" alt="" class="img-gif" />
             <div class="el-upload__text">{{ file.name }}（{{ toSizeFile(file.size) }}）</div>
-            <div class="el-upload__type">{{ $t("ui.customerDragUploadImporting") }}</div>
+            <div class="el-upload__type">{{ $("ui.customerDragUploadImporting") }}</div>
           </template>
           <!-- 导入成功 -->
           <template v-if="loading == 3">
             <img src="@/assets/images/uploadOk.png" alt="" class="img-ok" />
-            <div class="text-ok">{{ $t("ui.developModuleDragUploadImportSuccessful") }}</div>
+            <div class="text-ok">{{ $("ui.developModuleDragUploadImportSuccessful") }}</div>
             <div class="el-upload__type">
-              {{ $t("ui.developModuleDragUploadImportSucceeded") }} {{ response_data.successCount }} {{ $t("ui.developModuleDragUploadRecordsImportFailed") }} {{ response_data.errorCount }} {{ $t("ui.commonOaFromBoxItems") }}
+              {{ $("ui.developModuleDragUploadImportSucceeded") }} {{ response_data.successCount }} {{ $("ui.developModuleDragUploadRecordsImportFailed") }} {{ response_data.errorCount }} {{ $("ui.commonOaFromBoxItems") }}
             </div>
           </template>
           <!-- 导入失败 -->
           <template v-if="loading == 4">
             <i class="iconfont icontishi2"></i>
-            <div class="text-ok">{{ $t("ui.customerDragUploadImportFailed") }}</div>
+            <div class="text-ok">{{ $("ui.customerDragUploadImportFailed") }}</div>
             <div class="el-upload__text mb8 mt16">
               {{ file.name || '--' }}<span style="color: #909399">（{{ toSizeFile(file.size || 0) }}）</span>
             </div>
-            <div class="el-upload__text"><em>{{ $t("ui.customerDragUploadChooseAgain") }}</em></div>
+            <div class="el-upload__text"><em>{{ $("ui.customerDragUploadChooseAgain") }}</em></div>
           </template>
         </el-upload>
       </div>
       <div class="el-upload__tip">
-        {{ $t("ui.developModuleDragUploadExportedListFilesCanBeEditedInBulkAnd") }}
+        {{ $("ui.developModuleDragUploadExportedListFilesCanBeEditedInBulkAnd") }}
 
-        <div>{{ $t("ui.developModuleDragUploadFieldsMarkedUniqueMustContainUniqueValuesOrConflicting") }}</div>
+        <div>{{ $("ui.developModuleDragUploadFieldsMarkedUniqueMustContainUniqueValuesOrConflicting") }}</div>
       </div>
     </el-dialog>
     <!-- 导出 -->

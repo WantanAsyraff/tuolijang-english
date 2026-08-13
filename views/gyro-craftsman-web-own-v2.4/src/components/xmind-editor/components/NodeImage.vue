@@ -1,5 +1,6 @@
+import { $ } from '@/lang'
 <template>
-  <el-dialog class="nodeImageDialog" :title='$ts("图片")' :visible.sync="dialogVisible" width="400px" top="15vh">
+  <el-dialog class="nodeImageDialog" :title='$("file.picture")' :visible.sync="dialogVisible" width="400px" top="15vh">
     <div class="node-image-wrapper" v-if="img">
       <img class="node-image" :src="img" ref="nodeImage" />
       <div class="node-image-mask">
@@ -12,14 +13,13 @@
     </el-upload>
 
     <span slot="footer" class="dialog-footer">
-      <el-button @click="cancel">{{ $ts("取 消") }}</el-button>
-      <el-button type="primary" @click="confirm">{{ $ts("确 定") }}</el-button>
+      <el-button @click="cancel">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button type="primary" @click="confirm">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </span>
   </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { NODE_ACTIVE, SHOW_NODE_IMAGE } from '../event-constant';
 import compressImg from '@/utils/compressImg';
 
@@ -45,7 +45,7 @@ export default {
     async handleImgChange(e) {
       if (!/^image\//.test(e.raw.type)) {
         this.$refs.uploader.clearFiles();
-        return this.$message.error(i18n.t('legacyScript.uploadAValidImage'));
+        return this.$message.error($('legacyScript.uploadAValidImage'));
       }
       this.img = await compressImg(e.raw, e.raw.size >= 2097152);
     },

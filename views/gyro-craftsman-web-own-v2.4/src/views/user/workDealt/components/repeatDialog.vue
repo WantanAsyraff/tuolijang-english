@@ -8,34 +8,34 @@
     >
       <div class="body mt15">
         <el-form ref="form" :model="rules" :rules="rule" label-width="80px">
-          <el-form-item :label="$t('calendar.repetitiontype') + ':'">
+          <el-form-item :label="$('calendar.repetitiontype') + ':'">
             <el-select
               v-model="rules.repeat"
               size="small"
-              :placeholder="$t('calendar.placeholder10')"
+              :placeholder="$('calendar.placeholder10')"
               @change="handleRepeat"
             >
               <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
             </el-select>
           </el-form-item>
-          <el-form-item prop="rate" :label="$t('calendar.frequency') + ':'">
+          <el-form-item prop="rate" :label="$('calendar.frequency') + ':'">
             <el-input-number
               v-model="rules.rate"
               size="small"
               :controls="false"
               :min="1"
-              :placeholder="$t('calendar.placeholder17')"
+              :placeholder="$('calendar.placeholder17')"
             />
             <span class="day-title">{{ dayTitle }}</span>
           </el-form-item>
-          <el-form-item prop="weekDays" v-if="rules.repeat === 1" :label="$t('calendar.weekly') + ':'">
+          <el-form-item prop="weekDays" v-if="rules.repeat === 1" :label="$('calendar.weekly') + ':'">
             <el-checkbox-group v-model="rules.weekDays" size="small">
               <el-checkbox-button v-for="item in week" :key="item.value" :label="item.value">{{
                 item.label
               }}</el-checkbox-button>
             </el-checkbox-group>
           </el-form-item>
-          <el-form-item prop="monthDays" v-if="rules.repeat === 2" :label="$t('calendar.monthly') + ':'" class="month">
+          <el-form-item prop="monthDays" v-if="rules.repeat === 2" :label="$('calendar.monthly') + ':'" class="month">
             <el-checkbox-group v-model="rules.monthDays" size="small">
               <el-checkbox-button
                 v-for="item in 31"
@@ -45,21 +45,21 @@
               >
             </el-checkbox-group>
           </el-form-item>
-          <el-form-item :label="$t('calendar.enddate') + ':'">
+          <el-form-item :label="$('calendar.enddate') + ':'">
             <el-date-picker
               v-model="rules.time"
               size="small"
               type="datetime"
               prefix-icon="el-icon-date"
               :clearable="true"
-              :placeholder="$t('calendar.neverend')"
+              :placeholder="$('calendar.neverend')"
             />
           </el-form-item>
         </el-form>
       </div>
       <div slot="footer" class="dialog-footer text-center">
-        <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-        <el-button size="small" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+        <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+        <el-button size="small" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
       </div>
     </el-dialog>
   </div>
@@ -80,14 +80,14 @@ export default {
   data() {
     const checkWeek = (rule, value, callback) => {
       if (this.rules.repeat === 1 && value.length <= 0) {
-        return callback(new Error(this.$t('calendar.placeholder15')))
+        return callback(new Error(this.$('calendar.placeholder15')))
       } else {
         return callback()
       }
     }
     const checkMonth = (rule, value, callback) => {
       if (this.rules.repeat === 2 && value.length <= 0) {
-        return callback(new Error(this.$t('calendar.placeholder16')))
+        return callback(new Error(this.$('calendar.placeholder16')))
       } else {
         return callback()
       }
@@ -104,29 +104,29 @@ export default {
         time: ''
       },
       rule: {
-        rate: [{ required: true, message: this.$t('calendar.placeholder17'), trigger: 'blur' }],
+        rate: [{ required: true, message: this.$('calendar.placeholder17'), trigger: 'blur' }],
         weekDays: [{ required: false, validator: checkWeek, trigger: 'change' }],
         monthDays: [{ required: false, validator: checkMonth, trigger: 'change' }]
       },
       options: [
-        { value: 0, label: this.$t('calendar.repeatbyday') },
-        { value: 1, label: this.$t('calendar.repeatweekly') },
-        { value: 2, label: this.$t('calendar.repeatmonthly') },
-        { value: 3, label: this.$t('calendar.repeatyear') }
+        { value: 0, label: this.$('calendar.repeatbyday') },
+        { value: 1, label: this.$('calendar.repeatweekly') },
+        { value: 2, label: this.$('calendar.repeatmonthly') },
+        { value: 3, label: this.$('calendar.repeatyear') }
       ],
       week: [
-        { value: '1', label: this.$t('hr.monday') },
-        { value: '2', label: this.$t('hr.tuesday') },
-        { value: '3', label: this.$t('hr.wednesday') },
-        { value: '4', label: this.$t('hr.thursday') },
-        { value: '5', label: this.$t('hr.friday') },
-        { value: '6', label: this.$t('hr.saturday') },
-        { value: '7', label: this.$t('hr.sunday') }
+        { value: '1', label: this.$('hr.monday') },
+        { value: '2', label: this.$('hr.tuesday') },
+        { value: '3', label: this.$('hr.wednesday') },
+        { value: '4', label: this.$('hr.thursday') },
+        { value: '5', label: this.$('hr.friday') },
+        { value: '6', label: this.$('hr.saturday') },
+        { value: '7', label: this.$('hr.sunday') }
       ],
-      dayTitle: this.$t('access.day'),
+      dayTitle: this.$('access.day'),
       option: [
-        { value: '', label: this.$t('calendar.neverend') },
-        { value: 1, label: this.$t('hr.placeholder4') }
+        { value: '', label: this.$('calendar.neverend') },
+        { value: 1, label: this.$('hr.placeholder4') }
       ]
     }
   },
@@ -159,24 +159,24 @@ export default {
   methods: {
     setOptions() {
       this.options = [
-        { value: 0, label: this.$t('calendar.repeatbyday') },
-        { value: 1, label: this.$t('calendar.repeatweekly') },
-        { value: 2, label: this.$t('calendar.repeatmonthly') },
-        { value: 3, label: this.$t('calendar.repeatyear') }
+        { value: 0, label: this.$('calendar.repeatbyday') },
+        { value: 1, label: this.$('calendar.repeatweekly') },
+        { value: 2, label: this.$('calendar.repeatmonthly') },
+        { value: 3, label: this.$('calendar.repeatyear') }
       ]
       this.week = [
-        { value: 1, label: this.$t('hr.monday') },
-        { value: 2, label: this.$t('hr.tuesday') },
-        { value: 3, label: this.$t('hr.wednesday') },
-        { value: 4, label: this.$t('hr.thursday') },
-        { value: 5, label: this.$t('hr.friday') },
-        { value: 6, label: this.$t('hr.saturday') },
-        { value: 7, label: this.$t('hr.sunday') }
+        { value: 1, label: this.$('hr.monday') },
+        { value: 2, label: this.$('hr.tuesday') },
+        { value: 3, label: this.$('hr.wednesday') },
+        { value: 4, label: this.$('hr.thursday') },
+        { value: 5, label: this.$('hr.friday') },
+        { value: 6, label: this.$('hr.saturday') },
+        { value: 7, label: this.$('hr.sunday') }
       ]
-      this.dayTitle = this.$t('access.day')
+      this.dayTitle = this.$('access.day')
       this.option = [
-        { value: '', label: this.$t('calendar.neverend') },
-        { value: 1, label: this.$t('hr.placeholder4') }
+        { value: '', label: this.$('calendar.neverend') },
+        { value: 1, label: this.$('hr.placeholder4') }
       ]
     },
     handleClose() {
@@ -189,15 +189,15 @@ export default {
     },
     handleRepeat(e) {
       if (e === 0) {
-        this.dayTitle = this.$t('access.day')
+        this.dayTitle = this.$('access.day')
       } else if (e === 1) {
-        this.dayTitle = this.$t('user.work.week')
+        this.dayTitle = this.$('user.work.week')
       } else if (e === 2) {
-        this.dayTitle = this.$t('user.work.month')
+        this.dayTitle = this.$('user.work.month')
       } else if (e === 3) {
-        this.dayTitle = this.$t('calendar.year')
+        this.dayTitle = this.$('calendar.year')
       } else {
-        this.dayTitle = this.$t('access.day')
+        this.dayTitle = this.$('access.day')
       }
     },
     handleConfirm() {

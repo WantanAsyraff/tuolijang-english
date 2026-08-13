@@ -4,8 +4,8 @@
     
     <slot></slot>
     <div v-if="!formCreateInject.rule.originChildren.length" class="ab-empty">
-      <div>{{ $ts("可拖拽添加多个字段") }}</div>
-      <span>{{ $ts("(不支持明细中添加明细字段)") }}</span>
+      <div>{{ $("legacy.656b06d41eba382d") }}</div>
+      <span>{{ $("legacy.7c83e76e4372df50") }}</span>
     </div>
   </div>
 </template>

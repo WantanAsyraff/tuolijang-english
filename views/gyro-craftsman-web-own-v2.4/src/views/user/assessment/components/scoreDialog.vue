@@ -2,7 +2,7 @@
   <el-dialog :title="config.title" :visible.sync="dialogVisible" :width="config.width" :before-close="handleClose">
     <div class="mt15">
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="card" :label="$t('hr.administrators')" width="240">
+        <el-table-column prop="card" :label="$('hr.administrators')" width="240">
           <template slot-scope="scope">
             <div class="user-name">
               <img :src="scope.row.card.avatar" alt="" />
@@ -10,9 +10,9 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="score" :label="$t('access.totalscore1')" />
-        <el-table-column prop="total" :label="$t('access.totalscore')" />
-        <el-table-column prop="created_at" :label="$t('toptable.operationtime')" width="180" />
+        <el-table-column prop="score" :label="$('access.totalscore1')" />
+        <el-table-column prop="total" :label="$('access.totalscore')" />
+        <el-table-column prop="created_at" :label="$('toptable.operationtime')" width="180" />
       </el-table>
       <div class="text-right">
         <el-pagination

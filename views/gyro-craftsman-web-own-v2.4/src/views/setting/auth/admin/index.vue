@@ -3,16 +3,16 @@
   <el-card class="employees-card-bottom role-page-card">
     <div class="role-page-header">
       <div>
-        <div class="page-title">{{ $t("ui.settingAuthAdminIndexRolePermission") }}</div>
-        <div class="page-desc">{{ $t("ui.settingAuthAdminIndexManageRoleMembersStatusAndPermissionSettings") }}</div>
+        <div class="page-title">{{ $("ui.settingAuthAdminIndexRolePermission") }}</div>
+        <div class="page-desc">{{ $("ui.settingAuthAdminIndexManageRoleMembersStatusAndPermissionSettings") }}</div>
       </div>
-      <el-button type="primary" size="small" icon="el-icon-plus" @click="addAdminRole">{{ $t("ui.businessHolidayTypeIndexAdd") }}</el-button>
+      <el-button type="primary" size="small" icon="el-icon-plus" @click="addAdminRole">{{ $("ui.businessHolidayTypeIndexAdd") }}</el-button>
     </div>
     <div v-if="roleList.length" class="role-layout">
       <div class="role-sidebar">
         <div class="role-sidebar-title">
-          <span>{{ $t("ui.settingAuthAdminIndexRoleList") }}</span>
-          <span class="role-total">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.settingAuthAdminIndexIndividual") }}</span>
+          <span>{{ $("ui.settingAuthAdminIndexRoleList") }}</span>
+          <span class="role-total">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.settingAuthAdminIndexIndividual") }}</span>
         </div>
         <div class="role-search">
           <el-input
@@ -20,7 +20,7 @@
             size="small"
             prefix-icon="el-icon-search"
             clearable
-            :placeholder="$t('ui.settingAuthAdminIndexSearchRoles')"
+            :placeholder="$('ui.settingAuthAdminIndexSearchRoles')"
           />
         </div>
         <div class="role-list">
@@ -37,9 +37,9 @@
                 <span
                   class="role-status-dot"
                   :class="{ 'is-active': Number(item.status) === 1 }"
-                  :title="Number(item.status) === 1 ? $t('ui.settingAuthAdminIndexEnabled') : $t('ui.settingAuthAdminIndexDisabled')"
+                  :title="Number(item.status) === 1 ? $('ui.settingAuthAdminIndexEnabled') : $('ui.settingAuthAdminIndexDisabled')"
                 ></span>
-                <span>{{ getMemberCount(item) }} {{ $t("ui.customerWeChatMassAddGroupPostingPeople") }}</span>
+                <span>{{ getMemberCount(item) }} {{ $("ui.customerWeChatMassAddGroupPostingPeople") }}</span>
               </div>
             </div>
             <div class="role-actions-more" @click.stop>
@@ -47,31 +47,31 @@
                 <el-button type="text" icon="el-icon-more" class="role-more-button"></el-button>
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item command="status">{{
-                    Number(item.status) === 1 ? $t('ui.developConditionGroupDialogDisabled') : $t('ui.settingAuthAdminIndexEnabled2')
+                    Number(item.status) === 1 ? $('ui.developConditionGroupDialogDisabled') : $('ui.settingAuthAdminIndexEnabled2')
                   }}</el-dropdown-item>
-                  <el-dropdown-item command="member">{{ $t("ui.settingAuthAdminIndexManageMembers") }}</el-dropdown-item>
-                  <el-dropdown-item command="edit">{{ $t("ui.formCommonOaLogEdit") }}</el-dropdown-item>
-                  <el-dropdown-item command="delete" divided>{{ $t("ui.chatIndexDelete") }}</el-dropdown-item>
+                  <el-dropdown-item command="member">{{ $("ui.settingAuthAdminIndexManageMembers") }}</el-dropdown-item>
+                  <el-dropdown-item command="edit">{{ $("ui.formCommonOaLogEdit") }}</el-dropdown-item>
+                  <el-dropdown-item command="delete" divided>{{ $("ui.chatIndexDelete") }}</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>
           </div>
-          <el-empty v-if="filteredRoleList.length === 0" :image-size="80" :description="$t('ui.settingAuthAdminIndexNoMatchingRoles')"></el-empty>
+          <el-empty v-if="filteredRoleList.length === 0" :image-size="80" :description="$('ui.settingAuthAdminIndexNoMatchingRoles')"></el-empty>
         </div>
       </div>
 
       <div v-if="selectedRole" v-loading="roleDetailLoading" class="role-detail">
         <div class="role-detail-content">
           <div class="readonly-form-row">
-            <span class="readonly-form-label">{{ $t("ui.settingAuthAdminIndexRoleName") }}</span>
+            <span class="readonly-form-label">{{ $("ui.settingAuthAdminIndexRoleName") }}</span>
             <span class="readonly-form-value">{{ currentRole.role_name || '--' }}</span>
           </div>
 
           <el-tabs v-model="activeDetailTab" type="border-card" class="role-detail-tabs">
-            <el-tab-pane :label="$t('ui.settingAuthAdminIndexPermissionData')" name="1">
+            <el-tab-pane :label="$('ui.settingAuthAdminIndexPermissionData')" name="1">
               <div class="readonly-permission-layout">
                 <div class="readonly-menu-tree">
-                  <div class="detail-column-title">{{ $t("ui.settingAuthAdminIndexMenuPermissions") }}</div>
+                  <div class="detail-column-title">{{ $("ui.settingAuthAdminIndexMenuPermissions") }}</div>
                   <el-tree
                     v-if="readonlyTreeData.length"
                     :key="selectedRole.id"
@@ -87,11 +87,11 @@
                     show-checkbox
                     @node-click="handlePermissionNodeClick"
                   />
-                  <el-empty v-else :image-size="80" :description="$t('ui.settingAuthAdminIndexNoMenuPermissions')"></el-empty>
+                  <el-empty v-else :image-size="80" :description="$('ui.settingAuthAdminIndexNoMenuPermissions')"></el-empty>
                 </div>
 
                 <div class="readonly-api-list">
-                  <div class="detail-column-title">{{ $t("ui.settingAuthAdminIndexButtonAndApiPermissions") }}</div>
+                  <div class="detail-column-title">{{ $("ui.settingAuthAdminIndexButtonAndApiPermissions") }}</div>
                   <div v-if="activeApiList.length" class="api-checkbox-list">
                     <el-checkbox
                       v-for="item in activeApiList"
@@ -103,23 +103,23 @@
                       {{ item.label }}
                     </el-checkbox>
                   </div>
-                  <el-empty v-else :image-size="80" :description="$t('ui.settingAuthAdminIndexSelectAMenuOnTheLeftToViewApi')"></el-empty>
+                  <el-empty v-else :image-size="80" :description="$('ui.settingAuthAdminIndexSelectAMenuOnTheLeftToViewApi')"></el-empty>
                 </div>
 
                 <div class="readonly-module-permission">
-                  <div class="detail-column-title">{{ $t("ui.settingModulePermissionsDataPermissions") }}</div>
+                  <div class="detail-column-title">{{ $("ui.settingModulePermissionsDataPermissions") }}</div>
                   <el-table :data="modulePermissionRows" size="small">
-                    <el-table-column :label="$t('ui.settingModulePermissionsModule')" min-width="140">
+                    <el-table-column :label="$('ui.settingModulePermissionsModule')" min-width="140">
                       <template slot-scope="{ row }">
                         {{ row.module_name || row.name || row.key || '--' }}
                       </template>
                     </el-table-column>
-                    <el-table-column :label="$t('ui.settingModulePermissionsDataPermissions')" min-width="140">
+                    <el-table-column :label="$('ui.settingModulePermissionsDataPermissions')" min-width="140">
                       <template slot-scope="{ row }">
                         {{ getModuleDataLevelText(row.data_level) }}
                       </template>
                     </el-table-column>
-                    <el-table-column :label="$t('ui.settingAuthAdminIndexCustomDepartments')" min-width="180">
+                    <el-table-column :label="$('ui.settingAuthAdminIndexCustomDepartments')" min-width="180">
                       <template slot-scope="{ row }">
                         <el-tooltip
                           v-if="getFrameNameList(row).length"
@@ -148,26 +148,26 @@
                 </div>
               </div>
             </el-tab-pane>
-            <el-tab-pane :label="$t('ui.settingEnterpriseAddAdminRoleLowCodeApplications')" name="2">
+            <el-tab-pane :label="$('ui.settingEnterpriseAddAdminRoleLowCodeApplications')" name="2">
               <div class="readonly-crud-pane">
                 <el-table :data="crudList" size="small" class="readonly-crud-table">
-                  <el-table-column :label="$t('ui.developCrudEntityTableEntityName')" min-width="160" prop="table_name" show-overflow-tooltip />
-                  <el-table-column :label="$t('ui.settingAuthAdminIndexViewPermissions')" min-width="120">
+                  <el-table-column :label="$('ui.developCrudEntityTableEntityName')" min-width="160" prop="table_name" show-overflow-tooltip />
+                  <el-table-column :label="$('ui.settingAuthAdminIndexViewPermissions')" min-width="120">
                     <template slot-scope="{ row }">{{ getCrudDataLevelText(row.reade) }}</template>
                   </el-table-column>
-                  <el-table-column :label="$t('ui.settingAuthAdminIndexAddJurisdiction')" width="100">
-                    <template slot-scope="{ row }">{{ Number(row.created) === 1 ? $t('ui.customerWeChatMassAddGroupPostingAllowed') : $t('ui.customerWeChatMassAddGroupPostingNotAllowed') }}</template>
+                  <el-table-column :label="$('ui.settingAuthAdminIndexAddJurisdiction')" width="100">
+                    <template slot-scope="{ row }">{{ Number(row.created) === 1 ? $('ui.customerWeChatMassAddGroupPostingAllowed') : $('ui.customerWeChatMassAddGroupPostingNotAllowed') }}</template>
                   </el-table-column>
-                  <el-table-column :label="$t('ui.settingAuthAdminIndexModifyPermissions')" min-width="120">
+                  <el-table-column :label="$('ui.settingAuthAdminIndexModifyPermissions')" min-width="120">
                     <template slot-scope="{ row }">{{ getCrudDataLevelText(row.updated) }}</template>
                   </el-table-column>
-                  <el-table-column :label="$t('ui.settingAuthAdminIndexDeleteJurisdiction')" min-width="120">
+                  <el-table-column :label="$('ui.settingAuthAdminIndexDeleteJurisdiction')" min-width="120">
                     <template slot-scope="{ row }">{{ getCrudDataLevelText(row.deleted) }}</template>
                   </el-table-column>
-                  <el-table-column :label="$t('ui.settingAuthAdminIndexSharingPermission')" min-width="120">
+                  <el-table-column :label="$('ui.settingAuthAdminIndexSharingPermission')" min-width="120">
                     <template slot-scope="{ row }">{{ getCrudDataLevelText(row.share) }}</template>
                   </el-table-column>
-                  <el-table-column :label="$t('ui.settingAuthAdminIndexTransferPermissions')" min-width="120">
+                  <el-table-column :label="$('ui.settingAuthAdminIndexTransferPermissions')" min-width="120">
                     <template slot-scope="{ row }">{{ getCrudDataLevelText(row.transfer) }}</template>
                   </el-table-column>
                 </el-table>
@@ -177,7 +177,7 @@
         </div>
       </div>
     </div>
-    <el-empty v-else :description="$t('ui.settingAuthAdminIndexNoRoles')"></el-empty>
+    <el-empty v-else :description="$('ui.settingAuthAdminIndexNoRoles')"></el-empty>
 
     <!-- 管理人员弹窗 -->
     <el-drawer
@@ -185,37 +185,37 @@
       :visible.sync="drawer"
       :wrapperClosable="false"
       size="700px"
-      :title="$t('ui.settingAuthAdminIndexAdministrators')"
+      :title="$('ui.settingAuthAdminIndexAdministrators')"
     >
       <div slot="title" class="drawer-title">
-        <span>{{ $t("ui.settingAuthAdminIndexAdministrators") }}</span>
+        <span>{{ $("ui.settingAuthAdminIndexAdministrators") }}</span>
         <select-member ref="selectMember" :value="tableList || []" @getSelectList="getSelectList" :disabled="true">
           <template v-slot:custom>
-            <el-button size="small" type="primary" @click="openDepartment">{{ $t("ui.workFlowDrawerCopyerDrawerSelectMembers") }}</el-button>
+            <el-button size="small" type="primary" @click="openDepartment">{{ $("ui.workFlowDrawerCopyerDrawerSelectMembers") }}</el-button>
           </template>
         </select-member>
       </div>
       <div class="box">
         <el-table :data="tableList" style="width: 100%">
           <el-table-column label="ID" prop="id"> </el-table-column>
-          <el-table-column :label="$t('ui.businessHolidayQueryIndexName')" prop="name"> </el-table-column>
-          <el-table-column :label="$t('ui.businessHolidayQueryIndexDepartment')" prop="frame.name"> </el-table-column>
-          <el-table-column :label="$t('ui.settingAuthAdminIndexEnableStatus')" prop="position">
+          <el-table-column :label="$('ui.businessHolidayQueryIndexName')" prop="name"> </el-table-column>
+          <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" prop="frame.name"> </el-table-column>
+          <el-table-column :label="$('ui.settingAuthAdminIndexEnableStatus')" prop="position">
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
-                :active-text="$t('public.enable')"
+                :active-text="$('public.enable')"
                 :active-value="1"
-                :inactive-text="$t('public.disabled')"
+                :inactive-text="$('public.disabled')"
                 :inactive-value="0"
                 @change="handleChange($event, scope.row)"
               >
               </el-switch>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" prop="position" width="80px">
+          <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" prop="position" width="80px">
             <template slot-scope="scope">
-              <el-button type="text" @click="handleDeleteUser(scope.row.id, scope.$index)">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" @click="handleDeleteUser(scope.row.id, scope.$index)">{{ $("ui.chatIndexDelete") }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -450,7 +450,7 @@ export default {
     // 删除权限
     async handleDeleteRole(row, index) {
       if (!row) return
-      await this.$modalSure(this.$t('setting.admin.deletetitle'))
+      await this.$modalSure(this.$('setting.admin.deletetitle'))
       await systemRoleDeleteApi(row.id)
       await this.getList()
     },
@@ -490,7 +490,7 @@ export default {
     },
     // 删除成员
     async handleDeleteUser(id, index) {
-      await this.$modalSure(this.$t('setting.admin.deletetitle2'))
+      await this.$modalSure(this.$('setting.admin.deletetitle2'))
       await systemRoleDeleteUserApi({
         uid: id,
         role_id: this.roleId
@@ -510,7 +510,7 @@ export default {
     },
     getStatusText(status) {
       if (status === undefined || status === null) return '--'
-      return this.$ts(Number(status) === 1 ? '启用' : '禁用')
+      return this.$(Number(status) === 1 ? '启用' : '禁用')
     },
     getStatusTagType(status) {
       return Number(status) === 1 ? '' : 'info'
@@ -518,9 +518,9 @@ export default {
     getReadonlyTreeData(treeData) {
       return treeData.map((item) => ({
         ...item,
-        label: this.$ts(item.label, item.label_en),
+        label: this.$(item.label, item.label_en),
         apis: Array.isArray(item.apis)
-          ? item.apis.map((api) => ({ ...api, label: this.$ts(api.label, api.label_en) }))
+          ? item.apis.map((api) => ({ ...api, label: this.$(api.label, api.label_en) }))
           : item.apis,
         disabled: true,
         children: Array.isArray(item.children) ? this.getReadonlyTreeData(item.children) : []
@@ -551,7 +551,7 @@ export default {
         4: '全部数据',
         5: '直属下级'
       }
-      return this.$ts(map[Number(value)] || '不允许')
+      return this.$(map[Number(value)] || '不允许')
     },
     getModuleDataLevelText(value) {
       const map = {
@@ -561,7 +561,7 @@ export default {
         4: '自定义部门',
         5: '全部数据'
       }
-      return map[Number(value)] ? this.$ts(map[Number(value)]) : '--'
+      return map[Number(value)] ? this.$(map[Number(value)]) : '--'
     },
     getFrameNameList(row) {
       if (!row) return []

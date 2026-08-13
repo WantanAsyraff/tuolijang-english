@@ -9,7 +9,7 @@ export const useContract = () => {
   const openContractPanel = (contractId) => {
 
     Object.assign(contractFromData.value, {
-      title: proxy.$t('customer.editcustomer'),
+      title: proxy.$('customer.editcustomer'),
       width: '1100px',
       data: {},
       link_type: 'customer',

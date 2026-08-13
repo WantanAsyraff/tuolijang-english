@@ -1,37 +1,38 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <oaDialog :fromData="fromData" ref="oaDialog" @submit="submit">
     <!-- 内容 -->
     <el-form :model="form" label-width="100px" :rules="rules">
-      <el-form-item :label="$t('ui.developModuleButtonDialogButtonPosition')">
+      <el-form-item :label="$('ui.developModuleButtonDialogButtonPosition')">
         <el-radio-group v-model="form.position">
-          <el-radio :label="1">{{ $t("ui.developModuleButtonDialogInList") }}</el-radio>
-          <el-radio :label="2">{{ $t("ui.developModuleButtonDialogListHeader") }}</el-radio>
+          <el-radio :label="1">{{ $("ui.developModuleButtonDialogInList") }}</el-radio>
+          <el-radio :label="2">{{ $("ui.developModuleButtonDialogListHeader") }}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="$t('ui.developModuleButtonDialogEnabledRules')">
-        <el-button size="small"> {{ $t("ui.developModuleButtonDialogSetEnablementRules") }} </el-button>
+      <el-form-item :label="$('ui.developModuleButtonDialogEnabledRules')">
+        <el-button size="small"> {{ $("ui.developModuleButtonDialogSetEnablementRules") }} </el-button>
       </el-form-item>
-      <el-form-item :label="$t('ui.developModuleButtonDialogSelectForm')" prop="form">
-        <el-select v-model="form.form" :placeholder="$t('ui.developModuleButtonDialogSearchAndSelectAFormSingleSelection')" size="small" style="width: 100%">
-          <el-option :label="$t('ui.developModuleButtonDialogForm1')" value="1"></el-option>
-          <el-option :label="$t('ui.developModuleButtonDialogForm2')" value="2"></el-option>
+      <el-form-item :label="$('ui.developModuleButtonDialogSelectForm')" prop="form">
+        <el-select v-model="form.form" :placeholder="$('ui.developModuleButtonDialogSearchAndSelectAFormSingleSelection')" size="small" style="width: 100%">
+          <el-option :label="$('ui.developModuleButtonDialogForm1')" value="1"></el-option>
+          <el-option :label="$('ui.developModuleButtonDialogForm2')" value="2"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('ui.developModuleButtonDialogDialogTitle')" prop="title">
-        <el-input v-model="form.title" size="small" :placeholder="$t('ui.developModuleButtonDialogPleaseEnterADialogTitle')"></el-input>
+      <el-form-item :label="$('ui.developModuleButtonDialogDialogTitle')" prop="title">
+        <el-input v-model="form.title" size="small" :placeholder="$('ui.developModuleButtonDialogPleaseEnterADialogTitle')"></el-input>
       </el-form-item>
-      <el-form-item :label="$t('ui.developModuleButtonDialogAction')">
+      <el-form-item :label="$('ui.developModuleButtonDialogAction')">
         <el-radio-group v-model="form.action">
-          <el-radio :label="1">{{ $t("ui.businessHolidayTypeIndexAdd") }}</el-radio>
-          <el-radio :label="2">{{ $t("ui.formCommonOaLogEdit") }}</el-radio>
+          <el-radio :label="1">{{ $("ui.businessHolidayTypeIndexAdd") }}</el-radio>
+          <el-radio :label="2">{{ $("ui.formCommonOaLogEdit") }}</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item :label="$t('ui.developModuleButtonDialogParameterSettings')">
+      <el-form-item :label="$('ui.developModuleButtonDialogParameterSettings')">
         <el-table>
-          <el-table-column :label="$t('ui.formCommonOaTableSerialNumber')" prop="name" width="80"></el-table-column>
-          <el-table-column :label="$t('ui.developModuleButtonDialogParameterName')" prop="name"></el-table-column>
-          <el-table-column :label="$t('ui.developModuleButtonDialogParameterSource')" prop="value"></el-table-column>
+          <el-table-column :label="$('ui.formCommonOaTableSerialNumber')" prop="name" width="80"></el-table-column>
+          <el-table-column :label="$('ui.developModuleButtonDialogParameterName')" prop="name"></el-table-column>
+          <el-table-column :label="$('ui.developModuleButtonDialogParameterSource')" prop="value"></el-table-column>
         </el-table>
       </el-form-item>
     </el-form>
@@ -39,7 +40,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   name: 'buttonDialog',
   components: {
@@ -55,8 +55,8 @@ export default {
     return {
       fromData: {
         width: '700px',
-        title: i18n.t('legacyScript.buttonEventSettings'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.buttonEventSettings'),
+        btnText: '确定',
         labelWidth: '90px',
         type: 'slot'
       },
@@ -66,8 +66,8 @@ export default {
         title: ''
       },
       rules: {
-        form: [{ required: true, message: i18n.t('legacyScript.pleaseSelectAForm'), trigger: 'blur' }],
-        title: [{ required: true, message: i18n.t('ui.developModuleButtonDialogPleaseEnterADialogTitle'), trigger: 'blur' }]
+        form: [{ required: true, message: $('legacyScript.pleaseSelectAForm'), trigger: 'blur' }],
+        title: [{ required: true, message: $('ui.developModuleButtonDialogPleaseEnterADialogTitle'), trigger: 'blur' }]
       }
     }
   },

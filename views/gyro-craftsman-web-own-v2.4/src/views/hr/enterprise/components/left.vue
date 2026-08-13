@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <template>
   <div class="assess-left">
     <div class="el-card__header">
-      <span class="pull-left">{{ $ts("晋升表") }}</span>
-      <el-tooltip :content='$ts("添加晋升表类型")' effect="dark" placement="top">
+      <span class="pull-left">{{ $("ui.userTrainingPromotionPromotionTable") }}</span>
+      <el-tooltip :content='$("legacy.c2e254e47a110a92")' effect="dark" placement="top">
         <span class="iconfont icontianjia pull-right" @click="addType()"></span>
       </el-tooltip>
     </div>
@@ -17,7 +18,7 @@
               @click="clickDepart(index, item)"
             >
               <div>
-                <el-tooltip :content='$ts("显示/隐藏")' effect="dark" placement="top">
+                <el-tooltip :content='$("legacy.499256129a271c83")' effect="dark" placement="top">
                   <span v-if="item.status == 1" class="iconfont icondakai" @click.stop="putStatus(item)" />
                   <span v-if="item.status == 0" class="iconfont iconyincang" @click.stop="putStatus(item)" />
                 </el-tooltip>
@@ -27,8 +28,8 @@
 
               <el-popover :ref="`pop-${item.id}`" :offset="10" placement="bottom-end" trigger="click">
                 <div class="right-item-list">
-                  <div class="right-item" @click.stop="addDivsion(item)">{{ $t('public.edit') }}</div>
-                  <div class="right-item" @click.stop="handleDelete(item.id)">{{ $t('public.delete') }}</div>
+                  <div class="right-item" @click.stop="addDivsion(item)">{{ $('public.edit') }}</div>
+                  <div class="right-item" @click.stop="handleDelete(item.id)">{{ $('public.delete') }}</div>
                 </div>
                 <i slot="reference" class="icon iconfont icongengduo pointer assess-left-more"></i>
               </el-popover>
@@ -50,7 +51,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import {
   promotionListApi,
   subPromotionApi,
@@ -68,22 +68,22 @@ export default {
       department: [],
       fromData: {
         with: '600px',
-        title: i18n.t('legacyScript.addPromotionTable'),
-        btnText: i18n.t('ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave'),
+        title: $('legacyScript.addPromotionTable'),
+        btnText: '保存',
         labelWidth: '90px',
         type: ''
       },
       formConfig: [
         {
           type: 'input',
-          label: i18n.t('legacyScript.name'),
-          placeholder: i18n.t('legacyScript.pleaseEnterPromotionTableName'),
+          label: $('legacyScript.name'),
+          placeholder: $('legacyScript.pleaseEnterPromotionTableName'),
           key: 'name'
         },
         {
           type: 'inputNumber',
-          label: i18n.t('ui.businessHolidayTypeIndexSort'),
-          placeholder: i18n.t('customer.placeholder04'),
+          label: $('ui.businessHolidayTypeIndexSort'),
+          placeholder: $('customer.placeholder04'),
           key: 'sort'
         }
       ],
@@ -93,7 +93,7 @@ export default {
       },
       id: '',
       formRules: {
-        name: { required: true, message: i18n.t('legacyScript.pleaseEnterPromotionTableName'), trigger: 'blur' }
+        name: { required: true, message: $('legacyScript.pleaseEnterPromotionTableName'), trigger: 'blur' }
       }
     }
   },
@@ -114,7 +114,7 @@ export default {
     addType() {
       this.formDataInit.name = ''
       this.formDataInit.sort = 1
-      this.fromData.title = i18n.t('legacyScript.addPromotionTable')
+      this.fromData.title = $('legacyScript.addPromotionTable')
       this.fromData.type = ''
       this.$refs.oaDialog.openBox()
     },
@@ -141,7 +141,7 @@ export default {
       this.formDataInit.name = item.name
       this.formDataInit.sort = item.sort
       this.id = item.id
-      this.fromData.title = i18n.t('legacyScript.editPromotionTable')
+      this.fromData.title = $('legacyScript.editPromotionTable')
       this.fromData.type = 'edit'
       this.$refs.oaDialog.openBox()
     },

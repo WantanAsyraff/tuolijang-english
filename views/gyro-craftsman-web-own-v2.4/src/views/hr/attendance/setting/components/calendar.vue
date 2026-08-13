@@ -2,16 +2,16 @@
   <div>
     <el-dialog top="5%" :visible.sync="show" width="600" :close-on-click-modal="false" :show-close="false">
       <div slot="title" class="header">
-        <span class="title">{{ $ts("排班日历") }}</span>
+        <span class="title">{{ $("legacy.08eb629ed2f6801b") }}</span>
 
         <span class="el-icon-close" @click="handleClose"></span>
       </div>
       <div class="box">
         <div class="day">
-          {{ $ts("当前时间：") }}{{ activateDate.year }}-{{
+          {{ $("legacy.6d15ffce405b0ee9") }}{{ activateDate.year }}-{{
             this.activateDate.month < 10 ? '0' + this.activateDate.month : this.activateDate.month
           }}
-          <span>{{ $ts("（点击日历格可调整班休状态，历史日期不可调整，红色为休息日）") }}</span>
+          <span>{{ $("legacy.343a92308fc3511b") }}</span>
         </div>
         <ve-calendar
           :activateDate="activateDate"
@@ -30,8 +30,8 @@
         </ve-calendar>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="handleClose">{{ $ts("取 消") }}</el-button>
-        <el-button type="primary" :loading="loading" @click="submit">{{ $ts("确定") }}</el-button>
+        <el-button @click="handleClose">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+        <el-button type="primary" :loading="loading" @click="submit">{{ $("public.ok") }}</el-button>
       </span>
     </el-dialog>
   </div>

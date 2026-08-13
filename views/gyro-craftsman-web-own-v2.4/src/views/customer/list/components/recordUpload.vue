@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 客户跟进记录填写弹窗组件 -->
 <template>
   <div class="followUpRecord">
@@ -11,7 +12,7 @@
             ref="inputFocus"
             v-model="form.content"
             autosize
-            :placeholder='$ts("填写跟进记录吧")'
+            :placeholder='$("legacy.6ff5ce45e8f32052")'
             resize="none"
             type="textarea"
           >
@@ -40,15 +41,15 @@
               action="##"
               class="mr10 upload-real"
             >
-              <div v-if="!percentShow" class="addText mt20"><span class="iconfont iconfujian"></span> {{ $ts("添加附件") }}</div>
+              <div v-if="!percentShow" class="addText mt20"><span class="iconfont iconfujian"></span> {{ $("ui.customerWeChatMassMaterialContentAddAttachment") }}</div>
               <div v-else class="addText mt20">
                 <img alt="" class="l_gif" src="@/assets/images/loading.gif" />
               </div>
             </el-upload>
           </el-col>
           <el-col :span="12" class="text-right mt20">
-            <el-button v-if="formInfo.type === 'edit'" size="small" @click="clientCancel">{{ $ts("取消") }}</el-button>
-            <el-button :loading="loading" size="small" type="primary" @click="clientFollowSave">{{ $ts("确定") }}</el-button>
+            <el-button v-if="formInfo.type === 'edit'" size="small" @click="clientCancel">{{ $("public.cancel") }}</el-button>
+            <el-button :loading="loading" size="small" type="primary" @click="clientFollowSave">{{ $("public.ok") }}</el-button>
           </el-col>
         </el-row>
         <!-- <div v-if="formInfo.show !== 1" class="mt30"></div> -->
@@ -58,7 +59,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { saveClientFollowApi, putClientFollowApi } from '@/api/client'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
@@ -96,7 +96,7 @@ export default {
       },
       follow_id: 0,
       rules: {
-        content: [{ required: true, message: i18n.t('legacyScript.pleaseEnterFollowUpInformation'), trigger: 'blur' }]
+        content: [{ required: true, message: $('legacyScript.pleaseEnterFollowUpInformation'), trigger: 'blur' }]
       },
       avatar: '',
       uploadData: {},

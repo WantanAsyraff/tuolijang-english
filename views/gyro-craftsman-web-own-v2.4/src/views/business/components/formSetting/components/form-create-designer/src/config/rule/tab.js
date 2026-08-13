@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 const label = '标签页';
 const name = 'tab';
 
@@ -18,7 +18,7 @@ export default {
       {
         type: 'select',
         field: 'type',
-        title: i18n.t('legacyScript.styleType'),
+        title: $('legacyScript.styleType'),
         options: [
           { label: 'default', value: 'default' },
           {
@@ -28,11 +28,11 @@ export default {
           { label: 'border-card', value: 'border-card' },
         ],
       },
-      { type: 'switch', field: 'closable', title: i18n.t('legacyScript.whetherTagsAreClosable') },
+      { type: 'switch', field: 'closable', title: $('legacyScript.whetherTagsAreClosable') },
       {
         type: 'select',
         field: 'tabPosition',
-        title: i18n.t('legacyScript.tabPosition'),
+        title: $('legacyScript.tabPosition'),
         options: [
           { label: 'top', value: 'top' },
           { label: 'right', value: 'right' },
@@ -42,7 +42,7 @@ export default {
           },
         ],
       },
-      { type: 'switch', field: 'stretch', title: i18n.t('legacyScript.whetherTheLabelWidthAutoExpands') },
+      { type: 'switch', field: 'stretch', title: $('legacyScript.whetherTheLabelWidthAutoExpands') },
     ];
   },
 };

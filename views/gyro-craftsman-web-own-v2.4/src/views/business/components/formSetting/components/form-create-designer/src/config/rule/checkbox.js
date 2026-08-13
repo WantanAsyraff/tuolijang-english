@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule } from '../../utils/index';
 import { makeRequiredRule } from '../../utils';
@@ -21,8 +21,8 @@ export default {
       },
       props: {},
       options: [
-        { value: i18n.t('legacyScript.option1'), label: i18n.t('legacyScript.option1') },
-        { value: i18n.t('legacyScript.option2'), label: i18n.t('legacyScript.option2') },
+        { value: $('legacyScript.option1'), label: $('legacyScript.option1') },
+        { value: $('legacyScript.option2'), label: $('legacyScript.option2') },
       ],
     };
   },

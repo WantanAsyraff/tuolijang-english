@@ -2,7 +2,7 @@
   <div>
     <!-- 被邀请人列表 -->
     <el-dialog
-      :title="$t('public.list')"
+      :title="$('public.list')"
       :visible.sync="dialogFormVisible"
       width="815px"
       :modal="false"
@@ -10,25 +10,25 @@
       custom-class="person"
     >
       <el-table :data="dataTable" style="width: 100%">
-        <el-table-column prop="created_at" :label="$t('toptable.invitationtime')" min-width="160" />
-        <el-table-column :label="$t('setting.headportrait')" min-width="120">
+        <el-table-column prop="created_at" :label="$('toptable.invitationtime')" min-width="160" />
+        <el-table-column :label="$('setting.headportrait')" min-width="120">
           <template slot-scope="scope">
             <img class="avatar" :src="scope.row.user.avatar" alt="" />
           </template>
         </el-table-column>
-        <el-table-column prop="user.real_name" :label="$t('toptable.name')" min-width="120" />
-        <el-table-column prop="user.phone" :label="$t('toptable.phone')" min-width="120" />
-        <el-table-column prop="user.phone" :label="$t('toptable.state')" min-width="80">
+        <el-table-column prop="user.real_name" :label="$('toptable.name')" min-width="120" />
+        <el-table-column prop="user.phone" :label="$('toptable.phone')" min-width="120" />
+        <el-table-column prop="user.phone" :label="$('toptable.state')" min-width="80">
           <template slot-scope="scope">
-            <span v-if="scope.row.status == -1">{{ $t('toptable.audit') }}</span>
-            <span v-if="scope.row.status == 0">{{ $t('toptable.refuse') }}</span>
-            <span v-if="scope.row.status == 1">{{ $t('toptable.agree') }}</span>
+            <span v-if="scope.row.status == -1">{{ $('toptable.audit') }}</span>
+            <span v-if="scope.row.status == 0">{{ $('toptable.refuse') }}</span>
+            <span v-if="scope.row.status == 1">{{ $('toptable.agree') }}</span>
           </template>
         </el-table-column>
-        <el-table-column width="100" :label="$t('toptable.operation')" fixed="right">
+        <el-table-column width="100" :label="$('toptable.operation')" fixed="right">
           <template slot-scope="scope">
             <el-button type="text" size="small" @click="handleDelete(scope.row.id, scope.$index)">{{
-              $t('public.delete')
+              $('public.delete')
             }}</el-button>
           </template>
         </el-table-column>
@@ -82,7 +82,7 @@ export default {
     },
     // 删除申请人
     handleDelete(id, index) {
-      this.$modalSure(this.$t('setting.group.deleapply')).then(() => {
+      this.$modalSure(this.$('setting.group.deleapply')).then(() => {
         applyDeleteApi(id).then((res) => {
           this.dataTable.splice(index, 1)
         })

@@ -1,25 +1,25 @@
+import { $ } from '@/lang'
 <template>
 <div>
-  <el-dialog :title="this.id ? $t('ui.customerWeChatMassAddmassEditMaterial') : $t('ui.customerWeChatMassAddmassAddMaterial')" :visible.sync="visible" width="650px" @close="handleClose">
+  <el-dialog :title="this.id ? $('ui.customerWeChatMassAddmassEditMaterial') : $('ui.customerWeChatMassAddmassAddMaterial')" :visible.sync="visible" width="650px" @close="handleClose">
     <el-form :model="form" label-width="auto" ref="form" :rules="rules">
-      <el-form-item :label="$t('ui.customerWeChatMassAddmassMaterialCategory')" prop="group_id">
-        <el-select v-model="form.group_id" :placeholder="$t('ui.customerWeChatMassAddmassSelectMaterialCategorySingle')" size="small" style="width: 100%">
+      <el-form-item :label="$('ui.customerWeChatMassAddmassMaterialCategory')" prop="group_id">
+        <el-select v-model="form.group_id" :placeholder="$('ui.customerWeChatMassAddmassSelectMaterialCategorySingle')" size="small" style="width: 100%">
           <el-option v-for="item in leftList" :key="item.id" :label="item.name" :value="item.id"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('ui.customerWeChatMassAddmassMaterialContent')" prop="group_id">
+      <el-form-item :label="$('ui.customerWeChatMassAddmassMaterialContent')" prop="group_id">
         <materialContent ref="materialContent"></materialContent>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="handleClose" size="small">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-      <el-button type="primary" @click="handleConfirm" size="small">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+      <el-button @click="handleClose" size="small">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button type="primary" @click="handleConfirm" size="small">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </div>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { workMassTempSaveApi, workMassTempEditApi, workMassTempApi } from '@/api/weCom'
 export default {
   name: '',
@@ -39,7 +39,7 @@ export default {
       id: 0,
       form: { group_id: this.group_id, attach: [], content: '' },
       rules: {
-        group_id: [{ required: true, message: i18n.t('ui.customerWeChatMassMaterialLibrarySelectMaterialCategory'), trigger: 'change' }]
+        group_id: [{ required: true, message: $('ui.customerWeChatMassMaterialLibrarySelectMaterialCategory'), trigger: 'change' }]
       }
     }
   },
@@ -56,7 +56,7 @@ export default {
         this.form.content = this.$refs.materialContent.content
       }
       if (this.form.content == '') {
-        this.$message.error(i18n.t('user.work.title2'))
+        this.$message.error($('user.work.title2'))
         return false
       }
 

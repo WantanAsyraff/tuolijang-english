@@ -14,7 +14,7 @@ export const useCustomer = () => {
       const res = await chargeEditApi(customerId);
 
       Object.assign(customerFromData.value, {
-        title: proxy.$t('customer.editcustomer'),
+        title: proxy.$('customer.editcustomer'),
         width: '1100px',
         data: res.data.data,
         isClient: true,

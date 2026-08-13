@@ -1,8 +1,8 @@
 <template>
-  <el-form-item :label='$ts("图表数据实体")'>
+  <el-form-item :label='$("legacy.79694b3022b9db47")'>
     <el-cascader
       v-model="myOption.dataEntity"
-      :placeholder='$ts("请选择实体")'
+      :placeholder='$("ui.developCrudEventPleaseSelectEntity")'
       :options="unSystemEntityList"
       :show-all-levels="false"
       filterable

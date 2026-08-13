@@ -6,9 +6,9 @@
         <div>
           <div class="plan-tabs-content mb20">
             <el-tabs v-model="tabCur" @tab-click="tapClick">
-              <el-tab-pane :label='$ts("考核记录")' name="4" />
-              <el-tab-pane :label='$ts("待处理")' name="3" />
-              <el-tab-pane :label='$ts("考核统计")' name="5" />
+              <el-tab-pane :label='$("legacy.ccd4bfc16e72804c")' name="4" />
+              <el-tab-pane :label='$("toptable.pending")' name="3" />
+              <el-tab-pane :label='$("access.assessmentstatistics")' name="5" />
             </el-tabs>
             <el-button
               v-if="tabCur == 3 || tabCur == 4"
@@ -17,7 +17,7 @@
               size="small"
               type="primary"
               @click="addFinance"
-              >{{ $t('access.createassessment') }}</el-button
+              >{{ $('access.createassessment') }}</el-button
             >
           </div>
           <!-- 待处理与考核记录  -->

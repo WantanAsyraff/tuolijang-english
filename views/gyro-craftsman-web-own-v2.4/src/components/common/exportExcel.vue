@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 
   @FileDescription: Excel导出组件
   功能：封装Excel导出功能，支持自定义模板、单元格合并和样式设置
@@ -8,7 +9,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import XLSX from 'xlsx'
 
 export default {
@@ -54,7 +54,7 @@ export default {
      */
     exportExcel() {
       if (this.exportData.data.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.contentIsEmpty'))
+        this.$message.error($('legacyScript.contentIsEmpty'))
         return
       }
       

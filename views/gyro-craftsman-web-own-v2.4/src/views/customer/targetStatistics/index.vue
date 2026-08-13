@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox" v-loading="loading">
   <el-card class="mb12 box-height">
     <el-tabs v-model="where.link_type" @tab-click="handleClick">
-      <el-tab-pane :label="$t('ui.customerKpiIndexDepartmentTarget')" name="1" />
-      <el-tab-pane :label="$t('ui.customerKpiIndexSalespersonTarget')" name="0" />
+      <el-tab-pane :label="$('ui.customerKpiIndexDepartmentTarget')" name="1" />
+      <el-tab-pane :label="$('ui.customerKpiIndexSalespersonTarget')" name="0" />
     </el-tabs>
     <!-- 筛选 -->
     <div class="flex mb10 mt20">
@@ -13,7 +14,7 @@
         size="small"
         format="yyyy"
         value-format="yyyy"
-        :placeholder="$t('ui.customerKpiIndexSelectYear')"
+        :placeholder="$('ui.customerKpiIndexSelectYear')"
         @change="getTableData"
       >
       </el-date-picker>
@@ -36,7 +37,7 @@
         style="width: 250px"
       >
       </select-member>
-      <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+      <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
         <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
       </el-tooltip>
     </div>
@@ -47,112 +48,112 @@
 
     <!-- 表格 -->
     <el-table :data="tableData" border style="width: 100%" :cell-style="tableCellStyle" class="mt30">
-      <el-table-column :label="$t('ui.businessHolidayQueryIndexDepartment')" prop="user.name" fixed> </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexFullYear')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="annual.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="annual.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="annual.ratio" />
+      <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" prop="user.name" fixed> </el-table-column>
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexFullYear')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="annual.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="annual.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="annual.ratio" />
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexQ1')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="q1.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="q1.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="q1.ratio" />
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexQ1')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="q1.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="q1.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="q1.ratio" />
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexJanuary')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month1.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month1.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month1.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexJanuary')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month1.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month1.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month1.ratio">
           <template slot-scope="scope"> {{ scope.row.month1.ratio }}% </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexFebruary')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month2.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month2.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month2.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexFebruary')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month2.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month2.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month2.ratio">
           <template slot-scope="scope"> {{ scope.row.month2.ratio }}% </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexMarch')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month3.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month3.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month3.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexMarch')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month3.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month3.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month3.ratio">
           <template slot-scope="scope"> {{ scope.row.month3.ratio }}% </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexQ2')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="q2.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="q2.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="q2.ratio" />
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexQ2')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="q2.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="q2.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="q2.ratio" />
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexApril')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month4.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month4.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month4.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexApril')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month4.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month4.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month4.ratio">
           <template slot-scope="scope"> {{ scope.row.month4.ratio }}% </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexMay')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month5.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month5.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month5.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexMay')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month5.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month5.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month5.ratio">
           <template slot-scope="scope"> {{ scope.row.month5.ratio }}% </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexJune')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month6.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month6.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month6.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexJune')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month6.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month6.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month6.ratio">
           <template slot-scope="scope"> {{ scope.row.month6.ratio }}% </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexQ3')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="q3.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="q3.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="q3.ratio" />
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexQ3')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="q3.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="q3.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="q3.ratio" />
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexJuly')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month7.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month7.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month7.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexJuly')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month7.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month7.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month7.ratio">
           <template slot-scope="scope"> {{ scope.row.month7.ratio }}% </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexAugust')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month8.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month8.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month8.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexAugust')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month8.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month8.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month8.ratio">
           <template slot-scope="scope"> {{ scope.row.month8.ratio }}% </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexSeptember')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month9.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month9.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month9.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexSeptember')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month9.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month9.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month9.ratio">
           <template slot-scope="scope"> {{ scope.row.month9.ratio }}% </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexQ4')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="q4.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="q4.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="q4.ratio" />
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexQ4')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="q4.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="q4.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="q4.ratio" />
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexOctober')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month10.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month10.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month10.ratio" />
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexOctober')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month10.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month10.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month10.ratio" />
       </el-table-column>
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexNovember')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month11.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month11.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month11.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexNovember')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month11.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month11.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month11.ratio">
           <template slot-scope="scope"> {{ scope.row.month11.ratio }}% </template>
         </el-table-column>
       </el-table-column>
 
-      <el-table-column :label="$t('ui.customerTargetStatisticsIndexDecember')" align="center">
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompleted')" prop="month12.amount" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexTarget')" prop="month12.target" width="100" />
-        <el-table-column :label="$t('ui.customerTargetStatisticsIndexCompletionRate')" prop="month12.ratio">
+      <el-table-column :label="$('ui.customerTargetStatisticsIndexDecember')" align="center">
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompleted')" prop="month12.amount" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexTarget')" prop="month12.target" width="100" />
+        <el-table-column :label="$('ui.customerTargetStatisticsIndexCompletionRate')" prop="month12.ratio">
           <template slot-scope="scope"> {{ scope.row.month12.ratio }}% </template>
         </el-table-column>
       </el-table-column>
@@ -162,7 +163,6 @@
 </template>
 <script>
 import { clientTargetRateApi, clientTargetCensusApi } from '@/api/client'
-import { translateRuntimeText } from '@/utils/i18ns'
 export default {
   name: '',
   components: {
@@ -195,7 +195,7 @@ export default {
 
   methods: {
     tChartText(text) {
-      return translateRuntimeText(text, this)
+      return this.$(text)
     },
     // 获取表格数据
     getListData() {

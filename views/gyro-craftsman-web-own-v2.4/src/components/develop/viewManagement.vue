@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-新建编辑视图管理-->
 <template>
 <div class="oa-dialog">
@@ -10,7 +11,7 @@
     width="700px"
   >
     <div slot="title" class="header flex-between">
-      <span class="title">{{ $t("ui.commonHeaderSearchViewManagement") }}</span>
+      <span class="title">{{ $("ui.commonHeaderSearchViewManagement") }}</span>
       <span class="el-icon-close" @click="handleClose"></span>
     </div>
     <div class="flex mb20 flex-between">
@@ -19,23 +20,23 @@
           v-model="name"
           class="input"
           clearable
-          :placeholder="$t('ui.developViewManagementPleaseEnterViewName')"
+          :placeholder="$('ui.developViewManagementPleaseEnterViewName')"
           prefix-icon="el-icon-search"
           size="small"
           style="width: 300px"
         ></el-input>
       </div>
-      <el-button size="small" type="primary" @click="addViewFn">{{ $t("ui.developViewManagementCreateView") }}</el-button>
+      <el-button size="small" type="primary" @click="addViewFn">{{ $("ui.developViewManagementCreateView") }}</el-button>
     </div>
 
     <!-- 内容 -->
     <ul v-if="list.length > 0" class="content-title" v-loading="loading">
       <li>
-        <p>{{ $t("ui.developViewManagementOrder") }}</p>
-        <p>{{ $t("ui.developViewManagementViewName") }}</p>
-        <p>{{ $t("ui.developViewManagementType") }}</p>
-        <p>{{ $t("ui.hrAssessCheckIndexCreator") }}</p>
-        <p>{{ $t("ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation") }}</p>
+        <p>{{ $("ui.developViewManagementOrder") }}</p>
+        <p>{{ $("ui.developViewManagementViewName") }}</p>
+        <p>{{ $("ui.developViewManagementType") }}</p>
+        <p>{{ $("ui.hrAssessCheckIndexCreator") }}</p>
+        <p>{{ $("ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation") }}</p>
       </li>
       <ul class="content-body">
         <draggable
@@ -52,9 +53,9 @@
             <li v-for="(item, index) in searchList" :key="item.id">
               <p><i class="icon iconfont icontuodong item-drag"></i></p>
               <p class="text">{{ item.senior_title || item.title }}</p>
-              <p v-if="!viewType" class="text">{{ item.senior_type == 0 ? $t('ui.commonOaFromBoxPersonal') : $t('ui.commonOaFromBoxPublic') }}</p>
+              <p v-if="!viewType" class="text">{{ item.senior_type == 0 ? $('ui.commonOaFromBoxPersonal') : $('ui.commonOaFromBoxPublic') }}</p>
 
-              <p v-else class="text">{{ item.is_public == 0 ? $t('ui.commonOaFromBoxPersonal') : $t('ui.commonOaFromBoxPublic') }}</p>
+              <p v-else class="text">{{ item.is_public == 0 ? $('ui.commonOaFromBoxPersonal') : $('ui.commonOaFromBoxPublic') }}</p>
               <p class="text">{{ item.admin?item.admin.name:'--' }}</p>
               <p>
                 <span class="mr10" @click.stop="editFn(item)" v-if="item.uid !== user_id">--</span>
@@ -84,7 +85,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import defaultPage from '@/components/common/defaultPage'
 import draggable from 'vuedraggable'
 import oaDialog from '@/components/form-common/dialog-form'
@@ -132,8 +132,8 @@ export default {
       loading: false,
       fromData: {
         width: '500px',
-        title: i18n.t('ui.developViewManagementCreateView'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.developViewManagementCreateView'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },
@@ -145,14 +145,14 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: i18n.t('legacyScript.viewName'),
-          placeholder: i18n.t('legacyScript.pleaseEnterAViewNameWithin10Characters'),
+          label: $('legacyScript.viewName'),
+          placeholder: $('legacyScript.pleaseEnterAViewNameWithin10Characters'),
           key: 'senior_title'
         },
         {
           type: 'radio',
-          label: i18n.t('legacyScript.viewType'),
-          placeholder: i18n.t('legacyScript.pleaseSelectViewType'),
+          label: $('legacyScript.viewType'),
+          placeholder: $('legacyScript.pleaseSelectViewType'),
           key: 'senior_type',
           options: [
             {
@@ -170,16 +170,16 @@ export default {
         senior_title: [
           {
             required: true,
-            message: i18n.t('ui.developViewManagementPleaseEnterViewName'),
+            message: $('ui.developViewManagementPleaseEnterViewName'),
             trigger: 'blur'
           },
-          { min: 0, max: 10, message: i18n.t('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
+          { min: 0, max: 10, message: $('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
         ],
 
         senior_type: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectViewType'),
+            message: $('legacyScript.pleaseSelectViewType'),
             trigger: 'change'
           }
         ]
@@ -215,7 +215,7 @@ export default {
         senior_title: '',
         senior_type: '0'
       }
-      this.fromData.title = i18n.t('ui.developViewManagementCreateView')
+      this.fromData.title = $('ui.developViewManagementCreateView')
       this.$refs.oaDialog.openBox()
     },
     delFn(item) {
@@ -252,7 +252,7 @@ export default {
         search_boolean: item.view_search_boolean,
         senior_search: item.senior_search || item.content
       }
-      this.fromData.title = i18n.t('legacyScript.editView')
+      this.fromData.title = $('legacyScript.editView')
       this.$refs.oaDialog.openBox()
     },
     onStart() {},

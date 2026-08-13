@@ -2,23 +2,23 @@
   <div class="tree-box">
     <div class="tree-title">
       <el-dropdown placement="bottom" @command="handleCommand">
-        <el-button type="primary" size="small" class="dropdownbutton"> <i class="el-icon-plus"></i> {{ $ts("新 建") }} </el-button>
+        <el-button type="primary" size="small" class="dropdownbutton"> <i class="el-icon-plus"></i> {{ $("legacy.d396a55bbab86336") }} </el-button>
 
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="note" icon="el-icon-circle-plus">{{ $ts("新建笔记") }}</el-dropdown-item>
+          <el-dropdown-item command="note" icon="el-icon-circle-plus">{{ $("legacy.d3d2d99f600329e7") }}</el-dropdown-item>
           <el-dropdown-item command="folder" icon="iconfont iconjishiben-xinjianwenjianjia1"
-            >{{ $ts("新建文件夹") }}</el-dropdown-item
+            >{{ $("file.newfolder") }}</el-dropdown-item
           >
         </el-dropdown-menu>
       </el-dropdown>
       <div class="recently" :class="recentlyShow ? 'activeColor' : ''" @click="onRecently">
-        <span class="iconfont iconshijian"></span><span>{{ $ts("最近使用") }}</span>
+        <span class="iconfont iconshijian"></span><span>{{ $("legacy.39a9046f9c8c993d") }}</span>
       </div>
     </div>
     <div class="" v-height>
       <el-scrollbar style="height: 100%" class="reset-scroll-bar">
         <div class="main-box" tabindex="1" :class="focusShow ? 'focus' : ''" @click="handleClick(1)">
-          <span class="iconfont iconwenjianjia1"></span> <span>{{ $ts("我的文件夹") }}</span>
+          <span class="iconfont iconwenjianjia1"></span> <span>{{ $("legacy.be17c3e0e857ded8") }}</span>
         </div>
         <el-tree
           ref="tree"
@@ -57,11 +57,11 @@
             >
               <div class="right-item-list">
                 <div v-if="node.level < 3" class="right-item" @click.stop="addCate(1, data)">
-                  {{ $t('calendar.addtype') }}
+                  {{ $('calendar.addtype') }}
                 </div>
-                <div v-if="data.id != ''" class="right-item" @click.stop="addEdit(data)">{{ $t('public.edit') }}</div>
+                <div v-if="data.id != ''" class="right-item" @click.stop="addEdit(data)">{{ $('public.edit') }}</div>
                 <div v-if="data.id != ''" class="right-item" @click.stop="handleDelete(data)">
-                  {{ $t('public.delete') }}
+                  {{ $('public.delete') }}
                 </div>
               </div>
 
@@ -125,8 +125,8 @@ export default {
       switch (command) {
         case 'note':
           var data = {
-            title: this.$t('calendar.placeholder03'),
-            content: this.$t('calendar.placeholder04'),
+            title: this.$('calendar.placeholder03'),
+            content: this.$('calendar.placeholder04'),
             pid: this.id == '' ? 0 : this.id
           }
 
@@ -225,7 +225,7 @@ export default {
     // 删除
     handleDelete(item) {
       this.closePopover(item.id)
-      this.$modalSure(this.$t('calendar.placeholder08')).then(() => {
+      this.$modalSure(this.$('calendar.placeholder08')).then(() => {
         memorialCateDeleteApi(item.id).then((res) => {
           this.menuList()
         })

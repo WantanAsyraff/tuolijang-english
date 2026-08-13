@@ -14,34 +14,34 @@
             :height="tableHeight"
             :tree-props="{ children: 'children' }"
           >
-            <el-table-column prop="name" :label="$t('user.work.assessmentname')" min-width="130" />
-            <el-table-column prop="period" :label="$t('toptable.assessmentcycle')" min-width="100">
+            <el-table-column prop="name" :label="$('user.work.assessmentname')" min-width="130" />
+            <el-table-column prop="period" :label="$('toptable.assessmentcycle')" min-width="100">
               <template slot-scope="scope">
                 <span>{{ getPeriodText(scope.row.period) }}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="score" :label="$t('user.work.qssessmentscore')" min-width="100" />
-            <el-table-column prop="level" :label="$t('access.assessmentgrade')" min-width="100" />
-            <el-table-column prop="check.name" :label="$t('user.work.assessor')" min-width="100" />
-            <el-table-column prop="status" :label="$t('hr.assessmentstatus')" min-width="120">
+            <el-table-column prop="score" :label="$('user.work.qssessmentscore')" min-width="100" />
+            <el-table-column prop="level" :label="$('access.assessmentgrade')" min-width="100" />
+            <el-table-column prop="check.name" :label="$('user.work.assessor')" min-width="100" />
+            <el-table-column prop="status" :label="$('hr.assessmentstatus')" min-width="120">
               <template slot-scope="scope">
                 <el-tag :type="getStatusTag(scope.row.status).type">{{ getStatusTag(scope.row.status).text }}</el-tag>
               </template>
             </el-table-column>
-            <el-table-column prop="start_time" :label="$t('access.starttime')" min-width="100">
+            <el-table-column prop="start_time" :label="$('access.starttime')" min-width="100">
               <template slot-scope="scope">
                 {{ $moment(scope.row.start_time).format('yyyy-MM-DD') }}
               </template>
             </el-table-column>
-            <el-table-column prop="end_time" :label="$t('access.endtime')" min-width="100">
+            <el-table-column prop="end_time" :label="$('access.endtime')" min-width="100">
               <template slot-scope="scope">
                 {{ $moment(scope.row.end_time).format('yyyy-MM-DD') }}
               </template>
             </el-table-column>
-            <el-table-column prop="address" :label="$t('public.operation')" fixed="right" width="240">
+            <el-table-column prop="address" :label="$('public.operation')" fixed="right" width="240">
               <template slot-scope="scope">
                 <el-button v-if="scope.row.status !== 1" type="text" @click="handleCheck(scope.row, 'check')">
-                  {{ $t("ui.layoutNoticeNoticeListView") }}
+                  {{ $("ui.layoutNoticeNoticeListView") }}
                 </el-button>
 
                 <el-button
@@ -49,14 +49,14 @@
                   type="text"
                   @click="handleCheck(scope.row, 'selfEdit')"
                 >
-                  {{ scope.row.status === 1 ? $t('ui.userAssessmentSelfSelfAssessment') : $t('ui.userAssessmentSelfEditSelfAssessment') }}
+                  {{ scope.row.status === 1 ? $('ui.userAssessmentSelfSelfAssessment') : $('ui.userAssessmentSelfEditSelfAssessment') }}
                 </el-button>
 
                 <el-button
                   type="text"
                   v-if="scope.row.status !== 0 && scope.row.status !== 1"
                   @click="handleScore(scope.row)"
-                  >{{ $t('access.scoringrecord') }}</el-button
+                  >{{ $('access.scoringrecord') }}</el-button
                 >
               </template>
             </el-table-column>
@@ -177,7 +177,7 @@ export default {
     },
     handleScore(row) {
       this.config = {
-        title: this.$t('access.scoringrecord'),
+        title: this.$('access.scoringrecord'),
         width: '720px',
         id: row.id
       }

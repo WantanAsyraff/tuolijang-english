@@ -21,7 +21,7 @@
       <el-table-column width="30" align="center">
         <template slot-scope="scope">
            <div v-if="scope.row.isLoadMore" class="load-more-row">
-            <span class="load-more-text" @click="handleLoadMore(scope.row)">{{ $t("ui.developModuleTreeLoadMore") }}<span class="el-icon-arrow-down" /></span>
+            <span class="load-more-text" @click="handleLoadMore(scope.row)">{{ $("ui.developModuleTreeLoadMore") }}<span class="el-icon-arrow-down" /></span>
             <!-- <div class="divider"></div> -->
           </div>
         
@@ -79,23 +79,23 @@
           </el-table-column>
     
       
-     <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="130">
+     <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="130">
             <template slot-scope="scope">
             
               <!-- 客户子项行 -->
               <template v-if="!scope.row.isGroup">
-              <el-button class="mr10" type="text" @click="checkRow(scope.row)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+              <el-button class="mr10" type="text" @click="checkRow(scope.row)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
               <el-dropdown>
-                <span class="el-dropdown-link el-button--text el-button"> {{ $t("ui.layoutNavbarMore") }} <i class="el-icon-arrow-down" /></span>
+                <span class="el-dropdown-link el-button--text el-button"> {{ $("ui.layoutNavbarMore") }} <i class="el-icon-arrow-down" /></span>
                 <el-dropdown-menu>
-                  <el-dropdown-item @click.native="openShare(scope.row)"> {{ $t("ui.developCrudListSettingShareAndCollaborate") }} </el-dropdown-item>
+                  <el-dropdown-item @click.native="openShare(scope.row)"> {{ $("ui.developCrudListSettingShareAndCollaborate") }} </el-dropdown-item>
                   <el-dropdown-item v-if="scope.row.is_share" @click.native="cancelShare(scope.row)">
-                    {{ $t("ui.developCrudListSettingCancelCollaboration") }}
+                    {{ $("ui.developCrudListSettingCancelCollaboration") }}
                   </el-dropdown-item>
                   <el-dropdown-item @click.native="handleDropdown('transfer', scope.row)">
-                    {{ $t("ui.developCrudListSettingTransferOwner") }}
+                    {{ $("ui.developCrudListSettingTransferOwner") }}
                   </el-dropdown-item>
-                  <el-dropdown-item @click.native="deleteRow(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-dropdown-item>
+                  <el-dropdown-item @click.native="deleteRow(scope.row)">{{ $("ui.chatIndexDelete") }}</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
               </template>

@@ -3,9 +3,9 @@
   <el-card>
     <div class="head-box">
       <el-col :lg="10" :xl="8">
-        <span>{{ $t("ui.hrAssessCheckIndexTemplateSearch") }}</span>
-        <el-input v-model="input" :placeholder="$t('ui.hrAssessCheckIndexPleaseEnterTemplateName')" style="width: 60%" />
-        <el-button type="primary" icon="el-icon-search">{{ $t("ui.hrAssessCheckIndexSearch") }}</el-button>
+        <span>{{ $("ui.hrAssessCheckIndexTemplateSearch") }}</span>
+        <el-input v-model="input" :placeholder="$('ui.hrAssessCheckIndexPleaseEnterTemplateName')" style="width: 60%" />
+        <el-button type="primary" icon="el-icon-search">{{ $("ui.hrAssessCheckIndexSearch") }}</el-button>
       </el-col>
     </div>
   </el-card>
@@ -17,8 +17,8 @@
     <el-col :lg="21" :xl="8">
       <div class="assess-right">
         <div class="mb15">
-          <el-button type="primary" icon="el-icon-plus" @click="addTemplate">{{ $t("ui.hrAssessCheckIndexAddTemplate") }}</el-button>
-          <el-button type="success" icon="el-icon-plus" @click="addCheck">{{ $t("ui.uploadPictureIndexAddCategory") }}</el-button>
+          <el-button type="primary" icon="el-icon-plus" @click="addTemplate">{{ $("ui.hrAssessCheckIndexAddTemplate") }}</el-button>
+          <el-button type="success" icon="el-icon-plus" @click="addCheck">{{ $("ui.uploadPictureIndexAddCategory") }}</el-button>
         </div>
         <div class="table-box">
           <el-table
@@ -29,15 +29,15 @@
             :tree-props="{ children: 'children' }"
           >
             <el-table-column prop="id" label="ID" min-width="90" />
-            <el-table-column prop="name" :label="$t('ui.hrAssessCheckIndexTemplateName')" min-width="200" />
-            <el-table-column prop="info" :label="$t('ui.hrAssessCheckIndexTemplateContent')" min-width="200" />
-            <el-table-column prop="user.name" :label="$t('ui.hrAssessCheckIndexCreator')" min-width="160" />
-            <el-table-column prop="address" :label="$t('public.operation')" fixed="right" width="200">
+            <el-table-column prop="name" :label="$('ui.hrAssessCheckIndexTemplateName')" min-width="200" />
+            <el-table-column prop="info" :label="$('ui.hrAssessCheckIndexTemplateContent')" min-width="200" />
+            <el-table-column prop="user.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="160" />
+            <el-table-column prop="address" :label="$('public.operation')" fixed="right" width="200">
               <template slot-scope="scope">
-                <el-button type="text" @click="handleEdit(scope.row)">{{ $t('public.edit') }}</el-button>
-                <el-button type="text" @click="handleImage(scope.row)">{{ $t("ui.hrAssessCheckIndexEditCover") }}</el-button>
+                <el-button type="text" @click="handleEdit(scope.row)">{{ $('public.edit') }}</el-button>
+                <el-button type="text" @click="handleImage(scope.row)">{{ $("ui.hrAssessCheckIndexEditCover") }}</el-button>
                 <el-button type="text" @click="handleDelete(scope.row, scope.$index)">{{
-                  $t('public.delete')
+                  $('public.delete')
                 }}</el-button>
               </template>
             </el-table-column>
@@ -62,7 +62,7 @@
   <!-- 通用弹窗表单   -->
   <dialogForm ref="dialogForm" :roles-config="rolesConfig" :form-data="formBoxConfig" @isOk="getTableData()" />
   <!-- 选择封面   -->
-  <preview ref="preview" :title="$t('ui.hrAssessCheckIndexSelectCover')" :data="rowData" />
+  <preview ref="preview" :title="$('ui.hrAssessCheckIndexSelectCover')" :data="rowData" />
 </div>
 </template>
 <script>
@@ -141,7 +141,7 @@ export default {
       this.$refs.preview.openDialog()
     },
     handleDelete(item, index) {
-      this.$modalSure(this.$ts('你确定要删除这条考核模板吗')).then(() => {
+      this.$modalSure('你确定要删除这条考核模板吗').then(() => {
         templateDeleteApi(item.id).then((res) => {
           this.tableData.splice(index, 1)
         })

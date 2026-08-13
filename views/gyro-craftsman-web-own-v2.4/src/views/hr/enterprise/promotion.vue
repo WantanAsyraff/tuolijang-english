@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 人事-职位管理-晋升说明 -->
 <template>
 <div class="divBox">
@@ -12,11 +13,11 @@
           <div class="title">
             {{ title }}
           </div>
-          <span class="tips">{{ $t("ui.hrEnterprisePromotionDragRowsToReorderTheList") }}</span>
+          <span class="tips">{{ $("ui.hrEnterprisePromotionDragRowsToReorderTheList") }}</span>
         </div>
 
         <el-table ref="table" :data="list" class="table" row-key="id" style="width: 100%">
-          <el-table-column :label="$t('ui.hrEnterprisePromotionRank')" min-width="200" prop="rank">
+          <el-table-column :label="$('ui.hrEnterprisePromotionRank')" min-width="200" prop="rank">
             <template slot-scope="scope">
               <el-select
                 v-show="scope.row.show"
@@ -24,7 +25,7 @@
                 collapse-tags
                 filterable
                 multiple
-                :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                :placeholder="$('ui.developConditionGroupPleaseSelect')"
               >
                 <el-option
                   v-for="item in options"
@@ -48,123 +49,123 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrEnterprisePromotionBaseSalary')">
-            <el-table-column :label="$t('ui.hrEnterprisePromotionBaseSalary2')" min-width="100" prop="benefit.basicSalary">
+          <el-table-column :label="$('ui.hrEnterprisePromotionBaseSalary')">
+            <el-table-column :label="$('ui.hrEnterprisePromotionBaseSalary2')" min-width="100" prop="benefit.basicSalary">
               <template slot-scope="scope">
                 <el-input
                   v-show="scope.row.show"
                   v-model="scope.row.benefit.basicSalary"
                   oninput="if(value<0)value=0"
-                  :placeholder="$t('ui.customerOaFormPleaseEnter')"
+                  :placeholder="$('ui.customerOaFormPleaseEnter')"
                   type="number"
                 ></el-input>
                 <span v-show="!scope.row.show">{{ scope.row.benefit.basicSalary }}</span>
               </template>
             </el-table-column>
-            <el-table-column :label="$t('ui.hrEnterprisePromotionPerformancePay')" min-width="100" prop="benefit.performance">
+            <el-table-column :label="$('ui.hrEnterprisePromotionPerformancePay')" min-width="100" prop="benefit.performance">
               <template slot-scope="scope">
                 <el-input
                   v-show="scope.row.show"
                   v-model="scope.row.benefit.performance"
                   :precision="2"
                   oninput="if(value<0)value=0"
-                  :placeholder="$t('ui.customerOaFormPleaseEnter')"
+                  :placeholder="$('ui.customerOaFormPleaseEnter')"
                   type="number"
                 ></el-input>
                 <span v-show="!scope.row.show">{{ scope.row.benefit.performance }}</span>
               </template>
             </el-table-column>
-            <el-table-column :label="$t('ui.hrEnterprisePromotionTotal')" min-width="100" prop="total">
+            <el-table-column :label="$('ui.hrEnterprisePromotionTotal')" min-width="100" prop="total">
               <template slot-scope="scope">
                 <span>{{ getTotal(scope.row.benefit) }}</span>
               </template>
             </el-table-column>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrEnterprisePromotionPerformanceBasedSalary')">
+          <el-table-column :label="$('ui.hrEnterprisePromotionPerformanceBasedSalary')">
             <el-table-column min-width="100" prop="benefit.commission">
               <template slot="header" slot-scope="scope">
-                <el-popover :content="$t('ui.hrEnterprisePromotionEnterAPercentage')" placement="top" trigger="hover" width="170">
-                  <div slot="reference">{{ $t("ui.hrEnterprisePromotionCommissionSalary") }} <span class="el-icon-info"></span></div>
+                <el-popover :content="$('ui.hrEnterprisePromotionEnterAPercentage')" placement="top" trigger="hover" width="170">
+                  <div slot="reference">{{ $("ui.hrEnterprisePromotionCommissionSalary") }} <span class="el-icon-info"></span></div>
                 </el-popover>
               </template>
               <template slot-scope="scope">
                 <el-input
                   v-show="scope.row.show"
                   v-model="scope.row.benefit.commission"
-                  :placeholder="$t('ui.customerOaFormPleaseEnter')"
+                  :placeholder="$('ui.customerOaFormPleaseEnter')"
                 ></el-input>
                 <span v-show="!scope.row.show">{{ scope.row.benefit.commission }}</span>
               </template>
             </el-table-column>
             <el-table-column min-width="100" prop="benefit.teamAward">
               <template slot="header" slot-scope="scope">
-                <el-popover :content="$t('ui.hrEnterprisePromotionEnterAPercentage')" placement="top" trigger="hover" width="170">
-                  <div slot="reference">{{ $t("ui.hrEnterprisePromotionTeamBonus") }} <span class="el-icon-info"></span></div>
+                <el-popover :content="$('ui.hrEnterprisePromotionEnterAPercentage')" placement="top" trigger="hover" width="170">
+                  <div slot="reference">{{ $("ui.hrEnterprisePromotionTeamBonus") }} <span class="el-icon-info"></span></div>
                 </el-popover>
               </template>
               <template slot-scope="scope">
                 <el-input
                   v-show="scope.row.show"
                   v-model="scope.row.benefit.teamAward"
-                  :placeholder="$t('ui.customerOaFormPleaseEnter')"
+                  :placeholder="$('ui.customerOaFormPleaseEnter')"
                 ></el-input>
                 <span v-show="!scope.row.show">{{ scope.row.benefit.teamAward }}</span>
               </template>
             </el-table-column>
             <el-table-column min-width="100" prop="benefit.dividends">
               <template slot="header" slot-scope="scope">
-                <el-popover :content="$t('ui.hrEnterprisePromotionEnterAPercentage')" placement="top" trigger="hover" width="170">
-                  <div slot="reference">{{ $t("ui.hrEnterprisePromotionProfitSharing") }} <span class="el-icon-info"></span></div>
+                <el-popover :content="$('ui.hrEnterprisePromotionEnterAPercentage')" placement="top" trigger="hover" width="170">
+                  <div slot="reference">{{ $("ui.hrEnterprisePromotionProfitSharing") }} <span class="el-icon-info"></span></div>
                 </el-popover>
               </template>
               <template slot-scope="scope">
                 <el-input
                   v-show="scope.row.show"
                   v-model="scope.row.benefit.dividends"
-                  :placeholder="$t('ui.customerOaFormPleaseEnter')"
+                  :placeholder="$('ui.customerOaFormPleaseEnter')"
                 ></el-input>
                 <span v-show="!scope.row.show">{{ scope.row.benefit.dividends }}</span>
               </template></el-table-column
             >
           </el-table-column>
 
-          <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180">
+          <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180">
             <template slot-scope="scope">
               <el-button
                 v-if="scope.row.show == false"
                 v-hasPermi="['hr:training:promotion:edit']"
                 type="text"
                 @click="editFn(scope.row)"
-                >{{ $t("ui.formCommonOaLogEdit") }}</el-button
+                >{{ $("ui.formCommonOaLogEdit") }}</el-button
               >
               <el-button
                 v-if="scope.row.show == true"
                 v-hasPermi="['hr:training:promotion:edit']"
                 type="text"
                 @click="addRow(scope.row)"
-                >{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button
+                >{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button
               >
 
               <el-button v-hasPermi="['hr:training:promotion:details']" type="text" @click="handleCheck(scope.row)"
-                >{{ $t("ui.hrEnterprisePromotionPromotionCriteria") }}</el-button
+                >{{ $("ui.hrEnterprisePromotionPromotionCriteria") }}</el-button
               >
 
               <el-button v-hasPermi="['hr:training:promotion:delete']" type="text" @click="onDelete(scope)"
-                >{{ $t("ui.chatIndexDelete") }}</el-button
+                >{{ $("ui.chatIndexDelete") }}</el-button
               >
             </template>
           </el-table-column>
         </el-table>
-        <div class="add-row" @click="addANewLine"><span class="el-icon-plus"></span> {{ $t("ui.administrationMaterialFixedReceiveAddRow") }}</div>
+        <div class="add-row" @click="addANewLine"><span class="el-icon-plus"></span> {{ $("ui.administrationMaterialFixedReceiveAddRow") }}</div>
       </el-col>
     </el-row>
   </el-card>
 
   <!-- 晋升标准侧滑 -->
-  <el-drawer :before-close="handleClose" :visible.sync="editDrawer" direction="rtl" size="61%" :title="$t('ui.hrEnterprisePromotionPromotionCriteria')">
+  <el-drawer :before-close="handleClose" :visible.sync="editDrawer" direction="rtl" size="61%" :title="$('ui.hrEnterprisePromotionPromotionCriteria')">
     <div class="check-box">
       <div class="user-name mb20">
-        <span>{{ $t("ui.hrEnterprisePromotionRank2") }}</span>
+        <span>{{ $("ui.hrEnterprisePromotionRank2") }}</span>
         <span class="text">{{
           getIdsArrayFn(options, positions)
             .map((obj) => obj.label)
@@ -182,13 +183,12 @@
       />
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button :loading="loading" size="small" type="primary" @click="handleConfirm">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button :loading="loading" size="small" type="primary" @click="handleConfirm">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Sortable from 'sortablejs'
 import { getIdsArray, getArrayDifference } from '@/libs/public'
 
@@ -331,7 +331,7 @@ export default {
     // 打开晋升标准
     handleCheck(row) {
       if (!row.id) {
-        return this.$message.error(i18n.t('legacyScript.pleaseSaveTheDataFirst'))
+        return this.$message.error($('legacyScript.pleaseSaveTheDataFirst'))
       }
 
       this.editDrawer = true
@@ -362,7 +362,7 @@ export default {
     // 保存
     async addRow(row) {
       if (!row.rank.length) {
-        return this.$message.error(i18n.t('legacyScript.pleaseSelectAPositionFirst'))
+        return this.$message.error($('legacyScript.pleaseSelectAPositionFirst'))
       }
       let data = {
         promotion_id: this.promotion_id,

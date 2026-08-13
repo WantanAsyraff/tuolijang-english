@@ -1,7 +1,7 @@
 <!-- 客户-客户跟进记录页面组件 -->
 <template>
 <div class="followUpRecord">
-  <div class="title-16">{{ $t("ui.customerListDynamicRecordActivityRecords") }}</div>
+  <div class="title-16">{{ $("ui.customerListDynamicRecordActivityRecords") }}</div>
   <record-upload v-if="addRecordShow" :form-info="formInfo" @change="uploadChange"></record-upload>
   <div class="recordContent">
     <el-timeline>
@@ -24,7 +24,7 @@
             {{ activity.reason }}
           </div>
           <div v-if="activity.time" class="reminderTime">
-            <img alt="" class="zhong" src="../../../../assets/images/zhong.png" /> {{ $t("ui.userCalendarAddTodoReminderTime") }}{{ activity.created_at }}
+            <img alt="" class="zhong" src="../../../../assets/images/zhong.png" /> {{ $("ui.userCalendarAddTodoReminderTime") }}{{ activity.created_at }}
           </div>
         </div>
         <div v-else>
@@ -33,11 +33,11 @@
               <div class="head-right">
                 <span class="head-name">{{ getTypeStr(activity.type, activity.link_type) }}</span>
                 <span class="head-time"
-                  >{{ activity.creator ? activity.creator.name : $t('ui.commonOaFromBoxSystem') }} | {{ activity.created_at }}</span
+                  >{{ activity.creator ? activity.creator.name : $('ui.commonOaFromBoxSystem') }} | {{ activity.created_at }}</span
                 >
               </div>
             </div>
-            <div class="record"><span class="c-30">{{ $t("ui.customerListDynamicRecordInformation") }}</span> {{ activity.reason || '' }}</div>
+            <div class="record"><span class="c-30">{{ $("ui.customerListDynamicRecordInformation") }}</span> {{ activity.reason || '' }}</div>
         <div class="p20" v-if="activity.attachs.length > 0">
               <oa-uploadList :fileList="activity.attachs" :isTwoColumnShow="true"></oa-uploadList>
         </div>
@@ -72,7 +72,7 @@
 
   <div v-if="dynamicRecord.length == 0" class="default">
     <img alt="" class="img" src="../../../../assets/images/def1.png" />
-    <span class="text">{{ $t('public.message14') + '~' }}</span>
+    <span class="text">{{ $('public.message14') + '~' }}</span>
   </div>
   <!-- 查看图片 -->
   <el-image-viewer v-if="isImage" :on-close="closeImageViewer" :url-list="srcList" />

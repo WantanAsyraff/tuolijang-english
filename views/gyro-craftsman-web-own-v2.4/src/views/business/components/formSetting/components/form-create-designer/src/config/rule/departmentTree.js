@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeRequiredRule } from '../../utils';
 
@@ -24,10 +24,10 @@ export default {
       {
         type: 'radio',
         field: 'departType',
-        title: i18n.t('legacyScript.selectType'),
+        title: $('legacyScript.selectType'),
         options: [
-          { label: i18n.t('legacyScript.selectOneDepartment'), value: 'oneself' },
-          { label: i18n.t('legacyScript.selectMultipleDepartments'), value: 'many' },
+          { label: $('legacyScript.selectOneDepartment'), value: 'oneself' },
+          { label: $('legacyScript.selectMultipleDepartments'), value: 'many' },
         ],
       },
       makeRequiredRule(),

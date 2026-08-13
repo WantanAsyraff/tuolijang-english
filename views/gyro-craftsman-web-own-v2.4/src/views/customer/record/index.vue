@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
@@ -19,26 +20,26 @@
         <div class="table-wrapper">
           <div class="table-content">
             <el-table :data="tableData" style="width: 100%" height="100%">
-              <el-table-column prop="title.name" :label="$t('ui.customerRecordIndexCustomerLead')" width="220" show-overflow-tooltip>
+              <el-table-column prop="title.name" :label="$('ui.customerRecordIndexCustomerLead')" width="220" show-overflow-tooltip>
                 <template slot-scope="scope">
                   <div class="point" @click="openDetails(scope.row)">
                     {{ scope.row.title.eid ? scope.row.title.customer.name : scope.row.title.name }}
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="name" :label="$t('ui.customerRecordIndexOpportunityName')" width="220" show-overflow-tooltip>
+              <el-table-column prop="name" :label="$('ui.customerRecordIndexOpportunityName')" width="220" show-overflow-tooltip>
                 <template #default="{ row }">
                   <div :class="!row.title.eid || 'point'" @click="row.title.eid && openOdds(row)">
                     {{ row.title.eid ? row.title.name || '--' : '--' }}
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="content" :label="$t('ui.customerRecordIndexFollowUpContent')" show-overflow-tooltip>
+              <el-table-column prop="content" :label="$('ui.customerRecordIndexFollowUpContent')" show-overflow-tooltip>
                 <template slot-scope="scope">
                   <div class="over-text3">{{ scope.row.content }}</div>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('ui.customerRecordIndexCreator')" width="180" show-overflow-tooltip>
+              <el-table-column :label="$('ui.customerRecordIndexCreator')" width="180" show-overflow-tooltip>
                 <template #default="{ row }">
                   <div class="flex items-center">
                     <img
@@ -50,11 +51,11 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="created_at" :label="$t('ui.customerRecordIndexFollowUpTime')" width="220"> </el-table-column>
-              <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="150">
+              <el-table-column prop="created_at" :label="$('ui.customerRecordIndexFollowUpTime')" width="220"> </el-table-column>
+              <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="150">
                 <template slot-scope="scope">
-                  <el-button type="text" size="mini" @click="handleEdit(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-                  <el-button type="text" size="mini" @click="handleDelete(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+                  <el-button type="text" size="mini" @click="handleEdit(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+                  <el-button type="text" size="mini" @click="handleDelete(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -80,13 +81,12 @@
   <!-- 线索商机详情 -->
   <detailsDrawer ref="details" :formData="detailsFromData"></detailsDrawer>
   <!-- 跟进弹窗 -->
-  <el-dialog :visible.sync="dialogShow" class="record" :title="$t('ui.customerRecordIndexEditFollowUpRecord')" width="40%">
+  <el-dialog :visible.sync="dialogShow" class="record" :title="$('ui.customerRecordIndexEditFollowUpRecord')" width="40%">
     <recordUpload :form-info="formInfo" @change="recordChange"></recordUpload>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getClientFollowApi, delClientFollowApi } from '@/api/client'
 import { divTime } from '@/utils'
 export default {
@@ -103,11 +103,11 @@ export default {
     return {
       treeData: [
         {
-          label: i18n.t('legacyScript.ownedByMe'),
+          label: $('legacyScript.ownedByMe'),
           id: 1
         },
         {
-          label: i18n.t('legacyScript.ownedBySubordinates'),
+          label: $('legacyScript.ownedBySubordinates'),
           id: 2
         }
       ],
@@ -156,7 +156,7 @@ export default {
     },
     openOdds(item) {
       this.detailsFromData = {
-        title: i18n.t('legacyScript.viewOpportunity'),
+        title: $('legacyScript.viewOpportunity'),
         width: '1000px',
         data: item,
         eid: item.title.id,
@@ -170,7 +170,7 @@ export default {
     openDetails(item) {
       if (item.link_type === 'clue') {
         this.detailsFromData = {
-          title: i18n.t('legacyScript.viewLeads'),
+          title: $('legacyScript.viewLeads'),
           width: '1000px',
           data: item,
           types: 'clue',
@@ -181,7 +181,7 @@ export default {
         this.$refs.details.openBox(item.eid, 'clue')
       } else if (item.link_type === 'customer') {
         this.fromData = {
-          title: this.$t('customer.editcustomer'),
+          title: this.$('customer.editcustomer'),
           width: '1100px',
           data: item,
           link_type: 'customer',
@@ -193,7 +193,7 @@ export default {
       } else if (item.link_type === 'odds') {
         item.eid = item.title.eid
         this.fromData = {
-          title: this.$t('customer.editcustomer'),
+          title: this.$('customer.editcustomer'),
           width: '1100px',
           data: item,
           link_type: 'customer',

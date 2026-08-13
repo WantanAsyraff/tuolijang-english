@@ -1,28 +1,28 @@
 <template>
-<el-dialog :title="$t('ui.customerWeChatMassMaterialLibrarySelectMaterial')" :visible.sync="dialogTableVisible">
+<el-dialog :title="$('ui.customerWeChatMassMaterialLibrarySelectMaterial')" :visible.sync="dialogTableVisible">
   <div class="flex mb10">
     <el-input
       v-model="where.name"
       size="small"
-      :placeholder="$t('ui.customerWeChatMassMaterialLibraryEnterMaterialContent')"
+      :placeholder="$('ui.customerWeChatMassMaterialLibraryEnterMaterialContent')"
       style="width: 200px"
       class="mr10"
       @change="getTableData()"
     ></el-input>
     <el-select
       v-model="where.group_id"
-      :placeholder="$t('ui.customerWeChatMassMaterialLibrarySelectMaterialCategory')"
+      :placeholder="$('ui.customerWeChatMassMaterialLibrarySelectMaterialCategory')"
       size="small"
       style="width: 200px"
       @change="getTableData()"
     >
       <el-option v-for="(item, index) in options" :value="item.id" :label="item.name" :key="index"></el-option>
     </el-select>
-    <el-tooltip :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
+    <el-tooltip :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
       <div class="reset ml10" @click="reset"><i class="iconfont iconqingchu"></i></div>
     </el-tooltip>
   </div>
-  <div class="tips">{{ $t("ui.businessHolidayQueryIndexTotal") }}{{ total }}{{ $t("ui.customerWeChatMassMaterialLibraryAssets") }}</div>
+  <div class="tips">{{ $("ui.businessHolidayQueryIndexTotal") }}{{ total }}{{ $("ui.customerWeChatMassMaterialLibraryAssets") }}</div>
   <el-table :data="gridData" height="400px">
     <el-table-column width="80">
       <template slot-scope="scope">
@@ -31,7 +31,7 @@
       </template>
     </el-table-column>
     <el-table-column property="id" label="ID" width="150"></el-table-column>
-    <el-table-column property="content" :label="$t('ui.customerQuickReplyIndexMaterialContent')"></el-table-column>
+    <el-table-column property="content" :label="$('ui.customerQuickReplyIndexMaterialContent')"></el-table-column>
   </el-table>
   <el-pagination
     :page-size="where.limit"

@@ -3,9 +3,9 @@
   <el-card>
     <div class="head-box">
       <el-col :lg="10" :xl="8">
-        <span>{{ $t("ui.hrAssessQuotaIndexIndicatorSearch") }}</span>
-        <el-input v-model="input" :placeholder="$t('ui.hrAssessCheckIndexPleaseEnterTemplateName')" style="width: 60%" />
-        <el-button type="primary" icon="el-icon-search" @click="getSearch">{{ $t("ui.hrAssessCheckIndexSearch") }}</el-button>
+        <span>{{ $("ui.hrAssessQuotaIndexIndicatorSearch") }}</span>
+        <el-input v-model="input" :placeholder="$('ui.hrAssessCheckIndexPleaseEnterTemplateName')" style="width: 60%" />
+        <el-button type="primary" icon="el-icon-search" @click="getSearch">{{ $("ui.hrAssessCheckIndexSearch") }}</el-button>
       </el-col>
     </div>
   </el-card>
@@ -17,8 +17,8 @@
     <el-col :lg="21" :xl="8">
       <div class="assess-right">
         <div class="mb15">
-          <el-button type="primary" icon="el-icon-plus" @click="addTargetCreate">{{ $t("ui.hrAssessQuotaIndexAddIndicators") }}</el-button>
-          <el-button type="success" icon="el-icon-plus" @click="addCate">{{ $t("ui.uploadPictureIndexAddCategory") }}</el-button>
+          <el-button type="primary" icon="el-icon-plus" @click="addTargetCreate">{{ $("ui.hrAssessQuotaIndexAddIndicators") }}</el-button>
+          <el-button type="success" icon="el-icon-plus" @click="addCate">{{ $("ui.uploadPictureIndexAddCategory") }}</el-button>
         </div>
         <div class="table-box">
           <el-table
@@ -29,26 +29,26 @@
             :tree-props="{ children: 'children' }"
           >
             <el-table-column prop="id" label="ID" min-width="90" />
-            <el-table-column prop="name" :label="$t('ui.hrAssessQuotaIndexIndicatorName')" min-width="200" />
-            <el-table-column prop="content" :label="$t('ui.hrAssessQuotaIndexIndicatorContent')" min-width="300" />
-            <el-table-column prop="status" :label="$t('ui.customerSetupDictionaryIndexStatus')" min-width="100">
+            <el-table-column prop="name" :label="$('ui.hrAssessQuotaIndexIndicatorName')" min-width="200" />
+            <el-table-column prop="content" :label="$('ui.hrAssessQuotaIndexIndicatorContent')" min-width="300" />
+            <el-table-column prop="status" :label="$('ui.customerSetupDictionaryIndexStatus')" min-width="100">
               <template slot-scope="scope">
                 <el-switch
                   v-model="scope.row.status"
-                  :active-text="$t('hr.display')"
-                  :inactive-text="$t('hr.hide')"
+                  :active-text="$('hr.display')"
+                  :inactive-text="$('hr.hide')"
                   :active-value="1"
                   :inactive-value="0"
                   @change="handleStatus(scope.row)"
                 />
               </template>
             </el-table-column>
-            <el-table-column prop="address" :label="$t('public.operation')" fixed="right" width="180">
+            <el-table-column prop="address" :label="$('public.operation')" fixed="right" width="180">
               <template slot-scope="scope">
-                <el-button type="text" @click="handleEdit(scope.row)">{{ $t('public.edit') }}</el-button>
+                <el-button type="text" @click="handleEdit(scope.row)">{{ $('public.edit') }}</el-button>
 
                 <el-button type="text" @click="handleDelete(scope.row, scope.$index)">
-                  {{ $t('public.delete') }}
+                  {{ $('public.delete') }}
                 </el-button>
               </template>
             </el-table-column>
@@ -161,7 +161,7 @@ export default {
       })
     },
     handleDelete(item, index) {
-      this.$modalSure(this.$ts('你确定要删除这条指标模板吗')).then(() => {
+      this.$modalSure('你确定要删除这条指标模板吗').then(() => {
         assessTargetDeleteApi(item.id).then((res) => {
           this.tableData.splice(index, 1)
         })

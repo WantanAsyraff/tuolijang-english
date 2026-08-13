@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.customClass')">
+  <el-form-item :label="$('designer.setting.customClass')">
     <el-select v-model="optionModel.customClass" multiple filterable allow-create
                default-first-option>
       <el-option v-for="(item, idx) in cssClassList" :key="idx" :label="item" :value="item"></el-option>
@@ -8,13 +8,11 @@
 </template>
 
 <script>
-  import i18n from "@/utils/i18n";
   import {deepClone} from "@/utils/util";
 
   export default {
     name: "customClass-editor",
     componentName: 'PropertyEditor',
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -38,4 +36,3 @@
 <style scoped>
 
 </style>
-@/utils/i18ns

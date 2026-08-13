@@ -1,6 +1,6 @@
 <template>
 <div>
-  <el-drawer :title="$t('ui.developModuleTableStyleListProperties')" :visible.sync="drawerVisible" direction="rtl" :size="500">
+  <el-drawer :title="$('ui.developModuleTableStyleListProperties')" :visible.sync="drawerVisible" direction="rtl" :size="500">
     <el-form label-width="auto" label-position="top" class="p20">
       <!-- 表格类型切换 -->
       <el-form-item>
@@ -11,7 +11,7 @@
                 <el-col :span="24" class="bg-purple" />
               </el-row>
             </div>
-            <div>{{ $t("ui.developModuleTableStyleStandardTable") }}</div>
+            <div>{{ $("ui.developModuleTableStyleStandardTable") }}</div>
           </div>
           <div class="flex-column display-align">
             <div class="row-box" :class="{ active: tableStyle === 2 }" @click="tableStyle = 2">
@@ -22,37 +22,37 @@
                 <el-col :span="20" class="bg-purple" />
               </el-row>
             </div>
-            <div>{{ $t("ui.developModuleTableStyleTreeTable") }}</div>
+            <div>{{ $("ui.developModuleTableStyleTreeTable") }}</div>
           </div>
         </div>
       </el-form-item>
 
       <!-- 按钮配置区域 -->
-      <el-divider content-position="center">{{ $t("ui.developModuleTableStyleButtonSettings") }}</el-divider>
+      <el-divider content-position="center">{{ $("ui.developModuleTableStyleButtonSettings") }}</el-divider>
       <el-form-item>
         <el-checkbox-group v-model="checkedButtons" class="check-box">
-          <el-checkbox :label="$t('ui.developModuleTableStyleBatchShareAndCollaborate')">
-            {{ $t("ui.developModuleTableStyleBatchShareAndCollaborate") }}
+          <el-checkbox :label="$('ui.developModuleTableStyleBatchShareAndCollaborate')">
+            {{ $("ui.developModuleTableStyleBatchShareAndCollaborate") }}
             <el-input v-model="value" size="small" class="ml20" />
           </el-checkbox>
-          <el-checkbox :label="$t('ui.developModuleTableStyleBatchTransfer')">{{ $t("ui.developModuleTableStyleBatchTransfer") }}</el-checkbox>
-          <el-checkbox :label="$t('ui.developModuleTableStyleBatchEdit')">{{ $t("ui.developModuleTableStyleBatchEdit") }}</el-checkbox>
-          <el-checkbox :label="$t('ui.customerSetupDictionaryManagementBatchDelete')">{{ $t("ui.customerSetupDictionaryManagementBatchDelete") }}</el-checkbox>
-          <el-checkbox :label="$t('ui.developModuleFillInInviteToComplete')">{{ $t("ui.developModuleFillInInviteToComplete") }}</el-checkbox>
-          <el-checkbox :label="$t('ui.developModuleTableStyleInvitationLinkEntry')">{{ $t("ui.developModuleTableStyleInvitationLinkEntry") }}</el-checkbox>
-          <el-checkbox :label="$t('ui.developModuleTableStyleImportData')">{{ $t("ui.developModuleTableStyleImportData") }}</el-checkbox>
-          <el-checkbox :label="$t('ui.developModuleTableStyleExportData')">{{ $t("ui.developModuleTableStyleExportData") }}</el-checkbox>
-          <el-checkbox :label="$t('ui.developModuleTableStyleFilterSettings')">{{ $t("ui.developModuleTableStyleFilterSettings") }}</el-checkbox>
-          <el-checkbox :label="$t('ui.developModuleTableStyleColumnDisplaySettings')">{{ $t("ui.developModuleTableStyleColumnDisplaySettings") }}</el-checkbox>
-          <el-checkbox :label="$t('ui.developModuleTableStyleDetailTabSettings')">{{ $t("ui.developModuleTableStyleDetailTabSettings") }}</el-checkbox>
+          <el-checkbox :label="$('ui.developModuleTableStyleBatchTransfer')">{{ $("ui.developModuleTableStyleBatchTransfer") }}</el-checkbox>
+          <el-checkbox :label="$('ui.developModuleTableStyleBatchEdit')">{{ $("ui.developModuleTableStyleBatchEdit") }}</el-checkbox>
+          <el-checkbox :label="$('ui.customerSetupDictionaryManagementBatchDelete')">{{ $("ui.customerSetupDictionaryManagementBatchDelete") }}</el-checkbox>
+          <el-checkbox :label="$('ui.developModuleFillInInviteToComplete')">{{ $("ui.developModuleFillInInviteToComplete") }}</el-checkbox>
+          <el-checkbox :label="$('ui.developModuleTableStyleInvitationLinkEntry')">{{ $("ui.developModuleTableStyleInvitationLinkEntry") }}</el-checkbox>
+          <el-checkbox :label="$('ui.developModuleTableStyleImportData')">{{ $("ui.developModuleTableStyleImportData") }}</el-checkbox>
+          <el-checkbox :label="$('ui.developModuleTableStyleExportData')">{{ $("ui.developModuleTableStyleExportData") }}</el-checkbox>
+          <el-checkbox :label="$('ui.developModuleTableStyleFilterSettings')">{{ $("ui.developModuleTableStyleFilterSettings") }}</el-checkbox>
+          <el-checkbox :label="$('ui.developModuleTableStyleColumnDisplaySettings')">{{ $("ui.developModuleTableStyleColumnDisplaySettings") }}</el-checkbox>
+          <el-checkbox :label="$('ui.developModuleTableStyleDetailTabSettings')">{{ $("ui.developModuleTableStyleDetailTabSettings") }}</el-checkbox>
         </el-checkbox-group>
       </el-form-item>
 
       <!-- 自定义按钮区域 -->
       <el-form-item>
         <template #label>
-          {{ $t("ui.developModuleTableStyleCustomButtonArea") }}
-          <el-tooltip effect="dark" :content="$t('ui.developModuleTableStyleConfigureCustomAddButtonsAndButtonEvents')" placement="top-start">
+          {{ $("ui.developModuleTableStyleCustomButtonArea") }}
+          <el-tooltip effect="dark" :content="$('ui.developModuleTableStyleConfigureCustomAddButtonsAndButtonEvents')" placement="top-start">
             <span class="el-icon-question" />
           </el-tooltip>
         </template>
@@ -67,11 +67,11 @@
           <div v-for="(item, index) in customButtons" :key="index">
             <div class="flex mb10">
               <span class="drag-handle iconfont icontuodong" />
-              <span class="mr20">{{ $t("ui.developModuleTableStyleButtonName") }}</span>
+              <span class="mr20">{{ $("ui.developModuleTableStyleButtonName") }}</span>
               <el-input
                 v-model="item.name"
                 size="small"
-                :placeholder="$t('ui.developModuleTableStyleButtonName')"
+                :placeholder="$('ui.developModuleTableStyleButtonName')"
                 class="refresh-input"
                 style="width: 313px; margin-right: 10px"
               >
@@ -90,13 +90,13 @@
             </div>
           </div>
         </draggable>
-        <el-button type="text" icon="el-icon-plus" @click="handleAddCustomBtn"> {{ $t("ui.developModuleTableStyleAddButton") }} </el-button>
+        <el-button type="text" icon="el-icon-plus" @click="handleAddCustomBtn"> {{ $("ui.developModuleTableStyleAddButton") }} </el-button>
       </el-form-item>
 
       <!-- 底部操作按钮 -->
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button @click="drawerVisible = false" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button type="primary" @click="handleConfirm" size="small">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+        <el-button @click="drawerVisible = false" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button type="primary" @click="handleConfirm" size="small">{{ $("ui.formCommonDialogFormOk") }}</el-button>
       </div>
     </el-form>
   </el-drawer>

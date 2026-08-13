@@ -1,0 +1,5006 @@
+{
+  "mobile.common.cancel": {
+    "zh-cn": "取消",
+    "en": "Cancel"
+  },
+  "mobile.common.chinese": {
+    "zh-cn": "中文",
+    "en": "Chinese"
+  },
+  "mobile.common.confirm": {
+    "zh-cn": "确定",
+    "en": "Confirm"
+  },
+  "mobile.common.confirmLogout": {
+    "zh-cn": "确认退出登录",
+    "en": "Confirm log out"
+  },
+  "mobile.common.copied": {
+    "zh-cn": "复制成功",
+    "en": "Copied successfully"
+  },
+  "mobile.common.english": {
+    "zh-cn": "English",
+    "en": "English"
+  },
+  "mobile.common.language": {
+    "zh-cn": "语言",
+    "en": "Language"
+  },
+  "mobile.common.logout": {
+    "zh-cn": "退出登录",
+    "en": "Log out"
+  },
+  "mobile.common.translateToEnglish": {
+    "zh-cn": "翻译成英文",
+    "en": "Translate to English"
+  },
+  "mobile.navigation.pages/attendance/apply": {
+    "zh-cn": "申请",
+    "en": "Application"
+  },
+  "mobile.navigation.pages/attendance/detailed/teamCheckList": {
+    "zh-cn": "团队打卡明细",
+    "en": "Team attendance details"
+  },
+  "mobile.navigation.pages/attendance/detailed/userCheckList": {
+    "zh-cn": "考勤明细",
+    "en": "Attendance details"
+  },
+  "mobile.navigation.pages/attendance/detailed/userOvertimeList": {
+    "zh-cn": "加班明细",
+    "en": "Overtime details"
+  },
+  "mobile.navigation.pages/attendance/detailed/userVacationList": {
+    "zh-cn": "假期明细",
+    "en": "Leave details"
+  },
+  "mobile.navigation.pages/attendance/index": {
+    "zh-cn": "打卡",
+    "en": "Clock in"
+  },
+  "mobile.navigation.pages/attendance/map": {
+    "zh-cn": "考勤范围",
+    "en": "Attendance area"
+  },
+  "mobile.navigation.pages/attendance/personalReport": {
+    "zh-cn": "个人月报",
+    "en": "Personal monthly report"
+  },
+  "mobile.navigation.pages/attendance/rules": {
+    "zh-cn": "考勤规则",
+    "en": "Attendance rules"
+  },
+  "mobile.navigation.pages/attendance/schedule": {
+    "zh-cn": "排班管理",
+    "en": "Schedule management"
+  },
+  "mobile.navigation.pages/attendance/scheduleAdd": {
+    "zh-cn": "新增排班",
+    "en": "Add schedule"
+  },
+  "mobile.navigation.pages/attendance/scheduleDetail": {
+    "zh-cn": "排班详情",
+    "en": "Schedule details"
+  },
+  "mobile.navigation.pages/attendance/shift": {
+    "zh-cn": "班次管理",
+    "en": "Shift management"
+  },
+  "mobile.navigation.pages/attendance/shiftAdd": {
+    "zh-cn": "新建班次",
+    "en": "New shift"
+  },
+  "mobile.navigation.pages/attendance/statistics": {
+    "zh-cn": "统计",
+    "en": "Analytics"
+  },
+  "mobile.navigation.pages/attendance/teamReport": {
+    "zh-cn": "团队月报",
+    "en": "Team monthly report"
+  },
+  "mobile.navigation.pages/cloudfile/index": {
+    "zh-cn": "云文件",
+    "en": "Cloud files"
+  },
+  "mobile.navigation.pages/common/ww-default": {
+    "zh-cn": "企业微信",
+    "en": "WeCom"
+  },
+  "mobile.navigation.pages/customer/addressSearch/index": {
+    "zh-cn": "地址搜索",
+    "en": "Address search"
+  },
+  "mobile.navigation.pages/customer/contract/addContract": {
+    "zh-cn": "添加订单",
+    "en": "Add order"
+  },
+  "mobile.navigation.pages/customer/contract/addFile": {
+    "zh-cn": "添加订单资料",
+    "en": "Add order documents"
+  },
+  "mobile.navigation.pages/customer/contract/addPayment": {
+    "zh-cn": "添加付款",
+    "en": "Add payment"
+  },
+  "mobile.navigation.pages/customer/contract/addRemind": {
+    "zh-cn": "添加付款提醒",
+    "en": "Add Payment reminder"
+  },
+  "mobile.navigation.pages/customer/contract/collectionDetails": {
+    "zh-cn": "订单回款详情",
+    "en": "Order payment details"
+  },
+  "mobile.navigation.pages/customer/contract/details": {
+    "zh-cn": "订单详情",
+    "en": "Order details"
+  },
+  "mobile.navigation.pages/customer/contract/index": {
+    "zh-cn": "订单管理",
+    "en": "Order management"
+  },
+  "mobile.navigation.pages/customer/contract/search": {
+    "zh-cn": "订单-条件搜索",
+    "en": "Order filters"
+  },
+  "mobile.navigation.pages/customer/invoice/addInvoice": {
+    "zh-cn": "申请发票",
+    "en": "Apply for invoice"
+  },
+  "mobile.navigation.pages/customer/invoice/checkPayment": {
+    "zh-cn": "选择付款单",
+    "en": "Select Payment order"
+  },
+  "mobile.navigation.pages/customer/invoice/details": {
+    "zh-cn": "发票详情",
+    "en": "Invoice details"
+  },
+  "mobile.navigation.pages/customer/invoice/index": {
+    "zh-cn": "发票",
+    "en": "Invoice"
+  },
+  "mobile.navigation.pages/customer/invoice/search": {
+    "zh-cn": "-发票-条件搜索",
+    "en": "Invoice filters"
+  },
+  "mobile.navigation.pages/customer/lead/add": {
+    "zh-cn": "添加线索",
+    "en": "Add lead"
+  },
+  "mobile.navigation.pages/customer/lead/detail": {
+    "zh-cn": "线索详情",
+    "en": "Lead details"
+  },
+  "mobile.navigation.pages/customer/lead/index": {
+    "zh-cn": "线索",
+    "en": "Lead"
+  },
+  "mobile.navigation.pages/customer/lead/search": {
+    "zh-cn": "线索搜索",
+    "en": "Lead search"
+  },
+  "mobile.navigation.pages/customer/list/addCustomer": {
+    "zh-cn": "添加客户",
+    "en": "Add customer"
+  },
+  "mobile.navigation.pages/customer/list/addFollow": {
+    "zh-cn": "添加跟进记录",
+    "en": "Add follow-up record"
+  },
+  "mobile.navigation.pages/customer/list/addLiaison": {
+    "zh-cn": "添加联系人",
+    "en": "Add contact"
+  },
+  "mobile.navigation.pages/customer/list/addSpend": {
+    "zh-cn": "添加支付",
+    "en": "Add Payment"
+  },
+  "mobile.navigation.pages/customer/list/contract": {
+    "zh-cn": "订单",
+    "en": "Order"
+  },
+  "mobile.navigation.pages/customer/list/details": {
+    "zh-cn": "客户详情",
+    "en": "Customer details"
+  },
+  "mobile.navigation.pages/customer/list/file": {
+    "zh-cn": "资料",
+    "en": "Documents"
+  },
+  "mobile.navigation.pages/customer/list/index": {
+    "zh-cn": "客户",
+    "en": "Customer"
+  },
+  "mobile.navigation.pages/customer/list/invoice": {
+    "zh-cn": "发票",
+    "en": "Invoice"
+  },
+  "mobile.navigation.pages/customer/list/liaison": {
+    "zh-cn": "联系人",
+    "en": "Contacts"
+  },
+  "mobile.navigation.pages/customer/list/opp": {
+    "zh-cn": "商机",
+    "en": "Opportunity"
+  },
+  "mobile.navigation.pages/customer/list/search": {
+    "zh-cn": "客户-条件搜索",
+    "en": "Customer filters"
+  },
+  "mobile.navigation.pages/customer/list/shift": {
+    "zh-cn": "转移",
+    "en": "Transfer"
+  },
+  "mobile.navigation.pages/customer/list/statistics": {
+    "zh-cn": "业绩统计",
+    "en": "Performance statistics"
+  },
+  "mobile.navigation.pages/customer/opportunity/add": {
+    "zh-cn": "添加商机",
+    "en": "Add opportunity"
+  },
+  "mobile.navigation.pages/customer/opportunity/add-product": {
+    "zh-cn": "添加商品",
+    "en": "Add Product"
+  },
+  "mobile.navigation.pages/customer/opportunity/detail": {
+    "zh-cn": "商机详情",
+    "en": "Opportunity details"
+  },
+  "mobile.navigation.pages/customer/opportunity/edit-price": {
+    "zh-cn": "编辑价格",
+    "en": "Edit price"
+  },
+  "mobile.navigation.pages/customer/opportunity/index": {
+    "zh-cn": "商机",
+    "en": "Opportunity"
+  },
+  "mobile.navigation.pages/customer/opportunity/search": {
+    "zh-cn": "商机搜索",
+    "en": "Opportunity search"
+  },
+  "mobile.navigation.pages/customer/quickReply/index": {
+    "zh-cn": "快捷回复",
+    "en": "Quick replies"
+  },
+  "mobile.navigation.pages/customer/signing/addForm": {
+    "zh-cn": "添加合同",
+    "en": "Add contract"
+  },
+  "mobile.navigation.pages/customer/signing/details": {
+    "zh-cn": "合同详情",
+    "en": "Contract details"
+  },
+  "mobile.navigation.pages/customer/signing/index": {
+    "zh-cn": "合同合约",
+    "en": "Contracts"
+  },
+  "mobile.navigation.pages/customer/signing/orderList": {
+    "zh-cn": "选择订单",
+    "en": "Select Order"
+  },
+  "mobile.navigation.pages/customer/turnover/index": {
+    "zh-cn": "业绩统计",
+    "en": "Performance statistics"
+  },
+  "mobile.navigation.pages/finance/bill/add": {
+    "zh-cn": "添加账目信息",
+    "en": "Add Account information"
+  },
+  "mobile.navigation.pages/finance/bill/details": {
+    "zh-cn": "账目信息详情",
+    "en": "Account information details"
+  },
+  "mobile.navigation.pages/finance/bill/index": {
+    "zh-cn": "收支记账",
+    "en": "Income/expense accounting"
+  },
+  "mobile.navigation.pages/finance/bill/statistic": {
+    "zh-cn": "收支统计",
+    "en": "Income/expense statistics"
+  },
+  "mobile.navigation.pages/finance/invoice/details": {
+    "zh-cn": "发票详情",
+    "en": "Invoice details"
+  },
+  "mobile.navigation.pages/finance/invoice/index": {
+    "zh-cn": "开票管理",
+    "en": "Invoice management"
+  },
+  "mobile.navigation.pages/finance/invoice/search": {
+    "zh-cn": "发票审核-搜索",
+    "en": "Search invoice approvals"
+  },
+  "mobile.navigation.pages/finance/payment/details": {
+    "zh-cn": "付款详情",
+    "en": "Payment details"
+  },
+  "mobile.navigation.pages/finance/payment/index": {
+    "zh-cn": "付款审核",
+    "en": "Payment approvals"
+  },
+  "mobile.navigation.pages/finance/payment/search": {
+    "zh-cn": "付款搜索",
+    "en": "Search payments"
+  },
+  "mobile.navigation.pages/forum/default": {
+    "zh-cn": "查看文章",
+    "en": "View article"
+  },
+  "mobile.navigation.pages/forum/history": {
+    "zh-cn": "阅读记录",
+    "en": "View records"
+  },
+  "mobile.navigation.pages/forum/index": {
+    "zh-cn": "学习",
+    "en": "Learning"
+  },
+  "mobile.navigation.pages/forum/search": {
+    "zh-cn": "文章搜索",
+    "en": "Search articles"
+  },
+  "mobile.navigation.pages/index/index": {
+    "zh-cn": "首页",
+    "en": "Dashboard"
+  },
+  "mobile.navigation.pages/index/manage": {
+    "zh-cn": "应用管理",
+    "en": "Application management"
+  },
+  "mobile.navigation.pages/launch/index": {
+    "zh-cn": "陀螺匠",
+    "en": "Tuoluojiang"
+  },
+  "mobile.navigation.pages/module/addForm": {
+    "zh-cn": "低代码添加",
+    "en": "Add low-code item"
+  },
+  "mobile.navigation.pages/module/dashboard": {
+    "zh-cn": "数据统计",
+    "en": "Data statistics"
+  },
+  "mobile.navigation.pages/module/details": {
+    "zh-cn": "低代码详情",
+    "en": "Low-code details"
+  },
+  "mobile.navigation.pages/module/list": {
+    "zh-cn": "低代码应用",
+    "en": "Low-code applications"
+  },
+  "mobile.navigation.pages/module/oneOnOne": {
+    "zh-cn": "低代码一对一",
+    "en": "Low-code one-to-one"
+  },
+  "mobile.navigation.pages/module/questionnaire": {
+    "zh-cn": "问卷调查",
+    "en": "Questionnaire"
+  },
+  "mobile.navigation.pages/notice/index": {
+    "zh-cn": "消息",
+    "en": "News"
+  },
+  "mobile.navigation.pages/notice/info": {
+    "zh-cn": "待办详情",
+    "en": "To-do details"
+  },
+  "mobile.navigation.pages/notice/work": {
+    "zh-cn": "工作待办",
+    "en": "Work to-dos"
+  },
+  "mobile.navigation.pages/opportunities/index": {
+    "zh-cn": "企微商机",
+    "en": "WeCom opportunities"
+  },
+  "mobile.navigation.pages/user/index": {
+    "zh-cn": "通讯录",
+    "en": "Contacts"
+  },
+  "mobile.navigation.pages/user/personal": {
+    "zh-cn": "个人信息",
+    "en": "Personal information"
+  },
+  "mobile.navigation.pages/user/userId": {
+    "zh-cn": "成员ID添加",
+    "en": "Add member ID"
+  },
+  "mobile.navigation.pages/user/userPhone": {
+    "zh-cn": "手机号添加",
+    "en": "Add phone number"
+  },
+  "mobile.navigation.pages/user/userRecord": {
+    "zh-cn": "添加成员记录",
+    "en": "Add Member records"
+  },
+  "mobile.navigation.pages/users/assessment/default": {
+    "zh-cn": "考核详情",
+    "en": "Assessment details"
+  },
+  "mobile.navigation.pages/users/assessment/index": {
+    "zh-cn": "绩效考核",
+    "en": "Performance assessment"
+  },
+  "mobile.navigation.pages/users/center/index": {
+    "zh-cn": "个人中心",
+    "en": "Profile"
+  },
+  "mobile.navigation.pages/users/center/password": {
+    "zh-cn": "修改密码",
+    "en": "Change password"
+  },
+  "mobile.navigation.pages/users/center/phone": {
+    "zh-cn": "修改手机",
+    "en": "Edit Phone"
+  },
+  "mobile.navigation.pages/users/department/index": {
+    "zh-cn": "选择成员",
+    "en": "Select members"
+  },
+  "mobile.navigation.pages/users/examine/approve": {
+    "zh-cn": "我审批的",
+    "en": "My approvals"
+  },
+  "mobile.navigation.pages/users/examine/center": {
+    "zh-cn": "已提交",
+    "en": "Submitted"
+  },
+  "mobile.navigation.pages/users/examine/components/addSignature": {
+    "zh-cn": "加签",
+    "en": "Add approver"
+  },
+  "mobile.navigation.pages/users/examine/components/transfer": {
+    "zh-cn": "转审",
+    "en": "Transfer approval"
+  },
+  "mobile.navigation.pages/users/examine/default": {
+    "zh-cn": "添加审批",
+    "en": "Add Approval"
+  },
+  "mobile.navigation.pages/users/examine/defaults": {
+    "zh-cn": "审批详情",
+    "en": "Approval details"
+  },
+  "mobile.navigation.pages/users/examine/index": {
+    "zh-cn": "申请审批",
+    "en": "Approval requests"
+  },
+  "mobile.navigation.pages/users/examine/mine": {
+    "zh-cn": "我的审批",
+    "en": "My approvals"
+  },
+  "mobile.navigation.pages/users/examine/search": {
+    "zh-cn": "审批搜索",
+    "en": "Approval search"
+  },
+  "mobile.navigation.pages/users/login/config": {
+    "zh-cn": "添加服务配置",
+    "en": "Add service configuration"
+  },
+  "mobile.navigation.pages/users/login/enterprise": {
+    "zh-cn": "切换企业",
+    "en": "Enterprises"
+  },
+  "mobile.navigation.pages/users/login/index": {
+    "zh-cn": "登录",
+    "en": "Login"
+  },
+  "mobile.navigation.pages/users/login/privacy": {
+    "zh-cn": "隐私协议",
+    "en": "Privacy policy"
+  },
+  "mobile.navigation.pages/users/login/service": {
+    "zh-cn": "服务协议",
+    "en": "Terms of service"
+  },
+  "mobile.navigation.pages/users/memorandum/create": {
+    "zh-cn": "创建笔记",
+    "en": "Create note"
+  },
+  "mobile.navigation.pages/users/memorandum/details": {
+    "zh-cn": "记事本",
+    "en": "memorandum"
+  },
+  "mobile.navigation.pages/users/memorandum/index": {
+    "zh-cn": "记事本",
+    "en": "memorandum"
+  },
+  "mobile.navigation.pages/users/memorandum/search": {
+    "zh-cn": "条件搜索",
+    "en": "Condition search"
+  },
+  "mobile.navigation.pages/users/notice/index": {
+    "zh-cn": "企业动态",
+    "en": "Company news"
+  },
+  "mobile.navigation.pages/users/noticeDefault/index": {
+    "zh-cn": "企业动态",
+    "en": "Company news"
+  },
+  "mobile.navigation.pages/users/organization/index": {
+    "zh-cn": "组织架构",
+    "en": "Organization"
+  },
+  "mobile.navigation.pages/users/report/census": {
+    "zh-cn": "汇报统计",
+    "en": "Report statistics"
+  },
+  "mobile.navigation.pages/users/report/check": {
+    "zh-cn": "查看汇报",
+    "en": "Check daily"
+  },
+  "mobile.navigation.pages/users/report/index": {
+    "zh-cn": "填写汇报",
+    "en": "Write report"
+  },
+  "mobile.navigation.pages/users/report/mine": {
+    "zh-cn": "汇报详情",
+    "en": "Report details"
+  },
+  "mobile.navigation.pages/users/report/search": {
+    "zh-cn": "汇报搜索",
+    "en": "Report search"
+  },
+  "mobile.navigation.pages/users/scanCode/index": {
+    "zh-cn": "扫码登录",
+    "en": "Scan login"
+  },
+  "mobile.navigation.pages/users/schedule/create": {
+    "zh-cn": "新建日程",
+    "en": "New schedule"
+  },
+  "mobile.navigation.pages/users/schedule/detail": {
+    "zh-cn": "日程详情",
+    "en": "Schedule details"
+  },
+  "mobile.navigation.pages/users/schedule/index": {
+    "zh-cn": "我的日程",
+    "en": "My schedule"
+  },
+  "mobile.navigation.pages/workbench/index": {
+    "zh-cn": "应用",
+    "en": "Application"
+  },
+  "mobile.status.loginExpired": {
+    "zh-cn": "登录已过期，请重新登录。",
+    "en": "Login expired. Please log in again."
+  },
+  "mobile.status.networkError": {
+    "zh-cn": "网络开小差了！",
+    "en": "Network connection unavailable."
+  },
+  "mobile.status.refreshTokenFailed": {
+    "zh-cn": "刷新登录凭证失败。",
+    "en": "Failed to refresh login credentials."
+  },
+  "mobile.status.refreshTokenMissing": {
+    "zh-cn": "缺少刷新 TOKEN。",
+    "en": "Missing refresh token."
+  },
+  "mobile.status.requestFailed": {
+    "zh-cn": "请求失败。",
+    "en": "Request failed."
+  },
+  "mobile.status.serverError": {
+    "zh-cn": "服务器内部错误: 500",
+    "en": "Server error: 500"
+  },
+  "mobile.tab.0": {
+    "zh-cn": "首页",
+    "en": "Dashboard"
+  },
+  "mobile.tab.1": {
+    "zh-cn": "消息",
+    "en": "News"
+  },
+  "mobile.tab.2": {
+    "zh-cn": "日程",
+    "en": "Schedule"
+  },
+  "mobile.tab.3": {
+    "zh-cn": "笔记",
+    "en": "Notes"
+  },
+  "mobile.tab.4": {
+    "zh-cn": "应用",
+    "en": "Application"
+  },
+  "mobile.ui.attendanceApplyForMenuModalSelectRequest": {
+    "zh-cn": "选择申请单(",
+    "en": "Select request ("
+  },
+  "mobile.ui.attendanceApplyRequestRecords": {
+    "zh-cn": "申请记录",
+    "en": "Request records"
+  },
+  "mobile.ui.attendanceAttendanceAbnormalCardDay": {
+    "zh-cn": "天",
+    "en": "Day"
+  },
+  "mobile.ui.attendanceAttendanceAbnormalCardPendingExceptionsThisMonth": {
+    "zh-cn": "本月待处理异常",
+    "en": "Pending exceptions this month"
+  },
+  "mobile.ui.attendanceAttendanceUserCardAttendanceRules": {
+    "zh-cn": "考勤规则",
+    "en": "Attendance rules"
+  },
+  "mobile.ui.attendanceCalendarToday": {
+    "zh-cn": "今",
+    "en": "Today"
+  },
+  "mobile.ui.attendanceCardListException": {
+    "zh-cn": "异常",
+    "en": "Exception"
+  },
+  "mobile.ui.attendanceCardListFinishWork": {
+    "zh-cn": "下班",
+    "en": "Finish work"
+  },
+  "mobile.ui.attendanceCardListNoOffSiteClockStatistics": {
+    "zh-cn": "暂无外勤卡统计数据～",
+    "en": "No off-site clock statistics"
+  },
+  "mobile.ui.attendanceCardListNormal": {
+    "zh-cn": "正常",
+    "en": "Normal"
+  },
+  "mobile.ui.attendanceCardListStartWork": {
+    "zh-cn": "上班",
+    "en": "Start work"
+  },
+  "mobile.ui.attendanceCardListViewDetails": {
+    "zh-cn": "查看明细",
+    "en": "View details"
+  },
+  "mobile.ui.attendanceDetailedTeamCheckListAbsent": {
+    "zh-cn": "旷工",
+    "en": "Absent"
+  },
+  "mobile.ui.attendanceDetailedTeamCheckListClockInOut": {
+    "zh-cn": "上下班",
+    "en": "Clock-in/out"
+  },
+  "mobile.ui.attendanceDetailedTeamCheckListDetails": {
+    "zh-cn": "明细～",
+    "en": "details"
+  },
+  "mobile.ui.attendanceDetailedTeamCheckListLeave": {
+    "zh-cn": "假勤",
+    "en": "Leave"
+  },
+  "mobile.ui.attendanceDetailedTeamCheckListNone": {
+    "zh-cn": "暂无",
+    "en": "None"
+  },
+  "mobile.ui.attendanceDetailedTeamCheckListOvertime": {
+    "zh-cn": "加班",
+    "en": "Overtime"
+  },
+  "mobile.ui.attendanceDetailedTeamCheckListSelectCondition": {
+    "zh-cn": "选择条件",
+    "en": "Select Condition"
+  },
+  "mobile.ui.attendanceDetailedUserCheckListDispose": {
+    "zh-cn": "处理",
+    "en": "Dispose"
+  },
+  "mobile.ui.attendanceDetailedUserCheckListFilterStatus": {
+    "zh-cn": "筛选状态",
+    "en": "Filter status"
+  },
+  "mobile.ui.attendanceDetailedUserCheckListNoAttendanceDetails": {
+    "zh-cn": "暂无考勤明细～",
+    "en": "No Attendance details"
+  },
+  "mobile.ui.attendanceDetailedUserCheckListSAttendanceDetails": {
+    "zh-cn": "的考勤明细",
+    "en": "'s attendance details"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListCalculationMethod": {
+    "zh-cn": "核算方式",
+    "en": "Calculation method"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListDate": {
+    "zh-cn": "日期",
+    "en": "Date"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListDateType": {
+    "zh-cn": "日期类型",
+    "en": "Date type"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListNoOvertimeDetails": {
+    "zh-cn": "暂无加班明细～",
+    "en": "No Overtime details"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListOvertimeHours": {
+    "zh-cn": "加班时长",
+    "en": "Overtime hours"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListOvertimePay": {
+    "zh-cn": "加班费",
+    "en": "Overtime pay"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListPublicHoliday": {
+    "zh-cn": "节假日",
+    "en": "Public holiday"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListRestDay": {
+    "zh-cn": "休息日",
+    "en": "Rest day"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListSOvertimeDetails": {
+    "zh-cn": "的加班明细",
+    "en": "'s overtime details"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListTimeOffInLieu": {
+    "zh-cn": "调休",
+    "en": "Time off in lieu"
+  },
+  "mobile.ui.attendanceDetailedUserOvertimeListWorkday": {
+    "zh-cn": "工作日",
+    "en": "Workday"
+  },
+  "mobile.ui.attendanceDetailedUserVacationListNoLeaveDetails": {
+    "zh-cn": "暂无假勤明细～",
+    "en": "No Leave details"
+  },
+  "mobile.ui.attendanceDetailedUserVacationListSLeaveDetails": {
+    "zh-cn": "的假勤明细",
+    "en": "'s leave details"
+  },
+  "mobile.ui.attendanceExternalWorkModalClockInTime": {
+    "zh-cn": "打卡时间",
+    "en": "Clock-in time"
+  },
+  "mobile.ui.attendanceExternalWorkModalEnterContent": {
+    "zh-cn": "请输入内容",
+    "en": "Enter content"
+  },
+  "mobile.ui.attendancePersonalReportAbsenceDays": {
+    "zh-cn": "旷工(天)",
+    "en": "Absence (days)"
+  },
+  "mobile.ui.attendancePersonalReportHolidayOvertime": {
+    "zh-cn": "节假日加班",
+    "en": "Holiday overtime"
+  },
+  "mobile.ui.attendancePersonalReportLeaveStatistics": {
+    "zh-cn": "假勤统计",
+    "en": "Leave statistics"
+  },
+  "mobile.ui.attendancePersonalReportLocationExceptionsTimes": {
+    "zh-cn": "地点异常(次)",
+    "en": "Location exceptions (times)"
+  },
+  "mobile.ui.attendancePersonalReportNormalDaysExceptionDays": {
+    "zh-cn": "正常天数/异常天数",
+    "en": "Normal days / exception days"
+  },
+  "mobile.ui.attendancePersonalReportOvertimeStatistics": {
+    "zh-cn": "加班统计",
+    "en": "Overtime statistics"
+  },
+  "mobile.ui.attendancePersonalReportRestDayOvertime": {
+    "zh-cn": "休息日加班",
+    "en": "Rest-day overtime"
+  },
+  "mobile.ui.attendancePersonalReportWeekdayOvertime": {
+    "zh-cn": "工作日加班",
+    "en": "Weekday overtime"
+  },
+  "mobile.ui.attendanceProgressExceptions": {
+    "zh-cn": "异常人数",
+    "en": "Exceptions"
+  },
+  "mobile.ui.attendanceProgressNormal": {
+    "zh-cn": "正常人数",
+    "en": "Normal"
+  },
+  "mobile.ui.attendanceRules": {
+    "zh-cn": "进行打卡；",
+    "en": "."
+  },
+  "mobile.ui.attendanceRulesAllowClockCorrections": {
+    "zh-cn": "允许补卡",
+    "en": "Allow clock corrections"
+  },
+  "mobile.ui.attendanceRulesAllowOffSiteClockIn": {
+    "zh-cn": "允许外勤打卡",
+    "en": "Allow off-site clock-in"
+  },
+  "mobile.ui.attendanceRulesArrivingMoreThan": {
+    "zh-cn": "晚到超过",
+    "en": "Arriving more than"
+  },
+  "mobile.ui.attendanceRulesAttendanceAdministrator": {
+    "zh-cn": "考勤管理员",
+    "en": "Attendance administrator"
+  },
+  "mobile.ui.attendanceRulesAttendanceArea": {
+    "zh-cn": "考勤范围",
+    "en": "Attendance area"
+  },
+  "mobile.ui.attendanceRulesAttendanceTime": {
+    "zh-cn": "考勤时间",
+    "en": "Attendance time"
+  },
+  "mobile.ui.attendanceRulesBeforeStartLatestClockOut": {
+    "zh-cn": "之后可进行打卡；下班最晚",
+    "en": "before start; latest clock-out:"
+  },
+  "mobile.ui.attendanceRulesClockCorrection": {
+    "zh-cn": "补卡",
+    "en": "Clock correction"
+  },
+  "mobile.ui.attendanceRulesClockOutIsOptional": {
+    "zh-cn": "下班可免打卡",
+    "en": "Clock-out is optional"
+  },
+  "mobile.ui.attendanceRulesContactYourAttendanceGroupAdministratorIfYouHaveQuestions": {
+    "zh-cn": "若对考勤规则有疑问，可咨询你的考勤组管理员",
+    "en": "Contact your attendance group administrator if you have questions about the rules."
+  },
+  "mobile.ui.attendanceRulesCorrectionsCanBeRequestedForThePast": {
+    "zh-cn": "可申请过去",
+    "en": "Corrections can be requested for the past"
+  },
+  "mobile.ui.attendanceRulesDays": {
+    "zh-cn": "天内的补卡",
+    "en": "days"
+  },
+  "mobile.ui.attendanceRulesEarliestClockIn": {
+    "zh-cn": "上班最早",
+    "en": "Earliest clock-in:"
+  },
+  "mobile.ui.attendanceRulesEarlyIsConsideredAHalfDayMissingClockRecord": {
+    "zh-cn": "打卡记为半天缺卡",
+    "en": "early is considered a half-day missing clock record"
+  },
+  "mobile.ui.attendanceRulesEarlyIsConsideredEarlyLeaveArrivingMoreThan": {
+    "zh-cn": "打卡记为早退；晚到超过",
+    "en": "early is considered early leave; arriving more than"
+  },
+  "mobile.ui.attendanceRulesEmployeesMustTakePhotosWhenClockingInAndOut": {
+    "zh-cn": "员工上下班打卡均需拍照",
+    "en": "Employees must take photos when clocking in and out"
+  },
+  "mobile.ui.attendanceRulesLateIsConsideredLateLeaving": {
+    "zh-cn": "记为迟到；提前",
+    "en": "late is considered late; leaving"
+  },
+  "mobile.ui.attendanceRulesLateIsConsideredSeverelyLate": {
+    "zh-cn": "记为严重迟到",
+    "en": "late is considered severely late"
+  },
+  "mobile.ui.attendanceRulesLeaving": {
+    "zh-cn": "，提前",
+    "en": "; leaving"
+  },
+  "mobile.ui.attendanceRulesM": {
+    "zh-cn": "米以内）",
+    "en": "m)"
+  },
+  "mobile.ui.attendanceRulesMacAddress": {
+    "zh-cn": "MAC地址：",
+    "en": "MAC address:"
+  },
+  "mobile.ui.attendanceRulesMayBeDelayedBy": {
+    "zh-cn": "可延后",
+    "en": "may be delayed by"
+  },
+  "mobile.ui.attendanceRulesMon": {
+    "zh-cn": "一",
+    "en": "Mon"
+  },
+  "mobile.ui.attendanceRulesMonthlyCorrectionLimitPerPerson": {
+    "zh-cn": "每人每月补卡次数上限",
+    "en": "Monthly correction limit per person"
+  },
+  "mobile.ui.attendanceRulesNextDay": {
+    "zh-cn": "次日",
+    "en": "Next day"
+  },
+  "mobile.ui.attendanceRulesNoPosition": {
+    "zh-cn": "暂无职位",
+    "en": "No position"
+  },
+  "mobile.ui.attendanceRulesOfficeLocation": {
+    "zh-cn": "办公地点（",
+    "en": "Office location ("
+  },
+  "mobile.ui.attendanceRulesOffSiteClockIn": {
+    "zh-cn": "外勤打卡",
+    "en": "Off-site clock-in"
+  },
+  "mobile.ui.attendanceRulesPhotoRequiredForClockIn": {
+    "zh-cn": "拍照打卡",
+    "en": "Photo required for clock-in"
+  },
+  "mobile.ui.attendanceRulesPhotosAreRequiredForOffSiteClockIns": {
+    "zh-cn": "外勤打卡必须拍照",
+    "en": "Photos are required for off-site clock-ins"
+  },
+  "mobile.ui.attendanceRulesRemarksAreRequiredForOffSiteClockIns": {
+    "zh-cn": "外勤打卡备注必须填写",
+    "en": "Remarks are required for off-site clock-ins"
+  },
+  "mobile.ui.attendanceRulesSecond": {
+    "zh-cn": "次",
+    "en": "Second"
+  },
+  "mobile.ui.attendanceRulesToday": {
+    "zh-cn": "当日",
+    "en": "Today"
+  },
+  "mobile.ui.attendanceRulesWiFiInformation": {
+    "zh-cn": "WIFI信息",
+    "en": "Wi-Fi information"
+  },
+  "mobile.ui.attendanceRulesWiFiName": {
+    "zh-cn": "WIFI名称：",
+    "en": "Wi-Fi name:"
+  },
+  "mobile.ui.attendanceScheduleAddAddSchedule": {
+    "zh-cn": "新增排班",
+    "en": "Add schedule"
+  },
+  "mobile.ui.attendanceScheduleAddAttendanceGroupName": {
+    "zh-cn": "考勤组名称",
+    "en": "Attendance group name"
+  },
+  "mobile.ui.attendanceScheduleAttendanceGroup": {
+    "zh-cn": "考勤组名",
+    "en": "Attendance group"
+  },
+  "mobile.ui.attendanceScheduleAttendanceMembers": {
+    "zh-cn": "考勤成员",
+    "en": "Attendance members"
+  },
+  "mobile.ui.attendanceScheduleDetailSchedule": {
+    "zh-cn": "排班页面",
+    "en": "Schedule"
+  },
+  "mobile.ui.attendanceScheduleEnterAttendanceGroupName": {
+    "zh-cn": "请输入考勤组名称",
+    "en": "Enter attendance group name"
+  },
+  "mobile.ui.attendanceScheduleEtc": {
+    "zh-cn": "等",
+    "en": "etc."
+  },
+  "mobile.ui.attendanceScheduleFilterBarCycle": {
+    "zh-cn": "周期：",
+    "en": "Cycle:"
+  },
+  "mobile.ui.attendanceScheduleNoScheduleInformation": {
+    "zh-cn": "暂无排班信息~",
+    "en": "No schedule information"
+  },
+  "mobile.ui.attendanceSchedulePeople": {
+    "zh-cn": "人",
+    "en": "People"
+  },
+  "mobile.ui.attendanceScheduleSchedule": {
+    "zh-cn": "排班表",
+    "en": "Schedule"
+  },
+  "mobile.ui.attendanceScheduleScheduleManagement": {
+    "zh-cn": "排班管理",
+    "en": "Schedule management"
+  },
+  "mobile.ui.attendanceScheduleTableHeaderName": {
+    "zh-cn": "姓名",
+    "en": "Name"
+  },
+  "mobile.ui.attendanceScheduleTablePopupClear": {
+    "zh-cn": "清空",
+    "en": "Clear"
+  },
+  "mobile.ui.attendanceScheduleTablePopupDays": {
+    "zh-cn": "天）",
+    "en": "days)"
+  },
+  "mobile.ui.attendanceScheduleTablePopupNoCycle": {
+    "zh-cn": "暂无周期",
+    "en": "No Cycle"
+  },
+  "mobile.ui.attendanceScheduleTablePopupNoShift": {
+    "zh-cn": "暂无班次",
+    "en": "No Shift"
+  },
+  "mobile.ui.attendanceScheduleTablePopupScheduleByCycle": {
+    "zh-cn": "按周期排班",
+    "en": "Schedule by cycle"
+  },
+  "mobile.ui.attendanceScheduleTablePopupScheduleByShift": {
+    "zh-cn": "按班次排班",
+    "en": "Schedule by shift"
+  },
+  "mobile.ui.attendanceScheduleToolbarScheduleSettings": {
+    "zh-cn": "排班设置",
+    "en": "Schedule settings"
+  },
+  "mobile.ui.attendanceShiftAddBreakTime": {
+    "zh-cn": "中途休息时间",
+    "en": "Break time"
+  },
+  "mobile.ui.attendanceShiftAddBreakTimeIsExcludedFromWorkingHours": {
+    "zh-cn": "休息时间不计入工时",
+    "en": "Break time is excluded from working hours."
+  },
+  "mobile.ui.attendanceShiftAddEndTimeSettings": {
+    "zh-cn": "下班时间设置",
+    "en": "End-time settings"
+  },
+  "mobile.ui.attendanceShiftAddEnter": {
+    "zh-cn": "请填写",
+    "en": "Enter"
+  },
+  "mobile.ui.attendanceShiftAddFirst": {
+    "zh-cn": "第1次",
+    "en": "First"
+  },
+  "mobile.ui.attendanceShiftAddOneWorkPeriod": {
+    "zh-cn": "一次上下班",
+    "en": "One work period"
+  },
+  "mobile.ui.attendanceShiftAddOvertimeStart": {
+    "zh-cn": "加班起算时间",
+    "en": "Overtime start"
+  },
+  "mobile.ui.attendanceShiftAddSave": {
+    "zh-cn": "保存",
+    "en": "Save"
+  },
+  "mobile.ui.attendanceShiftAddSecondEndTimeSettings": {
+    "zh-cn": "第2次下班时间设置",
+    "en": "Second end-time settings"
+  },
+  "mobile.ui.attendanceShiftAddSecondStartTimeSettings": {
+    "zh-cn": "第2次上班时间设置",
+    "en": "Second start-time settings"
+  },
+  "mobile.ui.attendanceShiftAddShiftName": {
+    "zh-cn": "班次名称",
+    "en": "Shift name"
+  },
+  "mobile.ui.attendanceShiftAddShiftSettings": {
+    "zh-cn": "班次设置",
+    "en": "Shift settings"
+  },
+  "mobile.ui.attendanceShiftAddStartTimeSettings": {
+    "zh-cn": "上班时间设置",
+    "en": "Start-time settings"
+  },
+  "mobile.ui.attendanceShiftAddTimeAfterFinalClockOutBeforeOvertimeStarts": {
+    "zh-cn": "最后班次下班后多久开始计算",
+    "en": "Time after final clock-out before overtime starts"
+  },
+  "mobile.ui.attendanceShiftAddTotalWorkingHours": {
+    "zh-cn": "合计工作时长",
+    "en": "Total working hours"
+  },
+  "mobile.ui.attendanceShiftAddTotalWorkingHoursNbspNbsp": {
+    "zh-cn": "合计工作时长&nbsp;&nbsp;",
+    "en": "Total working hours&nbsp;&nbsp;"
+  },
+  "mobile.ui.attendanceShiftAddWorkPeriods": {
+    "zh-cn": "上下班次数",
+    "en": "Work periods"
+  },
+  "mobile.ui.attendanceShiftNoShiftInformation": {
+    "zh-cn": "暂无班次信息~",
+    "en": "No shift information"
+  },
+  "mobile.ui.attendanceShiftSearchShiftNameOrCreator": {
+    "zh-cn": "搜索班次名称或者创建人",
+    "en": "Search shift name or creator"
+  },
+  "mobile.ui.attendanceShiftSelected": {
+    "zh-cn": "已选择",
+    "en": "Selected"
+  },
+  "mobile.ui.attendanceShiftShiftManagement": {
+    "zh-cn": "班次管理",
+    "en": "Shift management"
+  },
+  "mobile.ui.attendanceShiftShifts": {
+    "zh-cn": "个班次",
+    "en": "shifts"
+  },
+  "mobile.ui.attendanceSignInButtonMacAddress": {
+    "zh-cn": "MAC地址:",
+    "en": "MAC address:"
+  },
+  "mobile.ui.attendanceSignInButtonNo": {
+    "zh-cn": "否",
+    "en": "No"
+  },
+  "mobile.ui.attendanceSignInButtonRefresh": {
+    "zh-cn": "刷新",
+    "en": "Refresh"
+  },
+  "mobile.ui.attendanceSignInButtonWithinWiFiRange": {
+    "zh-cn": "WIFI范围内:",
+    "en": "Within Wi-Fi range:"
+  },
+  "mobile.ui.attendanceSignInButtonYes": {
+    "zh-cn": "是",
+    "en": "Yes"
+  },
+  "mobile.ui.attendanceSignInModalIGotIt": {
+    "zh-cn": "我知道了",
+    "en": "I got it!"
+  },
+  "mobile.ui.attendanceTeamAttendanceAverageHoursH": {
+    "zh-cn": "平均工时(h)",
+    "en": "Average hours (h)"
+  },
+  "mobile.ui.attendanceTeamAttendanceClockInOutStatistics": {
+    "zh-cn": "上下班打卡统计",
+    "en": "Clock-in/out statistics"
+  },
+  "mobile.ui.attendanceTeamAttendanceEarlyLeaveTimes": {
+    "zh-cn": "早退(次)",
+    "en": "Early leave (times)"
+  },
+  "mobile.ui.attendanceTeamAttendanceLateTimes": {
+    "zh-cn": "迟到(次)",
+    "en": "Late (times)"
+  },
+  "mobile.ui.attendanceTeamAttendanceLeaveClockCorrectionOutOfOfficeAndBusinessTrip": {
+    "zh-cn": "系统自动汇总请假、补卡、外出、出差相关数据至考勤统计",
+    "en": "Leave, clock correction, out-of-office, and business-trip data is automatically included in attendance statistics."
+  },
+  "mobile.ui.attendanceTeamAttendanceMissingClockInTimes": {
+    "zh-cn": "缺卡(次)",
+    "en": "Missing clock-in (times)"
+  },
+  "mobile.ui.attendanceTeamAttendanceOffSiteClockStatistics": {
+    "zh-cn": "外勤卡统计",
+    "en": "Off-site clock statistics"
+  },
+  "mobile.ui.attendanceTeamAttendanceTeamMonthlyReport": {
+    "zh-cn": "团队月报",
+    "en": "Team monthly report"
+  },
+  "mobile.ui.attendanceTeamReportPeople": {
+    "zh-cn": "(人)",
+    "en": "(People)"
+  },
+  "mobile.ui.attendanceUserAttendanceAllowlist": {
+    "zh-cn": "白名单",
+    "en": "Allowlist"
+  },
+  "mobile.ui.attendanceUserAttendanceBreak": {
+    "zh-cn": "休息",
+    "en": "Break"
+  },
+  "mobile.ui.attendanceUserAttendanceClockIn": {
+    "zh-cn": "上班打卡",
+    "en": "Clock in"
+  },
+  "mobile.ui.attendanceUserAttendanceClockOut": {
+    "zh-cn": "下班打卡",
+    "en": "Clock out"
+  },
+  "mobile.ui.attendanceUserAttendanceEarlyLeave": {
+    "zh-cn": "早退",
+    "en": "Early leave"
+  },
+  "mobile.ui.attendanceUserAttendanceExceptionHandling": {
+    "zh-cn": "异常处理",
+    "en": "Exception handling"
+  },
+  "mobile.ui.attendanceUserAttendanceHours": {
+    "zh-cn": "(工时",
+    "en": "(Hours"
+  },
+  "mobile.ui.attendanceUserAttendanceLate": {
+    "zh-cn": "迟到",
+    "en": "Late"
+  },
+  "mobile.ui.attendanceUserAttendanceLocationException": {
+    "zh-cn": "地点异常",
+    "en": "Location exception"
+  },
+  "mobile.ui.attendanceUserAttendanceMissingClockIn": {
+    "zh-cn": "缺卡",
+    "en": "Missing clock-in"
+  },
+  "mobile.ui.attendanceUserAttendanceMyMonthlyReport": {
+    "zh-cn": "我的月报",
+    "en": "My monthly report"
+  },
+  "mobile.ui.attendanceUserAttendanceOffSite": {
+    "zh-cn": "外勤",
+    "en": "Off-site"
+  },
+  "mobile.ui.attendanceUserAttendanceTodayIsARestDayNoClockInIs": {
+    "zh-cn": "今日休息，无需打卡～",
+    "en": "Today is a rest day. No clock-in is required."
+  },
+  "mobile.ui.backTopIndexTop": {
+    "zh-cn": "顶部",
+    "en": "Top"
+  },
+  "mobile.ui.baseRichEditorFontStyleToolPanelFontSize": {
+    "zh-cn": "字号",
+    "en": "Font size"
+  },
+  "mobile.ui.baseRichEditorFontStyleToolPanelHighlightColor": {
+    "zh-cn": "高亮颜色",
+    "en": "Highlight color"
+  },
+  "mobile.ui.baseRichEditorFontStyleToolPanelTextColor": {
+    "zh-cn": "文字颜色",
+    "en": "Text color"
+  },
+  "mobile.ui.baTreePickerIndexCancel": {
+    "zh-cn": "取消",
+    "en": "Cancel"
+  },
+  "mobile.ui.baTreePickerIndexOk": {
+    "zh-cn": "确定",
+    "en": "OK"
+  },
+  "mobile.ui.bottomNavigationIndexNoDataPleaseConfigureIt": {
+    "zh-cn": "暂无数据，请设置",
+    "en": "No data. Please configure it."
+  },
+  "mobile.ui.cloudfileIndexCloudFiles": {
+    "zh-cn": "云文件",
+    "en": "Cloud files"
+  },
+  "mobile.ui.cloudfileIndexCreated202210131753": {
+    "zh-cn": "创建时间:2022/10/13 17:53",
+    "en": "Created: 2022/10/13 17:53"
+  },
+  "mobile.ui.cloudfileIndexEnterpriseSpace": {
+    "zh-cn": "企业空间",
+    "en": "Enterprise space"
+  },
+  "mobile.ui.commonWwDefaultNoCustomerData": {
+    "zh-cn": "暂无客户数据",
+    "en": "No customer data"
+  },
+  "mobile.ui.copyrightIndexTuoluojiangAllRightsReserved": {
+    "zh-cn": "陀螺匠. All Rights Reserved",
+    "en": "Tuoluojiang. All rights reserved."
+  },
+  "mobile.ui.customerAddressSearchIndexSearchLocations": {
+    "zh-cn": "搜索地点",
+    "en": "Search locations"
+  },
+  "mobile.ui.customerContractAddContractAddPayment": {
+    "zh-cn": "添加付款",
+    "en": "Add payment"
+  },
+  "mobile.ui.customerContractAddContractOrder": {
+    "zh-cn": "订单",
+    "en": "Order"
+  },
+  "mobile.ui.customerContractAddFileAddFile": {
+    "zh-cn": "添加文件",
+    "en": "Add file"
+  },
+  "mobile.ui.customerContractAddFilePleaseEnterRecordDescription": {
+    "zh-cn": "请填写记录描述",
+    "en": "Please enter Record description"
+  },
+  "mobile.ui.customerContractAddFileRecordDescription": {
+    "zh-cn": "记录描述",
+    "en": "Record description"
+  },
+  "mobile.ui.customerContractAddPaymentMbJpgJpegPngAndOtherFormatsSupported": {
+    "zh-cn": "M，支持jpg、jpeg、png 等",
+    "en": "MB; JPG, JPEG, PNG, and other formats supported"
+  },
+  "mobile.ui.customerContractAddPaymentPaymentReceivedCny": {
+    "zh-cn": "回款金额(元)",
+    "en": "Payment received (CNY)"
+  },
+  "mobile.ui.customerContractAddPaymentRecommended7341034Max": {
+    "zh-cn": "建议734*1034，大小不超过",
+    "en": "Recommended: 734 × 1034, max"
+  },
+  "mobile.ui.customerContractAddPaymentRenewalAmount": {
+    "zh-cn": "续费金额(元)",
+    "en": "Renewal amount"
+  },
+  "mobile.ui.customerContractAddPaymentRenewalDate": {
+    "zh-cn": "续费结束日期",
+    "en": "Renewal date"
+  },
+  "mobile.ui.customerContractAddPaymentRenewalType": {
+    "zh-cn": "续费类型",
+    "en": "Renewal type"
+  },
+  "mobile.ui.customerContractAddPaymentSelectOrder": {
+    "zh-cn": "选择订单",
+    "en": "Select Order"
+  },
+  "mobile.ui.customerContractAddRemindCollectionReminderDate": {
+    "zh-cn": "回款提醒日期",
+    "en": "Collection reminder date"
+  },
+  "mobile.ui.customerContractAddRemindEnterReminderDetails": {
+    "zh-cn": "填写提醒内容",
+    "en": "Enter reminder details"
+  },
+  "mobile.ui.customerContractAddRemindEstimatedCollectionAmount": {
+    "zh-cn": "预计回款金额",
+    "en": "Estimated collection amount"
+  },
+  "mobile.ui.customerContractAddRemindReminderContent": {
+    "zh-cn": "提醒内容",
+    "en": "Reminder content"
+  },
+  "mobile.ui.customerContractAddRemindReminderType": {
+    "zh-cn": "提醒类型",
+    "en": "Reminder type"
+  },
+  "mobile.ui.customerContractAddRemindRenewalAmount": {
+    "zh-cn": "续费金额",
+    "en": "Renewal amount"
+  },
+  "mobile.ui.customerContractAddRemindRenewalReminderDate": {
+    "zh-cn": "续费提醒日期",
+    "en": "Renewal reminder date"
+  },
+  "mobile.ui.customerContractContractListNoContractData": {
+    "zh-cn": "暂无合同数据",
+    "en": "No Contract data"
+  },
+  "mobile.ui.customerContractDetailsActivityRecords": {
+    "zh-cn": "动态记录",
+    "en": "Activity records"
+  },
+  "mobile.ui.customerContractDetailsAddAccount": {
+    "zh-cn": "添加账目",
+    "en": "Add Account"
+  },
+  "mobile.ui.customerContractDetailsAmountReceived": {
+    "zh-cn": "收款金额：",
+    "en": "Amount received:"
+  },
+  "mobile.ui.customerContractDetailsApplyForInvoice": {
+    "zh-cn": "申请发票",
+    "en": "Apply for invoice"
+  },
+  "mobile.ui.customerContractDetailsCustomerName": {
+    "zh-cn": "客户名称：",
+    "en": "Customer name:"
+  },
+  "mobile.ui.customerContractDetailsExpenseAmount": {
+    "zh-cn": "支出金额：",
+    "en": "Expense amount:"
+  },
+  "mobile.ui.customerContractDetailsOrderAmount": {
+    "zh-cn": "订单金额：",
+    "en": "Order amount:"
+  },
+  "mobile.ui.customerContractDetailsOrderNo": {
+    "zh-cn": "订单编号：",
+    "en": "Order No.:"
+  },
+  "mobile.ui.customerContractDetailsOutstandingAmount": {
+    "zh-cn": "未收款金额：",
+    "en": "Outstanding amount:"
+  },
+  "mobile.ui.customerContractDetailsReminder": {
+    "zh-cn": "提醒",
+    "en": "Reminder"
+  },
+  "mobile.ui.customerContractIndexOrderName": {
+    "zh-cn": "订单名称",
+    "en": "Order name"
+  },
+  "mobile.ui.customerContractPayDetailApproved": {
+    "zh-cn": "已通过",
+    "en": "Approved"
+  },
+  "mobile.ui.customerContractPayDetailCustomerName": {
+    "zh-cn": "客户名称",
+    "en": "Customer name"
+  },
+  "mobile.ui.customerContractPayDetailOrderNo": {
+    "zh-cn": "订单编号",
+    "en": "Order No."
+  },
+  "mobile.ui.customerContractPayDetailOrderPayment": {
+    "zh-cn": "订单回款",
+    "en": "Order payment"
+  },
+  "mobile.ui.customerContractPayDetailOrderRenewal": {
+    "zh-cn": "订单续费-",
+    "en": "Order renewal -"
+  },
+  "mobile.ui.customerContractPayDetailPaymentBillNo": {
+    "zh-cn": "付款单号",
+    "en": "Payment bill No."
+  },
+  "mobile.ui.customerContractPayDetailPaymentMethod": {
+    "zh-cn": "支付方式",
+    "en": "Payment method"
+  },
+  "mobile.ui.customerContractPayDetailPaymentProof": {
+    "zh-cn": "付款凭证",
+    "en": "Payment proof"
+  },
+  "mobile.ui.customerContractPayDetailPaymentTime": {
+    "zh-cn": "付款时间",
+    "en": "Payment time"
+  },
+  "mobile.ui.customerContractPayDetailPendingReview": {
+    "zh-cn": "待审核",
+    "en": "Pending review"
+  },
+  "mobile.ui.customerContractPayDetailRejected": {
+    "zh-cn": "未通过，",
+    "en": "Rejected,"
+  },
+  "mobile.ui.customerContractPayDetailRemarks": {
+    "zh-cn": "备注",
+    "en": "Remarks"
+  },
+  "mobile.ui.customerContractPayDetailRenewalExpiry": {
+    "zh-cn": "续费到期",
+    "en": "Renewal expiry"
+  },
+  "mobile.ui.customerContractPayDetailReviewResult": {
+    "zh-cn": "审核结果",
+    "en": "Review result"
+  },
+  "mobile.ui.customerContractPayDetailRevoked": {
+    "zh-cn": "已撤销",
+    "en": "Revoked"
+  },
+  "mobile.ui.customerContractPayDetailSalesperson": {
+    "zh-cn": "业务员",
+    "en": "Salesperson:"
+  },
+  "mobile.ui.customerContractPayDetailWithdrawing": {
+    "zh-cn": "撤销中",
+    "en": "Withdrawing"
+  },
+  "mobile.ui.customerContractPayDetailYuan": {
+    "zh-cn": "元",
+    "en": "Yuan"
+  },
+  "mobile.ui.customerContractPayRemindPaymentCollection": {
+    "zh-cn": "回款",
+    "en": "Payment collection"
+  },
+  "mobile.ui.customerContractPayRemindPaymentReminder": {
+    "zh-cn": "回款提醒",
+    "en": "Payment reminder"
+  },
+  "mobile.ui.customerContractPayRemindRecipients": {
+    "zh-cn": "提醒人",
+    "en": "Recipients"
+  },
+  "mobile.ui.customerContractPayRemindRenewal": {
+    "zh-cn": "续费",
+    "en": "Renewal"
+  },
+  "mobile.ui.customerContractPayRemindRenewalReminder": {
+    "zh-cn": "续费提醒",
+    "en": "Renewal reminder"
+  },
+  "mobile.ui.customerContractUploadFileImageDocument": {
+    "zh-cn": "文档",
+    "en": "Document"
+  },
+  "mobile.ui.customerContractUploadFileImageImage": {
+    "zh-cn": "图片",
+    "en": "Image"
+  },
+  "mobile.ui.customerEditFormBasicInformation": {
+    "zh-cn": "基本信息",
+    "en": "Basic information"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceAccountNumber": {
+    "zh-cn": "开户账号",
+    "en": "Account number"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceBankOfDeposit": {
+    "zh-cn": "开户行",
+    "en": "Bank of deposit"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceBillingAddress": {
+    "zh-cn": "开票地址",
+    "en": "Billing address"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceBillingDate": {
+    "zh-cn": "期望开票日期",
+    "en": "Billing date"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceContacts": {
+    "zh-cn": "联系人",
+    "en": "Contacts"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceEmailAddress": {
+    "zh-cn": "邮箱地址",
+    "en": "Email address"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceInvoiceAmount": {
+    "zh-cn": "开票金额",
+    "en": "Invoice amount:"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceInvoiceCategory": {
+    "zh-cn": "发票类目",
+    "en": "Invoice category:"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceInvoiceHeader": {
+    "zh-cn": "发票抬头",
+    "en": "Invoice header"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceInvoiceRequirements": {
+    "zh-cn": "开票要求",
+    "en": "Invoice requirements"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceInvoiceType": {
+    "zh-cn": "发票类型",
+    "en": "Invoice type"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceMailingAddress": {
+    "zh-cn": "邮寄地址",
+    "en": "Mailing address"
+  },
+  "mobile.ui.customerInvoiceAddInvoicePleaseNoteThatNoPaymentOrderHasBeenSelected": {
+    "zh-cn": "请注意,您没有选择该发票关联的付款订单！",
+    "en": "Please note that no payment order has been selected for this invoice."
+  },
+  "mobile.ui.customerInvoiceAddInvoiceTaxpayerId": {
+    "zh-cn": "纳税人识别号",
+    "en": "Taxpayer ID:"
+  },
+  "mobile.ui.customerInvoiceAddInvoiceTelephone": {
+    "zh-cn": "电话",
+    "en": "Telephone"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentApplyToVoid": {
+    "zh-cn": "申请作废",
+    "en": "Apply to void"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentApproveInvalidation": {
+    "zh-cn": "同意作废",
+    "en": "Approve invalidation"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentBusinessType": {
+    "zh-cn": "业务类型",
+    "en": "Business type"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentCreatedTime": {
+    "zh-cn": "创建时间",
+    "en": "Created time"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentCreator": {
+    "zh-cn": "创建人",
+    "en": "Creator"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentInvoiced": {
+    "zh-cn": "已开票",
+    "en": "Invoiced"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentInvoiceStatus": {
+    "zh-cn": "发票状态",
+    "en": "Invoice status"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentNext": {
+    "zh-cn": "下一步",
+    "en": "Next"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentPaymentAmount": {
+    "zh-cn": "付款金额",
+    "en": "Payment amount:"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentPaymentRecord": {
+    "zh-cn": "回款记录",
+    "en": "Payment record"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentPendingInvoicing": {
+    "zh-cn": "待开票",
+    "en": "Pending invoicing"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentRejected": {
+    "zh-cn": "已拒绝",
+    "en": "Rejected"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentRejectInvalidation": {
+    "zh-cn": "拒绝作废",
+    "en": "Reject invalidation"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentRenewalRecord": {
+    "zh-cn": "续费记录",
+    "en": "Renewal record"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentWithdrawInvoice": {
+    "zh-cn": "开票撤回",
+    "en": "Withdraw invoice"
+  },
+  "mobile.ui.customerInvoiceCheckPaymentWithdrawVoidRequest": {
+    "zh-cn": "作废撤回",
+    "en": "Withdraw void request"
+  },
+  "mobile.ui.customerInvoiceFormBoxSearchInvoice": {
+    "zh-cn": "搜索发票",
+    "en": "Search Invoice"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailActualInvoiceTime": {
+    "zh-cn": "（实际开票时间）",
+    "en": "(Actual invoice time)"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailApplicant": {
+    "zh-cn": "申请人",
+    "en": "Applicant"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailApplicationTime": {
+    "zh-cn": "申请时间",
+    "en": "Application time"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailDutyParagraph": {
+    "zh-cn": "税号",
+    "en": "Duty paragraph"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailElectronic": {
+    "zh-cn": "电子",
+    "en": "Electronic"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailExpected": {
+    "zh-cn": "(期望)",
+    "en": "(Expected)"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailExpress": {
+    "zh-cn": "快递",
+    "en": "express"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailInvoiceDate": {
+    "zh-cn": "开票日期",
+    "en": "Invoice date"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailInvoiceVoucher": {
+    "zh-cn": "开票凭证",
+    "en": "Invoice voucher:"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailNoActualInvoiceTime": {
+    "zh-cn": "暂无实际开票时间",
+    "en": "No actual invoice time"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailOperationTime": {
+    "zh-cn": "操作时间",
+    "en": "Operation time"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailPaper": {
+    "zh-cn": "纸质",
+    "en": "Paper"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailReviewRemarks": {
+    "zh-cn": "审核备注",
+    "en": "Review remarks"
+  },
+  "mobile.ui.customerInvoiceInvoiceDetailSendMethod": {
+    "zh-cn": "发送方式",
+    "en": "Send method:"
+  },
+  "mobile.ui.customerLeadDetailAddLabel": {
+    "zh-cn": "添加标签",
+    "en": "Add Label"
+  },
+  "mobile.ui.customerLeadDetailAddTime": {
+    "zh-cn": "添加时间：",
+    "en": "Add Time:"
+  },
+  "mobile.ui.customerLeadDetailConvertToCustomer": {
+    "zh-cn": "转客户",
+    "en": "Convert to customer"
+  },
+  "mobile.ui.customerLeadDetailWriteFollowUpRecords": {
+    "zh-cn": "填写跟进记录",
+    "en": "Write follow-up records"
+  },
+  "mobile.ui.customerLeadIndexLeadName": {
+    "zh-cn": "线索名称",
+    "en": "Lead name"
+  },
+  "mobile.ui.customerLeadLeadListAddTime": {
+    "zh-cn": "添加时间",
+    "en": "Add Time"
+  },
+  "mobile.ui.customerLeadLeadListLeadSource": {
+    "zh-cn": "线索来源",
+    "en": "Lead source"
+  },
+  "mobile.ui.customerLeadLeadListWeChat": {
+    "zh-cn": "@微信",
+    "en": "@WeChat"
+  },
+  "mobile.ui.customerLeadLeadListWeComCustomer": {
+    "zh-cn": "企微客户",
+    "en": "WeCom customer"
+  },
+  "mobile.ui.customerListAccountRecordCollectionDate": {
+    "zh-cn": "回款日期",
+    "en": "Collection date"
+  },
+  "mobile.ui.customerListAddCustomerAddOpportunity": {
+    "zh-cn": "添加商机",
+    "en": "Add opportunity"
+  },
+  "mobile.ui.customerListAddCustomerCustomer": {
+    "zh-cn": "客户",
+    "en": "Customer"
+  },
+  "mobile.ui.customerListAddFollowAddImage": {
+    "zh-cn": "添加图片",
+    "en": "Add Image"
+  },
+  "mobile.ui.customerListAddFollowFillInFollowUpInformation": {
+    "zh-cn": "填写跟进信息",
+    "en": "Fill in follow-up information"
+  },
+  "mobile.ui.customerListAddFollowFollowUpInformation": {
+    "zh-cn": "跟进信息",
+    "en": "Follow-up information"
+  },
+  "mobile.ui.customerListAddFollowMbJpgJpegPngAndOtherFormatsSupported": {
+    "zh-cn": "M，支持jpg、jpeg、png等)",
+    "en": "MB; JPG, JPEG, PNG, and other formats supported)"
+  },
+  "mobile.ui.customerListAddFollowRecommended7341034Max": {
+    "zh-cn": "(建议734*1034，大小不超过",
+    "en": "(Recommended: 734 × 1034, max"
+  },
+  "mobile.ui.customerListAddFollowReminderTime": {
+    "zh-cn": "提醒时间",
+    "en": "Reminder time"
+  },
+  "mobile.ui.customerListAddSpendExpenseAmountYuan": {
+    "zh-cn": "支出金额(元)",
+    "en": "Expense amount (yuan):"
+  },
+  "mobile.ui.customerListAddSpendExpenseTime": {
+    "zh-cn": "支出时间",
+    "en": "Expense time:"
+  },
+  "mobile.ui.customerListAddSpendExpenseType": {
+    "zh-cn": "支出类型",
+    "en": "Expense type"
+  },
+  "mobile.ui.customerListAddSpendExpenseVoucher": {
+    "zh-cn": "支出凭证",
+    "en": "Expense voucher:"
+  },
+  "mobile.ui.customerListAddSpendPleaseSelectAccountCategory": {
+    "zh-cn": "请选择账目分类",
+    "en": "Please select Account category"
+  },
+  "mobile.ui.customerListAddSpendRecommended7341034Max2MbJpgJpegPng": {
+    "zh-cn": "建议734*1034，大小不超过2M，支持jpg、jpeg、png 等",
+    "en": "Recommended: 734 × 1034, max 2 MB; JPG, JPEG, PNG, and other formats supported"
+  },
+  "mobile.ui.customerListBusinessFollowCollapse": {
+    "zh-cn": "收起",
+    "en": "Collapse"
+  },
+  "mobile.ui.customerListBusinessFollowEnterOpportunityFollowUp": {
+    "zh-cn": "请填写商机跟进",
+    "en": "Enter opportunity follow-up"
+  },
+  "mobile.ui.customerListBusinessFollowExpand": {
+    "zh-cn": "展开",
+    "en": "Expand"
+  },
+  "mobile.ui.customerListBusinessFollowFollowUpTime": {
+    "zh-cn": "跟进时间",
+    "en": "Follow-up time"
+  },
+  "mobile.ui.customerListBusinessFollowOpportunityNo": {
+    "zh-cn": "商机编号",
+    "en": "Opportunity No."
+  },
+  "mobile.ui.customerListBusinessFollowOpportunityQuote": {
+    "zh-cn": "商机报价",
+    "en": "Opportunity quote"
+  },
+  "mobile.ui.customerListCustomerContractContractNo": {
+    "zh-cn": "合同编号",
+    "en": "Contract No.:"
+  },
+  "mobile.ui.customerListCustomerContractStartAndEndTime": {
+    "zh-cn": "起止时间",
+    "en": "Start and end time"
+  },
+  "mobile.ui.customerListCustomerListDefaultOwner": {
+    "zh-cn": "负责人",
+    "en": "Owner"
+  },
+  "mobile.ui.customerListCustomerMoreCustomerLabels": {
+    "zh-cn": "客户标签",
+    "en": "Customer labels"
+  },
+  "mobile.ui.customerListCustomerMoreSalesperson": {
+    "zh-cn": "业务员：",
+    "en": "Salesperson:"
+  },
+  "mobile.ui.customerListDetailsAmountReceivedCny": {
+    "zh-cn": "收款金额(元)：",
+    "en": "Amount received (CNY):"
+  },
+  "mobile.ui.customerListDetailsCollaborators": {
+    "zh-cn": "协作者：",
+    "en": "Collaborators:"
+  },
+  "mobile.ui.customerListDetailsEnterCustomerFollowUp": {
+    "zh-cn": "填写客户跟进",
+    "en": "Enter customer follow-up"
+  },
+  "mobile.ui.customerListDetailsExpenseAmountYuan": {
+    "zh-cn": "支出金额(元)：",
+    "en": "Expense amount (yuan):"
+  },
+  "mobile.ui.customerListDetailsFootCall": {
+    "zh-cn": "打电话",
+    "en": "Call"
+  },
+  "mobile.ui.customerListDetailsFootLocation": {
+    "zh-cn": "位置",
+    "en": "Location"
+  },
+  "mobile.ui.customerListFileCardListDownload": {
+    "zh-cn": "下载",
+    "en": "Download"
+  },
+  "mobile.ui.customerListFileCardListRename": {
+    "zh-cn": "重命名",
+    "en": "rename"
+  },
+  "mobile.ui.customerListFollowRecordNoMore": {
+    "zh-cn": "-没有更多了-",
+    "en": "- No more -"
+  },
+  "mobile.ui.customerListFollowStepsReminderTime": {
+    "zh-cn": "提醒时间：",
+    "en": "Reminder time:"
+  },
+  "mobile.ui.customerListLiaisonListChat": {
+    "zh-cn": "聊天",
+    "en": "Chat"
+  },
+  "mobile.ui.customerListLiaisonListWeChat": {
+    "zh-cn": "微信",
+    "en": "WeChat"
+  },
+  "mobile.ui.customerListSelectedLabelSearch": {
+    "zh-cn": "搜索",
+    "en": "Search"
+  },
+  "mobile.ui.customerListSelectedLabelSearchCustomerLabels": {
+    "zh-cn": "搜索客户标签",
+    "en": "Search customer labels"
+  },
+  "mobile.ui.customerListStatisticsMultipleSpecs": {
+    "zh-cn": "多规格",
+    "en": "Multiple specs"
+  },
+  "mobile.ui.customerListStatisticsNetPerformance": {
+    "zh-cn": "业绩净额",
+    "en": "Net performance"
+  },
+  "mobile.ui.customerListStatisticsNoData": {
+    "zh-cn": "暂无数据",
+    "en": "No data"
+  },
+  "mobile.ui.customerListStatisticsOrderCategoryStatistics": {
+    "zh-cn": "订单分类统计",
+    "en": "Order category statistics"
+  },
+  "mobile.ui.customerListStatisticsPerformanceAmountCny": {
+    "zh-cn": "业绩金额(元)",
+    "en": "Performance amount (CNY)"
+  },
+  "mobile.ui.customerListStatisticsPerformanceBrief": {
+    "zh-cn": "业绩简报",
+    "en": "Performance brief"
+  },
+  "mobile.ui.customerListStatisticsPerformanceRanking": {
+    "zh-cn": "业绩排名",
+    "en": "Performance ranking"
+  },
+  "mobile.ui.customerListStatisticsProduct": {
+    "zh-cn": "商品",
+    "en": "Product"
+  },
+  "mobile.ui.customerListStatisticsProductCategoryStatistics": {
+    "zh-cn": "产品分类统计",
+    "en": "Product category statistics"
+  },
+  "mobile.ui.customerListStatisticsProductPerformanceRanking": {
+    "zh-cn": "产品业绩排行榜",
+    "en": "Product performance ranking"
+  },
+  "mobile.ui.customerListStatisticsRanking": {
+    "zh-cn": "排名",
+    "en": "Ranking"
+  },
+  "mobile.ui.customerListStatisticsSalesPerformanceRanking": {
+    "zh-cn": "业务员业绩排行榜",
+    "en": "Sales performance ranking"
+  },
+  "mobile.ui.customerListStatisticsSalesVolume": {
+    "zh-cn": "销量",
+    "en": "Sales volume"
+  },
+  "mobile.ui.customerListStatisticsSingleSpec": {
+    "zh-cn": "单规格",
+    "en": "Single spec"
+  },
+  "mobile.ui.customerListSuccessPopupAddedSuccessfully": {
+    "zh-cn": "添加成功",
+    "en": "Added successfully"
+  },
+  "mobile.ui.customerListSuccessPopupAddedSuccessfullyYouCanContinueTo": {
+    "zh-cn": "已添加成功，您可继续",
+    "en": "Added successfully. You can continue to"
+  },
+  "mobile.ui.customerListSuccessPopupNotNow": {
+    "zh-cn": "暂不添加",
+    "en": "Not now"
+  },
+  "mobile.ui.customerMomentRecordInformation": {
+    "zh-cn": "说明：",
+    "en": "Information:"
+  },
+  "mobile.ui.customerMomentRecordNoActivityRecords": {
+    "zh-cn": "暂无动态记录",
+    "en": "No Activity records"
+  },
+  "mobile.ui.customerOpportunityAddProductItems": {
+    "zh-cn": "件",
+    "en": "items"
+  },
+  "mobile.ui.customerOpportunityAddProductItemsSelected": {
+    "zh-cn": "件，已选中",
+    "en": "items, selected"
+  },
+  "mobile.ui.customerOpportunityAddProductSearchByProductNameOrSpecification": {
+    "zh-cn": "根据商品名称/商品规格值搜索",
+    "en": "Search by product name or specification"
+  },
+  "mobile.ui.customerOpportunityAddProductTotal": {
+    "zh-cn": "共",
+    "en": "Total"
+  },
+  "mobile.ui.customerOpportunityDetailFollowUpTime": {
+    "zh-cn": "跟进时间：",
+    "en": "Follow-up time:"
+  },
+  "mobile.ui.customerOpportunityDetailGenerateContract": {
+    "zh-cn": "生成合同",
+    "en": "Generate contract"
+  },
+  "mobile.ui.customerOpportunityDetailGenerateOrder": {
+    "zh-cn": "生成订单",
+    "en": "Generate order"
+  },
+  "mobile.ui.customerOpportunityDetailOpenChat": {
+    "zh-cn": "去聊天",
+    "en": "Open chat"
+  },
+  "mobile.ui.customerOpportunityDetailOpportunityNo": {
+    "zh-cn": "商机编号：",
+    "en": "Opportunity No.:"
+  },
+  "mobile.ui.customerOpportunityDetailOpportunityQuote": {
+    "zh-cn": "商机报价：",
+    "en": "Opportunity quote:"
+  },
+  "mobile.ui.customerOpportunityEditPriceEnterRemarks": {
+    "zh-cn": "填写备注信息",
+    "en": "Enter remarks"
+  },
+  "mobile.ui.customerOpportunityIndexOpportunityName": {
+    "zh-cn": "商机名称",
+    "en": "Opportunity name"
+  },
+  "mobile.ui.customerOpportunityOpportunityListStartChat": {
+    "zh-cn": "发起聊天",
+    "en": "Start chat"
+  },
+  "mobile.ui.customerOpportunityProductListDealTotal": {
+    "zh-cn": "成交总价",
+    "en": "Deal total"
+  },
+  "mobile.ui.customerOpportunityProductListDealUnitPrice": {
+    "zh-cn": "成交单价:",
+    "en": "Deal unit price:"
+  },
+  "mobile.ui.customerOpportunityProductListDiscount": {
+    "zh-cn": "折扣:",
+    "en": "Discount:"
+  },
+  "mobile.ui.customerOpportunityProductListNoProductData": {
+    "zh-cn": "暂无产品数据",
+    "en": "No Product data"
+  },
+  "mobile.ui.customerOpportunityProductListSalePrice": {
+    "zh-cn": "售价:",
+    "en": "Sale price:"
+  },
+  "mobile.ui.customerOpportunityProductPanelProductList": {
+    "zh-cn": "产品清单",
+    "en": "Product list"
+  },
+  "mobile.ui.customerOpportunityProductTotalTotalPrice": {
+    "zh-cn": "总价",
+    "en": "Total price"
+  },
+  "mobile.ui.customerQuickReplyAddReplyEditQuickReplies": {
+    "zh-cn": "编辑快捷回复",
+    "en": "Edit Quick replies"
+  },
+  "mobile.ui.customerQuickReplyAddReplyEnterQuickReplyContent": {
+    "zh-cn": "请输入快捷回复内容...",
+    "en": "Enter quick reply content..."
+  },
+  "mobile.ui.customerQuickReplyAddReplyNewQuickReply": {
+    "zh-cn": "新建快捷回复",
+    "en": "New quick reply"
+  },
+  "mobile.ui.customerQuickReplyAddReplyPleaseEnterSorting": {
+    "zh-cn": "请输入排序",
+    "en": "Please enter sorting"
+  },
+  "mobile.ui.customerQuickReplyAddReplyReplyContent": {
+    "zh-cn": "回复内容",
+    "en": "Reply content"
+  },
+  "mobile.ui.customerQuickReplyAddReplySort": {
+    "zh-cn": "排序",
+    "en": "Sort"
+  },
+  "mobile.ui.customerQuickReplyIndexEdit": {
+    "zh-cn": "编辑",
+    "en": "Edit"
+  },
+  "mobile.ui.customerQuickReplyIndexMiniProgram": {
+    "zh-cn": "小程序",
+    "en": "Mini Program"
+  },
+  "mobile.ui.customerQuickReplyIndexNoContent": {
+    "zh-cn": "暂无内容~",
+    "en": "No content"
+  },
+  "mobile.ui.customerQuickReplyIndexSelect": {
+    "zh-cn": "选择",
+    "en": "Select"
+  },
+  "mobile.ui.customerSigningAddFormAddSigner": {
+    "zh-cn": "添加签署方",
+    "en": "Add Signer:"
+  },
+  "mobile.ui.customerSigningAddFormContractDurationDays": {
+    "zh-cn": "合同时长（天）",
+    "en": "Contract duration (days)"
+  },
+  "mobile.ui.customerSigningAddFormContractName": {
+    "zh-cn": "合同名称",
+    "en": "Contract name:"
+  },
+  "mobile.ui.customerSigningAddFormContractTerm": {
+    "zh-cn": "合同期限",
+    "en": "Contract term"
+  },
+  "mobile.ui.customerSigningAddFormEnterpriseName": {
+    "zh-cn": "企业名称",
+    "en": "Enterprise name"
+  },
+  "mobile.ui.customerSigningAddFormHandler": {
+    "zh-cn": "经办人",
+    "en": "Handler:"
+  },
+  "mobile.ui.customerSigningAddFormPdfPngJpgWordExcelTxtAndOtherFormats": {
+    "zh-cn": "(支持pdf、png、jpg、word、excel、txt等格式)",
+    "en": "(PDF, PNG, JPG, Word, Excel, TXT, and other formats supported)"
+  },
+  "mobile.ui.customerSigningAddFormPleaseFillInTheRemarks": {
+    "zh-cn": "请填写备注信息",
+    "en": "Please fill in the remarks"
+  },
+  "mobile.ui.customerSigningAddFormUploadSignedFile": {
+    "zh-cn": "上传签署文件",
+    "en": "Upload signed file"
+  },
+  "mobile.ui.customerSigningDetailItemContactPhone": {
+    "zh-cn": "联系电话",
+    "en": "Contact phone"
+  },
+  "mobile.ui.customerSigningDetailItemContractAmount": {
+    "zh-cn": "合同金额",
+    "en": "Contract amount"
+  },
+  "mobile.ui.customerSigningDetailItemCustomerInformation": {
+    "zh-cn": "客户信息",
+    "en": "Customer information"
+  },
+  "mobile.ui.customerSigningDetailItemElectronicContract": {
+    "zh-cn": "电子合同",
+    "en": "Electronic contract"
+  },
+  "mobile.ui.customerSigningDetailItemEndDate": {
+    "zh-cn": "结束日期",
+    "en": "End date"
+  },
+  "mobile.ui.customerSigningDetailItemEnterprise": {
+    "zh-cn": "企业",
+    "en": "Enterprise"
+  },
+  "mobile.ui.customerSigningDetailItemESign": {
+    "zh-cn": "电子签",
+    "en": "E-sign"
+  },
+  "mobile.ui.customerSigningDetailItemHandler": {
+    "zh-cn": "经办人：",
+    "en": "Handler:"
+  },
+  "mobile.ui.customerSigningDetailItemInviteToSign": {
+    "zh-cn": "邀请签约",
+    "en": "Invite to sign"
+  },
+  "mobile.ui.customerSigningDetailItemOfflineSigning": {
+    "zh-cn": "线下签约",
+    "en": "Offline signing"
+  },
+  "mobile.ui.customerSigningDetailItemOurCompany": {
+    "zh-cn": "本企业",
+    "en": "Our company"
+  },
+  "mobile.ui.customerSigningDetailItemPersonal": {
+    "zh-cn": "个人",
+    "en": "Personal"
+  },
+  "mobile.ui.customerSigningDetailItemPhoneNumber": {
+    "zh-cn": "手机号：",
+    "en": "Phone number:"
+  },
+  "mobile.ui.customerSigningDetailItemProductInformation": {
+    "zh-cn": "产品信息",
+    "en": "Product information"
+  },
+  "mobile.ui.customerSigningDetailItemProvinceCityDistrict": {
+    "zh-cn": "省市区",
+    "en": "Province/city/district"
+  },
+  "mobile.ui.customerSigningDetailItemRemarkInformation": {
+    "zh-cn": "备注信息",
+    "en": "Remark information"
+  },
+  "mobile.ui.customerSigningDetailItemSigner": {
+    "zh-cn": "签署方",
+    "en": "Signer:"
+  },
+  "mobile.ui.customerSigningDetailItemSigningInformation": {
+    "zh-cn": "签约信息",
+    "en": "Signing information"
+  },
+  "mobile.ui.customerSigningDetailItemSigningMethod": {
+    "zh-cn": "签约方式",
+    "en": "Signing method"
+  },
+  "mobile.ui.customerSigningDetailItemSigningQrCode": {
+    "zh-cn": "签约二维码",
+    "en": "Signing QR code"
+  },
+  "mobile.ui.customerSigningDetailItemSignNow": {
+    "zh-cn": "去签约",
+    "en": "Sign now"
+  },
+  "mobile.ui.customerSigningDetailItemStartDate": {
+    "zh-cn": "开始日期",
+    "en": "Start date"
+  },
+  "mobile.ui.customerSigningDetailItemViewElectronicContract": {
+    "zh-cn": "查看电子合同",
+    "en": "View electronic contract"
+  },
+  "mobile.ui.customerSigningDetailsStartAndEndTime": {
+    "zh-cn": "起止时间：",
+    "en": "Start and end time:"
+  },
+  "mobile.ui.customerSigningESignatureDialogGeneratingQrCode": {
+    "zh-cn": "二维码生成中...",
+    "en": "Generating QR code..."
+  },
+  "mobile.ui.customerSigningESignatureDialogPressAndHoldToSaveTheQrCodeThen": {
+    "zh-cn": "长按保存二维码，微信扫码签约",
+    "en": "Press and hold to save the QR code, then scan it in WeChat to sign."
+  },
+  "mobile.ui.customerSigningESignatureDialogSignerSigning": {
+    "zh-cn": "签署方签约",
+    "en": "Signer signing"
+  },
+  "mobile.ui.customerSigningFormBoxSearchContract": {
+    "zh-cn": "搜索合同",
+    "en": "Search Contract"
+  },
+  "mobile.ui.customerSigningListExpirationStatus": {
+    "zh-cn": "到期状态",
+    "en": "Expiration status"
+  },
+  "mobile.ui.customerSigningListExpired": {
+    "zh-cn": "已过期",
+    "en": "Expired"
+  },
+  "mobile.ui.customerSigningListInProgress": {
+    "zh-cn": "进行中",
+    "en": "In progress"
+  },
+  "mobile.ui.customerSigningListNotStarted": {
+    "zh-cn": "未开始",
+    "en": "Not started"
+  },
+  "mobile.ui.customerSigningOrderItemNoOpportunityData": {
+    "zh-cn": "暂无商机数据",
+    "en": "No Opportunity data"
+  },
+  "mobile.ui.customerSigningOrderItemOpportunityAmount": {
+    "zh-cn": "商机金额",
+    "en": "Opportunity amount"
+  },
+  "mobile.ui.customerSigningOrderItemOpportunityStatus": {
+    "zh-cn": "商机状态",
+    "en": "Opportunity status"
+  },
+  "mobile.ui.customerSigningOrderItemOpportunityType": {
+    "zh-cn": "商机类型",
+    "en": "Opportunity type"
+  },
+  "mobile.ui.customerSigningOrderListNoOrderData": {
+    "zh-cn": "暂无订单数据",
+    "en": "No order data"
+  },
+  "mobile.ui.customerSigningOrderListOrderAmount": {
+    "zh-cn": "订单金额",
+    "en": "Order amount"
+  },
+  "mobile.ui.customerSigningOrderListOrderStatus": {
+    "zh-cn": "订单状态",
+    "en": "Order status"
+  },
+  "mobile.ui.customerSigningOrderListPaymentStatus": {
+    "zh-cn": "付款状态",
+    "en": "Payment status"
+  },
+  "mobile.ui.customerSigningOrderListSettled": {
+    "zh-cn": "已结清",
+    "en": "Settled"
+  },
+  "mobile.ui.customerSigningOrderListUnsettled": {
+    "zh-cn": "未结清",
+    "en": "Unsettled"
+  },
+  "mobile.ui.customerSigningPaymentTableLinkOrder": {
+    "zh-cn": "关联订单",
+    "en": "Link order"
+  },
+  "mobile.ui.customerTurnoverIndexPerformanceStatisticsAreUnderDevelopment": {
+    "zh-cn": "业绩统计,正在制作中~",
+    "en": "Performance statistics are under development."
+  },
+  "mobile.ui.departmentPopupIndexEmployeesAndDepartments": {
+    "zh-cn": "员工与部门",
+    "en": "Employees and departments"
+  },
+  "mobile.ui.editorCommonEditorcFontsizecAlignment": {
+    "zh-cn": "对齐方式",
+    "en": "Alignment"
+  },
+  "mobile.ui.editorCommonEditorcFontsizecTextFormat": {
+    "zh-cn": "文字格式",
+    "en": "Text format"
+  },
+  "mobile.ui.editorCommonEditorcTitlepHeadingStyle": {
+    "zh-cn": "标题格式",
+    "en": "Heading style"
+  },
+  "mobile.ui.editorCommonEditorcTitlepParagraph": {
+    "zh-cn": "段落",
+    "en": "Paragraph"
+  },
+  "mobile.ui.emptyIndexRefresh": {
+    "zh-cn": "刷新一下",
+    "en": "Refresh"
+  },
+  "mobile.ui.emptyIndexTheNetworkIsUnavailable": {
+    "zh-cn": "网络开小差了～",
+    "en": "The network is unavailable."
+  },
+  "mobile.ui.examineFormApprovalBillAdd": {
+    "zh-cn": "添加",
+    "en": "Add"
+  },
+  "mobile.ui.examineFormApprovalBillDelete": {
+    "zh-cn": "删除",
+    "en": "Delete"
+  },
+  "mobile.ui.examineFormCustomCheckboxPleaseSelect": {
+    "zh-cn": "请选择",
+    "en": "Please select"
+  },
+  "mobile.ui.examineFormIndexInWords": {
+    "zh-cn": "大写",
+    "en": "In words"
+  },
+  "mobile.ui.examineFormIndexPleaseSelectProvinceCityDistrict": {
+    "zh-cn": "请选择省市区",
+    "en": "Please select Province/city/district"
+  },
+  "mobile.ui.examineFormTimeFromAm": {
+    "zh-cn": "上午",
+    "en": "AM"
+  },
+  "mobile.ui.examineFormTimeFromHours": {
+    "zh-cn": "小时",
+    "en": "hours"
+  },
+  "mobile.ui.examineFormTimeFromPickerCompleted": {
+    "zh-cn": "完成",
+    "en": "Completed"
+  },
+  "mobile.ui.examineFormTimeFromPickerMonth": {
+    "zh-cn": "月",
+    "en": "Month"
+  },
+  "mobile.ui.examineFormTimeFromPickerSun": {
+    "zh-cn": "日",
+    "en": "Sun"
+  },
+  "mobile.ui.examineFormTimeFromPickerYear": {
+    "zh-cn": "年",
+    "en": "year"
+  },
+  "mobile.ui.examineFormTimeFromPleaseEnter": {
+    "zh-cn": "请输入",
+    "en": "Please enter"
+  },
+  "mobile.ui.examineFormTimeFromPm": {
+    "zh-cn": "下午",
+    "en": "PM"
+  },
+  "mobile.ui.financeBillAdd1ImageJpgJpegOrPng": {
+    "zh-cn": "(支持上传1张图片，支持jpg、jpeg、png)",
+    "en": "(1 image; JPG, JPEG, or PNG)"
+  },
+  "mobile.ui.financeBillAddAccountAmount": {
+    "zh-cn": "账目金额",
+    "en": "Account amount"
+  },
+  "mobile.ui.financeBillAddAccountCategory": {
+    "zh-cn": "账目分类",
+    "en": "Account category"
+  },
+  "mobile.ui.financeBillAddAccountType": {
+    "zh-cn": "账目类型",
+    "en": "Account type"
+  },
+  "mobile.ui.financeBillAddEntryAttachments": {
+    "zh-cn": "账目附件",
+    "en": "Entry attachments"
+  },
+  "mobile.ui.financeBillAddPaymentTime": {
+    "zh-cn": "支付时间",
+    "en": "Payment time"
+  },
+  "mobile.ui.financeBillAddPleaseEnterTheRemarkInformation": {
+    "zh-cn": "请输入备注信息",
+    "en": "Please enter the remark information"
+  },
+  "mobile.ui.financeBillAddUploadImage": {
+    "zh-cn": "上传图片",
+    "en": "Upload image"
+  },
+  "mobile.ui.financeBillAddUploadProof": {
+    "zh-cn": "上传凭证",
+    "en": "Upload proof"
+  },
+  "mobile.ui.financeBillIndexBillListCurrentNoAnalyticsData": {
+    "zh-cn": "当前暂无统计数据",
+    "en": "Current No Analytics data"
+  },
+  "mobile.ui.financeBillIndexBillListExpense": {
+    "zh-cn": "支",
+    "en": "Expense"
+  },
+  "mobile.ui.financeBillIndexBillListFilterEnterAmountOrRemarks": {
+    "zh-cn": "请输入金额/备注",
+    "en": "Enter amount or remarks"
+  },
+  "mobile.ui.financeBillIndexBillListFilterTransactionDate": {
+    "zh-cn": "收支日期",
+    "en": "Transaction date"
+  },
+  "mobile.ui.financeBillIndexBillListIncome": {
+    "zh-cn": "收",
+    "en": "Income"
+  },
+  "mobile.ui.financeBillIndexBillStatisticExpenseShare": {
+    "zh-cn": "支出占比统计",
+    "en": "Expense share"
+  },
+  "mobile.ui.financeBillIndexBillStatisticIncomeShareStatistics": {
+    "zh-cn": "收入占比统计",
+    "en": "Income share statistics"
+  },
+  "mobile.ui.financeBillIndexBillStatisticNoExpenditureStatistics": {
+    "zh-cn": "暂无支出统计图",
+    "en": "No expenditure statistics"
+  },
+  "mobile.ui.financeBillIndexBillStatisticNoIncomeStatistics": {
+    "zh-cn": "暂无收入统计图",
+    "en": "No income statistics"
+  },
+  "mobile.ui.financeBillIndexBillStatisticStatisticsSummary": {
+    "zh-cn": "统计简报",
+    "en": "Statistics summary"
+  },
+  "mobile.ui.financeBillIndexTabBarIncomeExpenseAccounting": {
+    "zh-cn": "收支记账",
+    "en": "Income/expense accounting"
+  },
+  "mobile.ui.financeBillIndexTabBarIncomeExpenseStatistics": {
+    "zh-cn": "收支统计",
+    "en": "Income/expense statistics"
+  },
+  "mobile.ui.financeInvoiceDetailsEnterInvoice": {
+    "zh-cn": "录入发票",
+    "en": "Enter invoice"
+  },
+  "mobile.ui.financeInvoiceDetailsInvalidate": {
+    "zh-cn": "作废",
+    "en": "Invalidate"
+  },
+  "mobile.ui.financeInvoiceInvoiceExamineEnterTheReasonForRejection": {
+    "zh-cn": "请填写拒绝理由",
+    "en": "Enter the reason for rejection"
+  },
+  "mobile.ui.financeInvoiceInvoiceExamineInvalidateReason": {
+    "zh-cn": "作废原因",
+    "en": "Invalidate reason"
+  },
+  "mobile.ui.financeInvoiceInvoiceExamineInvoiceResult": {
+    "zh-cn": "开票结果",
+    "en": "Invoice result"
+  },
+  "mobile.ui.financeInvoiceInvoiceExamineMbJpgJpegPngAndOtherFormatsSupported": {
+    "zh-cn": "M，支持jpg、jpeg、png等",
+    "en": "MB; JPG, JPEG, PNG, and other formats supported"
+  },
+  "mobile.ui.financeInvoiceInvoiceExaminePleaseEnterContacts": {
+    "zh-cn": "请填写联系人",
+    "en": "Please enter Contacts"
+  },
+  "mobile.ui.financeInvoiceInvoiceExaminePleaseEnterInvalidateReason": {
+    "zh-cn": "请填写作废原因",
+    "en": "Please enter Invalidate reason"
+  },
+  "mobile.ui.financeInvoiceInvoiceExaminePleaseEnterMailingAddress": {
+    "zh-cn": "请填写邮寄地址",
+    "en": "Please enter Mailing address"
+  },
+  "mobile.ui.financeInvoiceInvoiceExaminePleaseEnterReason": {
+    "zh-cn": "请填写原因",
+    "en": "Please enter Reason"
+  },
+  "mobile.ui.financeInvoiceInvoiceExaminePleaseEnterRemarks": {
+    "zh-cn": "请填写备注",
+    "en": "Please enter Remarks"
+  },
+  "mobile.ui.financeInvoiceInvoiceExaminePleaseEnterTheContactNumber": {
+    "zh-cn": "请填写联系电话",
+    "en": "Please enter the contact number"
+  },
+  "mobile.ui.financeInvoiceInvoiceExaminePleaseFillInTheEmailAddress": {
+    "zh-cn": "请填写邮箱地址",
+    "en": "Please fill in the email address"
+  },
+  "mobile.ui.financeInvoiceInvoiceExamineReason": {
+    "zh-cn": "原因",
+    "en": "Reason"
+  },
+  "mobile.ui.financeInvoiceInvoiceExamineReasonForRejection": {
+    "zh-cn": "拒绝理由",
+    "en": "Reason for rejection"
+  },
+  "mobile.ui.financeInvoiceInvoiceExamineVoidApproval": {
+    "zh-cn": "作废审核",
+    "en": "Void approval"
+  },
+  "mobile.ui.financePaymentDetailsAgree": {
+    "zh-cn": "同意",
+    "en": "Agree"
+  },
+  "mobile.ui.financePaymentDetailsRefuse": {
+    "zh-cn": "拒绝",
+    "en": "Refuse"
+  },
+  "mobile.ui.financePaymentPaymentExamineAfterApprovalTheSystemWillAutomaticallyGenerateAnIncome": {
+    "zh-cn": "审核通过后，系统自动生成收支记账流水信息！",
+    "en": "After approval, the system will automatically generate an income and expense transaction record."
+  },
+  "mobile.ui.financePaymentPaymentExamineAfterSavingTheIncomeExpenseEntryAndTheRelated": {
+    "zh-cn": "保存后，收支记账与对应订单付款记录也会同步修改！",
+    "en": "After saving, the income/expense entry and the related order payment record will also be updated."
+  },
+  "mobile.ui.financePaymentPaymentExamineAmountYuan": {
+    "zh-cn": "金额(元)",
+    "en": "Amount (yuan)"
+  },
+  "mobile.ui.financePaymentPaymentExamineExpense": {
+    "zh-cn": "支出",
+    "en": "Expense"
+  },
+  "mobile.ui.financePaymentPaymentExamineMethod": {
+    "zh-cn": "方式",
+    "en": "Method"
+  },
+  "mobile.ui.financePaymentPaymentExaminePayment": {
+    "zh-cn": "支付",
+    "en": "Payment"
+  },
+  "mobile.ui.financePaymentPaymentExaminePayment2": {
+    "zh-cn": "付款",
+    "en": "Payment"
+  },
+  "mobile.ui.financePaymentPaymentExamineReceipt": {
+    "zh-cn": "凭证",
+    "en": "Receipt"
+  },
+  "mobile.ui.financePaymentPaymentExamineTime": {
+    "zh-cn": "时间",
+    "en": "Time"
+  },
+  "mobile.ui.forgotPasswordIndexCode": {
+    "zh-cn": "验证码",
+    "en": "code"
+  },
+  "mobile.ui.forgotPasswordIndexForgetPassword": {
+    "zh-cn": "忘记密码",
+    "en": "Forget password"
+  },
+  "mobile.ui.forgotPasswordIndexMobileNumber": {
+    "zh-cn": "手机号码",
+    "en": "Mobile number"
+  },
+  "mobile.ui.forgotPasswordIndexPleaseEnterAPassword": {
+    "zh-cn": "请输入密码",
+    "en": "Please enter a password"
+  },
+  "mobile.ui.forumDefaultOriginal": {
+    "zh-cn": "原创",
+    "en": "Original"
+  },
+  "mobile.ui.forumDefaultReposted": {
+    "zh-cn": "转载",
+    "en": "Reposted"
+  },
+  "mobile.ui.forumDefaultViews": {
+    "zh-cn": "浏览",
+    "en": "Views"
+  },
+  "mobile.ui.forumDropDownNew": {
+    "zh-cn": "新建",
+    "en": "New"
+  },
+  "mobile.ui.forumForumListFavorite": {
+    "zh-cn": "收藏",
+    "en": "Favorite"
+  },
+  "mobile.ui.forumForumListLike": {
+    "zh-cn": "点赞",
+    "en": "Like"
+  },
+  "mobile.ui.forumLoginPopLogin": {
+    "zh-cn": "登录",
+    "en": "Login"
+  },
+  "mobile.ui.forumLoginPopPleaseEnterTheCorrectVerificationCode": {
+    "zh-cn": "请输入验证码",
+    "en": "Please enter the correct verification code"
+  },
+  "mobile.ui.forumLoginPopPleaseEnterYourMobilePhoneNumber": {
+    "zh-cn": "请输入手机号码",
+    "en": "Please enter your mobile phone number"
+  },
+  "mobile.ui.globalIndexIndexNewToDos": {
+    "zh-cn": "条新待办",
+    "en": "new to-dos"
+  },
+  "mobile.ui.globalIndexIndexYouHave": {
+    "zh-cn": "您有",
+    "en": "You have"
+  },
+  "mobile.ui.indexIndexAdversityRevealsTrueStrength": {
+    "zh-cn": "烈火试真金，逆境试强者",
+    "en": "Adversity reveals true strength"
+  },
+  "mobile.ui.indexIndexApproval": {
+    "zh-cn": "审批",
+    "en": "Approval"
+  },
+  "mobile.ui.indexIndexDepartmentPerformance": {
+    "zh-cn": "部门业绩",
+    "en": "Department performance"
+  },
+  "mobile.ui.indexIndexManagement": {
+    "zh-cn": "管理",
+    "en": "Management"
+  },
+  "mobile.ui.indexIndexMinute": {
+    "zh-cn": "分",
+    "en": "Minute"
+  },
+  "mobile.ui.indexIndexMyAttendance": {
+    "zh-cn": "我的考勤",
+    "en": "My attendance"
+  },
+  "mobile.ui.indexIndexMyPerformance": {
+    "zh-cn": "本人业绩",
+    "en": "My performance"
+  },
+  "mobile.ui.indexIndexNoPerformanceAssessment": {
+    "zh-cn": "暂无绩效考核",
+    "en": "No Performance assessment"
+  },
+  "mobile.ui.indexIndexPerformanceAssessment": {
+    "zh-cn": "绩效考核",
+    "en": "Performance assessment"
+  },
+  "mobile.ui.indexIndexPerformanceScore": {
+    "zh-cn": "绩效得分：",
+    "en": "Performance score:"
+  },
+  "mobile.ui.indexIndexQuickAccess": {
+    "zh-cn": "快捷入口",
+    "en": "Quick access"
+  },
+  "mobile.ui.indexIndexS": {
+    "zh-cn": "的",
+    "en": "'s"
+  },
+  "mobile.ui.indexIndexTeamAttendance": {
+    "zh-cn": "团队考勤",
+    "en": "Team attendance"
+  },
+  "mobile.ui.indexIndexTodayStatistics": {
+    "zh-cn": "(今日统计)",
+    "en": "(Today statistics)"
+  },
+  "mobile.ui.indexIndexWorkReports": {
+    "zh-cn": "工作汇报",
+    "en": "Work reports"
+  },
+  "mobile.ui.indexManageAddedApps": {
+    "zh-cn": "已添加应用",
+    "en": "Added apps"
+  },
+  "mobile.ui.indexManageManageApps": {
+    "zh-cn": "管理应用",
+    "en": "Manage apps"
+  },
+  "mobile.ui.indexManageTuoluojiangWillWorkHarderToUnderstandYourNeeds": {
+    "zh-cn": "陀螺匠会更努力了解你的需求",
+    "en": "Tuoluojiang will work harder to understand your needs."
+  },
+  "mobile.ui.moduleCommentComments": {
+    "zh-cn": "评论",
+    "en": "Comments"
+  },
+  "mobile.ui.moduleCommentEvaluate": {
+    "zh-cn": "回复",
+    "en": "Evaluate"
+  },
+  "mobile.ui.moduleCommentYouCanLeaveAComment": {
+    "zh-cn": "您可以发表评论哟～",
+    "en": "You can leave a comment"
+  },
+  "mobile.ui.moduleFormBoxSelectLabel": {
+    "zh-cn": "选择标签",
+    "en": "Select Label"
+  },
+  "mobile.ui.moduleFormCascadeLevel1Category": {
+    "zh-cn": "一级分类",
+    "en": "Level 1 category"
+  },
+  "mobile.ui.moduleFormCascadeLevel2Category": {
+    "zh-cn": "二级分类",
+    "en": "Level 2 category"
+  },
+  "mobile.ui.moduleFormCascadeLevel3Category": {
+    "zh-cn": "三级分类",
+    "en": "Level 3 category"
+  },
+  "mobile.ui.moduleFormCascadeLevel4Category": {
+    "zh-cn": "四级分类",
+    "en": "Level 4 category"
+  },
+  "mobile.ui.moduleFormCascadeOk": {
+    "zh-cn": "确认",
+    "en": "OK"
+  },
+  "mobile.ui.moduleFormCascadeReset": {
+    "zh-cn": "重置",
+    "en": "Reset"
+  },
+  "mobile.ui.moduleFormDetailedListAddDetails": {
+    "zh-cn": "+ 添加明细",
+    "en": "+ Add details"
+  },
+  "mobile.ui.moduleFormDetailedListDetails": {
+    "zh-cn": "明细",
+    "en": "Details"
+  },
+  "mobile.ui.moduleFormIndexMbImagesAttachmentsAndDocumentsAreSupported": {
+    "zh-cn": "M，支持图片、附件、文档)",
+    "en": "MB; images, attachments, and documents are supported)"
+  },
+  "mobile.ui.moduleFormIndexRecommended7341034Max2MbJpgJpegAnd": {
+    "zh-cn": "(建议734*1034，大小不超过2M，支持jpg、jpeg、png)",
+    "en": "(Recommended: 734 × 1034, max 2 MB; JPG, JPEG, and PNG supported)"
+  },
+  "mobile.ui.moduleFormIndexRecommendedMaximumSize": {
+    "zh-cn": "(建议大小不超过",
+    "en": "(Recommended maximum size:"
+  },
+  "mobile.ui.moduleFormIndexSelectCategory": {
+    "zh-cn": "选择分类",
+    "en": "Select Category"
+  },
+  "mobile.ui.moduleListMore": {
+    "zh-cn": "更多",
+    "en": "More"
+  },
+  "mobile.ui.moduleOneOnOneKeywordSearch": {
+    "zh-cn": "关键字搜索",
+    "en": "Keyword search"
+  },
+  "mobile.ui.moduleQuestionnaireYourQuestionnaireHasBeenSubmittedThankYouForParticipating": {
+    "zh-cn": "您的问卷已经提交，感谢您的参与！",
+    "en": "Your questionnaire has been submitted. Thank you for participating!"
+  },
+  "mobile.ui.morePopupIndexOperation": {
+    "zh-cn": "操作",
+    "en": "Operation"
+  },
+  "mobile.ui.navigation.editContract": {
+    "zh-cn": "编辑合同",
+    "en": "Edit contract"
+  },
+  "mobile.ui.navigation.editCustomer": {
+    "zh-cn": "编辑客户",
+    "en": "Edit customer"
+  },
+  "mobile.ui.navigation.editLead": {
+    "zh-cn": "编辑线索",
+    "en": "Edit lead"
+  },
+  "mobile.ui.navigation.editOpportunity": {
+    "zh-cn": "修改商机",
+    "en": "Edit opportunity"
+  },
+  "mobile.ui.navigation.editOrder": {
+    "zh-cn": "编辑订单",
+    "en": "Edit order"
+  },
+  "mobile.ui.navigation.oneOnOneReference": {
+    "zh-cn": "一对一引用",
+    "en": "One-on-one reference"
+  },
+  "mobile.ui.navigationBarSiderbarAll": {
+    "zh-cn": "全选",
+    "en": "All"
+  },
+  "mobile.ui.navigationBarSiderbarDeselectAll": {
+    "zh-cn": "取消全选",
+    "en": "Deselect all"
+  },
+  "mobile.ui.navigationBarSiderbarSelectArticleTagsToFollow": {
+    "zh-cn": "请选择关注文章标签",
+    "en": "Select article tags to follow"
+  },
+  "mobile.ui.noticeNoticeListNoNewMessages": {
+    "zh-cn": "暂无最新消息~",
+    "en": "No new messages"
+  },
+  "mobile.ui.noticeWorkListAnnualLeave": {
+    "zh-cn": "年假",
+    "en": "Annual leave"
+  },
+  "mobile.ui.noticeWorkListAppraisee": {
+    "zh-cn": "被考核人",
+    "en": "Appraisee"
+  },
+  "mobile.ui.noticeWorkListAssessmentCycle": {
+    "zh-cn": "考核周期",
+    "en": "Assessment cycle"
+  },
+  "mobile.ui.noticeWorkListInProgress": {
+    "zh-cn": "进行",
+    "en": "In progress"
+  },
+  "mobile.ui.noticeWorkListInvoiceAmount": {
+    "zh-cn": "开票金额(元)",
+    "en": "Invoice amount"
+  },
+  "mobile.ui.noticeWorkListInvoiceRequestSubmittedByXiaobei": {
+    "zh-cn": "小贝提交的开票申请",
+    "en": "Invoice request submitted by Xiaobei"
+  },
+  "mobile.ui.noticeWorkListNotInvoiced": {
+    "zh-cn": "暂未开票",
+    "en": "Not invoiced"
+  },
+  "mobile.ui.noticeWorkListNoTodoContent": {
+    "zh-cn": "暂无待办内容～",
+    "en": "No Todo content"
+  },
+  "mobile.ui.noticeWorkListPendingApproval": {
+    "zh-cn": "待审批",
+    "en": "Pending approval"
+  },
+  "mobile.ui.noticeWorkListSubmitS": {
+    "zh-cn": "提交的",
+    "en": "Submit 's"
+  },
+  "mobile.ui.noticeWorkListXiaozhaiInternationalMallPhase1": {
+    "zh-cn": "小寨国际商城一期",
+    "en": "Xiaozhai International Mall Phase 1"
+  },
+  "mobile.ui.oaFormIndexAddOrder": {
+    "zh-cn": "添加订单",
+    "en": "Add order"
+  },
+  "mobile.ui.oaFormIndexImagesAttachmentsAndDocumentsAreSupported": {
+    "zh-cn": "，支持图片、附件、文档)",
+    "en": "; images, attachments, and documents are supported)"
+  },
+  "mobile.ui.oaFormIndexUpload": {
+    "zh-cn": "上传",
+    "en": "Upload"
+  },
+  "mobile.ui.oaMemberIndexCompanyMembers": {
+    "zh-cn": "企业成员(",
+    "en": "Company members ("
+  },
+  "mobile.ui.oaMemberIndexFound": {
+    "zh-cn": "搜索到",
+    "en": "Found"
+  },
+  "mobile.ui.oaMemberIndexNoMembersSelected": {
+    "zh-cn": "暂无已选成员",
+    "en": "No members selected"
+  },
+  "mobile.ui.oaMemberIndexSearchMember": {
+    "zh-cn": "搜索成员",
+    "en": "Search Member"
+  },
+  "mobile.ui.oaMemberIndexSelected": {
+    "zh-cn": "已选",
+    "en": "Selected"
+  },
+  "mobile.ui.oaMemberIndexSelected2": {
+    "zh-cn": "已选（",
+    "en": "Selected ("
+  },
+  "mobile.ui.oaMemberIndexSelectMembers": {
+    "zh-cn": "选择成员",
+    "en": "Select members"
+  },
+  "mobile.ui.oaMemberOrgFound": {
+    "zh-cn": "找到",
+    "en": "Found"
+  },
+  "mobile.ui.oaMemberOrgMatchingResults": {
+    "zh-cn": "个匹配结果",
+    "en": "matching results"
+  },
+  "mobile.ui.oaMemberOrgNoMatchingPeopleFound": {
+    "zh-cn": "未找到匹配人员",
+    "en": "No matching people found"
+  },
+  "mobile.ui.oaMemberOrgSearchResults": {
+    "zh-cn": "搜索结果",
+    "en": "Search results"
+  },
+  "mobile.ui.opportunitiesIndexSalesAmount": {
+    "zh-cn": "销售金额",
+    "en": "Sales amount"
+  },
+  "mobile.ui.opportunitiesIndexSearchOpportunities": {
+    "zh-cn": "搜索商机...",
+    "en": "Search opportunities..."
+  },
+  "mobile.ui.replyComponentIndexAddAttachment": {
+    "zh-cn": "添加附件",
+    "en": "Add attachment"
+  },
+  "mobile.ui.replyComponentIndexEnterContent": {
+    "zh-cn": "请填写内容~",
+    "en": "Enter content"
+  },
+  "mobile.ui.replyComponentIndexSubmit": {
+    "zh-cn": "提交",
+    "en": "Submit"
+  },
+  "mobile.ui.script.0006d696d8e1": {
+    "zh-cn": "新增",
+    "en": "Add"
+  },
+  "mobile.ui.script.01cf382e3ea9": {
+    "zh-cn": "缺少必要参数不能添加",
+    "en": "Required parameters are missing"
+  },
+  "mobile.ui.script.02d4bf6343ea": {
+    "zh-cn": "最晚可延后多久打卡",
+    "en": "Latest allowed clock-out time"
+  },
+  "mobile.ui.script.03d1dc01b5cc": {
+    "zh-cn": "搜索线索名称",
+    "en": "Search lead name"
+  },
+  "mobile.ui.script.06bb3f4914e5": {
+    "zh-cn": "汇报",
+    "en": "Report"
+  },
+  "mobile.ui.script.06c891807ee3": {
+    "zh-cn": "合同",
+    "en": "Contract"
+  },
+  "mobile.ui.script.072db3a7f325": {
+    "zh-cn": "搜索商机名称",
+    "en": "Search opportunity name"
+  },
+  "mobile.ui.script.07fd4b9f1d13": {
+    "zh-cn": "删除提示",
+    "en": "Delete confirmation"
+  },
+  "mobile.ui.script.0830bb52f8c0": {
+    "zh-cn": "二维码分享",
+    "en": "Share QR code"
+  },
+  "mobile.ui.script.0a8f3ca85c78": {
+    "zh-cn": "确定要删除这条内容吗",
+    "en": "Delete this content?"
+  },
+  "mobile.ui.script.0a9ad2b0cea9": {
+    "zh-cn": "搜索客户名称",
+    "en": "Search customer name"
+  },
+  "mobile.ui.script.0b02c59fe983": {
+    "zh-cn": "邮寄地址不能为空",
+    "en": "Mailing address is required"
+  },
+  "mobile.ui.script.0b11e8a27c14": {
+    "zh-cn": "您确定要删除该订单吗",
+    "en": "Delete this order?"
+  },
+  "mobile.ui.script.0b596abab0e2": {
+    "zh-cn": "最多只能添加3个签署方",
+    "en": "Up to three signers can be added"
+  },
+  "mobile.ui.script.0c01455858b2": {
+    "zh-cn": "请选择考勤时间!",
+    "en": "Select an attendance time!"
+  },
+  "mobile.ui.script.0c184871f658": {
+    "zh-cn": "昨天",
+    "en": "Yesterday"
+  },
+  "mobile.ui.script.0cab18cabae0": {
+    "zh-cn": "十二月",
+    "en": "December"
+  },
+  "mobile.ui.script.0cf8b14f4651": {
+    "zh-cn": "上周",
+    "en": "Last week"
+  },
+  "mobile.ui.script.0d8cd2749f2b": {
+    "zh-cn": "缺少刷新TOKEN",
+    "en": "Missing refresh token"
+  },
+  "mobile.ui.script.0eeecd26f2ba": {
+    "zh-cn": "本月",
+    "en": "This month"
+  },
+  "mobile.ui.script.0f207fc4c5e1": {
+    "zh-cn": "不提醒",
+    "en": "No reminder"
+  },
+  "mobile.ui.script.105f55aa144e": {
+    "zh-cn": "验证失败",
+    "en": "Verification failed"
+  },
+  "mobile.ui.script.107c507a3728": {
+    "zh-cn": "ID添加",
+    "en": "Add by ID"
+  },
+  "mobile.ui.script.121a24b477d4": {
+    "zh-cn": "输入的内容不能为空",
+    "en": "Content cannot be empty"
+  },
+  "mobile.ui.script.126f796d4ff3": {
+    "zh-cn": "休息结束时间",
+    "en": "Break end time"
+  },
+  "mobile.ui.script.126fbf59cf04": {
+    "zh-cn": "请求失败",
+    "en": "Request failed"
+  },
+  "mobile.ui.script.13de7f073eca": {
+    "zh-cn": "您确定要删除此线索吗?",
+    "en": "Delete this lead?"
+  },
+  "mobile.ui.script.1423cbc02574": {
+    "zh-cn": "登录状态已失效",
+    "en": "Login session expired"
+  },
+  "mobile.ui.script.1435dd86e243": {
+    "zh-cn": "您确定要撤回作废该发票吗",
+    "en": "Withdraw the voiding request for this invoice?"
+  },
+  "mobile.ui.script.1600d175bbd0": {
+    "zh-cn": "不能选择之前的日期",
+    "en": "Past dates cannot be selected"
+  },
+  "mobile.ui.script.16e14527fe20": {
+    "zh-cn": "续费日期不能为空",
+    "en": "Renewal date is required"
+  },
+  "mobile.ui.script.18f13004541a": {
+    "zh-cn": "您确定要删除该客户吗?",
+    "en": "Delete this customer?"
+  },
+  "mobile.ui.script.1bdea3b3e2c6": {
+    "zh-cn": "文件夹层级不能超过两级",
+    "en": "Folder depth cannot exceed two levels"
+  },
+  "mobile.ui.script.1f203483dd93": {
+    "zh-cn": "请填写资料名称",
+    "en": "Enter a document name"
+  },
+  "mobile.ui.script.1fef4d23af6e": {
+    "zh-cn": "不在考勤范围内无法打卡",
+    "en": "You cannot clock in outside the attendance area."
+  },
+  "mobile.ui.script.203dcd059fce": {
+    "zh-cn": "流水数量(笔)",
+    "en": "Transaction count"
+  },
+  "mobile.ui.script.20d49af40f29": {
+    "zh-cn": "删除商机",
+    "en": "Delete opportunity"
+  },
+  "mobile.ui.script.21087896a9bf": {
+    "zh-cn": "日报",
+    "en": "Daily"
+  },
+  "mobile.ui.script.23ae0a11ac5b": {
+    "zh-cn": "星期三",
+    "en": "Wednesday"
+  },
+  "mobile.ui.script.23e006847e11": {
+    "zh-cn": "请选择参与人",
+    "en": "Select participants"
+  },
+  "mobile.ui.script.23eb7f7fdc57": {
+    "zh-cn": "按天重复",
+    "en": "Repeat daily"
+  },
+  "mobile.ui.script.2472fb242efb": {
+    "zh-cn": "已成交",
+    "en": "Closed"
+  },
+  "mobile.ui.script.247e8e8e1dba": {
+    "zh-cn": "资料重命名",
+    "en": "Rename document"
+  },
+  "mobile.ui.script.24e8fe7f92b4": {
+    "zh-cn": "审批驳回",
+    "en": "Approval rejected"
+  },
+  "mobile.ui.script.25409c9762ea": {
+    "zh-cn": "获取位置信息失败",
+    "en": "Failed to get location."
+  },
+  "mobile.ui.script.254f4dad7807": {
+    "zh-cn": "去授权",
+    "en": "Authorize"
+  },
+  "mobile.ui.script.25abac82e6d2": {
+    "zh-cn": "请输入账目金额!",
+    "en": "Enter the account amount!"
+  },
+  "mobile.ui.script.271ba79707d1": {
+    "zh-cn": "签约时间",
+    "en": "Signing time"
+  },
+  "mobile.ui.script.272ad74770d1": {
+    "zh-cn": "提前1天",
+    "en": "1 day before"
+  },
+  "mobile.ui.script.276db9bd07c3": {
+    "zh-cn": "所有日程",
+    "en": "All schedules"
+  },
+  "mobile.ui.script.29773693ced5": {
+    "zh-cn": "晚到超过多久记为严重迟到",
+    "en": "Minutes late before marking as severely late"
+  },
+  "mobile.ui.script.2a9efbcc1b22": {
+    "zh-cn": "只能选择一个部门",
+    "en": "Only one member can be selected"
+  },
+  "mobile.ui.script.2ae047252747": {
+    "zh-cn": "打开会话框",
+    "en": "Open conversation"
+  },
+  "mobile.ui.script.2b940b3e31d3": {
+    "zh-cn": "请选择发票类目",
+    "en": "Select an invoice category"
+  },
+  "mobile.ui.script.2bc3d355a321": {
+    "zh-cn": "审批流程已被删除",
+    "en": "The approval process has been deleted"
+  },
+  "mobile.ui.script.2cadfe8265eb": {
+    "zh-cn": "编辑文件夹",
+    "en": "Edit folder"
+  },
+  "mobile.ui.script.2dd0c7682898": {
+    "zh-cn": "搜索位置",
+    "en": "Search location"
+  },
+  "mobile.ui.script.2dffd5b5a9ab": {
+    "zh-cn": "任务开始时",
+    "en": "At task start"
+  },
+  "mobile.ui.script.2e477cb19313": {
+    "zh-cn": "邮箱地址不能为空",
+    "en": "Email address is required"
+  },
+  "mobile.ui.script.2e97e3b97bd6": {
+    "zh-cn": "纳税人识别号不能为空",
+    "en": "Taxpayer ID is required"
+  },
+  "mobile.ui.script.2edd2342e80c": {
+    "zh-cn": "按周重复",
+    "en": "Repeat weekly"
+  },
+  "mobile.ui.script.2ef38ab35a9f": {
+    "zh-cn": "收支方式",
+    "en": "Income/expense method"
+  },
+  "mobile.ui.script.2faa75bbc1da": {
+    "zh-cn": "二维码未生成",
+    "en": "QR code has not been generated"
+  },
+  "mobile.ui.script.2fb1db2875cb": {
+    "zh-cn": "提交中...",
+    "en": "Submitting..."
+  },
+  "mobile.ui.script.305378ddd2b8": {
+    "zh-cn": "链接",
+    "en": "Link"
+  },
+  "mobile.ui.script.3483ea9dfb66": {
+    "zh-cn": "提前5分钟",
+    "en": "5 minutes before"
+  },
+  "mobile.ui.script.348fbbb0286d": {
+    "zh-cn": "输入的邮箱不合法",
+    "en": "Enter a valid email address"
+  },
+  "mobile.ui.script.3550971bddbb": {
+    "zh-cn": "存在关联的企微客户,是否转客户?",
+    "en": "A linked WeCom customer exists. Convert it to a customer?"
+  },
+  "mobile.ui.script.3602152b0fe5": {
+    "zh-cn": "修改成功",
+    "en": "Updated successfully"
+  },
+  "mobile.ui.script.3606e77c2b47": {
+    "zh-cn": "请输入文件夹名称",
+    "en": "Enter a folder name"
+  },
+  "mobile.ui.script.364a4dfc2d47": {
+    "zh-cn": "一月",
+    "en": "January"
+  },
+  "mobile.ui.script.37c607040dff": {
+    "zh-cn": "二月",
+    "en": "February"
+  },
+  "mobile.ui.script.3816e03a7608": {
+    "zh-cn": "按周",
+    "en": "Weekly"
+  },
+  "mobile.ui.script.38dc7a3d64cf": {
+    "zh-cn": "休息开始时间",
+    "en": "Break start time"
+  },
+  "mobile.ui.script.38de25e52295": {
+    "zh-cn": "操作成功",
+    "en": "Operation succeeded"
+  },
+  "mobile.ui.script.39932f24fe11": {
+    "zh-cn": "文件",
+    "en": "File"
+  },
+  "mobile.ui.script.3a3f6e116ac4": {
+    "zh-cn": "请选择部门",
+    "en": "Select a department"
+  },
+  "mobile.ui.script.3a7ddf6c862a": {
+    "zh-cn": "今年",
+    "en": "This year"
+  },
+  "mobile.ui.script.3aa7a9e035a4": {
+    "zh-cn": "密码不能为空",
+    "en": "Password is required"
+  },
+  "mobile.ui.script.3bc277070f32": {
+    "zh-cn": "列表名称",
+    "en": "List name"
+  },
+  "mobile.ui.script.3bfb0e935bb6": {
+    "zh-cn": "三月",
+    "en": "March"
+  },
+  "mobile.ui.script.3fa6ea0e91aa": {
+    "zh-cn": "开票金额不能为空",
+    "en": "Invoice amount is required"
+  },
+  "mobile.ui.script.3ffe4999e737": {
+    "zh-cn": "确认删除该班次吗？班次将无法恢复",
+    "en": "Delete this shift? It cannot be restored."
+  },
+  "mobile.ui.script.405b651676e7": {
+    "zh-cn": "新增排班成功!",
+    "en": "Schedule added."
+  },
+  "mobile.ui.script.42195ba2bd9d": {
+    "zh-cn": "编辑成功",
+    "en": "Updated successfully"
+  },
+  "mobile.ui.script.42845d86b969": {
+    "zh-cn": "添加记录",
+    "en": "Add record"
+  },
+  "mobile.ui.script.42f796c81bcc": {
+    "zh-cn": "总收入(元)",
+    "en": "Total income (yuan)"
+  },
+  "mobile.ui.script.435dabea4643": {
+    "zh-cn": "修改商机状态",
+    "en": "Change opportunity status"
+  },
+  "mobile.ui.script.439aa9df3e0c": {
+    "zh-cn": "您确定要将此客户取消流失吗?",
+    "en": "Mark this customer as no longer lost?"
+  },
+  "mobile.ui.script.44b7a8369bbd": {
+    "zh-cn": "至少关注一个文章标签",
+    "en": "Follow at least one article tag"
+  },
+  "mobile.ui.script.4669785ade95": {
+    "zh-cn": "删除中...",
+    "en": "Deleting..."
+  },
+  "mobile.ui.script.478911d29ab8": {
+    "zh-cn": "星期四",
+    "en": "Thursday"
+  },
+  "mobile.ui.script.47ed9a9426ce": {
+    "zh-cn": "无期限",
+    "en": "No fixed term"
+  },
+  "mobile.ui.script.4848c546e09c": {
+    "zh-cn": "最早可提前多久打卡",
+    "en": "Earliest allowed clock-in time"
+  },
+  "mobile.ui.script.48f1853723ae": {
+    "zh-cn": "本部门",
+    "en": "This department"
+  },
+  "mobile.ui.script.498b04f087d1": {
+    "zh-cn": "验证成功",
+    "en": "Verification successful"
+  },
+  "mobile.ui.script.4a8df380210c": {
+    "zh-cn": "更新打卡",
+    "en": "Update clock record"
+  },
+  "mobile.ui.script.4b7d23dc9666": {
+    "zh-cn": "海报生成内容不能为空",
+    "en": "Poster content cannot be empty"
+  },
+  "mobile.ui.script.4bd5670b9ecc": {
+    "zh-cn": "请填写合同名称",
+    "en": "Enter the contract name"
+  },
+  "mobile.ui.script.4d89d6c1635e": {
+    "zh-cn": "请填写固定日期",
+    "en": "Enter the fixed date"
+  },
+  "mobile.ui.script.4dbaecc55e14": {
+    "zh-cn": "请选择客户",
+    "en": "Select customer"
+  },
+  "mobile.ui.script.4e5c9d3ffa31": {
+    "zh-cn": "至少选择一天重复",
+    "en": "Select at least one repeat day"
+  },
+  "mobile.ui.script.4eafa9e925b3": {
+    "zh-cn": "自定义",
+    "en": "Custom"
+  },
+  "mobile.ui.script.4f942bdffed7": {
+    "zh-cn": "搜索异常，请检查网络",
+    "en": "Search failed. Check your network connection."
+  },
+  "mobile.ui.script.4fb2c02c7ae6": {
+    "zh-cn": "请选择支付时间",
+    "en": "Select a payment time"
+  },
+  "mobile.ui.script.4fc80d2d1360": {
+    "zh-cn": "提前15分钟",
+    "en": "15 minutes before"
+  },
+  "mobile.ui.script.50bc5ea4276b": {
+    "zh-cn": "修改状态",
+    "en": "Change status"
+  },
+  "mobile.ui.script.50dc0a917532": {
+    "zh-cn": "微信好友",
+    "en": "WeChat contact"
+  },
+  "mobile.ui.script.5223f91b9670": {
+    "zh-cn": "删除成功",
+    "en": "Successfully deleted"
+  },
+  "mobile.ui.script.5279ad2b0808": {
+    "zh-cn": "最少选择一个部门",
+    "en": "Select at least one department"
+  },
+  "mobile.ui.script.528a02c95e54": {
+    "zh-cn": "我查看的",
+    "en": "Records I can view"
+  },
+  "mobile.ui.script.5554a8b5bbfc": {
+    "zh-cn": "请选择人员",
+    "en": "Please select personnel"
+  },
+  "mobile.ui.script.556c0e1595e7": {
+    "zh-cn": "晚到超过多久记为迟到",
+    "en": "Minutes late before marking as late"
+  },
+  "mobile.ui.script.55be56403c67": {
+    "zh-cn": "续费金额不能为空",
+    "en": "Renewal amount is required"
+  },
+  "mobile.ui.script.55d884613464": {
+    "zh-cn": "您确定要撤回此账目记录吗",
+    "en": "Withdraw this account record?"
+  },
+  "mobile.ui.script.56245fb1724f": {
+    "zh-cn": "删除提醒",
+    "en": "Delete notification"
+  },
+  "mobile.ui.script.5634d21b5e2e": {
+    "zh-cn": "关联商机",
+    "en": "Link opportunity"
+  },
+  "mobile.ui.script.56451fdf19c2": {
+    "zh-cn": "星期一",
+    "en": "Monday"
+  },
+  "mobile.ui.script.56bccf4e6591": {
+    "zh-cn": "支付方式不能为空",
+    "en": "Payment method is required"
+  },
+  "mobile.ui.script.57ef441f9495": {
+    "zh-cn": "十月",
+    "en": "October"
+  },
+  "mobile.ui.script.59513cbfd2c7": {
+    "zh-cn": "只能选择一个人员",
+    "en": "Only one person can be selected"
+  },
+  "mobile.ui.script.5ad78ad5dd5c": {
+    "zh-cn": "刷新登录凭证失败",
+    "en": "Failed to refresh sign-in credentials"
+  },
+  "mobile.ui.script.5ae5cbaf179a": {
+    "zh-cn": "五月",
+    "en": "May"
+  },
+  "mobile.ui.script.5b71c1e9fcde": {
+    "zh-cn": "流出(元)",
+    "en": "Outflow (CNY)"
+  },
+  "mobile.ui.script.5c553ec3f6db": {
+    "zh-cn": "周",
+    "en": "Week"
+  },
+  "mobile.ui.script.5c55a67935af": {
+    "zh-cn": "全部",
+    "en": "All"
+  },
+  "mobile.ui.script.5eb70633988e": {
+    "zh-cn": "重复截至时间不能小于开始时间",
+    "en": "Repeat end time cannot be earlier than the start time"
+  },
+  "mobile.ui.script.5f9d86a9e009": {
+    "zh-cn": "请输入转审意见",
+    "en": "Enter a transfer note"
+  },
+  "mobile.ui.script.606feff0829a": {
+    "zh-cn": "请填写合同时期（天）",
+    "en": "Enter the contract period (days)"
+  },
+  "mobile.ui.script.61ca80ecd069": {
+    "zh-cn": "请检查域名是否正确",
+    "en": "Check that the domain is correct"
+  },
+  "mobile.ui.script.6309a3bb5ba4": {
+    "zh-cn": "保存失败",
+    "en": "Save failed"
+  },
+  "mobile.ui.script.645b934deb86": {
+    "zh-cn": "登录成功",
+    "en": "Signed in successfully"
+  },
+  "mobile.ui.script.653f016e2d72": {
+    "zh-cn": "此日程及后续日程",
+    "en": "This and following schedules"
+  },
+  "mobile.ui.script.656b45fc5c4f": {
+    "zh-cn": "请选择转移的业务员",
+    "en": "Select the salesperson to transfer to"
+  },
+  "mobile.ui.script.658356b2e542": {
+    "zh-cn": "提前多久打卡记为半天缺卡",
+    "en": "Minutes early before marking a half-day missing punch"
+  },
+  "mobile.ui.script.65c8cd20304d": {
+    "zh-cn": "确定要删除该分类吗",
+    "en": "Delete this category?"
+  },
+  "mobile.ui.script.6925c0602513": {
+    "zh-cn": "填写撤销理由",
+    "en": "Enter a revocation reason"
+  },
+  "mobile.ui.script.692c48b73e2d": {
+    "zh-cn": "上月",
+    "en": "Last month"
+  },
+  "mobile.ui.script.695dde63a81c": {
+    "zh-cn": "您确定要领取将此客户吗?",
+    "en": "Claim this customer?"
+  },
+  "mobile.ui.script.69a8f0db690d": {
+    "zh-cn": "移动端暂不支持此类待办",
+    "en": "This task type is not supported on mobile"
+  },
+  "mobile.ui.script.6ad61a0fa90e": {
+    "zh-cn": "提醒内容不能为空",
+    "en": "Reminder content is required"
+  },
+  "mobile.ui.script.6bbb87a90cbb": {
+    "zh-cn": "你确定要全部标记已读吗",
+    "en": "Mark all messages as read?"
+  },
+  "mobile.ui.script.6c02b8db720e": {
+    "zh-cn": "请填写撤销理由",
+    "en": "Enter the revocation reason"
+  },
+  "mobile.ui.script.6cb4de6895aa": {
+    "zh-cn": "请输入合法的账目金额!",
+    "en": "Enter a valid account amount!"
+  },
+  "mobile.ui.script.6d4cffbca8dd": {
+    "zh-cn": "下班时间",
+    "en": "End time"
+  },
+  "mobile.ui.script.6d654a8ee57d": {
+    "zh-cn": "企业普通发票",
+    "en": "Enterprise general invoice"
+  },
+  "mobile.ui.script.6df505aac23c": {
+    "zh-cn": "打开失败，请检查链接",
+    "en": "Failed to open. Check the link."
+  },
+  "mobile.ui.script.6e0e88b78b44": {
+    "zh-cn": "订单续费金额(元)",
+    "en": "Order renewal amount (CNY)"
+  },
+  "mobile.ui.script.6e1cb9263bf3": {
+    "zh-cn": "请选择支付方式",
+    "en": "Select payment method"
+  },
+  "mobile.ui.script.6e453aa6e57a": {
+    "zh-cn": "内容不能为空",
+    "en": "Category name cannot be empty"
+  },
+  "mobile.ui.script.6e5969e50e4d": {
+    "zh-cn": "星期五",
+    "en": "Friday"
+  },
+  "mobile.ui.script.6e89737a00e1": {
+    "zh-cn": "数据来源",
+    "en": "Data source"
+  },
+  "mobile.ui.script.6e99bd83ba50": {
+    "zh-cn": "您已配置该企业,无需重复配置",
+    "en": "This enterprise is already configured"
+  },
+  "mobile.ui.script.73ea77b9c3a0": {
+    "zh-cn": "企业专用发票",
+    "en": "Enterprise special invoice"
+  },
+  "mobile.ui.script.7547b30cba1c": {
+    "zh-cn": "不能选择历史月份!",
+    "en": "Past months cannot be selected!"
+  },
+  "mobile.ui.script.76659b3305e7": {
+    "zh-cn": "订单不能为空",
+    "en": "Order is required"
+  },
+  "mobile.ui.script.76ed9ca67118": {
+    "zh-cn": "提前1小时",
+    "en": "1 hour before"
+  },
+  "mobile.ui.script.77eb60a9b709": {
+    "zh-cn": "退回公海",
+    "en": "Return to pool"
+  },
+  "mobile.ui.script.7821185357a7": {
+    "zh-cn": "确定要 撤销 申请吗",
+    "en": "Revoke the request?"
+  },
+  "mobile.ui.script.78c2e9316844": {
+    "zh-cn": "确定之后变为已放弃状态，您确定此订单不再续费了吗",
+    "en": "This will mark the order as abandoned. Confirm that it will not be renewed?"
+  },
+  "mobile.ui.script.7906b1ead081": {
+    "zh-cn": "批量标记成功",
+    "en": "Marked successfully"
+  },
+  "mobile.ui.script.7977a000ade5": {
+    "zh-cn": "确定要删除该付款提醒吗",
+    "en": "Delete this payment reminder?"
+  },
+  "mobile.ui.script.797f6f9c9ac8": {
+    "zh-cn": "月报",
+    "en": "Monthly"
+  },
+  "mobile.ui.script.79ed1defeb95": {
+    "zh-cn": "名片加载失败",
+    "en": "Failed to load business card"
+  },
+  "mobile.ui.script.7bb2f5ecaa1d": {
+    "zh-cn": "星期六",
+    "en": "Saturday"
+  },
+  "mobile.ui.script.7cf5275e3993": {
+    "zh-cn": "个人普通发票",
+    "en": "Personal general invoice"
+  },
+  "mobile.ui.script.7d1336e09267": {
+    "zh-cn": "提前2天",
+    "en": "2 days before"
+  },
+  "mobile.ui.script.7e1f15a5b488": {
+    "zh-cn": "BSSID 已复制",
+    "en": "BSSID copied"
+  },
+  "mobile.ui.script.7e9d36329636": {
+    "zh-cn": "移交同事",
+    "en": "Transfer to colleague"
+  },
+  "mobile.ui.script.7fe489bbefd0": {
+    "zh-cn": "图片转换失败",
+    "en": "Image conversion failed"
+  },
+  "mobile.ui.script.81a5d72767c5": {
+    "zh-cn": "请选择班次",
+    "en": "Select a shift"
+  },
+  "mobile.ui.script.81c69b227f15": {
+    "zh-cn": "请选择支出类型",
+    "en": "Select an expense type"
+  },
+  "mobile.ui.script.844759c9f55f": {
+    "zh-cn": "上传成功",
+    "en": "Upload succeeded"
+  },
+  "mobile.ui.script.844ab9477225": {
+    "zh-cn": "领取",
+    "en": "Issue"
+  },
+  "mobile.ui.script.85d8a5d9141e": {
+    "zh-cn": "请输入加签意见",
+    "en": "Enter an additional-approver note"
+  },
+  "mobile.ui.script.8621c00d3b2c": {
+    "zh-cn": "星期二",
+    "en": "Tuesday"
+  },
+  "mobile.ui.script.86499e552857": {
+    "zh-cn": "配置失败，请填写正确的服务域名",
+    "en": "Configuration failed. Enter the correct service domain."
+  },
+  "mobile.ui.script.87f044778398": {
+    "zh-cn": "请阅读用户协议",
+    "en": "Read the user agreement"
+  },
+  "mobile.ui.script.88472ca037a5": {
+    "zh-cn": "似乎已断开网络连接",
+    "en": "The network connection appears to be offline"
+  },
+  "mobile.ui.script.88782e74b90c": {
+    "zh-cn": "请选择支付方式!",
+    "en": "Select a payment method!"
+  },
+  "mobile.ui.script.88d28d38b073": {
+    "zh-cn": "确定要删除留言吗",
+    "en": "Delete this comment?"
+  },
+  "mobile.ui.script.8a02ac78bb9b": {
+    "zh-cn": "上传文件失败！请检查上传文件类型",
+    "en": "File upload failed. Check the file type."
+  },
+  "mobile.ui.script.8a53fbd17f63": {
+    "zh-cn": "上班时间",
+    "en": "Start time"
+  },
+  "mobile.ui.script.8ab84e442588": {
+    "zh-cn": "输入的密码不一致",
+    "en": "Passwords do not match"
+  },
+  "mobile.ui.script.8b789d9279a6": {
+    "zh-cn": "请选择成员",
+    "en": "Please select a member"
+  },
+  "mobile.ui.script.8b7974f847af": {
+    "zh-cn": "请选择商品",
+    "en": "Select a product"
+  },
+  "mobile.ui.script.8b8892d12623": {
+    "zh-cn": "联系人不能为空",
+    "en": "Contact is required"
+  },
+  "mobile.ui.script.8c84e205a562": {
+    "zh-cn": "我负责的",
+    "en": "Owned by me"
+  },
+  "mobile.ui.script.8d2638848d35": {
+    "zh-cn": "请选择支付时间!",
+    "en": "Select a payment time!"
+  },
+  "mobile.ui.script.8d43872aa946": {
+    "zh-cn": "您确定要将此客户标为流失吗?",
+    "en": "Mark this customer as lost?"
+  },
+  "mobile.ui.script.8e86f9b1d54f": {
+    "zh-cn": "复制链接",
+    "en": "Copy link"
+  },
+  "mobile.ui.script.8ec29d6d6320": {
+    "zh-cn": "请选择期望开票日期",
+    "en": "Select the expected invoice date"
+  },
+  "mobile.ui.script.8f3c638ad727": {
+    "zh-cn": "四月",
+    "en": "April"
+  },
+  "mobile.ui.script.8f918d998cb0": {
+    "zh-cn": "跟进信息不能为空",
+    "en": "Follow-up information is required"
+  },
+  "mobile.ui.script.8fbbcb2e328e": {
+    "zh-cn": "你确定要删除资金记录吗",
+    "en": "Are you sure you want to delete the fund record"
+  },
+  "mobile.ui.script.90eb1f51bbcf": {
+    "zh-cn": "请选择考勤组!",
+    "en": "Select an attendance group!"
+  },
+  "mobile.ui.script.9146cd754edb": {
+    "zh-cn": "请选择重复日期",
+    "en": "Select repeat date"
+  },
+  "mobile.ui.script.916d2d3b20f4": {
+    "zh-cn": "签约文件上传成功",
+    "en": "Contract file uploaded successfully"
+  },
+  "mobile.ui.script.917b1c1f18d0": {
+    "zh-cn": "保存中...",
+    "en": "Saving..."
+  },
+  "mobile.ui.script.91aae2e5f2c8": {
+    "zh-cn": "请选择提醒时间",
+    "en": "Select reminder time"
+  },
+  "mobile.ui.script.92396c6eec88": {
+    "zh-cn": "签约状态",
+    "en": "Signing status"
+  },
+  "mobile.ui.script.92b27f941990": {
+    "zh-cn": "待签约",
+    "en": "Pending signing"
+  },
+  "mobile.ui.script.9379dc4f4f6c": {
+    "zh-cn": "客户没有绑定企业微信",
+    "en": "The customer is not linked to WeCom"
+  },
+  "mobile.ui.script.93af1207cb0f": {
+    "zh-cn": "此日程",
+    "en": "This schedule"
+  },
+  "mobile.ui.script.93fb171159d9": {
+    "zh-cn": "无法删除选中企业",
+    "en": "The selected enterprise cannot be deleted"
+  },
+  "mobile.ui.script.949ded34c945": {
+    "zh-cn": "周报",
+    "en": "Weekly"
+  },
+  "mobile.ui.script.968fc004c0fc": {
+    "zh-cn": "确定删除线索吗？",
+    "en": "Delete this lead?"
+  },
+  "mobile.ui.script.999a459c3f3f": {
+    "zh-cn": "待处理",
+    "en": "Pending"
+  },
+  "mobile.ui.script.9a9906e39974": {
+    "zh-cn": "填写跟进",
+    "en": "Write follow-up"
+  },
+  "mobile.ui.script.9a9acd39e536": {
+    "zh-cn": "状态筛选",
+    "en": "Status filter"
+  },
+  "mobile.ui.script.9bc264613597": {
+    "zh-cn": "确定要删除该快捷回复吗？",
+    "en": "Delete this quick reply?"
+  },
+  "mobile.ui.script.9caa04a46e76": {
+    "zh-cn": "您确定要删除此账目记录吗",
+    "en": "Delete this account record?"
+  },
+  "mobile.ui.script.9e209fd87a54": {
+    "zh-cn": "微博分享",
+    "en": "Share to Weibo"
+  },
+  "mobile.ui.script.9f94d3421638": {
+    "zh-cn": "请选择加签审核人",
+    "en": "Select an additional approver"
+  },
+  "mobile.ui.script.a011e95dad5a": {
+    "zh-cn": "确定要删除该企业吗",
+    "en": "Delete this enterprise?"
+  },
+  "mobile.ui.script.a0eeb1d1a8c4": {
+    "zh-cn": "续费类型不能为空",
+    "en": "Renewal type is required"
+  },
+  "mobile.ui.script.a17cef456ad3": {
+    "zh-cn": "请选择重复星期",
+    "en": "Please select a repeating week"
+  },
+  "mobile.ui.script.a1c1ee43f735": {
+    "zh-cn": "付款时间不能为空",
+    "en": "Payment time is required"
+  },
+  "mobile.ui.script.a21d37a2abc5": {
+    "zh-cn": "仅本部门",
+    "en": "Current department only"
+  },
+  "mobile.ui.script.a2513bed93df": {
+    "zh-cn": "退回客户公海",
+    "en": "Return customer to pool"
+  },
+  "mobile.ui.script.a2dcf2be2f9a": {
+    "zh-cn": "暂未成交",
+    "en": "Not yet closed"
+  },
+  "mobile.ui.script.a3064785f1db": {
+    "zh-cn": "编辑日程",
+    "en": "Edit schedule"
+  },
+  "mobile.ui.script.a3db114460ba": {
+    "zh-cn": "二维码生成失败",
+    "en": "Failed to generate QR code"
+  },
+  "mobile.ui.script.a4393714922a": {
+    "zh-cn": "新增订单",
+    "en": "Add order"
+  },
+  "mobile.ui.script.a5b3e90754d5": {
+    "zh-cn": "自选节点不能为空",
+    "en": "A selected approval node is required"
+  },
+  "mobile.ui.script.a656eb54a3a6": {
+    "zh-cn": "流入(元)",
+    "en": "Inflow (CNY)"
+  },
+  "mobile.ui.script.a67881bd9ae2": {
+    "zh-cn": "您确定要领取此线索吗?",
+    "en": "Claim this lead?"
+  },
+  "mobile.ui.script.a68341e39955": {
+    "zh-cn": "固定日期",
+    "en": "Fixed date"
+  },
+  "mobile.ui.script.a7417876c523": {
+    "zh-cn": "提前30分钟",
+    "en": "30 minutes before"
+  },
+  "mobile.ui.script.a751a4381407": {
+    "zh-cn": "退回线索池",
+    "en": "Return to lead pool"
+  },
+  "mobile.ui.script.a87bd6bcba6b": {
+    "zh-cn": "选择部门",
+    "en": "Select Department"
+  },
+  "mobile.ui.script.a8c5db7342f3": {
+    "zh-cn": "提前1周",
+    "en": "1 week before"
+  },
+  "mobile.ui.script.a9e33db1914d": {
+    "zh-cn": "需要授权相册权限才能保存二维码",
+    "en": "Photo library permission is required to save the QR code"
+  },
+  "mobile.ui.script.a9fd84c36ccd": {
+    "zh-cn": "选择人员",
+    "en": "Select personnel"
+  },
+  "mobile.ui.script.aa6c658dd017": {
+    "zh-cn": "链接已复制成功",
+    "en": "Link copied"
+  },
+  "mobile.ui.script.ac3b4acf1347": {
+    "zh-cn": "第一个签署方不能删除",
+    "en": "The first signer cannot be deleted"
+  },
+  "mobile.ui.script.acbf945378b4": {
+    "zh-cn": "您确定要删除该客户联系人吗?",
+    "en": "Delete this customer contact?"
+  },
+  "mobile.ui.script.ad002c4eea67": {
+    "zh-cn": "无法打卡",
+    "en": "Unable to clock in"
+  },
+  "mobile.ui.script.add988289a69": {
+    "zh-cn": "您确定要撤销此合同申请吗?",
+    "en": "Revoke this contract application?"
+  },
+  "mobile.ui.script.affa2599cd5f": {
+    "zh-cn": "八月",
+    "en": "August"
+  },
+  "mobile.ui.script.b162169ca111": {
+    "zh-cn": "请选择账目分类!",
+    "en": "Select an account category!"
+  },
+  "mobile.ui.script.b1e61f68eae4": {
+    "zh-cn": "修改客户状态",
+    "en": "Change customer status"
+  },
+  "mobile.ui.script.b23aa9febb04": {
+    "zh-cn": "处理成功",
+    "en": "Processed successfully"
+  },
+  "mobile.ui.script.b2de5cc9cda4": {
+    "zh-cn": "回款金额不能为空",
+    "en": "Payment amount is required"
+  },
+  "mobile.ui.script.b39b4607c710": {
+    "zh-cn": "说明原因",
+    "en": "Reason:"
+  },
+  "mobile.ui.script.b45d34fc7542": {
+    "zh-cn": "九月",
+    "en": "September"
+  },
+  "mobile.ui.script.b4c6c3eb0bce": {
+    "zh-cn": "本周",
+    "en": "This week"
+  },
+  "mobile.ui.script.b5cf5979f90c": {
+    "zh-cn": "请输入正确的纳税人识别号",
+    "en": "Enter a valid taxpayer ID"
+  },
+  "mobile.ui.script.b67196891895": {
+    "zh-cn": "已放弃",
+    "en": "Abandoned"
+  },
+  "mobile.ui.script.b79933cbf75f": {
+    "zh-cn": "关联成功",
+    "en": "Linked successfully"
+  },
+  "mobile.ui.script.b79b57e9cc49": {
+    "zh-cn": "请填写待办标题",
+    "en": "Enter a task title"
+  },
+  "mobile.ui.script.b93570ae2712": {
+    "zh-cn": "无效的链接地址",
+    "en": "Invalid link"
+  },
+  "mobile.ui.script.b9d8853e0ce7": {
+    "zh-cn": "已到期",
+    "en": "Expired"
+  },
+  "mobile.ui.script.ba13ac3c4ed1": {
+    "zh-cn": "请输入记事本标题",
+    "en": "Enter a note title"
+  },
+  "mobile.ui.script.ba1debdc0df5": {
+    "zh-cn": "确定要 拒绝 申请人的申请吗",
+    "en": "Reject the applicant's request?"
+  },
+  "mobile.ui.script.ba22c0c7c76b": {
+    "zh-cn": "您确定要撤销该发票吗",
+    "en": "Revoke this invoice?"
+  },
+  "mobile.ui.script.bca1d2146f35": {
+    "zh-cn": "保存成功，请在微信内识别",
+    "en": "Saved successfully. Scan it in WeChat."
+  },
+  "mobile.ui.script.bd9c79a8f2a6": {
+    "zh-cn": "联系电话不能为空",
+    "en": "Contact phone is required"
+  },
+  "mobile.ui.script.bea7cc23de89": {
+    "zh-cn": "登录信息已失效，请重新登录",
+    "en": "Your sign-in information is no longer valid. Sign in again."
+  },
+  "mobile.ui.script.bff535a5f7f6": {
+    "zh-cn": "晚到超过多久记为半天缺卡",
+    "en": "Minutes late before marking a half-day missing punch"
+  },
+  "mobile.ui.script.c059c6e8ab94": {
+    "zh-cn": "不能选择自己",
+    "en": "You cannot select yourself"
+  },
+  "mobile.ui.script.c08aacda14a1": {
+    "zh-cn": "朋友圈",
+    "en": "Moments"
+  },
+  "mobile.ui.script.c08f5f0de8f2": {
+    "zh-cn": "收支时间",
+    "en": "Time of payment"
+  },
+  "mobile.ui.script.c1353c44ce45": {
+    "zh-cn": "请选择订单",
+    "en": "Select order"
+  },
+  "mobile.ui.script.c20f7618d330": {
+    "zh-cn": "视频",
+    "en": "Video"
+  },
+  "mobile.ui.script.c228558cf257": {
+    "zh-cn": "删除失败",
+    "en": "Delete failed"
+  },
+  "mobile.ui.script.c287bde2c030": {
+    "zh-cn": "电话号码不合法",
+    "en": "Invalid phone number."
+  },
+  "mobile.ui.script.c31b718d3f9c": {
+    "zh-cn": "你确定要删除全部消息吗",
+    "en": "Delete all messages?"
+  },
+  "mobile.ui.script.c374a873e560": {
+    "zh-cn": "您确定要删除此合同吗?",
+    "en": "Delete this contract?"
+  },
+  "mobile.ui.script.c3eb1db6efe3": {
+    "zh-cn": "您确定要删除此跟进记录吗",
+    "en": "Delete this follow-up record?"
+  },
+  "mobile.ui.script.c5c593d385bf": {
+    "zh-cn": "去年",
+    "en": "Last year"
+  },
+  "mobile.ui.script.c65d63c6a637": {
+    "zh-cn": "新增客户",
+    "en": "Add customer"
+  },
+  "mobile.ui.script.c6d5607cff1c": {
+    "zh-cn": "缺少定位权限",
+    "en": "Location permission is missing"
+  },
+  "mobile.ui.script.c730f10d8b82": {
+    "zh-cn": "您确定要修改此状态吗?",
+    "en": "Change this status?"
+  },
+  "mobile.ui.script.c7ccaa43950d": {
+    "zh-cn": "禁止手动修改数据",
+    "en": "Manual changes are not allowed."
+  },
+  "mobile.ui.script.ca3c684d88c7": {
+    "zh-cn": "按月",
+    "en": "Monthly"
+  },
+  "mobile.ui.script.cc60e689ee69": {
+    "zh-cn": "十一月",
+    "en": "November"
+  },
+  "mobile.ui.script.cd968cd1b3e3": {
+    "zh-cn": "仅本人",
+    "en": "Me only"
+  },
+  "mobile.ui.script.cdb86d82cd89": {
+    "zh-cn": "按年重复",
+    "en": "Repeat yearly"
+  },
+  "mobile.ui.script.d04fcbda737f": {
+    "zh-cn": "加载中",
+    "en": "Loading"
+  },
+  "mobile.ui.script.d1048d74b6fb": {
+    "zh-cn": "请选择时间",
+    "en": "Select a time"
+  },
+  "mobile.ui.script.d459fc31e189": {
+    "zh-cn": "请输入记事本内容",
+    "en": "Enter note content"
+  },
+  "mobile.ui.script.d5f5a7a01073": {
+    "zh-cn": "今天",
+    "en": "Today"
+  },
+  "mobile.ui.script.d75cbe44e504": {
+    "zh-cn": "请上传合同文件",
+    "en": "Upload the contract file"
+  },
+  "mobile.ui.script.daa9720fc97c": {
+    "zh-cn": "净额(元)",
+    "en": "Net amount (CNY)"
+  },
+  "mobile.ui.script.db0b98dd46b0": {
+    "zh-cn": "验证码不能为空",
+    "en": "Verification code is required"
+  },
+  "mobile.ui.script.dd81861811e5": {
+    "zh-cn": "文本",
+    "en": "Text"
+  },
+  "mobile.ui.script.ddcd10032f61": {
+    "zh-cn": "发票抬头不能为空",
+    "en": "Invoice title is required"
+  },
+  "mobile.ui.script.ddfba7fcb9e3": {
+    "zh-cn": "最少选择一个人员",
+    "en": "Select at least one person"
+  },
+  "mobile.ui.script.deebc1a80645": {
+    "zh-cn": "请输入...",
+    "en": "Enter..."
+  },
+  "mobile.ui.script.e05ddf992cc5": {
+    "zh-cn": "保存成功",
+    "en": "Saved successfully"
+  },
+  "mobile.ui.script.e113bd5e192b": {
+    "zh-cn": "签约日起算",
+    "en": "Start from signing date"
+  },
+  "mobile.ui.script.e12978bbcbcb": {
+    "zh-cn": "按天",
+    "en": "By day"
+  },
+  "mobile.ui.script.e1f794e2635f": {
+    "zh-cn": "新增排班失败!",
+    "en": "Failed to add the schedule."
+  },
+  "mobile.ui.script.e2c0262fb6c5": {
+    "zh-cn": "请假",
+    "en": "Leave"
+  },
+  "mobile.ui.script.e3a3f1757d3a": {
+    "zh-cn": "用户拒绝了位置权限请求",
+    "en": "Location permission was denied."
+  },
+  "mobile.ui.script.e406044d050d": {
+    "zh-cn": "获取 WIFI 信息失败",
+    "en": "Failed to get Wi-Fi information."
+  },
+  "mobile.ui.script.e447aaca1b2f": {
+    "zh-cn": "您确定要删除吗",
+    "en": "Delete this item?"
+  },
+  "mobile.ui.script.e98606b32fde": {
+    "zh-cn": "海报生成中",
+    "en": "Generating poster"
+  },
+  "mobile.ui.script.e99229840427": {
+    "zh-cn": "频率不能为空",
+    "en": "Frequency is required"
+  },
+  "mobile.ui.script.eacc0ff2dc03": {
+    "zh-cn": "数字越大越往前",
+    "en": "Larger numbers appear first"
+  },
+  "mobile.ui.script.eaf6ba40311a": {
+    "zh-cn": "提前多久打卡记为早退",
+    "en": "Minutes early before marking as early leave"
+  },
+  "mobile.ui.script.ebdc3594be5c": {
+    "zh-cn": "不重复",
+    "en": "No repeat"
+  },
+  "mobile.ui.script.ebecbbe06139": {
+    "zh-cn": "六月",
+    "en": "June"
+  },
+  "mobile.ui.script.ec72536b387c": {
+    "zh-cn": "快捷回复成功",
+    "en": "Quick reply succeeded"
+  },
+  "mobile.ui.script.ec9310bd7791": {
+    "zh-cn": "请填写支出金额",
+    "en": "Enter the expense amount"
+  },
+  "mobile.ui.script.ec93da23f2aa": {
+    "zh-cn": "星期天",
+    "en": "Sunday"
+  },
+  "mobile.ui.script.ee4d1319e5bb": {
+    "zh-cn": "新增订单金额(元)",
+    "en": "New contract amount (Yuan)"
+  },
+  "mobile.ui.script.ee575f24cbcc": {
+    "zh-cn": "结束时间不能小于开始时间",
+    "en": "The end time cannot be earlier than the start time."
+  },
+  "mobile.ui.script.f034210f5c37": {
+    "zh-cn": "暂无订单，请添加订单",
+    "en": "No orders yet. Add an order."
+  },
+  "mobile.ui.script.f0593ec0cc50": {
+    "zh-cn": "本人及下属",
+    "en": "Me and subordinates"
+  },
+  "mobile.ui.script.f2909c34a4a4": {
+    "zh-cn": "默认回复内容",
+    "en": "Default reply content"
+  },
+  "mobile.ui.script.f2a55cf50ff2": {
+    "zh-cn": "删除线索",
+    "en": "Delete lead"
+  },
+  "mobile.ui.script.f2d51b3b3e02": {
+    "zh-cn": "移动成功",
+    "en": "Moved successfully"
+  },
+  "mobile.ui.script.f50b0579624a": {
+    "zh-cn": "按月重复",
+    "en": "Repeat monthly"
+  },
+  "mobile.ui.script.f569383dcaf2": {
+    "zh-cn": "按年",
+    "en": "Yearly"
+  },
+  "mobile.ui.script.f56c6c82203b": {
+    "zh-cn": "提示",
+    "en": "Hint"
+  },
+  "mobile.ui.script.f6560d4dce32": {
+    "zh-cn": "提前2小时",
+    "en": "2 hours before"
+  },
+  "mobile.ui.script.f69377d58c84": {
+    "zh-cn": "全部待办",
+    "en": "All to-dos"
+  },
+  "mobile.ui.script.f85c3d29c17d": {
+    "zh-cn": "您确定要删除此商机吗?",
+    "en": "Delete this opportunity?"
+  },
+  "mobile.ui.script.f8cc8628d6af": {
+    "zh-cn": "电话号码不能为空",
+    "en": "Phone number is required"
+  },
+  "mobile.ui.script.f8cd68e290a5": {
+    "zh-cn": "七月",
+    "en": "July"
+  },
+  "mobile.ui.script.f975a973775f": {
+    "zh-cn": "确定要 同意 申请人的申请吗",
+    "en": "Approve the applicant's request?"
+  },
+  "mobile.ui.script.fa27dc454eab": {
+    "zh-cn": "已签约",
+    "en": "Signed"
+  },
+  "mobile.ui.script.fa42fafab97c": {
+    "zh-cn": "只有在企业微信中可进行聊天",
+    "en": "Chat is available only in WeCom"
+  },
+  "mobile.ui.script.fba3038c981e": {
+    "zh-cn": "转审人不能选自己",
+    "en": "You cannot transfer approval to yourself"
+  },
+  "mobile.ui.script.fc135337a267": {
+    "zh-cn": "分配",
+    "en": "Assign"
+  },
+  "mobile.ui.script.fc384e15c7e4": {
+    "zh-cn": "确定要同意申请人的申请吗",
+    "en": "Approve the applicant's request?"
+  },
+  "mobile.ui.script.fdaea91b0214": {
+    "zh-cn": "确定要撤销该审批记录吗",
+    "en": "Revoke this approval record?"
+  },
+  "mobile.ui.script.fe0625aa8ffe": {
+    "zh-cn": "删除客户",
+    "en": "Delete customer"
+  },
+  "mobile.ui.script.fe89f057fded": {
+    "zh-cn": "请选择账目类型!",
+    "en": "Select an account type!"
+  },
+  "mobile.ui.script.ff3dfedfe314": {
+    "zh-cn": "确认密码不能为空",
+    "en": "Password confirmation is required"
+  },
+  "mobile.ui.script.ff536b7aeffd": {
+    "zh-cn": "登录已过期，请重新登录",
+    "en": "Your session has expired. Sign in again."
+  },
+  "mobile.ui.script.ff6cc00f8cf2": {
+    "zh-cn": "至今未回款(元)",
+    "en": "Outstanding payment to date (CNY)"
+  },
+  "mobile.ui.script.ffda7a2fd4e8": {
+    "zh-cn": "修改线索状态",
+    "en": "Change lead status"
+  },
+  "mobile.ui.shareIndexNoticeThirdPartySdksMayCollectYourPersonalInformation": {
+    "zh-cn": "友情提示：第三方 SDK 可能会收集您的个人信息",
+    "en": "Notice: Third-party SDKs may collect your personal information"
+  },
+  "mobile.ui.shareIndexShareArticle": {
+    "zh-cn": "分享文章",
+    "en": "Share article"
+  },
+  "mobile.ui.slipperCodeIndexSlideRightToCompleteVerification": {
+    "zh-cn": "向右滑动完成验证",
+    "en": "Slide right to complete verification"
+  },
+  "mobile.ui.timePopupIndexEndTime": {
+    "zh-cn": "结束时间",
+    "en": "End time"
+  },
+  "mobile.ui.timePopupIndexStartTime": {
+    "zh-cn": "开始时间",
+    "en": "Start time"
+  },
+  "mobile.ui.timePopupIndexTimeFilter": {
+    "zh-cn": "时间筛选",
+    "en": "Time filter"
+  },
+  "mobile.ui.userAddMembersAddMember": {
+    "zh-cn": "添加成员",
+    "en": "Add member"
+  },
+  "mobile.ui.userAvatarSideslipLogOut": {
+    "zh-cn": "退出登录",
+    "en": "Log Out"
+  },
+  "mobile.ui.userCodeInvitationFrom": {
+    "zh-cn": "- 来自",
+    "en": "- From"
+  },
+  "mobile.ui.userCodeInvitationGeneratePoster": {
+    "zh-cn": "生成海报",
+    "en": "Generate poster"
+  },
+  "mobile.ui.userCodeInvitationInvitation": {
+    "zh-cn": "的邀请 -",
+    "en": "invitation -"
+  },
+  "mobile.ui.userCodeInvitationInvitesYouToScanAndJoin": {
+    "zh-cn": "邀请你扫码加入",
+    "en": "invites you to scan and join"
+  },
+  "mobile.ui.userCodeInvitationTuoluojiang": {
+    "zh-cn": "陀螺匠",
+    "en": "Tuoluojiang"
+  },
+  "mobile.ui.userIndexContacts": {
+    "zh-cn": "通讯录",
+    "en": "Contacts"
+  },
+  "mobile.ui.usersAssessmentDefaultCompletionSelfAssessment": {
+    "zh-cn": "完成度(自评)",
+    "en": "Completion (self-assessment)"
+  },
+  "mobile.ui.usersAssessmentDefaultCompletionStatus": {
+    "zh-cn": "完成情况",
+    "en": "Completion status"
+  },
+  "mobile.ui.usersAssessmentDefaultCurrentScore": {
+    "zh-cn": "当前得分",
+    "en": "Current score:"
+  },
+  "mobile.ui.usersAssessmentDefaultIndicatorDescription": {
+    "zh-cn": "指标说明",
+    "en": "Indicator description"
+  },
+  "mobile.ui.usersAssessmentDefaultMaximumIndicatorScore": {
+    "zh-cn": "指标满分",
+    "en": "Maximum indicator score"
+  },
+  "mobile.ui.usersAssessmentDefaultNext": {
+    "zh-cn": "下一项",
+    "en": "Next"
+  },
+  "mobile.ui.usersAssessmentDefaultNoEvaluation": {
+    "zh-cn": "暂无评价",
+    "en": "No Evaluation"
+  },
+  "mobile.ui.usersAssessmentDefaultPerformanceScore": {
+    "zh-cn": "绩效得分",
+    "en": "Performance score"
+  },
+  "mobile.ui.usersAssessmentDefaultPleaseEnterIndicatorDescription": {
+    "zh-cn": "请输入指标说明",
+    "en": "Please enter Indicator description"
+  },
+  "mobile.ui.usersAssessmentDefaultPleaseEnterTheCompletionStatus": {
+    "zh-cn": "请输入完成情况",
+    "en": "Please enter the completion status"
+  },
+  "mobile.ui.usersAssessmentDefaultPleaseEnterTheRatingLevel": {
+    "zh-cn": "请输入评分等级",
+    "en": "Please enter the rating level"
+  },
+  "mobile.ui.usersAssessmentDefaultPrevious": {
+    "zh-cn": "上一项",
+    "en": "Previous"
+  },
+  "mobile.ui.usersAssessmentDefaultRatingLevel": {
+    "zh-cn": "评分等级",
+    "en": "Rating level"
+  },
+  "mobile.ui.usersAssessmentDefaultScore": {
+    "zh-cn": "分数",
+    "en": "Score"
+  },
+  "mobile.ui.usersAssessmentDefaultScore2": {
+    "zh-cn": "得分：",
+    "en": "Score:"
+  },
+  "mobile.ui.usersAssessmentDefaultSelfRating": {
+    "zh-cn": "自我评分",
+    "en": "Self-rating"
+  },
+  "mobile.ui.usersAssessmentDefaultSelfScoringSelfEvaluation": {
+    "zh-cn": "自评分",
+    "en": "Self scoring (Self evaluation)"
+  },
+  "mobile.ui.usersAssessmentDefaultTheHigherEvaluation": {
+    "zh-cn": "上级评价",
+    "en": "The higher evaluation"
+  },
+  "mobile.ui.usersAssessmentDefaultTheSuperiorGrade": {
+    "zh-cn": "上级评分：",
+    "en": "The superior grade:"
+  },
+  "mobile.ui.usersAssessmentDefaultTotalScore": {
+    "zh-cn": "总分",
+    "en": "Total score:"
+  },
+  "mobile.ui.usersAssessmentDefaultWeight": {
+    "zh-cn": "权重",
+    "en": "Weight"
+  },
+  "mobile.ui.usersAssessmentExplainScoringCriteria": {
+    "zh-cn": "评分标准",
+    "en": "Scoring criteria"
+  },
+  "mobile.ui.usersAssessmentIndexAssessmentScore": {
+    "zh-cn": "考核分数",
+    "en": "Assessment score"
+  },
+  "mobile.ui.usersAssessmentIndexNoPerformanceAssessmentContent": {
+    "zh-cn": "暂无绩效考核内容～",
+    "en": "No Performance assessment content"
+  },
+  "mobile.ui.usersCenterIndexEmail": {
+    "zh-cn": "邮箱",
+    "en": "Email"
+  },
+  "mobile.ui.usersCenterIndexHeadPortrait": {
+    "zh-cn": "头像",
+    "en": "Head portrait"
+  },
+  "mobile.ui.usersCenterIndexNickname": {
+    "zh-cn": "昵称",
+    "en": "nickname"
+  },
+  "mobile.ui.usersCenterIndexPassword": {
+    "zh-cn": "密码",
+    "en": "Password"
+  },
+  "mobile.ui.usersCenterIndexPhone": {
+    "zh-cn": "手机",
+    "en": "Phone"
+  },
+  "mobile.ui.usersCenterIndexUserId": {
+    "zh-cn": "用户ID",
+    "en": "User ID"
+  },
+  "mobile.ui.usersCenterPasswordConfirmPassword": {
+    "zh-cn": "确认密码",
+    "en": "Confirm password"
+  },
+  "mobile.ui.usersCenterPasswordNewPassword": {
+    "zh-cn": "新密码",
+    "en": "New password"
+  },
+  "mobile.ui.usersCenterPasswordPleaseEnterANewPassword": {
+    "zh-cn": "请输入新密码",
+    "en": "Please enter a new password"
+  },
+  "mobile.ui.usersCenterPasswordPleaseEnterTheConfirmationPassword": {
+    "zh-cn": "请输入确认密码",
+    "en": "Please enter the confirmation password"
+  },
+  "mobile.ui.usersCenterPhonePleaseEnterANewMobileNumber": {
+    "zh-cn": "请输入新手机号",
+    "en": "Please enter a new mobile number"
+  },
+  "mobile.ui.usersDepartmentChenkPersonnelRemove": {
+    "zh-cn": "移除",
+    "en": "Remove"
+  },
+  "mobile.ui.usersDepartmentIndexEnterpriseMembers": {
+    "zh-cn": "企业成员（",
+    "en": "Enterprise members ("
+  },
+  "mobile.ui.usersDepartmentIndexOrganization": {
+    "zh-cn": "组织架构",
+    "en": "Organization"
+  },
+  "mobile.ui.usersDepartmentIndexPeople": {
+    "zh-cn": "人）",
+    "en": "people)"
+  },
+  "mobile.ui.usersDepartmentSelectBottomBarDepartment": {
+    "zh-cn": "部门",
+    "en": "Department"
+  },
+  "mobile.ui.usersExamineAddSignatureAddApproverMethod": {
+    "zh-cn": "加签方式",
+    "en": "Add approver method"
+  },
+  "mobile.ui.usersExamineAddSignatureAddingAnApproverAfterMeApprovesTheRequestAnd": {
+    "zh-cn": "在我之后加签，即表示同意该申请并增加审核人员。",
+    "en": "Adding an approver after me approves the request and adds another reviewer."
+  },
+  "mobile.ui.usersExamineAddSignatureAfterMe": {
+    "zh-cn": "在我之后",
+    "en": "After me"
+  },
+  "mobile.ui.usersExamineAddSignatureAllApprovers": {
+    "zh-cn": "会签",
+    "en": "All approvers"
+  },
+  "mobile.ui.usersExamineAddSignatureAnyApprover": {
+    "zh-cn": "或签",
+    "en": "Any approver"
+  },
+  "mobile.ui.usersExamineAddSignatureBeforeMe": {
+    "zh-cn": "在我之前",
+    "en": "Before me"
+  },
+  "mobile.ui.usersExamineAddSignatureMultipleApproverMethod": {
+    "zh-cn": "多人审批方式",
+    "en": "Multiple-approver method"
+  },
+  "mobile.ui.usersExamineAddSignatureSequentialApproval": {
+    "zh-cn": "依次审批",
+    "en": "Sequential approval"
+  },
+  "mobile.ui.usersExamineAddSignatureTheAddedApproverReviewsTheRequestBeforeItReturns": {
+    "zh-cn": "加签后，流程先经过加签审核人，再由我审核。",
+    "en": "The added approver reviews the request before it returns to me."
+  },
+  "mobile.ui.usersExamineAddSignatureTransferApprover": {
+    "zh-cn": "转审人",
+    "en": "Transfer approver"
+  },
+  "mobile.ui.usersExamineCheckProcessAddApprover": {
+    "zh-cn": "加签",
+    "en": "Add approver"
+  },
+  "mobile.ui.usersExamineCheckProcessApprovalProcess": {
+    "zh-cn": "审批流程",
+    "en": "Approval process"
+  },
+  "mobile.ui.usersExamineCheckProcessComment": {
+    "zh-cn": "意见：",
+    "en": "Comment:"
+  },
+  "mobile.ui.usersExamineCheckProcessTransferApproval": {
+    "zh-cn": "转审",
+    "en": "Transfer approval"
+  },
+  "mobile.ui.usersExamineChoosePeopleAdditionalApprover": {
+    "zh-cn": "加签审核人",
+    "en": "Additional approver"
+  },
+  "mobile.ui.usersExamineDefaultsApplicationTime": {
+    "zh-cn": "申请时间：",
+    "en": "Application time:"
+  },
+  "mobile.ui.usersExamineDefaultsComment": {
+    "zh-cn": "留言（",
+    "en": "Comment ("
+  },
+  "mobile.ui.usersExamineDefaultsComment2": {
+    "zh-cn": "留言",
+    "en": "Comment"
+  },
+  "mobile.ui.usersExamineDefaultsResubmit": {
+    "zh-cn": "再次提交",
+    "en": "Resubmit"
+  },
+  "mobile.ui.usersExamineDefaultsSendReminder": {
+    "zh-cn": "催办",
+    "en": "Send reminder"
+  },
+  "mobile.ui.usersExamineDefaultsViewApplicationsToWithdraw": {
+    "zh-cn": "查看需要撤销的申请单",
+    "en": "View applications to withdraw"
+  },
+  "mobile.ui.usersExamineExamineListDefaultResubmit": {
+    "zh-cn": "重新提交",
+    "en": "Resubmit"
+  },
+  "mobile.ui.usersExamineExamineListDefaultRevoke": {
+    "zh-cn": "撤销",
+    "en": "Revoke"
+  },
+  "mobile.ui.usersExamineExamineListDefaultSubmissionTime": {
+    "zh-cn": "提交时间",
+    "en": "Submission time"
+  },
+  "mobile.ui.usersExamineIndexRequestForm": {
+    "zh-cn": "申请表单",
+    "en": "Request form"
+  },
+  "mobile.ui.usersExamineMineNoSubmitContent": {
+    "zh-cn": "暂无提交内容～",
+    "en": "No Submit Content"
+  },
+  "mobile.ui.usersExamineProcessCannot": {
+    "zh-cn": "（不可",
+    "en": "(Cannot"
+  },
+  "mobile.ui.usersExamineSearchEnterANameToSearch": {
+    "zh-cn": "请填写人员姓名搜索",
+    "en": "Enter a name to search"
+  },
+  "mobile.ui.usersLoginConfigAddServiceConfiguration": {
+    "zh-cn": "添加服务配置",
+    "en": "Add service configuration"
+  },
+  "mobile.ui.usersLoginConfigEnterpriseBinding": {
+    "zh-cn": "企业信息绑定",
+    "en": "Enterprise binding"
+  },
+  "mobile.ui.usersLoginConfigEnterServiceDomain": {
+    "zh-cn": "请输入服务域名",
+    "en": "Enter service domain"
+  },
+  "mobile.ui.usersLoginConfigExampleHttpsDemoTuoluojiangCom": {
+    "zh-cn": "服务域名示例：https://demo.tuoluojiang.com",
+    "en": "Example: https://demo.tuoluojiang.com"
+  },
+  "mobile.ui.usersLoginConfigSave": {
+    "zh-cn": "保 存",
+    "en": "Save"
+  },
+  "mobile.ui.usersLoginConfigServiceDomain": {
+    "zh-cn": "服务域名",
+    "en": "Service domain"
+  },
+  "mobile.ui.usersLoginEnterpriseSelectEnterprise": {
+    "zh-cn": "选中企业",
+    "en": "Select enterprise"
+  },
+  "mobile.ui.usersLoginIndexAnd": {
+    "zh-cn": "和",
+    "en": "and"
+  },
+  "mobile.ui.usersLoginIndexANewAccountWillBeCreatedAutomaticallyWhenSigning": {
+    "zh-cn": "未注册手机号登录时会自动创建新账号",
+    "en": "A new account will be created automatically when signing in with an unregistered phone number"
+  },
+  "mobile.ui.usersLoginIndexEnterprises": {
+    "zh-cn": "切换企业",
+    "en": "Enterprises"
+  },
+  "mobile.ui.usersLoginIndexIHaveReadAndAgreeTo": {
+    "zh-cn": "我已阅读并同意",
+    "en": "I have read and agree to"
+  },
+  "mobile.ui.usersLoginIndexLogin": {
+    "zh-cn": "登 录",
+    "en": "Login"
+  },
+  "mobile.ui.usersLoginIndexNewUsersShouldSignInWithSms": {
+    "zh-cn": "未注册用户请使用短信登录",
+    "en": "New users should sign in with SMS"
+  },
+  "mobile.ui.usersLoginIndexPrivacyPolicy": {
+    "zh-cn": "《隐私协议》",
+    "en": "Privacy Policy"
+  },
+  "mobile.ui.usersLoginIndexSignInToTuolujiangEnterpriseAssistant": {
+    "zh-cn": "登录陀螺匠 · 企业助手",
+    "en": "Sign in to Tuolujiang · Enterprise Assistant"
+  },
+  "mobile.ui.usersLoginIndexTermsOfService": {
+    "zh-cn": "《服务协议》",
+    "en": "Terms of Service"
+  },
+  "mobile.ui.usersMemorandumCreateCreateYourPersonalNote": {
+    "zh-cn": "尽情创造你的个人笔记吧",
+    "en": "Create your personal note"
+  },
+  "mobile.ui.usersMemorandumCreateEnterTitle": {
+    "zh-cn": "请输入标题",
+    "en": "Enter title"
+  },
+  "mobile.ui.usersMemorandumDetailsMoveTo": {
+    "zh-cn": "移动至",
+    "en": "Move to"
+  },
+  "mobile.ui.usersMemorandumFolderListCreatedAt": {
+    "zh-cn": "创建于",
+    "en": "Created at"
+  },
+  "mobile.ui.usersMemorandumIndexNewFolder": {
+    "zh-cn": "新建文件夹",
+    "en": "New folder"
+  },
+  "mobile.ui.usersMemorandumNewesListEdited": {
+    "zh-cn": "编辑于",
+    "en": "Edited"
+  },
+  "mobile.ui.usersNoticeDefaultIndexViews": {
+    "zh-cn": "人阅读",
+    "en": "views"
+  },
+  "mobile.ui.usersNoticeIndexUnread": {
+    "zh-cn": "未读",
+    "en": "Unread"
+  },
+  "mobile.ui.usersNoticeIndexView": {
+    "zh-cn": "阅读",
+    "en": "View"
+  },
+  "mobile.ui.usersOrganizationIndexNoDataYetAddSomeNow": {
+    "zh-cn": "暂无数据，快去添加吧！",
+    "en": "No data yet. Add some now!"
+  },
+  "mobile.ui.usersReportCensusCalculating": {
+    "zh-cn": "统计中",
+    "en": "Calculating"
+  },
+  "mobile.ui.usersReportCensusNotSubmitted": {
+    "zh-cn": "未提交",
+    "en": "Not submitted"
+  },
+  "mobile.ui.usersReportCensusSubmissionResult": {
+    "zh-cn": "提交结果",
+    "en": "Submission result"
+  },
+  "mobile.ui.usersReportCensusSubmitted": {
+    "zh-cn": "已提交",
+    "en": "Submitted"
+  },
+  "mobile.ui.usersReportMineAttachment": {
+    "zh-cn": "附件",
+    "en": "Attachment"
+  },
+  "mobile.ui.usersReportMineDetails": {
+    "zh-cn": "详情",
+    "en": "Details"
+  },
+  "mobile.ui.usersReportMineUpTo2000Characters": {
+    "zh-cn": "(最多2000字)",
+    "en": "(Up to 2,000 characters)"
+  },
+  "mobile.ui.usersReportProcessReportTo": {
+    "zh-cn": "汇报给",
+    "en": "Report to"
+  },
+  "mobile.ui.usersReportReportListReportSummary": {
+    "zh-cn": "汇报总结：",
+    "en": "Report summary:"
+  },
+  "mobile.ui.usersReportSelectFrameDepartmentFilter": {
+    "zh-cn": "部门筛选",
+    "en": "Department filter"
+  },
+  "mobile.ui.usersScanCodeIndexCancelSignIn": {
+    "zh-cn": "取消登录",
+    "en": "Cancel sign-in"
+  },
+  "mobile.ui.usersScanCodeIndexConfirmAndSignIn": {
+    "zh-cn": "确认并登录",
+    "en": "Confirm and sign in"
+  },
+  "mobile.ui.usersScanCodeIndexOnlyScanATuolujiangQrCode": {
+    "zh-cn": "请认准陀螺匠二维码",
+    "en": "Only scan a Tuolujiang QR code"
+  },
+  "mobile.ui.usersScanCodeIndexResponse": {
+    "zh-cn": "返回",
+    "en": "Response"
+  },
+  "mobile.ui.usersScanCodeIndexScanFailed": {
+    "zh-cn": "扫码失败",
+    "en": "Scan failed"
+  },
+  "mobile.ui.usersScanCodeIndexScanSuccessful": {
+    "zh-cn": "扫码成功",
+    "en": "Scan successful"
+  },
+  "mobile.ui.usersScanCodeIndexTuolujiangCannotProcessOtherQrCodesScanTheQr": {
+    "zh-cn": "陀螺匠无法处理其他二维码，请扫描网页版登录二维码进行的登录：",
+    "en": "Tuolujiang cannot process other QR codes. Scan the QR code shown on the web sign-in page:"
+  },
+  "mobile.ui.usersScanCodeIndexTuoluojiangLoginConfirmation": {
+    "zh-cn": "陀螺匠登录确认",
+    "en": "Tuoluojiang login confirmation"
+  },
+  "mobile.ui.usersScheduleCreateDuplicate": {
+    "zh-cn": "重复",
+    "en": "Duplicate"
+  },
+  "mobile.ui.usersScheduleCreateEnterAToDoTitle": {
+    "zh-cn": "请输入待办标题",
+    "en": "Enter a to-do title"
+  },
+  "mobile.ui.usersScheduleCreateParticipants": {
+    "zh-cn": "参与人",
+    "en": "Participants"
+  },
+  "mobile.ui.usersScheduleCreatePleaseEnterTodoContent": {
+    "zh-cn": "请输入待办内容",
+    "en": "Please enter Todo content"
+  },
+  "mobile.ui.usersScheduleCreateRepeatEndDate": {
+    "zh-cn": "重复截至时间",
+    "en": "Repeat end date"
+  },
+  "mobile.ui.usersScheduleCreateScheduleType": {
+    "zh-cn": "日程类型",
+    "en": "Schedule type"
+  },
+  "mobile.ui.usersScheduleCreateSelectEndTime": {
+    "zh-cn": "请选择结束时间",
+    "en": "Select end time"
+  },
+  "mobile.ui.usersScheduleCreateSelectStartTime": {
+    "zh-cn": "请选择开始时间",
+    "en": "Select start time"
+  },
+  "mobile.ui.usersScheduleCreateTodoContent": {
+    "zh-cn": "待办内容",
+    "en": "Todo content"
+  },
+  "mobile.ui.usersScheduleCreateToDoTitle": {
+    "zh-cn": "待办标题",
+    "en": "To-do title"
+  },
+  "mobile.ui.usersScheduleCustomCreateCustomRepeat": {
+    "zh-cn": "自定义重复",
+    "en": "Custom repeat"
+  },
+  "mobile.ui.usersScheduleCustomCreateEnterFrequency": {
+    "zh-cn": "请输入频率",
+    "en": "Enter frequency"
+  },
+  "mobile.ui.usersScheduleCustomCreateFrequency": {
+    "zh-cn": "频率(",
+    "en": "Frequency ("
+  },
+  "mobile.ui.usersScheduleCustomCreateNeverEnd": {
+    "zh-cn": "永不结束",
+    "en": "Never end"
+  },
+  "mobile.ui.usersScheduleCustomCreateRepetitionType": {
+    "zh-cn": "重复类型",
+    "en": "Repetition type"
+  },
+  "mobile.ui.usersScheduleDayAllDay": {
+    "zh-cn": "全天",
+    "en": "All day"
+  },
+  "mobile.ui.usersScheduleDetailAlready": {
+    "zh-cn": "已",
+    "en": "Already"
+  },
+  "mobile.ui.usersScheduleDetailCompleted": {
+    "zh-cn": "已完成",
+    "en": "Completed"
+  },
+  "mobile.ui.usersScheduleIndexSchedule": {
+    "zh-cn": "日程",
+    "en": "Schedule"
+  },
+  "mobile.ui.usersScheduleIndexToDo": {
+    "zh-cn": "待办",
+    "en": "To-do"
+  },
+  "mobile.ui.usersScheduleScheduleClickToCreate": {
+    "zh-cn": "点击创建",
+    "en": "Click to create"
+  },
+  "mobile.ui.usersScheduleScheduleNoSchedules": {
+    "zh-cn": "暂无日程安排",
+    "en": "No schedules"
+  },
+  "mobile.ui.usersScheduleScheduleNoToDoTasks": {
+    "zh-cn": "暂无待办任务～",
+    "en": "No To-do tasks"
+  },
+  "mobile.ui.usersScheduleSetScheduleDisplayStyle": {
+    "zh-cn": "展现形式",
+    "en": "Display style"
+  },
+  "mobile.ui.usersScheduleTodoCreatedTime": {
+    "zh-cn": "创建时间：",
+    "en": "Created time:"
+  },
+  "mobile.ui.usersScheduleTodoHideCompletedItems": {
+    "zh-cn": "隐藏已完成事项",
+    "en": "Hide completed items"
+  },
+  "mobile.ui.usersScheduleTodoLoading": {
+    "zh-cn": "加载中...",
+    "en": "Loading..."
+  },
+  "mobile.ui.usersScheduleTodoNoToDo": {
+    "zh-cn": "暂无待办",
+    "en": "No To-do"
+  },
+  "mobile.ui.userTreeListIndexChairman": {
+    "zh-cn": "董事长",
+    "en": "Chairman"
+  },
+  "mobile.ui.userUserIdAddMember": {
+    "zh-cn": "添加新成员",
+    "en": "Add member"
+  },
+  "mobile.ui.userUserIdAfterEnteringAValidMemberIdTheUserMust": {
+    "zh-cn": "填写正确的成员ID之后，需经过用户同意添加为企业成员",
+    "en": "After entering a valid member ID, the user must approve joining the enterprise."
+  },
+  "mobile.ui.userUserIdConfirmAdd": {
+    "zh-cn": "确认添加",
+    "en": "Confirm add"
+  },
+  "mobile.ui.userUserIdMemberId": {
+    "zh-cn": "成员ID",
+    "en": "Member ID"
+  },
+  "mobile.ui.userUserIdPleaseEnterMemberId": {
+    "zh-cn": "请输入成员ID",
+    "en": "Please enter member ID"
+  },
+  "mobile.ui.userUserPhoneEnterMobileNumber": {
+    "zh-cn": "请输入手机号",
+    "en": "Enter mobile number"
+  },
+  "mobile.ui.userUserPhoneEnterName": {
+    "zh-cn": "请输入姓名",
+    "en": "Enter name"
+  },
+  "mobile.ui.userUserPhonePhoneNumber": {
+    "zh-cn": "手机号",
+    "en": "Phone number"
+  },
+  "mobile.ui.userUserRecordApproved": {
+    "zh-cn": "已同意",
+    "en": "Approved"
+  },
+  "mobile.ui.userUserRecordNoInvitationRecords": {
+    "zh-cn": "暂无邀请记录～",
+    "en": "No Invitation records"
+  },
+  "mobile.ui.userUserRecordRegistrationTime": {
+    "zh-cn": "注册时间",
+    "en": "Registration time"
+  },
+  "mobile.ui.userUserRecordUserStatus": {
+    "zh-cn": "用户状态",
+    "en": "User status"
+  },
+  "mobile.ui.userUserRecordXiaobei": {
+    "zh-cn": "小北爱吃肉",
+    "en": "Xiaobei"
+  },
+  "mobile.ui.verifitionVerifyPleaseCompleteTheSecurityVerification": {
+    "zh-cn": "请完成安全验证",
+    "en": "Please complete the security verification"
+  },
+  "mobile.upload.chooseFileFailed": {
+    "zh-cn": "文件选择失败。",
+    "en": "File selection failed."
+  },
+  "mobile.upload.chooseImageFailed": {
+    "zh-cn": "图片选择失败。",
+    "en": "Image selection failed."
+  },
+  "mobile.upload.fileTooLarge": {
+    "zh-cn": "文件大小不能超过{size}MB。",
+    "en": "The file size cannot exceed {size}MB."
+  },
+  "mobile.upload.imageTooLarge": {
+    "zh-cn": "图片大小不能超过{size}MB。",
+    "en": "The image size cannot exceed {size}MB."
+  },
+  "mobile.upload.uploadFailed": {
+    "zh-cn": "上传失败，请稍后再试！",
+    "en": "Upload failed. Please try again later."
+  },
+  "mobile.upload.uploading": {
+    "zh-cn": "上传中",
+    "en": "Uploading"
+  },
+  "mobile.user.avatar": {
+    "zh-cn": "头像",
+    "en": "Avatar"
+  },
+  "mobile.user.email": {
+    "zh-cn": "邮箱",
+    "en": "Email"
+  },
+  "mobile.user.enterEmail": {
+    "zh-cn": "请输入邮箱",
+    "en": "Please enter email"
+  },
+  "mobile.user.enterNickname": {
+    "zh-cn": "请输入昵称",
+    "en": "Please enter nickname"
+  },
+  "mobile.user.nickname": {
+    "zh-cn": "昵称",
+    "en": "Nickname"
+  },
+  "mobile.user.password": {
+    "zh-cn": "密码",
+    "en": "Password"
+  },
+  "mobile.user.phone": {
+    "zh-cn": "手机",
+    "en": "Phone"
+  },
+  "mobile.user.userId": {
+    "zh-cn": "用户ID",
+    "en": "User ID"
+  }
+}

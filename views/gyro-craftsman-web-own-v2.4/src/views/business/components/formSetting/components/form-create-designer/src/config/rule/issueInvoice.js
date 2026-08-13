@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 const label = '开具发票'
 const name = 'issueInvoice'
@@ -20,7 +20,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('customer.customerName'),
+          title: $('customer.customerName'),
           symbol: 'customerList',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -33,7 +33,7 @@ export default {
           hidden: true,
           info: '',
           input: false,
-          title: i18n.t('ui.invoiceInvoiceDetailsRelatedPaymentOrder'),
+          title: $('ui.invoiceInvoiceDetailsRelatedPaymentOrder'),
           symbol: 'billId',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -46,9 +46,9 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('legacyScript.relatedPaymentAmount'),
+          title: $('legacyScript.relatedPaymentAmount'),
           symbol: 'billAmount',
-          props: { disabled: true,readonly:true,placeholder:i18n.t('legacyScript.pleaseEnterRelatedPaymentOrder') },
+          props: { disabled: true,readonly:true,placeholder:$('legacyScript.pleaseEnterRelatedPaymentOrder') },
           type: 'input',
           _fc_drag_tag: 'input',
           options: []
@@ -60,8 +60,8 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          props: { placeholder: i18n.t('legacyScript.pleaseSelectBillingDate') },
-          title: i18n.t('customer.invoicingdate'),
+          props: { placeholder: $('legacyScript.pleaseSelectBillingDate') },
+          title: $('customer.invoicingdate'),
           symbol: 'desireDate',
           type: 'datePicker',
           _fc_drag_tag: 'datePicker'
@@ -70,14 +70,14 @@ export default {
           effect: { fetch: '', required: true },
           field: uniqueId(),
           props: { type: 'radio' },
-          title: i18n.t('legacyScript.invoiceRequirements'),
+          title: $('legacyScript.invoiceRequirements'),
           symbol: 'invoicingMethod',
           value: 'mail',
           type: 'radio',
           _fc_drag_tag: 'radio',
           options: [
-            { value: 'mail', label: i18n.t('ui.customerInvoiceInvoiceViewElectronic') },
-            { value: 'express', label: i18n.t('ui.customerInvoiceInvoiceViewPaper') }
+            { value: 'mail', label: $('ui.customerInvoiceInvoiceViewElectronic') },
+            { value: 'express', label: $('ui.customerInvoiceInvoiceViewPaper') }
           ]
         },
         {
@@ -87,8 +87,8 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: i18n.t('customer.placeholder55')  },
-          title: i18n.t('customer.emailaddress'),
+          props: { type: 'input', placeholder: $('customer.placeholder55')  },
+          title: $('customer.emailaddress'),
           symbol: 'invoicingEmail',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -100,8 +100,8 @@ export default {
           hidden: true,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: i18n.t('customer.placeholder52') },
-          title: i18n.t('customer.contacts'),
+          props: { type: 'input', placeholder: $('customer.placeholder52') },
+          title: $('customer.contacts'),
           symbol: 'liaisonMan',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -113,8 +113,8 @@ export default {
           hidden: true,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: i18n.t('customer.placeholder53') },
-          title: i18n.t('customer.contactnumber'),
+          props: { type: 'input', placeholder: $('customer.placeholder53') },
+          title: $('customer.contactnumber'),
           symbol: 'telephone',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -126,8 +126,8 @@ export default {
           hidden: true,
           info: '',
           input: false,
-          props: { type: 'input', placeholder: i18n.t('customer.placeholder56') },
-          title: i18n.t('customer.mailingaddress'),
+          props: { type: 'input', placeholder: $('customer.placeholder56') },
+          title: $('customer.mailingaddress'),
           symbol: 'mailingAddress',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -140,7 +140,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('customer.headerinformation'),
+          title: $('customer.headerinformation'),
           symbol: 'invoiceType',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -149,8 +149,8 @@ export default {
         {
           effect: { fetch: '', required: true },
           field: uniqueId(),
-          props: { type: 'moneyFrom', placeholder: i18n.t('customer.placeholder44') },
-          title: i18n.t('legacyScript.invoiceAmountCNY'),
+          props: { type: 'moneyFrom', placeholder: $('customer.placeholder44') },
+          title: $('legacyScript.invoiceAmountCNY'),
           symbol: 'invoiceAmount',
           type: 'moneyFrom',
           _fc_drag_tag: 'moneyFrom'
@@ -162,8 +162,8 @@ export default {
           hidden: false,
           info: '',
       
-          props: { type: 'input', placeholder: i18n.t('customer.placeholder46') },
-          title: i18n.t('customer.invoiceheader'),
+          props: { type: 'input', placeholder: $('customer.placeholder46') },
+          title: $('customer.invoiceheader'),
           symbol: 'invoiceHeader',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -175,8 +175,8 @@ export default {
           hidden: false,
           info: '',
      
-          props: { type: 'input', placeholder: i18n.t('customer.placeholder47') },
-          title: i18n.t('customer.paytaxes'),
+          props: { type: 'input', placeholder: $('customer.placeholder47') },
+          title: $('customer.paytaxes'),
           symbol: 'dutyParagraph',
           type: 'input',
           _fc_drag_tag: 'input'
@@ -187,8 +187,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: i18n.t('customer.placeholder18') },
-          title: i18n.t('customer.remark'),
+          props: { type: 'textarea', placeholder: $('customer.placeholder18') },
+          title: $('customer.remark'),
           symbol: 'remark',
           _fc_drag_tag: 'textarea'
         }
@@ -265,7 +265,7 @@ export default {
         info: '',
         props: {
           value: '1.开具发票是否需要审批流，在客户规格设置中配置<br>2.支持财务进行发票开具/拒绝开票',
-          title: i18n.t('legacyScript.issueInvoiceRules')
+          title: $('legacyScript.issueInvoiceRules')
         },
         input: false,
         title: '',

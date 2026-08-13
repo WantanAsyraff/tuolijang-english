@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <oaFromBox
     :isAddBtn="false"
-    :title="$t('ui.userExamineMySubmissionMyApplications')"
+    :title="$('ui.userExamineMySubmissionMyApplications')"
     :search="search"
     :total="total"
     :isViewSearch="false"
@@ -10,7 +11,7 @@
   >
     <template slot="rightBtn">
       <el-dropdown trigger="click" size="small" placement="bottom-start" @command="handleBuild">
-        <el-button type="primary" size="small">{{ $t("ui.userExamineMySubmissionCreateRequest") }}</el-button>
+        <el-button type="primary" size="small">{{ $("ui.userExamineMySubmissionCreateRequest") }}</el-button>
         <el-dropdown-menu slot="dropdown" class="build-dropdown">
           <el-dropdown-item
             v-for="(item, index) in dropdownList"
@@ -35,7 +36,7 @@
       row-key="id"
       default-expand-all
     >
-      <el-table-column prop="name" :label="$t('ui.businessRecordIndexApprovalType')" min-width="250">
+      <el-table-column prop="name" :label="$('ui.businessRecordIndexApprovalType')" min-width="250">
         <template slot-scope="scope">
           <el-row class="table-title">
             <el-col class="table-title-left">
@@ -50,27 +51,27 @@
           </el-row>
         </template>
       </el-table-column>
-      <el-table-column prop="name" :label="$t('ui.businessRecordIndexApprovalStatus')" min-width="80">
+      <el-table-column prop="name" :label="$('ui.businessRecordIndexApprovalStatus')" min-width="80">
         <template slot-scope="scope">
           <span class="status">
-            <el-tag v-if="scope.row.status === -1" type="info" effect="plain" size="mini"> {{ $t("ui.customerListApplyForPaymentRevoked") }} </el-tag>
+            <el-tag v-if="scope.row.status === -1" type="info" effect="plain" size="mini"> {{ $("ui.customerListApplyForPaymentRevoked") }} </el-tag>
             <el-tag v-if="scope.row.status === 1 && scope.row.recall" type="info" effect="plain" size="mini">
-              {{ $t("ui.userExamineExamineWithdrawing") }}
+              {{ $("ui.userExamineExamineWithdrawing") }}
             </el-tag>
-            <el-tag v-if="scope.row.status === 0" type="warning" effect="plain" size="mini"> {{ $t("ui.userExamineExamineUnderReview") }} </el-tag>
+            <el-tag v-if="scope.row.status === 0" type="warning" effect="plain" size="mini"> {{ $("ui.userExamineExamineUnderReview") }} </el-tag>
             <el-tag v-if="scope.row.status === 1 && !scope.row.recall" type="info" effect="plain" size="mini">
-              {{ $t("ui.customerListApplyForPaymentApproved") }}
+              {{ $("ui.customerListApplyForPaymentApproved") }}
             </el-tag>
-            <el-tag v-if="scope.row.status === 2" type="danger" effect="plain" size="mini"> {{ $t("ui.userExamineExamineRejected") }} </el-tag>
+            <el-tag v-if="scope.row.status === 2" type="danger" effect="plain" size="mini"> {{ $("ui.userExamineExamineRejected") }} </el-tag>
           </span>
         </template>
       </el-table-column>
-      <el-table-column prop="created_at" :label="$t('ui.businessRecordPrintPreviewSubmissionTime')" min-width="150" />
-      <el-table-column prop="name" :label="$t('public.operation')" width="200">
+      <el-table-column prop="created_at" :label="$('ui.businessRecordPrintPreviewSubmissionTime')" min-width="150" />
+      <el-table-column prop="name" :label="$('public.operation')" width="200">
         <template slot-scope="scope">
-          <el-button type="text" @click="handleDetail(scope.row)">{{ $t("ui.developModuleCheckDrawerDetails") }} </el-button>
+          <el-button type="text" @click="handleDetail(scope.row)">{{ $("ui.developModuleCheckDrawerDetails") }} </el-button>
           <el-button v-if="scope.row.status === 1 && scope.row.type < 6" type="text" @click="handleEdit(scope.row)"
-            >{{ $t("ui.userExamineMySubmissionResubmit") }}</el-button
+            >{{ $("ui.userExamineMySubmissionResubmit") }}</el-button
           >
 
           <el-button
@@ -82,7 +83,7 @@
             type="text"
             @click="handleRefuse(scope.row)"
           >
-            {{ $t("ui.formDesignerToolbarPanelIndexRevoke") }}
+            {{ $("ui.formDesignerToolbarPanelIndexRevoke") }}
           </el-button>
 
           <el-button
@@ -94,7 +95,7 @@
             type="text"
             @click="handleEdit(scope.row)"
           >
-            {{ $t("ui.customerContractContractRenewResubmit") }}
+            {{ $("ui.customerContractContractRenewResubmit") }}
           </el-button>
         </template>
       </el-table-column>
@@ -126,7 +127,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { approveApplyApi, approveApplyRevokeApi, approveConfigSearchApi } from '@/api/business'
 import func from '@/utils/preload'
 export default {
@@ -147,18 +147,18 @@ export default {
       formConfig: [
         {
           type: 'textarea',
-          label: i18n.t('legacyScript.reasonForReversal'),
-          placeholder: i18n.t('legacyScript.enterWithdrawalReason'),
+          label: $('legacyScript.reasonForReversal'),
+          placeholder: $('legacyScript.enterWithdrawalReason'),
           key: 'info'
         }
       ],
       formRules: {
-        info: [{ required: true, message: i18n.t('legacyScript.enterWithdrawalReason'), trigger: 'blur' }]
+        info: [{ required: true, message: $('legacyScript.enterWithdrawalReason'), trigger: 'blur' }]
       },
       fromData: {
         width: '600px',
-        title: i18n.t('ui.formDesignerToolbarPanelIndexRevoke'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.formDesignerToolbarPanelIndexRevoke'),
+        btnText: '确定',
         labelWidth: 'auto',
         type: ''
       },
@@ -214,8 +214,8 @@ export default {
     try {
       await Promise.all([this.getTableData(), this.getConfigSearch(0), this.getConfigSearch(3)])
     } catch (error) {
-      console.error(i18n.t('legacyScript.failedToInitializeDataLoading'), error)
-      this.$message.error(i18n.t('legacyScript.dataLoadingFailedPleaseRefreshThePageAndTryAgain'))
+      console.error($('legacyScript.failedToInitializeDataLoading'), error)
+      this.$message.error($('legacyScript.dataLoadingFailedPleaseRefreshThePageAndTryAgain'))
     }
   },
   methods: {
@@ -251,7 +251,7 @@ export default {
           }
         }
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToRetrieveConfigurationData'), error)
+        console.error($('legacyScript.failedToRetrieveConfigurationData'), error)
         if (id === 0) {
           this.dropdownList = []
         } else if (id === 3 || id === 1) {
@@ -297,7 +297,7 @@ export default {
         this.tableData = result && result.data && Array.isArray(result.data.list) ? result.data.list : []
         this.total = result && result.data && typeof result.data.count === 'number' ? result.data.count : 0
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToRetrieveApprovalData'), error)
+        console.error($('legacyScript.failedToRetrieveApprovalData'), error)
         this.tableData = []
         this.total = 0
       } finally {
@@ -341,7 +341,7 @@ export default {
     handleRefuse(row) {
       this.rowData = row
       if (row.status === 0) {
-        this.$confirm(this.$ts('你确定要撤销申请吗'), i18n.t('public.tips'), {
+        this.$confirm(this.$("legacy.11accb9f68551eb7"), $('public.tips'), {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -363,9 +363,9 @@ export default {
         if (this.$refs.oaDialog && typeof this.$refs.oaDialog.handleClose === 'function') {
           // this.$refs.oaDialog.handleClose()
         }
-        this.$message.success(i18n.t('legacyScript.withdrawApplicationSuccessful'))
+        this.$message.success($('legacyScript.withdrawApplicationSuccessful'))
       } catch (error) {
-        console.error(i18n.t('legacyScript.withdrawApplicationFailed'), error)
+        console.error($('legacyScript.withdrawApplicationFailed'), error)
         this.$message.error(error.message || '撤销申请失败')
       }
       this.getTableData()

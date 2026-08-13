@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <div class="flex-row-center">
@@ -11,15 +12,15 @@
   <el-form ref="form" :model="form" label-position="top" :rules="formRules">
     <el-form-item prop="name">
       <div slot="label" class="label">
-        {{ $t("ui.chatApplicationFormApplicationName") }}
-        <popover :tips="$t('ui.chatApplicationFormTheDisplayNameOfTheAiApplication')" :width="150" />
+        {{ $("ui.chatApplicationFormApplicationName") }}
+        <popover :tips="$('ui.chatApplicationFormTheDisplayNameOfTheAiApplication')" :width="150" />
       </div>
       <el-input v-model="form.name" size="small" maxlength="20" show-word-limit></el-input>
     </el-form-item>
     <el-form-item>
       <div slot="label" class="label">
-        {{ $t("ui.chatApplicationFormApplicationDescription") }}
-        <popover :tips="$t('ui.chatApplicationFormEnterAConciseEngagingIntroductionThatQuicklyEncouragesUsers')" :width="315" />
+        {{ $("ui.chatApplicationFormApplicationDescription") }}
+        <popover :tips="$('ui.chatApplicationFormEnterAConciseEngagingIntroductionThatQuicklyEncouragesUsers')" :width="315" />
       </div>
       <el-input v-model="form.info" type="textarea" size="small" maxlength="100" show-word-limit></el-input>
     </el-form-item>
@@ -27,9 +28,9 @@
       <div slot="label" class="label">
         <!-- <span class="el-icon-caret-right" :class="show2 ? 'rotating' : 'norotating'" @click="show2 = !show2"></span> -->
         <!-- <span class="required-icon">*</span> -->
-        {{ $t("ui.chatApplicationFormPersonaAndResponseLogic") }}
+        {{ $("ui.chatApplicationFormPersonaAndResponseLogic") }}
         <popover
-          :tips="$t('ui.chatApplicationFormUsePromptsToPreciselyDefineTheApplicationSScope')"
+          :tips="$('ui.chatApplicationFormUsePromptsToPreciselyDefineTheApplicationSScope')"
         ></popover>
       </div>
       <el-collapse-transition>
@@ -52,37 +53,37 @@
     </el-form-item>
     <el-form-item prop="edit">
       <div slot="label" class="label">
-        {{ $t("ui.chatApplicationFormEditPermissions") }} <popover :tips="$t('ui.chatApplicationFormMembersWithEditPermissionCanConfigureTheAiApplication')"></popover>
+        {{ $("ui.chatApplicationFormEditPermissions") }} <popover :tips="$('ui.chatApplicationFormMembersWithEditPermissionCanConfigureTheAiApplication')"></popover>
       </div>
       <selectMember
         ref="selectMember"
         :value="edituser"
-        :placeholder="$t('ui.chatApplicationFormSelectPeopleWithEditingPermissionMultiple')"
+        :placeholder="$('ui.chatApplicationFormSelectPeopleWithEditingPermissionMultiple')"
         @getSelectList="getSelectList($event, 'edit')"
       ></selectMember>
     </el-form-item>
     <el-form-item prop="auth_ids">
-      <div slot="label" class="label">{{ $t("ui.chatApplicationFormApplicationPermissions") }} <popover :tips="$t('ui.chatApplicationFormSelectThePeopleWhoAreAllowedToUseThis')"></popover></div>
+      <div slot="label" class="label">{{ $("ui.chatApplicationFormApplicationPermissions") }} <popover :tips="$('ui.chatApplicationFormSelectThePeopleWhoAreAllowedToUseThis')"></popover></div>
       <selectMember
         ref="selectMember"
         :value="authuser"
-        :placeholder="$t('ui.chatApplicationFormSelectApplicationPermissionsMultiple')"
+        :placeholder="$('ui.chatApplicationFormSelectApplicationPermissionsMultiple')"
         @getSelectList="getSelectList($event, 'auth_ids')"
       ></selectMember>
     </el-form-item>
     <el-form-item prop="use_limit">
       <div slot="label" class="label">
-        {{ $t("ui.chatApplicationFormUsageFrequency") }}
-        <popover :tips="$t('ui.chatApplicationFormSetHowOftenEachUserCanUseTheApplication')"></popover>
+        {{ $("ui.chatApplicationFormUsageFrequency") }}
+        <popover :tips="$('ui.chatApplicationFormSetHowOftenEachUserCanUseTheApplication')"></popover>
       </div>
       <el-input v-model="form.use_limit" size="small" type="number">
-        <span slot="suffix" class="suffix-text"> {{ $t("ui.chatApplicationFormUsesPerPersonPerDay") }}</span>
+        <span slot="suffix" class="suffix-text"> {{ $("ui.chatApplicationFormUsesPerPersonPerDay") }}</span>
       </el-input>
     </el-form-item>
     <el-form-item prop="sort">
       <div slot="label" class="label">
-        {{ $t("ui.chatApplicationFormApplicationSortOrder") }}
-        <popover :tips="$t('ui.chatApplicationFormAdjustTheApplicationOrderHigherNumbersAppearFirst')" />
+        {{ $("ui.chatApplicationFormApplicationSortOrder") }}
+        <popover :tips="$('ui.chatApplicationFormAdjustTheApplicationOrderHigherNumbersAppearFirst')" />
       </div>
       <el-input
         v-model="form.sort"
@@ -94,14 +95,13 @@
       </el-input>
     </el-form-item>
   </el-form>
-  <el-dialog :before-close="handleClose" :visible.sync="dialogVisible" :title="$t('ui.administrationNoticeAddNoticeSelectImage')" v-bind="$attrs" width="850px">
+  <el-dialog :before-close="handleClose" :visible.sync="dialogVisible" :title="$('ui.administrationNoticeAddNoticeSelectImage')" v-bind="$attrs" width="850px">
     <upload-picture ref="uploadPicture" :check-button="true" @getImage="getImage"></upload-picture>
   </el-dialog>
   <textDialog ref="textDialog" @submit="getTextData"></textDialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import popover from './popover'
 import uploadPicture from '@/components/uploadPicture/index'
 import selectMember from '@/components/form-common/select-member'
@@ -158,7 +158,7 @@ export default {
       edituser: [],
       authuser: [],
       formRules: {
-        name: [{ required: true, message: i18n.t('legacyScript.enterApplicationName'), trigger: 'blur' }]
+        name: [{ required: true, message: $('legacyScript.enterApplicationName'), trigger: 'blur' }]
         // edit: [{ required: true, validator: userValidate, trigger: 'blur' }],
         // auth_ids: [{ required: true, validator: authValidate, trigger: 'blur' }],
         // use_limit: [{ required: true, message: '请输入使用频次', trigger: 'change' }]

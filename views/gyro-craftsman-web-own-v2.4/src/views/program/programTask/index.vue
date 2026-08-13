@@ -1,4 +1,5 @@
-﻿<!-- 项目-我的项目-任务列表页面 -->
+import { $ } from '@/lang'
+<!-- 项目-我的项目-任务列表页面 -->
 <template>
 <div class="divBox bill-type box-height" :class="isDrawer ? 'mt0' : ''" @click.stop="hideMembersPicker()">
   <el-card :class="isDrawer ? 'no-border' : 'normal-page'" class="employees-card">
@@ -10,7 +11,7 @@
       :dropdownList="dropdownList"
       :total="total"
       :title="$route.meta.title"
-:btn-text="$t('ui.programProgramTaskAddTaskNewTask')"
+      :btnText="$('ui.programProgramTaskAddTaskNewTask')"
       @treeChange="treeChange"
       @addDataFn="addProgram"
       @dropdownFn="dropdownFn"
@@ -21,16 +22,16 @@
       <div class="table mt10" @mouseleave="mouseLeave">
         <div v-show="headerShow" class="table-header">
           <div class="header-right">
-            <span class="header-left fz13" v-show="headerShow">{{ $t("ui.programProgramTaskIndexSelected") }}{{ ids.length }}{{ $t("ui.programProgramTaskIndexWorkItems") }}</span>
+            <span class="header-left fz13" v-show="headerShow">{{ $("ui.programProgramTaskIndexSelected") }}{{ ids.length }}{{ $("ui.programProgramTaskIndexWorkItems") }}</span>
             <span>
-              <span class="fz13">{{ $t("ui.programProgramTaskIndexBatchSettings") }}</span>
+              <span class="fz13">{{ $("ui.programProgramTaskIndexBatchSettings") }}</span>
 
               <el-select
                 v-model="formData.program_id"
                 size="small"
                 clearable
                 @clear="setValueNull"
-                :placeholder="$t('ui.programProgramTaskIndexProject')"
+                :placeholder="$('ui.programProgramTaskIndexProject')"
                 @change="handleContract"
                 style="width: 100px; margin-right: 10px"
               >
@@ -40,7 +41,7 @@
                     <span
                       v-if="item.status == 1 || item.status == 2"
                       :class="item.status == 1 ? 'program-stop' : 'program-close'"
-                      >{{ item.status == 1 ? $t('ui.programProgramTaskAddTaskPaused') : $t('ui.programProgramTaskAddTaskClosed') }}</span
+                      >{{ item.status == 1 ? $('ui.programProgramTaskAddTaskPaused') : $('ui.programProgramTaskAddTaskClosed') }}</span
                     >
                   </div>
                 </el-option>
@@ -53,7 +54,7 @@
                 clearable
                 :disabled="!formData.program_id"
                 collapse-tags
-                :placeholder="$t('ui.programProgramTaskIndexVersion')"
+                :placeholder="$('ui.programProgramTaskIndexVersion')"
                 style="width: 100px; margin-right: 10px"
               >
                 <el-option v-for="item in programVersionList" :key="item.id" :label="item.name" :value="item.id">
@@ -65,7 +66,7 @@
                 size="small"
                 filterable
                 clearable
-                :placeholder="$t('ui.developModuleTreeOwner')"
+                :placeholder="$('ui.developModuleTreeOwner')"
                 :disabled="!formData.program_id"
                 style="width: 100px; margin-right: 10px"
               >
@@ -79,7 +80,7 @@
                 filterable
                 clearable
                 collapse-tags
-                :placeholder="$t('ui.customerSetupDictionaryIndexStatus')"
+                :placeholder="$('ui.customerSetupDictionaryIndexStatus')"
                 style="width: 100px; margin-right: 10px"
               >
                 <el-option
@@ -99,7 +100,7 @@
                 collapse-tags
                 clearable
                 @change="handleRemove"
-                :placeholder="$t('ui.programProgramTaskIndexParentWorkItem')"
+                :placeholder="$('ui.programProgramTaskIndexParentWorkItem')"
                 :disabled="!formData.program_id"
                 style="width: 100px; margin-right: 10px"
               >
@@ -111,7 +112,7 @@
                 clearable
                 :format="'yyyy-MM-dd'"
                 :value-format="'yyyy-MM-dd'"
-                :placeholder="$t('ui.programProgramTaskIndexStartTime')"
+                :placeholder="$('ui.programProgramTaskIndexStartTime')"
                 style="width: 130px; margin-right: 10px"
               ></el-date-picker>
               <el-date-picker
@@ -121,14 +122,14 @@
                 clearable
                 :format="'yyyy-MM-dd'"
                 :value-format="'yyyy-MM-dd'"
-                :placeholder="$t('ui.programProgramTaskIndexEndTime')"
+                :placeholder="$('ui.programProgramTaskIndexEndTime')"
                 :picker-options="{ disabledDate: disabledEndDate }"
                 style="width: 130px; margin-right: 10px"
               ></el-date-picker>
 
-              <el-button type="primary" size="small" @click="submitEvt"> {{ $t("ui.formCommonDialogFormOk") }} </el-button>
-              <el-button size="small" @click="deleteEvt"> {{ $t("ui.chatIndexDelete") }} </el-button>
-              <span class="cancel" @click="cancelEvt">{{ $t("ui.formCommonSelectLabelCancel") }}</span>
+              <el-button type="primary" size="small" @click="submitEvt"> {{ $("ui.formCommonDialogFormOk") }} </el-button>
+              <el-button size="small" @click="deleteEvt"> {{ $("ui.chatIndexDelete") }} </el-button>
+              <span class="cancel" @click="cancelEvt">{{ $("ui.formCommonSelectLabelCancel") }}</span>
             </span>
           </div>
         </div>
@@ -154,18 +155,18 @@
             </template>
           </el-table-column>
           <el-table-column v-if="headerShow" type="selection" width="55" fixed></el-table-column>
-          <el-table-column prop="ident" :label="$t('ui.programProgramTaskTableDataTaskNumber')" type="" width="120" fixed>
+          <el-table-column prop="ident" :label="$('ui.programProgramTaskTableDataTaskNumber')" type="" width="120" fixed>
             <template slot-scope="scope">
               <span
                 class="ident copy pointer handle"
                 @click="copy"
-                :title="$t('ui.programProgramTaskEditTaskClickToCopyTheWorkItemLink')"
+                :title="$('ui.programProgramTaskEditTaskClickToCopyTheWorkItemLink')"
                 :data-clipboard-text="identAddress(scope.row)"
                 >#{{ scope.row.ident }}</span
               >
             </template>
           </el-table-column>
-          <el-table-column prop="name" :label="$t('ui.programProgramTaskTableDataTaskName')" min-width="320" fixed>
+          <el-table-column prop="name" :label="$('ui.programProgramTaskTableDataTaskName')" min-width="320" fixed>
             <!-- show-overflow-tooltip -->
             <template slot-scope="scope">
               <!-- 新建 -->
@@ -173,7 +174,7 @@
                 <el-input
                   :ref="`addInput-${scope.row.id}`"
                   v-model="addName"
-                  :placeholder="$t('ui.programProgramTaskIndexEnterASubtaskNamePressEnterToSave')"
+                  :placeholder="$('ui.programProgramTaskIndexEnterASubtaskNamePressEnterToSave')"
                   @blur="handleBlur(scope.row)"
                   @keyup.native.enter="handleEnter(scope.row, 1)"
                   style="width: 260px"
@@ -206,7 +207,7 @@
                     v-if="iconVisible[scope.$index] && scope.row.level !== 4"
                     class="item"
                     effect="dark"
-                    :content="$t('ui.programProgramTaskTableDataNewChildWorkItem')"
+                    :content="$('ui.programProgramTaskTableDataNewChildWorkItem')"
                     placement="top"
                     :open-delay="500"
                   >
@@ -216,7 +217,7 @@
                     v-if="iconVisible[scope.$index] && scope.row.operate"
                     class="item"
                     effect="dark"
-                    :content="$t('ui.formCommonOaLogEdit')"
+                    :content="$('ui.formCommonOaLogEdit')"
                     placement="top"
                     :open-delay="500"
                   >
@@ -226,7 +227,7 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="priority" :label="$t('ui.developConditionDialogPriority')" width="100">
+          <el-table-column prop="priority" :label="$('ui.developConditionDialogPriority')" width="100">
             <template slot-scope="scope">
               <el-dropdown
                 trigger="click"
@@ -234,11 +235,11 @@
                 @command="putProgramTask('priority', $event, scope.row.id)"
               >
                 <span class="el-dropdown-link pointer dack" @click="isOperate(scope.row)">
-                  <el-tag v-if="scope.row.priority == 1" type="danger" effect="dark" size="mini">{{ $t("ui.programProgramTaskTableDataUrgent") }}</el-tag>
-                  <el-tag v-else-if="scope.row.priority == 2" type="warning" effect="dark" size="mini">{{ $t("ui.programProgramTaskTableDataHeight") }}</el-tag>
-                  <el-tag v-else-if="scope.row.priority == 3" effect="dark" size="mini">{{ $t("ui.programProgramTaskTableDataCenter") }}</el-tag>
-                  <el-tag v-else-if="scope.row.priority == 4" type="success" effect="dark" size="mini">{{ $t("ui.programProgramTaskTableDataLow") }}</el-tag>
-                  <el-tag v-else type="info" effect="dark" size="mini">{{ $t("ui.programProgramTaskTableDataNoPriority") }}</el-tag>
+                  <el-tag v-if="scope.row.priority == 1" type="danger" effect="dark" size="mini">{{ $("ui.programProgramTaskTableDataUrgent") }}</el-tag>
+                  <el-tag v-else-if="scope.row.priority == 2" type="warning" effect="dark" size="mini">{{ $("ui.programProgramTaskTableDataHeight") }}</el-tag>
+                  <el-tag v-else-if="scope.row.priority == 3" effect="dark" size="mini">{{ $("ui.programProgramTaskTableDataCenter") }}</el-tag>
+                  <el-tag v-else-if="scope.row.priority == 4" type="success" effect="dark" size="mini">{{ $("ui.programProgramTaskTableDataLow") }}</el-tag>
+                  <el-tag v-else type="info" effect="dark" size="mini">{{ $("ui.programProgramTaskTableDataNoPriority") }}</el-tag>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                   <div v-if="scope.row.operate" class="fixed-height">
@@ -269,7 +270,7 @@
               </el-dropdown>
             </template>
           </el-table-column>
-          <el-table-column prop="status" :label="$t('ui.customerSetupDictionaryIndexStatus')" width="80">
+          <el-table-column prop="status" :label="$('ui.customerSetupDictionaryIndexStatus')" width="80">
             <template slot-scope="scope">
               <el-dropdown
                 trigger="click"
@@ -277,19 +278,19 @@
                 @command="putProgramTask('status', $event, scope.row.id)"
               >
                 <span class="el-dropdown-link pointer status" @click="isOperate(scope.row)">
-                  <el-tag v-if="scope.row.status == 0" type="warning" effect="plain" size="mini">{{ $t("ui.programProgramTaskTableDataUnprocessed") }}</el-tag>
-                  <el-tag v-if="scope.row.status == 1" effect="plain" size="mini">{{ $t("ui.programProgramListIndexInProgress") }}</el-tag>
+                  <el-tag v-if="scope.row.status == 0" type="warning" effect="plain" size="mini">{{ $("ui.programProgramTaskTableDataUnprocessed") }}</el-tag>
+                  <el-tag v-if="scope.row.status == 1" effect="plain" size="mini">{{ $("ui.programProgramListIndexInProgress") }}</el-tag>
                   <el-tag
                     v-if="scope.row.status == 2"
                     type="info"
                     style="color: #f95c96; border: 1px solid #f95c96"
                     effect="plain"
                     size="mini"
-                    >{{ $t("ui.programProgramTaskTableDataResolved") }}</el-tag
+                    >{{ $("ui.programProgramTaskTableDataResolved") }}</el-tag
                   >
-                  <el-tag v-if="scope.row.status == 3" type="success" effect="plain" size="mini">{{ $t("ui.programProgramTaskTableDataAccepted") }}</el-tag>
-                  <el-tag v-if="scope.row.status == 4" type="danger" effect="plain" size="mini">{{ $t("ui.userExamineExamineRejected") }}</el-tag>
-                  <el-tag v-if="scope.row.status == 5" type="info" effect="plain" size="mini">{{ $t("ui.programProgramTaskAddTaskClosed") }}</el-tag>
+                  <el-tag v-if="scope.row.status == 3" type="success" effect="plain" size="mini">{{ $("ui.programProgramTaskTableDataAccepted") }}</el-tag>
+                  <el-tag v-if="scope.row.status == 4" type="danger" effect="plain" size="mini">{{ $("ui.userExamineExamineRejected") }}</el-tag>
+                  <el-tag v-if="scope.row.status == 5" type="info" effect="plain" size="mini">{{ $("ui.programProgramTaskAddTaskClosed") }}</el-tag>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                   <div v-if="scope.row.operate" class="fixed-height">
@@ -325,7 +326,7 @@
               </el-dropdown>
             </template>
           </el-table-column>
-          <el-table-column prop="admins" :label="$t('ui.developModuleTreeOwner')" width="120">
+          <el-table-column prop="admins" :label="$('ui.developModuleTreeOwner')" width="120">
             <template slot-scope="scope">
               <div
                 class="pointer flex"
@@ -346,7 +347,7 @@
                 v-model="adminsUid"
                 size="small"
                 clearable
-                :placeholder="$t('ui.developModuleTreeOwner')"
+                :placeholder="$('ui.developModuleTreeOwner')"
                 @click.native="changeAdmins(scope.row.program_id, scope.$index)"
                 @change="chooseAdmins(scope.row, scope.$index)"
               >
@@ -354,7 +355,7 @@
               </el-select>
             </template>
           </el-table-column>
-          <el-table-column prop="members" :label="$t('ui.programProgramTaskTableDataCollaborators')" min-width="180" show-overflow-tooltip>
+          <el-table-column prop="members" :label="$('ui.programProgramTaskTableDataCollaborators')" min-width="180" show-overflow-tooltip>
             <template slot-scope="scope">
               <el-tooltip
                 v-if="!membersVisible[scope.$index]"
@@ -393,7 +394,7 @@
                 multiple
                 filterable
                 collapse-tags
-                :placeholder="$t('ui.programProgramTaskAddTaskAssignCollaborators')"
+                :placeholder="$('ui.programProgramTaskAddTaskAssignCollaborators')"
                 @change="changeMembers(scope.row, scope.$index)"
               >
                 <el-option v-for="item in programMemberOptions" :key="item.id" :label="item.name" :value="item.id">
@@ -401,7 +402,7 @@
               </el-select>
             </template>
           </el-table-column>
-          <el-table-column prop="program" :label="$t('ui.programProgramTaskTableDataRelatedProject')" min-width="180" show-overflow-tooltip>
+          <el-table-column prop="program" :label="$('ui.programProgramTaskTableDataRelatedProject')" min-width="180" show-overflow-tooltip>
             <template slot-scope="scope">
               <el-dropdown
                 trigger="click"
@@ -426,7 +427,7 @@
                         <span
                           v-if="item.status == 1 || item.status == 2"
                           :class="item.status == 1 ? 'program-stop' : 'program-close'"
-                          >{{ item.status == 1 ? $t('ui.programProgramTaskAddTaskPaused') : $t('ui.programProgramTaskAddTaskClosed') }}</span
+                          >{{ item.status == 1 ? $('ui.programProgramTaskAddTaskPaused') : $('ui.programProgramTaskAddTaskClosed') }}</span
                         >
                       </div>
                     </el-dropdown-item>
@@ -435,7 +436,7 @@
               </el-dropdown>
             </template>
           </el-table-column>
-          <el-table-column prop="version" :label="$t('ui.programProgramTaskTableDataRelatedVersion')" width="100">
+          <el-table-column prop="version" :label="$('ui.programProgramTaskTableDataRelatedVersion')" width="100">
             <template slot-scope="scope">
               <div
                 @click="showVersion(scope.row, scope.$index, 1)"
@@ -448,7 +449,7 @@
                 v-else
                 v-model="versionId"
                 size="small"
-                :placeholder="$t('ui.programProgramTaskAddTaskPleaseSelectRelatedVersion')"
+                :placeholder="$('ui.programProgramTaskAddTaskPleaseSelectRelatedVersion')"
                 @click.native="changeVersion(scope.row.program_id, scope.$index)"
                 @change="chooseVersion(scope.row, scope.$index)"
               >
@@ -456,7 +457,7 @@
               </el-select>
             </template>
           </el-table-column>
-          <el-table-column prop="plan_start" :label="$t('ui.programProgramTaskTableDataPlannedStart')" width="160" header-align="left" show-overflow-tooltip>
+          <el-table-column prop="plan_start" :label="$('ui.programProgramTaskTableDataPlannedStart')" width="160" header-align="left" show-overflow-tooltip>
             <template slot-scope="scope">
               <div
                 class="pointer width100"
@@ -473,13 +474,13 @@
                 clearable
                 :format="'yyyy-MM-dd'"
                 :value-format="'yyyy-MM-dd'"
-                :placeholder="$t('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
+                :placeholder="$('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
                 @change="putProgramTask('plan_start', $event, scope.row.id)"
                 @blur="hideStartPicker(scope.row.id)"
               ></el-date-picker>
             </template>
           </el-table-column>
-          <el-table-column prop="plan_end" :label="$t('ui.programProgramTaskTableDataPlannedEnd')" width="160" header-align="left" show-overflow-tooltip>
+          <el-table-column prop="plan_end" :label="$('ui.programProgramTaskTableDataPlannedEnd')" width="160" header-align="left" show-overflow-tooltip>
             <template slot-scope="scope">
               <div class="pointer width100" v-if="!endShowStates[scope.row.id]" @click="handleEndClick(scope.row)">
                 <span>{{ scope.row.plan_end || '- -' }}</span>
@@ -492,13 +493,13 @@
                 clearable
                 :format="'yyyy-MM-dd'"
                 :value-format="'yyyy-MM-dd'"
-                :placeholder="$t('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
+                :placeholder="$('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
                 @change="putProgramTask('plan_end', $event, scope.row.id)"
                 @blur="hideEndPicker(scope.row.id)"
               ></el-date-picker>
             </template>
           </el-table-column>
-          <el-table-column prop="creator" :label="$t('ui.hrAssessCheckIndexCreator')" width="120">
+          <el-table-column prop="creator" :label="$('ui.hrAssessCheckIndexCreator')" width="120">
             <template slot-scope="scope">
               <div class="pointer">
                 <img
@@ -510,18 +511,18 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="plan_start" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" width="160">
+          <el-table-column prop="plan_start" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" width="160">
             <template slot-scope="scope">
               <span>{{ scope.row.created_at || '- -' }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="plan_end" :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" width="160">
+          <el-table-column prop="plan_end" :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" width="160">
             <template slot-scope="scope">
               <span>{{ scope.row.updated_at || '- -' }}</span>
             </template>
           </el-table-column>
         </el-table>
-        <div v-if="showDiv" :style="divStyle" class="follow-div">{{ $t("ui.programProgramTaskIndexMoveAWorkItem") }}</div>
+        <div v-if="showDiv" :style="divStyle" class="follow-div">{{ $("ui.programProgramTaskIndexMoveAWorkItem") }}</div>
       </div>
       <!-- <div class="page-fixed"> -->
       <el-pagination
@@ -565,7 +566,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   getProgramSelectApi,
   getProgramTaskApi,
@@ -664,49 +664,49 @@ export default {
         priorityOptions: [
           {
             value: 1,
-            label: i18n.t('ui.programProgramTaskTableDataUrgent')
+            label: $('ui.programProgramTaskTableDataUrgent')
           },
           {
             value: 2,
-            label: i18n.t('ui.programProgramTaskTableDataHeight')
+            label: $('ui.programProgramTaskTableDataHeight')
           },
           {
             value: 3,
-            label: i18n.t('ui.programProgramTaskTableDataCenter')
+            label: $('ui.programProgramTaskTableDataCenter')
           },
           {
             value: 4,
-            label: i18n.t('ui.programProgramTaskTableDataLow')
+            label: $('ui.programProgramTaskTableDataLow')
           },
           {
             value: 0,
-            label: i18n.t('ui.programProgramTaskTableDataNoPriority')
+            label: $('ui.programProgramTaskTableDataNoPriority')
           }
         ],
         statusOptions: [
           {
             value: 0,
-            label: i18n.t('ui.programProgramTaskTableDataUnprocessed')
+            label: $('ui.programProgramTaskTableDataUnprocessed')
           },
           {
             value: 1,
-            label: i18n.t('customer.execution')
+            label: $('customer.execution')
           },
           {
             value: 2,
-            label: i18n.t('ui.programProgramTaskTableDataResolved')
+            label: $('ui.programProgramTaskTableDataResolved')
           },
           {
             value: 3,
-            label: i18n.t('ui.programProgramTaskTableDataAccepted')
+            label: $('ui.programProgramTaskTableDataAccepted')
           },
           {
             value: 4,
-            label: i18n.t('ui.userExamineExamineRejected')
+            label: $('ui.userExamineExamineRejected')
           },
           {
             value: 5,
-            label: i18n.t('ui.programProgramTaskAddTaskClosed')
+            label: $('ui.programProgramTaskAddTaskClosed')
           }
         ]
       },
@@ -736,31 +736,31 @@ export default {
           options: [
             {
               value: 0,
-              label: i18n.t('legacyScript.allTasks')
+              label: $('legacyScript.allTasks')
             },
             {
               value: 1,
-              label: i18n.t('legacyScript.ownedByMe')
+              label: $('legacyScript.ownedByMe')
             },
             {
               value: 2,
-              label: i18n.t('legacyScript.myParticipations')
+              label: $('legacyScript.myParticipations')
             },
             {
               value: 3,
-              label: i18n.t('legacyScript.createdByMe')
+              label: $('legacyScript.createdByMe')
             }
           ]
         }
       ],
       search: [
         {
-          field_name: this.$ts('任务名称'),
+          field_name: '任务名称',
           field_name_en: 'name',
           form_value: 'input'
         },
         {
-          field_name: this.$ts('优先级'),
+          field_name: '优先级',
           field_name_en: 'priority',
           form_value: 'checkbox',
           multiple: true,
@@ -770,28 +770,28 @@ export default {
           data_dict: [
             {
               value: 1,
-              label: i18n.t('ui.programProgramTaskTableDataUrgent')
+              label: $('ui.programProgramTaskTableDataUrgent')
             },
             {
               value: 2,
-              label: i18n.t('ui.programProgramTaskTableDataHeight')
+              label: $('ui.programProgramTaskTableDataHeight')
             },
             {
               value: 3,
-              label: i18n.t('ui.programProgramTaskTableDataCenter')
+              label: $('ui.programProgramTaskTableDataCenter')
             },
             {
               value: 4,
-              label: i18n.t('ui.programProgramTaskTableDataLow')
+              label: $('ui.programProgramTaskTableDataLow')
             },
             {
               value: '0',
-              label: i18n.t('ui.programProgramTaskTableDataNoPriority')
+              label: $('ui.programProgramTaskTableDataNoPriority')
             }
           ]
         },
         {
-          field_name: this.$ts('状态'),
+          field_name: '状态',
           field_name_en: 'status',
           form_value: 'checkbox',
           multiple: true,
@@ -801,32 +801,32 @@ export default {
           data_dict: [
             {
               value: '0',
-              name: this.$ts('未处理')
+              name: '未处理'
             },
             {
               value: 1,
-              name: this.$ts('进行中')
+              name: '进行中'
             },
             {
               value: 2,
-              name: this.$ts('已解决')
+              name: '已解决'
             },
             {
               value: 3,
-              name: this.$ts('已验收')
+              name: '已验收'
             },
             {
               value: 4,
-              name: this.$ts('已拒绝')
+              name: '已拒绝'
             },
             {
               value: 5,
-              name: this.$ts('已关闭')
+              name: '已关闭'
             }
           ]
         },
         {
-          field_name: this.$ts('项目'),
+          field_name: '项目',
           field_name_en: 'program_id',
           form_value: 'select',
           multiple: true,
@@ -836,7 +836,7 @@ export default {
           data_dict: []
         },
         {
-          field_name: this.$ts('版本'),
+          field_name: '版本',
           field_name_en: 'version_id',
           form_value: 'checkbox',
           multiple: true,
@@ -848,30 +848,30 @@ export default {
       ],
       viewSearch: [
         {
-          title: i18n.t('ui.developModuleTreeOwner'),
+          title: $('ui.developModuleTreeOwner'),
           field: 'user_id'
         },
         {
-          title: i18n.t('ui.programProgramTaskTableDataCollaborators'),
+          title: $('ui.programProgramTaskTableDataCollaborators'),
           field: 'update_user_id'
         },
         {
-          title: i18n.t('ui.programProgramTaskTableDataPlannedStart'),
+          title: $('ui.programProgramTaskTableDataPlannedStart'),
           field: 'plan_start',
           type: 'date_picker'
         },
         {
-          title: i18n.t('ui.programProgramTaskTableDataPlannedEnd'),
+          title: $('ui.programProgramTaskTableDataPlannedEnd'),
           field: 'plan_end',
           type: 'date_picker'
         },
         {
-          title: i18n.t('customer.creationtime'),
+          title: $('customer.creationtime'),
           field: 'created_at',
           type: 'date_picker'
         }
       ],
-      dropdownList: [{ label: i18n.t('legacyScript.batchOperations'), value: 1 }],
+      dropdownList: [{ label: $('legacyScript.batchOperations'), value: 1 }],
       treeDefault: 0
     }
   },
@@ -946,7 +946,7 @@ export default {
               this.getProgramVersion(this.programId),
               this.getProgramMember(this.programId),
               this.getProgramSelect({ program_id: this.programId })
-            ]).catch((err) => console.error(i18n.t('legacyScript.projectAssociationRequestFailed'), err))
+            ]).catch((err) => console.error($('legacyScript.projectAssociationRequestFailed'), err))
           } else {
             this.getProgramVersion('')
           }
@@ -957,7 +957,7 @@ export default {
           this.search = this.search.filter((item) => item.field_name_en !== 'program_id')
         }
       } catch (err) {
-        console.error(i18n.t('legacyScript.pageInitializationFailed'), err)
+        console.error($('legacyScript.pageInitializationFailed'), err)
         // 可选：添加错误兜底（比如空数据展示）
       }
     },
@@ -1000,7 +1000,7 @@ export default {
             if (rowDown.pid !== rowUp.pid) {
               // 恢复原始位置
               evt.item.parentNode.insertBefore(evt.item, [...evt.item.parentNode.children][oldIndex])
-              return this.$message.warning(i18n.t('legacyScript.crossLevelDraggingIsNotAllowed'))
+              return this.$message.warning($('legacyScript.crossLevelDraggingIsNotAllowed'))
             }
 
             // 收集可排序ID（优化为递归处理）
@@ -1022,8 +1022,8 @@ export default {
             // 刷新数据
             await this.getTableData()
           } catch (e) {
-            console.error(i18n.t('legacyScript.sortFailed'), e)
-            this.$message.error(i18n.t('legacyScript.sortingOperationFailed'))
+            console.error($('legacyScript.sortFailed'), e)
+            this.$message.error($('legacyScript.sortingOperationFailed'))
           } finally {
             this.dragLoading = false
           }
@@ -1142,7 +1142,7 @@ export default {
       this.$nextTick(() => {
         const clipboard = new ClipboardJS('.copy')
         clipboard.on('success', () => {
-          this.$message.success(this.$t('setting.copytitle'))
+          this.$message.success(this.$('setting.copytitle'))
           clipboard.destroy()
         })
         clipboard.on('error', () => {})
@@ -1204,7 +1204,7 @@ export default {
           .catch((error) => {
             // 出错时关闭加载状态
             this.loading = false
-            console.error(i18n.t('legacyScript.errorFetchingTableData'), error)
+            console.error($('legacyScript.errorFetchingTableData'), error)
           })
       }
       // 懒加载刷新当前父级
@@ -1379,7 +1379,7 @@ export default {
       if (this.programVersionList.length) {
         this.$set(this.versionVisible, index, true)
       } else if (type == 1) {
-        this.$message(i18n.t('legacyScript.pleaseSetTheVersionInTheTaskDetails'))
+        this.$message($('legacyScript.pleaseSetTheVersionInTheTaskDetails'))
       }
     },
 
@@ -1444,7 +1444,7 @@ export default {
     // 批量提交
     submitEvt() {
       if (this.ids.length == 0) {
-        return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem2'))
+        return this.$message.error($('legacyScript.pleaseSelectAtLeastOneItem2'))
       }
       this.ids.forEach((item) => {
         this.formData.data.push(item.id)
@@ -1460,12 +1460,12 @@ export default {
     // 批量删除
     deleteEvt() {
       if (this.ids.length == 0) {
-        return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem2'))
+        return this.$message.error($('legacyScript.pleaseSelectAtLeastOneItem2'))
       }
       this.ids.forEach((item) => {
         this.formData.data.push(item.id)
       })
-      this.$modalSure(this.$ts('删除任务，关联的子级任务均会被删除')).then(() => {
+      this.$modalSure('删除任务，关联的子级任务均会被删除').then(() => {
         deleteProgramTaskBatchApi({ data: this.formData.data }).then(() => {
           this.headerShow = false
           this.tableFrom.pid = ''
@@ -1649,7 +1649,7 @@ export default {
      */
     isOperate(row) {
       if (!row.operate) {
-        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
+        return this.$message($('legacyScript.noOperationPermissions'))
       }
     },
     /**
@@ -1660,7 +1660,7 @@ export default {
      */
     handleStartClick(row) {
       if (!row.operate) {
-        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
+        return this.$message($('legacyScript.noOperationPermissions'))
       }
       this.$set(this.startShowStates, row.id, true)
     },
@@ -1681,7 +1681,7 @@ export default {
      */
     handleEndClick(row) {
       if (!row.operate) {
-        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
+        return this.$message($('legacyScript.noOperationPermissions'))
       }
       this.$set(this.endShowStates, row.id, true)
     },
@@ -1876,7 +1876,7 @@ export default {
         if (row.name.trim()) {
           this.putProgramTask('name', row.name, row.id)
         } else {
-          this.$message(i18n.t('legacyScript.taskNameIsRequired'))
+          this.$message($('legacyScript.taskNameIsRequired'))
         }
       })
     },
@@ -1913,7 +1913,7 @@ export default {
      */
     showVersion(row, index, type) {
       if (!row.operate) {
-        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
+        return this.$message($('legacyScript.noOperationPermissions'))
       }
 
       this.versionId = ''
@@ -1932,7 +1932,7 @@ export default {
      */
     showAdmins(row, index) {
       if (!row.operate) {
-        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
+        return this.$message($('legacyScript.noOperationPermissions'))
       }
       this.adminsUid = null
       this.$set(this.adminsVisible, this.adminIndex, false)
@@ -1950,7 +1950,7 @@ export default {
      */
     showMembers(row, index) {
       if (!row.operate) {
-        return this.$message(i18n.t('legacyScript.noOperationPermissions'))
+        return this.$message($('legacyScript.noOperationPermissions'))
       }
       this.membersId = []
       this.$set(this.adminsVisible, this.adminIndex, false)

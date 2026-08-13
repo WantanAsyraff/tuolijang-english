@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 // 整数字段组件
 <template>
   <form-item-wrapper
@@ -39,13 +40,12 @@
 <script>
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
-import i18n, { translate } from '@/utils/i18n'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'
 
 export default {
   name: 'input-number-widget',
   componentName: 'FieldWidget', //必须固定为FieldWidget，用于接收父级组件的broadcast事件
-  mixins: [emitter, fieldMixin, i18n],
+  mixins: [emitter, fieldMixin],
   props: {
     field: Object,
     parentWidget: Object,
@@ -134,4 +134,3 @@ export default {
   width: 100% !important;
 }
 </style>
-@/utils/i18ns

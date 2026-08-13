@@ -2,7 +2,7 @@ export default {
   data() {
     return {
       disabled: false,
-      text: this.$t('login.code'),
+      text: this.$('login.code'),
       _codeTimer: null,
     };
   },
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     setOptions() {
-      this.text = this.$t('login.code');
+      this.text = this.$('login.code');
     },
     sendCode() {
       if (this.disabled) return;
@@ -29,7 +29,7 @@ export default {
       let n = 60;
 
       const setCountdownText = () => {
-        this.text = `${this.$t('login.surplus')} ${n}s`;
+        this.text = `${this.$('login.surplus')} ${n}s`;
       };
 
       setCountdownText();
@@ -39,7 +39,7 @@ export default {
         if (n < 0) {
           clearInterval(this._codeTimer);
           this.disabled = false;
-          this.text = this.$t('login.Recapture');
+          this.text = this.$('login.Recapture');
           return;
         }
         setCountdownText();

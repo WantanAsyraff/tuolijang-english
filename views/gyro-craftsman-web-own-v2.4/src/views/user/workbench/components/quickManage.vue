@@ -11,7 +11,7 @@
     <div class="quick-list">
       <el-scrollbar style="height: 50vh">
         <div class="quick-list-item">
-          <div class="quick-list-item-name">{{ $t("ui.userWorkbenchQuickManageAdded") }}</div>
+          <div class="quick-list-item-name">{{ $("ui.userWorkbenchQuickManageAdded") }}</div>
 
           <ul
             v-if="config.data && config.data.length > 0"
@@ -45,7 +45,7 @@
               </transition-group>
             </draggable>
           </ul>
-          <div v-else class="quick-list-empty">{{ $t("ui.userWorkbenchQuickManageTuoluojiangWillWorkHarderToUnderstandYourNeeds") }}</div>
+          <div v-else class="quick-list-empty">{{ $("ui.userWorkbenchQuickManageTuoluojiangWillWorkHarderToUnderstandYourNeeds") }}</div>
         </div>
         <template v-for="(other, index) in fastEntryData">
           <div class="quick-list-item">
@@ -82,8 +82,8 @@
     </div>
   </div>
   <div slot="footer" class="dialog-footer">
-    <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-    <el-button :loading="loading" size="small" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+    <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+    <el-button :loading="loading" size="small" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
   </div>
 </el-dialog>
 </template>
@@ -151,10 +151,10 @@ export default {
         })
       }
       if (this.config.data.length > 8) {
-        return this.$message.error(this.$ts('maxshortcuts'))
+        return this.$message.error(this.$('maxshortcuts'))
       }
       if (this.config.data.length < 4) {
-        return this.$message.error(this.$ts('minshortcuts'))
+        return this.$message.error(this.$('minshortcuts'))
       }
 
       if (this.config.type == 'statistics') {

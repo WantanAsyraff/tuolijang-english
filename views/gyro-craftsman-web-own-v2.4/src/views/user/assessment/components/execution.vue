@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <!-- 上级评价页面 -->
@@ -12,22 +13,22 @@
             type="primary"
             @click="addAssess"
           >
-            {{ $t("ui.userAssessmentExecutionAddAssessmentDimension") }}
+            {{ $("ui.userAssessmentExecutionAddAssessmentDimension") }}
           </el-button>
-          <div v-else class="title-16">{{ $t("ui.userAssessmentAuditProcessPerformanceAssessment") }}</div>
+          <div v-else class="title-16">{{ $("ui.userAssessmentAuditProcessPerformanceAssessment") }}</div>
         </div>
 
         <div class="total-score">
           <p>
-            <span class="total-score-name">{{ $t('access.totalscore') }}:</span>
+            <span class="total-score-name">{{ $('access.totalscore') }}:</span>
             <span class="number">{{ assessInfo.max || max }}</span>
           </p>
           <p>
-            <span class="total-score-name">{{ $t("ui.userAssessmentExecutionPersonalScore") }}</span>
+            <span class="total-score-name">{{ $("ui.userAssessmentExecutionPersonalScore") }}</span>
             <span class="color-default number">{{ finishRatioSum() }}</span>
           </p>
           <p v-if="!testAccess">
-            <span class="total-score-name">{{ $t("ui.userAssessmentExecutionCurrentTotalScore") }}</span>
+            <span class="total-score-name">{{ $("ui.userAssessmentExecutionCurrentTotalScore") }}</span>
             <span class="number color-default">{{ total }}</span>
           </p>
         </div>
@@ -49,7 +50,7 @@
                 </span>
 
                 <span>
-                  {{ assessInfo.types == 0 ? $t('access.dimensionweight') : $t('access.dimensionscore') }}
+                  {{ assessInfo.types == 0 ? $('access.dimensionweight') : $('access.dimensionscore') }}
 
                   <el-input-number
                     v-model="item.ratio"
@@ -60,17 +61,17 @@
                   />
                   {{ assessInfo.types == 0 ? '%' : '' }}
                 </span>
-                <span class="pl10">{{ $t("ui.userAssessmentExecutionCurrentScore") }}</span>
+                <span class="pl10">{{ $("ui.userAssessmentExecutionCurrentScore") }}</span>
                 <span class="color-default">{{ currentSum(item, index) }}</span>
               </template>
               <template v-else>
                 <span>{{ item.name }}</span>
                 <span>
-                  {{ assessInfo.types == 0 ? $t('access.dimensionweight') : $t('access.dimensionscore') }}
+                  {{ assessInfo.types == 0 ? $('access.dimensionweight') : $('access.dimensionscore') }}
                   {{ item.ratio }}
                   {{ assessInfo.types == 0 ? '%' : '' }}
                 </span>
-                <span class="pl10">{{ $t("ui.userAssessmentExecutionCurrentScore") }}</span>
+                <span class="pl10">{{ $("ui.userAssessmentExecutionCurrentScore") }}</span>
                 <span class="color-default">{{ currentFinishSum(item) }}</span>
               </template>
             </div>
@@ -79,12 +80,12 @@
             </div>
           </div>
           <el-table :data="item.target" default-expand-all row-key="id" style="width: 100%">
-            <el-table-column :label="$t('access.targetname')" prop="name" width="160">
+            <el-table-column :label="$('access.targetname')" prop="name" width="160">
               <template slot-scope="scope">
                 <el-input
                   v-if="!testAccess && !verifyAccess && strType !== 'check'"
                   v-model="scope.row.name"
-                  :placeholder="$t('access.placeholder01')"
+                  :placeholder="$('access.placeholder01')"
                   autosize
                   style="width: 140px"
                   type="textarea"
@@ -92,13 +93,13 @@
                 <span v-else>{{ scope.row.name }}</span>
               </template>
             </el-table-column>
-            <el-table-column :label="$t('access.targetexplain')" min-width="300" prop="content">
+            <el-table-column :label="$('access.targetexplain')" min-width="300" prop="content">
               <template slot-scope="scope">
                 <el-input
                   v-if="!testAccess && !verifyAccess && strType !== 'check'"
                   v-model="scope.row.content"
                   :disabled="testAccess"
-                  :placeholder="$t('access.placeholder02')"
+                  :placeholder="$('access.placeholder02')"
                   autosize
                   type="textarea"
                 />
@@ -106,45 +107,45 @@
               </template>
             </el-table-column>
 
-            <el-table-column :label="$t('ui.userAssessmentExecutionScoringCriteria')" min-width="300" prop="info">
+            <el-table-column :label="$('ui.userAssessmentExecutionScoringCriteria')" min-width="300" prop="info">
               <template slot-scope="scope">
                 <el-input
                   v-if="!testAccess && !verifyAccess && strType !== 'check'"
                   v-model="scope.row.info"
                   :disabled="testAccess"
                   autosize
-                  :placeholder="$t('ui.userAssessmentExecutionEnterScoringCriteria')"
+                  :placeholder="$('ui.userAssessmentExecutionEnterScoringCriteria')"
                   type="textarea"
                 />
                 <span v-else>{{ scope.row.info }}</span>
               </template>
             </el-table-column>
 
-            <el-table-column :label="$t('ui.userAssessmentExecutionCompletionSelfEvaluation')" prop="finish_info" width="200">
+            <el-table-column :label="$('ui.userAssessmentExecutionCompletionSelfEvaluation')" prop="finish_info" width="200">
               <template slot-scope="scope">
                 <el-input
                   v-if="testAccess && strType !== 'check'"
                   v-model="scope.row.finish_info"
-                  :placeholder="$t('access.inputcompletion')"
+                  :placeholder="$('access.inputcompletion')"
                   autosize
                   type="textarea"
                 />
                 <span v-else>{{ scope.row.finish_info }}</span>
               </template>
             </el-table-column>
-            <el-table-column v-if="assessInfo.status > 1" :label="$t('ui.hrAssessStaffDetailsDialogTheHigherEvaluation')" min-width="150" prop="check_info">
+            <el-table-column v-if="assessInfo.status > 1" :label="$('ui.hrAssessStaffDetailsDialogTheHigherEvaluation')" min-width="150" prop="check_info">
               <template slot-scope="scope">
                 <el-input
                   v-if="checkAccess && strType !== 'check'"
                   v-model="scope.row.check_info"
                   autosize
-                  :placeholder="$t('ui.hrAssessStaffDetailsDialogTheHigherEvaluation')"
+                  :placeholder="$('ui.hrAssessStaffDetailsDialogTheHigherEvaluation')"
                   type="textarea"
                 />
                 <span v-else>{{ scope.row.check_info }}</span>
               </template>
             </el-table-column>
-            <el-table-column :label="assessInfo.types === 0 ? $t('ui.userAssessmentExecutionWeight') : $t('ui.userAssessmentExecutionScore')" min-width="60" prop="ratio">
+            <el-table-column :label="assessInfo.types === 0 ? $('ui.userAssessmentExecutionWeight') : $('ui.userAssessmentExecutionScore')" min-width="60" prop="ratio">
               <template slot-scope="scope">
                 <el-input
                   v-if="!testAccess && !verifyAccess && processIndex === 1"
@@ -162,7 +163,7 @@
                 <span v-if="assessInfo.types == 0">%</span>
               </template>
             </el-table-column>
-            <el-table-column v-if="assessInfo.types === 0" :label="$t('ui.userAssessmentExecutionToCompleteTheDegreeSelfEvaluation')" min-width="100" prop="finish_ratio">
+            <el-table-column v-if="assessInfo.types === 0" :label="$('ui.userAssessmentExecutionToCompleteTheDegreeSelfEvaluation')" min-width="100" prop="finish_ratio">
               <template slot-scope="scope">
                 <div class="current-task">
                   <el-progress
@@ -194,7 +195,7 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column v-else :label="$t('ui.userAssessmentExecutionSelfScoringSelfEvaluation')" min-width="60" prop="finish_ratio">
+            <el-table-column v-else :label="$('ui.userAssessmentExecutionSelfScoringSelfEvaluation')" min-width="60" prop="finish_ratio">
               <template slot-scope="scope">
                 <el-input
                   v-if="testAccess && strType !== 'check'"
@@ -210,7 +211,7 @@
             <!-- assessInfo.types === 0是加权方式 -->
             <el-table-column
               v-if="assessInfo.types === 0 && assessInfo.status > 1"
-              :label="$t('ui.userAssessmentExecutionTheSuperiorGrade')"
+              :label="$('ui.userAssessmentExecutionTheSuperiorGrade')"
               min-width="80"
               prop="score"
             >
@@ -231,7 +232,7 @@
             </el-table-column>
             <el-table-column
               v-if="assessInfo.types === 1 && assessInfo.status > 1"
-              :label="$t('ui.userAssessmentExecutionTheSuperiorGrade')"
+              :label="$('ui.userAssessmentExecutionTheSuperiorGrade')"
               min-width="80px"
               prop="score"
             >
@@ -249,7 +250,7 @@
             </el-table-column>
             <el-table-column
               v-if="!testAccess"
-              :label="$t('public.operation')"
+              :label="$('public.operation')"
               fixed="right"
               prop="address"
               width="70"
@@ -267,8 +268,8 @@
           <div v-if="!testAccess" class="current-bottom">
             <el-row v-if="strType !== 'check'">
               <el-col :lg="12">
-                <el-button type="text" @click="addTarget(index)">{{ $t('access.addTarget02') }}</el-button>
-                <el-button type="text" @click="selectTarget(index)">{{ $t('access.addTarget01') }}</el-button>
+                <el-button type="text" @click="addTarget(index)">{{ $('access.addTarget02') }}</el-button>
+                <el-button type="text" @click="selectTarget(index)">{{ $('access.addTarget01') }}</el-button>
               </el-col>
             </el-row>
           </div>
@@ -281,15 +282,15 @@
             <el-col :lg="22">
               <p class="comment-list-name">
                 {{ item.user.name }}
-                <span v-if="item.types === -1">{{ $t("ui.userAssessmentExecutionSelfAssessment") }}</span>
-                <span v-if="item.types === 0">{{ $t("ui.userAssessmentExecutionTheHigherEvaluation") }}</span>
-                <span v-if="item.types === 1">{{ $t("ui.userAssessmentExecutionPerformanceReview") }}</span>
+                <span v-if="item.types === -1">{{ $("ui.userAssessmentExecutionSelfAssessment") }}</span>
+                <span v-if="item.types === 0">{{ $("ui.userAssessmentExecutionTheHigherEvaluation") }}</span>
+                <span v-if="item.types === 1">{{ $("ui.userAssessmentExecutionPerformanceReview") }}</span>
               </p>
 
               <el-input
                 v-model="item.content"
                 :disabled="userInfo.id !== assessInfo.test_uid || item.types === 1"
-                :placeholder="$t('access.placeholder16')"
+                :placeholder="$('access.placeholder16')"
                 :rows="3"
                 resize="none"
                 type="textarea"
@@ -304,12 +305,12 @@
               <img :src="assessInfo.test.avatar" alt="" />
             </el-col>
             <el-col :lg="22">
-              <p class="comment-list-name">{{ assessInfo.test ? assessInfo.test.name : userInfo.name }} {{ $t("ui.userAssessmentExecutionSelfAssessment") }}</p>
+              <p class="comment-list-name">{{ assessInfo.test ? assessInfo.test.name : userInfo.name }} {{ $("ui.userAssessmentExecutionSelfAssessment") }}</p>
 
               <el-input
                 v-model="assessInfo.self_reply"
                 :disabled="!testAccess || strType == 'check'"
-                :placeholder="$t('access.placeholder16')"
+                :placeholder="$('access.placeholder16')"
                 maxlength="512"
                 show-word-limit
                 rows="4"
@@ -324,11 +325,11 @@
               <img :src="assessInfo.check ? assessInfo.check.avatar : userInfo.avatar" alt="" />
             </el-col>
             <el-col :lg="22">
-              <p class="comment-list-name">{{ assessInfo.check ? assessInfo.check.name : userInfo.name }} {{ $t("ui.userAssessmentExecutionRemarks") }}</p>
+              <p class="comment-list-name">{{ assessInfo.check ? assessInfo.check.name : userInfo.name }} {{ $("ui.userAssessmentExecutionRemarks") }}</p>
               <el-input
                 v-model="assessInfo.reply"
                 :disabled="!checkAccess || strType == 'check'"
-                :placeholder="$t('access.placeholder16')"
+                :placeholder="$('access.placeholder16')"
                 maxlength="512"
                 show-word-limit
                 rows="4"
@@ -343,11 +344,11 @@
               <i class="icon iconfont iconyincang1" />
             </el-col>
             <el-col :lg="22">
-              <p class="comment-list-name">{{ userInfo.name }} {{ $t("ui.userAssessmentExecutionVisibleOnlyToYou") }}</p>
+              <p class="comment-list-name">{{ userInfo.name }} {{ $("ui.userAssessmentExecutionVisibleOnlyToYou") }}</p>
               <el-input
                 v-model="assessInfo.hide_reply"
                 :disabled="strType == 'check'"
-                :placeholder="$t('access.tips12')"
+                :placeholder="$('access.tips12')"
                 type="textarea"
               />
             </el-col>
@@ -372,7 +373,7 @@
             type="primary"
             @click="addPreserve"
           >
-            {{ $t('access.saveandsubmit') }}
+            {{ $('access.saveandsubmit') }}
           </el-button>
         </div>
       </div>
@@ -381,16 +382,16 @@
   <!--添加考核维度-->
   <el-dialog
     :before-close="handleClose"
-    :title="$t('access.adddimension')"
+    :title="$('access.adddimension')"
     :visible.sync="dialogVisible"
     width="450px"
   >
     <div class="current-dialog mb15">
-      <span>{{ $t('access.dimensionname') }}：</span>
+      <span>{{ $('access.dimensionname') }}：</span>
       <el-input v-model="from.name" type="text" />
     </div>
     <div v-if="assessInfo.types === 0" class="current-dialog">
-      <span>{{ $t('access.dimensionweight') }}(%)：</span>
+      <span>{{ $('access.dimensionweight') }}(%)：</span>
       <div>
         <el-input-number
           v-model="from.ratio"
@@ -404,8 +405,8 @@
       </div>
     </div>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="clickCancel">{{ $t('public.cancel') }}</el-button>
-      <el-button type="primary" @click="addOk">{{ $t('public.ok') }}</el-button>
+      <el-button @click="clickCancel">{{ $('public.cancel') }}</el-button>
+      <el-button type="primary" @click="addOk">{{ $('public.ok') }}</el-button>
     </span>
   </el-dialog>
   <setTemplate
@@ -414,14 +415,12 @@
     :set-template="setTemplate"
     @handleTemplate="handleTemplate"
   ></setTemplate>
-  <selectTarget ref="selectTarget" :title="$t('access.targetibrary')" @dialogChangeDada="dialogChangeDada" />
+  <selectTarget ref="selectTarget" :title="$('access.targetibrary')" @dialogChangeDada="dialogChangeDada" />
   <!-- 通用弹窗表单   -->
   <dialogForm ref="dialogForm" :form-data="formBoxConfig" :roles-config="rolesConfig" @isOk="isOk" />
 </div>
 </template>
 <script>
-import i18n from '@/lang'
-import { translateRuntimeText } from '@/utils/i18ns'
 import {
   userAssessInfo,
   userAssessMark,
@@ -579,9 +578,6 @@ export default {
     this.getTableData()
   },
   methods: {
-    translateText(text) {
-      return translateRuntimeText(text, this)
-    },
     // 控制输入分数的最大值-自评
     numberChange(val, maxNum, index, index2) {
       this.$nextTick(() => {
@@ -641,12 +637,12 @@ export default {
     handleClose() {
       this.clickCancel()
     },
-    // {{ translateText('添加考核维度') }}
+    // {{ $('添加考核维度') }}
     addOk() {
       if (this.from.name == '') {
-        this.$message.error(this.$t('access.placeholder03'))
+        this.$message.error(this.$('access.placeholder03'))
       } else if (this.from.ratio == '') {
-        this.$message.error(this.$t('access.placeholder04'))
+        this.$message.error(this.$('access.placeholder04'))
       } else {
         this.tableData.push({
           name: this.from.name,
@@ -701,11 +697,11 @@ export default {
         ]
       } else {
         if (this.tableData[index].target[len].name == '') {
-          this.$message.error(this.$t('access.placeholder09'))
+          this.$message.error(this.$('access.placeholder09'))
         } else if (this.tableData[index].target[len].content == '') {
-          this.$message.error(this.$t('access.placeholder10'))
+          this.$message.error(this.$('access.placeholder10'))
         } else if (this.tableData[index].target[len].ratio == '') {
-          this.$message.error(this.$t('access.placeholder11'))
+          this.$message.error(this.$('access.placeholder11'))
         } else {
           this.tableData[index].target.push({
             name: '',
@@ -876,39 +872,39 @@ export default {
     judge() {
       var res = []
       if (this.tableData.length <= 0) {
-        this.$message.error(this.$t('access.placeholder12'))
+        this.$message.error(this.$('access.placeholder12'))
       } else if (this.dimensionMax > 0) {
         if (this.assessInfo.types === 1) {
           this.$message.error('分数之和必须为' + (this.assessInfo.max || this.max) + '分')
         } else {
-          this.$message.error(this.$t('access.placeholder13'))
+          this.$message.error(this.$('access.placeholder13'))
         }
       } else {
         for (let i = 0; i < this.tableData.length; i++) {
           if (this.tableData[i].name == '') {
-            this.$message.error(i18n.t('legacyScript.assessmentDimensionNameCannotBeEmpty'))
+            this.$message.error($('legacyScript.assessmentDimensionNameCannotBeEmpty'))
             break
           }
           if (this.tableData[i].ratio <= 0 && this.is_draft === 0) {
-            this.$message.error(i18n.t('legacyScript.assessmentDimensionWeightCannotBeZero'))
+            this.$message.error($('legacyScript.assessmentDimensionWeightCannotBeZero'))
             break
           }
           if (this.tableData[i].target.length <= 0) {
-            this.$message.error(i18n.t('legacyScript.assessmentIndicatorsCannotBeEmpty'))
+            this.$message.error($('legacyScript.assessmentIndicatorsCannotBeEmpty'))
             break
           }
           const target = []
           for (let j = 0; j < this.tableData[i].target.length; j++) {
             if (this.tableData[i].target[j].name == '') {
-              this.$message.error(i18n.t('legacyScript.indicatorNameIsRequired'))
+              this.$message.error($('legacyScript.indicatorNameIsRequired'))
               break
             }
             if (this.tableData[i].target[j].content == '') {
-              this.$message.error(i18n.t('legacyScript.indicatorContentIsRequired'))
+              this.$message.error($('legacyScript.indicatorContentIsRequired'))
               break
             }
             if (this.tableData[i].target[j].ratio <= 0 && this.is_draft === 0) {
-              this.$message.error(i18n.t('legacyScript.indicatorWeightCannotBeZero'))
+              this.$message.error($('legacyScript.indicatorWeightCannotBeZero'))
               break
             }
             target.push({
@@ -946,7 +942,7 @@ export default {
 
     async preserveMark() {
       if (this.onlyMark === '') {
-        this.$message.error(i18n.t('legacyScript.remarksIsRequired'))
+        this.$message.error($('legacyScript.remarksIsRequired'))
       } else {
         var data = {
           mark: this.onlyMark

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="table-box">
     <el-dialog
@@ -9,7 +10,7 @@
       <div slot="title" class="header">
         <span>{{ title }}</span>
         <el-link v-if="status == 'add'" :underline="false" icon="el-icon-edit-outline" @click="editFn"
-          >{{ $ts("编辑字段") }}</el-link
+          >{{ $("ui.businessFormSettingFormCreateDesignerFcDesignerEditField") }}</el-link
         >
       </div>
       <div class="line" />
@@ -24,9 +25,9 @@
         >
           <el-form-item
             :rules="[{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }]"
-            :label='$ts("生效时间:")'
+            :label='$("legacy.ea0b7ecf44e2e5a1")'
           >
-            <el-date-picker v-model="take_date" :placeholder='$ts("选择日期")' type="date" value-format="yyyy-MM-dd">
+            <el-date-picker v-model="take_date" :placeholder='$("hr.placeholder4")' type="date" value-format="yyyy-MM-dd">
             </el-date-picker>
           </el-form-item>
 
@@ -42,18 +43,18 @@
               ></el-input>
             </el-form-item>
           </div>
-          <el-form-item :label='$ts("调薪备注：")' prop="desc">
+          <el-form-item :label='$("legacy.ccad6c9545bc387e")' prop="desc">
             <el-input
               v-model="mark"
               maxlength="200"
-              :placeholder='$ts("请输入调薪备注，最多可输入200字")'
+              :placeholder='$("legacy.bc96c1245d6ff8e5")'
               style="width: 260px"
               type="textarea"
             ></el-input>
           </el-form-item>
           <el-form-item class="footer">
-            <el-button class="btn" @click="restFn">{{ $ts("取消") }}</el-button>
-            <el-button :loading="loading" class="btn" type="primary" @click="okFn('formName')">{{ $ts("确定") }}</el-button>
+            <el-button class="btn" @click="restFn">{{ $("public.cancel") }}</el-button>
+            <el-button :loading="loading" class="btn" type="primary" @click="okFn('formName')">{{ $("public.ok") }}</el-button>
           </el-form-item>
         </el-form>
 
@@ -66,10 +67,10 @@
         >
           <el-form-item
             :rules="[{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }]"
-            :label='$ts("生效时间:")'
+            :label='$("legacy.ea0b7ecf44e2e5a1")'
           >
             <div class="change-item">
-              <el-date-picker v-model="take_date" :placeholder='$ts("选择日期")' type="date" value-format="yyyy-MM-dd">
+              <el-date-picker v-model="take_date" :placeholder='$("hr.placeholder4")' type="date" value-format="yyyy-MM-dd">
               </el-date-picker>
             </div>
           </el-form-item>
@@ -89,17 +90,17 @@
               </div>
             </el-form-item>
           </div>
-          <el-form-item :label='$ts("调薪备注：")' prop="desc">
+          <el-form-item :label='$("legacy.ccad6c9545bc387e")' prop="desc">
             <el-input
               v-model="mark"
               maxlength="200"
-              :placeholder='$ts("请输入调薪备注信息，最多可输入200字")'
+              :placeholder='$("legacy.1acac51e0e616f3e")'
               type="textarea"
             ></el-input>
           </el-form-item>
           <el-form-item class="footer">
-            <el-button class="btn" @click="restFn">{{ $ts("取消") }}</el-button>
-            <el-button class="btn" type="primary" @click="okFn('formName')">{{ $ts("确定") }}</el-button>
+            <el-button class="btn" @click="restFn">{{ $("public.cancel") }}</el-button>
+            <el-button class="btn" type="primary" @click="okFn('formName')">{{ $("public.ok") }}</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -120,7 +121,7 @@
               <transition-group>
                 <div v-for="(item, index) in fromItem" :key="item.id" class="item-list">
                   <i class="icon iconfont icontuodong item-drag"></i>
-                  <el-input v-model="item.label" clearable :placeholder='$ts("请输入表单字段")' show-word-limit />
+                  <el-input v-model="item.label" clearable :placeholder='$("legacy.4d01e840dd9ffb59")' show-word-limit />
                   <i
                     v-if="item.sort !== 1 && item.sort !== 2"
                     class="el-icon-remove item-remove"
@@ -130,12 +131,12 @@
               </transition-group>
             </draggable>
             <el-button class="add-type mt14" type="text" @click="handleAddType()">
-              <i class="el-icon-plus"></i> {{ $ts("添加") }}</el-button
+              <i class="el-icon-plus"></i> {{ $("public.add") }}</el-button
             >
 
             <div class="footer">
-              <el-button class="btn" @click="handleResetFn">{{ $ts("取消") }}</el-button>
-              <el-button class="btn" type="primary" @click="handleConfirm">{{ $ts("确定") }}</el-button>
+              <el-button class="btn" @click="handleResetFn">{{ $("public.cancel") }}</el-button>
+              <el-button class="btn" type="primary" @click="handleConfirm">{{ $("public.ok") }}</el-button>
             </div>
           </div>
         </div>
@@ -144,7 +145,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import draggable from 'vuedraggable'
 import { getSalary, getSalaryContent, putSalaryContent, latelySalaryContent } from '@/api/enterprise'
 
@@ -168,47 +168,47 @@ export default {
       unmodifiedFormItem: [],
       dialogVisible: false,
       mark: '',
-      title: i18n.t('legacyScript.setSalary'),
+      title: $('legacyScript.setSalary'),
       status: 'add',
       loading: false,
       take_date: '',
       fromItem: [
         {
-          label: i18n.t('legacyScript.baseSalaryCNY'),
+          label: $('legacyScript.baseSalaryCNY'),
           value: '0',
-          placeholder: i18n.t('legacyScript.pleaseEnterBaseSalary'),
+          placeholder: $('legacyScript.pleaseEnterBaseSalary'),
           sort: 1
         },
         {
-          label: i18n.t('legacyScript.performancePayCNY'),
+          label: $('legacyScript.performancePayCNY'),
           value: 0,
-          placeholder: i18n.t('legacyScript.pleaseEnterPerformancePay'),
+          placeholder: $('legacyScript.pleaseEnterPerformancePay'),
           sort: 2
         },
         {
-          label: i18n.t('legacyScript.positionSalaryCNY'),
+          label: $('legacyScript.positionSalaryCNY'),
           value: 0,
-          placeholder: i18n.t('legacyScript.pleaseEnterPositionSalary'),
+          placeholder: $('legacyScript.pleaseEnterPositionSalary'),
           sort: 3
         },
 
         {
-          label: i18n.t('legacyScript.allowanceCNY'),
+          label: $('legacyScript.allowanceCNY'),
           value: 0,
-          placeholder: i18n.t('legacyScript.pleaseEnterManagementAllowance'),
+          placeholder: $('legacyScript.pleaseEnterManagementAllowance'),
           sort: 4
         },
         {
-          label: i18n.t('legacyScript.skillSubsidyCNY'),
+          label: $('legacyScript.skillSubsidyCNY'),
           value: 0,
-          placeholder: i18n.t('legacyScript.pleaseEnterBaseSalary'),
+          placeholder: $('legacyScript.pleaseEnterBaseSalary'),
           sort: 5
         },
 
         {
-          label: i18n.t('legacyScript.otherSubsidiesYuan'),
+          label: $('legacyScript.otherSubsidiesYuan'),
           value: 0,
-          placeholder: i18n.t('legacyScript.pleaseEnterOtherSubsidiesSuchAsDiningTransportationPhoneBills'),
+          placeholder: $('legacyScript.pleaseEnterOtherSubsidiesSuchAsDiningTransportationPhoneBills'),
           sort: 6
         }
       ],
@@ -238,7 +238,7 @@ export default {
     handleResetFn() {
       this.fromItem = JSON.parse(JSON.stringify(this.unmodifiedFormItem))
       if (this.nowtype == '调薪弹窗') {
-        this.title = i18n.t('legacyScript.salaryAdjustmentPopup')
+        this.title = $('legacyScript.salaryAdjustmentPopup')
         this.status = 'add'
         this.type = '调薪弹窗'
       } else {
@@ -298,7 +298,7 @@ export default {
     // 编辑
     editFn() {
       this.unmodifiedFormItem = JSON.parse(JSON.stringify(this.fromItem))
-      this.title = i18n.t('legacyScript.editFormFields')
+      this.title = $('legacyScript.editFormFields')
       this.status = 'edit'
     },
 
@@ -322,13 +322,13 @@ export default {
           return el.label === ''
         })
         if (status) {
-          this.$message.warning(this.$t('customer.message05'))
+          this.$message.warning(this.$('customer.message05'))
         } else {
           this.fromItem.push({
             sort: '',
             value: 0,
             label: '',
-            placeholder: i18n.t('finance.pleaseinput')
+            placeholder: $('finance.pleaseinput')
           })
         }
       } else {
@@ -336,7 +336,7 @@ export default {
           sort: '',
           value: 0,
           label: '',
-          placeholder: i18n.t('finance.pleaseinput')
+          placeholder: $('finance.pleaseinput')
         })
       }
     },
@@ -378,13 +378,13 @@ export default {
     handleConfirm() {
       const data = []
       if (this.fromItem.length <= 0) {
-        this.$message.warning(this.$t('customer.message05'))
+        this.$message.warning(this.$('customer.message05'))
       } else {
         const status = this.fromItem.some((el, index) => {
           return el.label === ''
         })
         if (status) {
-          this.$message.warning(this.$t('customer.message05'))
+          this.$message.warning(this.$('customer.message05'))
         } else {
           const len = this.fromItem.length
           this.fromItem.map((value, index) => {
@@ -407,7 +407,7 @@ export default {
           })
           this.status = 'add'
           if (this.type == '调薪弹窗') {
-            this.title = i18n.t('legacyScript.salaryAdjustmentPopup')
+            this.title = $('legacyScript.salaryAdjustmentPopup')
           }
         }
       }

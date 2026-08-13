@@ -9,16 +9,16 @@
             <!-- <div class="qrcode-logo">
               <img :src="imgSrc" />
             </div> -->
-            <span class="text">{{ $ts("扫描配置通用APP") }}</span>
+            <span class="text">{{ $("legacy.1830eb869bf9afc3") }}</span>
           </div>
         </div>
         <div class="drop-config">
-          <span>{{ $ts("服务器地址：") }}</span>
+          <span>{{ $("ui.settingWecomIndexServerUrl") }}</span>
           <span>{{ qrValue }}</span>
         </div>
       </div>
       <div slot="reference" class="config-info">
-        <el-tooltip :content='$ts("配置App")' effect="dark" placement="bottom">
+        <el-tooltip :content='$("systemText.configureApp")' effect="dark" placement="bottom">
           <i class="iconfont iconshoujisaoma pointer configapp"></i>
         </el-tooltip>
       </div>

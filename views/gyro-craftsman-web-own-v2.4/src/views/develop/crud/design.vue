@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <!-- 实体设计页面 -->
   <div class="divBox">
@@ -8,11 +9,11 @@
           <div class="invoice-logo"><i class="icon iconfont iconshitosheji"></i></div>
         </div>
         <div class="right">
-          <span class="title">{{ info.table_name || $ts('实体设计') }}</span>
+          <span class="title">{{ info.table_name || $("ui.developCrudEntityTableEntityDesign") }}</span>
           <el-tabs v-model="activeName" class="tab">
             <el-tab-pane v-for="(item, index) in tabArray" :key="index" :name="item.value">
               <div slot="label">
-                <span>{{ $ts(item.label, item.label_en) }}</span>
+                <span>{{ $(item.label, item.label_en) }}</span>
               </div>
             </el-tab-pane>
           </el-tabs>
@@ -38,7 +39,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import basicSetting from './components/basicSetting'
 import fieldSetting from './components/fieldSetting'
@@ -55,13 +55,13 @@ export default {
       infoLoading: false,
       info: {},
       tabArray: [
-      { label: i18n.t('ui.developCrudEntityTableListDesign'), value: '4', number: 4 },
-        { label: i18n.t('ui.developCrudEntityTableFieldDesign'), value: '2', number: 2 },
-        { label: i18n.t('ui.developCrudEntityTableFormDesign'), value: '3', number: 3 },
+      { label: $('ui.developCrudEntityTableListDesign'), value: '4', number: 4 },
+        { label: $('ui.developCrudEntityTableFieldDesign'), value: '2', number: 2 },
+        { label: $('ui.developCrudEntityTableFormDesign'), value: '3', number: 3 },
         
-        { label: i18n.t('ui.workFlowDialogErrorDialogWorkflowDesign'), value: '5', number: 5 },
-        { label: i18n.t('ui.developCrudEntityTableTriggerDesign'), value: '6', number: 6 },
-          { label: i18n.t('ui.developCrudEntityTableEntityProperties'), value: '1', number: 1 },
+        { label: $('ui.workFlowDialogErrorDialogWorkflowDesign'), value: '5', number: 5 },
+        { label: $('ui.developCrudEntityTableTriggerDesign'), value: '6', number: 6 },
+          { label: $('ui.developCrudEntityTableEntityProperties'), value: '1', number: 1 },
       ]
     }
   },

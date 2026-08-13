@@ -28,12 +28,12 @@
           >
             <template #options="{ data }">
               <el-button type="text" @click="hanldeOptions(data, 'edit')" v-hasPermi="['hr:archives:check']"
-                >{{ $t("ui.layoutNoticeNoticeListView") }}</el-button
+                >{{ $("ui.layoutNoticeNoticeListView") }}</el-button
               >
 
-              <el-button type="text" @click="hanldeOptions(data, 'delete')">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" @click="hanldeOptions(data, 'delete')">{{ $("ui.chatIndexDelete") }}</el-button>
 
-              <el-button type="text" @click="hanldeOptions(data, 'reEntry')">{{ $t("ui.hrArchivesUserDetailsRehire") }}</el-button>
+              <el-button type="text" @click="hanldeOptions(data, 'reEntry')">{{ $("ui.hrArchivesUserDetailsRehire") }}</el-button>
             </template>
           </Table>
         </div>

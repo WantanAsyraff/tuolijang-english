@@ -1,11 +1,11 @@
 import router from '../router'
 import settings from '@/settings'
 import helper from '@/libs/helper'
-export function modalSure(title, confirmButton = this.$t('public.ok'), tips = this.$t('public.tips')) {
+export function modalSure(title, confirmButton = this.$('public.ok'), tips = this.$('public.tips')) {
   return new Promise((resolve, reject) => {
-    this.$confirm(`${title || this.$t('publicjs.title1')}?`, tips, {
+    this.$confirm(`${title || this.$('publicjs.title1')}?`, tips, {
       confirmButtonText: confirmButton,
-      cancelButtonText: this.$t('public.cancel'),
+      cancelButtonText: this.$('public.cancel'),
       type: 'warning'
     })
       .then(() => {
@@ -15,7 +15,7 @@ export function modalSure(title, confirmButton = this.$t('public.ok'), tips = th
         reject()
         // this.$message({
         //   type: 'info',
-        //   message: this.$t('public.cancelled')
+        //   message: this.$('public.cancelled')
         // })
       })
   })

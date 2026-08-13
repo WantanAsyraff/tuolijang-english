@@ -6,9 +6,9 @@
       <div class="flex-row flex-col">
         <div>
           <el-tabs v-model="activeVal" class="tabs" @tab-click="activeClick">
-            <el-tab-pane :label="$t('ui.userDailyDepartmentDepartmentReports')" name="3" />
-            <el-tab-pane :label="$t('ui.userDailyDepartmentDepartmentStatistics')" name="4" />
-            <el-tab-pane :label="$t('ui.userDailyDepartmentCcToMe')" name="5" />
+            <el-tab-pane :label="$('ui.userDailyDepartmentDepartmentReports')" name="3" />
+            <el-tab-pane :label="$('ui.userDailyDepartmentDepartmentStatistics')" name="4" />
+            <el-tab-pane :label="$('ui.userDailyDepartmentCcToMe')" name="5" />
           </el-tabs>
         </div>
       </div>
@@ -26,14 +26,14 @@
       <!-- 我的汇报/汇报记录列表 -->
       <div v-loading="loading" class="mt-10">
         <el-table ref="elTable" :data="tableData" :height="tableHeight">
-          <el-table-column :label="$t('toptable.name')" prop="name" width="90" />
-          <el-table-column :label="$t('toptable.department')" min-width="100" prop="frame_name" />
-          <el-table-column :label="$t('toptable.worktoday')" min-width="250" prop="finish">
+          <el-table-column :label="$('toptable.name')" prop="name" width="90" />
+          <el-table-column :label="$('toptable.department')" min-width="100" prop="frame_name" />
+          <el-table-column :label="$('toptable.worktoday')" min-width="250" prop="finish">
             <template slot-scope="scope">
               <div v-for="(item, index) in scope.row.finish" :key="index" class="textover3">{{ item }}</div>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('toptable.tomorrowplan')" min-width="250" prop="plan">
+          <el-table-column :label="$('toptable.tomorrowplan')" min-width="250" prop="plan">
             <template slot-scope="scope">
               <div v-if="scope.row.types != 3">
                 <div v-for="(item, index) in scope.row.plan" :key="index" class="textover3">{{ item }}</div>
@@ -41,22 +41,22 @@
               <span v-else>--</span>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('ui.hrReportIndexReflection')" width="200">
+          <el-table-column :label="$('ui.hrReportIndexReflection')" width="200">
             <template #default="{ row }">
               {{ row.mark || '--' }}
             </template>
           </el-table-column>
 
-          <el-table-column :label="$t('user.work.dailytype')" width="120">
+          <el-table-column :label="$('user.work.dailytype')" width="120">
             <template slot-scope="scope">
               {{ getDailyTypes(scope.row.types) }}
             </template>
           </el-table-column>
 
-          <el-table-column :label="$t('user.work.creationtime')" prop="created_at" width="160" />
+          <el-table-column :label="$('user.work.creationtime')" prop="created_at" width="160" />
 
           <el-table-column
-            :label="$t('public.operation')"
+            :label="$('public.operation')"
             :show-overflow-tooltip="true"
             :width="tableFrom.type == 0 ? 160 : 60"
             fixed="right"
@@ -67,7 +67,7 @@
                 type="text"
                 @click="oncheck(scope.row.daily_id, 'check', scope.row)"
               >
-                {{ $t('public.check') }}
+                {{ $('public.check') }}
               </el-button>
 
               <el-button
@@ -76,7 +76,7 @@
                 type="text"
                 @click="onEditt(scope.row.daily_id, 'edit', scope.row)"
               >
-                {{ $t('public.edit') }}
+                {{ $('public.edit') }}
               </el-button>
               <el-button
                 v-if="tableFrom.type == 0 && new Date(scope.row.end_time).getTime() > new Date().getTime()"
@@ -84,7 +84,7 @@
                 type="text"
                 @click="onDelete(scope.row.daily_id)"
               >
-                {{ $t("ui.chatIndexDelete") }}
+                {{ $("ui.chatIndexDelete") }}
               </el-button>
             </template>
           </el-table-column>
@@ -117,43 +117,43 @@
           >
           </oaFromBox>
           <div class="title-text">
-            <span class="tips1">{{ thePreviousDay }} {{ $t("ui.userDailyDepartmentSubmissionStatus") }}</span>
-            <span class="tips2">{{ $t("ui.userDailyDepartmentDailyStatisticsFrom0000To2359") }}</span>
+            <span class="tips1">{{ thePreviousDay }} {{ $("ui.userDailyDepartmentSubmissionStatus") }}</span>
+            <span class="tips2">{{ $("ui.userDailyDepartmentDailyStatisticsFrom0000To2359") }}</span>
           </div>
         </div>
         <div class="classification">
           <div class="content">
             <span class="num">{{ total || 0 }}</span>
-            <span class="text">{{ $t("ui.userDailyDepartmentSubmissionResult") }}</span>
+            <span class="text">{{ $("ui.userDailyDepartmentSubmissionResult") }}</span>
           </div>
           <div class="content">
             <span class="num color1">{{ submit || 0 }}</span>
-            <span class="text color1">{{ $t("ui.userDailyDepartmentSubmitted") }}</span>
+            <span class="text color1">{{ $("ui.userDailyDepartmentSubmitted") }}</span>
           </div>
           <div class="content">
             <span class="num color2">{{ no_submit || 0 }}</span>
-            <span class="text color2">{{ $t("ui.userDailyDepartmentNotSubmitted") }}</span>
+            <span class="text color2">{{ $("ui.userDailyDepartmentNotSubmitted") }}</span>
           </div>
         </div>
         <el-tabs v-model="submitType" class="mt14 tabs" @tab-click="submitTypeFn">
-          <el-tab-pane :label="$t('ui.userDailyDepartmentSubmitted')" name="1" />
-          <el-tab-pane :label="$t('ui.userDailyDepartmentNotSubmitted')" name="2" />
+          <el-tab-pane :label="$('ui.userDailyDepartmentSubmitted')" name="1" />
+          <el-tab-pane :label="$('ui.userDailyDepartmentNotSubmitted')" name="2" />
         </el-tabs>
-        <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ totalSubmit }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+        <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ totalSubmit }} {{ $("ui.commonOaFromBoxItems") }}</div>
 
         <el-table ref="elTable" :data="table" :height="tableHeight">
-          <el-table-column :label="$t('ui.businessHolidayQueryIndexName')" prop="name" />
-          <el-table-column :label="$t('ui.businessHolidayQueryIndexDepartment')" prop="frame_name" />
-          <el-table-column :label="$t('ui.userDailyDepartmentReportType')" prop="types">
+          <el-table-column :label="$('ui.businessHolidayQueryIndexName')" prop="name" />
+          <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" prop="frame_name" />
+          <el-table-column :label="$('ui.userDailyDepartmentReportType')" prop="types">
             <template slot-scope="scope">
               {{ getDailyTypes(scope.row.types) }}
             </template></el-table-column
           >
-          <el-table-column v-if="submitType == '1'" :label="$t('ui.businessRecordPrintPreviewSubmissionTime')" prop="created_at" />
-          <el-table-column v-if="submitType == '1'" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" prop="" width="80">
+          <el-table-column v-if="submitType == '1'" :label="$('ui.businessRecordPrintPreviewSubmissionTime')" prop="created_at" />
+          <el-table-column v-if="submitType == '1'" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" prop="" width="80">
             <template slot-scope="scope">
               <el-button type="text" @click="oncheck(scope.row.daily_id, 'check', scope.row)">
-                {{ $t('public.check') }}
+                {{ $('public.check') }}
               </el-button>
             </template>
           </el-table-column>
@@ -185,7 +185,7 @@
         <!-- 汇报类型为月 -->
         <div v-else>
           <div class="month">
-            <i class="el-icon-arrow-left" @click="leftFn"></i> {{ year }}{{ $t("ui.userCalendarAddTodoYear") }}
+            <i class="el-icon-arrow-left" @click="leftFn"></i> {{ year }}{{ $("ui.userCalendarAddTodoYear") }}
             <i class="el-icon-arrow-right" @click="rightFn"></i>
           </div>
           <div class="monthBox">
@@ -195,7 +195,7 @@
               ></span>
             </div>
           </div>
-          <div class="tips"><span class="iconfont icontishi2" /> {{ $t("ui.userDailyDepartmentRedDotsOnTheCalendarIndicateSubordinatesWithUnsubmitted") }}</div>
+          <div class="tips"><span class="iconfont icontishi2" /> {{ $("ui.userDailyDepartmentRedDotsOnTheCalendarIndicateSubordinatesWithUnsubmitted") }}</div>
         </div>
       </el-col>
     </el-row>
@@ -211,14 +211,14 @@
       <!-- 抄送我的列表 -->
       <div v-loading="loading" class="mt-10">
         <el-table ref="elTable" :data="tableData" :height="tableHeight">
-          <el-table-column :label="$t('toptable.name')" prop="name" width="90" />
-          <el-table-column :label="$t('toptable.department')" min-width="100" prop="frame_name" />
-          <el-table-column :label="$t('toptable.worktoday')" min-width="250" prop="finish">
+          <el-table-column :label="$('toptable.name')" prop="name" width="90" />
+          <el-table-column :label="$('toptable.department')" min-width="100" prop="frame_name" />
+          <el-table-column :label="$('toptable.worktoday')" min-width="250" prop="finish">
             <template slot-scope="scope">
               <div v-for="(item, index) in scope.row.finish" :key="index" class="textover3">{{ item }}</div>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('toptable.tomorrowplan')" min-width="250" prop="plan">
+          <el-table-column :label="$('toptable.tomorrowplan')" min-width="250" prop="plan">
             <template slot-scope="scope">
               <div v-if="scope.row.types != 3">
                 <div v-for="(item, index) in scope.row.plan" :key="index" class="textover3">{{ item }}</div>
@@ -227,15 +227,15 @@
             </template>
           </el-table-column>
 
-          <el-table-column :label="$t('user.work.dailytype')" width="120">
+          <el-table-column :label="$('user.work.dailytype')" width="120">
             <template slot-scope="scope">
               {{ getDailyTypes(scope.row.types) }}
             </template>
           </el-table-column>
 
-          <el-table-column :label="$t('user.work.creationtime')" prop="created_at" width="160" />
+          <el-table-column :label="$('user.work.creationtime')" prop="created_at" width="160" />
           <el-table-column
-            :label="$t('public.operation')"
+            :label="$('public.operation')"
             :show-overflow-tooltip="true"
             :width="tableFrom.type == 0 ? 160 : 60"
             fixed="right"
@@ -246,7 +246,7 @@
                 type="text"
                 @click="oncheck(scope.row.daily_id, 'check', scope.row)"
               >
-                {{ $t('public.check') }}
+                {{ $('public.check') }}
               </el-button>
 
               <el-button
@@ -255,7 +255,7 @@
                 type="text"
                 @click="onEditt(scope.row.daily_id, false, scope.row)"
               >
-                {{ $t('public.edit') }}
+                {{ $('public.edit') }}
               </el-button>
               <el-button
                 v-if="tableFrom.type == 0 && new Date(scope.row.end_time).getTime() > new Date().getTime()"
@@ -263,7 +263,7 @@
                 type="text"
                 @click="onDelete(scope.row.daily_id)"
               >
-                {{ $t("ui.chatIndexDelete") }}
+                {{ $("ui.chatIndexDelete") }}
               </el-button>
             </template>
           </el-table-column>
@@ -313,21 +313,21 @@ export default {
       },
       totalSubmit: 0,
       fromList: [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('toptable.thisweek'), val: 'week' },
-        { text: this.$t('toptable.thismonth'), val: 'month' },
-        { text: this.$t('toptable.lastmonth'), val: 'last month' }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('toptable.thisweek'), val: 'week' },
+        { text: this.$('toptable.thismonth'), val: 'month' },
+        { text: this.$('toptable.lastmonth'), val: 'last month' }
       ],
       dailyData: [
-        { name: this.$t('user.work.writedaily'), id: 1 },
-        { name: this.$t('user.work.writedailyweek'), id: 2 },
-        { name: this.$t('user.work.writedailymonth'), id: 3 },
+        { name: this.$('user.work.writedaily'), id: 1 },
+        { name: this.$('user.work.writedailyweek'), id: 2 },
+        { name: this.$('user.work.writedailymonth'), id: 3 },
         { name: '填写汇报', id: 4 }
       ],
       options: [
-        { name: this.$t('user.work.dailyday'), id: 0 },
-        { name: this.$t('user.work.weekday'), id: 1 },
-        { name: this.$t('user.work.monthday'), id: 2 },
+        { name: this.$('user.work.dailyday'), id: 0 },
+        { name: this.$('user.work.weekday'), id: 1 },
+        { name: this.$('user.work.monthday'), id: 2 },
         { name: '汇报', id: 3 }
       ],
       search: [
@@ -342,9 +342,9 @@ export default {
           field_name_en: 'types',
           form_value: 'select',
           data_dict: [
-            { name: this.$t('user.work.dailyday'), id: '0' },
-            { name: this.$t('user.work.weekday'), id: '1' },
-            { name: this.$t('user.work.monthday'), id: '2' },
+            { name: this.$('user.work.dailyday'), id: '0' },
+            { name: this.$('user.work.weekday'), id: '1' },
+            { name: this.$('user.work.monthday'), id: '2' },
             { name: '汇报', id: '3' }
           ],
           value: '0'
@@ -373,9 +373,9 @@ export default {
           field_name_en: 'types',
           form_value: 'select',
           data_dict: [
-            { name: this.$t('user.work.dailyday'), id: 0 },
-            { name: this.$t('user.work.weekday'), id: 1 },
-            { name: this.$t('user.work.monthday'), id: 2 },
+            { name: this.$('user.work.dailyday'), id: 0 },
+            { name: this.$('user.work.weekday'), id: 1 },
+            { name: this.$('user.work.monthday'), id: 2 },
             { name: '汇报', id: 3 }
           ],
           value: 0
@@ -399,9 +399,9 @@ export default {
           field_name_en: 'types',
           form_value: 'select',
           data_dict: [
-            { name: this.$t('user.work.dailyday'), id: 0 },
-            { name: this.$t('user.work.weekday'), id: 1 },
-            { name: this.$t('user.work.monthday'), id: 2 },
+            { name: this.$('user.work.dailyday'), id: 0 },
+            { name: this.$('user.work.weekday'), id: 1 },
+            { name: this.$('user.work.monthday'), id: 2 },
             { name: '汇报', id: 3 }
           ],
           value: 0
@@ -788,10 +788,10 @@ export default {
 
     setOptions() {
       this.fromList = [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('toptable.thisweek'), val: 'week' },
-        { text: this.$t('toptable.thismonth'), val: 'month' },
-        { text: this.$t('toptable.lastmonth'), val: 'lastmonth' }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('toptable.thisweek'), val: 'week' },
+        { text: this.$('toptable.thismonth'), val: 'month' },
+        { text: this.$('toptable.lastmonth'), val: 'lastmonth' }
       ]
     },
 

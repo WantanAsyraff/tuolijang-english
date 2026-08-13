@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <el-table
@@ -17,30 +18,30 @@
         </template>
       </el-table-column>
       <el-table-column v-if="headerShow" fixed="left" type="selection" width="55"></el-table-column>
-      <el-table-column fixed="left" :label="$t('ui.programProgramTaskTableDataTaskNumber')" min-width="120" prop="ident" type="">
+      <el-table-column fixed="left" :label="$('ui.programProgramTaskTableDataTaskNumber')" min-width="120" prop="ident" type="">
         <template #default="{ row }" #header>
-          <span v-if="!headerShow">{{ $t("ui.programProgramTaskTableDataTaskNumber") }}</span>
+          <span v-if="!headerShow">{{ $("ui.programProgramTaskTableDataTaskNumber") }}</span>
         </template>
         <template #default="{ row }">
           <span
             :data-clipboard-text="identAddress(row)"
             class="ident copy pointer"
-            :title="$t('ui.programProgramTaskEditTaskClickToCopyTheWorkItemLink')"
+            :title="$('ui.programProgramTaskEditTaskClickToCopyTheWorkItemLink')"
             @click="copy"
             >#{{ row.ident }}</span
           >
         </template>
       </el-table-column>
-      <el-table-column fixed="left" :label="$t('ui.programProgramTaskTableDataTaskName')" min-width="320" prop="name">
+      <el-table-column fixed="left" :label="$('ui.programProgramTaskTableDataTaskName')" min-width="320" prop="name">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.programProgramTaskTableDataTaskName") }}</span>
+          <span v-if="!headerShow">{{ $("ui.programProgramTaskTableDataTaskName") }}</span>
         </template>
         <template #default="{ row }">
           <!-- 新建 -->
           <div v-if="row.add">
             <el-input
               v-model="addName"
-              :placeholder="$t('ui.programProgramTaskTableDataEnterAVersionNamePressEnterToSave')"
+              :placeholder="$('ui.programProgramTaskTableDataEnterAVersionNamePressEnterToSave')"
               style="width: 260px"
               @blur="handleEnter(row, 0)"
               @keyup.native.enter="handleEnter(row, 1)"
@@ -72,7 +73,7 @@
               <el-tooltip
                 v-if="iconVisible[row.$index] && row.level !== 4"
                 class="item"
-                :content="$t('ui.programProgramTaskTableDataNewChildWorkItem')"
+                :content="$('ui.programProgramTaskTableDataNewChildWorkItem')"
                 effect="dark"
                 placement="top"
               >
@@ -81,7 +82,7 @@
               <el-tooltip
                 v-if="iconVisible[row.$index] && row.operate"
                 class="item"
-                :content="$t('ui.formCommonOaLogEdit')"
+                :content="$('ui.formCommonOaLogEdit')"
                 effect="dark"
                 placement="top"
               >
@@ -91,18 +92,18 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.developConditionDialogPriority')" min-width="100" prop="priority">
+      <el-table-column :label="$('ui.developConditionDialogPriority')" min-width="100" prop="priority">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.developConditionDialogPriority") }}</span>
+          <span v-if="!headerShow">{{ $("ui.developConditionDialogPriority") }}</span>
         </template>
         <template #default="{ row }">
           <el-dropdown placement="bottom" trigger="click" @command="putProgramTask('priority', $event, row.id)">
             <span class="el-dropdown-link pointer">
-              <el-tag v-if="row.priority === 1" effect="dark" size="mini" type="danger">{{ $t("ui.programProgramTaskTableDataUrgent") }}</el-tag>
-              <el-tag v-else-if="row.priority === 2" effect="dark" size="mini" type="warning">{{ $t("ui.programProgramTaskTableDataHeight") }}</el-tag>
-              <el-tag v-else-if="row.priority === 3" effect="dark" size="mini">{{ $t("ui.programProgramTaskTableDataCenter") }}</el-tag>
-              <el-tag v-else-if="row.priority === 4" effect="dark" size="mini" type="success">{{ $t("ui.programProgramTaskTableDataLow") }}</el-tag>
-              <el-tag v-else effect="dark" size="mini" type="info">{{ $t("ui.programProgramTaskTableDataNoPriority") }}</el-tag>
+              <el-tag v-if="row.priority === 1" effect="dark" size="mini" type="danger">{{ $("ui.programProgramTaskTableDataUrgent") }}</el-tag>
+              <el-tag v-else-if="row.priority === 2" effect="dark" size="mini" type="warning">{{ $("ui.programProgramTaskTableDataHeight") }}</el-tag>
+              <el-tag v-else-if="row.priority === 3" effect="dark" size="mini">{{ $("ui.programProgramTaskTableDataCenter") }}</el-tag>
+              <el-tag v-else-if="row.priority === 4" effect="dark" size="mini" type="success">{{ $("ui.programProgramTaskTableDataLow") }}</el-tag>
+              <el-tag v-else effect="dark" size="mini" type="info">{{ $("ui.programProgramTaskTableDataNoPriority") }}</el-tag>
             </span>
             <el-dropdown-menu v-if="row.operate" slot="dropdown">
               <div class="fixed-height">
@@ -133,18 +134,18 @@
           </el-dropdown>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.customerSetupDictionaryIndexStatus')" min-width="80" prop="status">
+      <el-table-column :label="$('ui.customerSetupDictionaryIndexStatus')" min-width="80" prop="status">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.customerSetupDictionaryIndexStatus") }}</span>
+          <span v-if="!headerShow">{{ $("ui.customerSetupDictionaryIndexStatus") }}</span>
         </template>
         <template #default="{ row }">
           <el-dropdown placement="bottom" trigger="click" @command="putProgramTask('status', $event, row.id)">
             <span class="el-dropdown-link pointer">
-              <el-tag v-if="row.status === 0" effect="plain" size="mini" type="warning">{{ $t("ui.programProgramTaskTableDataUnprocessed") }}</el-tag>
-              <el-tag v-else-if="row.status === 1" effect="plain" size="mini">{{ $t("ui.programProgramListIndexInProgress") }}</el-tag>
-              <el-tag v-if="row.status === 2" effect="plain" size="mini" type="info">{{ $t("ui.programProgramTaskTableDataResolved") }}</el-tag>
-              <el-tag v-if="row.status === 3" effect="plain" size="mini" type="success">{{ $t("ui.programProgramTaskTableDataAccepted") }}</el-tag>
-              <el-tag v-if="row.status === 4" effect="plain" size="mini" type="danger">{{ $t("ui.userExamineExamineRejected") }}</el-tag>
+              <el-tag v-if="row.status === 0" effect="plain" size="mini" type="warning">{{ $("ui.programProgramTaskTableDataUnprocessed") }}</el-tag>
+              <el-tag v-else-if="row.status === 1" effect="plain" size="mini">{{ $("ui.programProgramListIndexInProgress") }}</el-tag>
+              <el-tag v-if="row.status === 2" effect="plain" size="mini" type="info">{{ $("ui.programProgramTaskTableDataResolved") }}</el-tag>
+              <el-tag v-if="row.status === 3" effect="plain" size="mini" type="success">{{ $("ui.programProgramTaskTableDataAccepted") }}</el-tag>
+              <el-tag v-if="row.status === 4" effect="plain" size="mini" type="danger">{{ $("ui.userExamineExamineRejected") }}</el-tag>
             </span>
             <el-dropdown-menu v-if="row.operate" slot="dropdown">
               <div class="fixed-height">
@@ -171,9 +172,9 @@
           </el-dropdown>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.developModuleTreeOwner')" min-width="150" prop="admins">
+      <el-table-column :label="$('ui.developModuleTreeOwner')" min-width="150" prop="admins">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.developModuleTreeOwner") }}</span>
+          <span v-if="!headerShow">{{ $("ui.developModuleTreeOwner") }}</span>
         </template>
         <template #default="{ row, index }">
           <div v-if="!adminsVisible[index]" class="pointer" @click="showAdmins(row, index)">
@@ -187,7 +188,7 @@
           <el-select
             v-else
             v-model="adminsUid"
-            :placeholder="$t('ui.developModuleTreeOwner')"
+            :placeholder="$('ui.developModuleTreeOwner')"
             size="small"
             @change="chooseAdmins(row, row.$index)"
             @click.native="changeAdmins(row.program_id, row.$index)"
@@ -196,9 +197,9 @@
           </el-select>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.programProgramTaskTableDataCollaborators')" min-width="180" prop="members">
+      <el-table-column :label="$('ui.programProgramTaskTableDataCollaborators')" min-width="180" prop="members">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.programProgramTaskTableDataCollaborators") }}</span>
+          <span v-if="!headerShow">{{ $("ui.programProgramTaskTableDataCollaborators") }}</span>
         </template>
         <template #default="{ row, index }">
           <el-tooltip v-if="!membersVisible[row.$index]" placement="top">
@@ -225,7 +226,7 @@
             collapse-tags
             filterable
             multiple
-            :placeholder="$t('ui.programProgramTaskAddTaskAssignCollaborators')"
+            :placeholder="$('ui.programProgramTaskAddTaskAssignCollaborators')"
             size="small"
             @change="changeMembers(row, index)"
           >
@@ -234,9 +235,9 @@
           </el-select>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.programProgramTaskTableDataRelatedProject')" min-width="180" prop="program">
+      <el-table-column :label="$('ui.programProgramTaskTableDataRelatedProject')" min-width="180" prop="program">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.programProgramTaskTableDataRelatedProject") }}</span>
+          <span v-if="!headerShow">{{ $("ui.programProgramTaskTableDataRelatedProject") }}</span>
         </template>
         <template #default="{ row }">
           <el-dropdown placement="bottom" trigger="click" @command="putProgramTask('program_id', $event, row.id)">
@@ -256,7 +257,7 @@
                     <span
                       v-if="item.status == 1 || item.status == 2"
                       :class="item.status == 1 ? 'program-stop' : 'program-close'"
-                      >{{ item.status == 1 ? $t('ui.programProgramTaskAddTaskPaused') : $t('ui.programProgramTaskAddTaskClosed') }}</span
+                      >{{ item.status == 1 ? $('ui.programProgramTaskAddTaskPaused') : $('ui.programProgramTaskAddTaskClosed') }}</span
                     >
                   </div>
                 </el-dropdown-item>
@@ -265,16 +266,16 @@
           </el-dropdown>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.programProgramTaskTableDataRelatedVersion')" min-width="100" prop="version">
+      <el-table-column :label="$('ui.programProgramTaskTableDataRelatedVersion')" min-width="100" prop="version">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.programProgramTaskTableDataRelatedVersion") }}</span>
+          <span v-if="!headerShow">{{ $("ui.programProgramTaskTableDataRelatedVersion") }}</span>
         </template>
         <template #default="{ row, index }">
           <el-select
             v-if="showVersion === row.id"
             :ref="'showVersion' + row.id"
             v-model="row.version.id"
-            :placeholder="$t('ui.programProgramTaskAddTaskPleaseSelectRelatedVersion')"
+            :placeholder="$('ui.programProgramTaskAddTaskPleaseSelectRelatedVersion')"
             size="small"
             @change="changeParam('version_id', row)"
             @click.native="changeVersion(row.program_id, index)"
@@ -286,9 +287,9 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="$t('ui.programProgramTaskTableDataPlannedStart')" min-width="100" prop="plan_start">
+      <el-table-column align="center" :label="$('ui.programProgramTaskTableDataPlannedStart')" min-width="100" prop="plan_start">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.programProgramTaskTableDataPlannedStart") }}</span>
+          <span v-if="!headerShow">{{ $("ui.programProgramTaskTableDataPlannedStart") }}</span>
         </template>
         <template #default="{ row }">
           <el-date-picker
@@ -298,7 +299,7 @@
             :format="'yyyy-MM-dd'"
             :value-format="'yyyy-MM-dd'"
             clearable
-            :placeholder="$t('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
+            :placeholder="$('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
             size="small"
             type="date"
             @blur="clearParamId('showStartTime')"
@@ -309,9 +310,9 @@
           </span>
         </template>
       </el-table-column>
-      <el-table-column align="center" :label="$t('ui.programProgramTaskTableDataPlannedEnd')" min-width="100" prop="plan_end">
+      <el-table-column align="center" :label="$('ui.programProgramTaskTableDataPlannedEnd')" min-width="100" prop="plan_end">
         <template #default="{ row }" #header>
-          <span v-if="!headerShow">{{ $t("ui.programProgramTaskTableDataPlannedEnd") }}</span>
+          <span v-if="!headerShow">{{ $("ui.programProgramTaskTableDataPlannedEnd") }}</span>
         </template>
         <template #default="{ row }">
           <el-date-picker
@@ -320,7 +321,7 @@
             :format="'yyyy-MM-dd'"
             :value-format="'yyyy-MM-dd'"
             clearable
-            :placeholder="$t('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
+            :placeholder="$('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
             size="small"
             type="date"
             @blur="clearParamId('showEndTime')"
@@ -331,25 +332,25 @@
           </span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.hrAssessCheckIndexCreator')" min-width="80" prop="creator">
+      <el-table-column :label="$('ui.hrAssessCheckIndexCreator')" min-width="80" prop="creator">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.hrAssessCheckIndexCreator") }}</span>
+          <span v-if="!headerShow">{{ $("ui.hrAssessCheckIndexCreator") }}</span>
         </template>
         <template #default="{ row }">
           <span v-for="item in row.creator" :key="item.id">{{ item.name }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="160" prop="plan_start">
+      <el-table-column :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="160" prop="plan_start">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.invoiceInvoiceDetailsCreatedTime") }}</span>
+          <span v-if="!headerShow">{{ $("ui.invoiceInvoiceDetailsCreatedTime") }}</span>
         </template>
         <template #default="{ row }">
           <span>{{ row.created_at || '- -' }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="160" prop="plan_end">
+      <el-table-column :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="160" prop="plan_end">
         <template #header>
-          <span v-if="!headerShow">{{ $t("ui.hrToolHaishAssessmentHistoryListUpdatedTime") }}</span>
+          <span v-if="!headerShow">{{ $("ui.hrToolHaishAssessmentHistoryListUpdatedTime") }}</span>
         </template>
         <template #default="{ row }">
           <span>{{ row.updated_at || '- -' }}</span>
@@ -359,7 +360,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Sortable from 'sortablejs'
 import manageRange from '@/components/form-common/select-manageRange'
 import {
@@ -407,45 +407,45 @@ export default {
         priorityOptions: [
           {
             value: 1,
-            label: i18n.t('ui.programProgramTaskTableDataUrgent')
+            label: $('ui.programProgramTaskTableDataUrgent')
           },
           {
             value: 2,
-            label: i18n.t('ui.programProgramTaskTableDataHeight')
+            label: $('ui.programProgramTaskTableDataHeight')
           },
           {
             value: 3,
-            label: i18n.t('ui.programProgramTaskTableDataCenter')
+            label: $('ui.programProgramTaskTableDataCenter')
           },
           {
             value: 4,
-            label: i18n.t('ui.programProgramTaskTableDataLow')
+            label: $('ui.programProgramTaskTableDataLow')
           },
           {
             value: 0,
-            label: i18n.t('ui.programProgramTaskTableDataNoPriority')
+            label: $('ui.programProgramTaskTableDataNoPriority')
           }
         ],
         statusOptions: [
           {
             value: 0,
-            label: i18n.t('ui.programProgramTaskTableDataUnprocessed')
+            label: $('ui.programProgramTaskTableDataUnprocessed')
           },
           {
             value: 1,
-            label: i18n.t('customer.execution')
+            label: $('customer.execution')
           },
           {
             value: 2,
-            label: i18n.t('ui.programProgramTaskTableDataResolved')
+            label: $('ui.programProgramTaskTableDataResolved')
           },
           {
             value: 3,
-            label: i18n.t('ui.programProgramTaskTableDataAccepted')
+            label: $('ui.programProgramTaskTableDataAccepted')
           },
           {
             value: 4,
-            label: i18n.t('ui.userExamineExamineRejected')
+            label: $('ui.userExamineExamineRejected')
           }
         ]
       },
@@ -473,55 +473,55 @@ export default {
       typesOptions: [
         {
           value: 0,
-          label: i18n.t('legacyScript.allTasks')
+          label: $('legacyScript.allTasks')
         },
         {
           value: 1,
-          label: i18n.t('legacyScript.ownedByMe')
+          label: $('legacyScript.ownedByMe')
         },
         {
           value: 2,
-          label: i18n.t('legacyScript.myParticipations')
+          label: $('legacyScript.myParticipations')
         },
         {
           value: 3,
-          label: i18n.t('legacyScript.createdByMe')
+          label: $('legacyScript.createdByMe')
         }
       ],
       statusOptions: [
         {
           value: 0,
-          label: i18n.t('ui.programProgramTaskTableDataUnprocessed')
+          label: $('ui.programProgramTaskTableDataUnprocessed')
         },
         {
           value: 1,
-          label: i18n.t('customer.execution')
+          label: $('customer.execution')
         },
         {
           value: 2,
-          label: i18n.t('ui.programProgramTaskTableDataResolved')
+          label: $('ui.programProgramTaskTableDataResolved')
         },
         {
           value: 3,
-          label: i18n.t('ui.programProgramTaskTableDataAccepted')
+          label: $('ui.programProgramTaskTableDataAccepted')
         },
         {
           value: 4,
-          label: i18n.t('ui.userExamineExamineRejected')
+          label: $('ui.userExamineExamineRejected')
         }
       ],
       timeOptions: [
         {
           value: 'plan_start',
-          label: i18n.t('ui.programProgramTaskTableDataPlannedStart')
+          label: $('ui.programProgramTaskTableDataPlannedStart')
         },
         {
           value: 'plan_end',
-          label: i18n.t('ui.programProgramTaskTableDataPlannedEnd')
+          label: $('ui.programProgramTaskTableDataPlannedEnd')
         },
         {
           value: 'created_at',
-          label: i18n.t('customer.creationtime')
+          label: $('customer.creationtime')
         }
       ],
       type: 0,
@@ -655,7 +655,7 @@ export default {
       if (this.versionList.length) {
         this.$set(this.versionVisible, index, true)
       } else if (type == 1) {
-        this.$message(i18n.t('legacyScript.pleaseSetTheVersionInTheTaskDetails'))
+        this.$message($('legacyScript.pleaseSetTheVersionInTheTaskDetails'))
       }
     },
     chooseVersion(row, index) {
@@ -717,7 +717,7 @@ export default {
         this.activeIds = []
         this.childrenNewPid = 0
         this.childrenTotal = 0
-        this.$message.warning(i18n.t('legacyScript.crossLevelDraggingIsNotAllowed'))
+        this.$message.warning($('legacyScript.crossLevelDraggingIsNotAllowed'))
         return false
       }
       const filteredRows = this.activeRows.filter((row) => row.level === this.childrenLevel)

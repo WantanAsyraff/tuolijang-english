@@ -1,4 +1,5 @@
-﻿<!-- 财务-财务科目-收入/支出分类页面 -->
+import { $ } from '@/lang'
+<!-- 财务-财务科目-收入/支出分类页面 -->
 <template>
   <div class="divBox">
     <el-card :body-style="{ padding: '20px 20px 0 20px' }" class="employees-card-bottom card-box">
@@ -7,8 +8,8 @@
         :isViewSearch="false"
         :search="search"
         :sortSearch="false"
-        :title="$route.meta.title"
-:btn-text="$t('ui.fdSetupCateIndexAddCategory')"
+      :title="$route.meta.title"
+      :btnText="$('ui.fdSetupCateIndexAddCategory')"
         @addDataFn="addFinance"
         @confirmData="confirmData"
       ></oaFromBox>
@@ -21,21 +22,21 @@
           :tree-props="{ children: 'children' }"
           style="width: 100%"
         >
-          <el-table-column :label="$t('finance.accounttabtype')" min-width="180" prop="name" />
+          <el-table-column :label="$('finance.accounttabtype')" min-width="180" prop="name" />
 
-          <el-table-column :label="$t('finance.accounttabtitle')" min-width="100" prop="types">
+          <el-table-column :label="$('finance.accounttabtitle')" min-width="100" prop="types">
             <template slot-scope="scope">
-              <el-tag v-if="scope.row.types === 0" plain size="small" type="warning">{{ $t('finance.pay') }}</el-tag>
-              <el-tag v-else plain size="small" type="success">{{ $t('finance.income') }}</el-tag>
+              <el-tag v-if="scope.row.types === 0" plain size="small" type="warning">{{ $('finance.pay') }}</el-tag>
+              <el-tag v-else plain size="small" type="success">{{ $('finance.income') }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('toptable.sort')" min-width="100" prop="sort" />
+          <el-table-column :label="$('toptable.sort')" min-width="100" prop="sort" />
 
-          <el-table-column :label="$t('public.operation')" fixed="right" prop="address" width="230">
+          <el-table-column :label="$('public.operation')" fixed="right" prop="address" width="230">
             <template slot-scope="scope">
-              <el-button type="text" @click="handleAdd(scope.row)"> {{ $t("ui.fdSetupCateIndexAddSubcategory") }} </el-button>
+              <el-button type="text" @click="handleAdd(scope.row)"> {{ $("ui.fdSetupCateIndexAddSubcategory") }} </el-button>
               <el-button v-hasPermi="['fd:setup:cate:income:edit']" type="text" @click="handleEdit(scope.row)">
-                {{ $t('public.edit') }}
+                {{ $('public.edit') }}
               </el-button>
               <el-button
                 v-if="!scope.row.children"
@@ -43,7 +44,7 @@
                 type="text"
                 @click="handleDelete(scope.row, scope.$index)"
               >
-                {{ $t('public.delete') }}
+                {{ $('public.delete') }}
               </el-button>
             </template>
           </el-table-column>
@@ -62,7 +63,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import dialogForm from './components/index'
 import oaFromBox from '@/components/common/oaFromBox'
 import { billCateApi, billCateCreateApi, billCateEditApi, billCateDeleteApi } from '@/api/enterprise'
@@ -88,7 +88,7 @@ export default {
       drawer: false,
       input: '',
       formBoxConfig: {
-        title: this.$t('hr.addposition'),
+        title: this.$('hr.addposition'),
         width: '500px',
         method: 'post',
         action: 'jobs'
@@ -110,15 +110,15 @@ export default {
       treeData: null,
       companyData: null,
       typeOptions: [
-        { label: this.$t('finance.all'), value: '' },
-        { label: this.$t('finance.income'), value: '1' },
-        { label: this.$t('finance.pay'), value: '0' }
+        { label: this.$('finance.all'), value: '' },
+        { label: this.$('finance.income'), value: '1' },
+        { label: this.$('finance.pay'), value: '0' }
       ],
       search: [
         {
           form_value: 'input',
           field_name_en: 'name',
-          field_name: this,$ts('账目分类')
+          field_name: '账目分类'
         }
       ]
     }
@@ -147,7 +147,7 @@ export default {
     handleAdd(row) {
       billCateCreateApi(row.id).then((res) => {
         this.formBoxConfig = {
-          title: i18n.t('calendar.addtype'),
+          title: $('calendar.addtype'),
           width: '500px',
           method: res.data.method,
           type: 1,
@@ -172,7 +172,7 @@ export default {
     async addFinance() {
       billCateCreateApi(0).then((res) => {
         this.formBoxConfig = {
-          title: this.$t('finance.addpositionType'),
+          title: this.$('finance.addpositionType'),
           width: '500px',
           type: 1,
           method: res.data.method,
@@ -205,7 +205,7 @@ export default {
     },
     // 删除
     async handleDelete(item, index) {
-      await this.$modalSure(this.$t('finance.message3'))
+      await this.$modalSure(this.$('finance.message3'))
       await billCateDeleteApi(item.id)
       this.getTableData()
     },

@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 const label = '提示';
 const name = 'el-alert';
 
@@ -10,7 +10,7 @@ export default {
     return {
       type: name,
       props: {
-        title: i18n.t('public.tips'),
+        title: $('public.tips'),
         description: 'form-create',
         type: 'success',
         effect: 'dark',
@@ -20,11 +20,11 @@ export default {
   },
   props() {
     return [
-      { type: 'input', field: 'title', title: i18n.t('ui.settingSystemQuickIndexTitle') },
+      { type: 'input', field: 'title', title: $('ui.settingSystemQuickIndexTitle') },
       {
         type: 'select',
         field: 'type',
-        title: i18n.t('legacyScript.theme'),
+        title: $('legacyScript.theme'),
         options: [
           { label: 'success', value: 'success' },
           { label: 'warning', value: 'warning' },
@@ -35,24 +35,24 @@ export default {
           { label: 'error', value: 'error' },
         ],
       },
-      { type: 'input', field: 'description', title: i18n.t('legacyScript.helperText') },
+      { type: 'input', field: 'description', title: $('legacyScript.helperText') },
       {
         type: 'switch',
         field: 'closable',
-        title: i18n.t('legacyScript.isClosable'),
+        title: $('legacyScript.isClosable'),
         value: true,
       },
-      { type: 'switch', field: 'center', title: i18n.t('legacyScript.isTextCentered'), value: true },
+      { type: 'switch', field: 'center', title: $('legacyScript.isTextCentered'), value: true },
       {
         type: 'input',
         field: 'closeText',
-        title: i18n.t('legacyScript.customCloseButtonText'),
+        title: $('legacyScript.customCloseButtonText'),
       },
-      { type: 'switch', field: 'showIcon', title: i18n.t('legacyScript.showIcon') },
+      { type: 'switch', field: 'showIcon', title: $('legacyScript.showIcon') },
       {
         type: 'select',
         field: 'effect',
-        title: i18n.t('legacyScript.selectAProvidedTheme'),
+        title: $('legacyScript.selectAProvidedTheme'),
         options: [
           { label: 'light', value: 'light' },
           { label: 'dark', value: 'dark' },

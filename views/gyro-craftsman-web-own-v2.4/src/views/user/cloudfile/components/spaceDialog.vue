@@ -4,11 +4,11 @@
   <el-dialog :before-close="handleClose" :title="fromData.title" :visible.sync="dialogVisible" width="680px">
     <div class="body">
       <div class="add-button">
-        <span>{{ $t("ui.userCloudfileSpaceDialogSpaceName") }}</span>
+        <span>{{ $("ui.userCloudfileSpaceDialogSpaceName") }}</span>
         <el-input
           v-model="name"
           :disabled="fromData.edit === 2 && !spaceButton"
-          :placeholder="$t('file.placeholder03')"
+          :placeholder="$('file.placeholder03')"
           class="search-input"
           maxlength="20"
           size="small"
@@ -26,14 +26,14 @@
                     type="text"
                     @click.stop="openDepartment(1)"
                   >
-                    {{ $t("ui.userCloudfileSpaceDialogAddMember") }}</el-button
+                    {{ $("ui.userCloudfileSpaceDialogAddMember") }}</el-button
                   >
                 </template>
               </select-member>
             </p>
             <p>
               <el-checkbox v-model="lookCheck" :disabled="true" @change="handleChange(1)" />
-              {{ $t('public.check') }}
+              {{ $('public.check') }}
             </p>
 
             <p>
@@ -41,7 +41,7 @@
                 v-model="createCheck"
                 :disabled="userList.length <= 0 || (fromData.edit === 2 && !spaceButton)"
                 @change="handleChange(2)"
-              />{{ $t('public.establish') }}
+              />{{ $('public.establish') }}
             </p>
             <p>
               <el-checkbox
@@ -49,7 +49,7 @@
                 :disabled="userList.length <= 0 || (fromData.edit === 2 && !spaceButton)"
                 @change="handleChange(3)"
               />
-              {{ $t('public.edit') }}
+              {{ $('public.edit') }}
             </p>
             <p>
               <el-checkbox
@@ -57,7 +57,7 @@
                 :disabled="userList.length <= 0 || (fromData.edit === 2 && !spaceButton)"
                 @change="handleChange(4)"
               />
-              {{ $t('public.download') }}
+              {{ $('public.download') }}
             </p>
             <p>
               <el-checkbox
@@ -65,10 +65,10 @@
                 :disabled="userList.length <= 0 || (fromData.edit === 2 && !spaceButton)"
                 @change="handleChange(5)"
               />
-              {{ $t('public.delete') }}
+              {{ $('public.delete') }}
             </p>
             <p>
-              {{ $t('public.operation') }}
+              {{ $('public.operation') }}
             </p>
           </li>
         </ul>
@@ -140,14 +140,14 @@
                     @getSelectList="getSelectList($event, 2)"
                   >
                     <template v-slot:custom>
-                      <el-button type="text" @click="openDepartment(2)">{{ $t("ui.userCloudfileSpaceDialogTransferAdministrator") }}</el-button>
+                      <el-button type="text" @click="openDepartment(2)">{{ $("ui.userCloudfileSpaceDialogTransferAdministrator") }}</el-button>
                     </template>
                   </select-member>
-                  <span v-if="!spaceButton" type="text">{{ $t("ui.userCloudfileSpaceDialogAdministrators") }}</span>
+                  <span v-if="!spaceButton" type="text">{{ $("ui.userCloudfileSpaceDialogAdministrators") }}</span>
                 </template>
                 <template v-else>
                   <el-button v-if="spaceButton" type="text" @click="deleteShare(index)">{{
-                    $t('public.delete')
+                    $('public.delete')
                   }}</el-button>
                 </template>
               </p>
@@ -157,8 +157,8 @@
       </div>
     </div>
     <div slot="footer" class="dialog-footer text-right">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" type="primary" @click="handleAdd">{{ $t('public.ok') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" type="primary" @click="handleAdd">{{ $('public.ok') }}</el-button>
     </div>
   </el-dialog>
 </div>
@@ -263,7 +263,7 @@ export default {
     },
     handleAdd() {
       if (this.name == '') {
-        this.$message.error(this.$t('file.placeholder03'))
+        this.$message.error(this.$('file.placeholder03'))
       } else {
         var list = []
         var data = {}

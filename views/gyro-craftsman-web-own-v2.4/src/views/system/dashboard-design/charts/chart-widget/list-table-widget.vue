@@ -31,8 +31,8 @@
       </el-table>
     </div>
     <div class="no-data" v-else>
-      {{ $t("ui.scEchartsChartWidgetUseThe") }}
-      <span class="lh">{{ $t("ui.systemDashboardDesignChartsChartWidgetListTableWidgetColumnDisplaySettings") }}</span> {{ $t("ui.systemDashboardDesignChartsChartWidgetListTableWidgetFieldPanelToAddData") }}
+      {{ $("ui.scEchartsChartWidgetUseThe") }}
+      <span class="lh">{{ $("ui.systemDashboardDesignChartsChartWidgetListTableWidgetColumnDisplaySettings") }}</span> {{ $("ui.systemDashboardDesignChartsChartWidgetListTableWidgetFieldPanelToAddData") }}
     </div>
   </div>
 </template>

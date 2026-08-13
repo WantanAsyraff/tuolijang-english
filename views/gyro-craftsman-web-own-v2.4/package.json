@@ -14,8 +14,10 @@
     "prettier:comment": "自动格式化当前目录下的所有文件",
     "prettier": "prettier --write .",
     "postinstall": "patch-package",
-    "i18n:audit": "node ../shared-i18n/localization-audit.cjs web",
-    "i18n:test": "node --test ../shared-i18n/localization.test.mjs"
+    "i18n:generate": "node ../shared-i18n/cli.cjs generate --app web",
+    "i18n:check": "node ../shared-i18n/cli.cjs check --app web",
+    "i18n:audit": "node ../shared-i18n/cli.cjs audit --app web",
+    "i18n:test": "node ../shared-i18n/cli.cjs test --app web"
   },
   "bin": "npm run postinstall",
   "lint-staged": {
@@ -90,7 +92,6 @@
     "vue": "^2.7.16",
     "vue-count-to": "1.0.13",
     "vue-demi": "^0.14.6",
-    "vue-i18n": "^8.28.2",
     "vue-json-viewer": "^2.2.22",
     "vue-lazyload": "^1.3.5",
     "vue-router": "^3.6.5",

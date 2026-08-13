@@ -2,7 +2,7 @@
   <div>
     <!-- 选择供应商 -->
     <el-dialog
-      :title='$ts("选择供应商")'
+      :title='$("ui.chatModelDialogSelectProvider")'
       :visible.sync="show"
       width="650px"
       :before-close="handleClose"

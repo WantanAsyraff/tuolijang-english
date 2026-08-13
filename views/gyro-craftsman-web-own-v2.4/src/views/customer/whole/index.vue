@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 客户-订单收支 -->
 <template>
   <div class="divBox">
@@ -9,9 +10,9 @@
         :search="search"
         :sortSearch="false"
         :timeVal="timeValue"
-        :title="$t('customer.orderIncomeExpenses')"
+        :title="$('customer.orderIncomeExpenses')"
         :total="total"
-        :btnText="$t('customer.export')"
+        :btnText="$('customer.export')"
         @addDataFn="getExportData"
         @confirmData="confirmData"
       ></oaFromBox>
@@ -29,29 +30,29 @@
                 style="width: 100%"
                 @sort-change="sortChange"
               >
-                <el-table-column :label="$t('customer.paymentTime')" min-width="150" prop="date" sortable />
-                <el-table-column :label="$t('customer.recordType')" min-width="90" prop="bill_types">
+                <el-table-column :label="$('customer.paymentTime')" min-width="150" prop="date" sortable />
+                <el-table-column :label="$('customer.recordType')" min-width="90" prop="bill_types">
                   <template v-slot:default="scope">
                     <el-tag :type="scope.row.types === 2 ? 'warning' : 'success'" class="bill-types-tag">
-                      {{ scope.row.types === 2 ? $t('customer.expense') : $t('customer.income') }}
+                      {{ scope.row.types === 2 ? $('customer.expense') : $('customer.income') }}
                     </el-tag>
                   </template>
                 </el-table-column>
 
-                <el-table-column :label="$t('customer.paymentAmountYuan')" min-width="100" prop="num" />
-                <el-table-column :label="$t('customer.paymentMethod')" min-width="100" prop="pay_type">
+                <el-table-column :label="$('customer.paymentAmountYuan')" min-width="100" prop="num" />
+                <el-table-column :label="$('customer.paymentMethod')" min-width="100" prop="pay_type">
                   <template v-slot:default="scope">
                     <span>{{ scope.row.pay_type !== '' ? scope.row.pay_type : '--' }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column :label="$t('customer.customerName')" min-width="120" prop="client.name">
+                <el-table-column :label="$('customer.customerName')" min-width="120" prop="client.name">
                   <template v-slot:default="scope">
                     <span class="pointer default-color" @click="clientCheck(scope.row)">
                       {{ scope.row.client ? scope.row.client.customer_name : '--' }}
                     </span>
                   </template>
                 </el-table-column>
-                <el-table-column :label="$t('customer.orderNumber')" min-width="120" prop="contract.contract_no">
+                <el-table-column :label="$('customer.orderNumber')" min-width="120" prop="contract.contract_no">
                   <template v-slot:default="scope">
                     <span class="pointer default-color" @click="treatyCheck(scope.row)">
                       {{ scope.row.contract ? scope.row.contract.contract_no : '--' }}
@@ -59,15 +60,15 @@
                   </template>
                 </el-table-column>
 
-                <el-table-column :label="$t('customer.approvalStatus')" min-width="140" prop="status">
+                <el-table-column :label="$('customer.approvalStatus')" min-width="140" prop="status">
                   <template v-slot:default="scope">
-                    <el-tag v-if="scope.row.status === 1" class="status-tag" type="success">{{ $t('customer.approved') }}</el-tag>
-                    <el-tag v-else-if="scope.row.status === -1" class="status-tag" type="info">{{ $t('customer.revoked') }}</el-tag>
-                    <el-tag v-else-if="scope.row.status === 0" class="status-tag" type="warning">{{ $t('customer.pendingApproval') }}</el-tag>
-                    <el-tag v-else class="status-tag" type="danger">{{ $t('customer.rejected') }}</el-tag>
+                    <el-tag v-if="scope.row.status === 1" class="status-tag" type="success">{{ $('customer.approved') }}</el-tag>
+                    <el-tag v-else-if="scope.row.status === -1" class="status-tag" type="info">{{ $('customer.revoked') }}</el-tag>
+                    <el-tag v-else-if="scope.row.status === 0" class="status-tag" type="warning">{{ $('customer.pendingApproval') }}</el-tag>
+                    <el-tag v-else class="status-tag" type="danger">{{ $('customer.rejected') }}</el-tag>
                   </template>
                 </el-table-column>
-                <el-table-column :label="$t('customer.salesperson')" min-width="140">
+                <el-table-column :label="$('customer.salesperson')" min-width="140">
                   <template slot-scope="scope">
                     <div class="flex items-center">
                       <img
@@ -79,11 +80,11 @@
                     </div>
                   </template>
                 </el-table-column>
-                <el-table-column :label="$t('customer.applicationTime')" min-width="140" prop="created_at"> </el-table-column>
+                <el-table-column :label="$('customer.applicationTime')" min-width="140" prop="created_at"> </el-table-column>
 
-                <el-table-column :label="$t('public.operation')" fixed="right" prop="address" width="100">
+                <el-table-column :label="$('public.operation')" fixed="right" prop="address" width="100">
                   <template v-slot:default="scope">
-                    <el-button type="text" @click="handleCheck(scope.row)">{{ $t('customer.view') }}</el-button>
+                    <el-button type="text" @click="handleCheck(scope.row)">{{ $('customer.view') }}</el-button>
                   </template>
                 </el-table-column>
               </el-table>
@@ -106,16 +107,16 @@
       <div class="footer-expend">
         <div class="expend">
           <span class="mr14"
-            >{{ $t('customer.totalReceivedAmountYuan') }}: <span class="income">{{ census.income || '0' }} </span>
+            >{{ $('customer.totalReceivedAmountYuan') }}: <span class="income">{{ census.income || '0' }} </span>
           </span>
 
           <span class="mr14">
-            {{ $t('customer.totalExpenseAmountYuan') }}: <span class="expend-color">{{ census.expend || '0' }} </span>
+            {{ $('customer.totalExpenseAmountYuan') }}: <span class="expend-color">{{ census.expend || '0' }} </span>
           </span>
 
           <span>
-            {{ $t('customer.amountUnderReviewYuan') }}: <span class="income">{{ census.review_income || '0' }} ({{ $t('customer.income') }})</span>
-            <span class="expend-color">{{ census.review_expend || '0' }} ({{ $t('customer.expense') }})</span></span
+            {{ $('customer.amountUnderReviewYuan') }}: <span class="income">{{ census.review_income || '0' }} ({{ $('customer.income') }})</span>
+            <span class="expend-color">{{ census.review_expend || '0' }} ({{ $('customer.expense') }})</span></span
           >
         </div>
       </div>
@@ -131,7 +132,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { clientBillListApi, getbillCate } from '@/api/enterprise'
 
 export default {
@@ -196,60 +196,60 @@ export default {
       clientFromData: {},
       search: [
         {
-          field_name: this.$t('customer.businesstype'),
+          field_name: this.$('customer.businesstype'),
           field_name_en: 'types',
           form_value: 'select',
           data_dict: [
-            { name: this.$t('toptable.all'), id: '' },
-            { name: this.$t('customer.orderPayment'), id: 0 },
-            { name: this.$t('customer.orderRenewal'), id: 1 },
-            { name: this.$t('customer.orderExpense'), id: 2 }
+            { name: this.$('toptable.all'), id: '' },
+            { name: this.$('customer.orderPayment'), id: 0 },
+            { name: this.$('customer.orderRenewal'), id: 1 },
+            { name: this.$('customer.orderExpense'), id: 2 }
           ]
         },
         {
           form_value: 'manage'
         },
         {
-          field_name: this.$t('customer.approvalStatus'),
+          field_name: this.$('customer.approvalStatus'),
           field_name_en: 'status',
           form_value: 'select',
           data_dict: [
             {
               id: '',
-              name: this.$t('toptable.all')
+              name: this.$('toptable.all')
             },
             {
               id: 0,
-              name: this.$t('customer.audit')
+              name: this.$('customer.audit')
             },
             {
               id: 1,
-              name: this.$t('customer.passed')
+              name: this.$('customer.passed')
             },
             {
               id: 2,
-              name: this.$t('customer.fail')
+              name: this.$('customer.fail')
             }
           ]
         },
         {
-          field_name: this.$t('customer.timeType'),
+          field_name: this.$('customer.timeType'),
           field_name_en: 'time_field',
           form_value: 'select',
           data_dict: [
             {
               value: 'date',
-              name: this.$t('customer.paymentDate')
+              name: this.$('customer.paymentDate')
             },
             {
               value: 'time',
-              name: this.$t('customer.applicationDate')
+              name: this.$('customer.applicationDate')
             }
           ]
         },
         {
-          field_name: this.$t('customer.startTime'),
-          field_name_end: this.$t('customer.endTime'),
+          field_name: this.$('customer.startTime'),
+          field_name_end: this.$('customer.endTime'),
           field_name_en: 'time',
           form_value: 'date_picker',
           data_dict: [
@@ -258,7 +258,7 @@ export default {
           ]
         },
         {
-          field_name: this.$t('customer.customerNameOrOrderNumber'),
+          field_name: this.$('customer.customerNameOrOrderNumber'),
           field_name_en: 'name',
           form_value: 'input'
         }
@@ -266,7 +266,7 @@ export default {
       dropdownList: [
         {
           value: 1,
-          label: this.$t('customer.export')
+          label: this.$('customer.export')
         }
       ]
     }
@@ -286,7 +286,7 @@ export default {
       val.cid = val.cid
       if (val) {
         this.clientFromData = {
-          title: this.$t('customer.editcustomer'),
+          title: this.$('customer.editcustomer'),
           width: '1100px',
           data: val,
           types: this.types
@@ -303,7 +303,7 @@ export default {
       item.contract_name = item.contract.contract_name
       item.eid = item.eid
       this.contractFromData = {
-        title: i18n.t('legacyScript.viewOrder'),
+        title: $('legacyScript.viewOrder'),
         width: '1000px',
         data: item,
         isClient: false,
@@ -342,7 +342,7 @@ export default {
     // 导出
     getExportData() {
       this.$refs.oaFromBox.loading = true
-      this.saveName = this.$t('customer.exportPaymentReview') + '_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
+      this.saveName = this.$('customer.exportPaymentReview') + '_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
 
       let where = {
         types: this.where.types,
@@ -357,20 +357,20 @@ export default {
       clientBillListApi(where).then((res) => {
         let data = res.data.list
         let aoaData = [
-          [this.$t('customer.paymentTime'), this.$t('customer.paymentAmountYuan'), this.$t('customer.paymentMethod'), this.$t('customer.remark'), this.$t('customer.businesstype'), this.$t('customer.customerName'), this.$t('customer.orderNumber'), this.$t('customer.orderNumber'), this.$t('customer.salesperson')]
+          [this.$('customer.paymentTime'), this.$('customer.paymentAmountYuan'), this.$('customer.paymentMethod'), this.$('customer.remark'), this.$('customer.businesstype'), this.$('customer.customerName'), this.$('customer.orderNumber'), this.$('customer.orderNumber'), this.$('customer.salesperson')]
         ]
         if (data.length > 0) {
           data.forEach((value) => {
             if (value.types == 0) {
-              value.types = this.$t('customer.paymentEntry')
+              value.types = this.$('customer.paymentEntry')
             } else if (value.types == 1) {
               if (value.renew && value.renew.title) {
-                value.types = this.$t('customer.renewalEntry') + '-' + value.renew.title
+                value.types = this.$('customer.renewalEntry') + '-' + value.renew.title
               } else {
-                value.types = this.$t('customer.renewalEntry')
+                value.types = this.$('customer.renewalEntry')
               }
             }else {
-              value.types = this.$t('customer.expenseEntry')
+              value.types = this.$('customer.expenseEntry')
             }
 
             aoaData.push([

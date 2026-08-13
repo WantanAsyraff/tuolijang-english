@@ -7,25 +7,25 @@
                 <div v-for="(item, index) in optionModel.tabList" :key="index" class="tab-item">
                    <img src="@/assets/images/del.png" alt="" class="del-icon" @click="removeTab(index)"></img>
                   <div class="left">
-                      <span class="iconfont icontuodong iconadd left" :title="$t('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')" />
+                      <span class="iconfont icontuodong iconadd left" :title="$('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')" />
                   </div>
                   <div class="right">
                       <div class="name mb14">
-                 <span style="flex-shrink: 0;">{{ $t("ui.settingSystemQuickIndexTitle") }}</span>
-                    <el-input v-model="item.name" size="small" :placeholder="$t('ui.customerOaFormPleaseEnter')" class="ml10"></el-input>
+                 <span style="flex-shrink: 0;">{{ $("ui.settingSystemQuickIndexTitle") }}</span>
+                    <el-input v-model="item.name" size="small" :placeholder="$('ui.customerOaFormPleaseEnter')" class="ml10"></el-input>
                   </div>
                       <div class="name">
-                    {{ $t("ui.customerSetupDictionaryIndexStatus") }}
+                    {{ $("ui.customerSetupDictionaryIndexStatus") }}
                    <el-switch v-model="item.status" 
-                  class="ml10" :width="80" :active-value="1" :inactive-value="0" :active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"></el-switch>
+                  class="ml10" :width="80" :active-value="1" :inactive-value="0" active-text="开启"
+                inactive-text="关闭"></el-switch>
                   </div>
                   </div>
                 </div>
               </draggable>
   
      <!-- 添加板块按钮 -->
-      <div class="add-btn" @click="addTab"><span class="el-icon-plus"  />{{ $t("ui.systemDashboardDesignChartsPropertyEditorTabEditorAddSection") }}</div>
+      <div class="add-btn" @click="addTab"><span class="el-icon-plus"  />{{ $("ui.systemDashboardDesignChartsPropertyEditorTabEditorAddSection") }}</div>
 </div>
 </template>
 <script>

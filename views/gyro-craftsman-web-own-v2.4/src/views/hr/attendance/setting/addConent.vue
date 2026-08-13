@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 新增考勤设置页面 -->
 <template>
 <div class="divBox">
@@ -20,7 +21,7 @@
         <div class="back-title">
           <i class="el-icon-arrow-left"></i>
           <span @click="backFn">
-            {{ type == 'add' ? $t('ui.hrAttendanceSettingAddConentAddAttendanceGroup') : $t('ui.hrAttendanceSettingAddConentEditAttendanceGroup') }}
+            {{ type == 'add' ? $('ui.hrAttendanceSettingAddConentAddAttendanceGroup') : $('ui.hrAttendanceSettingAddConentEditAttendanceGroup') }}
           </span>
         </div>
       </el-col>
@@ -28,16 +29,16 @@
     <!-- 步骤条 -->
     <div class="step">
       <span :class="activeIndex == 1 ? 'active' : ''" class="public">1</span>
-      <span :class="activeIndex == 1 ? 'activeText' : ''" class="step-text">{{ $t("ui.hrAttendanceSettingAddConentAttendanceInformation") }}</span>
+      <span :class="activeIndex == 1 ? 'activeText' : ''" class="step-text">{{ $("ui.hrAttendanceSettingAddConentAttendanceInformation") }}</span>
       <span class="line-title" />
       <span :class="activeIndex == 2 ? 'active' : ''" class="public">2</span>
-      <span :class="activeIndex == 2 ? 'activeText' : ''" class="step-text">{{ $t("ui.hrAttendanceSettingAddConentAttendanceLocations") }}</span>
+      <span :class="activeIndex == 2 ? 'activeText' : ''" class="step-text">{{ $("ui.hrAttendanceSettingAddConentAttendanceLocations") }}</span>
       <span class="line-title" />
       <span :class="activeIndex == 3 ? 'active' : ''" class="public">3</span>
-      <span :class="activeIndex == 3 ? 'activeText' : ''" class="step-text">{{ $t("ui.hrAttendanceSettingAddConentAttendanceRules") }}</span>
+      <span :class="activeIndex == 3 ? 'activeText' : ''" class="step-text">{{ $("ui.hrAttendanceSettingAddConentAttendanceRules") }}</span>
       <span class="line-title" />
       <span :class="activeIndex == 4 ? 'active' : ''" class="public">4</span>
-      <span :class="activeIndex == 4 ? 'activeText' : ''" class="step-text">{{ $t("ui.hrAttendanceSettingAddConentScheduleCycle") }}</span>
+      <span :class="activeIndex == 4 ? 'activeText' : ''" class="step-text">{{ $("ui.hrAttendanceSettingAddConentScheduleCycle") }}</span>
     </div>
     <!-- <div class="divisionLine" /> -->
 
@@ -45,7 +46,7 @@
       <div v-if="activeIndex == 1" class="alert">
         <el-alert
           class="cr-alert"
-          :description="$t('ui.hrAttendanceSettingAddConentUsingPreviousOrNextAtAnyStepAutomaticallySaves')"
+          :description="$('ui.hrAttendanceSettingAddConentUsingPreviousOrNextAtAnyStepAutomaticallySaves')"
           show-icon
           type="info"
         >
@@ -55,81 +56,81 @@
         <!-- 第一步 -->
         <template v-if="activeIndex == 1">
           <div class="from-item-title mb15">
-            <span>{{ $t('setting.info.essentialinformation') }}</span>
+            <span>{{ $('setting.info.essentialinformation') }}</span>
           </div>
           <!-- 基本信息 -->
           <div class="form-box">
             <div class="form-item">
               <el-form-item>
-                <span slot="label"><span class="color-tab">* </span>{{ $t("ui.hrAttendanceSettingAddConentAttendanceGroupName") }}</span>
-                <el-input v-model="from.name" clearable :placeholder="$t('ui.hrAttendanceSettingAddConentEnterAttendanceGroupName')" size="small" />
+                <span slot="label"><span class="color-tab">* </span>{{ $("ui.hrAttendanceSettingAddConentAttendanceGroupName") }}</span>
+                <el-input v-model="from.name" clearable :placeholder="$('ui.hrAttendanceSettingAddConentEnterAttendanceGroupName')" size="small" />
               </el-form-item>
             </div>
             <div class="form-item">
               <el-form-item>
-                <span slot="label"><span class="color-tab">* </span>{{ $t("ui.hrAttendanceSettingAddConentAttendancePersonnel") }}</span>
+                <span slot="label"><span class="color-tab">* </span>{{ $("ui.hrAttendanceSettingAddConentAttendancePersonnel") }}</span>
                 <el-radio-group v-model="from.type">
-                  <el-radio class="mb14" label="1">{{ $t("ui.hrAttendanceSettingAddConentAddByDepartment") }}</el-radio>
+                  <el-radio class="mb14" label="1">{{ $("ui.hrAttendanceSettingAddConentAddByDepartment") }}</el-radio>
                   <span class="tips"
-                    >{{ $t("ui.hrAttendanceSettingAddConentUseThisWhenEveryoneInADepartmentMustAttend") }}</span
+                    >{{ $("ui.hrAttendanceSettingAddConentUseThisWhenEveryoneInADepartmentMustAttend") }}</span
                   >
-                  <el-radio label="0">{{ $t("ui.hrAttendanceSettingAddConentAddByEmployee") }}</el-radio
-                  ><span class="tips"> {{ $t("ui.hrAttendanceSettingAddConentUseThisWhenOnlySelectedIndividualsNeedToParticipate") }}</span>
+                  <el-radio label="0">{{ $("ui.hrAttendanceSettingAddConentAddByEmployee") }}</el-radio
+                  ><span class="tips"> {{ $("ui.hrAttendanceSettingAddConentUseThisWhenOnlySelectedIndividualsNeedToParticipate") }}</span>
                 </el-radio-group>
               </el-form-item>
             </div>
             <div class="form-item">
               <el-form-item>
                 <span slot="label"
-                  ><span class="color-tab">* </span>{{ $t("ui.hrAttendanceSettingAddConentAttendanceRequired") }}{{ from.type == 1 ? $t('ui.businessHolidayQueryIndexDepartment') : $t('ui.hrAttendanceSettingAddConentPersonnel') }}：</span
+                  ><span class="color-tab">* </span>{{ $("ui.hrAttendanceSettingAddConentAttendanceRequired") }}{{ from.type == 1 ? $('ui.businessHolidayQueryIndexDepartment') : $('ui.hrAttendanceSettingAddConentPersonnel') }}：</span
                 >
                 <select-member
                   v-if="from.type == 0"
-                  :placeholder="$t('ui.hrAttendanceSettingAddConentSelectPersonnelRequiringAttendance')"
+                  :placeholder="$('ui.hrAttendanceSettingAddConentSelectPersonnelRequiringAttendance')"
                   :value="userList || []"
                   style="width: 100%"
                   @getSelectList="getSelectList($event, 3)"
                 ></select-member>
                 <select-department
                   v-if="from.type == 1"
-                  :placeholder="$t('ui.hrAttendanceSettingAddConentSelectDepartmentsRequiringAttendance')"
+                  :placeholder="$('ui.hrAttendanceSettingAddConentSelectDepartmentsRequiringAttendance')"
                   :value="frames || []"
                   style="width: 100%"
                   @changeMastart="changeMastart($event, 3)"
                 ></select-department>
 
                 <span v-if="eliminateList.length !== 0" class="tips"
-                  >{{ $t("ui.hrAttendanceSettingAddConentOfTheSelectedPeople") }}{{ eliminateList.length }}{{ $t("ui.hrAttendanceSettingAddConentCouldNotBeAddedBecauseTheyAlreadyBelongTo") }}
-                  <span class="color-doc" @click="openJoin">{{ $t("ui.hrAttendanceSettingAddConentClickToView") }}</span></span
+                  >{{ $("ui.hrAttendanceSettingAddConentOfTheSelectedPeople") }}{{ eliminateList.length }}{{ $("ui.hrAttendanceSettingAddConentCouldNotBeAddedBecauseTheyAlreadyBelongTo") }}
+                  <span class="color-doc" @click="openJoin">{{ $("ui.hrAttendanceSettingAddConentClickToView") }}</span></span
                 >
               </el-form-item>
             </div>
             <div class="form-item">
               <el-form-item>
-                <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentExcludedAttendanceMembers") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceSettingAddConentExcludedAttendanceMembers") }}</span>
                 <select-member
-                  :placeholder="$t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel')"
+                  :placeholder="$('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel')"
                   :value="filterList || []"
                   style="width: 100%"
                   @getSelectList="getSelectList($event, 2)"
                 ></select-member>
 
-                <span class="tips">{{ $t("ui.hrAttendanceSettingAddConentSelectPeopleExcludedFromThisAttendanceGroupWhoAttend") }}</span>
+                <span class="tips">{{ $("ui.hrAttendanceSettingAddConentSelectPeopleExcludedFromThisAttendanceGroupWhoAttend") }}</span>
               </el-form-item>
             </div>
 
             <div class="form-item">
               <el-form-item>
-                <span slot="label"><span class="color-tab">* </span>{{ $t("ui.hrAttendanceSettingAddConentAttendanceGroupAdministrators") }}</span>
+                <span slot="label"><span class="color-tab">* </span>{{ $("ui.hrAttendanceSettingAddConentAttendanceGroupAdministrators") }}</span>
                 <select-member
-                  :placeholder="$t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel')"
+                  :placeholder="$('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel')"
                   :value="adminList || []"
                   style="width: 100%"
                   @getSelectList="getSelectList($event, 1)"
                 ></select-member>
 
                 <span class="tips"
-                  >{{ $t("ui.hrAttendanceSettingAddConentAttendanceGroupAdministratorsCanEditRulesAndExportOr") }}</span
+                  >{{ $("ui.hrAttendanceSettingAddConentAttendanceGroupAdministratorsCanEditRulesAndExportOr") }}</span
                 >
               </el-form-item>
             </div>
@@ -138,12 +139,12 @@
 
           <!-- 考勤班次 -->
           <div class="from-item-title mb15">
-            <span>{{ $t("ui.hrAttendanceSettingAddConentAttendanceShift") }}</span>
+            <span>{{ $("ui.hrAttendanceSettingAddConentAttendanceShift") }}</span>
           </div>
           <div class="form-box">
             <div class="form-item">
               <el-form-item>
-                <span slot="label"><span class="color-tab">* </span>{{ $t("ui.hrAttendanceSettingAddConentAttendanceShift2") }}</span>
+                <span slot="label"><span class="color-tab">* </span>{{ $("ui.hrAttendanceSettingAddConentAttendanceShift2") }}</span>
                 <div class="select plan-footer-one" @click="openShift">
                   <div class="flex-box">
                     <div
@@ -153,17 +154,17 @@
                       class="shift-tag"
                     >
                       {{ item.name }}
-                      {{ item.times[0].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }} {{ item.times[0].work_hours }} -
-                      {{ item.times[0].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[0].off_hours }}
+                      {{ item.times[0].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }} {{ item.times[0].work_hours }} -
+                      {{ item.times[0].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[0].off_hours }}
                       <span v-if="item.times.length > 1"
-                        >、 {{ item.times[1].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}
-                        {{ item.times[1].work_hours }} - {{ item.times[1].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay')
+                        >、 {{ item.times[1].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}
+                        {{ item.times[1].work_hours }} - {{ item.times[1].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
                         }}{{ item.times[1].off_hours }}
                       </span>
                     </div>
                   </div>
                 </div>
-                <span class="tips">{{ $t("ui.hrAttendanceSettingAddConentWhenNoScheduleIsAssignedEmployeesMaySelectA") }}</span>
+                <span class="tips">{{ $("ui.hrAttendanceSettingAddConentWhenNoScheduleIsAssignedEmployeesMaySelectA") }}</span>
               </el-form-item>
             </div>
           </div>
@@ -172,43 +173,43 @@
         <!-- 第二步 -->
         <template v-if="activeIndex == 2">
           <div class="from-item-title mb10 mt14">
-            <span>{{ $t("ui.hrAttendanceSettingAddConentSelectAttendanceMethod") }}</span>
+            <span>{{ $("ui.hrAttendanceSettingAddConentSelectAttendanceMethod") }}</span>
           </div>
           <div class="form-box">
             <div class="form-item">
               <el-form-item label-width="100px">
-                <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentAttendanceMethod") }}</span>
-                <el-checkbox v-model="from.is_map">{{ $t("ui.hrAttendanceSettingAddConentGeographicArea") }}</el-checkbox>
-                <el-checkbox v-model="from.is_wifi"> {{ $t("ui.hrAttendanceSettingAddConentWiFiInformation") }} </el-checkbox>
+                <span slot="label">{{ $("ui.hrAttendanceSettingAddConentAttendanceMethod") }}</span>
+                <el-checkbox v-model="from.is_map">{{ $("ui.hrAttendanceSettingAddConentGeographicArea") }}</el-checkbox>
+                <el-checkbox v-model="from.is_wifi"> {{ $("ui.hrAttendanceSettingAddConentWiFiInformation") }} </el-checkbox>
                 <el-tooltip
                   class="item"
                   effect="dark"
-                  :content="$t('ui.hrAttendanceSettingAddConentWiFiClockInIsAvailableOnlyInThe')"
+                  :content="$('ui.hrAttendanceSettingAddConentWiFiClockInIsAvailableOnlyInThe')"
                   placement="top"
                 >
                   <i class="el-icon-info"></i>
                 </el-tooltip>
               </el-form-item>
               <el-form-item label-width="100px" v-if="from.is_wifi">
-                <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentWiFiInformation2") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceSettingAddConentWiFiInformation2") }}</span>
                 <div class="wifi-info-list">
                   <div v-for="(item, index) in from.wifi_data" :key="index">
-                    <el-input v-model="item.name" size="small" style="width: 180px" :placeholder="$t('ui.hrAttendanceSettingAddConentPleaseEnterWifiName')" />
+                    <el-input v-model="item.name" size="small" style="width: 180px" :placeholder="$('ui.hrAttendanceSettingAddConentPleaseEnterWifiName')" />
                     <el-input
                       v-model="item.mac"
                       size="small"
                       style="width: 180px"
-                      :placeholder="$t('ui.hrAttendanceSettingAddConentPleaseEnterRouterMacAddress')"
+                      :placeholder="$('ui.hrAttendanceSettingAddConentPleaseEnterRouterMacAddress')"
                     />
-                    <el-button size="small" type="danger" @click="deleteWifiFn(index)">{{ $t("ui.chatIndexDelete") }}</el-button>
+                    <el-button size="small" type="danger" @click="deleteWifiFn(index)">{{ $("ui.chatIndexDelete") }}</el-button>
                   </div>
-                  <el-button size="mini" type="primary" @click="addWifiFn">{{ $t("ui.hrAttendanceSettingAddConentAddWiFiInformation") }}</el-button>
+                  <el-button size="mini" type="primary" @click="addWifiFn">{{ $("ui.hrAttendanceSettingAddConentAddWiFiInformation") }}</el-button>
                 </div>
               </el-form-item>
             </div>
           </div>
           <div class="from-item-title mb10 mt14" v-if="from.is_map">
-            <span>{{ $t("ui.hrAttendanceSettingAddConentSelectAttendanceArea") }}</span>
+            <span>{{ $("ui.hrAttendanceSettingAddConentSelectAttendanceArea") }}</span>
           </div>
           <div class="mapBox" v-if="from.is_map">
             <div class="map">
@@ -218,21 +219,21 @@
               <el-form class="invoice-body" label-width="110px" @submit.native.prevent>
                 <div class="form-item">
                   <el-form-item>
-                    <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentAttendanceAddress") }}</span>
+                    <span slot="label">{{ $("ui.hrAttendanceSettingAddConentAttendanceAddress") }}</span>
                     <p>{{ from.address }}</p>
                   </el-form-item>
                 </div>
                 <div class="form-item">
                   <el-form-item>
-                    <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentCoordinates") }}</span>
+                    <span slot="label">{{ $("ui.hrAttendanceSettingAddConentCoordinates") }}</span>
                     <p>{{ from.lng }} &emsp;{{ from.lat }}</p>
                   </el-form-item>
                 </div>
                 <div class="form-item">
                   <el-form-item>
-                    <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentValidRadius") }}</span>
+                    <span slot="label">{{ $("ui.hrAttendanceSettingAddConentValidRadius") }}</span>
                     <el-input id="tipinput" v-model="from.effective_range" size="small" style="width: 100px">
-                      <i slot="suffix" style="font-style: normal; margin-right: 10px">{{ $t("ui.hrAttendanceSettingAddConentMeters") }}</i></el-input
+                      <i slot="suffix" style="font-style: normal; margin-right: 10px">{{ $("ui.hrAttendanceSettingAddConentMeters") }}</i></el-input
                     >
                     <!-- <p>{{ from.effective_range }}米</p> -->
                   </el-form-item>
@@ -240,19 +241,19 @@
               </el-form>
               <!-- <div class="line mt20" /> -->
               <div class="from-item-title mb15 mt14">
-                <span>{{ $t("ui.hrAttendanceSettingAddConentSetLocationName") }}</span>
+                <span>{{ $("ui.hrAttendanceSettingAddConentSetLocationName") }}</span>
               </div>
               <el-form-item>
-                <span slot="label"><span class="color-tab">* </span>{{ $t("ui.hrAttendanceSettingAddConentAttendanceLocationsName") }}</span>
+                <span slot="label"><span class="color-tab">* </span>{{ $("ui.hrAttendanceSettingAddConentAttendanceLocationsName") }}</span>
                 <el-input
                   v-model="from.location_name"
                   clearable
-                  :placeholder="$t('ui.hrAttendanceSettingAddConentPleaseEnterLocation')"
+                  :placeholder="$('ui.hrAttendanceSettingAddConentPleaseEnterLocation')"
                   size="small"
                   style="width: 350px"
                 />
                 <div>
-                  <span class="tips">{{ $t("ui.hrAttendanceSettingAddConentThisNameAppearsInTheMobileClockInScreen") }}</span>
+                  <span class="tips">{{ $("ui.hrAttendanceSettingAddConentThisNameAppearsInTheMobileClockInScreen") }}</span>
                 </div>
               </el-form-item>
             </div>
@@ -262,26 +263,26 @@
         <!-- 第三步 -->
         <template v-if="activeIndex == 3">
           <div class="from-item-title mb15">
-            <span>{{ $t("ui.hrAttendanceSettingAddConentClockCorrection") }}</span>
+            <span>{{ $("ui.hrAttendanceSettingAddConentClockCorrection") }}</span>
           </div>
-          <el-checkbox v-model="from.repair_allowed">{{ $t("ui.hrAttendanceSettingAddConentAllowClockCorrections") }}</el-checkbox>
+          <el-checkbox v-model="from.repair_allowed">{{ $("ui.hrAttendanceSettingAddConentAllowClockCorrections") }}</el-checkbox>
           <div v-if="from.repair_allowed" class="form-box">
             <div class="form-item">
               <el-form-item label-width="100px">
-                <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentCorrectionType") }}</span>
+                <span slot="label">{{ $("ui.hrAttendanceSettingAddConentCorrectionType") }}</span>
                 <el-checkbox-group v-model="from.repair_type">
-                  <el-checkbox label="1">{{ $t("ui.hrAttendanceSettingAddConentMissingClockIn") }}</el-checkbox>
-                  <el-checkbox label="2">{{ $t("ui.hrAttendanceSettingAddConentLate") }}</el-checkbox>
-                  <el-checkbox label="3">{{ $t("ui.hrAttendanceSettingAddConentSeverelyLate") }}</el-checkbox>
-                  <el-checkbox label="4">{{ $t("ui.hrAttendanceSettingAddConentEarlyLeave") }}</el-checkbox>
-                  <el-checkbox label="5">{{ $t("ui.hrAttendanceSettingAddConentLocationException") }}</el-checkbox>
+                  <el-checkbox label="1">{{ $("ui.hrAttendanceSettingAddConentMissingClockIn") }}</el-checkbox>
+                  <el-checkbox label="2">{{ $("ui.hrAttendanceSettingAddConentLate") }}</el-checkbox>
+                  <el-checkbox label="3">{{ $("ui.hrAttendanceSettingAddConentSeverelyLate") }}</el-checkbox>
+                  <el-checkbox label="4">{{ $("ui.hrAttendanceSettingAddConentEarlyLeave") }}</el-checkbox>
+                  <el-checkbox label="5">{{ $("ui.hrAttendanceSettingAddConentLocationException") }}</el-checkbox>
                 </el-checkbox-group>
               </el-form-item>
               <el-form-item label-width="100px">
-                <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentCorrectionPeriod") }}</span>
-                <el-checkbox v-model="from.is_limit_time">{{ $t("ui.hrAttendanceSettingAddConentLimitCorrectionPeriod") }}</el-checkbox>
+                <span slot="label">{{ $("ui.hrAttendanceSettingAddConentCorrectionPeriod") }}</span>
+                <el-checkbox v-model="from.is_limit_time">{{ $("ui.hrAttendanceSettingAddConentLimitCorrectionPeriod") }}</el-checkbox>
                 <div v-if="from.is_limit_time" class="fz12">
-                  {{ $t("ui.hrAttendanceSettingAddConentCorrectionsCanBeRequestedForThePast") }}
+                  {{ $("ui.hrAttendanceSettingAddConentCorrectionsCanBeRequestedForThePast") }}
                   <el-input-number
                     v-model="from.limit_time"
                     :max="365"
@@ -289,14 +290,14 @@
                     controls-position="right"
                     style="width: 120px"
                   ></el-input-number>
-                  {{ $t("ui.hrAttendanceSettingAddConentDaysEnter0ToAllowCorrectionsOnlyForThe") }}
+                  {{ $("ui.hrAttendanceSettingAddConentDaysEnter0ToAllowCorrectionsOnlyForThe") }}
                 </div>
               </el-form-item>
               <el-form-item label-width="100px">
-                <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentCorrectionCount") }}</span>
-                <el-checkbox v-model="from.is_limit_number">{{ $t("ui.hrAttendanceSettingAddConentLimitCorrectionCount") }}</el-checkbox>
+                <span slot="label">{{ $("ui.hrAttendanceSettingAddConentCorrectionCount") }}</span>
+                <el-checkbox v-model="from.is_limit_number">{{ $("ui.hrAttendanceSettingAddConentLimitCorrectionCount") }}</el-checkbox>
                 <div v-if="from.is_limit_number" class="fz12">
-                  {{ $t("ui.hrAttendanceSettingAddConentMonthlyCorrectionLimitPerPerson") }}
+                  {{ $("ui.hrAttendanceSettingAddConentMonthlyCorrectionLimitPerPerson") }}
                   <el-input-number
                     v-model="from.limit_number"
                     :max="30"
@@ -304,7 +305,7 @@
                     controls-position="right"
                     style="width: 120px"
                   ></el-input-number>
-                  {{ $t("ui.hrAttendanceSettingAddConentSecond") }}
+                  {{ $("ui.hrAttendanceSettingAddConentSecond") }}
                 </div>
               </el-form-item>
             </div>
@@ -313,29 +314,29 @@
 
           <!-- 拍照 -->
           <div class="from-item-title mb15">
-            <span>{{ $t("ui.hrAttendanceSettingAddConentPhotoRequiredForClockIn") }}</span>
+            <span>{{ $("ui.hrAttendanceSettingAddConentPhotoRequiredForClockIn") }}</span>
           </div>
-          <el-checkbox v-model="from.is_photo">{{ $t("ui.hrAttendanceSettingAddConentPhotoRequiredForClockIn") }}</el-checkbox>
-          <div class="pl24 mb20"><span class="tips">{{ $t("ui.hrAttendanceSettingAddConentWhenEnabledEmployeesMustTakeAPhotoWhenClocking") }}</span></div>
+          <el-checkbox v-model="from.is_photo">{{ $("ui.hrAttendanceSettingAddConentPhotoRequiredForClockIn") }}</el-checkbox>
+          <div class="pl24 mb20"><span class="tips">{{ $("ui.hrAttendanceSettingAddConentWhenEnabledEmployeesMustTakeAPhotoWhenClocking") }}</span></div>
           <!-- <div class="line" /> -->
 
           <!-- 外勤打卡 -->
           <div class="from-item-title mb15">
-            <span>{{ $t("ui.hrAttendanceSettingAddConentOffSiteClockIn") }}</span>
+            <span>{{ $("ui.hrAttendanceSettingAddConentOffSiteClockIn") }}</span>
           </div>
-          <el-checkbox v-model="from.is_external">{{ $t("ui.hrAttendanceSettingAddConentAllowOffSiteClockIn") }}</el-checkbox>
+          <el-checkbox v-model="from.is_external">{{ $("ui.hrAttendanceSettingAddConentAllowOffSiteClockIn") }}</el-checkbox>
           <div class="pl24 mb20">
-            <span class="tips">{{ $t("ui.hrAttendanceSettingAddConentWhenEnabledEmployeesMayClockInOffSiteOutside") }}</span>
+            <span class="tips">{{ $("ui.hrAttendanceSettingAddConentWhenEnabledEmployeesMayClockInOffSiteOutside") }}</span>
           </div>
           <div v-if="from.is_external" class="mb20 pl24">
             <span
-              >{{ $t("ui.hrAttendanceSettingAddConentOffSiteClockInRemarksAreRequired") }}<el-switch v-model="from.is_external_note" :active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
+              >{{ $("ui.hrAttendanceSettingAddConentOffSiteClockInRemarksAreRequired") }}<el-switch v-model="from.is_external_note" active-text="开启" inactive-text="关闭">
               </el-switch
             ></span>
           </div>
           <div v-if="from.is_external" class="pl24">
             <span
-              >{{ $t("ui.hrAttendanceSettingAddConentPhotosAreRequiredForOffSiteClockIns") }}<el-switch v-model="from.is_external_photo" :active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
+              >{{ $("ui.hrAttendanceSettingAddConentPhotosAreRequiredForOffSiteClockIns") }}<el-switch v-model="from.is_external_photo" active-text="开启" inactive-text="关闭">
               </el-switch
             ></span>
           </div>
@@ -344,22 +345,22 @@
         <!-- 第四步 -->
         <template v-if="activeIndex == 4">
           <div class="from-item-title mb15">
-            <span>{{ $t("ui.hrAttendanceSettingAddConentScheduleCycle") }}</span>
-            <div class="tips">{{ $t("ui.hrAttendanceSettingAddConentScheduleCyclesApplyToRecurringPatternsSuchAsOne") }}</div>
+            <span>{{ $("ui.hrAttendanceSettingAddConentScheduleCycle") }}</span>
+            <div class="tips">{{ $("ui.hrAttendanceSettingAddConentScheduleCyclesApplyToRecurringPatternsSuchAsOne") }}</div>
           </div>
-          <div class="add-row" @click="addCycleFn"><span class="el-icon-plus"></span> {{ $t("ui.hrAttendanceSettingAddCycleAddScheduleCycle") }}</div>
+          <div class="add-row" @click="addCycleFn"><span class="el-icon-plus"></span> {{ $("ui.hrAttendanceSettingAddCycleAddScheduleCycle") }}</div>
           <el-table :data="tableData" class="mb20" style="width: 100%">
-            <el-table-column :label="$t('ui.hrAttendanceSettingAddConentCycleName')" prop="name" width="180"> </el-table-column>
-            <el-table-column :label="$t('ui.hrAttendanceSettingAddConentCycleShifts')" prop="shifts" width="180">
+            <el-table-column :label="$('ui.hrAttendanceSettingAddConentCycleName')" prop="name" width="180"> </el-table-column>
+            <el-table-column :label="$('ui.hrAttendanceSettingAddConentCycleShifts')" prop="shifts" width="180">
               <template #default="{ row }">
                 <span> {{ row.shifts.map((obj) => obj.name).join('、') }}</span>
               </template>
             </el-table-column>
-            <el-table-column :label="$t('ui.hrAttendanceSettingAddConentCycleDays')" prop="cycle"> </el-table-column>
-            <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180">
+            <el-table-column :label="$('ui.hrAttendanceSettingAddConentCycleDays')" prop="cycle"> </el-table-column>
+            <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180">
               <template slot-scope="scope">
-                <el-button type="text" @click="editFn(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-                <el-button type="text" @click="deleteFn(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+                <el-button type="text" @click="editFn(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+                <el-button type="text" @click="deleteFn(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -370,9 +371,9 @@
 
   <!-- 底部按钮 -->
   <div class="cr-bottom-button">
-    <el-button v-if="activeIndex !== 1" size="small" @click="activeIndex = activeIndex - 1">{{ $t("ui.invoiceMergeInvoicePrevious") }}</el-button>
-    <el-button v-if="activeIndex !== 4" size="small" type="primary" @click="nextStep()">{{ $t("ui.invoiceMergeInvoiceNext") }}</el-button>
-    <el-button v-if="activeIndex == 4" size="small" type="primary" @click="submit()">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+    <el-button v-if="activeIndex !== 1" size="small" @click="activeIndex = activeIndex - 1">{{ $("ui.invoiceMergeInvoicePrevious") }}</el-button>
+    <el-button v-if="activeIndex !== 4" size="small" type="primary" @click="nextStep()">{{ $("ui.invoiceMergeInvoiceNext") }}</el-button>
+    <el-button v-if="activeIndex == 4" size="small" type="primary" @click="submit()">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
   </div>
 
   <!-- 新增排班周期 -->
@@ -384,7 +385,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import { mapGetters } from 'vuex'
 import {
@@ -621,9 +621,9 @@ export default {
         }
         let set = new Set(this.from.shifts)
         this.from.shifts = Array.from(set)
-        if (!this.from.name) return this.$message.error(i18n.t('ui.hrAttendanceSettingAddConentEnterAttendanceGroupName'))
-        if (this.from.members.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectAnEmployeeOrDepartment'))
-        if (this.from.admins.length == 0) return this.$message.error(i18n.t('legacyScript.pleaseSelectAttendanceGroupManagementPersonnel'))
+        if (!this.from.name) return this.$message.error($('ui.hrAttendanceSettingAddConentEnterAttendanceGroupName'))
+        if (this.from.members.length == 0) return this.$message.error($('legacyScript.pleaseSelectAnEmployeeOrDepartment'))
+        if (this.from.admins.length == 0) return this.$message.error($('legacyScript.pleaseSelectAttendanceGroupManagementPersonnel'))
         this.filterList.map((item) => {
           this.from.filters.push(item.value)
         })
@@ -631,7 +631,7 @@ export default {
         this.saveFn(this.from)
       } else if (this.activeIndex == 2) {
         if (!this.from.is_map && !this.from.is_wifi) {
-          return this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneAttendanceMethod'))
+          return this.$message.error($('legacyScript.pleaseSelectAtLeastOneAttendanceMethod'))
         }
         this.from.step = 'two'
         this.saveFn(this.from)
@@ -670,7 +670,7 @@ export default {
         if (data.is_wifi) {
           wifi_data = data.wifi_data.filter((item) => item.name && item.mac)
           if (wifi_data.length <= 0) {
-            return this.$message.error(i18n.t('legacyScript.pleaseEnterAtLeastOneWiFiConfiguration'))
+            return this.$message.error($('legacyScript.pleaseEnterAtLeastOneWiFiConfiguration'))
           }
         }
         const res = await putAttendanceGroup(this.id, data)

@@ -1,5 +1,5 @@
 <template>
-	<el-form-item :label='$ts("可折叠")' v-if="optionModel.showHeader">
+	<el-form-item :label='$("legacy.f8132c7ca733c805")' v-if="optionModel.showHeader">
 		<el-switch v-model="optionModel.showCollapse"></el-switch>
 	</el-form-item>
 </template>

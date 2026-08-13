@@ -15,13 +15,13 @@
           show-word-limit
           :rows="4"
           v-model="rules.remarks"
-          :placeholder="$t('customer.placeholder18')"
+          :placeholder="$('customer.placeholder18')"
         />
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" :loading="loading" type="primary" @click="handleConfirm">{{ $('public.ok') }}</el-button>
     </div>
   </el-dialog>
 </template>
@@ -45,7 +45,7 @@ export default {
         remarks: ''
       },
       rule: {
-        remarks: [{ required: true, message: this.$t('customer.placeholder18'), trigger: 'blur' }]
+        remarks: [{ required: true, message: this.$('customer.placeholder18'), trigger: 'blur' }]
       },
       dialogVisible: false,
       loading: false

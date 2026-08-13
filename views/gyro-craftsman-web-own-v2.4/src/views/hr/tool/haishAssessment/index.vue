@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <!-- 海事量表页面 -->
@@ -17,25 +18,25 @@
         <!-- 右边晋升表格 -->
         <div class="header mr20">
           <div class="title">
-            <el-input v-model="name" :placeholder="$t('ui.hrToolHaishAssessmentIndexPleaseEnterEvaluationFormName')" ref="inputFocus"></el-input>
+            <el-input v-model="name" :placeholder="$('ui.hrToolHaishAssessmentIndexPleaseEnterEvaluationFormName')" ref="inputFocus"></el-input>
           </div>
-          <span class="tips">{{ $t("ui.hrEnterprisePromotionDragRowsToReorderTheList") }}</span>
+          <span class="tips">{{ $("ui.hrEnterprisePromotionDragRowsToReorderTheList") }}</span>
         </div>
         <div class="pr20">
           <el-table :data="list" ref="table" row-key="col1" style="width: 100%" class="table ml20">
-            <el-table-column prop="position" :label="$t('ui.hrAssessConfigAssessBoxPosition')" min-width="100" fixed="left">
+            <el-table-column prop="position" :label="$('ui.hrAssessConfigAssessBoxPosition')" min-width="100" fixed="left">
               <template slot="header" slot-scope="scope">
                 <select-member ref="selectMember" @getSelectList="getSelectList">
                   <template v-slot:custom>
                     <div class="department" @click.stop="selectPosition">
-                      {{ $t("ui.hrAssessStaffMentStatisticsSelectPersonnel") }} <i class="el-icon-arrow-down"></i>
+                      {{ $("ui.hrAssessStaffMentStatisticsSelectPersonnel") }} <i class="el-icon-arrow-down"></i>
                     </div>
                   </template>
                 </select-member>
               </template>
 
               <template slot-scope="scope">
-                <el-select v-model="scope.row.col1" size="mini" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                <el-select v-model="scope.row.col1" size="mini" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                   <el-option
                     v-for="item in position"
                     :key="item.id"
@@ -48,20 +49,20 @@
               </template>
             </el-table-column>
 
-            <el-table-column :label="$t('ui.hrToolHaishAssessmentIndexKnowHowA')">
-              <el-table-column prop="col2" :label="$t('ui.hrToolHaishAssessmentIndexTechnicalKnowledge')" min-width="130">
+            <el-table-column :label="$('ui.hrToolHaishAssessmentIndexKnowHowA')">
+              <el-table-column prop="col2" :label="$('ui.hrToolHaishAssessmentIndexTechnicalKnowledge')" min-width="130">
                 <template slot="header" slot-scope="scope">
                   <el-popover
                     placement="top"
                     width="400"
                     trigger="hover"
-                    :content="$t('ui.hrToolHaishAssessmentIndexProfessionalKnowledgeMeasuresUnderstandingOfTheTheoryPracticalMethods')"
+                    :content="$('ui.hrToolHaishAssessmentIndexProfessionalKnowledgeMeasuresUnderstandingOfTheTheoryPracticalMethods')"
                   >
-                    <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexTechnicalKnowledge") }} <span class="el-icon-info"></span></div>
+                    <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexTechnicalKnowledge") }} <span class="el-icon-info"></span></div>
                   </el-popover>
                 </template>
                 <template slot-scope="scope">
-                  <el-select v-model="scope.row.col2" size="mini" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-model="scope.row.col2" size="mini" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option
                       v-for="item in professionalKnowledge"
                       :key="item.id"
@@ -73,38 +74,38 @@
                 </template>
               </el-table-column>
 
-              <el-table-column prop="col3" :label="$t('ui.hrToolHaishAssessmentIndexManagementKnowHow')" min-width="100">
+              <el-table-column prop="col3" :label="$('ui.hrToolHaishAssessmentIndexManagementKnowHow')" min-width="100">
                 <template slot="header" slot-scope="scope">
                   <el-popover
                     placement="top"
                     width="400"
                     trigger="hover"
-                    :content="$t('ui.hrToolHaishAssessmentIndexManagementExpertiseCoversTheSkillsAndStrategiesNeededTo')"
+                    :content="$('ui.hrToolHaishAssessmentIndexManagementExpertiseCoversTheSkillsAndStrategiesNeededTo')"
                   >
-                    <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexManagementKnowHow") }} <span class="el-icon-info"></span></div>
+                    <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexManagementKnowHow") }} <span class="el-icon-info"></span></div>
                   </el-popover>
                 </template>
                 <template slot-scope="scope">
-                  <el-select v-model="scope.row.col3" size="mini" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-model="scope.row.col3" size="mini" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option v-for="item in managementKnowHow" :key="item.id" :label="item.label" :value="item.id">
                     </el-option>
                   </el-select>
                 </template>
               </el-table-column>
 
-              <el-table-column prop="col4" :label="$t('ui.hrToolHaishAssessmentIndexInterpersonalSkills')" min-width="100">
+              <el-table-column prop="col4" :label="$('ui.hrToolHaishAssessmentIndexInterpersonalSkills')" min-width="100">
                 <template slot="header" slot-scope="scope">
                   <el-popover
                     placement="top"
                     width="400"
                     trigger="hover"
-                    :content="$t('ui.hrToolHaishAssessmentIndexInterpersonalSkillsCoverBuildingRelationshipsResolvingConflictAndEncouraging')"
+                    :content="$('ui.hrToolHaishAssessmentIndexInterpersonalSkillsCoverBuildingRelationshipsResolvingConflictAndEncouraging')"
                   >
-                    <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexInterpersonalSkills") }}<span class="el-icon-info"></span></div>
+                    <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexInterpersonalSkills") }}<span class="el-icon-info"></span></div>
                   </el-popover>
                 </template>
                 <template slot-scope="scope">
-                  <el-select v-model="scope.row.col4" size="mini" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-model="scope.row.col4" size="mini" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option
                       v-for="item in interpersonalRelationship"
                       :key="item.id"
@@ -116,13 +117,13 @@
                 </template>
               </el-table-column>
 
-              <el-table-column prop="col5" :label="$t('ui.hrToolHaishAssessmentIndexScore')" min-width="70">
+              <el-table-column prop="col5" :label="$('ui.hrToolHaishAssessmentIndexScore')" min-width="70">
                 <template slot-scope="scope">
                   <el-select
                     v-model="scope.row.col5"
                     :disabled="!score[getScore(scope.row.col2, scope.row.col3, scope.row.col4)]"
                     size="mini"
-                    :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                    :placeholder="$('ui.developConditionGroupPleaseSelect')"
                     @change="positionScore(scope.row)"
                   >
                     <el-option
@@ -137,50 +138,50 @@
               </el-table-column>
             </el-table-column>
 
-            <el-table-column :label="$t('ui.hrToolHaishAssessmentIndexProblemSolvingB')">
-              <el-table-column prop="col6" :label="$t('ui.hrToolHaishAssessmentIndexThinkingEnvironment')" min-width="120">
+            <el-table-column :label="$('ui.hrToolHaishAssessmentIndexProblemSolvingB')">
+              <el-table-column prop="col6" :label="$('ui.hrToolHaishAssessmentIndexThinkingEnvironment')" min-width="120">
                 <template slot="header" slot-scope="scope">
                   <el-popover
                     placement="top"
                     width="400"
                     trigger="hover"
-                    :content="$t('ui.hrToolHaishAssessmentIndexThinkingEnvironmentDescribesTheContextInWhichARole')"
+                    :content="$('ui.hrToolHaishAssessmentIndexThinkingEnvironmentDescribesTheContextInWhichARole')"
                   >
-                    <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexThinkingEnvironment") }} <span class="el-icon-info"></span></div>
+                    <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexThinkingEnvironment") }} <span class="el-icon-info"></span></div>
                   </el-popover>
                 </template>
                 <template slot-scope="scope">
-                  <el-select v-model="scope.row.col6" size="mini" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-model="scope.row.col6" size="mini" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option v-for="item in environment" :key="item.id" :label="item.label" :value="item.id">
                     </el-option>
                   </el-select>
                 </template>
               </el-table-column>
-              <el-table-column prop="col7" :label="$t('ui.hrToolHaishAssessmentIndexThinkingChallenge')" min-width="100">
+              <el-table-column prop="col7" :label="$('ui.hrToolHaishAssessmentIndexThinkingChallenge')" min-width="100">
                 <template slot="header" slot-scope="scope">
                   <el-popover
                     placement="top"
                     width="400"
                     trigger="hover"
-                    :content="$t('ui.hrToolHaishAssessmentIndexThinkingDifficultyDescribesProblemComplexityAndTheCognitiveChallenge')"
+                    :content="$('ui.hrToolHaishAssessmentIndexThinkingDifficultyDescribesProblemComplexityAndTheCognitiveChallenge')"
                   >
-                    <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexThinkingChallenge") }} <span class="el-icon-info"></span></div>
+                    <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexThinkingChallenge") }} <span class="el-icon-info"></span></div>
                   </el-popover>
                 </template>
                 <template slot-scope="scope">
-                  <el-select v-model="scope.row.col7" size="mini" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-model="scope.row.col7" size="mini" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option v-for="item in difficulty" :key="item.id" :label="item.label" :value="item.id">
                     </el-option>
                   </el-select>
                 </template>
               </el-table-column>
-              <el-table-column prop="col8" :label="$t('ui.hrToolHaishAssessmentIndexScore')" min-width="70">
+              <el-table-column prop="col8" :label="$('ui.hrToolHaishAssessmentIndexScore')" min-width="70">
                 <template slot-scope="scope">
                   <el-select
                     v-model="scope.row.col8"
                     :disabled="!solve[getSolve(scope.row.col6, scope.row.col7)]"
                     size="mini"
-                    :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                    :placeholder="$('ui.developConditionGroupPleaseSelect')"
                     @change="positionScore(scope.row)"
                   >
                     <el-option
@@ -195,20 +196,20 @@
               </el-table-column>
             </el-table-column>
 
-            <el-table-column :label="$t('ui.hrToolHaishAssessmentIndexAccountabilityC')">
+            <el-table-column :label="$('ui.hrToolHaishAssessmentIndexAccountabilityC')">
               <el-table-column prop="col9" min-width="120">
                 <template slot="header" slot-scope="scope">
                   <el-popover
                     placement="top"
                     width="400"
                     trigger="hover"
-                    :content="$t('ui.hrToolHaishAssessmentIndexFreedomToActDescribesHowIndependentlyARoleCan')"
+                    :content="$('ui.hrToolHaishAssessmentIndexFreedomToActDescribesHowIndependentlyARoleCan')"
                   >
-                    <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexFreedomToAct") }} <span class="el-icon-info"></span></div>
+                    <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexFreedomToAct") }} <span class="el-icon-info"></span></div>
                   </el-popover>
                 </template>
                 <template slot-scope="scope">
-                  <el-select v-model="scope.row.col9" size="mini" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-model="scope.row.col9" size="mini" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option v-for="item in free" :key="item.id" :label="item.label" :value="item.id"> </el-option>
                   </el-select>
                 </template>
@@ -219,13 +220,13 @@
                     placement="top"
                     width="400"
                     trigger="hover"
-                    :content="$t('ui.hrToolHaishAssessmentIndexAccountabilityDescribesTheSpecificResponsibilitiesAndObligationsOfA')"
+                    :content="$('ui.hrToolHaishAssessmentIndexAccountabilityDescribesTheSpecificResponsibilitiesAndObligationsOfA')"
                   >
-                    <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexAccountability") }} <span class="el-icon-info"></span></div>
+                    <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexAccountability") }} <span class="el-icon-info"></span></div>
                   </el-popover>
                 </template>
                 <template slot-scope="scope">
-                  <el-select v-model="scope.row.col10" size="mini" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                  <el-select v-model="scope.row.col10" size="mini" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                     <el-option v-for="item in responsibility" :key="item.id" :label="item.label" :value="item.id">
                     </el-option>
                   </el-select>
@@ -237,22 +238,22 @@
                     placement="top"
                     width="400"
                     trigger="hover"
-                    :content="$t('ui.hrToolHaishAssessmentIndexImpactOnResultsDescribesHowStronglyARoleAffects')"
+                    :content="$('ui.hrToolHaishAssessmentIndexImpactOnResultsDescribesHowStronglyARoleAffects')"
                   >
-                    <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexImpactOnResults") }} <span class="el-icon-info"></span></div>
+                    <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexImpactOnResults") }} <span class="el-icon-info"></span></div>
                   </el-popover>
                 </template>
                 <template slot-scope="scope">
                   <el-cascader v-model="scope.row.col11" size="mini" :options="influence"></el-cascader>
                 </template>
               </el-table-column>
-              <el-table-column prop="col12" :label="$t('ui.hrToolHaishAssessmentIndexScore')" min-width="70">
+              <el-table-column prop="col12" :label="$('ui.hrToolHaishAssessmentIndexScore')" min-width="70">
                 <template slot-scope="scope">
                   <el-select
                     v-model="scope.row.col12"
                     :disabled="!bear[getBear(scope.row.col9, scope.row.col10, scope.row.col11)]"
                     size="mini"
-                    :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                    :placeholder="$('ui.developConditionGroupPleaseSelect')"
                     @change="positionScore(scope.row)"
                   >
                     <el-option
@@ -273,9 +274,9 @@
                   placement="top"
                   width="400"
                   trigger="hover"
-                  :content="$t('ui.hrToolHaishAssessmentIndexClassifyRolesByTheirRequirementsForSkillsProblemSolving')"
+                  :content="$('ui.hrToolHaishAssessmentIndexClassifyRolesByTheirRequirementsForSkillsProblemSolving')"
                 >
-                  <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexWeightSettings") }}<span class="el-icon-info"></span></div>
+                  <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexWeightSettings") }}<span class="el-icon-info"></span></div>
                 </el-popover>
               </template>
               <el-table-column min-width="100">
@@ -290,7 +291,7 @@
                     size="mini"
                     min="20"
                     max="80"
-                    :placeholder="$t('ui.hrToolHaishAssessmentIndexEnterAnInteger')"
+                    :placeholder="$('ui.hrToolHaishAssessmentIndexEnterAnInteger')"
                     @change="positionScore(scope.row)"
                   >
                     <i slot="suffix" style="font-style: normal; margin-right: 10px">%</i>
@@ -302,7 +303,7 @@
                   <div>（β）</div>
                 </template>
                 <template slot-scope="scope">
-                  <el-input class="input" v-model="scope.row.col14" size="mini" disabled :placeholder="$t('ui.hrToolHaishAssessmentIndexCalculateAutomatically')">
+                  <el-input class="input" v-model="scope.row.col14" size="mini" disabled :placeholder="$('ui.hrToolHaishAssessmentIndexCalculateAutomatically')">
                     <i slot="suffix" style="font-style: normal; margin-right: 10px">%</i></el-input
                   >
                 </template>
@@ -310,38 +311,38 @@
             </el-table-column>
             <el-table-column min-width="80">
               <template slot="header" slot-scope="scope">
-                <el-popover placement="top" width="250" trigger="hover" :content="$t('ui.hrToolHaishAssessmentIndexRoleScoreA1BC')">
-                  <div slot="reference">{{ $t("ui.hrToolHaishAssessmentHistoryListPositionScore") }} <span class="el-icon-info"></span></div>
+                <el-popover placement="top" width="250" trigger="hover" :content="$('ui.hrToolHaishAssessmentIndexRoleScoreA1BC')">
+                  <div slot="reference">{{ $("ui.hrToolHaishAssessmentHistoryListPositionScore") }} <span class="el-icon-info"></span></div>
                 </el-popover>
               </template>
               <template slot-scope="scope">
-                <el-input v-model="scope.row.col15" size="mini" disabled :placeholder="$t('ui.hrToolHaishAssessmentIndexCalculateAutomatically')"></el-input>
+                <el-input v-model="scope.row.col15" size="mini" disabled :placeholder="$('ui.hrToolHaishAssessmentIndexCalculateAutomatically')"></el-input>
               </template>
             </el-table-column>
             <el-table-column min-width="80"
               ><template slot="header" slot-scope="scope">
-                <el-popover placement="top" width="250" trigger="hover" :content="$t('ui.hrToolHaishAssessmentIndexRoleCoefficientRoleScoreMinimumRoleScore')">
-                  <div slot="reference">{{ $t("ui.hrToolHaishAssessmentIndexRoleCoefficient") }} <span class="el-icon-info"></span></div>
+                <el-popover placement="top" width="250" trigger="hover" :content="$('ui.hrToolHaishAssessmentIndexRoleCoefficientRoleScoreMinimumRoleScore')">
+                  <div slot="reference">{{ $("ui.hrToolHaishAssessmentIndexRoleCoefficient") }} <span class="el-icon-info"></span></div>
                 </el-popover>
               </template>
               <template slot-scope="scope">
-                <el-input v-model="scope.row.col16" size="mini" disabled :placeholder="$t('ui.hrToolHaishAssessmentIndexCalculateAutomatically')"></el-input>
+                <el-input v-model="scope.row.col16" size="mini" disabled :placeholder="$('ui.hrToolHaishAssessmentIndexCalculateAutomatically')"></el-input>
               </template>
             </el-table-column>
-            <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="100" fixed="right">
+            <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="100" fixed="right">
               <template slot-scope="scope">
-                <el-button v-if="scope.row.col1" type="text" @click="openHistory(scope)">{{ $t("ui.hrToolHaishAssessmentIndexHistory") }}</el-button>
-                <el-button type="text" @click="deleteFn(scope)">{{ $t("ui.chatIndexDelete") }}</el-button>
+                <el-button v-if="scope.row.col1" type="text" @click="openHistory(scope)">{{ $("ui.hrToolHaishAssessmentIndexHistory") }}</el-button>
+                <el-button type="text" @click="deleteFn(scope)">{{ $("ui.chatIndexDelete") }}</el-button>
               </template>
             </el-table-column>
           </el-table>
         </div>
-        <div class="add-row ml20" @click="addANewLine"><span class="el-icon-plus"></span> {{ $t("ui.administrationMaterialFixedReceiveAddRow") }}</div>
+        <div class="add-row ml20" @click="addANewLine"><span class="el-icon-plus"></span> {{ $("ui.administrationMaterialFixedReceiveAddRow") }}</div>
       </el-card>
 
       <div class="cr-bottom-button btn-shadow">
-        <el-button size="small" @click="exportExcelData">{{ $t("ui.fdInvoiceIndexDownload") }}</el-button>
-        <el-button size="small" :loading="loading" type="primary" @click="submit()">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+        <el-button size="small" @click="exportExcelData">{{ $("ui.fdInvoiceIndexDownload") }}</el-button>
+        <el-button size="small" :loading="loading" type="primary" @click="submit()">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
       </div>
     </div>
   </template>
@@ -354,7 +355,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Sortable from 'sortablejs'
 import data from './mixins/index.js'
 import { jobSelectApi, hayGroupApi, getHayGroupApi, putHayGroupApi } from '@/api/config.js'
@@ -371,7 +371,7 @@ export default {
     return {
       type: 'list',
       name: '评估表',
-      title: i18n.t('legacyScript.addAssessmentForm'),
+      title: $('legacyScript.addAssessmentForm'),
       position: [],
       choiceEdit: 0,
       pageLoading: false,
@@ -526,7 +526,7 @@ export default {
       })
 
       if (!result) {
-        return this.$message.error(i18n.t('ui.userDutyAnalyseSelectPosition'))
+        return this.$message.error($('ui.userDutyAnalyseSelectPosition'))
       }
       this.loading = true
       let data = {
@@ -610,7 +610,7 @@ export default {
       this.list = []
       this.selectedList = []
       this.type = 'add'
-      this.title = i18n.t('legacyScript.addAssessmentForm')
+      this.title = $('legacyScript.addAssessmentForm')
       this.name = '评估表' + this.$moment(new Date()).format('YYYYMMDD')
       this.addANewLine()
       setTimeout(() => {
@@ -622,7 +622,7 @@ export default {
     async editType(data) {
       this.pageLoading = true
       this.type = 'edit'
-      this.title = i18n.t('legacyScript.editEvaluationForm')
+      this.title = $('legacyScript.editEvaluationForm')
       this.name = data.name
       this.id = data.id
       const result = await getHayGroupApi(data.id)

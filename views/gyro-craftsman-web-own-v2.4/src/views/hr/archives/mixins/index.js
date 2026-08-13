@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 let frameFn = (rule, value, callback) => {
   if (value && value.length > 0) {
     callback()
@@ -20,133 +20,133 @@ let formOptions = {
     this.FORMOPTIONS = [
       // 基本信息数据集合
       {
-        title: i18n.t('setting.info.essentialinformation'),
+        title: $('setting.info.essentialinformation'),
         edit_type: 'basic',
         data: [
           {
             type: 'input',
-            label: i18n.t('ui.hrEnterpriseJobAnalysisPersonName'),
+            label: $('ui.hrEnterpriseJobAnalysisPersonName'),
             value: 'name',
-            placeholder: i18n.t('legacyScript.pleaseEnterPersonName')
+            placeholder: $('legacyScript.pleaseEnterPersonName')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.mobileNumber'),
+            label: $('legacyScript.mobileNumber'),
             value: 'phone',
-            placeholder: i18n.t('legacyScript.phoneNumberIsTheEmployeeLoginAccountDefaultPassword888888')
+            placeholder: $('legacyScript.phoneNumberIsTheEmployeeLoginAccountDefaultPassword888888')
           },
           {
             slot: 'cascader',
-            label: i18n.t('ui.userTrainingPromotionPosition'),
+            label: $('ui.userTrainingPromotionPosition'),
             value: 'position',
-            placeholder: i18n.t('ui.userDutyAnalyseSelectPosition')
+            placeholder: $('ui.userDutyAnalyseSelectPosition')
           },
           {
             slot: 'frame_id',
-            label: i18n.t('ui.hrAttendanceStatisticsDetailsDrawerDepartment'),
+            label: $('ui.hrAttendanceStatisticsDetailsDrawerDepartment'),
             value: 'frame_id',
-            placeholder: i18n.t('legacyScript.selectDepartment')
+            placeholder: $('legacyScript.selectDepartment')
           },
           {
             type: 'radio',
-            label: i18n.t('ui.programProgramListAddProgramOwner'),
+            label: $('ui.programProgramListAddProgramOwner'),
             value: 'is_admin',
-            placeholder: i18n.t('ui.programProgramListAddProgramPleaseSelectOwner')
+            placeholder: $('ui.programProgramListAddProgramPleaseSelectOwner')
           },
           {
-            label: i18n.t('ui.hrEnterpriseGroupEditUserResponsibleDepartments'),
+            label: $('ui.hrEnterpriseGroupEditUserResponsibleDepartments'),
             slot: 'manage_frame'
           },
 
           {
-            label: i18n.t('legacyScript.directSuperior'),
+            label: $('legacyScript.directSuperior'),
             slot: 'superior_uid'
           }
         ]
       },
       // 职工信息数据集合
       {
-        title: i18n.t('hr.tablist2'),
+        title: $('hr.tablist2'),
         edit_type: 'staff',
         data: [
           {
             type: 'select',
 
-            label: i18n.t('legacyScript.employmentType'),
+            label: $('legacyScript.employmentType'),
             value: 'is_part',
-            placeholder: i18n.t('legacyScript.pleaseSelectEmploymentType'),
+            placeholder: $('legacyScript.pleaseSelectEmploymentType'),
             optionsList: [
               {
-                label: i18n.t('legacyScript.fullTime'),
+                label: $('legacyScript.fullTime'),
                 value: 0
               },
               {
-                label: i18n.t('legacyScript.partTime'),
+                label: $('legacyScript.partTime'),
                 value: 1
               },
               {
-                label: i18n.t('hr.internship'),
+                label: $('hr.internship'),
                 value: 2
               },
               {
-                label: i18n.t('legacyScript.laborDispatch'),
+                label: $('legacyScript.laborDispatch'),
                 value: 3
               },
               {
-                label: i18n.t('legacyScript.retireeRehired'),
+                label: $('legacyScript.retireeRehired'),
                 value: 4
               },
               {
-                label: i18n.t('legacyScript.laborOutsourcing'),
+                label: $('legacyScript.laborOutsourcing'),
                 value: 5
               },
               {
-                label: i18n.t('hr.other'),
+                label: $('hr.other'),
                 value: 6
               }
             ]
           },
           {
             type: 'select',
-            label: i18n.t('legacyScript.employeeStatus'),
+            label: $('legacyScript.employeeStatus'),
             value: 'type',
-            placeholder: i18n.t('hr.placeholder19'),
+            placeholder: $('hr.placeholder19'),
             optionsList: [
               {
-                label: i18n.t('hr.formal'),
+                label: $('hr.formal'),
                 value: '1'
               },
               {
-                label: i18n.t('hr.ontrial'),
+                label: $('hr.ontrial'),
                 value: '2'
               },
               {
-                label: i18n.t('hr.internship'),
+                label: $('hr.internship'),
                 value: '3'
               },
               {
-                label: i18n.t('hr.dimission'),
+                label: $('hr.dimission'),
                 value: '4'
               }
             ]
           },
           {
             type: 'date',
-            label: i18n.t('legacyScript.onboardingTime'),
+            label: $('legacyScript.onboardingTime'),
             value: 'work_time',
-            placeholder: i18n.t('legacyScript.pleaseSelectOnboardingTime')
+            placeholder: $('legacyScript.pleaseSelectOnboardingTime')
           },
           {
             type: 'date',
-            label: i18n.t('legacyScript.probationEndDate'),
+            label: $('legacyScript.probationEndDate'),
             value: 'trial_time',
-            placeholder: i18n.t('legacyScript.selectProbationEndDate')
+            placeholder: $('legacyScript.selectProbationEndDate')
           },
           {
             type: 'date',
-            label: i18n.t('legacyScript.positiveTime'),
+            label: $('legacyScript.positiveTime'),
             value: 'formal_time',
-            placeholder: i18n.t('legacyScript.pleaseSelectPositiveTime')
+            placeholder: $('legacyScript.pleaseSelectPositiveTime')
           }
           // {
           //   type: 'date',
@@ -158,268 +158,268 @@ let formOptions = {
       },
       // 个人信息数据集合
       {
-        title: i18n.t('hr.tablist1'),
+        title: $('hr.tablist1'),
         edit_type: 'user',
         data: [
           {
             type: 'input',
-            label: i18n.t('legacyScript.iDNumber'),
+            label: $('legacyScript.iDNumber'),
             value: 'card_id',
-            placeholder: i18n.t('legacyScript.enterIDNumber')
+            placeholder: $('legacyScript.enterIDNumber')
           },
           {
             type: 'select',
-            label: i18n.t('legacyScript.gender'),
+            label: $('legacyScript.gender'),
             value: 'sex',
-            placeholder: i18n.t('hr.placeholder3'),
+            placeholder: $('hr.placeholder3'),
             optionsList: [
               {
-                label: i18n.t('hr.male'),
+                label: $('hr.male'),
                 value: 1
               },
               {
-                label: i18n.t('hr.female'),
+                label: $('hr.female'),
                 value: 2
               },
               {
-                label: i18n.t('hr.unknown'),
+                label: $('hr.unknown'),
                 value: 0
               }
             ]
           },
           {
             type: 'date',
-            label: i18n.t('legacyScript.dateOfBirth'),
+            label: $('legacyScript.dateOfBirth'),
             value: 'birthday',
-            placeholder: i18n.t('legacyScript.pleaseSelectDateOfBirth')
+            placeholder: $('legacyScript.pleaseSelectDateOfBirth')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.age'),
+            label: $('legacyScript.age'),
             value: 'age',
-            placeholder: i18n.t('legacyScript.pleaseEnterAge')
+            placeholder: $('legacyScript.pleaseEnterAge')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.nation'),
+            label: $('legacyScript.nation'),
             value: 'nation',
-            placeholder: i18n.t('legacyScript.pleaseEnterNation')
+            placeholder: $('legacyScript.pleaseEnterNation')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.politicalOutlook'),
+            label: $('legacyScript.politicalOutlook'),
             value: 'politic',
-            placeholder: i18n.t('legacyScript.pleaseEnterPoliticalOutlook')
+            placeholder: $('legacyScript.pleaseEnterPoliticalOutlook')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.yearsOfExperience'),
+            label: $('legacyScript.yearsOfExperience'),
             value: 'work_years',
-            placeholder: i18n.t('legacyScript.enterYearsOfRelevantExperience')
+            placeholder: $('legacyScript.enterYearsOfRelevantExperience')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.nativePlace'),
+            label: $('legacyScript.nativePlace'),
             value: 'native',
-            placeholder: i18n.t('legacyScript.enterNativePlace')
+            placeholder: $('legacyScript.enterNativePlace')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.currentAddress'),
+            label: $('legacyScript.currentAddress'),
             value: 'address',
-            placeholder: i18n.t('legacyScript.enterCurrentResidentialAddress')
+            placeholder: $('legacyScript.enterCurrentResidentialAddress')
           },
           {
             type: 'select',
-            label: i18n.t('legacyScript.maritalStatus'),
+            label: $('legacyScript.maritalStatus'),
             value: 'marriage',
-            placeholder: i18n.t('legacyScript.pleaseSelectMaritalStatus'),
+            placeholder: $('legacyScript.pleaseSelectMaritalStatus'),
             optionsList: [
               {
-                label: i18n.t('hr.unmarried'),
+                label: $('hr.unmarried'),
                 value: 0
               },
               {
-                label: i18n.t('hr.married'),
+                label: $('hr.married'),
                 value: 1
               },
               {
-                label: i18n.t('legacyScript.marriedWithChildren'),
+                label: $('legacyScript.marriedWithChildren'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.emailAddress'),
+            label: $('legacyScript.emailAddress'),
             value: 'email',
-            placeholder: i18n.t('customer.placeholder55')
+            placeholder: $('customer.placeholder55')
           }
         ]
       },
       // 学历信息数据集合
       {
-        title: i18n.t('legacyScript.educationInformation'),
+        title: $('legacyScript.educationInformation'),
         edit_type: 'education',
         data: [
           {
             type: 'select',
-            label: i18n.t('legacyScript.highestEducation'),
+            label: $('legacyScript.highestEducation'),
             value: 'education',
-            placeholder: i18n.t('legacyScript.enterHighestEducation'),
+            placeholder: $('legacyScript.enterHighestEducation'),
             optionsList: [
               {
-                label: i18n.t('legacyScript.graduateDegree'),
+                label: $('legacyScript.graduateDegree'),
                 value: 6
               },
               {
-                label: i18n.t('legacyScript.bachelorDegree'),
+                label: $('legacyScript.bachelorDegree'),
                 value: 5
               },
               {
-                label: i18n.t('legacyScript.associateDegree'),
+                label: $('legacyScript.associateDegree'),
                 value: 4
               },
 
               {
-                label: i18n.t('legacyScript.highSchoolOrBelow'),
+                label: $('legacyScript.highSchoolOrBelow'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.highestDegree'),
+            label: $('legacyScript.highestDegree'),
             value: 'acad',
-            placeholder: i18n.t('legacyScript.enterHighestDegree')
+            placeholder: $('legacyScript.enterHighestDegree')
           },
           {
             type: 'date',
-            label: i18n.t('legacyScript.graduationDate'),
+            label: $('legacyScript.graduationDate'),
             value: 'graduate_date',
-            placeholder: i18n.t('legacyScript.pleaseSelectGraduationDate')
+            placeholder: $('legacyScript.pleaseSelectGraduationDate')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.schoolOrUniversity'),
+            label: $('legacyScript.schoolOrUniversity'),
             value: 'graduate_name',
-            placeholder: i18n.t('legacyScript.enterSchoolOrUniversity')
+            placeholder: $('legacyScript.enterSchoolOrUniversity')
           }
         ]
       },
       // 个人材料
       {
-        title: i18n.t('legacyScript.personalDocuments'),
+        title: $('legacyScript.personalDocuments'),
         edit_type: 'card',
 
         slot: 'personalMaterials',
         data: [
           {
             type: 'uploadImg',
-            label: i18n.t('legacyScript.frontOfIDCard'),
+            label: $('legacyScript.frontOfIDCard'),
             value: 'card_front'
           },
           {
             type: 'uploadImg',
-            label: i18n.t('legacyScript.backOfIDCard'),
+            label: $('legacyScript.backOfIDCard'),
             value: 'card_both'
           },
           {
             type: 'uploadImg',
-            label: i18n.t('legacyScript.educationCertificate'),
+            label: $('legacyScript.educationCertificate'),
             value: 'education_image'
           },
           {
             type: 'uploadImg',
-            label: i18n.t('legacyScript.degreeCertificate'),
+            label: $('legacyScript.degreeCertificate'),
             value: 'acad_image'
           }
         ]
       },
       // 银行卡信息
       {
-        title: i18n.t('legacyScript.bankCardInformation'),
+        title: $('legacyScript.bankCardInformation'),
         edit_type: 'bank',
         data: [
           {
             type: 'input',
-            label: i18n.t('legacyScript.bankCardNumber'),
+            label: $('legacyScript.bankCardNumber'),
             value: 'bank_num',
-            placeholder: i18n.t('legacyScript.enterBankCardNumber')
+            placeholder: $('legacyScript.enterBankCardNumber')
           },
 
           {
             type: 'input',
-            label: i18n.t('legacyScript.bankOfDeposit'),
+            label: $('legacyScript.bankOfDeposit'),
             value: 'bank_name',
-            placeholder: i18n.t('legacyScript.enterBankOfDeposit')
+            placeholder: $('legacyScript.enterBankOfDeposit')
           }
         ]
       },
       // 社保信息
       {
-        title: i18n.t('legacyScript.socialSecurityInformation'),
+        title: $('legacyScript.socialSecurityInformation'),
         edit_type: 'social',
         data: [
           {
             type: 'input',
-            label: i18n.t('legacyScript.socialSecurityAccount'),
+            label: $('legacyScript.socialSecurityAccount'),
             value: 'social_num',
-            placeholder: i18n.t('legacyScript.enterSocialSecurityAccount')
+            placeholder: $('legacyScript.enterSocialSecurityAccount')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.housingProvidentFundAccount'),
+            label: $('legacyScript.housingProvidentFundAccount'),
             value: 'fund_num',
-            placeholder: i18n.t('legacyScript.enterHousingProvidentFundAccount')
+            placeholder: $('legacyScript.enterHousingProvidentFundAccount')
           }
         ]
       },
       // 紧急联系人
       {
-        title: i18n.t('hr.emergencycontact'),
+        title: $('hr.emergencycontact'),
         edit_type: 'spare',
         data: [
           {
             type: 'input',
-            label: i18n.t('legacyScript.contactName'),
+            label: $('legacyScript.contactName'),
             value: 'spare_name',
-            placeholder: i18n.t('legacyScript.enterEmergencyContactName')
+            placeholder: $('legacyScript.enterEmergencyContactName')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.contactPhone'),
+            label: $('legacyScript.contactPhone'),
             value: 'spare_tel',
-            placeholder: i18n.t('legacyScript.enterEmergencyContactPhone')
+            placeholder: $('legacyScript.enterEmergencyContactPhone')
           }
         ]
       },
 
       // 工作经历
       {
-        title: i18n.t('hr.workexperience'),
+        title: $('hr.workexperience'),
         type: 1,
         slot: 'workExperience',
         data: []
       },
       // 教育经历
       {
-        title: i18n.t('hr.educationalexperience'),
+        title: $('hr.educationalexperience'),
         type: 1,
         slot: 'educationalExperience',
         data: []
       },
       {
-        title: i18n.t('legacyScript.systemInformation'),
+        title: $('legacyScript.systemInformation'),
         type: 1,
         edit_type: 'sort',
         slot: 'systemInformation',
         data: [
           {
             type: 'num',
-            label: i18n.t('ui.businessHolidayTypeIndexSort'),
+            label: $('ui.businessHolidayTypeIndexSort'),
             value: 'sort',
-            placeholder: i18n.t('legacyScript.pleaseEnterASortingValue')
+            placeholder: $('legacyScript.pleaseEnterASortingValue')
           }
         ]
       }
@@ -427,26 +427,26 @@ let formOptions = {
     // 个人简历
     this.userForm = [
       {
-        title: i18n.t('hr.tablist2'),
+        title: $('hr.tablist2'),
         data: [
           {
             type: 'input',
-            label: i18n.t('ui.userTrainingPromotionPosition'),
+            label: $('ui.userTrainingPromotionPosition'),
             value: 'position',
-            placeholder: i18n.t('legacyScript.pleaseEnterPosition')
+            placeholder: $('legacyScript.pleaseEnterPosition')
           },
           {
             type: 'select',
-            label: this.$t('setting.group.employmentType'),
+            label: this.$('setting.group.employmentType'),
             value: 'is_part',
-            placeholder: this.$t('setting.group.employmentTypePlaceholder'),
+            placeholder: this.$('setting.group.employmentTypePlaceholder'),
             optionsList: [
               {
-                label: i18n.t('legacyScript.fullTime'),
+                label: $('legacyScript.fullTime'),
                 value: 0
               },
               {
-                label: i18n.t('legacyScript.partTime'),
+                label: $('legacyScript.partTime'),
                 value: 1
               }
             ]
@@ -454,256 +454,256 @@ let formOptions = {
         ]
       },
       {
-        title: i18n.t('hr.tablist1'),
+        title: $('hr.tablist1'),
         data: [
           {
             type: 'input',
-            label: i18n.t('ui.hrEnterpriseJobAnalysisPersonName'),
+            label: $('ui.hrEnterpriseJobAnalysisPersonName'),
             value: 'name',
-            placeholder: i18n.t('legacyScript.enterName')
+            placeholder: $('legacyScript.enterName')
           },
           {
             type: 'input',
-            label: i18n.t('ui.customerSigningAddContractSignContactPhone'),
+            label: $('ui.customerSigningAddContractSignContactPhone'),
             value: 'phone',
-            placeholder: i18n.t('customer.placeholder09')
+            placeholder: $('customer.placeholder09')
           },
 
           {
             type: 'input',
-            label: i18n.t('legacyScript.iDNumber'),
+            label: $('legacyScript.iDNumber'),
             value: 'card_id',
-            placeholder: i18n.t('legacyScript.enterIDNumber')
+            placeholder: $('legacyScript.enterIDNumber')
           },
           {
             type: 'select',
-            label: i18n.t('legacyScript.gender'),
+            label: $('legacyScript.gender'),
             value: 'sex',
-            placeholder: i18n.t('hr.placeholder3'),
+            placeholder: $('hr.placeholder3'),
             optionsList: [
               {
-                label: i18n.t('hr.male'),
+                label: $('hr.male'),
                 value: 1
               },
               {
-                label: i18n.t('hr.female'),
+                label: $('hr.female'),
                 value: 2
               },
               {
-                label: i18n.t('hr.unknown'),
+                label: $('hr.unknown'),
                 value: 0
               }
             ]
           },
           {
             type: 'date',
-            label: i18n.t('legacyScript.dateOfBirth'),
+            label: $('legacyScript.dateOfBirth'),
             value: 'birthday',
-            placeholder: i18n.t('legacyScript.pleaseSelectDateOfBirth')
+            placeholder: $('legacyScript.pleaseSelectDateOfBirth')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.age'),
+            label: $('legacyScript.age'),
             value: 'age',
-            placeholder: i18n.t('legacyScript.pleaseEnterAge')
+            placeholder: $('legacyScript.pleaseEnterAge')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.nation'),
+            label: $('legacyScript.nation'),
             value: 'nation',
-            placeholder: i18n.t('legacyScript.pleaseEnterNation')
+            placeholder: $('legacyScript.pleaseEnterNation')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.politicalOutlook'),
+            label: $('legacyScript.politicalOutlook'),
             value: 'politic',
-            placeholder: i18n.t('legacyScript.pleaseEnterPoliticalOutlook')
+            placeholder: $('legacyScript.pleaseEnterPoliticalOutlook')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.yearsOfExperience'),
+            label: $('legacyScript.yearsOfExperience'),
             value: 'work_years',
-            placeholder: i18n.t('legacyScript.enterYearsOfRelevantExperience')
+            placeholder: $('legacyScript.enterYearsOfRelevantExperience')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.nativePlace'),
+            label: $('legacyScript.nativePlace'),
             value: 'native',
-            placeholder: i18n.t('legacyScript.enterNativePlace')
+            placeholder: $('legacyScript.enterNativePlace')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.currentAddress'),
+            label: $('legacyScript.currentAddress'),
             value: 'address',
-            placeholder: i18n.t('legacyScript.enterCurrentResidentialAddress')
+            placeholder: $('legacyScript.enterCurrentResidentialAddress')
           },
           {
             type: 'select',
-            label: i18n.t('legacyScript.maritalStatus'),
+            label: $('legacyScript.maritalStatus'),
             value: 'marriage',
-            placeholder: i18n.t('legacyScript.pleaseSelectMaritalStatus'),
+            placeholder: $('legacyScript.pleaseSelectMaritalStatus'),
             optionsList: [
               {
-                label: i18n.t('hr.unmarried'),
+                label: $('hr.unmarried'),
                 value: 0
               },
               {
-                label: i18n.t('hr.married'),
+                label: $('hr.married'),
                 value: 1
               },
               {
-                label: i18n.t('legacyScript.marriedWithChildren'),
+                label: $('legacyScript.marriedWithChildren'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.emailAddress'),
+            label: $('legacyScript.emailAddress'),
             value: 'email',
-            placeholder: i18n.t('customer.placeholder55')
+            placeholder: $('customer.placeholder55')
           }
         ]
       },
 
       {
-        title: i18n.t('legacyScript.educationInformation'),
+        title: $('legacyScript.educationInformation'),
         data: [
           {
             type: 'select',
-            label: i18n.t('legacyScript.highestEducation'),
+            label: $('legacyScript.highestEducation'),
             value: 'education',
-            placeholder: i18n.t('legacyScript.enterHighestEducation'),
+            placeholder: $('legacyScript.enterHighestEducation'),
             optionsList: [
               {
-                label: i18n.t('legacyScript.graduateDegree'),
+                label: $('legacyScript.graduateDegree'),
                 value: 6
               },
               {
-                label: i18n.t('legacyScript.bachelorDegree'),
+                label: $('legacyScript.bachelorDegree'),
                 value: 5
               },
               {
-                label: i18n.t('legacyScript.associateDegree'),
+                label: $('legacyScript.associateDegree'),
                 value: 4
               },
 
               {
-                label: i18n.t('legacyScript.highSchoolOrBelow'),
+                label: $('legacyScript.highSchoolOrBelow'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.highestDegree'),
+            label: $('legacyScript.highestDegree'),
             value: 'acad',
-            placeholder: i18n.t('legacyScript.enterHighestDegree')
+            placeholder: $('legacyScript.enterHighestDegree')
           },
           {
             type: 'date',
-            label: i18n.t('legacyScript.graduationDate'),
+            label: $('legacyScript.graduationDate'),
             value: 'graduate_date',
-            placeholder: i18n.t('legacyScript.pleaseSelectGraduationDate')
+            placeholder: $('legacyScript.pleaseSelectGraduationDate')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.schoolOrUniversity'),
+            label: $('legacyScript.schoolOrUniversity'),
             value: 'graduate_name',
-            placeholder: i18n.t('legacyScript.enterSchoolOrUniversity')
+            placeholder: $('legacyScript.enterSchoolOrUniversity')
           }
         ]
       },
       {
-        title: i18n.t('legacyScript.personalDocuments'),
+        title: $('legacyScript.personalDocuments'),
 
         slot: 'personalMaterials',
         data: [
           {
             type: 'uploadImg',
-            label: i18n.t('legacyScript.frontOfIDCard'),
+            label: $('legacyScript.frontOfIDCard'),
             value: 'card_front'
           },
           {
             type: 'uploadImg',
-            label: i18n.t('legacyScript.backOfIDCard'),
+            label: $('legacyScript.backOfIDCard'),
             value: 'card_both'
           },
           {
             type: 'uploadImg',
-            label: i18n.t('legacyScript.educationCertificate'),
+            label: $('legacyScript.educationCertificate'),
             value: 'education_image'
           },
           {
             type: 'uploadImg',
-            label: i18n.t('legacyScript.degreeCertificate'),
+            label: $('legacyScript.degreeCertificate'),
             value: 'acad_image'
           }
         ]
       },
       {
-        title: i18n.t('legacyScript.bankCardInformation'),
+        title: $('legacyScript.bankCardInformation'),
         data: [
           {
             type: 'input',
-            label: i18n.t('legacyScript.bankCardNumber'),
+            label: $('legacyScript.bankCardNumber'),
             value: 'bank_num',
-            placeholder: i18n.t('legacyScript.enterBankCardNumber')
+            placeholder: $('legacyScript.enterBankCardNumber')
           },
 
           {
             type: 'input',
-            label: i18n.t('legacyScript.bankOfDeposit'),
+            label: $('legacyScript.bankOfDeposit'),
             value: 'bank_name',
-            placeholder: i18n.t('legacyScript.enterBankOfDeposit')
+            placeholder: $('legacyScript.enterBankOfDeposit')
           }
         ]
       },
       {
-        title: i18n.t('legacyScript.socialSecurityInformation'),
+        title: $('legacyScript.socialSecurityInformation'),
         data: [
           {
             type: 'input',
-            label: i18n.t('legacyScript.socialSecurityAccount'),
+            label: $('legacyScript.socialSecurityAccount'),
             value: 'social_num',
-            placeholder: i18n.t('legacyScript.enterSocialSecurityAccount')
+            placeholder: $('legacyScript.enterSocialSecurityAccount')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.housingProvidentFundAccount'),
+            label: $('legacyScript.housingProvidentFundAccount'),
             value: 'fund_num',
-            placeholder: i18n.t('legacyScript.enterHousingProvidentFundAccount')
+            placeholder: $('legacyScript.enterHousingProvidentFundAccount')
           }
         ]
       },
       {
-        title: i18n.t('hr.emergencycontact'),
+        title: $('hr.emergencycontact'),
         data: [
           {
             type: 'input',
-            label: i18n.t('legacyScript.contactName'),
+            label: $('legacyScript.contactName'),
             value: 'spare_name',
-            placeholder: i18n.t('legacyScript.enterEmergencyContactName')
+            placeholder: $('legacyScript.enterEmergencyContactName')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.contactPhone'),
+            label: $('legacyScript.contactPhone'),
             value: 'spare_tel',
-            placeholder: i18n.t('legacyScript.enterEmergencyContactPhone')
+            placeholder: $('legacyScript.enterEmergencyContactPhone')
           }
         ]
       },
 
       // 工作经历
       {
-        title: i18n.t('hr.workexperience'),
+        title: $('hr.workexperience'),
         type: 1,
         slot: 'workExperience',
         data: []
       },
       // 教育经历
       {
-        title: i18n.t('hr.educationalexperience'),
+        title: $('hr.educationalexperience'),
         type: 1,
         slot: 'educationalExperience',
         data: []
@@ -713,77 +713,77 @@ let formOptions = {
     // 未入职员工
     ;(this.notEntry = [
       {
-        title: i18n.t('hr.tablist2'),
+        title: $('hr.tablist2'),
         edit_type: 'staff',
         data: [
           {
             type: 'date',
-            label: i18n.t('legacyScript.interviewTime'),
+            label: $('legacyScript.interviewTime'),
             value: 'interview_date',
-            placeholder: i18n.t('legacyScript.pleaseSelectInterviewTime')
+            placeholder: $('legacyScript.pleaseSelectInterviewTime')
           },
           {
             type: 'select',
-            label: i18n.t('legacyScript.employmentType'),
+            label: $('legacyScript.employmentType'),
             value: 'is_part',
-            placeholder: i18n.t('legacyScript.pleaseSelectEmploymentType'),
+            placeholder: $('legacyScript.pleaseSelectEmploymentType'),
             optionsList: [
               {
-                label: i18n.t('legacyScript.fullTime'),
+                label: $('legacyScript.fullTime'),
                 value: 0
               },
               {
-                label: i18n.t('legacyScript.partTime'),
+                label: $('legacyScript.partTime'),
                 value: 1
               },
               {
-                label: i18n.t('hr.internship'),
+                label: $('hr.internship'),
                 value: 2
               },
               {
-                label: i18n.t('legacyScript.laborDispatch'),
+                label: $('legacyScript.laborDispatch'),
                 value: 3
               },
               {
-                label: i18n.t('legacyScript.retireeRehired'),
+                label: $('legacyScript.retireeRehired'),
                 value: 4
               },
               {
-                label: i18n.t('legacyScript.laborOutsourcing'),
+                label: $('legacyScript.laborOutsourcing'),
                 value: 5
               },
               {
-                label: i18n.t('hr.other'),
+                label: $('hr.other'),
                 value: 6
               }
             ]
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.interviewPosition'),
+            label: $('legacyScript.interviewPosition'),
             value: 'interview_position',
-            placeholder: i18n.t('legacyScript.pleaseEnterInterviewPosition')
+            placeholder: $('legacyScript.pleaseEnterInterviewPosition')
           },
           {
             type: 'select',
-            label: i18n.t('legacyScript.employeeStatus'),
+            label: $('legacyScript.employeeStatus'),
             value: 'type',
-            placeholder: i18n.t('hr.placeholder19'),
+            placeholder: $('hr.placeholder19'),
             optionsList: [
               {
-                label: i18n.t('hr.formal'),
+                label: $('hr.formal'),
                 value: '1'
               },
               {
-                label: i18n.t('hr.ontrial'),
+                label: $('hr.ontrial'),
                 value: '3'
               },
               {
-                label: i18n.t('ui.hrArchivesTableNotOnboarded'),
+                label: $('ui.hrArchivesTableNotOnboarded'),
                 value: '0'
               },
               {
-                label: i18n.t('hr.dimission'),
+                label: $('hr.dimission'),
                 value: '4'
               }
             ]
@@ -791,195 +791,195 @@ let formOptions = {
         ]
       },
       {
-        title: i18n.t('hr.tablist1'),
+        title: $('hr.tablist1'),
         edit_type: 'user',
         data: [
           {
             type: 'input',
-            label: i18n.t('ui.hrEnterpriseJobAnalysisPersonName'),
+            label: $('ui.hrEnterpriseJobAnalysisPersonName'),
             value: 'name',
-            placeholder: i18n.t('legacyScript.enterName')
+            placeholder: $('legacyScript.enterName')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.mobileNumber'),
+            label: $('legacyScript.mobileNumber'),
             value: 'phone',
-            placeholder: i18n.t('legacyScript.theMobileNumberServesAsTheEmployeeLoginIDDefault')
+            placeholder: $('legacyScript.theMobileNumberServesAsTheEmployeeLoginIDDefault')
           },
 
           {
             type: 'input',
-            label: i18n.t('legacyScript.iDNumber'),
+            label: $('legacyScript.iDNumber'),
             value: 'card_id',
-            placeholder: i18n.t('legacyScript.enterIDNumber')
+            placeholder: $('legacyScript.enterIDNumber')
           },
           {
             type: 'select',
-            label: i18n.t('legacyScript.gender'),
+            label: $('legacyScript.gender'),
             value: 'sex',
-            placeholder: i18n.t('hr.placeholder3'),
+            placeholder: $('hr.placeholder3'),
             optionsList: [
               {
-                label: i18n.t('hr.male'),
+                label: $('hr.male'),
                 value: 1
               },
               {
-                label: i18n.t('hr.female'),
+                label: $('hr.female'),
                 value: 2
               },
               {
-                label: i18n.t('hr.unknown'),
+                label: $('hr.unknown'),
                 value: 0
               }
             ]
           },
           {
             type: 'date',
-            label: i18n.t('legacyScript.dateOfBirth'),
+            label: $('legacyScript.dateOfBirth'),
             value: 'birthday',
-            placeholder: i18n.t('legacyScript.pleaseSelectDateOfBirth')
+            placeholder: $('legacyScript.pleaseSelectDateOfBirth')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.age'),
+            label: $('legacyScript.age'),
             value: 'age',
-            placeholder: i18n.t('legacyScript.pleaseEnterAge')
+            placeholder: $('legacyScript.pleaseEnterAge')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.nation'),
+            label: $('legacyScript.nation'),
             value: 'nation',
-            placeholder: i18n.t('legacyScript.pleaseEnterNation')
+            placeholder: $('legacyScript.pleaseEnterNation')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.politicalOutlook'),
+            label: $('legacyScript.politicalOutlook'),
             value: 'politic',
-            placeholder: i18n.t('legacyScript.pleaseEnterPoliticalOutlook')
+            placeholder: $('legacyScript.pleaseEnterPoliticalOutlook')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.yearsOfExperience'),
+            label: $('legacyScript.yearsOfExperience'),
             value: 'work_years',
-            placeholder: i18n.t('legacyScript.enterYearsOfRelevantExperience')
+            placeholder: $('legacyScript.enterYearsOfRelevantExperience')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.nativePlace'),
+            label: $('legacyScript.nativePlace'),
             value: 'native',
-            placeholder: i18n.t('legacyScript.enterNativePlace')
+            placeholder: $('legacyScript.enterNativePlace')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.currentAddress'),
+            label: $('legacyScript.currentAddress'),
             value: 'address',
-            placeholder: i18n.t('legacyScript.enterCurrentResidentialAddress')
+            placeholder: $('legacyScript.enterCurrentResidentialAddress')
           },
           {
             type: 'select',
-            label: i18n.t('legacyScript.maritalStatus'),
+            label: $('legacyScript.maritalStatus'),
             value: 'marriage',
-            placeholder: i18n.t('legacyScript.pleaseSelectMaritalStatus'),
+            placeholder: $('legacyScript.pleaseSelectMaritalStatus'),
             optionsList: [
               {
-                label: i18n.t('hr.unmarried'),
+                label: $('hr.unmarried'),
                 value: 0
               },
               {
-                label: i18n.t('hr.married'),
+                label: $('hr.married'),
                 value: 1
               },
               {
-                label: i18n.t('legacyScript.marriedWithChildren'),
+                label: $('legacyScript.marriedWithChildren'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.emailAddress'),
+            label: $('legacyScript.emailAddress'),
             value: 'email',
-            placeholder: i18n.t('customer.placeholder55')
+            placeholder: $('customer.placeholder55')
           }
         ]
       },
       {
-        title: i18n.t('legacyScript.educationInformation'),
+        title: $('legacyScript.educationInformation'),
         edit_type: 'education',
         data: [
           {
             type: 'select',
-            label: i18n.t('legacyScript.highestEducation'),
+            label: $('legacyScript.highestEducation'),
             value: 'education',
-            placeholder: i18n.t('legacyScript.enterHighestEducation'),
+            placeholder: $('legacyScript.enterHighestEducation'),
             optionsList: [
               {
-                label: i18n.t('legacyScript.graduateDegree'),
+                label: $('legacyScript.graduateDegree'),
                 value: 6
               },
               {
-                label: i18n.t('legacyScript.bachelorDegree'),
+                label: $('legacyScript.bachelorDegree'),
                 value: 5
               },
               {
-                label: i18n.t('legacyScript.associateDegree'),
+                label: $('legacyScript.associateDegree'),
                 value: 4
               },
 
               {
-                label: i18n.t('legacyScript.highSchoolOrBelow'),
+                label: $('legacyScript.highSchoolOrBelow'),
                 value: 2
               }
             ]
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.highestDegree'),
+            label: $('legacyScript.highestDegree'),
             value: 'acad',
-            placeholder: i18n.t('legacyScript.enterHighestDegree')
+            placeholder: $('legacyScript.enterHighestDegree')
           },
           {
             type: 'date',
-            label: i18n.t('legacyScript.graduationDate'),
+            label: $('legacyScript.graduationDate'),
             value: 'graduate_date',
-            placeholder: i18n.t('legacyScript.pleaseSelectGraduationDate')
+            placeholder: $('legacyScript.pleaseSelectGraduationDate')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.schoolOrUniversity'),
+            label: $('legacyScript.schoolOrUniversity'),
             value: 'graduate_name',
-            placeholder: i18n.t('legacyScript.enterSchoolOrUniversity')
+            placeholder: $('legacyScript.enterSchoolOrUniversity')
           }
         ]
       },
       {
-        title: i18n.t('hr.emergencycontact'),
+        title: $('hr.emergencycontact'),
         edit_type: 'spare',
         data: [
           {
             type: 'input',
-            label: i18n.t('legacyScript.contactName'),
+            label: $('legacyScript.contactName'),
             value: 'spare_name',
-            placeholder: i18n.t('legacyScript.enterEmergencyContactName')
+            placeholder: $('legacyScript.enterEmergencyContactName')
           },
           {
             type: 'input',
-            label: i18n.t('legacyScript.contactPhone'),
+            label: $('legacyScript.contactPhone'),
             value: 'spare_tel',
-            placeholder: i18n.t('legacyScript.enterEmergencyContactPhone')
+            placeholder: $('legacyScript.enterEmergencyContactPhone')
           }
         ]
       },
       // 工作经历
       {
-        title: i18n.t('hr.workexperience'),
+        title: $('hr.workexperience'),
         type: 1,
         slot: 'workExperience',
         data: []
       },
       // 教育经历
       {
-        title: i18n.t('hr.educationalexperience'),
+        title: $('hr.educationalexperience'),
         type: 1,
         slot: 'educationalExperience',
         data: []
@@ -987,40 +987,40 @@ let formOptions = {
     ]),
       // 表单校验
       (this.fromRules = {
-        name: [{ required: true, message: i18n.t('legacyScript.pleaseEnterPersonName'), trigger: 'blur' }],
+        name: [{ required: true, message: $('legacyScript.pleaseEnterPersonName'), trigger: 'blur' }],
 
         position: [{ required: true, validator: positionFn, trigger: 'change' }],
 
-        is_admin: [{ required: true, message: i18n.t('legacyScript.ownerIsRequired'), trigger: 'change' }],
+        is_admin: [{ required: true, message: $('legacyScript.ownerIsRequired'), trigger: 'change' }],
         frame_id: [{ required: true, validator: frameFn, trigger: 'blur' }],
         phone: [
-          { required: true, message: i18n.t('customer.placeholder09'), trigger: 'blur' },
+          { required: true, message: $('customer.placeholder09'), trigger: 'blur' },
           {
             pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
-            message: i18n.t('legacyScript.pleaseEnterAValidPhoneNumber')
+            message: $('legacyScript.pleaseEnterAValidPhoneNumber')
           }
         ],
-        is_part: [{ required: true, message: i18n.t('legacyScript.pleaseSelectEmploymentType'), trigger: 'change' }],
+        is_part: [{ required: true, message: $('legacyScript.pleaseSelectEmploymentType'), trigger: 'change' }],
         email: [
-          { required: false, message: i18n.t('legacyScript.pleaseSelectEmploymentType'), trigger: 'change' },
+          { required: false, message: $('legacyScript.pleaseSelectEmploymentType'), trigger: 'change' },
           {
             type: 'email',
-            message: i18n.t('legacyScript.pleaseEnterAValidEmailAddress'),
+            message: $('legacyScript.pleaseEnterAValidEmailAddress'),
             trigger: ['blur']
           }
         ],
-        type: [{ required: true, message: i18n.t('legacyScript.employeeStatusIsRequired'), trigger: 'change' }],
+        type: [{ required: true, message: $('legacyScript.employeeStatusIsRequired'), trigger: 'change' }],
         card_id: [
           {
             pattern: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,
-            message: i18n.t('legacyScript.pleaseEnterAValidIDNumber'),
+            message: $('legacyScript.pleaseEnterAValidIDNumber'),
             trigger: 'blur'
           }
         ],
-        work_time: [{ required: true, message: i18n.t('legacyScript.pleaseSelectOnboardingTime'), trigger: 'blur' }],
-        interview_date: [{ required: true, message: i18n.t('legacyScript.pleaseSelectInterviewTime'), trigger: 'blur' }],
-        quit_time: [{ required: true, message: i18n.t('legacyScript.pleaseSelectResignationTime'), trigger: 'blur' }],
-        interview_position: [{ required: true, message: i18n.t('legacyScript.pleaseEnterInterviewPosition'), trigger: 'blur' }]
+        work_time: [{ required: true, message: $('legacyScript.pleaseSelectOnboardingTime'), trigger: 'blur' }],
+        interview_date: [{ required: true, message: $('legacyScript.pleaseSelectInterviewTime'), trigger: 'blur' }],
+        quit_time: [{ required: true, message: $('legacyScript.pleaseSelectResignationTime'), trigger: 'blur' }],
+        interview_position: [{ required: true, message: $('legacyScript.pleaseEnterInterviewPosition'), trigger: 'blur' }]
       })
     return {
       // 控制每个表单的是否修改状态

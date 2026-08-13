@@ -494,18 +494,6 @@ export function getDSByName(o, e) {
     n
   )
 }
-export function addZHExtensionLang(o) {
-  !!o.extension &&
-    !!o.extension.widgetLabel &&
-    overwriteObj(zhLocale_extension.extension.widgetLabel, o.extension.widgetLabel),
-    !!o.extension && !!o.extension.setting && overwriteObj(zhLocale_extension.extension.setting, o.extension.setting)
-}
-export function addENExtensionLang(o) {
-  !!o.extension &&
-    !!o.extension.widgetLabel &&
-    overwriteObj(enLocale_extension.extension.widgetLabel, o.extension.widgetLabel),
-    !!o.extension && !!o.extension.setting && overwriteObj(enLocale_extension.extension.setting, o.extension.setting)
-}
 var WidgetProperties = {
   COMMON_PROPERTIES: COMMON_PROPERTIES$1,
   ADVANCED_PROPERTIES: ADVANCED_PROPERTIES$1,

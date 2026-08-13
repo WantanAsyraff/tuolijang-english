@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 查看客户信息侧滑页面 -->
 <template>
 <div class="station">
@@ -26,7 +27,7 @@
             {{ dataInfo.data ? dataInfo.data.liaison_name : '--' }}
           </div>
           <div class="txt2" v-if="types !== 'liaison'">
-            <span class="title"> {{ types === 'odds' ? $t('ui.customerDetailsOpportunityStatus') : $t('ui.customerDetailsLeadStatus') }}</span>
+            <span class="title"> {{ types === 'odds' ? $('ui.customerDetailsOpportunityStatus') : $('ui.customerDetailsLeadStatus') }}</span>
 
             <span
               class="info3"
@@ -35,11 +36,11 @@
             >
 
             <span class="title" v-if="types === 'odds'"
-              >{{ $t("ui.customerDetailsCustomerName") }}<span class="weight">{{
+              >{{ $("ui.customerDetailsCustomerName") }}<span class="weight">{{
                 dataInfo.data && dataInfo.data.customer_name ? dataInfo.data.customer_name : '--'
               }}</span></span
             >
-            <span class="title">{{ $t('customer.salesman') }}：</span
+            <span class="title">{{ $('customer.salesman') }}：</span
             ><span class="weight">{{ dataInfo.data ? dataInfo.data.salesman : '--' }}</span>
           </div>
         </el-col>
@@ -79,14 +80,14 @@
         >
           <template v-slot:product="slotProps">
             <div class="from-item-title mb20 flex-between" style="width: 100%">
-              <span>{{ $t("ui.customerSpecificationsProductInformation") }}</span>
+              <span>{{ $("ui.customerSpecificationsProductInformation") }}</span>
               <div
                 v-if="slotProps.type == '' || slotProps.type == 'edit'"
                 class="addColor iconfont iconbianji3"
-                :title="$t('ui.customerDetailsEditProductList')"
+                :title="$('ui.customerDetailsEditProductList')"
                 @click="editProduct"
               >
-                {{ $t("ui.formCommonOaLogEdit") }}
+                {{ $("ui.formCommonOaLogEdit") }}
               </div>
             </div>
             <productList
@@ -96,8 +97,8 @@
               :product="dataInfo.product"
             ></productList>
             <div v-if="slotProps.type == 'add'" class="flex-end">
-              <el-button size="small" @click="productFn(1)">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-              <el-button size="small" type="primary" @click="productFn(2)">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+              <el-button size="small" @click="productFn(1)">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+              <el-button size="small" type="primary" @click="productFn(2)">{{ $("ui.formCommonDialogFormOk") }}</el-button>
             </div>
           </template>
         </oaForm>
@@ -114,7 +115,7 @@
         <template v-else>
           <default-page :textShow="false" :index="17" imgWidth="128px">
             <el-button class="btn-primary" type="text" size="small" @click="openContract"
-              >{{ $t("ui.customerDetailsGenerateContract") }} <span class="el-icon-arrow-right"
+              >{{ $("ui.customerDetailsGenerateContract") }} <span class="el-icon-arrow-right"
             /></el-button>
           </default-page>
         </template>
@@ -139,7 +140,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { contractDocDetailApi } from '@/api/contractSign'
 import { getCluesEditApi, oddsCreateEditApi } from '@/api/client'
 import { liaisonEditCreateApi } from '@/api/enterprise'
@@ -188,30 +188,30 @@ export default {
       const TAB_DATA = [
         {
           value: '1',
-          label: i18n.t('setting.info.essentialinformation')
+          label: $('setting.info.essentialinformation')
         },
         {
           value: '5',
-          label: i18n.t('legacyScript.contractInformation'),
+          label: $('legacyScript.contractInformation'),
           includeType: ['odds'],
           moduleKey: CUSTOMER_MODULE_KEYS.CONTRACT
         },
         {
           value: '2',
-          label: i18n.t('customer.followrecord'),
+          label: $('customer.followrecord'),
           badgeKey: 'follow_count',
           excludeType: ['liaison']
         },
         {
           value: '4',
-          label: i18n.t('customer.contract'),
+          label: $('customer.contract'),
           badgeKey: 'contract_count',
           excludeType: ['liaison', 'clue', 'clue_seas'],
           moduleKey: CUSTOMER_MODULE_KEYS.ORDER
         },
         {
           value: '3',
-          label: i18n.t('ui.customerListDynamicRecordActivityRecords'),
+          label: $('ui.customerListDynamicRecordActivityRecords'),
           badgeKey: 'record_count'
         }
       ]
@@ -264,7 +264,7 @@ export default {
     },
     openContract() {
       if (!this.formData.data.eid) {
-        this.$message.error(i18n.t('legacyScript.invalidCustomer'))
+        this.$message.error($('legacyScript.invalidCustomer'))
         return false
       }
       this.formData.data.link_type = '5'

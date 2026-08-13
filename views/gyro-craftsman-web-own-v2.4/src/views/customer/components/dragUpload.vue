@@ -1,10 +1,11 @@
+import { $ } from '@/lang'
 <template>
     <div class="oa-dialog">
-        <el-dialog :title="$t('ui.customerDragUploadImportData')" :visible.sync="show" width="789px" :before-close="handleClose"
+        <el-dialog :title="$('ui.customerDragUploadImportData')" :visible.sync="show" width="789px" :before-close="handleClose"
             :close-on-click-modal="false">
             <div class="tips-box">
-                {{ $t("ui.customerDragUploadEditTheContentUsingTheTemplateFormatThenUpload") }}<img src="@/assets/images/excel.png" alt="" class="img" />
-                <span class="download" @click="download">{{ $t("ui.fdInvoiceIndexDownload") }}{{ title }}</span>
+                {{ $("ui.customerDragUploadEditTheContentUsingTheTemplateFormatThenUpload") }}<img src="@/assets/images/excel.png" alt="" class="img" />
+                <span class="download" @click="download">{{ $("ui.fdInvoiceIndexDownload") }}{{ title }}</span>
             </div>
             <div class="upload-box">
                 <el-upload class="upload-demo" drag action="##" :show-file-list="false" :headers="myHeaders"
@@ -12,19 +13,19 @@
                     <!-- 导入 -->
                     <template v-if="loading === 1">
                         <img src="@/assets/images/upload.png" alt="" class="img" />
-                        <div class="el-upload__text">{{ $t("ui.customerDragUploadDragAFileHereToUploadOr") }} <em>{{ $t("ui.customerDragUploadClickToAdd") }}</em></div>
-                        <div class="el-upload__type">{{ $t("ui.customerDragUploadSupportsXlsAndXlsxFilesUpTo10000") }}</div>
+                        <div class="el-upload__text">{{ $("ui.customerDragUploadDragAFileHereToUploadOr") }} <em>{{ $("ui.customerDragUploadClickToAdd") }}</em></div>
+                        <div class="el-upload__type">{{ $("ui.customerDragUploadSupportsXlsAndXlsxFilesUpTo10000") }}</div>
                     </template>
                     <!-- 导入中 -->
                     <template v-if="loading == 2">
                         <img src="@/assets/images/loading.gif" alt="" class="img-gif" />
                         <div class="el-upload__text">{{ file.name }}（{{ toSizeFile(file.size) }}）</div>
-                        <div class="el-upload__type">{{ $t("ui.customerDragUploadImporting") }}</div>
+                        <div class="el-upload__type">{{ $("ui.customerDragUploadImporting") }}</div>
                     </template>
                     <!-- 导入成功 -->
                     <template v-if="loading == 3">
                         <img src="@/assets/images/uploadOk.png" alt="" class="img-ok" />
-                        <div class="text-ok">{{ $t("ui.customerDragUploadImportComplete") }}</div>
+                        <div class="text-ok">{{ $("ui.customerDragUploadImportComplete") }}</div>
                         <div class="el-upload__type">
 
                            {{ response_data }}
@@ -33,12 +34,12 @@
                     <!-- 导入失败 -->
                     <template v-if="loading == 4">
                         <i class="iconfont icontishi2"></i>
-                        <div class="text-ok">{{ $t("ui.customerDragUploadImportFailed") }}</div>
+                        <div class="text-ok">{{ $("ui.customerDragUploadImportFailed") }}</div>
                         <div class="el-upload__text mb8 mt16">
                             {{ file.name || '--' }}<span style="color: #909399">（{{ toSizeFile(file.size || 0)
                                 }}）</span>
                         </div>
-                        <div class="el-upload__text"><em>{{ $t("ui.customerDragUploadChooseAgain") }}</em></div>
+                        <div class="el-upload__text"><em>{{ $("ui.customerDragUploadChooseAgain") }}</em></div>
                     </template>
                 </el-upload>
             </div>
@@ -53,7 +54,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { uploader } from '@/utils/uploadCloud'
 import { clientImportTemplateApi, clientImportApi } from '@/api/client'
 import { formatBytes } from '@/libs/public'
@@ -70,7 +70,7 @@ export default {
                 authorization: 'Bearer ' + localStorage.getItem('token')
             },
             file: {},
-            title:i18n.t('legacyScript.customerTemplate'),
+            title:$('legacyScript.customerTemplate'),
             url:'',
             keyWord: '',
             response_data: '',

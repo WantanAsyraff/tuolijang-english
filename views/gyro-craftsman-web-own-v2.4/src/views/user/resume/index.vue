@@ -26,23 +26,23 @@
     <!-- 侧边推送 -->
     <el-card class="pushBox">
       <div @scroll.passive="getScroll($event)">
-        <div class="title mb20" v-if="list.length > 0">{{ $t("ui.userResumeIndexInvitation") }}</div>
+        <div class="title mb20" v-if="list.length > 0">{{ $("ui.userResumeIndexInvitation") }}</div>
         <div class="send-box" v-for="(item, index) in list" :key="index">
           <div class="send-content">
             <img :src="item.enterprise.logo" alt="" class="img" />
             <div class="text">
               <div>{{ item.enterprise.enterprise_name }}</div>
-              <span v-if="item.types == 0">{{ $t("ui.userResumeIndexYouAreInvitedToSendYourResumeInformation") }}</span>
-              <span v-else>{{ $t("ui.userResumeIndexYourEnterpriseInvitesYouToCompleteYourPersonalProfile") }}</span>
+              <span v-if="item.types == 0">{{ $("ui.userResumeIndexYouAreInvitedToSendYourResumeInformation") }}</span>
+              <span v-else>{{ $("ui.userResumeIndexYourEnterpriseInvitesYouToCompleteYourPersonalProfile") }}</span>
             </div>
           </div>
           <div class="footer">
-            <div class="refuse" @click="putPerfectRefuse(item)">{{ $t("ui.settingEnterpriseUpgradeIndexRefuse") }}</div>
-            <div class="refuse1" @click="putPerfectAgree(item)">{{ $t("ui.userResumeIndexSend") }}</div>
+            <div class="refuse" @click="putPerfectRefuse(item)">{{ $("ui.settingEnterpriseUpgradeIndexRefuse") }}</div>
+            <div class="refuse1" @click="putPerfectAgree(item)">{{ $("ui.userResumeIndexSend") }}</div>
           </div>
         </div>
         <div>
-          <div class="title" v-if="h_list.length > 0">{{ $t("ui.userResumeIndexInvitationRecords") }}</div>
+          <div class="title" v-if="h_list.length > 0">{{ $("ui.userResumeIndexInvitationRecords") }}</div>
           <div class="h-box" v-for="(val, index) in h_list" :key="index">
             <img :src="val.enterprise.logo" alt="" class="img" />
             <div class="text">
@@ -52,13 +52,13 @@
                 :class="{ 'status-success': val.status === 1, 'status-fail': val.status === 2 }"
                 v-if="val.types === 0"
               >
-                {{ val.status === 1 ? $t('ui.userResumeIndexResumeInformationSent') : $t('ui.userResumeIndexResumeInformationDeclined') }}
+                {{ val.status === 1 ? $('ui.userResumeIndexResumeInformationSent') : $('ui.userResumeIndexResumeInformationDeclined') }}
               </span>
               <span
                 :class="{ 'status-success': val.status === 1, 'status-fail': val.status === 2 }"
                 v-if="val.types === 1"
               >
-                {{ val.status === 1 ? $t('ui.userResumeIndexPersonalProfileCompleted') : $t('ui.userResumeIndexPersonalProfileCompletionDeclined') }}
+                {{ val.status === 1 ? $('ui.userResumeIndexPersonalProfileCompleted') : $('ui.userResumeIndexPersonalProfileCompletionDeclined') }}
               </span>
             </div>
           </div>
@@ -67,14 +67,14 @@
         <!-- 缺省页 -->
         <div class="default" v-if="h_list.length == 0 && list.length == 0">
           <img src="../../../assets/images/def1.png" alt="" class="def-img" />
-          <div>{{ $t("ui.userResumeIndexNoBusinessInvitationInformation") }}</div>
+          <div>{{ $("ui.userResumeIndexNoBusinessInvitationInformation") }}</div>
         </div>
       </div>
     </el-card>
 
     <div class="cr-bottom-button btn-shadow">
-      <el-button size="small" @click="restFn">{{ $t("ui.userResumeIndexReset") }}</el-button>
-      <el-button type="primary" size="small" @click="submit">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button size="small" @click="restFn">{{ $("ui.userResumeIndexReset") }}</el-button>
+      <el-button type="primary" size="small" @click="submit">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </div>
 </div>

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <div class="box">
@@ -5,8 +6,8 @@
         <div class="main">
           <!-- 搜索 -->
           <div class="search">
-            <el-input v-model="keyword" :placeholder='$ts("搜索功能和帮助")' prefix-icon="el-icon-search" @change="getList">
-              <el-button slot="suffix" type="primary" @click="getList()"> {{ $ts("搜索") }}</el-button>
+            <el-input v-model="keyword" :placeholder='$("legacy.73a0704915954be4")' prefix-icon="el-icon-search" @change="getList">
+              <el-button slot="suffix" type="primary" @click="getList()"> {{ $("public.search") }}</el-button>
             </el-input>
           </div>
           <!-- tab切换 -->
@@ -21,7 +22,7 @@
             <div v-if="item.type == 'document'" class="content" @click="openHelp(item)">
               <div class="header">
                 <div class="title">
-                  <span v-if="labelText == '全部'" class="text">{{ $ts("【操作手册】") }}</span>
+                  <span v-if="labelText == '全部'" class="text">{{ $("legacy.ed0b0151637f3038") }}</span>
 
                   <span v-html="item.question == '' ? item.title : item.question"></span>
                 </div>
@@ -34,7 +35,7 @@
             <div v-if="item.type == 'article'" class="content" @click="openArticle(item)">
               <div class="header">
                 <div class="title">
-                  <span v-if="labelText == '全部'" class="text color1">{{ $ts("【知识社区】") }}</span>
+                  <span v-if="labelText == '全部'" class="text color1">{{ $("legacy.289ab40a1767b8d1") }}</span>
 
                   <span v-html="item.title"></span>
                 </div>
@@ -52,8 +53,8 @@
               <div class="flex-end mt15">
                 <span class="icon">￥</span>
                 <span class="num">{{ item.price }}</span>
-                <span class="use">{{ item.download }}{{ $ts("人使用") }}</span>
-                <div class="down" @click.stop="fileDown(item)"><span class="iconfont iconxiazai" />{{ $ts("下载") }}</div>
+                <span class="use">{{ item.download }}{{ $("legacy.522109205f37cb80") }}</span>
+                <div class="down" @click.stop="fileDown(item)"><span class="iconfont iconxiazai" />{{ $("hr.download") }}</div>
               </div>
             </div>
             <div v-if="item.type == 'file' && item.unlock == 1" class="content" @click="proview(item)">
@@ -62,16 +63,16 @@
                 <div class="read"><span class="iconfont iconzuozhezhongxin-chuangzuozhongxin" /> {{ item.visit }}</div>
               </div>
               <div class="flex-end mt15">
-                <span class="free">{{ $ts("免费") }}</span>
-                <span class="use">{{ item.download }}{{ $ts("人使用") }}</span>
-                <div class="down" @click.stop="fileDown(item)"><span class="iconfont iconxiazai" />{{ $ts("下载") }}</div>
+                <span class="free">{{ $("legacy.649a0fc7237ed893") }}</span>
+                <span class="use">{{ item.download }}{{ $("legacy.522109205f37cb80") }}</span>
+                <div class="down" @click.stop="fileDown(item)"><span class="iconfont iconxiazai" />{{ $("hr.download") }}</div>
               </div>
             </div>
           </div>
 
           <div v-if="dataList.length == 0" class="default">
             <img alt="" src="../../assets/images/help.png" />
-            <div class="text">{{ $ts("暂无搜索结果~") }}</div>
+            <div class="text">{{ $("legacy.f76b6fce728a6ce3") }}</div>
           </div>
         </div>
       </el-card>
@@ -83,7 +84,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { mapMutations } from 'vuex'
 import { helpCenterApi, templatePayCode, templateViewApi, templateExportApi } from '@/api/user'
 import file from '@/utils/file'
@@ -202,7 +202,7 @@ export default {
     handlePayment(id) {
       templatePayCode(id).then((res) => {
         this.payData = {
-          title: i18n.t('legacyScript.payment'),
+          title: $('legacyScript.payment'),
           width: '300px',
           type: 0,
           data: res.data

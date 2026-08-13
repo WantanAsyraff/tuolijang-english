@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 人事-考勤管理-考勤组设置 -->
 <template>
 <div class="divBox">
@@ -8,7 +9,7 @@
       :isAddBtn="true"
       :isViewSearch="false"
       :search="search"
-      :title="$t('ui.hrAttendanceSettingTeamAttendanceGroupList')"
+      :title="$('ui.hrAttendanceSettingTeamAttendanceGroupList')"
       :total="total"
       @addDataFn="addFn"
       @confirmData="confirmData"
@@ -16,22 +17,22 @@
     ></oaFromBox>
     <div class="table-box mt10">
       <el-table :data="tableData" :height="tableHeight" style="width: 100%">
-        <el-table-column :label="$t('ui.hrAttendanceSettingTeamAttendanceGroupName')" min-width="180" prop="name" show-overflow-tooltip> </el-table-column>
-        <el-table-column :label="$t('ui.hrAttendanceSettingTeamAttendanceGroupMembers')" min-width="250" prop="members" show-overflow-tooltip>
+        <el-table-column :label="$('ui.hrAttendanceSettingTeamAttendanceGroupName')" min-width="180" prop="name" show-overflow-tooltip> </el-table-column>
+        <el-table-column :label="$('ui.hrAttendanceSettingTeamAttendanceGroupMembers')" min-width="250" prop="members" show-overflow-tooltip>
           <template #default="{ row }">
             <span>{{ row.members.map((obj) => obj.name).join('、') }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.hrAttendanceSettingAddConentAttendanceShift')" min-width="300" prop="shifts">
+        <el-table-column :label="$('ui.hrAttendanceSettingAddConentAttendanceShift')" min-width="300" prop="shifts">
           <template slot-scope="scope">
             <template v-if="scope.row.shifts.length <= 3">
               <span v-for="(item, index) in scope.row.shifts" :key="index"
-                >{{ item.name }}&nbsp;{{ item.times[0].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay')
-                }}{{ item.times[0].work_hours }}-{{ item.times[0].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay')
+                >{{ item.name }}&nbsp;{{ item.times[0].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
+                }}{{ item.times[0].work_hours }}-{{ item.times[0].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
                 }}{{ item.times[0].off_hours }}
                 <span v-if="item.times.length > 1">
-                  {{ item.times[1].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[1].work_hours }} -
-                  {{ item.times[1].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[1].off_hours }}
+                  {{ item.times[1].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[1].work_hours }} -
+                  {{ item.times[1].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[1].off_hours }}
                 </span>
               </span>
             </template>
@@ -49,15 +50,15 @@
             </el-popover>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" prop="created_at" width="180"> </el-table-column>
-        <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="130">
+        <el-table-column :label="$('ui.invoiceInvoiceDetailsCreatedTime')" prop="created_at" width="180"> </el-table-column>
+        <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="130">
           <template #default="{ row }">
             <el-button
               v-if="row.admins.includes(userInfo.id) || row.super.includes(userInfo.id)"
               v-hasPermi="['hr:attendance:team:edit']"
               type="text"
               @click="editFn(row)"
-              >{{ $t("ui.formCommonOaLogEdit") }}</el-button
+              >{{ $("ui.formCommonOaLogEdit") }}</el-button
             >
 
             <el-button
@@ -65,7 +66,7 @@
               v-hasPermi="['hr:attendance:team:delete']"
               type="text"
               @click="deleteFn(row)"
-              >{{ $t("ui.chatIndexDelete") }}</el-button
+              >{{ $("ui.chatIndexDelete") }}</el-button
             >
           </template>
         </el-table-column>
@@ -84,22 +85,22 @@
     </div>
   </el-card>
   <!-- 查看未设置考勤组人员 -->
-  <el-drawer :before-close="handleClose" :visible.sync="drawer" size="700px" :title="$t('ui.hrAttendanceSettingTeamEmployeesWithoutAnAttendanceGroup')">
+  <el-drawer :before-close="handleClose" :visible.sync="drawer" size="700px" :title="$('ui.hrAttendanceSettingTeamEmployeesWithoutAnAttendanceGroup')">
     <!-- 表格 -->
     <div class="box">
       <el-table ref="multipleTable" :data="listData" style="width: 100%" tooltip-effect="dark">
-        <el-table-column :label="$t('ui.hrAttendanceSettingNotJoinPersonName')" prop="name"> </el-table-column>
-        <el-table-column :label="$t('ui.businessHolidayQueryIndexDepartment')" prop="position">
+        <el-table-column :label="$('ui.hrAttendanceSettingNotJoinPersonName')" prop="name"> </el-table-column>
+        <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" prop="position">
           <template slot-scope="scope">
             <div v-for="(item, index) in scope.row.frames" :key="index" class="frame-name over-text">
               <span class="icon-h">
                 {{ item.name
-                }}<span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$t('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $t("ui.formCommonSelectDepartmentMain") }}</span>
+                }}<span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $("ui.formCommonSelectDepartmentMain") }}</span>
               </span>
             </div>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.hrAssessConfigAssessBoxPosition')" prop="job.name"> </el-table-column>
+        <el-table-column :label="$('ui.hrAssessConfigAssessBoxPosition')" prop="job.name"> </el-table-column>
       </el-table>
       <el-pagination
         :current-page="list.page"
@@ -115,7 +116,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import oaFromBox from '@/components/common/oaFromBox'
 import { attendanceGroupListApi, deleteAttendanceGroup, attendanceUnattendedMember } from '@/api/config'
@@ -145,7 +145,7 @@ export default {
       ],
       dropdownList: [
         {
-          label: i18n.t('ui.hrAttendanceSettingTeamEmployeesWithoutAnAttendanceGroup'),
+          label: $('ui.hrAttendanceSettingTeamEmployeesWithoutAnAttendanceGroup'),
           value: 1
         }
       ],

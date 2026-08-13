@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import moment from 'moment'
 
 /**
@@ -137,33 +137,33 @@ export const getInvoiceType = (status) => {
  * 发票审核状态筛选下拉框
  */
 export const selectInvoiceTitle = [
-  { label: i18n.t('finance.all'), value: '' },
-  { label: i18n.t('customer.pendingApproval'), value: 0 },
-  { label: i18n.t('ui.customerInvoiceIndexPendingInvoicing'), value: 1 },
-  { label: i18n.t('ui.userExamineExamineRejected'), value: 2 },
-  { label: i18n.t('ui.customerContractPaymentTableWithdrawInvoice'), value: 3 },
-  { label: i18n.t('ui.customerInvoiceIndexApplyToVoid'), value: 4 },
-  { label: i18n.t('customer.invoiced'), value: 5 },
-  { label: i18n.t('ui.customerInvoiceIndexVoided'), value: -1 }
+  { label: $('finance.all'), value: '' },
+  { label: $('customer.pendingApproval'), value: 0 },
+  { label: $('ui.customerInvoiceIndexPendingInvoicing'), value: 1 },
+  { label: $('ui.userExamineExamineRejected'), value: 2 },
+  { label: $('ui.customerContractPaymentTableWithdrawInvoice'), value: 3 },
+  { label: $('ui.customerInvoiceIndexApplyToVoid'), value: 4 },
+  { label: $('customer.invoiced'), value: 5 },
+  { label: $('ui.customerInvoiceIndexVoided'), value: -1 }
 ]
 
 /**
  * 发票审核状态筛选下拉框
  */
 export const selectInvoiceFd = [
-  { label: i18n.t('ui.customerInvoiceIndexPendingInvoicing'), value: 1 },
-  { label: i18n.t('ui.customerContractPaymentTableWithdrawInvoice'), value: 3 },
-  { label: i18n.t('ui.customerInvoiceIndexApplyToVoid'), value: 4 },
-  { label: i18n.t('customer.invoiced'), value: 5 },
-  { label: i18n.t('ui.customerInvoiceIndexVoided'), value: -1 }
+  { label: $('ui.customerInvoiceIndexPendingInvoicing'), value: 1 },
+  { label: $('ui.customerContractPaymentTableWithdrawInvoice'), value: 3 },
+  { label: $('ui.customerInvoiceIndexApplyToVoid'), value: 4 },
+  { label: $('customer.invoiced'), value: 5 },
+  { label: $('ui.customerInvoiceIndexVoided'), value: -1 }
 ]
 
 /**
  * 发票类型筛选下拉框
  */
 export const selectInvoiceType = [
-  { value: '', label: i18n.t('finance.all') },
-  { value: 1, label: i18n.t('customer.personalinvoice') },
-  { value: 2, label: i18n.t('customer.enterpriseinvoice') },
-  { value: 3, label: i18n.t('customer.specialinvoice') }
+  { value: '', label: $('finance.all') },
+  { value: 1, label: $('customer.personalinvoice') },
+  { value: 2, label: $('customer.enterpriseinvoice') },
+  { value: 3, label: $('customer.specialinvoice') }
 ]

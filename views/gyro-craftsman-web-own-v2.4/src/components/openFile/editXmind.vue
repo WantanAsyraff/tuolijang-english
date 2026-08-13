@@ -1,10 +1,10 @@
+import { $ } from '@/lang'
 <template>
   <XmindEditor v-if="xmindJsonData" ref="editor" :xmindData="xmindJsonData" :fileName="file.file_name" :size="xmindSize"
     @save="save" />
 </template>
 
 <script>
-import i18n from '@/lang'
 import { fileUpload } from "@/api/public";
 import XmindEditor from "@/components/xmind-editor/index.vue";
 import XmindParse from 'simple-mind-map/src/parse/xmind';
@@ -67,7 +67,7 @@ export default {
       } catch (err) {
         this.$emit('closeLoading')
         console.error(err)
-        this.$message.error(i18n.t('legacyScript.saveFailed'))
+        this.$message.error($('legacyScript.saveFailed'))
       }
 
       this.isSaveProcessing = false;

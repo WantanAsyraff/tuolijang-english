@@ -4,7 +4,7 @@
       <div class="clearfix el-card__header">
         <el-input
           v-model="filterText"
-          :placeholder='$ts("请输入应用，实体，接口名称搜索")'
+          :placeholder='$("legacy.892f0d252b260963")'
           clearable
           size="small"
           suffix-icon="el-icon-search"
@@ -27,7 +27,7 @@
               <div slot-scope="{ node, data }" class="custom-tree-node">
                 <div v-if="data.children">
                   <span class="iconfont iconjiekouwendang-01"></span> {{ data.name }}
-                  <span v-if="data.crud_id == 0" class="color-doc">{{ $ts("(系)") }}</span>
+                  <span v-if="data.crud_id == 0" class="color-doc">{{ $("legacy.5d79ac7d850d2343") }}</span>
                 </div>
                 <div v-else>
                   <span class="mr10" :style="getColor(data.method)">{{ data.method }}</span

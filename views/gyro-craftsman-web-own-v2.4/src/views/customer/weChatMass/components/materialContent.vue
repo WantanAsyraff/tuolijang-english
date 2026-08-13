@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="material-input-container">
   <!-- 素材内容输入框 -->
@@ -5,7 +6,7 @@
     <el-input
       ref="contentTextRef"
       type="textarea"
-      :placeholder="$t('ui.customerWeChatMassMaterialContentEnterMaterialContent')"
+      :placeholder="$('ui.customerWeChatMassMaterialContentEnterMaterialContent')"
       v-model="content"
       rows="8"
       resize="none"
@@ -13,7 +14,7 @@
       @input="contentChange"
     ></el-input>
     <div v-if="rightCustomerName" class="content-textarea-footer" @click="insertCustomerName">
-      <i class="el-icon-plus"></i> {{ $t("ui.customerWeChatMassMaterialContentInsertCustomerName") }}
+      <i class="el-icon-plus"></i> {{ $("ui.customerWeChatMassMaterialContentInsertCustomerName") }}
     </div>
   </div>
 
@@ -34,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="add" slot="reference"><i class="iconfont iconfujian1"></i>{{ $t("ui.customerWeChatMassMaterialContentAddAttachment") }}</div>
+      <div class="add" slot="reference"><i class="iconfont iconfujian1"></i>{{ $("ui.customerWeChatMassMaterialContentAddAttachment") }}</div>
     </el-popover>
 
     <div class="box mt10" v-if="uploadFileList.length > 0">
@@ -71,7 +72,7 @@
 
   <!-- 添加网页/小程序 -->
   <el-dialog
-    :title="activeType === 'link' ? $t('ui.customerWeChatMassMaterialContentAddWebpageMessage') : $t('ui.customerWeChatMassMaterialContentAddMiniProgramMessage')"
+    :title="activeType === 'link' ? $('ui.customerWeChatMassMaterialContentAddWebpageMessage') : $('ui.customerWeChatMassMaterialContentAddMiniProgramMessage')"
     :visible.sync="dialogTableVisible"
     :append-to-body="true"
     width="650px"
@@ -81,24 +82,24 @@
     <el-form :model="form" label-width="auto" ref="form" :rules="rules">
       <!-- 网页 -->
       <template v-if="activeType === 'link'">
-        <el-form-item :label="$t('ui.customerQuickReplyAddReplyWebLink')" prop="link">
-          <el-input :placeholder="$t('ui.customerQuickReplyAddReplyStartWithHttpOrHttps')" v-model="form.link" size="small"> </el-input>
+        <el-form-item :label="$('ui.customerQuickReplyAddReplyWebLink')" prop="link">
+          <el-input :placeholder="$('ui.customerQuickReplyAddReplyStartWithHttpOrHttps')" v-model="form.link" size="small"> </el-input>
         </el-form-item>
       </template>
       <!-- 小程序 -->
       <template v-if="activeType === 'mini_program'">
-        <el-form-item :label="$t('ui.customerQuickReplyAddReplyMiniProgramTitle')" prop="title">
-          <el-input v-model="form.title" size="small" :placeholder="$t('ui.customerQuickReplyAddReplyPleaseEnterMiniProgramTitle')"> </el-input>
+        <el-form-item :label="$('ui.customerQuickReplyAddReplyMiniProgramTitle')" prop="title">
+          <el-input v-model="form.title" size="small" :placeholder="$('ui.customerQuickReplyAddReplyPleaseEnterMiniProgramTitle')"> </el-input>
         </el-form-item>
         <el-form-item label="AppID：" prop="app_id">
-          <el-input v-model="form.app_id" size="small" :placeholder="$t('ui.customerQuickReplyAddReplyEnterTheMiniProgramAppIdLinkedToThe')">
+          <el-input v-model="form.app_id" size="small" :placeholder="$('ui.customerQuickReplyAddReplyEnterTheMiniProgramAppIdLinkedToThe')">
           </el-input>
         </el-form-item>
-        <el-form-item :label="$t('ui.customerQuickReplyAddReplyPagePath')" prop="link">
-          <el-input v-model="form.link" :placeholder="$t('ui.customerQuickReplyAddReplyEnterAPagePathForExamplePageIndex')" size="small"> </el-input>
+        <el-form-item :label="$('ui.customerQuickReplyAddReplyPagePath')" prop="link">
+          <el-input v-model="form.link" :placeholder="$('ui.customerQuickReplyAddReplyEnterAPagePathForExamplePageIndex')" size="small"> </el-input>
         </el-form-item>
         <el-form-item prop="replyType">
-          <div slot="label"><span class="required">*</span>{{ $t("ui.customerQuickReplyAddReplyMiniProgramCover") }}</div>
+          <div slot="label"><span class="required">*</span>{{ $("ui.customerQuickReplyAddReplyMiniProgramCover") }}</div>
           <div class="pic" v-if="file && file.url">
             <img class="img" :src="file.url" />
             <div class="pic-upload">
@@ -121,13 +122,13 @@
               <span class="el-icon-plus"></span>
             </div>
           </el-upload>
-          <div class="sort-tip">{{ $t("ui.customerQuickReplyAddReplyImagesMustBe10MbOrSmallerJpgAnd") }}</div>
+          <div class="sort-tip">{{ $("ui.customerQuickReplyAddReplyImagesMustBe10MbOrSmallerJpgAnd") }}</div>
         </el-form-item>
       </template>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="handleClose" size="small">{{ $t("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
-      <el-button type="primary" @click="handleConfirm" size="small" :loading="dialogLoading">{{ $t("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
+      <el-button @click="handleClose" size="small">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+      <el-button type="primary" @click="handleConfirm" size="small" :loading="dialogLoading">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>
     </div>
   </el-dialog>
   <!-- 上传文件、视频、文件 -->
@@ -143,7 +144,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getUploadKeysApi } from '@/api/public'
 import SettingMer from '@/libs/settingMer'
 import { getFileType, getFileExtension } from '@/libs/public'
@@ -183,36 +183,36 @@ export default {
         app_id: ''
       },
       rules: {
-        title: [{ required: true, message: i18n.t('legacyScript.enterTitle'), trigger: 'blur' }],
-        info: [{ required: true, message: i18n.t('legacyScript.pleaseEnterSummary'), trigger: 'blur' }],
-        link: [{ required: true, message: i18n.t('legacyScript.pleaseEnterThePathLink'), trigger: 'blur' }],
-        app_id: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheApplicationID'), trigger: 'blur' }]
+        title: [{ required: true, message: $('legacyScript.enterTitle'), trigger: 'blur' }],
+        info: [{ required: true, message: $('legacyScript.pleaseEnterSummary'), trigger: 'blur' }],
+        link: [{ required: true, message: $('legacyScript.pleaseEnterThePathLink'), trigger: 'blur' }],
+        app_id: [{ required: true, message: $('legacyScript.pleaseEnterTheApplicationID'), trigger: 'blur' }]
       },
       acceptType: '', // 上传类型
       type: [
         {
           icon: 'icontupian4',
-          label: i18n.t('file.picture'),
+          label: $('file.picture'),
           value: 'image'
         },
         {
           icon: 'iconshipin1',
-          label: i18n.t('legacyScript.video'),
+          label: $('legacyScript.video'),
           value: 'video'
         },
         {
           icon: 'iconwenjian4',
-          label: i18n.t('ui.userCloudfileLayoutCloudfileLeftFile'),
+          label: $('ui.userCloudfileLayoutCloudfileLeftFile'),
           value: 'file'
         },
         {
           icon: 'iconwangye-01',
-          label: i18n.t('legacyScript.webPage'),
+          label: $('legacyScript.webPage'),
           value: 'link'
         },
         {
           icon: 'iconxiaochengxu',
-          label: i18n.t('ui.customerWeChatMassAddGroupPostingMiniProgram'),
+          label: $('ui.customerWeChatMassAddGroupPostingMiniProgram'),
           value: 'mini_program'
         }
       ]
@@ -268,14 +268,14 @@ export default {
         const end = input.selectionEnd
         const newText = text.substring(0, start) + tag + text.substring(end)
         if (newText.length > 1000) {
-          this.$message.warning(i18n.t('legacyScript.contentLengthMustNotExceed1000Characters'))
+          this.$message.warning($('legacyScript.contentLengthMustNotExceed1000Characters'))
           return
         }
         this.content = newText
       } else {
         const newText = text + tag
         if (newText.length > 1000) {
-          this.$message.warning(i18n.t('legacyScript.contentLengthMustNotExceed1000Characters'))
+          this.$message.warning($('legacyScript.contentLengthMustNotExceed1000Characters'))
           return
         }
         this.content = newText
@@ -317,7 +317,7 @@ export default {
               this.form.file_id = this.file.id
             }
             if (this.activeType === 'mini_program' && !this.form.file_id) {
-              return this.$message.error(i18n.t('legacyScript.pleaseUploadTheMiniProgramCoverImage'))
+              return this.$message.error($('legacyScript.pleaseUploadTheMiniProgramCoverImage'))
             }
             this.form.types = this.activeType
             this.uploadFileList.push(JSON.parse(JSON.stringify(this.form)))
@@ -338,13 +338,13 @@ export default {
         // 参数校验：确保文件存在
         const file = params?.file
         if (!file) {
-          this.$message.error(i18n.t('legacyScript.noUploadedFileDetectedPleaseSelectAFileAgain'))
+          this.$message.error($('legacyScript.noUploadedFileDetectedPleaseSelectAFileAgain'))
           return
         }
 
         if (['mini_program', 'image', 'link'].includes(this.activeType)) {
           if (file.size / 1024 / 1024 > 10) {
-            this.$message.error(i18n.t('legacyScript.imageSizeMustNotExceed10MB'))
+            this.$message.error($('legacyScript.imageSizeMustNotExceed10MB'))
             return false
           }
           const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg']
@@ -355,13 +355,13 @@ export default {
             allowedMimeTypes.includes(file.type) || (fileExtension && allowedExtensions.includes(fileExtension))
 
           if (!isAllowed) {
-            this.$message.error(i18n.t('legacyScript.pleaseUploadAnImageInPNGOrJPGFormat'))
+            this.$message.error($('legacyScript.pleaseUploadAnImageInPNGOrJPGFormat'))
             return false
           }
         }
         if (this.activeType === 'video') {
           if (file.size / 1024 / 1024 > 10) {
-            this.$message.error(i18n.t('legacyScript.videoSizeMustNotExceed10MB'))
+            this.$message.error($('legacyScript.videoSizeMustNotExceed10MB'))
             return false
           }
           const fileName = file.name.toLowerCase()
@@ -370,14 +370,14 @@ export default {
 
           // 双重校验：后缀或 MIME 类型任一不符合则拒绝
           if (!isMP4ByExtension || !isMP4ByType) {
-            this.$message.error(i18n.t('legacyScript.pleaseUploadAVideoInMP4Format'))
+            this.$message.error($('legacyScript.pleaseUploadAVideoInMP4Format'))
             return false
           }
         }
 
         if (this.activeType === 'file') {
           if (file.size / 1024 / 1024 > 200) {
-            this.$message.error(i18n.t('legacyScript.fileSizeMustNotExceed200MB'))
+            this.$message.error($('legacyScript.fileSizeMustNotExceed200MB'))
             return false
           }
         }
@@ -390,7 +390,7 @@ export default {
         const uploadKeysRes = await getUploadKeysApi(obj)
 
         if (!uploadKeysRes?.data) {
-          this.$message.error(i18n.t('legacyScript.failedToRetrieveUploadConfigurationInvalidResponseFormat'))
+          this.$message.error($('legacyScript.failedToRetrieveUploadConfigurationInvalidResponseFormat'))
         }
 
         const isLocalUpload = uploadKeysRes.data.type === 'local'

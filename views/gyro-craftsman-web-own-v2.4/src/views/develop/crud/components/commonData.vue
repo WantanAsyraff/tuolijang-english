@@ -1,5 +1,5 @@
+import { $ } from '@/lang'
 <script>
-import i18n from '@/lang'
 import xitongImg from '@/assets/images/empty/xitong.png';
 import duanxinImg from '@/assets/images/empty/duanxin.png';
 import qiweiImg from '@/assets/images/empty/qiwei.png';
@@ -19,7 +19,7 @@ const messagePushData = [
     status: 'sms_status',
     is_edit: false,
     key: 'sms_template_id',
-    placeholder: i18n.t('legacyScript.enterTheSMSTemplateIDFromYihaotong')
+    placeholder: $('legacyScript.enterTheSMSTemplateIDFromYihaotong')
   },
   {
     icon: qiweiImg,
@@ -27,7 +27,7 @@ const messagePushData = [
     is_edit: false,
     status: 'work_webhook_status',
     key: 'work_webhook_url',
-    placeholder: i18n.t('legacyScript.enterTheWebhookGeneratedByTheWeComBot')
+    placeholder: $('legacyScript.enterTheWebhookGeneratedByTheWeComBot')
   },
   {
     icon: dingdingImg,
@@ -35,7 +35,7 @@ const messagePushData = [
     is_edit: false,
     status: 'ding_webhook_status',
     key: 'ding_webhook_url',
-    placeholder: i18n.t('legacyScript.enterTheWebhookGeneratedByTheDingTalkBot')
+    placeholder: $('legacyScript.enterTheWebhookGeneratedByTheDingTalkBot')
   },
   {
     icon: qitaImg,
@@ -43,83 +43,83 @@ const messagePushData = [
     is_edit: false,
     status: 'other_webhook_status',
     key: 'other_webhook_url',
-    placeholder: i18n.t('legacyScript.enterTheWebhookGeneratedByTheThirdPartyBot')
+    placeholder: $('legacyScript.enterTheWebhookGeneratedByTheThirdPartyBot')
   }
 ]
 const weekOptions = [
   {
     value: '1',
-    label: i18n.t('legacyScript.mon')
+    label: $('legacyScript.mon')
   },
   {
     value: '2',
-    label: i18n.t('legacyScript.tue')
+    label: $('legacyScript.tue')
   },
   {
     value: '3',
-    label: i18n.t('legacyScript.wed')
+    label: $('legacyScript.wed')
   },
   {
     value: '4',
-    label: i18n.t('legacyScript.thu')
+    label: $('legacyScript.thu')
   },
   {
     value: '5',
-    label: i18n.t('legacyScript.fri')
+    label: $('legacyScript.fri')
   },
   {
     value: '6',
-    label: i18n.t('legacyScript.sat')
+    label: $('legacyScript.sat')
   },
   {
     value: '7',
-    label: i18n.t('legacyScript.sun')
+    label: $('legacyScript.sun')
   }
 ]
 const timeOptions = [
   {
     value: '0',
-    label: i18n.t('legacyScript.everyNSeconds')
+    label: $('legacyScript.everyNSeconds')
   },
   {
     value: '1',
-    label: i18n.t('legacyScript.everyNMinutes')
+    label: $('legacyScript.everyNMinutes')
   },
   {
     value: '2',
-    label: i18n.t('legacyScript.everyNHours')
+    label: $('legacyScript.everyNHours')
   },
   {
     value: '3',
-    label: i18n.t('legacyScript.everyNDays')
+    label: $('legacyScript.everyNDays')
   },
   {
     value: '4',
-    label: i18n.t('legacyScript.daily')
+    label: $('legacyScript.daily')
   },
   {
     value: '5',
-    label: i18n.t('legacyScript.weekly')
+    label: $('legacyScript.weekly')
   },
   {
     value: '6',
-    label: i18n.t('calendar.monthly')
+    label: $('calendar.monthly')
   },
   {
     value: '7',
-    label: i18n.t('legacyScript.annually')
+    label: $('legacyScript.annually')
   }
 ]
 
 const activities = [
   {
-    title: i18n.t('legacyScript.whenAnActionOccurs'),
+    title: $('legacyScript.whenAnActionOccurs'),
     icon: 'iconfont icondangqian',
     color: '#1C9399',
     id: 1
   },
   {
-    title: i18n.t('legacyScript.executeAction'),
+    title: $('legacyScript.executeAction'),
     icon: 'iconfont icondangqian',
     color: '#eebe77',
     id: 2

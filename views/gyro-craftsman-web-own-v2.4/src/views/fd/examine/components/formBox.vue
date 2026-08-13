@@ -1,17 +1,18 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-form :inline="true" class="from-s">
     <el-row class="flex-row">
-      <el-form-item :label="$t('customer.businesstype')" class="select-bar">
+      <el-form-item :label="$('customer.businesstype')" class="select-bar">
         <el-select v-model="tableFrom.type" size="small" @change="handleConfirm">
           <el-option v-for="item in sexOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item :label="$t('ui.fdExamineFormBoxManagementScope')" class="select-bar">
+      <el-form-item :label="$('ui.fdExamineFormBoxManagementScope')" class="select-bar">
         <manage-range ref="manageRange" @change="changeMastart"></manage-range>
       </el-form-item>
-      <el-form-item :label="$t('ui.fdExamineFormBoxReviewStatus')" class="select-bar">
+      <el-form-item :label="$('ui.fdExamineFormBoxReviewStatus')" class="select-bar">
         <el-select v-model="tableFrom.status" size="small" @change="handleConfirm">
           <el-option
             v-for="(itemn, indexn) in fromStatus"
@@ -27,11 +28,11 @@
           class="sel"
           size="small"
           style="width: 100px"
-          :placeholder="$t('ui.fdExamineFormBoxTimeType')"
+          :placeholder="$('ui.fdExamineFormBoxTimeType')"
           v-model="tableFrom.time_field"
         >
-          <el-option :label="$t('ui.fdExamineFormBoxPaymentDate')" value="date"></el-option>
-          <el-option :label="$t('ui.fdExamineFormBoxApplicationDate')" value="time"></el-option>
+          <el-option :label="$('ui.fdExamineFormBoxPaymentDate')" value="date"></el-option>
+          <el-option :label="$('ui.fdExamineFormBoxApplicationDate')" value="time"></el-option>
         </el-select>
 
         <el-date-picker
@@ -39,19 +40,19 @@
           v-model="paymentTimeVal"
           size="small"
           type="daterange"
-          :placeholder="$t('toptable.selecttime')"
+          :placeholder="$('toptable.selecttime')"
           format="yyyy/MM/dd"
           value-format="yyyy/MM/dd"
-          :range-separator="$t('toptable.to')"
-          :start-placeholder="$t('toptable.startdate')"
-          :end-placeholder="$t('toptable.endingdate')"
+          :range-separator="$('toptable.to')"
+          :start-placeholder="$('toptable.startdate')"
+          :end-placeholder="$('toptable.endingdate')"
           clearable
           :picker-options="pickerOptions"
           @change="establishTime"
         />
       </el-form-item>
       <el-form-item>
-        <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+        <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
           <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
         </el-tooltip>
       </el-form-item>
@@ -61,7 +62,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import manageRange from '@/components/form-common/select-manageRange'
 
 export default {
@@ -72,10 +72,10 @@ export default {
     return {
       pickerOptions: this.$pickerOptionsTimeEle,
       fromStatus: [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('customer.audit'), val: 0 },
-        { text: this.$t('customer.passed'), val: 1 },
-        { text: this.$t('customer.fail'), val: 2 }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('customer.audit'), val: 0 },
+        { text: this.$('customer.passed'), val: 1 },
+        { text: this.$('customer.fail'), val: 2 }
       ],
 
       paymentTimeVal: [
@@ -96,10 +96,10 @@ export default {
         scope_frame: 'all'
       },
       sexOptions: [
-        { label: i18n.t('finance.all'), value: '' },
-        { label: i18n.t('customer.orderPayment'), value: 0 },
-        { label: i18n.t('customer.orderRenewal'), value: 1 },
-        { label: i18n.t('customer.orderExpense'), value: 2 }
+        { label: $('finance.all'), value: '' },
+        { label: $('customer.orderPayment'), value: 0 },
+        { label: $('customer.orderRenewal'), value: 1 },
+        { label: $('customer.orderExpense'), value: 2 }
       ]
     }
   },
@@ -116,15 +116,15 @@ export default {
   methods: {
     setOptions() {
       this.sexOptions = [
-        { label: this.$t('finance.all'), value: 2 },
-        { label: this.$t('customer.Contractpayment'), value: 1 },
-        { label: this.$t('customer.contractrenewal'), value: 0 }
+        { label: this.$('finance.all'), value: 2 },
+        { label: this.$('customer.Contractpayment'), value: 1 },
+        { label: this.$('customer.contractrenewal'), value: 0 }
       ]
       this.fromStatus = [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('customer.audit'), val: 0 },
-        { text: this.$t('customer.passed'), val: 1 },
-        { text: this.$t('customer.fail'), val: 2 }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('customer.audit'), val: 0 },
+        { text: this.$('customer.passed'), val: 1 },
+        { text: this.$('customer.fail'), val: 2 }
       ]
     },
 

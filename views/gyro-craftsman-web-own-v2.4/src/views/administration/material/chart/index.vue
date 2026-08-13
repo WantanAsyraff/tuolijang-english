@@ -1,4 +1,5 @@
-﻿<template>
+import { $ } from '@/lang'
+<template>
 <div class="box">
   <div class="box-height">
     <el-card class="background-card">
@@ -7,18 +8,18 @@
     <el-row :gutter="14" class="mt14">
       <el-col :span="12">
         <el-card>
-          <div class="statistics-title">{{ $t("ui.administrationMaterialChartIndexAssetValue") }}</div>
+          <div class="statistics-title">{{ $("ui.administrationMaterialChartIndexAssetValue") }}</div>
           <echartBox :option-data="optionData" :styles="styles1" />
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card>
-          <div class="statistics-title">{{ $t("ui.administrationMaterialChartIndexMaterialMovement") }}</div>
+          <div class="statistics-title">{{ $("ui.administrationMaterialChartIndexMaterialMovement") }}</div>
           <div class="content border-none">
             <ul class="content-ul">
               <li>
                 <el-row>
-                  <el-col :span="16">{{ $t("ui.administrationMaterialChartIndexPurchasedQuantity") }}</el-col>
+                  <el-col :span="16">{{ $("ui.administrationMaterialChartIndexPurchasedQuantity") }}</el-col>
                   <el-col :span="8" class="text-right">
                     <el-button circle size="small" type="primary">
                       <count-to :duration="1000" :end-val="Number(storageCount.put_count)" :start-val="0" />
@@ -28,7 +29,7 @@
               </li>
               <li>
                 <el-row>
-                  <el-col :span="16">{{ $t("ui.administrationMaterialChartIndexFixedAssetsIssued") }}</el-col>
+                  <el-col :span="16">{{ $("ui.administrationMaterialChartIndexFixedAssetsIssued") }}</el-col>
                   <el-col :span="8" class="text-right">
                     <el-button circle size="small" type="success">
                       <count-to :duration="1000" :end-val="storageCount.fixed_count" :start-val="0" />
@@ -38,7 +39,7 @@
               </li>
               <li>
                 <el-row>
-                  <el-col :span="16">{{ $t("ui.administrationMaterialChartIndexConsumablesIssued") }}</el-col>
+                  <el-col :span="16">{{ $("ui.administrationMaterialChartIndexConsumablesIssued") }}</el-col>
                   <el-col :span="8" class="text-right">
                     <el-button circle size="small" type="warning">
                       <count-to :duration="1000" :end-val="storageCount.temp_count" :start-val="0" />
@@ -48,7 +49,7 @@
               </li>
               <li>
                 <el-row>
-                  <el-col :span="16">{{ $t("ui.administrationMaterialChartIndexDisposedQuantity") }}</el-col>
+                  <el-col :span="16">{{ $("ui.administrationMaterialChartIndexDisposedQuantity") }}</el-col>
                   <el-col :span="8" class="text-right">
                     <el-button circle size="small" type="info">
                       <count-to :duration="1000" :end-val="storageCount.scrap_count" :start-val="0" />
@@ -58,7 +59,7 @@
               </li>
               <li>
                 <el-row>
-                  <el-col :span="16">{{ $t("ui.administrationMaterialChartIndexRepairQuantity") }}</el-col>
+                  <el-col :span="16">{{ $("ui.administrationMaterialChartIndexRepairQuantity") }}</el-col>
                   <el-col :span="8" class="text-right">
                     <el-button circle size="small" type="info">
                       <count-to :duration="1000" :end-val="storageCount.repair_count" :start-val="0" />
@@ -75,16 +76,16 @@
       <el-col :span="12">
         <el-card>
           <div class="pie-tab">
-            <div class="statistics-title mb20">{{ $t("ui.administrationMaterialChartIndexLowStockAlert") }}</div>
+            <div class="statistics-title mb20">{{ $("ui.administrationMaterialChartIndexLowStockAlert") }}</div>
             <div v-if="stockData.length > 0" class="content">
               <el-table :data="stockData" default-expand-all row-key="id" style="width: 100%">
-                <el-table-column :label="$t('ui.administrationMaterialChartIndexMaterialName')" min-width="100" prop="name" />
-                <el-table-column :label="$t('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" prop="units" />
-                <el-table-column :label="$t('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" prop="cate.cate_name" />
-                <el-table-column :label="$t('ui.administrationMaterialChartIndexCurrentInventory')" min-width="100" prop="stock" />
-                <el-table-column :label="$t('public.operation')" fixed="right" prop="describe" width="80">
+                <el-table-column :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="100" prop="name" />
+                <el-table-column :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" prop="units" />
+                <el-table-column :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" prop="cate.cate_name" />
+                <el-table-column :label="$('ui.administrationMaterialChartIndexCurrentInventory')" min-width="100" prop="stock" />
+                <el-table-column :label="$('public.operation')" fixed="right" prop="describe" width="80">
                   <template slot-scope="scope">
-                    <el-button type="text" @click="handleManage(scope.row)">{{ $t("ui.administrationMaterialChartIndexRestock") }}</el-button>
+                    <el-button type="text" @click="handleManage(scope.row)">{{ $("ui.administrationMaterialChartIndexRestock") }}</el-button>
                   </template>
                 </el-table-column>
               </el-table>
@@ -108,7 +109,7 @@
       <el-col :span="12">
         <el-card>
           <div class="pie-tab">
-            <div class="statistics-title mb20">{{ $t("ui.administrationMaterialChartIndexMaterialMovementDetails") }}</div>
+            <div class="statistics-title mb20">{{ $("ui.administrationMaterialChartIndexMaterialMovementDetails") }}</div>
             <div v-if="detailedDat.length > 0" class="content">
               <el-table
                 v-loading="detailLoading"
@@ -118,36 +119,36 @@
                 row-key="id"
                 style="width: 100%"
               >
-                <el-table-column :label="$t('ui.administrationMaterialChartIndexMaterialName')" min-width="130" prop="storage.name" show-overflow-tooltip />
+                <el-table-column :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="130" prop="storage.name" show-overflow-tooltip />
                 <el-table-column
-                  :label="$t('ui.administrationMaterialChartIndexMaterialCategory')"
+                  :label="$('ui.administrationMaterialChartIndexMaterialCategory')"
                   min-width="100"
                   prop="storage.cate.cate_name"
                   show-overflow-tooltip
                 />
-                <el-table-column :label="$t('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" prop="storage.units" show-overflow-tooltip />
-                <el-table-column :label="$t('ui.administrationMaterialChartIndexChange')" min-width="100" prop="stock" show-overflow-tooltip>
+                <el-table-column :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" prop="storage.units" show-overflow-tooltip />
+                <el-table-column :label="$('ui.administrationMaterialChartIndexChange')" min-width="100" prop="stock" show-overflow-tooltip>
                   <template #default="{ row }">
                     <template v-if="row.types === 0">
-                      {{ $t("ui.administrationMaterialChartIndexStockReceived") }}
+                      {{ $("ui.administrationMaterialChartIndexStockReceived") }}
                       <span class="color1">+{{ row.num }}</span>
                     </template>
                     <template v-if="row.types === 1">
-                      {{ $t("ui.administrationMaterialChartIndexQuantityIssued") }}
+                      {{ $("ui.administrationMaterialChartIndexQuantityIssued") }}
                       <span class="color2">+{{ row.num }}</span>
                     </template>
                     <template v-if="row.types === 4">
-                      {{ $t("ui.administrationMaterialChartIndexQuantityScrapped") }}
+                      {{ $("ui.administrationMaterialChartIndexQuantityScrapped") }}
                       <span class="color-success">+1</span>
                     </template>
                   </template>
                 </el-table-column>
-                <el-table-column :label="$t('ui.administrationMaterialChartIndexChangeTime')" min-width="100" prop="storage.units" show-overflow-tooltip>
+                <el-table-column :label="$('ui.administrationMaterialChartIndexChangeTime')" min-width="100" prop="storage.units" show-overflow-tooltip>
                   <template slot-scope="scope">
                     {{ $moment(scope.row.created_at).format('yyyy-MM-DD') }}
                   </template>
                 </el-table-column>
-                <el-table-column :show-overflow-tooltip="true" :label="$t('ui.administrationMaterialChartIndexOperator')" prop="creater.name" width="80">
+                <el-table-column :show-overflow-tooltip="true" :label="$('ui.administrationMaterialChartIndexOperator')" prop="creater.name" width="80">
                   <template slot-scope="scope">
                     <span class="none-button over-text" type="text">{{
                       scope.row.creater ? scope.row.creater.name : '--'
@@ -178,7 +179,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { storageListApi, storageRecordApi, storageRecordCensusApi } from '@/api/administration'
 export default {
   name: 'FinanceChart',
@@ -277,11 +277,7 @@ export default {
               axisLabel: {
                 color: '#666666'
               },
-              data: [
-                this.$ts('物资采购金额'),
-                this.$ts('物资报废金额'),
-                this.$ts('物资维修金额')
-              ]
+              data: ['物资采购金额', '物资报废金额', '物资维修金额']
             }
           ],
           yAxis: [
@@ -385,11 +381,11 @@ export default {
     },
     handleManage(row) {
       this.fromData = {
-        title: i18n.t('ui.administrationMaterialChartIndexRestock'),
+        title: $('ui.administrationMaterialChartIndexRestock'),
         width: '520px',
         data: row,
-        label: i18n.t('legacyScript.stockInDescription'),
-        placeholder: i18n.t('legacyScript.pleaseEnterStockInDescription'),
+        label: $('legacyScript.stockInDescription'),
+        placeholder: $('legacyScript.pleaseEnterStockInDescription'),
         type: 4
       }
       this.$refs.materialDialog.handleOpen()

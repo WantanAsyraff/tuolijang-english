@@ -1,10 +1,11 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card class="normal-page">
       <el-row>
         <el-col :span="4" class="tree-left">
           <div class="tree-box-content">
-            <div class="text">{{ $ts("协议类型") }}</div>
+            <div class="text">{{ $("legacy.adda8cd0c302fe22") }}</div>
             <el-tree
               ref="tree"
               class="blue-theme"
@@ -21,14 +22,14 @@
               :props="defaultProps"
             >
               <div slot-scope="{ node, data }" class="custom-tree-node">
-                <span class="flex-box">{{ $ts(node.label, data.title_en || data.label_en) }}</span>
+                <span class="flex-box">{{ $(node.label, data.title_en || data.label_en) }}</span>
               </div>
             </el-tree>
           </div>
         </el-col>
         <el-col :span="20" class="right">
           <div class="btn-box">
-            <el-button type="primary" :loading="loadding" size="small" @click="saveCurrent">{{ $ts("保存") }}</el-button>
+            <el-button type="primary" :loading="loadding" size="small" @click="saveCurrent">{{ $("public.save") }}</el-button>
           </div>
           <el-row class="mt20">
             <ueditorFrom :border="true" :height="height" type="notepad" :content="content" ref="ueditorFrom" />
@@ -40,7 +41,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { agreementListApi, agreementInfoApi, agreementUpdateApi } from '@/api/setting'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 
@@ -107,7 +107,7 @@ export default {
     saveCurrent() {
       this.content = this.$refs.ueditorFrom.getValue()
       if (!this.content) {
-        this.$message.error(i18n.t('legacyScript.contentIsEmpty'))
+        this.$message.error($('legacyScript.contentIsEmpty'))
       } else {
         this.loadding = true
         const content = this.content

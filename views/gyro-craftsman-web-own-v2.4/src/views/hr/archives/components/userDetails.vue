@@ -1,16 +1,17 @@
+import { $ } from '@/lang'
 <template>
 <!-- 个人档案弹窗：新增：initData.type=add 编辑：initData.type=edit -->
 <div class="userDetails">
   <el-drawer
     :direction="direction"
-    :title="initData.type !== 'edit' ? $t('ui.hrArchivesUserDetailsPersonalProfile') : ''"
+    :title="initData.type !== 'edit' ? $('ui.hrArchivesUserDetailsPersonalProfile') : ''"
     :visible.sync="drawerIsShow"
     size="65%"
     @close="handleClose"
   >
     <slot v-if="initData.type === 'add'" slot="title">
       <div class="tabsEdit">
-        <div class="tabs">{{ $t("ui.hrArchivesUserDetailsEmployeeArchives") }}</div>
+        <div class="tabs">{{ $("ui.hrArchivesUserDetailsEmployeeArchives") }}</div>
       </div>
     </slot>
     <!--------- 添加的页面 ----------->
@@ -39,8 +40,8 @@
 
       <!-- 底部保存 -->
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button size="small" @click="cancel">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button size="small" type="primary" @click="protect">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+        <el-button size="small" @click="cancel">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button size="small" type="primary" @click="protect">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
       </div>
     </div>
 
@@ -49,15 +50,15 @@
       <div class="tabsEdit">
         <div class="tabs">
           <el-tabs v-model="tabsName" class="cr-header-tabs" @tab-click="handleClick">
-            <el-tab-pane :label="$t('ui.hrArchivesUserDetailsPersonalProfile')" name="personalFile" />
-            <el-tab-pane :label="$t('ui.hrArchivesUserDetailsPersonalExperience')" name="personalExperience" />
-            <el-tab-pane v-if="tabtypes !== 0" :label="$t('ui.hrArchivesUserDetailsPersonnelChanges')" name="personnelChange" />
-            <el-tab-pane v-if="tabtypes !== 0" :label="$t('ui.hrArchivesUserDetailsSalaryAdjustmentRecords')" name="salaryAdjustmentRecord" />
+            <el-tab-pane :label="$('ui.hrArchivesUserDetailsPersonalProfile')" name="personalFile" />
+            <el-tab-pane :label="$('ui.hrArchivesUserDetailsPersonalExperience')" name="personalExperience" />
+            <el-tab-pane v-if="tabtypes !== 0" :label="$('ui.hrArchivesUserDetailsPersonnelChanges')" name="personnelChange" />
+            <el-tab-pane v-if="tabtypes !== 0" :label="$('ui.hrArchivesUserDetailsSalaryAdjustmentRecords')" name="salaryAdjustmentRecord" />
           </el-tabs>
         </div>
 
         <div v-if="tabtypes == 1 && userInfo.uid !== ''" class="invitationUrl" @click="perfectFn">
-          <el-link :underline="false"> <i class="iconfont icongerenjianli-yaoqing"></i> {{ $t("ui.hrArchivesUserDetailsInviteUserToCompleteProfile") }}</el-link>
+          <el-link :underline="false"> <i class="iconfont icongerenjianli-yaoqing"></i> {{ $("ui.hrArchivesUserDetailsInviteUserToCompleteProfile") }}</el-link>
         </div>
       </div>
     </slot>
@@ -89,9 +90,9 @@
 
         <!-- 编辑底部保存按钮 -->
         <div v-if="actionType" class="button from-foot-btn fix btn-shadow">
-          <el-button size="small" @click="cancel">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
+          <el-button size="small" @click="cancel">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
           <el-button :loading="isLoading" size="small" type="primary" @click="inDuction(actionType)">{{
-            actionType == '入职' ? $t('ui.hrArchivesUserDetailsOnboard') : $t('ui.hrArchivesUserDetailsRehire')
+            actionType == '入职' ? $('ui.hrArchivesUserDetailsOnboard') : $('ui.hrArchivesUserDetailsRehire')
           }}</el-button>
         </div>
       </template>
@@ -128,7 +129,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getSalaryList, deleteSalaryList, changeCard, entryCard, perfectCard } from '@/api/enterprise'
 import formOptions from '../mixins/index.js'
 export default {
@@ -260,14 +260,14 @@ export default {
     // 编辑: 调薪弹窗
     changeSalary() {
       let data = {
-        title: i18n.t('legacyScript.salaryAdjustmentPopup')
+        title: $('legacyScript.salaryAdjustmentPopup')
       }
       this.$refs.salaryAdjustmentRecord.changeSalary(data)
     },
     // 定薪
     onSalary() {
       this.$refs.salaryAdjustmentRecord.dialogVisible = true
-      this.$refs.salaryAdjustmentRecord.title = i18n.t('legacyScript.setSalary')
+      this.$refs.salaryAdjustmentRecord.title = $('legacyScript.setSalary')
       this.$refs.salaryAdjustmentRecord.status = 'add'
     },
 
@@ -283,7 +283,7 @@ export default {
     // 编辑: 编辑调薪记录
     getSalaryContent(id) {
       let data = {
-        title: i18n.t('legacyScript.editSalary'),
+        title: $('legacyScript.editSalary'),
         id: id
       }
       this.$refs.salaryAdjustmentRecord.editId(data)

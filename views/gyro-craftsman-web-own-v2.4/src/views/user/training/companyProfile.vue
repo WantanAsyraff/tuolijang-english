@@ -2,7 +2,7 @@
   <div class="divBox">
     <!-- <el-card> -->
     <div class="main box-height">
-      <div class="title">{{ $ts("公司介绍") }}</div>
+      <div class="title">{{ $("legacy.d94679c43f37ae32") }}</div>
       <div v-html="content" @click="replayImgShow($event)"></div>
     </div>
     <!-- </el-card> -->

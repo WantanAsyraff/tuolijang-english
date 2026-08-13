@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeRequiredRule } from '../../utils';
 
@@ -25,10 +25,10 @@ export default {
       {
         type: 'checkbox',
         field: 'range',
-        title: i18n.t('legacyScript.selectRange'),
+        title: $('legacyScript.selectRange'),
         options: [
-          { label: i18n.t('legacyScript.selfSelectable'), value: 'oneself' },
-          { label: i18n.t('legacyScript.multiSelectable'), value: 'many' },
+          { label: $('legacyScript.selfSelectable'), value: 'oneself' },
+          { label: $('legacyScript.multiSelectable'), value: 'many' },
         ],
       },
       makeRequiredRule(),

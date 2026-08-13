@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="box-container">
   <el-drawer :visible.sync="drawer" direction="rtl" :before-close="handleClose" size="75%" :append-to-body="true"
@@ -6,8 +7,8 @@
       <div class="tabsEdit">
         <div class="tabs">
           <el-tabs v-model="tabsName" class="cr-header-tabs" @tab-click="handleClick">
-            <el-tab-pane :label="$t('ui.layoutNoticeNoticeListUnread')" name="1" />
-            <el-tab-pane :label="$t('ui.layoutNoticeNoticeListAll')" name="2" />
+            <el-tab-pane :label="$('ui.layoutNoticeNoticeListUnread')" name="1" />
+            <el-tab-pane :label="$('ui.layoutNoticeNoticeListAll')" name="2" />
           </el-tabs>
         </div>
       </div>
@@ -16,7 +17,7 @@
       <div class="left">
         <!-- <div class="title mb15">消息类型</div> -->
         <div class="type" @click="handleTypes({ id: '' })" :class="activeId == 0 ? 'active' : ''">
-          {{ $t("ui.layoutNoticeNoticeListAllTypes") }}
+          {{ $("ui.layoutNoticeNoticeListAllTypes") }}
         </div>
         <div class="type" v-for="(item, index) in options" :key="index" @click="handleTypes(item)"
           :class="activeId == item.value ? 'active' : ''"  v-show="(tabsName==1&&item.count > 0)||tabsName==2">
@@ -25,28 +26,28 @@
 
         <div class="dingyue" @click="toSubscribe">
           
-          <span class="iconfont icondingyuexiaoxi"></span>{{ $t("ui.layoutNoticeNoticeListSubscriptions") }}</div>
+          <span class="iconfont icondingyuexiaoxi"></span>{{ $("ui.layoutNoticeNoticeListSubscriptions") }}</div>
       </div>
       <div class="right">
         <div class="mt20">
           <el-input v-model="where.title" prefix-icon="el-icon-search" clearable size="small" @change="getList"
-            @keyup.native.stop.prevent.enter="getList" :placeholder="$t('ui.layoutNoticeNoticeListPleaseEnterTitleAndContent')" style="width: 250px"></el-input>
+            @keyup.native.stop.prevent.enter="getList" :placeholder="$('ui.layoutNoticeNoticeListPleaseEnterTitleAndContent')" style="width: 250px"></el-input>
         </div>
         <!-- 消息列表 -->
         <div class="mt10">
           <el-table ref="table" :data="tableData" :height="height" v-loading="loading"
             @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="35" />
-            <el-table-column :label="$t('ui.layoutNoticeNoticeListView')" width="50">
+            <el-table-column :label="$('ui.layoutNoticeNoticeListView')" width="50">
               <template slot-scope="scope">
                 <el-image :src="scope.row.is_read === 0 ? unreadIcon : readIcon"></el-image>
               </template>
             </el-table-column>
-            <el-table-column prop="title" :label="$t('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="80"></el-table-column>
-            <el-table-column prop="message" :label="$t('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360" />
-            <el-table-column prop="cate_name" :label="$t('ui.developViewManagementType')" min-width="80" />
-            <el-table-column prop="created_at" :label="$t('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
-            <el-table-column :label="$t('toptable.operation')" width="100" fixed="right">
+            <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="80"></el-table-column>
+            <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360" />
+            <el-table-column prop="cate_name" :label="$('ui.developViewManagementType')" min-width="80" />
+            <el-table-column prop="created_at" :label="$('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
+            <el-table-column :label="$('toptable.operation')" width="100" fixed="right">
               <template slot-scope="scope">
                 <el-button type="text" v-for="(item, index) in scope.row.buttons" :key="index"
                   :disabled="selectedType.includes(item.action)" @click="handleDetails(scope.row, item)">
@@ -58,11 +59,11 @@
           <div class="footer">
             <div class="isSelect">
               <div class="flex" style="display: inline-block">
-                <el-button size="small" @click="handleRead()">{{ $t("ui.layoutNoticeNoticeListMarkAllAsRead") }}</el-button>
+                <el-button size="small" @click="handleRead()">{{ $("ui.layoutNoticeNoticeListMarkAllAsRead") }}</el-button>
                 <el-button size="small" :disabled="multipleSelection.length == 0"
-                  @click="handleRead(1)">{{ $t("ui.userNewsIndexMarkAsRead") }}</el-button>
+                  @click="handleRead(1)">{{ $("ui.userNewsIndexMarkAsRead") }}</el-button>
                 <el-button size="small" @click="handleDelete"
-                  :disabled="multipleSelection.length == 0">{{ $t("ui.customerSetupDictionaryManagementBatchDelete") }}</el-button>
+                  :disabled="multipleSelection.length == 0">{{ $("ui.customerSetupDictionaryManagementBatchDelete") }}</el-button>
               </div>
               <!-- <span v-if="multipleSelection.length !== 0">已选中{{ multipleSelection.length }} 条</span> -->
             </div>
@@ -81,7 +82,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { noticeMessageListApi, noticeMessageDeleteApi, noticeMessageReadApi } from '@/api/user'
 import { messageCateApi } from '@/api/setting'
 import { messageListApi } from '@/api/public'
@@ -189,7 +189,7 @@ export default {
     },
     handleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
+        this.$message.error($('legacyScript.selectAtLeastOneItem2'))
       } else {
         this.$modalSure('删除后不可恢复,您确认要删除吗').then(() => {
           const ids = []

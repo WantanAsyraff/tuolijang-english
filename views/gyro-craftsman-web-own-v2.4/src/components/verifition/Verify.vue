@@ -2,7 +2,7 @@
   <div v-show="showBox" :class="mode == 'pop' ? 'mask' : ''">
     <div :class="mode == 'pop' ? 'verifybox' : ''" :style="{ 'max-width': parseInt(imgSize.width) + 30 + 'px' }">
       <div v-if="mode == 'pop'" class="verifybox-top">
-        {{ $ts("请完成安全验证") }}
+        {{ $("legacy.0de769923e452dab") }}
         <span class="verifybox-close" @click="closeBox">
           <i class="iconfont icon-close" />
         </span>
@@ -164,20 +164,10 @@ export default {
       }
     },
     /**
-     * i18n
-     * @description 兼容vue-i18n 调用$t来转换ok
+     * @description Translate the verification result through the application resolver.
      * @param {String} text-被转换的目标
      * @return {String} i18n的结果
      * */
-    i18n(text) {
-      if (this.$t) {
-        return this.$t(text)
-      } else {
-        // 兼容不存在的语言
-        const i18n = this.$options.i18n.messages[this.locale] || this.$options.i18n.messages['en-US']
-        return i18n[text]
-      }
-    },
     /**
      * refresh
      * @description 刷新

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-dialog :visible.sync="show" width="650px" :show-close="false" :close-on-click-modal="false">
@@ -5,36 +6,36 @@
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item>
           <span class="title" @click="backFn">{{
-            supplierVal ? supplierVal.label : $t('ui.chatModelDialogSelectProvider')
+            supplierVal ? supplierVal.label : $('ui.chatModelDialogSelectProvider')
           }}</span></el-breadcrumb-item
         >
-        <el-breadcrumb-item><span class="title2">{{ $t("ui.chatModelFormModelSettings") }} </span></el-breadcrumb-item>
+        <el-breadcrumb-item><span class="title2">{{ $("ui.chatModelFormModelSettings") }} </span></el-breadcrumb-item>
       </el-breadcrumb>
       <span class="el-icon-close" @click="handleClose"></span>
     </div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="auto" label-position="top">
       <el-form-item prop="name">
         <span slot="label" class="flex"
-          >{{ $t("ui.chatModelDialogModelName") }} <popover style="display: inline-block" :tips="$t('ui.chatModelDialogACustomModelNameInTheSystem')" :width="250"></popover
+          >{{ $("ui.chatModelDialogModelName") }} <popover style="display: inline-block" :tips="$('ui.chatModelDialogACustomModelNameInTheSystem')" :width="250"></popover
         ></span>
         <el-input
           v-model="ruleForm.name"
           maxlength="60"
           size="small"
           show-word-limit
-          :placeholder="$t('ui.chatModelDialogACustomModelNameInTheSystem')"
+          :placeholder="$('ui.chatModelDialogACustomModelNameInTheSystem')"
         ></el-input>
       </el-form-item>
       <el-form-item prop="models_type">
         <span slot="label" class="flex"
-          >{{ $t("ui.chatModelDialogModelType") }} <popover style="display: inline-block" :tips="$t('ui.chatModelDialogTheReasoningModelUsedForAiConversationsInThe')" :width="250"></popover
+          >{{ $("ui.chatModelDialogModelType") }} <popover style="display: inline-block" :tips="$('ui.chatModelDialogTheReasoningModelUsedForAiConversationsInThe')" :width="250"></popover
         ></span>
 
         <el-select
           v-model="ruleForm.models_type"
           filterable
           clearable
-          :placeholder="$t('ui.chatModelDialogSelectAModelType')"
+          :placeholder="$('ui.chatModelDialogSelectAModelType')"
           size="small"
           style="width: 100%"
           @change="modelsTypeChange"
@@ -43,13 +44,13 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('ui.chatModelDialogModel')" prop="is_model">
+      <el-form-item :label="$('ui.chatModelDialogModel')" prop="is_model">
         <el-select
           v-model="ruleForm.is_model"
           allow-create
           filterable
           clearable
-          :placeholder="$t('ui.chatModelDialogEnterAModelNameAndPressEnterIfIt')"
+          :placeholder="$('ui.chatModelDialogEnterAModelNameAndPressEnterIfIt')"
           size="small"
           style="width: 100%"
         >
@@ -64,7 +65,7 @@
           size="small"
           limit-word-show
           :type="[flag ? 'text' : 'password']"
-          :placeholder="$t('ui.chatModelDialogPleaseEnterApiKey')"
+          :placeholder="$('ui.chatModelDialogPleaseEnterApiKey')"
         >
           <i
             slot="suffix"
@@ -77,14 +78,13 @@
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="handleClose">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button type="primary" @click="submitFn">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+      <el-button @click="handleClose">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button type="primary" @click="submitFn">{{ $("ui.formCommonDialogFormOk") }}</el-button>
     </span>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getModelsSelectApi, saveModelsApi, getModelsInfoApi, editModelsApi } from '@/api/chatAi'
 import popover from './popover'
 
@@ -111,10 +111,10 @@ export default {
       options: [],
       modelsOptions: [],
       rules: {
-        name: [{ required: true, message: i18n.t('legacyScript.pleaseEnterModelName'), trigger: 'blur' }],
-        models_type: [{ required: true, message: i18n.t('ui.chatModelDialogSelectAModelType'), trigger: 'change' }],
-        is_model: [{ required: true, message: i18n.t('legacyScript.pleaseSelectTheBaseModel'), trigger: 'change' }],
-        key: [{ required: true, message: i18n.t('legacyScript.pleaseEnterKey'), trigger: 'blur' }]
+        name: [{ required: true, message: $('legacyScript.pleaseEnterModelName'), trigger: 'blur' }],
+        models_type: [{ required: true, message: $('ui.chatModelDialogSelectAModelType'), trigger: 'change' }],
+        is_model: [{ required: true, message: $('legacyScript.pleaseSelectTheBaseModel'), trigger: 'change' }],
+        key: [{ required: true, message: $('legacyScript.pleaseEnterKey'), trigger: 'blur' }]
       }
     }
   },

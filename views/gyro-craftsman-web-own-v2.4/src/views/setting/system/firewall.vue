@@ -3,29 +3,29 @@
     <div class="box-height">
       <el-card class="card-head normal-page" shadow="never" :body-style="{ padding: '20px 20px 0 20px' }">
         <el-form :model="formData" :inline="true" class="form-box" size="small" label-width="84px">
-          <el-form-item :label='$ts("开关：")'>
+          <el-form-item :label='$("legacy.af5e5104719ce6a1")'>
             <el-radio-group v-model="formData.status">
-              <el-radio :label="0" :value="0">{{ $ts("关闭") }}</el-radio>
-              <el-radio :label="1" :value="1">{{ $ts("拦截") }}</el-radio>
-              <el-radio :label="2" :value="2">{{ $ts("过滤") }}</el-radio>
+              <el-radio :label="0" :value="0">{{ $("hr.close") }}</el-radio>
+              <el-radio :label="1" :value="1">{{ $("legacy.bf33347e3c857274") }}</el-radio>
+              <el-radio :label="2" :value="2">{{ $("legacy.9cb5e2a94ed56be2") }}</el-radio>
             </el-radio-group>
             <div class="form-item-tips">
-              {{ $ts("关闭：不验证请求数据；拦截：若非发请求则返回错误；过滤：过滤掉非法参数，程序继续执行") }}
+              {{ $("legacy.67ea41f271c7201d") }}
             </div>
           </el-form-item>
-          <el-form-item :label='$ts("规则设置：")'>
+          <el-form-item :label='$("legacy.0df3a2f3ba5e52fb")'>
             <div class="firewall-rule-item" v-for="(item, index) of formData.ruleList" :key="index">
-              <el-input v-model="formData.ruleList[index]" :placeholder='$ts("请输入规则")' clearable />
+              <el-input v-model="formData.ruleList[index]" :placeholder='$("legacy.209bfa3c22b7ef3d")' clearable />
 
               <div class="delete-btn-box" v-if="index">
-                <el-button type="text" class="delete-btn" @click="handleDeleteRule(index)">{{ $ts("删除") }}</el-button>
+                <el-button type="text" class="delete-btn" @click="handleDeleteRule(index)">{{ $("public.delete") }}</el-button>
               </div>
             </div>
             <el-button type="text" icon="el-icon-plus" @click="handleAddRule" style="margin: 10px 0"
-              >{{ $ts("添加规则") }}</el-button
+              >{{ $("legacy.c9f9e18b06233971") }}</el-button
             >
             <div class="firewall-rule-item">
-              <el-button type="primary" @click="handleSaveRule">{{ $ts("保存") }}</el-button>
+              <el-button type="primary" @click="handleSaveRule">{{ $("public.save") }}</el-button>
             </div>
           </el-form-item>
         </el-form>

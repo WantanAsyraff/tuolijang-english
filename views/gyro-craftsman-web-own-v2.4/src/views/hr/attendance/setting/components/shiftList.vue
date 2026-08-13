@@ -2,7 +2,7 @@
 <div>
   <!-- 考勤班次弹窗 -->
   <el-drawer
-    :title="$t('ui.hrAttendanceSettingShiftListSelectShift')"
+    :title="$('ui.hrAttendanceSettingShiftListSelectShift')"
     :visible.sync="drawer"
     size="700px"
     :wrapperClosable="false"
@@ -13,7 +13,7 @@
       <div class="flex mb10 flex-between">
         <el-input
           size="small"
-          :placeholder="$t('ui.chatModelFormEnterContent')"
+          :placeholder="$('ui.chatModelFormEnterContent')"
           v-model="where.name"
           class="input-with-select"
           style="width: 250px"
@@ -21,7 +21,7 @@
         >
           <el-button slot="append" icon="el-icon-search" @click="getList(1)"></el-button>
         </el-input>
-        <el-button size="small" class="ml10" @click="addFn">{{ $t("ui.hrAttendanceSettingShiftListNewShift") }}</el-button>
+        <el-button size="small" class="ml10" @click="addFn">{{ $("ui.hrAttendanceSettingShiftListNewShift") }}</el-button>
       </div>
 
       <!-- 表格 -->
@@ -35,22 +35,22 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="55" :reserve-selection="true"> </el-table-column>
-        <el-table-column prop="name" :label="$t('ui.hrAttendanceSettingShiftListShiftName')" width="120"> </el-table-column>
-        <el-table-column prop="position" :label="$t('ui.hrAttendanceSettingShiftListAttendanceTime')" width="170">
+        <el-table-column prop="name" :label="$('ui.hrAttendanceSettingShiftListShiftName')" width="120"> </el-table-column>
+        <el-table-column prop="position" :label="$('ui.hrAttendanceSettingShiftListAttendanceTime')" width="170">
           <template slot-scope="scope">
-            {{ scope.row.times[0].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }} {{ scope.row.times[0].work_hours }} -
-            {{ scope.row.times[0].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}{{ scope.row.times[0].off_hours }}
+            {{ scope.row.times[0].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }} {{ scope.row.times[0].work_hours }} -
+            {{ scope.row.times[0].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}{{ scope.row.times[0].off_hours }}
             <span v-if="scope.row.times.length > 1"
-              >、 {{ scope.row.times[1].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}
-              {{ scope.row.times[1].work_hours }} - {{ scope.row.times[1].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay')
+              >、 {{ scope.row.times[1].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}
+              {{ scope.row.times[1].work_hours }} - {{ scope.row.times[1].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
               }}{{ scope.row.times[1].off_hours }}
             </span>
           </template>
         </el-table-column>
-        <el-table-column prop="card.name" :label="$t('ui.hrAssessCheckIndexCreator')" show-overflow-tooltip> </el-table-column>
-        <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" show-overflow-tooltip>
+        <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" show-overflow-tooltip>
           <template slot-scope="scope">
-            <el-button type="text" @click="checkFn(scope.row)">{{ $t("ui.hrAttendanceSettingShiftListViewShift") }}</el-button>
+            <el-button type="text" @click="checkFn(scope.row)">{{ $("ui.hrAttendanceSettingShiftListViewShift") }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -67,8 +67,8 @@
       </div>
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button @click="handleClose" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button type="primary" size="small" @click="submitForm">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+      <el-button @click="handleClose" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button type="primary" size="small" @click="submitForm">{{ $("ui.formCommonDialogFormOk") }}</el-button>
     </div>
   </el-drawer>
   <!-- 新建班次 -->

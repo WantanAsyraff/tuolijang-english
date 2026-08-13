@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <!-- 客户-添加跟进提醒弹窗组件 -->
 <template>
   <el-dialog
-    :title="`${isEdit ? $ts('编辑') : $ts('添加')} ${$ts('跟进提醒')}`"
+    :title="`${isEdit ? $("public.edit") : $("public.add")} ${$("legacy.f0d805dd402c70de")}`"
     top="25vh"
     class="addBox"
     :append-to-body="true"
@@ -10,29 +11,28 @@
   >
     <div class="line" />
     <el-form :model="form" ref="form" :rules="rules" class="from">
-      <el-form-item :label='$ts("提醒时间：")' :label-width="formLabelWidth" prop="time">
+      <el-form-item :label='$("ui.userCalendarAddTodoReminderTime")' :label-width="formLabelWidth" prop="time">
         <el-date-picker
           class="picker-time"
           type="datetime"
           default-time="09:00:00"
           v-model="form.time"
-          :placeholder='$ts("请选择日期")'
+          :placeholder='$("finance.accountselectdate")'
         >
         </el-date-picker>
       </el-form-item>
-      <el-form-item :label='$ts("提醒内容：")' :label-width="formLabelWidth" prop="content">
-        <el-input type="textarea" maxlength="200" v-model="form.content" :placeholder='$ts("请输入提醒内容")'></el-input>
+      <el-form-item :label='$("legacy.ec46dc51f876b854")' :label-width="formLabelWidth" prop="content">
+        <el-input type="textarea" maxlength="200" v-model="form.content" :placeholder='$("customer.placeholder40")'></el-input>
       </el-form-item>
       <div class="dialog-footer">
-        <el-button size="small" class="btn" @click="handleClose">{{ $ts("取消") }}</el-button>
-        <el-button size="small" type="primary" @click="handleConfirm" class="btn">{{ $ts("确定") }}</el-button>
+        <el-button size="small" class="btn" @click="handleClose">{{ $("public.cancel") }}</el-button>
+        <el-button size="small" type="primary" @click="handleConfirm" class="btn">{{ $("public.ok") }}</el-button>
       </div>
     </el-form>
   </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import { clientFollowEditApi, clientFollowSaveApi } from '@/api/client'
 import { DIALOG_SIZE } from '@/constants/popupSize'
 export default {
@@ -54,8 +54,8 @@ export default {
         content: ''
       },
       rules: {
-        time: [{ required: true, message: i18n.t('legacyScript.selectReminderTime'), trigger: 'change' }],
-        content: [{ required: true, message: i18n.t('legacyScript.pleaseEnterReminderContent'), trigger: 'blur' }]
+        time: [{ required: true, message: $('legacyScript.selectReminderTime'), trigger: 'change' }],
+        content: [{ required: true, message: $('legacyScript.pleaseEnterReminderContent'), trigger: 'blur' }]
       },
       labelWidth: 110,
       loading: false,
@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     formLabelWidth() {
-      return this.$i18n.locale === 'en' ? '130px' : '100px'
+      return this.$language === 'en' ? '130px' : '100px'
     }
   },
   methods: {

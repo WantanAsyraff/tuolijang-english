@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <template>
   <div class="main-page">
     <div v-if="loading" class="loading-mask">
       <i class="el-icon-loading"></i>
-      <span>{{ $ts("正在加载 Excel 编辑器...") }}</span>
+      <span>{{ $("legacy.8d395ea6eceb4b0d") }}</span>
     </div>
     <div
       id="luckysheet"
@@ -12,7 +13,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import LuckyExcel from 'luckyexcel'
 import { exportExcel } from './export'
@@ -50,8 +50,8 @@ export default {
         this.loadExcel(this.$processResourceUrl(this.url))
       })
     } catch (error) {
-      console.error(i18n.t('legacyScript.failedToLoadLuckysheet'), error)
-      this.$message.error(i18n.t('legacyScript.failedToLoadTheExcelEditor'))
+      console.error($('legacyScript.failedToLoadLuckysheet'), error)
+      this.$message.error($('legacyScript.failedToLoadTheExcelEditor'))
     }
   },
   methods: {
@@ -98,7 +98,7 @@ export default {
       //转换数据
       LuckyExcel.transformExcelToLuckyByUrl(file, name, (exportJson, luckysheetfile) => {
         if (exportJson.sheets == null || exportJson.sheets.length == 0) {
-          alert(i18n.t('legacyScript.unableToReadTheExcelFileXLSFilesAre'))
+          alert($('legacyScript.unableToReadTheExcelFileXLSFilesAre'))
           return
         }
 

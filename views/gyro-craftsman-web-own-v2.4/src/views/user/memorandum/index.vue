@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!--记事本-->
 <template>
   <div class="divBox">
@@ -11,7 +12,7 @@
         <div class="search">
           <el-input
             v-model="where.title"
-            :placeholder="$t('calendar.placeholder01')"
+            :placeholder="$('calendar.placeholder01')"
             class="search-input"
             clearable
             size="small"
@@ -35,14 +36,14 @@
                   <span>{{ item.title }}</span>
                   <el-popover :ref="`pop-${item.id}`" :offset="10" placement="bottom-end" trigger="click">
                     <div class="right-item-list">
-                      <div class="right-item cursor-pointer mb-5" @click="moveTo(item)">{{ $ts("移动到") }}</div>
-                      <div class="right-item cursor-pointer" @click="delMemorandum">{{ $ts("删除") }}</div>
+                      <div class="right-item cursor-pointer mb-5" @click="moveTo(item)">{{ $("legacy.f3d717f55911acb8") }}</div>
+                      <div class="right-item cursor-pointer" @click="delMemorandum">{{ $("public.delete") }}</div>
                     </div>
                     <div slot="reference" class="iconfont icongengduo right-icon" />
                   </el-popover>
                 </div>
                 <span class="comment">{{ getStringHtml(item.content) }}</span>
-                <span class="foottime">{{ $ts("创建于") }} {{ item.created_at }}</span>
+                <span class="foottime">{{ $("ui.userExamineExamineCreatedAt") }} {{ item.created_at }}</span>
               </li>
             </ul>
             <!--无数据-->
@@ -50,8 +51,8 @@
               <div class="content">
                 <div class="content-list">
                   <img :src="none007Img" alt="" />
-                  <p class="text-center">{{ $t('public.message09') }}~</p>
-                  <el-button class="mt20" size="small" type="primary" @click="addMemorandum"> {{ $ts("新建记事本") }} </el-button>
+                  <p class="text-center">{{ $('public.message09') }}~</p>
+                  <el-button class="mt20" size="small" type="primary" @click="addMemorandum"> {{ $("legacy.ab397047133931d4") }} </el-button>
                 </div>
               </div>
             </div>
@@ -61,7 +62,7 @@
             <div v-for="(j, i) in recentlyData" :key="i">
               <ul class="content-ul px-10">
                 <div class="recentlyMonth" :class="j.month !== '本月' ? 'mt30 mb20' : ''">
-                  {{ $ts(j.month) }}
+                  {{ $(j.month) }}
                 </div>
                 <li
                   v-for="(item, index) in j.data"
@@ -74,8 +75,8 @@
                     <span>{{ item.title }}</span>
                     <el-popover :ref="`pop-${item.id}`" :offset="10" placement="bottom-end" trigger="click">
                       <div class="right-item-list">
-                        <div class="right-item cursor-pointer mb-5" @click="moveTo(item)">{{ $ts("移动到") }}</div>
-                        <div class="right-item cursor-pointer" @click="delMemorandum">{{ $ts("删除") }}</div>
+                        <div class="right-item cursor-pointer mb-5" @click="moveTo(item)">{{ $("legacy.f3d717f55911acb8") }}</div>
+                        <div class="right-item cursor-pointer" @click="delMemorandum">{{ $("public.delete") }}</div>
                       </div>
                       <div slot="reference" class="iconfont icongengduo right-icon" />
                     </el-popover>
@@ -100,7 +101,7 @@
             <span class="el-icon-close btn1" @click="handleClose"></span>
 
             <img alt="" class="img" src="../../../assets/images/nodedef1.png" />
-            <div>{{ $ts("暂无笔记~") }}</div>
+            <div>{{ $("legacy.b67fec6360a24da7") }}</div>
           </div>
 
           <div v-else class="content">
@@ -108,15 +109,15 @@
               <div class="edit-title">
                 <el-input
                   v-model="title"
-                  :placeholder="$t('calendar.placeholder02')"
+                  :placeholder="$('calendar.placeholder02')"
                   class="edit-input"
                   size="small"
                   @change="edit"
                 />
               </div>
               <div class="savebutton">
-                <el-button :loading="saveLoading" class="btn" size="small" :title='$ts("保存(Ctrl+S)")' @click="edit"
-                  >{{ $ts("保存") }}</el-button
+                <el-button :loading="saveLoading" class="btn" size="small" :title='$("legacy.6b69a94b35d4f01f")' @click="edit"
+                  >{{ $("public.save") }}</el-button
                 >
                 <span class="el-icon-close" @click="handleClose"></span>
               </div>
@@ -141,7 +142,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { memorialListApi, memorialSaveApi, memorialEditApi, memorialDeleteApi, memorialGroupApi } from '@/api/user'
 import fSpan from '@/views/business/components/formSetting/components/form-create-designer/src/config/rule/span'
 
@@ -255,8 +255,8 @@ export default {
     },
     addMemorandum() {
       var data = {
-        title: this.$t('calendar.placeholder03'),
-        content: this.$t('calendar.placeholder04'),
+        title: this.$('calendar.placeholder03'),
+        content: this.$('calendar.placeholder04'),
         pid: this.where.pid
       }
       this.addCreate(data)
@@ -288,9 +288,9 @@ export default {
     // 修改
     edit(val) {
       if (this.title == '') {
-        this.$message.error(this.$t('calendar.placeholder05'))
+        this.$message.error(this.$('calendar.placeholder05'))
       } else if (this.content == '') {
-        this.$message.error(this.$t('calendar.placeholder06'))
+        this.$message.error(this.$('calendar.placeholder06'))
       } else {
         if (this.itemIndex) {
           var data = {
@@ -313,7 +313,7 @@ export default {
       memorialEditApi(id, data)
         .then(async (res) => {
           if (res.status === '200' && val !== 'auto') {
-            this.$message.success(i18n.t('legacyScript.updatedSuccessfully'))
+            this.$message.success($('legacyScript.updatedSuccessfully'))
           }
           this.saveLoading = false
           if (this.recently) {
@@ -340,7 +340,7 @@ export default {
     // 删除
     delMemorandum() {
       if (!this.itemIndex) return false
-      this.$modalSure(this.$t('calendar.placeholder07')).then(async () => {
+      this.$modalSure(this.$('calendar.placeholder07')).then(async () => {
         await memorialDeleteApi(this.id)
         if (!this.recently) {
           this.$refs.menuTree.menuList()

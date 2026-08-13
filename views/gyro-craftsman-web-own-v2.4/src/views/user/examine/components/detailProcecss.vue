@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <template>
 <!-- 审批进程 -->
 <div class="stepsBox">
   <div class="acea-row mb25">
     <div class="shu mr10"></div>
-    <span class="title">{{ $t("ui.userExamineDetailProcecssApprovalProgress") }}</span>
+    <span class="title">{{ $("ui.userExamineDetailProcecssApprovalProgress") }}</span>
   </div>
   <el-steps :active="indexCheck" direction="vertical">
     <el-step v-for="(item, index) in examineList" :key="index">
@@ -66,7 +67,7 @@
             </div>
 
             <div v-if="items.content" class="sign-bag flex">
-              <span class="name">{{ items.is_transfer !== 2 && items.is_transfer ? $t('ui.userExamineAddSignatureTransferApproval') : $t('ui.userExamineAddSignatureAddApprover') }}{{ $t("ui.userExamineDetailProcecssComment") }}</span
+              <span class="name">{{ items.is_transfer !== 2 && items.is_transfer ? $('ui.userExamineAddSignatureTransferApproval') : $('ui.userExamineAddSignatureAddApprover') }}{{ $("ui.userExamineDetailProcecssComment") }}</span
               >{{ items.content }}
             </div>
           </div>
@@ -78,7 +79,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 export default {
   name: 'DetailProcess',
   props: {
@@ -94,7 +94,7 @@ export default {
       openStatus: false,
       onlyPerson: false,
       selectPerson: false,
-      title: i18n.t('hr.selectmembers'),
+      title: $('hr.selectmembers'),
       checkedList: [],
       examineList: [],
       activeDepartment: {},

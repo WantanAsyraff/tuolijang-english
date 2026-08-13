@@ -1,23 +1,24 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog :visible.sync="show" width="854px" :show-close="false">
       <div slot="title" class="flex-between">
-        <span>{{ $ts("选择MCP") }}</span>
+        <span>{{ $("legacy.ef274b513836b049") }}</span>
         <span class="el-icon-close" @click="handleClose"></span>
       </div>
       <div class="search-box">
         <div class="flex lh-center">
-          <span class="shrink mr10">{{ $ts("共") }}{{ total }}{{ $ts("项") }}</span>
+          <span class="shrink mr10">{{ $("file.total") }}{{ total }}{{ $("ui.developModuleFormBoxItems") }}</span>
           <el-input
             v-model="where.name"
             size="small"
-            :placeholder='$ts("请输入知识库名称")'
+            :placeholder='$("legacy.173b62af9815cc66")'
             prefix-icon="el-icon-search"
             @change="handleSearch"
           />
           <div class="reset ml10 shrink" @click="resetSearch()"><i class="iconfont iconqingchu"></i></div>
         </div>
-        <el-button @click="handleCustom" type="primary" icon="el-icon-plus" size="small">{{ $ts("自定义创建") }}</el-button>
+        <el-button @click="handleCustom" type="primary" icon="el-icon-plus" size="small">{{ $("legacy.c70237e9302f6789") }}</el-button>
       </div>
       <div class="box-content">
         <div class="box-list">
@@ -39,8 +40,8 @@
             <div style="line-height: 1.8; flex: 1">
               <span class="title"
                 >{{ item.name }}
-                <span class="tip1" v-if="item.is_default == 1">{{ $ts("系统") }}</span>
-                <span class="tip2" v-if="item.is_default != 1">{{ $ts("自定义") }}</span>
+                <span class="tip1" v-if="item.is_default == 1">{{ $("ui.commonOaFromBoxSystem") }}</span>
+                <span class="tip2" v-if="item.is_default != 1">{{ $("calendar.custom") }}</span>
               </span>
               <span class="over-text1 mr24">
                 {{ item.info }}
@@ -48,11 +49,11 @@
             </div>
 
             <div class="edit-box">
-              <span class="el-icon-edit-outline right" :title='$ts("编辑")' @click.stop="handleEdit(item)" />
+              <span class="el-icon-edit-outline right" :title='$("public.edit")' @click.stop="handleEdit(item)" />
               <span
                 class="el-icon-delete right"
                 v-if="item.is_default != 1"
-                :title='$ts("删除")'
+                :title='$("public.delete")'
                 @click.stop="handleDelete(item.id)"
               />
             </div>
@@ -73,42 +74,41 @@
         </el-pagination>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="handleClose" size="small">{{ $ts("取消") }}</el-button>
-        <el-button type="primary" @click="submitFn" size="small">{{ $ts("确定") }}</el-button>
+        <el-button @click="handleClose" size="small">{{ $("public.cancel") }}</el-button>
+        <el-button type="primary" @click="submitFn" size="small">{{ $("public.ok") }}</el-button>
       </span>
     </el-dialog>
 
     <!-- 自定义mcp -->
     <oa-dialog :fromData="fromData" ref="oaDialog" @submit="submit">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item :label='$ts("功能名称：")' prop="name">
+        <el-form-item :label='$("legacy.4562afe67a52584e")' prop="name">
           <el-input
             v-model="ruleForm.name"
             size="small"
             maxlength="20"
             show-word-limit
-            :placeholder='$ts("请输入名称")'
+            :placeholder='$("hr.message1")'
           ></el-input>
         </el-form-item>
-        <el-form-item :label='$ts("功能简介：")' prop="info">
+        <el-form-item :label='$("legacy.9bd921cf778b8fcd")' prop="info">
           <el-input
             v-model="ruleForm.info"
             type="textarea"
-            :placeholder='$ts("请输入功能简介")'
+            :placeholder='$("legacyScript.enterFunctionDescription")'
             maxlength="200"
             show-word-limit
           ></el-input>
         </el-form-item>
-        <el-form-item :label='$ts("JSON配置：")' prop="config_json">
+        <el-form-item :label='$("legacy.255c34453fff0517")' prop="config_json">
           <code-editor :mode="'json'" :readonly="false" v-model="ruleForm.config_json"></code-editor>
-          <div>{{ $ts("JSON配置数据需按照示例填写") }}</div>
+          <div>{{ $("legacy.fb32f54a5de2a6f8") }}</div>
         </el-form-item>
       </el-form>
     </oa-dialog>
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getMcpListApi, saveMcpServiceApi, getMcpServiceApi, putMcpServiceApi, delMcpServiceApi } from '@/api/chatAi'
 import oaDialog from '@/components/form-common/dialog-form'
 import CodeEditor from '@/components/code-editor/index'
@@ -140,14 +140,14 @@ export default {
         app_id: ''
       },
       rules: {
-        name: [{ required: true, message: i18n.t('legacyScript.enterFunctionName'), trigger: 'blur' }],
-        info: [{ required: true, message: i18n.t('legacyScript.enterFunctionDescription'), trigger: 'blur' }],
-        config_json: [{ required: true, message: i18n.t('legacyScript.enterJSONConfig'), trigger: 'blur' }]
+        name: [{ required: true, message: $('legacyScript.enterFunctionName'), trigger: 'blur' }],
+        info: [{ required: true, message: $('legacyScript.enterFunctionDescription'), trigger: 'blur' }],
+        config_json: [{ required: true, message: $('legacyScript.enterJSONConfig'), trigger: 'blur' }]
       },
       fromData: {
         width: '650px',
-        title: i18n.t('legacyScript.customMCP'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('legacyScript.customMCP'),
+        btnText: '确定',
         labelWidth: '90px',
         type: 'slot'
       },
@@ -210,7 +210,7 @@ export default {
           try {
             configJson = typeof configJson === 'string' ? JSON.parse(configJson) : configJson
           } catch (error) {
-            this.$message.error(i18n.t('legacyScript.invalidJSONConfigurationFormatPleaseCheckAndTryAgain'))
+            this.$message.error($('legacyScript.invalidJSONConfigurationFormatPleaseCheckAndTryAgain'))
             return
           }
         }
@@ -232,7 +232,7 @@ export default {
 
     submitFn() {
       if (this.selectList.length == 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectTheMCPToAdd'))
+        this.$message.error($('legacyScript.pleaseSelectTheMCPToAdd'))
         return false
       }
       this.show = false

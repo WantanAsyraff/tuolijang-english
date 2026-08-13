@@ -8,8 +8,8 @@
             :label="items.label || items.name"></el-option>
     </el-select>
     <el-select style="width: 100%" v-model="item.option" v-if="item.form_value === 'switch'" size="small">
-        <el-option value="1" :label="$t('ui.developFieldComponentYes')"></el-option>
-        <el-option value="0" :label="$t('ui.developFieldComponentNo')"></el-option>
+        <el-option value="1" :label="$('ui.developFieldComponentYes')"></el-option>
+        <el-option value="0" :label="$('ui.developFieldComponentNo')"></el-option>
     </el-select>
 
     <!-- 输入框类型 -->
@@ -46,7 +46,7 @@
     <!-- 管理范围 -->
     <el-cascader v-if="!noRule && item.type == 'scope_frame'" style="width: 100%" size="small" v-model="item.option"
         :options="frameTreeData" :props="{ checkStrictly: true, emitPath: false, value: 'id', label: 'label' }"
-        :placeholder="$t('ui.fdExamineFormBoxManagementScope')" filterable clearable :show-all-levels="false"></el-cascader>
+        :placeholder="$('ui.fdExamineFormBoxManagementScope')" filterable clearable :show-all-levels="false"></el-cascader>
     <!-- 级联选择省市区 -->
     <el-cascader v-model="item.option" :options="item.options || []" :props="{
         checkStrictly: true,
@@ -58,14 +58,13 @@
     <!-- 日期选择 -->
     <div v-if="item.type == 'date_picker' && !dateList.includes(item.value)">
         <div v-if="item.value == 'between' || !noRule" class="flex">
-            <el-date-picker v-model="item.option" type="daterange" :picker-options="pickerOptions"
-:range-separator="$t('ui.commonFormListTo')" :start-placeholder="$t('ui.customerSigningIndexStartDate')" :end-placeholder="$t('ui.customerSigningIndexEndDate')" style="width: 100%" size="small"
+      <el-date-picker v-model="item.option" type="daterange" :picker-options="pickerOptions" :range-separator="$('ui.commonFormListTo')" :start-placeholder="$('ui.customerSigningIndexStartDate')" :end-placeholder="$('ui.customerSigningIndexEndDate')" style="width: 100%" size="small"
                 format=" yyyy/MM/dd" value-format="yyyy/MM/dd">
             </el-date-picker>
         </div>
         <el-input-number v-else-if="['n_day', 'last_day', 'next_day'].includes(item.value)" v-model="item.option"
             :controls="false" :min="0" style="width: 100%" size="small"></el-input-number>
-        <el-date-picker v-else style="width: 100%" v-model="item.option" type="date" :placeholder="$t('ui.userCalendarAddTodoSelectDate')"
+        <el-date-picker v-else style="width: 100%" v-model="item.option" type="date" :placeholder="$('ui.userCalendarAddTodoSelectDate')"
             format=" yyyy/MM/dd" value-format="yyyy/MM/dd" size="small">
         </el-date-picker>
     </div>
@@ -73,15 +72,14 @@
     <!-- 日期时间选择 -->
     <div v-if="item.type == 'date_time_picker' && !lastYearList.includes(item.value)">
         <div v-if="item.value == 'between'" class="flex">
-            <el-date-picker v-model="item.option" type="datetimerange" :range-separator="$t('ui.commonFormListTo')" :start-placeholder="$t('ui.customerSigningIndexStartDate')"
-:end-placeholder="$t('ui.customerSigningIndexEndDate')" style="width: 100%" size="small" format=" yyyy/MM/dd HH:mm:ss"
+      <el-date-picker v-model="item.option" type="datetimerange" :range-separator="$('ui.commonFormListTo')" :start-placeholder="$('ui.customerSigningIndexStartDate')" :end-placeholder="$('ui.customerSigningIndexEndDate')" style="width: 100%" size="small" format=" yyyy/MM/dd HH:mm:ss"
                 value-format="yyyy/MM/dd HH:mm:ss" :picker-options="pickerOptions">
             </el-date-picker>
         </div>
         <el-input-number v-else-if="['n_day', 'last_day', 'next_day'].includes(item.value)" v-model="item.option"
             :controls="false" :min="0" style="width: 100%" size="small"></el-input-number>
         <el-date-picker v-else style="width: 100%" v-model="item.option" type="datetime"
-            format=" yyyy/MM/dd HH:mm:ss" value-format="yyyy/MM/dd HH:mm:ss" :placeholder="$t('ui.administrationNoticeAddNoticeSelectDateTime')" size="small">
+            format=" yyyy/MM/dd HH:mm:ss" value-format="yyyy/MM/dd HH:mm:ss" :placeholder="$('ui.administrationNoticeAddNoticeSelectDateTime')" size="small">
         </el-date-picker>
     </div>
 

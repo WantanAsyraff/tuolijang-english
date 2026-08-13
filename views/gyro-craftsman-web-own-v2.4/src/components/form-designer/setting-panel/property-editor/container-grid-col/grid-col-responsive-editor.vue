@@ -1,15 +1,12 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.responsive')">
+  <el-form-item :label="$('designer.setting.responsive')">
     <el-switch v-model="optionModel.responsive"></el-switch>
   </el-form-item>
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
-
   export default {
     name: "grid-col-responsive-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -21,4 +18,3 @@
 <style lang="scss" scoped>
 
 </style>
-@/utils/i18ns

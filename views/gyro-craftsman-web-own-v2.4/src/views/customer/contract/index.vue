@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
     <oaFromBox
       :title="$route.meta.title"
-:btn-text="$t('ui.customerListContractAddOrder')"
+      :btnText="$('ui.customerListContractAddOrder')"
       :treeData="treeDataGroup"
       :search="search"
       :viewSearch="viewSearch"
@@ -36,39 +37,39 @@
     >
       <template #options="{ data }">
         <el-button type="text" @click="handleCheck(data)">
-          {{ $t('public.check') }}
+          {{ $('public.check') }}
         </el-button>
         <el-button type="text" @click="handleBuild(data, buildData.contract_refund_switch, 'contract_refund_switch')">
-          {{ $t("ui.customerContractContractPaymentAddPayment") }}
+          {{ $("ui.customerContractContractPaymentAddPayment") }}
         </el-button>
         <el-dropdown>
           <span class="el-dropdown-link el-button--text el-button more">
-            {{ $t("ui.layoutNavbarMore") }}
+            {{ $("ui.layoutNavbarMore") }}
             <i class="el-icon-arrow-down" />
           </span>
           <el-dropdown-menu class="dropdown-menu-left" placement="top-start">
             <el-dropdown-item
               @click.native="handleBuild(data, buildData.contract_renew_switch, 'contract_renew_switch')"
             >
-              {{ $t("ui.customerContractContractPaymentAddRenewal") }}
+              {{ $("ui.customerContractContractPaymentAddRenewal") }}
             </el-dropdown-item>
             <el-dropdown-item
               @click.native="handleBuild(data, buildData.contract_disburse_switch, 'contract_disburse_switch')"
             >
-              {{ $t("ui.customerContractContractPaymentAddExpense") }}
+              {{ $("ui.customerContractContractPaymentAddExpense") }}
             </el-dropdown-item>
             <el-dropdown-item
               v-customer-module="CUSTOMER_MODULE_KEYS.INVOICE"
               style="border-bottom: 1px solid #f5f5f5"
               @click.native="handleBuild(data, buildData.invoicing_switch, 'invoicing_switch')"
             >
-              {{ $t("ui.customerContractIndexApplyForInvoice") }}
+              {{ $("ui.customerContractIndexApplyForInvoice") }}
             </el-dropdown-item>
-            <el-dropdown-item @click.native="handleTransfer(2, data)"> {{ $t("ui.customerClueIndexTransferToColleague") }} </el-dropdown-item>
+            <el-dropdown-item @click.native="handleTransfer(2, data)"> {{ $("ui.customerClueIndexTransferToColleague") }} </el-dropdown-item>
             <el-dropdown-item @click.native="markedAbnormal(data)">
-              {{ data.contract_status.value == 3 ? $t('ui.customerContractIndexMarkAsNormalOrder') : $t('ui.customerContractIndexMarkAsAbnormalOrder') }}
+              {{ data.contract_status.value == 3 ? $('ui.customerContractIndexMarkAsNormalOrder') : $('ui.customerContractIndexMarkAsAbnormalOrder') }}
             </el-dropdown-item>
-            <el-dropdown-item @click.native="handleDelete(data)"> {{ $t("ui.chatIndexDelete") }} </el-dropdown-item>
+            <el-dropdown-item @click.native="handleDelete(data)"> {{ $("ui.chatIndexDelete") }} </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </template>
@@ -93,7 +94,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { clientContractDeleteApi, contractViewApi, contractAbnormalApi, contractImport } from '@/api/enterprise'
 import { clientExportApi } from '@/api/client'
 import { configRuleApproveApi } from '@/api/config'
@@ -160,50 +160,50 @@ export default {
       timeSearchObj: {},
       viewSearch: [],
       dropdownList: [
-        { label: i18n.t('ui.customerClueIndexTransferToColleague'), value: 1 },
-        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 4 },
-        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 5 },
-        { label: i18n.t('customer.export'), value: 2 },
-        { label: i18n.t('finance.batchupload'), value: 3 },
-        { label: i18n.t('legacyScript.importExportRecords'), value: 6 },
-        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 7 }
+        { label: $('ui.customerClueIndexTransferToColleague'), value: 1 },
+        { label: $('ui.developModuleTableStyleFilterSettings'), value: 4 },
+        { label: $('ui.developModuleTableStyleColumnDisplaySettings'), value: 5 },
+        { label: $('customer.export'), value: 2 },
+        { label: $('finance.batchupload'), value: 3 },
+        { label: $('legacyScript.importExportRecords'), value: 6 },
+        { label: $('legacyScript.fieldOptionSettings'), value: 7 }
       ],
       treeDataGroup: [
         {
           id: 1,
-          label: i18n.t('legacyScript.ownedByMe')
+          label: $('legacyScript.ownedByMe')
         },
         {
           id: 2,
-          label: i18n.t('legacyScript.ownedBySubordinates')
+          label: $('legacyScript.ownedBySubordinates')
         },
         {
           id: 3,
-          label: i18n.t('legacyScript.followedByMe')
+          label: $('legacyScript.followedByMe')
         },
         {
           id: 4,
-          label: i18n.t('ui.customerSigningInfoItemSigned')
+          label: $('ui.customerSigningInfoItemSigned')
         },
         {
           id: 5,
-          label: i18n.t('legacyScript.notSigned')
+          label: $('legacyScript.notSigned')
         },
         {
           id: 6,
-          label: i18n.t('legacyScript.contractVoided')
+          label: $('legacyScript.contractVoided')
         },
         {
           id: 7,
-          label: i18n.t('legacyScript.expiredOrders')
+          label: $('legacyScript.expiredOrders')
         },
         {
           id: 8,
-          label: i18n.t('customer.urgentrenewal')
+          label: $('customer.urgentrenewal')
         },
         {
           id: 9,
-          label: i18n.t('legacyScript.feeExpired'),
+          label: $('legacyScript.feeExpired'),
           line: true
         }
       ]
@@ -230,8 +230,8 @@ export default {
     markedAbnormal(row) {
       const isNormal = Number(row.contract_status.value) === 3
       const status = isNormal ? 0 : 1
-      const statusText = this.$t(isNormal ? 'customer.normal' : 'customer.abnormal')
-      this.$modalSure(this.$t('customer.abnormalMessage', { status: statusText })).then(() => {
+      const statusText = this.$(isNormal ? 'customer.normal' : 'customer.abnormal')
+      this.$modalSure(this.$('customer.abnormalMessage', { status: statusText })).then(() => {
         contractAbnormalApi(row.id, status)
         this.getTableData()
       })
@@ -289,7 +289,7 @@ export default {
     // 转移
     handleTransfer(type, row = []) {
       if (this.ids.length <= 0 && type === 1) {
-        this.$message.error(this.$t('customer.placeholder22'))
+        this.$message.error(this.$('customer.placeholder22'))
       } else {
         let ids = []
         if (type === 1) {
@@ -308,7 +308,7 @@ export default {
           ids.push(row.id)
         }
         this.transferData = {
-          title: type === 1 ? '移交其他同事' : this.$t('customer.transfersettings'),
+          title: type === 1 ? '移交其他同事' : this.$('customer.transfersettings'),
           width: '520px',
           type: 2,
           ids
@@ -319,7 +319,7 @@ export default {
 
     // 删除
     handleDelete(item) {
-      this.$modalSure(this.$t('customer.placeholder27')).then(() => {
+      this.$modalSure(this.$('customer.placeholder27')).then(() => {
         clientContractDeleteApi(item.id).then((res) => {
           if (this.where.page > 1 && this.tableData.length <= 1) {
             this.where.page--
@@ -334,7 +334,7 @@ export default {
       item.eid = item.eid
       item.cid = item.id
       this.fromData = {
-        title: this.$t('customer.editcustomer'),
+        title: this.$('customer.editcustomer'),
         width: '1100px',
         link_type: 'customer',
         data: item
@@ -348,7 +348,7 @@ export default {
     async handleCheck(item) {
       item.cid = item.id
       this.fromData = {
-        title: i18n.t('legacyScript.viewOrder'),
+        title: $('legacyScript.viewOrder'),
         width: DRAWER_SIZE.LG,
         data: item,
         isClient: false,

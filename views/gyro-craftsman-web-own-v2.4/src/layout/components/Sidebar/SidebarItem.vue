@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div v-if="!item.hidden">
     <template
@@ -49,8 +50,6 @@
 import { resolve } from '@/utils/path'
 import { isExternal } from '@/utils/validate'
 import FixiOSBug from './FixiOSBug'
-import { translateSystemText } from '@/utils/i18ns'
-
 export default {
   name: 'SidebarItem',
   components: { Item: () => import('./Item'), AppLink: () => import('./Link') },
@@ -89,7 +88,7 @@ export default {
   },
   methods: {
     menuTitle(title, englishTitle) {
-      return translateSystemText(title, this, englishTitle)
+      return this.$(title, englishTitle)
     },
     // 递归判断子菜单下是否存在可见(is_show)的菜单项，避免子项全部隐藏时仍渲染空的父级菜单
     hasVisibleChild(item) {

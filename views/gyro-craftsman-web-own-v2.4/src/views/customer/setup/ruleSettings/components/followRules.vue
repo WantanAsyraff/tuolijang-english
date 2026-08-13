@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <div class="card-box">
@@ -7,52 +8,52 @@
           <div class="card-list">
             <div class="head">
               <span class="line">|</span>
-              <span class="title">{{ $t("ui.customerSetupRuleSettingsFollowRulesCustomerFollowUpRules") }}</span>
+              <span class="title">{{ $("ui.customerSetupRuleSettingsFollowRulesCustomerFollowUpRules") }}</span>
             </div>
-            <el-form-item :label="$t('ui.customerSetupRuleSettingsFollowRulesCustomerFollowUpReminder')" prop="follow_up_switch">
+            <el-form-item :label="$('ui.customerSetupRuleSettingsFollowRulesCustomerFollowUpReminder')" prop="follow_up_switch">
               <el-switch
                 v-model="formData.follow_up_switch"
                 :active-value="1"
                 :inactive-value="0"
                 active-color="#1890ff"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+                active-text="开启"
                 inactive-color="#cccccc"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                inactive-text="关闭"
               >
               </el-switch>
             </el-form-item>
             <template v-if="formData.follow_up_switch">
-              <el-form-item :label="$t('ui.customerListEditCustomerCustomerStatus')" prop="follow_up_status">
+              <el-form-item :label="$('ui.customerListEditCustomerCustomerStatus')" prop="follow_up_status">
                 <el-checkbox-group v-model="formData.follow_up_status" @change="handleCheckChange">
-                  <el-checkbox :label="2">{{ $t("ui.customerSetupRuleSettingsFollowRulesNotConverted") }}</el-checkbox>
-                  <el-checkbox :label="1">{{ $t("ui.customerSetupRuleSettingsFollowRulesClosed") }}</el-checkbox>
-                  <div class="info">{{ $t("ui.customerSetupRuleSettingsFollowRulesUsedToSetCustomerStatusesThatNeedFollowUp") }}</div>
+                  <el-checkbox :label="2">{{ $("ui.customerSetupRuleSettingsFollowRulesNotConverted") }}</el-checkbox>
+                  <el-checkbox :label="1">{{ $("ui.customerSetupRuleSettingsFollowRulesClosed") }}</el-checkbox>
+                  <div class="info">{{ $("ui.customerSetupRuleSettingsFollowRulesUsedToSetCustomerStatusesThatNeedFollowUp") }}</div>
                 </el-checkbox-group>
               </el-form-item>
-              <el-form-item v-if="getVal(2)" :label="$t('ui.customerSetupRuleSettingsFollowRulesOpenDealReminder')" prop="follow_up_unsettled">
+              <el-form-item v-if="getVal(2)" :label="$('ui.customerSetupRuleSettingsFollowRulesOpenDealReminder')" prop="follow_up_unsettled">
                 <el-input
                   v-model="formData.follow_up_unsettled"
                   clearable
-:placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+:placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                   show-word-limit
                   size="small"
                   type="number"
                 >
-                  <template slot="suffix">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                  <template slot="suffix">{{ $("ui.hrApprovaTimeDay") }}</template>
                 </el-input>
-                <div class="info">{{ $t("ui.customerSetupRuleSettingsFollowRulesUsedToSetHowOftenUnsettledCustomersNeedFollow") }}</div>
+                <div class="info">{{ $("ui.customerSetupRuleSettingsFollowRulesUsedToSetHowOftenUnsettledCustomersNeedFollow") }}</div>
               </el-form-item>
-              <el-form-item v-if="getVal(1)" :label="$t('ui.customerSetupRuleSettingsFollowRulesWonDealReminder')" prop="follow_up_traded">
+              <el-form-item v-if="getVal(1)" :label="$('ui.customerSetupRuleSettingsFollowRulesWonDealReminder')" prop="follow_up_traded">
                 <el-input
                   v-model="formData.follow_up_traded"
                   clearable
-:placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+:placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                   show-word-limit
                   size="small"
                 >
-                  <template slot="suffix">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                  <template slot="suffix">{{ $("ui.hrApprovaTimeDay") }}</template>
                 </el-input>
-                <div class="info">{{ $t("ui.customerSetupRuleSettingsFollowRulesUsedToSetHowOftenClosedCustomersNeedFollow") }}</div>
+                <div class="info">{{ $("ui.customerSetupRuleSettingsFollowRulesUsedToSetHowOftenClosedCustomersNeedFollow") }}</div>
               </el-form-item>
             </template>
           </div>
@@ -60,39 +61,12 @@
       </div>
     </el-card>
     <div class="cr-bottom-button">
-      <el-button size="small" type="primary" @click="saveEvt">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+      <el-button size="small" type="primary" @click="saveEvt">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
     </div>
   </div>
 </div>
 </template>
-                  </el-input>
-                  <div class="info">用于设置暂未成交状态的客户多少天需要跟进一次</div>
-                </el-form-item>
-                <el-form-item v-if="getVal(1)" label="已成交提醒：" prop="follow_up_traded">
-                  <el-input
-                    v-model="formData.follow_up_traded"
-                    clearable
-                    placeholder="请输入正整数"
-                    show-word-limit
-                    size="small"
-                  >
-                    <template slot="suffix">天</template>
-                  </el-input>
-                  <div class="info">用于设置已成交状态的客户多少天需要跟进一次</div>
-                </el-form-item>
-              </template>
-            </div>
-          </el-form>
-        </div>
-      </el-card>
-      <div class="cr-bottom-button">
-        <el-button size="small" type="primary" @click="saveEvt">保存</el-button>
-      </div>
-    </div>
-  </div>
-</template>
 <script>
-import i18n from '@/lang'
 export default {
   name: 'FollowRules',
   props: {
@@ -118,8 +92,8 @@ export default {
         xs: 24
       },
       rules: {
-        follow_up_unsettled: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheCustomerFollowUpReminderCycle') }],
-        follow_up_traded: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheCustomerFollowUpReminderCycle') }]
+        follow_up_unsettled: [{ required: true, message: $('legacyScript.pleaseEnterTheCustomerFollowUpReminderCycle') }],
+        follow_up_traded: [{ required: true, message: $('legacyScript.pleaseEnterTheCustomerFollowUpReminderCycle') }]
       }
     }
   },

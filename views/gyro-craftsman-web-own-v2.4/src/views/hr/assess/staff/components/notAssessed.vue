@@ -1,17 +1,18 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <!-- 查看未考核人员 -->
-  <el-drawer :title="$t('ui.hrAssessStaffNotAssessedEmployeesWithoutAnAssessment')" :visible.sync="drawer" size="700px" :before-close="handleClose">
+  <el-drawer :title="$('ui.hrAssessStaffNotAssessedEmployeesWithoutAnAssessment')" :visible.sync="drawer" size="700px" :before-close="handleClose">
     <div class="box">
       <!-- 筛选 -->
       <el-form :inline="true" class="from-s">
         <div class="flex">
-          <el-form-item :label="$t('toptable.assessmentcycle')" class="select-bar">
+          <el-form-item :label="$('toptable.assessmentcycle')" class="select-bar">
             <el-select
               v-model="tableFrom.period"
               size="small"
               @change="changePeriod"
-              :placeholder="$t('finance.pleaseselect')"
+              :placeholder="$('finance.pleaseselect')"
               style="width: 150px"
             >
               <el-option
@@ -23,7 +24,7 @@
             </el-select>
           </el-form-item>
           <template v-if="tableFrom.period">
-            <el-form-item :label="$t('access.assessmenttime')" class="select-bar">
+            <el-form-item :label="$('access.assessmenttime')" class="select-bar">
               <el-date-picker
                 class="time"
                 v-if="tableFrom.period === 1 || tableFrom.period === 2"
@@ -56,7 +57,7 @@
               />
             </el-form-item>
             <el-form-item>
-              <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+              <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
                 <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
               </el-tooltip>
             </el-form-item>
@@ -65,11 +66,11 @@
       </el-form>
       <!-- 表格 -->
       <el-table ref="multipleTable" :data="listData" tooltip-effect="dark" style="width: 100%">
-        <el-table-column prop="name" :label="$t('ui.hrAttendanceSettingNotJoinPersonName')"> </el-table-column>
-        <el-table-column prop="title" :label="$t('ui.hrAssessStaffNotAssessedAssessmentName')"> </el-table-column>
-        <el-table-column prop="frame.name" :label="$t('ui.businessHolidayQueryIndexDepartment')"> </el-table-column>
-        <el-table-column prop="job.name" :label="$t('ui.hrAssessConfigAssessBoxPosition')"> </el-table-column>
-        <el-table-column prop="super.name" :label="$t('ui.workFlowDrawerApproverDrawerDirectSuperior')"> </el-table-column>
+        <el-table-column prop="name" :label="$('ui.hrAttendanceSettingNotJoinPersonName')"> </el-table-column>
+        <el-table-column prop="title" :label="$('ui.hrAssessStaffNotAssessedAssessmentName')"> </el-table-column>
+        <el-table-column prop="frame.name" :label="$('ui.businessHolidayQueryIndexDepartment')"> </el-table-column>
+        <el-table-column prop="job.name" :label="$('ui.hrAssessConfigAssessBoxPosition')"> </el-table-column>
+        <el-table-column prop="super.name" :label="$('ui.workFlowDrawerApproverDrawerDirectSuperior')"> </el-table-column>
       </el-table>
       <div class="block mt10 text-right">
         <el-pagination
@@ -85,7 +86,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { userAssessAbnormalList } from '@/api/user'
 export default {
   components: {
@@ -97,21 +97,21 @@ export default {
       quarterBtn: false,
       listData: [],
       dateArray: [
-        { value: 1, type: 'week', text: i18n.t('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
-        { value: 2, type: 'month', text: i18n.t('legacyScript.selectMonth'), format: 'yyyy-MM' },
+        { value: 1, type: 'week', text: $('legacyScript.selectWeek'), format: 'yyyy 第 WW 周' },
+        { value: 2, type: 'month', text: $('legacyScript.selectMonth'), format: 'yyyy-MM' },
         { value: 4, type: '' },
         { value: 5, type: '' },
-        { value: 3, type: 'year', text: i18n.t('legacyScript.selectYear'), format: 'yyyy' }
+        { value: 3, type: 'year', text: $('legacyScript.selectYear'), format: 'yyyy' }
       ],
       total: 0,
       timeVal: [],
       tableFrom: { limit: 15, page: 1, period: 2, time: '' },
       periodOptions: [
-        { value: 2, label: i18n.t('hr.monthlyassessment') },
-        { value: 1, label: i18n.t('hr.weeklyassessment') },
-        { value: 5, label: i18n.t('legacyScript.quarterlyAssessment') },
-        { value: 4, label: i18n.t('legacyScript.semiannualAssessment') },
-        { value: 3, label: i18n.t('hr.annualassessment') }
+        { value: 2, label: $('hr.monthlyassessment') },
+        { value: 1, label: $('hr.weeklyassessment') },
+        { value: 5, label: $('legacyScript.quarterlyAssessment') },
+        { value: 4, label: $('legacyScript.semiannualAssessment') },
+        { value: 3, label: $('hr.annualassessment') }
       ],
       halfYearBtn: false
     }

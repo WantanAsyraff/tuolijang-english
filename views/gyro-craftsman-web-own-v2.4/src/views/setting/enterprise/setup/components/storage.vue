@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div style="min-height: calc(100vh - 190px)">
   <div class="message">
@@ -14,39 +15,39 @@
       </div>
       <el-alert v-if="parseInt(currentTab) === 1" closable>
         <template slot="title">
-          <p>{{ $t("ui.settingEnterpriseSetupStorageThumbnailsAreGeneratedWhenImagesAreUploaded") }}</p>
-          <p>{{ $t("ui.settingEnterpriseSetupStorageIfUnsetThumbnailsUseTheDefaultsLarge800800") }}</p>
+          <p>{{ $("ui.settingEnterpriseSetupStorageThumbnailsAreGeneratedWhenImagesAreUploaded") }}</p>
+          <p>{{ $("ui.settingEnterpriseSetupStorageIfUnsetThumbnailsUseTheDefaultsLarge800800") }}</p>
         </template>
       </el-alert>
       <el-alert v-else closable>
         <template slot="title">
           <p v-if="parseInt(currentTab) === 2">
-            {{ $t("ui.settingEnterpriseSetupStorageHowToEnableQiniuCloudStorage") }}<a href="https://doc.crmeb.com/single/v5/7792" target="_blank">{{ $t("ui.hrAttendanceSettingAddConentClickToView") }}</a>
+            {{ $("ui.settingEnterpriseSetupStorageHowToEnableQiniuCloudStorage") }}<a href="https://doc.crmeb.com/single/v5/7792" target="_blank">{{ $("ui.hrAttendanceSettingAddConentClickToView") }}</a>
           </p>
           <p v-if="parseInt(currentTab) === 3">
-            {{ $t("ui.settingEnterpriseSetupStorageHowToEnableAlibabaCloudOss") }}<a href="https://doc.crmeb.com/single/v5/7790" target="_blank">{{ $t("ui.hrAttendanceSettingAddConentClickToView") }}</a>
+            {{ $("ui.settingEnterpriseSetupStorageHowToEnableAlibabaCloudOss") }}<a href="https://doc.crmeb.com/single/v5/7790" target="_blank">{{ $("ui.hrAttendanceSettingAddConentClickToView") }}</a>
           </p>
           <p v-if="parseInt(currentTab) === 4">
-            {{ $t("ui.settingEnterpriseSetupStorageHowToEnableTencentCloudCos") }}<a href="https://doc.crmeb.com/single/v5/7791" target="_blank">{{ $t("ui.hrAttendanceSettingAddConentClickToView") }}</a>
+            {{ $("ui.settingEnterpriseSetupStorageHowToEnableTencentCloudCos") }}<a href="https://doc.crmeb.com/single/v5/7791" target="_blank">{{ $("ui.hrAttendanceSettingAddConentClickToView") }}</a>
           </p>
           <p v-if="parseInt(currentTab) === 5">
-            {{ $t("ui.settingEnterpriseSetupStorageHowToEnableJdCloudStorage") }}<a href="https://doc.crmeb.com/single/v5/8522" target="_blank">{{ $t("ui.hrAttendanceSettingAddConentClickToView") }}</a>
+            {{ $("ui.settingEnterpriseSetupStorageHowToEnableJdCloudStorage") }}<a href="https://doc.crmeb.com/single/v5/8522" target="_blank">{{ $("ui.hrAttendanceSettingAddConentClickToView") }}</a>
           </p>
           <p v-if="parseInt(currentTab) === 6">
-            {{ $t("ui.settingEnterpriseSetupStorageHowToEnableHuaweiCloudObs") }}<a href="https://doc.crmeb.com/single/v5/8523" target="_blank">{{ $t("ui.hrAttendanceSettingAddConentClickToView") }}</a>
+            {{ $("ui.settingEnterpriseSetupStorageHowToEnableHuaweiCloudObs") }}<a href="https://doc.crmeb.com/single/v5/8523" target="_blank">{{ $("ui.hrAttendanceSettingAddConentClickToView") }}</a>
           </p>
           <p v-if="parseInt(currentTab) === 7">
-            {{ $t("ui.settingEnterpriseSetupStorageHowToEnableChinaTelecomCloudStorage") }}<a href="https://doc.crmeb.com/single/v5/8524" target="_blank">{{ $t("ui.hrAttendanceSettingAddConentClickToView") }}</a>
+            {{ $("ui.settingEnterpriseSetupStorageHowToEnableChinaTelecomCloudStorage") }}<a href="https://doc.crmeb.com/single/v5/8524" target="_blank">{{ $("ui.hrAttendanceSettingAddConentClickToView") }}</a>
           </p>
-          <p>{{ $t("ui.settingEnterpriseSetupStorageStep1AddAStorageSpaceTheNameMust") }}</p>
-          <p>{{ $t("ui.settingEnterpriseSetupStorageStep2EnableStatus") }}</p>
+          <p>{{ $("ui.settingEnterpriseSetupStorageStep1AddAStorageSpaceTheNameMust") }}</p>
+          <p>{{ $("ui.settingEnterpriseSetupStorageStep2EnableStatus") }}</p>
           <template v-if="parseInt(currentTab) === 2">
-            <p>{{ $t("ui.settingEnterpriseSetupStorageStep3RequiredChooseEditDomainForTheCloud") }}</p>
-            <p>{{ $t("ui.settingEnterpriseSetupStorageStep4RequiredOpenCnameSettingsAndCopyThe") }}</p>
+            <p>{{ $("ui.settingEnterpriseSetupStorageStep3RequiredChooseEditDomainForTheCloud") }}</p>
+            <p>{{ $("ui.settingEnterpriseSetupStorageStep4RequiredOpenCnameSettingsAndCopyThe") }}</p>
           </template>
           <template v-else>
-            <p>{{ $t("ui.settingEnterpriseSetupStorageStep3OptionalChooseEditDomainForTheCloud") }}</p>
-            <p>{{ $t("ui.settingEnterpriseSetupStorageStep4OptionalOpenCnameSettingsAndCopyThe") }}</p>
+            <p>{{ $("ui.settingEnterpriseSetupStorageStep3OptionalChooseEditDomainForTheCloud") }}</p>
+            <p>{{ $("ui.settingEnterpriseSetupStorageStep4OptionalOpenCnameSettingsAndCopyThe") }}</p>
           </template>
         </template>
       </el-alert>
@@ -56,15 +57,15 @@
     <el-card class="ivu-mt">
       <el-row>
         <el-col :span="24">
-          <span class="save-type"> {{ $t("ui.settingEnterpriseSetupStorageStorageMethod") }} </span>
+          <span class="save-type"> {{ $("ui.settingEnterpriseSetupStorageStorageMethod") }} </span>
           <el-radio-group v-model="upload_type" @change="changeSave">
-            <el-radio label="1">{{ $t("ui.settingEnterpriseSetupStorageLocalStorage") }}</el-radio>
-            <el-radio label="2">{{ $t("ui.settingEnterpriseSetupStorageQiniuCloudStorage") }}</el-radio>
-            <el-radio label="3">{{ $t("ui.settingEnterpriseSetupStorageAlibabaCloudStorage") }}</el-radio>
-            <el-radio label="4">{{ $t("ui.settingEnterpriseSetupStorageTencentCloudStorage") }}</el-radio>
-            <el-radio label="5">{{ $t("ui.settingEnterpriseSetupStorageJdCloudStorage") }}</el-radio>
-            <el-radio label="6">{{ $t("ui.settingEnterpriseSetupStorageHuaweiCloudStorage") }}</el-radio>
-            <el-radio label="7">{{ $t("ui.settingEnterpriseSetupStorageChinaTelecomCloudStorage") }}</el-radio>
+            <el-radio label="1">{{ $("ui.settingEnterpriseSetupStorageLocalStorage") }}</el-radio>
+            <el-radio label="2">{{ $("ui.settingEnterpriseSetupStorageQiniuCloudStorage") }}</el-radio>
+            <el-radio label="3">{{ $("ui.settingEnterpriseSetupStorageAlibabaCloudStorage") }}</el-radio>
+            <el-radio label="4">{{ $("ui.settingEnterpriseSetupStorageTencentCloudStorage") }}</el-radio>
+            <el-radio label="5">{{ $("ui.settingEnterpriseSetupStorageJdCloudStorage") }}</el-radio>
+            <el-radio label="6">{{ $("ui.settingEnterpriseSetupStorageHuaweiCloudStorage") }}</el-radio>
+            <el-radio label="7">{{ $("ui.settingEnterpriseSetupStorageChinaTelecomCloudStorage") }}</el-radio>
           </el-radio-group>
           <!-- <el-switch :active-value="1"  :inactive-value="0"
             v-model="localStorage"
@@ -86,24 +87,24 @@
                 <div class="img">
                   <img alt="" class="imgs" src="@/assets/images/abbreviationBig.png" />
                 </div>
-                <div>{{ $t("ui.settingEnterpriseSetupStorageLargeThumbnail") }}</div>
+                <div>{{ $("ui.settingEnterpriseSetupStorageLargeThumbnail") }}</div>
               </div>
               <div class="topRight">
-                <el-form-item :label="$t('ui.settingEnterpriseSetupStorageWidth')">
+                <el-form-item :label="$('ui.settingEnterpriseSetupStorageWidth')">
                   <el-input
                     v-model="formValidate.thumb_big_width"
                     class="topIput"
-                    :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterAWidth')"
+                    :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterAWidth')"
                     type="number"
                   >
                     <span slot="append">px</span>
                   </el-input>
                 </el-form-item>
-                <el-form-item :label="$t('ui.settingEnterpriseSetupStorageHeight')">
+                <el-form-item :label="$('ui.settingEnterpriseSetupStorageHeight')">
                   <el-input
                     v-model="formValidate.thumb_big_height"
                     class="topIput"
-                    :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterAHeight')"
+                    :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterAHeight')"
                     type="number"
                   >
                     <span slot="append">px</span>
@@ -116,24 +117,24 @@
                 <div class="img">
                   <img alt="" class="imgs" src="@/assets/images/abbreviation.png" />
                 </div>
-                <div>{{ $t("ui.settingEnterpriseSetupStorageMediumThumbnail") }}</div>
+                <div>{{ $("ui.settingEnterpriseSetupStorageMediumThumbnail") }}</div>
               </div>
               <div class="topRight">
-                <el-form-item :label="$t('ui.settingEnterpriseSetupStorageWidth')">
+                <el-form-item :label="$('ui.settingEnterpriseSetupStorageWidth')">
                   <el-input
                     v-model="formValidate.thumb_mid_width"
                     class="topIput"
-                    :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterAWidth')"
+                    :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterAWidth')"
                     type="number"
                   >
                     <span slot="append">px</span>
                   </el-input>
                 </el-form-item>
-                <el-form-item :label="$t('ui.settingEnterpriseSetupStorageHeight')">
+                <el-form-item :label="$('ui.settingEnterpriseSetupStorageHeight')">
                   <el-input
                     v-model="formValidate.thumb_mid_height"
                     class="topIput"
-                    :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterAHeight')"
+                    :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterAHeight')"
                     type="number"
                   >
                     <span slot="append">px</span>
@@ -146,24 +147,24 @@
                 <div class="img">
                   <img alt="" class="imgs" src="@/assets/images/abbreviationSmall.png" />
                 </div>
-                <div>{{ $t("ui.settingEnterpriseSetupStorageSmallThumbnail") }}</div>
+                <div>{{ $("ui.settingEnterpriseSetupStorageSmallThumbnail") }}</div>
               </div>
               <div class="topRight">
-                <el-form-item :label="$t('ui.settingEnterpriseSetupStorageWidth')">
+                <el-form-item :label="$('ui.settingEnterpriseSetupStorageWidth')">
                   <el-input
                     v-model="formValidate.thumb_small_width"
                     class="topIput"
-                    :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterAWidth')"
+                    :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterAWidth')"
                     type="number"
                   >
                     <span slot="append">px</span>
                   </el-input>
                 </el-form-item>
-                <el-form-item :label="$t('ui.settingEnterpriseSetupStorageHeight')">
+                <el-form-item :label="$('ui.settingEnterpriseSetupStorageHeight')">
                   <el-input
                     v-model="formValidate.thumb_small_height"
                     class="topIput"
-                    :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterAHeight')"
+                    :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterAHeight')"
                     type="number"
                   >
                     <span slot="append">px</span>
@@ -185,35 +186,35 @@
             <!--                </el-switch>-->
             <!--              </el-form-item>-->
             <div v-if="formValidate.image_watermark_status === 1">
-              <el-form-item :label="$t('ui.settingEnterpriseSetupStorageWatermarkType')" label-width="160px">
+              <el-form-item :label="$('ui.settingEnterpriseSetupStorageWatermarkType')" label-width="160px">
                 <el-radio-group v-model="formValidate.watermark_type">
-                  <el-radio :label="1">{{ $t("ui.xmindEditorToolbarNodeBtnListImage") }}</el-radio>
-                  <el-radio :label="2">{{ $t("ui.settingEnterpriseSetupStorageText") }}</el-radio>
+                  <el-radio :label="1">{{ $("ui.xmindEditorToolbarNodeBtnListImage") }}</el-radio>
+                  <el-radio :label="2">{{ $("ui.settingEnterpriseSetupStorageText") }}</el-radio>
                 </el-radio-group>
               </el-form-item>
               <div v-if="formValidate.watermark_type === 1">
                 <div class="flex">
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkOpacity')" label-width="160px" prop="name">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkOpacity')" label-width="160px" prop="name">
                     <el-input
                       v-model="formValidate.watermark_opacity"
                       class="topIput"
-                      :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterWatermarkOpacity')"
+                      :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterWatermarkOpacity')"
                       type="number"
                     >
                     </el-input>
                   </el-form-item>
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkTilt')" label-width="160px" prop="mail">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkTilt')" label-width="160px" prop="mail">
                     <el-input
                       v-model="formValidate.watermark_rotate"
                       class="topIput"
-                      :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterWatermarkTilt')"
+                      :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterWatermarkTilt')"
                       type="number"
                     >
                     </el-input>
                   </el-form-item>
                 </div>
                 <div class="flex">
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkImage')" label-width="160px" prop="name">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkImage')" label-width="160px" prop="name">
                     <div class="picBox" @click="modalPicTap('单选')">
                       <div v-if="formValidate.watermark_image" class="pictrue">
                         <img :src="formValidate.watermark_image" />
@@ -223,7 +224,7 @@
                       </div>
                     </div>
                   </el-form-item>
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkPosition')" label-width="160px" prop="mail">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkPosition')" label-width="160px" prop="mail">
                     <div class="conents">
                       <div class="positionBox">
                         <div
@@ -239,22 +240,22 @@
                   </el-form-item>
                 </div>
                 <div class="flex">
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageHorizontalWatermarkOffset')" label-width="160px" prop="name">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageHorizontalWatermarkOffset')" label-width="160px" prop="name">
                     <el-input
                       v-model="formValidate.watermark_x"
                       class="topIput"
-                      :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterTheHorizontalWatermarkOffset')"
+                      :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterTheHorizontalWatermarkOffset')"
                       style="width: 240px"
                       type="number"
                     >
                       <span slot="append">px</span>
                     </el-input>
                   </el-form-item>
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageVerticalWatermarkOffset')" label-width="160px" prop="mail">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageVerticalWatermarkOffset')" label-width="160px" prop="mail">
                     <el-input
                       v-model="formValidate.watermark_y"
                       class="topIput"
-                      :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterTheVerticalWatermarkOffset')"
+                      :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterTheVerticalWatermarkOffset')"
                       style="width: 240px"
                       type="number"
                     >
@@ -266,25 +267,25 @@
               <!-- 水印类型为文字 -->
               <div v-else>
                 <div class="flex">
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkText')" label-width="160px" prop="name">
-                    <el-input v-model="formValidate.watermark_text" class="topIput" :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterWatermarkText')">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkText')" label-width="160px" prop="name">
+                    <el-input v-model="formValidate.watermark_text" class="topIput" :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterWatermarkText')">
                     </el-input>
                   </el-form-item>
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkFontSize')" label-width="160px">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkFontSize')" label-width="160px">
                     <el-input
                       v-model="formValidate.watermark_text_size"
                       class="topIput"
-                      :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterAWatermarkFontSize')"
+                      :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterAWatermarkFontSize')"
                       type="number"
                     >
                     </el-input>
                   </el-form-item>
                 </div>
                 <div class="flex">
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkFontColor')" label-width="160px" prop="name">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkFontColor')" label-width="160px" prop="name">
                     <el-color-picker v-model="formValidate.watermark_text_color"></el-color-picker>
                   </el-form-item>
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkPosition')" label-width="160px" prop="mail">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkPosition')" label-width="160px" prop="mail">
                     <div class="conents">
                       <div class="positionBox">
                         <div
@@ -300,31 +301,31 @@
                   </el-form-item>
                 </div>
                 <div class="flex">
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkRotation')" label-width="160px">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkRotation')" label-width="160px">
                     <el-input
                       v-model="formValidate.watermark_text_angle"
                       class="topIput"
-                      :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterWatermarkRotation')"
+                      :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterWatermarkRotation')"
                       type="number"
                     >
                     </el-input>
                   </el-form-item>
-                  <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageHorizontalWatermarkOffset')" label-width="160px">
+                  <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageHorizontalWatermarkOffset')" label-width="160px">
                     <el-input
                       v-model="formValidate.watermark_x"
                       class="topIput"
-                      :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterTheHorizontalWatermarkOffset')"
+                      :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterTheHorizontalWatermarkOffset')"
                       type="number"
                     >
                       <span slot="append">px</span>
                     </el-input>
                   </el-form-item>
                 </div>
-                <el-form-item class="contentIput" :label="$t('ui.settingEnterpriseSetupStorageWatermarkOffset')" label-width="160px" prop="mail">
+                <el-form-item class="contentIput" :label="$('ui.settingEnterpriseSetupStorageWatermarkOffset')" label-width="160px" prop="mail">
                   <el-input
                     v-model="formValidate.watermark_y"
                     class="topIput"
-                    :placeholder="$t('ui.settingEnterpriseSetupStoragePleaseEnterTheWatermarkOffset')"
+                    :placeholder="$('ui.settingEnterpriseSetupStoragePleaseEnterTheWatermarkOffset')"
                     type="number"
                   >
                     <span slot="append">px</span>
@@ -334,7 +335,7 @@
             </div>
           </div>
           <el-form-item>
-            <el-button type="primary" @click="handleSubmit('formValidate')">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+            <el-button type="primary" @click="handleSubmit('formValidate')">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
           </el-form-item>
         </div>
       </el-form>
@@ -346,14 +347,14 @@
       <el-row class="mb20">
         <el-col :span="24">
           <div class="btn-box">
-            <el-button type="primary" size="mini" @click="addStorageBtn">{{ $t("ui.settingEnterpriseSetupStorageAddStorageSpace") }}</el-button>
+            <el-button type="primary" size="mini" @click="addStorageBtn">{{ $("ui.settingEnterpriseSetupStorageAddStorageSpace") }}</el-button>
             <!-- <el-button style="margin-left: 20px" type="success" @click="synchro">同步存储空间</el-button>
             <el-button style="float: right" @click="addConfigBtn">修改配置信息</el-button> -->
             <el-dropdown @command="handleCommand">
               <span class="iconfont icongengduo2 pointer ml10"></span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item :command="1">{{ $t("ui.settingEnterpriseSetupStorageSyncStorageSpaces") }}</el-dropdown-item>
-                <el-dropdown-item :command="2">{{ $t("ui.settingEnterpriseSetupStorageEditSettings") }}</el-dropdown-item>
+                <el-dropdown-item :command="1">{{ $("ui.settingEnterpriseSetupStorageSyncStorageSpaces") }}</el-dropdown-item>
+                <el-dropdown-item :command="2">{{ $("ui.settingEnterpriseSetupStorageEditSettings") }}</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
@@ -368,56 +369,56 @@
         no-filtered-userFrom-text="暂无筛选结果"
         no-userFrom-text="暂无数据"
       >
-        <el-table-column :label="$t('ui.settingEnterpriseSetupStorageStorageSpaceName')" min-width="120">
+        <el-table-column :label="$('ui.settingEnterpriseSetupStorageStorageSpaceName')" min-width="120">
           <template slot-scope="scope">
             <span>{{ scope.row.name }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.settingEnterpriseSetupStorageRegion')" min-width="90">
+        <el-table-column :label="$('ui.settingEnterpriseSetupStorageRegion')" min-width="90">
           <template slot-scope="scope">
             <span>{{ scope.row._region }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.settingEnterpriseSetupStorageStorageDomain')" min-width="130">
+        <el-table-column :label="$('ui.settingEnterpriseSetupStorageStorageDomain')" min-width="130">
           <template slot-scope="scope">
             <span>{{ scope.row.domain }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.settingEnterpriseSetupStorageStatus')" min-width="90">
+        <el-table-column :label="$('ui.settingEnterpriseSetupStorageStatus')" min-width="90">
           <template slot-scope="scope">
             <el-switch
               v-model="scope.row.status"
               :active-value="1"
               :inactive-value="0"
               :value="scope.row.status"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+              active-text="开启"
               class="defineSwitch"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+              inactive-text="关闭"
               size="large"
               @change="changeSwitch(scope.row, index)"
             >
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="130">
+        <el-table-column :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="130">
           <template slot-scope="scope">
             <span>{{ scope.row._add_time }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="130">
+        <el-table-column :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="130">
           <template slot-scope="scope">
             <span>{{ scope.row._update_time }}</span>
           </template>
         </el-table-column>
-        <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="220">
+        <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="220">
           <template slot-scope="scope">
             <template v-if="scope.row.domain && scope.row.domain != scope.row.cname">
-              <span class="btn" @click="config(scope.row)">{{ $t("ui.settingEnterpriseSetupStorageCnameSettings") }}</span>
+              <span class="btn" @click="config(scope.row)">{{ $("ui.settingEnterpriseSetupStorageCnameSettings") }}</span>
               <el-divider direction="vertical"></el-divider>
             </template>
-            <span class="btn" @click="edit(scope.row)">{{ $t("ui.settingEnterpriseSetupStorageChangeStorageDomain") }}</span>
+            <span class="btn" @click="edit(scope.row)">{{ $("ui.settingEnterpriseSetupStorageChangeStorageDomain") }}</span>
             <el-divider direction="vertical"></el-divider>
-            <span class="btn" @click="del(scope.row, '删除该数据', scope.$index)">{{ $t("ui.chatIndexDelete") }}</span>
+            <span class="btn" @click="del(scope.row, '删除该数据', scope.$index)">{{ $("ui.chatIndexDelete") }}</span>
           </template>
         </el-table-column>
       </el-table>
@@ -436,13 +437,13 @@
     </el-card>
   </div>
   <el-dialog :visible.sync="configuModal" width="550px">
-    <el-descriptions :column="1" :title="$t('ui.settingEnterpriseSetupStorageCnameSettings')">
-      <el-descriptions-item :label="$t('ui.settingEnterpriseSetupStorageHostRecord')">{{ configData.domain }}</el-descriptions-item>
-      <el-descriptions-item :label="$t('ui.customerContractContractPaymentRecordType')">CNAME</el-descriptions-item>
-      <el-descriptions-item :label="$t('ui.settingEnterpriseSetupStorageRecordValue')" labelClassName="desc-label">
+    <el-descriptions :column="1" :title="$('ui.settingEnterpriseSetupStorageCnameSettings')">
+      <el-descriptions-item :label="$('ui.settingEnterpriseSetupStorageHostRecord')">{{ configData.domain }}</el-descriptions-item>
+      <el-descriptions-item :label="$('ui.customerContractContractPaymentRecordType')">CNAME</el-descriptions-item>
+      <el-descriptions-item :label="$('ui.settingEnterpriseSetupStorageRecordValue')" labelClassName="desc-label">
         {{ configData.cname
         }}<span :data-clipboard-text="configData.cname" class="copy copy-data" @click="insertCopy(configData.cname)"
-          >{{ $t("ui.settingWecomIndexCopy") }}</span
+          >{{ $("ui.settingWecomIndexCopy") }}</span
         >
       </el-descriptions-item>
     </el-descriptions>
@@ -450,7 +451,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import ClipboardJS from 'clipboard'
 
 import {
@@ -505,28 +505,28 @@ export default {
         upload_type: ''
       },
       boxs: [
-        { content: i18n.t('legacyScript.topLeft'), id: 1 },
-        { content: i18n.t('legacyScript.top'), id: 2 },
-        { content: i18n.t('legacyScript.topRight'), id: 3 },
-        { content: i18n.t('legacyScript.centerLeft'), id: 4 },
-        { content: i18n.t('ui.programProgramTaskTableDataCenter'), id: 5 },
-        { content: i18n.t('legacyScript.centerRight'), id: 6 },
-        { content: i18n.t('legacyScript.bottomLeft'), id: 7 },
-        { content: i18n.t('legacyScript.bottom'), id: 8 },
-        { content: i18n.t('legacyScript.bottomRight'), id: 9 }
+        { content: $('legacyScript.topLeft'), id: 1 },
+        { content: $('legacyScript.top'), id: 2 },
+        { content: $('legacyScript.topRight'), id: 3 },
+        { content: $('legacyScript.centerLeft'), id: 4 },
+        { content: $('ui.programProgramTaskTableDataCenter'), id: 5 },
+        { content: $('legacyScript.centerRight'), id: 6 },
+        { content: $('legacyScript.bottomLeft'), id: 7 },
+        { content: $('legacyScript.bottom'), id: 8 },
+        { content: $('legacyScript.bottomRight'), id: 9 }
       ],
       upload_type: null,
       ruleValidate: {},
       configuModal: false,
       configData: '',
       headerList: [
-        { label: i18n.t('legacyScript.storageSettings'), value: 1 },
-        { label: i18n.t('legacyScript.qiniuCloudStorage'), value: 2 },
-        { label: i18n.t('legacyScript.alibabaCloudStorage'), value: 3 },
-        { label: i18n.t('legacyScript.tencentCloudStorage'), value: '4' },
-        { label: i18n.t('legacyScript.jDCloudStorage'), value: '5' },
-        { label: i18n.t('legacyScript.huaweiCloudStorage'), value: '6' },
-        { label: i18n.t('legacyScript.chinaTelecomCloudStorage'), value: '7' }
+        { label: $('legacyScript.storageSettings'), value: 1 },
+        { label: $('legacyScript.qiniuCloudStorage'), value: 2 },
+        { label: $('legacyScript.alibabaCloudStorage'), value: 3 },
+        { label: $('legacyScript.tencentCloudStorage'), value: '4' },
+        { label: $('legacyScript.jDCloudStorage'), value: '5' },
+        { label: $('legacyScript.huaweiCloudStorage'), value: '6' },
+        { label: $('legacyScript.chinaTelecomCloudStorage'), value: '7' }
         // { label: "缩略图配置", value: "10" },
       ],
 
@@ -565,7 +565,7 @@ export default {
       this.$nextTick(() => {
         const clipboard = new ClipboardJS('.copy')
         clipboard.on('success', () => {
-          this.$message.success(i18n.t('setting.copytitle'))
+          this.$message.success($('setting.copytitle'))
           clipboard.destroy()
         })
       })
@@ -636,7 +636,7 @@ export default {
     },
     async changeSwitch(row, item) {
       await Tips.confirm({
-        message: i18n.t('legacyScript.changeTheCurrentStatus'),
+        message: $('legacyScript.changeTheCurrentStatus'),
         confirmButtonClass: 'btn-custom-cancel'
       })
       await storageStatusApi(row.id)

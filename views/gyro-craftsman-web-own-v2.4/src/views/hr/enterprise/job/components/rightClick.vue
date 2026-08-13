@@ -1,8 +1,8 @@
 <template>
   <div v-show="menuVisible" id="contextmenu" class="menu">
     <div v-if="configData.type === 1" class="right-item-list">
-      <div class="right-item" @click="rightItemClick()">{{ $ts("设置职级") }}</div>
-      <div v-if="configData.value" class="right-item" @click="deleteRankItem()">{{ $ts("移除职级") }}</div>
+      <div class="right-item" @click="rightItemClick()">{{ $("legacy.bf19a26dc598328a") }}</div>
+      <div v-if="configData.value" class="right-item" @click="deleteRankItem()">{{ $("legacy.8220f4921f028339") }}</div>
     </div>
     <div v-if="configData.type === 2" class="right-item-list">
       <div

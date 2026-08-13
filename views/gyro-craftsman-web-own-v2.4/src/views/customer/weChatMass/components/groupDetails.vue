@@ -6,7 +6,7 @@
     :direction="direction"
     :show-close="false"
     :size="DRAWER_SIZE.LG"
-    :title="$t('ui.layoutNoticeNoticeListView')"
+    :title="$('ui.layoutNoticeNoticeListView')"
     :visible.sync="drawer"
   >
     <div slot="title" class="invoice-title">
@@ -19,9 +19,9 @@
 
           <div class="txt2">
             <span class="title">
-              {{ $t("ui.customerWeChatMassGroupDetailsEnabledStatus") }}
-              <span v-if="dataInfo.status == 1" class="info2">{{ $t("ui.customerWeChatMassGroupDetailsEnable") }}</span>
-              <span v-else class="info1">{{ $t("ui.customerWeChatMassGroupDetailsClose") }}</span>
+              {{ $("ui.customerWeChatMassGroupDetailsEnabledStatus") }}
+              <span v-if="dataInfo.status == 1" class="info2">{{ $("ui.customerWeChatMassGroupDetailsEnable") }}</span>
+              <span v-else class="info1">{{ $("ui.customerWeChatMassGroupDetailsClose") }}</span>
             </span>
           </div>
         </el-col>
@@ -30,14 +30,14 @@
     </div>
 
     <el-form class="invoice-body" label-width="auto">
-      <div class="title-box">{{ $t("ui.customerWeChatMassGroupDetailsBasicInformation") }}</div>
-      <el-form-item :label="$t('ui.customerWeChatMassGroupDetailsQrCodeName')">
+      <div class="title-box">{{ $("ui.customerWeChatMassGroupDetailsBasicInformation") }}</div>
+      <el-form-item :label="$('ui.customerWeChatMassGroupDetailsQrCodeName')">
         {{ dataInfo.name }}
       </el-form-item>
-      <el-form-item :label="$t('ui.customerWeChatMassGroupDetailsVerificationMethod')">
-        {{ dataInfo.skip_verify == 1 ? $t('ui.customerWeChatMassGroupDetailsVerificationRequired') : $t('ui.customerWeChatMassGroupDetailsApproveDirectly') }}
+      <el-form-item :label="$('ui.customerWeChatMassGroupDetailsVerificationMethod')">
+        {{ dataInfo.skip_verify == 1 ? $('ui.customerWeChatMassGroupDetailsVerificationRequired') : $('ui.customerWeChatMassGroupDetailsApproveDirectly') }}
       </el-form-item>
-      <el-form-item :label="$t('ui.customerWeChatMassGroupDetailsUseEmployee')">
+      <el-form-item :label="$('ui.customerWeChatMassGroupDetailsUseEmployee')">
         <div class="send-box">
           <div v-for="(item, index) in dataInfo.users" class="user-box">
             <img :src="item.avatar" alt="" class="img" />
@@ -45,7 +45,7 @@
           </div>
         </div>
       </el-form-item>
-      <el-form-item :label="$t('ui.customerWeChatMassGroupDetailsCustomerLabels')">
+      <el-form-item :label="$('ui.customerWeChatMassGroupDetailsCustomerLabels')">
         <template v-if="dataInfo.tags && dataInfo.tags.length > 0">
           <span v-for="(item, index) in dataInfo.tags" :key="index"
             >{{ item.name }} {{ dataInfo.tags.length == index + 1 ? '' : '、' }}</span
@@ -53,7 +53,7 @@
         </template>
         <span v-else>--</span>
       </el-form-item>
-      <el-form-item :label="$t('ui.customerWeChatMassGroupDetailsNewCustomerWelcomeMessage')">
+      <el-form-item :label="$('ui.customerWeChatMassGroupDetailsNewCustomerWelcomeMessage')">
         <span style="display: inline-block; width: 100%">{{
           dataInfo.welcome ? dataInfo.welcome.content : '--'
         }}</span>
@@ -92,33 +92,33 @@
       </el-form-item>
       <div class="line"></div>
 
-      <div class="title-box">{{ $t("ui.customerWeChatMassGroupDetailsInviteToGroup") }}</div>
-      <el-form-item :label="$t('ui.customerWeChatMassGroupDetailsInviteToGroup2')">
-        {{ dataInfo.invite_group == 1 ? $t('ui.customerWeChatMassGroupDetailsEnable') : $t('ui.customerWeChatMassGroupDetailsClose') }}
+      <div class="title-box">{{ $("ui.customerWeChatMassGroupDetailsInviteToGroup") }}</div>
+      <el-form-item :label="$('ui.customerWeChatMassGroupDetailsInviteToGroup2')">
+        {{ dataInfo.invite_group == 1 ? $('ui.customerWeChatMassGroupDetailsEnable') : $('ui.customerWeChatMassGroupDetailsClose') }}
       </el-form-item>
       <el-table :data="dataInfo.group_chats" style="width: 100%" class="group-table">
-        <el-table-column :label="$t('ui.customerWeChatMassGroupChatGroupChatName')" min-width="140" :show-overflow-tooltip="true">
+        <el-table-column :label="$('ui.customerWeChatMassGroupChatGroupChatName')" min-width="140" :show-overflow-tooltip="true">
           <template slot-scope="scope">
             {{ scope.row.room_base_name || '--' }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.customerWeChatMassGroupChatGroupOwner')" property="admin.name" min-width="120">
+        <el-table-column :label="$('ui.customerWeChatMassGroupChatGroupOwner')" property="admin.name" min-width="120">
           <template slot-scope="scope">
             {{ scope.row.admin.name || '--' }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.customerWeChatMassGroupChatGroupMemberCount')" min-width="100" property="member_num" />
-        <el-table-column :label="$t('ui.customerWeChatMassGroupChatMembersWhoLeft')" min-width="90" property="retreat_group_num" />
-        <el-table-column :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="160" property="group_create_time" />
+        <el-table-column :label="$('ui.customerWeChatMassGroupChatGroupMemberCount')" min-width="100" property="member_num" />
+        <el-table-column :label="$('ui.customerWeChatMassGroupChatMembersWhoLeft')" min-width="90" property="retreat_group_num" />
+        <el-table-column :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="160" property="group_create_time" />
       </el-table>
 
-      <el-form-item :label="$t('ui.customerWeChatMassGroupDetailsAutomaticallyAddToGroup')">
-        {{ dataInfo.auto_create_room == 1 ? $t('ui.customerWeChatMassGroupDetailsEnable') : $t('ui.customerWeChatMassGroupDetailsClose') }}
+      <el-form-item :label="$('ui.customerWeChatMassGroupDetailsAutomaticallyAddToGroup')">
+        {{ dataInfo.auto_create_room == 1 ? $('ui.customerWeChatMassGroupDetailsEnable') : $('ui.customerWeChatMassGroupDetailsClose') }}
       </el-form-item>
 
-      <el-form-item :label="$t('ui.customerWeChatMassGroupDetailsGroupChatName')">{{ dataInfo.room_base_name || '--' }} </el-form-item>
-      <el-form-item :label="$t('ui.customerWeChatMassGroupDetailsGroupChatNumber')"
-        >{{ $t("ui.customerWeChatMassGroupDetailsGroupNumberingWillStartFrom") }}{{ dataInfo.room_base_id || 1 }}{{ $t("ui.customerWeChatMassGroupDetailsStart") }}{{ dataInfo.room_base_id >= 1 ? $t('ui.customerWeChatMassGroupDetailsGenerate') : $t('ui.customerWeChatMassGroupDetailsDoNotGenerate') }}
+      <el-form-item :label="$('ui.customerWeChatMassGroupDetailsGroupChatName')">{{ dataInfo.room_base_name || '--' }} </el-form-item>
+      <el-form-item :label="$('ui.customerWeChatMassGroupDetailsGroupChatNumber')"
+        >{{ $("ui.customerWeChatMassGroupDetailsGroupNumberingWillStartFrom") }}{{ dataInfo.room_base_id || 1 }}{{ $("ui.customerWeChatMassGroupDetailsStart") }}{{ dataInfo.room_base_id >= 1 ? $('ui.customerWeChatMassGroupDetailsGenerate') : $('ui.customerWeChatMassGroupDetailsDoNotGenerate') }}
       </el-form-item>
     </el-form>
   </el-drawer>

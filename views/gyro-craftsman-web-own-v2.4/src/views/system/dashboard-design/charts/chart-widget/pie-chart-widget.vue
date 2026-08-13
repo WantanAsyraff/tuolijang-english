@@ -1,9 +1,9 @@
+import { $ } from '@/lang'
 <template>
   <myEcharts :isShowEmpty="isShowEmpty" :option="option" :field="field" :designer="designer" v-loading="loading" />
 </template>
 
 <script>
-import i18n from '@/lang'
 import myEcharts from '@/components/scEcharts/chart-widget.vue'
 import { queryChartData } from '@/api/chart'
 import { getPreviewNum } from '@/utils/util'
@@ -111,7 +111,7 @@ export default {
               left: '3%',
               top: '3%',
               style: {
-                text: i18n.t('business.return'),
+                text: $('business.return'),
                 fontSize: 12,
                 fill: '#ccc'
               },

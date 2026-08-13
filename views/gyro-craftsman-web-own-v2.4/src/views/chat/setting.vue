@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card class="normal-page" body-style="padding:0 0 0 0; ">
@@ -19,14 +20,14 @@
           </div>
         </div>
         <div>
-          <el-button plain size="small" v-loading="loading" @click="submitOk('')">{{ $ts("保存") }}</el-button>
-          <el-button type="primary" size="small" class="mr30" @click="submitOk(1)">{{ $ts("发布") }}</el-button>
+          <el-button plain size="small" v-loading="loading" @click="submitOk('')">{{ $("public.save") }}</el-button>
+          <el-button type="primary" size="small" class="mr30" @click="submitOk(1)">{{ $("business.release") }}</el-button>
         </div>
       </div>
       <el-row style="height: 100%">
         <el-col :span="8">
           <div class="content">
-            <div class="title">{{ $ts("应用信息") }}</div>
+            <div class="title">{{ $("legacy.31d713a6f8104446") }}</div>
             <applicationForm ref="applicationForm" :info="info" tab-name="applicationForm"></applicationForm>
           </div>
         </el-col>
@@ -44,7 +45,7 @@
         </el-col>
         <el-col :span="8">
           <div class="content">
-            <div class="title">{{ $ts("调试预览") }}</div>
+            <div class="title">{{ $("legacy.9ed5529680abfead") }}</div>
 
             <div class="mobile-box">
               <iframe ref="previewIframe" :src="previewIframeUrl" class="mobile-box-iframe" frameborder="0"></iframe>
@@ -56,7 +57,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getApplicationsInfoApi, chatPutApplicationsApi, chatReleasesApplicationsApi } from '@/api/chatAi'
 import applicationForm from './components/applicationForm'
 import modelForm from './components/modelForm'
@@ -77,7 +77,7 @@ export default {
       id,
       info: {},
       loading: false,
-      tabArray: [{ value: '1', label: i18n.t('systemText.settings') }]
+      tabArray: [{ value: '1', label: $('systemText.settings') }]
     }
   },
 

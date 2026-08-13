@@ -1,6 +1,6 @@
 <template>
   <div class="left">
-    <div class="el-card__header clearfix">{{ $ts("物资分类") }}</div>
+    <div class="el-card__header clearfix">{{ $("ui.administrationMaterialChartIndexMaterialCategory") }}</div>
     <div class="tree-box-con">
       <div v-height>
         <el-scrollbar style="height: 100%" class="reset-scroll-bar">

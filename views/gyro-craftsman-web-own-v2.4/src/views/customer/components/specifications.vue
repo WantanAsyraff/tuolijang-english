@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-dialog
-    :title="$t('ui.customerSpecificationsSelectProducts')"
+    :title="$('ui.customerSpecificationsSelectProducts')"
     :visible.sync="dialogTableVisible"
     :before-close="handleClose"
     :append-to-body="true"
@@ -16,12 +16,12 @@
         :props="{ label: 'name', value: 'id', emitPath: false }"
         size="small"
         class="mr10"
-        :placeholder="$t('ui.customerSpecificationsProductCategories')"
+        :placeholder="$('ui.customerSpecificationsProductCategories')"
         style="width: 200px"
         clearable
       ></el-cascader>
       <el-input
-        :placeholder="$t('ui.customerSpecificationsPleaseEnterAName')"
+        :placeholder="$('ui.customerSpecificationsPleaseEnterAName')"
         v-model="where.name"
         size="small"
         style="width: 200px"
@@ -31,7 +31,7 @@
         clearable
       ></el-input>
       <el-input
-        :placeholder="$t('ui.customerSpecificationsPleaseEnterSpecValue')"
+        :placeholder="$('ui.customerSpecificationsPleaseEnterSpecValue')"
         v-model="where.attr"
         @change="getList(1)"
         @keydown="getList(1)"
@@ -48,12 +48,12 @@
       ref="multipleTable"
       :tree-props="{ children: 'attr_value', hasChildren: 'hasChildren' }"
     >
-      <el-table-column property="date" :label="$t('ui.customerSpecificationsProductInformation')">
+      <el-table-column property="date" :label="$('ui.customerSpecificationsProductInformation')">
         <template #header>
           <span class="iconfont icona-tongyongweigouxuanbiankuang ml40" v-if="!allId" @click="selectAll()"></span>
 
           <span class="iconfont icontongyonggouxuan-01 ml40" v-if="allId" @click="selectAll()"></span>
-          {{ $t("ui.customerSpecificationsProductInformation") }}
+          {{ $("ui.customerSpecificationsProductInformation") }}
         </template>
         <template slot-scope="scope">
           <div class="flex">
@@ -86,7 +86,7 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column property="name" :label="$t('ui.customerSpecificationsProductPrice')" width="120">
+      <el-table-column property="name" :label="$('ui.customerSpecificationsProductPrice')" width="120">
         <template slot-scope="scope">
           <div v-if="scope.row.attr_value && scope.row.attr_value.length == 1" class="ml10">
             {{ scope.row.attr_value[0].price || '0.00' }}
@@ -107,8 +107,8 @@
       />
     </div>
     <div slot="footer" class="dialog-footer">
-      <el-button @click="handleClose()">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button type="primary" @click="submit">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+      <el-button @click="handleClose()">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button type="primary" @click="submit">{{ $("ui.formCommonDialogFormOk") }}</el-button>
     </div>
   </el-dialog>
 </div>

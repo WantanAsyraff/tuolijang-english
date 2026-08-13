@@ -48,7 +48,7 @@
         </div>
         <div v-else-if="item.form_value === 'switch'">
             <el-switch disabled v-model="scope.row[item.field_name_en]" :active-value="1" :inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')" :inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')">
+                active-text="开启" inactive-text="关闭">
             </el-switch>
         </div>
 
@@ -71,7 +71,7 @@
             <span v-if="item.field_name_en == info.crudInfo.main_field_name" class="color-doc pointer"
                 @click="checkRow(scope.row)">
                 {{ getValue(scope.row[item.field_name_en], item.form_value) }}
-                <span class="share-tag" v-if="scope.row.is_share"> {{ $t("ui.userCloudfileRightClickShare") }} </span></span>
+                <span class="share-tag" v-if="scope.row.is_share"> {{ $("ui.userCloudfileRightClickShare") }} </span></span>
 
             <!-- 多选 -->
             <div v-else-if="item.form_value == 'checkbox'">

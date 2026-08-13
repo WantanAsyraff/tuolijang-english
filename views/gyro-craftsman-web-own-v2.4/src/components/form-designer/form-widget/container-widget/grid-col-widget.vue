@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <el-col
     v-if="widget.type === 'grid-col'"
@@ -49,39 +50,37 @@
     <div class="grid-col-action" v-if="designer.selectedId === widget.id && widget.type === 'grid-col'">
       <i
         class="el-icon-back"
-        :title="i18nt('designer.hint.selectParentWidget')"
+        :title="$('designer.hint.selectParentWidget')"
         @click.stop="selectParentWidget(widget)"
       ></i>
       <i
         class="el-icon-top"
         v-if="!!parentList && parentList.length > 1"
-        :title="i18nt('designer.hint.moveUpWidget')"
+        :title="$('designer.hint.moveUpWidget')"
         @click.stop="moveUpWidget()"
       ></i>
       <i
         class="el-icon-bottom"
         v-if="!!parentList && parentList.length > 1"
-        :title="i18nt('designer.hint.moveDownWidget')"
+        :title="$('designer.hint.moveDownWidget')"
         @click.stop="moveDownWidget()"
       ></i>
       <i
         class="el-icon-copy-document"
-        :title="i18nt('designer.hint.cloneWidget')"
+        :title="$('designer.hint.cloneWidget')"
         @click.stop="cloneGridCol(widget)"
       ></i>
-      <i class="el-icon-delete" :title="i18nt('designer.hint.remove')" @click.stop="removeWidget(widget)"></i>
+      <i class="el-icon-delete" :title="$('designer.hint.remove')" @click.stop="removeWidget(widget)"></i>
     </div>
 
     <div class="grid-col-handler" v-if="designer.selectedId === widget.id && widget.type === 'grid-col'">
-      <i>{{ i18nt('designer.widgetLabel.' + widget.type) }}</i>
+      <i>{{ $('designer.widgetLabel.' + widget.type) }}</i>
     </div>
   </el-col>
 </template>
 
 <script>
-import appI18n from '@/lang'
 import Draggable from 'vuedraggable'
-import i18n from '@/utils/i18n'
 import FieldComponents from '@/components/form-designer/form-widget/field-widget/index'
 import refMixinDesign from '@/components/form-designer/refMixinDesign'
 import containerMixin from '@/components/form-designer/form-widget/container-widget/containerMixin'
@@ -89,7 +88,7 @@ import containerMixin from '@/components/form-designer/form-widget/container-wid
 export default {
   name: 'GridColWidget',
   componentName: 'GridColWidget',
-  mixins: [i18n, refMixinDesign, containerMixin],
+  mixins: [refMixinDesign, containerMixin],
   inject: ['refList'],
   components: {
     Draggable,
@@ -237,7 +236,7 @@ export default {
       const newIndex = evt.newIndex
       if (subList[newIndex].type === 'details') {
         this.widget.widgetList.splice(newIndex, 1)
-        this.$message.error(appI18n.t('legacyScript.gridColumnsDoNotCurrentlySupportDetailTables'))
+        this.$message.error($('legacyScript.gridColumnsDoNotCurrentlySupportDetailTables'))
         return false
       }
       if (!!subList[newIndex]) {
@@ -356,4 +355,3 @@ export default {
   }
 }
 </style>
-@/utils/i18ns

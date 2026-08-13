@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label='$ts("可全屏")' v-if="optionModel.showHeader">
+  <el-form-item :label='$("legacy.172e191a2db4f9a8")' v-if="optionModel.showHeader">
     <el-switch v-model="optionModel.showFullscreen"></el-switch>
     
   </el-form-item>

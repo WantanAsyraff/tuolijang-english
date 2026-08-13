@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-table
@@ -9,45 +10,45 @@
     v-bind="$attrs"
     @selection-change="handleSelectionChange"
   >
-    <el-table-column :label="$t('ui.businessHolidayQueryIndexName')" min-width="100" prop="name"> </el-table-column>
-    <el-table-column :label="$t('ui.hrArchivesTableGender')" min-width="90" prop="sex">
+    <el-table-column :label="$('ui.businessHolidayQueryIndexName')" min-width="100" prop="name"> </el-table-column>
+    <el-table-column :label="$('ui.hrArchivesTableGender')" min-width="90" prop="sex">
       <template slot-scope="scope">
         <span>{{ getSex(scope.row.sex) }}</span>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.hrArchivesTableEducation')" prop="education">
+    <el-table-column :label="$('ui.hrArchivesTableEducation')" prop="education">
       <template slot-scope="scope">
         <span>{{ getEducation(scope.row.education) }}</span>
       </template>
     </el-table-column>
-    <el-table-column :label="notEmployees == '未入职' ? $t('ui.hrArchivesTableInterviewPosition') : $t('ui.hrAssessConfigAssessBoxPosition')" min-width="140">
+    <el-table-column :label="notEmployees == '未入职' ? $('ui.hrArchivesTableInterviewPosition') : $('ui.hrAssessConfigAssessBoxPosition')" min-width="140">
       <template slot-scope="scope">
         <span v-if="notEmployees == '未入职'">{{ scope.row.interview_position || '--' }}</span>
         <span v-else>{{ scope.row.job ? scope.row.job.name : '--' }}</span>
       </template>
     </el-table-column>
-    <el-table-column v-if="notEmployees !== '未入职'" :label="$t('ui.businessHolidayQueryIndexDepartment')" min-width="120" prop="frame.name">
+    <el-table-column v-if="notEmployees !== '未入职'" :label="$('ui.businessHolidayQueryIndexDepartment')" min-width="120" prop="frame.name">
       <template slot-scope="scope">
         <div v-for="(item, index) in scope.row.frames" :key="index">
           <span class="icon-h">
             {{ item.name }}
-            <span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$t('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $t("ui.formCommonSelectDepartmentMain") }}</span>
+            <span v-show="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $("ui.formCommonSelectDepartmentMain") }}</span>
           </span>
         </div>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.hrArchivesTableMobileNumber')" min-width="110" prop="phone" show-overflow-tooltip />
-    <el-table-column :label="$t('ui.developViewManagementType')" min-width="80" prop="is_part" show-overflow-tooltip>
+    <el-table-column :label="$('ui.hrArchivesTableMobileNumber')" min-width="110" prop="phone" show-overflow-tooltip />
+    <el-table-column :label="$('ui.developViewManagementType')" min-width="80" prop="is_part" show-overflow-tooltip>
       <template slot-scope="scope">
         <span>{{ getIsPart(scope.row.is_part) }}</span>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.hrArchivesTableEmployeeStatus')" prop="name" width="100">
+    <el-table-column :label="$('ui.hrArchivesTableEmployeeStatus')" prop="name" width="100">
       <template slot-scope="scope">
         <!-- 提取当前行的类型信息 -->
         <template v-if="scope.row.type !== undefined">
           <span :class="['table-btn', typeMap[scope.row.type] ? typeMap[scope.row.type].color : 'gray']">
-            {{ typeMap[scope.row.type] ? typeMap[scope.row.type].text : $t('ui.hrArchivesTableNotOnboarded') }}
+            {{ typeMap[scope.row.type] ? typeMap[scope.row.type].text : $('ui.hrArchivesTableNotOnboarded') }}
           </span>
         </template>
       </template>
@@ -57,7 +58,7 @@
         <span>{{ getTime(scope.row) || '--' }}</span>
       </template>
     </el-table-column>
-    <el-table-column v-if="notEmployees !== '未入职'" :label="$t('ui.hrArchivesTableAccountStatus')" min-width="110" prop="name">
+    <el-table-column v-if="notEmployees !== '未入职'" :label="$('ui.hrArchivesTableAccountStatus')" min-width="110" prop="name">
       <template slot-scope="scope">
         <div v-if="getStatusInfo(scope.row)" :class="['table-txt', getStatusInfo(scope.row).class]">
           <i :class="getStatusInfo(scope.row).iconClass" />
@@ -65,12 +66,12 @@
         </div>
       </template>
     </el-table-column>
-    <el-table-column v-if="notEmployees == '未入职'" fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" min-width="180" prop="address">
+    <el-table-column v-if="notEmployees == '未入职'" fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" min-width="180" prop="address">
       <template slot-scope="scope">
         <slot :data="scope.row" name="options"></slot>
       </template>
     </el-table-column>
-    <el-table-column v-if="notEmployees !== '未入职'" fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" min-width="180" prop="address">
+    <el-table-column v-if="notEmployees !== '未入职'" fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" min-width="180" prop="address">
       <template slot-scope="scope">
         <slot :data="scope.row" name="options"></slot>
       </template>
@@ -90,7 +91,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   name: 'Table',
   props: {
@@ -123,11 +123,11 @@ export default {
         limit: 15
       },
       typeMap: {
-        1: { text: this.$t('toptable.formal'), color: 'blue' },
-        2: { text: this.$t('toptable.ontrial'), color: 'yellow' },
-        3: { text: this.$t('toptable.internship'), color: 'green' },
-        4: { text: this.$t('toptable.dimission'), color: 'yellow' },
-        0: { text: i18n.t('ui.hrArchivesTableNotOnboarded'), color: 'gray' }
+        1: { text: this.$('toptable.formal'), color: 'blue' },
+        2: { text: this.$('toptable.ontrial'), color: 'yellow' },
+        3: { text: this.$('toptable.internship'), color: 'green' },
+        4: { text: this.$('toptable.dimission'), color: 'yellow' },
+        0: { text: $('ui.hrArchivesTableNotOnboarded'), color: 'gray' }
       },
 
       multipleSelectList: [],
@@ -210,10 +210,10 @@ export default {
     },
     getStatusInfo(row) {
       const statusMap = {
-        emptyUid: { text: i18n.t('legacyScript.inactive'), iconClass: 'bg-danger', class: 'table-txt' },
-        status0: { text: i18n.t('legacyScript.inactive'), iconClass: 'bg-danger', class: 'table-txt' },
-        status2: { text: i18n.t('hr.blockup'), iconClass: 'bg-danger', class: 'table-txt' },
-        status1: { text: this.$t('setting.info.normal'), iconClass: 'bg-default', class: 'table-txt' }
+        emptyUid: { text: $('legacyScript.inactive'), iconClass: 'bg-danger', class: 'table-txt' },
+        status0: { text: $('legacyScript.inactive'), iconClass: 'bg-danger', class: 'table-txt' },
+        status2: { text: $('hr.blockup'), iconClass: 'bg-danger', class: 'table-txt' },
+        status1: { text: this.$('setting.info.normal'), iconClass: 'bg-default', class: 'table-txt' }
       }
 
       if (row.uid === '') {

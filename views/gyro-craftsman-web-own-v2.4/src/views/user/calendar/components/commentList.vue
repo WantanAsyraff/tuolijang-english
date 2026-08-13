@@ -34,7 +34,7 @@
                   </div>
                 </div>
                 <div class="p_content">
-                  <span class="p_time"> {{ $t("ui.formCommonOaCommentEvaluate") }}{{ per.to_user.name }} : </span> {{ per.content }}
+                  <span class="p_time"> {{ $("ui.formCommonOaCommentEvaluate") }}{{ per.to_user.name }} : </span> {{ per.content }}
                 </div>
                 <div class="p_time">
                   {{ per.created_at }}

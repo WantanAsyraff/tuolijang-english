@@ -1,46 +1,47 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <!-- 新建班次页面 -->
   <el-drawer
     :title="title"
     :visible.sync="drawer"
-    size="1000px"
+    size="700px"
     :wrapperClosable="type == 'check' ? true : false"
     :before-close="handleCloseFn"
   >
     <div class="box" ref="scrollRef">
       <el-form :model="formData" ref="ruleForm" :rules="rules" label-width="100px" class="demo-ruleForm">
-        <el-form-item :label="$t('ui.hrAttendanceSettingAddShiftShiftName')" prop="name" class="form-item">
+        <el-form-item :label="$('ui.hrAttendanceSettingAddShiftShiftName')" prop="name" class="form-item">
           <div class="flex" v-if="type !== 'check'">
-            <el-input size="small" v-model="formData.name" :placeholder="$t('ui.hrAttendanceSettingAddShiftPleaseEnterShiftName')" style="width: 90%"></el-input>
+            <el-input size="small" v-model="formData.name" :placeholder="$('ui.hrAttendanceSettingAddShiftPleaseEnterShiftName')" style="width: 90%"></el-input>
 
             <el-color-picker v-model="formData.color" class="ml14"></el-color-picker>
           </div>
           <span v-else>{{ formData.name }}</span>
         </el-form-item>
-        <el-form-item :label="$t('ui.hrAttendanceSettingAddShiftWorkPeriods')" prop="number" class="form-item">
+        <el-form-item :label="$('ui.hrAttendanceSettingAddShiftWorkPeriods')" prop="number" class="form-item">
           <el-radio-group v-model="formData.number" @input="radioFn" v-if="type !== 'check'">
-            <el-radio label="1">{{ $t("ui.hrAttendanceSettingAddShiftOneWorkPeriod") }}</el-radio>
-            <el-radio label="2">{{ $t("ui.hrAttendanceSettingAddShiftTwoWorkPeriods") }}</el-radio>
+            <el-radio label="1">{{ $("ui.hrAttendanceSettingAddShiftOneWorkPeriod") }}</el-radio>
+            <el-radio label="2">{{ $("ui.hrAttendanceSettingAddShiftTwoWorkPeriods") }}</el-radio>
           </el-radio-group>
-          <span v-else>{{ formData.number == 1 ? $t('ui.hrAttendanceSettingAddShiftOneWorkPeriod') : $t('ui.hrAttendanceSettingAddShiftTwoWorkPeriods') }}</span>
+          <span v-else>{{ formData.number == 1 ? $('ui.hrAttendanceSettingAddShiftOneWorkPeriod') : $('ui.hrAttendanceSettingAddShiftTwoWorkPeriods') }}</span>
         </el-form-item>
-        <el-form-item :label="$t('ui.hrAttendanceSettingAddShiftWorkingDuration')" prop="title" class="form-item">
+        <el-form-item :label="$('ui.hrAttendanceSettingAddShiftWorkingDuration')" prop="title" class="form-item">
           <span>{{ formData.work_time }}</span>
         </el-form-item>
         <el-table :data="tableData" style="width: 100%" class="mb20">
-          <el-table-column prop="name" :label="$t('ui.hrAttendanceSettingAddShiftShift')" width="140"> </el-table-column>
-          <el-table-column prop="rule" :label="$t('ui.hrAttendanceSettingAddShiftRules')">
+          <el-table-column prop="name" :label="$('ui.hrAttendanceSettingAddShiftShift')" width="140"> </el-table-column>
+          <el-table-column prop="rule" :label="$('ui.hrAttendanceSettingAddShiftRules')">
             <template slot-scope="scope">
               <!-- 第一次上班 -->
               <div v-if="scope.row.rule == 1">
                 <div class="item">
-                  {{ $t("ui.hrAttendanceSettingAddShiftStartTime") }} &nbsp;
+                  {{ $("ui.hrAttendanceSettingAddShiftStartTime") }} &nbsp;
                   <el-select
                     v-model="formData.number1.first_day_after"
                     disabled
                     size="small"
-                    :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                    :placeholder="$('ui.developConditionGroupPleaseSelect')"
                     style="width: 150px"
                     v-if="type !== 'check'"
                   >
@@ -54,23 +55,23 @@
                     format="H:mm"
                     v-model="formData.number1.work_hours"
                     style="width: 150px"
-                    :placeholder="$t('ui.userCalendarAddTodoSelectTime')"
+                    :placeholder="$('ui.userCalendarAddTodoSelectTime')"
                     @change="changeTime"
                     v-if="type !== 'check'"
                   >
                   </el-time-picker>
                   <span v-else
-                    >{{ formData.number1.first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay')
+                    >{{ formData.number1.first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
                     }}{{ $moment(formData.number1.work_hours).format('HH:mm') }}</span
                   >
                 </div>
                 <div class="item" v-for="(item, index) in goToWork1" :key="index" v-if="type !== 'check'">
-                  {{ $ts(item.premise) }}
+                  {{ item.premise }}
 
                   <div class="mo-input--number">
                     <el-input-number v-model="form[item.hour]" controls-position="right" size="small" :min="0">
                     </el-input-number>
-                    <div class="define-append">{{ $t("ui.hrApprovaTimeHours") }}</div>
+                    <div class="define-append">{{ $("ui.hrApprovaTimeHours") }}</div>
                   </div>
 
                   <div class="mo-input--number">
@@ -80,26 +81,26 @@
                       size="small"
                       :min="0"
                     ></el-input-number>
-                    <div class="define-append">{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
+                    <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
                   </div>
                   &nbsp;
-                  {{ $ts(item.suffix) }}
+                  {{ item.suffix }}
                 </div>
                 <div v-if="type == 'check'" class="item" v-for="(item, index) in goToWork1" :key="index">
-                  <span class="rule-copy rule-suffix">{{ formatRuleText(item, form) }}</span>
+                  {{ item.premise }} {{ form[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}{{ form[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}{{ item.suffix }}
                 </div>
               </div>
 
               <!-- 第一次下班 -->
               <div v-if="scope.row.rule == 2">
                 <div class="item">
-                  {{ $t("ui.hrAttendanceSettingAddShiftEndTime") }}
+                  {{ $("ui.hrAttendanceSettingAddShiftEndTime") }}
                   <el-select
                     v-model="formData.number1.second_day_after"
                     v-if="type !== 'check'"
                     size="small"
                     class="ml6"
-                    :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                    :placeholder="$('ui.developConditionGroupPleaseSelect')"
                     style="width: 150px"
                     @change="changeTime"
                   >
@@ -112,23 +113,23 @@
                     size="small"
                     format="H:mm"
                     v-model="formData.number1.off_hours"
-                    :placeholder="$t('ui.userCalendarAddTodoSelectTime')"
+                    :placeholder="$('ui.userCalendarAddTodoSelectTime')"
                     style="width: 150px"
                     @change="changeTime"
                     v-if="type !== 'check'"
                   >
                   </el-time-picker>
                   <span v-else
-                    >{{ formData.number1.second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay')
+                    >{{ formData.number1.second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
                     }}{{ $moment(formData.number1.off_hours).format('HH:mm') }}</span
                   >
                 </div>
                 <div class="item" v-for="(item, index) in goToWork2" :key="index" v-if="type !== 'check'">
-                  {{ $ts(item.premise) }}
+                  {{ item.premise }}
                   <div class="mo-input--number">
                     <el-input-number v-model="form[item.hour]" controls-position="right" size="small" :min="0">
                     </el-input-number>
-                    <div class="define-append">{{ $t("ui.hrApprovaTimeHours") }}</div>
+                    <div class="define-append">{{ $("ui.hrApprovaTimeHours") }}</div>
                   </div>
 
                   <div class="mo-input--number">
@@ -138,26 +139,27 @@
                       size="small"
                       :min="0"
                     ></el-input-number>
-                    <div class="define-append">{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
+                    <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
                   </div>
-                  &nbsp; {{ $ts(item.suffix) }}
+                  &nbsp; {{ item.suffix }}
                 </div>
-                <el-checkbox v-model="form.free_clock" v-if="type !== 'check'">{{ $t("ui.hrAttendanceSettingAddShiftClockOutIsOptional") }}</el-checkbox>
+                <el-checkbox v-model="form.free_clock" v-if="type !== 'check'">{{ $("ui.hrAttendanceSettingAddShiftClockOutIsOptional") }}</el-checkbox>
 
                 <div v-if="type == 'check'" class="item" v-for="(item, index) in goToWork2" :key="index">
-                  <span class="rule-copy rule-suffix">{{ formatRuleText(item, form) }}</span>
+                  {{ item.premise }} <span v-if="form[item.hour] !== 0">{{ form[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}</span>
+                  <span v-if="form[item.minute] !== 0">{{ form[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span>{{ item.suffix }}
                 </div>
-                <span v-if="type == 'check'">{{ form.free_clock ? $t('ui.hrAttendanceSettingAddShiftClockOutIsOptional') : $t('ui.hrAttendanceSettingAddShiftClockOutIsRequired') }}</span>
+                <span v-if="type == 'check'">{{ form.free_clock ? $('ui.hrAttendanceSettingAddShiftClockOutIsOptional') : $('ui.hrAttendanceSettingAddShiftClockOutIsRequired') }}</span>
               </div>
 
               <div v-if="scope.row.rule == 3">
                 <!-- 第二次上班 -->
                 <div class="item">
-                  {{ $t("ui.hrAttendanceSettingAddShiftStartTime") }}
+                  {{ $("ui.hrAttendanceSettingAddShiftStartTime") }}
                   <el-select
                     v-model="formData.number2.first_day_after"
                     v-if="type !== 'check'"
-                    :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                    :placeholder="$('ui.developConditionGroupPleaseSelect')"
                     size="small"
                     class="ml6"
                     :disabled="formData.number1.second_day_after == 1"
@@ -173,23 +175,23 @@
                     :clearable="false"
                     format="H:mm"
                     v-model="formData.number2.work_hours"
-                    :placeholder="$t('ui.userCalendarAddTodoSelectTime')"
+                    :placeholder="$('ui.userCalendarAddTodoSelectTime')"
                     @change="changeTime"
                     style="width: 150px"
                     v-if="type !== 'check'"
                   >
                   </el-time-picker>
                   <span v-else
-                    >{{ formData.number2.first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay')
+                    >{{ formData.number2.first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
                     }}{{ $moment(formData.number2.work_hours).format('HH:mm') }}</span
                   >
                 </div>
                 <div class="item" v-for="(item, index) in goToWork1" :key="index" v-if="type !== 'check'">
-                  {{ $ts(item.premise) }}
+                  {{ item.premise }}
                   <div class="mo-input--number">
                     <el-input-number v-model="form1[item.hour]" controls-position="right" size="small" :min="0">
                     </el-input-number>
-                    <div class="define-append">{{ $t("ui.hrApprovaTimeHours") }}</div>
+                    <div class="define-append">{{ $("ui.hrApprovaTimeHours") }}</div>
                   </div>
 
                   <div class="mo-input--number">
@@ -199,23 +201,23 @@
                       size="small"
                       :min="0"
                     ></el-input-number>
-                    <div class="define-append">{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
+                    <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
                   </div>
-                  &nbsp;{{ $ts(item.suffix) }}
+                  &nbsp;{{ item.suffix }}
                 </div>
                 <div v-if="type == 'check'" class="item" v-for="(item, index) in goToWork1" :key="index">
-                  <span class="rule-copy rule-suffix">{{ formatRuleText(item, form1) }}</span>
+                  {{ item.premise }} {{ form1[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}{{ form1[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}{{ item.suffix }}
                 </div>
               </div>
               <!-- 第二次下班 -->
               <div v-if="scope.row.rule == 4">
                 <div class="item">
-                  {{ $t("ui.hrAttendanceSettingAddShiftEndTime") }}
+                  {{ $("ui.hrAttendanceSettingAddShiftEndTime") }}
                   <el-select
                     v-model="formData.number2.second_day_after"
                     class="ml6"
                     v-if="type !== 'check'"
-                    :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                    :placeholder="$('ui.developConditionGroupPleaseSelect')"
                     size="small"
                     :disabled="formData.number2.first_day_after == 1"
                     style="width: 150px"
@@ -230,23 +232,23 @@
                     :clearable="false"
                     format="H:mm"
                     v-model="formData.number2.off_hours"
-                    :placeholder="$t('ui.userCalendarAddTodoSelectTime')"
+                    :placeholder="$('ui.userCalendarAddTodoSelectTime')"
                     style="width: 150px"
                     @change="changeTime"
                     v-if="type !== 'check'"
                   >
                   </el-time-picker>
                   <span v-else
-                    >{{ formData.number2.second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay')
+                    >{{ formData.number2.second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
                     }}{{ $moment(formData.number2.off_hours).format('HH:mm') }}</span
                   >
                 </div>
                 <div class="item" v-for="(item, index) in goToWork2" :key="index" v-if="type !== 'check'">
-                  {{ $ts(item.premise) }}
+                  {{ item.premise }}
                   <div class="mo-input--number">
                     <el-input-number v-model="form1[item.hour]" controls-position="right" size="small" :min="0">
                     </el-input-number>
-                    <div class="define-append">{{ $t("ui.hrApprovaTimeHours") }}</div>
+                    <div class="define-append">{{ $("ui.hrApprovaTimeHours") }}</div>
                   </div>
 
                   <div class="mo-input--number">
@@ -256,26 +258,26 @@
                       size="small"
                       :min="0"
                     ></el-input-number>
-                    <div class="define-append">{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
+                    <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
                   </div>
-                  &nbsp;{{ $ts(item.suffix) }}
+                  &nbsp;{{ item.suffix }}
                 </div>
-                <el-checkbox v-model="form1.free_clock" v-if="type !== 'check'">{{ $t("ui.hrAttendanceSettingAddShiftClockOutIsOptional") }}</el-checkbox>
+                <el-checkbox v-model="form1.free_clock" v-if="type !== 'check'">{{ $("ui.hrAttendanceSettingAddShiftClockOutIsOptional") }}</el-checkbox>
                 <div v-if="type == 'check'" class="item" v-for="(item, index) in goToWork2" :key="index">
-                  <span class="rule-copy rule-suffix">{{ formatRuleText(item, form1) }}</span>
+                  {{ item.premise }} {{ form[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}{{ form[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}{{ item.suffix }}
                 </div>
-                <span v-if="type == 'check'">{{ form1.free_clock ? $t('ui.hrAttendanceSettingAddShiftClockOutIsOptional') : $t('ui.hrAttendanceSettingAddShiftClockOutIsRequired') }}</span>
+                <span v-if="type == 'check'">{{ form1.free_clock ? $('ui.hrAttendanceSettingAddShiftClockOutIsOptional') : $('ui.hrAttendanceSettingAddShiftClockOutIsRequired') }}</span>
               </div>
             </template>
           </el-table-column>
         </el-table>
 
         <el-form-item v-if="formData.number == 1 && type !== 'check'">
-          <el-checkbox slot="label" v-model="formData.rest_time" @change="changeTime">{{ $t("ui.hrAttendanceSettingAddShiftBreakTime") }}</el-checkbox>
+          <el-checkbox slot="label" v-model="formData.rest_time" @change="changeTime">{{ $("ui.hrAttendanceSettingAddShiftBreakTime") }}</el-checkbox>
           <el-select
             v-model="formData.rest_start_after"
             v-if="type !== 'check'"
-            :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+            :placeholder="$('ui.developConditionGroupPleaseSelect')"
             size="small"
             class="ml20"
             :disabled="formData.number1.second_day_after == 0"
@@ -291,7 +293,7 @@
             format="H:mm"
             size="small"
             v-model="formData.rest_start"
-            :placeholder="$t('ui.programProgramTaskIndexStartTime')"
+            :placeholder="$('ui.programProgramTaskIndexStartTime')"
             style="width: 130px"
             @change="changeTime"
           >
@@ -301,7 +303,7 @@
             v-model="formData.rest_end_after"
             v-if="type !== 'check'"
             size="small"
-            :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+            :placeholder="$('ui.developConditionGroupPleaseSelect')"
             :disabled="formData.rest_start_after == 1 || formData.number1.second_day_after == 0"
             style="width: 100px"
             @change="changeTime"
@@ -316,27 +318,27 @@
             v-model="formData.rest_end"
             @change="changeTime"
             style="width: 130px"
-            :placeholder="$t('ui.programProgramTaskIndexEndTime')"
+            :placeholder="$('ui.programProgramTaskIndexEndTime')"
           >
           </el-time-picker>
-          <div class="tips ml25">{{ $t("ui.hrAttendanceSettingAddShiftBreakTimeIsExcludedFromWorkingHours") }}</div>
+          <div class="tips ml25">{{ $("ui.hrAttendanceSettingAddShiftBreakTimeIsExcludedFromWorkingHours") }}</div>
         </el-form-item>
         <el-form-item
-          :label="$t('ui.hrAttendanceSettingAddShiftBreakTime')"
+          :label="$('ui.hrAttendanceSettingAddShiftBreakTime')"
           v-if="formData.number == 1 && type == 'check' && formData.rest_time == 1"
         >
           <span
             >{{ $moment(formData.rest_start).format('HH:mm') }}-{{ $moment(formData.rest_end).format('HH:mm') }}</span
           >
-          <div class="tips ml25">{{ $t("ui.hrAttendanceSettingAddShiftBreakTimeIsExcludedFromWorkingHours") }}</div></el-form-item
+          <div class="tips ml25">{{ $("ui.hrAttendanceSettingAddShiftBreakTimeIsExcludedFromWorkingHours") }}</div></el-form-item
         >
-        <el-form-item :label="$t('ui.hrAttendanceSettingAddShiftOvertimeStart')" prop="title">
+        <el-form-item :label="$('ui.hrAttendanceSettingAddShiftOvertimeStart')" prop="title">
           <div class="item" v-if="type !== 'check'">
-            {{ $t("ui.hrAttendanceSettingAddShiftAfterTheFinalShiftEnds") }}
+            {{ $("ui.hrAttendanceSettingAddShiftAfterTheFinalShiftEnds") }}
             <div class="mo-input--number">
               <el-input-number v-model="form.overtimeH" controls-position="right" size="small" :min="0">
               </el-input-number>
-              <div class="define-append">{{ $t("ui.hrApprovaTimeHours") }}</div>
+              <div class="define-append">{{ $("ui.hrApprovaTimeHours") }}</div>
             </div>
             <div class="mo-input--number">
               <el-input-number
@@ -345,23 +347,22 @@
                 size="small"
                 :min="0"
               ></el-input-number>
-              <div class="define-append">{{ $t("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
+              <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
             </div>
-            <span class="ml10"> {{ $t("ui.hrAttendanceSettingAddShiftBeforeOvertimeStarts") }}</span>
+            <span class="ml10"> {{ $("ui.hrAttendanceSettingAddShiftBeforeOvertimeStarts") }}</span>
           </div>
-          <span v-else>{{ formatOvertimeText() }}</span>
+          <span v-else>{{ $("ui.hrAttendanceSettingAddShiftAfterTheFinalShiftEnds") }}{{ form.overtimeH }}{{ $("ui.hrApprovaTimeHours") }}{{ form.overtimeM }}{{ $("ui.hrAttendanceSettingAddShiftMinutesBeforeOvertimeStartsCounting") }}</span>
         </el-form-item>
       </el-form>
       <div class="button from-foot-btn fix btn-shadow" v-if="type !== 'check'">
-        <el-button @click="handleClose(1)" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button type="primary" :loading="loading" size="small" @click="submitForm">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+        <el-button @click="handleClose(1)" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button type="primary" :loading="loading" size="small" @click="submitForm">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
       </div>
     </div>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { saveAttendanceShiftApi, detailShiftListApi, putShiftListApi } from '@/api/config'
 import { getInervalHour, getInervalTwoHour, getHour } from '@/libs/public'
 export default {
@@ -371,15 +372,15 @@ export default {
     return {
       drawer: false,
       loading: false,
-      title: i18n.t('legacyScript.newShift'),
+      title: $('legacyScript.newShift'),
       options: [
         {
           value: '0',
-          label: i18n.t('ui.hrAttendanceSettingAddConentToday')
+          label: $('ui.hrAttendanceSettingAddConentToday')
         },
         {
           value: '1',
-          label: i18n.t('ui.hrAttendanceSettingAddConentNextDay')
+          label: $('ui.hrAttendanceSettingAddConentNextDay')
         }
       ],
 
@@ -517,8 +518,8 @@ export default {
         }
       },
       rules: {
-        name: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddShiftPleaseEnterShiftName'), trigger: 'blur' }],
-        number: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddCyclePleaseSelectShift'), trigger: 'change' }]
+        name: [{ required: true, message: $('ui.hrAttendanceSettingAddShiftPleaseEnterShiftName'), trigger: 'blur' }],
+        number: [{ required: true, message: $('ui.hrAttendanceSettingAddCyclePleaseSelectShift'), trigger: 'change' }]
       },
       tableData: [
         {
@@ -539,49 +540,55 @@ export default {
     formatRuleText(item, values) {
       const hours = values[item.hour]
       const minutes = values[item.minute]
-      const ruleKeys = {
-        ['晚到超过\u0000记为迟到']: 'attendanceShift.arrivingLate',
-        ['晚到超过\u0000记为严重迟到']: 'attendanceShift.arrivingSeverelyLate',
-        ['晚到超过\u0000记为半天缺卡']: 'attendanceShift.arrivingMissingHalfDay',
-        ['最早提前\u0000']: 'attendanceShift.earliestClockIn',
-        ['提前\u0000打卡记为早退']: 'attendanceShift.leavingEarly',
-        ['提前\u0000打卡记为半天缺卡']: 'attendanceShift.leavingMissingHalfDay',
-        ['最晚可延后\u0000']: 'attendanceShift.latestClockIn'
+      if (this.$("ui.hrApprovaTimeHours") !== 'hours') {
+        return `${item.premise} ${hours} 小时${minutes} 分钟${item.suffix}`
       }
-      const key = ruleKeys[`${item.premise}\u0000${item.suffix || ''}`] || 'attendanceShift.fallback'
-      return this.$t(key, {
-        hours,
-        minutes,
-        premise: this.$ts(item.premise),
-        suffix: this.$ts(item.suffix)
-      })
+      const duration = `${hours} hours ${minutes} minutes`
+      if (item.premise === '晚到超过' && item.suffix === '记为迟到') {
+        return `Arriving more than ${duration} late is considered late`
+      }
+      if (item.premise === '晚到超过' && item.suffix === '记为严重迟到') {
+        return `Arriving more than ${duration} late is considered severely late`
+      }
+      if (item.premise === '晚到超过' && item.suffix === '记为半天缺卡') {
+        return `Arriving more than ${duration} late is considered a half-day missing clock record`
+      }
+      if (item.premise === '最早提前') return `Clock-in is available up to ${duration} early`
+      if (item.premise === '提前' && item.suffix === '打卡记为早退') {
+        return `Clocking out ${duration} early is considered early leave`
+      }
+      if (item.premise === '提前' && item.suffix === '打卡记为半天缺卡') {
+        return `Clocking out ${duration} early is considered a half-day missing clock record`
+      }
+      if (item.premise === '最晚可延后') return `Clock-in is available up to ${duration} late`
+      return `${this.$(item.premise)} ${duration} ${this.$(item.suffix)}`
     },
     formatOvertimeText() {
-      return this.$t('attendanceShift.overtime', {
-        hours: this.form.overtimeH,
-        minutes: this.form.overtimeM
-      })
+      if (this.$("ui.hrApprovaTimeHours") !== 'hours') {
+        return `最后班次下班${this.form.overtimeH}小时${this.form.overtimeM}分钟后开始计算加班`
+      }
+      return `Overtime starts ${this.form.overtimeH} hours ${this.form.overtimeM} minutes after the final shift ends`
     },    // 计算工作时长
     changeTime() {
       let duration1 = null
       if (this.formData.number == 1 && this.formData.rest_time == 1) {
         if (this.formData.number1.second_day_after == 0) {
           if (this.formData.number1.work_hours > this.formData.rest_start) {
-            return this.$message.error(i18n.t('legacyScript.breakStartTimeMustBeLaterThanWorkStartTime'))
+            return this.$message.error($('legacyScript.breakStartTimeMustBeLaterThanWorkStartTime'))
           }
           if (this.formData.number1.off_hours < this.formData.rest_end) {
-            return this.$message.error(i18n.t('legacyScript.breakEndTimeMustBeBeforeClockOutTime'))
+            return this.$message.error($('legacyScript.breakEndTimeMustBeBeforeClockOutTime'))
           }
         } else {
           if (this.formData.rest_start_after == 0) {
             if (this.formData.number1.work_hours > this.formData.rest_start) {
-              return this.$message.error(i18n.t('legacyScript.breakStartTimeMustBeLaterThanWorkStartTime'))
+              return this.$message.error($('legacyScript.breakStartTimeMustBeLaterThanWorkStartTime'))
             }
           }
 
           if (this.formData.rest_end_after == 1) {
             if (this.formData.number1.off_hours < this.formData.rest_end) {
-              return this.$message.error(i18n.t('legacyScript.breakEndTimeMustBeBeforeClockOutTime'))
+              return this.$message.error($('legacyScript.breakEndTimeMustBeBeforeClockOutTime'))
             }
           }
         }
@@ -636,7 +643,7 @@ export default {
           this.formData.number1.second_day_after == 0 &&
           Date.parse(new Date(this.formData.number1.off_hours)) < Date.parse(new Date(this.formData.number1.work_hours))
         ) {
-          return this.$message.error(i18n.t('legacyScript.endTimeMustBeGreaterThanStartTime'))
+          return this.$message.error($('legacyScript.endTimeMustBeGreaterThanStartTime'))
         }
         if (this.formData.number == 1) {
           duration1 = getHour(this.formData.number1.work_hours, this.formData.number1.off_hours, 0, 0)
@@ -706,12 +713,12 @@ export default {
     openBox(id, type) {
       this.type = type
       if (type == 'edit') {
-        this.title = i18n.t('legacyScript.editShift')
+        this.title = $('legacyScript.editShift')
       } else if (type == 'check') {
-        this.title = i18n.t('ui.hrAttendanceSettingShiftListViewShift')
+        this.title = $('ui.hrAttendanceSettingShiftListViewShift')
       } else {
         this.type = 'add'
-        this.title = i18n.t('ui.hrAttendanceSettingShiftListNewShift')
+        this.title = $('ui.hrAttendanceSettingShiftListNewShift')
         this.changeTime()
       }
       if (id) {
@@ -787,7 +794,7 @@ export default {
     // 提交表单
     submitForm() {
       if (!this.formData.name) {
-        return this.$message.error(i18n.t('legacyScript.shiftNameIsRequired'))
+        return this.$message.error($('legacyScript.shiftNameIsRequired'))
       }
       // 计算工作时长函数
       this.changeTime()
@@ -795,24 +802,24 @@ export default {
       this.conversion()
 
       if (this.formData.number1.late > this.formData.number1.extreme_late) {
-        return this.$message.error(i18n.t('legacyScript.theSevereLateThresholdMustBeGreaterThanTheStandard'))
+        return this.$message.error($('legacyScript.theSevereLateThresholdMustBeGreaterThanTheStandard'))
       }
       if (this.formData.number1.extreme_late > this.formData.number1.late_lack_card) {
-        return this.$message.error(i18n.t('legacyScript.halfDayMissingPunchInValueMustBeGreaterThan'))
+        return this.$message.error($('legacyScript.halfDayMissingPunchInValueMustBeGreaterThan'))
       }
       if (this.formData.number1.early_leave > this.formData.number1.early_lack_card) {
-        return this.$message.error(i18n.t('legacyScript.halfDayAbsenceMustBeGreaterThanEarlyLeaveWhich'))
+        return this.$message.error($('legacyScript.halfDayAbsenceMustBeGreaterThanEarlyLeaveWhich'))
       }
 
       if (this.formData.number == 2) {
         if (this.formData.number2.late > this.formData.number2.extreme_late) {
-          return this.$message.error(i18n.t('legacyScript.theSevereLateThresholdMustBeGreaterThanTheStandard'))
+          return this.$message.error($('legacyScript.theSevereLateThresholdMustBeGreaterThanTheStandard'))
         }
         if (this.formData.number2.extreme_late > this.formData.number2.late_lack_card) {
-          return this.$message.error(i18n.t('legacyScript.halfDayMissingPunchInValueMustBeGreaterThan'))
+          return this.$message.error($('legacyScript.halfDayMissingPunchInValueMustBeGreaterThan'))
         }
         if (this.formData.number2.early_leave > this.formData.number2.early_lack_card) {
-          return this.$message.error(i18n.t('legacyScript.halfDayAbsenceMustBeGreaterThanEarlyLeaveWhich'))
+          return this.$message.error($('legacyScript.halfDayAbsenceMustBeGreaterThanEarlyLeaveWhich'))
         }
         this.formData.number2.work_hours = this.$moment(this.formData.number2.work_hours).format('HH:mm')
         this.formData.number2.off_hours = this.$moment(this.formData.number2.off_hours).format('HH:mm')

@@ -1,20 +1,20 @@
 <template>
 <div>
   <el-dialog
-    :title="$t('ui.hrToolHaishAssessmentHistoryListHistoryRecords')"
+    :title="$('ui.hrToolHaishAssessmentHistoryListHistoryRecords')"
     :visible.sync="dialogVisible"
     width="700px"
     :append-to-body="true"
     :before-close="handleClose"
   >
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="position.name" :label="$t('ui.hrAssessConfigAssessBoxPosition')" width="150"> </el-table-column>
-      <el-table-column prop="col15" :label="$t('ui.hrToolHaishAssessmentHistoryListPositionScore')" width="140"> </el-table-column>
-      <el-table-column prop="card.name" :label="$t('ui.hrAssessCheckIndexCreator')"> </el-table-column>
-      <el-table-column prop="updated_at" :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="150"> </el-table-column>
-      <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="120" fixed="right">
+      <el-table-column prop="position.name" :label="$('ui.hrAssessConfigAssessBoxPosition')" width="150"> </el-table-column>
+      <el-table-column prop="col15" :label="$('ui.hrToolHaishAssessmentHistoryListPositionScore')" width="140"> </el-table-column>
+      <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')"> </el-table-column>
+      <el-table-column prop="updated_at" :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')" min-width="150"> </el-table-column>
+      <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="120" fixed="right">
         <template slot-scope="scope">
-          <el-button type="text" @click="apply(scope.row)">{{ $t("ui.chatIndexUse") }}</el-button>
+          <el-button type="text" @click="apply(scope.row)">{{ $("ui.chatIndexUse") }}</el-button>
         </template>
       </el-table-column>
     </el-table>

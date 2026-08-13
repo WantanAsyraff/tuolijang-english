@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="navbar-news">
     <div class="navbar">
@@ -43,7 +44,7 @@
                 <div slot="reference" class="nav-item popover-nav-item">
                   <div class="nav-items">
                     <i class="iconfont icongenjinjilu-gengduo"></i>
-                    <span>{{ menuTitle($t('ui.layoutNavbarMore')) }}</span>
+                    <span>{{ menuTitle($('ui.layoutNavbarMore')) }}</span>
                   </div>
                 </div>
               </el-popover>
@@ -67,7 +68,6 @@
 import { mapGetters } from 'vuex'
 import { roterPre } from '@/settings'
 import Cookies from 'js-cookie'
-import { generateTitle, translateSystemText } from '@/utils/i18ns'
 import defaultSettings from '@/settings'
 const settingMenuUniquePath = '/admin/setting';
 export default {
@@ -143,7 +143,7 @@ export default {
   },
   methods: {
     menuTitle(title, englishTitle) {
-      return translateSystemText(title, this, englishTitle)
+      return this.$(title, englishTitle)
     },
     getIconCss(cssName) {
       if (/^el-icon-/.test(cssName)) {
@@ -160,7 +160,11 @@ export default {
       this.showMore = navHeight * len <= height
       this.showMax = Math.floor(height / navHeight) - 1
     },
-    generateTitle,
+    generateTitle(title) {
+      const routeKey = `route.${title}`
+      const translated = this.$(routeKey)
+      return translated === routeKey ? this.$(title) : translated
+    },
     getBreadcrumb() {
       // only show routes with meta.title
       const matched = this.$route.matched.filter((item) => item.meta && item.meta.title)

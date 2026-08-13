@@ -2,7 +2,7 @@
   <div class="tree-box">
     <div class="v-height-flag">
       <div class="title">
-        {{ $ts("消息类型") }}
+        {{ $("ui.settingEnterpriseNewsIndexMessageType") }}
         <!-- <el-tooltip class="item" effect="dark" content="新增消息类型" placement="bottom">
           <span class="el-icon-plus" v-if="type !== 2" @click="addType"></span>
         </el-tooltip> -->
@@ -21,7 +21,7 @@
             >
               <div slot-scope="{ node, data }" class="custom-tree-node">
                 <div class="flex-box">
-                  <span class="over-text">{{ $ts(node.label, data.label_en || data.name_en) }}</span>
+                  <span class="over-text">{{ $(node.label, data.label_en || data.name_en) }}</span>
 
                   <div>
                     <!-- <el-popover
@@ -34,10 +34,10 @@
                     >
                       <div class="right-item-list">
                         <div class="right-item" @click.stop="addDivsion(1)">
-                          {{ $t('public.edit') }}
+                          {{ $('public.edit') }}
                         </div>
                         <div class="right-item" @click.stop="hanleDelete(data)">
-                          {{ $t('public.delete') }}
+                          {{ $('public.delete') }}
                         </div>
                       </div>
                       <div slot="reference" v-if="type !== 2" class="iconfont icongengduo right-icon" />

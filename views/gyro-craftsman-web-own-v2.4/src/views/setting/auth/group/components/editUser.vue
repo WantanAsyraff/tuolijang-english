@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-drawer
-      :title='$ts("用户权限")'
+      :title='$("legacy.1ab7161933f0ff72")'
       :visible.sync="drawer"
       :direction="direction"
       :before-close="handleClose"
@@ -12,20 +12,20 @@
     >
       <div class="container">
         <div class="table-box">
-          <span> {{ $ts("编辑权限") }} </span>
+          <span> {{ $("permission.editPermission") }} </span>
           <i class="el-icon-close" @click="handleClose" />
         </div>
 
         <div class="tree-box">
           <div v-if="userInfo" class="form-box">
             <el-form ref="ruleForm" :model="userInfo" :rules="rules" label-width="90px" class="demo-ruleForm">
-              <el-form-item :label='$ts("用户角色：")'>
+              <el-form-item :label='$("legacy.f11a61dd33856c71")'>
                 <div>
                   <el-select
                     v-model="pageData.roles"
                     multiple
                     size="small"
-                    :placeholder="$t('setting.edit.pleaseselect')"
+                    :placeholder="$('setting.edit.pleaseselect')"
                     @change="handleRoles"
                     style="width: 100%"
                   >
@@ -37,7 +37,7 @@
                     />
                   </el-select>
                 </div>
-                <span class="tips">{{ $t('setting.edit.text2') }}</span>
+                <span class="tips">{{ $('setting.edit.text2') }}</span>
               </el-form-item>
             </el-form>
           </div>
@@ -52,8 +52,8 @@
         </div>
       </div>
       <div class="from-foot-btn fix btn-shadow">
-        <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-        <el-button size="small" type="primary" @click="onSubmit">{{ $t('public.save') }}</el-button>
+        <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+        <el-button size="small" type="primary" @click="onSubmit">{{ $('public.save') }}</el-button>
       </div>
     </el-drawer>
   </div>

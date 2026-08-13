@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <el-drawer
   :append-to-body="true"
@@ -11,45 +12,44 @@
   <div class="demo-drawer__content">
     <div class="copyer_content drawer_content">
       <p class="title">
-        {{ $t("ui.workFlowDrawerApproverDrawerSpecifiedMembers") }}
-        <span>{{ $t("ui.workFlowDrawerApproverDrawerNoMoreThan100People") }}</span>
+        {{ $("ui.workFlowDrawerApproverDrawerSpecifiedMembers") }}
+        <span>{{ $("ui.workFlowDrawerApproverDrawerNoMoreThan100People") }}</span>
       </p>
       <select-member
         :value="checkedList || []"
-        :placeholder="$t('ui.workFlowDrawerCopyerDrawerSelectMembers')"
+        :placeholder="$('ui.workFlowDrawerCopyerDrawerSelectMembers')"
         @getSelectList="getSelectList"
         style="width: 100%"
       ></select-member>
 
       <p class="title mt20">
-        {{ $t("ui.workFlowDrawerApproverDrawerSpecifiedSupervisor") }}
-        <span>{{ $t("ui.workFlowDrawerCopyerDrawerAllowSpecifiedSupervisorsAsCcRecipients") }}</span>
+        {{ $("ui.workFlowDrawerApproverDrawerSpecifiedSupervisor") }}
+        <span>{{ $("ui.workFlowDrawerCopyerDrawerAllowSpecifiedSupervisorsAsCcRecipients") }}</span>
       </p>
       <el-select multiple v-model="copyerConfig.departmentHead">
         <el-option
           v-for="item in directorMaxLevel"
-          :label="item === 1 ? $t('ui.workFlowDrawerCopyerDrawerDirectSuperior') : $t('ui.workFlowDrawerApproverDrawerThe') + item + $t('ui.workFlowDrawerCopyerDrawerLevelS') + $t('ui.workFlowDrawerCopyerDrawerSuperior')"
+          :label="item === 1 ? $('ui.workFlowDrawerCopyerDrawerDirectSuperior') : $('ui.workFlowDrawerApproverDrawerThe') + item + $('ui.workFlowDrawerCopyerDrawerLevelS') + $('ui.workFlowDrawerCopyerDrawerSuperior')"
           :value="item.toString()"
           :key="item"
         ></el-option>
       </el-select>
       <p class="title mt20" v-if="typeStr !== 'lowCode'">
-        {{ $t("ui.workFlowDrawerApproverDrawerSelectedByApplicant") }}
-        <span>{{ $t("ui.workFlowDrawerCopyerDrawerAllowApplicantsToSelectCcRecipients") }}</span>
+        {{ $("ui.workFlowDrawerApproverDrawerSelectedByApplicant") }}
+        <span>{{ $("ui.workFlowDrawerCopyerDrawerAllowApplicantsToSelectCcRecipients") }}</span>
       </p>
       <el-checkbox-group v-model="ccSelfSelectFlag" class="mt15" v-if="typeStr !== 'lowCode'">
-        <el-checkbox label="1">{{ $t("ui.workFlowDrawerCopyerDrawerAllowApplicantsToSelectCcRecipients") }}</el-checkbox>
+        <el-checkbox label="1">{{ $("ui.workFlowDrawerCopyerDrawerAllowApplicantsToSelectCcRecipients") }}</el-checkbox>
       </el-checkbox-group>
     </div>
     <div class="button from-foot-btn fix btn-shadow">
-      <el-button size="small" @click="closeDrawer">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" type="primary" @click="saveCopyer">{{ $t('public.ok') }}</el-button>
+      <el-button size="small" @click="closeDrawer">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" type="primary" @click="saveCopyer">{{ $('public.ok') }}</el-button>
     </div>
   </div>
 </el-drawer>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   props: {
     directorMaxLevel: {
@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      title: i18n.t('legacyScript.cCRecipientSettings'),
+      title: $('legacyScript.cCRecipientSettings'),
       memberShow: false,
       copyerConfig: {},
       ccSelfSelectFlag: [],
@@ -93,7 +93,7 @@ export default {
         this.checkedList.length <= 0 &&
         this.ccSelfSelectFlag.length <= 0
       ) {
-        this.$message.warning(i18n.t('customer.placeholder22'))
+        this.$message.warning($('customer.placeholder22'))
         return false
       }
       this.copyerConfig.ccSelfSelectFlag = this.ccSelfSelectFlag.length == 0 ? 0 : '1'

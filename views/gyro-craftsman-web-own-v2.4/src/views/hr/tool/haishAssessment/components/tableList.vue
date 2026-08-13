@@ -6,7 +6,7 @@
       :search="search"
       :isViewSearch="false"
       :total="total"
-      :title="$t('ui.hrToolHaishAssessmentTableListHayEvaluationChart')"
+      :title="$('ui.hrToolHaishAssessmentTableListHayEvaluationChart')"
       :isAddBtn="true"
       @addDataFn="addFn"
       @confirmData="confirmData"
@@ -14,23 +14,23 @@
 
     <div class="table-box mt10">
       <el-table :data="tableData" :height="tableHeight" style="width: 100%">
-        <el-table-column prop="name" :label="$t('ui.hrToolHaishAssessmentTableListEvaluationFormName')" width="180"> </el-table-column>
-        <el-table-column prop="position" :label="$t('ui.hrToolHaishAssessmentTableListRelatedPosition')" width="180">
+        <el-table-column prop="name" :label="$('ui.hrToolHaishAssessmentTableListEvaluationFormName')" width="180"> </el-table-column>
+        <el-table-column prop="position" :label="$('ui.hrToolHaishAssessmentTableListRelatedPosition')" width="180">
           <template slot-scope="scope">
             <span v-for="(item, index) in scope.row.positions" :key="index">{{ item.name }},</span>
           </template>
         </el-table-column>
-        <el-table-column prop="card.name" :label="$t('ui.hrAssessCheckIndexCreator')"> </el-table-column>
-        <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')"> </el-table-column>
-        <el-table-column prop="updated_at" :label="$t('ui.hrToolHaishAssessmentHistoryListUpdatedTime')"> </el-table-column>
-        <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180" fixed="right">
+        <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')"> </el-table-column>
+        <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')"> </el-table-column>
+        <el-table-column prop="updated_at" :label="$('ui.hrToolHaishAssessmentHistoryListUpdatedTime')"> </el-table-column>
+        <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="180" fixed="right">
           <template slot-scope="scope">
             <el-button type="text" @click="editFn(scope.row)" v-hasPermi="['hr:training:haishAssessment:edit']"
-              >{{ $t("ui.formCommonOaLogEdit") }}</el-button
+              >{{ $("ui.formCommonOaLogEdit") }}</el-button
             >
 
             <el-button type="text" @click="deleteFn(scope.row)" v-hasPermi="['hr:training:haishAssessment:delete']"
-              >{{ $t("ui.chatIndexDelete") }}</el-button
+              >{{ $("ui.chatIndexDelete") }}</el-button
             >
           </template>
         </el-table-column>

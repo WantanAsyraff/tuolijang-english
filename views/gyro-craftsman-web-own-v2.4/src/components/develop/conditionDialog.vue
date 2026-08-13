@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-高级筛选组件-条件设置组件-->
 <template>
 <div>
@@ -9,7 +10,7 @@
       >
         <el-row :gutter="20" v-if="eventStr !== 'event'">
           <el-col :span="16">
-            <el-form-item :label="$t('ui.developConditionDialogConditionSettings')">
+            <el-form-item :label="$('ui.developConditionDialogConditionSettings')">
               <el-input type="text" v-model="conditionConfig.nodeName"></el-input>
             </el-form-item>
           </el-col>
@@ -18,7 +19,7 @@
               <el-option
                 v-for="item in conditionLen"
                 :value="item.toString()"
-                :label="$t('ui.developConditionDialogPriority') + item"
+                :label="$('ui.developConditionDialogPriority') + item"
                 :key="item"
               ></el-option>
             </el-select>
@@ -47,7 +48,7 @@
               <el-select
                 v-if="noRule"
                 v-model="item.value"
-                :placeholder="$t('ui.developConditionDialogSelectCondition')"
+                :placeholder="$('ui.developConditionDialogSelectCondition')"
                 @change="changeValue(item, index)"
                 style="width: 50%"
                 size="small"
@@ -78,7 +79,7 @@
           </el-row>
         </div>
         <div class="conditions mb20">
-          <el-button @click="addCondition" type="text"> <span class="el-icon-circle-plus"></span>{{ $t("ui.developConditionDialogAddCondition") }}</el-button>
+          <el-button @click="addCondition" type="text"> <span class="el-icon-circle-plus"></span>{{ $("ui.developConditionDialogAddCondition") }}</el-button>
           <div class="el-popover conditions-popover" v-show="conditionsPopover">
             <el-button
               type="text"
@@ -93,22 +94,22 @@
         </div>
 
         <template v-if="eventStr == 'event' && noRule">
-          <el-divider v-if="max !== 9">{{ $t("ui.developConditionDialogConditionRuleSettings") }}</el-divider>
+          <el-divider v-if="max !== 9">{{ $("ui.developConditionDialogConditionRuleSettings") }}</el-divider>
           <el-divider v-else></el-divider>
-          <el-form-item :label="$t('ui.developConditionDialogConditionRules')">
-            <el-radio v-model="additional_search_boolean" label="1">{{ $t("ui.developConditionDialogMatchAll") }}</el-radio>
-            <el-radio v-model="additional_search_boolean" label="0">{{ $t("ui.developConditionDialogMatchAny") }}</el-radio>
+          <el-form-item :label="$('ui.developConditionDialogConditionRules')">
+            <el-radio v-model="additional_search_boolean" label="1">{{ $("ui.developConditionDialogMatchAll") }}</el-radio>
+            <el-radio v-model="additional_search_boolean" label="0">{{ $("ui.developConditionDialogMatchAny") }}</el-radio>
           </el-form-item>
         </template>
       </div>
       <template v-if="isFooter">
         <div class="button from-foot-btn fix btn-shadow" v-if="max !== 9">
-          <el-button @click="closeCondition">{{ $t('public.cancel') }}</el-button>
-          <el-button type="primary" @click="saveCondition">{{ $t('public.ok') }}</el-button>
+          <el-button @click="closeCondition">{{ $('public.cancel') }}</el-button>
+          <el-button type="primary" @click="saveCondition">{{ $('public.ok') }}</el-button>
         </div>
         <div v-else class="flex-end fix">
-          <el-button size="small" @click="close">{{ $t("ui.developConditionDialogClear") }}</el-button>
-          <el-button size="small" type="primary" @click="saveCondition">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+          <el-button size="small" @click="close">{{ $("ui.developConditionDialogClear") }}</el-button>
+          <el-button size="small" type="primary" @click="saveCondition">{{ $("ui.formCommonDialogFormOk") }}</el-button>
         </div>
       </template>
     </div>
@@ -116,7 +117,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { frameTreeApi } from '@/api/public'
 import Common from '@/components/develop/commonData'
 import { dataDatabaseFieldsApi } from '@/api/develop'
@@ -380,7 +380,7 @@ export default {
 
     addCondition() {
       if (this.max && this.conditionConfig.conditionList.length > this.max - 1) {
-        this.$message.error(i18n.t('legacyScript.youCanAddUpTo9Conditions'))
+        this.$message.error($('legacyScript.youCanAddUpTo9Conditions'))
         return false
       }
       this.conditionConfig.conditionList.push({ field: '', value: '', type: 'input', form_value: 'input' })

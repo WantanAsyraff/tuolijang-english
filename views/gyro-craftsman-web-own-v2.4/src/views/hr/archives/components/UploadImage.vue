@@ -26,7 +26,7 @@
       </el-upload>
     </div>
 
-    <el-dialog :before-close="handleClose" :visible.sync="dialogVisible" :title='$ts("选择图片")' v-bind="$attrs" width="850px">
+    <el-dialog :before-close="handleClose" :visible.sync="dialogVisible" :title='$("ui.administrationNoticeAddNoticeSelectImage")' v-bind="$attrs" width="850px">
       <upload-picture ref="uploadPicture" :check-button="true" @getImage="getImage"></upload-picture>
     </el-dialog>
     <el-image-viewer v-if="isImage" :on-close="closeImageViewer" :url-list="srcList" />

@@ -1,4 +1,3 @@
-import appI18n from '@/lang';
 export const COMMON_PROPERTIES$1 = {
   name: 'name-editor',
   keyNameEnabled: 'keyNameEnabled-editor',
@@ -189,46 +188,4 @@ export const EVENT_PROPERTIES$1 = {
   onNodeCheck: 'onNodeCheck-editor',
   onNodeContextmenu: 'onNodeContextmenu-editor',
   onCheckChange: 'onCheckChange-editor'
-}
-
-export const zhLocale_extension = {
-  extension: {
-    widgetLabel: { card: '\u5361\u7247', alert: '\u63D0\u793A' },
-    setting: {
-      headerHidden: '\u9690\u85CF\u6807\u9898\u533A',
-      cardFolded: '\u662F\u5426\u6536\u8D77',
-      cardShowFold: '\u663E\u793A\u6298\u53E0\u6309\u94AE',
-      cardWidth: '\u5361\u7247\u5BBD\u5EA6',
-      cardShadow: '\u663E\u793A\u9634\u5F71',
-      alertTitle: '\u6807\u9898',
-      alertType: '\u7C7B\u578B',
-      description: appI18n.t('ui.systemDashboardDesignChartsConfigDataJsSupportingText'),
-      closable: '\u662F\u5426\u53EF\u5173\u95ED',
-      closeText: '\u5173\u95ED\u6309\u94AE\u6587\u5B57',
-      center: '\u6587\u5B57\u5C45\u4E2D',
-      showIcon: '\u663E\u793A\u56FE\u6807',
-      effect: '\u663E\u793A\u6548\u679C'
-    }
-  }
-}
-export const enLocale_extension = {
-  extension: {
-    widgetLabel: { card: 'Card', alert: 'Alert' },
-    setting: {
-      headerHidden: 'Header Hidden',
-
-      cardFolded: 'Folded',
-      cardShowFold: 'Show Fold',
-      cardWidth: 'Width Of Card',
-      cardShadow: 'Shadow',
-      alertTitle: 'Title',
-      alertType: 'Type',
-      description: 'Description',
-      closable: 'Closable',
-      closeText: 'Text On Close Btn',
-      center: 'Center',
-      showIcon: 'Show Icon',
-      effect: 'Effect'
-    }
-  }
 }

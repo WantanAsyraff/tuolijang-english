@@ -7,17 +7,17 @@
           <el-col v-bind="grid1">&nbsp;</el-col>
           <el-col v-bind="grid2">
             <el-form ref="elForm" :model="examineFrom" :rules="rules" size="medium" label-width="150px">
-              <el-form-item :label="$t('business.businessType1')" prop="name">
+              <el-form-item :label="$('business.businessType1')" prop="name">
                 <el-input
                   v-model="examineFrom.name"
                   :maxlength="16"
                   show-word-limit
-                  :placeholder="$t('business.message1')"
+                  :placeholder="$('business.message1')"
                   clearable
                   :style="{ width: '100%' }"
                 ></el-input>
               </el-form-item>
-              <el-form-item :label="$t('business.businessPic1')" prop="icon">
+              <el-form-item :label="$('business.businessPic1')" prop="icon">
                 <div
                   v-if="examineFrom.icon"
                   class="selIcon mr15"
@@ -30,25 +30,25 @@
                   <div v-for="(i, index) in iconList" :key="index" class="icon-item" @click="itemChose(i)">
                     <i class="icon iconfont" :class="i.icon" :style="{ color: i.color }"></i>
                   </div>
-                  <el-button slot="reference">{{ $t('business.changeIcon') }}</el-button>
+                  <el-button slot="reference">{{ $('business.changeIcon') }}</el-button>
                 </el-popover>
               </el-form-item>
-              <el-form-item :label="$t('business.businessTypeIn')" prop="flowRemark">
+              <el-form-item :label="$('business.businessTypeIn')" prop="flowRemark">
                 <el-input
                   v-model="examineFrom.info"
                   type="textarea"
-                  :placeholder="$t('business.message3')"
+                  :placeholder="$('business.message3')"
                   :maxlength="100"
                   show-word-limit
                   :autosize="{ minRows: 4, maxRows: 4 }"
                   :style="{ width: '100%' }"
                 ></el-input>
               </el-form-item>
-              <el-form-item :label='$ts("排序：")' prop="flowRemark">
+              <el-form-item :label='$("ui.businessHolidayTypeIndexSort")' prop="flowRemark">
                 <el-input
                   v-model="examineFrom.sort"
                   type="number"
-                  :placeholder='$ts("请输入排序")'
+                  :placeholder='$("customer.placeholder04")'
                   :style="{ width: '100%' }"
                 ></el-input>
               </el-form-item>
@@ -107,14 +107,14 @@ export default {
         name: [
           {
             required: true,
-            message: this.$t('business.message1'),
+            message: this.$('business.message1'),
             trigger: 'blur'
           }
         ],
         icon: [
           {
             required: true,
-            message: this.$t('business.message2'),
+            message: this.$('business.message2'),
             trigger: 'change'
           }
         ]

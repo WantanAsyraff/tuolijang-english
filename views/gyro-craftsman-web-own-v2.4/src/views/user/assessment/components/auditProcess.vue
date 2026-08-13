@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <div class="box-height">
@@ -12,7 +13,7 @@
           </div>
           <div class="right">
             <span class="title"
-              >{{ rowData && rowData.test && rowData.test.name ? rowData.test.name : $t('ui.userAssessmentAuditProcessPerformanceAssessment') }}·
+              >{{ rowData && rowData.test && rowData.test.name ? rowData.test.name : $('ui.userAssessmentAuditProcessPerformanceAssessment') }}·
               {{ getJobName() }}
             </span>
             <div class="process-left-list">
@@ -24,7 +25,7 @@
           </div>
         </div>
         <div class="process-right">
-          <el-button v-if="isShow && strType !== 'check'" size="small" @click="onlySaveSubmit">{{ $t("ui.developCrudEventSaveOnly") }}</el-button>
+          <el-button v-if="isShow && strType !== 'check'" size="small" @click="onlySaveSubmit">{{ $("ui.developCrudEventSaveOnly") }}</el-button>
           <el-button v-if="isShow && strType !== 'check'" type="primary" size="small" @click="addSaveSubmit">{{
             isShowButton
           }}</el-button>
@@ -39,7 +40,7 @@
           class="tips-box mb15 tActive"
         >
           <i class="el-icon-close" @click="closeTips" />
-          <p>{{ $t("ui.userAssessmentAuditProcessPerformanceAppeal2") }} {{ appeal.content }}</p>
+          <p>{{ $("ui.userAssessmentAuditProcessPerformanceAppeal2") }} {{ appeal.content }}</p>
         </div>
         <div v-else class="mb14">
           <el-alert v-if="tipsBoxContent" class="cr-alert" title="" :closable="true" type="info" :show-icon="false">
@@ -82,7 +83,6 @@
 <script>
 import { userAssessExplain, userAssessInfo } from '@/api/user'
 import { getStorageJson } from '@/utils/storage'
-import { translateRuntimeText } from '@/utils/i18ns'
 export default {
   name: 'AuditProcess',
   components: {
@@ -126,11 +126,11 @@ export default {
   data() {
     return {
       tableData: [
-        { id: 1, name: this.$t('access.goalsetting') },
-        { id: 2, name: this.$t('access.executionphase') },
-        { id: 3, name: this.$t('access.higherevaluation') },
-        { id: 4, name: this.$t('access.performancereview') },
-        { id: 5, name: this.$t('access.end') }
+        { id: 1, name: this.$('access.goalsetting') },
+        { id: 2, name: this.$('access.executionphase') },
+        { id: 3, name: this.$('access.higherevaluation') },
+        { id: 4, name: this.$('access.performancereview') },
+        { id: 5, name: this.$('access.end') }
       ],
       from: {
         return: 0
@@ -175,20 +175,17 @@ export default {
     }
   },
   methods: {
-    translateText(text) {
-      return translateRuntimeText(text, this)
-    },
     // 返回
     goBack() {
       this.$router.go(-1)
     },
     setOptions() {
       this.tableData = [
-        { id: 1, name: this.$t('access.goalsetting') },
-        { id: 2, name: this.$t('access.executionphase') },
-        { id: 3, name: this.$t('access.higherevaluation') },
-        { id: 4, name: this.$t('access.performancereview') },
-        { id: 5, name: this.$t('access.end') }
+        { id: 1, name: this.$('access.goalsetting') },
+        { id: 2, name: this.$('access.executionphase') },
+        { id: 3, name: this.$('access.higherevaluation') },
+        { id: 4, name: this.$('access.performancereview') },
+        { id: 5, name: this.$('access.end') }
       ]
     },
 
@@ -198,7 +195,7 @@ export default {
       } else if (this.rowData.test && this.rowData.test.job) {
         return this.rowData.test.job.name
       } else {
-        return this.translateText('暂无职位')
+        return this.$('暂无职位')
       }
     },
     closeTips() {
@@ -271,11 +268,11 @@ export default {
       this.isShowButton = '保存提交'
       if (this.processIndex === 0) {
         if (this.addButton) {
-          this.isShowButton = this.$t('public.enable')
+          this.isShowButton = this.$('public.enable')
           this.isShow = false
         } else {
           if (this.assessInfo.is_show !== 1) {
-            this.isShowButton = this.$t('public.enable')
+            this.isShowButton = this.$('public.enable')
             this.isShow = false
           } else {
             this.isShow = false
@@ -291,7 +288,7 @@ export default {
         this.isShow = true
       } else {
         this.isShow = false
-        this.isShowButton = this.$t('public.enable')
+        this.isShowButton = this.$('public.enable')
       }
     }
   }

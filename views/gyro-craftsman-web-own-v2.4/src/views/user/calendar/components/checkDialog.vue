@@ -8,33 +8,33 @@
   >
     <div v-if="repeatData.data !== undefined" class="body mt15">
       <el-row>
-        <el-col :span="12" class="repeat-title">{{ $t("ui.userCalendarCheckDialogToDoType") }}{{ getScheduleName(repeatData.data.types) }}</el-col>
+        <el-col :span="12" class="repeat-title">{{ $("ui.userCalendarCheckDialogToDoType") }}{{ getScheduleName(repeatData.data.types) }}</el-col>
         <el-col :span="12" class="text-right repeat-left">
           {{ repeatData.data.remind_day }} {{ repeatData.data.remind_time }}
         </el-col>
       </el-row>
-      <p>{{ $t("ui.userCalendarCheckDialogTodoContent") }}{{ repeatData.data.content }}</p>
+      <p>{{ $("ui.userCalendarCheckDialogTodoContent") }}{{ repeatData.data.content }}</p>
       <p v-if="['client_renew', 'client_track', 'client_return'].includes(repeatData.data.types)">
-        <span>{{ repeatData.data.types === 'client_track' ? $t('ui.developModuleTreeCustomerName') : $t('ui.invoiceInvoiceDetailsOrderName') }}：</span>
+        <span>{{ repeatData.data.types === 'client_track' ? $('ui.developModuleTreeCustomerName') : $('ui.invoiceInvoiceDetailsOrderName') }}：</span>
         <span @click="toRouterLink()" class="default-color pointer">{{ repeatData.data.title }}</span>
       </p>
-      <p v-if="repeatData.data.types === 'personal'">{{ $t("ui.userCalendarCheckDialogToDoRemarks") }}{{ repeatData.data.mark }}</p>
+      <p v-if="repeatData.data.types === 'personal'">{{ $("ui.userCalendarCheckDialogToDoRemarks") }}{{ repeatData.data.mark }}</p>
     </div>
     <div slot="footer" class="dialog-footer" v-if="repeatData.data !== undefined">
       <el-button
         size="small"
         @click="handleEdit"
         v-if="repeatData.data.types === 'personal' || repeatData.data.types === 'report_renew'"
-        >{{ $t('public.edit') }}</el-button
+        >{{ $('public.edit') }}</el-button
       >
       <el-button
         size="small"
         v-if="(!deleteBtn && repeatData.data.types === 'personal') || repeatData.data.types === 'report_renew'"
         type="primary"
         @click="handleConfirm"
-        >{{ $t('public.delete') }}</el-button
+        >{{ $('public.delete') }}</el-button
       >
-      <el-button size="small" v-if="deleteBtn" type="primary" @click="handleOk">{{ $t('login.ok') }}</el-button>
+      <el-button size="small" v-if="deleteBtn" type="primary" @click="handleOk">{{ $('login.ok') }}</el-button>
     </div>
   </el-dialog>
 </div>

@@ -1,14 +1,15 @@
+import { $ } from '@/lang'
 <!-- 订单信息页面组件 -->
 <template>
   <div class="station">
     <el-form ref="form" label-width="100px" :model="rules" :rules="rule">
       <div v-if="!formInfo.edit" class="from-item-title mb15">
-        <span>{{ $t('setting.info.essentialinformation') }}</span>
+        <span>{{ $('setting.info.essentialinformation') }}</span>
       </div>
       <div class="form-box">
         <div class="form-item">
           <el-form-item prop="category_id">
-            <span slot="label">{{ $ts("订单分类:") }}</span>
+            <span slot="label">{{ $("legacy.71cc69b09902f4d6") }}</span>
             <el-cascader
               size="small"
               v-model="rules.category_id"
@@ -22,26 +23,26 @@
         </div>
         <div class="form-item">
           <el-form-item prop="title">
-            <span slot="label">{{ $t('customer.contractname') }}:</span>
-            <el-input v-model.trim="rules.title" size="small" clearable :placeholder="$t('customer.placeholder26')" />
+            <span slot="label">{{ $('customer.contractname') }}:</span>
+            <el-input v-model.trim="rules.title" size="small" clearable :placeholder="$('customer.placeholder26')" />
           </el-form-item>
         </div>
         <div class="form-item">
           <el-form-item prop="price">
-            <span slot="label">{{ $t('customer.contractpay') }}:</span>
+            <span slot="label">{{ $('customer.contractpay') }}:</span>
             <el-input-number
               v-model.trim="rules.price"
               :controls="false"
               size="small"
               :min="0"
               :precision="2"
-              :placeholder="$t('customer.placeholder28')"
+              :placeholder="$('customer.placeholder28')"
             ></el-input-number>
           </el-form-item>
         </div>
         <div class="form-item">
           <el-form-item prop="eid">
-            <span slot="label">{{ $ts("客户名称:") }}</span>
+            <span slot="label">{{ $("legacy.25689ab2db139b12") }}</span>
             <el-select v-model="rules.eid" :filterable="true" size="small" @change="categoryName">
               <el-option
                 :disabled="formInfo.edit ? true : false"
@@ -56,7 +57,7 @@
 
         <div class="form-item">
           <el-form-item prop="startTime">
-            <span slot="label">{{ $t('toptable.startdate') }}:</span>
+            <span slot="label">{{ $('toptable.startdate') }}:</span>
             <el-date-picker
               v-model="rules.startTime"
               size="small"
@@ -64,50 +65,50 @@
               type="date"
               clearable
               format="yyyy/MM/dd"
-              :placeholder="$t('customer.placeholder29')"
+              :placeholder="$('customer.placeholder29')"
             ></el-date-picker>
           </el-form-item>
         </div>
         <div class="form-item">
           <el-form-item>
-            <span slot="label">{{ $t('toptable.endingdate') }}:</span>
+            <span slot="label">{{ $('toptable.endingdate') }}:</span>
             <el-date-picker
               v-model="rules.endTime"
               size="small"
               type="date"
               format="yyyy/MM/dd"
               clearable
-              :placeholder="$t('customer.placeholder30')"
+              :placeholder="$('customer.placeholder30')"
             ></el-date-picker>
           </el-form-item>
         </div>
         <!-- 签约状态 -->
         <div class="form-item">
           <el-form-item prop="sign_status">
-            <span slot="label">{{ $ts("签约状态:") }}</span>
+            <span slot="label">{{ $("legacy.e71e0b3e24b2ad09") }}</span>
             <el-radio-group v-model="rules.sign_status">
-              <el-radio :label="0">{{ $ts("未签约") }}</el-radio>
-              <el-radio :label="1">{{ $ts("已签约") }}</el-radio>
+              <el-radio :label="0">{{ $("legacyScript.notSigned") }}</el-radio>
+              <el-radio :label="1">{{ $("ui.customerSigningInfoItemSigned") }}</el-radio>
 
-              <el-radio :label="2">{{ $ts("作废") }}</el-radio>
+              <el-radio :label="2">{{ $("ui.fdInvoiceIndexInvalidate") }}</el-radio>
             </el-radio-group>
           </el-form-item>
         </div>
         <!-- 订单编号 -->
         <div class="form-item">
           <el-form-item>
-            <span slot="label"> {{ $ts("订单编号:") }} </span>
-            <el-input v-model="rules.contract_no" size="small" :placeholder='$ts("系统自动生成")' disabled />
+            <span slot="label"> {{ $("legacy.b31a3bdab32604d2") }} </span>
+            <el-input v-model="rules.contract_no" size="small" :placeholder='$("legacy.6f51aa18270e9726")' disabled />
           </el-form-item>
         </div>
 
         <div class="form-item">
           <el-form-item>
-            <span slot="label">{{ $ts("订单状态:") }}</span>
+            <span slot="label">{{ $("legacy.9e22b7a1fa97e1d9") }}</span>
             <el-switch
               v-model="rules.is_abnormal"
-:active-text="$t('ui.customerContractContractInfoException')"
-:inactive-text="$t('ui.programProgramListDetailsProgramNormal')"
+              active-text="异常"
+              inactive-text="正常"
               :active-value="1"
               :inactive-value="0"
               inactive-color="#1890FF"
@@ -121,14 +122,14 @@
       <div class="form-box">
         <div class="form-item width100">
           <el-form-item>
-            <span slot="label">{{ $t('public.remarks') }}:</span>
+            <span slot="label">{{ $('public.remarks') }}:</span>
             <el-input
               v-model="rules.mark"
               type="textarea"
               maxlength="255"
               show-word-limit
               :autosize="autosize"
-              :placeholder="$t('customer.placeholder18')"
+              :placeholder="$('customer.placeholder18')"
             />
           </el-form-item>
         </div>
@@ -138,7 +139,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { contractList } from '@/api/enterprise'
 import { clientContractEditApi, clientContractSaveApi, clientNameApi } from '@/api/client'
 
@@ -175,34 +175,34 @@ export default {
         title: [
           {
             required: true,
-            message: this.$t('customer.placeholder26'),
+            message: this.$('customer.placeholder26'),
             trigger: 'blur'
           }
         ],
         price: [
           {
             required: true,
-            message: this.$t('customer.placeholder28'),
+            message: this.$('customer.placeholder28'),
             trigger: 'blur'
           }
         ],
         startTime: [
           {
             required: true,
-            message: this.$t('customer.placeholder29'),
+            message: this.$('customer.placeholder29'),
             trigger: 'blur'
           }
         ],
-        sign_status: [{ required: true, message: i18n.t('legacyScript.pleaseSelectSigningStatus'), trigger: 'change' }],
-        eid: [{ required: true, message: i18n.t('legacyScript.pleaseSelectCustomerName'), trigger: 'change' }],
+        sign_status: [{ required: true, message: $('legacyScript.pleaseSelectSigningStatus'), trigger: 'change' }],
+        eid: [{ required: true, message: $('legacyScript.pleaseSelectCustomerName'), trigger: 'change' }],
         endTime: [
           {
             required: true,
-            message: this.$t('customer.placeholder30'),
+            message: this.$('customer.placeholder30'),
             trigger: 'blur'
           }
         ],
-        category_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectOrderCategory'), trigger: 'change' }]
+        category_id: [{ required: true, message: $('legacyScript.pleaseSelectOrderCategory'), trigger: 'change' }]
       },
       startDatePicker: this.beginDate(),
       endDatePicker: this.processDate(),
@@ -282,7 +282,7 @@ export default {
     handleConfirm() {
       return new Promise((resolve, reject) => {
         if (this.rules.endTime && new Date(this.rules.startTime) > new Date(this.rules.endTime)) {
-          return this.$message.error(i18n.t('legacyScript.theEndTimeCannotBeEarlierThanTheStart'))
+          return this.$message.error($('legacyScript.theEndTimeCannotBeEarlierThanTheStart'))
         }
         this.$refs.form.validate((valid) => {
           if (valid) {

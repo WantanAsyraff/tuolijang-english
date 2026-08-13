@@ -1,14 +1,15 @@
+import { $ } from '@/lang'
 <!-- 新建项目侧滑弹窗  -->
 <template>
 <div :class="id > 0 ? 'stationBox' : ''">
   <div class="title flex-between" v-if="id > 0">
-    <div class="ml30">{{ $t("ui.customerWeChatMassAddGroupPostingBasicInformation") }}</div>
+    <div class="ml30">{{ $("ui.customerWeChatMassAddGroupPostingBasicInformation") }}</div>
     <div v-if="drawerType !== 'info'">
-      <el-button size="small" @click="drawerEdit('info')">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" type="primary" @click="handleConfirm('ruleForm')">{{ $t('public.ok') }}</el-button>
+      <el-button size="small" @click="drawerEdit('info')">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" type="primary" @click="handleConfirm('ruleForm')">{{ $('public.ok') }}</el-button>
     </div>
     <div class="editText" @click="drawerEdit('edit')" v-if="drawerType == 'info' && formInfo.operate">
-      <i class="el-icon-edit"></i>{{ $t("ui.formCommonOaLogEdit") }}
+      <i class="el-icon-edit"></i>{{ $("ui.formCommonOaLogEdit") }}
     </div>
   </div>
   <div class="mr14" :class="id == 0 ? 'mt20' : ''">
@@ -20,31 +21,31 @@
       :rules="rule"
       @submit.native.prevent
     >
-      <el-form-item :label="$t('ui.programProgramListAddProgramProjectName')" prop="name">
-        <el-input v-model="formData.name" size="small" class="input-item" :placeholder="$t('ui.programProgramListAddProgramPleaseEnterProjectName')" />
+      <el-form-item :label="$('ui.programProgramListAddProgramProjectName')" prop="name">
+        <el-input v-model="formData.name" size="small" class="input-item" :placeholder="$('ui.programProgramListAddProgramPleaseEnterProjectName')" />
       </el-form-item>
 
-      <el-form-item :label="$t('ui.programProgramListAddProgramOwner')" prop="uid" class="select-bar">
-        <span slot="label"><span class="required">*</span> {{ $t("ui.programProgramListAddProgramOwner") }}</span>
+      <el-form-item :label="$('ui.programProgramListAddProgramOwner')" prop="uid" class="select-bar">
+        <span slot="label"><span class="required">*</span> {{ $("ui.programProgramListAddProgramOwner") }}</span>
         <select-member
           :only-one="true"
           :value="principal || []"
-          :placeholder="$t('ui.programProgramListAddProgramPleaseSelectOwner')"
+          :placeholder="$('ui.programProgramListAddProgramPleaseSelectOwner')"
           @getSelectList="getSelectList($event, 1)"
           style="width: 100%"
         ></select-member>
       </el-form-item>
 
-      <el-form-item :label="$t('ui.programProgramListAddProgramProjectMembers')" class="select-bar">
+      <el-form-item :label="$('ui.programProgramListAddProgramProjectMembers')" class="select-bar">
         <select-member
           :value="userList || []"
-          :placeholder="$t('ui.programProgramListAddProgramPleaseSelectAMember')"
+          :placeholder="$('ui.programProgramListAddProgramPleaseSelectAMember')"
           @getSelectList="getSelectList($event, 2)"
           style="width: 100%"
         ></select-member>
       </el-form-item>
 
-      <el-form-item :label="$t('ui.programProgramListAddProgramPlannedStart')" class="select-bar" prop="start_date">
+      <el-form-item :label="$('ui.programProgramListAddProgramPlannedStart')" class="select-bar" prop="start_date">
         <el-date-picker
           v-model="formData.start_date"
           size="small"
@@ -52,11 +53,11 @@
           clearable
           :format="'yyyy-MM-dd'"
           :value-format="'yyyy-MM-dd'"
-          :placeholder="$t('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
+          :placeholder="$('ui.programProgramListAddProgramSelectThePlannedProjectStartDate')"
         ></el-date-picker>
       </el-form-item>
 
-      <el-form-item :label="$t('ui.programProgramListAddProgramPlannedEnd')" class="select-bar" prop="end_date">
+      <el-form-item :label="$('ui.programProgramListAddProgramPlannedEnd')" class="select-bar" prop="end_date">
         <el-date-picker
           v-model="formData.end_date"
           size="small"
@@ -64,71 +65,70 @@
           clearable
           :format="'yyyy-MM-dd'"
           :value-format="'yyyy-MM-dd'"
-          :placeholder="$t('ui.programProgramListAddProgramSelectThePlannedProjectEndDate')"
+          :placeholder="$('ui.programProgramListAddProgramSelectThePlannedProjectEndDate')"
         ></el-date-picker>
       </el-form-item>
 
-      <el-form-item :label="$t('ui.programProgramListAddProgramRelatedCustomer')" prop="eid">
+      <el-form-item :label="$('ui.programProgramListAddProgramRelatedCustomer')" prop="eid">
         <el-select
           v-model="formData.eid"
           size="small"
           clearable
           filterable
-          :placeholder="$t('ui.programProgramListAddProgramPleaseSelectRelatedCustomer')"
+          :placeholder="$('ui.programProgramListAddProgramPleaseSelectRelatedCustomer')"
           @change="handleContract"
           class="custom-select"
         >
           <el-option v-for="item in customerList" :key="item.value" :label="item.label" :value="item.value" />
         </el-select>
       </el-form-item>
-      <el-form-item v-if="formData.eid" :label="$t('ui.programProgramListAddProgramLinkOrder')" prop="cid">
+      <el-form-item v-if="formData.eid" :label="$('ui.programProgramListAddProgramLinkOrder')" prop="cid">
         <el-select
           class="custom-select"
           v-model="formData.cid"
           size="small"
           clearable
           filterable
-          :placeholder="$t('ui.programProgramListAddProgramPleaseSelectLinkOrder')"
+          :placeholder="$('ui.programProgramListAddProgramPleaseSelectLinkOrder')"
         >
           <el-option v-for="item in contractList" :key="item.id" :label="item.title" :value="item.id" />
         </el-select>
       </el-form-item>
 
-      <el-form-item :label="$t('ui.programProgramListAddProgramProjectStatus')" prop="status">
+      <el-form-item :label="$('ui.programProgramListAddProgramProjectStatus')" prop="status">
         <el-radio-group v-model="formData.status">
-          <el-radio :label="0">{{ $t("ui.programProgramListDetailsProgramNormal") }}</el-radio>
-          <el-radio :label="1">{{ $t("ui.programProgramListDetailsProgramPause") }}</el-radio>
-          <el-radio :label="2">{{ $t("ui.customerWeChatMassGroupDetailsClose") }}</el-radio>
+          <el-radio :label="0">{{ $("ui.programProgramListDetailsProgramNormal") }}</el-radio>
+          <el-radio :label="1">{{ $("ui.programProgramListDetailsProgramPause") }}</el-radio>
+          <el-radio :label="2">{{ $("ui.customerWeChatMassGroupDetailsClose") }}</el-radio>
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item :label="$t('ui.programProgramListAddProgramProjectDescription')">
+      <el-form-item :label="$('ui.programProgramListAddProgramProjectDescription')">
         <el-input
           v-model="formData.describe"
           type="textarea"
           maxlength="1000"
           show-word-limit
           :rows="3"
-          :placeholder="$t('ui.programProgramListAddProgramEnterAProjectDescriptionUpTo1000Characters')"
+          :placeholder="$('ui.programProgramListAddProgramEnterAProjectDescriptionUpTo1000Characters')"
         />
       </el-form-item>
     </el-form>
   </div>
   <div v-if="id == 0" class="button from-foot-btn fix btn-shadow">
-    <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
+    <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
     <el-button size="small" type="primary" :loading="loading" @click="handleConfirm('ruleForm')">{{
-      $t('public.ok')
+      $('public.ok')
     }}</el-button>
   </div>
   <details-program v-if="drawerType == 'info'" ref="detailsProgram" :formData="formData" />
   <div class="delText mb20" v-if="id > 0 && formInfo.operate">
-    <el-button plain class="delBtn ml30" size="small" @click="handleDelete">{{ $t("ui.programProgramListAddProgramDeleteProject") }}</el-button
-    >{{ $t("ui.programProgramListAddProgramDeletingTheProjectRemovesAllWorkItemsPermanentlyProceed") }}
+    <el-button plain class="delBtn ml30" size="small" @click="handleDelete">{{ $("ui.programProgramListAddProgramDeleteProject") }}</el-button
+    >{{ $("ui.programProgramListAddProgramDeletingTheProjectRemovesAllWorkItemsPermanentlyProceed") }}
   </div>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { saveProgramApi, putProgramApi, getProgramInfoApi } from '@/api/program'
 import debounce from '@form-create/utils/lib/debounce'
 import { customerSelectApi, selectContractListApi } from '@/api/enterprise'
@@ -174,12 +174,12 @@ export default {
       },
       detailsData: {},
       rule: {
-        name: [{ required: true, message: i18n.t('ui.programProgramListAddProgramPleaseEnterProjectName'), trigger: 'blur' }],
+        name: [{ required: true, message: $('ui.programProgramListAddProgramPleaseEnterProjectName'), trigger: 'blur' }],
         // uid: [{ required: true, validator: this.checkUid, message: '请选择负责人', trigger: 'blur' }],
         end_date: [
           {
             required: false,
-            message: i18n.t('ui.programProgramListAddProgramSelectThePlannedProjectEndDate'),
+            message: $('ui.programProgramListAddProgramSelectThePlannedProjectEndDate'),
             trigger: 'blur'
           },
           {
@@ -334,7 +334,7 @@ export default {
     // 提交
     handleConfirm: debounce(function () {
       if(!this.formData.uid){
-        this.$message.error(i18n.t('ui.programProgramListAddProgramPleaseSelectOwner'))
+        this.$message.error($('ui.programProgramListAddProgramPleaseSelectOwner'))
         return false
       }
       this.$refs.formData.validate((valid) => {
@@ -355,7 +355,7 @@ export default {
                 this.loading = false
               })
             } else {
-              this.$message(i18n.t('legacyScript.projectNameIsRequired'))
+              this.$message($('legacyScript.projectNameIsRequired'))
             }
           } else {
             if (this.formData.name.trim()) {
@@ -369,7 +369,7 @@ export default {
                 this.loading = false
               })
             } else {
-              this.$message(i18n.t('legacyScript.projectNameIsRequired'))
+              this.$message($('legacyScript.projectNameIsRequired'))
             }
           }
         }

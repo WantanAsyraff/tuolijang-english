@@ -10,20 +10,20 @@
     >
       <div class="container">
         <div class="logo"><img :src="rolesConfig.logo" alt="" /></div>
-        <div class="logo-text">{{ rolesConfig.name }} {{ $t('setting.enterprise04') }}</div>
+        <div class="logo-text">{{ rolesConfig.name }} {{ $('setting.enterprise04') }}</div>
         <div class="w60">
-          <el-button type="primary" @click="handleConfirm">{{ $t('setting.enterprise05') }}</el-button>
+          <el-button type="primary" @click="handleConfirm">{{ $('setting.enterprise05') }}</el-button>
         </div>
         <div class="w60">
-          <el-button type="text" @click="handleClose">{{ $t('setting.enterprise06') }}</el-button>
+          <el-button type="text" @click="handleClose">{{ $('setting.enterprise06') }}</el-button>
         </div>
       </div>
     </el-dialog>
-    <el-dialog :title='$ts("提示")' :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
-      <span>{{ $ts("是否需要完善信息？") }}</span>
+    <el-dialog :title='$("public.tips")' :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+      <span>{{ $("legacy.32286daee790349b") }}</span>
       <span slot="footer">
-        <el-button @click="dialogVisible = false">{{ $ts("取 消") }}</el-button>
-        <el-button type="primary" @click="goNow">{{ $ts("立即前往") }}</el-button>
+        <el-button @click="dialogVisible = false">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
+        <el-button type="primary" @click="goNow">{{ $("legacy.4b752d2b625f4594") }}</el-button>
       </span>
     </el-dialog>
   </div>

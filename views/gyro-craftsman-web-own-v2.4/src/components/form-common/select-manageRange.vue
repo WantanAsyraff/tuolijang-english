@@ -6,7 +6,7 @@
     v-model="frame_id"
     :options="frameTreeData"
     :props="{ checkStrictly: true, value: 'id', label: 'label' }"
-    :placeholder='$ts("请选择管理范围")'
+    :placeholder='$("legacy.1e6ec83f00fbd08c")'
     filterable
     :show-all-levels="false"
     @change="changeFrame"
@@ -48,7 +48,7 @@ export default {
       if (!Array.isArray(list)) return []
       return list.map((item) => ({
         ...item,
-        label: this.$ts(item.label),
+        label: this.$(item.label),
         children: item.children ? this.localizeFrameTree(item.children) : item.children
       }))
     },

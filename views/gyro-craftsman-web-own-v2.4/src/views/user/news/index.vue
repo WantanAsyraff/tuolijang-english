@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-card :body-style="{ padding: '10px 20px 0 20px' }" class="mb14">
     <el-tabs v-model="activeName" class="cr-header-tabs" @tab-click="handleClick">
-      <el-tab-pane :label="$t('ui.layoutNoticeNoticeListUnread')" name="1"></el-tab-pane>
-      <el-tab-pane :label="$t('ui.layoutNoticeNoticeListAll')" name="2"></el-tab-pane>
+      <el-tab-pane :label="$('ui.layoutNoticeNoticeListUnread')" name="1"></el-tab-pane>
+      <el-tab-pane :label="$('ui.layoutNoticeNoticeListAll')" name="2"></el-tab-pane>
     </el-tabs>
   </el-card>
 
@@ -11,25 +12,25 @@
     <div class="mb14">
       <form-box ref="formBox" @confirmData="confirmData" />
       <div class="mb20">
-        <el-button v-if="activeName == 1" type="primary" @click="handleIsRead" size="small">{{ $t("ui.userNewsIndexMarkAsRead") }}</el-button>
-        <el-button size="small" @click="handleDelete">{{ $t("ui.customerSetupDictionaryManagementBatchDelete") }}</el-button>
+        <el-button v-if="activeName == 1" type="primary" @click="handleIsRead" size="small">{{ $("ui.userNewsIndexMarkAsRead") }}</el-button>
+        <el-button size="small" @click="handleDelete">{{ $("ui.customerSetupDictionaryManagementBatchDelete") }}</el-button>
       </div>
     </div>
     <div>
       <el-table ref="table" :data="tableData" v-loading="loading" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="45"> </el-table-column>
-        <el-table-column :label="$t('ui.layoutNoticeNoticeListView')" width="50">
+        <el-table-column :label="$('ui.layoutNoticeNoticeListView')" width="50">
           <template slot-scope="scope">
             <el-image :src="scope.row.is_read === 0 ? unreadIcon : readIcon"></el-image>
           </template>
         </el-table-column>
-        <el-table-column prop="title" :label="$t('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100"></el-table-column>
-        <el-table-column prop="message" :label="$t('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360" />
-        <el-table-column prop="cate_name" :label="$t('ui.developViewManagementType')" min-width="90" />
-        <el-table-column prop="created_at" :label="$t('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
-        <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="100" fixed="right">
+        <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100"></el-table-column>
+        <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360" />
+        <el-table-column prop="cate_name" :label="$('ui.developViewManagementType')" min-width="90" />
+        <el-table-column prop="created_at" :label="$('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
+        <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="100" fixed="right">
           <template slot-scope="scope">
-            <el-button type="text" @click="handleDetails(scope.row)">{{ $t("ui.userExamineExamineViewDetails") }}</el-button>
+            <el-button type="text" @click="handleDetails(scope.row)">{{ $("ui.userExamineExamineViewDetails") }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -53,7 +54,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { noticeMessageListApi, noticeMessageReadApi, noticeMessageDeleteApi } from '@/api/user'
 import { messageListApi } from '@/api/public'
 
@@ -142,7 +142,7 @@ export default {
     },
     handleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
+        this.$message.error($('legacyScript.selectAtLeastOneItem2'))
       } else {
         this.$modalSure('删除后不可恢复,您确认要删除吗').then(() => {
           const ids = []
@@ -168,7 +168,7 @@ export default {
     },
     handleIsRead() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
+        this.$message.error($('legacyScript.selectAtLeastOneItem2'))
       } else {
         const ids = []
         this.multipleSelection.map((value) => {

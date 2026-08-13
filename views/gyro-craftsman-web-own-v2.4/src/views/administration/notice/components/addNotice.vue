@@ -1,14 +1,15 @@
+import { $ } from '@/lang'
 <!-- 行政-新建公告页面 -->
 <template>
 <div class="add-notice">
   <el-card class="card-box notice" :body-style="{ padding: '0' }">
     <div class="header">
       <i class="el-icon-arrow-left onHand" @click="handleEmit"></i>
-      <span>{{ formData.isEdit ? $t('ui.administrationNoticeAddNoticeEditAnnouncement') : $t('ui.administrationNoticeAddNoticeAddAnnouncement') }}</span>
+      <span>{{ formData.isEdit ? $('ui.administrationNoticeAddNoticeEditAnnouncement') : $('ui.administrationNoticeAddNoticeAddAnnouncement') }}</span>
     </div>
     <div ref="notice" class="pl20 mt20">
       <el-form ref="form" :model="form" :rules="rules" label-width="100px">
-        <el-form-item :label="$t('ui.administrationNoticeAddNoticeAnnouncementTitle')" class="input" prop="title">
+        <el-form-item :label="$('ui.administrationNoticeAddNoticeAnnouncementTitle')" class="input" prop="title">
           <el-input
             style="width: 350px"
             v-model="form.title"
@@ -16,15 +17,15 @@
             maxlength="50"
             clearable
             show-word-limit
-            :placeholder="$t('ui.administrationNoticeAddNoticePleaseEnterAnnouncementTitle')"
+            :placeholder="$('ui.administrationNoticeAddNoticePleaseEnterAnnouncementTitle')"
           ></el-input>
         </el-form-item>
-        <el-form-item :label="$t('ui.administrationNoticeAddNoticeAnnouncementCategory')" prop="categoryId">
+        <el-form-item :label="$('ui.administrationNoticeAddNoticeAnnouncementCategory')" prop="categoryId">
           <el-select
             v-model="form.categoryId"
             size="small"
             clearable
-            :placeholder="$t('ui.administrationNoticeAddNoticePleaseSelectAnnouncementCategory')"
+            :placeholder="$('ui.administrationNoticeAddNoticePleaseSelectAnnouncementCategory')"
             style="width: 350px"
           >
             <el-option
@@ -35,7 +36,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('ui.administrationNoticeAddNoticeAnnouncementSummary')" class="input">
+        <el-form-item :label="$('ui.administrationNoticeAddNoticeAnnouncementSummary')" class="input">
           <el-input
             style="width: 80%"
             v-model="form.info"
@@ -45,10 +46,10 @@
             resize="none"
             show-word-limit
             clearable
-            :placeholder="$t('ui.administrationNoticeAddNoticePleaseEnterAnnouncementSummary')"
+            :placeholder="$('ui.administrationNoticeAddNoticePleaseEnterAnnouncementSummary')"
           ></el-input>
         </el-form-item>
-        <el-form-item :label="$t('ui.administrationNoticeAddNoticeAnnouncementCover')">
+        <el-form-item :label="$('ui.administrationNoticeAddNoticeAnnouncementCover')">
           <div v-if="form.imageUrl" class="avatar">
             <img class="img" :src="form.imageUrl" />
             <div class="avatar-upload">
@@ -60,21 +61,21 @@
           </div>
           <i @click="beforeUpload" v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-form-item>
-        <el-form-item> {{ $t("ui.administrationNoticeAddNoticeRecommendedSize162108") }}</el-form-item>
-        <el-form-item :label="$t('ui.administrationNoticeAddNoticeAnnouncementContent')" prop="contents">
+        <el-form-item> {{ $("ui.administrationNoticeAddNoticeRecommendedSize162108") }}</el-form-item>
+        <el-form-item :label="$('ui.administrationNoticeAddNoticeAnnouncementContent')" prop="contents">
           <div style="width: 80%">
             <ueditorFrom :border="true" type="notepad" :height="`500px`" :content="form.content" ref="ueditorFrom" />
           </div>
         </el-form-item>
-        <el-form-item :label="$t('ui.administrationNoticeAddNoticePinToTop')">
-          <el-switch v-model="form.delivery" :active-text="$t('ui.developFieldComponentYes')" :inactive-text="$t('ui.developFieldComponentNo')"></el-switch>
+        <el-form-item :label="$('ui.administrationNoticeAddNoticePinToTop')">
+          <el-switch v-model="form.delivery" active-text="是" inactive-text="否"></el-switch>
         </el-form-item>
         <el-row class="resource-content">
           <el-col class="resource-left">
-            <el-form-item :label="$t('ui.userNoticeIndexReleaseTime')">
+            <el-form-item :label="$('ui.userNoticeIndexReleaseTime')">
               <el-radio-group v-model="form.resource" size="small">
-                <el-radio :label="0" class="resource">{{ $t("ui.administrationNoticeAddNoticeReleaseNow") }}</el-radio>
-                <el-radio :label="1">{{ $t("ui.administrationNoticeAddNoticeScheduledPublishing") }}</el-radio>
+                <el-radio :label="0" class="resource">{{ $("ui.administrationNoticeAddNoticeReleaseNow") }}</el-radio>
+                <el-radio :label="1">{{ $("ui.administrationNoticeAddNoticeScheduledPublishing") }}</el-radio>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -88,7 +89,7 @@
               type="datetime"
               :picker-options="expireTimeOption"
               clearable
-              :placeholder="$t('ui.administrationNoticeAddNoticeSelectDateTime')"
+              :placeholder="$('ui.administrationNoticeAddNoticeSelectDateTime')"
             ></el-date-picker>
             <!-- </el-form-item> -->
           </el-col>
@@ -98,10 +99,10 @@
   </el-card>
   <div class="cr-bottom-button">
     <el-button type="primary" size="small" :loading="loading" @click="handleConfirm()">
-      {{ $t('public.save') }}
+      {{ $('public.save') }}
     </el-button>
   </div>
-  <el-dialog :title="$t('ui.administrationNoticeAddNoticeSelectImage')" :visible.sync="dialogVisible" width="850px" :before-close="handleClose">
+  <el-dialog :title="$('ui.administrationNoticeAddNoticeSelectImage')" :visible.sync="dialogVisible" width="850px" :before-close="handleClose">
     <upload-picture ref="uploadPicture" :check-button="true" @getImage="getImage"></upload-picture>
   </el-dialog>
   <el-image-viewer v-if="isImage" :on-close="closeImageViewer" :url-list="srcList" />
@@ -109,7 +110,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { noticeEditApi, noticeEditCreateApi, noticeSaveApi } from '@/api/administration'
 export default {
   name: 'AddNotice',
@@ -152,9 +152,9 @@ export default {
         }
       },
       rules: {
-        title: [{ required: true, message: i18n.t('ui.administrationNoticeAddNoticePleaseEnterAnnouncementTitle'), trigger: 'blur' }],
-        categoryId: [{ required: true, message: i18n.t('ui.administrationNoticeAddNoticePleaseSelectAnnouncementCategory'), trigger: 'change' }],
-        contents: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheAnnouncementBody'), trigger: 'change' }]
+        title: [{ required: true, message: $('ui.administrationNoticeAddNoticePleaseEnterAnnouncementTitle'), trigger: 'blur' }],
+        categoryId: [{ required: true, message: $('ui.administrationNoticeAddNoticePleaseSelectAnnouncementCategory'), trigger: 'change' }],
+        contents: [{ required: true, message: $('legacyScript.pleaseEnterTheAnnouncementBody'), trigger: 'change' }]
       },
       isImage: false,
       srcList: []
@@ -218,13 +218,13 @@ export default {
     },
     handleConfirm() {
       if (this.form.resource == 1 && !this.form.date) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectReleaseTime'))
+        this.$message.error($('legacyScript.pleaseSelectReleaseTime'))
 
         return false
       }
       this.form.contents = this.$refs.ueditorFrom.getValue()
       if (this.form.contents == '<p><br></p>') {
-        this.$message.error(i18n.t('legacyScript.pleaseEnterTheAnnouncementBody'))
+        this.$message.error($('legacyScript.pleaseEnterTheAnnouncementBody'))
         return false
       }
       this.$refs.form.validate((valid) => {

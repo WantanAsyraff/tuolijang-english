@@ -1,11 +1,12 @@
+import { $ } from '@/lang'
 <template>
 <div class="app-body">
   <!------------- 编辑: 个人经历页面 ------------->
   <template v-if="componentStatus && componentStatus.personalExperience">
     <!-- 工作经历table -->
     <div class="from-item-title mb15">
-      <span class="title">{{ $t("ui.hrArchivesFormItemDataListWorkExperience") }} </span>
-      <el-link :underline="false" icon="el-icon-plus" @click="editWorks('work')">{{ $t("ui.hrArchivesFormItemDataListAddExperience") }}</el-link>
+      <span class="title">{{ $("ui.hrArchivesFormItemDataListWorkExperience") }} </span>
+      <el-link :underline="false" icon="el-icon-plus" @click="editWorks('work')">{{ $("ui.hrArchivesFormItemDataListAddExperience") }}</el-link>
     </div>
     <div>
       <tableBox
@@ -20,8 +21,8 @@
 
     <!-- 教育经历table -->
     <div class="from-item-title mb15">
-      <span class="title">{{ $t("ui.hrArchivesFormItemDataListEducationExperience") }}</span>
-      <el-link :underline="false" icon="el-icon-plus" @click="editEducation('education')">{{ $t("ui.hrArchivesFormItemDataListAddExperience") }}</el-link>
+      <span class="title">{{ $("ui.hrArchivesFormItemDataListEducationExperience") }}</span>
+      <el-link :underline="false" icon="el-icon-plus" @click="editEducation('education')">{{ $("ui.hrArchivesFormItemDataListAddExperience") }}</el-link>
     </div>
     <div>
       <tableBox
@@ -36,7 +37,7 @@
   </template>
 
   <!-------------- 新增:新增页面 ------------>
-  <el-form v-else ref="form" :model="ruleForm" :rules="fromRules" label-width="150px">
+  <el-form v-else ref="form" :model="ruleForm" :rules="fromRules" label-width="90px">
     <div v-for="(formItem, itemIndex) in newFrom" :key="itemIndex" class="p20">
       <div
         v-if="componentStatus.type === 'add' || !['工作经历', '教育经历'].includes(formItem.title)"
@@ -50,15 +51,15 @@
           <!-- 个人简历需要展示的文字 -->
           <span v-if="formItem.title === '银行卡信息' && user === '个人简历'" class="text-title">
             <i class="el-icon-warning"></i>
-            {{ $t("ui.hrArchivesFormItemDataListBankCardInformationIsSensitiveAndWillNotBe") }}</span
+            {{ $("ui.hrArchivesFormItemDataListBankCardInformationIsSensitiveAndWillNotBe") }}</span
           >
           <span v-if="formItem.title === '社保信息' && user === '个人简历'" class="text-title">
             <i class="el-icon-warning"></i>
-            {{ $t("ui.hrArchivesFormItemDataListSocialInsuranceInformationIsSensitiveAndWillNotBe") }}</span
+            {{ $("ui.hrArchivesFormItemDataListSocialInsuranceInformationIsSensitiveAndWillNotBe") }}</span
           >
           <span v-if="formItem.title === '个人材料' && user === '个人简历'" class="text-title">
             <i class="el-icon-warning"></i>
-            {{ $t("ui.hrArchivesFormItemDataListPersonalDocumentsAreSensitiveAndWillNotBeIncluded") }}
+            {{ $("ui.hrArchivesFormItemDataListPersonalDocumentsAreSensitiveAndWillNotBeIncluded") }}
           </span>
         </span>
 
@@ -68,18 +69,18 @@
             :underline="false"
             icon="el-icon-edit-outline"
             @click="FORMITEMISEDIT[itemIndex] = !FORMITEMISEDIT[itemIndex]"
-            >{{ $t("ui.formCommonOaLogEdit") }}</el-link
+            >{{ $("ui.formCommonOaLogEdit") }}</el-link
           >
         </span>
         <div v-if="!FORMITEMISEDIT[itemIndex]">
-          <el-button size="small" @click="restFn(itemIndex)">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-          <el-button size="small" type="primary" @click="formItemEdit(formItem.edit_type, itemIndex)">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+          <el-button size="small" @click="restFn(itemIndex)">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+          <el-button size="small" type="primary" @click="formItemEdit(formItem.edit_type, itemIndex)">{{ $("ui.formCommonDialogFormOk") }}</el-button>
         </div>
 
         <!-- 新增:添加经历 -->
         <span v-if="['工作经历', '教育经历'].includes(formItem.title)">
           <div style="padding: 10px">
-            <el-link :underline="false" icon="el-icon-plus" @click="addWorks(formItem.title)">{{ $t("ui.hrArchivesFormItemDataListAddExperience") }}</el-link>
+            <el-link :underline="false" icon="el-icon-plus" @click="addWorks(formItem.title)">{{ $("ui.hrArchivesFormItemDataListAddExperience") }}</el-link>
           </div>
         </span>
       </div>
@@ -162,7 +163,7 @@
 
               <div v-if="item.slot === 'frame_id'">
                 <span v-for="(item, index) in frameText" :key="index" class="mr5"
-                  >{{ item.name }} <span v-if="item.is_mastart" style="color: #1890ff; font-size: 13px"> {{ $t("ui.formCommonSelectDepartmentMain") }} </span>
+                  >{{ item.name }} <span v-if="item.is_mastart" style="color: #1890ff; font-size: 13px"> {{ $("ui.formCommonSelectDepartmentMain") }} </span>
                 </span>
               </div>
             </div>
@@ -220,15 +221,15 @@
                 :value="frames || []"
                 :is-site="true"
                 :checkStrictly="true"
-                :placeholder="$t('ui.hrArchivesFormItemDataListSelectDepartment')"
+                :placeholder="$('ui.hrArchivesFormItemDataListSelectDepartment')"
                 @changeMastart="changeMastart"
                 style="width: 100%"
               ></select-department>
 
               <!-- 负责人 -->
               <template v-if="item.type === 'radio'">
-                <el-radio v-model="ruleForm[item.value]" label="1">{{ $t("ui.developFieldComponentYes") }}</el-radio>
-                <el-radio v-model="ruleForm[item.value]" label="0">{{ $t("ui.developFieldComponentNo") }}</el-radio>
+                <el-radio v-model="ruleForm[item.value]" label="1">{{ $("ui.developFieldComponentYes") }}</el-radio>
+                <el-radio v-model="ruleForm[item.value]" label="0">{{ $("ui.developFieldComponentNo") }}</el-radio>
               </template>
 
               <!-- 直属上级 -->
@@ -245,7 +246,7 @@
                       v-if="superiorUser.length == 0"
                       style="color: #1890ff"
                       @click="handlesuperiorOpen"
-                      >{{ $t("ui.userDailyAddBoxAdd") }}</span
+                      >{{ $("ui.userDailyAddBoxAdd") }}</span
                     >
                     <span v-else @click="handlesuperiorOpen">
                       {{ superiorUser[0].name }}
@@ -255,7 +256,7 @@
                       v-if="superiorUser.length > 0"
                       style="color: #1890ff"
                       @click="handlesuperiorOpen"
-                      >{{ $t("ui.hrArchivesFormItemDataListModify") }}</span
+                      >{{ $("ui.hrArchivesFormItemDataListModify") }}</span
                     >
                   </template>
                 </select-member>
@@ -264,7 +265,7 @@
               <div v-if="item.slot == 'manage_frame'">
                 <el-select
                   v-model="ruleForm.manage_frame"
-                  :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                  :placeholder="$('ui.developConditionGroupPleaseSelect')"
                   size="small"
                   :disabled="ruleForm.is_admin != 1"
                   multiple
@@ -307,13 +308,13 @@
                   v-model="ruleForm.radio"
                   :disabled="componentStatus.type === 'edit' && FORMITEMISEDIT[itemIndex]"
                   label="1"
-                  >{{ $t("ui.hrArchivesFormItemDataListAddDirectly") }}</el-radio
+                  >{{ $("ui.hrArchivesFormItemDataListAddDirectly") }}</el-radio
                 >
                 <el-radio
                   v-model="ruleForm.radio"
                   :disabled="componentStatus.type === 'edit' && FORMITEMISEDIT[itemIndex]"
                   label="2"
-                  >{{ $t("ui.hrArchivesFormItemDataListInviteLater") }}</el-radio
+                  >{{ $("ui.hrArchivesFormItemDataListInviteLater") }}</el-radio
                 >
               </template>
             </div>
@@ -331,7 +332,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import formOptions from '../mixins/index.js'
 import myMixins from '../mixins/method.js'
 import {
@@ -474,32 +474,32 @@ export default {
       // 工作经历表格头部
       workLabel: [
         {
-          name: this.$t('toptable.startdate'),
+          name: this.$('toptable.startdate'),
           prop: 'start_time',
           width: '100'
         },
         {
-          name: this.$t('toptable.endingdate'),
+          name: this.$('toptable.endingdate'),
           prop: 'end_time',
           width: '100'
         },
         {
-          name: this.$t('hr.company'),
+          name: this.$('hr.company'),
           prop: 'company',
           width: '110'
         },
         {
-          name: this.$t('hr.jobdescription'),
+          name: this.$('hr.jobdescription'),
           prop: 'describe',
           width: '120'
         },
         {
-          name: this.$t('toptable.post'),
+          name: this.$('toptable.post'),
           prop: 'position',
           width: '100'
         },
         {
-          name: this.$t('hr.reasonsleaving'),
+          name: this.$('hr.reasonsleaving'),
           prop: 'quit_reason',
           width: '120'
         }
@@ -510,37 +510,37 @@ export default {
       // 教育经历表格头部
       educationLabel: [
         {
-          name: this.$t('hr.admissiontime'),
+          name: this.$('hr.admissiontime'),
           prop: 'start_time',
           width: '100'
         },
         {
-          name: this.$t('hr.graduationtime'),
+          name: this.$('hr.graduationtime'),
           prop: 'end_time',
           width: '100'
         },
         {
-          name: this.$t('hr.schoolname'),
+          name: this.$('hr.schoolname'),
           prop: 'school_name',
           width: '90'
         },
         {
-          name: this.$t('hr.major'),
+          name: this.$('hr.major'),
           prop: 'major',
           width: '90'
         },
         {
-          name: this.$t('hr.education'),
+          name: this.$('hr.education'),
           prop: 'education',
           width: '80'
         },
         {
-          name: this.$t('hr.degree'),
+          name: this.$('hr.degree'),
           prop: 'academic',
           width: '80'
         },
         {
-          name: this.$t('public.remarks'),
+          name: this.$('public.remarks'),
           prop: 'remark',
           width: '100'
         }
@@ -563,9 +563,9 @@ export default {
           if (item.title == '职工信息') {
             let obj = {
               type: 'date',
-              label: i18n.t('legacyScript.resignationTime'),
+              label: $('legacyScript.resignationTime'),
               value: 'quit_time',
-              placeholder: i18n.t('legacyScript.pleaseSelectResignationTime')
+              placeholder: $('legacyScript.pleaseSelectResignationTime')
             }
 
             item.data.push(obj)
@@ -711,7 +711,7 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           if (this.tabtypes != 0 && this.ruleForm.frame_id.length == 0) {
-            this.$message.error(i18n.t('legacyScript.selectDepartment'))
+            this.$message.error($('legacyScript.selectDepartment'))
             return
           }
           if (this.ruleForm.position.length > 0) {
@@ -801,7 +801,7 @@ export default {
     // 新增：职位等级
     addQuick() {
       this.positionConfig = {
-        title: i18n.t('hr.addposition'),
+        title: $('hr.addposition'),
         width: '520px',
         data: this.treeData
       }
@@ -843,13 +843,13 @@ export default {
       this.setIndex = index
       this.editTable = '编辑'
       if (type === 'works') {
-        this.$refs.refwork.title = i18n.t('legacyScript.editWorkExperience')
+        this.$refs.refwork.title = $('legacyScript.editWorkExperience')
         this.add = 'work'
         this.$nextTick(() => {
           this.$refs.refwork.workForm = row
         })
       } else {
-        this.$refs.refwork.title = i18n.t('legacyScript.editEducationExperience')
+        this.$refs.refwork.title = $('legacyScript.editEducationExperience')
         this.add = 'education'
         this.$nextTick(() => {
           this.$refs.refwork.educationForm = row
@@ -1083,7 +1083,7 @@ export default {
         })
         this.$emit('getPhoto', res.data.photo)
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToRetrieveEnterpriseCardInformation'), error)
+        console.error($('legacyScript.failedToRetrieveEnterpriseCardInformation'), error)
       }
     }
   },

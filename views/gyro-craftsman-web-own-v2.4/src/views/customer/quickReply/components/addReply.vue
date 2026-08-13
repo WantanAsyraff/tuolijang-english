@@ -1,20 +1,21 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-dialog
-    :title="this.id ? $t('ui.customerQuickReplyAddReplyEditQuickReplies') : $t('ui.customerQuickReplyAddReplyAddQuickReplies')"
+    :title="this.id ? $('ui.customerQuickReplyAddReplyEditQuickReplies') : $('ui.customerQuickReplyAddReplyAddQuickReplies')"
     :visible.sync="visible"
     width="650px"
     @close="handleClose"
   >
     <el-form :model="form" label-width="auto" ref="form" :rules="rules">
-      <el-form-item :label="$t('ui.customerQuickReplyAddReplyContentGroup')" prop="group_id">
-        <el-select v-model="form.group_id" :placeholder="$t('ui.customerQuickReplyAddReplySelectOneContentGroup')" size="small" style="width: 100%">
+      <el-form-item :label="$('ui.customerQuickReplyAddReplyContentGroup')" prop="group_id">
+        <el-select v-model="form.group_id" :placeholder="$('ui.customerQuickReplyAddReplySelectOneContentGroup')" size="small" style="width: 100%">
           <el-option v-for="item in leftList" :key="item.id" :label="item.name" :value="item.id"></el-option>
         </el-select>
       </el-form-item>
 
       <el-form-item>
-        <div slot="label"><span class="required">*</span>{{ $t("ui.customerQuickReplyAddReplyReplyType") }}</div>
+        <div slot="label"><span class="required">*</span>{{ $("ui.customerQuickReplyAddReplyReplyType") }}</div>
         <div class="flex">
           <div
             v-for="(item, index) in type"
@@ -30,18 +31,18 @@
       </el-form-item>
       <div class="flex flex-between lh-center" v-if="activeType === 'text'">
         <!-- <span class="required">*</span>回复内容： -->
-        <div class="title">{{ $t("ui.customerWeChatMassClientGroupChatMassSendContent") }}</div>
-        <el-button type="text" @click="openLibrary">{{ $t("ui.customerQuickReplyAddReplySelectFromTheMaterialLibrary") }}</el-button>
+        <div class="title">{{ $("ui.customerWeChatMassClientGroupChatMassSendContent") }}</div>
+        <el-button type="text" @click="openLibrary">{{ $("ui.customerQuickReplyAddReplySelectFromTheMaterialLibrary") }}</el-button>
       </div>
       <el-form-item v-if="activeType === 'text'" label="" prop="content">
-        <div slot="label"><span class="required">*</span>{{ $t("ui.customerQuickReplyAddReplyReplyContent") }}</div>
+        <div slot="label"><span class="required">*</span>{{ $("ui.customerQuickReplyAddReplyReplyContent") }}</div>
         <div>
           <el-input
             v-model="form.content"
             type="textarea"
             :rows="8"
             max="1000"
-            :placeholder="$t('ui.customerQuickReplyAddReplyEnterQuickReplyContent')"
+            :placeholder="$('ui.customerQuickReplyAddReplyEnterQuickReplyContent')"
             resize="none"
             autofocus="true"
           >
@@ -52,7 +53,7 @@
       <!-- 图片/视频 -->
       <el-form-item v-if="activeType === 'image' || activeType === 'video'">
         <div slot="label">
-          <span class="required">*</span>{{ activeType === 'image' ? $t('ui.customerQuickReplyAddReplyUploadImage') : $t('ui.customerQuickReplyAddReplyUploadVideo') }}
+          <span class="required">*</span>{{ activeType === 'image' ? $('ui.customerQuickReplyAddReplyUploadImage') : $('ui.customerQuickReplyAddReplyUploadVideo') }}
         </div>
         <template v-if="file && file.url">
           <div class="pic" v-if="activeType === 'image'">
@@ -89,13 +90,13 @@
           </div>
         </el-upload>
         <div class="sort-tip">
-          {{ activeType == 'image' ? $t('ui.customerQuickReplyAddReplyImagesMustBe10MbOrSmallerJpgAnd') : $t('ui.customerQuickReplyAddReplyVideosCanBeUpTo10MbMp4Is') }}
+          {{ activeType == 'image' ? $('ui.customerQuickReplyAddReplyImagesMustBe10MbOrSmallerJpgAnd') : $('ui.customerQuickReplyAddReplyVideosCanBeUpTo10MbMp4Is') }}
         </div>
       </el-form-item>
 
       <!-- 文件上传 -->
       <el-form-item v-if="activeType === 'file'">
-        <div slot="label"><span class="required">*</span>{{ $t("ui.customerQuickReplyAddReplyUploadFile") }}</div>
+        <div slot="label"><span class="required">*</span>{{ $("ui.customerQuickReplyAddReplyUploadFile") }}</div>
         <upload-list
           v-if="file && file.url"
           :file-list="[file]"
@@ -110,25 +111,25 @@
           :show-file-list="false"
           :http-request="uploadServerLog"
         >
-          <div class="upload-file" v-if="!isUploading">{{ $t("ui.customerQuickReplyAddReplyClickToUpload") }}</div>
+          <div class="upload-file" v-if="!isUploading">{{ $("ui.customerQuickReplyAddReplyClickToUpload") }}</div>
 
           <span class="el-icon-loading" v-else></span>
         </el-upload>
       </el-form-item>
       <!-- 网页 -->
       <template v-if="activeType === 'link'">
-        <el-form-item :label="$t('ui.customerQuickReplyAddReplyWebLink')" prop="link">
-          <el-input :placeholder="$t('ui.customerQuickReplyAddReplyStartWithHttpOrHttps')" v-model="form.link" size="small" @change="handleLinkChange">
+        <el-form-item :label="$('ui.customerQuickReplyAddReplyWebLink')" prop="link">
+          <el-input :placeholder="$('ui.customerQuickReplyAddReplyStartWithHttpOrHttps')" v-model="form.link" size="small" @change="handleLinkChange">
           </el-input>
         </el-form-item>
-        <el-form-item :label="$t('ui.customerQuickReplyAddReplyLinkTitle')" prop="title">
-          <el-input :placeholder="$t('ui.customerQuickReplyAddReplyPleaseEnterLinkTitle')" v-model="form.title" size="small"> </el-input>
+        <el-form-item :label="$('ui.customerQuickReplyAddReplyLinkTitle')" prop="title">
+          <el-input :placeholder="$('ui.customerQuickReplyAddReplyPleaseEnterLinkTitle')" v-model="form.title" size="small"> </el-input>
         </el-form-item>
-        <el-form-item :label="$t('ui.customerQuickReplyAddReplyLinkSummary')" prop="info">
-          <el-input :placeholder="$t('ui.customerQuickReplyAddReplyPleaseEnterLinkSummary')" v-model="form.info" size="small"> </el-input>
+        <el-form-item :label="$('ui.customerQuickReplyAddReplyLinkSummary')" prop="info">
+          <el-input :placeholder="$('ui.customerQuickReplyAddReplyPleaseEnterLinkSummary')" v-model="form.info" size="small"> </el-input>
         </el-form-item>
         <el-form-item>
-          <div slot="label"><span class="required">*</span>{{ $t("ui.customerQuickReplyAddReplyLinkCover") }}</div>
+          <div slot="label"><span class="required">*</span>{{ $("ui.customerQuickReplyAddReplyLinkCover") }}</div>
           <div class="pic" v-if="file && file.url">
             <img class="img" :src="file.url" />
             <div class="pic-upload">
@@ -151,23 +152,23 @@
               <span class="el-icon-loading" v-else></span>
             </div>
           </el-upload>
-          <div class="sort-tip">{{ $t("ui.customerQuickReplyAddReplyImagesMustBe10MbOrSmallerJpgAnd") }}</div>
+          <div class="sort-tip">{{ $("ui.customerQuickReplyAddReplyImagesMustBe10MbOrSmallerJpgAnd") }}</div>
         </el-form-item>
       </template>
       <!-- 小程序 -->
       <template v-if="activeType === 'mini_program'">
-        <el-form-item :label="$t('ui.customerQuickReplyAddReplyMiniProgramTitle')" prop="title">
-          <el-input v-model="form.title" size="small" :placeholder="$t('ui.customerQuickReplyAddReplyPleaseEnterMiniProgramTitle')"> </el-input>
+        <el-form-item :label="$('ui.customerQuickReplyAddReplyMiniProgramTitle')" prop="title">
+          <el-input v-model="form.title" size="small" :placeholder="$('ui.customerQuickReplyAddReplyPleaseEnterMiniProgramTitle')"> </el-input>
         </el-form-item>
         <el-form-item label="AppID：" prop="app_id">
-          <el-input v-model="form.app_id" size="small" :placeholder="$t('ui.customerQuickReplyAddReplyEnterTheMiniProgramAppIdLinkedToThe')">
+          <el-input v-model="form.app_id" size="small" :placeholder="$('ui.customerQuickReplyAddReplyEnterTheMiniProgramAppIdLinkedToThe')">
           </el-input>
         </el-form-item>
-        <el-form-item :label="$t('ui.customerQuickReplyAddReplyPagePath')" prop="link">
-          <el-input v-model="form.link" :placeholder="$t('ui.customerQuickReplyAddReplyEnterAPagePathForExamplePageIndex')" size="small"> </el-input>
+        <el-form-item :label="$('ui.customerQuickReplyAddReplyPagePath')" prop="link">
+          <el-input v-model="form.link" :placeholder="$('ui.customerQuickReplyAddReplyEnterAPagePathForExamplePageIndex')" size="small"> </el-input>
         </el-form-item>
         <el-form-item prop="replyType">
-          <div slot="label"><span class="required">*</span>{{ $t("ui.customerQuickReplyAddReplyMiniProgramCover") }}</div>
+          <div slot="label"><span class="required">*</span>{{ $("ui.customerQuickReplyAddReplyMiniProgramCover") }}</div>
           <div class="pic" v-if="file && file.url">
             <img class="img" :src="file.url" />
             <div class="pic-upload">
@@ -191,19 +192,19 @@
               <span class="el-icon-loading" v-else></span>
             </div>
           </el-upload>
-          <div class="sort-tip">{{ $t("ui.customerQuickReplyAddReplyImagesMustBe10MbOrSmallerJpgAnd") }}</div>
+          <div class="sort-tip">{{ $("ui.customerQuickReplyAddReplyImagesMustBe10MbOrSmallerJpgAnd") }}</div>
         </el-form-item>
       </template>
 
-      <el-form-item :label="$t('ui.businessHolidayTypeIndexSort')" prop="sort">
-        <el-input size="small" v-model.number="form.sort" :placeholder="$t('ui.customerQuickReplyAddReplyEnterASortValueHigherNumbersAppearFirst')" type="number" />
-        <div class="sort-tip">{{ $t("ui.customerQuickReplyAddReplyHigherNumbersAppearFirst") }}</div>
+      <el-form-item :label="$('ui.businessHolidayTypeIndexSort')" prop="sort">
+        <el-input size="small" v-model.number="form.sort" :placeholder="$('ui.customerQuickReplyAddReplyEnterASortValueHigherNumbersAppearFirst')" type="number" />
+        <div class="sort-tip">{{ $("ui.customerQuickReplyAddReplyHigherNumbersAppearFirst") }}</div>
       </el-form-item>
     </el-form>
 
     <div slot="footer" class="dialog-footer">
-      <el-button @click="handleClose">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button type="primary" :loading="isLoading" @click="handleConfirm">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+      <el-button @click="handleClose">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button type="primary" :loading="isLoading" @click="handleConfirm">{{ $("ui.formCommonDialogFormOk") }}</el-button>
     </div>
   </el-dialog>
   <!-- 素材库组件 -->
@@ -211,7 +212,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   workReplySaveApi,
   workReplyDetailsApi,
@@ -267,11 +267,11 @@ export default {
       },
 
       rules: {
-        group_id: [{ required: true, message: i18n.t('legacyScript.pleaseSelectGroup'), trigger: 'blur' }],
-        title: [{ required: true, message: i18n.t('legacyScript.enterTitle'), trigger: 'blur' }],
-        info: [{ required: true, message: i18n.t('legacyScript.pleaseEnterSummary'), trigger: 'blur' }],
-        link: [{ required: true, message: i18n.t('legacyScript.pleaseEnterThePathLink'), trigger: 'change' }],
-        app_id: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheApplicationID'), trigger: 'change' }]
+        group_id: [{ required: true, message: $('legacyScript.pleaseSelectGroup'), trigger: 'blur' }],
+        title: [{ required: true, message: $('legacyScript.enterTitle'), trigger: 'blur' }],
+        info: [{ required: true, message: $('legacyScript.pleaseEnterSummary'), trigger: 'blur' }],
+        link: [{ required: true, message: $('legacyScript.pleaseEnterThePathLink'), trigger: 'change' }],
+        app_id: [{ required: true, message: $('legacyScript.pleaseEnterTheApplicationID'), trigger: 'change' }]
         // content: [{ required: true, message: '请输入内容', trigger: 'blur' }]
       }
     }
@@ -286,7 +286,7 @@ export default {
     beforeVideoUpload(file) {
       const isVideo = file.type.startsWith('video/')
       if (!isVideo) {
-        this.$message.error(i18n.t('legacyScript.pleaseUploadAVideoFile'))
+        this.$message.error($('legacyScript.pleaseUploadAVideoFile'))
         return false
       }
       this.form.video = file
@@ -341,7 +341,7 @@ export default {
           }
         }
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToFetchWebpageMetadata'), error)
+        console.error($('legacyScript.failedToFetchWebpageMetadata'), error)
       } finally {
         this.metaLoading = false
       }
@@ -361,7 +361,7 @@ export default {
         // 使用现有的上传方法
         await this.uploadServerLog({ file })
       } catch (error) {
-        console.error(i18n.t('legacyScript.coverImageUploadFailed'), error)
+        console.error($('legacyScript.coverImageUploadFailed'), error)
       }
     },
 
@@ -370,7 +370,7 @@ export default {
       if (this.$refs.libraryRef) {
         this.$refs.libraryRef.openBox()
       } else {
-        this.$message.error(i18n.t('legacyScript.failedToLoadAssetLibraryComponent'))
+        this.$message.error($('legacyScript.failedToLoadAssetLibraryComponent'))
       }
     },
     openBox(id) {
@@ -440,19 +440,19 @@ export default {
             this.form.file_id = this.file.id
           }
           if (this.activeType == 'text' && !this.form.content) {
-            return this.$message.error(i18n.t('access.placeholder16'))
+            return this.$message.error($('access.placeholder16'))
           }
           if (this.activeType == 'image' && !this.form.file_id) {
-            return this.$message.error(i18n.t('legacyScript.pleaseUploadAnImage'))
+            return this.$message.error($('legacyScript.pleaseUploadAnImage'))
           }
           if (this.activeType == 'video' && !this.form.file_id) {
-            return this.$message.error(i18n.t('legacyScript.pleaseUploadAVideo'))
+            return this.$message.error($('legacyScript.pleaseUploadAVideo'))
           }
           if (this.activeType == 'file' && !this.form.file_id) {
-            return this.$message.error(i18n.t('legacyScript.pleaseUploadTheAttachment'))
+            return this.$message.error($('legacyScript.pleaseUploadTheAttachment'))
           }
           if ((this.activeType == 'mini_program' || this.activeType == 'link') && !this.form.file_id) {
-            return this.$message.error(i18n.t('legacyScript.pleaseUploadACoverImage'))
+            return this.$message.error($('legacyScript.pleaseUploadACoverImage'))
           }
           if (this.id) {
             workReplyPutApi(this.id, this.form).then(() => {
@@ -501,13 +501,13 @@ export default {
         const file = params?.file
         if (!file) {
           this.isUploading = false
-          this.$message.error(i18n.t('legacyScript.noUploadedFileDetectedPleaseSelectAFileAgain'))
+          this.$message.error($('legacyScript.noUploadedFileDetectedPleaseSelectAFileAgain'))
           return
         }
 
         if (['mini_program', 'image', 'link'].includes(this.activeType)) {
           if (file.size / 1024 / 1024 > 10) {
-            this.$message.error(i18n.t('legacyScript.imageSizeMustNotExceed10MB'))
+            this.$message.error($('legacyScript.imageSizeMustNotExceed10MB'))
             this.isUploading = false
             return false
           }
@@ -520,14 +520,14 @@ export default {
 
           if (!isAllowed) {
             this.isUploading = false
-            this.$message.error(i18n.t('legacyScript.pleaseUploadAnImageInPNGOrJPGFormat'))
+            this.$message.error($('legacyScript.pleaseUploadAnImageInPNGOrJPGFormat'))
             return false
           }
         }
         if (this.activeType === 'video') {
           if (file.size / 1024 / 1024 > 10) {
             this.isUploading = false
-            this.$message.error(i18n.t('legacyScript.videoSizeMustNotExceed10MB'))
+            this.$message.error($('legacyScript.videoSizeMustNotExceed10MB'))
             return false
           }
           const fileName = file.name.toLowerCase()
@@ -537,7 +537,7 @@ export default {
           // 双重校验：后缀或 MIME 类型任一不符合则拒绝
           if (!isMP4ByExtension || !isMP4ByType) {
             this.isUploading = false
-            this.$message.error(i18n.t('legacyScript.pleaseUploadAVideoInMP4Format'))
+            this.$message.error($('legacyScript.pleaseUploadAVideoInMP4Format'))
             return false
           }
         }
@@ -545,7 +545,7 @@ export default {
         if (this.activeType === 'file') {
           if (file.size / 1024 / 1024 > 200) {
             this.isUploading = false
-            this.$message.error(i18n.t('legacyScript.fileSizeMustNotExceed200MB'))
+            this.$message.error($('legacyScript.fileSizeMustNotExceed200MB'))
             return false
           }
         }
@@ -559,7 +559,7 @@ export default {
 
         if (!uploadKeysRes?.data) {
           this.isUploading = false
-          this.$message.error(i18n.t('legacyScript.failedToRetrieveUploadConfigurationInvalidResponseFormat'))
+          this.$message.error($('legacyScript.failedToRetrieveUploadConfigurationInvalidResponseFormat'))
         }
 
         const isLocalUpload = uploadKeysRes.data.type === 'local'

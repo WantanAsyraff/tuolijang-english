@@ -24,7 +24,7 @@
           </div>
           <div class="amount mt20 text-center mb15" v-if="fromData.data">
             <div class="number">
-              <span class="title03">{{ $t("ui.formCommonDialogPaymentPaymentAmount") }}</span>
+              <span class="title03">{{ $("ui.formCommonDialogPaymentPaymentAmount") }}</span>
               <span class="title01">¥</span>
               <span class="title02">{{ fromData.data.amount.toString().split('.')[0] }}.</span>
               <span class="title01">{{ fromData.data.amount.toString().split('.')[1] }}</span>

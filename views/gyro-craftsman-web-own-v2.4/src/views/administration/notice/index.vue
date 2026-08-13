@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 行政-企业动态页面 -->
 <template>
 <div class="divBox">
@@ -16,15 +17,15 @@
                 :isViewSearch="false"
                 :sortSearch="false"
                 :isAddBtn="hasAddPermission"
-                :title="$route.meta.title"
-:btn-text="$t('ui.administrationNoticeIndexNewAnnouncement')"
+      :title="$route.meta.title"
+      :btnText="$('ui.administrationNoticeIndexCreateAnnouncement')"
                 @addDataFn="handleNews"
                 @confirmData="confirmData"
               ></oaFromBox>
 
               <div class="mt14">
                 <el-table :data="tableData" :height="tableHeight" style="width: 100%" row-key="id" default-expand-all>
-                  <el-table-column prop="name" :label="$t('ui.administrationNoticeIndexCover')" min-width="80">
+                  <el-table-column prop="name" :label="$('ui.administrationNoticeIndexCover')" min-width="80">
                     <template slot-scope="scope">
                       <el-image
                         :src="scope.row.cover || defaultImage"
@@ -34,37 +35,37 @@
                       />
                     </template>
                   </el-table-column>
-                  <el-table-column prop="title" :label="$t('ui.settingSystemQuickIndexTitle')" min-width="150" show-overflow-tooltip />
-                  <el-table-column prop="visit" :label="$t('ui.administrationNoticeIndexReadCount')" min-width="80" />
-                  <el-table-column prop="info" :label="$t('ui.administrationNoticeAddNoticeAnnouncementSummary')" min-width="200" show-overflow-tooltip>
+                  <el-table-column prop="title" :label="$('ui.settingSystemQuickIndexTitle')" min-width="150" show-overflow-tooltip />
+                  <el-table-column prop="visit" :label="$('ui.administrationNoticeIndexReadCount')" min-width="80" />
+                  <el-table-column prop="info" :label="$('ui.administrationNoticeAddNoticeAnnouncementSummary')" min-width="200" show-overflow-tooltip>
                     <template slot-scope="scope">
                       <div class="over-text2">{{ scope.row.info || '--' }}</div>
                     </template>
                   </el-table-column>
-                  <el-table-column prop="card.name" :label="$t('ui.hrAssessCheckIndexCreator')" min-width="80" />
-                  <el-table-column prop="status" :label="$t('ui.customerSetupDictionaryIndexStatus')" min-width="80">
+                  <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="80" />
+                  <el-table-column prop="status" :label="$('ui.customerSetupDictionaryIndexStatus')" min-width="80">
                     <template slot-scope="scope">
                       <el-switch
                         v-model="scope.row.status"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                        active-text="开启"
+                        inactive-text="关闭"
                         :active-value="1"
                         :inactive-value="0"
                         @change="handleStatus(scope.row)"
                       />
                     </template>
                   </el-table-column>
-                  <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="120">
+                  <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="120">
                     <template slot-scope="scope">
                       {{ $moment(scope.row.created_at).format('yyyy-MM-DD') }}
                     </template>
                   </el-table-column>
-                  <el-table-column prop="is_top" :label="$t('ui.userNoticeIndexPin')" width="100">
+                  <el-table-column prop="is_top" :label="$('ui.userNoticeIndexPin')" width="100">
                     <template slot-scope="scope">
                       <el-switch
                         v-model="scope.row.is_top"
-:active-text="$t('ui.administrationNoticeIndexPinned')"
-:inactive-text="$t('ui.administrationNoticeIndexNotPinned')"
+                        active-text="已置顶"
+                        inactive-text="未置顶"
                         :active-value="1"
                         :inactive-value="0"
                         :width="70"
@@ -72,13 +73,13 @@
                       />
                     </template>
                   </el-table-column>
-                  <el-table-column prop="describe" :label="$t('public.operation')" fixed="right" width="120">
+                  <el-table-column prop="describe" :label="$('public.operation')" fixed="right" width="120">
                     <template slot-scope="scope">
                       <el-button
                         type="text"
                         @click="handleEdit(scope.row)"
                         v-hasPermi="['administration:notice:edit']"
-                        >{{ $t('public.edit') }}</el-button
+                        >{{ $('public.edit') }}</el-button
                       >
 
                       <el-button
@@ -86,7 +87,7 @@
                         @click="handleDelete(scope.row.id)"
                         v-hasPermi="['administration:notice:delete']"
                       >
-                        {{ $t('public.delete') }}
+                        {{ $('public.delete') }}
                       </el-button>
                     </template>
                   </el-table-column>
@@ -115,7 +116,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { noticeCategoryApi, noticeDeleteApi, noticeListApi, noticeStatusApi, noticeTopApi } from '@/api/administration'
 
 import noticeImg from '@/assets/images/notice.png'
@@ -205,7 +205,7 @@ export default {
     },
     handleNews() {
       if (this.$refs.left.department.length == 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseCreateAnAnnouncementTypeFirst'))
+        this.$message.error($('legacyScript.pleaseCreateAnAnnouncementTypeFirst'))
         return false
       }
       this.getTargetCate()

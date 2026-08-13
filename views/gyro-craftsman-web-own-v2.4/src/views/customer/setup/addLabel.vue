@@ -1,6 +1,7 @@
+import { $ } from '@/lang'
 <template>
   <el-dialog
-    :title='$ts("编辑标签组")'
+    :title='$("customer.editlabel")'
     :visible.sync="visible"
     width="530px"
     :close-on-click-modal="false"
@@ -8,12 +9,12 @@
   >
     <!-- 标签组名称输入 -->
     <el-form ref="form" :model="form" label-width="100px" label-position="top" class="mt10">
-      <el-form-item :label='$ts("标签组名称")'>
-        <el-input v-model="form.group.name" :placeholder='$ts("请输入标签组名称")' maxlength="50"></el-input>
+      <el-form-item :label='$("customer.labelename")'>
+        <el-input v-model="form.group.name" :placeholder='$("customer.placeholder05")' maxlength="50"></el-input>
       </el-form-item>
 
       <!-- 标签列表 -->
-      <el-form-item :label='$ts("标签")'>
+      <el-form-item :label='$("customer.label")'>
         <!-- 可拖拽列表 -->
         <div ref="scrollTarget" class="content">
           <draggable
@@ -28,12 +29,12 @@
               <el-input
                 :ref="`input_${index}`"
                 v-model="tag.name"
-                :placeholder='$ts("请输入标签内容")'
+                :placeholder='$("legacy.88436aefc742fbb1")'
                 maxlength="50"
               ></el-input>
               <div class="tag-actions">
-                <span class="iconfont icontuodong" :title='$ts("拖拽排序")'></span>
-                <span class="el-icon-delete" :title='$ts("删除")' @click.stop="handleDeleteTag(tag, index)"></span>
+                <span class="iconfont icontuodong" :title='$("ui.formDesignerSettingPanelOptionItemsSettingDragToSort")'></span>
+                <span class="el-icon-delete" :title='$("public.delete")' @click.stop="handleDeleteTag(tag, index)"></span>
               </div>
             </div>
             <!-- </div> -->
@@ -41,24 +42,23 @@
         </div>
         <!-- 添加标签按钮 -->
         <el-button type="text" class="add-tag-btn" @click="handleAddTag">
-          <i class="el-icon-plus"></i> {{ $ts("添加标签") }}
+          <i class="el-icon-plus"></i> {{ $("legacy.795cbff909c46891") }}
         </el-button>
       </el-form-item>
     </el-form>
 
     <!-- 底部按钮 -->
     <div slot="footer" class="flex flex-between">
-      <el-button type="text" class="delete-group-btn" @click="handleDeleteGroup"> {{ $ts("删除标签组") }} </el-button>
+      <el-button type="text" class="delete-group-btn" @click="handleDeleteGroup"> {{ $("legacy.08a3d2cc55da86c7") }} </el-button>
       <div>
-        <el-button size="small" @click="visible = false">{{ $ts("取消") }}</el-button>
-        <el-button size="small" type="primary" @click="handleConfirm">{{ $ts("确定") }}</el-button>
+        <el-button size="small" @click="visible = false">{{ $("public.cancel") }}</el-button>
+        <el-button size="small" type="primary" @click="handleConfirm">{{ $("public.ok") }}</el-button>
       </div>
     </div>
   </el-dialog>
 </template>
 
 <script>
-import i18n from '@/lang'
 import Draggable from 'vuedraggable'
 import { clientSaveLabelsApi } from '@/api/client'
 import { clientConfigLabelDeleteApi } from '@/api/enterprise'
@@ -147,7 +147,7 @@ export default {
 
     // 删除标签组
     handleDeleteGroup() {
-      this.$confirm(i18n.t('legacyScript.areYouSureYouWantToDeleteThisTagGroup'), i18n.t('legacyScript.warning'), {
+      this.$confirm($('legacyScript.areYouSureYouWantToDeleteThisTagGroup'), $('legacyScript.warning'), {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -164,7 +164,7 @@ export default {
 
     // 确认提交
     handleConfirm() {
-      if (this.form.group.name == '') return this.$message.error(i18n.t('legacyScript.labelGroupNameIsRequired'))
+      if (this.form.group.name == '') return this.$message.error($('legacyScript.labelGroupNameIsRequired'))
 
       const filteredLabels = this.form.label.filter((item) => {
         return item?.name?.trim() !== ''

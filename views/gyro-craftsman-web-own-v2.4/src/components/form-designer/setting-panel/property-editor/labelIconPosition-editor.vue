@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.labelIconPosition')">
+  <el-form-item :label="$('designer.setting.labelIconPosition')">
     <el-select v-model="optionModel.labelIconPosition">
       <el-option v-for="item in labelIconPosition" :key="item.value" :label="item.label"
                  :value="item.value">
@@ -9,11 +9,8 @@
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
-
   export default {
     name: "labelIconPosition-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -35,4 +32,3 @@
 <style scoped>
 
 </style>
-@/utils/i18ns

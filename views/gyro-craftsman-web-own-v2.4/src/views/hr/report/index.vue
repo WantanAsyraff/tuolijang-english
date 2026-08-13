@@ -3,12 +3,12 @@
   <el-card class="normal-page">
     <oaFromBox
       v-if="search.length > 0"
-:btn-text="$t('ui.fdExamineIndexExport')"
+      :btnText="$('ui.fdExamineIndexExport')"
       :isAddBtn="true"
       :btnIcon="false"
       :isViewSearch="false"
       :search="search"
-      :title="$t('ui.hrReportIndexReportManagement')"
+      :title="$('ui.hrReportIndexReportManagement')"
       :total="totalPage"
       @addDataFn="getExportData"
       @confirmData="confirmData"
@@ -16,14 +16,14 @@
 
     <div class="mt10 table-box">
       <el-table :data="tableData" :height="tableHeight">
-        <el-table-column :label="$t('toptable.name')" prop="name" width="100" />
-        <el-table-column :label="$t('toptable.department')" prop="frame_name" width="120" />
-        <el-table-column :label="$t('toptable.worktoday')" min-width="250" prop="finish">
+        <el-table-column :label="$('toptable.name')" prop="name" width="100" />
+        <el-table-column :label="$('toptable.department')" prop="frame_name" width="120" />
+        <el-table-column :label="$('toptable.worktoday')" min-width="250" prop="finish">
           <template slot-scope="scope">
             <div v-for="(item, index) in scope.row.finish" :key="index" class="textover3">{{ item }}</div>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('toptable.tomorrowplan')" min-width="250" prop="plan">
+        <el-table-column :label="$('toptable.tomorrowplan')" min-width="250" prop="plan">
           <template slot-scope="scope">
             <div v-if="scope.row.types !== 3">
               <div v-for="(item, index) in scope.row.plan" :key="index" class="textover3">{{ item }}</div>
@@ -31,23 +31,23 @@
             <div v-else>--</div>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.hrReportIndexReflection')" width="200">
+        <el-table-column :label="$('ui.hrReportIndexReflection')" width="200">
           <template #default="{ row }">
             {{ row.mark || '--' }}
           </template>
         </el-table-column>
 
-        <el-table-column :label="$t('user.work.dailytype')" width="100">
+        <el-table-column :label="$('user.work.dailytype')" width="100">
           <template #default="{ row }">
-            <span v-if="row.types === 1">{{ $t("ui.hrReportIndexWeekly") }}</span>
-            <span v-else-if="row.types === 2">{{ $t("ui.hrReportIndexMonthly") }}</span>
-            <span v-else-if="row.types === 3">{{ $t("ui.hrReportIndexReport") }}</span>
-            <span v-else>{{ $t("ui.hrReportIndexDaily") }}</span>
+            <span v-if="row.types === 1">{{ $("ui.hrReportIndexWeekly") }}</span>
+            <span v-else-if="row.types === 2">{{ $("ui.hrReportIndexMonthly") }}</span>
+            <span v-else-if="row.types === 3">{{ $("ui.hrReportIndexReport") }}</span>
+            <span v-else>{{ $("ui.hrReportIndexDaily") }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('toptable.updatetime')" prop="updated_at" width="160" />
-        <el-table-column :label="$t('user.work.creationtime')" prop="created_at" width="160" />
-        <el-table-column :label="$t('public.operation')" fixed="right" width="100">
+        <el-table-column :label="$('toptable.updatetime')" prop="updated_at" width="160" />
+        <el-table-column :label="$('user.work.creationtime')" prop="created_at" width="160" />
+        <el-table-column :label="$('public.operation')" fixed="right" width="100">
           <template slot-scope="scope">
             <el-button
               v-hasPermi="['hr:report:check']"
@@ -55,7 +55,7 @@
               type="text"
               @click="onCheck(scope.row.daily_id, 'check', scope.row)"
             >
-              {{ $t('public.check') }}
+              {{ $('public.check') }}
             </el-button>
           </template>
         </el-table-column>
@@ -96,16 +96,16 @@ export default {
     return {
       // 搜索条件列表
       fromList: [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('toptable.thisweek'), val: 'week' },
-        { text: this.$t('toptable.thismonth'), val: 'month' },
-        { text: this.$t('toptable.lastmonth'), val: 'lastmonth' } // 修正为和其他逻辑一致的格式
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('toptable.thisweek'), val: 'week' },
+        { text: this.$('toptable.thismonth'), val: 'month' },
+        { text: this.$('toptable.lastmonth'), val: 'lastmonth' } // 修正为和其他逻辑一致的格式
       ],
       // 日报类型数据
       dailyData: [
-        { name: this.$t('user.work.writedaily'), id: 1 },
-        { name: this.$t('user.work.writedailyweek'), id: 2 },
-        { name: this.$t('user.work.writedailymonth'), id: 3 }
+        { name: this.$('user.work.writedaily'), id: 1 },
+        { name: this.$('user.work.writedailyweek'), id: 2 },
+        { name: this.$('user.work.writedailymonth'), id: 3 }
       ],
       // 当前日报名称
       dailyName: '',
@@ -186,9 +186,9 @@ export default {
           field: 'repeat',
           select_type: 'single',
           data_dict: [
-            { name: this.$t('user.work.dailyday'), value: '0' },
-            { name: this.$t('user.work.weekday'), value: '1' }, // 统一为字符串形式
-            { name: this.$t('user.work.monthday'), value: '2' }, // 统一为字符串形式
+            { name: this.$('user.work.dailyday'), value: '0' },
+            { name: this.$('user.work.weekday'), value: '1' }, // 统一为字符串形式
+            { name: this.$('user.work.monthday'), value: '2' }, // 统一为字符串形式
             { name: '汇报', value: '3' } // 统一为字符串形式
           ],
           value: ''
@@ -204,10 +204,10 @@ export default {
     },
     setOptions() {
       this.fromList = [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('toptable.thisweek'), val: 'week' },
-        { text: this.$t('toptable.thismonth'), val: 'month' },
-        { text: this.$t('toptable.lastmonth'), val: 'lastmonth' }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('toptable.thisweek'), val: 'week' },
+        { text: this.$('toptable.thismonth'), val: 'month' },
+        { text: this.$('toptable.lastmonth'), val: 'lastmonth' }
       ]
     },
     confirmData(data) {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="title-16 mb20">{{ $ts("考核流程") }}</div>
+    <div class="title-16 mb20">{{ $("access.assessmentprocess") }}</div>
     <div class="flex pt-20">
       <div class="process-left">
         <div class="process-left-con">
@@ -26,14 +26,14 @@
           >
             <p class="title">{{ item.name }}</p>
             <div v-if="item.id == 5" class="process-right-con">
-              <div class="left">{{ $t('access.reviewer') }}：</div>
+              <div class="left">{{ $('access.reviewer') }}：</div>
               <div class="right">
                 <div class="right-con">
                   <!-- <el-checkbox :checked="true" :disabled="true" @change="changeSuperior($event)"
                     >上上级领导</el-checkbox
                   > -->
                   <el-button type="primary" circle>1</el-button>
-                  <span>{{ $ts("上上级领导") }}</span>
+                  <span>{{ $("legacy.0bb8af0effa45184") }}</span>
                 </div>
               </div>
             </div>
@@ -48,18 +48,18 @@
               </div>
             </div>
             <div v-if="item.id === 4" class="process-right-con">
-              <div class="left">{{ $ts("审核人：") }}</div>
+              <div class="left">{{ $("legacy.8092c2ef12d5ff56") }}</div>
               <div class="right">
                 <div class="right-con">
                   <el-button type="primary" circle>1</el-button>
-                  <span>{{ $ts("上上级领导") }}</span>
+                  <span>{{ $("legacy.0bb8af0effa45184") }}</span>
                 </div>
               </div>
             </div>
 
             <!-- <div v-if="item.id == 5" class="process-right-con">
               <div class="left" />
-              <div class="right color444">{{ $t('access.placeholder20') }}</div>
+              <div class="right color444">{{ $('access.placeholder20') }}</div>
             </div> -->
           </div>
         </el-col>
@@ -78,39 +78,39 @@ export default {
       tableData: [
         {
           id: 1,
-          name: this.$t('access.goalsetting'),
-          title: this.$t('access.participants'),
-          children: [{ label: this.$t('toptable.assessor') }]
+          name: this.$('access.goalsetting'),
+          title: this.$('access.participants'),
+          children: [{ label: this.$('toptable.assessor') }]
         },
         {
           id: 2,
-          name: this.$t('access.executionphase'),
-          title: this.$t('access.participants'),
-          children: [{ label: this.$t('toptable.assessor') }, { label: this.$t('access.examinee') }]
+          name: this.$('access.executionphase'),
+          title: this.$('access.participants'),
+          children: [{ label: this.$('toptable.assessor') }, { label: this.$('access.examinee') }]
         },
         {
           id: 3,
-          name: this.$t('access.higherevaluation'),
-          title: this.$t('access.required'),
-          children: [{ label: this.$t('access.assessmentscore') }, { label: this.$t('access.superiorcomments') }]
+          name: this.$('access.higherevaluation'),
+          title: this.$('access.required'),
+          children: [{ label: this.$('access.assessmentscore') }, { label: this.$('access.superiorcomments') }]
         },
         {
           id: 4,
-          name: this.$t('access.performancegrievance'),
-          title: this.$t('access.applicant'),
-          children: [{ label: this.$t('access.examinee') }]
+          name: this.$('access.performancegrievance'),
+          title: this.$('access.applicant'),
+          children: [{ label: this.$('access.examinee') }]
         },
         {
           id: 5,
-          name: this.$t('access.performancereview'),
-          title: this.$t('access.jurisdiction'),
+          name: this.$('access.performancereview'),
+          title: this.$('access.jurisdiction'),
           children: [
-            { label: this.$t('access.adjustscore') },
-            { label: this.$t('access.superiorcomments') },
-            { label: this.$t('access.toscore') }
+            { label: this.$('access.adjustscore') },
+            { label: this.$('access.superiorcomments') },
+            { label: this.$('access.toscore') }
           ]
         },
-        { id: 6, name: this.$t('access.end') }
+        { id: 6, name: this.$('access.end') }
       ],
       tabIndex: 0,
       staff: []
@@ -134,39 +134,39 @@ export default {
       this.tableData = [
         {
           id: 1,
-          name: this.$t('access.goalsetting'),
-          title: this.$t('access.participants'),
-          children: [{ label: this.$t('toptable.assessor') }]
+          name: this.$('access.goalsetting'),
+          title: this.$('access.participants'),
+          children: [{ label: this.$('toptable.assessor') }]
         },
         {
           id: 2,
-          name: this.$t('access.executionphase'),
-          title: this.$t('access.participants'),
-          children: [{ label: this.$t('toptable.assessor') }, { label: this.$t('access.examinee') }]
+          name: this.$('access.executionphase'),
+          title: this.$('access.participants'),
+          children: [{ label: this.$('toptable.assessor') }, { label: this.$('access.examinee') }]
         },
         {
           id: 3,
-          name: this.$t('access.higherevaluation'),
-          title: this.$t('access.required'),
-          children: [{ label: this.$t('access.assessmentscore') }, { label: this.$t('access.superiorcomments') }]
+          name: this.$('access.higherevaluation'),
+          title: this.$('access.required'),
+          children: [{ label: this.$('access.assessmentscore') }, { label: this.$('access.superiorcomments') }]
         },
         {
           id: 4,
-          name: this.$t('access.performancegrievance'),
-          title: this.$t('access.applicant'),
-          children: [{ label: this.$t('access.examinee') }]
+          name: this.$('access.performancegrievance'),
+          title: this.$('access.applicant'),
+          children: [{ label: this.$('access.examinee') }]
         },
         {
           id: 5,
-          name: this.$t('access.performancereview'),
-          title: this.$t('access.jurisdiction'),
+          name: this.$('access.performancereview'),
+          title: this.$('access.jurisdiction'),
           children: [
-            { label: this.$t('access.adjustscore') },
-            { label: this.$t('access.superiorcomments') },
-            { label: this.$t('access.toscore') }
+            { label: this.$('access.adjustscore') },
+            { label: this.$('access.superiorcomments') },
+            { label: this.$('access.toscore') }
           ]
         },
-        { id: 6, name: this.$t('access.end') }
+        { id: 6, name: this.$('access.end') }
       ]
     },
     async getVerify() {
@@ -179,7 +179,7 @@ export default {
     },
     async handlePreserve() {
       if (this.isAppoint && this.departmentObj.userList.length == 0) {
-        this.$message.error(this.$t('access.placeholder21'))
+        this.$message.error(this.$('access.placeholder21'))
       } else {
         const is_superior = this.isSuperior == true ? 1 : 0
         const is_appoint = this.isAppoint == true ? 1 : 0

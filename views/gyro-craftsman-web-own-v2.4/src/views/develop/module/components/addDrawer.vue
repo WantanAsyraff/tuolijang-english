@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
-    :title="this.id > 0 ? $t('ui.formCommonOaLogEdit') : $t('ui.businessHolidayTypeIndexAdd')"
+    :title="this.id > 0 ? $('ui.formCommonOaLogEdit') : $('ui.businessHolidayTypeIndexAdd')"
     :visible.sync="drawer"
     direction="rtl"
     :show-close="true"
@@ -24,8 +25,8 @@
       </VFormRender>
 
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button size="small" class="el-btn" @click="handleClose">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button size="small" type="primary" :loading="loading" @click="saveFn">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+        <el-button size="small" class="el-btn" @click="handleClose">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button size="small" type="primary" :loading="loading" @click="saveFn">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
       </div>
     </div>
     <div v-else>
@@ -35,7 +36,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import VFormRender from '@/components/form-render/index'
 import defaultPage from '@/components/common/defaultPage'
 import { crudModuleCreateApi, crudModuleSaveDataApi, crudModuleUpdateApi } from '@/api/develop'
@@ -60,7 +60,7 @@ export default {
         formConfig: {},
         widgetList: []
       },
-      title: i18n.t('ui.businessHolidayTypeIndexAdd'),
+      title: $('ui.businessHolidayTypeIndexAdd'),
       id: 0, // 当前列表的id值
       designer: {},
       testFormData: {},
@@ -73,9 +73,9 @@ export default {
         ],
 
         select001: [
-          { label: i18n.t('legacyScript.chiliPepper'), value: 1 },
-          { label: i18n.t('legacyScript.pineapple'), value: 2 },
-          { label: i18n.t('legacyScript.dekopon'), value: 3 }
+          { label: $('legacyScript.chiliPepper'), value: 1 },
+          { label: $('legacyScript.pineapple'), value: 2 },
+          { label: $('legacyScript.dekopon'), value: 3 }
         ]
       }
     }

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
@@ -11,8 +12,8 @@
         :whereData="where"
         :category="keyword"
         :timeSearchObj="timeSearchObj"
-        ref="fromBox"
-:btn-text="$t('ui.customerListOddsAddOpportunity')"
+      ref="fromBox"
+      :btnText="$('ui.customerListOddsAddOpportunity')"
         @addDataFn="addDataFn"
         @confirmData="confirmData"
         @dropdownFn="dropdownFn"
@@ -32,35 +33,35 @@
         @getTableData="getTableData"
       >
         <template #options="{ data }">
-          <el-button type="text" @click="openDetails(data)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
+          <el-button type="text" @click="openDetails(data)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
           <el-button
             type="text"
             v-if="!data.is_sign"
             v-customer-module="CUSTOMER_MODULE_KEYS.CONTRACT"
             @click="addSigning(data)"
-            >{{ $t("ui.customerDetailsGenerateContract") }}</el-button
+            >{{ $("ui.customerDetailsGenerateContract") }}</el-button
           >
 
           <el-dropdown>
             <span class="el-dropdown-link el-button--text el-button more ml10">
-              {{ $t("ui.layoutNavbarMore") }}
+              {{ $("ui.layoutNavbarMore") }}
               <i class="el-icon-arrow-down" />
             </span>
             <el-dropdown-menu style="text-align: center">
               <el-dropdown-item @click.native="addContract(data)" v-customer-module="CUSTOMER_MODULE_KEYS.ORDER">
-                {{ $t("ui.customerListOddsGenerateOrder") }}
+                {{ $("ui.customerListOddsGenerateOrder") }}
               </el-dropdown-item>
               <el-dropdown-item style="border-bottom: 1px solid #f5f5f5" @click.native="handleFollowUp(data)">
-                {{ $t("ui.customerClueIndexWriteFollowUp") }}
+                {{ $("ui.customerClueIndexWriteFollowUp") }}
               </el-dropdown-item>
-              <el-dropdown-item @click.native="handleTransfer(2, data)"> {{ $t("ui.customerClueIndexTransferToColleague") }} </el-dropdown-item>
+              <el-dropdown-item @click.native="handleTransfer(2, data)"> {{ $("ui.customerClueIndexTransferToColleague") }} </el-dropdown-item>
               <el-dropdown-item v-if="data.status && data.status.value == 1" @click.native="handleInvalid(data, 4)">
-                {{ $t("ui.customerOpportunityManagementIndexMarkInvalid") }}
+                {{ $("ui.customerOpportunityManagementIndexMarkInvalid") }}
               </el-dropdown-item>
               <el-dropdown-item v-if="data.status && data.status.value == 4" @click.native="handleInvalid(data, 1)">
-                {{ $t("ui.customerOpportunityManagementIndexRestore") }}
+                {{ $("ui.customerOpportunityManagementIndexRestore") }}
               </el-dropdown-item>
-              <el-dropdown-item @click.native="handleDelete(data)"> {{ $t("ui.chatIndexDelete") }} </el-dropdown-item>
+              <el-dropdown-item @click.native="handleDelete(data)"> {{ $("ui.chatIndexDelete") }} </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </template>
@@ -74,7 +75,7 @@
     <!-- 详情 -->
     <detailsDrawer ref="details" :formData="detailsFromData" @getTableData="getTableData"></detailsDrawer>
     <!-- 跟进弹窗 -->
-    <el-dialog :visible.sync="dialogShow" class="record" :title="$t('ui.customerClueIndexAddFollowUpRecord')" width="40%">
+    <el-dialog :visible.sync="dialogShow" class="record" :title="$('ui.customerClueIndexAddFollowUpRecord')" width="40%">
       <recordUpload :form-info="formInfo" @change="recordChange"></recordUpload>
     </el-dialog>
     <add-contract ref="addContract" :form-data="contractFromData"></add-contract>
@@ -88,7 +89,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   oddsCreateApi,
   oddsCreateEditApi,
@@ -125,29 +125,29 @@ export default {
       },
       contractFromData: {},
       dropdownList: [
-        { label: i18n.t('ui.customerClueIndexTransferToColleague'), value: 1 },
-        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 2 },
-        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 3 },
-        { label: i18n.t('customer.export'), value: 4 },
-        { label: i18n.t('finance.batchupload'), value: 5 },
-        { label: i18n.t('legacyScript.importExportRecords'), value: 6 },
-        { label: i18n.t('legacyScript.fieldOptionSettings'), value: 7 }
+        { label: $('ui.customerClueIndexTransferToColleague'), value: 1 },
+        { label: $('ui.developModuleTableStyleFilterSettings'), value: 2 },
+        { label: $('ui.developModuleTableStyleColumnDisplaySettings'), value: 3 },
+        { label: $('customer.export'), value: 4 },
+        { label: $('finance.batchupload'), value: 5 },
+        { label: $('legacyScript.importExportRecords'), value: 6 },
+        { label: $('legacyScript.fieldOptionSettings'), value: 7 }
       ],
       treeData: [
         {
-          label: i18n.t('legacyScript.ownedByMe'),
+          label: $('legacyScript.ownedByMe'),
           id: 1
         },
         {
-          label: i18n.t('legacyScript.ownedBySubordinates'),
+          label: $('legacyScript.ownedBySubordinates'),
           id: 2
         },
         {
-          label: i18n.t('legacyScript.followedByMe'),
+          label: $('legacyScript.followedByMe'),
           id: 3
         },
         {
-          label: i18n.t('legacyScript.needsUrgentFollowUp'),
+          label: $('legacyScript.needsUrgentFollowUp'),
           id: 4,
           line: true
         }
@@ -210,7 +210,7 @@ export default {
     // 生成合同
     addSigning(data) {
       if (!data.eid) {
-        this.$message.error(i18n.t('legacyScript.invalidCustomer'))
+        this.$message.error($('legacyScript.invalidCustomer'))
         return false
       }
       data.link_type = '5'
@@ -221,7 +221,7 @@ export default {
     addContract(data) {
       oddsCreateEditApi(data.id, { eid: data.eid, odds_id: data.id }).then((res) => {
         this.contractFromData = {
-          title: this.$t('customer.addcontract'),
+          title: this.$('customer.addcontract'),
           width: '1129px',
           product: res.data.product,
           odds_id: data.id,
@@ -236,7 +236,7 @@ export default {
     // 编辑商机
     handleEdit(data) {
       this.formBoxConfig = {
-        title: i18n.t('legacyScript.editOpportunity'),
+        title: $('legacyScript.editOpportunity'),
         width: '1000px',
         types: this.keyword
       }
@@ -264,11 +264,11 @@ export default {
     }, // 转移
     handleTransfer(type, row = []) {
       if (this.ids.length <= 0 && type === 1) {
-        this.$message.error(this.$t('customer.placeholder22'))
+        this.$message.error(this.$('customer.placeholder22'))
       } else {
         const ids = type === 1 ? this.ids : [row.id]
         this.transferData = {
-          title: i18n.t('legacyScript.transferToAnotherColleague'),
+          title: $('legacyScript.transferToAnotherColleague'),
           width: '520px',
           type: 1,
           ids
@@ -279,7 +279,7 @@ export default {
     // 查看
     async openDetails(item) {
       this.detailsFromData = {
-        title: i18n.t('legacyScript.viewOpportunity'),
+        title: $('legacyScript.viewOpportunity'),
         width: DRAWER_SIZE.LG,
         data: item,
         eid: item.id,

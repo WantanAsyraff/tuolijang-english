@@ -1,15 +1,16 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card v-loading="loadingBox" class="card-box box-height">
     <div slot="header" class="acea-row row-between row-middle card-header">
       <div>
         <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane :label="$t('ui.customerSetupCustomFormIndexLeadForm')" name="4" />
-          <el-tab-pane :label="$t('ui.customerSetupCustomFormIndexCustomerForm')" name="1" />
-          <el-tab-pane :label="$t('ui.customerSetupCustomFormIndexOpportunityForm')" name="5" />
-          <el-tab-pane :label="$t('ui.customerSetupCustomFormIndexOrderForm')" name="2" />
-          <el-tab-pane :label="$t('ui.customerSetupCustomFormIndexContactForm')" name="3" />
-          <el-tab-pane :label="$t('ui.customerSetupCustomFormIndexProductForm')" name="6" />
+          <el-tab-pane :label="$('ui.customerSetupCustomFormIndexLeadForm')" name="4" />
+          <el-tab-pane :label="$('ui.customerSetupCustomFormIndexCustomerForm')" name="1" />
+          <el-tab-pane :label="$('ui.customerSetupCustomFormIndexOpportunityForm')" name="5" />
+          <el-tab-pane :label="$('ui.customerSetupCustomFormIndexOrderForm')" name="2" />
+          <el-tab-pane :label="$('ui.customerSetupCustomFormIndexContactForm')" name="3" />
+          <el-tab-pane :label="$('ui.customerSetupCustomFormIndexProductForm')" name="6" />
         </el-tabs>
       </div>
       <div class="flex">
@@ -17,8 +18,8 @@
           <span class="el-icon-setting"></span>
         </div>
 
-        <el-button size="small" @click="addGroup">{{ $t("ui.customerSetupCustomFormIndexAddGroup") }}</el-button>
-        <el-button :loading="loading" size="small" type="primary" @click="submitFrom">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+        <el-button size="small" @click="addGroup">{{ $("ui.customerSetupCustomFormIndexAddGroup") }}</el-button>
+        <el-button :loading="loading" size="small" type="primary" @click="submitFrom">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
       </div>
     </div>
 
@@ -38,16 +39,16 @@
             inactive-text="选填"
           /> -->
 
-          <el-tooltip :content="$t('ui.customerSetupCustomFormIndexShowOrHideGroup')" effect="dark" placement="top" v-if="item.ident != 'product'">
+          <el-tooltip :content="$('ui.customerSetupCustomFormIndexShowOrHideGroup')" effect="dark" placement="top" v-if="item.ident != 'product'">
             <span v-if="item.status == 0" class="iconfont iconyincang pointer" @click="showCate(item)" />
             <span v-else class="iconfont icondakai pointer" @click="showCate(item)" />
           </el-tooltip>
-          <el-tooltip :content="$t('ui.formCommonOaLogEdit')" effect="dark" placement="top">
+          <el-tooltip :content="$('ui.formCommonOaLogEdit')" effect="dark" placement="top">
             <span class="iconfont iconbianji1 pointer" @click="editCate(item)" />
           </el-tooltip>
 
           <template v-if="item.enable_delete == 1 && item.ident != 'product'">
-            <el-tooltip :content="$t('ui.chatIndexDelete')" effect="dark" placement="top">
+            <el-tooltip :content="$('ui.chatIndexDelete')" effect="dark" placement="top">
               <span class="iconfont iconshanchu pointer" @click="deleteCate(item.id)" />
             </el-tooltip>
           </template>
@@ -56,13 +57,13 @@
 
       <!-- 表格 -->
       <el-table ref="table" :data="item.data" class="table" row-key="id" style="width: 100%">
-        <el-table-column fixed="left" :label="$t('ui.developCrudFieldSettingFieldName')" min-width="130px" prop="id">
+        <el-table-column fixed="left" :label="$('ui.developCrudFieldSettingFieldName')" min-width="130px" prop="id">
           <template slot-scope="scope">
-            <el-input v-model="scope.row.key_name" class="input" :placeholder="$t('ui.customerOaFormPleaseEnter')" size="small"> </el-input>
+            <el-input v-model="scope.row.key_name" class="input" :placeholder="$('ui.customerOaFormPleaseEnter')" size="small"> </el-input>
           </template>
         </el-table-column>
         <!-- 字段类型 -->
-        <el-table-column :label="$t('ui.developForeignDocumentFieldType')" min-width="130px" prop="type">
+        <el-table-column :label="$('ui.developForeignDocumentFieldType')" min-width="130px" prop="type">
           <template slot-scope="scope">
             <el-select
               v-model="scope.row.type"
@@ -76,14 +77,14 @@
           </template>
         </el-table-column>
         <!-- 关联字典 -->
-        <el-table-column :label="$t('ui.customerSetupCustomFormIndexLinkedDictionary')" min-width="150px" prop="cate_id">
+        <el-table-column :label="$('ui.customerSetupCustomFormIndexLinkedDictionary')" min-width="150px" prop="cate_id">
           <template slot-scope="scope">
             <el-select
               v-model="scope.row.dict_ident"
               :disabled="scope.row.enable_delete !== 1 || typeDisabled.includes(scope.row.type)"
               clearable
               filterable
-              :placeholder="$t('ui.customerSetupCustomFormIndexSelectLinkedDictionary')"
+              :placeholder="$('ui.customerSetupCustomFormIndexSelectLinkedDictionary')"
               size="small"
               @change="getDictData(scope.row.dict_ident, index1, scope.$index)"
             >
@@ -93,49 +94,49 @@
           </template>
         </el-table-column>
         <!-- 是否必填 -->
-        <el-table-column :label="$t('ui.customerSetupCustomFormIndexRequired')" prop="required" min-width="145">
+        <el-table-column :label="$('ui.customerSetupCustomFormIndexRequired')" prop="required">
           <template slot-scope="scope">
             <el-switch
               v-model="scope.row.required"
               :active-value="1"
               :inactive-value="0"
-:active-text="$t('ui.developForeignDocumentRequired')"
-:inactive-text="$t('ui.customerSetupCustomFormIndexOptional')"
+              active-text="必填"
+              inactive-text="选填"
             />
           </template>
         </el-table-column>
         <!-- 唯一校验 -->
-        <el-table-column :label="$t('ui.customerSetupCustomFormIndexUniqueValidation')" prop="uniqued">
+        <el-table-column :label="$('ui.customerSetupCustomFormIndexUniqueValidation')" prop="uniqued">
           <template slot-scope="{ row }">
             <el-switch
               v-model="row.uniqued"
               :active-value="1"
               :disabled="contractList.includes(row.key)"
               :inactive-value="0"
-:active-text="$t('ui.customerSetupCustomFormIndexUnique')"
-:inactive-text="$t('ui.customerSetupCustomFormIndexDuplicate')"
+              active-text="唯一"
+              inactive-text="重复"
             />
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.customerSetupCustomFormIndexHintText')" min-width="110px" prop="placeholder">
+        <el-table-column :label="$('ui.customerSetupCustomFormIndexHintText')" min-width="110px" prop="placeholder">
           <template slot-scope="{ row }">
-            <el-input v-model="row.placeholder" class="input" :placeholder="$t('ui.customerOaFormPleaseEnter')" size="small"> </el-input>
+            <el-input v-model="row.placeholder" class="input" :placeholder="$('ui.customerOaFormPleaseEnter')" size="small"> </el-input>
           </template>
         </el-table-column>
         <!-- 默认值 -->
-        <el-table-column :label="$t('ui.chatModelFormDefaultValue')" min-width="180px" prop="value">
+        <el-table-column :label="$('ui.chatModelFormDefaultValue')" min-width="180px" prop="value">
           <template slot-scope="{ row }">
             <el-input
               v-if="getTypes(row.type, 'select', 'radio', 'checked')"
               v-model="row.value"
               :disabled="row.type == 'file' || row.type == 'images'"
               class="input"
-              :placeholder="$t('ui.chatModelFormEnterDefaultValue')"
+              :placeholder="$('ui.chatModelFormEnterDefaultValue')"
               size="small"
             >
             </el-input>
 
-            <el-select v-else-if="row.type == 'radio'" v-model="row.value" :placeholder="$t('ui.customerSetupCustomFormIndexSelectDefaultValue')" size="small">
+            <el-select v-else-if="row.type == 'radio'" v-model="row.value" :placeholder="$('ui.customerSetupCustomFormIndexSelectDefaultValue')" size="small">
               <el-option v-for="el in row.optionItems" :key="el.value" :label="el.name" :value="el.value">
               </el-option>
             </el-select>
@@ -143,7 +144,7 @@
               v-else-if="row.type == 'checked'"
               multiple
               v-model="row.value"
-              :placeholder="$t('ui.customerSetupCustomFormIndexSelectDefaultValue')"
+              :placeholder="$('ui.customerSetupCustomFormIndexSelectDefaultValue')"
               size="small"
             >
               <el-option v-for="el in row.optionItems" :key="el.value" :label="el.name" :value="el.value">
@@ -172,12 +173,12 @@
           <template slot="header" slot-scope="scope">
             <el-popover placement="top" trigger="hover" width="300">
               <div class="tips-popover">
-                {{ $t("ui.customerSetupCustomFormIndexForTextInputsAndTextAreasBoundariesLimitThe") }}<br />
-                {{ $t("ui.customerSetupCustomFormIndexForNumbersBoundariesDefineTheNumericRange") }}<br />
-                {{ $t("ui.customerSetupCustomFormIndexForMultiSelectDropdownsAndCheckboxesBoundariesLimitThe") }}<br />{{ $t("ui.customerSetupCustomFormIndexForDateControlsBoundariesDefineTheTimeRange") }}<br />
-                {{ $t("ui.customerSetupCustomFormIndexForImageAndAttachmentControlsBoundariesLimitTheNumber") }}
+                {{ $("ui.customerSetupCustomFormIndexForTextInputsAndTextAreasBoundariesLimitThe") }}<br />
+                {{ $("ui.customerSetupCustomFormIndexForNumbersBoundariesDefineTheNumericRange") }}<br />
+                {{ $("ui.customerSetupCustomFormIndexForMultiSelectDropdownsAndCheckboxesBoundariesLimitThe") }}<br />{{ $("ui.customerSetupCustomFormIndexForDateControlsBoundariesDefineTheTimeRange") }}<br />
+                {{ $("ui.customerSetupCustomFormIndexForImageAndAttachmentControlsBoundariesLimitTheNumber") }}
               </div>
-              <div slot="reference">{{ $t("ui.customerSetupCustomFormIndexBoundaryValue") }} <span class="el-icon-info"></span></div>
+              <div slot="reference">{{ $("ui.customerSetupCustomFormIndexBoundaryValue") }} <span class="el-icon-info"></span></div>
             </el-popover>
           </template>
           <template slot-scope="scope">
@@ -214,7 +215,7 @@
               ></el-input-number>
             </div>
             <div v-else class="flex">
-              <span class="m5"> {{ $t("ui.customerSetupCustomFormIndexBoundaryValueIsNotSupported") }} </span>
+              <span class="m5"> {{ $("ui.customerSetupCustomFormIndexBoundaryValueIsNotSupported") }} </span>
               <!-- <el-date-picker
                 v-model="scope.row.min"
                 :format="'yyyy-MM-dd'"
@@ -240,23 +241,23 @@
           </template>
         </el-table-column>
         <!-- 状态 -->
-        <el-table-column :label="$t('ui.customerSetupDictionaryIndexStatus')" prop="status">
+        <el-table-column :label="$('ui.customerSetupDictionaryIndexStatus')" prop="status">
           <template slot-scope="{ row }">
             <el-switch
               v-model="row.status"
               :active-value="1"
               :disabled="row.enable_delete !== 1"
               :inactive-value="0"
-:active-text="$t('ui.settingAuthAdminIndexEnabled2')"
-:inactive-text="$t('ui.customerSetupCustomFormIndexDisabled')"
+              active-text="启用"
+              inactive-text="停用"
             />
           </template>
         </el-table-column>
-        <el-table-column fixed="right" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" min-width="150px" prop="address">
+        <el-table-column fixed="right" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" min-width="150px" prop="address">
           <template slot-scope="scope">
-            <el-button type="text" @click="moveFn(scope.row)">{{ $t("ui.customerSetupCustomFormIndexMoveGroup") }}</el-button>
+            <el-button type="text" @click="moveFn(scope.row)">{{ $("ui.customerSetupCustomFormIndexMoveGroup") }}</el-button>
             <el-button v-if="scope.row.enable_delete == 1" type="text" @click="deleteFn(scope, index1)"
-              >{{ $t("ui.chatIndexDelete") }}</el-button
+              >{{ $("ui.chatIndexDelete") }}</el-button
             >
           </template>
         </el-table-column>
@@ -264,14 +265,14 @@
           <div>
             {{
               ['5', '2'].includes(activeName) && item.ident == 'product'
-                ? $t('ui.customerSetupCustomFormIndexProductListFieldsAreMaintainedWhenAddingProductInformation')
-                : $t('ui.scEchartsChartWidgetNoData')
+                ? $('ui.customerSetupCustomFormIndexProductListFieldsAreMaintainedWhenAddingProductInformation')
+                : $('ui.scEchartsChartWidgetNoData')
             }}
           </div>
         </template>
       </el-table>
       <div class="add-row" v-if="item.ident != 'product'">
-        <span class="pointer" @click.stop="addANewLine(index1)"><span class="el-icon-plus mr5"></span>{{ $t("ui.developUpdateContentAddField") }}</span>
+        <span class="pointer" @click.stop="addANewLine(index1)"><span class="el-icon-plus mr5"></span>{{ $("ui.developUpdateContentAddField") }}</span>
       </div>
     </div>
     <!-- <div v-if="['5', '2'].includes(activeName)" style="border: 1px solid #e6ebf5">
@@ -308,7 +309,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Sortable from 'sortablejs'
 import { configConvertApi } from '@/api/client'
 import common from './components/customCommon'
@@ -334,11 +334,11 @@ export default {
       loadingBox: false,
       loading: false,
       fromData: {
-        title: i18n.t('ui.customerSetupCustomFormIndexAddGroup'),
+        title: $('ui.customerSetupCustomFormIndexAddGroup'),
         type: 'add',
         width: '500px',
         labelWidth: '80px',
-        btnText: i18n.t('ui.formCommonDialogFormOk')
+        btnText: '确定'
       },
       clueList: [],
       formConfig: [],
@@ -348,7 +348,7 @@ export default {
         title: [
           {
             required: true,
-            message: i18n.t('ui.developModuleFormBoxEnterGroupName'),
+            message: $('ui.developModuleFormBoxEnterGroupName'),
             trigger: 'blur'
           }
         ]
@@ -385,16 +385,16 @@ export default {
       this.formConfig = [
         {
           key: 'title',
-          label: i18n.t('legacyScript.groupName'),
+          label: $('legacyScript.groupName'),
           type: 'input',
           maxlength: 20,
-          placeholder: i18n.t('ui.developModuleFormBoxEnterGroupName')
+          placeholder: $('ui.developModuleFormBoxEnterGroupName')
         },
         {
           key: 'sort',
-          label: i18n.t('legacyScript.sort'),
+          label: $('legacyScript.sort'),
           type: 'inputNumber',
-          placeholder: i18n.t('legacyScript.enterASortValueHigherNumbersAppearFirst')
+          placeholder: $('legacyScript.enterASortValueHigherNumbersAppearFirst')
         }
       ]
       this.formDataInit = {
@@ -517,15 +517,15 @@ export default {
     moveFn(row) {
       this.id = row.id
       this.move = true
-      this.fromData.title = i18n.t('ui.customerSetupCustomFormIndexMoveGroup')
+      this.fromData.title = $('ui.customerSetupCustomFormIndexMoveGroup')
       this.fromData.type = 'add'
       this.formConfig = [
         {
           key: 'itemId',
-          label: i18n.t('legacyScript.groupName'),
+          label: $('legacyScript.groupName'),
           type: 'select',
           maxlength: 20,
-          placeholder: i18n.t('legacyScript.pleaseSelectGroup'),
+          placeholder: $('legacyScript.pleaseSelectGroup'),
           options: this.groupList
         }
       ]
@@ -539,7 +539,7 @@ export default {
     editCate(row) {
       this.addGroupingData()
       this.cate_id = row.id
-      this.fromData.title = i18n.t('legacyScript.editGroup')
+      this.fromData.title = $('legacyScript.editGroup')
       this.fromData.type = 'edit'
       this.formDataInit.title = row.title
       this.formDataInit.sort = row.sort
@@ -548,11 +548,9 @@ export default {
 
     // 删除
     deleteFn(row, index) {
-    this.$modalSure(
-      this.$ts("你确定要删除这条数据吗")
-    ).then(() => {
-      this.dataList[index].data.splice(row.$index, 1)
-    })
+      this.$modalSure('你确定要删除这条数据吗').then(() => {
+        this.dataList[index].data.splice(row.$index, 1)
+      })
     },
 
     // 修改分组状态
@@ -570,7 +568,7 @@ export default {
     async submitFrom() {
       let result = true
       if (!result) {
-        return this.$message.error(i18n.t('ui.userDutyAnalyseSelectPosition'))
+        return this.$message.error($('ui.userDutyAnalyseSelectPosition'))
       }
 
       this.dataList.forEach((item) => {
@@ -587,7 +585,7 @@ export default {
         })
       })
       if (!result) {
-        return this.$message.error(i18n.t('legacyScript.fieldNameAndFieldTypeCannotBeEmptyPleaseRe'))
+        return this.$message.error($('legacyScript.fieldNameAndFieldTypeCannotBeEmptyPleaseRe'))
       }
       let list = this.dataList
       list.map((item) => {
@@ -645,7 +643,7 @@ export default {
     // 新增分组
     addGroup() {
       this.addGroupingData()
-      this.fromData.title = i18n.t('ui.customerSetupCustomFormIndexAddGroup')
+      this.fromData.title = $('ui.customerSetupCustomFormIndexAddGroup')
       this.fromData.type = 'add'
       this.$refs.oaDialog.openBox()
     },

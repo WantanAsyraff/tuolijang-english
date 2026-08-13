@@ -6,11 +6,11 @@
           <el-date-picker
             v-model="timeVal"
             :clearable="false"
-            :end-placeholder="$t('toptable.endingdate')"
+            :end-placeholder="$('toptable.endingdate')"
             :picker-options="pickerOptions"
-            :placeholder="$t('toptable.selecttime')"
-            :range-separator="$t('toptable.to')"
-            :start-placeholder="$t('toptable.startdate')"
+            :placeholder="$('toptable.selecttime')"
+            :range-separator="$('toptable.to')"
+            :start-placeholder="$('toptable.startdate')"
             class="time"
             format="yyyy/MM/dd"
             size="small"
@@ -20,7 +20,7 @@
           />
         </el-form-item>
         <el-form-item>
-          <el-tooltip :content='$ts("重置搜索条件")' effect="dark" placement="top">
+          <el-tooltip :content='$("ui.administrationMaterialFixedRecordResetSearchConditions")' effect="dark" placement="top">
             <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
           </el-tooltip>
         </el-form-item>

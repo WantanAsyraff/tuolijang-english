@@ -1,8 +1,8 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.required')">
+  <el-form-item :label="$('designer.setting.required')">
     <span slot="label"
-      >{{ i18nt('designer.setting.required') }}
-      <el-tooltip effect="light" :content='$ts("字段设计中开启必填，此字段务必必填")'>
+      >{{ $('designer.setting.required') }}
+      <el-tooltip effect="light" :content='$("legacy.4e9142dd06272ae0")'>
         <i class="el-icon-info"></i
       ></el-tooltip>
     </span>
@@ -11,11 +11,8 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
-
 export default {
   name: 'required-editor',
-  mixins: [i18n],
   props: {
     designer: Object,
     selectedWidget: Object,
@@ -25,4 +22,3 @@ export default {
 </script>
 
 <style scoped></style>
-@/utils/i18ns

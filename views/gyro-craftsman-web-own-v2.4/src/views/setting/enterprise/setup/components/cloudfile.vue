@@ -1,19 +1,20 @@
+import { $ } from '@/lang'
 <template>
 <div class="v-height-flag ml20 mr20" style="min-height: calc(100vh - 200px)">
   <div v-height>
     <el-alert
       class="cr-alert"
       show-icon
-      :title="$t('ui.settingEnterpriseSetupCloudfileCloudFileSettingsUseWpsOpenPlatformForOnline')"
+      :title="$('ui.settingEnterpriseSetupCloudfileCloudFileSettingsUseWpsOpenPlatformForOnline')"
       type="info"
     ></el-alert>
     <el-form ref="form" :model="form" :rules="rules" class="mt20" label-width="150px">
       <el-row>
         <el-col :span="14">
-          <el-form-item :label="$t('ui.settingEnterpriseSetupCloudfileEditType')" prop="wps_type">
+          <el-form-item :label="$('ui.settingEnterpriseSetupCloudfileEditType')" prop="wps_type">
             <el-radio-group v-model="form.wps_type">
               <el-radio :label="0">WPS</el-radio>
-              <el-radio :label="1">{{ $t("ui.settingEnterpriseSetupCloudfileBuiltIn") }}</el-radio>
+              <el-radio :label="1">{{ $("ui.settingEnterpriseSetupCloudfileBuiltIn") }}</el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -22,48 +23,47 @@
         <el-row>
           <el-col :span="14">
             <el-form-item label="APPID：" prop="wps_appid">
-              <el-input v-model="form.wps_appid" :placeholder="$t('ui.settingEnterpriseSetupCloudfilePleaseEnterTheAppidObtainedFromWpsPlatform')" size="small"></el-input>
+              <el-input v-model="form.wps_appid" :placeholder="$('ui.settingEnterpriseSetupCloudfilePleaseEnterTheAppidObtainedFromWpsPlatform')" size="small"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-button class="ml14 copy-data" type="text"
-              ><a href="https://developer.kdocs.cn/" target="_blank">{{ $t("ui.settingEnterpriseSetupCloudfileOpenWpsPlatform") }} </a></el-button
+              ><a href="https://developer.kdocs.cn/" target="_blank">{{ $("ui.settingEnterpriseSetupCloudfileOpenWpsPlatform") }} </a></el-button
             >
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="14">
             <el-form-item label="APPKEY：" prop="wps_appkey">
-              <el-input v-model="form.wps_appkey" :placeholder="$t('ui.settingEnterpriseSetupCloudfilePleaseEnterTheAppkeyObtainedFromWpsPlatform')" size="small"></el-input>
+              <el-input v-model="form.wps_appkey" :placeholder="$('ui.settingEnterpriseSetupCloudfilePleaseEnterTheAppkeyObtainedFromWpsPlatform')" size="small"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row class="form-item">
           <el-col :span="14">
-            <el-form-item :label="$t('ui.settingEnterpriseSetupCloudfileApplicationUrl')" prop="address">
-              <el-input v-model="form.address" :disabled="true" :placeholder="$t('ui.settingEnterpriseSetupCloudfilePleaseEnterTheWebsiteUrl')" size="small"></el-input>
+            <el-form-item :label="$('ui.settingEnterpriseSetupCloudfileApplicationUrl')" prop="address">
+              <el-input v-model="form.address" :disabled="true" :placeholder="$('ui.settingEnterpriseSetupCloudfilePleaseEnterTheWebsiteUrl')" size="small"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-button :data-clipboard-text="form.address" class="ml14 copy-data" type="text" @click="copy"
-              >{{ $t("ui.settingEnterpriseSetupCloudfileCopyUrl") }}</el-button
+              >{{ $("ui.settingEnterpriseSetupCloudfileCopyUrl") }}</el-button
             >
           </el-col>
         </el-row>
 
         <el-form-item>
-          {{ $t("ui.settingEnterpriseSetupCloudfilePasteTheApplicationUrlIntoTheDataCallbackUrl") }}
+          {{ $("ui.settingEnterpriseSetupCloudfilePasteTheApplicationUrlIntoTheDataCallbackUrl") }}
         </el-form-item>
       </template>
       <el-form-item>
-        <el-button :loading="loading" size="small" type="primary" @click="submitForm()">{{ $t("ui.settingEnterpriseSetupCloudfileSubmitNow") }}</el-button>
+        <el-button :loading="loading" size="small" type="primary" @click="submitForm()">{{ $("ui.settingEnterpriseSetupCloudfileSubmitNow") }}</el-button>
       </el-form-item>
     </el-form>
   </div>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import ClipboardJS from 'clipboard'
 import { cloudFileSetupApi } from '@/api/config'
 import { configUpdateDataApi } from '@/api/setting'
@@ -88,10 +88,10 @@ export default {
         address: location.protocol + '//' + location.host
       },
       rules: {
-        wps_type: [{ required: true, message: i18n.t('legacyScript.pleaseEnterWpsType'), trigger: 'change' }],
-        wps_appid: [{ required: true, message: i18n.t('legacyScript.pleaseEnterAPPID'), trigger: 'blur' }],
-        wps_appkey: [{ required: true, message: i18n.t('legacyScript.pleaseEnterAPPKEY'), trigger: 'blur' }],
-        address: [{ required: true, message: i18n.t('ui.settingEnterpriseSetupCloudfilePleaseEnterTheWebsiteUrl'), trigger: 'blur' }]
+        wps_type: [{ required: true, message: $('legacyScript.pleaseEnterWpsType'), trigger: 'change' }],
+        wps_appid: [{ required: true, message: $('legacyScript.pleaseEnterAPPID'), trigger: 'blur' }],
+        wps_appkey: [{ required: true, message: $('legacyScript.pleaseEnterAPPKEY'), trigger: 'blur' }],
+        address: [{ required: true, message: $('ui.settingEnterpriseSetupCloudfilePleaseEnterTheWebsiteUrl'), trigger: 'blur' }]
       },
       loading: false
     }
@@ -134,7 +134,7 @@ export default {
       this.$nextTick(() => {
         const clipboard = new ClipboardJS('.copy-data')
         clipboard.on('success', () => {
-          this.$message.success(this.$t('setting.copytitle'))
+          this.$message.success(this.$('setting.copytitle'))
           clipboard.destroy()
         })
       })

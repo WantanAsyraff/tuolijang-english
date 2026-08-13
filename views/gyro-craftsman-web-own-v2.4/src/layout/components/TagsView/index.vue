@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div id="tags-view-container" class="tags-view-container">
     <scroll-pane ref="scrollPane" class="tags-view-wrapper">
@@ -21,17 +22,16 @@
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
-      <li @click="refreshSelectedTag(selectedTag)">{{ $ts("刷新") }}</li>
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">{{ $ts("关闭") }}</li>
-      <li @click="closeOthersTags">{{ $ts("关闭其它") }}</li>
-      <li @click="closeAllTags(selectedTag)">{{ $ts("关闭全部") }}</li>
+      <li @click="refreshSelectedTag(selectedTag)">{{ $("legacy.aee88743413144a2") }}</li>
+      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">{{ $("hr.close") }}</li>
+      <li @click="closeOthersTags">{{ $("legacy.268438c47aaf927e") }}</li>
+      <li @click="closeAllTags(selectedTag)">{{ $("legacy.2e8456bb7d65651a") }}</li>
     </ul>
   </div>
 </template>
 
 <script>
 import { resolve } from "@/utils/path";
-import { generateTitle } from '@/utils/i18ns'
 export default {
   components: { ScrollPane: () => import('./ScrollPane') },
   data() {
@@ -69,7 +69,11 @@ export default {
     this.addTags()
   },
   methods: {
-    generateTitle,
+    generateTitle(title) {
+      const routeKey = `route.${title}`
+      const translated = this.$(routeKey)
+      return translated === routeKey ? this.$(title) : translated
+    },
     isActive(route) {
       return route.path === this.$route.path
     },
@@ -279,4 +283,3 @@ export default {
   }
 }
 </style>
-@/utils/i18ns

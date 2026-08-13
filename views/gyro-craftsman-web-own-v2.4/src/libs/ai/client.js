@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import { getAiRuntimeConfig } from './runtime-config'
 import { ensureAiPluginLoaded } from './plugin-loader'
 import { createChatPageUrl } from './utils'
@@ -136,7 +136,7 @@ export class AiEmbeddedClient {
     } catch (error) {
       // 失败后标记 error，但不销毁 client，方便后续重试
       this.status = CLIENT_STATUS.ERROR
-      console.error(i18n.t('legacyScript.failedToLoadTheAIPlugin'), error)
+      console.error($('legacyScript.failedToLoadTheAIPlugin'), error)
       return null
     } finally {
       // 无论成功还是失败，都释放 initTask，避免失败 Promise 被永久复用

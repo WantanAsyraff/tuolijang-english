@@ -3,10 +3,10 @@
   <el-card class="station-header" :body-style="{ padding: '14px' }">
     <el-row>
       <el-col :span="24">
-        <el-page-header :content="$t('ui.hrAttendanceSettingAddSchedulSchedule')">
+        <el-page-header :content="$('ui.hrAttendanceSettingAddSchedulSchedule')">
           <div slot="title" @click="backFn">
             <i class="el-icon-arrow-left"></i>
-            {{ $t("ui.customerProductAddProductResponse") }}
+            {{ $("ui.customerProductAddProductResponse") }}
           </div>
         </el-page-header>
       </el-col>
@@ -26,7 +26,7 @@
           <el-input
             class="mr14"
             size="small"
-            :placeholder="$t('ui.hrAttendanceSettingAddSchedulPleaseEnterEmployeeName')"
+            :placeholder="$('ui.hrAttendanceSettingAddSchedulPleaseEnterEmployeeName')"
             v-model="where.name"
             clearable
             style="width: 260px"
@@ -42,7 +42,7 @@
             size="small"
             type="month"
             :picker-options="pickerOptions"
-            :placeholder="$t('ui.hrAttendanceSettingAddSchedulSelectMonth')"
+            :placeholder="$('ui.hrAttendanceSettingAddSchedulSelectMonth')"
             @change="getList"
           >
           </el-date-picker>
@@ -59,7 +59,7 @@
     <!-- 设置排班 -->
     <el-form ref="ruleForm" label-width="90px" class="mt10 form-box">
       <el-form-item class="h32">
-        <span slot="label">{{ $t("ui.hrAttendanceSettingAddConentAttendanceShift2") }}</span>
+        <span slot="label">{{ $("ui.hrAttendanceSettingAddConentAttendanceShift2") }}</span>
         <div class="flex-box">
           <template>
             <div class="shift-tag">
@@ -68,23 +68,23 @@
                   <span class="fang" :style="{ backgroundColor: item.color }"></span>
                   <span class="mr10">
                     {{ item.name }}
-                    {{ item.times[0].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }} {{ item.times[0].work_hours }} -
-                    {{ item.times[0].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[0].off_hours }}
+                    {{ item.times[0].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }} {{ item.times[0].work_hours }} -
+                    {{ item.times[0].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[0].off_hours }}
                     <span v-if="item.times.length > 1"
-                      >、 {{ item.times[1].first_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }} {{ item.times[1].work_hours }} -
-                      {{ item.times[1].second_day_after == 0 ? $t('ui.hrAttendanceSettingAddConentToday') : $t('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[1].off_hours }}
+                      >、 {{ item.times[1].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }} {{ item.times[1].work_hours }} -
+                      {{ item.times[1].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[1].off_hours }}
                     </span>
                   </span>
                 </div>
               </div>
               <span class="fang" style="backgroundcolor: #cccccc"></span>
-              <span>{{ $t("ui.hrAttendanceSettingAddSchedulBreak") }}</span>
+              <span>{{ $("ui.hrAttendanceSettingAddSchedulBreak") }}</span>
             </div>
           </template>
         </div>
       </el-form-item>
       <el-form-item class="mb0">
-        <span slot="label">{{ $t("ui.hrAttendanceSettingAddSchedulScheduleCycle") }}</span>
+        <span slot="label">{{ $("ui.hrAttendanceSettingAddSchedulScheduleCycle") }}</span>
         <div class="flex">
           <div class="flex-box">
             <template v-for="(item, index4) in cycleList">
@@ -93,9 +93,9 @@
               </div>
             </template>
 
-            <span class="addText" @click="addCycleFn">{{ $t("ui.userDailyAddBoxAdd") }}</span>
+            <span class="addText" @click="addCycleFn">{{ $("ui.userDailyAddBoxAdd") }}</span>
           </div>
-          <span class="tips">{{ $t("ui.hrAttendanceSettingCheckSchedulWhenNoScheduleIsAssignedTheSystemUsesThe") }}</span>
+          <span class="tips">{{ $("ui.hrAttendanceSettingCheckSchedulWhenNoScheduleIsAssignedTheSystemUsesThe") }}</span>
         </div>
       </el-form-item>
     </el-form>
@@ -112,12 +112,12 @@
       >
         <template v-if="where.date">
           <!-- 点击选中整行 -->
-          <el-table-column prop="name" :label="$t('ui.businessHolidayQueryIndexName')" width="140" fixed="left" style="background-color: #fff">
+          <el-table-column prop="name" :label="$('ui.businessHolidayQueryIndexName')" width="140" fixed="left" style="background-color: #fff">
             <template slot-scope="scope">
               <el-popover placement="bottom" :ref="'row' + scope.$index" width="238px" trigger="click">
                 <div>
                   <el-tabs v-model="activeName">
-                    <el-tab-pane :label="$t('ui.hrAttendanceSettingAddSchedulScheduleByShift')" name="1">
+                    <el-tab-pane :label="$('ui.hrAttendanceSettingAddSchedulScheduleByShift')" name="1">
                       <div class="shiftBox">
                         <div
                           class="box"
@@ -132,7 +132,7 @@
                       </div>
                     </el-tab-pane>
 
-                    <el-tab-pane :label="$t('ui.hrAttendanceSettingAddSchedulScheduleByCycle')" name="2">
+                    <el-tab-pane :label="$('ui.hrAttendanceSettingAddSchedulScheduleByCycle')" name="2">
                       <div class="shiftBox">
                         <div
                           class="box add-line"
@@ -149,7 +149,7 @@
                 </div>
 
                 <div slot="reference">
-                  <el-tooltip class="item" effect="dark" :content="$t('ui.hrAttendanceSettingAddSchedulClickToSelectTheEntireRow')" placement="top">
+                  <el-tooltip class="item" effect="dark" :content="$('ui.hrAttendanceSettingAddSchedulClickToSelectTheEntireRow')" placement="top">
                     <div class="nameFn" @click="clickRowIndex(scope.row.name)">
                       {{ scope.row.name }}
                     </div>
@@ -164,7 +164,7 @@
             <template v-slot:header>
               <el-popover :ref="'column' + index1" placement="right" width="238px" trigger="click">
                 <el-tabs v-model="activeName1" v-if="sameDay <= index1">
-                  <el-tab-pane :label="$t('ui.hrAttendanceSettingAddSchedulScheduleByShift')" name="1">
+                  <el-tab-pane :label="$('ui.hrAttendanceSettingAddSchedulScheduleByShift')" name="1">
                     <div class="shiftBox">
                       <div
                         class="box"
@@ -179,7 +179,7 @@
                     </div>
                   </el-tab-pane>
 
-                  <el-tab-pane :label="$t('ui.hrAttendanceSettingAddSchedulScheduleByCycle')" name="2">
+                  <el-tab-pane :label="$('ui.hrAttendanceSettingAddSchedulScheduleByCycle')" name="2">
                     <div class="shiftBox">
                       <div
                         class="box add-line"
@@ -193,10 +193,10 @@
                     </div>
                   </el-tab-pane>
                 </el-tabs>
-                <div v-else>{{ $t("ui.hrAttendanceSettingAddSchedulPastDatesCannotBeScheduled") }}</div>
+                <div v-else>{{ $("ui.hrAttendanceSettingAddSchedulPastDatesCannotBeScheduled") }}</div>
 
                 <div slot="reference" @click="clickColumnIndex(index1)" :class="item.is_rest == 1 ? 'addDate' : ''">
-                  <el-tooltip class="item" effect="dark" :content="$t('ui.hrAttendanceSettingAddSchedulClickToSelectTheEntireColumn')" placement="top">
+                  <el-tooltip class="item" effect="dark" :content="$('ui.hrAttendanceSettingAddSchedulClickToSelectTheEntireColumn')" placement="top">
                     <div class="date">
                       <div class="day">{{ $moment(item.date).format('D') }}</div>
                       <div class="week">{{ getWeek(item.date) }}</div>
@@ -210,7 +210,7 @@
             <template slot-scope="scope">
               <el-popover :ref="'pop' + index1" placement="bottom" width="238px" trigger="click">
                 <el-tabs v-model="activeName2" v-if="sameDay <= index1">
-                  <el-tab-pane :label="$t('ui.hrAttendanceSettingAddSchedulScheduleByShift')" name="1">
+                  <el-tab-pane :label="$('ui.hrAttendanceSettingAddSchedulScheduleByShift')" name="1">
                     <div class="shiftBox">
                       <div
                         class="box"
@@ -225,7 +225,7 @@
                     </div>
                   </el-tab-pane>
 
-                  <el-tab-pane :label="$t('ui.hrAttendanceSettingAddSchedulScheduleByCycle')" name="2">
+                  <el-tab-pane :label="$('ui.hrAttendanceSettingAddSchedulScheduleByCycle')" name="2">
                     <div class="shiftBox">
                       <div
                         class="box add-line"
@@ -239,7 +239,7 @@
                     </div>
                   </el-tab-pane>
                 </el-tabs>
-                <div v-else>{{ $t("ui.hrAttendanceSettingAddSchedulPastDatesCannotBeScheduled") }}</div>
+                <div v-else>{{ $("ui.hrAttendanceSettingAddSchedulPastDatesCannotBeScheduled") }}</div>
 
                 <div
                   slot="reference"
@@ -269,8 +269,8 @@
     </div>
   </el-card>
   <div class="cr-bottom-button btn-shadow">
-    <el-button size="small" @click="backFn">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-    <el-button size="small" type="primary" @click="submit">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+    <el-button size="small" @click="backFn">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+    <el-button size="small" type="primary" @click="submit">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
   </div>
   <!-- 添加周期 -->
   <add-cycle ref="addCycle" @cycleList="getCycleList" :group_id="id"></add-cycle>

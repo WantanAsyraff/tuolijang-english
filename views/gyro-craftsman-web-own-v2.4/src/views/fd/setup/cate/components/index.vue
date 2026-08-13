@@ -12,9 +12,9 @@
     >
       <formCreate v-if="rules.length > 0" ref="fc" :option="option" :rule="rules" />
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button size="small" @click="drawer = false">{{ $t('public.cancel') }}</el-button>
+        <el-button size="small" @click="drawer = false">{{ $('public.cancel') }}</el-button>
         <el-button size="small" type="primary" :loading="loading" @click="handleConfirm('ruleForm')">{{
-          $t('public.ok')
+          $('public.ok')
         }}</el-button>
       </div>
     </el-drawer>

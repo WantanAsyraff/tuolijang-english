@@ -5,7 +5,7 @@
     <el-input
       v-model="queryText"
       type="text"
-      :placeholder="$t('ui.mlReferenceSearchReferenceSearchTablePleaseEnterKeywordSearch')"
+      :placeholder="$('ui.mlReferenceSearchReferenceSearchTablePleaseEnterKeywordSearch')"
       @keyup.enter.native="doSearch"
       clearable
       @clear="cancelSearch"
@@ -37,7 +37,7 @@
           <el-icon>
             <Check />
           </el-icon>
-          {{ $t("ui.developTableDialogSelect") }}
+          {{ $("ui.developTableDialogSelect") }}
         </el-button>
       </template>
     </SimpleTable>

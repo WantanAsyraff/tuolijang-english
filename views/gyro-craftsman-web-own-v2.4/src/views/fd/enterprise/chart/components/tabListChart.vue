@@ -2,10 +2,10 @@
   <div>
     <ul class="tab-list">
       <li class="font-weight800">
-        <span>{{ $t('finance.serialnumber') }}</span>
-        <span>{{ $t('finance.type') }}</span>
-        <span>{{ $t('finance.amountmoney') }}</span>
-        <span>{{ $t('finance.proportion') }}</span>
+        <span>{{ $('finance.serialnumber') }}</span>
+        <span>{{ $('finance.type') }}</span>
+        <span>{{ $('finance.amountmoney') }}</span>
+        <span>{{ $('finance.proportion') }}</span>
       </li>
     </ul>
     <ul class="tab-list tab-animate" @mouseenter="stop()" @mouseleave="up()">
@@ -14,7 +14,7 @@
           <el-button type="info" size="mini" circle>{{ index + 1 }}</el-button>
         </span>
         <span v-if="item.cate_id > 0">{{ item.name }}</span>
-        <span v-else>{{ $t('finance.other') }}</span>
+        <span v-else>{{ $('finance.other') }}</span>
         <span>{{ item.sum }}</span>
         <span>
           <el-progress :text-inside="true" :stroke-width="20" :percentage="Number(item.ratio)" />

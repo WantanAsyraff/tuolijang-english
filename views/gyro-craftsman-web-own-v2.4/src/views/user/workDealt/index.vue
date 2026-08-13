@@ -5,7 +5,7 @@
     <div class="mb15">
       <el-button class="add-task" @click="addTask">
         <i class="el-icon-plus" />
-        {{ $t('calendar.addtask') }}
+        {{ $('calendar.addtask') }}
         <i class="el-icon-bell icon-task-dell" />
       </el-button>
     </div>
@@ -22,7 +22,7 @@
           <div class="task-list-right">
             <p>{{ item.content }}</p>
             <p>
-              <span>{{ $t('customer.reminderdata') }}:</span>
+              <span>{{ $('customer.reminderdata') }}:</span>
               <span>{{ item.remind_day }} {{ item.remind_time }}</span>
             </p>
           </div>
@@ -30,7 +30,7 @@
       </ul>
       <div class="task-text">
         <span class="pointer" @click="addCompleteTask">
-          {{ complete === true ? $t('ui.developConditionGroupDialogHide') : $t('ui.userWorkDealtIndexDisplay') }}{{ $t("ui.userWorkDealtIndexCompletedItems") }}
+          {{ complete === true ? $('ui.developConditionGroupDialogHide') : $('ui.userWorkDealtIndexDisplay') }}{{ $("ui.userWorkDealtIndexCompletedItems") }}
           <i :class="complete === true ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
         </span>
       </div>
@@ -46,7 +46,7 @@
             <div class="task-list-right">
               <p>{{ item.content }}</p>
               <p>
-                <span>{{ $t('customer.reminderdata') }}:</span>
+                <span>{{ $('customer.reminderdata') }}:</span>
                 <span>{{ item.remind_day }} {{ item.remind_time }}</span>
               </p>
             </div>
@@ -100,7 +100,7 @@ export default {
     },
     addTask() {
       this.formBoxConfig = {
-        title: this.$t('calendar.addtask'),
+        title: this.$('calendar.addtask'),
         edit: false,
         data: {
           types: 'personal'
@@ -139,7 +139,7 @@ export default {
         this.handleList()
       } else {
         this.formBoxConfig = {
-          title: this.$t('calendar.edittask'),
+          title: this.$('calendar.edittask'),
           edit: true,
           width: '500px',
           data: this.itemArray
@@ -153,7 +153,7 @@ export default {
     },
     handleItemClick(item) {
       this.repeatData = {
-        title: this.$t('calendar.checktask'),
+        title: this.$('calendar.checktask'),
         width: '480px',
         data: item
       }

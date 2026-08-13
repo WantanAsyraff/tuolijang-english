@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 办公-我的日程 Tab 内容 -->
 <template>
   <div class="my-calendar">
@@ -5,7 +6,7 @@
       <div class="calendar-sidebar">
         <calendar-bar ref="calendarBar" @handleDate="handleDate" />
       </div>
-      <div class="calendar-main line" v-loading="loading" :element-loading-text="$t('ui.userCalendarMyCalendarLoadingData')">
+      <div class="calendar-main line" v-loading="loading" element-loading-text="数据正在加载中">
         <div class="plan-tabs-content"></div>
         <div class="needToBeDealt">
           <div class="add-btn">
@@ -79,7 +80,7 @@
     <calendarDetails ref="calendarDetails" @deleteFn="getList" @editFn="editFn" :dateInfo="dateInfo"></calendarDetails>
     <contract-dialog ref="contractDialog" :config="configContract" @isOk="getList"></contract-dialog>
     <!-- 跟进弹窗 -->
-    <el-dialog :title="$t('ui.customerClueIndexAddFollowUpRecord')" class="record" :visible.sync="dialogVisible" width="40%">
+    <el-dialog :title="$('ui.customerClueIndexAddFollowUpRecord')" class="record" :visible.sync="dialogVisible" width="40%">
       <recordUpload :form-info="formInfo" @change="recordChange"></recordUpload>
     </el-dialog>
     <edit-examine
@@ -104,7 +105,6 @@ import { configRuleApproveApi } from '@/api/config'
 
 // 导入工具函数
 import { toGetWeek, getColor } from '@/utils/format'
-import { translateSystemText } from '@/utils/i18ns'
 import { getStorageJson } from '@/utils/storage'
 
 export default {
@@ -135,9 +135,9 @@ export default {
         follow_id: 0
       },
       fromList: [
-        { text: translateSystemText('天', this), val: '1' },
-        { text: translateSystemText('周', this), val: '2' },
-        { text: translateSystemText('月', this), val: '3' }
+        { text: this.$('天'), val: '1' },
+        { text: this.$('周'), val: '2' },
+        { text: this.$('月'), val: '3' }
       ],
 
       start_time: '',
@@ -163,9 +163,9 @@ export default {
         },
 
         buttonText: {
-          month: translateSystemText('月', this),
-          week: translateSystemText('周', this),
-          day: translateSystemText('天', this)
+          month: this.$('月'),
+          week: this.$('周'),
+          day: this.$('天')
         },
 
         allDaySlot: true,
@@ -202,7 +202,7 @@ export default {
         events: [],
         slotEventOverlap: false,
         eventOverlap: false,
-        locale: this.$i18n.locale === 'en' ? 'en' : 'zh-cn',
+        locale: this.$language === 'en' ? 'en' : 'zh-cn',
         weekNumberCalculation: 'ISO'
       },
       detailedData: {},
@@ -324,7 +324,7 @@ export default {
     },
 
     moreLinkContent(e) {
-      return this.$i18n.locale === 'en' ? `${e.num} more schedules` : '还有' + e.num + '个日程'
+      return this.$language === 'en' ? `${e.num} more schedules` : '还有' + e.num + '个日程'
     },
 
     day() {
@@ -460,7 +460,7 @@ export default {
       return -1
     },
     getWeek(date) {
-      return translateSystemText(toGetWeek(date), this)
+      return this.$(toGetWeek(date))
     },
 
     editFn(id, type, date) {

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="m14">
   <!-- 全部页面 -->
@@ -16,16 +17,16 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="35"> </el-table-column>
-        <el-table-column :label="$t('ui.layoutNoticeNoticeListView')" width="50">
+        <el-table-column :label="$('ui.layoutNoticeNoticeListView')" width="50">
           <template slot-scope="scope">
             <el-image :src="scope.row.is_read === 0 ? unreadIcon : readIcon"></el-image>
           </template>
         </el-table-column>
-        <el-table-column prop="title" :label="$t('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="80"></el-table-column>
-        <el-table-column prop="message" :label="$t('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360" />
-        <el-table-column prop="cate_name" :label="$t('ui.developViewManagementType')" min-width="80" />
-        <el-table-column prop="created_at" :label="$t('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
-        <el-table-column :label="$t('toptable.operation')" width="100" fixed="right">
+        <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="80"></el-table-column>
+        <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360" />
+        <el-table-column prop="cate_name" :label="$('ui.developViewManagementType')" min-width="80" />
+        <el-table-column prop="created_at" :label="$('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
+        <el-table-column :label="$('toptable.operation')" width="100" fixed="right">
           <template slot-scope="scope">
             <el-button
               type="text"
@@ -43,9 +44,9 @@
     <div class="footer">
       <div class="isSelect">
         <div class="flex" style="display: inline-block">
-          <el-button size="small" @click="handleDelete" :disabled="multipleSelection.length == 0">{{ $t("ui.customerSetupDictionaryManagementBatchDelete") }}</el-button>
+          <el-button size="small" @click="handleDelete" :disabled="multipleSelection.length == 0">{{ $("ui.customerSetupDictionaryManagementBatchDelete") }}</el-button>
         </div>
-        <span v-if="multipleSelection.length !== 0">{{ $t("ui.userNewsReadSelected") }}{{ multipleSelection.length }} {{ $t("ui.commonOaFromBoxItems") }}</span>
+        <span v-if="multipleSelection.length !== 0">{{ $("ui.userNewsReadSelected") }}{{ multipleSelection.length }} {{ $("ui.commonOaFromBoxItems") }}</span>
       </div>
       <div class="paginationClass">
         <el-pagination
@@ -67,7 +68,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { noticeMessageListApi, noticeMessageReadApi, noticeMessageDeleteApi } from '@/api/user'
 import { messageListApi } from '@/api/public'
 
@@ -145,7 +145,7 @@ export default {
     },
     handleDelete() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
+        this.$message.error($('legacyScript.selectAtLeastOneItem2'))
       } else {
         this.$modalSure('删除后不可恢复,您确认要删除吗').then(() => {
           const ids = []
@@ -173,7 +173,7 @@ export default {
     },
     handleIsRead() {
       if (this.multipleSelection.length <= 0) {
-        this.$message.error(i18n.t('legacyScript.selectAtLeastOneItem2'))
+        this.$message.error($('legacyScript.selectAtLeastOneItem2'))
       } else {
         const ids = []
         this.multipleSelection.map((value) => {

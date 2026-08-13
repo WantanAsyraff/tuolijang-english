@@ -12,8 +12,8 @@
           v-if="search.length > 0"
           :search="search"
           :total="total"
-          :title="$t('ui.administrationMaterialConsumeLogMaterialRecords')"
-:btn-text="$t('ui.fdExamineIndexExport')"
+          :title="$('ui.administrationMaterialConsumeLogMaterialRecords')"
+          :btnText="$('ui.fdExamineIndexExport')"
           :btnIcon="false"
           :isAddBtn="true"
           :isViewSearch="false"
@@ -23,22 +23,22 @@
 
         <div class="table-box mt10 v-height-flag">
           <el-table :data="tableData" :height="tableHeight" style="width: 100%" row-key="id" default-expand-all>
-            <el-table-column prop="id" :label="$t('ui.administrationMaterialConsumeLogReceivingDepartmentEmployee')" min-width="100">
+            <el-table-column prop="id" :label="$('ui.administrationMaterialConsumeLogReceivingDepartmentEmployee')" min-width="100">
               <template slot-scope="scope">
                 <span v-if="scope.row.frame"> {{ scope.row.frame ? scope.row.frame.name : '--' }}</span>
                 <span v-else>{{ scope.row.card ? scope.row.card.name : '--' }}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="storage.name" :label="$t('ui.administrationMaterialChartIndexMaterialName')" min-width="100" />
-            <el-table-column prop="storage.units" :label="$t('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100">
+            <el-table-column prop="storage.name" :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="100" />
+            <el-table-column prop="storage.units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100">
               <template slot-scope="scope">
                 {{ scope.row.storage.units ? scope.row.storage.units : '--' }}
               </template>
             </el-table-column>
-            <el-table-column prop="storage.cate.cate_name" :label="$t('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" />
-            <el-table-column prop="storage.specs" :label="$t('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
-            <el-table-column prop="num" :label="$t('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="80" />
-            <el-table-column prop="updated_at" :label="$t('ui.administrationMaterialConsumeLogIssueTime')" min-width="120">
+            <el-table-column prop="storage.cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" />
+            <el-table-column prop="storage.specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
+            <el-table-column prop="num" :label="$('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="80" />
+            <el-table-column prop="updated_at" :label="$('ui.administrationMaterialConsumeLogIssueTime')" min-width="120">
               <template slot-scope="scope">
                 {{ $moment(scope.row.updated_at).format('yyyy-MM-DD') }}
               </template>
@@ -197,7 +197,7 @@ export default {
       storageRecordApi(where).then((res) => {
         let data = res.data.list
         if (data.length <= 0) {
-          this.$message.error(this.$t('access.placeholder24'))
+          this.$message.error(this.$('access.placeholder24'))
         } else {
           const aoaData = [['领取部门/人员', '物资名称', '规格型号', '物资分类', '计量单位', '领用数量', '领用时间']]
 

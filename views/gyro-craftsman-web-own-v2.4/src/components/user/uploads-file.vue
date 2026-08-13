@@ -7,7 +7,7 @@
           <div v-if="showClose && fileList.length < maxLength" class="upload-box">
             <el-upload action="#" :show-file-list="false" :http-request="uploadServerLog" :multiple="multiple">
               <slot>
-                <div class="btn">{{ $ts("＋上传附件（最多") }}{{ maxLength }}{{ $ts("个）") }}</div>
+                <div class="btn">{{ $("legacy.ac7432b14cb34ebb") }}{{ maxLength }}{{ $("legacy.22ba276c22bf4a9c") }}</div>
               </slot>
             </el-upload>
           </div>

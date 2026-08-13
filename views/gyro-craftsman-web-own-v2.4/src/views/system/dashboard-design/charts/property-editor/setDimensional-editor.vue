@@ -1,13 +1,14 @@
+import { $ } from '@/lang'
 <template>
 <div>
-  <el-form-item class="mb-18" :label="chartType == 'listTable' ? $t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDisplayedFields') : $t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimensionAndMetricSettings')">
-    <el-button @click="openDrawer">{{ $t("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure") }}</el-button>
+  <el-form-item class="mb-18" :label="chartType == 'listTable' ? $('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDisplayedFields') : $('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimensionAndMetricSettings')">
+    <el-button @click="openDrawer">{{ $("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure") }}</el-button>
   </el-form-item>
-  <el-drawer :visible.sync="drawer" :title="$t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimensionAndMetricSettings')" :size="360">
+  <el-drawer :visible.sync="drawer" :title="$('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimensionAndMetricSettings')" :size="360">
     <div class="drawer-main">
       <div class="form-box" ref="formBoxRefs">
         <el-form label-width="60">
-          <el-form-item :label="$t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimension')" v-if="isShowDimension()">
+          <el-form-item :label="$('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimension')" v-if="isShowDimension()">
             <div class="input-box">
               <el-scrollbar max-height="132px">
                 <DimensionCom
@@ -45,10 +46,10 @@
               </div>
             </div>
             <template #reference>
-              <el-button type="text" icon="el-icon-circle-plus" v-show="dimension.length < 1">{{ $t("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorAddDimension") }}</el-button>
+              <el-button type="text" icon="el-icon-circle-plus" v-show="dimension.length < 1">{{ $("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorAddDimension") }}</el-button>
             </template>
           </el-popover>
-          <el-form-item :label="$t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorRowDimensions')" v-if="chartType == 'pivotTable'">
+          <el-form-item :label="$('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorRowDimensions')" v-if="chartType == 'pivotTable'">
             <div class="input-box">
               <el-scrollbar max-height="132px">
                 <DimensionCom v-model="dimensionRow" @onSort="onSort" isDimension :chartType="chartType" />
@@ -73,13 +74,13 @@
                     </div>
                   </div>
                   <template #reference>
-                    <el-button type="text" icon="el-icon-circle-plus">{{ $t("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorAddRowDimensions") }}</el-button>
+                    <el-button type="text" icon="el-icon-circle-plus">{{ $("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorAddRowDimensions") }}</el-button>
                   </template>
                 </el-popover>
               </el-scrollbar>
             </div>
           </el-form-item>
-          <el-form-item :label="$t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorColumnDimensions')" v-if="chartType == 'pivotTable'">
+          <el-form-item :label="$('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorColumnDimensions')" v-if="chartType == 'pivotTable'">
             <div class="input-box">
               <el-scrollbar max-height="132px">
                 <DimensionCom v-model="dimensionCol" @onSort="onSort" :chartType="chartType" />
@@ -104,14 +105,14 @@
                     </div>
                   </div>
                   <template #reference>
-                    <el-button type="text" icon="el-icon-circle-plus">{{ $t("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorAddColumnDimensions") }}</el-button>
+                    <el-button type="text" icon="el-icon-circle-plus">{{ $("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorAddColumnDimensions") }}</el-button>
                   </template>
                 </el-popover>
               </el-scrollbar>
             </div>
           </el-form-item>
           <!-- 数据列表 -->
-          <el-form-item :label="$t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorIndicator')" v-if="chartType != 'listTable'">
+          <el-form-item :label="$('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorIndicator')" v-if="chartType != 'listTable'">
             <div class="input-box">
               <el-scrollbar max-height="132px">
                 <DimensionCom v-model="metrics" @onSort="onSort" :chartType="chartType" />
@@ -140,15 +141,15 @@
               </div>
             </div>
             <template #reference>
-              <el-button type="text" icon="el-icon-circle-plus">{{ $t("ui.hrAssessQuotaIndexAddIndicators") }}</el-button>
+              <el-button type="text" icon="el-icon-circle-plus">{{ $("ui.hrAssessQuotaIndexAddIndicators") }}</el-button>
             </template>
           </el-popover>
           <!-- 进度条 -->
-          <el-form-item :label="$t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorTargetValue')" v-if="chartType == 'progressbar'">
+          <el-form-item :label="$('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorTargetValue')" v-if="chartType == 'progressbar'">
             <el-input-number v-model="optionModel.setDimensional.targetValue" :min="0" class="w-100" />
           </el-form-item>
           <!-- 数据列表 -->
-          <el-form-item :label="$t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDisplayedFields')" v-if="chartType == 'listTable'">
+          <el-form-item :label="$('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDisplayedFields')" v-if="chartType == 'listTable'">
             <div class="input-box">
               <el-scrollbar max-height="132px">
                 <DimensionCom
@@ -186,7 +187,7 @@
               </div>
             </div>
             <template #reference>
-              <el-button type="text" icon="el-icon-circle-plus">{{ $t("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorAddDisplayedFields") }}</el-button>
+              <el-button type="text" icon="el-icon-circle-plus">{{ $("ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorAddDisplayedFields") }}</el-button>
             </template>
           </el-popover>
         </el-form>
@@ -195,14 +196,13 @@
     <template #footer>
       <div style="flex: auto; padding-top: 10px">
         <!-- <el-button size="default" @click="onCancel">取消</el-button> -->
-        <el-button size="default" type="primary" @click="drawer = false">{{ $t("ui.customerWeChatMassGroupDetailsClose") }}</el-button>
+        <el-button size="default" type="primary" @click="drawer = false">{{ $("ui.customerWeChatMassGroupDetailsClose") }}</el-button>
       </div>
     </template>
   </el-drawer>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { mapActions } from 'vuex'
 // import VueDraggableNext from 'vue-draggable-next'
 import DimensionCom from './components/DimensionCom.vue'
@@ -330,7 +330,7 @@ export default {
     },
     openDrawer() {
       if (!this.optionModel.dataEntity) {
-        this.$message.warning(i18n.t('legacyScript.pleaseSelectAnIconDataEntityFirst'))
+        this.$message.warning($('legacyScript.pleaseSelectAnIconDataEntityFirst'))
         return
       }
       this.drawer = true
@@ -365,23 +365,23 @@ export default {
       let checkHasMetrics = this.metrics.filter((el) => el.field_name == cutField.field_name)
       let checkHasShowFields = this.showFields.filter((el) => el.field_name == cutField.field_name)
       if (checkHasDimension.length > 0) {
-        this.$message.warning(i18n.t('legacyScript.failedToAddDimensionsCannotBeAddedRepeatedlyForThe'))
+        this.$message.warning($('legacyScript.failedToAddDimensionsCannotBeAddedRepeatedlyForThe'))
         return
       }
       if (checkHasDimensionRow.length > 0) {
-        this.$message.warning(i18n.t('legacyScript.failedToAddDimensionRowsCannotBeAddedForThe'))
+        this.$message.warning($('legacyScript.failedToAddDimensionRowsCannotBeAddedForThe'))
         return
       }
       if (checkHasDimensionCol.length > 0) {
-        this.$message.warning(i18n.t('legacyScript.failedToAddTheSameFieldCannotHaveDuplicateDimension'))
+        this.$message.warning($('legacyScript.failedToAddTheSameFieldCannotHaveDuplicateDimension'))
         return
       }
       if (checkHasMetrics.length > 0) {
-        this.$message.warning(i18n.t('legacyScript.failedToAddDuplicateMetricsCannotBeAddedForThe'))
+        this.$message.warning($('legacyScript.failedToAddDuplicateMetricsCannotBeAddedForThe'))
         return
       }
       if (checkHasShowFields.length > 0) {
-        this.$message.warning(i18n.t('legacyScript.failedToAddTheSameFieldCannotBeAddedMultiple'))
+        this.$message.warning($('legacyScript.failedToAddTheSameFieldCannotBeAddedMultiple'))
         return
       }
       let dimensionLength = this.dimension.length
@@ -394,17 +394,17 @@ export default {
         // 2个维度或1个指标
         if (max3.includes(type)) {
           if (dimensionLength > 1) {
-            this.$message.warning(i18n.t('legacyScript.additionFailedAMaximumOf2DimensionsCanBeAdded'))
+            this.$message.warning($('legacyScript.additionFailedAMaximumOf2DimensionsCanBeAdded'))
             return
           }
           if (metricsLength > 1 && dimensionLength > 0) {
-            this.$message.warning(i18n.t('legacyScript.failedToAddMultipleIndicatorsCanHaveAtMostOne'))
+            this.$message.warning($('legacyScript.failedToAddMultipleIndicatorsCanHaveAtMostOne'))
             return
           }
         }
         // 如果是饼图、漏斗图 最多添加1个维度
         if ((type == 'pieChart' || type == 'funnelChart') && dimensionLength > 0) {
-          this.$message.warning(i18n.t('legacyScript.failedToAddMaximumOf1DimensionAllowed'))
+          this.$message.warning($('legacyScript.failedToAddMaximumOf1DimensionAllowed'))
           return
         }
         this.dimension.push(cutField)
@@ -415,13 +415,13 @@ export default {
         // 2个维度或1个指标
         if (max3.includes(type)) {
           if (dimensionLength > 1 && metricsLength > 0) {
-            this.$message.warning(i18n.t('legacyScript.additionFailedAMaximumOf1MetricCanBeAdded'))
+            this.$message.warning($('legacyScript.additionFailedAMaximumOf1MetricCanBeAdded'))
             return
           }
         }
         // 如果是饼图、进度条 最多添加1个指标
         if ((type == 'pieChart' || type == 'progressbar' || type == 'statistic') && metricsLength > 0) {
-          this.$message.warning(i18n.t('legacyScript.additionFailedMaximumOf1MetricAllowed'))
+          this.$message.warning($('legacyScript.additionFailedMaximumOf1MetricAllowed'))
           return
         }
         this.metrics.push(cutField)

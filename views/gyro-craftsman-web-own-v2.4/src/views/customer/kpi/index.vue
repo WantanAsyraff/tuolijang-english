@@ -1,19 +1,20 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div>
     <el-card class="employees-card-bottom">
       <div class="plan-tabs-content mb20">
         <el-tabs v-model="where.link_type" @tab-click="tapClick">
-          <el-tab-pane :label="$t('ui.customerKpiIndexDepartmentTarget')" name="1" />
-          <el-tab-pane :label="$t('ui.customerKpiIndexSalespersonTarget')" name="0" />
+          <el-tab-pane :label="$('ui.customerKpiIndexDepartmentTarget')" name="1" />
+          <el-tab-pane :label="$('ui.customerKpiIndexSalespersonTarget')" name="0" />
         </el-tabs>
         <div>
-          <el-button class="btn-create" size="small" type="primary" @click="addFinance">{{ $t("ui.customerKpiIndexSetTarget") }}</el-button>
-          <el-button size="small" class="btn-create" v-if="!editShow" @click="editFn"> {{ $t("ui.formCommonOaLogEdit") }} </el-button>
+          <el-button class="btn-create" size="small" type="primary" @click="addFinance">{{ $("ui.customerKpiIndexSetTarget") }}</el-button>
+          <el-button size="small" class="btn-create" v-if="!editShow" @click="editFn"> {{ $("ui.formCommonOaLogEdit") }} </el-button>
           <el-button size="small" class="btn-create" type="primary" v-if="editShow" @click="saveFinance">
-            {{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}
+            {{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}
           </el-button>
-          <el-button size="small" class="btn-create" v-if="editShow" @click="editShow = false"> {{ $t("ui.formCommonSelectLabelCancel") }} </el-button>
+          <el-button size="small" class="btn-create" v-if="editShow" @click="editShow = false"> {{ $("ui.formCommonSelectLabelCancel") }} </el-button>
         </div>
       </div>
       <!-- 筛选 -->
@@ -24,7 +25,7 @@
           size="small"
           format="yyyy"
           value-format="yyyy"
-          :placeholder="$t('ui.customerKpiIndexSelectYear')"
+          :placeholder="$('ui.customerKpiIndexSelectYear')"
           @change="getTableData"
         >
         </el-date-picker>
@@ -47,7 +48,7 @@
           style="width: 250px"
         >
         </select-member>
-        <el-tooltip effect="dark" :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
+        <el-tooltip effect="dark" :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" placement="top">
           <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
         </el-tooltip>
       </div>
@@ -90,10 +91,10 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="80">
+        <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="80">
           <template slot-scope="scope">
             <el-button type="text" v-if="scope.row.user && typeof scope.row.user === 'object' && scope.row.user.name != '目标合计'" @click="delFn(scope.$index, scope.row)">
-              {{ $t("ui.chatIndexDelete") }}</el-button
+              {{ $("ui.chatIndexDelete") }}</el-button
             >
           </template>
         </el-table-column>
@@ -105,7 +106,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { clientTargetsApi, clientTargetPutApi, clientTargetDelApi } from '@/api/client'
 export default {
   name: 'kpi',
@@ -123,75 +123,75 @@ export default {
       where: { year: '', frame_id: [], user_id: [], link_type: '1' },
       header: [
         {
-          label: i18n.t('setting.edit.departmentname'),
+          label: $('setting.edit.departmentname'),
           prop: 'user'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexFullYear'),
+          label: $('ui.customerTargetStatisticsIndexFullYear'),
           prop: 'annual'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexQ1'),
+          label: $('ui.customerTargetStatisticsIndexQ1'),
           prop: 'q1'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexJanuary'),
+          label: $('ui.customerTargetStatisticsIndexJanuary'),
           prop: 'month1'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexFebruary'),
+          label: $('ui.customerTargetStatisticsIndexFebruary'),
           prop: 'month2'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexMarch'),
+          label: $('ui.customerTargetStatisticsIndexMarch'),
           prop: 'month3'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexQ2'),
+          label: $('ui.customerTargetStatisticsIndexQ2'),
           prop: 'q2'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexApril'),
+          label: $('ui.customerTargetStatisticsIndexApril'),
           prop: 'month4'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexMay'),
+          label: $('ui.customerTargetStatisticsIndexMay'),
           prop: 'month5'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexJune'),
+          label: $('ui.customerTargetStatisticsIndexJune'),
           prop: 'month6'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexQ3'),
+          label: $('ui.customerTargetStatisticsIndexQ3'),
           prop: 'q3'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexJuly'),
+          label: $('ui.customerTargetStatisticsIndexJuly'),
           prop: 'month7'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexAugust'),
+          label: $('ui.customerTargetStatisticsIndexAugust'),
           prop: 'month8'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexSeptember'),
+          label: $('ui.customerTargetStatisticsIndexSeptember'),
           prop: 'month9'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexQ4'),
+          label: $('ui.customerTargetStatisticsIndexQ4'),
           prop: 'q4'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexOctober'),
+          label: $('ui.customerTargetStatisticsIndexOctober'),
           prop: 'month10'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexNovember'),
+          label: $('ui.customerTargetStatisticsIndexNovember'),
           prop: 'month11'
         },
         {
-          label: i18n.t('ui.customerTargetStatisticsIndexDecember'),
+          label: $('ui.customerTargetStatisticsIndexDecember'),
           prop: 'month12'
         }
       ],
@@ -258,7 +258,7 @@ export default {
         })
         this.loading = false
       } else {
-        this.$message.warning(i18n.t('legacyScript.noValidDataRetrieved'))
+        this.$message.warning($('legacyScript.noValidDataRetrieved'))
         this.tableData = []
       }
     },
@@ -373,9 +373,9 @@ export default {
     },
     tapClick(tab, event) {
       if (tab.name == 0) {
-        this.header[0].label = i18n.t('legacyScript.salespersonName')
+        this.header[0].label = $('legacyScript.salespersonName')
       } else {
-        this.header[0].label = i18n.t('setting.edit.departmentname')
+        this.header[0].label = $('setting.edit.departmentname')
       }
       this.editShow = false
       this.where.frame_id = []

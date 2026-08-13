@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription: 审批详情侧滑页面 -->
 <template>
 <div>
@@ -17,7 +18,7 @@
           </div>
           <div class="nameBox">
             <span class="st1"
-              >{{ examineData.card.name }}{{ $t("ui.userExamineDetailExamineS") }}{{ examineData.approve ? examineData.approve.name : $t('ui.userExamineDetailExamineLeave') }}</span
+              >{{ examineData.card.name }}{{ $("ui.userExamineDetailExamineS") }}{{ examineData.approve ? examineData.approve.name : $('ui.userExamineDetailExamineLeave') }}</span
             >
             <span class="st2" :class="getColor(examineData.status)">
               {{ $func.getExamineStatus(examineData.status, examineData) }}
@@ -33,29 +34,29 @@
             size="small"
             class="ml10"
             @click="handleRefuse()"
-            >{{ $t("ui.formDesignerToolbarPanelIndexRevoke") }}</el-button
+            >{{ $("ui.formDesignerToolbarPanelIndexRevoke") }}</el-button
           >
           <el-button v-if="examineData.verify_status === 0" type="danger" size="small" @click="onAgree(0)"
-            >{{ $t("ui.settingEnterpriseUpgradeIndexRefuse") }}</el-button
+            >{{ $("ui.settingEnterpriseUpgradeIndexRefuse") }}</el-button
           >
           <el-button v-if="examineData.verify_status === 0" type="primary" size="small" @click="onAgree(1)"
-            >{{ $t("ui.settingEnterpriseUpgradeIndexAgree") }}</el-button
+            >{{ $("ui.settingEnterpriseUpgradeIndexAgree") }}</el-button
           >
 
           <el-button v-if="examineData.verify_status !== 0" size="small" class="ml10" @click="handlePrint()"
-            >{{ $t("ui.businessRecordPrintPreviewPrint") }}</el-button
+            >{{ $("ui.businessRecordPrintPreviewPrint") }}</el-button
           >
           <el-dropdown v-if="examineData.verify_status === 0 && examineData.approve.types !== 11">
             <span class="iconfont icongengduo2 pointer ml10"></span>
             <el-dropdown-menu style="text-align: left">
               <template v-if="examineData.status == 0">
                 <el-dropdown-item v-if="examineData.rules.is_sign == 1" @click.native="dropdownSearch(0)"
-                  >{{ $t("ui.userExamineAddSignatureAddApprover") }}
+                  >{{ $("ui.userExamineAddSignatureAddApprover") }}
                 </el-dropdown-item>
                 <el-dropdown-item v-if="examineData.verify_status == 0" @click.native="dropdownSearch(1)"
-                  >{{ $t("ui.userExamineAddSignatureTransferApproval") }}
+                  >{{ $("ui.userExamineAddSignatureTransferApproval") }}
                 </el-dropdown-item>
-                <el-dropdown-item @click.native="handlePrint">{{ $t("ui.businessRecordPrintPreviewPrint") }} </el-dropdown-item>
+                <el-dropdown-item @click.native="handlePrint">{{ $("ui.businessRecordPrintPreviewPrint") }} </el-dropdown-item>
               </template>
             </el-dropdown-menu>
           </el-dropdown>
@@ -66,7 +67,7 @@
             v-if="examineData.status == 0 && examineData.verify_status !== 0"
             size="small"
             @click="urgentProcessing()"
-            >{{ $t("ui.userExamineDetailExamineSendReminder") }}</el-button
+            >{{ $("ui.userExamineDetailExamineSendReminder") }}</el-button
           >
         </div>
 
@@ -85,7 +86,7 @@
         <div class="ex-content-con" :class="isShow ? 'pb-120' : ''">
           <div class="acea-row mb20">
             <div class="shu mr10"></div>
-            <div class="title">{{ $t("ui.userExamineDetailExamineSubmitApproval") }}</div>
+            <div class="title">{{ $("ui.userExamineDetailExamineSubmitApproval") }}</div>
           </div>
           <!-- -----------------------------------审批内容-------------------------------- -->
           <el-form label-width="auto">
@@ -137,7 +138,7 @@
             </el-form-item>
             <el-form-item v-if="examineData.apply_id">
               <div class="revoke" @click="revokeFn(examineData.apply_id)">
-                {{ $t("ui.userExamineDetailExamineViewRequestToRevoke") }} <span class="el-icon-arrow-right"></span>
+                {{ $("ui.userExamineDetailExamineViewRequestToRevoke") }} <span class="el-icon-arrow-right"></span>
               </div>
             </el-form-item>
           </el-form>
@@ -158,7 +159,7 @@
                   <el-input
                     ref="replyInput"
                     v-model="textarea"
-                    :placeholder="$t('ui.userExamineDetailExamineAddComment')"
+                    :placeholder="$('ui.userExamineDetailExamineAddComment')"
                     type="textarea"
                     class="replyText"
                     :rows="3"
@@ -206,15 +207,15 @@
                     action="##"
                     class="mr10 upload-real"
                   >
-                    <div v-if="!percentShow" class="addText"><span class="iconfont iconfujian"></span> {{ $t("ui.customerWeChatMassMaterialContentAddAttachment") }}</div>
+                    <div v-if="!percentShow" class="addText"><span class="iconfont iconfujian"></span> {{ $("ui.customerWeChatMassMaterialContentAddAttachment") }}</div>
                     <div v-else class="addText">
                       <img alt="" class="l_gif" src="@/assets/images/loading.gif" />
                     </div>
                   </el-upload>
 
                   <div>
-                    <el-button size="small" @click="cancel">{{ $t('public.cancel') }}</el-button>
-                    <el-button size="small" type="primary" @click="submitReply">{{ $t("ui.shareSubmit") }}</el-button>
+                    <el-button size="small" @click="cancel">{{ $('public.cancel') }}</el-button>
+                    <el-button size="small" type="primary" @click="submitReply">{{ $("ui.shareSubmit") }}</el-button>
                   </div>
                 </div>
               </div>
@@ -222,7 +223,7 @@
             <template v-else>
               <div class="flex" @click="evaluate">
                 <img class="avatar" :src="avatar" alt="" />
-                <div class="replyCon-no">{{ $t("ui.userDailyAddBoxAddComment") }}</div>
+                <div class="replyCon-no">{{ $("ui.userDailyAddBoxAddComment") }}</div>
               </div>
             </template>
           </div>
@@ -247,7 +248,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import func from '@/utils/preload'
 import { toSrcFn } from '@/utils/format'
 import { getStorageJson } from '@/utils/storage'
@@ -301,18 +301,18 @@ export default {
       formConfig: [
         {
           type: 'textarea',
-          label: i18n.t('legacyScript.reasonForReversal'),
-          placeholder: i18n.t('legacyScript.enterWithdrawalReason'),
+          label: $('legacyScript.reasonForReversal'),
+          placeholder: $('legacyScript.enterWithdrawalReason'),
           key: 'info'
         }
       ],
       formRules: {
-        info: [{ required: true, message: i18n.t('legacyScript.enterWithdrawalReason'), trigger: 'blur' }]
+        info: [{ required: true, message: $('legacyScript.enterWithdrawalReason'), trigger: 'blur' }]
       },
       fromData: {
         width: '600px',
-        title: i18n.t('ui.formDesignerToolbarPanelIndexRevoke'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.formDesignerToolbarPanelIndexRevoke'),
+        btnText: '确定',
         labelWidth: 'auto',
         type: ''
       },
@@ -349,7 +349,7 @@ export default {
   methods: {
     async submitReply() {
       if (this.textarea == '') {
-        return this.$message.error(i18n.t('legacyScript.pleaseEnterComment'))
+        return this.$message.error($('legacyScript.pleaseEnterComment'))
       }
       const ids = []
       this.uploadList.map((item) => {
@@ -431,7 +431,7 @@ export default {
     // 撤销
     handleRefuse() {
       if (this.examineData.status === 0) {
-        this.$modalSure(this.$ts('你确定要撤销申请吗')).then(() => {
+        this.$modalSure(this.$("legacy.11accb9f68551eb7")).then(() => {
           this.getApplyRevoke()
           this.close()
         })
@@ -468,7 +468,7 @@ export default {
           info: data.info
         }
         if (getStorageJson('userInfo', {}).id == obj.user[0]) {
-          this.$message.error(i18n.t('legacyScript.theReviewerCannotBeYourself'))
+          this.$message.error($('legacyScript.theReviewerCannotBeYourself'))
 
           return false
         }

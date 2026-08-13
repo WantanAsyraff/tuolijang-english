@@ -1,10 +1,11 @@
+import { $ } from '@/lang'
 <template>
   <div class="product-list mb20">
     <!-- 表格区域 -->
     <el-table :data="tableData" ref="table" row-key="unique" show-summary :summary-method="getSummaries"
       style="width: 100%" v-loading="loading">
       <!-- 操作列 -->
-      <el-table-column :label="$ts('操作')" width="98px" v-if="type != 'edit'">
+      <el-table-column :label="$("public.operation")" width="98px" v-if="type != 'edit'">
         <template slot-scope="scope">
           <div>
             <span class="iconfont icontuodong tuozhuai"></span>
@@ -14,11 +15,11 @@
         </template>
       </el-table-column>
       <!-- 产品信息列 -->
-      <el-table-column :label="$ts('产品信息')" prop="image" width="210px">
+      <el-table-column :label="$("ui.customerSpecificationsProductInformation")" prop="image" width="210px">
         <template slot-scope="scope">
           <el-tooltip class="item" effect="dark" placement="top" :disabled="!scope.row.unique">
             <div slot="content" style="line-height: 24px" v-if="scope.row.unique">
-              {{ scope.row.name || scope.row.product_name }} | {{ scope.row.sku || $t('ui.customerProductAddProductSingleSpec') }}
+              {{ scope.row.name || scope.row.product_name }} | {{ scope.row.sku || $('ui.customerProductAddProductSingleSpec') }}
             </div>
             <div class="flex lh-center">
               <img v-if="scope.row.unique && scope.row.image" :src="scope.row.image" class="product-img"
@@ -33,16 +34,16 @@
                 {{ scope.row.name || scope.row.product_name }}
               </div>
               <div v-if="scope.row.unique" class="over-text1">
-                {{ scope.row.sku || $t('ui.customerProductAddProductSingleSpec') }}
+                {{ scope.row.sku || $('ui.customerProductAddProductSingleSpec') }}
               </div>
             </div>
           </el-tooltip>
         </template>
       </el-table-column>
       <!-- 售价列 -->
-      <el-table-column prop="ot_price" :label="$ts('售价')" width="110px"></el-table-column>
+      <el-table-column prop="ot_price" :label="$("legacy.4ea47b184e0109b9")" width="110px"></el-table-column>
       <!-- 成交数量列 -->
-      <el-table-column prop="count" :label="$t('ui.customerProductListDealQuantity')" width="120">
+      <el-table-column prop="count" :label="$('ui.customerProductListDealQuantity')" width="120">
         <template slot-scope="scope">
           <span v-if="type === 'edit'">{{ scope.row.count }}</span>
           <el-input-number v-else v-model="scope.row.count" :min="0" :precision="0" size="small" class="priceBox"
@@ -50,7 +51,7 @@
         </template>
       </el-table-column>
       <!-- 折扣列 -->
-      <el-table-column prop="discount" :label="$t('ui.customerProductListDiscount')" width="120">
+      <el-table-column prop="discount" :label="$('ui.customerProductListDiscount')" width="120">
         <template slot-scope="scope">
           <span v-if="type === 'edit'">{{ scope.row.discount }}</span>
           <el-input-number v-else v-model="scope.row.discount" :min="0" :max="100" :precision="0" size="small"
@@ -59,7 +60,7 @@
         </template>
       </el-table-column>
       <!-- 成交单价列 -->
-      <el-table-column prop="price" :label="$t('ui.customerProductListDealUnitPrice')" width="120">
+      <el-table-column prop="price" :label="$('ui.customerProductListDealUnitPrice')" width="120">
         <template slot-scope="scope">
           <span v-if="type === 'edit'">{{ scope.row.price }}</span>
           <el-input-number v-else v-model="scope.row.price" :min="0" :precision="2" size="small" :controls="false"
@@ -67,7 +68,7 @@
         </template>
       </el-table-column>
       <!-- 成交总价列 -->
-      <el-table-column prop="total_price" :label="$t('ui.customerProductListDealTotal')" width="120">
+      <el-table-column prop="total_price" :label="$('ui.customerProductListDealTotal')" width="120">
         <template slot-scope="scope">
           <span v-if="type === 'edit'">{{ scope.row.total_price }}</span>
           <el-input-number v-else :controls="false" v-model="scope.row.total_price" :min="0" :precision="2"
@@ -75,10 +76,10 @@
             @change="handleTotalPrice(scope.row)"></el-input-number>
         </template>
       </el-table-column>
-      <el-table-column prop="remark" :label="$t('ui.xmindEditorToolbarNodeBtnListRemarks')" :fixed="remarkFixed ? 'right' : false" :width="remarkFixed ? 200 : undefined">
+      <el-table-column prop="remark" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" :fixed="remarkFixed ? 'right' : false" :width="remarkFixed ? 200 : undefined">
         <template slot-scope="scope">
           <span v-if="type === 'edit'">{{ scope.row.remark || '--' }}</span>
-          <el-input v-else v-model="scope.row.remark" size="small" :placeholder="$t('ui.customerProductListPleaseEnterRemarks')"></el-input>
+          <el-input v-else v-model="scope.row.remark" size="small" :placeholder="$('ui.customerProductListPleaseEnterRemarks')"></el-input>
         </template>
       </el-table-column>
     </el-table>
@@ -88,7 +89,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Sortable from 'sortablejs'
 export default {
   name: 'ProductList',
@@ -171,7 +171,7 @@ export default {
     },
     handleAdd(index) {
       if (this.tableData[index].unique == '') {
-        return this.$message.error(i18n.t('legacyScript.pleaseSelectAndFillInProductInformation'))
+        return this.$message.error($('legacyScript.pleaseSelectAndFillInProductInformation'))
       }
 
       this.tableData.splice(index + 1, 0, {
@@ -197,7 +197,7 @@ export default {
       }).length
       columns.forEach((column, index) => {
         if (index === 0) {
-          sums[index] = `${this.$ts('合计')} (${count})`
+          sums[index] = `${this.$("ui.hrEnterprisePromotionTotal")} (${count})`
           return
         }
         if (indexArr.includes(index)) {

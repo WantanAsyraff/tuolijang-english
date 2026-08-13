@@ -4,8 +4,8 @@
       <div class="flex-between">
         <div class="title-16">{{ $route.meta.title }}</div>
         <div>
-          <el-button size="small" @click="synchronizeTags">{{ $ts("同步标签") }}</el-button>
-          <el-button size="small" icon="el-icon-plus" type="primary" @click="addFinance">{{ $ts("添加标签组") }}</el-button>
+          <el-button size="small" @click="synchronizeTags">{{ $("legacy.2ea21ab4f5b6eff3") }}</el-button>
+          <el-button size="small" icon="el-icon-plus" type="primary" @click="addFinance">{{ $("customer.addlabel") }}</el-button>
         </div>
       </div>
       <div>
@@ -21,33 +21,33 @@
           >
             <el-table-column prop="name" min-width="30">
               <template slot-scope="scope">
-                <span class="iconfont icontuodong tuozhuai" :title="$t('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')"></span>
+                <span class="iconfont icontuodong tuozhuai" :title="$('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')"></span>
               </template>
             </el-table-column>
-            <el-table-column prop="name" :label="$t('customer.labelename')" min-width="100">
-              <template slot-scope="scope">{{ $ts(scope.row.name) }}</template>
+            <el-table-column prop="name" :label="$('customer.labelename')" min-width="100">
+              <template slot-scope="scope">{{ $(scope.row.name) }}</template>
             </el-table-column>
-            <el-table-column prop="cate.name" :label="$t('customer.label')" min-width="520">
+            <el-table-column prop="cate.name" :label="$('customer.label')" min-width="520">
               <template slot-scope="scope">
                 <div class="label-list">
                   <div v-for="item in scope.row.children" :key="item.id" class="item">
-                    {{ $ts(item.name) }}
+                    {{ $(item.name) }}
                   </div>
                 </div>
               </template>
             </el-table-column>
 
-            <el-table-column prop="address" :label="$t('public.operation')" fixed="right" width="120">
+            <el-table-column prop="address" :label="$('public.operation')" fixed="right" width="120">
               <template slot-scope="scope">
                 <el-button type="text" v-hasPermi="['customer:setup:label:edit']" @click="handleEdit(scope.row)">{{
-                  $t('public.edit')
+                  $('public.edit')
                 }}</el-button>
 
                 <el-button
                   type="text"
                   v-hasPermi="['customer:setup:label:delete']"
                   @click="handleDelete(scope.row, 1)"
-                  >{{ $t('public.delete') }}</el-button
+                  >{{ $('public.delete') }}</el-button
                 >
               </template>
             </el-table-column>
@@ -67,30 +67,30 @@
         </div>
 
         <!-- 替换标签 -->
-        <el-dialog :title="$t('ui.customerSetupLabelLabelReplacement')" :visible.sync="dialogTableVisible" width="560px" class="replaceDialog">
+        <el-dialog :title="$('ui.customerSetupLabelLabelReplacement')" :visible.sync="dialogTableVisible" width="560px" class="replaceDialog">
           <el-form :model="form" :rules="rules" label-width="90px" ref="dynamicValidateForm">
-            <el-form-item :label="$t('ui.customerSetupLabelReplace')">
+            <el-form-item :label="$('ui.customerSetupLabelReplace')">
               <el-radio-group v-model="radio">
-                <el-radio :label="1">{{ $t("ui.customerSetupLabelReplacementLabel") }}</el-radio>
-                <el-radio :label="2">{{ $t("ui.customerSetupLabelDoNotReplace") }}</el-radio>
+                <el-radio :label="1">{{ $("ui.customerSetupLabelReplacementLabel") }}</el-radio>
+                <el-radio :label="2">{{ $("ui.customerSetupLabelDoNotReplace") }}</el-radio>
               </el-radio-group>
-              <div class="tips" v-if="radio == 1">{{ $t("ui.customerSetupLabelAfterReplacementTuoluojiangAndWeComLabelsWillBe") }}</div>
-              <div class="tips" v-if="radio == 2">{{ $t("ui.customerSetupLabelIfNoReplacementLabelIsSelectedTheLabelWill") }}</div>
+              <div class="tips" v-if="radio == 1">{{ $("ui.customerSetupLabelAfterReplacementTuoluojiangAndWeComLabelsWillBe") }}</div>
+              <div class="tips" v-if="radio == 2">{{ $("ui.customerSetupLabelIfNoReplacementLabelIsSelectedTheLabelWill") }}</div>
             </el-form-item>
-            <el-form-item :label="$t('ui.customerSetupLabelReplacementLabel2')" v-if="radio == 1" prop="labelId">
+            <el-form-item :label="$('ui.customerSetupLabelReplacementLabel2')" v-if="radio == 1" prop="labelId">
               <el-cascader
                 v-model="form.labelId"
                 size="small"
                 :options="tableData"
-                :placeholder="$t('ui.customerSetupLabelSelectReplacementLabel')"
+                :placeholder="$('ui.customerSetupLabelSelectReplacementLabel')"
                 :props="{ label: 'name', value: 'id' }"
                 style="width: 100%"
               ></el-cascader>
             </el-form-item>
           </el-form>
           <span slot="footer" class="dialog-footer">
-            <el-button size="small" @click="dialogTableVisible = false">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-            <el-button size="small" type="primary" @click="deleteSubmit()">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+            <el-button size="small" @click="dialogTableVisible = false">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+            <el-button size="small" type="primary" @click="deleteSubmit()">{{ $("ui.formCommonDialogFormOk") }}</el-button>
           </span>
         </el-dialog>
       </div>
@@ -138,7 +138,7 @@ export default {
   data() {
     const validCascader = (rule, value, callback) => {
       if (this.form.labelId.length == 0) {
-        callback(new Error(this.$ts('请选择替换标签')))
+        callback(new Error('请选择替换标签'))
       } else {
         callback()
       }
@@ -232,7 +232,7 @@ export default {
     // 添加标签组
     async addFinance() {
       this.repeatData = {
-        title: this.$t('customer.addlabel'),
+        title: this.$('customer.addlabel'),
         width: '480px',
         label: 2,
         type: 1,
@@ -245,7 +245,7 @@ export default {
       this.$refs.addLabel.openBox(item)
 
       // this.repeatData = {
-      //   title: this.$t('customer.editlabel'),
+      //   title: this.$('customer.editlabel'),
       //   width: '480px',
       //   label: 2,
       //   type: 2,
@@ -255,7 +255,7 @@ export default {
     },
     // 删除
     handleDelete(item, type) {
-      const mes = type === 1 ? this.$t('customer.message03') : this.$t('customer.message04')
+      const mes = type === 1 ? this.$('customer.message03') : this.$('customer.message04')
       this.$modalSure(mes).then(() => {
         clientConfigLabelDeleteApi(item.id).then((res) => {
           if (this.where.page > 1 && this.tableData.length <= 1) {

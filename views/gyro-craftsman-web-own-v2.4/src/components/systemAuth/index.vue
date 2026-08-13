@@ -1,11 +1,12 @@
+import { $ } from '@/lang'
 <!-- 系统权限管理组件 -->
 <template>
   <div style="background: #fff">
     <!-- 顶部选项卡和搜索框 -->
     <div class="tab-box">
       <el-tabs v-model="activeName" @tab-click="handleClickFn" style="width: 100%">
-        <el-tab-pane :label='$ts("web端")' name="first"></el-tab-pane>
-        <el-tab-pane :label='$ts("移动端")' name="second"></el-tab-pane>
+        <el-tab-pane :label='$("legacy.48bb67997439d018")' name="first"></el-tab-pane>
+        <el-tab-pane :label='$("legacy.541ab19b0857aac6")' name="second"></el-tab-pane>
       </el-tabs>
       <el-input
         v-model="value"
@@ -14,7 +15,7 @@
         class="mr10"
         size="small"
         suffix-icon="el-icon-search"
-        :placeholder='$ts("输入权限名称")'
+        :placeholder='$("legacy.34f639ab906aa0bf")'
       ></el-input>
     </div>
 
@@ -36,7 +37,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { menuNotSaveApi } from '@/api/system'
 
 export default {
@@ -73,7 +73,7 @@ export default {
         this.mobileList = res.data.uni || []
         this.list = this.webList
       }).catch(error => {
-        console.error(i18n.t('legacyScript.failedToRetrieveThePermissionList'), error)
+        console.error($('legacyScript.failedToRetrieveThePermissionList'), error)
       })
     },
     // 切换tab

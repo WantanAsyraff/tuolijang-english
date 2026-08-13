@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule } from '../../utils/index';
 
@@ -27,19 +27,19 @@ export default {
         data: [
           {
             id: 1,
-            label: i18n.t('legacyScript.level1'),
+            label: $('legacyScript.level1'),
             children: [
               {
                 id: 4,
-                label: i18n.t('legacyScript.level2'),
+                label: $('legacyScript.level2'),
                 children: [
                   {
                     id: 9,
-                    label: i18n.t('legacyScript.level3'),
+                    label: $('legacyScript.level3'),
                   },
                   {
                     id: 10,
-                    label: i18n.t('legacyScript.level32'),
+                    label: $('legacyScript.level32'),
                   },
                 ],
               },
@@ -47,29 +47,29 @@ export default {
           },
           {
             id: 2,
-            label: i18n.t('legacyScript.level12'),
+            label: $('legacyScript.level12'),
             children: [
               {
                 id: 5,
-                label: i18n.t('legacyScript.level221'),
+                label: $('legacyScript.level221'),
               },
               {
                 id: 6,
-                label: i18n.t('legacyScript.level222'),
+                label: $('legacyScript.level222'),
               },
             ],
           },
           {
             id: 3,
-            label: i18n.t('legacyScript.level13'),
+            label: $('legacyScript.level13'),
             children: [
               {
                 id: 7,
-                label: i18n.t('legacyScript.level231'),
+                label: $('legacyScript.level231'),
               },
               {
                 id: 8,
-                label: i18n.t('legacyScript.level232'),
+                label: $('legacyScript.level232'),
               },
             ],
           },
@@ -80,48 +80,48 @@ export default {
   props() {
     return [
       makeOptionsRule('props.data'),
-      { type: 'input', field: 'emptyText', title: i18n.t('legacyScript.textDisplayedWhenContentIsEmpty') },
+      { type: 'input', field: 'emptyText', title: $('legacyScript.textDisplayedWhenContentIsEmpty') },
       {
         type: 'Struct',
         field: 'props',
-        title: i18n.t('legacyScript.configurationOptionsSeeTableBelow'),
+        title: $('legacyScript.configurationOptionsSeeTableBelow'),
         props: { defaultValue: {} },
       },
-      { type: 'switch', field: 'renderAfterExpand', title: i18n.t('legacyScript.whetherToRenderChildNodesOnlyAfterTheFirstExpansion'), value: true },
+      { type: 'switch', field: 'renderAfterExpand', title: $('legacyScript.whetherToRenderChildNodesOnlyAfterTheFirstExpansion'), value: true },
       {
         type: 'switch',
         field: 'defaultExpandAll',
-        title: i18n.t('legacyScript.whetherAllNodesAreExpandedByDefault'),
+        title: $('legacyScript.whetherAllNodesAreExpandedByDefault'),
       },
       {
         type: 'switch',
         field: 'expandOnClickNode',
         title:
-          i18n.t('legacyScript.whetherToExpandOrCollapseNodesOnClickDefaultIs'),
+          $('legacyScript.whetherToExpandOrCollapseNodesOnClickDefaultIs'),
         value: true,
       },
       {
         type: 'switch',
         field: 'checkOnClickNode',
-        title: i18n.t('legacyScript.whetherToSelectTheNodeOnClickDefaultIsFalse'),
+        title: $('legacyScript.whetherToSelectTheNodeOnClickDefaultIsFalse'),
       },
-      { type: 'switch', field: 'autoExpandParent', title: i18n.t('legacyScript.whetherToAutomaticallyExpandParentNodesWhenChildNodesAre'), value: true },
+      { type: 'switch', field: 'autoExpandParent', title: $('legacyScript.whetherToAutomaticallyExpandParentNodesWhenChildNodesAre'), value: true },
       {
         type: 'switch',
         field: 'checkStrictly',
-        title: i18n.t('legacyScript.whenCheckboxesAreDisplayedWhetherToStrictlyEnforceThatParent'),
+        title: $('legacyScript.whenCheckboxesAreDisplayedWhetherToStrictlyEnforceThatParent'),
       },
-      { type: 'switch', field: 'accordion', title: i18n.t('legacyScript.whetherToExpandOnlyOneSiblingTreeNodeAtA') },
+      { type: 'switch', field: 'accordion', title: $('legacyScript.whetherToExpandOnlyOneSiblingTreeNodeAtA') },
       {
         type: 'inputNumber',
         field: 'indent',
-        title: i18n.t('legacyScript.horizontalIndentationBetweenAdjacentLevelNodesInPixels'),
+        title: $('legacyScript.horizontalIndentationBetweenAdjacentLevelNodesInPixels'),
       },
-      { type: 'input', field: 'iconClass', title: i18n.t('legacyScript.customIconForTreeNodes') },
+      { type: 'input', field: 'iconClass', title: $('legacyScript.customIconForTreeNodes') },
       {
         type: 'input',
         field: 'nodeKey',
-        title: i18n.t('legacyScript.attributeUsedAsUniqueIdentifierForEachTreeNodeMust'),
+        title: $('legacyScript.attributeUsedAsUniqueIdentifierForEachTreeNodeMust'),
       },
     ];
   },

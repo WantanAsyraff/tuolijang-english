@@ -10,9 +10,9 @@
     >
       <formCreate v-if="rules.length > 0" ref="fc" :option="option" :rule="rules" />
       <div slot="footer" class="dialog-footer">
-        <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
+        <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
         <el-button size="small" type="primary" @click="handleConfirm('ruleForm')">
-          {{ type === 2 ? $t('setting.invitationaddlink') : $t('public.ok') }}
+          {{ type === 2 ? $('setting.invitationaddlink') : $('public.ok') }}
         </el-button>
       </div>
     </el-dialog>

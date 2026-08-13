@@ -28,8 +28,8 @@
       ></oaForm>
     </div>
     <span slot="footer" class="dialog-footer" v-if="isFooter">
-      <el-button size="small" @click="handleClose">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button size="small" type="primary" @click="submit">{{ fromData.btnText || $t('ui.formCommonDialogFormOk') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button size="small" type="primary" @click="submit">{{ fromData.btnText || $('ui.formCommonDialogFormOk') }}</el-button>
     </span>
   </el-dialog>
 </div>

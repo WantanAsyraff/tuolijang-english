@@ -1,12 +1,13 @@
+import { $ } from '@/lang'
 <template>
   <el-scrollbar :style="{ height: scrollerHeight }" class="side-scroll-bar">
     <div class="panel-container">
       <el-tabs v-model="firstTab" class="no-bottom-margin indent-left-margin">
         <el-tab-pane name="componentLib">
-          <span slot="label">{{ i18nt('designer.componentLib') }}</span>
+          <span slot="label">{{ $('designer.componentLib') }}</span>
 
           <el-collapse v-model="activeNames" class="widget-collapse">
-            <el-collapse-item :title="i18nt('designer.containerTitle')" name="1">
+            <el-collapse-item :title="$('designer.containerTitle')" name="1">
               <draggable
                 :clone="handleContainerWidgetClone"
                 :group="{ name: 'dragGroup', pull: 'clone', put: false }"
@@ -70,18 +71,15 @@
 </template>
 
 <script>
-import appI18n from '@/lang'
 import Draggable from 'vuedraggable'
 import { containers, basicFields, advancedFields, customFields } from './widgetsConfig'
 import { addWindowResizeHandler } from '@/utils/formDesignerUtils'
-import i18n from '@/utils/i18n'
 import axios from 'axios'
 import { formCrudList } from '@/api/form'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'FieldPanel',
-  mixins: [i18n],
   components: {
     Draggable
     // SvgIcon
@@ -218,7 +216,7 @@ export default {
     },
 
     loadFormTemplate(jsonUrl) {
-      this.$confirm(this.i18nt('designer.hint.loadFormTemplateHint'), appI18n.t('public.tips'), {
+      this.$confirm(this.$('designer.hint.loadFormTemplateHint'), $('public.tips'), {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       })
@@ -236,10 +234,10 @@ export default {
                 this.designer.emitHistoryChange()
               }
 
-              this.$message.success(this.i18nt('designer.hint.loadFormTemplateSuccess'))
+              this.$message.success(this.$('designer.hint.loadFormTemplateSuccess'))
             })
             .catch((error) => {
-              this.$message.error(this.i18nt('designer.hint.loadFormTemplateFailed') + ':' + error)
+              this.$message.error(this.$('designer.hint.loadFormTemplateFailed') + ':' + error)
             })
         })
         .catch((error) => {
@@ -390,4 +388,3 @@ div.panel-container {
   color: #fff;
 }
 </style>
-@/utils/i18ns

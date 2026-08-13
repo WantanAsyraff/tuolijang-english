@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div class="content">
   <template v-if="!submitSuccess">
-    <div class="title">{{ info.crud ? info.crud.table_name : '' }}{{ $t("ui.businessHolidayTypeIndexAdd") }} {{ role_type }}</div>
+    <div class="title">{{ info.crud ? info.crud.table_name : '' }}{{ $("ui.businessHolidayTypeIndexAdd") }} {{ role_type }}</div>
     <div class="form-box">
       <VFormRender
         ref="preForm"
@@ -15,7 +16,7 @@
       </VFormRender>
     </div>
     <div class="footer">
-      <el-button size="small" type="primary" :loading="loading" @click="saveFn">{{ $t("ui.shareSubmit") }}</el-button>
+      <el-button size="small" type="primary" :loading="loading" @click="saveFn">{{ $("ui.shareSubmit") }}</el-button>
     </div>
   </template>
   <default-page v-else :index="20"> </default-page>
@@ -30,7 +31,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import store from '@/store'
 import { mapMutations } from 'vuex'
 import Verify from '@/components/verifition/Verify'
@@ -57,9 +57,9 @@ export default {
         ],
 
         select001: [
-          { label: i18n.t('legacyScript.chiliPepper'), value: 1 },
-          { label: i18n.t('legacyScript.pineapple'), value: 2 },
-          { label: i18n.t('legacyScript.dekopon'), value: 3 }
+          { label: $('legacyScript.chiliPepper'), value: 1 },
+          { label: $('legacyScript.pineapple'), value: 2 },
+          { label: $('legacyScript.dekopon'), value: 3 }
         ]
       },
       loading: false,

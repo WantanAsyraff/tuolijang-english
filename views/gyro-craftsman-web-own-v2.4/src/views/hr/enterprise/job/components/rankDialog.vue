@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <el-dialog
     :title="config.title"
@@ -12,13 +13,13 @@
         <el-form-item class="mt20">
           <span slot="label">
             <span class="color-tab">*</span>
-            {{ $ts("职等区间") }}
+            {{ $("legacy.571d32700b46a308") }}
           </span>
           <el-col :span="11">
             <el-form-item prop="levelMin">
               <el-input-number
                 v-model="formData.levelMin"
-                :placeholder='$ts("最低职等")'
+                :placeholder='$("legacy.eb2129f2fdcf13f2")'
                 :min="0"
                 :controls="false"
               ></el-input-number>
@@ -29,7 +30,7 @@
             <el-form-item prop="levelMax">
               <el-input-number
                 v-model="formData.levelMax"
-                :placeholder='$ts("最高职等")'
+                :placeholder='$("legacy.45e19ed86bafd50d")'
                 :min="formData.levelMin"
                 :controls="false"
               ></el-input-number>
@@ -39,13 +40,13 @@
         <el-form-item class="mt20">
           <span slot="label">
             <span class="color-tab">*</span>
-            {{ $ts("薪资区间") }}
+            {{ $("legacy.3d64ed45eb24bca8") }}
           </span>
           <el-col :span="11">
             <el-form-item prop="salaryMin">
               <el-input-number
                 v-model="formData.salaryMin"
-                :placeholder='$ts("最低薪资")'
+                :placeholder='$("legacy.2e5c3b7083a71300")'
                 :min="0"
                 :controls="false"
               ></el-input-number>
@@ -56,7 +57,7 @@
             <el-form-item prop="salaryMax">
               <el-input-number
                 v-model="formData.salaryMax"
-                :placeholder='$ts("最高薪资")'
+                :placeholder='$("legacy.9eb17dad08fa9ba9")'
                 :min="formData.salaryMin"
                 :controls="false"
               ></el-input-number>
@@ -65,25 +66,24 @@
         </el-form-item>
       </div>
       <div v-if="config.type === 2">
-        <el-form-item class="mt20" :label='$ts("每级职等跨度:")' prop="rank">
-          <el-input-number :placeholder='$ts("请输入职等跨度")' v-model="formData.rank" :controls="false"></el-input-number>
+        <el-form-item class="mt20" :label='$("legacy.c5952d5d6d7451e1")' prop="rank">
+          <el-input-number :placeholder='$("legacyScript.pleaseEnterTheJobGradeSpan")' v-model="formData.rank" :controls="false"></el-input-number>
         </el-form-item>
-        <el-form-item class="mt20" :label='$ts("跨度说明")' style="margin-bottom: 0">
+        <el-form-item class="mt20" :label='$("legacy.6f7880f833915a73")' style="margin-bottom: 0">
           <div class="rank-explain">
-            <p>{{ $ts("1. 批量设置职等跨度，跨度只能为正整数，不能为负数；") }}</p>
-            <p>{{ $ts("2. 职等跨度示例：1-4，跨度数字为4。") }}</p>
+            <p>{{ $("legacy.17ff579e3a5609e8") }}</p>
+            <p>{{ $("legacy.d0a9a3c4e093ce0d") }}</p>
           </div>
         </el-form-item>
       </div>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" type="primary" :loading="loading" @click="handleConfirm">{{ $t('public.ok') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" type="primary" :loading="loading" @click="handleConfirm">{{ $('public.ok') }}</el-button>
     </div>
   </el-dialog>
 </template>
 <script>
-import i18n from '@/lang'
 import { rankLevelBatchApi, rankLevelEditApi, rankLevelSaveApi } from '@/api/setting'
 
 export default {
@@ -121,10 +121,10 @@ export default {
       },
       rules: {
         levelMin: [{ required: true, validator: checkLevelMin, trigger: 'blur' }],
-        levelMax: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheHighestJobLevel'), trigger: 'blur' }],
-        salaryMin: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheMinimumSalary'), trigger: 'blur' }],
-        salaryMax: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheMaximumSalary'), trigger: 'blur' }],
-        rank: [{ required: true, message: i18n.t('legacyScript.pleaseEnterTheJobGradeSpan'), trigger: 'blur' }]
+        levelMax: [{ required: true, message: $('legacyScript.pleaseEnterTheHighestJobLevel'), trigger: 'blur' }],
+        salaryMin: [{ required: true, message: $('legacyScript.pleaseEnterTheMinimumSalary'), trigger: 'blur' }],
+        salaryMax: [{ required: true, message: $('legacyScript.pleaseEnterTheMaximumSalary'), trigger: 'blur' }],
+        rank: [{ required: true, message: $('legacyScript.pleaseEnterTheJobGradeSpan'), trigger: 'blur' }]
       },
       loading: false
     }

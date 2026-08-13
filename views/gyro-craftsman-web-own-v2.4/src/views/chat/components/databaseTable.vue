@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-dialog
-    :title="$t('ui.chatDatabaseTableSelectDatabase')"
+    :title="$('ui.chatDatabaseTableSelectDatabase')"
     :visible.sync="show"
     width="650px"
     :close-on-click-modal="false"
@@ -9,10 +9,10 @@
     top="10vh"
   >
     <div>
-      <span class="total">{{ $t("ui.developModuleFormBoxTotal") }} {{ selectList.length || '0' }} / {{ tableData.length || '0' }} {{ $t("ui.developModuleFormBoxItems") }}</span>
+      <span class="total">{{ $("ui.developModuleFormBoxTotal") }} {{ selectList.length || '0' }} / {{ tableData.length || '0' }} {{ $("ui.developModuleFormBoxItems") }}</span>
       <el-input
         v-model="where.keyword"
-        :placeholder="$t('ui.chatDatabaseTableByDatabaseTableNameSearch')"
+        :placeholder="$('ui.chatDatabaseTableByDatabaseTableNameSearch')"
         prefix-icon="el-icon-search"
         style="width: 250px"
         size="small"
@@ -38,8 +38,8 @@
           ></el-checkbox>
         </template>
       </el-table-column>
-      <el-table-column prop="table" :label="$t('ui.chatDatabaseTableDatabaseTableName')" width="180"> </el-table-column>
-      <el-table-column prop="comment" :label="$t('ui.chatDatabaseTableDatabaseTableDescription')" width="auto">
+      <el-table-column prop="table" :label="$('ui.chatDatabaseTableDatabaseTableName')" width="180"> </el-table-column>
+      <el-table-column prop="comment" :label="$('ui.chatDatabaseTableDatabaseTableDescription')" width="auto">
         <template slot-scope="scope">
           {{ scope.row.comment || '--' }}
         </template>
@@ -47,8 +47,8 @@
     </el-table>
 
     <span slot="footer" class="dialog-footer">
-      <el-button @click="handleClose" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button type="primary" @click="submitFn" size="small">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+      <el-button @click="handleClose" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button type="primary" @click="submitFn" size="small">{{ $("ui.formCommonDialogFormOk") }}</el-button>
     </span>
   </el-dialog>
 </div>

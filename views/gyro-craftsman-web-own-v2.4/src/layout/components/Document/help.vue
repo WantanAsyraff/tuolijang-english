@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <!-- 右侧帮助文档模块 -->
 <template>
     <div class="box">
       <div class="title">
-        <span class="text">{{ $ts("帮助中心") }} </span>
+        <span class="text">{{ $("legacy.dc0179998b33bc8a") }} </span>
         <span class="iconfont iconguanbi1" @click="closeHelp" />
       </div>
       <iframe :src="url" class="iframe"></iframe>
@@ -14,7 +15,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import file from '@/utils/file'
 import Vue from 'vue'
 Vue.use(file)
@@ -36,7 +36,7 @@ export default {
       payData: {},
       fileTemp: {
         type: 1,
-        title: i18n.t('legacyScript.viewMoreDocumentation'),
+        title: $('legacyScript.viewMoreDocumentation'),
         width: '820px'
       },
       wordList: [],

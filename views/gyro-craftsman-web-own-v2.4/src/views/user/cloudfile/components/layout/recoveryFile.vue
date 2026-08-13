@@ -1,11 +1,12 @@
+import { $ } from '@/lang'
 <template>
 <div class="v-height-flag box">
   <oaFromBox
     :search="search"
     :total="total"
     :isBack="true"
-    :title="$t('ui.userCloudfileLayoutRecoveryFileRecycleBin')"
-:btn-text="$t('ui.userCloudfileLayoutRecoveryFileCompletelyDelete')"
+      :title="$('ui.userCloudfileLayoutRecoveryFileRecycleBin')"
+      :btnText="$('ui.userCloudfileLayoutRecoveryFileCompletelyDelete')"
     :btnIcon="false"
     :isViewSearch="false"
     :sortSearch="false"
@@ -24,7 +25,7 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection"> </el-table-column>
-    <el-table-column prop="name" :label="$t('ui.userCloudfileLayoutRecoveryFileName')" min-width="250">
+    <el-table-column prop="name" :label="$('ui.userCloudfileLayoutRecoveryFileName')" min-width="250">
       <template slot-scope="scope">
         <span v-if="scope.row.type == 0">
           <i class="icon iconfont mr10" :class="getFileTypeIconfont(scope.row.type, scope.row.file_ext)" />
@@ -33,16 +34,16 @@
         <span>.{{ scope.row.file_ext }}</span>
       </template>
     </el-table-column>
-    <el-table-column prop="path" :label="$t('ui.userCloudfileLayoutRecoveryFileLocation')" min-width="150"> </el-table-column>
-    <el-table-column prop="deleted_at" :label="$t('ui.userCloudfileLayoutRecoveryFileDeleteTime')"> </el-table-column>
-    <el-table-column prop="date" :label="$t('ui.administrationMaterialChartIndexOperator')">
+    <el-table-column prop="path" :label="$('ui.userCloudfileLayoutRecoveryFileLocation')" min-width="150"> </el-table-column>
+    <el-table-column prop="deleted_at" :label="$('ui.userCloudfileLayoutRecoveryFileDeleteTime')"> </el-table-column>
+    <el-table-column prop="date" :label="$('ui.administrationMaterialChartIndexOperator')">
       <template slot-scope="scope">
         <div v-if="scope.row.del_user" class="flex">
           <img :src="scope.row.del_user.avatar" alt="" class="img" />{{ scope.row.del_user.name }}
         </div>
       </template>
     </el-table-column>
-    <el-table-column prop="date" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="100">
+    <el-table-column prop="date" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="100">
       <template slot-scope="scope">
         <el-dropdown>
           <span class="el-dropdown-link el-button--text el-button more">
@@ -50,7 +51,7 @@
           </span>
           <el-dropdown-menu style="text-align: center">
             <el-dropdown-item v-if="userInfo.id == scope.row.master_uid" @click.native="deleteFn(scope.row.id)">
-              {{ $t("ui.userCloudfileLayoutRecoveryFileCompletelyDelete") }}
+              {{ $("ui.userCloudfileLayoutRecoveryFileCompletelyDelete") }}
             </el-dropdown-item>
             <el-dropdown-item
               v-if="
@@ -58,7 +59,7 @@
               "
               @click.native="recoveryFn(scope.row.id)"
             >
-              {{ $t("ui.userCloudfileLayoutRecoveryFileRestoreFile") }}
+              {{ $("ui.userCloudfileLayoutRecoveryFileRestoreFile") }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -81,7 +82,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import Vue from 'vue'
 import file from '@/utils/file'
 Vue.use(file)
@@ -111,7 +111,7 @@ export default {
       },
       userInfo: getStorageJson('userInfo', {}),
 
-      dropdownList: [{ label: i18n.t('file.restorefile'), value: '1' }],
+      dropdownList: [{ label: $('file.restorefile'), value: '1' }],
       search: [
         {
           field_name: '搜索文件名称',
@@ -161,7 +161,7 @@ export default {
     },
     dropdownFn() {
       if (this.ids.length == 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem3'))
+        this.$message.error($('legacyScript.pleaseSelectAtLeastOneItem3'))
         return false
       }
       let data = {
@@ -204,7 +204,7 @@ export default {
     // 批量删除
     batchDeletFn() {
       if (this.ids.length == 0) {
-        this.$message.error(i18n.t('legacyScript.pleaseSelectAtLeastOneItem3'))
+        this.$message.error($('legacyScript.pleaseSelectAtLeastOneItem3'))
         return false
       }
       let data = {

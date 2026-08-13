@@ -23,33 +23,33 @@
             alt=""
             style="width: 80px; height: 80px"
           />
-          <p>{{ $t('file.detailedinformation') }}</p>
+          <p>{{ $('file.detailedinformation') }}</p>
         </div>
         <el-row :gutter="20" class="content-list mt15">
           <el-col class="content-left"><i class="icon iconfont iconwenjianleixing" /></el-col>
           <el-col class="content-right">
-            <div>{{ $t('file.filetype') }}</div>
+            <div>{{ $('file.filetype') }}</div>
             <div v-if="fileData.type !== 1">{{ fileData.file_ext }}</div>
-            <div v-else>{{ $t('file.folder') }}</div>
+            <div v-else>{{ $('file.folder') }}</div>
           </el-col>
         </el-row>
         <el-row :gutter="20" class="content-list mt15" v-if="fileData.type !== 1">
           <el-col class="content-left"><i class="icon iconfont iconwenjiandaxiao1" /></el-col>
           <el-col class="content-right">
-            <div>{{ $ts("文件大小") }}</div>
+            <div>{{ $("file.filesize") }}</div>
             <div>{{ formatBytesFn(fileData.file_size) }}</div>
           </el-col>
         </el-row>
         <el-row :gutter="20" class="content-list">
           <el-col class="content-left"><i class="icon iconfont iconwenjianweizhi" /></el-col>
           <el-col class="content-right">
-            <div>{{ $t('file.filelocation') }}</div>
+            <div>{{ $('file.filelocation') }}</div>
             <div v-if="fileData.path.length > 0">
-              {{ $t('file.allpositions') }}
+              {{ $('file.allpositions') }}
               <span>/ {{ fileData.path }}</span>
             </div>
             <div v-else>
-              {{ $t('file.allpositions') }}
+              {{ $('file.allpositions') }}
             </div>
           </el-col>
         </el-row>
@@ -57,21 +57,21 @@
         <el-row :gutter="20" class="content-list">
           <el-col class="content-left"><i class="icon iconfont iconchuangjianren" /></el-col>
           <el-col class="content-right">
-            <div>{{ $t('hr.founder') }}</div>
+            <div>{{ $('hr.founder') }}</div>
             <div>{{ fileData.user.name || '--' }}</div>
           </el-col>
         </el-row>
         <el-row :gutter="20" class="content-list">
           <el-col class="content-left"><i class="icon iconfont iconchuangjianshijian" /></el-col>
           <el-col class="content-right">
-            <div>{{ $t('file.creationtime') }}</div>
+            <div>{{ $('file.creationtime') }}</div>
             <div>{{ fileData.created_at }}</div>
           </el-col>
         </el-row>
         <el-row :gutter="20" class="content-list">
           <el-col class="content-left"><i class="icon iconfont iconxiugaishijian" /></el-col>
           <el-col class="content-right">
-            <div>{{ $t('file.updatetime') }}</div>
+            <div>{{ $('file.updatetime') }}</div>
             <div>{{ fileData.updated_at }}</div>
           </el-col>
         </el-row>

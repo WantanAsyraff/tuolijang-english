@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 订单-关联付款单的申请发票页面 -->
 <template>
 <div>
@@ -15,21 +16,21 @@
       <!-- 步骤条 -->
       <div class="step">
         <span :class="activeIndex == 1 ? 'active' : ''" class="public">1</span>
-        <span :class="activeIndex == 1 ? 'activeText' : ''" class="step-text">{{ $t("ui.invoiceMergeInvoiceSelectPaymentOrder") }}</span>
+        <span :class="activeIndex == 1 ? 'activeText' : ''" class="step-text">{{ $("ui.invoiceMergeInvoiceSelectPaymentOrder") }}</span>
         <span class="line-title" />
         <span :class="activeIndex == 2 ? 'active' : ''" class="public">2</span>
-        <span :class="activeIndex == 2 ? 'activeText' : ''" class="step-text">{{ $t("ui.invoiceMergeInvoiceEnterInvoiceInformation") }}</span>
+        <span :class="activeIndex == 2 ? 'activeText' : ''" class="step-text">{{ $("ui.invoiceMergeInvoiceEnterInvoiceInformation") }}</span>
       </div>
 
       <!-- 未选择付款订单提示 -->
       <div v-if="activeIndex == 2 && rules.bill_id.length == 0" class="alert">
-        <el-alert class="cr-alert" :description="$t('ui.invoiceMergeInvoicePleaseNoteThatNoPaymentOrderHasBeenSelected')" show-icon type="info">
+        <el-alert class="cr-alert" :description="$('ui.invoiceMergeInvoicePleaseNoteThatNoPaymentOrderHasBeenSelected')" show-icon type="info">
         </el-alert>
       </div>
       <!-- 表格 -->
       <div v-if="activeIndex == 1" class="mt20">
         <el-button v-if="formData.type == 'edit'" class="mb14" size="small" type="primary" @click="addPaymentFn"
-          >{{ $t("ui.invoiceMergeInvoiceAddOtherPaymentOrder") }}</el-button
+          >{{ $("ui.invoiceMergeInvoiceAddOtherPaymentOrder") }}</el-button
         >
         <paymentTable
           ref="paymentTable"
@@ -53,9 +54,9 @@
         </div>
       </div>
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button size="small" @click="handleClose">{{ activeIndex == 1 ? $t('ui.formCommonSelectLabelCancel') : $t('ui.invoiceMergeInvoicePrevious') }}</el-button>
+        <el-button size="small" @click="handleClose">{{ activeIndex == 1 ? $('ui.formCommonSelectLabelCancel') : $('ui.invoiceMergeInvoicePrevious') }}</el-button>
         <el-button size="small" type="primary" @click="handleConfirm()">
-          {{ activeIndex == 1 ? $t('ui.invoiceMergeInvoiceNext') : $t('ui.formCommonDialogFormOk') }}
+          {{ activeIndex == 1 ? $('ui.invoiceMergeInvoiceNext') : $('ui.formCommonDialogFormOk') }}
         </el-button>
       </div>
     </el-drawer>
@@ -63,15 +64,15 @@
     <el-dialog
       :append-to-body="true"
       :visible.sync="addPayment"
-      :title="$t('ui.invoiceMergeInvoiceSelectAPaymentOrderForInvoicing')"
+      :title="$('ui.invoiceMergeInvoiceSelectAPaymentOrderForInvoicing')"
       width="1100px"
       @close="cancelFn"
     >
       <div class="line" />
       <paymentTable :edit="edit" :ids="rules.bill_id" :tableData="tableData2" @handleSelectionFn="pushTableFn" />
       <div class="footer">
-        <el-button class="btn" size="small" @click="cancelFn">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button class="btn" size="small" type="primary" @click="okFn">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+        <el-button class="btn" size="small" @click="cancelFn">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button class="btn" size="small" type="primary" @click="okFn">{{ $("ui.formCommonDialogFormOk") }}</el-button>
       </div>
     </el-dialog>
   </div>
@@ -79,7 +80,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import paymentTable from './paymentTable'
 
 import { uninvoicedListApi } from '@/api/enterprise'
@@ -113,7 +113,7 @@ export default {
   data() {
     const checkIdent = (rule, value, callback) => {
       if (!value && this.rules.invoiceType > 1) {
-        return callback(new Error(this.$t('customer.placeholder47')))
+        return callback(new Error(this.$('customer.placeholder47')))
       } else if (!helper.identReg.test(value)) {
         return callback(new Error('税号输入不合法'))
       } else {
@@ -136,13 +136,13 @@ export default {
       categoryList: [], // 发票类目
       invoiceOptions: [
         // 发票类型
-        { value: 1, label: this.$t('customer.personalinvoice') },
-        { value: 2, label: this.$t('customer.enterpriseinvoice') },
-        { value: 3, label: this.$t('customer.specialinvoice') }
+        { value: 1, label: this.$('customer.personalinvoice') },
+        { value: 2, label: this.$('customer.enterpriseinvoice') },
+        { value: 3, label: this.$('customer.specialinvoice') }
       ],
       methodOptions: [
-        { value: 'express', label: this.$t('customer.express') },
-        { value: 'mail', label: this.$t('customer.mail') }
+        { value: 'express', label: this.$('customer.express') },
+        { value: 'mail', label: this.$('customer.mail') }
       ],
       activeIndex: 1,
       withdraw: '',
@@ -170,20 +170,20 @@ export default {
       },
       newFormData: {},
       rule: {
-        name: [{ required: true, message: this.$t('customer.placeholder42'), trigger: 'blur' }],
-        amount: [{ required: true, message: this.$t('customer.placeholder44'), trigger: 'blur' }],
-        billDate: [{ required: true, message: this.$t('customer.placeholder65'), trigger: 'blur' }],
-        title: [{ required: true, message: this.$t('customer.placeholder46'), trigger: 'blur' }],
+        name: [{ required: true, message: this.$('customer.placeholder42'), trigger: 'blur' }],
+        amount: [{ required: true, message: this.$('customer.placeholder44'), trigger: 'blur' }],
+        billDate: [{ required: true, message: this.$('customer.placeholder65'), trigger: 'blur' }],
+        title: [{ required: true, message: this.$('customer.placeholder46'), trigger: 'blur' }],
         ident: [{ required: true, validator: checkIdent, trigger: 'blur' }],
-        category_id: [{ required: true, message: i18n.t('legacyScript.selectAnInvoiceCategory'), trigger: 'change' }],
-        collect_name: [{ required: true, message: i18n.t('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
-        collect_tel: [{ required: true, message: i18n.t('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
-        collect_email: [{ required: true, message: i18n.t('legacyScript.emailAddressCannotBeEmpty'), trigger: 'blur' }],
-        mail_address: [{ required: true, message: i18n.t('legacyScript.mailingAddressCannotBeEmpty'), trigger: 'blur' }],
-        address: [{ required: true, message: this.$t('customer.placeholder56'), trigger: 'blur' }],
-        bank: [{ required: true, message: this.$t('customer.placeholder48'), trigger: 'blur' }],
-        account: [{ required: true, message: this.$t('customer.placeholder49'), trigger: 'blur' }],
-        tel: [{ required: true, message: i18n.t('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }]
+        category_id: [{ required: true, message: $('legacyScript.selectAnInvoiceCategory'), trigger: 'change' }],
+        collect_name: [{ required: true, message: $('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
+        collect_tel: [{ required: true, message: $('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }],
+        collect_email: [{ required: true, message: $('legacyScript.emailAddressCannotBeEmpty'), trigger: 'blur' }],
+        mail_address: [{ required: true, message: $('legacyScript.mailingAddressCannotBeEmpty'), trigger: 'blur' }],
+        address: [{ required: true, message: this.$('customer.placeholder56'), trigger: 'blur' }],
+        bank: [{ required: true, message: this.$('customer.placeholder48'), trigger: 'blur' }],
+        account: [{ required: true, message: this.$('customer.placeholder49'), trigger: 'blur' }],
+        tel: [{ required: true, message: $('legacyScript.phoneNumberCannotBeEmpty'), trigger: 'blur' }]
       }
     }
   },

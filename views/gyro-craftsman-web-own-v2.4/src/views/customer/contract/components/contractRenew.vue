@@ -1,8 +1,9 @@
+import { $ } from '@/lang'
 <!-- 订单-订单续费页面组件 -->
 <template>
 <div class="station">
   <el-row class="mb14">
-    <el-button @click="handleContract(2, 1)" size="small" type="primary">{{ $t('customer.addrenewal') }}</el-button>
+    <el-button @click="handleContract(2, 1)" size="small" type="primary">{{ $('customer.addrenewal') }}</el-button>
   </el-row>
   <div class="renewal-content" v-if="renewCensusData.length > 0">
     <el-row>
@@ -13,18 +14,18 @@
             $moment(item.end_date).format('yyyy-MM-DD')
           }}</span>
           <span v-else>--</span>
-          {{ $t("ui.customerContractContractRenewExpired") }}
+          {{ $("ui.customerContractContractRenewExpired") }}
         </p>
       </el-col>
       <el-col :span="4" class="text-right">
         <el-button size="small" type="text" @click="handleRenewCensus"
-          >{{ $t("ui.customerContractContractRenewViewAll") }} <i class="el-icon-d-arrow-right"></i
+          >{{ $("ui.customerContractContractRenewViewAll") }} <i class="el-icon-d-arrow-right"></i
         ></el-button>
       </el-col>
     </el-row>
   </div>
   <el-table :data="renewData" style="width: 100%; height: 90%">
-    <el-table-column prop="end_date" :label="$t('customer.renewaldate')" min-width="100">
+    <el-table-column prop="end_date" :label="$('customer.renewaldate')" min-width="100">
       <template slot-scope="scope">
         <span v-if="scope.row.end_date !== '0000-00-00 00:00:00'">{{
           $moment(scope.row.end_date).format('YYYY-MM-DD')
@@ -32,30 +33,30 @@
         <span v-else>--</span>
       </template>
     </el-table-column>
-    <el-table-column prop="num" :label="$t('customer.renewalamount')" min-width="80"> </el-table-column>
-    <el-table-column prop="renew.title" :label="$t('customer.renewaltype')" min-width="110"> </el-table-column>
-    <el-table-column prop="status" :label="$t('customer.accessstatus')" min-width="80">
+    <el-table-column prop="num" :label="$('customer.renewalamount')" min-width="80"> </el-table-column>
+    <el-table-column prop="renew.title" :label="$('customer.renewaltype')" min-width="110"> </el-table-column>
+    <el-table-column prop="status" :label="$('customer.accessstatus')" min-width="80">
       <template slot-scope="scope">
-        <el-tag v-if="scope.row.status === 0" type="warning" size="mini"> {{ $t('customer.audit') }} </el-tag>
-        <el-tag v-if="scope.row.status === 1" type="info" size="mini"> {{ $t('customer.passed') }} </el-tag>
-        <el-tag v-if="scope.row.status == -1" type="info" size="mini"> {{ $t("ui.customerContractContractRenewRecall") }}</el-tag>
+        <el-tag v-if="scope.row.status === 0" type="warning" size="mini"> {{ $('customer.audit') }} </el-tag>
+        <el-tag v-if="scope.row.status === 1" type="info" size="mini"> {{ $('customer.passed') }} </el-tag>
+        <el-tag v-if="scope.row.status == -1" type="info" size="mini"> {{ $("ui.customerContractContractRenewRecall") }}</el-tag>
         <el-popover v-if="scope.row.status === 2" trigger="hover" placement="top">
-          <p>{{ $t('customer.reason') }}:</p>
+          <p>{{ $('customer.reason') }}:</p>
           <p>{{ scope.row.fail_msg }}</p>
           <div slot="reference">
-            <el-tag type="danger" size="mini"> {{ $t('customer.fail') }} </el-tag>
+            <el-tag type="danger" size="mini"> {{ $('customer.fail') }} </el-tag>
           </div>
         </el-popover>
       </template>
     </el-table-column>
-    <el-table-column prop="card.name" :label="$t('setting.info.founder')" min-width="80"> </el-table-column>
-    <el-table-column prop="address" min-width="160" :label="$t('public.operation')">
+    <el-table-column prop="card.name" :label="$('setting.info.founder')" min-width="80"> </el-table-column>
+    <el-table-column prop="address" min-width="160" :label="$('public.operation')">
       <template slot-scope="scope">
         <el-button v-if="scope.row.status !== 1" type="text" @click="handleContract(2, 2, scope.row)">
-          {{ scope.row.status == 0 ? $t('ui.formCommonOaLogEdit') : $t('ui.customerContractContractRenewResubmit') }}
+          {{ scope.row.status == 0 ? $('ui.formCommonOaLogEdit') : $('ui.customerContractContractRenewResubmit') }}
         </el-button>
-        <el-button @click="setRemarks(scope.row)" type="text">{{ $t('public.remarks') }}</el-button>
-        <el-button v-if="scope.row.status == 0" @click="handleDelete(scope.row)" type="text">{{ $t("ui.customerContractContractRenewRecall") }}</el-button>
+        <el-button @click="setRemarks(scope.row)" type="text">{{ $('public.remarks') }}</el-button>
+        <el-button v-if="scope.row.status == 0" @click="handleDelete(scope.row)" type="text">{{ $("ui.customerContractContractRenewRecall") }}</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -74,7 +75,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { clientBillListApi } from '@/api/enterprise'
 import { clientBillPutApi } from '@/api/client'
 export default {
@@ -136,13 +136,13 @@ export default {
     handleContract(type, edit, row = []) {
       let str = ''
       if (type === 1 && edit === 1) {
-        str = this.$t('customer.addcollection')
+        str = this.$('customer.addcollection')
       } else if (type === 1 && edit === 2) {
-        str = this.$t('customer.editcollection')
+        str = this.$('customer.editcollection')
       } else if (type === 2 && edit === 1) {
-        str = this.$t('customer.addrenewal')
+        str = this.$('customer.addrenewal')
       } else if (type === 2 && edit === 2) {
-        str = this.$t('customer.editrenewal')
+        str = this.$('customer.editrenewal')
       }
 
       this.configContract = {
@@ -162,7 +162,7 @@ export default {
     },
     setRemarks(row) {
       this.configMark = {
-        title: this.$t('customer.remarkinformation'),
+        title: this.$('customer.remarkinformation'),
         width: '480px',
         id: row.id,
         type: 1,
@@ -172,7 +172,7 @@ export default {
     },
     handleRenewCensus() {
       this.configRenewCensus = {
-        title: i18n.t('customer.orderRenewal'),
+        title: $('customer.orderRenewal'),
         width: '480px',
         data: this.renewCensusData
       }
@@ -192,7 +192,7 @@ export default {
     },
     // 删除
     handleDelete(item) {
-      this.$modalSure(this.$t('customer.placeholder23')).then(() => {
+      this.$modalSure(this.$('customer.placeholder23')).then(() => {
         clientBillPutApi(item.id).then((res) => {
           if (this.where.page > 1 && this.renewData.length <= 1) {
             this.where.page--

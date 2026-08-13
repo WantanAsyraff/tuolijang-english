@@ -1,8 +1,8 @@
 <template>
-<el-dialog :visible.sync="dialogTableVisible" :title="$t('ui.customerSetupCustomFormClueToCustomersLeadToCustomerFieldSettings')">
-  <div class="tips">{{ $t("ui.customerSetupCustomFormClueToCustomersWhenConvertingALeadToACustomerSelectThe") }}</div>
+<el-dialog :visible.sync="dialogTableVisible" :title="$('ui.customerSetupCustomFormClueToCustomersLeadToCustomerFieldSettings')">
+  <div class="tips">{{ $("ui.customerSetupCustomFormClueToCustomersWhenConvertingALeadToACustomerSelectThe") }}</div>
   <el-table :data="gridData" :height="450">
-    <el-table-column :label="$t('ui.customerSetupCustomFormClueToCustomersLeadField')" property="name">
+    <el-table-column :label="$('ui.customerSetupCustomFormClueToCustomersLeadField')" property="name">
       <template slot-scope="scope">
         {{ scope.row.key_name }}
       </template>
@@ -12,11 +12,11 @@
         <span class="el-icon-right"></span>
       </template>
     </el-table-column>
-    <el-table-column :label="$t('ui.customerSetupCustomFormClueToCustomersCustomerField')" property="customer">
+    <el-table-column :label="$('ui.customerSetupCustomFormClueToCustomersCustomerField')" property="customer">
       <template slot-scope="scope">
         <el-select
           v-model="scope.row.related"
-          :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+          :placeholder="$('ui.developConditionGroupPleaseSelect')"
           multiple
           clearable
           filterable
@@ -34,8 +34,8 @@
     </el-table-column>
   </el-table>
   <div slot="footer" class="dialog-footer">
-    <el-button size="small" @click="dialogTableVisible = false">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-    <el-button size="small" type="primary" @click="submit">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+    <el-button size="small" @click="dialogTableVisible = false">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+    <el-button size="small" type="primary" @click="submit">{{ $("ui.formCommonDialogFormOk") }}</el-button>
   </div>
 </el-dialog>
 </template>

@@ -1,11 +1,12 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="normal-page">
     <formBox
-      :title="$t('ui.chatIndexApplicationList')"
+      :title="$('ui.chatIndexApplicationList')"
       :total="total"
       :search="search"
-:btn-text="$t('ui.chatIndexCreateApplication')"
+      :btnText="$('ui.chatIndexCreateApplication')"
       :isViewSearch="false"
       :sortSearch="false"
       @confirmData="confirmData"
@@ -20,21 +21,21 @@
             <img v-else src="../../assets/images/ai.png" alt="" class="img" />
             <div class="flex-column" style="width: 100%">
               <div class="title over-text">{{ item.name }}</div>
-              <span class="name">{{ $t("ui.chatIndexCreator") }}{{ item.user ? item.user.name : '--' }} </span>
+              <span class="name">{{ $("ui.chatIndexCreator") }}{{ item.user ? item.user.name : '--' }} </span>
             </div>
-            <div class="status" v-if="item.status == 1">{{ $t("ui.chatIndexRelease") }}</div>
-            <div class="status" v-else>{{ $t("ui.chatIndexUnreleased") }}</div>
+            <div class="status" v-if="item.status == 1">{{ $("ui.chatIndexRelease") }}</div>
+            <div class="status" v-else>{{ $("ui.chatIndexUnreleased") }}</div>
           </div>
           <div class="over-text2 content">
             {{ item.info }}
           </div>
           <div class="operate flex flex-center">
-            <span @click="handleOpenChatApp(item.id)"> {{ $t("ui.chatIndexUse") }}</span>
+            <span @click="handleOpenChatApp(item.id)"> {{ $("ui.chatIndexUse") }}</span>
             <template v-if="item.auth">
               <el-divider direction="vertical"></el-divider>
-              <span @click="handleEdit(item)"> {{ $t("ui.chatIndexSettings") }}</span>
+              <span @click="handleEdit(item)"> {{ $("ui.chatIndexSettings") }}</span>
               <el-divider direction="vertical"></el-divider>
-              <span @click="deleteFn(item.id)"> {{ $t("ui.chatIndexDelete") }}</span>
+              <span @click="deleteFn(item.id)"> {{ $("ui.chatIndexDelete") }}</span>
             </template>
           </div>
         </div>
@@ -60,7 +61,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import formBox from '@/components/common/oaFromBox'
 import oaDialog from '@/components/form-common/dialog-form'
@@ -84,27 +84,27 @@ export default {
         }
       ],
       fromData: {
-        title: i18n.t('legacyScript.createApplication'),
+        title: $('legacyScript.createApplication'),
         width: '650px',
         type: 'add',
-        btnText: i18n.t('ui.formCommonOaLogEstablish')
+        btnText: '创建'
       },
       formConfig: [
         {
           type: 'input',
-          label: i18n.t('legacyScript.applicationName'),
-          placeholder: i18n.t('legacyScript.enterApplicationName'),
+          label: $('legacyScript.applicationName'),
+          placeholder: $('legacyScript.enterApplicationName'),
           key: 'name',
           maxlength: 20,
           showWordLimit: true
         },
         {
           type: 'textarea',
-          label: i18n.t('legacyScript.applicationDescription'),
+          label: $('legacyScript.applicationDescription'),
           maxlength: 100,
           showWordLimit: true,
           placeholder:
-            i18n.t('legacyScript.youAreAnEnterpriseManagementAssistantThatAnalyzesChallengesAnd'),
+            $('legacyScript.youAreAnEnterpriseManagementAssistantThatAnalyzesChallengesAnd'),
           key: 'info',
           height: '120px'
         }
@@ -114,7 +114,7 @@ export default {
         info: ''
       },
       formRules: {
-        name: [{ required: true, message: i18n.t('legacyScript.enterApplicationName'), trigger: 'blur' }]
+        name: [{ required: true, message: $('legacyScript.enterApplicationName'), trigger: 'blur' }]
       },
       total: 0,
       where: {
@@ -164,14 +164,14 @@ export default {
           name: 'temperature',
           filed: '采样温度',
           value: '0.95',
-          message: i18n.t('legacyScript.range0To2HigherValuesEG08')
+          message: $('legacyScript.range0To2HigherValuesEG08')
         },
         {
           name: 'max_tokens',
           filed: '最大tokens',
           value: '2048',
           message:
-            i18n.t('legacyScript.maximumTokensForModelGeneratedCompletionsPerRequestTotalInput')
+            $('legacyScript.maximumTokensForModelGeneratedCompletionsPerRequestTotalInput')
         }
       ]
       chatSaveApplicationsApi(data).then((res) => {

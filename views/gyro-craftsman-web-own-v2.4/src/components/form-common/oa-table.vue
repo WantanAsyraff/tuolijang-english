@@ -3,7 +3,7 @@
   <el-table
     :data="tableData"
     v-loading="loading"
-:element-loading-text="$t('ui.formCommonOaTableLoading')"
+    element-loading-text="拼命加载中"
     element-loading-background="rgba(255, 255, 255, 0.7)"
     :height="height"
     ref="elTable"
@@ -13,7 +13,7 @@
     :key="tableKey"
   >
     <template v-for="(col, index) in tableOptions">
-      <el-table-column v-if="col.type === 'index'" type="index" width="50" :label="$t('ui.formCommonOaTableSerialNumber')" />
+      <el-table-column v-if="col.type === 'index'" type="index" width="50" :label="$('ui.formCommonOaTableSerialNumber')" />
 
       <!-- 自定义插槽 -->
       <el-table-column v-else-if="col.type === 'slot'" :width="col.width || null" :label="col.label">

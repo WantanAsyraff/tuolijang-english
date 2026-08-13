@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="v-height-flag ml20 mr20" style="min-height: calc(100vh - 200px)">
     <el-form ref="form" :model="form" :rules="formRules" :label-width="formLabelWidth" class="mt20">
@@ -7,7 +8,7 @@
           :key="item.field"
           :span="item.span || 24"
         >
-          <el-form-item :label="$ts(item.title, item.title_en) + ':'" :prop="item.field">
+          <el-form-item :label="$(item.title, item.title_en) + ':'" :prop="item.field">
             <!-- 文本输入 -->
             <el-input
               v-if="item.type === 'input'"
@@ -54,8 +55,8 @@
             <el-switch
               v-else-if="item.type === 'switch'"
               v-model="form[item.field]"
-:active-text="$ts(item.activeText || $t('ui.customerWeChatMassGroupDetailsEnable'), item.activeText_en)"
-:inactive-text="$ts(item.inactiveText || $t('ui.customerWeChatMassGroupDetailsClose'), item.inactiveText_en)"
+              :active-text="$(item.activeText || '开启', item.activeText_en)"
+              :inactive-text="$(item.inactiveText || '关闭', item.inactiveText_en)"
               :active-value="item.activeValue !== undefined ? item.activeValue : 1"
               :inactive-value="item.inactiveValue !== undefined ? item.inactiveValue : 0"
               :disabled="item.disabled"
@@ -71,7 +72,7 @@
                 :key="opt.value"
                 :label="opt.value"
               >
-                {{ $ts(opt.label, opt.label_en) }}
+                {{ $(opt.label, opt.label_en) }}
               </el-radio>
             </el-radio-group>
             <!-- 多选 -->
@@ -85,7 +86,7 @@
                 :key="opt.value"
                 :label="opt.value"
               >
-                {{ $ts(opt.label, opt.label_en) }}
+                {{ $(opt.label, opt.label_en) }}
               </el-checkbox>
             </el-checkbox-group>
             <!-- 下拉选择 -->
@@ -103,7 +104,7 @@
               <el-option
                 v-for="opt in item.options"
                 :key="opt.value"
-                :label="$ts(opt.label, opt.label_en)"
+                :label="$(opt.label, opt.label_en)"
                 :value="opt.value"
               />
             </el-select>
@@ -147,20 +148,20 @@
             />
             <!-- 说明文字 (info) -->
             <div v-if="item.info" class="form-item-info">
-              {{ $ts(item.info, item.info_en) }}
+              {{ $(item.info, item.info_en) }}
             </div>
           </el-form-item>
         </el-col>
       </el-row>
 
       <el-form-item>
-        <el-button :loading="loading" size="small" type="primary" @click="submitForm">{{ $ts("立即提交") }}</el-button>
+        <el-button :loading="loading" size="small" type="primary" @click="submitForm">{{ $("ui.settingEnterpriseSetupCloudfileSubmitNow") }}</el-button>
       </el-form-item>
     </el-form>
 
     <!-- 图片选择对话框 -->
     <el-dialog
-      :title='$ts("选择图片")'
+      :title='$("ui.administrationNoticeAddNoticeSelectImage")'
       :visible.sync="imageDialogVisible"
       width="850px"
       append-to-body
@@ -176,7 +177,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { cloudFileSetupApi } from '@/api/config'
 import uploadPicture from '@/components/uploadPicture/index'
 import request from '@/api/request'
@@ -215,11 +215,11 @@ export default {
   },
   computed: {
     formLabelWidth() {
-      return this.$i18n && this.$i18n.locale === 'en' ? '220px' : '150px'
+      return this.$language === 'en' ? '220px' : '150px'
     }
   },
   watch: {
-    '$i18n.locale'() {
+    '$language'() {
       this.formRules = this.buildFormRules(this.rule || [])
       this.$nextTick(() => this.$refs.form && this.$refs.form.clearValidate())
     },
@@ -295,9 +295,9 @@ export default {
 
     getFieldPlaceholder(item, action) {
       const direct = item.placeholder
-      if (direct) return this.$ts(direct, item.placeholder_en)
-      const title = this.$ts(item.title, item.title_en)
-      if (this.$i18n && this.$i18n.locale === 'en') {
+      if (direct) return this.$(direct, item.placeholder_en)
+      const title = this.$(item.title, item.title_en)
+      if (this.$language === 'en') {
         return `${action === 'select' ? 'Select' : 'Enter'} ${String(title).toLowerCase()}`
       }
       return `${action === 'select' ? '请选择' : '请输入'}${item.title}`
@@ -311,16 +311,16 @@ export default {
         formRules[item.field] = validations.map((validation) => ({
           ...validation,
           message: validation.message
-            ? this.$ts(validation.message, validation.message_en)
+            ? this.$(validation.message, validation.message_en)
             : validation.message
         }))
         if (item.required) {
           const sourceMessage = item.message || `请输入${item.title || item.label}`
-          const title = this.$ts(item.title || item.label, item.title_en || item.label_en)
+          const title = this.$(item.title || item.label, item.title_en || item.label_en)
           const englishMessage = item.message_en || `Please enter ${String(title).toLowerCase()}`
           formRules[item.field].push({
             required: true,
-            message: this.$ts(sourceMessage, englishMessage),
+            message: this.$(sourceMessage, englishMessage),
             trigger: ['blur', 'change']
           })
         }
@@ -424,7 +424,7 @@ export default {
           await this.getConfig()
         }
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToSaveSettings'), error)
+        console.error($('legacyScript.failedToSaveSettings'), error)
       } finally {
         this.loading = false
       }
@@ -447,7 +447,7 @@ export default {
       try {
         await this.$store.dispatch('appConfig/fetchConfig', true)
       } catch (error) {
-        console.error(i18n.t('legacyScript.failedToLoadSettings'), error)
+        console.error($('legacyScript.failedToLoadSettings'), error)
       }
     }
   }

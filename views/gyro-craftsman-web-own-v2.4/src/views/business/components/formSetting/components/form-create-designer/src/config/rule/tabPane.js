@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 const label = '标签页';
 const name = 'tab-pane';
 
@@ -11,23 +11,23 @@ export default {
   rule() {
     return {
       type: 'el-tab-pane',
-      props: { label: i18n.t('legacyScript.newTab') },
+      props: { label: $('legacyScript.newTab') },
       children: [],
     };
   },
   props() {
     return [
-      { type: 'input', field: 'label', title: i18n.t('legacyScript.tabTitle') },
+      { type: 'input', field: 'label', title: $('legacyScript.tabTitle') },
       {
         type: 'switch',
         field: 'disabled',
-        title: i18n.t('legacyScript.disable'),
+        title: $('legacyScript.disable'),
       },
-      { type: 'input', field: 'name', title: i18n.t('legacyScript.identifierCorrespondingToTheBoundTabValueRepresentingTheTab') },
+      { type: 'input', field: 'name', title: $('legacyScript.identifierCorrespondingToTheBoundTabValueRepresentingTheTab') },
       {
         type: 'switch',
         field: 'lazy',
-        title: i18n.t('legacyScript.whetherTheLabelIsRenderedLazily'),
+        title: $('legacyScript.whetherTheLabelIsRenderedLazily'),
       },
     ];
   },

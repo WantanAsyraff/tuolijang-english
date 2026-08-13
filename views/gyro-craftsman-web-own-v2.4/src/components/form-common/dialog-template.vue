@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription:考核模板库弹窗页面 -->
 <template>
   <div>
@@ -23,7 +24,7 @@
                 :class="index == tabIndex ? 'active' : ''"
                 @click="clickDepart(index, item.id)"
               >
-                <span>{{ $ts(item.name) }}</span>
+                <span>{{ $(item.name) }}</span>
               </li>
             </ul>
           </div>
@@ -35,7 +36,7 @@
                 v-model="where.name"
                 @change="searchFn"
                 size="small"
-                :placeholder='$ts("请输入模板名称")'
+                :placeholder='$("ui.hrAssessCheckIndexPleaseEnterTemplateName")'
                 class="input-with-select"
               />
               <el-scrollbar>
@@ -49,8 +50,8 @@
                     @mouseleave="showLeaveItem(index)"
                   >
                     <div class="temp-text" :style="{ color: item.color }">
-                      <p class="title textover">{{ $ts(item.name) }}</p>
-                      <p class="caption">{{ $ts(item.info) }}</p>
+                      <p class="title textover">{{ $(item.name) }}</p>
+                      <p class="caption">{{ $(item.info) }}</p>
                       <p class="icon-star" v-if="item.way === 1">
                         <i class="el-icon-star-on" :class="setIsCollect(item)" @click.stop="statusStar(item)" />
 
@@ -73,10 +74,10 @@
                         }
                       "
                     >
-                      <div class="pointer"><span @click.stop="setPreviewImage(item)">{{ $ts("设置封面") }}</span></div>
-                      <div class="pointer"><span @click.stop="handleEdit(item)">{{ $ts("编辑") }}</span></div>
+                      <div class="pointer"><span @click.stop="setPreviewImage(item)">{{ $("legacy.4f02c87a0774b150") }}</span></div>
+                      <div class="pointer"><span @click.stop="handleEdit(item)">{{ $("public.edit") }}</span></div>
                       <div class="pointer" @click.stop="handleDelete(item)">
-                        <span>{{ $ts("删除") }}</span>
+                        <span>{{ $("public.delete") }}</span>
                       </div>
                     </div>
                   </li>
@@ -106,11 +107,11 @@
           <div class="ml15">
             <div class="template-preview">
               <el-scrollbar style="height: 100%">
-                <p class="title">{{ $ts(selectTitle) }}</p>
+                <p class="title">{{ $(selectTitle) }}</p>
                 <div v-for="(item, index) in selectDada" :key="index" class="template-preview-list">
-                  <p class="caption">{{ $ts(item.name) }}</p>
+                  <p class="caption">{{ $(item.name) }}</p>
                   <ul class="template-preview-ul">
-                    <li v-for="(items, indexs) in item.target" :key="indexs">{{ $ts(items.name) }}</li>
+                    <li v-for="(items, indexs) in item.target" :key="indexs">{{ $(items.name) }}</li>
                   </ul>
                 </div>
               </el-scrollbar>
@@ -119,16 +120,15 @@
         </el-col>
       </el-row>
       <div slot="footer" class="dialog-footer">
-        <el-button size="small" @click="closeDialog">{{ $ts("取消") }}</el-button>
-        <el-button size="small" type="primary" @click="handleConfirm">{{ $ts("确定") }}</el-button>
+        <el-button size="small" @click="closeDialog">{{ $("public.cancel") }}</el-button>
+        <el-button size="small" type="primary" @click="handleConfirm">{{ $("public.ok") }}</el-button>
       </div>
     </el-dialog>
-    <preview ref="preview" :title='$ts("设置封面图")' :data="itemData" @handlePreview="handlePreview" />
+    <preview ref="preview" :title='$("legacy.6cad0faf39c93cf5")' :data="itemData" @handlePreview="handlePreview" />
   </div>
 </template>
 
 <script>
-import i18n from '@/lang'
 import {
   assessTargetCateApi,
   assessTargetCateEditApi,
@@ -277,7 +277,7 @@ export default {
     },
     handleConfirm() {
       if (this.clickIndex < 0) {
-        this.$message.error(i18n.t('legacyScript.noSelectionMade'))
+        this.$message.error($('legacyScript.noSelectionMade'))
       } else {
         if (this.remindButton) {
           var selectDada = this.selectDada
@@ -378,13 +378,13 @@ export default {
     handleEdit(item) {
       assessTemplateEditApi(item.id).then((res) => {
         if (res.data === undefined) {
-          this.$message.error(i18n.t('legacyScript.theContentIsEmptyAndCannotBeEdited'))
+          this.$message.error($('legacyScript.theContentIsEmptyAndCannotBeEdited'))
         } else {
           this.configData.edit = 2
           this.configData.data = {
             ...res.data,
             temp: res.data.temp
-              ? { ...res.data.temp, name: this.$ts(res.data.temp.name), info: this.$ts(res.data.temp.info) }
+              ? { ...res.data.temp, name: this.$(res.data.temp.name), info: this.$(res.data.temp.info) }
               : res.data.temp,
             info: this.localizeTemplateDetails(res.data.info)
           }
@@ -417,13 +417,13 @@ export default {
       if (!Array.isArray(details)) return []
       return details.map((dimension) => ({
         ...dimension,
-        name: this.$ts(dimension.name),
+        name: this.$(dimension.name),
         target: Array.isArray(dimension.target)
           ? dimension.target.map((indicator) => ({
               ...indicator,
-              name: this.$ts(indicator.name),
-              content: this.$ts(indicator.content),
-              info: this.$ts(indicator.info)
+              name: this.$(indicator.name),
+              content: this.$(indicator.content),
+              info: this.$(indicator.info)
             }))
           : []
       }))

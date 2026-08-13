@@ -1,11 +1,11 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 export default function field() {
   return [
     {
       type: 'input',
       field: 'field',
       value: '',
-      title: i18n.t('legacyScript.fieldID'),
+      title: $('legacyScript.fieldID'),
       props: {
         disabled: true,
       },
@@ -14,13 +14,13 @@ export default function field() {
       type: 'input',
       field: 'title',
       value: '',
-      title: i18n.t('legacyScript.identifierName'),
+      title: $('legacyScript.identifierName'),
     },
     {
       type: 'input',
       field: 'info',
       value: '',
-      title: i18n.t('legacyScript.promptText'),
+      title: $('legacyScript.promptText'),
       props: {
         type: 'textarea',
       },

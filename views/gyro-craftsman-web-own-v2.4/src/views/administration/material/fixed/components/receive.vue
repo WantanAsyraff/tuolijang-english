@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 物资领用弹窗 -->
 <template>
 <div class="station">
@@ -13,13 +14,13 @@
   >
     <div class="invoice">
       <el-form ref="form" label-width="80px">
-        <el-form-item :label="$t('ui.administrationMaterialFixedReceiveSelectionMethod')">
+        <el-form-item :label="$('ui.administrationMaterialFixedReceiveSelectionMethod')">
           <el-radio-group size="small" v-model="type">
-            <el-radio label="0">{{ $t("ui.administrationMaterialFixedReceiveByPersonnel") }}</el-radio>
-            <el-radio label="1">{{ $t("ui.administrationMaterialFixedReceiveByDepartment") }}</el-radio>
+            <el-radio label="0">{{ $("ui.administrationMaterialFixedReceiveByPersonnel") }}</el-radio>
+            <el-radio label="1">{{ $("ui.administrationMaterialFixedReceiveByDepartment") }}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item :label="$t('ui.administrationMaterialFixedReceiveRecipient')" class="el-input--small">
+        <el-form-item :label="$('ui.administrationMaterialFixedReceiveRecipient')" class="el-input--small">
           <select-member
             v-if="type == 0"
             :only-one="true"
@@ -39,16 +40,16 @@
       </el-form>
       <div class="table-box">
         <el-table :data="tableData" style="width: 100%" row-key="id" default-expand-all>
-          <el-table-column prop="id" :label="$t('ui.formCommonOaTableSerialNumber')" min-width="45">
+          <el-table-column prop="id" :label="$('ui.formCommonOaTableSerialNumber')" min-width="45">
             <template slot-scope="scope">{{ scope.$index + 1 }}</template>
           </el-table-column>
-          <el-table-column prop="name" :label="$t('ui.administrationMaterialChartIndexMaterialName')" min-width="150">
+          <el-table-column prop="name" :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="150">
             <template slot-scope="scope">
               <el-select
                 v-model="scope.row.name"
                 size="small"
                 filterable
-                :placeholder="$t('ui.administrationMaterialFixedReceivePleaseSelectMaterial')"
+                :placeholder="$('ui.administrationMaterialFixedReceivePleaseSelectMaterial')"
                 @change="handleName($event, scope.$index)"
               >
                 <el-option
@@ -56,19 +57,19 @@
                   :key="index"
                   :value="index"
                   :label="
-                    item.name + $t('ui.administrationMaterialFixedReceiveSpecificationModel') + item.units + (formData.type === 1 ? $t('ui.administrationMaterialFixedReceiveMaterialNumber') + item.number : '')
+                    item.name + $('ui.administrationMaterialFixedReceiveSpecificationModel') + item.units + (formData.type === 1 ? $('ui.administrationMaterialFixedReceiveMaterialNumber') + item.number : '')
                   "
                   :disabled="ids.includes(item.id) && formData.type === 1"
                 ></el-option>
               </el-select>
             </template>
           </el-table-column>
-          <el-table-column prop="number" v-if="formData.type === 1" :label="$t('ui.administrationMaterialFixedFixedMaterialNumber')" min-width="150" />
-          <el-table-column prop="units" :label="$t('ui.administrationMaterialChartIndexSpecificationModel')" min-width="80" />
-          <el-table-column prop="cate.cate_name" :label="$t('ui.administrationMaterialChartIndexMaterialCategory')" min-width="80" />
-          <el-table-column prop="specs" :label="$t('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
-          <el-table-column prop="stock" v-if="formData.type === 0" :label="$t('ui.administrationMaterialFixedConsumeInventoryQuantity')" min-width="80" />
-          <el-table-column prop="number" v-if="formData.type === 0" :label="$t('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="150">
+          <el-table-column prop="number" v-if="formData.type === 1" :label="$('ui.administrationMaterialFixedFixedMaterialNumber')" min-width="150" />
+          <el-table-column prop="units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="80" />
+          <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="80" />
+          <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
+          <el-table-column prop="stock" v-if="formData.type === 0" :label="$('ui.administrationMaterialFixedConsumeInventoryQuantity')" min-width="80" />
+          <el-table-column prop="number" v-if="formData.type === 0" :label="$('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="150">
             <template slot-scope="scope">
               <el-input-number
                 v-model="scope.row.sNumber"
@@ -88,10 +89,10 @@
         </el-table>
       </div>
       <div class="mt14">
-        <el-button type="text" icon="el-icon-plus" @click="addRow()">{{ $t("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
+        <el-button type="text" icon="el-icon-plus" @click="addRow()">{{ $("ui.administrationMaterialFixedReceiveAddRow") }}</el-button>
       </div>
       <el-form ref="form" label-width="80px">
-        <el-form-item :label="$t('ui.administrationMaterialFixedReceiveRemarks')" class="el-input--small">
+        <el-form-item :label="$('ui.administrationMaterialFixedReceiveRemarks')" class="el-input--small">
           <el-input
             v-model="mark"
             type="textarea"
@@ -99,14 +100,14 @@
             show-word-limit
             :rows="2"
             resize="none"
-            :placeholder="$t('customer.placeholder18')"
+            :placeholder="$('customer.placeholder18')"
           />
         </el-form-item>
       </el-form>
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button @click="handleClose" size="small">{{ $t('public.cancel') }}</el-button>
+        <el-button @click="handleClose" size="small">{{ $('public.cancel') }}</el-button>
         <el-button :loading="loading" size="small" type="primary" @click="handleConfirm()">
-          {{ $t('public.ok') }}
+          {{ $('public.ok') }}
         </el-button>
       </div>
     </div>
@@ -114,7 +115,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { storageRecordSaveApi } from '@/api/administration'
 
 export default {
@@ -186,9 +186,9 @@ export default {
     // 提交
     handleConfirm() {
       if (this.type == 0 && this.userList.length <= 0) {
-        return this.$message.error(i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'))
+        return this.$message.error($('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'))
       } else if (this.type == 1 && this.frames.length <= 0) {
-        return this.$message.error(i18n.t('legacyScript.pleaseSelectDepartment'))
+        return this.$message.error($('legacyScript.pleaseSelectDepartment'))
       } else {
         let user_type = null
         let user_id = null

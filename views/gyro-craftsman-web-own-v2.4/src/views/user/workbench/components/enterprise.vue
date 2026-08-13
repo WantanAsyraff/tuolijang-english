@@ -14,10 +14,10 @@
         <div class="logo-text">{{ rolesConfig.name }}</div>
         <div class="logo-reason">{{ rolesConfig.reason }}</div>
         <div v-if="rolesConfig.tab" class="w60" @click="handleTab">
-          <el-button type="success">{{ $t('navbar.tabenterprise') }}</el-button>
+          <el-button type="success">{{ $('navbar.tabenterprise') }}</el-button>
         </div>
         <div class="w60">
-          <el-button type="primary" @click="handleConfirm">{{ $t('setting.enterprise07') }}</el-button>
+          <el-button type="primary" @click="handleConfirm">{{ $('setting.enterprise07') }}</el-button>
         </div>
       </div>
     </el-dialog>

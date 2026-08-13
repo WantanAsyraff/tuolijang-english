@@ -25,7 +25,7 @@
       <div class="drop-item" @click="goMyMenu">
         <i class="iconfont icongerenzhongxin2"></i>
      
-       {{ $ts("个人信息") }}
+       {{ $("hr.tablist1") }}
       </div>
       <!-- <div class="drop-item" @click="toSubscribe">
         <i class="iconfont icondingyuexiaoxi"></i>
@@ -34,7 +34,7 @@
 
       <div class="drop-item" @click="toResume">
         <i class="iconfont iconjianli"></i>
-        {{ $ts("个人简历") }}
+        {{ $("legacy.4e2c6c2e79f7ab7f") }}
       </div>
       <!-- <div class="drop-item" @click="toCommunity" v-if="this.$store.state.settings.forumShow">
         <i class="iconfont icongudingwuzi"></i>
@@ -42,12 +42,12 @@
       </div> -->
       <div class="drop-item drop-body" @click="toForum" v-if="this.$store.state.settings.bbsShow">
         <i class="iconfont iconcebianlan-luntanzhongxin"></i>
-        {{ $ts("论坛中心") }}
+        {{ $("legacy.f9fc5233cb346c26") }}
       </div>
       <!-- 退出登录 -->
       <div class="drop-item" @click="loginOut">
         <i class="iconfont icontuichudenglu"></i>
-        {{ $ts("退出登录") }}
+        {{ $("navbar.logOut") }}
       </div>
     </div>
     <div v-if="userInfo" slot="reference" class="user-info">

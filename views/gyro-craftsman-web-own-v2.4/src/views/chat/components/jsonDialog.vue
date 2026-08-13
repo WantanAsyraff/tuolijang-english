@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-dialog
-    :title="$t('ui.chatDatabaseTableSelectDatabase')"
+    :title="$('ui.chatDatabaseTableSelectDatabase')"
     :visible.sync="show"
     width="65%"
     :close-on-click-modal="false"
@@ -9,13 +9,13 @@
   >
     <div class="flex flex-between mb10">
       <span class="tips"
-        >{{ $t("ui.chatJsonDialogDatabaseTable") }}
+        >{{ $("ui.chatJsonDialogDatabaseTable") }}
         <popover
-          :tips="$t('ui.chatJsonDialogAddTheRelationshipsBetweenTablesAndDescribeThePurpose')"
+          :tips="$('ui.chatJsonDialogAddTheRelationshipsBetweenTablesAndDescribeThePurpose')"
           style="display: inline-block"
         ></popover
       ></span>
-      <span class="add-text" @click="addTable"><span class="el-icon-plus"></span> {{ $t("ui.userDailyAddBoxAdd") }}</span>
+      <span class="add-text" @click="addTable"><span class="el-icon-plus"></span> {{ $("ui.userDailyAddBoxAdd") }}</span>
     </div>
 
     <mavon-editor
@@ -29,8 +29,8 @@
     />
 
     <span slot="footer" class="dialog-footer">
-      <el-button @click="handleClose" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-      <el-button type="primary" @click="submitFn" size="small">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+      <el-button @click="handleClose" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+      <el-button type="primary" @click="submitFn" size="small">{{ $("ui.formCommonDialogFormOk") }}</el-button>
     </span>
   </el-dialog>
   <databaseTable ref="databaseTable" :list="list" @submit="getSelectVal"></databaseTable>

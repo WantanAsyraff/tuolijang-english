@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <form-create
     class="_fc-validate"
@@ -9,7 +10,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 export default {
   name: 'Validate',
   props: {
@@ -37,9 +37,9 @@ export default {
           type: 'select',
           field: 'type',
           value: undefined,
-          title: i18n.t('ui.developForeignDocumentFieldType'),
+          title: $('ui.developForeignDocumentFieldType'),
           options: [
-            { value: undefined, label: i18n.t('finance.pleaseselect') },
+            { value: undefined, label: $('finance.pleaseselect') },
             { value: 'string', label: 'String' },
             { value: 'array', label: 'Array' },
             { value: 'number', label: 'Number' },
@@ -65,7 +65,7 @@ export default {
                     rules: [
                       {
                         type: 'select',
-                        title: i18n.t('legacyScript.triggerMethod'),
+                        title: $('legacyScript.triggerMethod'),
                         field: 'trigger',
                         value: 'change',
                         options: [
@@ -76,14 +76,14 @@ export default {
                       },
                       {
                         type: 'select',
-                        title: i18n.t('legacyScript.verificationMethod'),
+                        title: $('legacyScript.verificationMethod'),
                         field: 'mode',
                         options: [
-                          { value: 'required', label: i18n.t('ui.developForeignDocumentRequired') },
-                          { value: 'pattern', label: i18n.t('legacyScript.regularExpression') },
-                          { value: 'min', label: i18n.t('legacyScript.minimumValue') },
-                          { value: 'max', label: i18n.t('legacyScript.maximumValue') },
-                          { value: 'len', label: i18n.t('legacyScript.length') },
+                          { value: 'required', label: $('ui.developForeignDocumentRequired') },
+                          { value: 'pattern', label: $('legacyScript.regularExpression') },
+                          { value: 'min', label: $('legacyScript.minimumValue') },
+                          { value: 'max', label: $('legacyScript.maximumValue') },
+                          { value: 'len', label: $('legacyScript.length') },
                         ],
                         value: 'required',
                         control: [
@@ -103,7 +103,7 @@ export default {
                               {
                                 type: 'input',
                                 field: 'pattern',
-                                title: i18n.t('legacyScript.regularExpression'),
+                                title: $('legacyScript.regularExpression'),
                               },
                             ],
                           },
@@ -113,7 +113,7 @@ export default {
                               {
                                 type: 'inputNumber',
                                 field: 'min',
-                                title: i18n.t('legacyScript.minimumValue'),
+                                title: $('legacyScript.minimumValue'),
                               },
                             ],
                           },
@@ -123,7 +123,7 @@ export default {
                               {
                                 type: 'inputNumber',
                                 field: 'max',
-                                title: i18n.t('legacyScript.maximumValue'),
+                                title: $('legacyScript.maximumValue'),
                               },
                             ],
                           },
@@ -133,7 +133,7 @@ export default {
                               {
                                 type: 'inputNumber',
                                 field: 'len',
-                                title: i18n.t('legacyScript.length'),
+                                title: $('legacyScript.length'),
                               },
                             ],
                           },
@@ -141,7 +141,7 @@ export default {
                       },
                       {
                         type: 'input',
-                        title: i18n.t('legacyScript.errorInformation'),
+                        title: $('legacyScript.errorInformation'),
                         field: 'message',
                         value: '',
                       },

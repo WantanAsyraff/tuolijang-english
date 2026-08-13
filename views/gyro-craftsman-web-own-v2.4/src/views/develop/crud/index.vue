@@ -3,7 +3,7 @@
 <div class="divBox">
   <el-card class="normal-page">
     <template v-if="!isShow">
-      <formBox :title="$t('ui.developCrudIndexApplicationManagement')" :total="total" :search="search" :btn-text="$t('ui.developCrudIndexNewApplication')" :isViewSearch="false"
+    <formBox :title="$('ui.developCrudIndexApplicationManagement')" :total="total" :search="search" :btnText="$('ui.developCrudIndexNewApplication')" :isViewSearch="false"
         :sortSearch="false" @confirmData="confirmData" @addDataFn="addDataFn"></formBox>
       <div id="content-box " class="mt10" v-loading="loading">
         <default-page v-if="listData.length == 0" :index="14" :min-height="520" />
@@ -17,7 +17,7 @@
               <div class="flex-column entry-name">
                 <div class="title over-text">{{ item.name }}</div>
               </div>
-               <span class="count">{{ item.crud_count }}{{ $t("ui.developCrudIndexEntities") }}</span>
+               <span class="count">{{ item.crud_count }}{{ $("ui.developCrudIndexEntities") }}</span>
               </div>
              
           
@@ -25,9 +25,9 @@
               {{ item.info ||'--'}}
             </div>
             <div class="operate flex flex-center">
-              <span @click.stop="handleEdit(item)"> {{ $t("ui.formCommonOaLogEdit") }}</span>
+              <span @click.stop="handleEdit(item)"> {{ $("ui.formCommonOaLogEdit") }}</span>
               <el-divider direction="vertical"></el-divider>
-              <span @click.stop="deleteFn(item.id)"> {{ $t("ui.chatIndexDelete") }}</span>
+              <span @click.stop="deleteFn(item.id)"> {{ $("ui.chatIndexDelete") }}</span>
             </div>
           </div>
         </div>

@@ -10,28 +10,28 @@
     :wrapper-closable="true"
     :wrapperClosable="false"
     size="700px"
-    :title="$t('ui.hrEnterpriseGroupEditUserOrganization')"
+    :title="$('ui.hrEnterpriseGroupEditUserOrganization')"
   >
     <div class="container">
       <div class="table-box">
         <span @click="activeName = 0">
-          {{ $t('setting.edit.editorialmembers') }}
+          {{ $('setting.edit.editorialmembers') }}
         </span>
         <span v-if="false" :class="{ on: activeName == 1 }" @click="activeName = 1">
-          {{ $t('setting.edit.permissionsetting') }}
+          {{ $('setting.edit.permissionsetting') }}
         </span>
         <i class="el-icon-close" @click="handleClose" />
       </div>
       <div v-show="activeName == 0">
         <div v-if="userInfo" class="form-box ml20">
           <el-form ref="ruleForm" :model="userInfo" :rules="rules" class="demo-ruleForm" label-width="auto">
-            <el-form-item :label="$t('setting.edit.membername') + '：'" prop="name">
+            <el-form-item :label="$('setting.edit.membername') + '：'" prop="name">
               <el-input v-model="userInfo.name" clearable size="small" />
             </el-form-item>
-            <el-form-item :label="$t('setting.edit.phone') + '：'" prop="phone">
+            <el-form-item :label="$('setting.edit.phone') + '：'" prop="phone">
               <el-input v-model="userInfo.phone" clearable size="small" />
             </el-form-item>
-            <el-form-item :label="$t('ui.hrAttendanceStatisticsDetailsDrawerDepartment')" prop="name">
+            <el-form-item :label="$('ui.hrAttendanceStatisticsDetailsDrawerDepartment')" prop="name">
               <select-department
                 ref="selectDepartment"
                 :is-site="true"
@@ -52,22 +52,22 @@
                     >
                       <div>
                         <div class="prop-txt" @click="handleDepartment(item, index)">
-                          {{ $t('setting.edit.setdepartment') }}
+                          {{ $('setting.edit.setdepartment') }}
                         </div>
-                        <div class="prop-txt" @click="handleDeleteDep(index)">{{ $t('public.delete') }}</div>
+                        <div class="prop-txt" @click="handleDeleteDep(index)">{{ $('public.delete') }}</div>
                       </div>
                       <el-button slot="reference" size="small">
                         {{ item.name }}
-                        <span v-if="item.is_mastart" style="color: #1890ff; font-size: 12px"> {{ $t("ui.formCommonSelectDepartmentMain") }} </span>
+                        <span v-if="item.is_mastart" style="color: #1890ff; font-size: 12px"> {{ $("ui.formCommonSelectDepartmentMain") }} </span>
                         <i class="el-icon-arrow-right el-icon--right" />
                       </el-button>
                     </el-popover>
-                    <el-button class="item" size="small" type="text" @click="handleOpen"> {{ $t("ui.hrArchivesFormItemDataListModify") }} </el-button>
+                    <el-button class="item" size="small" type="text" @click="handleOpen"> {{ $("ui.hrArchivesFormItemDataListModify") }} </el-button>
                   </div>
                 </template>
               </select-department>
             </el-form-item>
-            <el-form-item :label="$t('setting.edit.position') + '：'" prop="position">
+            <el-form-item :label="$('setting.edit.position') + '：'" prop="position">
               <el-cascader
                 v-model="userInfo.position"
                 :options="treeData"
@@ -75,19 +75,19 @@
                 size="small"
               ></el-cascader>
             </el-form-item>
-            <el-form-item :label="$t('ui.hrEnterpriseGroupEditUserDepartmentHead')" prop="name">
+            <el-form-item :label="$('ui.hrEnterpriseGroupEditUserDepartmentHead')" prop="name">
               <div>
                 <el-radio-group v-model="userInfo.is_admin">
-                  <el-radio :label="0">{{ $t('customer.no') }}</el-radio>
-                  <el-radio :label="1">{{ $t('customer.yes') }}</el-radio>
+                  <el-radio :label="0">{{ $('customer.no') }}</el-radio>
+                  <el-radio :label="1">{{ $('customer.yes') }}</el-radio>
                 </el-radio-group>
               </div>
             </el-form-item>
-            <el-form-item v-if="userInfo.is_admin" :label="$t('ui.hrEnterpriseGroupEditUserResponsibleDepartments')" prop="manage_frame">
+            <el-form-item v-if="userInfo.is_admin" :label="$('ui.hrEnterpriseGroupEditUserResponsibleDepartments')" prop="manage_frame">
               <el-select
                 v-model="userInfo.manage_frame"
                 multiple
-                :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+                :placeholder="$('ui.developConditionGroupPleaseSelect')"
                 size="small"
                 style="width: 100%"
               >
@@ -95,7 +95,7 @@
               </el-select>
             </el-form-item>
 
-            <el-form-item :label="$t('setting.edit.directsuperior') + '：'" prop="name">
+            <el-form-item :label="$('setting.edit.directsuperior') + '：'" prop="name">
               <select-member
                 ref="selectMember"
                 :only-one="true"
@@ -108,7 +108,7 @@
                       {{ superiorUser[0].name }}
                     </el-button>
                     <el-button size="small" type="text" @click="handlesuperiorOpen">
-                      {{ superiorUser.length > 0 ? $t('public.modify') : $t('public.add') }}
+                      {{ superiorUser.length > 0 ? $('public.modify') : $('public.add') }}
                     </el-button>
                   </div>
                 </template>
@@ -119,8 +119,8 @@
       </div>
     </div>
     <div class="from-foot-btn fix btn-shadow">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" type="primary" :loading="loading" @click="onSubmit">{{ $t('public.save') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" type="primary" :loading="loading" @click="onSubmit">{{ $('public.save') }}</el-button>
     </div>
   </el-drawer>
 </div>
@@ -161,7 +161,7 @@ export default {
       superiorFrame: [], // 上级部门
       superiorUser: [], // 上级人员
       formBoxConfig: {
-        title: this.$t('setting.edit.addmembers'),
+        title: this.$('setting.edit.addmembers'),
         width: '500px',
         method: 'post',
         action: '/user/create'
@@ -312,7 +312,7 @@ export default {
         superior_frame_id = this.superiorUser[0].value
       }
       if (mastart_id === '') {
-        return this.$message.error(this.$t('setting.edit.text3'))
+        return this.$message.error(this.$('setting.edit.text3'))
       }
       if (frame_id.length == 1 && mastart_id == '') {
         this.userInfo.mastart_id = frame_id[0]

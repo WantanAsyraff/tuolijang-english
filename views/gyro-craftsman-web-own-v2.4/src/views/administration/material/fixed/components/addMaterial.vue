@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 新增入库弹窗 -->
 <template>
 <div class="station">
@@ -14,12 +15,12 @@
     <div class="invoice">
       <el-form ref="form" :model="rules" label-width="100px" :rules="rule">
         <div class="from-item-title mb15">
-          <span>{{ $t("ui.administrationMaterialFixedAddMaterialMaterialInformation") }}</span>
+          <span>{{ $("ui.administrationMaterialFixedAddMaterialMaterialInformation") }}</span>
         </div>
         <div class="form-box">
           <div class="form-item">
             <el-form-item prop="name">
-              <span slot="label">{{ $t("ui.administrationMaterialFixedAddMaterialMaterialName") }}</span>
+              <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialMaterialName") }}</span>
               <el-select
                 v-model="rules.name"
                 v-if="!formData.edit"
@@ -27,7 +28,7 @@
                 size="small"
                 filterable
                 clearable
-                :placeholder="$t('ui.administrationMaterialFixedAddMaterialSelectOrEnterAMaterialName')"
+                :placeholder="$('ui.administrationMaterialFixedAddMaterialSelectOrEnterAMaterialName')"
                 class="countries-select"
                 @change="handleName"
               >
@@ -38,17 +39,17 @@
                   :value="index"
                 />
               </el-select>
-              <el-input v-else v-model="rules.name" clearable size="small" :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseEnterMaterialName')" />
+              <el-input v-else v-model="rules.name" clearable size="small" :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseEnterMaterialName')" />
             </el-form-item>
           </div>
           <div class="form-item">
             <el-form-item prop="cid">
-              <span slot="label">{{ $t("ui.administrationMaterialFixedAddMaterialMaterialCategory") }}</span>
+              <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialMaterialCategory") }}</span>
               <el-cascader
                 v-model="rules.cid"
                 :options="formData.treeData"
                 size="small"
-                :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseSelectMaterialCategory')"
+                :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseSelectMaterialCategory')"
                 :props="{ checkStrictly: true }"
                 clearable
               ></el-cascader>
@@ -56,66 +57,66 @@
           </div>
           <div class="form-item overflow">
             <el-form-item>
-              <span slot="label">{{ $t("ui.administrationMaterialFixedAddMaterialMaterialModel") }}</span>
+              <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialMaterialModel") }}</span>
               <el-input
                 v-model="rules.units"
                 clearable
                 size="small"
                 :maxlength="20"
                 show-word-limit
-                :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseEnterMaterialModel')"
+                :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseEnterMaterialModel')"
               />
             </el-form-item>
           </div>
           <div class="form-item">
             <el-form-item prop="amount">
-              <span slot="label">{{ $t("ui.administrationMaterialFixedAddMaterialUnitOfMeasure") }}</span>
+              <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialUnitOfMeasure") }}</span>
               <el-input
                 v-model="rules.specs"
                 clearable
                 size="small"
                 :maxlength="8"
                 show-word-limit
-                :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseEnterUnitOfMeasure')"
+                :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseEnterUnitOfMeasure')"
               />
             </el-form-item>
           </div>
           <div class="form-item" v-if="this.formData.edit && formData.type === 1" style="width: 100%">
             <el-form-item prop="price">
-              <span slot="label">{{ $t("ui.administrationMaterialFixedAddMaterialUnitPriceYuan") }}</span>
+              <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialUnitPriceYuan") }}</span>
               <el-input-number
                 v-model="rules.price"
                 :controls="false"
                 :min="0"
                 :precision="2"
                 size="small"
-                :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseEnterUnitPrice')"
+                :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseEnterUnitPrice')"
               ></el-input-number>
             </el-form-item>
           </div>
           <div class="form-item" style="width: 100%">
             <el-form-item>
-              <span slot="label">{{ $t("ui.administrationMaterialFixedAddMaterialManufacturer") }}</span>
+              <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialManufacturer") }}</span>
               <el-input
                 v-model="rules.factory"
                 :maxlength="50"
                 show-word-limit
                 clearable
                 size="small"
-                :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseEnterManufacturer')"
+                :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseEnterManufacturer')"
               />
             </el-form-item>
           </div>
           <div class="form-item" style="width: 100%">
             <el-form-item>
-              <span slot="label">{{ $t('public.remarks') }}:</span>
+              <span slot="label">{{ $('public.remarks') }}:</span>
               <el-input
                 type="textarea"
                 maxlength="200"
                 show-word-limit
                 :rows="3"
                 v-model.trim="rules.mark"
-                :placeholder="$t('customer.placeholder18')"
+                :placeholder="$('customer.placeholder18')"
               />
             </el-form-item>
           </div>
@@ -123,12 +124,12 @@
 
         <template v-if="!this.formData.edit">
           <div class="from-item-title mb15">
-            <span>{{ $t("ui.administrationMaterialFixedAddMaterialStockInInformation") }}</span>
+            <span>{{ $("ui.administrationMaterialFixedAddMaterialStockInInformation") }}</span>
           </div>
           <div class="form-box">
             <div class="form-item">
               <el-form-item prop="number">
-                <span slot="label">{{ $t("ui.administrationMaterialFixedAddMaterialStockInQuantity") }}</span>
+                <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialStockInQuantity") }}</span>
                 <el-input-number
                   v-model="rules.number"
                   :controls="false"
@@ -136,33 +137,33 @@
                   :max="1000"
                   :precision="0"
                   size="small"
-                  :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseEnterStockInQuantity')"
+                  :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseEnterStockInQuantity')"
                 ></el-input-number>
               </el-form-item>
             </div>
             <div class="form-item">
               <el-form-item prop="price">
-                <span slot="label">{{ $t("ui.administrationMaterialFixedAddMaterialUnitPriceYuan") }}</span>
+                <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialUnitPriceYuan") }}</span>
                 <el-input-number
                   v-model="rules.price"
                   :controls="false"
                   :min="0"
                   :precision="2"
                   size="small"
-                  :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseEnterUnitPrice')"
+                  :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseEnterUnitPrice')"
                 ></el-input-number>
               </el-form-item>
             </div>
             <div class="form-item" style="width: 100%">
               <el-form-item>
-                <span slot="label">{{ $t("ui.administrationMaterialFixedAddMaterialStockInDescription") }}</span>
+                <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialStockInDescription") }}</span>
                 <el-input
                   type="textarea"
                   maxlength="200"
                   show-word-limit
                   :rows="3"
                   v-model.trim="rules.remark"
-                  :placeholder="$t('customer.placeholder18')"
+                  :placeholder="$('customer.placeholder18')"
                 />
               </el-form-item>
             </div>
@@ -170,9 +171,9 @@
         </template>
       </el-form>
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button @click="handleClose" size="small">{{ $t('public.cancel') }}</el-button>
+        <el-button @click="handleClose" size="small">{{ $('public.cancel') }}</el-button>
         <el-button :loading="loading" size="small" type="primary" @click="handleConfirm('ruleForm')">
-          {{ $t('public.ok') }}
+          {{ $('public.ok') }}
         </el-button>
       </div>
     </div>
@@ -180,7 +181,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { storageListSaveApi } from '@/api/administration'
 
 export default {
@@ -226,8 +226,8 @@ export default {
       loading: false,
       itemData: {},
       rule: {
-        name: [{ required: true, message: i18n.t('ui.administrationMaterialFixedAddMaterialSelectOrEnterAMaterialName'), trigger: 'change,blur' }],
-        cid: [{ required: true, message: i18n.t('ui.administrationMaterialFixedAddMaterialPleaseSelectMaterialCategory'), trigger: 'change' }],
+        name: [{ required: true, message: $('ui.administrationMaterialFixedAddMaterialSelectOrEnterAMaterialName'), trigger: 'change,blur' }],
+        cid: [{ required: true, message: $('ui.administrationMaterialFixedAddMaterialPleaseSelectMaterialCategory'), trigger: 'change' }],
         number: [{ required: true, validator: checkNumber, trigger: 'blur' }],
         price: [{ required: true, validator: checkPrice, trigger: 'blur' }]
       }
@@ -326,7 +326,7 @@ export default {
           this.loading = false
           let message = ''
           if (type) {
-            message = i18n.t('legacyScript.updatedSuccessfully')
+            message = $('legacyScript.updatedSuccessfully')
           } else {
             if (this.formData.type === 1) {
               message = ''
@@ -339,7 +339,7 @@ export default {
                 }
               }
             } else {
-              message = i18n.t('legacyScript.addedSuccessfully')
+              message = $('legacyScript.addedSuccessfully')
             }
           }
         })

@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
 import containerMixin from '@/components/form-designer/form-widget/container-widget/containerMixin'
 import ContainerWrapper from '@/components/form-designer/form-widget/container-widget/container-wrapper'
 import TableCellWidget from '@/components/form-designer/form-widget/container-widget/table-cell-widget'
@@ -48,7 +47,7 @@ import refMixinDesign from '@/components/form-designer/refMixinDesign'
 export default {
   name: 'table-widget',
   componentName: 'ContainerWidget',
-  mixins: [i18n, containerMixin, refMixinDesign],
+  mixins: [containerMixin, refMixinDesign],
   inject: ['refList'],
   components: {
     ContainerWrapper,
@@ -113,4 +112,4 @@ div.table-container {
 .table-container.selected {
   outline: 2px solid #409eff !important;
 }
-</style>@/utils/i18ns
+</style>

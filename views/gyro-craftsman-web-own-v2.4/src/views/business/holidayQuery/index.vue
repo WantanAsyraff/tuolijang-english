@@ -1,10 +1,11 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="employees-card-bottom">
     <el-row>
       <!-- 左边结构 -->
       <el-col :span="5" class="left">
-        <div class="title">{{ $t("ui.hrHolidaySettingLeaveTypes") }}</div>
+        <div class="title">{{ $("ui.hrHolidaySettingLeaveTypes") }}</div>
         <div class="tree-box">
           <el-tree
             class="mt14"
@@ -31,19 +32,19 @@
         <div>
           <!-- <form-box ref="formBox" /> -->
         </div>
-        <div class="inTotal">{{ $t("ui.businessHolidayQueryIndexTotal") }} {{ total }} {{ $t("ui.commonOaFromBoxItems") }}</div>
+        <div class="inTotal">{{ $("ui.businessHolidayQueryIndexTotal") }} {{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
         <div class="mt20 pl14 pr14">
           <div v-loading="loading">
             <el-table ref="table" :data="tableData" style="width: 100%" row-key="id" key="tab" default-expand-all>
-              <el-table-column :label="$t('ui.businessHolidayQueryIndexName')" prop="created_at" min-width="80" />
-              <el-table-column :label="$t('ui.businessHolidayQueryIndexDepartment')" prop="created_at" min-width="100" />
-              <el-table-column :label="$t('ui.businessHolidayQueryIndexWorkingHours')" prop="created_at" min-width="120" />
-              <el-table-column :label="$t('ui.businessHolidayQueryIndexOnboardingTime')" prop="created_at" min-width="120" />
-              <el-table-column :label="$t('ui.businessHolidayQueryIndexAnnualLeaveEntitlementDays')" prop="created_at" min-width="150" />
-              <el-table-column :label="$t('ui.businessHolidayQueryIndexCarriedOverLeaveDays')" prop="created_at" min-width="150" />
-              <el-table-column :label="$t('ui.businessHolidayQueryIndexAnnualLeaveGrantedDays')" prop="created_at" min-width="150" />
-              <el-table-column :label="$t('ui.businessHolidayQueryIndexAnnualLeaveTakenDays')" prop="created_at" min-width="150" />
-              <el-table-column :label="$t('ui.businessHolidayQueryIndexAnnualLeaveRemainingDays')" prop="created_at" min-width="150" />
+              <el-table-column :label="$('ui.businessHolidayQueryIndexName')" prop="created_at" min-width="80" />
+              <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" prop="created_at" min-width="100" />
+              <el-table-column :label="$('ui.businessHolidayQueryIndexWorkingHours')" prop="created_at" min-width="120" />
+              <el-table-column :label="$('ui.businessHolidayQueryIndexOnboardingTime')" prop="created_at" min-width="120" />
+              <el-table-column :label="$('ui.businessHolidayQueryIndexAnnualLeaveEntitlementDays')" prop="created_at" min-width="150" />
+              <el-table-column :label="$('ui.businessHolidayQueryIndexCarriedOverLeaveDays')" prop="created_at" min-width="150" />
+              <el-table-column :label="$('ui.businessHolidayQueryIndexAnnualLeaveGrantedDays')" prop="created_at" min-width="150" />
+              <el-table-column :label="$('ui.businessHolidayQueryIndexAnnualLeaveTakenDays')" prop="created_at" min-width="150" />
+              <el-table-column :label="$('ui.businessHolidayQueryIndexAnnualLeaveRemainingDays')" prop="created_at" min-width="150" />
               <!-- <el-table-column label="创建时间" prop="created_at" width="100">
               <template slot-scope="scope">
                 <div style="width: 76px;">
@@ -70,7 +71,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   name: '',
   components: {
@@ -80,42 +80,42 @@ export default {
     return {
       treeData: [
         {
-          label: i18n.t('legacyScript.annualLeave'),
+          label: $('legacyScript.annualLeave'),
           value: '',
           num: 0
         },
         {
-          label: i18n.t('legacyScript.personalLeave'),
+          label: $('legacyScript.personalLeave'),
           value: 0,
           num: 0
         },
         {
-          label: i18n.t('legacyScript.sickLeave'),
+          label: $('legacyScript.sickLeave'),
           value: 1,
           num: 0
         },
         {
-          label: i18n.t('legacyScript.compensatoryLeave'),
+          label: $('legacyScript.compensatoryLeave'),
           value: 2,
           num: 0
         },
         {
-          label: i18n.t('legacyScript.marriageLeave'),
+          label: $('legacyScript.marriageLeave'),
           value: 3,
           num: 0
         },
         {
-          label: i18n.t('legacyScript.maternityLeave'),
+          label: $('legacyScript.maternityLeave'),
           value: 4,
           num: 0
         },
         {
-          label: i18n.t('legacyScript.paternityLeave'),
+          label: $('legacyScript.paternityLeave'),
           value: 5,
           num: 0
         },
         {
-          label: i18n.t('legacyScript.bereavementLeave'),
+          label: $('legacyScript.bereavementLeave'),
           value: 6,
           num: 0
         }

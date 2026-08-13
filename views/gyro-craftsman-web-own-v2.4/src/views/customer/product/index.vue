@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
@@ -9,8 +10,8 @@
         :dropdownList="dropdownList"
         :viewSearch="viewSearch"
         :category="keyword"
-        :timeSearchObj="timeSearchObj"
-:btn-text="$t('ui.customerProductIndexAddProduct')"
+      :timeSearchObj="timeSearchObj"
+      :btnText="$('ui.customerProductIndexAddProduct')"
         ref="fromBox"
         @addDataFn="addDataFn"
         @dropdownFn="dropdownFn"
@@ -31,9 +32,9 @@
           @getTableData="getTableData"
         >
           <template #options="{ data }">
-            <el-button type="text" @click="openDetails(data)">{{ $t("ui.layoutNoticeNoticeListView") }}</el-button>
-            <el-button type="text" @click="handleEdit(data)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-            <el-button type="text" @click="handleDelete(data)">{{ $t("ui.chatIndexDelete") }}</el-button>
+            <el-button type="text" @click="openDetails(data)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
+            <el-button type="text" @click="handleEdit(data)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+            <el-button type="text" @click="handleDelete(data)">{{ $("ui.chatIndexDelete") }}</el-button>
           </template>
       </customizeTable>
     </el-card>
@@ -42,7 +43,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { roterPre } from '@/settings'
 import { productListApi, productDelApi } from '@/api/client'
 import { DRAWER_SIZE } from '@/constants/popupSize'
@@ -64,9 +64,9 @@ export default {
         types: 'product'
       },
       dropdownList: [
-        { label: i18n.t('ui.developModuleTableStyleFilterSettings'), value: 1 },
-        { label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'), value: 2 },
-        { label: i18n.t('ui.customerDictOptionSettingDictionaryOptionSettings'), value: 3 },
+        { label: $('ui.developModuleTableStyleFilterSettings'), value: 1 },
+        { label: $('ui.developModuleTableStyleColumnDisplaySettings'), value: 2 },
+        { label: $('ui.customerDictOptionSettingDictionaryOptionSettings'), value: 3 },
       ],
       timeSearchObj: {},
       keyword: 'product',
@@ -76,7 +76,7 @@ export default {
       search: [],
       treeData: [
         {
-          label: i18n.t('finance.all'),
+          label: $('finance.all'),
           id: ''
         }
       ],
@@ -136,7 +136,7 @@ export default {
     // 查看
     async openDetails(item) {
       this.detailsFromData = {
-        title: i18n.t('legacyScript.viewProduct'),
+        title: $('legacyScript.viewProduct'),
         width: DRAWER_SIZE.LG,
         data: item,
         types: this.types

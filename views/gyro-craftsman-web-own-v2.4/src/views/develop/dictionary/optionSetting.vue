@@ -4,7 +4,7 @@
     <div class="boder">
       <div slot="title" class="station-header title-16">
         <i class="el-icon-arrow-left" @click="goBack"></i>
-        {{ $t("ui.customerDictOptionSettingDictionaryOptionSettings") }}
+        {{ $("ui.customerDictOptionSettingDictionaryOptionSettings") }}
       </div>
     </div>
     <div class="content" v-if="left.length > 0">
@@ -29,23 +29,23 @@
                     </span>
                   </el-input>
 
-                  <span class="iconfont icontuodong iconadd" :title="$t('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')"></span>
+                  <span class="iconfont icontuodong iconadd" :title="$('ui.formDesignerSettingPanelOptionItemsSettingDragToSort')"></span>
 
                   <span class="el-icon-delete iconadd" @click.stop="deleteOption(option, idx)"></span>
                 </div>
               </div>
             </draggable>
-            <div class="add-text" @click="addOption">{{ $t("ui.customerDictOptionSettingAdd") }}</div>
+            <div class="add-text" @click="addOption">{{ $("ui.customerDictOptionSettingAdd") }}</div>
           </template>
 
           <!-- 树形 -->
           <el-tree :data="customizeItems" node-key="value" default-expand-all v-else>
             <div class="custom-tree-node" slot-scope="{ node, data }">
-              <el-input v-model="data.name" :placeholder="$t('ui.customerSetupDictionaryManagementDataValue')" size="small" style="width: 300px;" />
+              <el-input v-model="data.name" :placeholder="$('ui.customerSetupDictionaryManagementDataValue')" size="small" style="width: 300px;" />
               <template>
                 <span class="iconfont icontianjia1 iconadd" @click="addFn(node, data)" />
-                <span class="iconfont icona-ziji1x iconadd" :title="$t('ui.customerDictOptionSettingAddChildItem')" @click="addChildFn(node, data)" />
-                <span class="el-icon-delete iconadd" :title="$t('ui.chatIndexDelete')" @click="deleteFn(node, data)" />
+                <span class="iconfont icona-ziji1x iconadd" :title="$('ui.customerSetupDictionaryManagementAddChildItem')" @click="addChildFn(node, data)" />
+                <span class="el-icon-delete iconadd" :title="$('public.delete')" @click="deleteFn(node, data)" />
               </template>
             </div>
           </el-tree>
@@ -60,38 +60,10 @@
     </div>
   </el-card>
   <div class="cr-bottom-button">
-    <el-button @click="goBack" size="small">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-    <el-button type="primary" @click="saveEvt" size="small" :loading="submitLoading">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+    <el-button @click="goBack" size="small">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+    <el-button type="primary" @click="saveEvt" size="small" :loading="submitLoading">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
   </div>
 </div>
-</template>
-
-            <!-- 树形 -->
-            <el-tree :data="customizeItems" node-key="value" default-expand-all v-else>
-              <div class="custom-tree-node" slot-scope="{ node, data }">
-                <el-input v-model="data.name" placeholder="数据值" size="small" style="width: 300px;" />
-                <template>
-                  <span class="iconfont icontianjia1 iconadd" @click="addFn(node, data)" />
-                  <span class="iconfont icona-ziji1x iconadd" title="添加子项" @click="addChildFn(node, data)" />
-                  <span class="el-icon-delete iconadd" title="删除" @click="deleteFn(node, data)" />
-                </template>
-              </div>
-            </el-tree>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div v-else>
-        <default-page :index="18" />
-      </div>
-    </el-card>
-    <div class="cr-bottom-button">
-      <el-button @click="goBack" size="small">取消</el-button>
-      <el-button type="primary" @click="saveEvt" size="small" :loading="submitLoading">保存</el-button>
-    </div>
-  </div>
 </template>
 <script>
 import { crudDictListApi, crudDictBatchApi } from '@/api/develop'

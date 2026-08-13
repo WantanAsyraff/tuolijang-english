@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <style>
 ._fc-designer {
   height: 100%;
@@ -248,7 +249,7 @@
         <template v-for="(item, index) in menuList">
           <div class="_fc-l-group" :key="index">
             <el-tabs v-model="activeName">
-              <el-tab-pane :label="$t('ui.businessFormSettingFormCreateDesignerFcDesignerControl')" name="first" class="mb20 mt20">
+              <el-tab-pane :label="$('ui.businessFormSettingFormCreateDesignerFcDesignerControl')" name="first" class="mb20 mt20">
                 <draggable
                   :group="{ name: 'default', pull: 'clone', put: false }"
                   :sort="false"
@@ -265,8 +266,8 @@
                   </div>
                 </draggable>
               </el-tab-pane>
-              <el-tab-pane :label="$t('ui.businessFormSettingFormCreateDesignerFcDesignerControlGroup')" class="mt10" name="second">
-                <div class="pl10 _fc-title">{{ $t("ui.businessFormSettingFormCreateDesignerFcDesignerHrManagement") }}</div>
+              <el-tab-pane :label="$('ui.businessFormSettingFormCreateDesignerFcDesignerControlGroup')" class="mt10" name="second">
+                <div class="pl10 _fc-title">{{ $("ui.businessFormSettingFormCreateDesignerFcDesignerHrManagement") }}</div>
                 <draggable
                   :group="{ name: 'default', pull: 'clone', put: false }"
                   :sort="false"
@@ -282,7 +283,7 @@
                     </div>
                   </div>
                 </draggable>
-                <div class="pl10 _fc-title">{{ $t("ui.businessFormSettingFormCreateDesignerFcDesignerCustomerManagement") }}</div>
+                <div class="pl10 _fc-title">{{ $("ui.businessFormSettingFormCreateDesignerFcDesignerCustomerManagement") }}</div>
                 <draggable
                   :group="{ name: 'default', pull: 'clone', put: false }"
                   :sort="false"
@@ -308,12 +309,12 @@
           <div class="_fc-m-drag drag-center">
             <div class="_fc-m-tools" height="45">
               <slot name="handle"></slot>
-              <div class="edit">{{ $t("ui.businessFormSettingFormCreateDesignerFcDesignerEditField") }}</div>
+              <div class="edit">{{ $("ui.businessFormSettingFormCreateDesignerFcDesignerEditField") }}</div>
               <div class="handle-r">
-                <div @click="previewFc" class="mr20 views"><span class="iconfont icondakai"></span> {{ $t("ui.formDesignerToolbarPanelIndexPreview") }}</div>
+                <div @click="previewFc" class="mr20 views"><span class="iconfont icondakai"></span> {{ $("ui.formDesignerToolbarPanelIndexPreview") }}</div>
 
                 <div class="views views-c" @click="clearDragRule">
-                  <span class="iconfont iconshanchu1"></span> {{ $t("ui.formDesignerToolbarPanelIndexClear") }}
+                  <span class="iconfont iconshanchu1"></span> {{ $("ui.formDesignerToolbarPanelIndexClear") }}
                 </div>
               </div>
             </div>
@@ -333,7 +334,7 @@
           >
             <div>
               
-              <ElDivider v-if="showBaseRule">{{ $t("ui.businessFormSettingFormCreateDesignerFcDesignerFormContentDescription") }}</ElDivider>
+              <ElDivider v-if="showBaseRule">{{ $("ui.businessFormSettingFormCreateDesignerFcDesignerFormContentDescription") }}</ElDivider>
             
               <FormCreate
                 v-if="basicForm.rule"
@@ -349,7 +350,7 @@
                 :option="baseForm.options"
                 @change="baseChange"
               ></FormCreate>
-              <ElDivider v-if="propsForm.rule.length > 0">{{ $t("ui.businessFormSettingFormCreateDesignerFcDesignerFormContentConfiguration") }}</ElDivider>
+              <ElDivider v-if="propsForm.rule.length > 0">{{ $("ui.businessFormSettingFormCreateDesignerFcDesignerFormContentConfiguration") }}</ElDivider>
               <FormCreate
                 v-model="propsForm.api"
                 :rule="propsForm.rule"
@@ -369,7 +370,6 @@
 </ElContainer>
 </template>
 <script>
-import i18n from '@/lang'
 import form from '../config/base/form'
 import field from '../config/base/field'
 import validate from '../config/base/validate'
@@ -1021,7 +1021,7 @@ export default {
           if (this.gropList.length === 0) {
             this.gropList.push(config)
           } else {
-            this.$message.error(i18n.t('legacyScript.theCurrentFormCanOnlyAddOneControlGroupAt'))
+            this.$message.error($('legacyScript.theCurrentFormCanOnlyAddOneControlGroupAt'))
             return
           }
         }
@@ -1073,7 +1073,7 @@ export default {
                 const top = this.getParent(self)
                 const field = top.parent.field
                 if (this.condition && this.condition.indexOf(field) > -1) {
-                  this.$message.error(i18n.t('legacyScript.thisFieldIsUsedInTheWorkflow'))
+                  this.$message.error($('legacyScript.thisFieldIsUsedInTheWorkflow'))
                   return
                 }
 
@@ -1123,7 +1123,7 @@ export default {
             delete: ({ self }) => {
               const field = self.children[0].field
               if (this.condition && this.condition.indexOf(field) > -1) {
-                this.$message.error(i18n.t('legacyScript.thisFieldIsUsedInTheWorkflow'))
+                this.$message.error($('legacyScript.thisFieldIsUsedInTheWorkflow'))
                 return
               }
 

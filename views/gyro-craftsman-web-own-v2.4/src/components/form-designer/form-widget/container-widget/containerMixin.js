@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 export default {
   inject: ['getGlobalDsv'],
   methods: {
@@ -17,7 +17,7 @@ export default {
 
       if (type==='details'&&(addedItem.category === 'container' || addedItem.options?.crud_id === 0)) {
         this.widget.widgetList.splice(newIndex, 1)
-        this.$message.error(i18n.t('legacyScript.detailTablesOnlySupportDetailEntityFields'))
+        this.$message.error($('legacyScript.detailTablesOnlySupportDetailEntityFields'))
         return false
       }
       if (!!subList[newIndex]) {

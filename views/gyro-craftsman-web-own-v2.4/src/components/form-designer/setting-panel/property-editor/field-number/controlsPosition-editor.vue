@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.controlsPosition')">
+  <el-form-item :label="$('designer.setting.controlsPosition')">
     <el-select v-model="optionModel.controlsPosition">
       <el-option label="default" value=""></el-option>
       <el-option label="right" value="right"></el-option>
@@ -8,11 +8,8 @@
 </template>
 
 <script>
-  import i18n from "@/utils/i18n"
-
   export default {
     name: "controlsPosition-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -25,4 +22,3 @@
 <style scoped>
 
 </style>
-@/utils/i18ns

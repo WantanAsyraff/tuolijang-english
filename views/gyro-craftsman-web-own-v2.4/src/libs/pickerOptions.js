@@ -1,10 +1,9 @@
-import i18n from '@/lang'
-
+import { $ } from '@/lang'
 //日历搜索快捷键
 export default {
   shortcuts: [
     {
-      text: i18n.t('toptable.today'),
+      text: $('toptable.today'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -12,7 +11,7 @@ export default {
       },
     },
     {
-      text: i18n.t('toptable.yesterday'),
+      text: $('toptable.yesterday'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -21,7 +20,7 @@ export default {
       },
     },
     {
-      text: i18n.t('toptable.thismonth'),
+      text: $('hr.month'),
       onClick(picker) {
         const start = new Date();
         const end = new Date();
@@ -33,7 +32,7 @@ export default {
       },
     },
     {
-      text: i18n.t('toptable.lastmonth'),
+      text: $('toptable.lastmonth'),
       onClick(picker) {
         const start = picker.$moment().subtract(1, 'month').startOf('month').format('YYYY/MM/DD');
         const end = picker.$moment().subtract(1, 'month').endOf('month').format('YYYY/MM/DD');
@@ -41,7 +40,7 @@ export default {
       },
     },
     {
-      text: i18n.t('toptable.day7'),
+      text: $('toptable.day7'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -50,7 +49,7 @@ export default {
       },
     },
     {
-      text: i18n.t('toptable.day30'),
+      text: $('toptable.day30'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -59,7 +58,7 @@ export default {
       },
     },
     {
-      text: i18n.t('legacyScript.last90Days'),
+      text: $('legacyScript.last90Days'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -68,7 +67,7 @@ export default {
       },
     },
     {
-      text: i18n.t('legacyScript.lastYear2'),
+      text: $('legacyScript.lastYear2'),
       onClick(picker) {
         const end = new Date();
         const start = new Date();
@@ -77,7 +76,7 @@ export default {
       },
     },
     {
-      text: i18n.t('toptable.thisyear'),
+      text: $('toptable.thisyear'),
       onClick(picker) {
         const start = picker.$moment().startOf('year').format('YYYY/MM/DD HH:mm:ss');
         const end = picker.$moment().format('YYYY/MM/DD HH:mm:ss');
@@ -85,7 +84,7 @@ export default {
       },
     },
     {
-      text: i18n.t('legacyScript.lastYear'),
+      text: $('legacyScript.lastYear'),
       onClick(picker) {
         const start = picker.$moment().subtract(1, 'year').startOf('year').format('YYYY/MM/DD HH:mm:ss');
         const end = picker.$moment().subtract(1, 'year').endOf('year').format('YYYY/MM/DD HH:mm:ss');

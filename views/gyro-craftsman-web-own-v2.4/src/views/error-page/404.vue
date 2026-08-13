@@ -4,7 +4,7 @@
       <div class="bullshit">
         <img class="pic-404__parent" src="@/assets/404_images/404-01.png" alt="404" />
         <div class="bullshit__headline text-center">{{ message }}</div>
-        <div class="bullshit__info text-center">{{ $ts("您可能输错了网址，或该网页已被删除、不存在等") }}</div>
+        <div class="bullshit__info text-center">{{ $("legacy.1709400ef6a946aa") }}</div>
 
         <div class="text-center mt14">
           <!-- <router-link :to="{ path: roterPre + '/user/work' }">

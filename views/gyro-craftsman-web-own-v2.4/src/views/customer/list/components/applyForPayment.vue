@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 付款记录详情侧滑组件 -->
 <template>
 <div class="station">
@@ -17,11 +18,11 @@
           <img :src="list.card ? list.card.avatar : ''" alt="" class="img" />
         </div>
         <div class="invoice-right">
-          <span class="title">{{ list.card ? list.card.name : '--' }}{{ $t("ui.customerListApplyForPaymentSOrderPaymentRequest") }}</span>
-          <span class="text color1" v-if="list.status === 0"> {{ $t("ui.customerListApplyForPaymentPendingReview") }} </span>
-          <span class="text color2" v-if="list.status === 1"> {{ $t("ui.customerListApplyForPaymentApproved") }} </span>
-          <span class="text color3" v-if="list.status === 2"> {{ $t("ui.customerListApplyForPaymentRejected") }} </span>
-          <span class="text color2" v-if="list.status === -1"> {{ $t("ui.customerListApplyForPaymentRevoked") }} </span>
+          <span class="title">{{ list.card ? list.card.name : '--' }}{{ $("ui.customerListApplyForPaymentSOrderPaymentRequest") }}</span>
+          <span class="text color1" v-if="list.status === 0"> {{ $("ui.customerListApplyForPaymentPendingReview") }} </span>
+          <span class="text color2" v-if="list.status === 1"> {{ $("ui.customerListApplyForPaymentApproved") }} </span>
+          <span class="text color3" v-if="list.status === 2"> {{ $("ui.customerListApplyForPaymentRejected") }} </span>
+          <span class="text color2" v-if="list.status === -1"> {{ $("ui.customerListApplyForPaymentRevoked") }} </span>
         </div>
       </el-row>
     </div>
@@ -29,31 +30,31 @@
     <div class="content">
       <el-form label-width="100px">
         <div class="from-item-title mb15">
-          <span>{{ list.bill_types == 0 ? $t('ui.customerListApplyForPaymentExpenseInformation') : $t('ui.customerListApplyForPaymentPaymentInformation') }}</span>
+          <span>{{ list.bill_types == 0 ? $('ui.customerListApplyForPaymentExpenseInformation') : $('ui.customerListApplyForPaymentPaymentInformation') }}</span>
         </div>
         <div class="form-box">
           <div class="form-item">
-            <el-form-item :label="list.types == 2 ? $t('ui.customerListApplyForPaymentExpenseTime') : $t('ui.customerListApplyForPaymentPaymentTime')">
+            <el-form-item :label="list.types == 2 ? $('ui.customerListApplyForPaymentExpenseTime') : $('ui.customerListApplyForPaymentPaymentTime')">
               <span>{{ list.date }}</span>
             </el-form-item>
           </div>
           <div class="form-item">
-            <el-form-item :label="list.types == 2 ? $t('ui.customerListApplyForPaymentExpenseAmountYuan') : $t('ui.customerInvoiceInvoiceViewPaymentAmountYuan')">
+            <el-form-item :label="list.types == 2 ? $('ui.customerListApplyForPaymentExpenseAmountYuan') : $('ui.customerInvoiceInvoiceViewPaymentAmountYuan')">
               <span>{{ list.num }}</span>
             </el-form-item>
           </div>
           <div class="form-item">
-            <el-form-item :label="$t('ui.customerListApplyForPaymentPaymentMethod')">
+            <el-form-item :label="$('ui.customerListApplyForPaymentPaymentMethod')">
               <span>{{ list.pay_type }}</span>
             </el-form-item>
           </div>
           <div class="form-item">
-            <el-form-item :label="list.types == 2 ? $t('ui.customerListApplyForPaymentExpenseNumber') : $t('ui.customerListApplyForPaymentPaymentBillNo')">
+            <el-form-item :label="list.types == 2 ? $('ui.customerListApplyForPaymentExpenseNumber') : $('ui.customerListApplyForPaymentPaymentBillNo')">
               <span>{{ list.bill_no || '--' }}</span>
             </el-form-item>
           </div>
           <div class="form-item">
-            <el-form-item :label="list.types == 2 ? $t('ui.customerListApplyForPaymentExpenseVoucher') : $t('ui.customerListApplyForPaymentPaymentProof')">
+            <el-form-item :label="list.types == 2 ? $('ui.customerListApplyForPaymentExpenseVoucher') : $('ui.customerListApplyForPaymentPaymentProof')">
               <span v-if="JSON.stringify(list.attachs) == '[]'">--</span>
 
               <img
@@ -67,31 +68,31 @@
           </div>
           <div class="line"></div>
           <div class="from-item-title mb15">
-            <span>{{ $t("ui.customerListApplyForPaymentOtherInformation") }}</span>
+            <span>{{ $("ui.customerListApplyForPaymentOtherInformation") }}</span>
           </div>
           <div class="form-item">
-            <el-form-item :label="$t('ui.customerDetailsCustomerName')">
+            <el-form-item :label="$('ui.customerDetailsCustomerName')">
               <span>{{ list.client ? list.client.name : '--' }}</span>
             </el-form-item>
           </div>
           <div class="form-item">
-            <el-form-item :label="$t('ui.customerInvoiceInvoiceViewOrderName')">
+            <el-form-item :label="$('ui.customerInvoiceInvoiceViewOrderName')">
               <span>{{ list.treaty ? list.treaty.contract_name : '--' }}</span>
             </el-form-item>
           </div>
           <div class="form-item" v-if="list.types !== 2">
-            <el-form-item :label="$t('ui.administrationMaterialFixedRecordBusinessType')">
-              <span v-if="list.types === 0">{{ $t("ui.customerListApplyForPaymentOrderPayment") }}</span>
-              <span v-if="list.types === 1">{{ $t("ui.customerListApplyForPaymentOrderRenewal") }} {{ list.renew.title }}</span>
+            <el-form-item :label="$('ui.administrationMaterialFixedRecordBusinessType')">
+              <span v-if="list.types === 0">{{ $("ui.customerListApplyForPaymentOrderPayment") }}</span>
+              <span v-if="list.types === 1">{{ $("ui.customerListApplyForPaymentOrderRenewal") }} {{ list.renew.title }}</span>
             </el-form-item>
           </div>
           <div class="form-item" v-if="list.types === 1 && list.types !== 2">
-            <el-form-item :label="$t('ui.customerListApplyForPaymentRenewalDate')">
+            <el-form-item :label="$('ui.customerListApplyForPaymentRenewalDate')">
               <span>{{ list.end_date == '0000-00-00' ? '--' : list.end_date }}</span>
             </el-form-item>
           </div>
           <div class="form-item" v-if="list.types !== 2">
-            <el-form-item :label="$t('ui.customerListApplyForPaymentInvoiceReviewStatus')">
+            <el-form-item :label="$('ui.customerListApplyForPaymentInvoiceReviewStatus')">
               <template v-if="list.invoice">
                 <span> {{ getInvoiceStatus(list.invoice.status) }} </span>
               </template>
@@ -99,7 +100,7 @@
             </el-form-item>
           </div>
           <div class="form-item">
-            <el-form-item :label="$t('ui.fdEnterpriseListViewDetailsRemarks')">
+            <el-form-item :label="$('ui.fdEnterpriseListViewDetailsRemarks')">
               <span class="lh24">{{ list.mark || '--' }}</span>
             </el-form-item>
           </div>
@@ -107,8 +108,8 @@
       </el-form>
     </div>
     <div class="button from-foot-btn fix btn-shadow" v-if="list.status === 0 && formData.type !== 1">
-      <el-button size="small" type="primary" @click="handleContract">{{ $t("ui.customerListApplyForPaymentApprove") }}</el-button>
-      <el-button size="small" type="danger" @click="refuse">{{ $t("ui.settingEnterpriseUpgradeIndexRefuse") }}</el-button>
+      <el-button size="small" type="primary" @click="handleContract">{{ $("ui.customerListApplyForPaymentApprove") }}</el-button>
+      <el-button size="small" type="danger" @click="refuse">{{ $("ui.settingEnterpriseUpgradeIndexRefuse") }}</el-button>
     </div>
   </el-drawer>
   <expend-dialog ref="expendDialog" :config="operationDialog" @isOk="isOk"></expend-dialog>
@@ -127,8 +128,8 @@
         <el-input type="textarea" v-model="form.remarks"></el-input>
       </el-form-item>
       <div class="footer">
-        <el-button size="small" class="btn" @click="cancelFn">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-        <el-button size="small" type="primary" @click="submitFn" class="btn">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+        <el-button size="small" class="btn" @click="cancelFn">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+        <el-button size="small" type="primary" @click="submitFn" class="btn">{{ $("ui.formCommonDialogFormOk") }}</el-button>
       </div>
     </el-form>
   </el-dialog>
@@ -136,7 +137,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getbillCate, billCateApi } from '@/api/enterprise'
 import { clientBillStatusApi } from '@/api/client'
 import { getInvoiceText } from '@/libs/customer'
@@ -173,11 +173,11 @@ export default {
         remarks: ''
       },
       rules: {
-        remarks: [{ required: true, message: i18n.t('legacyScript.pleaseEnterRefuseReason'), trigger: 'blur' }]
+        remarks: [{ required: true, message: $('legacyScript.pleaseEnterRefuseReason'), trigger: 'blur' }]
       },
 
       reason: '拒绝原因',
-      title: i18n.t('ui.settingAuthAuthIndexReviewRejected')
+      title: $('ui.settingAuthAuthIndexReviewRejected')
     }
   },
 

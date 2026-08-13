@@ -3,10 +3,10 @@
   <el-card :body-style="{ padding: '14px' }" class="station-header">
     <el-row>
       <el-col :span="24">
-        <el-page-header :content="$t('ui.hrAttendanceSettingAddSchedulSchedule')">
+        <el-page-header :content="$('ui.hrAttendanceSettingAddSchedulSchedule')">
           <div slot="title" @click="backFn">
             <i class="el-icon-arrow-left"></i>
-            {{ $t("ui.customerProductAddProductResponse") }}
+            {{ $("ui.customerProductAddProductResponse") }}
           </div>
         </el-page-header>
       </el-col>
@@ -21,7 +21,7 @@
             v-model="where.name"
             class="mr14"
             clearable
-            :placeholder="$t('ui.hrAttendanceSettingAddSchedulPleaseEnterEmployeeName')"
+            :placeholder="$('ui.hrAttendanceSettingAddSchedulPleaseEnterEmployeeName')"
             size="small"
             style="width: 260px"
             @change="getList"
@@ -32,7 +32,7 @@
         <el-form-item class="select-bar">
           <el-date-picker
             v-model="where.date"
-            :placeholder="$t('ui.hrAttendanceSettingAddSchedulSelectMonth')"
+            :placeholder="$('ui.hrAttendanceSettingAddSchedulSelectMonth')"
             size="small"
             style="width: 150px"
             type="month"
@@ -41,19 +41,19 @@
           </el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-tooltip :content="$t('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
+          <el-tooltip :content="$('ui.administrationMaterialFixedRecordResetSearchConditions')" effect="dark" placement="top">
             <div class="reset" @click="restFn"><i class="iconfont iconqingchu"></i></div>
           </el-tooltip>
         </el-form-item>
       </el-form>
 
-      <span class="tips mt10">{{ $t("ui.hrAttendanceSettingCheckSchedulWhenNoScheduleIsAssignedTheSystemUsesThe") }}</span>
+      <span class="tips mt10">{{ $("ui.hrAttendanceSettingCheckSchedulWhenNoScheduleIsAssignedTheSystemUsesThe") }}</span>
     </div>
 
     <!-- 排班表格 -->
     <el-table v-loading="loading" :data="tableData" border style="width: 100%">
       <!-- 点击选中整行 -->
-      <el-table-column fixed="left" :label="$t('ui.businessHolidayQueryIndexName')" prop="name" style="background-color: #fff" width="140">
+      <el-table-column fixed="left" :label="$('ui.businessHolidayQueryIndexName')" prop="name" style="background-color: #fff" width="140">
         <template slot-scope="scope">
           <div class="nameFn">
             {{ scope.row.name }}

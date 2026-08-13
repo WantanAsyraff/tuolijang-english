@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 申请发票填写信息组件 -->
 <template>
 <div class="station">
@@ -20,63 +21,63 @@
         <el-col v-if="drawer">
           <div class="txt1">{{ delData.title }}</div>
           <div class="txt2">
-            <span class="title1">{{ $t("ui.invoiceInvoiceDetailsInvoiceStatus") }}</span>
+            <span class="title1">{{ $("ui.invoiceInvoiceDetailsInvoiceStatus") }}</span>
             <span class="tab-btn" :class="getInvoiceColor(delData.status)">
               {{ getInvoiceStatus(delData.status) }}
             </span>
 
-            <span class="title">{{ $t('customer.invoicingpay') }}：</span
+            <span class="title">{{ $('customer.invoicingpay') }}：</span
             ><span class="info2">{{ delData.amount }}</span>
           </div>
         </el-col>
       </el-row>
     </div>
     <el-tabs v-model="tabIndex" type="border-card" @tab-click="handleClick" :tab-position="tabPosition">
-      <el-tab-pane :label="$t('ui.invoiceInvoiceDetailsInvoiceInformation')" name="1"></el-tab-pane>
-      <el-tab-pane :label="$t('ui.invoiceInvoiceDetailsRelatedPaymentOrder')" name="2"></el-tab-pane>
-      <el-tab-pane :label="$t('ui.invoiceInvoiceDetailsOperationRecords')" name="3"></el-tab-pane>
+      <el-tab-pane :label="$('ui.invoiceInvoiceDetailsInvoiceInformation')" name="1"></el-tab-pane>
+      <el-tab-pane :label="$('ui.invoiceInvoiceDetailsRelatedPaymentOrder')" name="2"></el-tab-pane>
+      <el-tab-pane :label="$('ui.invoiceInvoiceDetailsOperationRecords')" name="3"></el-tab-pane>
     </el-tabs>
     <div class="contract-body">
       <!-- 发票信息 -->
       <el-form label-width="110px" v-if="tabIndex == 1" class="invoice-body">
         <div class="from-item-title mb15">
-          <span>{{ $t('setting.info.essentialinformation') }}</span>
+          <span>{{ $('setting.info.essentialinformation') }}</span>
         </div>
         <div class="form-box">
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerDetailsCustomerName") }}</span>
+              <span slot="label">{{ $("ui.customerDetailsCustomerName") }}</span>
               <p>{{ getCustomerName(delData) }}</p>
             </el-form-item>
           </div>
           <div class="form-item" v-if="delData.treaty">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewOrderName") }}</span>
+              <span slot="label">{{ $("ui.customerInvoiceInvoiceViewOrderName") }}</span>
               <p>{{ delData.treaty ? delData.treaty.contract_name : '--' }}</p>
             </el-form-item>
           </div>
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewPaymentAmountYuan") }}</span>
+              <span slot="label">{{ $("ui.customerInvoiceInvoiceViewPaymentAmountYuan") }}</span>
               <p>{{ delData.price }}</p>
             </el-form-item>
           </div>
           <div class="form-item">
             <el-form-item>
-              <span slot="label" class="item-label">{{ $t("ui.customerInvoiceInvoiceViewInvoiceCategory") }}</span>
+              <span slot="label" class="item-label">{{ $("ui.customerInvoiceInvoiceViewInvoiceCategory") }}</span>
               <p>{{ delData.category ? delData.category.name : '' }}</p>
             </el-form-item>
           </div>
 
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t('customer.invoicingdate') }}：</span>
+              <span slot="label">{{ $('customer.invoicingdate') }}：</span>
               <p>{{ delData.bill_date }}</p>
             </el-form-item>
           </div>
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t('public.remarks') }}：</span>
+              <span slot="label">{{ $('public.remarks') }}：</span>
               <p>{{ delData.mark || '--' }}</p>
             </el-form-item>
           </div>
@@ -84,43 +85,43 @@
         <div class="line" />
 
         <div class="from-item-title mt15 mb15">
-          <span>{{ $t('customer.invoiceinformation') }}</span>
+          <span>{{ $('customer.invoiceinformation') }}</span>
         </div>
         <div class="form-box">
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t('customer.invoicingpay') }}：</span>
+              <span slot="label">{{ $('customer.invoicingpay') }}：</span>
               <p>{{ delData.amount }}</p>
             </el-form-item>
           </div>
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t('customer.headerinformation') }}：</span>
+              <span slot="label">{{ $('customer.headerinformation') }}：</span>
               <p>{{ getInvoiceTitle(Number(delData.types)) }}</p>
             </el-form-item>
           </div>
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t('customer.invoiceheader') }}：</span>
+              <span slot="label">{{ $('customer.invoiceheader') }}：</span>
               <p>{{ delData.title }}</p>
             </el-form-item>
           </div>
           <div class="form-item" v-if="delData.types > 1">
             <el-form-item>
-              <span slot="label">{{ $t('customer.paytaxes') }}：</span>
+              <span slot="label">{{ $('customer.paytaxes') }}：</span>
               <p>{{ delData.ident }}</p>
             </el-form-item>
           </div>
 
           <div class="form-item" v-if="delData.types > 2">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewAddressPhone") }}</span>
+              <span slot="label">{{ $("ui.customerInvoiceInvoiceViewAddressPhone") }}</span>
               <p>{{ delData.address }} {{ delData.tel }}</p>
             </el-form-item>
           </div>
           <div class="form-item" v-if="delData.types > 2">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewBankAndAccountNumber") }}</span>
+              <span slot="label">{{ $("ui.customerInvoiceInvoiceViewBankAndAccountNumber") }}</span>
               <p>{{ delData.bank }} {{ delData.account }}</p>
             </el-form-item>
           </div>
@@ -130,46 +131,46 @@
 
         <!-- 邮寄信息 -->
         <div class="from-item-title mt15 mb15">
-          <span>{{ $t('customer.mailinginformation') }}</span>
+          <span>{{ $('customer.mailinginformation') }}</span>
         </div>
         <div class="form-box">
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewInvoiceRequirements") }}</span>
+              <span slot="label">{{ $("ui.customerInvoiceInvoiceViewInvoiceRequirements") }}</span>
               <p>
-                {{ delData.collect_type == 'mail' ? $t('ui.customerInvoiceInvoiceViewElectronic') : $t('ui.customerInvoiceInvoiceViewPaper') }}
+                {{ delData.collect_type == 'mail' ? $('ui.customerInvoiceInvoiceViewElectronic') : $('ui.customerInvoiceInvoiceViewPaper') }}
               </p>
             </el-form-item>
           </div>
           <div class="form-item" v-if="delData.status !== 0 && delData.status !== -1">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewSendMethod") }}</span>
+              <span slot="label">{{ $("ui.customerInvoiceInvoiceViewSendMethod") }}</span>
               <p>
-                {{ delData.invoice_type == 'mail' ? $t('ui.customerInvoiceInvoiceViewEmail') : $t('ui.customerInvoiceInvoiceViewExpress') }}
+                {{ delData.invoice_type == 'mail' ? $('ui.customerInvoiceInvoiceViewEmail') : $('ui.customerInvoiceInvoiceViewExpress') }}
               </p>
             </el-form-item>
           </div>
           <template v-if="delData.status !== 0 && delData.status !== -1">
             <div class="form-item" v-if="delData.invoice_type !== 'mail'">
               <el-form-item>
-                <span slot="label">{{ $t('customer.contacts') }}：</span>
+                <span slot="label">{{ $('customer.contacts') }}：</span>
                 <p>{{ delData.collect_name }}</p>
               </el-form-item>
             </div>
             <div class="form-item" v-if="delData.invoice_type !== 'mail'">
               <el-form-item>
-                <span slot="label">{{ $t('customer.contactnumber') }}：</span>
+                <span slot="label">{{ $('customer.contactnumber') }}：</span>
                 <p>{{ delData.collect_tel }}</p>
               </el-form-item>
             </div>
 
             <div class="form-item">
               <el-form-item v-if="delData.invoice_type === 'mail'">
-                <span slot="label"> {{ $t('customer.emailaddress') }} ：</span>
+                <span slot="label"> {{ $('customer.emailaddress') }} ：</span>
                 <p>{{ delData.invoice_address }}</p>
               </el-form-item>
               <el-form-item v-else>
-                <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewEmailInformation") }}</span>
+                <span slot="label">{{ $("ui.customerInvoiceInvoiceViewEmailInformation") }}</span>
                 <p>{{ delData.invoice_address }}</p>
               </el-form-item>
             </div>
@@ -177,24 +178,24 @@
           <template v-else>
             <div class="form-item" v-if="delData.collect_type !== 'mail'">
               <el-form-item>
-                <span slot="label">{{ $t('customer.contacts') }}：</span>
+                <span slot="label">{{ $('customer.contacts') }}：</span>
                 <p>{{ delData.collect_name }}</p>
               </el-form-item>
             </div>
             <div class="form-item" v-if="delData.collect_type !== 'mail'">
               <el-form-item>
-                <span slot="label">{{ $t('customer.contactnumber') }}：</span>
+                <span slot="label">{{ $('customer.contactnumber') }}：</span>
                 <p>{{ delData.collect_tel }}</p>
               </el-form-item>
             </div>
 
             <div class="form-item">
               <el-form-item v-if="delData.collect_type === 'mail'">
-                <span slot="label"> {{ $t('customer.emailaddress') }} ：</span>
+                <span slot="label"> {{ $('customer.emailaddress') }} ：</span>
                 <p>{{ delData.collect_email }}</p>
               </el-form-item>
               <el-form-item v-else>
-                <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewEmailInformation2") }}</span>
+                <span slot="label">{{ $("ui.customerInvoiceInvoiceViewEmailInformation2") }}</span>
                 <p>{{ delData.mail_address }}</p>
               </el-form-item>
             </div>
@@ -204,44 +205,44 @@
         <div class="line" />
         <!-- 开票信息 -->
         <div class="from-item-title mt15 mb15">
-          <span>{{ $t('customer.billinginformation') }}</span>
+          <span>{{ $('customer.billinginformation') }}</span>
         </div>
         <div class="form-box">
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewInvoiceResult") }}</span>
+              <span slot="label">{{ $("ui.customerInvoiceInvoiceViewInvoiceResult") }}</span>
               <p>{{ getInvoiceStatus(delData.status) }}</p>
             </el-form-item>
           </div>
           <div class="form-item" v-if="delData.status !== 0 && delData.status !== -1">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewReviewRemarks") }}</span>
+              <span slot="label">{{ $("ui.customerInvoiceInvoiceViewReviewRemarks") }}</span>
               <p v-if="delData.status == -1">--</p>
               <p v-else>{{ delData.remark || '--' }}</p>
             </el-form-item>
           </div>
           <div class="form-item" v-if="delData.file && delData.file.length > 0">
             <el-form-item>
-              <span slot="label">{{ $t("ui.fdInvoiceInvoicingDialogInvoiceVoucher") }}</span>
+              <span slot="label">{{ $("ui.fdInvoiceInvoicingDialogInvoiceVoucher") }}</span>
               <img :src="delData.file[0].thumb_dir" alt="" class="item-img" />
             </el-form-item>
           </div>
           <div class="form-item" v-if="delData.status !== 0">
             <el-form-item>
-              <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewOperationTime") }}</span>
+              <span slot="label">{{ $("ui.customerInvoiceInvoiceViewOperationTime") }}</span>
               <p>{{ delData.updated_at || '--' }}</p>
             </el-form-item>
           </div>
 
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t("ui.fdInvoiceIndexApplicant") }}</span>
+              <span slot="label">{{ $("ui.fdInvoiceIndexApplicant") }}</span>
               <p>{{ delData.card ? delData.card.name : '--' }}</p>
             </el-form-item>
           </div>
           <div class="form-item">
             <el-form-item>
-              <span slot="label">{{ $t("ui.fdInvoiceIndexApplicationTime") }}</span>
+              <span slot="label">{{ $("ui.fdInvoiceIndexApplicationTime") }}</span>
               <p>{{ delData.created_at || '--' }}</p>
             </el-form-item>
           </div>
@@ -251,19 +252,19 @@
       <!-- 关联付款单 -->
       <div v-if="tabIndex == 2" class="invoice-body mr20">
         <el-table :data="tableData" style="width: 100%">
-          <el-table-column prop="bill_no" :label="$t('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="180"> </el-table-column>
-          <el-table-column prop="treaty.contract_name" :label="$t('ui.invoiceInvoiceDetailsOrderName')" min-width="150"> </el-table-column>
+          <el-table-column prop="bill_no" :label="$('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="180"> </el-table-column>
+          <el-table-column prop="treaty.contract_name" :label="$('ui.invoiceInvoiceDetailsOrderName')" min-width="150"> </el-table-column>
 
-          <el-table-column prop="types" :label="$t('ui.invoiceInvoiceDetailsBusinessType')" min-width="200">
+          <el-table-column prop="types" :label="$('ui.invoiceInvoiceDetailsBusinessType')" min-width="200">
             <template slot-scope="scope">
-              <span v-if="scope.row.types === 0">{{ $t("ui.invoiceInvoiceDetailsPaymentRecord") }}</span>
-              <span v-if="scope.row.types === 1">{{ $t("ui.invoiceInvoiceDetailsRenewalRecord") }} {{ scope.row.renew ? scope.row.renew.title : '--' }}</span>
+              <span v-if="scope.row.types === 0">{{ $("ui.invoiceInvoiceDetailsPaymentRecord") }}</span>
+              <span v-if="scope.row.types === 1">{{ $("ui.invoiceInvoiceDetailsRenewalRecord") }} {{ scope.row.renew ? scope.row.renew.title : '--' }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="num" :label="$t('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="150"> </el-table-column>
+          <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="150"> </el-table-column>
 
-          <el-table-column prop="card.name" :label="$t('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
-          <el-table-column prop="created_at" :label="$t('ui.invoiceInvoiceDetailsCreatedTime')" min-width="180"> </el-table-column>
+          <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
+          <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="180"> </el-table-column>
         </el-table>
       </div>
 
@@ -271,7 +272,7 @@
       <div class="invoice-body1" v-if="tabIndex == 3">
         <div class="default" v-if="recordList.length == 0">
           <img src="../../../../assets/images/defd.png" alt="" class="img" />
-          <div class="text">{{ $t("ui.fdEnterpriseListViewDetailsNoOperationRecords") }}</div>
+          <div class="text">{{ $("ui.fdEnterpriseListViewDetailsNoOperationRecords") }}</div>
         </div>
         <el-steps direction="vertical" space="100" class="set" :active="1" v-if="recordList.length !== 0">
           <el-step v-for="(item, index) in recordList" :key="index">
@@ -317,7 +318,7 @@
       class="button from-foot-btn fix btn-shadow"
       v-if="formData.follType && formData.follType === 'fd' && delData.status === 0"
     >
-      <el-button size="small" type="primary" @click="handleInvoicing">{{ $t("ui.invoiceInvoiceDetailsReview") }}</el-button>
+      <el-button size="small" type="primary" @click="handleInvoicing">{{ $("ui.invoiceInvoiceDetailsReview") }}</el-button>
     </div>
     <el-image-viewer v-if="isImage" :on-close="closeImageViewer" :url-list="srcList" />
   </el-drawer>
@@ -325,7 +326,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import file from '@/utils/file'
 import { paymentRecordApi, operationRecordApi } from '@/api/enterprise'
 import { clientInvoiceDetailApi } from '@/api/client'
@@ -389,7 +389,7 @@ export default {
     // 开票
     handleInvoicing() {
       this.invoicingDialog = {
-        title: i18n.t('customer.invoicingapproval'),
+        title: $('customer.invoicingapproval'),
         data: this.formData.data
       }
       this.$refs.invoicingDialog.openBox()

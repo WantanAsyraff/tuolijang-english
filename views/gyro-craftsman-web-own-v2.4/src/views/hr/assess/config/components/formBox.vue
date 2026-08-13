@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form :inline="true">
-      <el-form-item :label='$ts("考核时间:")' label-width="80px" style="display: flex; align-items: center">
+      <el-form-item :label='$("legacy.4c01a66a8007a900")' label-width="80px" style="display: flex; align-items: center">
         <el-radio-group v-model="tableFrom.time" size="small" @change="selectChange">
           <el-radio-button v-for="(itemn, indexn) in fromList" :key="indexn" :label="itemn.val"
             >{{ itemn.text }}
@@ -10,12 +10,12 @@
         <el-date-picker
           v-model="timeVal"
           type="daterange"
-          :placeholder="$t('toptable.selecttime')"
+          :placeholder="$('toptable.selecttime')"
           format="yyyy/MM/dd"
           value-format="yyyy/MM/dd"
-          :range-separator="$t('toptable.to')"
-          :start-placeholder="$t('toptable.startdate')"
-          :end-placeholder="$t('toptable.endingdate')"
+          :range-separator="$('toptable.to')"
+          :start-placeholder="$('toptable.startdate')"
+          :end-placeholder="$('toptable.endingdate')"
           style="position: relative; top: 3px"
           @change="onchangeTime"
         />
@@ -24,10 +24,10 @@
         <el-row :gutter="20">
           <el-col :lg="24" :xl="24">
             <el-col :lg="7" :xl="8" style="margin-left: -10px">
-              <el-form-item :label='$ts("部门:")' label-width="80px" class="select-bar">
+              <el-form-item :label='$("legacy.6224d14a87eec4de")' label-width="80px" class="select-bar">
                 <el-select
                   v-model="tableFrom.type"
-                  :placeholder="$t('finance.pleaseselect')"
+                  :placeholder="$('finance.pleaseselect')"
                   style="width: 100%"
                   @change="handType"
                 >
@@ -36,10 +36,10 @@
               </el-form-item>
             </el-col>
             <el-col :lg="7" :xl="8">
-              <el-form-item :label='$ts("考核状态:")' label-width="80px" class="select-bar">
+              <el-form-item :label='$("legacy.836cfaaa4e7d95e7")' label-width="80px" class="select-bar">
                 <el-select
                   v-model="tableFrom.status"
-                  :placeholder="$t('finance.pleaseselect')"
+                  :placeholder="$('finance.pleaseselect')"
                   style="flex: 1; width: 100%"
                   @change="handStatus"
                 >
@@ -53,10 +53,10 @@
               </el-form-item>
             </el-col>
             <el-col :lg="7" :xl="8">
-              <el-form-item :label='$ts("考核类型:")' label-width="80px" class="select-bar">
+              <el-form-item :label='$("legacy.0789c82dffa3c0ba")' label-width="80px" class="select-bar">
                 <el-select
                   v-model="tableFrom.status"
-                  :placeholder="$t('finance.pleaseselect')"
+                  :placeholder="$('finance.pleaseselect')"
                   style="flex: 1; width: 100%"
                   @change="handStatus"
                 >
@@ -76,10 +76,10 @@
         <el-row :gutter="20">
           <el-col :lg="24" :xl="24">
             <el-col :lg="7" :xl="8" style="margin-left: -10px">
-              <el-form-item :label='$ts("被考核人:")' label-width="80px" class="select-bar">
+              <el-form-item :label='$("legacy.a7e79839775907dd")' label-width="80px" class="select-bar">
                 <el-select
                   v-model="tableFrom.type"
-                  :placeholder="$t('finance.pleaseselect')"
+                  :placeholder="$('finance.pleaseselect')"
                   style="width: 100%"
                   @change="handType"
                 >
@@ -88,10 +88,10 @@
               </el-form-item>
             </el-col>
             <el-col :lg="7" :xl="8">
-              <el-form-item :label='$ts("考核人:")' label-width="80px" class="select-bar">
+              <el-form-item :label='$("legacy.19c6af8e10284a01")' label-width="80px" class="select-bar">
                 <el-select
                   v-model="tableFrom.status"
-                  :placeholder="$t('finance.pleaseselect')"
+                  :placeholder="$('finance.pleaseselect')"
                   style="flex: 1; width: 100%"
                   @change="handStatus"
                 >
@@ -105,9 +105,9 @@
               </el-form-item>
             </el-col>
             <el-button class="btns one" type="primary" icon="el-icon-search" @click="handleConfirm">{{
-              $t('public.search')
+              $('public.search')
             }}</el-button>
-            <el-button class="btns" @click="reset">{{ $t('public.reset') }}</el-button>
+            <el-button class="btns" @click="reset">{{ $('public.reset') }}</el-button>
           </el-col>
         </el-row>
       </div>
@@ -122,13 +122,13 @@ export default {
   data() {
     return {
       fromList: [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('toptable.today'), val: 'today' },
-        { text: this.$t('toptable.yesterday'), val: 'yesterday' },
-        { text: this.$t('toptable.day7'), val: 'lately7' },
-        { text: this.$t('toptable.day30'), val: 'lately30' },
-        { text: this.$t('toptable.thismonth'), val: 'month' },
-        { text: this.$t('toptable.thisyear'), val: 'year' }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('toptable.today'), val: 'today' },
+        { text: this.$('toptable.yesterday'), val: 'yesterday' },
+        { text: this.$('toptable.day7'), val: 'lately7' },
+        { text: this.$('toptable.day30'), val: 'lately30' },
+        { text: this.$('toptable.thismonth'), val: 'month' },
+        { text: this.$('toptable.thisyear'), val: 'year' }
       ],
       timeVal: [],
       tableFrom: {
@@ -138,19 +138,19 @@ export default {
       },
       sexOptions: [
         {
-          label: this.$t('finance.all'),
+          label: this.$('finance.all'),
           value: ''
         },
         {
-          label: this.$t('finance.income'),
+          label: this.$('finance.income'),
           value: '0'
         },
         {
-          label: this.$t('finance.pay'),
+          label: this.$('finance.pay'),
           value: '1'
         }
       ],
-      statusOptions: [{ label: this.$t('toptable.all'), value: '' }]
+      statusOptions: [{ label: this.$('toptable.all'), value: '' }]
     }
   },
   computed: {
@@ -166,31 +166,31 @@ export default {
   methods: {
     setOptions() {
       this.fromList = [
-        { text: this.$t('toptable.all'), val: '' },
-        { text: this.$t('toptable.today'), val: 'today' },
-        { text: this.$t('toptable.yesterday'), val: 'yesterday' },
-        { text: this.$t('toptable.day7'), val: 'lately7' },
-        { text: this.$t('toptable.day30'), val: 'lately30' },
-        { text: this.$t('toptable.thismonth'), val: 'month' },
-        { text: this.$t('toptable.thisyear'), val: 'year' }
+        { text: this.$('toptable.all'), val: '' },
+        { text: this.$('toptable.today'), val: 'today' },
+        { text: this.$('toptable.yesterday'), val: 'yesterday' },
+        { text: this.$('toptable.day7'), val: 'lately7' },
+        { text: this.$('toptable.day30'), val: 'lately30' },
+        { text: this.$('toptable.thismonth'), val: 'month' },
+        { text: this.$('toptable.thisyear'), val: 'year' }
       ]
       this.sexOptions = [
         {
-          label: this.$t('finance.all'),
+          label: this.$('finance.all'),
           value: ''
         },
         {
-          label: this.$t('finance.income'),
+          label: this.$('finance.income'),
           value: '0'
         },
         {
-          label: this.$t('finance.pay'),
+          label: this.$('finance.pay'),
           value: '1'
         }
       ]
       this.statusOptions = [
         {
-          label: this.$t('toptable.all'),
+          label: this.$('toptable.all'),
           value: ''
         }
       ]
@@ -208,7 +208,7 @@ export default {
         type: '',
         status: ''
       }
-      this.statusOptions = [{ label: this.$t('toptable.all'), value: '' }]
+      this.statusOptions = [{ label: this.$('toptable.all'), value: '' }]
       this.$emit('confirmData', this.tableFrom)
     },
     changeTimeDate(days) {
@@ -253,7 +253,7 @@ export default {
       const data = {
         types: type
       }
-      const list = [{ label: this.$t('toptable.all'), value: '' }]
+      const list = [{ label: this.$('toptable.all'), value: '' }]
       const result = await billCateApi(data)
       if (result.data.length > 0) {
         result.data.forEach((val) => {

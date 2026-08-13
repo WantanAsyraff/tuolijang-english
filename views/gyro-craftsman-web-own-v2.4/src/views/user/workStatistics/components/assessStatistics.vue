@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="statistics">
     <oaFromBox
@@ -21,7 +22,6 @@
 import { assessCensusLineApi } from '@/api/enterprise'
 import Commnt from '@/components/user/accessCommon'
 import echarts from 'echarts'
-import { localizeChartOption, translateRuntimeText } from '@/utils/i18ns'
 export default {
   name: 'AssessStatistics',
   components: {
@@ -61,8 +61,8 @@ export default {
         '#F0F8FF'
       ],
       periodOptions: Commnt.periodOptions,
-      frameArray: [{ label: this.$t('setting.selectdepartment'), value: '' }],
-      userArray: [{ label: this.$t('access.selectpersonnel'), value: '' }],
+      frameArray: [{ label: this.$('setting.selectdepartment'), value: '' }],
+      userArray: [{ label: this.$('access.selectpersonnel'), value: '' }],
       tableData: [],
       frame: [],
       period: 2,
@@ -108,18 +108,26 @@ export default {
     }
   },
   watch: {
-    '$i18n.locale'() {
+    '$language'() {
       this.setOptions()
-      if (this.myChart) this.myChart.setOption(localizeChartOption(this.optionData, this), true)
+      if (this.myChart) this.myChart.setOption(this.mapDisplayValues(this.optionData), true)
     }
   },
   methods: {
-    translateChartText(text) {
-      return translateRuntimeText(text, this)
+    mapDisplayValues(value, seen = new WeakMap()) {
+      if (typeof value === 'string') return this.$(value)
+      if (!value || typeof value !== 'object' || value instanceof Date || value instanceof RegExp) return value
+      if (seen.has(value)) return seen.get(value)
+      const result = Array.isArray(value) ? [] : {}
+      seen.set(value, result)
+      Object.keys(value).forEach((key) => {
+        result[key] = this.mapDisplayValues(value[key], seen)
+      })
+      return result
     },
     formatChartAxisText(text) {
-      const translated = this.translateChartText(text)
-      if (this.$i18n && this.$i18n.locale === 'en') {
+      const translated = this.$(text)
+      if (this.$language === 'en') {
         return String(translated).replace(/(\d{4})年(\d{1,2})月/g, (match, year, month) => {
           const monthName = new Date(Number(year), Number(month) - 1, 1).toLocaleString('en', { month: 'short' })
           return `${monthName} ${year}`
@@ -153,8 +161,8 @@ export default {
       this.getTableData()
     },
     setOptions() {
-      this.frameArray[0].label = this.$t('setting.selectdepartment')
-      this.userArray[0].label = this.$t('access.selectpersonnel')
+      this.frameArray[0].label = this.$('setting.selectdepartment')
+      this.userArray[0].label = this.$('access.selectpersonnel')
     },
     reset() {
       this.period = 2
@@ -209,7 +217,7 @@ export default {
             params.forEach((item) => {
               const value = item.value == null ? 0 : item.value
               rows +=
-                `<div style="min-width:100px;break-inside:avoid">${item.marker}${this.translateChartText(item.seriesName)}` +
+                `<div style="min-width:100px;break-inside:avoid">${item.marker}${this.$(item.seriesName)}` +
                 `<span style="float:right;margin-left:20px;font-weight:600">${value}</span></div>`
             })
             // 数据量大于 20 条时改为两列展示
@@ -286,7 +294,7 @@ export default {
       const seriesData = []
       const legendName = []
       this.tableData.series.forEach((value, index) => {
-        const translatedName = this.translateChartText(value.name)
+        const translatedName = this.$(value.name)
         legendName.push(translatedName)
         seriesData.push({
           name: translatedName,
@@ -307,7 +315,7 @@ export default {
             data: [
               {
                 type: 'average',
-                name: this.translateChartText('平均值')
+                name: this.$('平均值')
               }
             ]
           },
@@ -320,14 +328,14 @@ export default {
 
       this.myChart = echarts.init(document.getElementById('statistics-con'))
       let option = null
-      option = localizeChartOption(this.optionData, this)
+      option = this.mapDisplayValues(this.optionData)
       // 基于准备好的dom，初始化echarts实例
       this.myChart.setOption(option, true)
     },
     handleFrame(num) {
       this.frame_id = num
       this.test_uid = ''
-      this.userArray = [{ label: this.$t('access.selectpersonnel'), value: '' }]
+      this.userArray = [{ label: this.$('access.selectpersonnel'), value: '' }]
       if (num != '') {
         const index = this.getFindIndex(this.frame, 'id', num)
         this.frame[index].user.forEach((value) => {

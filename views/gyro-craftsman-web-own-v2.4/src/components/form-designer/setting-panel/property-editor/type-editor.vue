@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.displayType')" v-if="selectedWidget.type === 'input'">
+  <el-form-item :label="$('designer.setting.displayType')" v-if="selectedWidget.type === 'input'">
   
     <el-select v-model="optionModel.type" @change="changeType">
       <el-option label="text" value="text"></el-option>
@@ -13,11 +13,8 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
-
 export default {
   name: 'type-editor',
-  mixins: [i18n],
   props: {
     designer: Object,
     selectedWidget: Object,
@@ -36,4 +33,3 @@ export default {
 
 <style lang="scss" scoped>
 </style>
-@/utils/i18ns

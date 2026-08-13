@@ -8,7 +8,7 @@
       :precision="precisionNum"
       :step="Math.pow(10, precisionNum ? -precisionNum : 0)"
     ></el-input-number>
-    <div class="daxie">{{ $ts("大写：") }}{{ numFrom }}</div>
+    <div class="daxie">{{ $("legacy.1aacbbd79b0161c6") }}{{ numFrom }}</div>
   </div>
 </template>
 

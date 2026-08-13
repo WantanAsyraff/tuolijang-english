@@ -2,7 +2,7 @@
 <template>
 <div>
   <el-dialog
-    :title="status == 0 ? $t('ui.userExamineAddSignatureAddApprover') : $t('ui.userExamineAddSignatureTransferApproval')"
+    :title="status == 0 ? $('ui.userExamineAddSignatureAddApprover') : $('ui.userExamineAddSignatureTransferApproval')"
     :visible.sync="visible"
     width="600px"
     :before-close="handleClose"
@@ -10,7 +10,7 @@
   >
     <div class="mt10">
       <el-form :model="formData" ref="form" label-width="auto">
-        <el-form-item :label="status == 0 ? $t('ui.userExamineAddSignatureAdditionalApprover') : $t('ui.userExamineAddSignatureTransferReviewer')" prop="user_id">
+        <el-form-item :label="status == 0 ? $('ui.userExamineAddSignatureAdditionalApprover') : $('ui.userExamineAddSignatureTransferReviewer')" prop="user_id">
           <select-member
             ref="selectMember"
             :value="userList"
@@ -26,7 +26,7 @@
                   v-if="status == 0 || (status == 1 && userList.length == 0)"
                 >
                   <span class="el-icon-plus"></span>
-                  {{ $t("ui.userDailyAddBoxAdd") }}
+                  {{ $("ui.userDailyAddBoxAdd") }}
                 </div>
 
                 <div v-for="(item, index) in userList" :key="index" class="user">
@@ -38,39 +38,39 @@
             </template>
           </select-member>
         </el-form-item>
-        <el-form-item :label="$t('ui.userExamineAddSignatureAddApproverMethod')" prop="type" v-if="status == 0">
+        <el-form-item :label="$('ui.userExamineAddSignatureAddApproverMethod')" prop="type" v-if="status == 0">
           <div>
             <el-radio-group v-model="formData.types">
-              <el-radio :label="1">{{ $t("ui.userExamineAddSignatureBeforeMe") }}</el-radio>
-              <el-radio :label="0">{{ $t("ui.userExamineAddSignatureAfterMe") }}</el-radio>
+              <el-radio :label="1">{{ $("ui.userExamineAddSignatureBeforeMe") }}</el-radio>
+              <el-radio :label="0">{{ $("ui.userExamineAddSignatureAfterMe") }}</el-radio>
             </el-radio-group>
-            <div class="tips" v-if="formData.types == 1">{{ $t("ui.userExamineAddSignatureTheAddedApproverReviewsTheRequestBeforeItReturns") }}</div>
-            <div class="tips" v-if="formData.types == 0">{{ $t("ui.userExamineAddSignatureAddingAnApproverAfterMeApprovesTheRequestAnd") }}</div>
+            <div class="tips" v-if="formData.types == 1">{{ $("ui.userExamineAddSignatureTheAddedApproverReviewsTheRequestBeforeItReturns") }}</div>
+            <div class="tips" v-if="formData.types == 0">{{ $("ui.userExamineAddSignatureAddingAnApproverAfterMeApprovesTheRequestAnd") }}</div>
           </div>
         </el-form-item>
-        <el-form-item :label="$t('ui.userExamineAddSignatureMultipleReviewerMethod')" prop="examineType" v-if="status == 0 && userList.length > 1">
+        <el-form-item :label="$('ui.userExamineAddSignatureMultipleReviewerMethod')" prop="examineType" v-if="status == 0 && userList.length > 1">
           <el-radio-group v-model="formData.examine_mode">
-            <el-radio :label="1">{{ $t("ui.userExamineAddSignatureAnyApprover") }}</el-radio>
-            <el-radio :label="2">{{ $t("ui.userExamineAddSignatureAllApprovers") }}</el-radio>
-            <el-radio :label="3">{{ $t("ui.userExamineAddSignatureSequentialApproval") }}</el-radio>
+            <el-radio :label="1">{{ $("ui.userExamineAddSignatureAnyApprover") }}</el-radio>
+            <el-radio :label="2">{{ $("ui.userExamineAddSignatureAllApprovers") }}</el-radio>
+            <el-radio :label="3">{{ $("ui.userExamineAddSignatureSequentialApproval") }}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item :label="status == 0 ? $t('ui.userExamineAddSignatureAdditionalApproverNote') : $t('ui.userExamineAddSignatureTransferNote')" prop="opinion">
+        <el-form-item :label="status == 0 ? $('ui.userExamineAddSignatureAdditionalApproverNote') : $('ui.userExamineAddSignatureTransferNote')" prop="opinion">
           <el-input
             type="textarea"
             v-model="formData.info"
             :rows="3"
             size="small"
-            :placeholder="status == 0 ? $t('ui.userExamineAddSignatureEnterAnAdditionalApproverNote') : $t('ui.userExamineAddSignatureEnterATransferNote')"
+            :placeholder="status == 0 ? $('ui.userExamineAddSignatureEnterAnAdditionalApproverNote') : $('ui.userExamineAddSignatureEnterATransferNote')"
           />
         </el-form-item>
       </el-form>
     </div>
     <div slot="footer" class="dialog-footer">
       <div class="footer-tips">
-        {{ status == 0 && !formData.types ? $t('ui.userExamineAddSignatureClickingTheButtonApprovesThisRequestAndAddsAn') : '' }}
+        {{ status == 0 && !formData.types ? $('ui.userExamineAddSignatureClickingTheButtonApprovesThisRequestAndAddsAn') : '' }}
       </div>
-      <el-button size="small" type="primary" @click="submit"> {{ $t("ui.settingEnterpriseUpgradeIndexOk") }}{{ status == 0 ? $t('ui.userExamineAddSignatureAddApprover') : $t('ui.userExamineAddSignatureTransferApproval') }} </el-button>
+      <el-button size="small" type="primary" @click="submit"> {{ $("ui.settingEnterpriseUpgradeIndexOk") }}{{ status == 0 ? $('ui.userExamineAddSignatureAddApprover') : $('ui.userExamineAddSignatureTransferApproval') }} </el-button>
     </div>
   </el-dialog>
 </div>

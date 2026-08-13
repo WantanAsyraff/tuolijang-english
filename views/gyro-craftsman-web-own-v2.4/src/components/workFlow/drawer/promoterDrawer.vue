@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <!-- 申请审批-选择申请人弹窗 -->
   <el-drawer
@@ -12,11 +13,11 @@
     <div class="demo-drawer__content">
       <div class="promoter_content drawer_content">
         <el-radio-group v-model="radio" class="mt20">
-          <el-radio :label="2">{{ $ts("按部门添加") }}</el-radio>
-          <el-radio :label="1">{{ $ts("按人员添加") }}</el-radio>
+          <el-radio :label="2">{{ $("ui.hrAttendanceSettingAddConentAddByDepartment") }}</el-radio>
+          <el-radio :label="1">{{ $("ui.hrAttendanceSettingAddConentAddByEmployee") }}</el-radio>
         </el-radio-group>
-        <p class="title1">{{ $ts("可提交申请的成员") }}</p>
-        <p class="title2">{{ $ts("模板范围内的成员可提交，修改后，模板可见范围将被同步修改") }}</p>
+        <p class="title1">{{ $("legacy.ce1d9be7b39bbdab") }}</p>
+        <p class="title2">{{ $("legacy.04427c4d3844e4a1") }}</p>
 
         <select-member
           v-if="radio == 1"
@@ -37,7 +38,6 @@
   </el-drawer>
 </template>
 <script>
-import i18n from '@/lang'
 export default {
   components: {
     selectMember: () => import('@/components/form-common/select-member'),
@@ -52,7 +52,7 @@ export default {
       radio: 1,
       userList: [],
       depList: [],
-      title: i18n.t('access.applicant')
+      title: $('access.applicant')
     }
   },
   computed: {

@@ -3,7 +3,7 @@
   <div class="file-box">
     <div class="header flex-between">
       <div>{{ file.name }}.{{ file.file_ext }}</div>
-      <el-button v-show="editBtn" :loading="loading" size="small" type="primary" @click="save">{{ $ts("保存") }}</el-button>
+      <el-button v-show="editBtn" :loading="loading" size="small" type="primary" @click="save">{{ $("public.save") }}</el-button>
     </div>
 
     <div class="main">

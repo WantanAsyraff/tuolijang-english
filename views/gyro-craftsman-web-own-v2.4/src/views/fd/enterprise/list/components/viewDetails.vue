@@ -1,10 +1,10 @@
 <template>
 <!-- 查看账目详情侧滑弹窗 -->
 <div>
-  <el-drawer :before-close="handleClose" :visible.sync="drawer" direction="rtl" size="450px" :title="$t('ui.fdEnterpriseListViewDetailsViewAccountDetails')">
+  <el-drawer :before-close="handleClose" :visible.sync="drawer" direction="rtl" size="450px" :title="$('ui.fdEnterpriseListViewDetailsViewAccountDetails')">
     <el-tabs v-model="tabIndex" tab-position="top" type="border-card" @tab-click="handleClick">
-      <el-tab-pane :label="$t('ui.fdEnterpriseListViewDetailsAccountInformation')" name="1" />
-      <el-tab-pane :label="$t('ui.invoiceInvoiceDetailsOperationRecords')" name="2" />
+      <el-tab-pane :label="$('ui.fdEnterpriseListViewDetailsAccountInformation')" name="1" />
+      <el-tab-pane :label="$('ui.invoiceInvoiceDetailsOperationRecords')" name="2" />
 
       <!-- 账目信息 -->
       <div class="contract-body">
@@ -13,51 +13,51 @@
             <div class="form-box">
               <div class="form-item">
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsTimeOfPayment") }}</span>
+                  <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsTimeOfPayment") }}</span>
                   <p>{{ delData.edit_time }}</p>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsAccountType") }}</span>
-                  <p>{{ delData.types == 0 ? $t('ui.customerContractContractPaymentExpense') : $t('ui.customerContractContractPaymentIncome') }}</p>
+                  <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsAccountType") }}</span>
+                  <p>{{ delData.types == 0 ? $('ui.customerContractContractPaymentExpense') : $('ui.customerContractContractPaymentIncome') }}</p>
                 </el-form-item>
 
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsIncomeExpenseAmountYuan") }}</span>
+                  <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsIncomeExpenseAmountYuan") }}</span>
                   <p>{{ delData.num }}</p>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsIncomeExpenseMethod") }}</span>
+                  <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsIncomeExpenseMethod") }}</span>
                   <p>{{ delData.pay_type }}</p>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsAccountCategory") }}</span>
+                  <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsAccountCategory") }}</span>
                   <p>{{ delData.cate ? delData.cate.name : '--' }}</p>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsRemarks") }}</span>
+                  <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsRemarks") }}</span>
                   <p class="remarks-wrap">
                     {{ delData.client_bill ? delData.client_bill.mark||'--' : delData.mark||'--' }}
                   </p>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsDataSource") }}</span>
-                  <p>{{ delData.link_id > 0 ? $t('ui.fdEnterpriseListViewDetailsOrderAccounts') : $t('ui.fdEnterpriseListViewDetailsAddManually') }}</p>
+                  <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsDataSource") }}</span>
+                  <p>{{ delData.link_id > 0 ? $('ui.fdEnterpriseListViewDetailsOrderAccounts') : $('ui.fdEnterpriseListViewDetailsAddManually') }}</p>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.customerDetailsCustomerName") }}</span>
+                  <span slot="label">{{ $("ui.customerDetailsCustomerName") }}</span>
                   <p>{{ delData.client ? delData.client.customer_name : '--' }}</p>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.customerInvoiceInvoiceViewOrderName") }}</span>
+                  <span slot="label">{{ $("ui.customerInvoiceInvoiceViewOrderName") }}</span>
                   <p>{{ delData.contract ? delData.contract.title : '--' }}</p>
                 </el-form-item>
 
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.customerListApplyForPaymentPaymentBillNo") }}</span>
+                  <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentBillNo") }}</span>
                   <p>{{ delData.client_bill ? delData.client_bill.bill_no : '--' }}</p>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.customerContractEditContractSalesperson") }}</span>
+                  <span slot="label">{{ $("ui.customerContractEditContractSalesperson") }}</span>
                   <p>
                     {{
                       delData.user
@@ -69,7 +69,7 @@
                   </p>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.customerListApplyForPaymentPaymentProof") }}</span>
+                  <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentProof") }}</span>
 
                   <upload-file
                     v-if="delData.attachs && delData.attachs.length > 0"
@@ -83,7 +83,7 @@
                   <div v-else>--</div>
                 </el-form-item>
                 <el-form-item>
-                  <span slot="label">{{ $t("ui.fdEnterpriseListViewDetailsCreatedTime") }}</span>
+                  <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsCreatedTime") }}</span>
                   <p>{{ delData.created_at }}</p>
                 </el-form-item>
               </div>
@@ -95,7 +95,7 @@
         <div v-if="tabIndex == 2" class="invoice-body1">
           <div v-if="recordList.length == 0" class="default">
             <img alt="" class="img" src="../../../../../assets/images/none-009.png" />
-            <div class="text">{{ $t("ui.fdEnterpriseListViewDetailsNoOperationRecords") }}</div>
+            <div class="text">{{ $("ui.fdEnterpriseListViewDetailsNoOperationRecords") }}</div>
           </div>
           <el-steps v-if="recordList.length !== 0" :active="1" class="set" direction="vertical" space="130px">
             <el-step v-for="(item, index) in recordList" :key="index">
@@ -125,7 +125,7 @@
                             @click="handlePictureCardPreview(details.val.before)"
                           />
                           <span v-else>--</span>
-                          <span class="ml10 mr10"> {{ $t("ui.fdEnterpriseListViewDetailsChangeTo") }}</span>
+                          <span class="ml10 mr10"> {{ $("ui.fdEnterpriseListViewDetailsChangeTo") }}</span>
                           <img
                             v-if="details.val.after"
                             :src="details.val.after"

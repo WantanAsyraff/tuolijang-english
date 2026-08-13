@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.displayType')">
+  <el-form-item :label="$('designer.setting.displayType')">
     <el-select v-model="optionModel.type">
       <el-option label="daterange" value="daterange"></el-option>
       <el-option label="datetimerange" value="datetimerange"></el-option>
@@ -9,11 +9,8 @@
 </template>
 
 <script>
-  import i18n from "@/utils/i18n";
-
   export default {
     name: "date-time-picker-type-editor",
-    mixins: [i18n],
     props: {
       designer: Object,
       selectedWidget: Object,
@@ -25,4 +22,3 @@
 <style lang="scss" scoped>
 
 </style>
-@/utils/i18ns

@@ -5,14 +5,14 @@
         <div v-if="tableData.length > 0" class="current-list">
           <div class="total-score">
             <p>
-              <span class="total-score-name">{{ $t('access.totalscore') }}:</span>
+              <span class="total-score-name">{{ $('access.totalscore') }}:</span>
               <span class="number">{{ assessInfo.max }}</span>
             </p>
             <p v-for="(item, index) in tableData" :key="index">
               <span class="total-score-name">{{ item.name }}:</span> <span class="number">{{ sum(index) }}</span>
             </p>
             <p>
-              <span class="total-score-name">{{ $t('access.totalscore1') }}:</span>
+              <span class="total-score-name">{{ $('access.totalscore1') }}:</span>
               <span class="number">{{ totalSum() }}</span>
             </p>
           </div>
@@ -28,47 +28,47 @@
                     type="text"
                 /></span>
                 <span
-                  >{{ $t('access.dimensionweight')
+                  >{{ $('access.dimensionweight')
                   }}<el-input-number v-model="item.ratio" :controls="false" :min="0" :max="item.weight" />%</span
                 >
               </div>
               <div v-else>
                 <span>{{ item.name }}</span>
                 <span>
-                  {{ assessInfo.types == 0 ? $t('access.dimensionweight') : $t('access.dimensionscore') }}
+                  {{ assessInfo.types == 0 ? $('access.dimensionweight') : $('access.dimensionscore') }}
                   {{ item.ratio }}
                   {{ assessInfo.types == 0 ? '%' : '' }}
                 </span>
               </div>
             </div>
             <el-table :data="item.target" style="width: 100%;" row-key="id" default-expand-all>
-              <el-table-column prop="name" :label="$t('access.targetname')" min-width="100">
+              <el-table-column prop="name" :label="$('access.targetname')" min-width="100">
                 <template slot-scope="scope">
                   <el-input v-if="!testAccess" v-model="scope.row.name" type="text" />
                   <span v-else>{{ scope.row.name }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="content" :label="$t('access.targetexplain')" min-width="200">
+              <el-table-column prop="content" :label="$('access.targetexplain')" min-width="200">
                 <template slot-scope="scope">
                   <el-input v-if="!testAccess" v-model="scope.row.content" type="text" />
                   <span v-else>{{ scope.row.content }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="finish_info" :label="$t('access.completion')" min-width="180">
+              <el-table-column prop="finish_info" :label="$('access.completion')" min-width="180">
                 <template slot-scope="scope">
                   <el-input v-if="testAccess" v-model="scope.row.finish_info" type="text" />
                   <span v-else>{{ scope.row.finish_info }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="check_info" :label="$t('access.higherevaluation')" min-width="180">
+              <el-table-column prop="check_info" :label="$('access.higherevaluation')" min-width="180">
                 <template slot-scope="scope">
-                  <el-input v-if="!testAccess" v-model="scope.row.check_info" type="text" :placeholder="$t('ui.hrAssessStaffDetailsDialogTheHigherEvaluation')" />
+                  <el-input v-if="!testAccess" v-model="scope.row.check_info" type="text" :placeholder="$('ui.hrAssessStaffDetailsDialogTheHigherEvaluation')" />
                   <span v-if="testAccess">{{ scope.row.check_info }}</span>
                 </template>
               </el-table-column>
               <el-table-column
                 prop="ratio"
-                :label="assessInfo.types == 0 ? $t('access.weight') : $t('access.score')"
+                :label="assessInfo.types == 0 ? $('access.weight') : $('access.score')"
                 min-width="100"
               >
                 <template slot-scope="scope">
@@ -79,7 +79,7 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column v-if="assessInfo.types == 0" prop="task" :label="$t('access.degree')" min-width="100">
+              <el-table-column v-if="assessInfo.types == 0" prop="task" :label="$('access.degree')" min-width="100">
                 <template slot-scope="scope">
                   <div class="current-task">
                     <el-progress
@@ -94,7 +94,7 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column v-else prop="task" :label="$t('access.completion1')" min-width="100">
+              <el-table-column v-else prop="task" :label="$('access.completion1')" min-width="100">
                 <template slot-scope="scope">
                   <div class="current-task">
                     <el-input v-if="testAccess" v-model="scope.row.finish_ratio" type="text" />
@@ -102,13 +102,13 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="score" :label="$t('access.superiorgrade')" min-width="60">
+              <el-table-column prop="score" :label="$('access.superiorgrade')" min-width="60">
                 <template slot-scope="scope">
                   <div class="current-task">
                     <el-input-number
                       v-if="!testAccess"
                       v-model="scope.row.score"
-                      :placeholder="$t('access.score')"
+                      :placeholder="$('access.score')"
                       :controls="false"
                       :min="0"
                       :max="100"

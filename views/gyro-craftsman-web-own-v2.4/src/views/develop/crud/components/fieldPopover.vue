@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- @FileDescription:  应用举例：低代码新建字段 -->
 <template>
   <div class="popover-box">
@@ -5,20 +6,19 @@
       <div class="flex-box">
         <div v-for="item in list" :key="item.value" class="item" @click="handleClick(item)">
           <i class="iconfont" :class="item.icon"></i>
-          <div class="field-text">{{ $ts(item.label, item.label_en) }}</div>
+          <div class="field-text">{{ $(item.label, item.label_en) }}</div>
         </div>
       </div>
       <el-button size="small" type="primary" slot="reference" v-if="title">
-        {{ $ts(title) }}<i class="el-icon-arrow-down">
+        {{ $(title) }}<i class="el-icon-arrow-down">
         </i></el-button>
-      <span v-if="!title" slot="reference" :title='$ts("新建字段")' class="el-icon-plus ml10 pointer"></span>
+      <span v-if="!title" slot="reference" :title='$("ui.developCrudFieldSettingNewField")' class="el-icon-plus ml10 pointer"></span>
     </el-popover>
     <fieldDialog ref="fieldDialog" @submit="submit" :typesObj="typeValue" :rowData="rowData" :dictList="dictList">
     </fieldDialog>
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   dataFieldTypeApi,
   dataFieldSaveApi
@@ -53,31 +53,31 @@ export default {
       list: [
         {
           icon: 'iconwenben1',
-          label: i18n.t('legacyScript.text'),
+          label: $('legacyScript.text'),
           value: 'text'
         }, {
           icon: 'iconshuzi2',
-          label: i18n.t('legacyScript.number'),
+          label: $('legacyScript.number'),
           value: 'number'
         }, {
           icon: 'iconxuanxiang',
-          label: i18n.t('legacyScript.option'),
+          label: $('legacyScript.option'),
           value: 'select'
         }, {
           icon: 'iconshijian1',
-          label: i18n.t('legacyScript.time'),
+          label: $('legacyScript.time'),
           value: 'date'
         }, {
           icon: 'icontupian5',
-          label: i18n.t('file.picture'),
+          label: $('file.picture'),
           value: 'image'
         }, {
           icon: 'iconwenjian5',
-          label: i18n.t('ui.userCloudfileLayoutCloudfileLeftFile'),
+          label: $('ui.userCloudfileLayoutCloudfileLeftFile'),
           value: 'file'
         }, {
           icon: 'iconguanlian',
-          label: i18n.t('legacyScript.oneToOneRelation'),
+          label: $('legacyScript.oneToOneRelation'),
           value: 'oneToOne'
         }
       ]

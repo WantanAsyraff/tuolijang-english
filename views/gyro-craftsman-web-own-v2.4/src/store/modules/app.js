@@ -1,5 +1,5 @@
+import { getLanguage, setLanguage } from '@/lang'
 import Cookies from 'js-cookie'
-import { getLanguage } from '@/lang/index'
 import { getStorageJson } from '@/utils/storage'
 import moment from 'moment'
 const state = {
@@ -54,11 +54,8 @@ const mutations = {
     Cookies.set('size', size)
   },
   SET_LANGUAGE: (state, language) => {
-    state.language = language
-    Cookies.set('language', language)
-    localStorage.setItem('language', language)
-    localStorage.setItem('form_cache', language === 'en' ? 'en-US' : 'zh-CN')
-    moment.locale(language === 'en' ? 'en' : 'zh-cn')
+    state.language = setLanguage(language)
+    moment.locale(state.language === 'en' ? 'en' : 'zh-cn')
   },
   SET_BARTYPE: (state, data) => {
     state.sidebarType = data

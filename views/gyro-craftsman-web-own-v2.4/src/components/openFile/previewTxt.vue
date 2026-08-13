@@ -8,7 +8,7 @@
       v-model="htmlMD"
       type="textarea"
       :rows="30"
-      :placeholder='$ts("请输入内容")'
+      :placeholder='$("access.placeholder16")'
       style="width: 100%"
     ></el-input>
   </div>

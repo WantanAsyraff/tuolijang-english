@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div>
     <!-- 线索池配置 -->
@@ -14,127 +15,126 @@
           >
             <div class="card-list">
               <div class="head">
-                <span class="title">{{ $t("ui.customerSetupRuleSettingsCluePoolConfigReminderRules") }}</span>
+                <span class="title">{{ $("ui.customerSetupRuleSettingsCluePoolConfigReminderRules") }}</span>
               </div>
-              <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigLeadFollowUpReminder')" prop="clue_follow_switch">
+              <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigLeadFollowUpReminder')" prop="clue_follow_switch">
                 <el-switch
                   v-model="formData.clue_follow_switch"
                   :active-value="1"
                   :inactive-value="0"
                   active-color="#1890ff"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+                  active-text="开启"
                   inactive-color="#cccccc"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  inactive-text="关闭"
                 >
                 </el-switch>
               </el-form-item>
 
-              <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigLeadFollowUpReminder')" prop="clue_follow_date" v-if="formData.clue_follow_switch">
+              <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigLeadFollowUpReminder')" prop="clue_follow_date" v-if="formData.clue_follow_switch">
                 <el-input
                   v-model="formData.clue_follow_date"
                   clearable
-                  :placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+                  :placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                   show-word-limit
                   size="small"
                 >
-                  <template slot="suffix">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                  <template slot="suffix">{{ $("ui.hrApprovaTimeDay") }}</template>
                 </el-input>
-                <div class="info">{{ $t("ui.customerSetupRuleSettingsCluePoolConfigSetHowOftenActiveLeadsMustBeFollowedUp") }}</div>
+                <div class="info">{{ $("ui.customerSetupRuleSettingsCluePoolConfigSetHowOftenActiveLeadsMustBeFollowedUp") }}</div>
               </el-form-item>
               <!-- <div class="dash-line"></div> -->
               <div class="head mt20">
-                <span class="title">{{ $t("ui.customerSetupRuleSettingsCluePoolConfigLeadPoolReturnRules") }}</span>
+                <span class="title">{{ $("ui.customerSetupRuleSettingsCluePoolConfigLeadPoolReturnRules") }}</span>
               </div>
-              <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigAutomaticLeadPoolReturnRules')" prop="return_clue_switch" label-width="auto">
+              <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigAutomaticLeadPoolReturnRules')" prop="return_clue_switch" label-width="auto">
                 <el-switch
                   v-model="formData.return_clue_switch"
                   :active-value="1"
                   :inactive-value="0"
                   active-color="#1890ff"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+                  active-text="开启"
                   inactive-color="#cccccc"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  inactive-text="关闭"
                 >
                 </el-switch>
               </el-form-item>
               <template v-if="formData.return_clue_switch">
-                <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigReturnIfNotConvertedToCustomer')" prop="return_clue_date">
+                <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigReturnIfNotConvertedToCustomer')" prop="return_clue_date">
                   <el-input
                     v-model="formData.return_clue_date"
                     clearable
-                    :placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+                    :placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                     show-word-limit
                     size="small"
                   >
-                    <template slot="suffix">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                    <template slot="suffix">{{ $("ui.hrApprovaTimeDay") }}</template>
                   </el-input>
-                  <div class="info">{{ $t("ui.customerSetupRuleSettingsCluePoolConfigUsedToSetHowManyDaysBeforeUnconvertedLeads") }}</div>
+                  <div class="info">{{ $("ui.customerSetupRuleSettingsCluePoolConfigUsedToSetHowManyDaysBeforeUnconvertedLeads") }}</div>
                 </el-form-item>
-                <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigReturnIfNotFollowedUp')" prop="return_clue_cycle">
+                <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigReturnIfNotFollowedUp')" prop="return_clue_cycle">
                   <el-input
                     v-model="formData.return_clue_cycle"
                     clearable
-                    :placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+                    :placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                     show-word-limit
                     size="small"
                   >
-                    <template slot="suffix">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                    <template slot="suffix">{{ $("ui.hrApprovaTimeDay") }}</template>
                   </el-input>
-                  <div class="info">{{ $t("ui.customerSetupRuleSettingsCluePoolConfigSetHowManyDaysWithoutFollowUpBeforeA") }}</div>
+                  <div class="info">{{ $("ui.customerSetupRuleSettingsCluePoolConfigSetHowManyDaysWithoutFollowUpBeforeA") }}</div>
                 </el-form-item>
-                <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigLeadReturnReminder')" prop="return_clue_remind">
+                <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigLeadReturnReminder')" prop="return_clue_remind">
                   <el-input
                     v-model="formData.return_clue_remind"
                     clearable
-                    :placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+                    :placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                     show-word-limit
                     size="small"
                   >
-                    <template slot="suffix">{{ $t("ui.hrApprovaTimeDay") }}</template>
+                    <template slot="suffix">{{ $("ui.hrApprovaTimeDay") }}</template>
                   </el-input>
-                  <div class="info">{{ $t("ui.customerSetupRuleSettingsCluePoolConfigSetHowManyDaysInAdvanceToRemindUsers") }}</div>
+                  <div class="info">{{ $("ui.customerSetupRuleSettingsCluePoolConfigSetHowManyDaysInAdvanceToRemindUsers") }}</div>
                 </el-form-item>
               </template>
               <div class="head">
-                <span class="title">{{ $t("ui.customerSetupRuleSettingsCluePoolConfigLeadRetentionRules") }}</span>
+                <span class="title">{{ $("ui.customerSetupRuleSettingsCluePoolConfigLeadRetentionRules") }}</span>
               </div>
-              <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigLeadRetentionRules2')" prop="clue_policy_switch">
+              <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigLeadRetentionRules2')" prop="clue_policy_switch">
                 <el-switch
                   v-model="formData.clue_policy_switch"
                   :active-value="1"
                   :inactive-value="0"
                   active-color="#1890ff"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
+                  active-text="开启"
                   inactive-color="#cccccc"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  inactive-text="关闭"
                 >
                 </el-switch>
               </el-form-item>
-              <el-form-item :label="$t('ui.customerSetupRuleSettingsCluePoolConfigPolicyCount')" prop="clue_policy_count" v-if="formData.clue_policy_switch">
+              <el-form-item :label="$('ui.customerSetupRuleSettingsCluePoolConfigPolicyCount')" prop="clue_policy_count" v-if="formData.clue_policy_switch">
                 <el-input
                   v-model="formData.clue_policy_count"
                   clearable
-                  :placeholder="$t('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
+                  :placeholder="$('ui.customerSetupRuleSettingsCluePoolConfigEnterAPositiveInteger')"
                   show-word-limit
                   size="small"
                 >
-                  <template slot="suffix">{{ $t("ui.commonOaFromBoxItems") }}</template>
+                  <template slot="suffix">{{ $("ui.commonOaFromBoxItems") }}</template>
                 </el-input>
-                <div class="info">{{ $t("ui.customerSetupRuleSettingsCluePoolConfigSetTheMaximumNumberOfLeadsEachSalespersonCan") }}</div>
+                <div class="info">{{ $("ui.customerSetupRuleSettingsCluePoolConfigSetTheMaximumNumberOfLeadsEachSalespersonCan") }}</div>
               </el-form-item>
             </div>
           </el-form>
         </div>
       </el-card>
       <div class="cr-bottom-button">
-        <el-button type="primary" @click="saveEvt" size="small">{{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
+        <el-button type="primary" @click="saveEvt" size="small">{{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import i18n from '@/lang'
 export default {
   name: 'CluePoolConfig',
   props: {
@@ -160,11 +160,11 @@ export default {
         xs: 24
       },
       rules: {
-        clue_follow_date: [{ required: true, message: i18n.t('legacyScript.pleaseEnterCluesBasedOnTheReminder') }],
-        return_clue_date: [{ required: true, message: i18n.t('legacyScript.pleaseEnterReturnIfNotConvertedToCustomer') }],
-        return_clue_cycle: [{ required: true, message: i18n.t('legacyScript.pleaseEnterReturnIfNotFollowedUp') }],
-        return_clue_remind: [{ required: true, message: i18n.t('legacyScript.pleaseEnterCustomerPoolReturnReminder') }],
-        clue_policy_count: [{ required: true, message: i18n.t('legacyScript.pleaseEnterPolicyCount') }]
+        clue_follow_date: [{ required: true, message: $('legacyScript.pleaseEnterCluesBasedOnTheReminder') }],
+        return_clue_date: [{ required: true, message: $('legacyScript.pleaseEnterReturnIfNotConvertedToCustomer') }],
+        return_clue_cycle: [{ required: true, message: $('legacyScript.pleaseEnterReturnIfNotFollowedUp') }],
+        return_clue_remind: [{ required: true, message: $('legacyScript.pleaseEnterCustomerPoolReturnReminder') }],
+        clue_policy_count: [{ required: true, message: $('legacyScript.pleaseEnterPolicyCount') }]
       }
     }
   },

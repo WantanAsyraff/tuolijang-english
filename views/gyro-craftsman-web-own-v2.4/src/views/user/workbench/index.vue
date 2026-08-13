@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <template>
   <div class="box">
     <div
       class="box-height workbench-page"
       v-loading="pageLoading"
-      :element-loading-text="$t('workbench.loading')"
+      :element-loading-text="$('workbench.loading')"
       element-loading-background="rgba(255, 255, 255, 0.85)"
       :class="{ 'workbench-ready': !pageLoading }"
     >
@@ -19,7 +20,7 @@
           >
             <div class="header-need">
               <div class="header-need-left">
-                <span class="name">{{ $ts(realName) }}, {{ greetingText }}!</span>
+                <span class="name">{{ $(realName) }}, {{ greetingText }}!</span>
 
                 <div class="header-need-left-info mt14">
                   <img :src="getWeatherIcon()" alt="" />
@@ -37,7 +38,7 @@
                   @click="needInfoItem(item)"
                 >
                   <p class="num">{{ item.num }}</p>
-                  <p class="text">{{ $t(item.textKey) }}</p>
+                  <p class="text">{{ $(item.textKey) }}</p>
                 </div>
               </div>
             </div>
@@ -49,8 +50,8 @@
               <div class="header-pic-content">
                 <img class="image" :src="personalIcon" alt="" />
                 <div class="text">
-                  <div class="over-text1">{{ $t('workbench.welcomeLogin') }}</div>
-                  <div class="info over-text2">{{ $ts(enterprise.culture || '--') }}</div>
+                  <div class="over-text1">{{ $('workbench.welcomeLogin') }}</div>
+                  <div class="info over-text2">{{ $(enterprise.culture || '--') }}</div>
                 </div>
               </div>
             </div>
@@ -63,12 +64,12 @@
           <el-card body-style="padding:20px;">
             <el-row class="calendar_title achievementPb">
               <el-col :span="12" class="row-middle">
-                <div class="dynamics">{{ $t('workbench.achievementStatistics') }}</div>
+                <div class="dynamics">{{ $('workbench.achievementStatistics') }}</div>
               </el-col>
               <el-col :span="12" class="text-right calendar_title-left">
-                <span @click="workStatisticsList(0)" :class="achievementTypes === 0 ? 'active' : ''">{{ $t('workbench.departmentPerformance') }}</span>
+                <span @click="workStatisticsList(0)" :class="achievementTypes === 0 ? 'active' : ''">{{ $('workbench.departmentPerformance') }}</span>
                 <span class="line">|</span>
-                <span @click="workStatisticsList(1)" :class="achievementTypes === 1 ? 'active' : ''">{{ $t('workbench.personalPerformance') }}</span>
+                <span @click="workStatisticsList(1)" :class="achievementTypes === 1 ? 'active' : ''">{{ $('workbench.personalPerformance') }}</span>
               </el-col>
             </el-row>
             <div class="achievementContent">
@@ -88,7 +89,7 @@
           <el-card body-style="padding:0" class="mt14">
             <el-row class="calendar_title">
               <el-col :span="12" class="row-middle">
-                <div class="dynamics">{{ $t('workbench.commonFunctions') }}</div>
+                <div class="dynamics">{{ $('workbench.commonFunctions') }}</div>
               </el-col>
               <el-col :span="12" class="text-right calendar_title-left">
                 <span class="display-align" @click="handleQuick">
@@ -120,10 +121,10 @@
             <div class="week-calendar" v-loading="timeTabLoading">
               <div class="calendar-header">
                 <div class="calendar-title">
-                  <span>{{ $t('workbench.todoItems') }}</span>
+                  <span>{{ $('workbench.todoItems') }}</span>
                 </div>
                 <div class="calendar-actions">
-                  <span class="today-btn" :class="{ active: isCurrentWeek }" @click="goToToday">{{ $t('workbench.today') }}</span>
+                  <span class="today-btn" :class="{ active: isCurrentWeek }" @click="goToToday">{{ $('workbench.today') }}</span>
                 </div>
               </div>
               <div class="week-nav">
@@ -173,11 +174,11 @@
             <el-card body-style="padding:0" style="height: 386px">
               <div class="calendar_title clearfix">
                 <div class="pull-left acea-row row-middle">
-                  <div class="dynamics">{{ $t('workbench.currentAssessment') }}</div>
+                  <div class="dynamics">{{ $('workbench.currentAssessment') }}</div>
                 </div>
                 <div class="pull-right acea-row row-middle">
                   <div class="notice-more" @click="handleAssessMore()">
-                    {{ $t('workbench.more') }}
+                    {{ $('workbench.more') }}
                     <i class="el-icon-arrow-right"></i>
                   </div>
                 </div>
@@ -200,11 +201,11 @@
           <el-card body-style="padding:0" class="table-box note" style="height: 386px">
             <div class="calendar_title clearfix">
               <div class="pull-left acea-row row-middle">
-                <div class="dynamics">{{ $t('workbench.systemNotice') }}</div>
+                <div class="dynamics">{{ $('workbench.systemNotice') }}</div>
               </div>
               <div class="pull-right acea-row row-middle">
                 <div class="notice-more" @click="handleNewMore()">
-                  {{ $t('workbench.more') }}
+                  {{ $('workbench.more') }}
                   <i class="el-icon-arrow-right"></i>
                 </div>
               </div>
@@ -233,11 +234,11 @@
           <el-card body-style="padding:0" style="height: 386px">
             <div class="calendar_title clearfix">
               <div class="pull-left acea-row row-middle">
-                <div class="dynamics">{{ $t('workbench.enterpriseNews') }}</div>
+                <div class="dynamics">{{ $('workbench.enterpriseNews') }}</div>
               </div>
               <div class="pull-right acea-row row-middle">
                 <div class="notice-more" @click="handleNoticeMore('')">
-                  {{ $t('workbench.more') }}
+                  {{ $('workbench.more') }}
                   <i class="el-icon-arrow-right"></i>
                 </div>
               </div>
@@ -279,7 +280,6 @@
   </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   dealtScheduleListApi,
   noticeMessageListApi,
@@ -302,8 +302,6 @@ import { pageJumpTo } from '@/libs/public'
 import ElementUI from 'element-ui'
 import { roterPre } from '@/settings'
 import { configRuleApproveApi } from '@/api/config'
-import { translateMessage } from '@/lang'
-
 // 图片资源导入
 
 import personalIcon from '@/assets/images/personal-icon.png'
@@ -371,9 +369,9 @@ export default {
       systemNote: [], // 系统通知
       timeTab: 1,
       timeTabData: [
-        { text: this.$t('workbench.previousDay'), label: 0 },
-        { text: this.$t('workbench.today'), label: 1 },
-        { text: this.$t('workbench.nextDay'), label: 2 }
+        { text: this.$('workbench.previousDay'), label: 0 },
+        { text: this.$('workbench.today'), label: 1 },
+        { text: this.$('workbench.nextDay'), label: 2 }
       ],
       timeTabIndex: 1,
       timeTabLoading: false,
@@ -407,11 +405,11 @@ export default {
       options: [
         {
           value: 0,
-          label: this.$t('workbench.departmentPerformance')
+          label: this.$('workbench.departmentPerformance')
         },
         {
           value: 1,
-          label: this.$t('workbench.personalPerformance')
+          label: this.$('workbench.personalPerformance')
         }
       ],
       achievementTypes: 0,
@@ -432,13 +430,13 @@ export default {
     currentDateStr() {
       const currentDate = new Date()
       const weekDayNames = [
-        this.$t('workbench.weekDayNames.sun'),
-        this.$t('workbench.weekDayNames.mon'),
-        this.$t('workbench.weekDayNames.tue'),
-        this.$t('workbench.weekDayNames.wed'),
-        this.$t('workbench.weekDayNames.thu'),
-        this.$t('workbench.weekDayNames.fri'),
-        this.$t('workbench.weekDayNames.sat')
+        this.$('workbench.weekDayNames.sun'),
+        this.$('workbench.weekDayNames.mon'),
+        this.$('workbench.weekDayNames.tue'),
+        this.$('workbench.weekDayNames.wed'),
+        this.$('workbench.weekDayNames.thu'),
+        this.$('workbench.weekDayNames.fri'),
+        this.$('workbench.weekDayNames.sat')
       ]
       return this.$moment(currentDate).format('YYYY-MM-DD') + ' ' + weekDayNames[currentDate.getDay()]
     },
@@ -483,7 +481,7 @@ export default {
       this.getConfigApprove()
     ])
       .catch((error) => {
-        console.error(i18n.t('legacyScript.asynchronousTaskExecutionFailed'), error)
+        console.error($('legacyScript.asynchronousTaskExecutionFailed'), error)
       })
       .finally(() => {
         this.pageLoading = false
@@ -495,23 +493,23 @@ export default {
   },
   methods: {
     localizedNoticeText(value) {
-      return translateMessage(value)
+      return $(value)
     },
     // 根据当前时间获取问候语
     getGreeting() {
       const hour = new Date().getHours()
       if (hour >= 5 && hour < 9) {
-        return this.$t('workbench.greetings.earlyMorning')
+        return this.$('workbench.greetings.earlyMorning')
       } else if (hour >= 9 && hour < 12) {
-        return this.$t('workbench.greetings.morning')
+        return this.$('workbench.greetings.morning')
       } else if (hour >= 12 && hour < 14) {
-        return this.$t('workbench.greetings.noon')
+        return this.$('workbench.greetings.noon')
       } else if (hour >= 14 && hour < 18) {
-        return this.$t('workbench.greetings.afternoon')
+        return this.$('workbench.greetings.afternoon')
       } else if (hour >= 18 && hour < 22) {
-        return this.$t('workbench.greetings.evening')
+        return this.$('workbench.greetings.evening')
       } else {
-        return this.$t('workbench.greetings.lateNight')
+        return this.$('workbench.greetings.lateNight')
       }
     },
     localizedAchievementTitle(title) {
@@ -526,7 +524,7 @@ export default {
         今日新增订单: 'newOrdersToday'
       }
       const key = keyMap[title]
-      return key ? this.$t(`workbench.achievement.${key}`) : title
+      return key ? this.$(`workbench.achievement.${key}`) : title
     },
 
     // 初始化周视图
@@ -566,7 +564,7 @@ export default {
           this.currentWeather.text = str
         })
         .catch((error) => {
-          console.error(i18n.t('legacyScript.failedToFetchWeatherData'), error)
+          console.error($('legacyScript.failedToFetchWeatherData'), error)
         })
     },
 
@@ -576,13 +574,13 @@ export default {
       const selectedDate = this.$moment(this.time).format('YYYY-MM-DD')
       this.weekDays = []
       const weekNames = [
-        this.$t('workbench.weekNames.mon'),
-        this.$t('workbench.weekNames.tue'),
-        this.$t('workbench.weekNames.wed'),
-        this.$t('workbench.weekNames.thu'),
-        this.$t('workbench.weekNames.fri'),
-        this.$t('workbench.weekNames.sat'),
-        this.$t('workbench.weekNames.sun')
+        this.$('workbench.weekNames.mon'),
+        this.$('workbench.weekNames.tue'),
+        this.$('workbench.weekNames.wed'),
+        this.$('workbench.weekNames.thu'),
+        this.$('workbench.weekNames.fri'),
+        this.$('workbench.weekNames.sat'),
+        this.$('workbench.weekNames.sun')
       ]
       for (let i = 0; i < 7; i++) {
         const dayDate = this.$moment(this.currentWeekStart).add(i, 'days')
@@ -649,12 +647,12 @@ export default {
       const result = await workStatisticsApiAll()
       let otherData = [
         {
-          cate_name: this.$t('workbench.performanceBrief'),
+          cate_name: this.$('workbench.performanceBrief'),
           fast_entry: result.data.list
         }
       ]
       this.configData = {
-        title: this.$t('workbench.performanceManage'),
+        title: this.$('workbench.performanceManage'),
         type: 'statistics',
         width: '600px',
         data: result.data.select,
@@ -680,9 +678,9 @@ export default {
 
     // 提醒授权弹窗
     getAuthMessage(message) {
-      const title = translateMessage('\u6388\u6743\u63d0\u9192')
-      const description = translateMessage(message)
-      const action = translateMessage('\u7acb\u5373\u6388\u6743')
+      const title = $('\u6388\u6743\u63d0\u9192')
+      const description = $(message)
+      const action = $('\u7acb\u5373\u6388\u6743')
       const content = `<div class='el-row display-align'>
         <div class="el-col el-col-24 right width100">
           <p class='title over-text'>${title}</p>
@@ -694,7 +692,7 @@ export default {
       </div>`
 
       const notify = ElementUI.Notification({
-        title: translateMessage('\u6d88\u606f'),
+        title: $('\u6d88\u606f'),
         dangerouslyUseHTMLString: true,
         message: content,
         duration: 10000,
@@ -809,7 +807,7 @@ export default {
     getPassword() {
       if (this.userInfo && this.userInfo.is_init === 1) {
         this.passwordData = {
-          title: i18n.t('passwordDialog.title'),
+          title: $('passwordDialog.title'),
           width: '540px'
         }
         setTimeout(() => {
@@ -826,7 +824,7 @@ export default {
           const invitation = JSON.parse(invitationStorage)
           this.getEnterpriseInfo(invitation)
         } catch (e) {
-          console.error(i18n.t('legacyScript.failedToParseInvitationInformation'), e)
+          console.error($('legacyScript.failedToParseInvitationInformation'), e)
         }
       }
     },
@@ -942,7 +940,7 @@ export default {
       arr = JSON.parse(JSON.stringify(this.quickVal))
       let otherArr = this.quickData.cates
       this.configData = {
-        title: this.$t('workbench.quickEntryManagement'),
+        title: this.$('workbench.quickEntryManagement'),
         width: '600px',
         data: arr,
         otherArr: otherArr

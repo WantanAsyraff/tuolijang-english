@@ -1,24 +1,25 @@
+import { $ } from '@/lang'
 // 表单操作预览
 <template>
 <div class="toolbar-container">
   <div class="left-toolbar">
-    <el-button type="text" :disabled="undoDisabled" :title="$t('ui.formDesignerToolbarPanelIndexRevoke')" @click="undoHistory">
+    <el-button type="text" :disabled="undoDisabled" :title="$('ui.formDesignerToolbarPanelIndexRevoke')" @click="undoHistory">
       <!-- <i class="el-icon-arrow-left"></i> -->
       <span class="iconfont iconicon_back"></span>
     </el-button>
-    <el-button type="text" :disabled="redoDisabled" :title="$t('ui.formDesignerToolbarPanelIndexRedo')" @click="redoHistory">
+    <el-button type="text" :disabled="redoDisabled" :title="$('ui.formDesignerToolbarPanelIndexRedo')" @click="redoHistory">
       <!-- <i class="el-icon-arrow-right"></i> -->
       <span class="iconfont icona-icon_nextstep"></span>
     </el-button>
   </div>
   <div class="right-toolbar">
     <div class="right-toolbar-con">
-      <el-button class="view-btn" @click="previewForm"> <i class="el-icon-view" />{{ $t("ui.formDesignerToolbarPanelIndexPreview") }}</el-button>
-      <el-button class="clear-btn" @click="clearFormWidget"> <i class="el-icon-delete" />{{ $t("ui.formDesignerToolbarPanelIndexClear") }}</el-button>
+      <el-button class="view-btn" @click="previewForm"> <i class="el-icon-view" />{{ $("ui.formDesignerToolbarPanelIndexPreview") }}</el-button>
+      <el-button class="clear-btn" @click="clearFormWidget"> <i class="el-icon-delete" />{{ $("ui.formDesignerToolbarPanelIndexClear") }}</el-button>
 
       <el-button type="primary" @click="exportJson">
         <i class="el-icon-collection"></i>
-        {{ $t("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button
+        {{ $("ui.formDesignerFormWidgetFieldWidgetRichTextWidgetSave") }}</el-button
       >
       <template v-for="(idx, slotName) in $slots">
         <slot :name="slotName"></slot>
@@ -27,7 +28,7 @@
   </div>
 
   <el-dialog
-    :title="$t('ui.formDesignerToolbarPanelIndexPreview')"
+    :title="$('ui.formDesignerToolbarPanelIndexPreview')"
     :visible.sync="showPreviewDialogFlag"
     v-if="showPreviewDialogFlag"
     :show-close="true"
@@ -64,17 +65,17 @@
       </div>
     </div>
     <div slot="footer" class="dialog-footer">
-      <el-button type="primary" @click="getFormData">{{ $t("ui.formDesignerToolbarPanelIndexGetData") }}</el-button>
-      <el-button type="primary" @click="resetForm">{{ $t("ui.formDesignerToolbarPanelIndexResetForm") }}</el-button>
-      <el-button type="primary" @click="setFormDisabled">{{ $t("ui.formDesignerToolbarPanelIndexDisableEditing") }}</el-button>
-      <el-button type="primary" @click="setFormEnabled">{{ $t("ui.formDesignerToolbarPanelIndexEnableEditing") }}</el-button>
-      <el-button type="primary" @click="onlyReadMode">{{ $t("ui.formDesignerToolbarPanelIndexViewReadOnly") }}</el-button>
-      <el-button type="" @click="showPreviewDialogFlag = false">{{ $t("ui.customerWeChatMassGroupDetailsClose") }}</el-button>
+      <el-button type="primary" @click="getFormData">{{ $("ui.formDesignerToolbarPanelIndexGetData") }}</el-button>
+      <el-button type="primary" @click="resetForm">{{ $("ui.formDesignerToolbarPanelIndexResetForm") }}</el-button>
+      <el-button type="primary" @click="setFormDisabled">{{ $("ui.formDesignerToolbarPanelIndexDisableEditing") }}</el-button>
+      <el-button type="primary" @click="setFormEnabled">{{ $("ui.formDesignerToolbarPanelIndexEnableEditing") }}</el-button>
+      <el-button type="primary" @click="onlyReadMode">{{ $("ui.formDesignerToolbarPanelIndexViewReadOnly") }}</el-button>
+      <el-button type="" @click="showPreviewDialogFlag = false">{{ $("ui.customerWeChatMassGroupDetailsClose") }}</el-button>
     </div>
   </el-dialog>
 
   <el-dialog
-    :title="$t('ui.formDesignerToolbarPanelIndexExportJson')"
+    :title="$('ui.formDesignerToolbarPanelIndexExportJson')"
     :visible.sync="showExportJsonDialogFlag"
     v-if="showExportJsonDialogFlag"
     :show-close="true"
@@ -89,14 +90,14 @@
     <code-editor :mode="'json'" :readonly="true" v-model="jsonContent"></code-editor>
     <div slot="footer" class="dialog-footer">
       <el-button type="primary" class="copy-json-btn" :data-clipboard-text="jsonRawContent" @click="copyFormJson">
-        {{ $t("ui.formDesignerToolbarPanelIndexCopyJson") }}</el-button
+        {{ $("ui.formDesignerToolbarPanelIndexCopyJson") }}</el-button
       >
       <!-- <el-button @click="saveFormJson">保存为文件</el-button> -->
-      <el-button type="" @click="showExportJsonDialogFlag = false"> {{ $t("ui.customerWeChatMassGroupDetailsClose") }}</el-button>
+      <el-button type="" @click="showExportJsonDialogFlag = false"> {{ $("ui.customerWeChatMassGroupDetailsClose") }}</el-button>
     </div>
   </el-dialog>
   <el-dialog
-    :title="$t('ui.formDesignerToolbarPanelIndexFormData')"
+    :title="$('ui.formDesignerToolbarPanelIndexFormData')"
     :visible.sync="showFormDataDialogFlag"
     v-if="showFormDataDialogFlag"
     :show-close="true"
@@ -118,16 +119,15 @@
         :data-clipboard-text="formDataRawJson"
         @click="copyFormDataJson"
       >
-        {{ $t("ui.formDesignerToolbarPanelIndexCopyJson") }}</el-button
+        {{ $("ui.formDesignerToolbarPanelIndexCopyJson") }}</el-button
       >
       <!-- <el-button @click="saveFormData">保存为文件</el-button> -->
-      <el-button type="" @click="showFormDataDialogFlag = false"> {{ $t("ui.customerWeChatMassGroupDetailsClose") }}</el-button>
+      <el-button type="" @click="showFormDataDialogFlag = false"> {{ $("ui.customerWeChatMassGroupDetailsClose") }}</el-button>
     </div>
   </el-dialog>
 </div>
 </template>
 <script>
-import appI18n from '@/lang'
 import VFormRender from '@/components/form-render/index'
 import Clipboard from 'clipboard'
 import {
@@ -138,14 +138,12 @@ import {
   traverseAllWidgets,
   addWindowResizeHandler
 } from '@/utils/formDesignerUtils'
-import i18n from '@/utils/i18n'
 import { saveAs } from 'file-saver'
 // import SvgIcon from '@/components/svg-icon'
 import CodeEditor from '@/components/code-editor/index'
 import { formCrudSave, formInfo } from '@/api/form'
 export default {
   name: 'ToolbarPanel',
-  mixins: [i18n],
   components: {
     VFormRender,
     Clipboard,
@@ -207,9 +205,9 @@ export default {
         ],
 
         select001: [
-          { label: appI18n.t('legacyScript.chiliPepper'), value: 1 },
-          { label: appI18n.t('legacyScript.pineapple'), value: 2 },
-          { label: appI18n.t('legacyScript.dekopon'), value: 3 }
+          { label: $('legacyScript.chiliPepper'), value: 1 },
+          { label: $('legacyScript.pineapple'), value: 2 },
+          { label: $('legacyScript.dekopon'), value: 3 }
         ]
       },
       id: 0,
@@ -424,7 +422,7 @@ if( res.data.fields && res.data.fields.length > 0){
     },
 
     saveAsFile(fileContent, defaultFileName) {
-      this.$prompt(appI18n.t('legacyScript.fileName'), appI18n.t('legacyScript.saveAsFile'), {
+      this.$prompt($('legacyScript.fileName'), $('legacyScript.saveAsFile'), {
         inputValue: defaultFileName,
         closeOnClickModal: false,
         inputPlaceholder: '请输入文件名'
@@ -492,8 +490,8 @@ if( res.data.fields && res.data.fields.length > 0){
         this.vueCode,
         e,
         this.$message,
-        this.i18nt('designer.hint.copyVueCodeSuccess'),
-        this.i18nt('designer.hint.copyVueCodeFail')
+        this.$('designer.hint.copyVueCodeSuccess'),
+        this.$('designer.hint.copyVueCodeFail')
       )
     },
 
@@ -502,8 +500,8 @@ if( res.data.fields && res.data.fields.length > 0){
         this.htmlCode,
         e,
         this.$message,
-        this.i18nt('designer.hint.copyHtmlCodeSuccess'),
-        this.i18nt('designer.hint.copyHtmlCodeFail')
+        this.$('designer.hint.copyHtmlCodeSuccess'),
+        this.$('designer.hint.copyHtmlCodeFail')
       )
     },
 
@@ -520,8 +518,8 @@ if( res.data.fields && res.data.fields.length > 0){
         this.sfcCodeV3,
         e,
         this.$message,
-        this.i18nt('designer.hint.copySFCSuccess'),
-        this.i18nt('designer.hint.copySFCFail')
+        this.$('designer.hint.copySFCSuccess'),
+        this.$('designer.hint.copySFCFail')
       )
     },
 
@@ -560,8 +558,8 @@ if( res.data.fields && res.data.fields.length > 0){
         this.formDataRawJson,
         e,
         this.$message,
-        this.i18nt('designer.hint.copyJsonSuccess'),
-        this.i18nt('designer.hint.copyJsonFail')
+        this.$('designer.hint.copyJsonSuccess'),
+        this.$('designer.hint.copyJsonFail')
       )
     },
 
@@ -610,7 +608,7 @@ if( res.data.fields && res.data.fields.length > 0){
       //console.log('test', JSON.stringify(nodeData))
 
       if (nodeData.selectable !== undefined && !nodeData.selectable) {
-        this.$message.info(this.i18nt('designer.hint.currentNodeCannotBeSelected'))
+        this.$message.info(this.$('designer.hint.currentNodeCannotBeSelected'))
       } else {
         const selectedId = nodeData.id
         const foundW = this.findWidgetById(selectedId)

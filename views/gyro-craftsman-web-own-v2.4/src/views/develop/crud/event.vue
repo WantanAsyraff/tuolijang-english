@@ -4,19 +4,19 @@
   <!-- 头部 -->
   <div class="header">
     <div class="title">
-      当前触发器：{{ form.name }}
+      {{ $('ui.shared.currentTrigger') }}{{ form.name }}
       <el-popover placement="bottom" ref="popoverRef" width="400" trigger="click">
         <div>
-          <el-input v-model="value" :placeholder="$t('ui.developCrudEventPleaseEnterTriggerName')" style="width: 250px" size="small"></el-input>
-          <el-button size="small" class="ml14" type="text" @click="close">{{ $t("ui.formCommonSelectLabelCancel") }}</el-button>
-          <el-button type="primary" size="small" @click="nameSubmit">{{ $t("ui.formCommonDialogFormOk") }}</el-button>
+          <el-input v-model="value" :placeholder="$('ui.developCrudEventPleaseEnterTriggerName')" style="width: 250px" size="small"></el-input>
+          <el-button size="small" class="ml14" type="text" @click="close">{{ $("ui.formCommonSelectLabelCancel") }}</el-button>
+          <el-button type="primary" size="small" @click="nameSubmit">{{ $("ui.formCommonDialogFormOk") }}</el-button>
         </div>
         <span class="el-icon-edit-outline" slot="reference"></span>
       </el-popover>
     </div>
     <div class="mr24 flex">
-      <div class="btn btn-left" @click="save">{{ $t("ui.developCrudEventSaveOnly") }}</div>
-      <div class="btn btn-right" @click="save(1)">{{ $t("ui.developCrudEventSaveAndClose") }}</div>
+      <div class="btn btn-left" @click="save">{{ $("ui.developCrudEventSaveOnly") }}</div>
+      <div class="btn btn-right" @click="save(1)">{{ $("ui.developCrudEventSaveAndClose") }}</div>
     </div>
   </div>
   <!-- 头部 -->
@@ -28,7 +28,7 @@
         <div class="tips">{{ item.title }}</div>
         <div v-if="item.id === 1" class="phase_1">
           <el-form ref="form" :model="form" label-width="100px">
-            <el-form-item :label="$t('ui.developCrudEventApplicationEntity')" class="mb14">
+            <el-form-item :label="$('ui.developCrudEventApplicationEntity')" class="mb14">
               <el-cascader
                 v-model="crud_id"
                 :options="crudOptions"
@@ -40,11 +40,11 @@
                 style="width: 300px"
                 clearable
                 @change="crudChange"
-:placeholder="$t('ui.developCrudEventPleaseSelectEntity')"
+:placeholder="$('ui.developCrudEventPleaseSelectEntity')"
               >
               </el-cascader>
             </el-form-item>
-            <el-form-item :label="$t('ui.developCrudEventTriggerAction')">
+            <el-form-item :label="$('ui.developCrudEventTriggerAction')">
               <el-checkbox-group v-model="action" @change="actionChange()">
                 <div style="width: 430px">
                   <el-checkbox
@@ -62,8 +62,8 @@
                 </div>
               </el-checkbox-group>
               <template v-if="action && action.length > 0 && action.includes('timer')">
-                {{ $t("ui.developCrudEventExecutionCycle") }}
-                <el-select v-model="form.timer_type" size="small" :placeholder="$t('ui.developConditionGroupPleaseSelect')">
+                {{ $("ui.developCrudEventExecutionCycle") }}
+                <el-select v-model="form.timer_type" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
                   <el-option v-for="item in timeOptions" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
@@ -71,14 +71,14 @@
                   v-if="form.timer_type == 5"
                   v-model="form.timer_options.weekday"
                   size="small"
-:placeholder="$t('ui.developConditionGroupPleaseSelect')"
+:placeholder="$('ui.developConditionGroupPleaseSelect')"
                 >
                   <el-option v-for="item in weekOptions" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
                 <el-input
                   v-if="form.timer_type == 7"
-:placeholder="$t('ui.customerOaFormPleaseEnter')"
+:placeholder="$('ui.customerOaFormPleaseEnter')"
                   type="number"
                   @input="numberChange('month', 12)"
                   @change="numberChange('month', 12)"
@@ -86,11 +86,11 @@
                   v-model="form.timer_options.month"
                   size="small"
                 >
-                  <span slot="suffix" class="text-16">{{ $t("ui.customerKpiAddKpiMonth") }}</span>
+                  <span slot="suffix" class="text-16">{{ $("ui.customerKpiAddKpiMonth") }}</span>
                 </el-input>
                 <el-input
                   v-if="['6', '7', '3'].includes(form.timer_type)"
-:placeholder="$t('ui.customerOaFormPleaseEnter')"
+:placeholder="$('ui.customerOaFormPleaseEnter')"
                   type="number"
                   @input="numberChange('day', 31)"
                   @change="numberChange('day', 31)"
@@ -98,11 +98,11 @@
                   v-model="form.timer_options.day"
                   size="small"
                 >
-                  <span slot="suffix" class="text-16">{{ $t("ui.developCrudEventSun") }}</span>
+                  <span slot="suffix" class="text-16">{{ $("ui.developCrudEventSun") }}</span>
                 </el-input>
                 <el-input
                   v-if="!['0', '1'].includes(form.timer_type)"
-:placeholder="$t('ui.customerOaFormPleaseEnter')"
+:placeholder="$('ui.customerOaFormPleaseEnter')"
                   type="number"
                   @input="numberChange('hour', 59)"
                   @change="numberChange('hour', 59)"
@@ -110,11 +110,11 @@
                   v-model="form.timer_options.hour"
                   size="small"
                 >
-                  <span slot="suffix" class="text-16">{{ $t("ui.developCrudEventHour") }}</span>
+                  <span slot="suffix" class="text-16">{{ $("ui.developCrudEventHour") }}</span>
                 </el-input>
                 <el-input
                   v-if="form.timer_type != '0'"
-:placeholder="$t('ui.customerOaFormPleaseEnter')"
+:placeholder="$('ui.customerOaFormPleaseEnter')"
                   type="number"
                   @input="numberChange('minute', 59)"
                   @change="numberChange('minute', 59)"
@@ -122,11 +122,11 @@
                   v-model="form.timer_options.minute"
                   size="small"
                 >
-                  <span slot="suffix" class="text-16">{{ $t("ui.developCrudEventMinute") }}</span>
+                  <span slot="suffix" class="text-16">{{ $("ui.developCrudEventMinute") }}</span>
                 </el-input>
                 <el-input
                   v-if="['4', '5', '6', '0'].includes(form.timer_type)"
-:placeholder="$t('ui.customerOaFormPleaseEnter')"
+:placeholder="$('ui.customerOaFormPleaseEnter')"
                   type="number"
                   @input="numberChange('second', 59)"
                   @change="numberChange('second', 59)"
@@ -134,58 +134,58 @@
                   v-model="form.timer_options.second"
                   size="small"
                 >
-                  <span slot="suffix" class="text-16">{{ $t("ui.developCrudEventSecond") }}</span>
+                  <span slot="suffix" class="text-16">{{ $("ui.developCrudEventSecond") }}</span>
                 </el-input>
                 <div class="prompt mt10 ml50">
                   {{ getStr(form.timer_type) }}
                 </div>
               </template>
             </el-form-item>
-            <el-form-item :label="$t('ui.developCrudEventAdditionalFilterConditions')" v-if="info.event !== 'get_data'">
+            <el-form-item :label="$('ui.developCrudEventAdditionalFilterConditions')" v-if="info.event !== 'get_data'">
               <div class="default-color pointer fz-12">
                 <span @click="OpenSettings('additional_search')">
                   {{
                     form.additional_search && form.additional_search.length > 0
-                      ? $t('ui.developCrudEventConditionsSet') + form.additional_search.length + '）'
-                      : $t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
+                      ? $('ui.developCrudEventConditionsSet') + form.additional_search.length + '）'
+                      : $('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
                   }}</span
                 >
               </div>
-              <div class="prompt">{{ $t("ui.developCrudEventTheTriggerRunsOnlyWhenTheEntityActionMeets") }}</div>
+              <div class="prompt">{{ $("ui.developCrudEventTheTriggerRunsOnlyWhenTheEntityActionMeets") }}</div>
             </el-form-item>
           </el-form>
         </div>
 
         <div v-if="item.id === 2">
           <el-form ref="form" :model="form" label-width="100px">
-            <el-form-item :label="$t('ui.developCrudEventExecutionAction')">
+            <el-form-item :label="$('ui.developCrudEventExecutionAction')">
               <div>{{ event_name }}</div>
             </el-form-item>
             <!-- 操作内容-动态添加 -->
-            <el-form-item :label="$t('ui.developCrudEventAction')">
+            <el-form-item :label="$('ui.developCrudEventAction')">
               <div class="box">
                 <el-form ref="form" :model="form" label-width="90px" v-if="id != 0">
                   <!-- 数据校验 -->
                   <template v-if="info.event === 'data_check'">
-                    <el-form-item :label="$t('ui.developCrudEventValidationConditions')">
+                    <el-form-item :label="$('ui.developCrudEventValidationConditions')">
                       <div class="default-color pointer fz-12">
                         <span @click="OpenSettings('testOptions')">{{
                           form.testOptions && form.testOptions.length > 0
-                            ? $t('ui.developCrudEventConditionsSet') + form.testOptions.length + '）'
-                            : $t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
+                            ? $('ui.developCrudEventConditionsSet') + form.testOptions.length + '）'
+                            : $('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
                         }}</span>
                       </div>
-                      <div class="prompt">{{ $t("ui.developCrudEventActionsOnRecordsMatchingTheValidationConditionsWillShow") }}</div>
+                      <div class="prompt">{{ $("ui.developCrudEventActionsOnRecordsMatchingTheValidationConditionsWillShow") }}</div>
                     </el-form-item>
                   </template>
                   <!-- 数据校验 -->
 
                   <!-- 发送通知 -->
                   <template v-if="info.event === 'send_notice'">
-                    <el-form-item :label="$t('ui.developCrudEventRecipients')">
+                    <el-form-item :label="$('ui.developCrudEventRecipients')">
                       <select-member
                         :value="userList || []"
-:placeholder="$t('ui.workFlowDrawerCopyerDrawerSelectMembers')"
+:placeholder="$('ui.workFlowDrawerCopyerDrawerSelectMembers')"
                         @getSelectList="getSelectList"
                         style="width: 100%"
                       ></select-member>
@@ -195,10 +195,10 @@
                         <el-checkbox :label="0">通知</el-checkbox>
                       </el-checkbox-group>
                     </el-form-item> -->
-                    <el-form-item :label="$t('ui.developCrudEventPushTitle')" class="mt14">
+                    <el-form-item :label="$('ui.developCrudEventPushTitle')" class="mt14">
                       <el-input
                         class="textPosition"
-:placeholder="$t('ui.developToDoSchedulePleaseEnterPushTitle')"
+:placeholder="$('ui.developToDoSchedulePleaseEnterPushTitle')"
                         @input="onInput"
                         v-model="form.title"
                       >
@@ -217,25 +217,25 @@
                         <span class="el-icon-chat-dot-square icon" slot="reference"></span>
                       </el-popover>
                       <div class="prompt mt14">
-                        {{ $t("ui.developToDoScheduleTheTitleSupportsFieldVariablesForExample") }} <span class="color-file">{createdOn}</span> {{ $t("ui.developToDoScheduleCreatedOnIsTheInternalFieldIdentifierOfThe") }}
+                        {{ $("ui.developToDoScheduleTheTitleSupportsFieldVariablesForExample") }} <span class="color-file">{createdOn}</span> {{ $("ui.developToDoScheduleCreatedOnIsTheInternalFieldIdentifierOfThe") }}
                       </div>
                     </el-form-item>
                   </template>
                   <el-form-item
                     v-if="['send_notice', 'data_check'].includes(info.event)"
-:label="info.event == 'data_check' ? $t('ui.developCrudEventHintContent') : $t('ui.developCrudEventPushContent')"
+:label="info.event == 'data_check' ? $('ui.developCrudEventHintContent') : $('ui.developCrudEventPushContent')"
                     class="mt14"
                   >
                     <el-input
                       class="textPosition"
                       type="textarea"
                       :rows="3"
-:placeholder="$t('ui.developToDoSchedulePleaseEnterPushContent')"
+:placeholder="$('ui.developToDoSchedulePleaseEnterPushContent')"
                       v-model="form.template"
                     >
                     </el-input>
                     <span class="prompt"
-                      >{{ $t("ui.developCrudEventMessageShownWhenValidationFailsFieldVariablesAreSupported") }} <span class="color-file">{createdOn} </span>{{ $t("ui.developToDoScheduleCreatedOnIsTheInternalFieldIdentifierOfThe") }}</span
+                      >{{ $("ui.developCrudEventMessageShownWhenValidationFailsFieldVariablesAreSupported") }} <span class="color-file">{createdOn} </span>{{ $("ui.developToDoScheduleCreatedOnIsTheInternalFieldIdentifierOfThe") }}</span
                     >
 
                     <el-popover placement="left" trigger="hover">
@@ -260,13 +260,13 @@
                       @selection-change="handleSelectionChange"
                     >
                       <el-table-column type="selection"></el-table-column>
-                      <el-table-column :label="$t('ui.settingEnterpriseNewsIndexDeliveryChannel')" width="150">
+                      <el-table-column :label="$('ui.settingEnterpriseNewsIndexDeliveryChannel')" width="150">
                         <template slot-scope="scope">
                           <img :src="scope.row.icon" alt="" class="img" />
                         </template>
                       </el-table-column>
-                      <el-table-column :label="$t('ui.developCrudEntityTableDisplayName')" prop="name" width="150"> </el-table-column>
-                      <el-table-column :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')">
+                      <el-table-column :label="$('ui.developCrudEntityTableDisplayName')" prop="name" width="150"> </el-table-column>
+                      <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')">
                         <template slot-scope="scope" v-if="scope.row.status !== 'system_status'">
                           <el-input
                             v-model="form[scope.row.key]"
@@ -282,13 +282,13 @@
 
                   <!-- 自动审核 -->
                   <el-form-item
-:label="$t('ui.developCrudEventSelectApprovalProcess')"
+:label="$('ui.developCrudEventSelectApprovalProcess')"
                     v-if="['auto_revoke_approve', 'auto_approve'].includes(info.event)"
                   >
                     <el-select
                       size="small"
                       v-model="form.crud_approve_id"
-:placeholder="info.event === 'auto_approve' ? $t('ui.developCrudEventPleaseSelectApprovalProcess') : $t('ui.developCrudEventPleaseSearchSelectRelatedRevokeRecords')"
+:placeholder="info.event === 'auto_approve' ? $('ui.developCrudEventPleaseSelectApprovalProcess') : $('ui.developCrudEventPleaseSearchSelectRelatedRevokeRecords')"
                       style="width: 300px"
                     >
                       <el-option v-for="(item, index) in approval" :key="index" :label="item.name" :value="item.id">
@@ -297,8 +297,8 @@
                     <div class="prompt mt14">
                       {{
                         info.event === 'auto_approve'
-                          ? $t('ui.developCrudEventAddAnApprovalProcessBeforeSelectingOneHere')
-                          : $t('ui.developCrudEventTheSourceEntityRecordOrAnotherRelatedRecordCan')
+                          ? $('ui.developCrudEventAddAnApprovalProcessBeforeSelectingOneHere')
+                          : $('ui.developCrudEventTheSourceEntityRecordOrAnotherRelatedRecordCan')
                       }}
                     </div>
                   </el-form-item>
@@ -311,12 +311,12 @@
 
                   <!-- 获取数据 -->
                   <template v-if="info.event === 'get_data' || info.event === 'push_data'">
-                    <el-form-item :label="$t('ui.developDataManagementIndexLinkUrl')">
+                    <el-form-item :label="$('ui.developDataManagementIndexLinkUrl')">
                       <el-select
                         size="small"
                         v-model="form.curl_id"
                         filterable
-:placeholder="$t('ui.developDataManagementIndexLinkUrl')"
+:placeholder="$('ui.developDataManagementIndexLinkUrl')"
                         style="width: 300px"
                       >
                         <el-option v-for="item in dataList" :key="item.id" :label="item.title" :value="item.id">
@@ -330,11 +330,11 @@
                           size="small"
                           class="mt10"
                           @click="crudSendFn(1)"
-                          >{{ $t("ui.developDataManagementAddDataTestRequest") }}</el-button
+                          >{{ $("ui.developDataManagementAddDataTestRequest") }}</el-button
                         >
                       </div>
                       <div v-if="info.event == 'get_data'" class="prompt mb20">
-                        {{ $t("ui.developCrudEventRunTheTestRequestFirstSoTheSourceFields") }}
+                        {{ $("ui.developCrudEventRunTheTestRequestFirstSoTheSourceFields") }}
                       </div>
                     </el-form-item>
                   </template>
@@ -342,7 +342,7 @@
 
                   <!-- 字段更新/聚合 -->
                   <el-form-item
-:label="$t('ui.developCrudEventTargetEntity')"
+:label="$('ui.developCrudEventTargetEntity')"
                     v-if="
                       [
                         'field_update',
@@ -358,7 +358,7 @@
                       size="small"
                       v-model="form.target_crud_id"
                       filterable
-:placeholder="$t('ui.developCrudEventApplicationEntityName')"
+:placeholder="$('ui.developCrudEventApplicationEntityName')"
                       style="width: 300px"
                       @change="changeTargetCrudId"
                     >
@@ -371,23 +371,23 @@
                       </el-option>
                     </el-select>
                   </el-form-item>
-                  <el-form-item :label="$t('ui.developCrudEventAggregationTargetConditions')" class="mt14" v-if="info.event === 'group_aggregate'">
+                  <el-form-item :label="$('ui.developCrudEventAggregationTargetConditions')" class="mt14" v-if="info.event === 'group_aggregate'">
                     <div class="default-color pointer fz-12">
                       <span @click="OpenSettings('aggregate_target_search')">
                         {{
                           form.aggregate_target_search && form.aggregate_target_search.length > 0
-                            ? $t('ui.developCrudEventConditionsSet') + form.aggregate_target_search.length + '）'
-                            : $t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
+                            ? $('ui.developCrudEventConditionsSet') + form.aggregate_target_search.length + '）'
+                            : $('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
                         }}</span
                       >
                     </div>
-                    <div class="prompt">{{ $t("ui.developCrudEventOnlyDataMatchingTheConditionsIsAggregated") }}</div>
+                    <div class="prompt">{{ $("ui.developCrudEventOnlyDataMatchingTheConditionsIsAggregated") }}</div>
                   </el-form-item>
 
-                  <el-form-item :label="$t('ui.developCrudEventDuplicateDataHandling')" class="mt14" v-if="info.event === 'get_data'">
+                  <el-form-item :label="$('ui.developCrudEventDuplicateDataHandling')" class="mt14" v-if="info.event === 'get_data'">
                     <el-radio-group v-model="form.options.is_skip_value">
-                      <el-radio :label="`0`">{{ $t("ui.developCrudEventSkip") }}</el-radio>
-                      <el-radio :label="`1`">{{ $t("ui.settingUserRoomIndexUpdate") }}</el-radio>
+                      <el-radio :label="`0`">{{ $("ui.developCrudEventSkip") }}</el-radio>
+                      <el-radio :label="`1`">{{ $("ui.settingUserRoomIndexUpdate") }}</el-radio>
                     </el-radio-group>
                   </el-form-item>
                   <!-- 动态更新渲染组件 -->
@@ -417,7 +417,7 @@
                   /></template>
 
                   <el-form-item
-:label="$t('ui.developCrudEventAggregationDataConditions')"
+:label="$('ui.developCrudEventAggregationDataConditions')"
                     class="mt14"
                     v-if="info.event === 'field_aggregate' || info.event === 'group_aggregate'"
                   >
@@ -425,20 +425,20 @@
                       <span @click="OpenSettings('aggregate_data_search')">
                         {{
                           form.aggregate_data_search && form.aggregate_data_search.length > 0
-                            ? $t('ui.developCrudEventConditionsSet') + form.aggregate_data_search.length + '）'
-                            : $t('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
+                            ? $('ui.developCrudEventConditionsSet') + form.aggregate_data_search.length + '）'
+                            : $('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorClickToConfigure')
                         }}</span
                       >
                     </div>
-                    <div class="prompt">{{ $t("ui.developCrudEventOnlyDataMatchingTheFilterConditionsIsAggregated") }}</div>
+                    <div class="prompt">{{ $("ui.developCrudEventOnlyDataMatchingTheFilterConditionsIsAggregated") }}</div>
                   </el-form-item>
                 </el-form>
               </div>
             </el-form-item>
             <!-- 字段更新/聚合 -->
-            <el-form-item :label="$t('ui.developCrudEventExecutionPriority')">
+            <el-form-item :label="$('ui.developCrudEventExecutionPriority')">
               <el-input-number v-model="form.sort" :min="0" size="small" style="width: 220px"></el-input-number>
-              <div class="prompt mt14">{{ $t("ui.developCrudEventHigherPrioritiesRunFirstForEqualPrioritiesTheTrigger") }}</div>
+              <div class="prompt mt14">{{ $("ui.developCrudEventHigherPrioritiesRunFirstForEqualPrioritiesTheTrigger") }}</div>
             </el-form-item>
           </el-form>
         </div>
@@ -448,7 +448,7 @@
   <!-- 内容 -->
 
   <!-- 测试请求数据回显 -->
-  <el-dialog :title="$t('ui.developCrudEventRequestData')" :visible.sync="isRequest" width="50%">
+  <el-dialog :title="$('ui.developCrudEventRequestData')" :visible.sync="isRequest" width="50%">
     <json-viewer style="height: 600px; width: 100%" :value="jsonData" :expand-depth="8" copyable></json-viewer>
   </el-dialog>
 
@@ -457,7 +457,7 @@
     ref="checkboxDialog"
     :name="name"
     :showName="showName"
-:title="$t('ui.developCrudEventSpecifiedField')"
+:title="$('ui.developCrudEventSpecifiedField')"
     :type="`view`"
     @getData="getData"
   ></checkbox-dialog>
@@ -465,7 +465,7 @@
   <el-drawer
     size="650px"
     direction="rtl"
-:title="$t('ui.workFlowDrawerConditionDrawerConditionSettings')"
+:title="$('ui.workFlowDrawerConditionDrawerConditionSettings')"
     :append-to-body="true"
     :wrapperClosable="false"
     class="condition_copyer"
@@ -480,7 +480,8 @@
   </el-drawer>
 </div>
 </template>
-<script>import appI18n from '@/lang';
+<script>
+import localizationI18n from "@/lang";
 
 import JsonViewer from 'vue-json-viewer'
 import Commnt from './components/commonData'
@@ -769,7 +770,7 @@ export default {
       if (this.info.event === 'send_notice') {
         this.form.send_user = []
         if (this.userList.length == 0) {
-          return this.$message.error(appI18n.t('ui.developCrudEventPleaseAddMembers'))
+          return this.$message.error(localizationI18n.t("ui.script.befaa27c94af"))
         }
         this.userList.map((item) => {
           this.form.send_user.push(item.id)
@@ -789,10 +790,10 @@ export default {
 
       this.form.action = this.action
       if (!this.form.name) {
-        return this.$message.error(appI18n.t('ui.developCrudEventTriggerNameIsRequired'))
+        return this.$message.error(localizationI18n.t("ui.script.459ad2c7e493"))
       }
       if (!this.form.action) {
-        return this.$message.error(appI18n.t('ui.developCrudEventTriggerActionIsRequired'))
+        return this.$message.error(localizationI18n.t("ui.script.e94f24fa9b53"))
       }
       if (this.additional_Type === 'testOptions') {
         this.form.options = {
@@ -860,7 +861,7 @@ export default {
     // 发送请求
     crudSendFn(val) {
       this.field = []
-      if (!this.form.curl_id) return this.$message.error(appI18n.t('ui.developCrudEventLinkAddressIsRequired'))
+      if (!this.form.curl_id) return this.$message.error(localizationI18n.t("ui.script.578a8dbb67d7"))
       this.curlLoading = true
       crudSendApi(this.form.curl_id).then((res) => {
         if (res.status == 200) {
@@ -965,7 +966,7 @@ export default {
         this.relatedData = res.data
         this.targetEntity = res.data.list
         this.options = res.data.update_type
-        this.uniqidOptions = [{ label: appI18n.t('ui.developCrudEventFieldValue'), value: 'field_value' }]
+        this.uniqidOptions = [{ label: localizationI18n.t("ui.script.bf914865463c"), value: 'field_value' }]
         this.field = res.data.field
         this.approval = res.data.approve
         this.getInfo()
@@ -1022,7 +1023,7 @@ export default {
             return !['approve_create', 'timer'].includes(item.value)
           })
         } else if (this.info.event == 'get_data') {
-          this.actionList = [{ label: appI18n.t('ui.developCrudEventScheduledExecution'), value: 'timer' }]
+          this.actionList = [{ label: localizationI18n.t("ui.script.18b0556e690a"), value: 'timer' }]
 
           this.form.curl_id = this.form.curl_id == 0 ? '' : this.form.curl_id
           this.getDataList()

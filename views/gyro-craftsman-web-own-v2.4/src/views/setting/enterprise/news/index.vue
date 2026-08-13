@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '20px 20px 0 20px' }" class="normal-page">
@@ -12,7 +13,7 @@
           type="primary"
           size="small"
           @click="handleBatchPush"
-          >{{ $t("ui.settingEnterpriseNewsIndexBatchSettings") }}
+          >{{ $("ui.settingEnterpriseNewsIndexBatchSettings") }}
         </el-button>
         <oaFromBox
           :search="searchData"
@@ -30,108 +31,108 @@
         <div class="table-box">
           <el-table ref="table" :data="tableData" :height="tableHeight" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55" />
-            <el-table-column prop="title" :label="$t('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip />
-            <el-table-column prop="content" :label="$t('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip />
-            <el-table-column prop="cate_name" :label="$t('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" show-overflow-tooltip />
-            <el-table-column prop="verify" :label="$t('ui.settingEnterpriseNewsIndexSystemNotifications')" min-width="100">
+            <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip />
+            <el-table-column prop="content" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip />
+            <el-table-column prop="cate_name" :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" show-overflow-tooltip />
+            <el-table-column prop="verify" :label="$('ui.settingEnterpriseNewsIndexSystemNotifications')" min-width="100">
               <template slot-scope="scope">
                 <el-switch
                   v-if="scope.row.system_template"
                   v-model="scope.row.system_template.status"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  active-text="开启"
+                  inactive-text="关闭"
                   @change="messageStatus(scope.row.id, scope.row.system_template, 0)"
                   :active-value="1"
                   :inactive-value="0"
                 />
               </template>
             </el-table-column>
-            <el-table-column prop="verify" :label="$t('ui.settingEnterpriseNewsIndexSms')" min-width="100">
+            <el-table-column prop="verify" :label="$('ui.settingEnterpriseNewsIndexSms')" min-width="100">
               <template slot-scope="scope">
                 <el-switch
                   v-if="scope.row.sms_template"
                   v-model="scope.row.sms_template.status"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  active-text="开启"
+                  inactive-text="关闭"
                   @change="messageStatus(scope.row.id, scope.row.sms_template, 1)"
                   :active-value="1"
                   :inactive-value="0"
                 />
               </template>
             </el-table-column>
-            <el-table-column prop="verify" :label="$t('ui.settingEnterpriseNewsIndexWeComMessage')" min-width="100">
+            <el-table-column prop="verify" :label="$('ui.settingEnterpriseNewsIndexWeComMessage')" min-width="100">
               <template slot-scope="scope">
                 <el-switch
                   v-if="scope.row.wework_template"
                   v-model="scope.row.wework_template.status"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  active-text="开启"
+                  inactive-text="关闭"
                   @change="messageStatus(scope.row.id, scope.row.wework_template, 5)"
                   :active-value="1"
                   :inactive-value="0"
                 />
               </template>
             </el-table-column>
-            <el-table-column prop="verify" :label="$t('ui.settingEnterpriseNewsIndexWeComBot')" min-width="100">
+            <el-table-column prop="verify" :label="$('ui.settingEnterpriseNewsIndexWeComBot')" min-width="100">
               <template slot-scope="scope">
                 <el-switch
                   v-if="scope.row.work_template"
                   v-model="scope.row.work_template.status"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  active-text="开启"
+                  inactive-text="关闭"
                   @change="messageStatus(scope.row.id, scope.row.work_template, 2)"
                   :active-value="1"
                   :inactive-value="0"
                 />
               </template>
             </el-table-column>
-            <el-table-column prop="verify" :label="$t('ui.settingEnterpriseNewsIndexDingTalkBot')" min-width="100">
+            <el-table-column prop="verify" :label="$('ui.settingEnterpriseNewsIndexDingTalkBot')" min-width="100">
               <template slot-scope="scope">
                 <el-switch
                   v-if="scope.row.ding_template"
                   v-model="scope.row.ding_template.status"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  active-text="开启"
+                  inactive-text="关闭"
                   @change="messageStatus(scope.row.id, scope.row.ding_template, 3)"
                   :active-value="1"
                   :inactive-value="0"
                 />
               </template>
             </el-table-column>
-            <el-table-column prop="verify" :label="$t('ui.settingEnterpriseNewsIndexOtherBot')" min-width="100">
+            <el-table-column prop="verify" :label="$('ui.settingEnterpriseNewsIndexOtherBot')" min-width="100">
               <template slot-scope="scope">
                 <el-switch
                   v-if="scope.row.other_template"
                   v-model="scope.row.other_template.status"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  active-text="开启"
+                  inactive-text="关闭"
                   @change="messageStatus(scope.row.id, scope.row.other_template, 4)"
                   :active-value="1"
                   :inactive-value="0"
                 />
               </template>
             </el-table-column>
-            <el-table-column prop="verify" :label="$t('ui.settingEnterpriseNewsIndexCanUnsubscribe')" min-width="100">
+            <el-table-column prop="verify" :label="$('ui.settingEnterpriseNewsIndexCanUnsubscribe')" min-width="100">
               <template slot-scope="scope">
                 <el-switch
                   v-model="scope.row.user_sub"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  active-text="开启"
+                  inactive-text="关闭"
                   @change="messageSubscribe(scope.row)"
                   :active-value="1"
                   :inactive-value="0"
                 />
               </template>
             </el-table-column>
-            <el-table-column :label="$t('toptable.operation')" width="190" fixed="right">
+            <el-table-column :label="$('toptable.operation')" width="190" fixed="right">
               <template slot-scope="scope">
-                <el-button type="text" @click="handlePush(scope.row)">{{ $t("ui.settingEnterpriseNewsIndexDeliveryChannel") }}</el-button>
+                <el-button type="text" @click="handlePush(scope.row)">{{ $("ui.settingEnterpriseNewsIndexDeliveryChannel") }}</el-button>
                 <el-button
                   v-hasPermi="['enterprise:news:edit']"
                   v-if="scope.row.template_time === 1"
                   type="text"
                   @click="handleTime(scope.row)"
-                  >{{ $t("ui.settingEnterpriseNewsIndexSetTime") }}
+                  >{{ $("ui.settingEnterpriseNewsIndexSetTime") }}
                 </el-button>
               </template>
             </el-table-column>
@@ -161,7 +162,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { messageListApi, putStatusMessageApi, messageSubscribeApi, messageSyncApi, messageCateApi } from '@/api/setting'
 import { status } from 'nprogress'
 
@@ -211,7 +211,7 @@ export default {
           form_value: 'input'
         }
       ],
-      dropdownList: [{ label: i18n.t('legacyScript.syncData'), value: 'sync' }]
+      dropdownList: [{ label: $('legacyScript.syncData'), value: 'sync' }]
     }
   },
   mounted() {
@@ -312,7 +312,7 @@ export default {
       }
       this.messageData = {
         width: '560px',
-        title: i18n.t('legacyScript.setReminderTime'),
+        title: $('legacyScript.setReminderTime'),
         type,
         data: row
       }
@@ -323,7 +323,7 @@ export default {
     },
     handleBatchPush() {
       if (!this.selectedRows.length) {
-        this.$message.warning(i18n.t('legacyScript.selectTheMessagesYouWantToConfigureFirst'))
+        this.$message.warning($('legacyScript.selectTheMessagesYouWantToConfigureFirst'))
         return
       }
       this.$refs.messagePush.openBatchBox(this.selectedRows.map((row) => row.id))
@@ -354,7 +354,7 @@ export default {
     },
     getMessageCate() {
       messageCateApi().then((res) => {
-        this.options = [{ label: i18n.t('finance.all'), value: '' }, ...res.data]
+        this.options = [{ label: $('finance.all'), value: '' }, ...res.data]
         for (let i = 0; i < res.data.length; i++) {
           res.data[i].name = res.data[i].label
         }

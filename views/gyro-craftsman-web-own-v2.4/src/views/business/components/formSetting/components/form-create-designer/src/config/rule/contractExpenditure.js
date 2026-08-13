@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 const label = '订单支出'
 const name = 'contractExpenditure'
@@ -20,10 +20,10 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('customer.contractname'),
+          title: $('customer.contractname'),
           symbol: 'contractList',
           type: 'select',
-          props: { disabled: false, readonly: true, placeholder:i18n.t('legacyScript.pleaseSelectOrderName')},
+          props: { disabled: false, readonly: true, placeholder:$('legacyScript.pleaseSelectOrderName')},
           _fc_drag_tag: 'select',
           options: []
         },
@@ -35,7 +35,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('legacyScript.financialExpenseCategory'),
+          title: $('legacyScript.financialExpenseCategory'),
           symbol: 'expenditureCategories',
           type: 'cascader',
           _fc_drag_tag: 'cascader',
@@ -53,7 +53,7 @@ export default {
           hidden: false,
           info: '',
           input: false,
-          title: i18n.t('customer.paymentMethod'),
+          title: $('customer.paymentMethod'),
           symbol: 'payType',
           type: 'select',
           _fc_drag_tag: 'select',
@@ -63,7 +63,7 @@ export default {
           effect: { fetch: '', required: true },
           field: uniqueId(),
           props: { type: 'moneyFrom' },
-          title: i18n.t('customer.expenseAmountYuan'),
+          title: $('customer.expenseAmountYuan'),
           symbol: 'expenditureAmount',
           type: 'moneyFrom',
           _fc_drag_tag: 'moneyFrom'
@@ -75,8 +75,8 @@ export default {
           field: uniqueId(),
           hidden: false,
           info: '',
-          props: { type: 'datetime', placeholder: i18n.t('legacyScript.pleaseSelectTime') },
-          title: i18n.t('legacyScript.expenseTime'),
+          props: { type: 'datetime', placeholder: $('legacyScript.pleaseSelectTime') },
+          title: $('legacyScript.expenseTime'),
           symbol: 'payTime',
           type: 'datePicker',
           _fc_drag_tag: 'datetimerange'
@@ -85,7 +85,7 @@ export default {
           effect: { fetch: '', required: false },
           field: uniqueId(),
           props: { type: 'uploadFrom' },
-          title: i18n.t('legacyScript.paymentProof'),
+          title: $('legacyScript.paymentProof'),
           symbol: 'paymentVoucher',
           type: 'uploadFrom',
           _fc_drag_tag: 'uploadFrom'
@@ -96,8 +96,8 @@ export default {
           display: true,
           hidden: false,
           info: '',
-          props: { type: 'textarea', placeholder: i18n.t('finance.pleaseinput') },
-          title: i18n.t('customer.remark'),
+          props: { type: 'textarea', placeholder: $('finance.pleaseinput') },
+          title: $('customer.remark'),
           symbol: 'remark',
           _fc_drag_tag: 'textarea'
         }
@@ -175,7 +175,7 @@ export default {
         props: {
           value:
             '1.支出是否需要审批流，在客户规格设置中配置<br>2.支持财务在付款记录中进行回款修改、管理<br>3.订单相关支出根据财务支出科目，自动同步财务账目支出记录',
-          title: i18n.t('legacyScript.expenseRules')
+          title: $('legacyScript.expenseRules')
         },
         input: false,
         title: '',

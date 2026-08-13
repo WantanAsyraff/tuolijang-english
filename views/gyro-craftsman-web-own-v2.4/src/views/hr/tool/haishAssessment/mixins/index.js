@@ -1,4 +1,4 @@
-import i18n from '@/lang'
+import { $ } from '@/lang'
 const data = {
   // 海事量表基础数据
   data() {
@@ -6,35 +6,35 @@ const data = {
     this.professionalKnowledge = [
       {
         id: 1,
-        label: i18n.t('legacyScript.basic'),
+        label: $('legacyScript.basic'),
       },
       {
         id: 2,
-        label: i18n.t('legacyScript.basicBusiness'),
+        label: $('legacyScript.basicBusiness'),
       },
       {
         id: 3,
-        label: i18n.t('legacyScript.mediumSizedBusiness'),
+        label: $('legacyScript.mediumSizedBusiness'),
       },
       {
         id: 4,
-        label: i18n.t('legacyScript.highLevelBusiness'),
+        label: $('legacyScript.highLevelBusiness'),
       },
       {
         id: 5,
-        label: i18n.t('legacyScript.basicSpecializedTechnology'),
+        label: $('legacyScript.basicSpecializedTechnology'),
       },
       {
         id: 6,
-        label: i18n.t('legacyScript.proficientInSpecializedTechnology'),
+        label: $('legacyScript.proficientInSpecializedTechnology'),
       },
       {
         id: 7,
-        label: i18n.t('legacyScript.proficientInSpecializedTechnology2'),
+        label: $('legacyScript.proficientInSpecializedTechnology2'),
       },
       {
         id: 8,
-        label: i18n.t('legacyScript.authoritativeSpecializedTechnology'),
+        label: $('legacyScript.authoritativeSpecializedTechnology'),
       },
     ];
 
@@ -42,23 +42,23 @@ const data = {
     this.managementKnowHow = [
       {
         id: 1,
-        label: i18n.t('legacyScript.basic2'),
+        label: $('legacyScript.basic2'),
       },
       {
         id: 2,
-        label: i18n.t('legacyScript.related'),
+        label: $('legacyScript.related'),
       },
       {
         id: 3,
-        label: i18n.t('legacyScript.diverse'),
+        label: $('legacyScript.diverse'),
       },
       {
         id: 4,
-        label: i18n.t('legacyScript.broad'),
+        label: $('legacyScript.broad'),
       },
       {
         id: 5,
-        label: i18n.t('legacyScript.comprehensive'),
+        label: $('legacyScript.comprehensive'),
       },
     ];
 
@@ -67,15 +67,15 @@ const data = {
      
         {
           id: 1,
-          label: i18n.t('legacyScript.basic'),
+          label: $('legacyScript.basic'),
         },
         {
           id: 2,
-          label: i18n.t('legacyScript.important'),
+          label: $('legacyScript.important'),
         },
         {
           id: 3,
-          label: i18n.t('legacyScript.critical'),
+          label: $('legacyScript.critical'),
         },
   
       ]
@@ -216,35 +216,35 @@ const data = {
     this.environment = [
       {
         id: 1,
-        label: i18n.t('legacyScript.highlyRoutine'),
+        label: $('legacyScript.highlyRoutine'),
       },
       {
         id: 2,
-        label: i18n.t('legacyScript.routine'),
+        label: $('legacyScript.routine'),
       },
       {
         id: 3,
-        label: i18n.t('legacyScript.semiRoutine'),
+        label: $('legacyScript.semiRoutine'),
       },
       {
         id: 4,
-        label: i18n.t('legacyScript.standardized'),
+        label: $('legacyScript.standardized'),
       },
       {
         id: 5,
-        label: i18n.t('legacyScript.explicitlyDefined'),
+        label: $('legacyScript.explicitlyDefined'),
       },
       {
         id: 6,
-        label: i18n.t('legacyScript.broadlySpecified'),
+        label: $('legacyScript.broadlySpecified'),
       },
       {
         id: 7,
-        label: i18n.t('legacyScript.generalProvisions'),
+        label: $('legacyScript.generalProvisions'),
       },
       {
         id: 8,
-        label: i18n.t('legacyScript.abstractlySpecified'),
+        label: $('legacyScript.abstractlySpecified'),
       },
     ]
 
@@ -252,23 +252,23 @@ const data = {
     this.difficulty = [
     {
       id: 1,
-      label: i18n.t('legacyScript.repetitive')
+      label: $('legacyScript.repetitive')
     },
     {
       id: 2,
-      label: i18n.t('legacyScript.modeBased')
+      label: $('legacyScript.modeBased')
     },
     {
       id: 3,
-      label: i18n.t('legacyScript.intermediate')
+      label: $('legacyScript.intermediate')
     },
     {
       id: 4,
-      label: i18n.t('legacyScript.adaptive')
+      label: $('legacyScript.adaptive')
     },
     {
       id: 5,
-      label: i18n.t('legacyScript.noPrecedent')
+      label: $('legacyScript.noPrecedent')
     },
    
     ]
@@ -329,39 +329,39 @@ const data = {
     this.free = [
       {
         id: 1,
-        label: i18n.t('legacyScript.regulationsApply')
+        label: $('legacyScript.regulationsApply')
       },
       {
         id: 2,
-        label: i18n.t('legacyScript.controlled')
+        label: $('legacyScript.controlled')
       },
       {
         id: 3,
-        label: i18n.t('legacyScript.standardized')
+        label: $('legacyScript.standardized')
       },
       {
         id: 4,
-        label: i18n.t('legacyScript.general')
+        label: $('legacyScript.general')
       },
       {
         id: 5,
-        label: i18n.t('legacyScript.guided')
+        label: $('legacyScript.guided')
       },
       {
         id: 6,
-        label: i18n.t('legacyScript.directionalGuidance')
+        label: $('legacyScript.directionalGuidance')
       },
       {
         id: 7,
-        label: i18n.t('legacyScript.broadGuidelines')
+        label: $('legacyScript.broadGuidelines')
       },
       {
         id: 8,
-        label: i18n.t('legacyScript.strategicGuidance')
+        label: $('legacyScript.strategicGuidance')
       },
       {
         id: 9,
-        label: i18n.t('legacyScript.generalUnguided')
+        label: $('legacyScript.generalUnguided')
       },
     ]
 
@@ -369,19 +369,19 @@ const data = {
     this.responsibility = [
       {
         id: 1,
-        label: i18n.t('legacyScript.tiny')
+        label: $('legacyScript.tiny')
       },
       {
         id: 2,
-        label: i18n.t('legacyScript.smallAmount')
+        label: $('legacyScript.smallAmount')
       },
       {
         id: 3,
-        label: i18n.t('legacyScript.intermediate2')
+        label: $('legacyScript.intermediate2')
       },
       {
         id: 4,
-        label: i18n.t('legacyScript.largeVolume')
+        label: $('legacyScript.largeVolume')
       },
     ]
 
@@ -389,27 +389,27 @@ const data = {
     this.influence = [
     {
       value:1,
-    label:i18n.t('legacyScript.indirect'),
+    label:$('legacyScript.indirect'),
     children:[
       {
         value:1,
-    label:i18n.t('legacyScript.logistics')
+    label:$('legacyScript.logistics')
     },
     {
       value:2,
-      label:i18n.t('legacyScript.assistant')
+      label:$('legacyScript.assistant')
     }]
     },
     {
       value:2,
-    label:i18n.t('legacyScript.direct'),
+    label:$('legacyScript.direct'),
     children:[{
       value:1,
-    label:i18n.t('legacyScript.allocation')
+    label:$('legacyScript.allocation')
     },
     {
       value:2,
-      label:i18n.t('legacyScript.main')
+      label:$('legacyScript.main')
     }]
     },
     ]

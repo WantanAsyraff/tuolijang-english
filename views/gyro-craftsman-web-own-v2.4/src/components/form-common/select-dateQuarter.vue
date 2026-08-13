@@ -8,7 +8,7 @@
   />
   <el-input
     v-model="showValue"
-    :placeholder="halfYearBtn ? $t('ui.formCommonSelectDateQuarterPleaseSelectAHalfYear') : $t('ui.formCommonSelectDateQuarterPleaseSelectAQuarter')"
+    :placeholder="halfYearBtn ? $('ui.formCommonSelectDateQuarterPleaseSelectAHalfYear') : $('ui.formCommonSelectDateQuarterPleaseSelectAQuarter')"
     style="width: 100%"
     size="small"
     @focus="showSeason = true"
@@ -23,14 +23,14 @@
     <div slot="header" class="clearfix" style="text-align: center; padding: 0">
       <button
         type="button"
-        :aria-label="$t('ui.formCommonSelectDateQuarterPreviousYear')"
+        :aria-label="$('ui.formCommonSelectDateQuarterPreviousYear')"
         class="el-picker-panel__icon-btn el-date-picker__prev-btn el-icon-d-arrow-left"
         @click="prev"
       />
-      <span role="button" class="el-date-picker__header-label">{{ year }}{{ $t("ui.userCalendarAddTodoYear") }}</span>
+      <span role="button" class="el-date-picker__header-label">{{ year }}{{ $("ui.userCalendarAddTodoYear") }}</span>
       <button
         type="button"
-        :aria-label="$t('ui.formCommonSelectDateQuarterNextYear')"
+        :aria-label="$('ui.formCommonSelectDateQuarterNextYear')"
         class="el-picker-panel__icon-btn el-date-picker__next-btn el-icon-d-arrow-right"
         @click="next"
       />

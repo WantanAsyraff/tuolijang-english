@@ -1,4 +1,5 @@
-﻿<template>
+import { $ } from '@/lang'
+<template>
 <div class="divBox">
   <el-card class="normal-page">
     <el-row>
@@ -11,7 +12,7 @@
               size="small"
               prefix-icon="el-icon-search"
               clearable
-              :placeholder="$t('ui.hrEnterpriseJobAnalysisSearchDepartment')"
+              :placeholder="$('ui.hrEnterpriseJobAnalysisSearchDepartment')"
             />
           </div>
           <el-tree
@@ -58,29 +59,29 @@
               style="width: 100%"
             >
               <el-table-column type="index" width="50"> </el-table-column>
-              <el-table-column prop="name" :label="$t('toptable.name')" min-width="100" />
-              <el-table-column prop="job.name" :label="$t('toptable.post')" min-width="120" />
-              <el-table-column prop="frame.name" :label="$t('ui.businessHolidayQueryIndexDepartment')" min-width="160" show-overflow-tooltip>
+              <el-table-column prop="name" :label="$('toptable.name')" min-width="100" />
+              <el-table-column prop="job.name" :label="$('toptable.post')" min-width="120" />
+              <el-table-column prop="frame.name" :label="$('ui.businessHolidayQueryIndexDepartment')" min-width="160" show-overflow-tooltip>
                 <template slot-scope="scope">
                   <div v-for="(item, index) in scope.row.frames" :key="index">
                     <span class="icon-h"
                       >{{ item.name }}
-                      <span v-if="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$t('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $t("ui.formCommonSelectDepartmentMain") }}</span>
+                      <span v-if="item.is_mastart === 1 && scope.row.frames.length > 1" :title="$('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $("ui.formCommonSelectDepartmentMain") }}</span>
                     </span>
                   </div>
                 </template>
               </el-table-column>
 
-              <el-table-column prop="phone" :label="$t('toptable.phone')" min-width="110" show-overflow-tooltip />
-              <el-table-column prop="join_time" :label="$t('toptable.jointime')" min-width="100" />
-              <el-table-column :label="$t('public.operation')" width="180">
+              <el-table-column prop="phone" :label="$('toptable.phone')" min-width="110" show-overflow-tooltip />
+              <el-table-column prop="join_time" :label="$('toptable.jointime')" min-width="100" />
+              <el-table-column :label="$('public.operation')" width="180">
                 <template slot-scope="scope">
                   <el-button type="text" @click="onPassword(scope.row)" v-hasPermi="['auth:group:password']">
-                    {{ $t("ui.settingAuthGroupIndexChangePassword") }}
+                    {{ $("ui.settingAuthGroupIndexChangePassword") }}
                   </el-button>
 
                   <el-button type="text" @click="onEdit(scope.row.id)" v-hasPermi="['auth:group:edit']">
-                    {{ $t('public.edit') }}
+                    {{ $('public.edit') }}
                   </el-button>
 
                   <el-button
@@ -88,7 +89,7 @@
                     @click="onDelete(scope.row.id, scope.$index)"
                     v-hasPermi="['auth:group:delete']"
                   >
-                    {{ $t('public.delete') }}
+                    {{ $('public.delete') }}
                   </el-button>
                 </template>
               </el-table-column>
@@ -124,7 +125,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { configFrameApi } from '@/api/setting'
 import { loginRegex } from '@/utils/format'
 import { userListApi } from '@/api/user'
@@ -146,8 +146,8 @@ export default {
     return {
       fromData: {
         with: '400px',
-        title: i18n.t('passwordDialog.title'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('passwordDialog.title'),
+        btnText: '确定',
         labelWidth: '90px',
         type: ''
       },
@@ -172,14 +172,14 @@ export default {
       formConfig: [
         {
           type: 'password',
-          label: i18n.t('ui.settingUserRoomIndexPassword'),
-          placeholder: i18n.t('passwordDialog.passwordRequired'),
+          label: $('ui.settingUserRoomIndexPassword'),
+          placeholder: $('passwordDialog.passwordRequired'),
           key: 'password'
         },
         {
           type: 'password',
-          label: i18n.t('ui.settingUserRoomIndexConfirmPassword'),
-          placeholder: i18n.t('legacyScript.pleaseConfirmThePassword'),
+          label: $('ui.settingUserRoomIndexConfirmPassword'),
+          placeholder: $('legacyScript.pleaseConfirmThePassword'),
           key: 'password_confirm'
         }
       ],
@@ -214,7 +214,7 @@ export default {
       indexType: null,
       searchData: [
         {
-          field_name: this.$ts('姓名、电话号码'),
+          field_name: '姓名、电话号码',
           field_name_en: 'name',
           form_value: 'input'
         }
@@ -340,7 +340,7 @@ export default {
 
     //  删除人员
     async onDelete(id, index) {
-      await this.$modalSure(this.$t('setting.group.deletitle'))
+      await this.$modalSure(this.$('setting.group.deletitle'))
       await enterpriseCardDeleteApi(id)
       this.tableData.splice(index, 1)
     },

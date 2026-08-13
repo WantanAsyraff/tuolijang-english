@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 查看客户信息侧滑页面 -->
 <template>
 <div class="station">
@@ -6,7 +7,7 @@
     :direction="direction"
     :show-close="false"
     :size="DRAWER_SIZE.LG"
-    :title="$t('ui.layoutNoticeNoticeListView')"
+    :title="$('ui.layoutNoticeNoticeListView')"
     :visible.sync="drawer"
   >
     <div slot="title" class="invoice-title">
@@ -19,30 +20,30 @@
 
           <div class="txt2">
             <span class="title">
-              {{ $t("ui.customerWeChatMassMassDetailsTaskStatus") }}
-              <span v-if="dataInfo.status == 1" class="info3">{{ $t("ui.customerWeChatMassClientGroupChatScheduled") }}</span>
-              <span v-else-if="dataInfo.status == 2" class="info2">{{ $t("ui.customerWeChatMassMassDetailsSending") }}</span>
-              <span v-else-if="dataInfo.status == 0" class="info1">{{ $t("ui.customerWeChatMassMassDetailsStopped") }}</span>
-              <span v-else-if="dataInfo.status == 3" class="info4">{{ $t("ui.customerWeChatMassMassDetailsCompleted") }}</span>
+              {{ $("ui.customerWeChatMassMassDetailsTaskStatus") }}
+              <span v-if="dataInfo.status == 1" class="info3">{{ $("ui.customerWeChatMassClientGroupChatScheduled") }}</span>
+              <span v-else-if="dataInfo.status == 2" class="info2">{{ $("ui.customerWeChatMassMassDetailsSending") }}</span>
+              <span v-else-if="dataInfo.status == 0" class="info1">{{ $("ui.customerWeChatMassMassDetailsStopped") }}</span>
+              <span v-else-if="dataInfo.status == 3" class="info4">{{ $("ui.customerWeChatMassMassDetailsCompleted") }}</span>
             </span>
             <template v-if="types == '0'">
               <span class="title"
-                >{{ $t("ui.customerWeChatMassMassDetailsSentCustomers") }}<span class="weight">{{ dataInfo.is_send || 0 }}</span></span
+                >{{ $("ui.customerWeChatMassMassDetailsSentCustomers") }}<span class="weight">{{ dataInfo.is_send || 0 }}</span></span
               >
               <span class="title"
-                >{{ $t("ui.customerWeChatMassMassDetailsDeliveredCustomers") }}<span class="weight">{{ dataInfo.is_sent || 0 }}</span></span
+                >{{ $("ui.customerWeChatMassMassDetailsDeliveredCustomers") }}<span class="weight">{{ dataInfo.is_sent || 0 }}</span></span
               >
               <span class="title"
-                >{{ $t("ui.customerWeChatMassMassDetailsUndeliveredCustomers") }}<span class="weight">{{ dataInfo.not_sent || 0 }}</span></span
+                >{{ $("ui.customerWeChatMassMassDetailsUndeliveredCustomers") }}<span class="weight">{{ dataInfo.not_sent || 0 }}</span></span
               >
             </template>
             <template v-if="types == '1'">
               <span class="title"
-                >{{ $t("ui.customerWeChatMassMassDetailsDeliveredCustomerGroups") }}<span class="weight">{{ dataInfo.is_send || 0 }}</span></span
+                >{{ $("ui.customerWeChatMassMassDetailsDeliveredCustomerGroups") }}<span class="weight">{{ dataInfo.is_send || 0 }}</span></span
               >
 
               <span class="title"
-                >{{ $t("ui.customerWeChatMassMassDetailsUndeliveredCustomerGroups") }}<span class="weight">{{ dataInfo.not_sent || 0 }}</span></span
+                >{{ $("ui.customerWeChatMassMassDetailsUndeliveredCustomerGroups") }}<span class="weight">{{ dataInfo.not_sent || 0 }}</span></span
               >
             </template>
           </div>
@@ -61,8 +62,8 @@
       <el-tab-pane v-for="item in tabData" :key="item.value" :label="item.label" :name="item.value">
         <div v-if="item.value == 1" style="width: 950px">
           <el-form class="invoice-body" label-width="auto">
-            <div class="title-box">{{ types == 2 ? $t('ui.customerWeChatMassMassDetailsEmployeePostingStatus') : $t('ui.customerWeChatMassMassDetailsEmployeeSendingStatus') }}</div>
-            <el-form-item :label="types == 1 ? $t('ui.customerWeChatMassMassDetailsGroupOwner') : $t('ui.customerWeChatMassAddGroupPostingMassSendEmployees')">
+            <div class="title-box">{{ types == 2 ? $('ui.customerWeChatMassMassDetailsEmployeePostingStatus') : $('ui.customerWeChatMassMassDetailsEmployeeSendingStatus') }}</div>
+            <el-form-item :label="types == 1 ? $('ui.customerWeChatMassMassDetailsGroupOwner') : $('ui.customerWeChatMassAddGroupPostingMassSendEmployees')">
               <div class="send-box">
                 <div v-for="(item, index) in dataInfo.send_user" class="user-box">
                   <img :src="item.avatar" alt="" class="img" />
@@ -74,12 +75,12 @@
                 </div>
               </div>
             </el-form-item>
-            <el-form-item :label="$t('ui.customerWeChatMassMassDetailsDeliveryScope')">
-              <span>{{ dataInfo.is_modify == 1 ? $t('ui.customerWeChatMassMassDetailsAllowEmployeesToAdjust') : $t('ui.customerWeChatMassMassDetailsDoNotAllowEmployeesToAdjust') }}</span>
+            <el-form-item :label="$('ui.customerWeChatMassMassDetailsDeliveryScope')">
+              <span>{{ dataInfo.is_modify == 1 ? $('ui.customerWeChatMassMassDetailsAllowEmployeesToAdjust') : $('ui.customerWeChatMassMassDetailsDoNotAllowEmployeesToAdjust') }}</span>
             </el-form-item>
 
-            <div class="title-box">{{ $t("ui.customerWeChatMassClientGroupChatMassSendContent") }}</div>
-            <el-form-item :label="$t('ui.customerWeChatMassAddGroupPostingMassSendContent')">
+            <div class="title-box">{{ $("ui.customerWeChatMassClientGroupChatMassSendContent") }}</div>
+            <el-form-item :label="$('ui.customerWeChatMassAddGroupPostingMassSendContent')">
               <span>{{ dataInfo.temp ? dataInfo.temp.content : '--' }}</span>
 
               <div class="box mt10" v-if="dataInfo.temp && dataInfo.temp.attach && dataInfo.temp.attach.length > 0">
@@ -113,31 +114,31 @@
                 </div>
               </div>
             </el-form-item>
-            <el-form-item :label="$t('ui.customerWeChatMassMassDetailsSendTime')">
+            <el-form-item :label="$('ui.customerWeChatMassMassDetailsSendTime')">
               <span>{{ dataInfo.send_time || '--' }}</span>
             </el-form-item>
           </el-form>
         </div>
         <div v-if="item.value == 2" style="width: 960px">
           <el-table :data="tableData" fit style="width: 100%" v-if="types == 1">
-            <el-table-column :label="$t('ui.customerWeChatMassGroupChatGroupChatName')">
+            <el-table-column :label="$('ui.customerWeChatMassGroupChatGroupChatName')">
               <template slot-scope="scope">{{ scope.row.chat_group.name || '--' }}</template>
             </el-table-column>
-            <el-table-column :label="$t('ui.customerWeChatMassMassDetailsDeliveryStatus')">
+            <el-table-column :label="$('ui.customerWeChatMassMassDetailsDeliveryStatus')">
               <template slot-scope="scope">
-                <el-tag v-if="scope.row.status == 0">{{ $t("ui.customerWeChatMassMassDetailsUnsent") }}</el-tag>
-                <el-tag v-else-if="scope.row.status == 2 || scope.row.status == 3" type="info">{{ $t("ui.customerWeChatMassMassDetailsNotDelivered") }}</el-tag>
-                <el-tag v-else-if="scope.row.status == 1" type="success">{{ $t("ui.customerWeChatMassMassDetailsCompleted") }}</el-tag>
+                <el-tag v-if="scope.row.status == 0">{{ $("ui.customerWeChatMassMassDetailsUnsent") }}</el-tag>
+                <el-tag v-else-if="scope.row.status == 2 || scope.row.status == 3" type="info">{{ $("ui.customerWeChatMassMassDetailsNotDelivered") }}</el-tag>
+                <el-tag v-else-if="scope.row.status == 1" type="success">{{ $("ui.customerWeChatMassMassDetailsCompleted") }}</el-tag>
               </template>
             </el-table-column>
             <!-- <el-table-column prop="is_comment" label="已读人数"> </el-table-column> -->
-            <el-table-column prop="admin.name" :label="$t('ui.customerWeChatMassMassDetailsSentBy')"> </el-table-column>
-            <el-table-column prop="send_time" :label="$t('ui.customerWeChatMassMassDetailsSentTime')">
+            <el-table-column prop="admin.name" :label="$('ui.customerWeChatMassMassDetailsSentBy')"> </el-table-column>
+            <el-table-column prop="send_time" :label="$('ui.customerWeChatMassMassDetailsSentTime')">
               <template slot-scope="scope">{{ scope.row.send_time || '--' }}</template>
             </el-table-column>
           </el-table>
           <el-table :data="tableData" fit style="width: 100%" v-if="types != 1">
-            <el-table-column :label="$t('ui.customerSigningAddContractSignCustomerInformation')">
+            <el-table-column :label="$('ui.customerSigningAddContractSignCustomerInformation')">
               <template slot-scope="scope">
                 <div class="work-user">
                   <img
@@ -147,7 +148,7 @@
                     class="img"
                   />
                   {{ scope.row.customer.name || '--' }}
-                  <span v-if="scope.row.customer.type == 1" class="info4 ml4">{{ $t("ui.customerCustomizeTableWeChat") }}</span>
+                  <span v-if="scope.row.customer.type == 1" class="info4 ml4">{{ $("ui.customerCustomizeTableWeChat") }}</span>
                   <span v-if="scope.row.customer.type == 2" class="info2 ml4"
                     >@{{ scope.row.customer.corp_name || '--' }}</span
                   >
@@ -162,17 +163,17 @@
               </template>
             </el-table-column> -->
 
-            <el-table-column v-if="types == '2'" :label="$t('ui.customerWeChatMassMassDetailsCustomerActivity')">
+            <el-table-column v-if="types == '2'" :label="$('ui.customerWeChatMassMassDetailsCustomerActivity')">
               <template slot-scope="scope">
                 <span v-if="scope.row.is_like || scope.row.is_comment">
-                  {{ scope.row.is_like ? $t('ui.customerWeChatMassMassDetailsLike') : '' }} {{ scope.row.is_comment ? $t('ui.developModuleCheckDrawerComments') : '' }}
+                  {{ scope.row.is_like ? $('ui.customerWeChatMassMassDetailsLike') : '' }} {{ scope.row.is_comment ? $('ui.developModuleCheckDrawerComments') : '' }}
                 </span>
                 <span v-else>--</span>
               </template>
             </el-table-column>
 
-            <el-table-column prop="admin.name" :label="$t('ui.customerWeChatMassMassDetailsSentBy')"> </el-table-column>
-            <el-table-column prop="send_time" :label="$t('ui.customerWeChatMassMassDetailsSentTime')" v-if="types == 0">
+            <el-table-column prop="admin.name" :label="$('ui.customerWeChatMassMassDetailsSentBy')"> </el-table-column>
+            <el-table-column prop="send_time" :label="$('ui.customerWeChatMassMassDetailsSentTime')" v-if="types == 0">
               <template slot-scope="scope">{{ scope.row.send_time || '--' }}</template>
             </el-table-column>
           </el-table>
@@ -194,7 +195,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getWorkMassEdit, getWorkMassResult } from '@/api/weCom'
 import { getFileType, getFileExtension } from '@/libs/public'
 import { DRAWER_SIZE } from '@/constants/popupSize'
@@ -220,8 +220,8 @@ export default {
       },
       total: 0,
       tabData: [
-        { value: '1', label: i18n.t('ui.customerWeChatMassGroupDetailsBasicInformation') },
-        { value: '2', label: i18n.t('ui.customerWeChatMassMassDetailsDeliveryStatus') }
+        { value: '1', label: $('ui.customerWeChatMassGroupDetailsBasicInformation') },
+        { value: '2', label: $('ui.customerWeChatMassMassDetailsDeliveryStatus') }
       ]
     }
   },

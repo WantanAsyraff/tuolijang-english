@@ -5,57 +5,56 @@
     <div class="container-action" v-if="designer.selectedId === widget.id && !widget.internal">
       <i
         class="el-icon-back"
-        :title="i18nt('designer.hint.selectParentWidget')"
+        :title="$('designer.hint.selectParentWidget')"
         @click.stop="selectParentWidget(widget)"
       ></i>
       <i
         class="el-icon-top"
         v-if="!!parentList && parentList.length > 1"
-        :title="i18nt('designer.hint.moveUpWidget')"
+        :title="$('designer.hint.moveUpWidget')"
         @click.stop="moveUpWidget()"
       ></i>
       <i
         class="el-icon-bottom"
         v-if="!!parentList && parentList.length > 1"
-        :title="i18nt('designer.hint.moveDownWidget')"
+        :title="$('designer.hint.moveDownWidget')"
         @click.stop="moveDownWidget()"
       ></i>
       <i
         v-if="widget.type === 'table'"
         class="iconfont icon-insertrow"
-        :title="i18nt('designer.hint.insertRow')"
+        :title="$('designer.hint.insertRow')"
         @click.stop="appendTableRow(widget)"
       ></i>
       <i
         v-if="widget.type === 'table'"
         class="iconfont icon-insertcolumn"
-        :title="i18nt('designer.hint.insertColumn')"
+        :title="$('designer.hint.insertColumn')"
         @click.stop="appendTableCol(widget)"
       ></i>
       <i
         class="el-icon-copy-document"
         v-if="widget.type === 'grid' || widget.type === 'table'"
-        :title="i18nt('designer.hint.cloneWidget')"
+        :title="$('designer.hint.cloneWidget')"
         @click.stop="cloneContainer(widget)"
       ></i>
-      <i class="el-icon-delete" :title="i18nt('designer.hint.remove')" @click.stop="removeWidget(widget)"></i>
+      <i class="el-icon-delete" :title="$('designer.hint.remove')" @click.stop="removeWidget(widget)"></i>
     </div>
 
     <div class="drag-handler" v-if="designer.selectedId === widget.id && !widget.internal">
-      <i class="el-icon-rank" :title="i18nt('designer.hint.dragHandler')"></i>
-      <i>{{ i18n2t(`designer.widgetLabel.${widget.type}`, `extension.widgetLabel.${widget.type}`) }}</i>
+      <i class="el-icon-rank" :title="$('designer.hint.dragHandler')"></i>
+      <i>{{ $(`extension.widgetLabel.${widget.type}`) }}</i>
       <i v-if="widget.options.hidden === true" class="iconfont icon-hide"></i>
     </div>
   </div>
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
 import containerMixin from '@/components/form-designer/form-widget/container-widget/containerMixin'
 
 export default {
   name: 'container-wrapper',
-  mixins: [i18n, containerMixin],
+  mixins: [containerMixin],
   props: {
     widget: Object,
     parentWidget: Object,
@@ -114,4 +113,3 @@ export default {
   }
 }
 </style>
-@/utils/i18ns

@@ -11,40 +11,40 @@
     >
       <div class="content">
         <el-form ref="form" :model="rules" :rules="rule" label-width="100px">
-          <el-form-item prop="content" :label="$t('calendar.todocontent') + ':'">
+          <el-form-item prop="content" :label="$('calendar.todocontent') + ':'">
             <el-input
               v-model="rules.content"
               size="small"
               class="input-item"
               :maxlength="50"
-              :placeholder="$t('calendar.placeholder09')"
+              :placeholder="$('calendar.placeholder09')"
             />
           </el-form-item>
-          <el-form-item :label="$t('calendar.remarks') + ':'">
+          <el-form-item :label="$('calendar.remarks') + ':'">
             <el-input
               v-model="rules.marks"
               type="textarea"
               :rows="2"
               :maxlength="200"
               class="textarea-item"
-              :placeholder="$t('finance.pleaseremark')"
+              :placeholder="$('finance.pleaseremark')"
             />
           </el-form-item>
-          <el-form-item prop="time" :label="$t('customer.reminderdata') + ':'">
+          <el-form-item prop="time" :label="$('customer.reminderdata') + ':'">
             <el-date-picker
               v-model="rules.time"
               size="small"
               type="datetime"
               prefix-icon="el-icon-date"
               :picker-options="pickerOptions"
-              :placeholder="$t('calendar.placeholder11')"
+              :placeholder="$('calendar.placeholder11')"
             />
           </el-form-item>
-          <el-form-item :label="$t('calendar.repeatreminder') + ':'">
+          <el-form-item :label="$('calendar.repeatreminder') + ':'">
             <el-select
               v-model="rules.repeat"
               size="small"
-              :placeholder="$t('calendar.placeholder10')"
+              :placeholder="$('calendar.placeholder10')"
               @change="handleRepeat"
             >
               <el-option
@@ -59,9 +59,9 @@
         </el-form>
       </div>
       <div class="button from-foot-btn fix btn-shadow">
-        <el-button size="small" @click="drawer = false">{{ $t('public.cancel') }}</el-button>
+        <el-button size="small" @click="drawer = false">{{ $('public.cancel') }}</el-button>
         <el-button size="small" type="primary" :loading="loading" @click="handleConfirm('ruleForm')">
-          {{ $t('public.ok') }}
+          {{ $('public.ok') }}
         </el-button>
       </div>
     </el-drawer>
@@ -97,16 +97,16 @@ export default {
         repeat: -1
       },
       rule: {
-        content: [{ required: true, message: this.$t('calendar.placeholder12'), trigger: 'blur' }],
-        time: [{ required: true, message: this.$t('calendar.placeholder13'), trigger: 'change' }]
+        content: [{ required: true, message: this.$('calendar.placeholder12'), trigger: 'blur' }],
+        time: [{ required: true, message: this.$('calendar.placeholder13'), trigger: 'change' }]
       },
       options: [
-        { value: -1, label: this.$t('calendar.norepetition') },
-        { value: 0, label: this.$t('calendar.repeatbyday') },
-        { value: 1, label: this.$t('calendar.repeatweekly') },
-        { value: 2, label: this.$t('calendar.repeatmonthly') },
-        { value: 3, label: this.$t('calendar.repeatyear') },
-        { value: 4, label: this.$t('calendar.custom') }
+        { value: -1, label: this.$('calendar.norepetition') },
+        { value: 0, label: this.$('calendar.repeatbyday') },
+        { value: 1, label: this.$('calendar.repeatweekly') },
+        { value: 2, label: this.$('calendar.repeatmonthly') },
+        { value: 3, label: this.$('calendar.repeatyear') },
+        { value: 4, label: this.$('calendar.custom') }
       ],
       repeatData: {},
       repeatDialogData: {},
@@ -143,12 +143,12 @@ export default {
   methods: {
     setOptions() {
       this.options = [
-        { value: -1, label: this.$t('calendar.norepetition') },
-        { value: 0, label: this.$t('calendar.repeatbyday') },
-        { value: 1, label: this.$t('calendar.repeatweekly') },
-        { value: 2, label: this.$t('calendar.repeatmonthly') },
-        { value: 3, label: this.$t('calendar.repeatyear') },
-        { value: 4, label: this.$t('calendar.custom') }
+        { value: -1, label: this.$('calendar.norepetition') },
+        { value: 0, label: this.$('calendar.repeatbyday') },
+        { value: 1, label: this.$('calendar.repeatweekly') },
+        { value: 2, label: this.$('calendar.repeatmonthly') },
+        { value: 3, label: this.$('calendar.repeatyear') },
+        { value: 4, label: this.$('calendar.custom') }
       ]
     },
     handleClose() {
@@ -168,7 +168,7 @@ export default {
     rulesOptionChange(e) {
       if (e === 4) {
         this.repeatData = {
-          title: this.$t('calendar.customrepeat'),
+          title: this.$('calendar.customrepeat'),
           width: this.width
         }
         if (this.formData.edit) {

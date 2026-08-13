@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
@@ -11,14 +12,14 @@
     :size="`55%`"
   >
     <div class="title flex-between" slot="title">
-      <div class="fz15">{{ name || $t('ui.layoutNoticeNoticeListView') }}</div>
+      <div class="fz15">{{ name || $('ui.layoutNoticeNoticeListView') }}</div>
       <div class="title-right">
      
         <el-dropdown v-if="tabIndex == 1">
           <div class="close-box mr10"><span class="el-icon-more"></span></div>
           <el-dropdown-menu style="text-align: left">
          
-            <el-dropdown-item @click.native="deleteRow"> {{ $t("ui.chatIndexDelete") }} </el-dropdown-item>
+            <el-dropdown-item @click.native="deleteRow"> {{ $("ui.chatIndexDelete") }} </el-dropdown-item>
            
           </el-dropdown-menu>
         </el-dropdown>
@@ -28,7 +29,7 @@
 
     <div class="titleTab" style="position: relative">
       <el-tabs v-model="tabIndex" type="border-card" tab-position="top" @tab-click="handleClick">
-        <el-tab-pane :label="$t('ui.developModuleCheckDrawerDetails')" name="1"></el-tab-pane>
+        <el-tab-pane :label="$('ui.developModuleCheckDrawerDetails')" name="1"></el-tab-pane>
         <el-tab-pane
           v-for="item in tabData"
           :key="item.table_name_en"
@@ -56,7 +57,7 @@
         <div class="comment-tab" :class="info.crudInfo.show_log && info.crudInfo.show_comment ? 'border-top' : ''">
           <el-tabs v-model="activeName" @tab-click="handleCommentClick">
             <el-tab-pane
-              :label="`${info.crudInfo.comment_title || $t('ui.developModuleCheckDrawerComments')}(${commentCount})`"
+              :label="`${info.crudInfo.comment_title || $('ui.developModuleCheckDrawerComments')}(${commentCount})`"
               name="1"
               v-if="info.crudInfo.show_comment"
             >
@@ -70,7 +71,7 @@
                 ></oa-comment>
               </div>
             </el-tab-pane>
-            <el-tab-pane :label="`操作日志(${logCount})`" name="2" v-if="info.crudInfo.show_log">
+            <el-tab-pane :label="$('ui.shared.operationLogsCount', { count: logCount })" name="2" v-if="info.crudInfo.show_log">
               <div class="comment-box">
                 <oa-log type="develop" :list="logList" :keyName="name"></oa-log>
               </div>
@@ -83,18 +84,18 @@
       <div class="mt50 table-box" v-if="tabIndex != 1">
         <div class="flex-between mb10">
           <div class="search">
-            <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.developModuleFormBoxItems") }}</div>
+            <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.developModuleFormBoxItems") }}</div>
             <el-input
               v-model="where.keyword_default"
               prefix-icon="el-icon-search"
               size="small"
-              :placeholder="$t('ui.commonFormListPleaseEnterKeyword')"
+              :placeholder="$('ui.commonFormListPleaseEnterKeyword')"
               clearable
               class="input"
               @change="getList"
             ></el-input>
           </div>
-          <el-button size="small" icon="el-icon-plus" type="primary" @click="addData">{{ $t("ui.developModuleCheckDrawerNew") }}</el-button>
+          <el-button size="small" icon="el-icon-plus" type="primary" @click="addData">{{ $("ui.developModuleCheckDrawerNew") }}</el-button>
         </div>
 
         <el-table :data="tableData" style="width: 100%" row-key="id" :key="keyVal" :height="height">
@@ -174,8 +175,8 @@
                   v-model="scope.row[item.field_name_en]"
                   :active-value="1"
                   :inactive-value="0"
-:active-text="$t('ui.customerWeChatMassGroupDetailsEnable')"
-:inactive-text="$t('ui.customerWeChatMassGroupDetailsClose')"
+                  active-text="开启"
+                  inactive-text="关闭"
                 >
                 </el-switch>
               </div>
@@ -238,10 +239,10 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="130">
+          <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" fixed="right" width="130">
             <template slot-scope="scope">
-              <el-button type="text" @click="editTabsRow(scope.row)">{{ $t("ui.formCommonOaLogEdit") }}</el-button>
-              <el-button type="text" @click="deleteTabsRow(scope.row)">{{ $t("ui.chatIndexDelete") }}</el-button>
+              <el-button type="text" @click="editTabsRow(scope.row)">{{ $("ui.formCommonOaLogEdit") }}</el-button>
+              <el-button type="text" @click="deleteTabsRow(scope.row)">{{ $("ui.chatIndexDelete") }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -272,7 +273,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { getColor } from '@/utils/format'
 import VFormRender from '@/components/form-render/index'
 import oaLog from '@/components/form-common/oa-log'
@@ -557,7 +557,7 @@ export default {
       let ids = []
       if (type === 'tab') {
         this.tabSave = 'tab'
-        this.title = i18n.t('legacyScript.configureTabDisplay')
+        this.title = $('legacyScript.configureTabDisplay')
         if (this.tabData && this.tabData.length > 0) {
           selectList = this.tabData
           this.tabData.map((item) => {
@@ -568,7 +568,7 @@ export default {
         }
       } else {
         this.tabSave = 'create'
-        this.title = i18n.t('legacyScript.configureAddButton')
+        this.title = $('legacyScript.configureAddButton')
         if (this.dropdownList && this.dropdownList.length > 0) {
           selectList = this.dropdownList
           this.dropdownList.map((item) => {

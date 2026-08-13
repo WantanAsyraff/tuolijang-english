@@ -1,6 +1,6 @@
 <template>
   <div class="demonstrateContainer">
-    <el-tooltip class="item" effect="dark" :content='$ts("进入演示模式")' placement="top">
+    <el-tooltip class="item" effect="dark" :content='$("legacy.3b081aee43218b20")' placement="top">
       <div class="nav-btn xmind-iconfont iconyanshibofang" @click="enterDemoMode"></div>
     </el-tooltip>
     <div class="exitDemonstrateBtn" @click="exit" ref="exitDemonstrateBtnRef" v-show="isEnterDemonstrate"

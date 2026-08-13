@@ -1,9 +1,10 @@
+import { $ } from '@/lang'
 <template>
 <div class="searchBox">
   <div class="flex-between mt20">
-    <div class="title-16">{{ info.crudInfo ? info.crudInfo.table_name : $t('ui.developModuleFormBoxDesign') }}{{ $t("ui.developModuleFormBoxList") }}</div>
+    <div class="title-16">{{ info.crudInfo ? info.crudInfo.table_name : $('ui.developModuleFormBoxDesign') }}{{ $("ui.developModuleFormBoxList") }}</div>
     <div class="lh-center">
-      <el-button class="h32" icon="el-icon-plus" size="small" type="primary" @click="addData">{{ $t("ui.businessHolidayTypeIndexAdd") }}</el-button>
+      <el-button class="h32" icon="el-icon-plus" size="small" type="primary" @click="addData">{{ $("ui.businessHolidayTypeIndexAdd") }}</el-button>
 
       <div>
         <el-dropdown>
@@ -36,7 +37,7 @@
               @click="typeClick(item, index)"
             >
               <span class="over-text">{{ item.label }}</span>
-              <span class="tips">{{ $t("ui.commonOaFromBoxSystem") }}</span>
+              <span class="tips">{{ $("ui.commonOaFromBoxSystem") }}</span>
             </div>
             <div
               v-for="(item, indexT) in viewList"
@@ -46,17 +47,17 @@
               @click="viewClick(item)"
             >
               <span class="over-text">{{ item.senior_title }}</span>
-              <span class="tips">{{ item.senior_type == 0 ? $t('ui.commonOaFromBoxPersonal') : $t('ui.commonOaFromBoxPublic') }}</span>
+              <span class="tips">{{ item.senior_type == 0 ? $('ui.commonOaFromBoxPersonal') : $('ui.commonOaFromBoxPublic') }}</span>
             </div>
           </div>
-          <div class="view-text" @click="openViewBox"><span class="iconfont iconshituguanli"></span>{{ $t("ui.commonHeaderSearchViewManagement") }}</div>
+          <div class="view-text" @click="openViewBox"><span class="iconfont iconshituguanli"></span>{{ $("ui.commonHeaderSearchViewManagement") }}</div>
           <div slot="reference" class="view-box">
             <span class="over-text1">{{ viewText }}</span>
             <span class="el-icon-arrow-down"></span>
           </div>
         </el-popover>
       </div>
-      <div class="inTotal">{{ $t("ui.developModuleFormBoxTotal") }} {{ total }} {{ $t("ui.developModuleFormBoxItems") }}</div>
+      <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }} {{ total }} {{ $("ui.developModuleFormBoxItems") }}</div>
     </div>
     <!-- 动态筛选条件 -->
     <div class="center flex">
@@ -74,14 +75,14 @@
     <div class="right">
       <el-popover placement="bottom" trigger="click" width="117">
         <div>
-          <div v-if="!['0', '1', '2'].includes(viewIndex)" class="view-item" @click="updateView">{{ $t("ui.developModuleFormBoxUpdateCurrentView") }}</div>
+          <div v-if="!['0', '1', '2'].includes(viewIndex)" class="view-item" @click="updateView">{{ $("ui.developModuleFormBoxUpdateCurrentView") }}</div>
           <div :class="!['0', '1', '2'].includes(viewIndex) ? 'mt14' : ''" class="view-item" @click="addViewFn">
-            {{ $t("ui.developModuleFormBoxSaveAsNewView") }}
+            {{ $("ui.developModuleFormBoxSaveAsNewView") }}
           </div>
         </div>
 
         <div v-show="additional_search.length > 0" slot="reference" class="shitu">
-          {{ $t("ui.developModuleFormBoxSaveView") }}&nbsp;<span class="el-icon-arrow-down"></span>
+          {{ $("ui.developModuleFormBoxSaveView") }}&nbsp;<span class="el-icon-arrow-down"></span>
         </div>
       </el-popover>
 
@@ -94,7 +95,7 @@
         <!-- 高级筛选 -->
         <div class="condition-box">
           <div class="flex-between">
-            <div class="title">{{ $t("ui.developModuleFormBoxFilterConditions") }}</div>
+            <div class="title">{{ $("ui.developModuleFormBoxFilterConditions") }}</div>
             <div class="el-icon-close pointer" @click="$store.state.business.conditionDialog = false"></div>
           </div>
           <condition-dialog
@@ -107,7 +108,7 @@
           ></condition-dialog>
         </div>
         <div slot="reference" class="pointer mr4 text-16 el-dropdown-link" @click="onShow">
-          {{ $t("ui.developModuleTreeFilter") }}&nbsp;<span class="iconfont icona-bianzu8"></span>
+          {{ $("ui.developModuleTreeFilter") }}&nbsp;<span class="iconfont icona-bianzu8"></span>
           <span v-if="additional_search.length > 0" class="yuan">{{
             additional_search ? additional_search.length : 0
           }}</span>
@@ -117,7 +118,7 @@
       <!-- 分组筛选 -->
       <el-popover placement="bottom" width="202" trigger="hover">
         <div>
-          <el-input v-model="groupName" :placeholder="$t('ui.developModuleFormBoxEnterGroupName')" clearable size="small" />
+          <el-input v-model="groupName" :placeholder="$('ui.developModuleFormBoxEnterGroupName')" clearable size="small" />
           <div class="viewSearch-box">
             <div
               class="item"
@@ -130,10 +131,10 @@
               {{ val.field_name }}
             </div>
           </div>
-          <div class="clear-item" @click="clearGroup">{{ $t("ui.formDesignerToolbarPanelIndexClear") }}</div>
+          <div class="clear-item" @click="clearGroup">{{ $("ui.formDesignerToolbarPanelIndexClear") }}</div>
         </div>
         <div slot="reference" class="pointer mr4 text-16 el-dropdown-link">
-          {{ $t("ui.developModuleTreeGroup") }}&nbsp;<span class="iconfont iconfenzu"></span>
+          {{ $("ui.developModuleTreeGroup") }}&nbsp;<span class="iconfont iconfenzu"></span>
         </div>
       </el-popover>
       <!-- <el-dropdown>
@@ -214,7 +215,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import {
   crudModuleSaveApi,
   crudViewSaveApi,
@@ -290,8 +290,8 @@ export default {
       merges: [{ s: { r: 0, c: 0 }, e: { r: 0, c: 10 } }],
       fromData: {
         width: '500px',
-        title: i18n.t('ui.developViewManagementCreateView'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.developViewManagementCreateView'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },
@@ -302,14 +302,14 @@ export default {
       formConfig: [
         {
           type: 'input',
-          label: i18n.t('legacyScript.viewName'),
-          placeholder: i18n.t('legacyScript.pleaseEnterAViewNameWithin10Characters'),
+          label: $('legacyScript.viewName'),
+          placeholder: $('legacyScript.pleaseEnterAViewNameWithin10Characters'),
           key: 'senior_title'
         },
         {
           type: 'radio',
-          label: i18n.t('legacyScript.viewType'),
-          placeholder: i18n.t('legacyScript.pleaseSelectViewType'),
+          label: $('legacyScript.viewType'),
+          placeholder: $('legacyScript.pleaseSelectViewType'),
           key: 'senior_type',
           options: [
             {
@@ -327,15 +327,15 @@ export default {
         senior_title: [
           {
             required: true,
-            message: i18n.t('ui.developViewManagementPleaseEnterViewName'),
+            message: $('ui.developViewManagementPleaseEnterViewName'),
             trigger: 'blur'
           },
-          { min: 0, max: 10, message: i18n.t('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
+          { min: 0, max: 10, message: $('legacyScript.enterUpTo10Characters'), trigger: 'blur' }
         ],
         senior_type: [
           {
             required: true,
-            message: i18n.t('legacyScript.pleaseSelectViewType'),
+            message: $('legacyScript.pleaseSelectViewType'),
             trigger: 'change'
           }
         ]
@@ -356,18 +356,18 @@ export default {
       ],
       dropdownList: [
         {
-          label: i18n.t('toptable.operation'),
+          label: $('toptable.operation'),
           children: [
             {
-              label: i18n.t('ui.developModuleTableStyleBatchShareAndCollaborate'),
+              label: $('ui.developModuleTableStyleBatchShareAndCollaborate'),
               value: 7
             },
             {
-              label: i18n.t('ui.developModuleTableStyleBatchTransfer'),
+              label: $('ui.developModuleTableStyleBatchTransfer'),
               value: 8
             },
             {
-              label: i18n.t('ui.customerSetupDictionaryManagementBatchDelete'),
+              label: $('ui.customerSetupDictionaryManagementBatchDelete'),
               value: 1
             }
           ]
@@ -375,11 +375,11 @@ export default {
         {
           children: [
             {
-              label: i18n.t('ui.developModuleFillInInviteToComplete'),
+              label: $('ui.developModuleFillInInviteToComplete'),
               value: 9
             },
             {
-              label: i18n.t('ui.developModuleFillInInvitationLinkRecords'),
+              label: $('ui.developModuleFillInInvitationLinkRecords'),
               value: 10
             }
           ]
@@ -387,11 +387,11 @@ export default {
         {
           children: [
             {
-              label: i18n.t('ui.developModuleTableStyleImportData'),
+              label: $('ui.developModuleTableStyleImportData'),
               value: 5
             },
             {
-              label: i18n.t('ui.developModuleTableStyleExportData'),
+              label: $('ui.developModuleTableStyleExportData'),
               value: 4
             }
           ]
@@ -399,19 +399,19 @@ export default {
         {
           children: [
             {
-              label: i18n.t('ui.developModuleTableStyleFilterSettings'),
+              label: $('ui.developModuleTableStyleFilterSettings'),
               value: 2
             },
             {
-              label: i18n.t('ui.developModuleTableStyleColumnDisplaySettings'),
+              label: $('ui.developModuleTableStyleColumnDisplaySettings'),
               value: 3
             },
             {
-              label: i18n.t('ui.developModuleTableStyleDetailTabSettings'),
+              label: $('ui.developModuleTableStyleDetailTabSettings'),
               value: 6
             },
             {
-              label: i18n.t('ui.customerDictOptionSettingDictionaryOptionSettings'),
+              label: $('ui.customerDictOptionSettingDictionaryOptionSettings'),
               value: 12
             }
           ]
@@ -626,7 +626,7 @@ export default {
       if (val.value === 2) {
         this.max = 2
         this.min = 0
-        this.title = i18n.t('legacyScript.searchDisplaySettings')
+        this.title = $('legacyScript.searchDisplaySettings')
         this.searchType = 2
         if (this.info.crudInfo.customField) {
           this.info.crudInfo.customField = this.info.crudInfo.customField.filter((item) => {
@@ -638,7 +638,7 @@ export default {
       } else if (val.value === 3) {
         this.max = 0
         this.min = 5
-        this.title = i18n.t('ui.developModuleTableStyleColumnDisplaySettings')
+        this.title = $('ui.developModuleTableStyleColumnDisplaySettings')
         this.searchType = 3
         this.info.crudInfo.customField = this.info.crudInfo.customField.filter((item) => {
           return !['file', 'rich_text'].includes(item.form_value)
@@ -649,7 +649,7 @@ export default {
       } else if (val.value == 4) {
         // 导出
         if (this.total > 1000) {
-          return this.$message.error(i18n.t('legacyScript.exportLimitExceededUpTo1000RecordsAreSupported'))
+          return this.$message.error($('legacyScript.exportLimitExceededUpTo1000RecordsAreSupported'))
         }
         this.where.page = 0
         this.where.limit = 1000
@@ -706,7 +706,7 @@ export default {
         this.max = 0
         let selectList = []
         let ids = []
-        this.title = i18n.t('legacyScript.configureTabDisplay')
+        this.title = $('legacyScript.configureTabDisplay')
         let tabData = this.info.userOptions.options
         if (tabData && tabData.tab && tabData.tab.length > 0) {
           selectList = tabData.tab

@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
-    :title="$t('ui.developModuleShareDataSharingAndCollaboration')"
+    :title="$('ui.developModuleShareDataSharingAndCollaboration')"
     :visible.sync="drawer"
     direction="rtl"
     :show-close="true"
@@ -12,16 +13,16 @@
   >
     <div class="table-box">
       <div class="flex-between mb10">
-        <div class="title-16">{{ $t("ui.developModuleShareCollaboratorList") }}</div>
-        <el-button type="primary" size="small" @click="addShare">{{ $t("ui.developModuleShareAddCollaborator") }}</el-button>
+        <div class="title-16">{{ $("ui.developModuleShareCollaboratorList") }}</div>
+        <el-button type="primary" size="small" @click="addShare">{{ $("ui.developModuleShareAddCollaborator") }}</el-button>
       </div>
       <el-table :data="tableData" style="width: 100%" :height="height">
-        <el-table-column prop="user.name" :label="$t('ui.developModuleShareCollaborators')"> </el-table-column>
-        <el-table-column prop="name" :label="$t('ui.developModuleSharePersonnelPermissions')" width="280">
+        <el-table-column prop="user.name" :label="$('ui.developModuleShareCollaborators')"> </el-table-column>
+        <el-table-column prop="name" :label="$('ui.developModuleSharePersonnelPermissions')" width="280">
           <template slot-scope="scope">
             <el-select
               v-model="scope.row.role_type"
-              :placeholder="$t('ui.developConditionGroupPleaseSelect')"
+              :placeholder="$('ui.developConditionGroupPleaseSelect')"
               size="small"
               @change="roleTypeFn($event, scope.row.id)"
             >
@@ -30,11 +31,11 @@
             </el-select>
           </template>
         </el-table-column>
-        <el-table-column prop="operate.name" :label="$t('ui.administrationMaterialChartIndexOperator')"> </el-table-column>
-        <el-table-column prop="updated_at" :label="$t('ui.developModuleShareLastActionTime')" width="150"> </el-table-column>
-        <el-table-column prop="address" :label="$t('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="120">
+        <el-table-column prop="operate.name" :label="$('ui.administrationMaterialChartIndexOperator')"> </el-table-column>
+        <el-table-column prop="updated_at" :label="$('ui.developModuleShareLastActionTime')" width="150"> </el-table-column>
+        <el-table-column prop="address" :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="120">
           <template slot-scope="scope">
-            <el-button type="text" @click="delModuleShare(scope.row.id)">{{ $t("ui.chatIndexDelete") }}</el-button>
+            <el-button type="text" @click="delModuleShare(scope.row.id)">{{ $("ui.chatIndexDelete") }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -62,7 +63,6 @@
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { moduleShareListApi, delModuleShareApi, putModuleShareApi, moduleShareApi } from '@/api/develop'
 import oaDialog from '@/components/form-common/dialog-form'
 export default {
@@ -78,15 +78,15 @@ export default {
       disabledList: [],
       height: `calc(100vh - 200px)`,
       options: [
-        { label: i18n.t('legacyScript.viewOnly'), value: 0 },
-        { label: i18n.t('legacyScript.viewAndEdit'), value: 1 },
-        { label: i18n.t('legacyScript.viewEditAndDelete'), value: 2 }
+        { label: $('legacyScript.viewOnly'), value: 0 },
+        { label: $('legacyScript.viewAndEdit'), value: 1 },
+        { label: $('legacyScript.viewEditAndDelete'), value: 2 }
       ],
       formConfig: [
         {
           type: 'user_id',
-          label: i18n.t('legacyScript.selectPersonnel'),
-          placeholder: i18n.t('legacyScript.pleaseSelectPersonnel'),
+          label: $('legacyScript.selectPersonnel'),
+          placeholder: $('legacyScript.pleaseSelectPersonnel'),
           key: 'user_ids',
           disabledList: [],
           disabled: true,
@@ -94,13 +94,13 @@ export default {
         },
         {
           type: 'select',
-          label: i18n.t('legacyScript.sharingPermission'),
-          placeholder: i18n.t('legacyScript.pleaseSelectASharingPermission'),
+          label: $('legacyScript.sharingPermission'),
+          placeholder: $('legacyScript.pleaseSelectASharingPermission'),
           key: 'role_type',
           options: [
-            { label: i18n.t('legacyScript.viewOnly'), value: '0' },
-            { label: i18n.t('legacyScript.viewAndEdit'), value: '1' },
-            { label: i18n.t('legacyScript.viewEditAndDelete'), value: '2' }
+            { label: $('legacyScript.viewOnly'), value: '0' },
+            { label: $('legacyScript.viewAndEdit'), value: '1' },
+            { label: $('legacyScript.viewEditAndDelete'), value: '2' }
           ]
         }
       ],
@@ -109,13 +109,13 @@ export default {
       },
       dropdownType: '',
       formRules: {
-        user_ids: [{ required: true, message: i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'), trigger: 'blur' }],
-        role_type: [{ required: true, message: i18n.t('legacyScript.pleaseSelectASharingPermission'), trigger: 'blur' }]
+        user_ids: [{ required: true, message: $('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'), trigger: 'blur' }],
+        role_type: [{ required: true, message: $('legacyScript.pleaseSelectASharingPermission'), trigger: 'blur' }]
       },
       fromData: {
         width: '600px',
-        title: i18n.t('ui.developModuleShareDataSharingAndCollaboration'),
-        btnText: i18n.t('ui.formCommonDialogFormOk'),
+        title: $('ui.developModuleShareDataSharingAndCollaboration'),
+        btnText: '确定',
         labelWidth: '100px',
         type: ''
       },

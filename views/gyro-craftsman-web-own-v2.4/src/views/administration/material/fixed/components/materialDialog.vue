@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 物资维修弹窗 -->
 <template>
 <div>
@@ -14,36 +15,36 @@
           <template v-if="fromData.type !== 7">
             <el-row>
               <el-col :span="12">
-                <el-form-item :label="$t('ui.administrationMaterialFixedMaterialDialogMaterialName')">{{ fromData.data.name }}</el-form-item>
+                <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialName')">{{ fromData.data.name }}</el-form-item>
               </el-col>
               <el-col :span="12" v-if="fromData.type !== 4">
-                <el-form-item :label="$t('ui.administrationMaterialFixedMaterialDialogMaterialNumber')">{{ fromData.data.number }}</el-form-item>
+                <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialNumber')">{{ fromData.data.number }}</el-form-item>
               </el-col>
             </el-row>
             <el-row>
               <el-col :span="12">
-                <el-form-item :label="$t('ui.administrationMaterialFixedMaterialDialogMaterialCategory')">{{ fromData.data.cate.cate_name }}</el-form-item>
+                <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialCategory')">{{ fromData.data.cate.cate_name }}</el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item :label="$t('ui.administrationMaterialFixedMaterialDialogMaterialModel')">{{ fromData.data.units || "--" }}</el-form-item>
+                <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialModel')">{{ fromData.data.units || "--" }}</el-form-item>
               </el-col>
             </el-row>
             <el-row v-if="fromData.type == 6">
               <el-col :span="12">
-                <el-form-item :label="$t('ui.administrationMaterialFixedMaterialDialogReturnRecipient')">{{
+                <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogReturnRecipient')">{{
                   fromData.data.receive_frame ? fromData.data.receive_frame.name : fromData.data.receive_user.name
                 }}</el-form-item>
               </el-col>
             </el-row>
           </template>
           <template v-if="fromData.type === 5 || fromData.type == 7">
-            <el-form-item :label="$t('ui.administrationMaterialFixedReceiveSelectionMethod')" prop="other" class="m0">
+            <el-form-item :label="$('ui.administrationMaterialFixedReceiveSelectionMethod')" prop="other" class="m0">
               <el-radio-group size="small" v-model="type" class="flex">
-                <el-radio label="0">{{ $t("ui.administrationMaterialFixedReceiveByPersonnel") }}</el-radio>
-                <el-radio label="1">{{ $t("ui.administrationMaterialFixedReceiveByDepartment") }}</el-radio>
+                <el-radio label="0">{{ $("ui.administrationMaterialFixedReceiveByPersonnel") }}</el-radio>
+                <el-radio label="1">{{ $("ui.administrationMaterialFixedReceiveByDepartment") }}</el-radio>
               </el-radio-group>
             </el-form-item>
-            <el-form-item :label="$t('ui.administrationMaterialFixedReceiveRecipient')" prop="price">
+            <el-form-item :label="$('ui.administrationMaterialFixedReceiveRecipient')" prop="price">
               <select-member
                 v-if="type == 0"
                 :only-one="true"
@@ -63,12 +64,12 @@
 
             <div class="table-box mt20" v-if="fromData.type == 7">
               <el-table :data="[fromData.data]" style="width: 100%">
-                <el-table-column prop="name" :label="$t('ui.administrationMaterialChartIndexMaterialName')"> </el-table-column>
-                <el-table-column prop="units" :label="$t('ui.administrationMaterialChartIndexSpecificationModel')"> </el-table-column>
-                <el-table-column prop="cate.cate_name" :label="$t('ui.administrationMaterialChartIndexMaterialCategory')"> </el-table-column>
-                <el-table-column prop="specs" :label="$t('ui.administrationMaterialFixedConsumeUnitOfMeasure')"> </el-table-column>
-                <el-table-column prop="stock" :label="$t('ui.administrationMaterialFixedConsumeInventoryQuantity')"> </el-table-column>
-                <el-table-column :label="$t('ui.administrationMaterialFixedConsumeIssueQuantity')" width="150">
+                <el-table-column prop="name" :label="$('ui.administrationMaterialChartIndexMaterialName')"> </el-table-column>
+                <el-table-column prop="units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')"> </el-table-column>
+                <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')"> </el-table-column>
+                <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')"> </el-table-column>
+                <el-table-column prop="stock" :label="$('ui.administrationMaterialFixedConsumeInventoryQuantity')"> </el-table-column>
+                <el-table-column :label="$('ui.administrationMaterialFixedConsumeIssueQuantity')" width="150">
                   <template slot-scope="scope">
                     <el-input-number
                       v-model="num"
@@ -85,14 +86,14 @@
           </template>
 
           <template v-if="fromData.type === 3">
-            <el-form-item style="margin-bottom: 10px" :label="$t('ui.administrationMaterialFixedMaterialDialogRepairReason')">{{ markDefault.mark }}</el-form-item>
-            <el-form-item :label="$t('ui.administrationMaterialFixedMaterialDialogRepairAction')" prop="other">
+            <el-form-item style="margin-bottom: 10px" :label="$('ui.administrationMaterialFixedMaterialDialogRepairReason')">{{ markDefault.mark }}</el-form-item>
+            <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogRepairAction')" prop="other">
               <el-radio-group v-model="form.other">
-                <el-radio :label="0">{{ $t("ui.administrationMaterialFixedMaterialDialogStockIn") }} <span>{{ $t("ui.administrationMaterialFixedMaterialDialogAfterStockInTheMaterialReturnsToInventoryAnd") }}</span></el-radio>
-                <el-radio :label="4">{{ $t("ui.administrationMaterialFixedFixedDisposal") }} <span>{{ $t("ui.administrationMaterialFixedMaterialDialogAfterDisposalTheMaterialCannotBeIssuedAgain") }}</span></el-radio>
+                <el-radio :label="0">{{ $("ui.administrationMaterialFixedMaterialDialogStockIn") }} <span>{{ $("ui.administrationMaterialFixedMaterialDialogAfterStockInTheMaterialReturnsToInventoryAnd") }}</span></el-radio>
+                <el-radio :label="4">{{ $("ui.administrationMaterialFixedFixedDisposal") }} <span>{{ $("ui.administrationMaterialFixedMaterialDialogAfterDisposalTheMaterialCannotBeIssuedAgain") }}</span></el-radio>
               </el-radio-group>
             </el-form-item>
-            <el-form-item :label="$t('ui.administrationMaterialFixedMaterialDialogCostYuan')" prop="price">
+            <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogCostYuan')" prop="price">
               <el-input-number
                 v-model="form.price"
                 :precision="2"
@@ -103,24 +104,24 @@
             </el-form-item>
           </template>
           <template v-if="fromData.type === 4">
-            <el-form-item class="mt14" :label="$t('ui.administrationMaterialFixedMaterialDialogStockInQuantity')" prop="number">
+            <el-form-item class="mt14" :label="$('ui.administrationMaterialFixedMaterialDialogStockInQuantity')" prop="number">
               <el-input-number
                 v-model="form.number"
                 :controls="false"
                 :min="0"
                 :precision="0"
                 size="small"
-                :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseEnterStockInQuantity')"
+                :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseEnterStockInQuantity')"
               ></el-input-number>
             </el-form-item>
-            <el-form-item :label="$t('ui.administrationMaterialFixedMaterialDialogUnitPriceYuan')" prop="prices">
+            <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogUnitPriceYuan')" prop="prices">
               <el-input-number
                 v-model="form.prices"
                 :controls="false"
                 :min="0"
                 :precision="2"
                 size="small"
-                :placeholder="$t('ui.administrationMaterialFixedAddMaterialPleaseEnterUnitPrice')"
+                :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseEnterUnitPrice')"
               ></el-input-number>
             </el-form-item>
           </template>
@@ -140,14 +141,13 @@
       </div>
     </div>
     <div slot="footer" class="dialog-footer">
-      <el-button size="small" @click="handleClose">{{ $t('public.cancel') }}</el-button>
-      <el-button size="small" :loading="loading" type="primary" @click="handleAdd">{{ $t('public.ok') }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $('public.cancel') }}</el-button>
+      <el-button size="small" :loading="loading" type="primary" @click="handleAdd">{{ $('public.ok') }}</el-button>
     </div>
   </el-dialog>
 </div>
 </template>
 <script>
-import i18n from '@/lang'
 import { storageRecordRepairApi, storageRecordSaveApi } from '@/api/administration'
 
 export default {
@@ -195,9 +195,9 @@ export default {
       },
       rules: {
         mark: [{ required: this.fromData.type < 3, validator: checkMark, trigger: 'blur' }],
-        other: [{ required: true, message: i18n.t('legacyScript.pleaseSelectDisposeType'), trigger: 'change' }],
-        price: [{ required: true, message: i18n.t('legacyScript.pleaseEnterRepairAmount'), trigger: 'blur' }],
-        number: [{ required: true, message: i18n.t('ui.administrationMaterialFixedAddMaterialPleaseEnterStockInQuantity'), trigger: 'blur' }],
+        other: [{ required: true, message: $('legacyScript.pleaseSelectDisposeType'), trigger: 'change' }],
+        price: [{ required: true, message: $('legacyScript.pleaseEnterRepairAmount'), trigger: 'blur' }],
+        number: [{ required: true, message: $('ui.administrationMaterialFixedAddMaterialPleaseEnterStockInQuantity'), trigger: 'blur' }],
         prices: [{ required: true, validator: checkPrices, trigger: 'blur' }]
       },
       markDefault: {},
@@ -244,9 +244,9 @@ export default {
     handleAdd() {
       let types = [5, 7]
       if (this.type == 0 && this.userList.length <= 0 && types.includes(this.fromData.type)) {
-        return this.$message.error(i18n.t('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'))
+        return this.$message.error($('ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'))
       } else if (this.type == 1 && this.frames.length <= 0 && types.includes(this.fromData.type)) {
-        return this.$message.error(i18n.t('legacyScript.pleaseSelectDepartment'))
+        return this.$message.error($('legacyScript.pleaseSelectDepartment'))
       }
       this.$refs.form.validate((valid) => {
         if (valid) {

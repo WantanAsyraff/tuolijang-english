@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="i18nt('designer.setting.precision')">
+  <el-form-item :label="$('designer.setting.precision')">
     <el-input-number
       v-model="optionModel.precision"
       :min="0"
@@ -11,11 +11,8 @@
 </template>
 
 <script>
-import i18n from '@/utils/i18n'
-
 export default {
   name: 'precision-editor',
-  mixins: [i18n],
   props: {
     designer: Object,
     selectedWidget: Object,
@@ -25,4 +22,3 @@ export default {
 </script>
 
 <style scoped></style>
-@/utils/i18ns

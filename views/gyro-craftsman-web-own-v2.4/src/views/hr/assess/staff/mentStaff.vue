@@ -19,54 +19,54 @@
               default-expand-all
               :tree-props="{ children: 'children' }"
             >
-              <el-table-column prop="test.name" :label="$t('access.examinee')" min-width="100" />
-              <el-table-column prop="frame.name" :label="$t('user.work.department')" min-width="120" />
-              <el-table-column prop="name" :label="$t('user.work.assessmentname')" min-width="100" />
-              <el-table-column prop="period" :label="$t('toptable.assessmentcycle')" min-width="100">
+              <el-table-column prop="test.name" :label="$('access.examinee')" min-width="100" />
+              <el-table-column prop="frame.name" :label="$('user.work.department')" min-width="120" />
+              <el-table-column prop="name" :label="$('user.work.assessmentname')" min-width="100" />
+              <el-table-column prop="period" :label="$('toptable.assessmentcycle')" min-width="100">
                 <template slot-scope="scope">
                   <span>{{ $refs.formBox.getPeriodText(scope.row.period) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="score" :label="$t('user.work.qssessmentscore')" min-width="80" />
-              <el-table-column prop="level" :label="$t('access.assessmentgrade')" min-width="80" />
-              <el-table-column prop="check.name" :label="$t('user.work.assessor')" min-width="80" />
-              <el-table-column prop="status" :label="$t('hr.assessmentstatus')" min-width="80">
+              <el-table-column prop="score" :label="$('user.work.qssessmentscore')" min-width="80" />
+              <el-table-column prop="level" :label="$('access.assessmentgrade')" min-width="80" />
+              <el-table-column prop="check.name" :label="$('user.work.assessor')" min-width="80" />
+              <el-table-column prop="status" :label="$('hr.assessmentstatus')" min-width="80">
                 <template slot-scope="scope">
                   <span>{{ $refs.formBox.getStatusText(scope.row.status) }}</span>
                 </template>
               </el-table-column>
-              <el-table-column prop="id" :label="$t('access.assessmenttime')" min-width="150">
+              <el-table-column prop="id" :label="$('access.assessmenttime')" min-width="150">
                 <template slot-scope="scope">
                   <p class="p-time">
-                    <span>{{ $t('access.start') }}：</span>
+                    <span>{{ $('access.start') }}：</span>
                     {{ $moment(scope.row.start_time).format('yyyy-MM-DD') }}
                   </p>
                   <p class="p-time">
-                    <span>{{ $t('access.end') }}：</span>
+                    <span>{{ $('access.end') }}：</span>
                     {{ $moment(scope.row.end_time).format('yyyy-MM-DD') }}
                   </p>
                 </template>
               </el-table-column>
-              <el-table-column prop="address" :label="$t('public.operation')" fixed="right" width="180">
+              <el-table-column prop="address" :label="$('public.operation')" fixed="right" width="180">
                 <template slot-scope="scope">
                   <el-button
                     type="text"
                     @click="changeStaff(scope.row)"
                     v-hasPermi="['hr:assessStaff:assessmentStaff:edit']"
-                    >{{ $t("ui.layoutNoticeNoticeListView") }}</el-button
+                    >{{ $("ui.layoutNoticeNoticeListView") }}</el-button
                   >
                   <el-button
                   v-if="scope.row.status == 1"
                     type="text"
                     @click="skipSelfAssessment(scope.row)"
-                    >{{ $t("ui.hrAssessStaffMentStaffSkipSelfAssessment") }}</el-button
+                    >{{ $("ui.hrAssessStaffMentStaffSkipSelfAssessment") }}</el-button
                   >
 
                   <el-button
                     type="text"
                     @click="handleDelete(scope.row)"
                     v-hasPermi="['hr:assessStaff:assessmentStaff:delete']"
-                    >{{ $t('public.delete') }}</el-button
+                    >{{ $('public.delete') }}</el-button
                   >
 
                   <el-button
@@ -74,7 +74,7 @@
                     type="text"
                     @click="handleScore(scope.row)"
                     v-hasPermi="['hr:assessStaff:assessmentStaff:record']"
-                    >{{ $t("ui.hrAssessStaffMentStaffScoringRecords") }}</el-button
+                    >{{ $("ui.hrAssessStaffMentStaffScoringRecords") }}</el-button
                   >
                 </template>
               </el-table-column>
@@ -219,24 +219,24 @@ export default {
       obj.page = 1
       obj.limit = 0
       this.saveName =
-        this.$t('access.performanceexport') + '_' + this.$moment(new Date()).format('MM-DD-HH-mm-ss') + '.xlsx'
+        this.$('access.performanceexport') + '_' + this.$moment(new Date()).format('MM-DD-HH-mm-ss') + '.xlsx'
       userAssessList(obj).then((res) => {
         const data = res.data.list
         if (data.length <= 0) {
-          this.$message.error(this.$t('access.placeholder24'))
+          this.$message.error(this.$('access.placeholder24'))
         } else {
           const aoaData = [
             [
-              this.$t('user.work.name'),
-              this.$t('user.work.department'),
-              this.$t('user.work.assessmentname'),
-              this.$t('toptable.assessmentcycle'),
-              this.$t('user.work.qssessmentscore'),
-              this.$t('access.assessmentgrade'),
-              this.$t('user.work.assessor'),
-              this.$t('hr.assessmentstatus'),
-              this.$t('access.starttime'),
-              this.$t('access.endtime')
+              this.$('user.work.name'),
+              this.$('user.work.department'),
+              this.$('user.work.assessmentname'),
+              this.$('toptable.assessmentcycle'),
+              this.$('user.work.qssessmentscore'),
+              this.$('access.assessmentgrade'),
+              this.$('user.work.assessor'),
+              this.$('hr.assessmentstatus'),
+              this.$('access.starttime'),
+              this.$('access.endtime')
             ]
           ]
           data.forEach((value) => {
@@ -271,7 +271,7 @@ export default {
     },
     handleScore(row) {
       this.config = {
-        title: this.$t('access.scoringrecord'),
+        title: this.$('access.scoringrecord'),
         width: '720px',
         id: row.id
       }

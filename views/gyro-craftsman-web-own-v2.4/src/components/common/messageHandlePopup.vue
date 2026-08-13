@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <!-- 
   @FileDescription: 消息处理弹窗组件
   功能：根据消息类型展示不同的弹窗组件
@@ -28,7 +29,6 @@
 </template>
 
 <script>
-import i18n from '@/lang'
 import { toMessageDetailUrl } from '@/libs/public'
 import {
   chargeDetailsApi
@@ -229,7 +229,7 @@ export default {
     getClientBillDetail(id) {
       clientBillDetailApi(id).then((res) => {
         this.applyData = {
-          title: this.$t('customer.viewcustomer'),
+          title: this.$('customer.viewcustomer'),
           width: '500px',
           data: res.data,
           isClient: false,
@@ -246,7 +246,7 @@ export default {
     getClientInvoiceDetail(id) {
       clientInvoiceDetailApi(id).then((res) => {
         this.invoiceData = {
-          title: i18n.t('legacyScript.viewInvoice'),
+          title: $('legacyScript.viewInvoice'),
           width: '1000px',
           data: res.data
         }
@@ -275,7 +275,7 @@ export default {
           item.eid = res.data.contract_customer.id
 
           this.contractData = {
-            title: i18n.t('legacyScript.viewOrder'),
+            title: $('legacyScript.viewOrder'),
             width: '1000px',
             data: row || item,
             isClient: false,
@@ -318,7 +318,7 @@ export default {
         data.cid = 0
 
         this.customerData = {
-          title: this.$t('customer.editcustomer'),
+          title: this.$('customer.editcustomer'),
           width: '1100px',
           data: data,
           isClient: true,

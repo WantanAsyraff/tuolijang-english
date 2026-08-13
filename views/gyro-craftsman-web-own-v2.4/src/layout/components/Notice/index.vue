@@ -10,12 +10,12 @@
           :value="$store.state.user.messageCount"
           :max="99"
         >
-          <el-tooltip effect="dark" :content='$ts("消息通知")' placement="bottom">
+          <el-tooltip effect="dark" :content='$("systemText.notifications")' placement="bottom">
             <i class="iconfont iconxiaoxi2" />
           </el-tooltip>
         </el-badge>
         <span v-else @click="goMessageCenter">
-          <el-tooltip effect="dark" :content='$ts("消息通知")' placement="bottom">
+          <el-tooltip effect="dark" :content='$("systemText.notifications")' placement="bottom">
             <i class="iconfont iconxiaoxi2" style="margin-top: 2px;" />
           </el-tooltip>
         </span>

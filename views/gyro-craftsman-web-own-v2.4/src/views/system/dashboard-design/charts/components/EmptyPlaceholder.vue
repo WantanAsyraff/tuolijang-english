@@ -1,7 +1,7 @@
 <template>
   <div class="no-widget-hint" :class="{ fixed }">
     <img src="@/assets/images/no-widget-hint.png" alt="" />
-    <div class="trip">{{ $ts("暂无图表,选择左侧图表组件，鼠标点击即可加入") }}</div>
+    <div class="trip">{{ $("legacy.c8f65d41de39ae32") }}</div>
   </div>
 </template>
 

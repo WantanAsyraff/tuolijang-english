@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 <template>
   <div class="breadcrumb-content flex lh-center">
     <div v-if="hasBrand" class="logo-wrapper">
@@ -13,7 +14,6 @@
 <script>
 import { roterPre } from '@/settings'
 import { mapGetters } from 'vuex'
-import { translateSystemText } from '@/utils/i18ns'
 export default {
   name: 'Breadcrumb',
   data() {
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     menuTitle(title) {
-      return translateSystemText(title, this)
+      return this.$(title)
     },
     getBreadcrumb() {
       let newPath = this.$route.fullPath
