@@ -7,7 +7,7 @@ import { $ } from '@/lang'
         <tree :list="list" @getJson="getJson" />
       </el-col>
       <el-col v-bind="gridr" class="boder-left">
-        <div class="title-16">{{ parentName }}-{{ jsonData.name }}</div>
+        <div class="title-16">{{ $(parentName) }}-{{ $(jsonData.name) }}</div>
 
         <!-- 1 -->
         <div class="mt20">
@@ -29,7 +29,9 @@ import { $ } from '@/lang'
                   {{ scope.row.is_must ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}
                 </template>
               </el-table-column>
-              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column :label="$('ui.developForeignDocumentInformation')">
+                <template slot-scope="scope">{{ $(scope.row.message) }}</template>
+              </el-table-column>
             </el-table>
           </div>
         </div>
@@ -44,7 +46,9 @@ import { $ } from '@/lang'
                   {{ scope.row.is_must ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}
                 </template>
               </el-table-column>
-              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column :label="$('ui.developForeignDocumentInformation')">
+                <template slot-scope="scope">{{ $(scope.row.message) }}</template>
+              </el-table-column>
             </el-table>
           </div>
           <div class="mt10 table-box">
@@ -57,7 +61,9 @@ import { $ } from '@/lang'
                   {{ scope.row.is_must ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}
                 </template>
               </el-table-column>
-              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column :label="$('ui.developForeignDocumentInformation')">
+                <template slot-scope="scope">{{ $(scope.row.message) }}</template>
+              </el-table-column>
             </el-table>
           </div>
           <div class="mt10 table-box">
@@ -70,7 +76,9 @@ import { $ } from '@/lang'
                   {{ scope.row.is_must ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}
                 </template>
               </el-table-column>
-              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column :label="$('ui.developForeignDocumentInformation')">
+                <template slot-scope="scope">{{ $(scope.row.message) }}</template>
+              </el-table-column>
             </el-table>
           </div>
         </div>
@@ -86,7 +94,9 @@ import { $ } from '@/lang'
             >
               <el-table-column prop="name" :label="$('ui.developCrudFieldSettingFieldName')"> </el-table-column>
               <el-table-column prop="form_type" :label="$('ui.developForeignDocumentFieldType')"> </el-table-column>
-              <el-table-column prop="message" :label="$('ui.developForeignDocumentInformation')"> </el-table-column>
+              <el-table-column :label="$('ui.developForeignDocumentInformation')">
+                <template slot-scope="scope">{{ $(scope.row.message) }}</template>
+              </el-table-column>
             </el-table>
           </div>
         </div>

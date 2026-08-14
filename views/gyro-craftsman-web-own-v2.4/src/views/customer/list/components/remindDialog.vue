@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户-添加跟进提醒弹窗组件 -->
 <template>
   <el-dialog
@@ -35,6 +34,7 @@ import { $ } from '@/lang'
 <script>
 import { clientFollowEditApi, clientFollowSaveApi } from '@/api/client'
 import { DIALOG_SIZE } from '@/constants/popupSize'
+import { $ } from '@/lang'
 export default {
   name: 'LiaisonDialog',
   props: {
