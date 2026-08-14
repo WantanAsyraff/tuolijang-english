@@ -43,7 +43,7 @@ import { $ } from '@/lang'
                     v-show="!authParents.includes(scope.row.id)"
                     @click="parentsChange(true, scope.row, scope)"
                   ></span>
-                  <span> {{ scope.row.name }}</span>
+                  <span> {{ $(scope.row.name) }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -51,7 +51,7 @@ import { $ } from '@/lang'
               <template slot-scope="scope">
                 <el-checkbox-group v-model="auth">
                   <el-checkbox v-for="(item, index) in scope.row.opitons" :label="item.id" :key="index">{{
-                    item.name
+                    $(item.name)
                   }}</el-checkbox>
                 </el-checkbox-group>
               </template>

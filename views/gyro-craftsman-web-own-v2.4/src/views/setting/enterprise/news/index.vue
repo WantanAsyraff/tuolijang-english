@@ -31,9 +31,15 @@ import { $ } from '@/lang'
         <div class="table-box">
           <el-table ref="table" :data="tableData" :height="tableHeight" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55" />
-            <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip />
-            <el-table-column prop="content" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip />
-            <el-table-column prop="cate_name" :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" show-overflow-tooltip />
+            <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip>
+              <template slot-scope="scope">{{ $(scope.row.title) }}</template>
+            </el-table-column>
+            <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip>
+              <template slot-scope="scope">{{ $(scope.row.content) }}</template>
+            </el-table-column>
+            <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" show-overflow-tooltip>
+              <template slot-scope="scope">{{ $(scope.row.cate_name) }}</template>
+            </el-table-column>
             <el-table-column prop="verify" :label="$('ui.settingEnterpriseNewsIndexSystemNotifications')" min-width="100">
               <template slot-scope="scope">
                 <el-switch

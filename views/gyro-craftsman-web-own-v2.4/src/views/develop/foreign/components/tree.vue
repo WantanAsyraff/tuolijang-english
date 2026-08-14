@@ -26,12 +26,12 @@
             >
               <div slot-scope="{ node, data }" class="custom-tree-node">
                 <div v-if="data.children">
-                  <span class="iconfont iconjiekouwendang-01"></span> {{ data.name }}
+                  <span class="iconfont iconjiekouwendang-01"></span> {{ $(data.name) }}
                   <span v-if="data.crud_id == 0" class="color-doc">{{ $("legacy.5d79ac7d850d2343") }}</span>
                 </div>
                 <div v-else>
                   <span class="mr10" :style="getColor(data.method)">{{ data.method }}</span
-                  >{{ data.name }}
+                  >{{ $(data.name) }}
                 </div>
               </div>
             </el-tree>

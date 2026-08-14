@@ -1,5 +1,469 @@
 {
-  "runtime.0006d696d8e1ec28": {
+  "runtime.openapi.systemExternalApi": {
+    "zh-cn": "系统对外接口",
+    "en": "System external APIs",
+    "runtime": true
+  },
+  "runtime.openapi.customerBasicInformation": {
+    "zh-cn": "客户基本信息",
+    "en": "Customer information",
+    "runtime": true
+  },
+  "runtime.openapi.customerContacts": {
+    "zh-cn": "客户联系人",
+    "en": "Customer contacts",
+    "runtime": true
+  },
+  "runtime.openapi.authorizationAccount": {
+    "zh-cn": "授权账号",
+    "en": "Authorization account",
+    "runtime": true
+  },
+  "runtime.logs.systemMenuList": {
+    "zh-cn": "系统菜单列表",
+    "en": "System menu list",
+    "runtime": true
+  },
+  "runtime.config.loginErrorCount": {
+    "zh-cn": "登录错误次数",
+    "en": "Maximum login attempts",
+    "runtime": true
+  },
+  "runtime.openapi.externalApiAuthorization": {
+    "zh-cn": "对外接口授权",
+    "en": "External API authorization",
+    "runtime": true
+  },
+  "runtime.openapi.authorizationLogin": {
+    "zh-cn": "授权登录",
+    "en": "Authorization login",
+    "runtime": true
+  },
+  "runtime.openapi.editCustomer": {
+    "zh-cn": "修改客户",
+    "en": "Edit customer",
+    "runtime": true
+  },
+  "runtime.openapi.deleteCustomer": {
+    "zh-cn": "删除客户",
+    "en": "Delete customer",
+    "runtime": true
+  },
+  "runtime.openapi.addContract": {
+    "zh-cn": "新增合同",
+    "en": "Add contract",
+    "runtime": true
+  },
+  "runtime.openapi.editContract": {
+    "zh-cn": "修改合同",
+    "en": "Edit contract",
+    "runtime": true
+  },
+  "runtime.openapi.deleteContract": {
+    "zh-cn": "删除合同",
+    "en": "Delete contract",
+    "runtime": true
+  },
+  "runtime.openapi.editContact": {
+    "zh-cn": "修改联系人",
+    "en": "Edit contact",
+    "runtime": true
+  },
+  "runtime.openapi.deleteContact": {
+    "zh-cn": "删除联系人",
+    "en": "Delete contact",
+    "runtime": true
+  },
+  "runtime.openapi.addInvoice": {
+    "zh-cn": "新增发票",
+    "en": "Add invoice",
+    "runtime": true
+  },
+  "runtime.openapi.voidInvoice": {
+    "zh-cn": "发票作废",
+    "en": "Void invoice",
+    "runtime": true
+  },
+  "runtime.openapi.customerAccountRecords": {
+    "zh-cn": "客户账目记录",
+    "en": "Customer account records",
+    "runtime": true
+  },
+  "runtime.openapi.addPaymentCollection": {
+    "zh-cn": "新增账目回款",
+    "en": "Add payment collection",
+    "runtime": true
+  },
+  "runtime.openapi.addRenewalPayment": {
+    "zh-cn": "新增账目续费",
+    "en": "Add renewal payment",
+    "runtime": true
+  },
+  "runtime.openapi.addExpense": {
+    "zh-cn": "新增账目支出",
+    "en": "Add expense",
+    "runtime": true
+  },
+  "runtime.openapi.deleteAccountEntry": {
+    "zh-cn": "删除账目",
+    "en": "Delete account entry",
+    "runtime": true
+  },
+  "runtime.openapi.addPaymentReminder": {
+    "zh-cn": "新增付款提醒",
+    "en": "Add payment reminder",
+    "runtime": true
+  },
+  "runtime.openapi.schedulesAndTodos": {
+    "zh-cn": "日程待办",
+    "en": "Schedules and to-dos",
+    "runtime": true
+  },
+  "runtime.openapi.editSchedule": {
+    "zh-cn": "修改日程",
+    "en": "Edit schedule",
+    "runtime": true
+  },
+  "runtime.openapi.deleteSchedule": {
+    "zh-cn": "删除日程",
+    "en": "Delete schedule",
+    "runtime": true
+  },
+  "runtime.openapi.addOrder": {
+    "zh-cn": "新增订单",
+    "en": "Add order",
+    "runtime": true
+  },
+  "runtime.openapi.editOrder": {
+    "zh-cn": "修改订单",
+    "en": "Edit order",
+    "runtime": true
+  },
+  "runtime.openapi.deleteOrder": {
+    "zh-cn": "删除订单",
+    "en": "Delete order",
+    "runtime": true
+  },
+  "runtime.openapi.authorizationSecretKey": {
+    "zh-cn": "授权秘钥",
+    "en": "Authorization secret key",
+    "runtime": true
+  },
+  "runtime.openapi.authorizationToken": {
+    "zh-cn": "授权凭证",
+    "en": "Authorization token",
+    "runtime": true
+  },
+  "runtime.openapi.tokenType": {
+    "zh-cn": "凭证类型",
+    "en": "Token type",
+    "runtime": true
+  },
+  "runtime.openapi.expirationTime": {
+    "zh-cn": "过期时间",
+    "en": "Expiration time",
+    "runtime": true
+  },
+  "runtime.openapi.autoIncrementId": {
+    "zh-cn": "自增ID",
+    "en": "Auto-increment ID",
+    "runtime": true
+  },
+  "runtime.logs.getAuthorizationInformation": {
+    "zh-cn": "获取授权信息",
+    "en": "Get authorization information",
+    "runtime": true
+  },
+  "runtime.logs.createRoleForm": {
+    "zh-cn": "创建角色表单",
+    "en": "Create role form",
+    "runtime": true
+  },
+  "runtime.logs.editRoleForm": {
+    "zh-cn": "修改角色表单",
+    "en": "Edit role form",
+    "runtime": true
+  },
+  "runtime.logs.getRoleUsers": {
+    "zh-cn": "获取角色用户列表",
+    "en": "Get role users",
+    "runtime": true
+  },
+  "runtime.logs.entityCategoryList": {
+    "zh-cn": "实体分类列表",
+    "en": "Entity category list",
+    "runtime": true
+  },
+  "runtime.logs.organizationTreePersonnel": {
+    "zh-cn": "组织架构tree型人员",
+    "en": "Organization tree personnel",
+    "runtime": true
+  },
+  "runtime.logs.dataTableFields": {
+    "zh-cn": "数据表字段",
+    "en": "Data table fields",
+    "runtime": true
+  },
+  "runtime.logs.dataTableList": {
+    "zh-cn": "数据表列表",
+    "en": "Data table list",
+    "runtime": true
+  },
+  "runtime.logs.getOrganizationList": {
+    "zh-cn": "获取组织结构列表接口",
+    "en": "Get organization structure list",
+    "runtime": true
+  },
+  "runtime.logs.getApiDocumentation": {
+    "zh-cn": "获取接口文档",
+    "en": "Get API documentation",
+    "runtime": true
+  },
+  "runtime.logs.getExternalApiKeyDetails": {
+    "zh-cn": "获取对外接口密钥详情",
+    "en": "Get external API key details",
+    "runtime": true
+  },
+  "runtime.config.systemConfiguration": {
+    "zh-cn": "系统配置",
+    "en": "System configuration",
+    "runtime": true
+  },
+  "runtime.config.storageConfiguration": {
+    "zh-cn": "存储配置",
+    "en": "Storage configuration",
+    "runtime": true
+  },
+  "runtime.config.yihaotongConfiguration": {
+    "zh-cn": "一号通配置",
+    "en": "Yihaotong configuration",
+    "runtime": true
+  },
+  "runtime.config.appNotificationConfiguration": {
+    "zh-cn": "App通知配置",
+    "en": "App notification configuration",
+    "runtime": true
+  },
+  "runtime.config.fileUploadConfiguration": {
+    "zh-cn": "文件上传配置",
+    "en": "File upload configuration",
+    "runtime": true
+  },
+  "runtime.config.aiAssistantIcon": {
+    "zh-cn": "Ai悬浮球图",
+    "en": "AI assistant icon",
+    "runtime": true
+  },
+  "runtime.config.aiAssistantIconDescription": {
+    "zh-cn": "Ai悬浮球图标",
+    "en": "AI assistant icon",
+    "runtime": true
+  },
+  "runtime.config.enableAiAssistant": {
+    "zh-cn": "开启Ai悬浮球",
+    "en": "Enable AI assistant",
+    "runtime": true
+  },
+  "runtime.config.showAiAssistant": {
+    "zh-cn": "是否显示Ai悬浮球",
+    "en": "Whether to show the AI assistant",
+    "runtime": true
+  },
+  "runtime.config.companyMotto": {
+    "zh-cn": "企业文化语",
+    "en": "Company motto",
+    "runtime": true
+  },
+  "runtime.config.globalAttachmentSize": {
+    "zh-cn": "全局附件大小",
+    "en": "Global attachment size",
+    "runtime": true
+  },
+  "runtime.config.megabytesUnit": {
+    "zh-cn": "单位：MB",
+    "en": "Unit: MB",
+    "runtime": true
+  },
+  "runtime.config.passwordLockDuration": {
+    "zh-cn": "密码错误锁定时间",
+    "en": "Password lock duration",
+    "runtime": true
+  },
+  "runtime.config.passwordLength": {
+    "zh-cn": "密码长度",
+    "en": "Password length",
+    "runtime": true
+  },
+  "runtime.config.passwordRequirements": {
+    "zh-cn": "密码类型",
+    "en": "Password requirements",
+    "runtime": true
+  },
+  "runtime.config.uppercaseLetters": {
+    "zh-cn": "大写字母",
+    "en": "Uppercase letters",
+    "runtime": true
+  },
+  "runtime.config.lowercaseLetters": {
+    "zh-cn": "小写字母",
+    "en": "Lowercase letters",
+    "runtime": true
+  },
+  "runtime.config.specialCharacters": {
+    "zh-cn": "特殊符号",
+    "en": "Special characters",
+    "runtime": true
+  },
+  "runtime.config.enableRegistration": {
+    "zh-cn": "开启用户注册",
+    "en": "Enable user registration",
+    "runtime": true
+  },
+  "runtime.config.registrationDescription": {
+    "zh-cn": "开启后用户可通过验证码注册",
+    "en": "Allow users to register with a verification code",
+    "runtime": true
+  },
+  "runtime.config.globalWatermark": {
+    "zh-cn": "全局水印后台开关",
+    "en": "Global watermark",
+    "runtime": true
+  },
+  "runtime.notice.invoiceApplication": {
+    "zh-cn": "开具发票申请",
+    "en": "Invoice issuance request",
+    "runtime": true
+  },
+  "runtime.notice.assessmentEnding": {
+    "zh-cn": "考核结束提醒",
+    "en": "Assessment ending reminder",
+    "runtime": true
+  },
+  "runtime.notice.performanceAppealRequest": {
+    "zh-cn": "绩效申诉请求",
+    "en": "Performance appeal request",
+    "runtime": true
+  },
+  "runtime.notice.performanceAppealResult": {
+    "zh-cn": "绩效申诉结果",
+    "en": "Performance appeal result",
+    "runtime": true
+  },
+  "runtime.notice.startAssessment": {
+    "zh-cn": "开启考核提醒",
+    "en": "Start assessment reminder",
+    "runtime": true
+  },
+  "runtime.notice.selfEvaluation": {
+    "zh-cn": "自我评价提醒",
+    "en": "Self-evaluation reminder",
+    "runtime": true
+  },
+  "runtime.notice.managerEvaluation": {
+    "zh-cn": "上级评价提醒",
+    "en": "Manager evaluation reminder",
+    "runtime": true
+  },
+  "runtime.notice.assessmentObjectivesPublished": {
+    "zh-cn": "考核目标发布",
+    "en": "Assessment objectives published",
+    "runtime": true
+  },
+  "runtime.notice.businessApproval": {
+    "zh-cn": "业务审批提醒",
+    "en": "Business approval reminder",
+    "runtime": true
+  },
+  "runtime.notice.businessWithdrawal": {
+    "zh-cn": "业务撤回提醒",
+    "en": "Business withdrawal reminder",
+    "runtime": true
+  },
+  "runtime.notice.approvalPassed": {
+    "zh-cn": "审批通过提醒",
+    "en": "Approval passed reminder",
+    "runtime": true
+  },
+  "runtime.notice.approvalCc": {
+    "zh-cn": "审批抄送提醒",
+    "en": "Approval CC reminder",
+    "runtime": true
+  },
+  "runtime.notice.financeReview": {
+    "zh-cn": "财务审核",
+    "en": "Finance review",
+    "runtime": true
+  },
+  "runtime.notice.content.assessmentTarget": {
+    "zh-cn": "您还未创建{#负责部门}的{#时间2}考核目标，请您尽快制定考核任务！！！",
+    "en": "You have not created the {#时间2} assessment objectives for {#负责部门}. Please create the assessment task as soon as possible!",
+    "runtime": true
+  },
+  "runtime.notice.content.dailyReport": {
+    "zh-cn": "今天您还未填写日报，再忙也要记得总结沉淀哦！",
+    "en": "You have not submitted today's daily report. Remember to reflect and summarize, even on a busy day!",
+    "runtime": true
+  },
+  "runtime.notice.content.assessmentException": {
+    "zh-cn": "未找到{#被考核人}上{#时间1}考核任务，请核查原因！",
+    "en": "No assessment task was found for {#被考核人} for {#时间1}. Please investigate.",
+    "runtime": true
+  },
+  "runtime.notice.content.invoiceApplication": {
+    "zh-cn": "{#业务员}于{#申请时间}申请{#关联合同}的发票开具，请您及时处理！",
+    "en": "{#业务员} applied to issue an invoice for {#关联合同} on {#申请时间}. Please process it promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.assessmentEnding": {
+    "zh-cn": "请注意{#考核名称}今日结束！",
+    "en": "Please note that {#考核名称} ends today.",
+    "runtime": true
+  },
+  "runtime.notice.content.performanceAppealRequest": {
+    "zh-cn": "{#申诉人}于{#申诉时间}提交了绩效考核申诉，请您及时处理！",
+    "en": "{#申诉人} submitted a performance assessment appeal on {#申诉时间}. Please process it promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.performanceAppealResult": {
+    "zh-cn": "您于{#申诉时间}提交的绩效考核申诉已完成，请注意查看结果！",
+    "en": "The performance assessment appeal you submitted on {#申诉时间} has been completed. Please review the result.",
+    "runtime": true
+  },
+  "runtime.notice.content.startAssessment": {
+    "zh-cn": "您还未开启{#负责部门}{#时间2}考核任务，请您尽快开启考核任务！",
+    "en": "You have not started the {#时间2} assessment task for {#负责部门}. Please start it as soon as possible.",
+    "runtime": true
+  },
+  "runtime.notice.content.selfEvaluation": {
+    "zh-cn": "您还未对{#考核名称}进行自我评价，请您尽快完成自我评价！",
+    "en": "You have not completed the self-evaluation for {#考核名称}. Please complete it as soon as possible.",
+    "runtime": true
+  },
+  "runtime.notice.content.managerEvaluation": {
+    "zh-cn": "您还未完成{#负责部门} {#考核名称}的考核评价，请您尽快处理！",
+    "en": "You have not completed the assessment evaluation for {#负责部门} {#考核名称}. Please process it as soon as possible.",
+    "runtime": true
+  },
+  "runtime.notice.content.objectivesPublished": {
+    "zh-cn": "{#考核名称}目标已发布，请注意查看您的考核目标！",
+    "en": "The objectives for {#考核名称} have been published. Please review your assessment objectives.",
+    "runtime": true
+  },
+  "runtime.notice.content.businessApproval": {
+    "zh-cn": "{#申请人部门}  {#申请人}于{#申请时间}提交{#业务类型}，请您及时审批！",
+    "en": "{#申请人部门} {#申请人} submitted {#业务类型} on {#申请时间}. Please review it promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.businessWithdrawal": {
+    "zh-cn": "因特殊原因，您已审批通过的 {#申请人单位}{#申请人}于{#申请时间}发起的{#业务类型}申请，已撤销！",
+    "en": "For special reasons, the {#业务类型} request initiated by {#申请人单位}{#申请人} on {#申请时间}, which you approved, has been withdrawn.",
+    "runtime": true
+  },
+  "runtime.notice.content.approvalPassed": {
+    "zh-cn": "{#申请人部门}{#申请人}于{#申请时间}提交的{#业务类型}申请，已通过审批！",
+    "en": "The {#业务类型} request submitted by {#申请人部门}{#申请人} on {#申请时间} has been approved.",
+    "runtime": true
+  },  "runtime.0006d696d8e1ec28": {
     "zh-cn": "新增",
     "en": "Add",
     "runtime": true
