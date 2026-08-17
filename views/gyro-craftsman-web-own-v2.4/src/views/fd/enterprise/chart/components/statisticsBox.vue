@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <oaFromBox
@@ -15,6 +14,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { billCateApi } from '@/api/enterprise'
 import oaFromBox from '@/components/common/oaFromBox'
 export default {

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-dialog
@@ -237,6 +236,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 // 集中导入用户相关的日程API
 import {
   scheduleInfoApi,

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="pdf-preview-container">
     <!-- PDF渲染区域 -->
@@ -7,6 +6,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import * as PDFJS from 'pdfjs-dist'
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
 

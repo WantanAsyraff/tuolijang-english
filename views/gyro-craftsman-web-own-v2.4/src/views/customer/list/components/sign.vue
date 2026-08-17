@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="station">
   <div class="btn-box1 mb10">
@@ -109,6 +108,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { getColor } from '@/utils/format'
 import {

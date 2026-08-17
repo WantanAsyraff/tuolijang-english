@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div
   class="contextmenuContainer listBox"
@@ -133,6 +132,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getTextFromHtml, imgToDataUrl } from 'simple-mind-map/src/utils'
 import { transformToMarkdown } from 'simple-mind-map/src/parse/toMarkdown'
 import { transformToTxt } from 'simple-mind-map/src/parse/toTxt'

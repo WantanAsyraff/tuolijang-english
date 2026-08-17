@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 
   @FileDescription: 公共ECharts图表组件
   功能：封装ECharts图表基础功能，支持动态配置、响应式调整和事件交互
@@ -11,6 +10,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import echarts from 'echarts'
 
 const FORMATTER_KEYS = new Set(['formatter', 'labelFormatter', 'tooltipFormatter', 'valueFormatter'])

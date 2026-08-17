@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <el-dialog
     :title="config.title"
@@ -84,6 +83,7 @@ import { $ } from '@/lang'
   </el-dialog>
 </template>
 <script>
+import { $ } from '@/lang'
 import { rankLevelBatchApi, rankLevelEditApi, rankLevelSaveApi } from '@/api/setting'
 
 export default {

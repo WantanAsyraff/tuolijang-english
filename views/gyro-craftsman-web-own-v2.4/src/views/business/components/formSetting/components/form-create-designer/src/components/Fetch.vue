@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="_fc_fetch">
  
@@ -7,6 +6,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import debounce from '@form-create/utils/lib/debounce'
 import is from '@form-create/utils/lib/type'
 

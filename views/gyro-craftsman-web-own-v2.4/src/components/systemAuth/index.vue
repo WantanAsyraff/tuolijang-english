@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 系统权限管理组件 -->
 <template>
   <div style="background: #fff">
@@ -37,6 +36,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { menuNotSaveApi } from '@/api/system'
 
 export default {

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <!-- 假期类型表格 -->
@@ -155,6 +154,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   saveHolidayTypeApi,
   approveHolidayTypeApi,

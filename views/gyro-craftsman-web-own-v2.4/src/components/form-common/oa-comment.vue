@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 公共-全局-评论组件 应用举例：低代码评论功能、任务评论功能 -->
 <template>
 <div>
@@ -121,6 +120,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import imageViewer from '@/components/common/imageViewer'
 

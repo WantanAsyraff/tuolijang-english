@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户跟进记录填写弹窗组件 -->
 <template>
   <div class="followUpRecord">
@@ -59,6 +58,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { saveClientFollowApi, putClientFollowApi } from '@/api/client'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="box-height">
@@ -64,6 +63,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import rightDrawer from '@/components/setting/rightDrawer'
 import oaFromBox from '@/components/common/oaFromBox'
 import formCreate from '@form-create/element-ui'

@@ -1,7 +1,7 @@
 <template>
   <view class="content">
     <view class="cr-position-header">
-      <default-nav-bar :defaultTitle="`一对一引用`" :backgroundColor="data.backgroundColor"
+      <default-nav-bar :defaultTitle="$t('mobile.ui.navigation.oneOnOneReference')" :backgroundColor="data.backgroundColor"
         :color="`#fff`"></default-nav-bar>
     </view>
     <view class="examine-content">

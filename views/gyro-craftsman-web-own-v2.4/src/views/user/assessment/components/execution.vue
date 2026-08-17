@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <!-- 上级评价页面 -->
@@ -421,6 +420,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   userAssessInfo,
   userAssessMark,

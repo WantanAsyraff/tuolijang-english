@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
@@ -225,6 +224,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { systemRoleCreateApi, systemRoleStoreApi, systemRoleUpdateApi } from '@/api/config'
 import settingsPopover from './settingsPopover'
 import { getcrudCateListApi } from '@/api/develop'

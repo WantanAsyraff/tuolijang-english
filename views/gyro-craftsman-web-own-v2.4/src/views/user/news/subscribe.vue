@@ -4,33 +4,41 @@
     <form-box ref="formBox" @confirmData="confirmData" />
     <div class="table-box">
       <div class="inTotal">{{ $("ui.developModuleFormBoxTotal") }}{{ total }} {{ $("ui.commonOaFromBoxItems") }}</div>
-      <el-table ref="table" :data="tableData" :height="tableHeight">
-        <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" />
-        <el-table-column prop="content" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" />
-        <el-table-column prop="cate_name" :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" />
-        <el-table-column prop="verify" :label="$('ui.userNewsSubscribeNotifications')" min-width="100">
-          <template slot-scope="scope">
-            <el-switch
-              v-if="scope.row.is_subscribe === 2"
-              :value="1"
-              active-text="订阅"
-              inactive-text="取消"
-              :disabled="true"
-              :active-value="1"
-              :inactive-value="0"
-            />
-            <el-switch
-              v-else
-              v-model="scope.row.is_subscribe"
-              active-text="订阅"
-              inactive-text="取消"
-              @change="messageSubscribe(scope.row)"
-              :active-value="1"
-              :inactive-value="0"
-            />
-          </template>
-        </el-table-column>
-      </el-table>
+      <div class="table-scroll">
+        <el-table ref="table" class="subscription-table" :data="tableData" :height="tableHeight">
+          <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="220">
+            <template slot-scope="scope">{{ $(scope.row.title) }}</template>
+          </el-table-column>
+          <el-table-column prop="content" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="480">
+            <template slot-scope="scope">{{ formatTemplateContent(scope.row.content) }}</template>
+          </el-table-column>
+          <el-table-column prop="cate_name" :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="180">
+            <template slot-scope="scope">{{ $(scope.row.cate_name) }}</template>
+          </el-table-column>
+          <el-table-column prop="verify" :label="$('ui.userNewsSubscribeNotifications')" min-width="160">
+            <template slot-scope="scope">
+              <el-switch
+                v-if="scope.row.is_subscribe === 2"
+                :value="1"
+                :active-text="$('ui.userNewsSubscribeSubscribe')"
+                :inactive-text="$('ui.userNewsSubscribeCancel')"
+                :disabled="true"
+                :active-value="1"
+                :inactive-value="0"
+              />
+              <el-switch
+                v-else
+                v-model="scope.row.is_subscribe"
+                :active-text="$('ui.userNewsSubscribeSubscribe')"
+                :inactive-text="$('ui.userNewsSubscribeCancel')"
+                @change="messageSubscribe(scope.row)"
+                :active-value="1"
+                :inactive-value="0"
+              />
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
       <el-pagination
         :page-size="where.limit"
         :current-page="where.page"
@@ -46,6 +54,7 @@
 </template>
 <script>
 import { userNoticeSubscribeApi, userNoticeSubscribeShowApi } from '@/api/user'
+import { formatNotificationTemplatePreview } from '@/lang/notification-template-preview'
 export default {
   name: 'subscribe',
   components: {
@@ -72,6 +81,9 @@ export default {
     this.getTableData()
   },
   methods: {
+    formatTemplateContent(content) {
+      return formatNotificationTemplatePreview(this.$(content), this.$language)
+    },
     // 获取列表
     getTableData() {
       userNoticeSubscribeApi(this.where).then((res) => {
@@ -114,7 +126,11 @@ export default {
 .pt0 {
   padding-top: 0px !important;
 }
-.divBox {
-  margin-left: -145px;
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+.subscription-table {
+  min-width: 1040px;
 }
 </style>

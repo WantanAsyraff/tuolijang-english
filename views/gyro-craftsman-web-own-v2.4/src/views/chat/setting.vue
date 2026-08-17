@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card class="normal-page" body-style="padding:0 0 0 0; ">
@@ -57,6 +56,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getApplicationsInfoApi, chatPutApplicationsApi, chatReleasesApplicationsApi } from '@/api/chatAi'
 import applicationForm from './components/applicationForm'
 import modelForm from './components/modelForm'

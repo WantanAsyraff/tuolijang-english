@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="oa-dialog">
   <el-drawer
@@ -68,6 +67,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { extractArrayIds } from '@/libs/public'
 import { getOenapiApi, saveOpenKeyApi, getOpenKeyInfoApi, putOpenKeyApi } from '@/api/develop'
 export default {

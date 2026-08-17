@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="station">
   <el-drawer
@@ -214,6 +213,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { crudTestSendApi, crudAddCurlApi, crudGetCurlEditApi, crudPutCurlApi } from '@/api/develop'
 export default {
   name: '',

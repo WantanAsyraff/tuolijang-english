@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <el-col
     v-if="widget.type === 'grid-col'"
@@ -80,6 +79,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import Draggable from 'vuedraggable'
 import FieldComponents from '@/components/form-designer/form-widget/field-widget/index'
 import refMixinDesign from '@/components/form-designer/refMixinDesign'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="searchBox">
   <div class="flex-between mt20">
@@ -215,6 +214,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   crudModuleSaveApi,
   crudViewSaveApi,

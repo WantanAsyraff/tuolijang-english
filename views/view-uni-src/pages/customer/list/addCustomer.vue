@@ -2,7 +2,7 @@
   <BaseContainer class="base-container">
     <!-- 顶部 -->
     <view class="head-wrap">
-      <NavBar :is-right="true" :defaultTitle="data.eid ? '编辑客户' : ' 添加客户'" />
+      <NavBar :is-right="true" :defaultTitle="data.eid ? $t('mobile.ui.navigation.editCustomer') : $t('mobile.navigation.pages/customer/list/addCustomer')" />
     </view>
     <!-- 表单内容 -->
     <view class="form-card">

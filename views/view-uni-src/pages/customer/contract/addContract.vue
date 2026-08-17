@@ -2,7 +2,7 @@
   <BaseContainer class="base-container">
     <!-- 顶部 -->
     <view class="head-wrap">
-      <NavBar :is-right="true" :defaultTitle="data.cid ? '编辑订单' : ' 添加订单'" />
+      <NavBar :is-right="true" :defaultTitle="data.cid ? $t('mobile.ui.navigation.editOrder') : $t('mobile.navigation.pages/customer/contract/addContract')" />
     </view>
     <!-- 表单内容 -->
     <view class="form-card">

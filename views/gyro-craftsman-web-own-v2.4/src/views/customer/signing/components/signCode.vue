@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
     <oa-dialog ref="oaDialog" :fromData="fromData" :visible.sync="visible" :isFooter="false" @handleClose="closeDialog" >
         <div class="sign-code-container">
@@ -17,6 +16,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
     import QRCode from 'qrcodejs2'
 export default {
     name: 'SignCode',

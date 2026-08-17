@@ -2481,7 +2481,8 @@
   },
   "mobile.ui.financeInvoiceInvoiceExaminePleaseEnterInvalidateReason": {
     "zh-cn": "请填写作废原因",
-    "en": "Please enter Invalidate reason"
+    "en": "Enter a reason for voiding",
+    "runtime": true
   },
   "mobile.ui.financeInvoiceInvoiceExaminePleaseEnterMailingAddress": {
     "zh-cn": "请填写邮寄地址",
@@ -2754,6 +2755,10 @@
   "mobile.ui.moduleFormIndexSelectCategory": {
     "zh-cn": "选择分类",
     "en": "Select Category"
+  },
+  "mobile.ui.moduleFormIndexSelectLabels": {
+    "zh-cn": "选择标签",
+    "en": "Select labels"
   },
   "mobile.ui.moduleListMore": {
     "zh-cn": "更多",
@@ -3061,7 +3066,8 @@
   },
   "mobile.ui.script.1bdea3b3e2c6": {
     "zh-cn": "文件夹层级不能超过两级",
-    "en": "Folder depth cannot exceed two levels"
+    "en": "Folder depth cannot exceed two levels",
+    "runtime": true
   },
   "mobile.ui.script.1f203483dd93": {
     "zh-cn": "请填写资料名称",
@@ -3229,7 +3235,8 @@
   },
   "mobile.ui.script.38de25e52295": {
     "zh-cn": "操作成功",
-    "en": "Operation succeeded"
+    "en": "Operation succeeded",
+    "runtime": true
   },
   "mobile.ui.script.39932f24fe11": {
     "zh-cn": "文件",
@@ -3901,7 +3908,8 @@
   },
   "mobile.ui.script.b23aa9febb04": {
     "zh-cn": "处理成功",
-    "en": "Processed successfully"
+    "en": "Processed successfully",
+    "runtime": true
   },
   "mobile.ui.script.b2de5cc9cda4": {
     "zh-cn": "回款金额不能为空",
@@ -3965,7 +3973,8 @@
   },
   "mobile.ui.script.bea7cc23de89": {
     "zh-cn": "登录信息已失效，请重新登录",
-    "en": "Your sign-in information is no longer valid. Sign in again."
+    "en": "Your sign-in information is no longer valid. Sign in again.",
+    "runtime": true
   },
   "mobile.ui.script.bff535a5f7f6": {
     "zh-cn": "晚到超过多久记为半天缺卡",
@@ -3993,7 +4002,8 @@
   },
   "mobile.ui.script.c228558cf257": {
     "zh-cn": "删除失败",
-    "en": "Delete failed"
+    "en": "Delete failed",
+    "runtime": true
   },
   "mobile.ui.script.c287bde2c030": {
     "zh-cn": "电话号码不合法",
@@ -4185,7 +4195,8 @@
   },
   "mobile.ui.script.f2d51b3b3e02": {
     "zh-cn": "移动成功",
-    "en": "Moved successfully"
+    "en": "Moved successfully",
+    "runtime": true
   },
   "mobile.ui.script.f50b0579624a": {
     "zh-cn": "按月重复",
@@ -4761,7 +4772,8 @@
   },
   "mobile.ui.usersScanCodeIndexScanFailed": {
     "zh-cn": "扫码失败",
-    "en": "Scan failed"
+    "en": "Scan failed",
+    "runtime": true
   },
   "mobile.ui.usersScanCodeIndexScanSuccessful": {
     "zh-cn": "扫码成功",

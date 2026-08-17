@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="product-list mb20">
     <!-- 表格区域 -->
@@ -89,6 +88,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Sortable from 'sortablejs'
 export default {
   name: 'ProductList',

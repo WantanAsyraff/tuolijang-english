@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 
   @FileDescription: 消息处理弹窗组件
   功能：根据消息类型展示不同的弹窗组件
@@ -29,6 +28,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { toMessageDetailUrl } from '@/libs/public'
 import {
   chargeDetailsApi

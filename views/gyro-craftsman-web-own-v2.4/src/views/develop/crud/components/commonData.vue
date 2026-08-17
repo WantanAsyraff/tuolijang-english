@@ -1,5 +1,5 @@
-import { $ } from '@/lang'
 <script>
+import { $ } from '@/lang'
 import xitongImg from '@/assets/images/empty/xitong.png';
 import duanxinImg from '@/assets/images/empty/duanxin.png';
 import qiweiImg from '@/assets/images/empty/qiwei.png';

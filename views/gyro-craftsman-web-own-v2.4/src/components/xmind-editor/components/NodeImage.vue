@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <el-dialog class="nodeImageDialog" :title='$("file.picture")' :visible.sync="dialogVisible" width="400px" top="15vh">
     <div class="node-image-wrapper" v-if="img">
@@ -20,6 +19,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { NODE_ACTIVE, SHOW_NODE_IMAGE } from '../event-constant';
 import compressImg from '@/utils/compressImg';
 

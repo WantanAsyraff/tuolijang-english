@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <el-drawer
@@ -90,6 +89,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { configFrameCreateApi, configFrameUpdataApi, configFrameEditApi, frameUpdataApi } from '@/api/setting'
 import { systemRoleListApi } from '@/api/config'
 export default {

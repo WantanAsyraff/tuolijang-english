@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 行政-新建公告页面 -->
 <template>
 <div class="add-notice">
@@ -110,6 +109,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { noticeEditApi, noticeEditCreateApi, noticeSaveApi } from '@/api/administration'
 export default {
   name: 'AddNotice',

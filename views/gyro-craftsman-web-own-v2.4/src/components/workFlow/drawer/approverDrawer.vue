@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <el-drawer
   :append-to-body="true"
@@ -167,6 +166,7 @@ import { $ } from '@/lang'
 </el-drawer>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   props: {
     directorMaxLevel: {

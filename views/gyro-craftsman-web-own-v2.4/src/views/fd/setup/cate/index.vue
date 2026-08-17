@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 财务-财务科目-收入/支出分类页面 -->
 <template>
   <div class="divBox">
@@ -63,6 +62,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import dialogForm from './components/index'
 import oaFromBox from '@/components/common/oaFromBox'
 import { billCateApi, billCateCreateApi, billCateEditApi, billCateDeleteApi } from '@/api/enterprise'

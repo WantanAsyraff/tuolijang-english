@@ -1,10 +1,10 @@
-import { $ } from '@/lang'
 <template>
   <XmindEditor v-if="xmindJsonData" ref="editor" :xmindData="xmindJsonData" :fileName="file.file_name" :size="xmindSize"
     @save="save" />
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { fileUpload } from "@/api/public";
 import XmindEditor from "@/components/xmind-editor/index.vue";
 import XmindParse from 'simple-mind-map/src/parse/xmind';

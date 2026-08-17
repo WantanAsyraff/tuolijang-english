@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="flex">
   <template v-if="type">
@@ -256,6 +255,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { getDictTreeListApi } from '@/api/form'
 // 表单类型分组配置
 const FORM_TYPE_GROUPS = {

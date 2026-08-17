@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 添加付款记录/付款提醒弹窗页面 以config.type来区分 type=1:回款记录和续费记录/ type=3 回款提醒和续费提醒 -->
 <template>
 <el-dialog
@@ -99,6 +98,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import {
   clientBillEditApi,
   clientBillSaveApi,

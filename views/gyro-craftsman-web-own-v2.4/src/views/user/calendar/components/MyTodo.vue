@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 办公-我的待办 Tab 内容 -->
 <template>
 <div class="my-todo">
@@ -97,6 +96,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script setup>
+import { $ } from '@/lang'
 import { ref, computed, onMounted, getCurrentInstance } from 'vue'
 import { todoOverviewApi, todoListApi } from '@/api/user'
 import CalendarDetails from './calendarDetails.vue'

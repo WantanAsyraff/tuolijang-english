@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <el-popover placement="bottom" trigger="manual" v-model="showPopover" popper-class="time-popover">
@@ -22,6 +21,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   name: '',
   props: {

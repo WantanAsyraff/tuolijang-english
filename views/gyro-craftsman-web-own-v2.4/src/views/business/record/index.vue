@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="normal-page">
@@ -70,6 +69,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { approveApplyApi, approveApplyDeleteApi, approveApplyExportApi, approveApplyEditApi } from '@/api/business'
 import func from '@/utils/preload'
 export default {

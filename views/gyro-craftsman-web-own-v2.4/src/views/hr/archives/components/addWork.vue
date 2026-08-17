@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog :title="title" :visible.sync="dialogFormVisible" width="560px" v-bind="$attrs">
@@ -53,6 +52,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'addWork',
   components: {},

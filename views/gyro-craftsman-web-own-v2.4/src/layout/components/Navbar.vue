@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="navbar-news">
     <div class="navbar">
@@ -65,6 +64,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { mapGetters } from 'vuex'
 import { roterPre } from '@/settings'
 import Cookies from 'js-cookie'

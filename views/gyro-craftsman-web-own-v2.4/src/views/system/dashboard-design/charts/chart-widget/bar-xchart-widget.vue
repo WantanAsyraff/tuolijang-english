@@ -1,9 +1,9 @@
-import { $ } from '@/lang'
 <template>
   <myEcharts :isShowEmpty="isShowEmpty" :option="option" :field="field" :designer="designer" v-loading="loading" />
 </template>
 
 <script>
+import { $ } from '@/lang'
 import myEcharts from '@/components/scEcharts/chart-widget.vue'
 import { queryChartData } from '@/api/chart'
 import { EventBus } from '@/libs/bus'

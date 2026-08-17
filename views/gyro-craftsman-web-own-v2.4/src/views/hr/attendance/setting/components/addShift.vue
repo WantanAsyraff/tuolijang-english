@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <!-- 新建班次页面 -->
@@ -363,6 +362,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { saveAttendanceShiftApi, detailShiftListApi, putShiftListApi } from '@/api/config'
 import { getInervalHour, getInervalTwoHour, getHour } from '@/libs/public'
 export default {

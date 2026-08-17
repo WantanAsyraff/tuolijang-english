@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 订单-关联付款单的申请发票页面 -->
 <template>
 <div>
@@ -80,6 +79,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import paymentTable from './paymentTable'
 
 import { uninvoicedListApi } from '@/api/enterprise'

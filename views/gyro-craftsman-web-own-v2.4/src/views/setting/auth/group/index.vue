@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="normal-page">
@@ -125,6 +124,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { configFrameApi } from '@/api/setting'
 import { loginRegex } from '@/utils/format'
 import { userListApi } from '@/api/user'

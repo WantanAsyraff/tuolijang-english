@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <form-item-wrapper :designer="designer" :field="field" :rules="rules" :design-state="designState"
                      :parent-widget="parentWidget" :parent-list="parentList" :index-of-parent-list="indexOfParentList"
@@ -16,6 +15,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
   import FormItemWrapper from './form-item-wrapper'
   import emitter from '@/utils/emitter'
   import fieldMixin from "@/components/form-designer/form-widget/field-widget/fieldMixin";

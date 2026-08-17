@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户-账目记录页面组件 -->
 <template>
 <div class="station">
@@ -136,6 +135,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { mapGetters } from 'vuex'
 import { clientBillAllListApi, clientBillDeleteApi, getCustomerStatisticsApi } from '@/api/enterprise'

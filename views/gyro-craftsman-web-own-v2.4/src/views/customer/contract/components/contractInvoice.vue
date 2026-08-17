@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户列表/订单管理：查看-发票页面  contractInvoice：来区分订单管理还是客户管理 -->
 <template>
 <div class="station-invoice">
@@ -120,6 +119,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getInvoiceText, getInvoiceClassName } from '@/libs/customer'
 import { approveApplyRevokeApi } from '@/api/business'
 import {

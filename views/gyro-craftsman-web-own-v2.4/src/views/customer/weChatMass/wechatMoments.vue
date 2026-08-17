@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 群发素材页面 -->
 <template>
 <div>
@@ -78,6 +77,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getMassList, delWorkMass, getWorkMassStatus, getWorkMassRemind } from '@/api/weCom'
 import { roterPre } from '@/settings'
 export default {

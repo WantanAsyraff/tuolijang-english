@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 项目-我的项目-项目动态页面 -->
 <template>
 <div>
@@ -141,6 +140,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   getDynamicApi,
   getDynamicTaskApi,

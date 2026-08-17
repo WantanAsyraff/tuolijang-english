@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="box">
   <div class="box-height">
@@ -179,6 +178,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { storageListApi, storageRecordApi, storageRecordCensusApi } from '@/api/administration'
 export default {
   name: 'FinanceChart',

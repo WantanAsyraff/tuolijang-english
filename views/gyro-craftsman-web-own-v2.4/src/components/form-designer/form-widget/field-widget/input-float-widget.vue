@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 // 精确小数
 
 <template>
@@ -40,6 +39,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'

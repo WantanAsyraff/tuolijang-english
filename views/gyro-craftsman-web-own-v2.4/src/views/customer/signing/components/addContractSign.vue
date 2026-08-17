@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="contract-signing-slide">
   <el-drawer
@@ -329,6 +328,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { oddsListApi, clientCustomerBaseApi } from '@/api/client'
 import { clientContractListApi } from '@/api/enterprise'
 import {

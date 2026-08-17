@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="box-height">
@@ -19,6 +18,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { employeeTrainApi, getEmployeeTrainApi } from '@/api/config.js'
 export default {
   name: '',

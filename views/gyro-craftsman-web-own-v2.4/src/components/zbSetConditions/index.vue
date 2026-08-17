@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="mlset-conditions" v-loading="loading">
   <div class="mlconditions-list-box">
@@ -243,6 +242,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import conditionsConfig from '@/config/conditionsConfig'
 import ReferenceSearchTable from '@/components/mlReferenceSearch/reference-search-table.vue'
 import useCommonStore from '@/store/modules/common'

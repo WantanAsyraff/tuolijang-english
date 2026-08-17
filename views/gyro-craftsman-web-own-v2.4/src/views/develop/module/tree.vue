@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="customer-management">
   <el-card :body-style="{ padding: '20px' }" class="normal-page">
@@ -253,6 +252,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'CustomerManagement',
   data() {

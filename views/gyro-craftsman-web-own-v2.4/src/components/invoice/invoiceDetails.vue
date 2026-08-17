@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 申请发票填写信息组件 -->
 <template>
 <div class="station">
@@ -126,6 +125,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import file from '@/utils/file'
 import { paymentRecordApi, operationRecordApi,uninvoicedListApi ,invoiceBillApi} from '@/api/enterprise'
 import Vue from 'vue'

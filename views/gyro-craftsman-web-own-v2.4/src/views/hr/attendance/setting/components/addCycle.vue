@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
@@ -42,6 +41,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { attendanceShiftSelectApi, saveRosterCycleApi, rosterCycleDetailApi, putCycleListApi } from '@/api/config'
 export default {
   name: 'CrmebOaEntAddCycle',

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="employees-card-bottom">
@@ -168,6 +167,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { dailyStatisticsApi, putStatisticsApi } from '@/api/config'
 export default {
   name: 'CrmebOaEntDaily',

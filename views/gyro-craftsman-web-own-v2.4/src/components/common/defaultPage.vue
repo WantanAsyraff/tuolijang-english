@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 公共-缺省页 -->
 <template>
   <div class="default-page">
@@ -13,6 +12,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 // 静态图片导入
 import newdef1 from '@/assets/images/newdef1.png'
 import none008 from '@/assets/images/none-008.png'

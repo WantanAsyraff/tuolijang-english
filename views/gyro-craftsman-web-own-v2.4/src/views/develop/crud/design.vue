@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <!-- 实体设计页面 -->
   <div class="divBox">
@@ -39,6 +38,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import basicSetting from './components/basicSetting'
 import fieldSetting from './components/fieldSetting'

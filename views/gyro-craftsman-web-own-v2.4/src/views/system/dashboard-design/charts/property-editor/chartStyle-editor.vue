@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="chart-styles">
   <div class="c-s-t">{{ $("ui.systemDashboardDesignChartsPropertyEditorChartStyleEditorChartStyle") }}</div>
@@ -22,6 +21,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import SvgIcon from '@/components/svg-icon-nc'
 
 export default {

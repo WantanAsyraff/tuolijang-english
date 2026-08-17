@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
     <div class="header">
@@ -104,6 +103,7 @@ import { $ } from '@/lang'
 
 </template>
 <script>
+import { $ } from '@/lang'
 import {
     databaseSaveApi,
     databaseListApi,

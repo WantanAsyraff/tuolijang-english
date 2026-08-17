@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription:  应用举例：低代码新建字段 -->
 <template>
   <div class="popover-box">
@@ -19,6 +18,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   dataFieldTypeApi,
   dataFieldSaveApi

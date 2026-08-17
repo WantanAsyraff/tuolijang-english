@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <el-dialog :visible.sync="visible" width="330px" :append-to-body="true" custom-class="no-header-dialog">
     <div class="box" v-loading="loading">
@@ -11,6 +10,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import * as ww from '@wecom/jssdk'
 import { workBinding, workAuthLogin } from '@/api/user'
 import { getWorkCorpConfigApi } from '@/api/setting'

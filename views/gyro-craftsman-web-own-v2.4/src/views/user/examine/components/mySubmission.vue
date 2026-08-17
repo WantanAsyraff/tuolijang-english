@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <oaFromBox
@@ -127,6 +126,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { approveApplyApi, approveApplyRevokeApi, approveConfigSearchApi } from '@/api/business'
 import func from '@/utils/preload'
 export default {

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="app-body">
   <!------------- 编辑: 个人经历页面 ------------->
@@ -332,6 +331,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import formOptions from '../mixins/index.js'
 import myMixins from '../mixins/method.js'
 import {

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 申请发票填写信息组件 -->
 <template>
 <div class="station">
@@ -326,6 +325,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import file from '@/utils/file'
 import { paymentRecordApi, operationRecordApi } from '@/api/enterprise'
 import { clientInvoiceDetailApi } from '@/api/client'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <oaFromBox
@@ -49,6 +48,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import SettingMer from '@/libs/settingMer'
 import helper from '@/libs/helper'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <div class="card-box">
@@ -112,6 +111,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'ReturnRule',
   props: {

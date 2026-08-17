@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 // 该文件是cascader-radio-widget组件的定义文件，用于渲染cascader-radio类型的字段。 //
 该组件继承自fieldMixin，fieldMixin提供了字段的基本功能，如校验、数据绑定等。 //
 该组件还提供了一些自定义功能，如单选框隐藏下拉框、任意级节点可选等。
@@ -48,6 +47,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'

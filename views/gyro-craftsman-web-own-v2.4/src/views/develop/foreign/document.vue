@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '0px' }">
@@ -123,6 +122,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getDocsApi } from '@/api/develop'
 import JsonViewer from 'vue-json-viewer'
 export default {

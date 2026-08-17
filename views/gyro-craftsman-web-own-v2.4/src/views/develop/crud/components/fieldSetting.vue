@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <div class="flex-between">
@@ -98,6 +97,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Commnt from '@/components/develop/commonData'
 import oaDialog from '@/components/form-common/dialog-form'
 import fieldPopover from './fieldPopover'

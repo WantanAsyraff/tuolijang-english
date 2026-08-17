@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
@@ -63,6 +62,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { moduleShareListApi, delModuleShareApi, putModuleShareApi, moduleShareApi } from '@/api/develop'
 import oaDialog from '@/components/form-common/dialog-form'
 export default {

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <!-- 审批进程 -->
 <div class="stepsBox">
@@ -79,6 +78,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'DetailProcess',
   props: {

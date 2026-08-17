@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 新增入库弹窗 -->
 <template>
 <div class="station">
@@ -181,6 +180,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { storageListSaveApi } from '@/api/administration'
 
 export default {

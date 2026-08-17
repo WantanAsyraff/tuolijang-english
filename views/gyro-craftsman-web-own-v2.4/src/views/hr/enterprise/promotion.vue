@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 人事-职位管理-晋升说明 -->
 <template>
 <div class="divBox">
@@ -189,6 +188,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Sortable from 'sortablejs'
 import { getIdsArray, getArrayDifference } from '@/libs/public'
 

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog :title="title" :visible.sync="visible" width="896px" :before-close="handleClose" :modal="false">
@@ -8,6 +7,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'UploadFroms',
   components: { UploadIndex: () => import('@/components/uploadPicture/index.vue') },

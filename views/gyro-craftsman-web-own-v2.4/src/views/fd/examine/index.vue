@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 财务-付款审核页面 -->
 <template>
 <div class="divBox">
@@ -163,6 +162,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { clientBillListApi, getbillCate, billCateApi, billDelFinanceApi } from '@/api/enterprise'
 import { clientBillStatusApi } from '@/api/client'
 

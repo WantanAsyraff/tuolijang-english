@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="statistics">
     <oaFromBox
@@ -19,6 +18,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { assessCensusLineApi } from '@/api/enterprise'
 import Commnt from '@/components/user/accessCommon'
 import echarts from 'echarts'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="normal-page">
@@ -61,6 +60,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import formBox from '@/components/common/oaFromBox'
 import oaDialog from '@/components/form-common/dialog-form'

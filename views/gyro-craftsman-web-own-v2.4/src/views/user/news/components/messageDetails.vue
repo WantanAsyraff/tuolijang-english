@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog
@@ -56,6 +55,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import noticeHandle from '@/libs/noticeHandle'
 import { noticeMessageReadApi } from '@/api/user'
 import { messageListApi } from '@/api/public'

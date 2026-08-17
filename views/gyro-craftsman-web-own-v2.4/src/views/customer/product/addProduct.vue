@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <!-- <el-card :body-style="{ padding: '14px' }" class="station-header">
@@ -272,6 +271,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import vuedraggable from 'vuedraggable'
 import { productCreateApi, productSaveApi, productInfoApi, putProductApi } from '@/api/client'

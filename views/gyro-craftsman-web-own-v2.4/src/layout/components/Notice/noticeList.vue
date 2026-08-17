@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="box-container">
   <el-drawer :visible.sync="drawer" direction="rtl" :before-close="handleClose" size="75%" :append-to-body="true"
@@ -82,6 +81,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { noticeMessageListApi, noticeMessageDeleteApi, noticeMessageReadApi } from '@/api/user'
 import { messageCateApi } from '@/api/setting'
 import { messageListApi } from '@/api/public'

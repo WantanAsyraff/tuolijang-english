@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 
   @FileDescription: 高德地图组件
   功能：封装高德地图功能，支持地址搜索、标记点拖拽、范围显示等
@@ -33,6 +32,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import AMapLoader from '@amap/amap-jsapi-loader'
 
 // 高德地图安全配置

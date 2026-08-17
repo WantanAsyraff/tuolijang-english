@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <formBox v-if="keyName" :total="total" :info="info" :type="`view`" :keyName="keyName" :id="id" @getInfo="getInfo"
@@ -194,6 +193,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import treeTable from '@/views/develop/module/treeTable.vue'
 import { getColor } from '@/utils/format'
 import Commnt from '@/components/develop/commonData'

@@ -43,6 +43,7 @@ import { $, getLanguage } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Vue from 'vue'
 import '@wangeditor-next/editor/dist/css/style.css'
 import { uploader } from '@/utils/uploadCloud'

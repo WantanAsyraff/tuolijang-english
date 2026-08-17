@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <style>
 ._fc-designer {
   height: 100%;
@@ -370,6 +369,7 @@ import { $ } from '@/lang'
 </ElContainer>
 </template>
 <script>
+import { $ } from '@/lang'
 import form from '../config/base/form'
 import field from '../config/base/field'
 import validate from '../config/base/validate'

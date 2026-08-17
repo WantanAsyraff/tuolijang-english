@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 // 一对一引用组件，用于选择一组数据中的一个值，并显示该值对应的名称。 //
 该组件依赖于ReferenceSearchTable组件，该组件用于搜索并选择一组数据中的一个值。
 
@@ -65,6 +64,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { dataModulerListApi, dataModulerFieldApi } from '@/api/develop'
 // import VisualDesign from '@/../lib/visual-design/designer.umd.js'
 import ReferenceSearchTable from '@/components/mlReferenceSearch/reference-search-table.vue'

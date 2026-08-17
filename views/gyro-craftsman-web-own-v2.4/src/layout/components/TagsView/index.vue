@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div id="tags-view-container" class="tags-view-container">
     <scroll-pane ref="scrollPane" class="tags-view-wrapper">
@@ -31,6 +30,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { resolve } from "@/utils/path";
 export default {
   components: { ScrollPane: () => import('./ScrollPane') },

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 穿梭框弹窗页面 例：客户管理设置列表头部 -->
 <template>
   <div class="delete-info-dialog">
@@ -40,6 +39,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Sortable from 'sortablejs'
 import cloneDeep from 'lodash/cloneDeep' //避免修改父组件传过来的数据
 export default {

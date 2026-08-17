@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="ivu-global-footer-copyright">
     <div class="mb14">
@@ -12,6 +11,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 export default {
   name: 'CrmebOaEntCopyright',

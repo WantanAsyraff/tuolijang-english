@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox" v-loading="loading">
   <el-card class="mb12 box-height">
@@ -162,6 +161,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { clientTargetRateApi, clientTargetCensusApi } from '@/api/client'
 export default {
   name: '',

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <!-- Element UI 的 Dialog 弹窗组件 -->
 <el-dialog :title="tabCur == 1 ? $('ui.customerKpiAddKpiSetDepartmentTargets') : $('ui.customerKpiAddKpiSetSalespersonTargets')" :visible.sync="dialogVisible" width="660px">
@@ -64,6 +63,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { clientTargetPutApi } from '@/api/client'
 export default {
   name: 'addKpi',

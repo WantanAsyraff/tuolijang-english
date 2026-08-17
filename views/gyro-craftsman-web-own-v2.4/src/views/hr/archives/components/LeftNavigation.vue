@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="assess-left v-height-flag">
   <!-- 个人头像 -->
@@ -62,6 +61,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { putCardApi } from '@/api/enterprise'
 import { getToken } from '@/utils/auth'
 import { uploader } from '@/utils/uploadCloud'

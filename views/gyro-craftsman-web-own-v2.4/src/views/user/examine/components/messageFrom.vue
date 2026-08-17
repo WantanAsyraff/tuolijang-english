@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <div class="title">
@@ -44,6 +43,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { approveReplyApi, approveReplyDelApi } from '@/api/business'
 export default {
   name: 'MessageFrom',

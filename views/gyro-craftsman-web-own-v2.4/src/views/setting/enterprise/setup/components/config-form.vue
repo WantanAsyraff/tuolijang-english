@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="v-height-flag ml20 mr20" style="min-height: calc(100vh - 200px)">
     <el-form ref="form" :model="form" :rules="formRules" :label-width="formLabelWidth" class="mt20">
@@ -177,6 +176,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { cloudFileSetupApi } from '@/api/config'
 import uploadPicture from '@/components/uploadPicture/index'
 import request from '@/api/request'

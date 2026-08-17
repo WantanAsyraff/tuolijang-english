@@ -4,8 +4,10 @@
   "scripts": {
     "dev:h5": "uni",
     "build:h5": "uni build",
-    "i18n:audit": "node ../shared-i18n/localization-audit.cjs mobile",
-    "i18n:test": "node --test ../shared-i18n/localization.test.mjs"
+    "i18n:generate": "node ../shared-i18n/cli.cjs generate --app mobile",
+    "i18n:check": "node ../shared-i18n/cli.cjs check --app mobile",
+    "i18n:audit": "node ../shared-i18n/cli.cjs audit --app mobile",
+    "i18n:test": "node ../shared-i18n/cli.cjs test --app mobile"
   },
   "dependencies": {
     "@wecom/jssdk": "^2.3.1",

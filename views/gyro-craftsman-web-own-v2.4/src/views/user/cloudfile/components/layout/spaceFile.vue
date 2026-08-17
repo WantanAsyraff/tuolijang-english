@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div
   v-box-selection="{
@@ -168,6 +167,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   folderSpaceEntAllMoveApi,
   folderSpaceEntDeleteApi,

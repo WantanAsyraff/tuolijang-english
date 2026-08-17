@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 新增任务侧滑弹窗  -->
 <template>
 <div class="station">
@@ -171,6 +170,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { saveProgramTaskApi, getProgramTaskInfoApi, getProgramVersionApi, setProgramVersionApi } from '@/api/program'
 import draggable from 'vuedraggable'
 export default {

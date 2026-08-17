@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="assess">
   <el-scrollbar style="height: 100%; width: 100%">
@@ -51,6 +50,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { userAssessInfo } from '@/api/user'
 export default {
   name: 'AssessInfo',

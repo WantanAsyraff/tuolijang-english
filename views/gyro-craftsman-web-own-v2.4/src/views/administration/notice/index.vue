@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 行政-企业动态页面 -->
 <template>
 <div class="divBox">
@@ -116,6 +115,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { noticeCategoryApi, noticeDeleteApi, noticeListApi, noticeStatusApi, noticeTopApi } from '@/api/administration'
 
 import noticeImg from '@/assets/images/notice.png'

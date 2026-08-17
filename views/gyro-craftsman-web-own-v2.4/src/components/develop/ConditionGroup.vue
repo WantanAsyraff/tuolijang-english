@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-表单设计-数据联动组件-->
 <template>
 <div class="condition-group-wrapper">
@@ -120,6 +119,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'ConditionGroup', // 递归组件必须声明name
   props: {

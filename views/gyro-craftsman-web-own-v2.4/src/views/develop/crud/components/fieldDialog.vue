@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
     <div>
         <oa-dialog :fromData="fromData" ref="oaDialog" @submit="submit">
@@ -72,6 +71,7 @@ import { $ } from '@/lang'
     </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { pinyin } from 'pinyin-pro'
 import oaDialog from '@/components/form-common/dialog-form.vue'
 import checkboxDialog from '@/components/develop/checkboxDialog'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 添加客户弹窗组件 -->
 <template>
   <div class="station">
@@ -26,6 +25,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { oddsCreateApi } from '@/api/client'
 import { chargeCreateApi, chargeEditApi, chargeEditSubmitApi } from '@/api/enterprise'
 import { clientCustomerSaveApi } from '@/api/client'

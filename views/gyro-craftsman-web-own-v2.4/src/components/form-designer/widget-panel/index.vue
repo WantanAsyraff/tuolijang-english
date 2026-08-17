@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <el-scrollbar :style="{ height: scrollerHeight }" class="side-scroll-bar">
     <div class="panel-container">
@@ -71,6 +70,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import Draggable from 'vuedraggable'
 import { containers, basicFields, advancedFields, customFields } from './widgetsConfig'
 import { addWindowResizeHandler } from '@/utils/formDesignerUtils'

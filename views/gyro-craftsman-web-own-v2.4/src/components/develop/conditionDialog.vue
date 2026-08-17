@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-高级筛选组件-条件设置组件-->
 <template>
 <div>
@@ -117,6 +116,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { frameTreeApi } from '@/api/public'
 import Common from '@/components/develop/commonData'
 import { dataDatabaseFieldsApi } from '@/api/develop'

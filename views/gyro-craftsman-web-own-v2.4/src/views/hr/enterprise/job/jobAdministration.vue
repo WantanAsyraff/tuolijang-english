@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 人事-职位管理-职位管理 -->
 <template>
 <div class="divBox">
@@ -129,6 +128,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import draweForm from '@/components/form-common/drawer-form'
 import { endJobApi, endJobStatusApi, endJobInfoApi, endJobDeleteApi, enterpriseEntInfoApi } from '@/api/enterprise'

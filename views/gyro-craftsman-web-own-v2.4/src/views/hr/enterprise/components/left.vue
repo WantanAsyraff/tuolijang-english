@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="assess-left">
     <div class="el-card__header">
@@ -51,6 +50,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import {
   promotionListApi,
   subPromotionApi,

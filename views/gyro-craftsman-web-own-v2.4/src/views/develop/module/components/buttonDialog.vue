@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <oaDialog :fromData="fromData" ref="oaDialog" @submit="submit">
@@ -40,6 +39,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'buttonDialog',
   components: {

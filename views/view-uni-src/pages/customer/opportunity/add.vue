@@ -1,7 +1,7 @@
 <template>
   <BaseContainer class="base-container">
     <view class="head-wrap">
-      <NavBar :is-right="true" :defaultTitle="pageData.id ? '修改商机' : '添加商机'" />
+      <NavBar :is-right="true" :defaultTitle="pageData.id ? $t('mobile.ui.navigation.editOpportunity') : $t('mobile.navigation.pages/customer/opportunity/add')" />
     </view>
     <view class="form-box" v-if="formConfig.length">
       <oaForm :listData="formConfig" ref="formRef" @submitOk="handleSaveData" immediate>

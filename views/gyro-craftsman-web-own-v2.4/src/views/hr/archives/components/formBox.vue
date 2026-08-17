@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <oaFromBox
@@ -26,6 +25,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import 'element-ui/lib/theme-chalk/display.css'
 import { getTemp, importCardApi } from '@/api/enterprise'
 import exportExcel from '@/components/common/exportExcel'

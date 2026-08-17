@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription:考核模板库弹窗页面 -->
 <template>
   <div>
@@ -129,6 +128,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import {
   assessTargetCateApi,
   assessTargetCateEditApi,

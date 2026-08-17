@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
@@ -70,6 +69,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import fillInDialog from './fillInDialog'
 import { getModuleQuestionnaireApi, delModuleQuestionnaireApi, putModuleQuestionnaireApi } from '@/api/develop'
 export default {

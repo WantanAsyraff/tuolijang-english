@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!--
   @FileDescription: 字典选项设置 - 基础可复用组件
   功能：提供完整的字典选项管理界面，包括：
@@ -119,6 +118,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script setup>
+import { $ } from '@/lang'
 /**
  * @description 字典选项设置基础组件
  * 使用 Vue 2.7 Composition API (setup) 编写

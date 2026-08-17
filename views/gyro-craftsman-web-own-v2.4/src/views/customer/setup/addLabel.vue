@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <el-dialog
     :title='$("customer.editlabel")'
@@ -59,6 +58,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import Draggable from 'vuedraggable'
 import { clientSaveLabelsApi } from '@/api/client'
 import { clientConfigLabelDeleteApi } from '@/api/enterprise'

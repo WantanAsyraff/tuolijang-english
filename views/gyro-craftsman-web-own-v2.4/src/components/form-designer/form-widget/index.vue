@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="form-widget-container">
     <el-form
@@ -54,6 +53,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import Draggable from 'vuedraggable'
 import '@/components/form-designer/form-widget/container-widget/index'
 import FieldComponents from '@/components/form-designer/form-widget/field-widget/index'

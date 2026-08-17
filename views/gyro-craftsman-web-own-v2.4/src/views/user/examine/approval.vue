@@ -11,7 +11,7 @@
                   <el-tab-pane
                     v-for="(item, index) in examineTabData"
                     :key="item.id"
-                    :label="item.name"
+                    :label="$(item.name)"
                     :name="item.id"
                     lazy
                   ></el-tab-pane>

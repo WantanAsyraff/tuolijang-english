@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 固定物资管理 -->
 <template>
 <div ref="bodyRef">
@@ -142,6 +141,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { storageCateApi, storageDeleteApi, storageListApi, storageListCateApi } from '@/api/administration'
 export default {
   name: 'Consume',

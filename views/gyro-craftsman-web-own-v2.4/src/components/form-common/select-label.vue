@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 下拉选择标签组件 -->
 <template>
 <div class="">
@@ -97,6 +96,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { clientConfigLabelApi } from '@/api/enterprise'
 import { extractArrayIds, isInArray, removeDuplicateObjects, getArrayDifference } from '@/libs/public'
 export default {

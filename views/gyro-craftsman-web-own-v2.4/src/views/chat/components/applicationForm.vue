@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <div class="flex-row-center">
@@ -102,6 +101,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import popover from './popover'
 import uploadPicture from '@/components/uploadPicture/index'
 import selectMember from '@/components/form-common/select-member'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 消耗物资-物资管理 -->
 <template>
 <div>
@@ -90,6 +89,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import tree from './tree'
 import addMaterial from './addMaterial'
 import receive from './receive'

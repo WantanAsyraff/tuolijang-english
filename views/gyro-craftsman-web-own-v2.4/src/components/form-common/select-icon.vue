@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 选择图标组件 例：菜单管理选择图标 -->
 <template>
   <div class="iconBox">
@@ -40,6 +39,7 @@ import { $ } from '@/lang'
 </template>
 
 <script setup>
+import { $ } from '@/lang'
 import { ref, computed, onMounted, getCurrentInstance } from 'vue'
 import iconfontIcons from '../../libs/iconfont-icons'
 

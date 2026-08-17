@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 通过付款审核记录弹窗 -->
 <template>
 <div>
@@ -121,6 +120,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { enterprisePayTypeApi, clientConfigListApi, billFinanceApi } from '@/api/enterprise'
 import { clientBillStatusApi } from '@/api/client'
 import { getToken } from '@/utils/auth'

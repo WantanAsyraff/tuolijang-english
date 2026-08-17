@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户管理 -->
 <template>
   <div class="divBox">
@@ -97,6 +96,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import imageViewer from '@/components/common/imageViewer'
 import { getWorkCorpConfigApi } from '@/api/setting'

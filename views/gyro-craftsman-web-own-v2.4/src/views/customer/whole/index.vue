@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户-订单收支 -->
 <template>
   <div class="divBox">
@@ -132,6 +131,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { clientBillListApi, getbillCate } from '@/api/enterprise'
 
 export default {

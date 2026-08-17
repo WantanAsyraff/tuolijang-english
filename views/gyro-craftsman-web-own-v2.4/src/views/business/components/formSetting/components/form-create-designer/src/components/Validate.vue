@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <form-create
     class="_fc-validate"
@@ -10,6 +9,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'Validate',
   props: {

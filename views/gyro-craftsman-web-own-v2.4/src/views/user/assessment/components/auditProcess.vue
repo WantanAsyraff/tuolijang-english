@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <div class="box-height">
@@ -81,6 +80,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { userAssessExplain, userAssessInfo } from '@/api/user'
 import { getStorageJson } from '@/utils/storage'
 export default {

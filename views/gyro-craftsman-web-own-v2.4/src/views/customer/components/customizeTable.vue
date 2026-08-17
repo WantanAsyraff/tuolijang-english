@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div :class="{ 'flex-layout-table': flexLayout }">
     <div class="mt10 table-box" :style="selectionCountStyle">
@@ -264,6 +263,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { getColor } from '@/utils/format'
 import { customerSubscribeApi, contractSubscribeApi } from '@/api/enterprise'

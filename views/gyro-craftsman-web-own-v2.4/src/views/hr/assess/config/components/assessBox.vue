@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="box-container">
   <el-drawer
@@ -72,6 +71,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { assessPlanUserListApi } from '@/api/enterprise'
 
 export default {

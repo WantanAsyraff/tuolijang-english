@@ -10,7 +10,7 @@
           style="width: 220px"
           clearable
         >
-          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+          <el-option v-for="item in options" :key="item.value" :label="$(item.label)" :value="item.value"></el-option>
         </el-select>
         <!-- <el-cascader
           v-model="types"

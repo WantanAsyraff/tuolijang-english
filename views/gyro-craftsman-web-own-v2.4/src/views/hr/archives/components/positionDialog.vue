@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <el-dialog
     :title="config.title"
@@ -34,6 +33,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { endJobSaveApi } from '@/api/enterprise'
 import { rankCateListApi, rankListApi } from '@/api/setting'
 

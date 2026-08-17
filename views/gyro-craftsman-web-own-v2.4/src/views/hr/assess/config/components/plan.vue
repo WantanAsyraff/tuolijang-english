@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <div class="v-height-flag">
@@ -251,6 +250,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import Common from '@/components/user/accessCommon'
 import { assessPlanGetApi, assessPlanPutApi } from '@/api/enterprise'
 export default {

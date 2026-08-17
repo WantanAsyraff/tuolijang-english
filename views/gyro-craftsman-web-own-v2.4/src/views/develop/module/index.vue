@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card class="normal-page" :body-style="{ padding: '0px 20px 20px 20px' }">
@@ -135,6 +134,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import defaultPage from '@/components/common/defaultPage'
 import Commnt from '@/components/develop/commonData'
 import formBox from './components/formBox'

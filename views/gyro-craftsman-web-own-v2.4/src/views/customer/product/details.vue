@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 查看客户信息侧滑页面 -->
 <template>
 <div class="station">
@@ -151,6 +150,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getProductInfoApi } from '@/api/client'
 export default {
   name: 'details',

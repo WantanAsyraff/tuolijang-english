@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户-商机页面组件 -->
 <template>
 <div class="station odds-station">
@@ -41,6 +40,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { oddsCreateApi, oddsListApi } from '@/api/client'
 export default {
   name: 'Liaison',

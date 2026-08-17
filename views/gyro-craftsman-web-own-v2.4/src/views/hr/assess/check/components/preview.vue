@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog
@@ -94,6 +93,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import RGBaster from '@/utils/rgbaster'
 import { attachCoverDeleteApi, attachCoverListApi, attachCoverSetApi } from '@/api/enterprise'
 import SettingMer from '@/libs/settingMer'

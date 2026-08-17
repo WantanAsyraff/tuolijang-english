@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <static-content-wrapper
     :designer="designer"
@@ -18,6 +17,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import StaticContentWrapper from './static-content-wrapper'
 import emitter from '@/utils/emitter'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'

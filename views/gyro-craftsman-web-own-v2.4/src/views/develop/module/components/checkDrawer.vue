@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
@@ -273,6 +272,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getColor } from '@/utils/format'
 import VFormRender from '@/components/form-render/index'
 import oaLog from '@/components/form-common/oa-log'

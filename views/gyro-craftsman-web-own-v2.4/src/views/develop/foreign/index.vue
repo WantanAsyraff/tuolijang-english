@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="v-height-flag">
@@ -95,6 +94,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import addForeign from './components/addForeign'
 import { deleteOpenKeyApi, getOpenKeyApi, getOpenKeyStatusApi, getFindskApi } from '@/api/develop'

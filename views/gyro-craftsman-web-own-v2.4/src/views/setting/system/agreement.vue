@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card class="normal-page">
@@ -41,6 +40,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { agreementListApi, agreementInfoApi, agreementUpdateApi } from '@/api/setting'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 

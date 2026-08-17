@@ -2,7 +2,7 @@
   <BaseContainer class="base-container">
     <!-- 顶部 -->
     <view class="cr-position-header">
-      <default-nav-bar :is-right="true" :defaultTitle="data.id > 0 ? '编辑合同' : ' 添加合同'"> </default-nav-bar>
+      <default-nav-bar :is-right="true" :defaultTitle="data.id > 0 ? $t('mobile.ui.navigation.editContract') : $t('mobile.navigation.pages/customer/signing/addForm')"> </default-nav-bar>
       <!-- tab切换 -->
       <view class="tab-box">
         <view class="tab-item" :class="{ active: currentTab === '1' }" @click="currentTab = '1'">{{ $t('ui.customerOpportunityProductPanelProductList') }}</view>

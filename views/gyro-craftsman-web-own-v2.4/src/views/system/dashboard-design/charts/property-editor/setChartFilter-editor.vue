@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <div>
@@ -39,6 +38,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { mapState } from 'vuex'
 import zbDialog from '@/components/zbDialog'
 import zbSetConditions from '@/components/zbSetConditions'

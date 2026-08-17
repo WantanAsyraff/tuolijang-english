@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户-订单转移弹窗组件 -->
 <template>
 <div>
@@ -41,6 +40,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { customerShiftApi, clientInvoiceShiftApi, cluesShiftApi } from '@/api/enterprise'
 import { clientContractShiftApi, oddsShiftApi } from '@/api/client'
 export default {

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <!-- 排班管理列表页面 -->
@@ -89,6 +88,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { attendanceGroupListApi, attendanceArrangeApi, attendanceArrangeListApi } from '@/api/config'
 import oaFromBox from '@/components/common/oaFromBox'
 

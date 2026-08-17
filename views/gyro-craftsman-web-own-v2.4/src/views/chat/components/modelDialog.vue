@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-dialog :visible.sync="show" width="650px" :show-close="false" :close-on-click-modal="false">
@@ -85,6 +84,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getModelsSelectApi, saveModelsApi, getModelsInfoApi, editModelsApi } from '@/api/chatAi'
 import popover from './popover'
 

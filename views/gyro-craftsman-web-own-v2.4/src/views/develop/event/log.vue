@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="mb14 normal-page">
@@ -78,6 +77,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { dataEventLogApi, dataEventTypeApi, dataEventActionApi, getDatabaseApi } from '@/api/develop'
 import JsonViewer from 'vue-json-viewer'
 import oaDialog from '@/components/form-common/drawer-form'

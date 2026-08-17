@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 订单-付款提醒页面组件 -->
 <template>
 <div class="station">
@@ -92,6 +91,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { remindAbjureApi } from '@/api/enterprise'
 import { clientRemindDeleteApi, clientRemindListApi } from '@/api/client'
 import { configRuleApproveApi } from '@/api/config'

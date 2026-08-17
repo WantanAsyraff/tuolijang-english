@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 人事-办公审批-审批设置 checkBtn：审批列表/审批设置 -->
 <template>
 <div :class="!checkBtn ? 'box' : 'divBox'">
@@ -170,6 +169,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { entAddApi, entListApi, entInfoApi, entEditApi, entDeleteApi, entChangeApi } from '@/api/business'
 export default {
   name: 'BusinessExamine',

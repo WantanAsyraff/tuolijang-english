@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-触发器更新规则-动态内容组件-->
 <template>
 <div>
@@ -297,6 +296,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getDictTreeListApi } from '@/api/form'
 export default {
   props: {
