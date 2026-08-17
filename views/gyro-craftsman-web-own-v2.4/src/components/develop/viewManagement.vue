@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-新建编辑视图管理-->
 <template>
 <div class="oa-dialog">
@@ -85,6 +84,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import defaultPage from '@/components/common/defaultPage'
 import draggable from 'vuedraggable'
 import oaDialog from '@/components/form-common/dialog-form'

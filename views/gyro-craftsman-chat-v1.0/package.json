@@ -11,8 +11,10 @@
     "preview": "vite preview",
     "eslint:fix": "npx eslint . --fix",
     "entry:style": "sass -w public/entry/style/",
-    "i18n:audit": "node ../shared-i18n/localization-audit.cjs chat",
-    "i18n:test": "node --test ../shared-i18n/localization.test.mjs"
+    "i18n:generate": "node ../shared-i18n/cli.cjs generate --app chat",
+    "i18n:check": "node ../shared-i18n/cli.cjs check --app chat",
+    "i18n:audit": "node ../shared-i18n/cli.cjs audit --app chat",
+    "i18n:test": "node ../shared-i18n/cli.cjs test --app chat"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",

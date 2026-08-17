@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <!-- 申请审批-选择申请人弹窗 -->
   <el-drawer
@@ -38,6 +37,7 @@ import { $ } from '@/lang'
   </el-drawer>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   components: {
     selectMember: () => import('@/components/form-common/select-member'),

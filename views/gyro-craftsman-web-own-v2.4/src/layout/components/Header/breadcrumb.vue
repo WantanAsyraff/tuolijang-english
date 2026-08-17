@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="breadcrumb-content flex lh-center">
     <div v-if="hasBrand" class="logo-wrapper">
@@ -12,6 +11,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import { mapGetters } from 'vuex'
 export default {

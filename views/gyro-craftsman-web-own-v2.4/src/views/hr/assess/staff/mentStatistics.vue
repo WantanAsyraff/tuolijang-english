@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="card-box">
@@ -84,6 +83,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { assessCensusApi } from '@/api/enterprise'
 import Commnt from '@/components/user/accessCommon'
 import echarts from 'echarts'

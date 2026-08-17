@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 财务-账目记录-收支统计页面 -->
 <template>
   <div class="box">
@@ -113,6 +112,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { billChartApi, billChangeBie } from '@/api/enterprise'
 import { numberFormat } from '@/utils/numberFormat'
 export default {

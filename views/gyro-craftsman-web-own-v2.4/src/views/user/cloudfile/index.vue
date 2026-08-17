@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="divBox" @click="isSortShow = false">
     <!-- 云盘主页面 -->
@@ -122,6 +121,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 // 导入辅助工具库
 import helper from '@/libs/helper'
 // 导入云存储上传工具

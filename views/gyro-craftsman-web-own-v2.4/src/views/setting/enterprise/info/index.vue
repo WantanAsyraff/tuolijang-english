@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <div class="content-con">
@@ -150,6 +149,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { getCityListApi } from '@/api/public'
 import { mapGetters } from 'vuex'
 import { enterpriseEntInfoApi, entInfoUpdateApi } from '@/api/enterprise'

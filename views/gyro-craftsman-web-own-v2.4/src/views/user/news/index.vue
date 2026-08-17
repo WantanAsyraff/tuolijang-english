@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-card :body-style="{ padding: '10px 20px 0 20px' }" class="mb14">
@@ -54,6 +53,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { noticeMessageListApi, noticeMessageReadApi, noticeMessageDeleteApi } from '@/api/user'
 import { messageListApi } from '@/api/public'
 

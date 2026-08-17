@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <container-item-wrapper :widget="widget">
     <div :key="widget.id" class="sub-form-container" v-show="!widget.options.hidden">
@@ -101,6 +100,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import emitter from '@/utils/emitter'
 import { deepClone, generateId } from '../../../utils/util'
 import refMixin from '../../../components/form-render/refMixin'

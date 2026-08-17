@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 物资维修弹窗 -->
 <template>
 <div>
@@ -148,6 +147,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { storageRecordRepairApi, storageRecordSaveApi } from '@/api/administration'
 
 export default {

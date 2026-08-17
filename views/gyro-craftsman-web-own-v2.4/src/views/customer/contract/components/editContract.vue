@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 查看订单信息页面 -->
 <template>
 <div class="contract">
@@ -151,6 +150,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { contractDocDetailApi } from '@/api/contractSign'
 import { contractEditCreateApi } from '@/api/enterprise'
 import { clientDataInfoApi, clientContractDetailApi as contractDetailApi } from '@/api/client'

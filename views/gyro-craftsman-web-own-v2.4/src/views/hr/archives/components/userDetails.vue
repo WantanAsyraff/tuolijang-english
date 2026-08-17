@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <!-- 个人档案弹窗：新增：initData.type=add 编辑：initData.type=edit -->
 <div class="userDetails">
@@ -129,6 +128,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getSalaryList, deleteSalaryList, changeCard, entryCard, perfectCard } from '@/api/enterprise'
 import formOptions from '../mixins/index.js'
 export default {

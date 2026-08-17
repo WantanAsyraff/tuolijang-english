@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!--
   @FileDescription: 全局筛选组件
   功能：提供统一的筛选、排序、新增等功能
@@ -166,6 +165,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import viewManagement from '@/components/develop/viewManagement'
 import oaDialog from '@/components/form-common/dialog-form'
 import formList from '@/views/develop/module/components/formList'

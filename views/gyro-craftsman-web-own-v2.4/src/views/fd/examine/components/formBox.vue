@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-form :inline="true" class="from-s">
@@ -62,6 +61,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import manageRange from '@/components/form-common/select-manageRange'
 
 export default {

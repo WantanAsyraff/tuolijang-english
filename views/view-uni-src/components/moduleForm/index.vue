@@ -431,7 +431,7 @@
       @submitOk="cascadeSubmit"
     ></cascade>
     <selected-label
-      :title="String($ts('选择标签'))"
+      :title="$t('mobile.ui.moduleFormIndexSelectLabels')"
       ref="selectedLabelRef"
       :listData="data.labelData"
       @changeItem="changeItem"

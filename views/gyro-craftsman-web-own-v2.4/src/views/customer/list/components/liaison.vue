@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户-联系人页面组件 -->
 <template>
 <div class="station">
@@ -25,6 +24,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import liaisonDialog from '@/views/customer/list/components/liaisonDialog'
 import detailsDrawer from '@/views/customer/components/details'
 import { clientLiaisonDeleteApi, clientLiaisonListApi as liaisonViewApi } from '@/api/client'

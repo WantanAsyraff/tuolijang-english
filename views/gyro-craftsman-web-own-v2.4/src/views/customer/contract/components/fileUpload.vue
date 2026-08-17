@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 订单-添加订单记录附件弹窗组件 -->
 <template>
   <div class="followUpRecord">
@@ -57,6 +56,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { contracFileEditApi, contracFileSaveApi } from '@/api/client'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
 import { uploader } from '@/utils/uploadCloud'

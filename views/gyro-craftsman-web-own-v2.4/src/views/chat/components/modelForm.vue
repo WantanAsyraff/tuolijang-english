@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-form ref="form" :model="form" :rules="formRules" label-position="top">
@@ -286,6 +285,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import popover from './popover'
 import databaseTable from './databaseTable'
 import jsonDialog from './jsonDialog'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 发票管理页面 -->
 <template>
 <div class="divBox">
@@ -312,6 +311,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   getSalesman,
   uninvoicedListApi

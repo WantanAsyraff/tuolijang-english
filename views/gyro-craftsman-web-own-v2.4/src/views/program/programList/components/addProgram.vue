@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 新建项目侧滑弹窗  -->
 <template>
 <div :class="id > 0 ? 'stationBox' : ''">
@@ -129,6 +128,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { saveProgramApi, putProgramApi, getProgramInfoApi } from '@/api/program'
 import debounce from '@form-create/utils/lib/debounce'
 import { customerSelectApi, selectContractListApi } from '@/api/enterprise'

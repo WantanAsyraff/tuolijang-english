@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 付款记录详情侧滑组件 -->
 <template>
 <div class="station">
@@ -137,6 +136,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getbillCate, billCateApi } from '@/api/enterprise'
 import { clientBillStatusApi } from '@/api/client'
 import { getInvoiceText } from '@/libs/customer'

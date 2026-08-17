@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div>
@@ -106,6 +105,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { clientTargetsApi, clientTargetPutApi, clientTargetDelApi } from '@/api/client'
 export default {
   name: 'kpi',

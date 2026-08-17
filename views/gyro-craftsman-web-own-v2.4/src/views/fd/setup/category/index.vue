@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 财务-财务设置-发票类目 -->
 <template>
 <div class="divBox table-box">
@@ -49,6 +48,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { invoiceCategoryList, deleteInvoiceCategory } from '@/api/enterprise'
 import dialogForm from '@/views/customer/setup/type/components/addDialog'
 import oaFromBox from '@/components/common/oaFromBox'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!--审批设置-规则配置 -->
 <template>
   <div class="ruleSetting">
@@ -56,6 +55,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'RuleSetting',
   components: {

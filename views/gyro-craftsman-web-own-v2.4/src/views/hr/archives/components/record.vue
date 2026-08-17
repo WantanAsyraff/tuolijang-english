@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="table-box">
     <el-dialog
@@ -145,6 +144,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import draggable from 'vuedraggable'
 import { getSalary, getSalaryContent, putSalaryContent, latelySalaryContent } from '@/api/enterprise'
 

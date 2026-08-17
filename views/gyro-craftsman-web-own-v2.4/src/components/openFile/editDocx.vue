@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <div class="toolbar">
@@ -18,6 +17,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import '@wangeditor-next/editor/dist/css/style.css'
 import { Editor, Toolbar } from '@wangeditor-next/editor-for-vue2'
 import { uploader } from '@/utils/uploadCloud'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 订单-订单续费页面组件 -->
 <template>
 <div class="station">
@@ -75,6 +74,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { clientBillListApi } from '@/api/enterprise'
 import { clientBillPutApi } from '@/api/client'
 export default {

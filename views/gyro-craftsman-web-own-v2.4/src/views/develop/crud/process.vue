@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 低代码-流程设计页面 -->
 <template>
   <div>
@@ -147,6 +146,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import selectMember from '@/components/form-common/select-member'
 import processSetting from '@/components/develop/processSetting'
 import iconfontList from '@/views/business/components/basicSetting/iconfontList.js'

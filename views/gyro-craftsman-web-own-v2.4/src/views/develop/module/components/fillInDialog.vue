@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="oa-dialog">
     <el-dialog :title='$("ui.developModuleFillInInviteToComplete")' :visible.sync="show" width="600px" :before-close="handleClose">
@@ -23,6 +22,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { moduleQuestionnaireApi } from '@/api/develop'
 import { roterPre } from '@/settings'
 import { mapMutations } from 'vuex'

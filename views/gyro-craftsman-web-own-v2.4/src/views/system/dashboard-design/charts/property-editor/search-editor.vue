@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
     <div v-if="optionModel">
         <!-- 1. 选择需要筛选的图表 -->
@@ -29,6 +28,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
     import { viewSearchApi } from '@/api/develop'
 export default {
     name: "ChartFilterConfig",

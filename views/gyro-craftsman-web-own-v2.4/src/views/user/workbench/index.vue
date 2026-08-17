@@ -1,13 +1,6 @@
-import { $ } from '@/lang'
 <template>
   <div class="box">
-    <div
-      class="box-height workbench-page"
-      v-loading="pageLoading"
-      :element-loading-text="$('workbench.loading')"
-      element-loading-background="rgba(255, 255, 255, 0.85)"
-      :class="{ 'workbench-ready': !pageLoading }"
-    >
+    <div class="box-height workbench-page">
       <!--顶部-->
       <el-row :gutter="14" type="flex">
         <el-col :span="16">
@@ -107,7 +100,7 @@ import { $ } from '@/lang'
                 >
                   <div class="pointer">
                     <el-image :src="item.image" class="image"></el-image>
-                    <div class="name">{{ item.name }}</div>
+                    <div class="name">{{ $(item.name) }}</div>
                   </div>
                 </div>
               </div>
@@ -269,7 +262,7 @@ import { $ } from '@/lang'
       </el-row>
       <password ref="password" :form-data="passwordData"></password>
       <!-- 系统通知 -->
-      <noticeList ref="noticeList" v-if="noticeListVisible"></noticeList>
+      <notice-list ref="noticeList" />
 
       <message-details ref="messageDetails" :message-data="messageData" />
       <quick-manage ref="quickManage" @isSuccess="quickSuccess" :config="configData"></quick-manage>
@@ -280,6 +273,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   dealtScheduleListApi,
   noticeMessageListApi,
@@ -300,6 +294,7 @@ import { noticeListApi } from '@/api/administration'
 import { getStorageJson } from '@/utils/storage'
 import { pageJumpTo } from '@/libs/public'
 import ElementUI from 'element-ui'
+import noticeList from '@/layout/components/Notice/noticeList'
 import { roterPre } from '@/settings'
 import { configRuleApproveApi } from '@/api/config'
 // 图片资源导入
@@ -315,15 +310,13 @@ export default {
     defaultPage: () => import('@/components/common/defaultPage'),
     messageDetails: () => import('@/views/user/news/components/messageDetails'),
     quickManage: () => import('./components/quickManage'),
-    noticeList: () => import('@/layout/components/Notice/noticeList'),
+    noticeList,
     copyright: () => import('@/layout/components/copyright.vue')
   },
   data() {
     const currentDate = new Date()
     return {
       personalIcon,
-      pageLoading: true,
-      noticeListVisible: false,
       addTodoVisible: false,
       calendarDetailsVisible: false,
 
@@ -479,13 +472,9 @@ export default {
       this.entAuth(),
       this.getUserWorkCount(),
       this.getConfigApprove()
-    ])
-      .catch((error) => {
-        console.error($('legacyScript.asynchronousTaskExecutionFailed'), error)
-      })
-      .finally(() => {
-        this.pageLoading = false
-      })
+    ]).catch((error) => {
+      console.error($('legacyScript.asynchronousTaskExecutionFailed'), error)
+    })
 
     // 同步执行的操作
     this.getInvitation()
@@ -844,10 +833,7 @@ export default {
 
     // 打开系统通知弹窗
     handleNewMore() {
-      this.noticeListVisible = true
-      this.$nextTick(() => {
-        this.$refs.noticeList.openBox()
-      })
+      this.$refs.noticeList.openBox()
     },
 
     // 点击快捷菜单跳转
@@ -970,20 +956,6 @@ export default {
 
 .workbench-page {
   min-height: calc(100vh - 92px);
-  transition: opacity 0.35s ease;
-
-  &.workbench-ready {
-    animation: workbenchFadeIn 0.35s ease;
-  }
-}
-
-@keyframes workbenchFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 .dynamics {

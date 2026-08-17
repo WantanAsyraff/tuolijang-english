@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="main-page">
     <div v-if="loading" class="loading-mask">
@@ -13,6 +12,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import LuckyExcel from 'luckyexcel'
 import { exportExcel } from './export'

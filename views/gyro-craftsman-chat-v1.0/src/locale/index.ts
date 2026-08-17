@@ -1,7 +1,5 @@
-﻿import { createI18n } from "vue-i18n";
-import en from "./en";
-import zhCn from "./zh-cn";
-import { translateSystemTextValue } from "./system-text";
+import { createI18n } from "vue-i18n";
+import { messages, translateSystemTextValue } from "./generated-locale";
 
 export type SupportedLocale = "zh-cn" | "en";
 
@@ -44,10 +42,7 @@ const i18n = createI18n({
   globalInjection: true,
   locale: getLanguage(),
   fallbackLocale: "zh-cn",
-  messages: {
-    en,
-    "zh-cn": zhCn,
-  },
+  messages,
 });
 
 export const setLanguage = (language: SupportedLocale): SupportedLocale => {

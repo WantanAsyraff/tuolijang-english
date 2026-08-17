@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <!-- 编辑审批 -->
@@ -37,6 +36,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import request from '@/api/request'
 import {
   approveApplyEditApi,

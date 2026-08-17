@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <div v-clickoutside="hideReplyBtn" @click="inputFocus" class="my-reply" :class="{ active: showReply }">
@@ -127,6 +126,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getTaskCommentApi, saveTaskCommentApi, putTaskCommentApi, deleteTaskCommentApi } from '@/api/program'
 import imageViewer from '@/components/common/imageViewer'
 import { getStorageJson } from '@/utils/storage'

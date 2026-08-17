@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <el-table
@@ -360,6 +359,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Sortable from 'sortablejs'
 import manageRange from '@/components/form-common/select-manageRange'
 import {

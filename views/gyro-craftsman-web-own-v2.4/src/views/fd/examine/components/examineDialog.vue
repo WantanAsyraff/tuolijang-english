@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 编辑付款记录弹窗 -->
 <template>
 <el-dialog
@@ -102,6 +101,7 @@ import { $ } from '@/lang'
 </el-dialog>
 </template>
 <script>
+import { $ } from '@/lang'
 import { clientBillStatusApi, clientFileDeleteApi, clientInvoiceStatusApi, putInvalid, clientInvoiceStatus } from '@/api/client'
 import SettingMer from '@/libs/settingMer'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'

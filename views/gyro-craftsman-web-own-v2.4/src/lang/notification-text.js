@@ -7,22 +7,22 @@ function errorMessage(value) {
 }
 
 // Element accepts strings, errors, and several option shapes. This adapter only
-// normalizes those shapes; every display string is resolved by the single $().
+// normalizes those shapes; every display string is resolved by the single translate().
 export function normalizeNotificationInput(input, translate) {
   if (typeof translate !== 'function') return input
-  if (typeof input === 'string') return $(input)
+  if (typeof input === 'string') return translate(input)
 
   const directError = errorMessage(input)
-  if (directError) return $(directError)
+  if (directError) return translate(directError)
   if (!input || typeof input !== 'object' || Array.isArray(input)) return input
 
   const normalized = { ...input }
   ;['message', 'title', 'description', 'content'].forEach((field) => {
     if (typeof normalized[field] === 'string') {
-      normalized[field] = $(normalized[field])
+      normalized[field] = translate(normalized[field])
     } else {
       const nestedError = errorMessage(normalized[field])
-      if (nestedError) normalized[field] = $(nestedError)
+      if (nestedError) normalized[field] = translate(nestedError)
     }
   })
 
@@ -30,16 +30,16 @@ export function normalizeNotificationInput(input, translate) {
     const fallback = [normalized.msg, normalized.detail, normalized.error]
       .map((value) => (typeof value === 'string' ? value : errorMessage(value)))
       .find(Boolean)
-    if (fallback) normalized.message = $(fallback)
+    if (fallback) normalized.message = translate(fallback)
   }
 
   if (Array.isArray(normalized.buttons)) {
     normalized.buttons = normalized.buttons.map((button) => {
-      if (typeof button === 'string') return $(button)
+      if (typeof button === 'string') return translate(button)
       if (!button || typeof button !== 'object') return button
       const next = { ...button }
       ;['title', 'label', 'text'].forEach((field) => {
-        if (typeof next[field] === 'string') next[field] = $(next[field])
+        if (typeof next[field] === 'string') next[field] = translate(next[field])
       })
       return next
     })

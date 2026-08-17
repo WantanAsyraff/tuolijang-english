@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <div class="v-height-flag">
@@ -95,6 +94,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import oaFromBox from '@/components/common/oaFromBox'
 import { getcrudCateListApi, getDatabaseApi } from '@/api/develop'

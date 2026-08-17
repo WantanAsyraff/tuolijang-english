@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <!-- 查看未考核人员 -->
@@ -86,6 +85,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { userAssessAbnormalList } from '@/api/user'
 export default {
   components: {

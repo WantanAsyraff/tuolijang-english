@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 申请发票信息侧滑弹窗 -->
 <template>
   <div class="station">
@@ -252,6 +251,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { clientInvoiceEditApi, clientInvoiceSaveApi, clientInvoiceDetailApi } from '@/api/client'
 import helper from '@/libs/helper'
 import { getStorageJson } from '@/utils/storage'

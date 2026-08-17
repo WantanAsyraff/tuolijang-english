@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="employees-card-bottom">
@@ -143,6 +142,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 import oaTable from '@/components/form-common/oa-table'
 import defaultPage from '@/components/common/defaultPage'

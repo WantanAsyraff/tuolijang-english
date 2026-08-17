@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="material-input-container">
   <!-- 素材内容输入框 -->
@@ -144,6 +143,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getUploadKeysApi } from '@/api/public'
 import SettingMer from '@/libs/settingMer'
 import { getFileType, getFileExtension } from '@/libs/public'

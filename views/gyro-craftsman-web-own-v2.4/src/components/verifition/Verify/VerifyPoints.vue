@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div style="position: relative">
     <div class="verify-img-out">
@@ -60,6 +59,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script type="text/babel">
+import { $ } from '@/lang'
 /**
  * VerifyPoints
  * @description 点选

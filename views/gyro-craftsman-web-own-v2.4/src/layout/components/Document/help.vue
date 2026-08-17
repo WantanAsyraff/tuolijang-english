@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 右侧帮助文档模块 -->
 <template>
     <div class="box">
@@ -15,6 +14,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import file from '@/utils/file'
 import Vue from 'vue'
 Vue.use(file)

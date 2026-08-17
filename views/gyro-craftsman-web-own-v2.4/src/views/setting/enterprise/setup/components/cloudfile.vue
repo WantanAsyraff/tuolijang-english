@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="v-height-flag ml20 mr20" style="min-height: calc(100vh - 200px)">
   <div v-height>
@@ -64,6 +63,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import ClipboardJS from 'clipboard'
 import { cloudFileSetupApi } from '@/api/config'
 import { configUpdateDataApi } from '@/api/setting'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <!--  新建文件或文件夹弹窗-->
 <el-dialog :before-close="handleClose" :title="config.title" :visible.sync="dialogVisible" width="480px">
@@ -26,6 +25,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { folderCreateApi, folderMakeApi, folderSpaceEntCreateApi, folderSpaceEntMakeApi } from '@/api/cloud'
 export default {
   name: 'MyFileDialog',

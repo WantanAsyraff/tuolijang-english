@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 低代码-触发器更新规则-日程待办组件-->
 <template>
 <div>
@@ -169,6 +168,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   props: {
     field: {

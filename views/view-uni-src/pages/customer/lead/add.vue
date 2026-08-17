@@ -2,7 +2,7 @@
   <BaseContainer class="base-container">
     <view class="head-wrap">
 
-      <NavBar :is-right="true" :defaultTitle="leadId ? '编辑线索' : '添加线索'" />
+      <NavBar :is-right="true" :defaultTitle="leadId ? $t('mobile.ui.navigation.editLead') : $t('mobile.navigation.pages/customer/lead/add')" />
     </view>
     <view class="form-card">
       <oaForm :listData="formDesignInfo" ref="formRef" @submitOk="handleSubmit" />

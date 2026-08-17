@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <!--  最近打开文件-->
   <div class="content">
@@ -219,6 +218,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { formatBytes } from '@/libs/public'
 import helper from '@/libs/helper'
 import {

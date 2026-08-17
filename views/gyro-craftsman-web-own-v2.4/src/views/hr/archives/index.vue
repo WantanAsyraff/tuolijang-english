@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 人事-员工档案 -->
 <template>
   <div class="divBox">
@@ -44,6 +43,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { perfectCard, deleteCard, formalCard, quitCard, importCardApi, getTemp, getInterview } from '@/api/enterprise'
 import file from '@/utils/file'
 import { getStorageJson } from '@/utils/storage'

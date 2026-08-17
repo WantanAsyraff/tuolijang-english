@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-dialog
@@ -47,6 +46,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { messageUpdateApi, upDateMessageApi } from '@/api/setting'
 
 export default {

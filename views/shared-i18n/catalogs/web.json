@@ -6633,7 +6633,8 @@
   },
   "web.legacy.1eeabd1ffe2a1a0a": {
     "zh-cn": "请填写应用名称",
-    "en": "Enter application name"
+    "en": "Enter application name",
+    "runtime": true
   },
   "web.legacy.209bfa3c22b7ef3d": {
     "zh-cn": "请输入规则",
@@ -8313,7 +8314,8 @@
   },
   "web.legacyScript.createSuccess": {
     "zh-cn": "创建成功",
-    "en": "Create Success"
+    "en": "Created successfully",
+    "runtime": true
   },
   "web.legacyScript.critical": {
     "zh-cn": "关键的",
@@ -9929,7 +9931,8 @@
   },
   "web.legacyScript.noValidImportDataRead": {
     "zh-cn": "未读取到有效导入数据",
-    "en": "No valid import data read"
+    "en": "No valid import data found",
+    "runtime": true
   },
   "web.legacyScript.number": {
     "zh-cn": "数字",
@@ -10465,7 +10468,8 @@
   },
   "web.legacyScript.pleaseEnterTheMessageContent": {
     "zh-cn": "请填写发送内容",
-    "en": "Please enter the message content"
+    "en": "Enter message content",
+    "runtime": true
   },
   "web.legacyScript.pleaseEnterTheMinimumSalary": {
     "zh-cn": "请输入最低薪资",
@@ -10533,11 +10537,13 @@
   },
   "web.legacyScript.pleaseSelectAccountCategory": {
     "zh-cn": "请选择账目分类",
-    "en": "Please select Account category"
+    "en": "Select an account category",
+    "runtime": true
   },
   "web.legacyScript.pleaseSelectACoverImage": {
     "zh-cn": "请选择封面图",
-    "en": "Please select a cover image"
+    "en": "Select a cover image",
+    "runtime": true
   },
   "web.legacyScript.pleaseSelectADefaultRole": {
     "zh-cn": "请选择默认角色",
@@ -10577,7 +10583,8 @@
   },
   "web.legacyScript.pleaseSelectApprovalType": {
     "zh-cn": "请选择审批类型",
-    "en": "Please select Approval type"
+    "en": "Select an approval type",
+    "runtime": true
   },
   "web.legacyScript.pleaseSelectARequestMethod": {
     "zh-cn": "请选择请求方式",
@@ -10653,7 +10660,8 @@
   },
   "web.legacyScript.pleaseSelectEmployee": {
     "zh-cn": "请选择员工",
-    "en": "Please select Employee"
+    "en": "Select an employee",
+    "runtime": true
   },
   "web.legacyScript.pleaseSelectEmploymentType": {
     "zh-cn": "请选择员工类型",
@@ -10669,7 +10677,8 @@
   },
   "web.legacyScript.pleaseSelectGraduationDate": {
     "zh-cn": "请选择毕业时间",
-    "en": "Please select Graduation date"
+    "en": "Select a graduation date",
+    "runtime": true
   },
   "web.legacyScript.pleaseSelectGroup": {
     "zh-cn": "请选择分组",
@@ -10721,11 +10730,13 @@
   },
   "web.legacyScript.pleaseSelectPositiveTime": {
     "zh-cn": "请选择转正时间",
-    "en": "Please select Positive time"
+    "en": "Select a confirmation date",
+    "runtime": true
   },
   "web.legacyScript.pleaseSelectRankCategory": {
     "zh-cn": "请选择职级类别",
-    "en": "Please select Rank category"
+    "en": "Select a rank category",
+    "runtime": true
   },
   "web.legacyScript.pleaseSelectReleaseTime": {
     "zh-cn": "请选择发布时间",
@@ -10809,7 +10820,8 @@
   },
   "web.legacyScript.pleaseSelectTime": {
     "zh-cn": "请选择时间",
-    "en": "Please select Time"
+    "en": "Select a time",
+    "runtime": true
   },
   "web.legacyScript.pleaseSelectViewType": {
     "zh-cn": "请选择视图类型",
@@ -10833,7 +10845,8 @@
   },
   "web.legacyScript.pleaseUploadAnImage": {
     "zh-cn": "请上传图片",
-    "en": "Please upload an image"
+    "en": "Please upload an image",
+    "runtime": true
   },
   "web.legacyScript.pleaseUploadAnImageInPNGOrJPGFormat": {
     "zh-cn": "请上传 PNG 或 JPG 格式的图片",
@@ -10841,7 +10854,8 @@
   },
   "web.legacyScript.pleaseUploadAVideo": {
     "zh-cn": "请上传视频",
-    "en": "Please upload a video"
+    "en": "Please upload a video",
+    "runtime": true
   },
   "web.legacyScript.pleaseUploadAVideoFile": {
     "zh-cn": "请上传视频文件",
@@ -10857,11 +10871,13 @@
   },
   "web.legacyScript.pleaseUploadTheContractFile": {
     "zh-cn": "请上传合同文件",
-    "en": "Please upload the contract file"
+    "en": "Please upload the contract file",
+    "runtime": true
   },
   "web.legacyScript.pleaseUploadTheMiniProgramCoverImage": {
     "zh-cn": "请上传小程序封面",
-    "en": "Please upload the mini program cover image"
+    "en": "Please upload the mini program cover image",
+    "runtime": true
   },
   "web.legacyScript.pleaseUploadTheSignedDocument": {
     "zh-cn": "请上传签署文件",
@@ -11201,7 +11217,8 @@
   },
   "web.legacyScript.saveFailed": {
     "zh-cn": "保存失败",
-    "en": "Save failed"
+    "en": "Save failed",
+    "runtime": true
   },
   "web.legacyScript.schedule": {
     "zh-cn": "日程",
@@ -11837,7 +11854,8 @@
   },
   "web.legacyScript.theSevereLateThresholdMustBeGreaterThanTheStandard": {
     "zh-cn": "严重迟到值要大于迟到",
-    "en": "The severe late threshold must be greater than the standard late threshold"
+    "en": "The severe late threshold must be greater than the standard late threshold",
+    "runtime": true
   },
   "web.legacyScript.thisDepartmentHasAlreadyJoinedAnotherAttendanceGroup": {
     "zh-cn": "此部门已加入其他考勤组",
@@ -17621,7 +17639,8 @@
   },
   "web.ui.developCrudEventPleaseSelectApprovalProcess": {
     "zh-cn": "请选择审批流程",
-    "en": "Please select Approval process"
+    "en": "Select an approval process",
+    "runtime": true
   },
   "web.ui.developCrudEventPleaseSelectEntity": {
     "zh-cn": "请选择实体",
@@ -20561,7 +20580,8 @@
   },
   "web.ui.programProgramListAddProgramPleaseSelectRelatedCustomer": {
     "zh-cn": "请选择关联客户",
-    "en": "Please select Related Customer"
+    "en": "Select a related customer",
+    "runtime": true
   },
   "web.ui.programProgramListAddProgramProjectDescription": {
     "zh-cn": "项目描述：",
@@ -20697,7 +20717,8 @@
   },
   "web.ui.programProgramTaskAddTaskPleaseSelectRelatedProject": {
     "zh-cn": "请选择关联项目",
-    "en": "Please select Related Project"
+    "en": "Select a related project",
+    "runtime": true
   },
   "web.ui.programProgramTaskAddTaskPleaseSelectRelatedVersion": {
     "zh-cn": "请选择关联版本",
@@ -22802,6 +22823,14 @@
   "web.ui.userNewsSubscribeNotifications": {
     "zh-cn": "消息通知",
     "en": "Notifications"
+  },
+  "web.ui.userNewsSubscribeSubscribe": {
+    "zh-cn": "订阅",
+    "en": "Subscribe"
+  },
+  "web.ui.userNewsSubscribeCancel": {
+    "zh-cn": "取消",
+    "en": "Cancel"
   },
   "web.ui.userNoticeIndexLatestAnnouncement": {
     "zh-cn": "最新公告",

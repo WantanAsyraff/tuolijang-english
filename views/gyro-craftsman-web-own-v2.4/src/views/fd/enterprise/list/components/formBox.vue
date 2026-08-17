@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 收支记账列表条件筛选组件 -->
 <template>
   <div>
@@ -23,6 +22,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import file from '@/utils/file'
 import Vue from 'vue'
 Vue.use(file)

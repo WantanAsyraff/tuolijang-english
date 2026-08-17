@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
     <div>
         <oaDialog ref="oaDialog" :fromData="fromData" :isFooter="false" @submit="submit">
@@ -39,6 +38,7 @@ import { $ } from '@/lang'
     </div>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
     name: 'eSignatureDialog',
     components: {

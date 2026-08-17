@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 下拉选择人员组件 -->
 <template>
 <el-popover
@@ -86,6 +85,7 @@ import { $ } from '@/lang'
 </el-popover>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getArrayDifference, isInArray, removeDuplicateObjects } from '@/libs/public'
 import isFullScreen from '@/components/isFullScreen/index'
 

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <!-- 线索池配置 -->
@@ -135,6 +134,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 export default {
   name: 'CluePoolConfig',
   props: {

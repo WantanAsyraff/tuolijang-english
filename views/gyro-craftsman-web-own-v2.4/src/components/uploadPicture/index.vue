@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="Modal">
   <div class="colLeft">
@@ -210,6 +209,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   formatLstApi,
   attachmentCreateApi,

@@ -4,10 +4,12 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
 import { createLocalizationRuntime } from "./runtime.js";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
 const views = path.resolve(root, "..");
 const catalogDirectory = path.join(root, "catalogs");
 const appRoots = {
@@ -40,6 +42,9 @@ const runtimeIndex = Object.fromEntries(
   Object.values(common).filter((entry) => entry.runtime).map((entry) => [entry["zh-cn"], entry.en])
 );
 const runtime = createLocalizationRuntime(runtimeIndex);
+const { formatNotificationTemplatePreview } = require(
+  path.join(views, "gyro-craftsman-web-own-v2.4/src/lang/notification-template-preview.js")
+);
 
 test("canonical catalogs contain complete adjacent locale pairs", () => {
   const identifiers = new Set();
@@ -67,7 +72,54 @@ test("locale aliases normalize while unknown aliases remain unset", () => {
 test("runtime translation honors backend English and exact canonical text", () => {
   assert.equal(runtime.translateSystemTextValue("保存", { locale: "en" }), "Save");
   assert.equal(runtime.translateSystemTextValue("保存", { locale: "en", englishValue: "Persist" }), "Persist");
+  assert.equal(runtime.translateSystemTextValue("账号或密码不正确", { locale: "en" }), "Incorrect account or password.");
+  assert.equal(runtime.translateSystemTextValue("缺少审批流程", { locale: "en" }), "The approval process is missing.");
   assert.equal(runtime.translateSystemTextValue("保存", { locale: "zh-cn", englishValue: "Persist" }), "保存");
+});
+
+test("dynamic backend responses preserve interpolated values in both locales", () => {
+  const cases = [
+    ["员工导入结果，成功：12条,失败：3条.", "Employee import result — successful: 12, failed: 3."],
+    ["第4行账目金额必须大于0", "In row 4, the amount must be greater than 0"],
+    ["维度总分必须为100分", "The dimension total score must be 100"],
+    ["目标字段“total”输入的公式错误,错误原因:division by zero", "The formula for target field “total” is invalid. Reason: division by zero"],
+    ["暂无权限在Orders模块中删除该数据！", "You do not have permission to delete this data in the Orders module"],
+    ["客户【Acme】存在负责人, 不能进行取消流失操作", "Customer Acme has an owner, so the lost status cannot be cancelled"],
+    ["读取 JSON 文件失败：C:/data/cities.json", "Failed to read JSON file: C:/data/cities.json"],
+    ["版本信息不匹配，请更新App版本至: v3.2.1版本", "Version mismatch. Update the app to version v3.2.1"],
+    ["字段sku的值不能重复", "The value of field sku must be unique"],
+    ["导入失败：invalid workbook", "Import failed: invalid workbook"],
+    ["清除角标失败: connection refused", "Failed to clear the badge: connection refused"],
+  ];
+
+  for (const [source, expected] of cases) {
+    const translated = runtime.translateSystemTextValue(source, { locale: "en" });
+    assert.equal(translated, expected);
+    assert.equal(/[\u3400-\u9fff]/.test(translated), false);
+    assert.equal(runtime.translateSystemTextValue(source, { locale: "zh-cn" }), source);
+  }
+});
+test("notification templates translate placeholder labels without changing Chinese mode", () => {
+  const assessment = "您还未创建{#负责部门}的{#时间2}考核目标，请您尽快制定考核任务！！！";
+  const fileDeletion = "{#创建人}创建的{#文件名称}文件已被{#删除人}删除，请悉知！";
+  const translatedAssessment = runtime.translateSystemTextValue(assessment, { locale: "en" });
+  const translatedFileDeletion = runtime.translateSystemTextValue(fileDeletion, { locale: "en" });
+
+  assert.equal(/[\u3400-\u9fff]/.test(translatedAssessment), false);
+  assert.match(translatedAssessment, /\{#responsibleDepartment\}/);
+  assert.match(translatedAssessment, /\{#time2\}/);
+  assert.equal(/[\u3400-\u9fff]/.test(translatedFileDeletion), false);
+  assert.match(translatedFileDeletion, /\{#fileName\}/);
+  assert.equal(runtime.translateSystemTextValue(assessment, { locale: "zh-cn" }), assessment);
+});
+
+test("notification subscription previews hide raw placeholder syntax in English mode", () => {
+  const translated = "You have not created the {#time2} objectives for {#responsibleDepartment}.";
+  const preview = formatNotificationTemplatePreview(translated, "en");
+
+  assert.equal(preview, "You have not created the time 2 objectives for responsible department.");
+  assert.doesNotMatch(preview, /\{#[^}]+\}/);
+  assert.equal(formatNotificationTemplatePreview(translated, "zh-cn"), translated);
 });
 
 test("runtime formatting is allowlisted and unknown business content is preserved", () => {
@@ -78,6 +130,15 @@ test("runtime formatting is allowlisted and unknown business content is preserve
   assert.equal(runtime.translateSystemTextValue("客户手写备注", { locale: "en" }), "客户手写备注");
 });
 
+test("backend user-facing response audit has no unmapped or unclassified candidates", () => {
+  const result = spawnSync(process.execPath, [path.join(root, "backend-audit.cjs")], {
+    cwd: views,
+    encoding: "utf8",
+  });
+  assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
+  assert.match(result.stdout, /Direct unmapped: 0/);
+  assert.match(result.stdout, /Unclassified residuals: 0/);
+});
 test("generation is deterministic and the source audit passes", () => {
   runCli("check");
   runCli("audit");
@@ -155,6 +216,42 @@ test("dashboard exposes $() as its only application translation interface", () =
   const notification = read("gyro-craftsman-web-own-v2.4/src/lang/notification-text.js");
   assert.match(notification, /normalizeNotificationInput/);
   assert.doesNotMatch(notification, /generated-locale|KNOWN_NOTIFICATION_TEXT|translateSystemText/);
+  assert.doesNotMatch(notification, /(?<![\w.])\$\s*\(/);
+  assert.match(notification, /translate\(input\)/);
+});
+
+test("dashboard script translation calls are lexically scoped", () => {
+  const sourceRoot = path.join(appRoots.web, "src");
+  const pending = [sourceRoot];
+  const issues = [];
+
+  while (pending.length) {
+    const directory = pending.pop();
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const filename = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        pending.push(filename);
+        continue;
+      }
+      if (!entry.name.endsWith(".vue")) continue;
+
+      const source = fs.readFileSync(filename, "utf8");
+      const scriptOpen = source.indexOf("<script");
+      const scriptMatch = source.match(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/);
+      if (!scriptMatch) continue;
+
+      const relative = path.relative(sourceRoot, filename);
+      const script = scriptMatch[1];
+      if (source.slice(0, scriptOpen).includes("import { $ } from '@/lang'")) {
+        issues.push(`${relative}: translator import is outside <script>`);
+      }
+      if (/(?<![\w.])\$\s*\(/.test(script) && !script.includes("import { $ } from '@/lang'")) {
+        issues.push(`${relative}: bare $() call has no translator import`);
+      }
+    }
+  }
+
+  assert.deepEqual(issues, []);
 });
 test("all clients expose the same localization maintenance commands", () => {
   const expected = ["i18n:generate", "i18n:check", "i18n:audit", "i18n:test"];

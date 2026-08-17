@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 人事-考勤管理-白名单设置 -->
 <template>
 <div class="divBox">
@@ -42,6 +41,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { putWhitelistApi, getWhitelistApi } from '@/api/config'
 export default {
   name: '',

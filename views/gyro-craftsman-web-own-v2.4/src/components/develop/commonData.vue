@@ -1,5 +1,5 @@
-import { $ } from '@/lang'
 <script>
+import { $ } from '@/lang'
 // 新建实体表单数配置
 const formDataInit = {
   table_name: '',

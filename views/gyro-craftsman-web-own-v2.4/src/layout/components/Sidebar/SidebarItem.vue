@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div v-if="!item.hidden">
     <template
@@ -47,6 +46,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { resolve } from '@/utils/path'
 import { isExternal } from '@/utils/validate'
 import FixiOSBug from './FixiOSBug'

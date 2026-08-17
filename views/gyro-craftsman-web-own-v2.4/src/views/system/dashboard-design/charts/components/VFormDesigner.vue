@@ -83,6 +83,7 @@ import { $, getLanguage, setLanguage } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 
 import SvgIcon from '@/components/svg-icon-nc'
 import { createDesigner } from '../designer'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card class="card-box mt20">
@@ -173,6 +172,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getWorkConfigApi, saveWorkConfigApi, getWorkRsaApi } from '@/api/setting'
 export default {
   data() {

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <!-- 海事量表页面 -->
@@ -355,6 +354,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Sortable from 'sortablejs'
 import data from './mixins/index.js'
 import { jobSelectApi, hayGroupApi, getHayGroupApi, putHayGroupApi } from '@/api/config.js'

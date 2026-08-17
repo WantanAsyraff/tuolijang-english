@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!--
   @FileDescription: 客户/订单新增的动态表单组件
   功能：提供动态表单渲染，支持多种表单控件类型
@@ -460,6 +459,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { extractArrayIds } from '@/libs/public'
 import { pinyin } from 'pinyin-pro'

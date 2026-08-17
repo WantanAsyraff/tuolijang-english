@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <!-- 明细表详情 -->
 <container-item-wrapper :widget="widget">
@@ -79,6 +78,7 @@ import { $ } from '@/lang'
 </container-item-wrapper>
 </template>
 <script>
+import { $ } from '@/lang'
 import { putUpdateFieldApi } from '@/api/develop'
 import emitter from '@/utils/emitter'
 import refMixin from '@/components/form-render/refMixin'

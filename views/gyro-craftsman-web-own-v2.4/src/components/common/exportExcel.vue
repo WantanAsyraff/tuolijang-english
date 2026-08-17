@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 
   @FileDescription: Excel导出组件
   功能：封装Excel导出功能，支持自定义模板、单元格合并和样式设置
@@ -9,6 +8,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import XLSX from 'xlsx'
 
 export default {

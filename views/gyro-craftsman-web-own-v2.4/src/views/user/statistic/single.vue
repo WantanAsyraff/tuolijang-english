@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <!-- 个人统计 -->
@@ -176,6 +175,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { attendanceStatistics, individualStatistics } from '@/api/user'
 
 // 预加载图片资源，避免在渲染时多次加载

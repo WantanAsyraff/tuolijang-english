@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-form-item class="mb-18" :label="chartType == 'listTable' ? $('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDisplayedFields') : $('ui.systemDashboardDesignChartsPropertyEditorSetDimensionalEditorDimensionAndMetricSettings')">
@@ -203,6 +202,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { mapActions } from 'vuex'
 // import VueDraggableNext from 'vue-draggable-next'
 import DimensionCom from './components/DimensionCom.vue'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 财务-账目记录-收支记账页面 -->
 <template>
   <div class="divBox">
@@ -110,6 +109,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   billListApi,
   billListEditApi,

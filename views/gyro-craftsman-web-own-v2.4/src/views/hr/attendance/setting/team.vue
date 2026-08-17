@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 人事-考勤管理-考勤组设置 -->
 <template>
 <div class="divBox">
@@ -116,6 +115,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import oaFromBox from '@/components/common/oaFromBox'
 import { attendanceGroupListApi, deleteAttendanceGroup, attendanceUnattendedMember } from '@/api/config'

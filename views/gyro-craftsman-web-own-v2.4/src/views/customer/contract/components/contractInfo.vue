@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 订单信息页面组件 -->
 <template>
   <div class="station">
@@ -139,6 +138,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { contractList } from '@/api/enterprise'
 import { clientContractEditApi, clientContractSaveApi, clientNameApi } from '@/api/client'
 

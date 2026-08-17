@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="box">
   <oaFromBox
@@ -16,6 +15,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import { approveConfigSearchApi } from '@/api/business'
 import 'animate.css'

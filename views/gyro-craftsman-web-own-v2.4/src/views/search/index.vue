@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <div class="box">
@@ -84,6 +83,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { mapMutations } from 'vuex'
 import { helpCenterApi, templatePayCode, templateViewApi, templateExportApi } from '@/api/user'
 import file from '@/utils/file'

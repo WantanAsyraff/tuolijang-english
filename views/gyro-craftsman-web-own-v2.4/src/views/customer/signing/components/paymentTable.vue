@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 订单发票-关联付款单表格组件 -->
 <template>
 <div class="paymentTable">
@@ -68,6 +67,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getColor } from '@/utils/format'
 import { customerViewApi, clientContractListApi } from '@/api/enterprise'
 export default {

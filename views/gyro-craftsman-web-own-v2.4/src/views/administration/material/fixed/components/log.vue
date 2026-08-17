@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 固定物资记录 -->
 <template>
 <div ref="bodyRef">
@@ -81,6 +80,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { storageCateApi, storageRecordApi, storageRecordUsersApi } from '@/api/administration'
 import 'animate.css'
 export default {

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 审批详情侧滑页面 -->
 <template>
 <div>
@@ -248,6 +247,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import func from '@/utils/preload'
 import { toSrcFn } from '@/utils/format'
 import { getStorageJson } from '@/utils/storage'

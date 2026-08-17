@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
     <div class="oa-dialog">
         <el-dialog :title="$('ui.customerDragUploadImportData')" :visible.sync="show" width="789px" :before-close="handleClose"
@@ -54,6 +53,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { uploader } from '@/utils/uploadCloud'
 import { clientImportTemplateApi, clientImportApi } from '@/api/client'
 import { formatBytes } from '@/libs/public'

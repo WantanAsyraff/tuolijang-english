@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="current-list">
     <!-- 创建考核页面 -->
@@ -285,6 +284,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import Common from '@/components/user/accessCommon'
 import { userAssessEditApi, userAssessInfo, userAssessCreateApi } from '@/api/user'
 import { assessPlanPeriodApi, assessTargetCateListApi, assessTemplatePutApi } from '@/api/enterprise'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 客户-账目记录-添加/编辑弹窗支出页面 -->
 <template>
 <el-dialog
@@ -105,6 +104,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import {
   selectContractListApi,
   enterprisePayTypeApi,

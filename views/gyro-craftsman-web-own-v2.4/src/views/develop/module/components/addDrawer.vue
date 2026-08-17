@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer
@@ -36,6 +35,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import VFormRender from '@/components/form-render/index'
 import defaultPage from '@/components/common/defaultPage'
 import { crudModuleCreateApi, crudModuleSaveDataApi, crudModuleUpdateApi } from '@/api/develop'

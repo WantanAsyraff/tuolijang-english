@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 项目-我的项目-项目列表页面 -->
 <template>
   <div class="divBox bill-type">
@@ -87,6 +86,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getProgramListApi, deleteProgramApi } from '@/api/program'
 import { customerSelectApi } from '@/api/enterprise'
 import { roterPre } from '@/settings'

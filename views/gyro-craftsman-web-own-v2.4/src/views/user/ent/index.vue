@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '0px 20px 20px 20px' }" class="normal-page">
@@ -60,6 +59,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 // 引入用户通讯录树和列表的API
 import { userAddBookTree, userAddBookeList } from '@/api/user'
 // 引入菜单树组件

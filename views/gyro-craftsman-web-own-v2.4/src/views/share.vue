@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="content">
   <template v-if="!submitSuccess">
@@ -31,6 +30,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import store from '@/store'
 import { mapMutations } from 'vuex'
 import Verify from '@/components/verifition/Verify'

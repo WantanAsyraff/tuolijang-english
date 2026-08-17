@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <el-form-item label-width="0">
     <el-divider class="custom-divider-margin-top">
@@ -51,6 +50,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { getDictListApi, getDictTreeListApi } from '@/api/form'
 import OptionItemsSetting from '@/components/form-designer/setting-panel/option-items-setting'
 import OptionCascsderSetting from '@/components/form-designer/setting-panel/option-cascsder-setting'

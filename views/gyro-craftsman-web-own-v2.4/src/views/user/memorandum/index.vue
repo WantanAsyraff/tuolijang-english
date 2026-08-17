@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!--记事本-->
 <template>
   <div class="divBox">
@@ -142,6 +141,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { memorialListApi, memorialSaveApi, memorialEditApi, memorialDeleteApi, memorialGroupApi } from '@/api/user'
 import fSpan from '@/views/business/components/formSetting/components/form-create-designer/src/config/rule/span'
 

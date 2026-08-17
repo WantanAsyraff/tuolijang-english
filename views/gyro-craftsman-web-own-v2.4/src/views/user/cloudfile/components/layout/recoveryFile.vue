@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="v-height-flag box">
   <oaFromBox
@@ -82,6 +81,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Vue from 'vue'
 import file from '@/utils/file'
 Vue.use(file)

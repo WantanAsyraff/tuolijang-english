@@ -396,7 +396,7 @@
   },
   "runtime.notice.content.assessmentTarget": {
     "zh-cn": "您还未创建{#负责部门}的{#时间2}考核目标，请您尽快制定考核任务！！！",
-    "en": "You have not created the {#时间2} assessment objectives for {#负责部门}. Please create the assessment task as soon as possible!",
+    "en": "You have not created the {#time2} assessment objectives for {#responsibleDepartment}. Please create the assessment task as soon as possible!",
     "runtime": true
   },
   "runtime.notice.content.dailyReport": {
@@ -406,64 +406,345 @@
   },
   "runtime.notice.content.assessmentException": {
     "zh-cn": "未找到{#被考核人}上{#时间1}考核任务，请核查原因！",
-    "en": "No assessment task was found for {#被考核人} for {#时间1}. Please investigate.",
+    "en": "No assessment task was found for {#assessedEmployee} for {#time1}. Please investigate.",
     "runtime": true
   },
   "runtime.notice.content.invoiceApplication": {
     "zh-cn": "{#业务员}于{#申请时间}申请{#关联合同}的发票开具，请您及时处理！",
-    "en": "{#业务员} applied to issue an invoice for {#关联合同} on {#申请时间}. Please process it promptly.",
+    "en": "{#salesperson} applied to issue an invoice for {#relatedContract} on {#applicationTime}. Please process it promptly.",
     "runtime": true
   },
   "runtime.notice.content.assessmentEnding": {
     "zh-cn": "请注意{#考核名称}今日结束！",
-    "en": "Please note that {#考核名称} ends today.",
+    "en": "Please note that {#assessmentName} ends today.",
     "runtime": true
   },
   "runtime.notice.content.performanceAppealRequest": {
     "zh-cn": "{#申诉人}于{#申诉时间}提交了绩效考核申诉，请您及时处理！",
-    "en": "{#申诉人} submitted a performance assessment appeal on {#申诉时间}. Please process it promptly.",
+    "en": "{#appellant} submitted a performance assessment appeal on {#appealTime}. Please process it promptly.",
     "runtime": true
   },
   "runtime.notice.content.performanceAppealResult": {
     "zh-cn": "您于{#申诉时间}提交的绩效考核申诉已完成，请注意查看结果！",
-    "en": "The performance assessment appeal you submitted on {#申诉时间} has been completed. Please review the result.",
+    "en": "The performance assessment appeal you submitted on {#appealTime} has been completed. Please review the result.",
     "runtime": true
   },
   "runtime.notice.content.startAssessment": {
     "zh-cn": "您还未开启{#负责部门}{#时间2}考核任务，请您尽快开启考核任务！",
-    "en": "You have not started the {#时间2} assessment task for {#负责部门}. Please start it as soon as possible.",
+    "en": "You have not started the {#time2} assessment task for {#responsibleDepartment}. Please start it as soon as possible.",
     "runtime": true
   },
   "runtime.notice.content.selfEvaluation": {
     "zh-cn": "您还未对{#考核名称}进行自我评价，请您尽快完成自我评价！",
-    "en": "You have not completed the self-evaluation for {#考核名称}. Please complete it as soon as possible.",
+    "en": "You have not completed the self-evaluation for {#assessmentName}. Please complete it as soon as possible.",
     "runtime": true
   },
   "runtime.notice.content.managerEvaluation": {
     "zh-cn": "您还未完成{#负责部门} {#考核名称}的考核评价，请您尽快处理！",
-    "en": "You have not completed the assessment evaluation for {#负责部门} {#考核名称}. Please process it as soon as possible.",
+    "en": "You have not completed the assessment evaluation for {#responsibleDepartment} {#assessmentName}. Please process it as soon as possible.",
     "runtime": true
   },
   "runtime.notice.content.objectivesPublished": {
     "zh-cn": "{#考核名称}目标已发布，请注意查看您的考核目标！",
-    "en": "The objectives for {#考核名称} have been published. Please review your assessment objectives.",
+    "en": "The objectives for {#assessmentName} have been published. Please review your assessment objectives.",
     "runtime": true
   },
   "runtime.notice.content.businessApproval": {
     "zh-cn": "{#申请人部门}  {#申请人}于{#申请时间}提交{#业务类型}，请您及时审批！",
-    "en": "{#申请人部门} {#申请人} submitted {#业务类型} on {#申请时间}. Please review it promptly.",
+    "en": "{#applicantDepartment} {#applicant} submitted {#businessType} on {#applicationTime}. Please review it promptly.",
     "runtime": true
   },
   "runtime.notice.content.businessWithdrawal": {
     "zh-cn": "因特殊原因，您已审批通过的 {#申请人单位}{#申请人}于{#申请时间}发起的{#业务类型}申请，已撤销！",
-    "en": "For special reasons, the {#业务类型} request initiated by {#申请人单位}{#申请人} on {#申请时间}, which you approved, has been withdrawn.",
+    "en": "For special reasons, the {#businessType} request initiated by {#applicantOrganization}{#applicant} on {#applicationTime}, which you approved, has been withdrawn.",
     "runtime": true
   },
   "runtime.notice.content.approvalPassed": {
     "zh-cn": "{#申请人部门}{#申请人}于{#申请时间}提交的{#业务类型}申请，已通过审批！",
-    "en": "The {#业务类型} request submitted by {#申请人部门}{#申请人} on {#申请时间} has been approved.",
+    "en": "The {#businessType} request submitted by {#applicantDepartment}{#applicant} on {#applicationTime} has been approved.",
     "runtime": true
-  },  "runtime.0006d696d8e1ec28": {
+  },
+  "runtime.notice.todoReminder": {
+    "zh-cn": "待办任务提醒",
+    "en": "To-do task reminder",
+    "runtime": true
+  },
+  "runtime.notice.invoiceReviewRejected": {
+    "zh-cn": "发票审核未通过",
+    "en": "Invoice review rejected",
+    "runtime": true
+  },
+  "runtime.notice.paymentReviewApproved": {
+    "zh-cn": "付款审核通过",
+    "en": "Payment review approved",
+    "runtime": true
+  },
+  "runtime.notice.paymentReviewRejected": {
+    "zh-cn": "付款审核未通过",
+    "en": "Payment review rejected",
+    "runtime": true
+  },
+  "runtime.notice.contractTaskReminder": {
+    "zh-cn": "合同待办提醒",
+    "en": "Contract task reminder",
+    "runtime": true
+  },
+  "runtime.notice.contractExpiringReminder": {
+    "zh-cn": "合同即将到期提醒",
+    "en": "Contract expiration reminder",
+    "runtime": true
+  },
+  "runtime.notice.contractDueTodayReminder": {
+    "zh-cn": "合同今日到期提醒",
+    "en": "Contract due today reminder",
+    "runtime": true
+  },
+  "runtime.notice.contractExceptionReminder": {
+    "zh-cn": "合同异常提醒",
+    "en": "Contract exception reminder",
+    "runtime": true
+  },
+  "runtime.notice.repaymentReviewRequest": {
+    "zh-cn": "回款核对请求",
+    "en": "Payment collection review request",
+    "runtime": true
+  },
+  "runtime.notice.assessmentResultNotification": {
+    "zh-cn": "考核结果通知",
+    "en": "Assessment result notification",
+    "runtime": true
+  },
+  "runtime.notice.customerContract": {
+    "zh-cn": "客户合同",
+    "en": "Customer contracts",
+    "runtime": true
+  },
+  "runtime.notice.enterpriseActivityReminder": {
+    "zh-cn": "企业动态提醒",
+    "en": "Enterprise activity reminder",
+    "runtime": true
+  },
+  "runtime.notice.enterpriseFile": {
+    "zh-cn": "企业文件",
+    "en": "Enterprise files",
+    "runtime": true
+  },
+  "runtime.notice.enterpriseInvitationReminder": {
+    "zh-cn": "企业邀请提醒",
+    "en": "Enterprise invitation reminder",
+    "runtime": true
+  },
+  "runtime.notice.enterpriseRegistration": {
+    "zh-cn": "企业注册",
+    "en": "Enterprise registration",
+    "runtime": true
+  },
+  "runtime.notice.personnelChange": {
+    "zh-cn": "人员异动",
+    "en": "Personnel changes",
+    "runtime": true
+  },
+  "runtime.notice.dailyReportUpdated": {
+    "zh-cn": "日报修改查看提醒",
+    "en": "Daily report update reminder",
+    "runtime": true
+  },
+  "runtime.notice.managerScoreResult": {
+    "zh-cn": "上级评分结果",
+    "en": "Manager score result",
+    "runtime": true
+  },
+  "runtime.notice.approvalRejected": {
+    "zh-cn": "审批未通过提醒",
+    "en": "Approval rejection reminder",
+    "runtime": true
+  },
+  "runtime.notice.fileAdded": {
+    "zh-cn": "文件新增提醒",
+    "en": "File added reminder",
+    "runtime": true
+  },
+  "runtime.notice.fileRead": {
+    "zh-cn": "文件阅读提醒",
+    "en": "File read reminder",
+    "runtime": true
+  },
+  "runtime.notice.renewalOverdue": {
+    "zh-cn": "续费过期提醒",
+    "en": "Renewal overdue reminder",
+    "runtime": true
+  },
+  "runtime.notice.renewalReviewRequest": {
+    "zh-cn": "续费核对请求",
+    "en": "Renewal review request",
+    "runtime": true
+  },
+  "runtime.notice.renewalExpiring": {
+    "zh-cn": "续费即将到期提醒",
+    "en": "Renewal expiration reminder",
+    "runtime": true
+  },
+  "runtime.notice.renewalDueToday": {
+    "zh-cn": "续费今日到期提醒",
+    "en": "Renewal due today reminder",
+    "runtime": true
+  },
+  "runtime.notice.completeProfileInvitation": {
+    "zh-cn": "邀请完善信息",
+    "en": "Invite to complete information",
+    "runtime": true
+  },
+  "runtime.notice.content.fileDeleted": {
+    "zh-cn": "{#创建人}创建的{#文件名称}文件已被{#删除人}删除，请悉知！",
+    "en": "{#creator} created {#fileName}, which was deleted by {#deletedBy}. Please be advised.",
+    "runtime": true
+  },
+  "runtime.notice.content.fileCreated": {
+    "zh-cn": "{#创建人}于{#创建时间}创建了新文件，请悉知！",
+    "en": "{#creator} created a new file on {#creationTime}. Please be advised.",
+    "runtime": true
+  },
+  "runtime.notice.content.renewalDueToday": {
+    "zh-cn": "{#合同名称} {#续费类型}今日到期，请立刻联系客户进行续费哦！",
+    "en": "{#contractName} {#renewalType} expires today. Contact the customer immediately to arrange renewal.",
+    "runtime": true
+  },
+  "runtime.notice.content.renewalOverdue": {
+    "zh-cn": "{#合同名称} {#续费类型}已超期，请立刻联系客户进行核实续费哦！",
+    "en": "{#contractName} {#renewalType} is overdue. Contact the customer immediately to confirm the renewal.",
+    "runtime": true
+  },
+  "runtime.notice.content.renewalExpiring": {
+    "zh-cn": "{#合同名称} {#续费类型}余额剩余30天，请记得联系客户进行续费哦！",
+    "en": "{#contractName} {#renewalType} has 30 days remaining. Remember to contact the customer about renewal.",
+    "runtime": true
+  },
+  "runtime.notice.content.contractDueToday": {
+    "zh-cn": "{#合同名称}今日到期，请记得联系客户沟通后续工作哦！",
+    "en": "{#contractName} expires today. Remember to contact the customer about the next steps.",
+    "runtime": true
+  },
+  "runtime.notice.content.contractExpiring": {
+    "zh-cn": "{#合同名称}剩余30天结束，请立刻联系客户沟通后续工作哦！",
+    "en": "{#contractName} ends in 30 days. Contact the customer immediately about the next steps.",
+    "runtime": true
+  },
+  "runtime.notice.content.dailyReportUpdated": {
+    "zh-cn": "{#汇报人}的{#汇报类型}已更新，请及时查看！",
+    "en": "{#reporter}'s {#reportType} has been updated. Please review it promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.dailyReportSubmitted": {
+    "zh-cn": "{#汇报人}的{#汇报类型}已提交，请及时查看！",
+    "en": "{#reporter}'s {#reportType} has been submitted. Please review it promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.managerScoreResult": {
+    "zh-cn": "{#考核名称}上级评价已结束，您的上级评价得分为：{#上级评价得分}分！",
+    "en": "The manager evaluation for {#assessmentName} has ended. Your manager evaluation score is {#managerEvaluationScore}.",
+    "runtime": true
+  },
+  "runtime.notice.content.assessmentResult": {
+    "zh-cn": "{#考核名称}已结束，您的最终考核得分为：{#最终得分}分！",
+    "en": "{#assessmentName} has ended. Your final assessment score is {#finalScore}.",
+    "runtime": true
+  },
+  "runtime.notice.content.enterpriseInvitation": {
+    "zh-cn": "{#企业名称}邀请您加入该企业，请您尽快处理哦！",
+    "en": "{#enterpriseName} invited you to join the enterprise. Please respond promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.enterpriseJoinRequest": {
+    "zh-cn": "{#申请人员姓名}申请加入我们{#企业名称}大家庭，请您尽快处理哦！",
+    "en": "{#applicantName} applied to join {#enterpriseName}. Please respond promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.enterpriseJoinRejected": {
+    "zh-cn": "{#申请人员姓名}已拒绝加入企业，请核实原因！",
+    "en": "{#applicantName} declined to join the enterprise. Please verify the reason.",
+    "runtime": true
+  },
+  "runtime.notice.content.contractMarkedAbnormal": {
+    "zh-cn": "{#业务员}于{#触发时间}将{#合同名称}状态改为异常，请悉知！",
+    "en": "{#salesperson} marked {#contractName} as abnormal on {#triggerTime}. Please be advised.",
+    "runtime": true
+  },
+  "runtime.notice.content.repaymentReviewRequest": {
+    "zh-cn": "{#业务员}于{#申请时间}申请{#关联合同名称}的合同回款核对，请您及时审核！",
+    "en": "{#salesperson} requested payment collection verification for {#relatedContractName} on {#applicationTime}. Please review it promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.renewalReviewRequest": {
+    "zh-cn": "{#业务员}于{#申请时间}申请{#关联合同名称}的合同续费核对，请您及时审核！",
+    "en": "{#salesperson} requested renewal verification for {#relatedContractName} on {#applicationTime}. Please review it promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.fileRead": {
+    "zh-cn": "{#阅读人}查阅了您创建的{#文件名称}文件，请悉知！",
+    "en": "{#reader} viewed the {#fileName} file you created. Please be advised.",
+    "runtime": true
+  },
+  "runtime.notice.content.enterpriseActivity": {
+    "zh-cn": "您当前所在企业{#企业名称}，发布了一条新动态：{#文章标题}。",
+    "en": "Your current enterprise, {#enterpriseName}, published a new update: {#articleTitle}.",
+    "runtime": true
+  },
+  "runtime.notice.content.completeProfileInvitation": {
+    "zh-cn": "您当前所在企业{#企业名称}，邀请您完善个人档案信息。",
+    "en": "Your current enterprise, {#enterpriseName}, invited you to complete your profile.",
+    "runtime": true
+  },
+  "runtime.notice.content.approvalRejected": {
+    "zh-cn": "您提交的{#业务类型}申请，未通过审批！",
+    "en": "Your {#businessType} request was rejected.",
+    "runtime": true
+  },
+  "runtime.notice.content.enterpriseRegistrationRejected": {
+    "zh-cn": "您提交的企业【{#企业名称}】资料未通过平台审核，请您核对后重新提交注册！",
+    "en": "The registration information submitted for {#enterpriseName} was rejected by the platform. Please verify it and resubmit.",
+    "runtime": true
+  },
+  "runtime.notice.content.enterpriseRegistrationApproved": {
+    "zh-cn": "您提交的企业【{#企业名称}】资料已通过平台审核，请您重新登录系统，快来体验吧！",
+    "en": "The registration information submitted for {#enterpriseName} was approved by the platform. Please sign in again to continue.",
+    "runtime": true
+  },
+  "runtime.notice.content.todoTask": {
+    "zh-cn": "您有一条{#待办类型}任务，请记得处理哦！提醒内容【{#待办内容}】",
+    "en": "You have a {#todoType} task to process. Reminder: {#todoContent}",
+    "runtime": true
+  },
+  "runtime.notice.content.personalTodo": {
+    "zh-cn": "您有一条个人待办任务，请记得处理哦！待办内容【{#待办内容}】",
+    "en": "You have a personal to-do task to process: {#todoContent}",
+    "runtime": true
+  },
+  "runtime.notice.content.customerFollowup": {
+    "zh-cn": "您有一条客户跟进任务，请记得处理哦！提醒内容【{#待办内容}】",
+    "en": "You have a customer follow-up task to process: {#todoContent}",
+    "runtime": true
+  },
+  "runtime.notice.content.repaymentReviewRejected": {
+    "zh-cn": "您于{#申请时间}申请{#关联合同}的合同款项核对未通过，备注：{#备注内容}。",
+    "en": "Your contract payment verification request for {#relatedContract} on {#applicationTime} was rejected. Remarks: {#remarks}.",
+    "runtime": true
+  },
+  "runtime.notice.content.invoiceReviewRejected": {
+    "zh-cn": "您于{#申请时间}申请{#关联合同名称}的发票审核未通过，备注：{#备注内容}！",
+    "en": "Your invoice review request for {#relatedContractName} on {#applicationTime} was rejected. Remarks: {#remarks}.",
+    "runtime": true
+  },
+  "runtime.notice.content.invoiceIssued": {
+    "zh-cn": "您于{#申请时间}申请{#关联合同名称}的发票已开具，请您及时查看！",
+    "en": "The invoice requested for {#relatedContractName} on {#applicationTime} has been issued. Please review it promptly.",
+    "runtime": true
+  },
+  "runtime.notice.content.contractPaymentReviewApproved": {
+    "zh-cn": "您于{#申请时间}申请{#关联合同名称}的合同款项核对已通过！",
+    "en": "Your contract payment verification request for {#relatedContractName} on {#applicationTime} was approved.",
+    "runtime": true
+  },
+  "runtime.0006d696d8e1ec28": {
     "zh-cn": "新增",
     "en": "Add",
     "runtime": true
@@ -21786,6 +22067,4566 @@
   "runtime.web.notification.038": {
     "zh-cn": "个人月统计提醒",
     "en": "Personal monthly statistics reminder",
+    "runtime": true
+  },
+  "runtime.backend.4ff91b4758fd": {
+    "zh-cn": "不能删除企业的创始人",
+    "en": "The organization founder cannot be deleted.",
+    "runtime": true
+  },
+  "runtime.backend.3e2b222d98e5": {
+    "zh-cn": "两次输入的密码不一致",
+    "en": "Passwords do not match.",
+    "runtime": true
+  },
+  "runtime.backend.9e483361142d": {
+    "zh-cn": "人员信息不符，禁止操作",
+    "en": "User information does not match. This action is not allowed.",
+    "runtime": true
+  },
+  "runtime.backend.92e889a96146": {
+    "zh-cn": "仅可删除自己的评价！",
+    "en": "You can delete only your own comments.",
+    "runtime": true
+  },
+  "runtime.backend.3765437375a7": {
+    "zh-cn": "企业创始人不能离职！",
+    "en": "The organization founder cannot leave the organization.",
+    "runtime": true
+  },
+  "runtime.backend.93f9453dc643": {
+    "zh-cn": "企业存在相同记录，请勿重复操作",
+    "en": "An identical organization record already exists.",
+    "runtime": true
+  },
+  "runtime.backend.b3fa7ad9b831": {
+    "zh-cn": "企业用户信息不存在",
+    "en": "Organization user information was not found.",
+    "runtime": true
+  },
+  "runtime.backend.35575bf01585": {
+    "zh-cn": "保存基础配置失败",
+    "en": "Failed to save the basic configuration.",
+    "runtime": true
+  },
+  "runtime.backend.fc075ac20a14": {
+    "zh-cn": "保存流程配置失败",
+    "en": "Failed to save the process configuration.",
+    "runtime": true
+  },
+  "runtime.backend.054bc09a6076": {
+    "zh-cn": "保存表单配置失败",
+    "en": "Failed to save the form configuration.",
+    "runtime": true
+  },
+  "runtime.backend.2596a040b347": {
+    "zh-cn": "保存规则配置失败",
+    "en": "Failed to save the rules configuration.",
+    "runtime": true
+  },
+  "runtime.backend.9ec9db648c05": {
+    "zh-cn": "修改的用户不存在",
+    "en": "The user you are trying to update does not exist.",
+    "runtime": true
+  },
+  "runtime.backend.45615e191a2c": {
+    "zh-cn": "修改的用户名片不存在",
+    "en": "The employee profile you are trying to update does not exist.",
+    "runtime": true
+  },
+  "runtime.backend.f910f1dbec7b": {
+    "zh-cn": "修改的记录不存在，请确认后重试",
+    "en": "The record you are trying to update does not exist. Check it and try again.",
+    "runtime": true
+  },
+  "runtime.backend.038b4802002e": {
+    "zh-cn": "创建用户信息失败！",
+    "en": "Failed to create the user.",
+    "runtime": true
+  },
+  "runtime.backend.782aa85313fe": {
+    "zh-cn": "删除的用户名片不存在",
+    "en": "The employee profile you are trying to delete does not exist.",
+    "runtime": true
+  },
+  "runtime.backend.7a413d635ee9": {
+    "zh-cn": "删除的记录不存在",
+    "en": "The record you are trying to delete does not exist.",
+    "runtime": true
+  },
+  "runtime.backend.2ded76f6cecf": {
+    "zh-cn": "参数已失效,请重新获取",
+    "en": "The request has expired. Please request a new one.",
+    "runtime": true
+  },
+  "runtime.backend.ab9b165189e7": {
+    "zh-cn": "审批已通过，无法操作",
+    "en": "This request has already been approved and can no longer be changed.",
+    "runtime": true
+  },
+  "runtime.backend.11f871b336bd": {
+    "zh-cn": "尚未配置相关审批流程，请前往 人事->办公审批->审批设置 中配置",
+    "en": "No approval process is configured. Go to HR > Office approvals > Approval settings to configure one.",
+    "runtime": true
+  },
+  "runtime.backend.683e6b91cb88": {
+    "zh-cn": "尚未配置相关审批表单，请前往 人事->办公审批->审批设置 中配置",
+    "en": "No approval form is configured. Go to HR > Office approvals > Approval settings to configure one.",
+    "runtime": true
+  },
+  "runtime.backend.bbce963859b8": {
+    "zh-cn": "已存在关联的申请记录，无法删除！",
+    "en": "This item has related requests and cannot be deleted.",
+    "runtime": true
+  },
+  "runtime.backend.83fa27c04350": {
+    "zh-cn": "已扫码",
+    "en": "Scanned",
+    "runtime": true
+  },
+  "runtime.backend.4953baf3c909": {
+    "zh-cn": "已激活的用户不可删除",
+    "en": "An activated user cannot be deleted.",
+    "runtime": true
+  },
+  "runtime.backend.85b3e7429120": {
+    "zh-cn": "已申请撤销中，请勿重复操作！",
+    "en": "A withdrawal is already pending. Do not submit another request.",
+    "runtime": true
+  },
+  "runtime.backend.ec045b941bcf": {
+    "zh-cn": "已转正，请勿重复操作",
+    "en": "This employee has already been confirmed.",
+    "runtime": true
+  },
+  "runtime.backend.c817a490b97b": {
+    "zh-cn": "当前员工物资未归还，不能离职！",
+    "en": "This employee still has unreturned assets and cannot leave the organization.",
+    "runtime": true
+  },
+  "runtime.backend.659ceabc9a6e": {
+    "zh-cn": "当前员工绩效未结束，不能离职！",
+    "en": "This employee has an active performance assessment and cannot leave the organization.",
+    "runtime": true
+  },
+  "runtime.backend.40b177c096c9": {
+    "zh-cn": "当前成员没有绑定账号",
+    "en": "This member does not have a linked account.",
+    "runtime": true
+  },
+  "runtime.backend.25cb5958275c": {
+    "zh-cn": "当前扫码非企业内部成员，无法登录",
+    "en": "This QR code belongs to someone outside the organization and cannot be used to sign in.",
+    "runtime": true
+  },
+  "runtime.backend.13e1757d9e49": {
+    "zh-cn": "必须选择一个主部门",
+    "en": "Select a primary department.",
+    "runtime": true
+  },
+  "runtime.backend.e96536961a2b": {
+    "zh-cn": "必须选择一个负责部门",
+    "en": "Select a responsible department.",
+    "runtime": true
+  },
+  "runtime.backend.e3832b2d1ee9": {
+    "zh-cn": "必须选择一个部门",
+    "en": "Select a department.",
+    "runtime": true
+  },
+  "runtime.backend.ee9d810c6d29": {
+    "zh-cn": "您暂时没有操作权限",
+    "en": "You do not currently have permission to perform this action.",
+    "runtime": true
+  },
+  "runtime.backend.9cd672d793c1": {
+    "zh-cn": "您的手机号码尚未注册",
+    "en": "This mobile number is not registered.",
+    "runtime": true
+  },
+  "runtime.backend.a37c0d26106c": {
+    "zh-cn": "您的账号已被锁定,无法登录!",
+    "en": "Your account is locked and cannot sign in.",
+    "runtime": true
+  },
+  "runtime.backend.8a7cc0f132ec": {
+    "zh-cn": "手机号码已存在",
+    "en": "This mobile number is already in use.",
+    "runtime": true
+  },
+  "runtime.backend.ac86bf92b60e": {
+    "zh-cn": "手机号码已注册,请直接登录",
+    "en": "This mobile number is already registered. Sign in instead.",
+    "runtime": true
+  },
+  "runtime.backend.b4633eb96c33": {
+    "zh-cn": "手机号绑定的帐号已激活，无法修改手机号!",
+    "en": "The account linked to this mobile number is active, so the number cannot be changed.",
+    "runtime": true
+  },
+  "runtime.backend.067db5863b19": {
+    "zh-cn": "手机号重复",
+    "en": "This mobile number is already in use.",
+    "runtime": true
+  },
+  "runtime.backend.2574cae7ce8a": {
+    "zh-cn": "操作太过频繁，请稍后再试",
+    "en": "Too many requests. Please try again later.",
+    "runtime": true
+  },
+  "runtime.backend.00d68447384f": {
+    "zh-cn": "无效的审批信息",
+    "en": "Invalid approval information.",
+    "runtime": true
+  },
+  "runtime.backend.8d703f2d9d89": {
+    "zh-cn": "无效的审批流程",
+    "en": "Invalid approval process.",
+    "runtime": true
+  },
+  "runtime.backend.520e37819914": {
+    "zh-cn": "无效的申请",
+    "en": "Invalid request.",
+    "runtime": true
+  },
+  "runtime.backend.3b93c77d068a": {
+    "zh-cn": "无效的账号信息!",
+    "en": "Invalid account information.",
+    "runtime": true
+  },
+  "runtime.backend.37768b348187": {
+    "zh-cn": "无法修改其他用户密码",
+    "en": "You cannot change another user’s password.",
+    "runtime": true
+  },
+  "runtime.backend.ab7bc6ced0f2": {
+    "zh-cn": "暂无可操作记录！",
+    "en": "There are no records available for this action.",
+    "runtime": true
+  },
+  "runtime.backend.48c541640465": {
+    "zh-cn": "暂无权限操作",
+    "en": "You do not have permission to perform this action.",
+    "runtime": true
+  },
+  "runtime.backend.068a8cffc2fc": {
+    "zh-cn": "未扫码",
+    "en": "Not scanned",
+    "runtime": true
+  },
+  "runtime.backend.c44fc7fd783c": {
+    "zh-cn": "未找到交接人信息",
+    "en": "Handover recipient information was not found.",
+    "runtime": true
+  },
+  "runtime.backend.aef6b5c4192d": {
+    "zh-cn": "未找到相关员工信息",
+    "en": "Employee information was not found.",
+    "runtime": true
+  },
+  "runtime.backend.fc22514bd64f": {
+    "zh-cn": "未找到相关员工档案信息",
+    "en": "The employee record was not found.",
+    "runtime": true
+  },
+  "runtime.backend.ae355b1a7ec5": {
+    "zh-cn": "未找到相关审批记录",
+    "en": "The approval record was not found.",
+    "runtime": true
+  },
+  "runtime.backend.cd8485f02409": {
+    "zh-cn": "未找到相关用户信息",
+    "en": "User information was not found.",
+    "runtime": true
+  },
+  "runtime.backend.d6fa49cdf76c": {
+    "zh-cn": "未找到相关邀请记录",
+    "en": "The invitation record was not found.",
+    "runtime": true
+  },
+  "runtime.backend.f98e6ea59aef": {
+    "zh-cn": "没有查到成员信息",
+    "en": "Member information was not found.",
+    "runtime": true
+  },
+  "runtime.backend.2b5efdd1753f": {
+    "zh-cn": "流程节点至少存在一个人员",
+    "en": "Each process step must include at least one person.",
+    "runtime": true
+  },
+  "runtime.backend.855ea23e7df8": {
+    "zh-cn": "用户ID不能为空",
+    "en": "User ID is required.",
+    "runtime": true
+  },
+  "runtime.backend.1b2a3e6bd117": {
+    "zh-cn": "用户不存在",
+    "en": "The user does not exist.",
+    "runtime": true
+  },
+  "runtime.backend.5f3b49bd6df1": {
+    "zh-cn": "申请人不可申请该流程",
+    "en": "The applicant cannot use this approval process.",
+    "runtime": true
+  },
+  "runtime.backend.44e548987c3a": {
+    "zh-cn": "简历完善度过低，请先完善个人简历",
+    "en": "Complete your profile before continuing.",
+    "runtime": true
+  },
+  "runtime.backend.fc3a2cc856e7": {
+    "zh-cn": "类型不存在",
+    "en": "The type does not exist.",
+    "runtime": true
+  },
+  "runtime.backend.89388d7ead3a": {
+    "zh-cn": "类型名称重复",
+    "en": "A type with this name already exists.",
+    "runtime": true
+  },
+  "runtime.backend.833d92a0207a": {
+    "zh-cn": "缺少审批流程",
+    "en": "The approval process is missing.",
+    "runtime": true
+  },
+  "runtime.backend.760273d2a2cd": {
+    "zh-cn": "该员工已入职",
+    "en": "This employee has already joined the organization.",
+    "runtime": true
+  },
+  "runtime.backend.08ff93d188ce": {
+    "zh-cn": "该审批信息无需催办",
+    "en": "This approval request does not require a reminder.",
+    "runtime": true
+  },
+  "runtime.backend.9630d0e456d4": {
+    "zh-cn": "该审批暂不允许加签",
+    "en": "Additional approvers cannot be added to this request.",
+    "runtime": true
+  },
+  "runtime.backend.f71885149d23": {
+    "zh-cn": "该审批流程与业务绑定，无法修改指定控件组",
+    "en": "This approval process is linked to a business workflow, so its control group cannot be changed.",
+    "runtime": true
+  },
+  "runtime.backend.545542511495": {
+    "zh-cn": "该审批流程与业务绑定，无法删除",
+    "en": "This approval process is linked to a business workflow and cannot be deleted.",
+    "runtime": true
+  },
+  "runtime.backend.49f1a81aca2e": {
+    "zh-cn": "该手机号已存在",
+    "en": "This mobile number is already in use.",
+    "runtime": true
+  },
+  "runtime.backend.a73bb78b55d7": {
+    "zh-cn": "该申请不允许通过后撤销！",
+    "en": "This request cannot be withdrawn after approval.",
+    "runtime": true
+  },
+  "runtime.backend.fbaa29bf94ee": {
+    "zh-cn": "账号或密码不正确",
+    "en": "Incorrect account or password.",
+    "runtime": true
+  },
+  "runtime.backend.c52deed4fea6": {
+    "zh-cn": "账号或密码错误次数已达上限请稍后再试!",
+    "en": "Too many failed sign-in attempts. Please try again later.",
+    "runtime": true
+  },
+  "runtime.backend.f572c21dbbed": {
+    "zh-cn": "转审用户已在审批人中",
+    "en": "The selected transfer recipient is already an approver.",
+    "runtime": true
+  },
+  "runtime.backend.7a8c78cdd8e7": {
+    "zh-cn": "邀请完善信息已发出，等待用户完善",
+    "en": "The invitation was sent. Waiting for the user to complete their information.",
+    "runtime": true
+  },
+  "runtime.backend.92c70e138997": {
+    "zh-cn": "token创建失败",
+    "en": "Failed to create the authentication token.",
+    "runtime": true
+  },
+  "runtime.backend.3c5be5f2a106": {
+    "zh-cn": "操作成功",
+    "en": "Operation succeeded",
+    "runtime": true
+  },
+  "runtime.backend.6d83cdf57229": {
+    "zh-cn": "退出成功",
+    "en": "Signed out successfully",
+    "runtime": true
+  },
+  "runtime.backend.75613348eed2": {
+    "zh-cn": "该手机号已被锁定",
+    "en": "This mobile number has been locked",
+    "runtime": true
+  },
+  "runtime.backend.d56881d178f0": {
+    "zh-cn": "短信发送失败，未注册的手机号",
+    "en": "SMS delivery failed because the mobile number is not registered",
+    "runtime": true
+  },
+  "runtime.backend.df8b83327842": {
+    "zh-cn": "短信发送成功",
+    "en": "SMS sent successfully",
+    "runtime": true
+  },
+  "runtime.backend.39cb41ecf75c": {
+    "zh-cn": "短信发送失败",
+    "en": "Failed to send SMS",
+    "runtime": true
+  },
+  "runtime.backend.fd429390daf1": {
+    "zh-cn": "注册成功!",
+    "en": "Registration successful",
+    "runtime": true
+  },
+  "runtime.backend.347b847880f9": {
+    "zh-cn": "缺少CODE",
+    "en": "Authorization code is required",
+    "runtime": true
+  },
+  "runtime.backend.8cedb3752367": {
+    "zh-cn": "暂无权限访问,请联系管理员分配权限!",
+    "en": "Access denied. Contact an administrator to request permission",
+    "runtime": true
+  },
+  "runtime.backend.ba5c1fc37ac4": {
+    "zh-cn": "手机号已注册,请更换没有注册的手机号",
+    "en": "This mobile number is already registered. Use an unregistered number",
+    "runtime": true
+  },
+  "runtime.backend.06212456d957": {
+    "zh-cn": "处理成功",
+    "en": "Processed successfully",
+    "runtime": true
+  },
+  "runtime.backend.763284f0fbc6": {
+    "zh-cn": "处理失败",
+    "en": "Processing failed",
+    "runtime": true
+  },
+  "runtime.backend.758d54627944": {
+    "zh-cn": "绑定成功",
+    "en": "Linked successfully",
+    "runtime": true
+  },
+  "runtime.backend.af5da097bab4": {
+    "zh-cn": "解绑成功",
+    "en": "Unlinked successfully",
+    "runtime": true
+  },
+  "runtime.backend.e2928d1add18": {
+    "zh-cn": "扫码失败",
+    "en": "Scan failed",
+    "runtime": true
+  },
+  "runtime.backend.4658101d4689": {
+    "zh-cn": "请选择转正时间",
+    "en": "Select a confirmation date",
+    "runtime": true
+  },
+  "runtime.backend.3201887cfeb3": {
+    "zh-cn": "没有权限操作",
+    "en": "Permission denied",
+    "runtime": true
+  },
+  "runtime.backend.8d2e5d36328c": {
+    "zh-cn": "请先获取短信发送KEY",
+    "en": "Request an SMS delivery key first",
+    "runtime": true
+  },
+  "runtime.backend.f5fb2170fef5": {
+    "zh-cn": "短信发送KEY已失效请重新获取",
+    "en": "The SMS delivery key has expired. Request a new one",
+    "runtime": true
+  },
+  "runtime.backend.f2adc76b78a7": {
+    "zh-cn": "当前手机号验证码已发送,验证码在有效期内可重复使用!",
+    "en": "A verification code has already been sent to this mobile number and can be reused until it expires",
+    "runtime": true
+  },
+  "runtime.backend.d8ba63de6b5d": {
+    "zh-cn": "当前手机号今日发送验证码已达上限!",
+    "en": "This mobile number has reached today’s verification-code limit",
+    "runtime": true
+  },
+  "runtime.backend.66bee9f00acd": {
+    "zh-cn": "当前手机每分钟发送验证码已达上限!",
+    "en": "This mobile number has reached the per-minute verification-code limit",
+    "runtime": true
+  },
+  "runtime.backend.a17e443ac75a": {
+    "zh-cn": "请选择审批类型",
+    "en": "Select an approval type",
+    "runtime": true
+  },
+  "runtime.backend.fba3d236892d": {
+    "zh-cn": "缺少必要参数：考核ID",
+    "en": "Required parameter missing: assessment ID",
+    "runtime": true
+  },
+  "runtime.backend.8100d1fc3c37": {
+    "zh-cn": "未找到考核记录",
+    "en": "Assessment record not found",
+    "runtime": true
+  },
+  "runtime.backend.b3ba46326e57": {
+    "zh-cn": "提交申诉成功",
+    "en": "Appeal submitted successfully",
+    "runtime": true
+  },
+  "runtime.backend.4b2041a883b4": {
+    "zh-cn": "缺少参数",
+    "en": "Required parameters are missing",
+    "runtime": true
+  },
+  "runtime.backend.fb565dcb4911": {
+    "zh-cn": "缺少必要参数",
+    "en": "Required parameters are missing",
+    "runtime": true
+  },
+  "runtime.backend.998ffb4fbfe7": {
+    "zh-cn": "移动成功",
+    "en": "Moved successfully",
+    "runtime": true
+  },
+  "runtime.backend.a70a2948b3f7": {
+    "zh-cn": "文件名称不能为空",
+    "en": "File name is required",
+    "runtime": true
+  },
+  "runtime.backend.aa19194f3e57": {
+    "zh-cn": "请选择正确的时间范围,且跨度不能超过30天",
+    "en": "Select a valid date range of no more than 30 days",
+    "runtime": true
+  },
+  "runtime.backend.1fa469dcf185": {
+    "zh-cn": "已加入消息队列，正在异步同步中请稍后查看",
+    "en": "Added to the message queue. Synchronization is in progress; check again later",
+    "runtime": true
+  },
+  "runtime.backend.a6c10434c88c": {
+    "zh-cn": "请选择表",
+    "en": "Select a table",
+    "runtime": true
+  },
+  "runtime.backend.69495d785e52": {
+    "zh-cn": "数据不存在",
+    "en": "Data not found",
+    "runtime": true
+  },
+  "runtime.backend.0e520a5189f8": {
+    "zh-cn": "系统默认MCP服务不可删除",
+    "en": "The default system MCP service cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.72250c5922f2": {
+    "zh-cn": "删除失败",
+    "en": "Delete failed",
+    "runtime": true
+  },
+  "runtime.backend.9abb4650393c": {
+    "zh-cn": "修改失败",
+    "en": "Update failed",
+    "runtime": true
+  },
+  "runtime.backend.b3f81b56f37d": {
+    "zh-cn": "服务地址不能为空",
+    "en": "Service URL is required",
+    "runtime": true
+  },
+  "runtime.backend.8e22d754be0c": {
+    "zh-cn": "缺少历史对话ID",
+    "en": "Conversation history ID is required",
+    "runtime": true
+  },
+  "runtime.backend.8f58ce6c65d4": {
+    "zh-cn": "对话记录不存在",
+    "en": "Conversation record not found",
+    "runtime": true
+  },
+  "runtime.backend.c664b782cd72": {
+    "zh-cn": "无权限",
+    "en": "Permission denied",
+    "runtime": true
+  },
+  "runtime.backend.8f66248ec864": {
+    "zh-cn": "缺少对话记录ID",
+    "en": "Conversation record ID is required",
+    "runtime": true
+  },
+  "runtime.backend.71c05f840eca": {
+    "zh-cn": "缺少对话ID",
+    "en": "Conversation ID is required",
+    "runtime": true
+  },
+  "runtime.backend.5f66f706c1dc": {
+    "zh-cn": "清理成功",
+    "en": "Cleared successfully",
+    "runtime": true
+  },
+  "runtime.backend.964a34694b97": {
+    "zh-cn": "历史对话不存在",
+    "en": "Conversation history not found",
+    "runtime": true
+  },
+  "runtime.backend.7fd87d1fa1dd": {
+    "zh-cn": "创建成功",
+    "en": "Created successfully",
+    "runtime": true
+  },
+  "runtime.backend.62d1428ad8b7": {
+    "zh-cn": "请选择目录",
+    "en": "Select a directory",
+    "runtime": true
+  },
+  "runtime.backend.13a2a1e792a4": {
+    "zh-cn": "请选择模板",
+    "en": "Select a template",
+    "runtime": true
+  },
+  "runtime.backend.cd1b8c359b8d": {
+    "zh-cn": "暂无权限获取权限",
+    "en": "You do not have permission to retrieve permissions",
+    "runtime": true
+  },
+  "runtime.backend.34ec5530d30c": {
+    "zh-cn": "已成功删除",
+    "en": "Deleted successfully",
+    "runtime": true
+  },
+  "runtime.backend.0dea624e0227": {
+    "zh-cn": "转让成功",
+    "en": "Transferred successfully",
+    "runtime": true
+  },
+  "runtime.backend.9e0aaeed7eb8": {
+    "zh-cn": "获取失败",
+    "en": "Failed to retrieve data",
+    "runtime": true
+  },
+  "runtime.backend.260a323487d8": {
+    "zh-cn": "您今日上传文件的次数已达上限",
+    "en": "You have reached today's file upload limit",
+    "runtime": true
+  },
+  "runtime.backend.eba75e67963b": {
+    "zh-cn": "资源不存在",
+    "en": "Resource not found",
+    "runtime": true
+  },
+  "runtime.backend.30bca290ac54": {
+    "zh-cn": "缺少FileId",
+    "en": "File ID is required",
+    "runtime": true
+  },
+  "runtime.backend.d0147937527a": {
+    "zh-cn": "消息不存在",
+    "en": "Message not found",
+    "runtime": true
+  },
+  "runtime.backend.82f25caaa3ce": {
+    "zh-cn": "操作成功，如未生效请手动重启Http服务",
+    "en": "Operation succeeded. If the change does not take effect, restart the HTTP service manually",
+    "runtime": true
+  },
+  "runtime.backend.12d42b0e4b53": {
+    "zh-cn": "验证失败重新尝试",
+    "en": "Verification failed. Try again",
+    "runtime": true
+  },
+  "runtime.backend.749fdd27c68d": {
+    "zh-cn": "一分钟内只能提交一次问卷",
+    "en": "A questionnaire can only be submitted once per minute",
+    "runtime": true
+  },
+  "runtime.backend.69c933657d4e": {
+    "zh-cn": "系统默认数据不允许创建",
+    "en": "Default system data cannot be created",
+    "runtime": true
+  },
+  "runtime.backend.97eabdbb44f2": {
+    "zh-cn": "处理中，已处理",
+    "en": "Processing; already processed",
+    "runtime": true
+  },
+  "runtime.backend.438175d67183": {
+    "zh-cn": "缺少邀请记录ID",
+    "en": "Invitation record ID is required",
+    "runtime": true
+  },
+  "runtime.backend.9c364f7007c9": {
+    "zh-cn": "未获取到导入数据",
+    "en": "No import data was received",
+    "runtime": true
+  },
+  "runtime.backend.9ba78010497a": {
+    "zh-cn": "员工导入结果，成功：",
+    "en": "Employee import result — successful: ",
+    "runtime": true
+  },
+  "runtime.backend.9835bb57ba2d": {
+    "zh-cn": "必须选择一个上级主管",
+    "en": "Select a direct supervisor",
+    "runtime": true
+  },
+  "runtime.backend.0f35ce90946a": {
+    "zh-cn": "至少选择一个部门进行设置",
+    "en": "Select at least one department",
+    "runtime": true
+  },
+  "runtime.backend.3135b7b11f75": {
+    "zh-cn": "至少选择一个用户进行设置",
+    "en": "Select at least one user",
+    "runtime": true
+  },
+  "runtime.backend.5f4e1dce777b": {
+    "zh-cn": "批量加入成功",
+    "en": "Added in bulk successfully",
+    "runtime": true
+  },
+  "runtime.backend.8dff2f35ad98": {
+    "zh-cn": "保存配置成功",
+    "en": "Configuration saved successfully",
+    "runtime": true
+  },
+  "runtime.backend.838211262b90": {
+    "zh-cn": "请填写数据值",
+    "en": "Enter a data value",
+    "runtime": true
+  },
+  "runtime.backend.1e8d7c27b430": {
+    "zh-cn": "字段不存在",
+    "en": "Field not found",
+    "runtime": true
+  },
+  "runtime.backend.bb60774104db": {
+    "zh-cn": "数据表不存在",
+    "en": "Database table not found",
+    "runtime": true
+  },
+  "runtime.backend.1242f3831a88": {
+    "zh-cn": "排序成功",
+    "en": "Sorted successfully",
+    "runtime": true
+  },
+  "runtime.backend.40525a732872": {
+    "zh-cn": "保存失败",
+    "en": "Save failed",
+    "runtime": true
+  },
+  "runtime.backend.fb15316cb24d": {
+    "zh-cn": "防火墙配置格式错误,必须为正则表达式",
+    "en": "Invalid firewall configuration. A regular expression is required",
+    "runtime": true
+  },
+  "runtime.backend.3e64edf2ea33": {
+    "zh-cn": "参数错误",
+    "en": "Invalid parameters",
+    "runtime": true
+  },
+  "runtime.backend.857139f1e378": {
+    "zh-cn": "同步成功",
+    "en": "Synchronized successfully",
+    "runtime": true
+  },
+  "runtime.backend.1d6b65cf8627": {
+    "zh-cn": "缺少APPID",
+    "en": "App ID is required",
+    "runtime": true
+  },
+  "runtime.backend.6a78f33859e9": {
+    "zh-cn": "请先设置空间域名",
+    "en": "Configure the storage domain first",
+    "runtime": true
+  },
+  "runtime.backend.8043f03dbede": {
+    "zh-cn": "格式错误，请输入格式为：http://域名",
+    "en": "Invalid format. Use: http://domain",
+    "runtime": true
+  },
+  "runtime.backend.12fd9604d3d7": {
+    "zh-cn": "没有正在使用的存储空间",
+    "en": "No active storage provider is configured",
+    "runtime": true
+  },
+  "runtime.backend.a014b3518bda": {
+    "zh-cn": "合并成功",
+    "en": "Merged successfully",
+    "runtime": true
+  },
+  "runtime.backend.e1effc561839": {
+    "zh-cn": "开票成功",
+    "en": "Invoice issued successfully",
+    "runtime": true
+  },
+  "runtime.backend.ade976738066": {
+    "zh-cn": "已加入队列，正在同步中",
+    "en": "Added to the queue. Synchronization is in progress",
+    "runtime": true
+  },
+  "runtime.backend.09e424b5e896": {
+    "zh-cn": "操作失败",
+    "en": "Operation failed",
+    "runtime": true
+  },
+  "runtime.backend.499970fb304c": {
+    "zh-cn": "请选择关联客户!",
+    "en": "Select a related customer",
+    "runtime": true
+  },
+  "runtime.backend.f6587bf02f81": {
+    "zh-cn": "缺少必要参数：产品ID",
+    "en": "Required parameter missing: product ID",
+    "runtime": true
+  },
+  "runtime.backend.f0e65f05ada2": {
+    "zh-cn": "密码修改成功",
+    "en": "Password changed successfully",
+    "runtime": true
+  },
+  "runtime.backend.cd71ef8f34a3": {
+    "zh-cn": "请选择标签",
+    "en": "Select labels",
+    "runtime": true
+  },
+  "runtime.backend.b46c3ba98f00": {
+    "zh-cn": "缺少文章ID",
+    "en": "Article ID is required",
+    "runtime": true
+  },
+  "runtime.backend.973141e7f6c6": {
+    "zh-cn": "请填写应用名称",
+    "en": "Enter application name",
+    "runtime": true
+  },
+  "runtime.backend.e9e0950ef398": {
+    "zh-cn": "请先删除该应用下的实体",
+    "en": "Delete the entities under this application first",
+    "runtime": true
+  },
+  "runtime.backend.1a9746aacfe3": {
+    "zh-cn": "请输入表名",
+    "en": "Enter a table name",
+    "runtime": true
+  },
+  "runtime.backend.8e2074d65f9c": {
+    "zh-cn": "表名不符合规范，应为字母和下划线的组合",
+    "en": "Invalid table name. Use letters and underscores only",
+    "runtime": true
+  },
+  "runtime.backend.be59ce9e660a": {
+    "zh-cn": "没有查询到实体信息",
+    "en": "Entity information not found",
+    "runtime": true
+  },
+  "runtime.backend.4553d74e8d68": {
+    "zh-cn": "缺少实体名称参数",
+    "en": "Entity name is required",
+    "runtime": true
+  },
+  "runtime.backend.ea9dbb9c5099": {
+    "zh-cn": "请输选择数据表字段类型",
+    "en": "Select a database field type",
+    "runtime": true
+  },
+  "runtime.backend.916c70a7b85e": {
+    "zh-cn": "请输入字段名",
+    "en": "Enter a field name",
+    "runtime": true
+  },
+  "runtime.backend.b2f86d460692": {
+    "zh-cn": "字段名不符合规范，应为字母、下划线、数字的组合，且不能以数字开头",
+    "en": "Invalid field name. Use letters, underscores, and numbers, and do not start with a number",
+    "runtime": true
+  },
+  "runtime.backend.b25aecbe851f": {
+    "zh-cn": "添加字段成功",
+    "en": "Field added successfully",
+    "runtime": true
+  },
+  "runtime.backend.e655071022e3": {
+    "zh-cn": "请选择字典类型",
+    "en": "Select a dictionary type",
+    "runtime": true
+  },
+  "runtime.backend.4d259865ea19": {
+    "zh-cn": "请填写字典数据",
+    "en": "Enter dictionary data",
+    "runtime": true
+  },
+  "runtime.backend.72c294174eb3": {
+    "zh-cn": "没有查询到数据",
+    "en": "No data found",
+    "runtime": true
+  },
+  "runtime.backend.34812991bb03": {
+    "zh-cn": "缺少请求地址",
+    "en": "Request URL is required",
+    "runtime": true
+  },
+  "runtime.backend.7c2147d75437": {
+    "zh-cn": "没有查询到实体",
+    "en": "Entity not found",
+    "runtime": true
+  },
+  "runtime.backend.5d3e2a36bbc9": {
+    "zh-cn": "请输入事件名称",
+    "en": "Enter an event name",
+    "runtime": true
+  },
+  "runtime.backend.677748616135": {
+    "zh-cn": "请选择事件类型",
+    "en": "Select an event type",
+    "runtime": true
+  },
+  "runtime.backend.4cc5212bcef5": {
+    "zh-cn": "选择的事件类型不存在",
+    "en": "The selected event type does not exist",
+    "runtime": true
+  },
+  "runtime.backend.b20284f73ed7": {
+    "zh-cn": "从表不允许创建审批触发器",
+    "en": "Approval triggers cannot be created for a child table",
+    "runtime": true
+  },
+  "runtime.backend.98f35ffdce43": {
+    "zh-cn": "请选择执行动作",
+    "en": "Select an action",
+    "runtime": true
+  },
+  "runtime.backend.46f72e97efd1": {
+    "zh-cn": "没有查询到事件",
+    "en": "Event not found",
+    "runtime": true
+  },
+  "runtime.backend.85273036dedf": {
+    "zh-cn": "请选择目标实体",
+    "en": "Select a target entity",
+    "runtime": true
+  },
+  "runtime.backend.d0a35bee1341": {
+    "zh-cn": "请输入通知内容",
+    "en": "Enter notification content",
+    "runtime": true
+  },
+  "runtime.backend.9bc55a2c1242": {
+    "zh-cn": "请输入校验失败模板内容",
+    "en": "Enter the validation-failure template content",
+    "runtime": true
+  },
+  "runtime.backend.b5d077dcb4f9": {
+    "zh-cn": "请选择目标字段",
+    "en": "Select a target field",
+    "runtime": true
+  },
+  "runtime.backend.bff859294110": {
+    "zh-cn": "请选择审批流程",
+    "en": "Select an approval process",
+    "runtime": true
+  },
+  "runtime.backend.83ee35259051": {
+    "zh-cn": "必须选择带有星号的源字段",
+    "en": "Select the required source fields marked with an asterisk",
+    "runtime": true
+  },
+  "runtime.backend.403cf9144549": {
+    "zh-cn": "至少选择一个源字段列表数据",
+    "en": "Select at least one source-field list item",
+    "runtime": true
+  },
+  "runtime.backend.071e02fe9373": {
+    "zh-cn": "选择的源字段必须为同一个数组下的字段",
+    "en": "Selected source fields must belong to the same array",
+    "runtime": true
+  },
+  "runtime.backend.9eb4b675e6b3": {
+    "zh-cn": "请输入回复内容",
+    "en": "Enter reply content",
+    "runtime": true
+  },
+  "runtime.backend.6c8030002a47": {
+    "zh-cn": "目标字段“",
+    "en": "Target field “",
+    "runtime": true
+  },
+  "runtime.backend.5126174b4b7c": {
+    "zh-cn": "修改的字段信息不存在",
+    "en": "The field being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.5a953f51070b": {
+    "zh-cn": "只有文本框才可以设置为主展示字段",
+    "en": "Only a text field can be used as the primary display field",
+    "runtime": true
+  },
+  "runtime.backend.547468ae4b53": {
+    "zh-cn": "请选择数据字典",
+    "en": "Select a data dictionary",
+    "runtime": true
+  },
+  "runtime.backend.377b19ef81cf": {
+    "zh-cn": "字段名不能为children或者count",
+    "en": "The field name cannot be children or count",
+    "runtime": true
+  },
+  "runtime.backend.6af8d6946ffb": {
+    "zh-cn": "请先删除数据表数据,再进行修改字段类型",
+    "en": "Delete the table data before changing the field type",
+    "runtime": true
+  },
+  "runtime.backend.e934d6e0a906": {
+    "zh-cn": "修改字段成功",
+    "en": "Field updated successfully",
+    "runtime": true
+  },
+  "runtime.backend.9900c557b3c0": {
+    "zh-cn": "删除字段成功",
+    "en": "Field deleted successfully",
+    "runtime": true
+  },
+  "runtime.backend.35b8bfce3a9a": {
+    "zh-cn": "没有查询到字段信息",
+    "en": "Field information not found",
+    "runtime": true
+  },
+  "runtime.backend.47be02154a5a": {
+    "zh-cn": "表单名称不能为空",
+    "en": "Form name is required",
+    "runtime": true
+  },
+  "runtime.backend.40f03f922a4f": {
+    "zh-cn": "实体信息不存在",
+    "en": "Entity information not found",
+    "runtime": true
+  },
+  "runtime.backend.156f29984a1b": {
+    "zh-cn": "至少选择一个字段进行保存",
+    "en": "Select at least one field to save",
+    "runtime": true
+  },
+  "runtime.backend.88506c1e65f4": {
+    "zh-cn": "缺少视图标题",
+    "en": "View title is required",
+    "runtime": true
+  },
+  "runtime.backend.db0a8dc25532": {
+    "zh-cn": "视图搜索条件最多添加100个",
+    "en": "A view can have at most 100 search conditions",
+    "runtime": true
+  },
+  "runtime.backend.dc021ec404aa": {
+    "zh-cn": "系统默认数据不允许更新",
+    "en": "Default system data cannot be updated",
+    "runtime": true
+  },
+  "runtime.backend.d19638acf8b1": {
+    "zh-cn": "字段存在重复，请联系管理员",
+    "en": "Duplicate fields detected. Contact an administrator",
+    "runtime": true
+  },
+  "runtime.backend.77fdb7118f21": {
+    "zh-cn": "表单明细字段数据类型必须位数组",
+    "en": "Form-detail field data must be an array",
+    "runtime": true
+  },
+  "runtime.backend.19c21efd433f": {
+    "zh-cn": "系统默认数据不允许删除",
+    "en": "Default system data cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.6f300a81b864": {
+    "zh-cn": "系统默认数据不允许导入",
+    "en": "Default system data cannot be imported",
+    "runtime": true
+  },
+  "runtime.backend.c55427ca2295": {
+    "zh-cn": "缺少导入的数据",
+    "en": "Import data is required",
+    "runtime": true
+  },
+  "runtime.backend.2d56bba9e01f": {
+    "zh-cn": "请输入评论内容",
+    "en": "Enter a comment",
+    "runtime": true
+  },
+  "runtime.backend.011914b4fe0d": {
+    "zh-cn": "评论成功",
+    "en": "Comment posted successfully",
+    "runtime": true
+  },
+  "runtime.backend.1ea295a5166e": {
+    "zh-cn": "评论不存在",
+    "en": "Comment not found",
+    "runtime": true
+  },
+  "runtime.backend.d715d1bc5fd9": {
+    "zh-cn": "只能修改自己的评论",
+    "en": "You can only edit your own comments",
+    "runtime": true
+  },
+  "runtime.backend.60940d40c268": {
+    "zh-cn": "只能删除自己的评论",
+    "en": "You can only delete your own comments",
+    "runtime": true
+  },
+  "runtime.backend.375f3b50e222": {
+    "zh-cn": "系统默认数据不允进行移交",
+    "en": "Default system data cannot be transferred",
+    "runtime": true
+  },
+  "runtime.backend.481cb6723ee4": {
+    "zh-cn": "请选择需要移交的数据",
+    "en": "Select the data to transfer",
+    "runtime": true
+  },
+  "runtime.backend.2559e61f0e1c": {
+    "zh-cn": "请选择需要移交给谁的用户",
+    "en": "Select the user who will receive the data",
+    "runtime": true
+  },
+  "runtime.backend.187212969fef": {
+    "zh-cn": "移交成功",
+    "en": "Transferred successfully",
+    "runtime": true
+  },
+  "runtime.backend.0c6312802cbd": {
+    "zh-cn": "系统默认数据不允进行共享",
+    "en": "Default system data cannot be shared",
+    "runtime": true
+  },
+  "runtime.backend.664c43fd169d": {
+    "zh-cn": "请选择正确的共享类型",
+    "en": "Select a valid sharing type",
+    "runtime": true
+  },
+  "runtime.backend.fad157d7a856": {
+    "zh-cn": "共享成功",
+    "en": "Shared successfully",
+    "runtime": true
+  },
+  "runtime.backend.fbd274557620": {
+    "zh-cn": "系统默认数据不允许创建问卷",
+    "en": "Questionnaires cannot be created from default system data",
+    "runtime": true
+  },
+  "runtime.backend.91c962c0b684": {
+    "zh-cn": "没有找到问卷表单信息",
+    "en": "Questionnaire form information not found",
+    "runtime": true
+  },
+  "runtime.backend.6bedda813967": {
+    "zh-cn": "问卷已经过期,无法打开状态",
+    "en": "The questionnaire has expired and cannot be opened",
+    "runtime": true
+  },
+  "runtime.backend.dd956a098a3f": {
+    "zh-cn": "请选择时间",
+    "en": "Select a time",
+    "runtime": true
+  },
+  "runtime.backend.4b6dcc118219": {
+    "zh-cn": "平台消息已被关闭，无法修改消息状态",
+    "en": "Platform messages are disabled, so the message status cannot be changed",
+    "runtime": true
+  },
+  "runtime.backend.10bd4b3a85e0": {
+    "zh-cn": "消息信息获取失败",
+    "en": "Failed to retrieve message information",
+    "runtime": true
+  },
+  "runtime.backend.2ac15da2150e": {
+    "zh-cn": "没有查询到密钥信息",
+    "en": "API key information not found",
+    "runtime": true
+  },
+  "runtime.backend.f1fed0556c3f": {
+    "zh-cn": "业务员不存在",
+    "en": "Salesperson not found",
+    "runtime": true
+  },
+  "runtime.backend.80f276a60b12": {
+    "zh-cn": "缺失账目记录ID！",
+    "en": "Account record ID is required",
+    "runtime": true
+  },
+  "runtime.backend.56841907f222": {
+    "zh-cn": "缺失发票ID！",
+    "en": "Invoice ID is required",
+    "runtime": true
+  },
+  "runtime.backend.5fdeabbd680b": {
+    "zh-cn": "请选择关联客户",
+    "en": "Select a related customer",
+    "runtime": true
+  },
+  "runtime.backend.0825c92e5475": {
+    "zh-cn": "缺少日程ID",
+    "en": "Schedule ID is required",
+    "runtime": true
+  },
+  "runtime.backend.31f44cfc3182": {
+    "zh-cn": "回复成功",
+    "en": "Reply sent successfully",
+    "runtime": true
+  },
+  "runtime.backend.fccf47ff04ae": {
+    "zh-cn": "回复失败",
+    "en": "Failed to send reply",
+    "runtime": true
+  },
+  "runtime.backend.9d563ebbbd89": {
+    "zh-cn": "添加失败",
+    "en": "Add failed",
+    "runtime": true
+  },
+  "runtime.backend.fc428e7249b2": {
+    "zh-cn": "缺少日程类型ID",
+    "en": "Schedule type ID is required",
+    "runtime": true
+  },
+  "runtime.backend.8b93d74da76a": {
+    "zh-cn": "缺少物资记录ID",
+    "en": "Asset record ID is required",
+    "runtime": true
+  },
+  "runtime.backend.de4e4b21542f": {
+    "zh-cn": "数据导入中，请稍后在记录中查看结果...",
+    "en": "Data is being imported. Check the record later for the result",
+    "runtime": true
+  },
+  "runtime.backend.d5f625d7756c": {
+    "zh-cn": "请选择关联实体",
+    "en": "Select a related entity",
+    "runtime": true
+  },
+  "runtime.backend.408496b20cd0": {
+    "zh-cn": "修改的菜单的ID不能为空",
+    "en": "Menu ID is required",
+    "runtime": true
+  },
+  "runtime.backend.52b3b219e9cd": {
+    "zh-cn": "修改的菜单的状态为必填项",
+    "en": "Menu status is required",
+    "runtime": true
+  },
+  "runtime.backend.356b4352f27f": {
+    "zh-cn": "修改的菜单ID不能为空",
+    "en": "Menu ID is required",
+    "runtime": true
+  },
+  "runtime.backend.90d4aff2c34a": {
+    "zh-cn": "删除的菜单的ID不能为空",
+    "en": "Menu ID is required for deletion",
+    "runtime": true
+  },
+  "runtime.backend.76e228dc39e7": {
+    "zh-cn": "角色ID不能为空",
+    "en": "Role ID is required",
+    "runtime": true
+  },
+  "runtime.backend.5b2b7d6a0a13": {
+    "zh-cn": "修改的角色ID不能为空",
+    "en": "Role ID is required",
+    "runtime": true
+  },
+  "runtime.backend.88b12855f98e": {
+    "zh-cn": "删除的角色ID不存在",
+    "en": "The role ID to delete does not exist",
+    "runtime": true
+  },
+  "runtime.backend.0be0a339ffe3": {
+    "zh-cn": "至少选择一个权限",
+    "en": "Select at least one permission",
+    "runtime": true
+  },
+  "runtime.backend.740bb17f02fe": {
+    "zh-cn": "上级id必须填写",
+    "en": "Parent ID is required",
+    "runtime": true
+  },
+  "runtime.backend.843387543af4": {
+    "zh-cn": "缺少角色ID",
+    "en": "Role ID is required",
+    "runtime": true
+  },
+  "runtime.backend.5cc3917aab04": {
+    "zh-cn": "缺少用户ID",
+    "en": "User ID is required",
+    "runtime": true
+  },
+  "runtime.backend.397eb84b5234": {
+    "zh-cn": "至少选择一个部门或者一个用户",
+    "en": "Select at least one department or user",
+    "runtime": true
+  },
+  "runtime.backend.7fb52ce2bd30": {
+    "zh-cn": "添加成员成功",
+    "en": "Member added successfully",
+    "runtime": true
+  },
+  "runtime.backend.656d5a1c7830": {
+    "zh-cn": "缺少删除角色成员ID",
+    "en": "Role-member ID is required for deletion",
+    "runtime": true
+  },
+  "runtime.backend.671e8ae41452": {
+    "zh-cn": "时间段格式错误",
+    "en": "Invalid time-range format",
+    "runtime": true
+  },
+  "runtime.backend.2d2de716c175": {
+    "zh-cn": "URL不能为空",
+    "en": "URL is required",
+    "runtime": true
+  },
+  "runtime.backend.a0df5a8668c6": {
+    "zh-cn": "URL格式不正确",
+    "en": "Invalid URL format",
+    "runtime": true
+  },
+  "runtime.backend.bdbe569e351d": {
+    "zh-cn": "请填写网址链接",
+    "en": "Enter a website URL",
+    "runtime": true
+  },
+  "runtime.backend.adcd90d6adec": {
+    "zh-cn": "获取链接信息失败，请稍后重试",
+    "en": "Failed to retrieve link information. Try again later",
+    "runtime": true
+  },
+  "runtime.backend.fba60f19e44a": {
+    "zh-cn": "素材不存在",
+    "en": "Media asset not found",
+    "runtime": true
+  },
+  "runtime.backend.0853af5e6e69": {
+    "zh-cn": "用户客户端ID不存在",
+    "en": "User client ID not found",
+    "runtime": true
+  },
+  "runtime.backend.2310136e0eac": {
+    "zh-cn": "清除角标失败: ",
+    "en": "Failed to clear the badge: ",
+    "runtime": true
+  },
+  "runtime.backend.dca969ecd098": {
+    "zh-cn": "无效的版本信息",
+    "en": "Invalid version information",
+    "runtime": true
+  },
+  "runtime.backend.c71e6eb37854": {
+    "zh-cn": "您的系统版本过低...",
+    "en": "Your system version is too old",
+    "runtime": true
+  },
+  "runtime.backend.36943e047f61": {
+    "zh-cn": "您的系统版本无需更新",
+    "en": "Your system version is already up to date",
+    "runtime": true
+  },
+  "runtime.backend.e2cff7737269": {
+    "zh-cn": "更新成功",
+    "en": "Updated successfully",
+    "runtime": true
+  },
+  "runtime.backend.dd4678ec97f5": {
+    "zh-cn": "操作失败，记录不存在",
+    "en": "Operation failed because the record does not exist",
+    "runtime": true
+  },
+  "runtime.backend.96966ed71141": {
+    "zh-cn": "时间段格式错误,格式为:dd hh:ii:ss",
+    "en": "Invalid duration format. Use: dd hh:mm:ss",
+    "runtime": true
+  },
+  "runtime.backend.3198b6cdfc20": {
+    "zh-cn": "时间格式错误,格式为:mm-dd hh:ii:ss",
+    "en": "Invalid time format. Use: MM-DD HH:mm:ss",
+    "runtime": true
+  },
+  "runtime.backend.2f5c7098485b": {
+    "zh-cn": "请输入正确的时间",
+    "en": "Enter a valid time",
+    "runtime": true
+  },
+  "runtime.backend.56051f32ffe6": {
+    "zh-cn": "时间格式错误,格式为:hh:ii:ss",
+    "en": "Invalid time format. Use: HH:mm:ss",
+    "runtime": true
+  },
+  "runtime.backend.43c9c81d102c": {
+    "zh-cn": "未找到相关考核信息",
+    "en": "Related assessment information not found",
+    "runtime": true
+  },
+  "runtime.backend.6844d2f4dea4": {
+    "zh-cn": "考核记录不存在",
+    "en": "Assessment record not found",
+    "runtime": true
+  },
+  "runtime.backend.0a2aa1a8f293": {
+    "zh-cn": "考核内容不存在",
+    "en": "Assessment content not found",
+    "runtime": true
+  },
+  "runtime.backend.d7de2dd0ebf8": {
+    "zh-cn": "请填写模板名称",
+    "en": "Enter a template name",
+    "runtime": true
+  },
+  "runtime.backend.afa84e92eb8d": {
+    "zh-cn": "保存失败，请选择被考核人",
+    "en": "Save failed. Select an employee to assess",
+    "runtime": true
+  },
+  "runtime.backend.95909c89bc0e": {
+    "zh-cn": "保存失败，被考核人必须为下级用户",
+    "en": "Save failed. The assessed employee must be a subordinate",
+    "runtime": true
+  },
+  "runtime.backend.478d3faff398": {
+    "zh-cn": "绩效内容修改失败",
+    "en": "Failed to update performance-assessment content",
+    "runtime": true
+  },
+  "runtime.backend.0e51f8b25221": {
+    "zh-cn": "未找到指定考核记录",
+    "en": "Specified assessment record not found",
+    "runtime": true
+  },
+  "runtime.backend.eb33eac2cc40": {
+    "zh-cn": "无效的状态！",
+    "en": "Invalid status",
+    "runtime": true
+  },
+  "runtime.backend.bbb27d6ded79": {
+    "zh-cn": "未找到考核记录！",
+    "en": "Assessment record not found",
+    "runtime": true
+  },
+  "runtime.backend.78325c2c6442": {
+    "zh-cn": "考核已完成自评，无法修改状态！",
+    "en": "The self-evaluation is complete, so the status cannot be changed",
+    "runtime": true
+  },
+  "runtime.backend.cb10b4e9a7fe": {
+    "zh-cn": "考核已启失败，请按规范完善内容！",
+    "en": "Failed to enable the assessment. Complete the required content first",
+    "runtime": true
+  },
+  "runtime.backend.43d678564c68": {
+    "zh-cn": "删除失败，您填写删除原因！",
+    "en": "Delete failed. Enter a reason for deletion",
+    "runtime": true
+  },
+  "runtime.backend.fd503c0cc63d": {
+    "zh-cn": "删除失败！",
+    "en": "Delete failed",
+    "runtime": true
+  },
+  "runtime.backend.39bc21421e7f": {
+    "zh-cn": "您暂无权限操作该考核记录",
+    "en": "You do not have permission to manage this assessment record",
+    "runtime": true
+  },
+  "runtime.backend.3d8bca3a4de7": {
+    "zh-cn": "申诉失败，上级未评价打分",
+    "en": "Appeal failed because the supervisor has not submitted a score",
+    "runtime": true
+  },
+  "runtime.backend.3f1b4cbd0a53": {
+    "zh-cn": "申诉失败，考核已结束",
+    "en": "Appeal failed because the assessment has ended",
+    "runtime": true
+  },
+  "runtime.backend.bc07f50b1404": {
+    "zh-cn": "无效的考核周期",
+    "en": "Invalid assessment period",
+    "runtime": true
+  },
+  "runtime.backend.78ecebe6bc8a": {
+    "zh-cn": "维度总分必须为",
+    "en": "The dimension total score must be ",
+    "runtime": true
+  },
+  "runtime.backend.ba6057659480": {
+    "zh-cn": "维度中指标总分必须为",
+    "en": "The total indicator score within the dimension must be ",
+    "runtime": true
+  },
+  "runtime.backend.68a8c352a498": {
+    "zh-cn": "维度权重总占比必须为100%",
+    "en": "Dimension weights must total 100%",
+    "runtime": true
+  },
+  "runtime.backend.2cd754329ebc": {
+    "zh-cn": "维度中指标权重总占比必须为100%",
+    "en": "Indicator weights within the dimension must total 100%",
+    "runtime": true
+  },
+  "runtime.backend.e2290de172ed": {
+    "zh-cn": "保存失败，无效的考核周期",
+    "en": "Save failed because the assessment period is invalid",
+    "runtime": true
+  },
+  "runtime.backend.a21e40cbb96e": {
+    "zh-cn": "修改的模板分类不存在",
+    "en": "The template category being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.65580b95be13": {
+    "zh-cn": "分类已存在，请勿重复添加！",
+    "en": "The category already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.11f26b632fbe": {
+    "zh-cn": "请先删除关联指标,再尝试删除",
+    "en": "Delete the related indicators before deleting this item",
+    "runtime": true
+  },
+  "runtime.backend.1cd9ecb17a16": {
+    "zh-cn": "修改的指标模板不存在",
+    "en": "The indicator template being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.bf27e1452bf8": {
+    "zh-cn": "您暂无权限修改该考核信息",
+    "en": "You do not have permission to edit this assessment",
+    "runtime": true
+  },
+  "runtime.backend.5b108d8fc7d7": {
+    "zh-cn": "无效的考核信息",
+    "en": "Invalid assessment information",
+    "runtime": true
+  },
+  "runtime.backend.9f20e7735533": {
+    "zh-cn": "修改的模板不存在！",
+    "en": "The template being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.785ed26d6ecb": {
+    "zh-cn": "模板已存在，请勿重复添加！",
+    "en": "The template already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.676e517c5029": {
+    "zh-cn": "请选择封面图",
+    "en": "Select a cover image",
+    "runtime": true
+  },
+  "runtime.backend.9ea14f9ccd35": {
+    "zh-cn": "操作失败，您无权修改该模板",
+    "en": "Operation failed. You do not have permission to edit this template",
+    "runtime": true
+  },
+  "runtime.backend.9955de612bc1": {
+    "zh-cn": "考核模板不存在",
+    "en": "Assessment template not found",
+    "runtime": true
+  },
+  "runtime.backend.cc3c1ef29239": {
+    "zh-cn": "您暂无权限查看该考核记录",
+    "en": "You do not have permission to view this assessment record",
+    "runtime": true
+  },
+  "runtime.backend.6a91bac96bc0": {
+    "zh-cn": "无效的绩效考核！",
+    "en": "Invalid performance assessment",
+    "runtime": true
+  },
+  "runtime.backend.81af3ff74112": {
+    "zh-cn": "绩效考核已启用，无法修改！",
+    "en": "The performance assessment is enabled and cannot be edited",
+    "runtime": true
+  },
+  "runtime.backend.57452d627df6": {
+    "zh-cn": "保存失败，存在无效的指标",
+    "en": "Save failed because one or more indicators are invalid",
+    "runtime": true
+  },
+  "runtime.backend.38cd8a153740": {
+    "zh-cn": "保存失败，不在考核期内",
+    "en": "Save failed because the assessment is outside its active period",
+    "runtime": true
+  },
+  "runtime.backend.80690d00d779": {
+    "zh-cn": "保存失败，不在评价期内",
+    "en": "Save failed because the assessment is outside its evaluation period",
+    "runtime": true
+  },
+  "runtime.backend.14b4461e791b": {
+    "zh-cn": "保存失败，不在审核期内",
+    "en": "Save failed because the assessment is outside its review period",
+    "runtime": true
+  },
+  "runtime.backend.898031d7940c": {
+    "zh-cn": "未找到该条考核记录",
+    "en": "This assessment record was not found",
+    "runtime": true
+  },
+  "runtime.backend.57d328ddcb7a": {
+    "zh-cn": "您无权操作该考核记录",
+    "en": "You do not have permission to manage this assessment record",
+    "runtime": true
+  },
+  "runtime.backend.c4d4665e0c24": {
+    "zh-cn": "您暂无权限修改考核内容",
+    "en": "You do not have permission to edit assessment content",
+    "runtime": true
+  },
+  "runtime.backend.4b1132035b85": {
+    "zh-cn": "您有一条绩效考核目标未制定，请尽快处理！",
+    "en": "You have a performance-assessment objective that has not been set. Please handle it promptly",
+    "runtime": true
+  },
+  "runtime.backend.ab22fa7268d9": {
+    "zh-cn": "您有一条待自评的绩效考核信息，请尽快处理！",
+    "en": "You have a performance assessment awaiting self-evaluation. Please handle it promptly",
+    "runtime": true
+  },
+  "runtime.backend.938cf70cf830": {
+    "zh-cn": "考核状态错误，提醒失败",
+    "en": "Reminder failed because the assessment status is invalid",
+    "runtime": true
+  },
+  "runtime.backend.757282e24202": {
+    "zh-cn": "删除失败，您暂无删除权限！",
+    "en": "Delete failed. You do not have permission to delete this item",
+    "runtime": true
+  },
+  "runtime.backend.719e86875758": {
+    "zh-cn": "无效的操作类型",
+    "en": "Invalid operation type",
+    "runtime": true
+  },
+  "runtime.backend.7252613d7104": {
+    "zh-cn": "没有查询到数据！",
+    "en": "No data found",
+    "runtime": true
+  },
+  "runtime.backend.df6578447c22": {
+    "zh-cn": "删除失败，该分类下有内容！",
+    "en": "Delete failed because this category contains items",
+    "runtime": true
+  },
+  "runtime.backend.8ae2134d707e": {
+    "zh-cn": "关联类型错误",
+    "en": "Invalid relation type",
+    "runtime": true
+  },
+  "runtime.backend.399e5793ecbd": {
+    "zh-cn": "今日及以前的日期禁止调整",
+    "en": "Dates up to and including today cannot be adjusted",
+    "runtime": true
+  },
+  "runtime.backend.823b97fd5e6d": {
+    "zh-cn": "考勤组异常",
+    "en": "Invalid attendance group",
+    "runtime": true
+  },
+  "runtime.backend.65def729a154": {
+    "zh-cn": "考勤时间不能为过去月份",
+    "en": "Attendance time cannot be in a past month",
+    "runtime": true
+  },
+  "runtime.backend.e1e34542ee51": {
+    "zh-cn": "排班时间不能为过去月份",
+    "en": "Scheduling time cannot be in a past month",
+    "runtime": true
+  },
+  "runtime.backend.6f5dc158f82e": {
+    "zh-cn": "操作失败，考勤组记录不存在",
+    "en": "Operation failed because the attendance-group record does not exist",
+    "runtime": true
+  },
+  "runtime.backend.d22d3e02e781": {
+    "zh-cn": "排班失败",
+    "en": "Scheduling failed",
+    "runtime": true
+  },
+  "runtime.backend.d5488ddb47df": {
+    "zh-cn": "排班数据异常",
+    "en": "Invalid scheduling data",
+    "runtime": true
+  },
+  "runtime.backend.7a717ffcb75e": {
+    "zh-cn": "排班人员异常",
+    "en": "Invalid scheduled employee",
+    "runtime": true
+  },
+  "runtime.backend.ae9a8529d655": {
+    "zh-cn": "排班班次异常",
+    "en": "Invalid scheduled shift",
+    "runtime": true
+  },
+  "runtime.backend.2ea2d4eaf6dc": {
+    "zh-cn": "排班数据异常: 排班数据长度与月份天数不符",
+    "en": "Invalid scheduling data: its length does not match the number of days in the month",
+    "runtime": true
+  },
+  "runtime.backend.35c37e3db8b0": {
+    "zh-cn": "排班人员异常: 用户ID不在成员列表中",
+    "en": "Invalid scheduled employee: the user ID is not in the member list",
+    "runtime": true
+  },
+  "runtime.backend.ae139ccee5c4": {
+    "zh-cn": "排班班次异常: 无效班次ID",
+    "en": "Invalid scheduled shift: invalid shift ID",
+    "runtime": true
+  },
+  "runtime.backend.b1970b700c58": {
+    "zh-cn": "打卡类型异常",
+    "en": "Invalid clock-in type",
+    "runtime": true
+  },
+  "runtime.backend.be609ff9e118": {
+    "zh-cn": "未到打卡时间",
+    "en": "It is not yet time to clock in",
+    "runtime": true
+  },
+  "runtime.backend.15a5f01db4e4": {
+    "zh-cn": "打卡班次已变化, 请刷新后重试",
+    "en": "The clock-in shift has changed. Refresh and try again",
+    "runtime": true
+  },
+  "runtime.backend.d5603627fded": {
+    "zh-cn": "打卡异常",
+    "en": "Clock-in error",
+    "runtime": true
+  },
+  "runtime.backend.da461e652a7a": {
+    "zh-cn": "打卡班次错误",
+    "en": "Invalid clock-in shift",
+    "runtime": true
+  },
+  "runtime.backend.ffd0a7ea6d83": {
+    "zh-cn": "人员数据异常",
+    "en": "Invalid employee data",
+    "runtime": true
+  },
+  "runtime.backend.9b6e1c6b5171": {
+    "zh-cn": "导入内容不能为空",
+    "en": "Import content is required",
+    "runtime": true
+  },
+  "runtime.backend.5cc703800467": {
+    "zh-cn": "打卡数据导入异常",
+    "en": "Failed to import clock-in data",
+    "runtime": true
+  },
+  "runtime.backend.042a031091a8": {
+    "zh-cn": "导入类型错误",
+    "en": "Invalid import type",
+    "runtime": true
+  },
+  "runtime.backend.eb74e2137691": {
+    "zh-cn": "打卡记录导入异常",
+    "en": "Failed to import clock-in records",
+    "runtime": true
+  },
+  "runtime.backend.a93da4488286": {
+    "zh-cn": "打卡日期异常",
+    "en": "Invalid clock-in date",
+    "runtime": true
+  },
+  "runtime.backend.ea43f83cef25": {
+    "zh-cn": "班次数据已变化, 请刷新后重试",
+    "en": "The shift data has changed. Refresh and try again",
+    "runtime": true
+  },
+  "runtime.backend.2d2203335700": {
+    "zh-cn": "班次错误",
+    "en": "Invalid shift",
+    "runtime": true
+  },
+  "runtime.backend.ec87f7811056": {
+    "zh-cn": "更新班次错误",
+    "en": "Failed to update the shift",
+    "runtime": true
+  },
+  "runtime.backend.8897b50b414c": {
+    "zh-cn": "无法更新打卡, 请刷新后重试",
+    "en": "Unable to update the clock-in. Refresh and try again",
+    "runtime": true
+  },
+  "runtime.backend.ccde8d114078": {
+    "zh-cn": "不允许外勤打卡！",
+    "en": "Off-site clock-in is not allowed",
+    "runtime": true
+  },
+  "runtime.backend.8ef05088023e": {
+    "zh-cn": "上传拍照最多9张！",
+    "en": "You can upload at most 9 clock-in photos",
+    "runtime": true
+  },
+  "runtime.backend.5cc42ce28166": {
+    "zh-cn": "请填写备注！",
+    "en": "Enter a note",
+    "runtime": true
+  },
+  "runtime.backend.afa26715e8ba": {
+    "zh-cn": "请进行拍照打卡！",
+    "en": "Take a photo to clock in",
+    "runtime": true
+  },
+  "runtime.backend.e529079b22ee": {
+    "zh-cn": "不能查看该员工考勤数据",
+    "en": "You cannot view this employee's attendance data",
+    "runtime": true
+  },
+  "runtime.backend.663ba85570e1": {
+    "zh-cn": "打卡数据更新异常, 请稍后再试",
+    "en": "Failed to update clock-in data. Try again later",
+    "runtime": true
+  },
+  "runtime.backend.6dd16759085b": {
+    "zh-cn": "您没有权限操作",
+    "en": "You do not have permission to perform this operation",
+    "runtime": true
+  },
+  "runtime.backend.65b1ed456ac7": {
+    "zh-cn": "考勤组名称重复",
+    "en": "The attendance-group name already exists",
+    "runtime": true
+  },
+  "runtime.backend.d636505700eb": {
+    "zh-cn": "请选择正确的补卡类型",
+    "en": "Select a valid missed-clock correction type",
+    "runtime": true
+  },
+  "runtime.backend.fd18512b161f": {
+    "zh-cn": "考勤部门重复",
+    "en": "Duplicate attendance department",
+    "runtime": true
+  },
+  "runtime.backend.2ff890843a53": {
+    "zh-cn": "考勤人员重复",
+    "en": "Duplicate attendance employee",
+    "runtime": true
+  },
+  "runtime.backend.a9dae3e64a22": {
+    "zh-cn": "暂无权限查看该人员的出勤统计信息",
+    "en": "You do not have permission to view this employee's attendance statistics",
+    "runtime": true
+  },
+  "runtime.backend.5b1a44ce3e95": {
+    "zh-cn": "考勤时间格式错误",
+    "en": "Invalid attendance-time format",
+    "runtime": true
+  },
+  "runtime.backend.bcbe4777aa36": {
+    "zh-cn": "打卡状态不能更新异常",
+    "en": "The clock-in status cannot be updated",
+    "runtime": true
+  },
+  "runtime.backend.bac9e52f1bde": {
+    "zh-cn": "当前班次已被使用, 不能删除",
+    "en": "This shift is in use and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.f9930dfd37b7": {
+    "zh-cn": "连续班次最早上班卡与最晚下班卡时间不能重叠",
+    "en": "For consecutive shifts, the earliest start-clock time and latest end-clock time cannot overlap",
+    "runtime": true
+  },
+  "runtime.backend.e4f5b51a9bbb": {
+    "zh-cn": "请设置班次规则",
+    "en": "Configure shift rules",
+    "runtime": true
+  },
+  "runtime.backend.0dc51a1928a8": {
+    "zh-cn": "严重迟到值要大于迟到",
+    "en": "The severe late threshold must be greater than the standard late threshold",
+    "runtime": true
+  },
+  "runtime.backend.2e3151b7a56c": {
+    "zh-cn": "晚到缺卡值要大于严重迟到",
+    "en": "The missing-clock threshold must be greater than the severe-late threshold",
+    "runtime": true
+  },
+  "runtime.backend.c33f4d41ea07": {
+    "zh-cn": "半天缺卡的值要大于早退",
+    "en": "The half-day missing-clock threshold must be greater than the early-leave threshold",
+    "runtime": true
+  },
+  "runtime.backend.8f560b987641": {
+    "zh-cn": "下班时间要晚于上班时间",
+    "en": "The end time must be later than the start time",
+    "runtime": true
+  },
+  "runtime.backend.6c0fac7d7c3d": {
+    "zh-cn": "提前打卡时间要早于延后打卡时间",
+    "en": "The early clock-in time must be earlier than the late clock-in time",
+    "runtime": true
+  },
+  "runtime.backend.057b0de4003b": {
+    "zh-cn": "默认班次不能删除",
+    "en": "The default shift cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.60a513095c8e": {
+    "zh-cn": "班次名称重复",
+    "en": "The shift name already exists",
+    "runtime": true
+  },
+  "runtime.backend.f8e0964efbf7": {
+    "zh-cn": "时间异常",
+    "en": "Invalid time",
+    "runtime": true
+  },
+  "runtime.backend.10691d3bd488": {
+    "zh-cn": "时间格式错误",
+    "en": "Invalid time format",
+    "runtime": true
+  },
+  "runtime.backend.e3603b5ef87e": {
+    "zh-cn": "排班周期班次异常",
+    "en": "Invalid shift in the scheduling cycle",
+    "runtime": true
+  },
+  "runtime.backend.c4157e6de611": {
+    "zh-cn": "考勤班次异常",
+    "en": "Invalid attendance shift",
+    "runtime": true
+  },
+  "runtime.backend.3a5af7d201c9": {
+    "zh-cn": "日期格式有误",
+    "en": "Invalid date format",
+    "runtime": true
+  },
+  "runtime.backend.26afe409f785": {
+    "zh-cn": "无法更新打卡",
+    "en": "Unable to update the clock-in",
+    "runtime": true
+  },
+  "runtime.backend.42a88ce48c29": {
+    "zh-cn": "表名不符合规范",
+    "en": "Invalid table name",
+    "runtime": true
+  },
+  "runtime.backend.26f60647de6f": {
+    "zh-cn": "配置不能为空",
+    "en": "Configuration is required",
+    "runtime": true
+  },
+  "runtime.backend.b16a9adc00e5": {
+    "zh-cn": "配置地址不能为空",
+    "en": "Configuration URL is required",
+    "runtime": true
+  },
+  "runtime.backend.46abad832c79": {
+    "zh-cn": "配置传输方式不能为空",
+    "en": "Configuration transport method is required",
+    "runtime": true
+  },
+  "runtime.backend.aedb6bb11870": {
+    "zh-cn": "当前为默认的mcp无法删除",
+    "en": "The default MCP service cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.e6dede532d26": {
+    "zh-cn": "请先在应用中解除关联！【",
+    "en": "Remove the association from the application first: 【",
+    "runtime": true
+  },
+  "runtime.backend.4446154e0195": {
+    "zh-cn": "没有查询到该对话记录",
+    "en": "Conversation record not found",
+    "runtime": true
+  },
+  "runtime.backend.12898f2c47ec": {
+    "zh-cn": "没有查询到该对话记录的SQL语句",
+    "en": "No SQL statement was found for this conversation",
+    "runtime": true
+  },
+  "runtime.backend.02e795ab8955": {
+    "zh-cn": "该对话记录的SQL语句已失效，请重新对话",
+    "en": "The SQL statement for this conversation has expired. Start a new conversation",
+    "runtime": true
+  },
+  "runtime.backend.d51e45e8d99b": {
+    "zh-cn": "查询失败，请重新对话:",
+    "en": "Query failed. Start a new conversation: ",
+    "runtime": true
+  },
+  "runtime.backend.48b8efdc03f4": {
+    "zh-cn": "当前类目已存在, 请勿重复添加",
+    "en": "This category already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.29a102902074": {
+    "zh-cn": "当前类目已存在，请确认后重试",
+    "en": "This category already exists. Check it and try again",
+    "runtime": true
+  },
+  "runtime.backend.d49d47b9a5e1": {
+    "zh-cn": "当前类目已被使用, 无法删除",
+    "en": "This category is in use and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.43357b3018e0": {
+    "zh-cn": "企业空间不存在",
+    "en": "Enterprise space not found",
+    "runtime": true
+  },
+  "runtime.backend.bf8eb0279a0b": {
+    "zh-cn": "不支持的文件类型",
+    "en": "Unsupported file type",
+    "runtime": true
+  },
+  "runtime.backend.ffcf0a1eb083": {
+    "zh-cn": "文件不存在",
+    "en": "File not found",
+    "runtime": true
+  },
+  "runtime.backend.c987a0f675f6": {
+    "zh-cn": "未完善wps配置无法预览，请完善配置！",
+    "en": "Preview is unavailable until the WPS configuration is completed",
+    "runtime": true
+  },
+  "runtime.backend.652d523a0ebf": {
+    "zh-cn": "该文件类型不支持预览",
+    "en": "This file type cannot be previewed",
+    "runtime": true
+  },
+  "runtime.backend.a6f805694be5": {
+    "zh-cn": "上传失败",
+    "en": "Upload failed",
+    "runtime": true
+  },
+  "runtime.backend.bf3529e9ccce": {
+    "zh-cn": "无效的文件路径",
+    "en": "Invalid file path",
+    "runtime": true
+  },
+  "runtime.backend.4db45e95ed16": {
+    "zh-cn": "无效路径",
+    "en": "Invalid path",
+    "runtime": true
+  },
+  "runtime.backend.f734f6885772": {
+    "zh-cn": "仅支持复制文件",
+    "en": "Only files can be copied",
+    "runtime": true
+  },
+  "runtime.backend.805f2ea1ebc6": {
+    "zh-cn": "删除失败，无权限操作",
+    "en": "Delete failed because permission was denied",
+    "runtime": true
+  },
+  "runtime.backend.30971e4bb8a1": {
+    "zh-cn": "创建文件失败",
+    "en": "Failed to create the file",
+    "runtime": true
+  },
+  "runtime.backend.7c0d06fb1d71": {
+    "zh-cn": "上传的文件不存在",
+    "en": "The uploaded file does not exist",
+    "runtime": true
+  },
+  "runtime.backend.2d597424ebb7": {
+    "zh-cn": "上传分片文件失败",
+    "en": "Failed to upload the file chunk",
+    "runtime": true
+  },
+  "runtime.backend.498cd2baf5cb": {
+    "zh-cn": "上传文件失败",
+    "en": "Failed to upload the file",
+    "runtime": true
+  },
+  "runtime.backend.9b5eb0e5f56d": {
+    "zh-cn": "校验文件失败",
+    "en": "File validation failed",
+    "runtime": true
+  },
+  "runtime.backend.adf715827c30": {
+    "zh-cn": "获取文件格式失败，请上传标准文件格式",
+    "en": "Failed to identify the file format. Upload a standard file format",
+    "runtime": true
+  },
+  "runtime.backend.77df152608d8": {
+    "zh-cn": "请上传标准的docx格式文件",
+    "en": "Upload a valid DOCX file",
+    "runtime": true
+  },
+  "runtime.backend.aadf203f2430": {
+    "zh-cn": "平台错误：发生异常，请稍后重试",
+    "en": "Platform error. An exception occurred; try again later",
+    "runtime": true
+  },
+  "runtime.backend.978f15744df3": {
+    "zh-cn": "请选择员工",
+    "en": "Select an employee",
+    "runtime": true
+  },
+  "runtime.backend.0343de86ac1f": {
+    "zh-cn": "未找到指定的空间",
+    "en": "Specified space not found",
+    "runtime": true
+  },
+  "runtime.backend.8e75c905773f": {
+    "zh-cn": "只能删除自己创建的空间",
+    "en": "You can only delete spaces you created",
+    "runtime": true
+  },
+  "runtime.backend.4f5bec221b82": {
+    "zh-cn": "空间不存在",
+    "en": "Space not found",
+    "runtime": true
+  },
+  "runtime.backend.779f2664f3a7": {
+    "zh-cn": "只能修改空间名称",
+    "en": "Only the space name can be changed",
+    "runtime": true
+  },
+  "runtime.backend.70741bfde7c7": {
+    "zh-cn": "只能修改自己的空间",
+    "en": "You can only edit spaces you created",
+    "runtime": true
+  },
+  "runtime.backend.3949a4105c4e": {
+    "zh-cn": "没有权限转让",
+    "en": "You do not have permission to transfer this item",
+    "runtime": true
+  },
+  "runtime.backend.a3973367d2a8": {
+    "zh-cn": "请选择有效的员工",
+    "en": "Select a valid employee",
+    "runtime": true
+  },
+  "runtime.backend.aad7468afe0b": {
+    "zh-cn": "邀请信息不存在",
+    "en": "Invitation information not found",
+    "runtime": true
+  },
+  "runtime.backend.3d61842abbf7": {
+    "zh-cn": "已同意,无法操作",
+    "en": "The invitation has already been accepted and cannot be changed",
+    "runtime": true
+  },
+  "runtime.backend.4816a916b766": {
+    "zh-cn": "保存处理信息失败",
+    "en": "Failed to save the processing information",
+    "runtime": true
+  },
+  "runtime.backend.355fc79b052e": {
+    "zh-cn": "该企业名称已被占用",
+    "en": "This enterprise name is already in use",
+    "runtime": true
+  },
+  "runtime.backend.71be42be781a": {
+    "zh-cn": "账号可申请企业数量已达上限",
+    "en": "This account has reached the enterprise-application limit",
+    "runtime": true
+  },
+  "runtime.backend.96133669a8b8": {
+    "zh-cn": "修改的申请不存在",
+    "en": "The application being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.a9b1da8663e0": {
+    "zh-cn": "未找到可修改的申请记录",
+    "en": "No editable application record was found",
+    "runtime": true
+  },
+  "runtime.backend.1097fd1db73e": {
+    "zh-cn": "审核已通过，无法修改相关信息",
+    "en": "The review has passed, so the information cannot be changed",
+    "runtime": true
+  },
+  "runtime.backend.2d17d9389813": {
+    "zh-cn": "未找到可删除的申请记录",
+    "en": "No deletable application record was found",
+    "runtime": true
+  },
+  "runtime.backend.90f8aa5c6607": {
+    "zh-cn": "审核已通过，无法删除相关信息",
+    "en": "The review has passed, so the information cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.194053afab27": {
+    "zh-cn": "企业ID不能为空",
+    "en": "Enterprise ID is required",
+    "runtime": true
+  },
+  "runtime.backend.54def4cfac0e": {
+    "zh-cn": "企业不存在",
+    "en": "Enterprise not found",
+    "runtime": true
+  },
+  "runtime.backend.5fc38df5ea07": {
+    "zh-cn": "已审核通过不能被强制删除",
+    "en": "Approved records cannot be force-deleted",
+    "runtime": true
+  },
+  "runtime.backend.9fc48c94dcba": {
+    "zh-cn": "删除的企业不存在",
+    "en": "The enterprise to delete does not exist",
+    "runtime": true
+  },
+  "runtime.backend.dc38c5d99449": {
+    "zh-cn": "修改的信息不存在",
+    "en": "The information being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.f47d9a8087c0": {
+    "zh-cn": "企业名片不存在",
+    "en": "Enterprise profile not found",
+    "runtime": true
+  },
+  "runtime.backend.2795231cf547": {
+    "zh-cn": "请选择入学时间",
+    "en": "Select an enrollment date",
+    "runtime": true
+  },
+  "runtime.backend.46cf98a26bca": {
+    "zh-cn": "请选择毕业时间",
+    "en": "Select a graduation date",
+    "runtime": true
+  },
+  "runtime.backend.2b11a599c985": {
+    "zh-cn": "用户信息不存在",
+    "en": "User information not found",
+    "runtime": true
+  },
+  "runtime.backend.1705572a01d3": {
+    "zh-cn": "修改的工作经历不存在",
+    "en": "The work experience being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.9a5c514f3622": {
+    "zh-cn": "保存失败，等级分数存在冲突！",
+    "en": "Save failed because grade scores overlap",
+    "runtime": true
+  },
+  "runtime.backend.76d73cb50532": {
+    "zh-cn": "保存失败，等级分数区间错误！",
+    "en": "Save failed because the grade-score range is invalid",
+    "runtime": true
+  },
+  "runtime.backend.00b08ac1e9f9": {
+    "zh-cn": "修改配置",
+    "en": "Failed to update the configuration",
+    "runtime": true
+  },
+  "runtime.backend.3e61c10de7ab": {
+    "zh-cn": "缺少配置类型",
+    "en": "Configuration type is required",
+    "runtime": true
+  },
+  "runtime.backend.b6965c3a63ba": {
+    "zh-cn": "保存失败，缺少必要参数",
+    "en": "Save failed because required parameters are missing",
+    "runtime": true
+  },
+  "runtime.backend.0e3ddac26112": {
+    "zh-cn": "已超出字典最大层级限制",
+    "en": "The maximum dictionary depth has been exceeded",
+    "runtime": true
+  },
+  "runtime.backend.ded8736cd8b7": {
+    "zh-cn": "字典数据值已在重复, 请勿重复添加",
+    "en": "The dictionary data value is duplicated. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.953284a8bc52": {
+    "zh-cn": "修改的字典数据不存在",
+    "en": "The dictionary data being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.6902aa931829": {
+    "zh-cn": "字典数据值已存在, 请勿重复添加",
+    "en": "The dictionary data value already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.ac8a268de6f5": {
+    "zh-cn": "缺少字典关联参数",
+    "en": "Dictionary relation parameters are required",
+    "runtime": true
+  },
+  "runtime.backend.719ca9225f8e": {
+    "zh-cn": "字典已存在, 请勿重复添加",
+    "en": "The dictionary already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.0562a6565fff": {
+    "zh-cn": "修改的字典不存在",
+    "en": "The dictionary being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.42b49f976141": {
+    "zh-cn": "字典名称已存在, 请勿重复添加",
+    "en": "The dictionary name already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.c11369eb950e": {
+    "zh-cn": "字典标识已存在, 请勿重复添加",
+    "en": "The dictionary identifier already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.53db5b34d1ec": {
+    "zh-cn": "字典存在关联数据，无法删除",
+    "en": "The dictionary has related data and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.2deb769dcd32": {
+    "zh-cn": "默认字典无法删除",
+    "en": "The default dictionary cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.807d1c766ea5": {
+    "zh-cn": "分组数据异常",
+    "en": "Invalid group data",
+    "runtime": true
+  },
+  "runtime.backend.5ff5a6803e86": {
+    "zh-cn": "移动失败",
+    "en": "Move failed",
+    "runtime": true
+  },
+  "runtime.backend.2faaa70e92dc": {
+    "zh-cn": "业务类型异常",
+    "en": "Invalid business type",
+    "runtime": true
+  },
+  "runtime.backend.025002c00ed1": {
+    "zh-cn": "无效参数！",
+    "en": "Invalid parameters",
+    "runtime": true
+  },
+  "runtime.backend.ad1cf73373dd": {
+    "zh-cn": "快捷入口已存在，请勿重复添加！",
+    "en": "The shortcut already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.d7ce03c70b52": {
+    "zh-cn": "修改的快捷入口数据不存在",
+    "en": "The shortcut being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.8403762083b9": {
+    "zh-cn": "请选择分类",
+    "en": "Select a category",
+    "runtime": true
+  },
+  "runtime.backend.0fb2d174e3e2": {
+    "zh-cn": "业务类型错误",
+    "en": "Invalid business type",
+    "runtime": true
+  },
+  "runtime.backend.8d3be095b8c6": {
+    "zh-cn": "至少选中3个字段",
+    "en": "Select at least three fields",
+    "runtime": true
+  },
+  "runtime.backend.4f3aa4b886ca": {
+    "zh-cn": "至少选择一种密码类型！",
+    "en": "Select at least one password type",
+    "runtime": true
+  },
+  "runtime.backend.739761a57d82": {
+    "zh-cn": "没有查询到表名",
+    "en": "Table name not found",
+    "runtime": true
+  },
+  "runtime.backend.8e2ba6f1e806": {
+    "zh-cn": "分组的实体信息不存在",
+    "en": "The group's entity information does not exist",
+    "runtime": true
+  },
+  "runtime.backend.472650bef041": {
+    "zh-cn": "分组的字段信息不存在",
+    "en": "The group's field information does not exist",
+    "runtime": true
+  },
+  "runtime.backend.e61e3dbd946b": {
+    "zh-cn": "没有查询到表单信息",
+    "en": "Form information not found",
+    "runtime": true
+  },
+  "runtime.backend.6d9e21f6c1df": {
+    "zh-cn": "没有查询到实体字段信息信息",
+    "en": "Entity field information not found",
+    "runtime": true
+  },
+  "runtime.backend.b341b09e2b07": {
+    "zh-cn": "没有查询到一对一关联实体信息",
+    "en": "One-to-one related entity information not found",
+    "runtime": true
+  },
+  "runtime.backend.4be27a4c752a": {
+    "zh-cn": "请先前往开发中设置[",
+    "en": "Configure this first under Development [",
+    "runtime": true
+  },
+  "runtime.backend.d7fafc8e89db": {
+    "zh-cn": "明细字段",
+    "en": "Detail field",
+    "runtime": true
+  },
+  "runtime.backend.cdebd0581692": {
+    "zh-cn": "关联字段没有查询到字段名",
+    "en": "The related field name was not found",
+    "runtime": true
+  },
+  "runtime.backend.939efe22f74a": {
+    "zh-cn": "没有查询到数据无法进行修改",
+    "en": "No data was found to update",
+    "runtime": true
+  },
+  "runtime.backend.c8b4718723ae": {
+    "zh-cn": "修改失败或修改的数据没有变化",
+    "en": "Update failed or the data did not change",
+    "runtime": true
+  },
+  "runtime.backend.bebc41b8344d": {
+    "zh-cn": "没有查询到",
+    "en": "Not found: ",
+    "runtime": true
+  },
+  "runtime.backend.806abd9834c8": {
+    "zh-cn": "暂无权限在",
+    "en": "You do not have permission in ",
+    "runtime": true
+  },
+  "runtime.backend.4c549c117984": {
+    "zh-cn": "没有查询到副表的信息",
+    "en": "Child-table information not found",
+    "runtime": true
+  },
+  "runtime.backend.65ba08c6e20e": {
+    "zh-cn": "导入的字段不存在无法导入",
+    "en": "The imported field does not exist, so the data cannot be imported",
+    "runtime": true
+  },
+  "runtime.backend.9ca45f4b5b9a": {
+    "zh-cn": "导入的字段不存在，无法导入！",
+    "en": "The imported field does not exist, so the data cannot be imported",
+    "runtime": true
+  },
+  "runtime.backend.68a64aca649e": {
+    "zh-cn": "选择的数据没有可以进行转移的权限",
+    "en": "You do not have permission to transfer the selected data",
+    "runtime": true
+  },
+  "runtime.backend.5f6722eb1250": {
+    "zh-cn": "选择的数据没有可以进行分享的权限",
+    "en": "You do not have permission to share the selected data",
+    "runtime": true
+  },
+  "runtime.backend.1711c6f78852": {
+    "zh-cn": "分享失败",
+    "en": "Share failed",
+    "runtime": true
+  },
+  "runtime.backend.1d97c3ab37d0": {
+    "zh-cn": "表单明细提交数据类型错误",
+    "en": "Invalid submitted data type for form details",
+    "runtime": true
+  },
+  "runtime.backend.0dcbf15c57f8": {
+    "zh-cn": "表单明细数据不能为空",
+    "en": "Form-detail data is required",
+    "runtime": true
+  },
+  "runtime.backend.5c09f7eec901": {
+    "zh-cn": "缺少前置请求地址",
+    "en": "Pre-request URL is required",
+    "runtime": true
+  },
+  "runtime.backend.4e883e344c50": {
+    "zh-cn": "已经关联触发器，暂时无法删除，请先解除触发器关联的接口",
+    "en": "This interface is linked to a trigger. Remove the trigger association before deleting it",
+    "runtime": true
+  },
+  "runtime.backend.5b71d601cbb4": {
+    "zh-cn": "维度设置过多",
+    "en": "Too many dimensions are configured",
+    "runtime": true
+  },
+  "runtime.backend.8c136174dc11": {
+    "zh-cn": "指标设置过多",
+    "en": "Too many indicators are configured",
+    "runtime": true
+  },
+  "runtime.backend.73b0baabb3a7": {
+    "zh-cn": "没有查询到事件详情",
+    "en": "Event details not found",
+    "runtime": true
+  },
+  "runtime.backend.d30976225841": {
+    "zh-cn": "指定更新的字段,没有发生更新",
+    "en": "The specified fields were not changed",
+    "runtime": true
+  },
+  "runtime.backend.3dbb32935463": {
+    "zh-cn": "系统表不允许添加字段",
+    "en": "Fields cannot be added to a system table",
+    "runtime": true
+  },
+  "runtime.backend.c41508a71a09": {
+    "zh-cn": "字段已存在",
+    "en": "The field already exists",
+    "runtime": true
+  },
+  "runtime.backend.921a8793f1b9": {
+    "zh-cn": "字段名已存在",
+    "en": "The field name already exists",
+    "runtime": true
+  },
+  "runtime.backend.d56b4187fef9": {
+    "zh-cn": "附表不允许添加唯一字段",
+    "en": "A unique field cannot be added to a child table",
+    "runtime": true
+  },
+  "runtime.backend.438341b51627": {
+    "zh-cn": "当前表已存在数据，无法设置唯一字段",
+    "en": "This table contains data, so a unique field cannot be configured",
+    "runtime": true
+  },
+  "runtime.backend.3e69cb8fc2e0": {
+    "zh-cn": "选择的表单类型不存在",
+    "en": "The selected form type does not exist",
+    "runtime": true
+  },
+  "runtime.backend.595a078aae07": {
+    "zh-cn": "一对一关联必须选择展示字段",
+    "en": "Select a display field for a one-to-one relation",
+    "runtime": true
+  },
+  "runtime.backend.f85d7af21f08": {
+    "zh-cn": "请选择关联数据表",
+    "en": "Select a related data table",
+    "runtime": true
+  },
+  "runtime.backend.9cb7fc8eb98e": {
+    "zh-cn": "修改的字段不存在",
+    "en": "The field being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.0a51e5f77fa8": {
+    "zh-cn": "当前字段不能设置为唯一字段",
+    "en": "This field cannot be configured as unique",
+    "runtime": true
+  },
+  "runtime.backend.3a070040d4e8": {
+    "zh-cn": "选择的表单类型不存在,建议删除此字段",
+    "en": "The selected form type does not exist. Delete this field",
+    "runtime": true
+  },
+  "runtime.backend.957491289a04": {
+    "zh-cn": "没有查到字段信息",
+    "en": "Field information not found",
+    "runtime": true
+  },
+  "runtime.backend.2bb4094b2e04": {
+    "zh-cn": "没有查到实体数据",
+    "en": "Entity data not found",
+    "runtime": true
+  },
+  "runtime.backend.548230783009": {
+    "zh-cn": "没有查到实体名称",
+    "en": "Entity name not found",
+    "runtime": true
+  },
+  "runtime.backend.b9b3dcfb8256": {
+    "zh-cn": "请先在表单中移除对应表单",
+    "en": "Remove the corresponding item from the form first",
+    "runtime": true
+  },
+  "runtime.backend.7693f197b5b8": {
+    "zh-cn": "当前字段已经有触发器，请先解除触发器中的目标实体关联",
+    "en": "This field has a trigger. Remove its target-entity association first",
+    "runtime": true
+  },
+  "runtime.backend.7dcf44db0ea1": {
+    "zh-cn": "系统表名存在不允许重复",
+    "en": "The system table name already exists and cannot be duplicated",
+    "runtime": true
+  },
+  "runtime.backend.7f63575e2798": {
+    "zh-cn": "字段名已存在：",
+    "en": "Field name already exists: ",
+    "runtime": true
+  },
+  "runtime.backend.b3772f7eade7": {
+    "zh-cn": "字段名已存在:",
+    "en": "Field name already exists: ",
+    "runtime": true
+  },
+  "runtime.backend.a514be6b1a92": {
+    "zh-cn": "批量字段中存在重复字段名：",
+    "en": "Duplicate field names exist in the batch: ",
+    "runtime": true
+  },
+  "runtime.backend.9a4c7affe2c2": {
+    "zh-cn": "表单类型不存在",
+    "en": "Form type not found",
+    "runtime": true
+  },
+  "runtime.backend.d095c53615b1": {
+    "zh-cn": "没有查询到问卷信息",
+    "en": "Questionnaire information not found",
+    "runtime": true
+  },
+  "runtime.backend.94824fe03251": {
+    "zh-cn": "问卷已经过期",
+    "en": "The questionnaire has expired",
+    "runtime": true
+  },
+  "runtime.backend.93af5bc7928f": {
+    "zh-cn": "问卷没有开启",
+    "en": "The questionnaire is not enabled",
+    "runtime": true
+  },
+  "runtime.backend.783e74747e95": {
+    "zh-cn": "问卷关联的实体信息不存在",
+    "en": "The entity related to this questionnaire does not exist",
+    "runtime": true
+  },
+  "runtime.backend.693740fb0d2c": {
+    "zh-cn": "缺少权限ID",
+    "en": "Permission ID is required",
+    "runtime": true
+  },
+  "runtime.backend.1a622bb52cf4": {
+    "zh-cn": "实体名已存在",
+    "en": "The entity name already exists",
+    "runtime": true
+  },
+  "runtime.backend.091fb6c98812": {
+    "zh-cn": "实体已存在或者已被删除，不能添加相同实体名称的实体",
+    "en": "An entity with this name already exists or was deleted. Use a different entity name",
+    "runtime": true
+  },
+  "runtime.backend.8b1034e0476c": {
+    "zh-cn": "主表不存在",
+    "en": "Primary table not found",
+    "runtime": true
+  },
+  "runtime.backend.728e9ca71444": {
+    "zh-cn": "此主体下只能存在一个从表",
+    "en": "Only one child table is allowed under this primary table",
+    "runtime": true
+  },
+  "runtime.backend.7373c2ac2a6e": {
+    "zh-cn": "从表下不能添加从表",
+    "en": "A child table cannot contain another child table",
+    "runtime": true
+  },
+  "runtime.backend.aeafdde11de9": {
+    "zh-cn": "实体名称已经存在",
+    "en": "The entity name already exists",
+    "runtime": true
+  },
+  "runtime.backend.b7177c800b9a": {
+    "zh-cn": "没有查询到表数据",
+    "en": "Table data not found",
+    "runtime": true
+  },
+  "runtime.backend.56293c67ea0e": {
+    "zh-cn": "实体表名已经存在请更换其他名称",
+    "en": "The entity table name already exists. Use a different name",
+    "runtime": true
+  },
+  "runtime.backend.c488434710b7": {
+    "zh-cn": "请先解除\"",
+    "en": "Remove the association with \" first",
+    "runtime": true
+  },
+  "runtime.backend.78235805f7e3": {
+    "zh-cn": "请上传合同文件",
+    "en": "Please upload the contract file",
+    "runtime": true
+  },
+  "runtime.backend.8684140196b5": {
+    "zh-cn": "请填写合同经办人",
+    "en": "Enter the contract handler",
+    "runtime": true
+  },
+  "runtime.backend.5c9a5ff57422": {
+    "zh-cn": "合同已签约,无法撤销",
+    "en": "The contract has been signed and cannot be revoked",
+    "runtime": true
+  },
+  "runtime.backend.b5372a19aaf8": {
+    "zh-cn": "合同不存在",
+    "en": "Contract not found",
+    "runtime": true
+  },
+  "runtime.backend.416d184602c0": {
+    "zh-cn": "合同已拒绝签约,无需撤销",
+    "en": "The contract signing was rejected, so no revocation is required",
+    "runtime": true
+  },
+  "runtime.backend.08d63ca6787b": {
+    "zh-cn": "合同签约已过期,无需撤销",
+    "en": "The contract signing has expired, so no revocation is required",
+    "runtime": true
+  },
+  "runtime.backend.9f708804d177": {
+    "zh-cn": "合同签约已撤销,请勿重复操作",
+    "en": "The contract signing has already been revoked. Do not repeat this operation",
+    "runtime": true
+  },
+  "runtime.backend.e57e1e6e9592": {
+    "zh-cn": "部分订单不存在",
+    "en": "One or more orders do not exist",
+    "runtime": true
+  },
+  "runtime.backend.06910b215804": {
+    "zh-cn": "该合同需要电子签约",
+    "en": "This contract requires electronic signing",
+    "runtime": true
+  },
+  "runtime.backend.1f3e8f4d5126": {
+    "zh-cn": "该合同未发起电子签约",
+    "en": "Electronic signing has not been initiated for this contract",
+    "runtime": true
+  },
+  "runtime.backend.f2edda9cb0e8": {
+    "zh-cn": "获取签约订单信息失败",
+    "en": "Failed to retrieve signing-order information",
+    "runtime": true
+  },
+  "runtime.backend.499bd769a630": {
+    "zh-cn": "签约订单状态信息缺失",
+    "en": "Signing-order status information is missing",
+    "runtime": true
+  },
+  "runtime.backend.7a229e0ab4de": {
+    "zh-cn": "客户数据验证失败",
+    "en": "Customer data validation failed",
+    "runtime": true
+  },
+  "runtime.backend.128a2f2cdd27": {
+    "zh-cn": "操作记录保存失败",
+    "en": "Failed to save the operation record",
+    "runtime": true
+  },
+  "runtime.backend.0877bb440d5c": {
+    "zh-cn": "数据获取异常",
+    "en": "Failed to retrieve data",
+    "runtime": true
+  },
+  "runtime.backend.6fe48648ad46": {
+    "zh-cn": "请填写说明原因",
+    "en": "Enter an explanation",
+    "runtime": true
+  },
+  "runtime.backend.0004d30fbfbe": {
+    "zh-cn": "客户【",
+    "en": "Customer 【",
+    "runtime": true
+  },
+  "runtime.backend.771c8dfddcd1": {
+    "zh-cn": "客户状态更新失败",
+    "en": "Failed to update the customer status",
+    "runtime": true
+  },
+  "runtime.backend.0474029056f2": {
+    "zh-cn": "未找到客户数据或客户状态异常",
+    "en": "Customer data was not found or the customer status is invalid",
+    "runtime": true
+  },
+  "runtime.backend.8064c3584476": {
+    "zh-cn": "未找到该客户信息",
+    "en": "Customer information not found",
+    "runtime": true
+  },
+  "runtime.backend.54472edd101b": {
+    "zh-cn": "无权限删除该客户",
+    "en": "You do not have permission to delete this customer",
+    "runtime": true
+  },
+  "runtime.backend.9498caea90b1": {
+    "zh-cn": "当前客户存在审核通过的回款、续费数据, 不能删除",
+    "en": "This customer has approved collection or renewal records and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.3b6f2d3a8581": {
+    "zh-cn": "当前客户存在合同订单数据, 不能删除",
+    "en": "This customer has contract-order data and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.2fa9e0845705": {
+    "zh-cn": "当前客户存在发票数据, 不能删除",
+    "en": "This customer has invoice data and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.8672590b3d97": {
+    "zh-cn": "当前客户存在合同签约数据, 不能删除",
+    "en": "This customer has contract-signing data and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.66d93a44b777": {
+    "zh-cn": "交接人员不存在",
+    "en": "Handover employee not found",
+    "runtime": true
+  },
+  "runtime.backend.6b8e368c8da1": {
+    "zh-cn": "至少需要两个客户进行合并",
+    "en": "Select at least two customers to merge",
+    "runtime": true
+  },
+  "runtime.backend.2fc91d231c5b": {
+    "zh-cn": "未找到客户信息",
+    "en": "Customer information not found",
+    "runtime": true
+  },
+  "runtime.backend.cf4b1857f665": {
+    "zh-cn": "无权限操作",
+    "en": "Permission denied",
+    "runtime": true
+  },
+  "runtime.backend.9dd50f94f344": {
+    "zh-cn": "无权限访问",
+    "en": "Access denied",
+    "runtime": true
+  },
+  "runtime.backend.c07a7998b06e": {
+    "zh-cn": "未成交自动退回异常,客户状态修改失败",
+    "en": "Automatic return of an unconverted customer failed because the customer status could not be updated",
+    "runtime": true
+  },
+  "runtime.backend.1bae1ef62ea7": {
+    "zh-cn": "未成交自动退回异常,操作记录保存失败",
+    "en": "Automatic return of an unconverted customer failed because the operation record could not be saved",
+    "runtime": true
+  },
+  "runtime.backend.21e3ed983a82": {
+    "zh-cn": "未跟进自动退回异常,客户状态修改失败",
+    "en": "Automatic return of an unfollowed customer failed because the customer status could not be updated",
+    "runtime": true
+  },
+  "runtime.backend.6cdd2ede11e8": {
+    "zh-cn": "未跟进自动退回异常,操作记录保存失败",
+    "en": "Automatic return of an unfollowed customer failed because the operation record could not be saved",
+    "runtime": true
+  },
+  "runtime.backend.65941dcbefb3": {
+    "zh-cn": "请{$action}{$item['key_name']}",
+    "en": "Please {$action} {$item['key_name']}",
+    "runtime": true
+  },
+  "runtime.backend.a8a2b3615107": {
+    "zh-cn": "最多输入65535个字",
+    "en": "Enter no more than 65,535 characters",
+    "runtime": true
+  },
+  "runtime.backend.f0376ad8f5c6": {
+    "zh-cn": "线索数据异常",
+    "en": "Invalid lead data",
+    "runtime": true
+  },
+  "runtime.backend.971d92f1f0f4": {
+    "zh-cn": "客户数据异常",
+    "en": "Invalid customer data",
+    "runtime": true
+  },
+  "runtime.backend.379eb6646a36": {
+    "zh-cn": "该业务暂不支持填写跟进",
+    "en": "Follow-up entries are not supported for this business type",
+    "runtime": true
+  },
+  "runtime.backend.946c2d2e90d2": {
+    "zh-cn": "没有查询到模型信息",
+    "en": "Model information not found",
+    "runtime": true
+  },
+  "runtime.backend.24be086ca751": {
+    "zh-cn": "模型配置有问题，请检查模型配置",
+    "en": "The model configuration is invalid. Check the model settings",
+    "runtime": true
+  },
+  "runtime.backend.2ebf6646a65c": {
+    "zh-cn": "操作类型错误",
+    "en": "Invalid operation type",
+    "runtime": true
+  },
+  "runtime.backend.0abb475e6062": {
+    "zh-cn": "操作记录添加失败",
+    "en": "Failed to add the operation record",
+    "runtime": true
+  },
+  "runtime.backend.fb4607fca614": {
+    "zh-cn": "请填写邮寄联系人",
+    "en": "Enter a mailing contact",
+    "runtime": true
+  },
+  "runtime.backend.ee8c4c4d3bc9": {
+    "zh-cn": "发票类目异常, 请重新选择",
+    "en": "Invalid invoice category. Select it again",
+    "runtime": true
+  },
+  "runtime.backend.8d9d433f6c64": {
+    "zh-cn": "当年发票不能申请作废, 请核对发票状态",
+    "en": "An invoice issued this year cannot be voided. Check its status",
+    "runtime": true
+  },
+  "runtime.backend.dbec312cc702": {
+    "zh-cn": "请填写作废原因",
+    "en": "Enter a reason for voiding",
+    "runtime": true
+  },
+  "runtime.backend.212494009bde": {
+    "zh-cn": "发票状态异常, 请稍后再试",
+    "en": "Invalid invoice status. Try again later",
+    "runtime": true
+  },
+  "runtime.backend.534424a7ede4": {
+    "zh-cn": "您暂无权限查看",
+    "en": "You do not have permission to view this item",
+    "runtime": true
+  },
+  "runtime.backend.b8052bcc7efa": {
+    "zh-cn": "当前发票不能操作作废, 请核对发票状态",
+    "en": "This invoice cannot be voided in its current status. Check its status",
+    "runtime": true
+  },
+  "runtime.backend.0565ad1d54b8": {
+    "zh-cn": "发票撤回失败, 请核对发票状态",
+    "en": "Failed to withdraw the invoice. Check its status",
+    "runtime": true
+  },
+  "runtime.backend.41100134b5b1": {
+    "zh-cn": "发票不存在",
+    "en": "Invoice not found",
+    "runtime": true
+  },
+  "runtime.backend.8e690caefb68": {
+    "zh-cn": "缺少发票ID",
+    "en": "Invoice ID is required",
+    "runtime": true
+  },
+  "runtime.backend.e2a2a928d25b": {
+    "zh-cn": "缺少发票信息",
+    "en": "Invoice information is required",
+    "runtime": true
+  },
+  "runtime.backend.4cf379f82c0c": {
+    "zh-cn": "缺少发票号码",
+    "en": "Invoice number is required",
+    "runtime": true
+  },
+  "runtime.backend.6a94eb30da42": {
+    "zh-cn": "无效的接口数据",
+    "en": "Invalid API data",
+    "runtime": true
+  },
+  "runtime.backend.7455283b4cfd": {
+    "zh-cn": "请选择关联的付款单",
+    "en": "Select a related payment record",
+    "runtime": true
+  },
+  "runtime.backend.20137fc0f304": {
+    "zh-cn": "已存在相同数据，请勿重复添加",
+    "en": "Identical data already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.6e525c702e94": {
+    "zh-cn": "请先删除标签组内的标签",
+    "en": "Delete the labels in this label group first",
+    "runtime": true
+  },
+  "runtime.backend.075c30fe2ff1": {
+    "zh-cn": "未找到数据",
+    "en": "Data not found",
+    "runtime": true
+  },
+  "runtime.backend.2db98e4a58db": {
+    "zh-cn": "未转客户自动退回异常,状态修改失败",
+    "en": "Automatic return of an unconverted lead failed because the status could not be updated",
+    "runtime": true
+  },
+  "runtime.backend.72dd5b538777": {
+    "zh-cn": "未跟进自动退回异常,线索状态修改失败",
+    "en": "Automatic return of an unfollowed lead failed because the lead status could not be updated",
+    "runtime": true
+  },
+  "runtime.backend.8b3237f3ce46": {
+    "zh-cn": "客户不存在或线索不存在",
+    "en": "Customer or lead not found",
+    "runtime": true
+  },
+  "runtime.backend.9ccbc4fa32e0": {
+    "zh-cn": "已到达线索保单数量，无法获取新线索",
+    "en": "The lead-pool limit has been reached, so no new leads can be retrieved",
+    "runtime": true
+  },
+  "runtime.backend.8f8818f05bfa": {
+    "zh-cn": "更新失败",
+    "en": "Update failed",
+    "runtime": true
+  },
+  "runtime.backend.fc2068d140f9": {
+    "zh-cn": "当前合同订单存在审核通过的付款/支出数据, 不能删除",
+    "en": "This contract order has approved payment or expense data and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.210e13dba341": {
+    "zh-cn": "当前合同订单存在发票, 不能删除",
+    "en": "This contract order has invoices and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.c16dacab6c0a": {
+    "zh-cn": "结束时间不能早于开始时间",
+    "en": "The end time cannot be earlier than the start time",
+    "runtime": true
+  },
+  "runtime.backend.7b9190176e25": {
+    "zh-cn": "凭证不支持上传多图",
+    "en": "Only one image can be uploaded for a voucher",
+    "runtime": true
+  },
+  "runtime.backend.53cabe809a01": {
+    "zh-cn": "付款单添加失败",
+    "en": "Failed to add the payment record",
+    "runtime": true
+  },
+  "runtime.backend.5ef473491927": {
+    "zh-cn": "合同订单信息更新失败",
+    "en": "Failed to update contract-order information",
+    "runtime": true
+  },
+  "runtime.backend.abcb4d03148f": {
+    "zh-cn": "付款提醒关联失败",
+    "en": "Failed to link the payment reminder",
+    "runtime": true
+  },
+  "runtime.backend.0b3d1ff8f3ee": {
+    "zh-cn": "付款单已审核，无法修改",
+    "en": "The payment record has been reviewed and cannot be edited",
+    "runtime": true
+  },
+  "runtime.backend.2e3373257c8b": {
+    "zh-cn": "合同订单信息获取异常",
+    "en": "Failed to retrieve contract-order information",
+    "runtime": true
+  },
+  "runtime.backend.10a20288c36c": {
+    "zh-cn": "发票信息更新失败",
+    "en": "Failed to update invoice information",
+    "runtime": true
+  },
+  "runtime.backend.226f97a703d8": {
+    "zh-cn": "审核状态异常",
+    "en": "Invalid review status",
+    "runtime": true
+  },
+  "runtime.backend.bd1b4be4c411": {
+    "zh-cn": "已经关联发票的付款审核不可撤回",
+    "en": "A payment review linked to an invoice cannot be withdrawn",
+    "runtime": true
+  },
+  "runtime.backend.0e025bcdb218": {
+    "zh-cn": "请选择账目分类",
+    "en": "Select an account category",
+    "runtime": true
+  },
+  "runtime.backend.b9506bb7789d": {
+    "zh-cn": "撤回状态异常",
+    "en": "Invalid withdrawal status",
+    "runtime": true
+  },
+  "runtime.backend.7f4b861b0dfd": {
+    "zh-cn": "申请失败,请核对付款单状态",
+    "en": "Application failed. Check the payment-record status",
+    "runtime": true
+  },
+  "runtime.backend.d67273b873f5": {
+    "zh-cn": "申请失败,请核对付款单",
+    "en": "Application failed. Check the payment record",
+    "runtime": true
+  },
+  "runtime.backend.39681e1f4abd": {
+    "zh-cn": "付款记录不存在",
+    "en": "Payment record not found",
+    "runtime": true
+  },
+  "runtime.backend.d2b49b0f3fd4": {
+    "zh-cn": "账目审核失败",
+    "en": "Account review failed",
+    "runtime": true
+  },
+  "runtime.backend.241802227578": {
+    "zh-cn": "账目记录更新失败",
+    "en": "Failed to update the account record",
+    "runtime": true
+  },
+  "runtime.backend.a303211960c8": {
+    "zh-cn": "客户数据获取异常",
+    "en": "Failed to retrieve customer data",
+    "runtime": true
+  },
+  "runtime.backend.240f0ad12ec1": {
+    "zh-cn": "账目记录获取异常",
+    "en": "Failed to retrieve the account record",
+    "runtime": true
+  },
+  "runtime.backend.eebcf53fce59": {
+    "zh-cn": "发票信息获取异常",
+    "en": "Failed to retrieve invoice information",
+    "runtime": true
+  },
+  "runtime.backend.115b61eaa4b6": {
+    "zh-cn": "未找到相关产品信息",
+    "en": "Related product information not found",
+    "runtime": true
+  },
+  "runtime.backend.931616a802e7": {
+    "zh-cn": "修改的分类不存在",
+    "en": "The category being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.241c60513e66": {
+    "zh-cn": "分类已存在，请勿重复添加",
+    "en": "The category already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.a3fd1e1fae33": {
+    "zh-cn": "存在子分类，请先删除子分类",
+    "en": "Child categories exist. Delete them first",
+    "runtime": true
+  },
+  "runtime.backend.3449b41a7e0c": {
+    "zh-cn": "单规格商品属性错误",
+    "en": "Invalid single-variant product attributes",
+    "runtime": true
+  },
+  "runtime.backend.f6182053f418": {
+    "zh-cn": "规格错误 ：",
+    "en": "Invalid specification: ",
+    "runtime": true
+  },
+  "runtime.backend.2c5f2c9763d6": {
+    "zh-cn": "付款提醒信息获取失败",
+    "en": "Failed to retrieve payment-reminder information",
+    "runtime": true
+  },
+  "runtime.backend.8d74d06d9dc2": {
+    "zh-cn": "付款提醒关联数据异常, 请刷新后重试",
+    "en": "Invalid payment-reminder relation data. Refresh and try again",
+    "runtime": true
+  },
+  "runtime.backend.e0dc66177384": {
+    "zh-cn": "待办数据获取失败",
+    "en": "Failed to retrieve task data",
+    "runtime": true
+  },
+  "runtime.backend.655596427ce0": {
+    "zh-cn": "客户信息获取异常",
+    "en": "Failed to retrieve customer information",
+    "runtime": true
+  },
+  "runtime.backend.814a0436397f": {
+    "zh-cn": "附件不存在",
+    "en": "Attachment not found",
+    "runtime": true
+  },
+  "runtime.backend.3b48e052cbcb": {
+    "zh-cn": "修改的财务流水类别不存在",
+    "en": "The financial-transaction category being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.33f50efcd461": {
+    "zh-cn": "账目分类最多为5级",
+    "en": "Account categories can have at most five levels",
+    "runtime": true
+  },
+  "runtime.backend.bc725d703090": {
+    "zh-cn": "前置分类不能为自己",
+    "en": "A category cannot be its own parent",
+    "runtime": true
+  },
+  "runtime.backend.e52b20d25da5": {
+    "zh-cn": "分类信息获取异常",
+    "en": "Failed to retrieve category information",
+    "runtime": true
+  },
+  "runtime.backend.7ec3b5a66c63": {
+    "zh-cn": "该财务分类已经被使用，不可删除！",
+    "en": "This financial category is in use and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.c946aebbcbc9": {
+    "zh-cn": "分类ID生成失败",
+    "en": "Failed to generate the category ID",
+    "runtime": true
+  },
+  "runtime.backend.da6bf6d97406": {
+    "zh-cn": "分类数据不存在",
+    "en": "Category data not found",
+    "runtime": true
+  },
+  "runtime.backend.80891b839b12": {
+    "zh-cn": "请选择正确的分类",
+    "en": "Select a valid category",
+    "runtime": true
+  },
+  "runtime.backend.10ccc53e30b6": {
+    "zh-cn": "第{$rowNo}行账目类型只能填写收入或支出",
+    "en": "In row {$rowNo}, the account type must be income or expense",
+    "runtime": true
+  },
+  "runtime.backend.6981082931ec": {
+    "zh-cn": "第{$rowNo}行账目金额必须大于0",
+    "en": "In row {$rowNo}, the amount must be greater than 0",
+    "runtime": true
+  },
+  "runtime.backend.e1d8b36f99ce": {
+    "zh-cn": "第{$rowNo}行账目分类不能为空",
+    "en": "In row {$rowNo}, the account category is required",
+    "runtime": true
+  },
+  "runtime.backend.7d8eaa76433d": {
+    "zh-cn": "第{$rowNo}行支付方式不能为空",
+    "en": "In row {$rowNo}, the payment method is required",
+    "runtime": true
+  },
+  "runtime.backend.6f54217fdd7a": {
+    "zh-cn": "第{$rowNo}行支付方式不存在",
+    "en": "In row {$rowNo}, the payment method does not exist",
+    "runtime": true
+  },
+  "runtime.backend.11f279470d86": {
+    "zh-cn": "第{$rowNo}行收支时间格式不正确",
+    "en": "In row {$rowNo}, the transaction time format is invalid",
+    "runtime": true
+  },
+  "runtime.backend.566f0b7bb953": {
+    "zh-cn": "第{$rowNo}行存在无效的分类",
+    "en": "In row {$rowNo}, the category is invalid",
+    "runtime": true
+  },
+  "runtime.backend.1bd7f6052903": {
+    "zh-cn": "记账数据保存失败",
+    "en": "Failed to save accounting data",
+    "runtime": true
+  },
+  "runtime.backend.701aa895a08c": {
+    "zh-cn": "未读取到有效导入数据",
+    "en": "No valid import data found",
+    "runtime": true
+  },
+  "runtime.backend.4a9f9650d63e": {
+    "zh-cn": "用户信息获取异常",
+    "en": "Failed to retrieve user information",
+    "runtime": true
+  },
+  "runtime.backend.d523f2429cc9": {
+    "zh-cn": "收支记账保存失败",
+    "en": "Failed to save the income/expense record",
+    "runtime": true
+  },
+  "runtime.backend.296ba7ad69d6": {
+    "zh-cn": "修改的支付方式不存在",
+    "en": "The payment method being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.5065eb6e876c": {
+    "zh-cn": "支付方式已存在，请勿重复添加",
+    "en": "The payment method already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.9b8de12652b7": {
+    "zh-cn": "请先删除关联财务流水,再尝试删除",
+    "en": "Delete related financial transactions before deleting this item",
+    "runtime": true
+  },
+  "runtime.backend.a85abeac7fab": {
+    "zh-cn": "支付方式异常",
+    "en": "Invalid payment method",
+    "runtime": true
+  },
+  "runtime.backend.5c96c7a7b7b6": {
+    "zh-cn": "主部门不存在",
+    "en": "Primary department not found",
+    "runtime": true
+  },
+  "runtime.backend.9409d3d9adb1": {
+    "zh-cn": "组织架构不存在",
+    "en": "Organization structure not found",
+    "runtime": true
+  },
+  "runtime.backend.968b1fe04fea": {
+    "zh-cn": "请选择上级部门",
+    "en": "Select a parent department",
+    "runtime": true
+  },
+  "runtime.backend.e220d6b47714": {
+    "zh-cn": "已存在相同部门，请勿重复创建",
+    "en": "An identical department already exists. Do not create it again",
+    "runtime": true
+  },
+  "runtime.backend.e7b8f2e1a2cc": {
+    "zh-cn": "创建部门失败",
+    "en": "Failed to create the department",
+    "runtime": true
+  },
+  "runtime.backend.299f375835ea": {
+    "zh-cn": "未找到相关部门信息",
+    "en": "Related department information not found",
+    "runtime": true
+  },
+  "runtime.backend.ec133b7b7dc3": {
+    "zh-cn": "修改该部门需要修改企业名称！",
+    "en": "Editing this department requires changing the enterprise name",
+    "runtime": true
+  },
+  "runtime.backend.bca959b9eed1": {
+    "zh-cn": "本部门和上级部门不能相同",
+    "en": "A department cannot be its own parent",
+    "runtime": true
+  },
+  "runtime.backend.676f2b6d2018": {
+    "zh-cn": "删除失败，存在下级部门",
+    "en": "Delete failed because child departments exist",
+    "runtime": true
+  },
+  "runtime.backend.2745221ad6fd": {
+    "zh-cn": "部门信息获取失败",
+    "en": "Failed to retrieve department information",
+    "runtime": true
+  },
+  "runtime.backend.7947832fc090": {
+    "zh-cn": "无效的用户信息",
+    "en": "Invalid user information",
+    "runtime": true
+  },
+  "runtime.backend.0095f0c16b06": {
+    "zh-cn": "创建企业初始架构失败",
+    "en": "Failed to create the initial enterprise structure",
+    "runtime": true
+  },
+  "runtime.backend.357f84e71aa1": {
+    "zh-cn": "导出业务类型错误",
+    "en": "Invalid export business type",
+    "runtime": true
+  },
+  "runtime.backend.098ea2124e76": {
+    "zh-cn": "低代码应用消息模板不存在",
+    "en": "Low-code application message template not found",
+    "runtime": true
+  },
+  "runtime.backend.ee16c82944fa": {
+    "zh-cn": "该类别下存在公告信息，不可删除",
+    "en": "This category contains announcements and cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.f19d10b33781": {
+    "zh-cn": "修改的记录不存在",
+    "en": "The record being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.0db67051a428": {
+    "zh-cn": "未找到相关通知内容",
+    "en": "Related notification content not found",
+    "runtime": true
+  },
+  "runtime.backend.96eb7afa8bdc": {
+    "zh-cn": "修改的备忘录文件夹不存在",
+    "en": "The memo folder being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.80dfc735727a": {
+    "zh-cn": "文件夹已存在，请勿重复添加",
+    "en": "The folder already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.1fc6a5eea405": {
+    "zh-cn": "该文件夹不能修改前置文件夹",
+    "en": "The parent folder of this folder cannot be changed",
+    "runtime": true
+  },
+  "runtime.backend.b048c1e7106c": {
+    "zh-cn": "该文件夹无法删除",
+    "en": "This folder cannot be deleted",
+    "runtime": true
+  },
+  "runtime.backend.0dfcd7b28a7e": {
+    "zh-cn": "请先删除关联备忘录或文件夹,再尝试删除",
+    "en": "Delete related memos or folders before deleting this folder",
+    "runtime": true
+  },
+  "runtime.backend.9a5eec779296": {
+    "zh-cn": "文件夹最多可添加三级",
+    "en": "Folders can have at most three levels",
+    "runtime": true
+  },
+  "runtime.backend.5d36dcde4cd7": {
+    "zh-cn": "父级文件夹获取异常",
+    "en": "Failed to retrieve the parent folder",
+    "runtime": true
+  },
+  "runtime.backend.fcbebbc28a4c": {
+    "zh-cn": "文件夹获取异常",
+    "en": "Failed to retrieve the folder",
+    "runtime": true
+  },
+  "runtime.backend.2194ca89df41": {
+    "zh-cn": "父文件夹层级不能超过两级",
+    "en": "The parent-folder depth cannot exceed two levels",
+    "runtime": true
+  },
+  "runtime.backend.8bab7aabc3f8": {
+    "zh-cn": "文件夹层级不能超过两级",
+    "en": "Folder depth cannot exceed two levels",
+    "runtime": true
+  },
+  "runtime.backend.665b1ef52a53": {
+    "zh-cn": "不能移动至下级文件夹",
+    "en": "A folder cannot be moved into one of its child folders",
+    "runtime": true
+  },
+  "runtime.backend.c5e3b27c38d5": {
+    "zh-cn": "分类信息不存在",
+    "en": "Category information not found",
+    "runtime": true
+  },
+  "runtime.backend.4969cceb3184": {
+    "zh-cn": "请选择正确的文件夹",
+    "en": "Select a valid folder",
+    "runtime": true
+  },
+  "runtime.backend.6e8bb4caa54a": {
+    "zh-cn": "修改的内容不存在",
+    "en": "The content being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.8cbc732c1348": {
+    "zh-cn": "无权访问此消息",
+    "en": "You do not have permission to access this message",
+    "runtime": true
+  },
+  "runtime.backend.5f74bc81331e": {
+    "zh-cn": "该消息通知无法取消订阅",
+    "en": "This notification cannot be unsubscribed from",
+    "runtime": true
+  },
+  "runtime.backend.145de03833e1": {
+    "zh-cn": "无效的密钥信息",
+    "en": "Invalid API key information",
+    "runtime": true
+  },
+  "runtime.backend.3edc9d3b47ea": {
+    "zh-cn": "密钥已被禁用",
+    "en": "The API key has been disabled",
+    "runtime": true
+  },
+  "runtime.backend.6de4af6d6980": {
+    "zh-cn": "暂无权限访问该接口!",
+    "en": "You do not have permission to access this API",
+    "runtime": true
+  },
+  "runtime.backend.0ab9d10f35dc": {
+    "zh-cn": "暂无权限访问该接口",
+    "en": "You do not have permission to access this API",
+    "runtime": true
+  },
+  "runtime.backend.d77dde3c46d1": {
+    "zh-cn": "执行任务类缺少",
+    "en": "Task class is missing: ",
+    "runtime": true
+  },
+  "runtime.backend.e3def9042d1a": {
+    "zh-cn": "周期格式错误",
+    "en": "Invalid recurrence format",
+    "runtime": true
+  },
+  "runtime.backend.5286d3bb8ada": {
+    "zh-cn": "触发时间必须填写一项",
+    "en": "At least one trigger time is required",
+    "runtime": true
+  },
+  "runtime.backend.5be7c07dfe4c": {
+    "zh-cn": "未找到相关视图",
+    "en": "Related view not found",
+    "runtime": true
+  },
+  "runtime.backend.1fadc53cd336": {
+    "zh-cn": "未找到相关版本信息",
+    "en": "Related version information not found",
+    "runtime": true
+  },
+  "runtime.backend.a7c630f86248": {
+    "zh-cn": "您当前版本不符",
+    "en": "Your current version is incompatible",
+    "runtime": true
+  },
+  "runtime.backend.2b6436b6f4ce": {
+    "zh-cn": "未找到新的升级包",
+    "en": "No new upgrade package was found",
+    "runtime": true
+  },
+  "runtime.backend.bcea213bdf97": {
+    "zh-cn": "修改的职级类别不存在",
+    "en": "The rank category being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.235593816938": {
+    "zh-cn": "已存在相同类别！",
+    "en": "An identical category already exists",
+    "runtime": true
+  },
+  "runtime.backend.cae706fc3b6f": {
+    "zh-cn": "请先删除关联职级,再尝试删除",
+    "en": "Delete related ranks before deleting this item",
+    "runtime": true
+  },
+  "runtime.backend.5f8fef6275ab": {
+    "zh-cn": "请先取消职位体系图关联，再尝试删除",
+    "en": "Remove the position-chart association before deleting this item",
+    "runtime": true
+  },
+  "runtime.backend.db9af8d0fd99": {
+    "zh-cn": "修改的职位不存在",
+    "en": "The position being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.f71ff8746862": {
+    "zh-cn": "请先取消海氏量表职位关联，再尝试删除",
+    "en": "Remove the Hay scale position association before deleting this item",
+    "runtime": true
+  },
+  "runtime.backend.c05baab68cd8": {
+    "zh-cn": "职位不存在",
+    "en": "Position not found",
+    "runtime": true
+  },
+  "runtime.backend.b3b97ad25361": {
+    "zh-cn": "成员不存在",
+    "en": "Member not found",
+    "runtime": true
+  },
+  "runtime.backend.766b9cff711c": {
+    "zh-cn": "修改的岗位职责不存在",
+    "en": "The job responsibility being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.c4ac9dbec490": {
+    "zh-cn": "请输入正确的职等范围！",
+    "en": "Enter a valid job-grade range",
+    "runtime": true
+  },
+  "runtime.backend.ffd6abaeccf3": {
+    "zh-cn": "您无权限修改该条记录",
+    "en": "You do not have permission to edit this record",
+    "runtime": true
+  },
+  "runtime.backend.d897fb704ced": {
+    "zh-cn": "您无权限删除该条记录",
+    "en": "You do not have permission to delete this record",
+    "runtime": true
+  },
+  "runtime.backend.5bd69866971d": {
+    "zh-cn": "请填写正确的区间！",
+    "en": "Enter a valid range",
+    "runtime": true
+  },
+  "runtime.backend.1d4958520704": {
+    "zh-cn": "暂无职等，无法设置！",
+    "en": "No job grades exist, so this cannot be configured",
+    "runtime": true
+  },
+  "runtime.backend.c586aa923050": {
+    "zh-cn": "修改的职级类型不存在",
+    "en": "The rank type being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.4ad8a49128b5": {
+    "zh-cn": "暂无删除权限！",
+    "en": "You do not have permission to delete this item",
+    "runtime": true
+  },
+  "runtime.backend.1951c3d7c4c8": {
+    "zh-cn": "修改的职级不存在",
+    "en": "The rank being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.8d3e4b32c60e": {
+    "zh-cn": "请选择职级类别",
+    "en": "Select a rank category",
+    "runtime": true
+  },
+  "runtime.backend.8a9d7e265559": {
+    "zh-cn": "请先删除关联职位,再尝试删除",
+    "en": "Delete related positions before deleting this item",
+    "runtime": true
+  },
+  "runtime.backend.37b3b3d2b90f": {
+    "zh-cn": "您暂无权限操作！",
+    "en": "You do not have permission to perform this operation",
+    "runtime": true
+  },
+  "runtime.backend.caeb61b0e3fd": {
+    "zh-cn": "请重新选择关联订单",
+    "en": "Select the related order again",
+    "runtime": true
+  },
+  "runtime.backend.bc7f199de46c": {
+    "zh-cn": "删除失败，您暂无权限删除！",
+    "en": "Delete failed. You do not have permission to delete this item",
+    "runtime": true
+  },
+  "runtime.backend.783bbe2f4a94": {
+    "zh-cn": "任务数据异常",
+    "en": "Invalid task data",
+    "runtime": true
+  },
+  "runtime.backend.b4cfc4f92f40": {
+    "zh-cn": "请重新选择上级评价",
+    "en": "Select the parent evaluation again",
+    "runtime": true
+  },
+  "runtime.backend.52838d31dd09": {
+    "zh-cn": "开始时间不能大于结束时间",
+    "en": "The start time cannot be later than the end time",
+    "runtime": true
+  },
+  "runtime.backend.a2c6d3c5c390": {
+    "zh-cn": "请重新选择父级任务",
+    "en": "Select the parent task again",
+    "runtime": true
+  },
+  "runtime.backend.f8c9790e3450": {
+    "zh-cn": "最多支持4级任务",
+    "en": "Tasks can have at most four levels",
+    "runtime": true
+  },
+  "runtime.backend.b3254cf7d84e": {
+    "zh-cn": "当前任务存在父级任务，无法修改关联项目",
+    "en": "This task has a parent task, so its related project cannot be changed",
+    "runtime": true
+  },
+  "runtime.backend.5446653f4048": {
+    "zh-cn": "请重新选择关联项目",
+    "en": "Select the related project again",
+    "runtime": true
+  },
+  "runtime.backend.2ce752827f32": {
+    "zh-cn": "请重新选择关联版本",
+    "en": "Select the related version again",
+    "runtime": true
+  },
+  "runtime.backend.fe361a939c8b": {
+    "zh-cn": "请重新选择负责人",
+    "en": "Select the person responsible again",
+    "runtime": true
+  },
+  "runtime.backend.564e1cbe9d31": {
+    "zh-cn": "请重新选择协作者",
+    "en": "Select the collaborators again",
+    "runtime": true
+  },
+  "runtime.backend.84618785e25e": {
+    "zh-cn": "请选择父级任务",
+    "en": "Select a parent task",
+    "runtime": true
+  },
+  "runtime.backend.ae39d7f659e5": {
+    "zh-cn": "修改的数据不存在",
+    "en": "The data being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.f63ede9dbbe6": {
+    "zh-cn": "您没有权限修改该任务",
+    "en": "You do not have permission to edit this task",
+    "runtime": true
+  },
+  "runtime.backend.2f52065d2697": {
+    "zh-cn": "请重新选择计划时间, 开始时间需要小于结束时间",
+    "en": "Select the planned time again. The start time must be earlier than the end time",
+    "runtime": true
+  },
+  "runtime.backend.40efb52f02ad": {
+    "zh-cn": "请选择关联项目",
+    "en": "Select a related project",
+    "runtime": true
+  },
+  "runtime.backend.258f026b8568": {
+    "zh-cn": "仅支持兄弟之间进行排序",
+    "en": "Only sibling tasks can be reordered",
+    "runtime": true
+  },
+  "runtime.backend.89450c6d1167": {
+    "zh-cn": "父级任务不存在",
+    "en": "Parent task not found",
+    "runtime": true
+  },
+  "runtime.backend.cf67b7675376": {
+    "zh-cn": "状态不正确",
+    "en": "Invalid status",
+    "runtime": true
+  },
+  "runtime.backend.6b5436adf7c1": {
+    "zh-cn": "项目负责人不存在",
+    "en": "Project owner not found",
+    "runtime": true
+  },
+  "runtime.backend.37785a426eb2": {
+    "zh-cn": "项目不存在",
+    "en": "Project not found",
+    "runtime": true
+  },
+  "runtime.backend.3131910368a9": {
+    "zh-cn": "版本不存在",
+    "en": "Version not found",
+    "runtime": true
+  },
+  "runtime.backend.9f1e73ede7ac": {
+    "zh-cn": "未找到指定项目记录",
+    "en": "Specified project record not found",
+    "runtime": true
+  },
+  "runtime.backend.27fd0596129d": {
+    "zh-cn": "汇报信息不存在",
+    "en": "Report information not found",
+    "runtime": true
+  },
+  "runtime.backend.fdd1073d2dad": {
+    "zh-cn": "请填写工作计划",
+    "en": "Enter a work plan",
+    "runtime": true
+  },
+  "runtime.backend.3d95bc3640e2": {
+    "zh-cn": "请先加入企业再尝试填写汇报",
+    "en": "Join an enterprise before submitting a report",
+    "runtime": true
+  },
+  "runtime.backend.e43936b98349": {
+    "zh-cn": "汇报不存在",
+    "en": "Report not found",
+    "runtime": true
+  },
+  "runtime.backend.97e446178206": {
+    "zh-cn": "您只能修改当天的汇报",
+    "en": "You can only edit reports from today",
+    "runtime": true
+  },
+  "runtime.backend.5f1255fdf62a": {
+    "zh-cn": "您只能修改本周的汇报",
+    "en": "You can only edit reports from the current week",
+    "runtime": true
+  },
+  "runtime.backend.b8ed4b700a87": {
+    "zh-cn": "您只能修改本月的汇报",
+    "en": "You can only edit reports from the current month",
+    "runtime": true
+  },
+  "runtime.backend.515a12c31a3a": {
+    "zh-cn": "未找到删除记录",
+    "en": "Record to delete not found",
+    "runtime": true
+  },
+  "runtime.backend.268fb827bed9": {
+    "zh-cn": "您只能删除当天提交的汇报",
+    "en": "You can only delete reports submitted today",
+    "runtime": true
+  },
+  "runtime.backend.f0eb9cba01cb": {
+    "zh-cn": "请填写日程类型名称",
+    "en": "Enter a schedule-type name",
+    "runtime": true
+  },
+  "runtime.backend.f53c7b1b9caf": {
+    "zh-cn": "修改的日程类型不存在",
+    "en": "The schedule type being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.ce0f6e0ad93d": {
+    "zh-cn": "未找到该日程类型",
+    "en": "Schedule type not found",
+    "runtime": true
+  },
+  "runtime.backend.2ba0ca11ca6b": {
+    "zh-cn": "未找到相关记录",
+    "en": "Related record not found",
+    "runtime": true
+  },
+  "runtime.backend.b1a03e186d2a": {
+    "zh-cn": "未找到可删除评价",
+    "en": "No deletable evaluation was found",
+    "runtime": true
+  },
+  "runtime.backend.1c3b7307a131": {
+    "zh-cn": "修改的物资分类不存在",
+    "en": "The asset category being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.082545949747": {
+    "zh-cn": "请先删除关联物资,再尝试删除",
+    "en": "Delete related assets before deleting this item",
+    "runtime": true
+  },
+  "runtime.backend.d7c3a1efdd68": {
+    "zh-cn": "请先删除关联分类,再尝试删除",
+    "en": "Delete related categories before deleting this item",
+    "runtime": true
+  },
+  "runtime.backend.7dfc9d11d7a2": {
+    "zh-cn": "请填写报废原因",
+    "en": "Enter a reason for disposal",
+    "runtime": true
+  },
+  "runtime.backend.2816bc0d82e8": {
+    "zh-cn": "请填写维修说明",
+    "en": "Enter repair details",
+    "runtime": true
+  },
+  "runtime.backend.e05569d81781": {
+    "zh-cn": "操作用户类型不正确",
+    "en": "Invalid operator type",
+    "runtime": true
+  },
+  "runtime.backend.1196625dfa46": {
+    "zh-cn": "缺少人员/部门ID",
+    "en": "Employee or department ID is required",
+    "runtime": true
+  },
+  "runtime.backend.78b1ac62d88a": {
+    "zh-cn": "请选择正确的物资编号",
+    "en": "Select a valid asset number",
+    "runtime": true
+  },
+  "runtime.backend.72c4aaafcfc7": {
+    "zh-cn": "请选择正确的物资信息",
+    "en": "Select valid asset information",
+    "runtime": true
+  },
+  "runtime.backend.6fd76de2064f": {
+    "zh-cn": "请至少选择一个有效的物资",
+    "en": "Select at least one valid asset",
+    "runtime": true
+  },
+  "runtime.backend.d22f8ecec914": {
+    "zh-cn": "请填写维修金额",
+    "en": "Enter the repair cost",
+    "runtime": true
+  },
+  "runtime.backend.c3fd7a00de1a": {
+    "zh-cn": "请选择查询时间",
+    "en": "Select a query period",
+    "runtime": true
+  },
+  "runtime.backend.9178d6358639": {
+    "zh-cn": "超过最大可选时间范围",
+    "en": "The maximum selectable time range has been exceeded",
+    "runtime": true
+  },
+  "runtime.backend.5f010ddc6b22": {
+    "zh-cn": "状态错误，当前物资未处于维修中",
+    "en": "Invalid status. This asset is not currently under repair",
+    "runtime": true
+  },
+  "runtime.backend.86ccf67e6e03": {
+    "zh-cn": "未找到相关维修记录",
+    "en": "Related repair record not found",
+    "runtime": true
+  },
+  "runtime.backend.8e8cb5f0a62b": {
+    "zh-cn": "缺少物资ID或移动分类ID",
+    "en": "Asset ID or destination-category ID is required",
+    "runtime": true
+  },
+  "runtime.backend.1f767b0d4356": {
+    "zh-cn": "菜单标识已存在,不允许重复！",
+    "en": "The menu identifier already exists and cannot be duplicated",
+    "runtime": true
+  },
+  "runtime.backend.d6715a027a3e": {
+    "zh-cn": "保存菜单数据失败",
+    "en": "Failed to save menu data",
+    "runtime": true
+  },
+  "runtime.backend.ba86bb8110ba": {
+    "zh-cn": "请先删除下级菜单",
+    "en": "Delete child menu items first",
+    "runtime": true
+  },
+  "runtime.backend.64ea6eac2f68": {
+    "zh-cn": "修改的菜单数据不存在",
+    "en": "The menu item being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.3b434ed58cbf": {
+    "zh-cn": "角色不存在",
+    "en": "Role not found",
+    "runtime": true
+  },
+  "runtime.backend.23e4dda66a30": {
+    "zh-cn": "修改的角色不存在",
+    "en": "The role being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.85cc4b572852": {
+    "zh-cn": "未找到可修改的角色",
+    "en": "No editable role was found",
+    "runtime": true
+  },
+  "runtime.backend.3923d9282915": {
+    "zh-cn": "角色名称必须填写",
+    "en": "Role name is required",
+    "runtime": true
+  },
+  "runtime.backend.db00ca3bf11a": {
+    "zh-cn": "角色名称已存在，请勿重复添加",
+    "en": "The role name already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.8e98b042f2cd": {
+    "zh-cn": "未找到可删除的角色",
+    "en": "No deletable role was found",
+    "runtime": true
+  },
+  "runtime.backend.cd41ced0d2ff": {
+    "zh-cn": "无效的角色ID",
+    "en": "Invalid role ID",
+    "runtime": true
+  },
+  "runtime.backend.07762d36a674": {
+    "zh-cn": "角色id不能为空",
+    "en": "Role ID is required",
+    "runtime": true
+  },
+  "runtime.backend.d16a4d498afe": {
+    "zh-cn": "您选择的用户已全部加入该角色下",
+    "en": "All selected users already belong to this role",
+    "runtime": true
+  },
+  "runtime.backend.864ed53af801": {
+    "zh-cn": "修改的成员不存在!",
+    "en": "The member being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.0f7d4c81b128": {
+    "zh-cn": "删除的成员不存在!",
+    "en": "The member to delete does not exist",
+    "runtime": true
+  },
+  "runtime.backend.e3423fe78338": {
+    "zh-cn": "接口未授权,无法访问!",
+    "en": "This API is not authorized and cannot be accessed",
+    "runtime": true
+  },
+  "runtime.backend.f9b2a9349ad3": {
+    "zh-cn": "删除的管理员成员不存在!",
+    "en": "The administrator member to delete does not exist",
+    "runtime": true
+  },
+  "runtime.backend.d5a277d8c8ff": {
+    "zh-cn": "JSON 文件不存在：{$jsonPath}",
+    "en": "JSON file not found: {$jsonPath}",
+    "runtime": true
+  },
+  "runtime.backend.d79377dd55f8": {
+    "zh-cn": "读取 JSON 文件失败：{$jsonPath}",
+    "en": "Failed to read JSON file: {$jsonPath}",
+    "runtime": true
+  },
+  "runtime.backend.24d402bbdf2b": {
+    "zh-cn": "JSON 解析失败：",
+    "en": "Failed to parse JSON: ",
+    "runtime": true
+  },
+  "runtime.backend.51d4a298f794": {
+    "zh-cn": "缺少组合数据id",
+    "en": "Composite-data ID is required",
+    "runtime": true
+  },
+  "runtime.backend.b4d7a761f8f4": {
+    "zh-cn": "修改的组合数据不存在",
+    "en": "The composite data being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.306a5f418067": {
+    "zh-cn": "组合数据不存在",
+    "en": "Composite data not found",
+    "runtime": true
+  },
+  "runtime.backend.8814a0e5ff04": {
+    "zh-cn": "数据组字段已存在！",
+    "en": "The data-group field already exists",
+    "runtime": true
+  },
+  "runtime.backend.a270359b621f": {
+    "zh-cn": "字段至少存在一个！",
+    "en": "At least one field is required",
+    "runtime": true
+  },
+  "runtime.backend.abde59641dc9": {
+    "zh-cn": "缺少字段:",
+    "en": "Missing field: ",
+    "runtime": true
+  },
+  "runtime.backend.4a9b4f69aa0c": {
+    "zh-cn": "字段name必须为英文字母",
+    "en": "The field name must contain English letters only",
+    "runtime": true
+  },
+  "runtime.backend.e85c9753b002": {
+    "zh-cn": "字段type类型不正确",
+    "en": "Invalid field type",
+    "runtime": true
+  },
+  "runtime.backend.23ce6a7aec84": {
+    "zh-cn": "请先删除组合数据的数据内容",
+    "en": "Delete the composite data content first",
+    "runtime": true
+  },
+  "runtime.backend.01a62583389f": {
+    "zh-cn": "培训类型错误",
+    "en": "Invalid training type",
+    "runtime": true
+  },
+  "runtime.backend.817f92013870": {
+    "zh-cn": "个人简历不存在",
+    "en": "Personal résumé not found",
+    "runtime": true
+  },
+  "runtime.backend.e62d11468d93": {
+    "zh-cn": "最多只能选择12个快捷入口",
+    "en": "Select no more than 12 shortcuts",
+    "runtime": true
+  },
+  "runtime.backend.eeb9f5a636a2": {
+    "zh-cn": "业绩类型错误",
+    "en": "Invalid performance type",
+    "runtime": true
+  },
+  "runtime.backend.80ba058dbcf1": {
+    "zh-cn": "保存失败,未找到简历信息",
+    "en": "Save failed because résumé information was not found",
+    "runtime": true
+  },
+  "runtime.backend.de1654baa36e": {
+    "zh-cn": "操作失败：缺少必要参数",
+    "en": "Operation failed: required parameters are missing",
+    "runtime": true
+  },
+  "runtime.backend.07f979735f51": {
+    "zh-cn": "未找到待操作的记录",
+    "en": "No record was found for this operation",
+    "runtime": true
+  },
+  "runtime.backend.1c4848f32f48": {
+    "zh-cn": "无效的提醒信息!",
+    "en": "Invalid reminder information",
+    "runtime": true
+  },
+  "runtime.backend.69e291a0a524": {
+    "zh-cn": "已存在相同内容，请勿重复添加",
+    "en": "Identical content already exists. Do not add it again",
+    "runtime": true
+  },
+  "runtime.backend.43cabef115b8": {
+    "zh-cn": "查询的日程不存在",
+    "en": "The requested schedule does not exist",
+    "runtime": true
+  },
+  "runtime.backend.20c2efe86723": {
+    "zh-cn": "未找到待修改的记录",
+    "en": "No record was found to update",
+    "runtime": true
+  },
+  "runtime.backend.bdca02aa95f0": {
+    "zh-cn": "未找到待删除的记录",
+    "en": "No record was found to delete",
+    "runtime": true
+  },
+  "runtime.backend.116519f18161": {
+    "zh-cn": "非个人提醒无法执行删除操作",
+    "en": "Only personal reminders can be deleted",
+    "runtime": true
+  },
+  "runtime.backend.e2bee4ae442b": {
+    "zh-cn": "非本人提醒无法执行删除操作!",
+    "en": "You can only delete your own reminders",
+    "runtime": true
+  },
+  "runtime.backend.718729bf060d": {
+    "zh-cn": "无效的业务类型",
+    "en": "Invalid business type",
+    "runtime": true
+  },
+  "runtime.backend.72d2debd5bd3": {
+    "zh-cn": "请选择重复周期",
+    "en": "Select a recurrence interval",
+    "runtime": true
+  },
+  "runtime.backend.8a55628fc71e": {
+    "zh-cn": "无效的重复周期",
+    "en": "Invalid recurrence interval",
+    "runtime": true
+  },
+  "runtime.backend.9a8a86835070": {
+    "zh-cn": "刷新TOKEN不能为空",
+    "en": "Refresh token is required",
+    "runtime": true
+  },
+  "runtime.backend.954ad4318195": {
+    "zh-cn": "登录信息已失效，请重新登录",
+    "en": "Your sign-in information is no longer valid. Sign in again.",
+    "runtime": true
+  },
+  "runtime.backend.9737f53cb2f0": {
+    "zh-cn": "请先配置企业微信ID",
+    "en": "Configure the WeCom ID first",
+    "runtime": true
+  },
+  "runtime.backend.96e7e388f66e": {
+    "zh-cn": "没有查询到群",
+    "en": "Group chat not found",
+    "runtime": true
+  },
+  "runtime.backend.d81add87a756": {
+    "zh-cn": "用户已经绑定企业微信",
+    "en": "The user is already linked to WeCom",
+    "runtime": true
+  },
+  "runtime.backend.432725cc10fc": {
+    "zh-cn": "当前扫码非企业内部成员，无法绑定",
+    "en": "The scanned account is not an internal enterprise member and cannot be linked",
+    "runtime": true
+  },
+  "runtime.backend.9454e941e89f": {
+    "zh-cn": "当前扫码的内部成员不存在",
+    "en": "The scanned internal member does not exist",
+    "runtime": true
+  },
+  "runtime.backend.1858602e8244": {
+    "zh-cn": "没有绑定企业微信无法解除",
+    "en": "The account is not linked to WeCom and cannot be unlinked",
+    "runtime": true
+  },
+  "runtime.backend.59253b26fcc3": {
+    "zh-cn": "无效的URL格式",
+    "en": "Invalid URL format",
+    "runtime": true
+  },
+  "runtime.backend.7a2c88e89bca": {
+    "zh-cn": "无法获取网页内容",
+    "en": "Unable to retrieve webpage content",
+    "runtime": true
+  },
+  "runtime.backend.e3353df2436e": {
+    "zh-cn": "缺少发送内容",
+    "en": "Message content is required",
+    "runtime": true
+  },
+  "runtime.backend.27dc06f400c9": {
+    "zh-cn": "请选择发送成员",
+    "en": "Select recipients",
+    "runtime": true
+  },
+  "runtime.backend.b0126eda3340": {
+    "zh-cn": "缺少筛选条件",
+    "en": "Filter criteria are required",
+    "runtime": true
+  },
+  "runtime.backend.5a68a05df564": {
+    "zh-cn": "请填写发送内容",
+    "en": "Enter message content",
+    "runtime": true
+  },
+  "runtime.backend.d5c135f60e7b": {
+    "zh-cn": "请上传图片",
+    "en": "Please upload an image",
+    "runtime": true
+  },
+  "runtime.backend.bafc8958d1f3": {
+    "zh-cn": "请上传视频",
+    "en": "Please upload a video",
+    "runtime": true
+  },
+  "runtime.backend.0fedce44b85b": {
+    "zh-cn": "请填写网页链接",
+    "en": "Enter a webpage URL",
+    "runtime": true
+  },
+  "runtime.backend.32348b7859f5": {
+    "zh-cn": "请上传小程序封面",
+    "en": "Please upload the mini program cover image",
+    "runtime": true
+  },
+  "runtime.backend.2b17bb7b6b51": {
+    "zh-cn": "请填写小程序页面路径",
+    "en": "Enter the mini program page path",
+    "runtime": true
+  },
+  "runtime.backend.85e75b0b19cd": {
+    "zh-cn": "请填写小程序appid",
+    "en": "Enter the mini program App ID",
+    "runtime": true
+  },
+  "runtime.backend.e58fa6fd0800": {
+    "zh-cn": "请填写小程序标题",
+    "en": "Enter the mini program title",
+    "runtime": true
+  },
+  "runtime.backend.97f47b78010d": {
+    "zh-cn": "请选择类型",
+    "en": "Select a type",
+    "runtime": true
+  },
+  "runtime.backend.aef227e5b8da": {
+    "zh-cn": "编辑的分类不存在",
+    "en": "The category being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.62196c4fcd16": {
+    "zh-cn": "编辑的分组不存在",
+    "en": "The group being edited does not exist",
+    "runtime": true
+  },
+  "runtime.backend.e657e2b33aab": {
+    "zh-cn": "缺少快捷回复分组",
+    "en": "Quick-reply group is required",
+    "runtime": true
+  },
+  "runtime.backend.f36c241954ab": {
+    "zh-cn": "缺少快捷回复内容",
+    "en": "Quick-reply content is required",
+    "runtime": true
+  },
+  "runtime.backend.48aa36400b85": {
+    "zh-cn": "内容不存在",
+    "en": "Content not found",
+    "runtime": true
+  },
+  "runtime.backend.a131eec99a23": {
+    "zh-cn": "无权访问此内容",
+    "en": "You do not have permission to access this content",
+    "runtime": true
+  },
+  "runtime.backend.cf6d953a9e6c": {
+    "zh-cn": "个人库仅支持文本类型",
+    "en": "The personal library only supports text content",
+    "runtime": true
+  },
+  "runtime.backend.b0ba7ec4cdc9": {
+    "zh-cn": "请选择回复内容类型",
+    "en": "Select a reply-content type",
+    "runtime": true
+  },
+  "runtime.backend.585b0643de77": {
+    "zh-cn": "缺少token",
+    "en": "Token is required",
+    "runtime": true
+  },
+  "runtime.backend.bb831c81b49c": {
+    "zh-cn": "管理员不存在",
+    "en": "Administrator not found",
+    "runtime": true
+  },
+  "runtime.backend.df087fa8e744": {
+    "zh-cn": "无效管理员",
+    "en": "Invalid administrator",
+    "runtime": true
+  },
+  "runtime.backend.3f39895d82a1": {
+    "zh-cn": "无效用户",
+    "en": "Invalid user",
+    "runtime": true
+  },
+  "runtime.backend.63cbe4b86ddd": {
+    "zh-cn": "你在说啥",
+    "en": "The request was not understood",
+    "runtime": true
+  },
+  "runtime.backend.31d68fc5cd6b": {
+    "zh-cn": "已存在相同分类",
+    "en": "An identical category already exists",
+    "runtime": true
+  },
+  "runtime.backend.ada160144d15": {
+    "zh-cn": "添加的层级已超最高层级",
+    "en": "The new level exceeds the maximum hierarchy depth",
+    "runtime": true
+  },
+  "runtime.backend.1535765ef9b8": {
+    "zh-cn": "添加分类失败",
+    "en": "Failed to add the category",
+    "runtime": true
+  },
+  "runtime.backend.aae0682b9d4b": {
+    "zh-cn": "请先删除下级分类",
+    "en": "Delete child categories first",
+    "runtime": true
+  },
+  "runtime.backend.9a42f9ce4453": {
+    "zh-cn": "版本信息不匹配",
+    "en": "Version information does not match",
+    "runtime": true
+  },
+  "runtime.backend.3549c7b7dcb7": {
+    "zh-cn": "版本信息不匹配，请更新App版本至: v",
+    "en": "Version mismatch. Update the app to version v",
+    "runtime": true
+  },
+  "runtime.backend.310fb84b3e7d": {
+    "zh-cn": "参数类型不正确",
+    "en": "Invalid parameter type",
+    "runtime": true
+  },
+  "runtime.backend.3ab727a580f5": {
+    "zh-cn": "超过可领用最大库存！",
+    "en": "The maximum available inventory has been exceeded",
+    "runtime": true
+  },
+  "runtime.backend.eb9e6081266e": {
+    "zh-cn": "创建连接类型不正确",
+    "en": "Invalid connection type",
+    "runtime": true
+  },
+  "runtime.backend.61efb8ebea5f": {
+    "zh-cn": "创建目录失败",
+    "en": "Failed to create the directory",
+    "runtime": true
+  },
+  "runtime.backend.84fca9c91672": {
+    "zh-cn": "登录信息已失效",
+    "en": "Your sign-in information has expired",
+    "runtime": true
+  },
+  "runtime.backend.535385d73367": {
+    "zh-cn": "发生异常，请稍后重试",
+    "en": "An error occurred. Try again later",
+    "runtime": true
+  },
+  "runtime.backend.4da07c0a12c5": {
+    "zh-cn": "工作台设置",
+    "en": "Workbench settings",
+    "runtime": true
+  },
+  "runtime.backend.ffd6c0268b0a": {
+    "zh-cn": "接口请求失败：非法操作！",
+    "en": "Request failed: invalid operation",
+    "runtime": true
+  },
+  "runtime.backend.2e1a2932bfd3": {
+    "zh-cn": "解密失败",
+    "en": "Decryption failed",
+    "runtime": true
+  },
+  "runtime.backend.c73231546b37": {
+    "zh-cn": "没有查询到接口数据",
+    "en": "API data not found",
+    "runtime": true
+  },
+  "runtime.backend.8e7f9af8625e": {
+    "zh-cn": "模版ID不存在",
+    "en": "Template ID not found",
+    "runtime": true
+  },
+  "runtime.backend.47e46b26f699": {
+    "zh-cn": "您已关闭上传功能",
+    "en": "Uploads are disabled",
+    "runtime": true
+  },
+  "runtime.backend.f3c266e00204": {
+    "zh-cn": "配置已更改或token已失效",
+    "en": "The configuration has changed or the token has expired",
+    "runtime": true
+  },
+  "runtime.backend.be3bff935623": {
+    "zh-cn": "配置已更改token已失效",
+    "en": "The configuration has changed and the token has expired",
+    "runtime": true
+  },
+  "runtime.backend.c8bc2d941b83": {
+    "zh-cn": "企业微信查询群详情失败",
+    "en": "Failed to retrieve WeCom group-chat details",
+    "runtime": true
+  },
+  "runtime.backend.b46e0d7bd89a": {
+    "zh-cn": "企业已被禁用无法使用",
+    "en": "This enterprise has been disabled and cannot be used",
+    "runtime": true
+  },
+  "runtime.backend.904017672ffd": {
+    "zh-cn": "请传入所属地域",
+    "en": "Specify a region",
+    "runtime": true
+  },
+  "runtime.backend.14ad0b75eb08": {
+    "zh-cn": "请传入桶名",
+    "en": "Specify a bucket name",
+    "runtime": true
+  },
+  "runtime.backend.35fada2fd242": {
+    "zh-cn": "请传入SecretId",
+    "en": "Specify the Secret ID",
+    "runtime": true
+  },
+  "runtime.backend.178a3e2b8bfe": {
+    "zh-cn": "请传入SecretKey",
+    "en": "Specify the Secret Key",
+    "runtime": true
+  },
+  "runtime.backend.093288f40c05": {
+    "zh-cn": "请求类不存在",
+    "en": "Request class not found",
+    "runtime": true
+  },
+  "runtime.backend.02066cab6231": {
+    "zh-cn": "请先配置水印图片",
+    "en": "Configure the watermark image first",
+    "runtime": true
+  },
+  "runtime.backend.88e71bbe6c8d": {
+    "zh-cn": "请先配置水印文字",
+    "en": "Configure the watermark text first",
+    "runtime": true
+  },
+  "runtime.backend.cf3aa19262a7": {
+    "zh-cn": "请先配置agent_id",
+    "en": "Configure the agent ID first",
+    "runtime": true
+  },
+  "runtime.backend.d2b6e3da402f": {
+    "zh-cn": "请选择要删除的附件",
+    "en": "Select attachments to delete",
+    "runtime": true
+  },
+  "runtime.backend.7644b1e9e828": {
+    "zh-cn": "请选择要删除的图片",
+    "en": "Select images to delete",
+    "runtime": true
+  },
+  "runtime.backend.0984809dc889": {
+    "zh-cn": "缺少必要的参数",
+    "en": "Required parameters are missing",
+    "runtime": true
+  },
+  "runtime.backend.d000fcc91485": {
+    "zh-cn": "缺少必要的实体参数",
+    "en": "Required entity parameters are missing",
+    "runtime": true
+  },
+  "runtime.backend.db41379f45ae": {
+    "zh-cn": "缺少身份验证token",
+    "en": "Authentication token is required",
+    "runtime": true
+  },
+  "runtime.backend.2f539ee6c39c": {
+    "zh-cn": "缺少消息发送内容",
+    "en": "Message content is required",
+    "runtime": true
+  },
+  "runtime.backend.8106c06745fd": {
+    "zh-cn": "删除的云存储空间不存在",
+    "en": "The cloud storage space to delete does not exist",
+    "runtime": true
+  },
+  "runtime.backend.72d6fb655d58": {
+    "zh-cn": "生成字段列表失败",
+    "en": "Failed to generate the field list",
+    "runtime": true
+  },
+  "runtime.backend.a40faf76295e": {
+    "zh-cn": "手机号不能为空",
+    "en": "Mobile number is required",
+    "runtime": true
+  },
+  "runtime.backend.25202981defa": {
+    "zh-cn": "未找到触发器操作执行类",
+    "en": "Trigger action handler not found",
+    "runtime": true
+  },
+  "runtime.backend.987580a481f0": {
+    "zh-cn": "文件保存失败",
+    "en": "Failed to save the file",
+    "runtime": true
+  },
+  "runtime.backend.048981b405d5": {
+    "zh-cn": "文件不存在!",
+    "en": "File not found",
+    "runtime": true
+  },
+  "runtime.backend.1b4e52fdaa9f": {
+    "zh-cn": "文件夹不存在",
+    "en": "Folder not found",
+    "runtime": true
+  },
+  "runtime.backend.15da61d47414": {
+    "zh-cn": "无法创建文件存储目录，请检查public目录权限",
+    "en": "Unable to create the file-storage directory. Check the public-directory permissions",
+    "runtime": true
+  },
+  "runtime.backend.c739ef60d04a": {
+    "zh-cn": "无效的商机状态,仅允许修改为：进行中、失效!",
+    "en": "Invalid opportunity status. Only In progress or Invalid is allowed",
+    "runtime": true
+  },
+  "runtime.backend.16e36e565382": {
+    "zh-cn": "消息渠道transmission和revoke不能同时存在",
+    "en": "The transmission and revoke message channels cannot be used together",
+    "runtime": true
+  },
+  "runtime.backend.47c41a584867": {
+    "zh-cn": "移动失败或不能重复移动到同一分类下",
+    "en": "Move failed, or the item is already in that category",
+    "runtime": true
+  },
+  "runtime.backend.511559d7885a": {
+    "zh-cn": "已取消关注",
+    "en": "Unfollowed",
+    "runtime": true
+  },
+  "runtime.backend.e8d1cda22f7e": {
+    "zh-cn": "域名输入有误",
+    "en": "Invalid domain",
+    "runtime": true
+  },
+  "runtime.backend.d227f0eb7572": {
+    "zh-cn": "远程文件请求失败，链接无效或文件不存在",
+    "en": "Remote file request failed because the link is invalid or the file does not exist",
+    "runtime": true
+  },
+  "runtime.backend.e397793a3abf": {
+    "zh-cn": "云存储正在使用中,需要启动其他空间才能删除",
+    "en": "This cloud storage space is in use. Activate another space before deleting it",
+    "runtime": true
+  },
+  "runtime.backend.089c092f91ba": {
+    "zh-cn": "云空间名称不能重复",
+    "en": "Cloud-space names must be unique",
+    "runtime": true
+  },
+  "runtime.backend.2d87a36515a3": {
+    "zh-cn": "支付类型错误",
+    "en": "Invalid payment type",
+    "runtime": true
+  },
+  "runtime.backend.9439b5f28001": {
+    "zh-cn": "captchaType参数不正确！",
+    "en": "Invalid captchaType parameter",
+    "runtime": true
+  },
+  "runtime.backend.4651f1856a7f": {
+    "zh-cn": "客户ID不能为空",
+    "en": "Customer ID is required",
+    "runtime": true
+  },
+  "runtime.backend.c55c4875c286": {
+    "zh-cn": "未通过原因不能为空",
+    "en": "A rejection reason is required",
+    "runtime": true
+  },
+  "runtime.backend.7bc00e9739c6": {
+    "zh-cn": "转移人ID不能为空",
+    "en": "Transfer recipient ID is required",
+    "runtime": true
+  },
+  "runtime.backend.5f76edc5de7b": {
+    "zh-cn": "未知错误",
+    "en": "Unknown error",
     "runtime": true
   }
 }

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-form :inline="true" class="from-s">
@@ -101,6 +100,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Common from '@/components/user/accessCommon'
 import { frameUserApi } from '@/api/setting'
 export default {

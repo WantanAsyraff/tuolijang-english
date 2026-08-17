@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 查看发票详情弹窗 -->
 <template>
 <div>
@@ -65,6 +64,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { clientInvoiceStatusApi } from '@/api/client'
 import { getToken } from '@/utils/auth'
 import { uploader } from '@/utils/uploadCloud'

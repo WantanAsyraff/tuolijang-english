@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 订单-添加订单页面 -->
 <template>
   <div class="station">
@@ -33,6 +32,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { oddsCreateEditApi } from '@/api/client'
 import { contractCreateApi, contractEditCreateApi } from '@/api/enterprise'
 import { clientContractSaveApi as contractAddApi, clientContractEditApi } from '@/api/client'

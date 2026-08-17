@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card class="normal-page" body-style="padding: 0">
@@ -87,6 +86,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import oaFromBox from '@/components/common/oaFromBox'
 import supplierDialog from './components/supplierDialog'
 import defaultPage from '@/components/common/defaultPage'

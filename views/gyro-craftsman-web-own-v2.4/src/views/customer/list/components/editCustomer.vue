@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 查看客户信息侧滑页面 -->
 <template>
 <div>
@@ -136,6 +135,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { chargeEditApi } from '@/api/enterprise';
 import { CUSTOMER_MODULE_KEYS } from '@/constants/customerModules';
 import { DRAWER_SIZE } from '@/constants/popupSize';

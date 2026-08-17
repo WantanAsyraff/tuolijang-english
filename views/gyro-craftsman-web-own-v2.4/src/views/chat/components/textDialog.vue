@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="textDialog">
     <el-dialog
@@ -29,6 +28,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 export default {
   props: {},
   data() {

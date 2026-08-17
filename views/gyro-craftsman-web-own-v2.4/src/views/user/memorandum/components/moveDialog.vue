@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog
@@ -41,6 +40,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { memorialCateListApi, memorialEditApi } from '@/api/user'
 
 export default {

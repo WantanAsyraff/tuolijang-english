@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 财务-发票审核页面 -->
 <template>
 <div class="divBox">
@@ -284,6 +283,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { financeInvoiceListApi } from '@/api/enterprise'
 import ClipboardJS from 'clipboard'
 import { getInvoiceClassName, getInvoiceText, getInvoiceType, selectInvoiceFd } from '@/libs/customer'

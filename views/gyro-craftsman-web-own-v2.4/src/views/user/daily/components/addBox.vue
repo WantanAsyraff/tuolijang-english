@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-drawer :append-to-body="true" :before-close="handleClose" :modal="true" :title="newTitle" :visible.sync="drawer"
@@ -139,6 +138,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { enterpriseDaily, getEnterpriseEdit, dailyReply, dailydel, getDailyEdit, getCompleted } from '@/api/enterprise'
 import file from '@/utils/file'
 import { dailyReportMemberApi } from '@/api/business'

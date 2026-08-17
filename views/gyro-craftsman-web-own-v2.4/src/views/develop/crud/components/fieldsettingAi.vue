@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-dialog
@@ -105,6 +104,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { pinyin } from 'pinyin-pro'
 import Mobile from './mobile.vue'
 import { getDictListApi } from '@/api/form'

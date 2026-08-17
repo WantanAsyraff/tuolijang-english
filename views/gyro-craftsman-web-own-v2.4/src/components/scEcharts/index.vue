@@ -1,10 +1,10 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 图表设计-echarts组件 -->
 <template>
   <div @click="sizechange" ref="scEcharts" :style="{ height: height, width: width }"></div>
 </template>
 
 <script>
+import { $ } from '@/lang'
 import * as echarts from 'echarts'
 import T from './echarts-theme-T.js'
 import 'echarts-liquidfill'

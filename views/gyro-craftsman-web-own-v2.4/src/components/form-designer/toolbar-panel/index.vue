@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 // 表单操作预览
 <template>
 <div class="toolbar-container">
@@ -128,6 +127,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import VFormRender from '@/components/form-render/index'
 import Clipboard from 'clipboard'
 import {

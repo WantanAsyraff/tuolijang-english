@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="v-height-flag">
@@ -113,6 +112,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import { getDictListApi, getDictCreateApi, getDictEditApi, getDictPutShowApi, getDictDeleteShowApi } from '@/api/form'
 export default {

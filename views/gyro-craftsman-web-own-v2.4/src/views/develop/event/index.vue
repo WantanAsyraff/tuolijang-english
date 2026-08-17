@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <div class="v-height-flag">
@@ -99,6 +98,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import oaPopover from '@/components/form-common/oa-popover'
 import oaFromBox from '@/components/common/oaFromBox'
 import { roterPre } from '@/settings'

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card :body-style="{ padding: '20px 20px 0 20px' }" class="normal-page">
@@ -168,6 +167,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { messageListApi, putStatusMessageApi, messageSubscribeApi, messageSyncApi, messageCateApi } from '@/api/setting'
 import { status } from 'nprogress'
 

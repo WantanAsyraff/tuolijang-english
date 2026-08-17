@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <div class="item-tag" v-for="(tag, inx) of list" :key="inx" ref="buttonRef">
@@ -189,6 +188,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { mapGetters } from 'vuex'
 import SvgIcon from '@/components/svg-icon-nc'
 export default {

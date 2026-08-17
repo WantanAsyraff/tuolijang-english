@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="timeFrom">
   <!-- 请假表单 -->
@@ -61,6 +60,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { divTime } from '@/utils'
 export default {
   name: 'Index',

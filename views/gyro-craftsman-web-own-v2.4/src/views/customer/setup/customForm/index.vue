@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
   <el-card v-loading="loadingBox" class="card-box box-height">
@@ -309,6 +308,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Sortable from 'sortablejs'
 import { configConvertApi } from '@/api/client'
 import common from './components/customCommon'

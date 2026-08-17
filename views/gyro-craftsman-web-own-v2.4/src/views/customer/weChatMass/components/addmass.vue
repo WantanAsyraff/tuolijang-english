@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div>
   <el-dialog :title="this.id ? $('ui.customerWeChatMassAddmassEditMaterial') : $('ui.customerWeChatMassAddmassAddMaterial')" :visible.sync="visible" width="650px" @close="handleClose">
@@ -20,6 +19,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { workMassTempSaveApi, workMassTempEditApi, workMassTempApi } from '@/api/weCom'
 export default {
   name: '',

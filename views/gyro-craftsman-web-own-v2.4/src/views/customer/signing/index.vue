@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="divBox">
 
@@ -203,6 +202,7 @@ import { $ } from '@/lang'
 
 </template>
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { getColor } from '@/utils/format'
 import { getContractDocListApi, contractDocDelApi, contractDocCancelApi, contractSignatoryApi, contractDocSignApi } from '@/api/contractSign'

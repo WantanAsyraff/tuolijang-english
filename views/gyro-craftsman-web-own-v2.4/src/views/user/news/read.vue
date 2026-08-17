@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div class="m14">
   <!-- 全部页面 -->
@@ -68,6 +67,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { noticeMessageListApi, noticeMessageReadApi, noticeMessageDeleteApi } from '@/api/user'
 import { messageListApi } from '@/api/public'
 

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
 <div style="min-height: calc(100vh - 190px)">
   <div class="message">
@@ -451,6 +450,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import ClipboardJS from 'clipboard'
 
 import {

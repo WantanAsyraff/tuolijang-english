@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 项目-我的项目-任务列表页面 -->
 <template>
 <div class="divBox bill-type box-height" :class="isDrawer ? 'mt0' : ''" @click.stop="hideMembersPicker()">
@@ -566,6 +565,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import {
   getProgramSelectApi,
   getProgramTaskApi,

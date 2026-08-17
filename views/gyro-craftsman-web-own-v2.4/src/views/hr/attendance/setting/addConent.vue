@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 新增考勤设置页面 -->
 <template>
 <div class="divBox">
@@ -385,6 +384,7 @@ import { $ } from '@/lang'
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { roterPre } from '@/settings'
 import { mapGetters } from 'vuex'
 import {

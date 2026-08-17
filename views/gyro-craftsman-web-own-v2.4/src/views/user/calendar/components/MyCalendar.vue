@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- 办公-我的日程 Tab 内容 -->
 <template>
   <div class="my-calendar">
@@ -92,6 +91,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 // 导入FullCalendar插件
 import dayGridPlugin from '@fullcalendar/daygrid'
 import listPlugin from '@fullcalendar/list'

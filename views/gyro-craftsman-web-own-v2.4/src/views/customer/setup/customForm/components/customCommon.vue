@@ -1,5 +1,5 @@
-import { $ } from '@/lang'
 <script>
+import { $ } from '@/lang'
 // 自定义表单-字段类型选项
 const typeOptions = [
   {

@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <v-form-designer
     ref="dbDesignerRef"
@@ -27,6 +26,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { dashboard_container_schema } from '@/views/system/dashboard-design/charts/charts-schema'
 import { deepClone, mlShortcutkeys } from '@/utils/formDesignerUtils'
 import { getDashboardDesign, changeDashboardDesign } from '@/api/chart'

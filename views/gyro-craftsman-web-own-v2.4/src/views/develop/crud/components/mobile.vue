@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="assistant-dialog">
     <div class="dialog-item">
@@ -48,6 +47,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 export default {
   name: 'AssistantDialog',

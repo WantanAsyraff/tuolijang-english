@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <!-- @FileDescription: 系统-新增菜单动态表单 -->
 <template>
   <div>
@@ -23,6 +22,7 @@ import { $ } from '@/lang'
 </template>
 
 <script>
+import { $ } from '@/lang'
 import formCreate from '@form-create/element-ui'
 import request from '@/api/request'
 import { Message } from 'element-ui'

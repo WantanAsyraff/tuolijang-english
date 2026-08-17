@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div>
     <el-dialog :visible.sync="show" width="854px" :show-close="false">
@@ -109,6 +108,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getMcpListApi, saveMcpServiceApi, getMcpServiceApi, putMcpServiceApi, delMcpServiceApi } from '@/api/chatAi'
 import oaDialog from '@/components/form-common/dialog-form'
 import CodeEditor from '@/components/code-editor/index'

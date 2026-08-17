@@ -1,4 +1,3 @@
-import { $ } from '@/lang'
 <template>
   <div class="divBox">
     <el-card :body-style="{ padding: '20px 20px 20px 20px' }" class="normal-page el-card-flex">
@@ -50,6 +49,7 @@ import { $ } from '@/lang'
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { clientExportApi, clientLiaisonDeleteApi, clientLiaisonListApi as liaisonViewApi } from '@/api/client'
 import { DRAWER_SIZE } from '@/constants/popupSize'
 import { roterPre } from '@/settings'
