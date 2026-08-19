@@ -42,6 +42,9 @@ const runtimeIndex = Object.fromEntries(
   Object.values(common).filter((entry) => entry.runtime).map((entry) => [entry["zh-cn"], entry.en])
 );
 const runtime = createLocalizationRuntime(runtimeIndex);
+const repoRoot = path.resolve(views, '..');
+const { auditSql, auditSqlSource, decodeSqlString } = require(path.join(root, 'sql-audit.cjs'));
+const sqlPolicy = JSON.parse(fs.readFileSync(path.join(root, 'sql-audit-policy.json'), 'utf8'));
 const { formatNotificationTemplatePreview } = require(
   path.join(views, "gyro-craftsman-web-own-v2.4/src/lang/notification-template-preview.js")
 );
@@ -138,6 +141,64 @@ test("backend user-facing response audit has no unmapped or unclassified candida
   assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
   assert.match(result.stdout, /Direct unmapped: 0/);
   assert.match(result.stdout, /Unclassified residuals: 0/);
+});
+test("SQL parser classifies multiline statements, escaping, JSON, comments, identifiers, and comparison values", { skip: !includesApp("web") }, () => {
+  const source = `
+-- 审计注释
+CREATE TABLE sample (name varchar(20) COMMENT '字段说明') COMMENT='测试表';
+INSERT INTO eb_system_config (key_name, desc) VALUES
+  ('引号配置', '包含\\'引号');
+INSERT INTO eb_approve_form (title, content) VALUES
+  ('审批表单', '{"label":"审批标题","value":"raw_key"}');
+INSERT INTO eb_system_menus (menu_name, unique_auth) VALUES
+  ('系统菜单', '内部标识');
+INSERT INTO eb_chat_app_mcp_services (name, info)
+  SELECT '客户MCP服务', '客户信息' WHERE NOT EXISTS (SELECT 1);
+UPDATE eb_form_data a JOIN eb_form_cate b ON a.cate_id = b.id
+  SET a.key_name = replace(key_name, '合同', '订单')
+  WHERE a.key_name LIKE '%合同%';
+INSERT INTO eb_message (title, content) VALUES ('测试消息', '用户内容');
+`;
+  const rows = auditSqlSource({ source, relative: "fixtures/sql-audit.sql", policy: sqlPolicy });
+  const find = (value, classification) => rows.some((row) => row.value === value && row.classification === classification);
+
+  assert.equal(decodeSqlString("'包含\\'引号'"), "包含'引号");
+  assert.equal(rows.some((row) => row.classification === "COMMENT" && row.value.includes("审计注释")), true);
+  assert.equal(find("字段说明", "DATABASE_METADATA"), true);
+  assert.equal(find("包含'引号", "USER_VISIBLE"), true);
+  assert.equal(find("审批标题", "USER_VISIBLE"), true);
+  assert.equal(find("内部标识", "IDENTIFIER"), true);
+  assert.equal(find("客户MCP服务", "USER_VISIBLE"), true);
+  assert.equal(find("合同", "INTERNAL_VALUE"), true);
+  assert.equal(find("测试消息", "TEST_DATA"), true);
+  assert.equal(rows.some((row) => row.classification === "UNKNOWN"), false);
+});
+
+test("all tracked SQL display values are classified, mapped, and hierarchy-safe", { skip: !includesApp("web") }, () => {
+  const sql = auditSql({ repoRoot, runtimeValues: new Map(Object.entries(runtimeIndex)) });
+
+  assert.equal(sql.files, 19);
+  assert.equal(sql.unknown.length, 0);
+  assert.equal(sql.missing.length, 0);
+  assert.equal(sql.classifications.UNKNOWN, 0);
+  assert.equal(sql.userVisible, sql.mapped);
+  assert.equal(sql.uncoveredFrontend.length, 0);
+  assert.equal(sql.frontendCoverage.length, 20);
+  assert.ok(sql.areaValues.length > 3500);
+  assert.ok(Object.keys(sql.byFile).length === 19);
+  assert.ok(Object.keys(sql.byTable).length > 30);
+  assert.ok(Object.keys(sql.byColumn).length > 50);
+
+  for (const row of sql.areaValues) {
+    assert.notEqual(row.areaCode, null, `${row.value} missing raw area code`);
+    assert.notEqual(row.parentCode, null, `${row.value} missing raw parent relationship`);
+  }
+  assert.equal(runtimeIndex["北京市"], "Beijing");
+  assert.equal(runtimeIndex["重庆市"], "Chongqing");
+  assert.equal(runtimeIndex["内蒙古自治区"], "Inner Mongolia Autonomous Region");
+  assert.equal(runtimeIndex["六安市"], "Lu'an City");
+  assert.equal(runtimeIndex["漯河市"], "Luohe City");
+  assert.equal(/[\u3400-\u9fff]/.test(runtimeIndex["渝中区"]), false);
 });
 test("generation is deterministic and the source audit passes", () => {
   runCli("check");

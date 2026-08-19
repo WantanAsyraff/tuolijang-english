@@ -32,7 +32,9 @@
           <el-table-column type="selection" width="55"> </el-table-column>
           <el-table-column prop="name" :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="100" />
           <el-table-column prop="units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" />
-          <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" />
+          <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" >
+            <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.cate_name) || '--' }}</template>
+          </el-table-column>
           <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
           <el-table-column prop="stock" :label="$('ui.administrationMaterialFixedConsumeInventoryQuantity')" min-width="80" />
           <el-table-column prop="used" :label="$('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="80" />

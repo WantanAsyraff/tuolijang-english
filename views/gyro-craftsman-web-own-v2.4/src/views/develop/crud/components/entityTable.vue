@@ -36,7 +36,7 @@
             </el-table-column>
             <el-table-column prop="table_name" :label="$('ui.developCrudEntityTableDisplayName')" min-width="150">
                 <template slot-scope="scope">
-                    {{ scope.row.table_name }}
+                    {{ $(scope.row.table_name) }}
                     <span :class="scope.row.crud_id == 0 ? 'zhu' : 'cong'">{{
                         scope.row.crud_id == 0 ? $('ui.formCommonSelectDepartmentMain') : $('ui.developCrudEntityTableFrom')
                         }}</span>
@@ -44,13 +44,13 @@
             </el-table-column>
             <el-table-column prop="info" :label="$('ui.developApproveIndexLinkedApplication')" min-width="250" show-overflow-tooltip>
                 <template slot-scope="scope">
-                    <span v-if="scope.row.cate && scope.row.cate.length > 0">{{ scope.row.cate.join('、') }}</span>
+                    <span v-if="scope.row.cate && scope.row.cate.length > 0">{{ localizedList(scope.row.cate) }}</span>
                     <span v-else>--</span>
                 </template>
             </el-table-column>
 
             <el-table-column prop="info" :label="$('ui.developCrudEntityTableEntityDescription')" min-width="250" show-overflow-tooltip>
-                <template slot-scope="scope">{{ scope.row.info || '--' }}</template>
+                <template slot-scope="scope">{{ $(scope.row.info) || '--' }}</template>
             </el-table-column>
             <el-table-column prop="user.name" :label="$('ui.hrAssessCheckIndexCreator')" width="230"> </el-table-column>
             <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" width="230"> </el-table-column>
@@ -191,6 +191,9 @@ export default {
         this.getList()
     },
     methods: {
+        localizedList(items) {
+            return (items || []).map((item) => this.$(item)).join(' / ')
+        },
         goBack() {
             this.$emit('goBack')
         },

@@ -4,7 +4,7 @@
   <el-card class="normal-page">
     <oaFromBox
       :isViewSearch="false"
-      :title="$route.meta.title"
+      :title="$($route.meta.title, $route.meta.title_en)"
       :total="total"
       :btnText="$('ui.fdSetupCategoryIndexAddCategory')"
       @addDataFn="addFinance"
@@ -17,7 +17,9 @@
       row-key="id"
       style="width: 100%"
     >
-      <el-table-column :label="$('ui.fdSetupCategoryIndexCategoryName')" min-width="220" prop="name"> </el-table-column>
+      <el-table-column :label="$('ui.fdSetupCategoryIndexCategoryName')" min-width="220" prop="name">
+        <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+      </el-table-column>
       <el-table-column :label="$('toptable.sort')" min-width="100" prop="sort" />
       <el-table-column :label="$('public.operation')" prop="address" width="200">
         <template slot-scope="scope">

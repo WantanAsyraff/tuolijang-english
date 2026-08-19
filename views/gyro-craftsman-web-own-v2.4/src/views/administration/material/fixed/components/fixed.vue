@@ -38,7 +38,9 @@
               {{ scope.row.units || '--' }}
             </template>
           </el-table-column>
-          <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" show-overflow-tooltip />
+          <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" show-overflow-tooltip >
+            <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.cate_name) || '--' }}</template>
+          </el-table-column>
           <el-table-column prop="record[0].price" :label="$('ui.administrationMaterialFixedFixedMaterialUnitPriceYuan')" min-width="100" show-overflow-tooltip />
           <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" show-overflow-tooltip>
             <template slot-scope="scope">

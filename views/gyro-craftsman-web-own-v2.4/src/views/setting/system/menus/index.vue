@@ -7,7 +7,7 @@
         :isViewSearch="false"
         :search="searchData"
         :sortSearch="false"
-      :title="$route.meta.title"
+      :title="$($route.meta.title, $route.meta.title_en)"
       :btnText="$('ui.settingSystemMenusIndexAddMenu')"
         @addDataFn="addMenu"
         @confirmData="confirmData"
@@ -20,7 +20,9 @@
           row-key="id"
           style="width: 100%"
         >
-          <el-table-column :label="$('ui.settingSystemMenusIndexMenuName')" prop="menu_name"> </el-table-column>
+          <el-table-column :label="$('ui.settingSystemMenusIndexMenuName')" prop="menu_name">
+            <template slot-scope="props"><span>{{ $(props.row.menu_name, props.row.menu_name_en) }}</span></template>
+          </el-table-column>
           <el-table-column :label="$('ui.settingSystemMenusIndexMenuIcon')" prop="menu_name">
             <template slot-scope="props">
               <span class="icon iconfont" :class="props.row.icon" v-if="props.row.icon"></span>
@@ -41,8 +43,8 @@
                 v-model="props.row.is_show"
                 :active-value="1"
                 :inactive-value="0"
-                active-text="显示"
-                inactive-text="隐藏"
+                :active-text="$('public.display')"
+                :inactive-text="$('hr.hide')"
                 @change="changeStatus(props.row)"
               >
               </el-switch>
@@ -85,7 +87,7 @@ export default {
       },
       searchData: [
         {
-          field_name: '菜单名称',
+          field_name: $('ui.settingSystemMenusIndexMenuName'),
           field_name_en: 'menu_name',
           form_value: 'input'
         }

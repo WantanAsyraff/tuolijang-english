@@ -11,7 +11,7 @@
                 <el-tab-pane
                   v-for="(item, index) in noticeNav"
                   :key="index"
-                  :label="item.cate_name"
+                  :label="$(item.cate_name, item.cate_name_en)"
                   :name="index.toString()"
                 ></el-tab-pane
               ></el-tabs>

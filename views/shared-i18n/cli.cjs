@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");
 const babelParser = require("@babel/parser");
+const { auditSql, formatSqlAuditSummary } = require("./sql-audit.cjs");
 
 const root = __dirname;
 const viewsRoot = path.resolve(root, "..");
@@ -33,6 +34,7 @@ function loadAndValidate() {
   const catalogs = Object.fromEntries(["common", ...appNames].map((name) => [name, readCatalog(name)]));
   const ids = new Set();
   const runtimeValues = new Map();
+  const runtimeValuesByApp = Object.fromEntries(appNames.map((app) => [app, new Map()]));
   const errors = [];
   for (const [catalogName, entries] of Object.entries(catalogs)) {
     for (const [id, entry] of Object.entries(entries)) {
@@ -50,11 +52,17 @@ function loadAndValidate() {
         const previous = runtimeValues.get(entry["zh-cn"]);
         if (previous && previous !== entry.en) errors.push(`conflicting runtime translation: ${entry["zh-cn"]}`);
         runtimeValues.set(entry["zh-cn"], entry.en);
+        const runtimeApps = entry.apps || appNames;
+        if (!Array.isArray(runtimeApps) || runtimeApps.some((app) => !appNames.includes(app))) {
+          errors.push(`${catalogName}:${id} has invalid runtime apps`);
+        } else {
+          runtimeApps.forEach((app) => runtimeValuesByApp[app].set(entry["zh-cn"], entry.en));
+        }
       }
     }
   }
   if (errors.length) throw new Error(`Catalog validation failed:\n${errors.slice(0, 100).join("\n")}`);
-  return { catalogs, runtimeValues };
+  return { catalogs, runtimeValues, runtimeValuesByApp };
 }
 
 function setNested(target, dottedKey, value) {
@@ -139,11 +147,11 @@ function renderShared(runtimeValues) {
 }
 
 function expectedOutputs(selectedApp) {
-  const { catalogs, runtimeValues } = loadAndValidate();
+  const { catalogs, runtimeValues, runtimeValuesByApp } = loadAndValidate();
   const selected = selectedApp && selectedApp !== "all" ? [selectedApp] : appNames;
   if (selected.some((app) => !appNames.includes(app))) throw new Error(`Unknown app: ${selectedApp}`);
   const expected = new Map([[sharedOutput, renderShared(runtimeValues)]]);
-  selected.forEach((app) => expected.set(outputs[app], renderModule(app, catalogs[app], runtimeValues)));
+  selected.forEach((app) => expected.set(outputs[app], renderModule(app, catalogs[app], runtimeValuesByApp[app])));
   return expected;
 }
 
@@ -276,6 +284,11 @@ function auditScriptBlock(block, relative, issues) {
 function audit(selectedApp) {
   check(selectedApp);
   const selected = selectedApp && selectedApp !== "all" ? [selectedApp] : appNames;
+  if (selected.includes("web")) {
+    const { runtimeValues } = loadAndValidate();
+    const sqlResult = auditSql({ repoRoot: path.resolve(viewsRoot, ".."), runtimeValues });
+    console.log(formatSqlAuditSummary(sqlResult));
+  }
   const roots = {
     web: path.join(viewsRoot, "gyro-craftsman-web-own-v2.4/src"),
     chat: path.join(viewsRoot, "gyro-craftsman-chat-v1.0/src"),

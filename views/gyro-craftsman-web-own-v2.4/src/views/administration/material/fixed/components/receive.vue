@@ -65,7 +65,9 @@
           </el-table-column>
           <el-table-column prop="number" v-if="formData.type === 1" :label="$('ui.administrationMaterialFixedFixedMaterialNumber')" min-width="150" />
           <el-table-column prop="units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="80" />
-          <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="80" />
+          <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="80" >
+            <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.cate_name) || '--' }}</template>
+          </el-table-column>
           <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
           <el-table-column prop="stock" v-if="formData.type === 0" :label="$('ui.administrationMaterialFixedConsumeInventoryQuantity')" min-width="80" />
           <el-table-column prop="number" v-if="formData.type === 0" :label="$('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="150">
