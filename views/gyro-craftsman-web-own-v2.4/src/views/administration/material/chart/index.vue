@@ -80,7 +80,9 @@
               <el-table :data="stockData" default-expand-all row-key="id" style="width: 100%">
                 <el-table-column :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="100" prop="name" />
                 <el-table-column :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" prop="units" />
-                <el-table-column :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" prop="cate.cate_name" />
+                <el-table-column :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" prop="cate.cate_name" >
+            <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.cate_name) || '--' }}</template>
+          </el-table-column>
                 <el-table-column :label="$('ui.administrationMaterialChartIndexCurrentInventory')" min-width="100" prop="stock" />
                 <el-table-column :label="$('public.operation')" fixed="right" prop="describe" width="80">
                   <template slot-scope="scope">
@@ -124,7 +126,9 @@
                   min-width="100"
                   prop="storage.cate.cate_name"
                   show-overflow-tooltip
-                />
+                >
+                  <template slot-scope="scope">{{ $(scope.row.storage && scope.row.storage.cate && scope.row.storage.cate.cate_name) || '--' }}</template>
+                </el-table-column>
                 <el-table-column :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" prop="storage.units" show-overflow-tooltip />
                 <el-table-column :label="$('ui.administrationMaterialChartIndexChange')" min-width="100" prop="stock" show-overflow-tooltip>
                   <template #default="{ row }">

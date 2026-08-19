@@ -14,7 +14,7 @@
             <el-table-column prop="name" :label="$('ui.hrHolidaySettingLeaveTypes')" min-width="120">
               <template slot-scope="scope">
                 <div class="flex">
-                  <div class="ml10">{{ scope.row.name }}</div>
+                  <div class="ml10">{{ $(scope.row.name) }}</div>
                 </div>
               </template>
             </el-table-column>

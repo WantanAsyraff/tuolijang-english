@@ -25,7 +25,9 @@
         </el-table-column>
         <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100"></el-table-column>
         <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360" />
-        <el-table-column prop="cate_name" :label="$('ui.developViewManagementType')" min-width="90" />
+        <el-table-column prop="cate_name" :label="$('ui.developViewManagementType')" min-width="90" >
+          <template slot-scope="scope">{{ $(scope.row.cate_name, scope.row.cate_name_en) }}</template>
+        </el-table-column>
         <el-table-column prop="created_at" :label="$('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
         <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="100" fixed="right">
           <template slot-scope="scope">

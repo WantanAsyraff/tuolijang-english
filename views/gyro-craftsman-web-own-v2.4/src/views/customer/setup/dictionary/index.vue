@@ -3,7 +3,7 @@
   <div class="v-height-flag">
     <el-card class="mb14 normal-page" v-loading="loadingBox" :body-style="{ padding: '20px 20px 20px 20px' }">
       <oaFromBox
-        :title="$route.meta.title"
+        :title="$($route.meta.title, $route.meta.title_en)"
         :search="search"
         :dropdownList="dropdownList"
         :total="total"
@@ -59,15 +59,17 @@
         >
           <el-table-column type="selection" width="55"> </el-table-column>
           <el-table-column prop="id" label="ID" type=""></el-table-column>
-          <el-table-column prop="name" :label="$('ui.customerSetupDictionaryIndexDictionaryName')" show-overflow-tooltip> </el-table-column>
+          <el-table-column prop="name" :label="$('ui.customerSetupDictionaryIndexDictionaryName')" show-overflow-tooltip>
+            <template slot-scope="scope"><span>{{ $(scope.row.name) }}</span></template>
+          </el-table-column>
           <el-table-column prop="ident" :label="$('ui.customerSetupDictionaryIndexDictionaryIdentifier')" show-overflow-tooltip> </el-table-column>
           <el-table-column prop="type" :label="$('ui.customerSetupDictionaryIndexStatus')" show-overflow-tooltip>
             <template slot-scope="scope">
               <el-switch
                 :disabled="scope.row.is_default === 1"
                 v-model="scope.row.status"
-                active-text="启用"
-                inactive-text="停用"
+                :active-text="$('public.enable')"
+                :inactive-text="$('public.disable')"
                 :active-value="1"
                 :inactive-value="0"
                 @change="handleStatus(scope.row)"
@@ -76,7 +78,7 @@
           </el-table-column>
           <el-table-column prop="mark" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="150" show-overflow-tooltip>
             <template slot-scope="scope">
-              <span>{{ scope.row.mark || '--' }}</span>
+              <span>{{ $(scope.row.mark) || '--' }}</span>
             </template>
           </el-table-column>
           <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" show-overflow-tooltip>

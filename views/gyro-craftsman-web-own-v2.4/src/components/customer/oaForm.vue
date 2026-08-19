@@ -15,7 +15,7 @@
         class="from-item-title mb20 flex-between"
         style="width: 100%"
       >
-        <span>{{ item.title }}</span>
+        <span>{{ $(item.title) }}</span>
         <!-- v-if="item.ident == 'product' && viewMode && editKey !== 'product'" -->
       </div>
 
@@ -41,7 +41,7 @@
             :span="viewMode && !['file', 'images', 'oaWangeditor'].includes(val.type) ? 12 : 24"
           >
             <el-form-item v-show="val.input_type !== 'hidden'" :prop="val.key" class="label-box inline-edit-item">
-              <span slot="label" class="label">{{ val.key_name }}：</span>
+              <span slot="label" class="label">{{ $(val.key_name) }}：</span>
               <i v-if="viewMode && savingKeyMap[val.key]" class="el-icon-loading inline-edit-saving-icon" />
               <!-- 文本输入框 -->
               <template v-if="val.input_type === 'input' && val.type === 'text'">
@@ -50,7 +50,7 @@
                   v-model="ruleForm[val.key]"
                   :maxlength="val.max"
                   :min="val.min"
-                  :placeholder="val.placeholder ? val.placeholder : $('ui.customerOaFormPleaseEnter') + val.key_name"
+                  :placeholder="fieldPlaceholder(val, 'enter')"
                   clearable
                   size="small"
                   class="clickZone"
@@ -78,7 +78,7 @@
                   :controls="false"
                   :max="val.max"
                   :min="val.min"
-                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :placeholder="fieldPlaceholder(val, 'select')"
                   :precision="val.decimal_place"
                   size="small"
                   style="width: 100%"
@@ -104,7 +104,7 @@
                   v-model="ruleForm[val.key]"
                   :autosize="autosize"
                   :maxlength="val.max"
-                  :placeholder="val.placeholder ? val.placeholder : $('ui.customerOaFormPleaseEnter') + val.key_name"
+                  :placeholder="fieldPlaceholder(val, 'enter')"
                   clearable
                   show-word-limit
                   size="small"
@@ -132,8 +132,8 @@
                   v-if="!viewMode || editKey == val.key"
                   :ref="`input_${val.key}`"
                   v-model="ruleForm[val.key]"
-                  :options="val.options"
-                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :options="localizedOptions(val.options, val.key)"
+                  :placeholder="fieldPlaceholder(val, 'select')"
                   :props="{
                     checkStrictly: true,
                     label: 'label',
@@ -166,7 +166,7 @@
                   v-if="!viewMode || editKey == val.key"
                   v-model="ruleForm[val.key]"
                   :multiple="val.type !== 'single'"
-                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :placeholder="fieldPlaceholder(val, 'select')"
                   clearable
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
                   filterable
@@ -181,7 +181,7 @@
                     v-for="el in val.options"
                     :key="el.value"
                     :disabled="el.disabled"
-                    :label="el.label"
+                    :label="localizedOptionLabel(el.label, val.key)"
                     :value="el.value"
                   />
                 </el-select>
@@ -236,7 +236,7 @@
                   @click="handleLabel(val)"
                 >
                   <div v-if="labelList && labelList.length == 0" class="placeholder">
-                    {{ val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name }}
+                    {{ fieldPlaceholder(val, 'select') }}
                   </div>
                   <div ref="getHeight">
                     <span
@@ -298,7 +298,7 @@
                   @keyup.enter.native="handlePopoverHide(ruleForm[val.key])"
                 >
                   <el-radio v-for="(el, index) in val.options" :key="index" :label="el.value">
-                    {{ el.label }}
+                    {{ localizedOptionLabel(el.label, val.key) }}
                   </el-radio>
                 </el-radio-group>
                 <div v-else :class="fieldViewClass(val)">
@@ -320,7 +320,7 @@
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
                 >
                   <el-checkbox v-for="(check, checkIndex) in val.options" :key="checkIndex" :label="check.value">
-                    {{ check.label }}
+                    {{ localizedOptionLabel(check.label, val.key) }}
                   </el-checkbox>
                 </el-checkbox-group>
                 <div v-else :class="fieldViewClass(val)">
@@ -340,7 +340,7 @@
                   v-if="!viewMode || editKey == val.key"
                   v-model="ruleForm[val.key]"
                   :format="'yyyy-MM-dd'"
-                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :placeholder="fieldPlaceholder(val, 'select')"
                   :value-format="'yyyy-MM-dd'"
                   clearable
                   size="small"
@@ -365,7 +365,7 @@
                   v-if="!viewMode || editKey == val.key"
                   v-model="ruleForm[val.key]"
                   :format="'yyyy-MM-dd HH:mm:ss'"
-                  :placeholder="val.placeholder ? val.placeholder : $('ui.developConditionGroupPleaseSelect') + val.key_name"
+                  :placeholder="fieldPlaceholder(val, 'select')"
                   :value-format="'yyyy-MM-dd HH:mm:ss'"
                   clearable
                   size="small"
@@ -626,6 +626,11 @@ export default {
   },
 
   methods: {
+    fieldPlaceholder(field, mode) {
+      if (field.placeholder) return this.$(field.placeholder)
+      const prefixKey = mode === 'enter' ? 'ui.customerOaFormPleaseEnter' : 'ui.developConditionGroupPleaseSelect'
+      return this.$(prefixKey) + this.$(field.key_name)
+    },
     localizedOptions(options, fieldKey) {
       return (options || []).map((option) => ({
         ...option,
@@ -710,7 +715,7 @@ export default {
           ['radio', 'select', 'checked', 'single', 'multiple'].includes(field.type) &&
           field.key !== 'customer_label'
         ) {
-          field.text = this.getText(field.options, field.value)
+          field.text = this.getText(field.options, field.value, field.key)
         }
         if (['checked', 'multiple'].includes(field.type) && field.value == '') {
           field.value = []
@@ -721,7 +726,7 @@ export default {
 
         // 2.4 校验规则动态注入
         if (field.required == 1) {
-          this.$set(this.rule, field.key, [{ required: true, message: `请输入${field.key_name}`, trigger: 'blur' }])
+          this.$set(this.rule, field.key, [{ required: true, message: this.$('ui.customerOaFormPleaseEnter') + this.$(field.key_name), trigger: 'blur' }])
         }
 
         // 2.5 表单值智能合并：优先保留用户已填 > 新默认值 > 空数组（多选）
@@ -1039,20 +1044,21 @@ export default {
       return value
     },
 
-    getText(options, val) {
+    getText(options, val, fieldKey) {
       if (Array.isArray(val)) {
         let resultNames = []
         val.forEach((id) => {
           const name = this.findNameInTree(options, this.resolveOptionValue(id))
 
           if (name) {
-            resultNames.push(name)
+            resultNames.push(this.localizedOptionLabel(name, fieldKey))
           }
         })
 
         return resultNames.join('/')
       } else {
-        return this.findNameInTree(options, this.resolveOptionValue(val))
+        const name = this.findNameInTree(options, this.resolveOptionValue(val))
+        return name ? this.localizedOptionLabel(name, fieldKey) : name
       }
     },
 

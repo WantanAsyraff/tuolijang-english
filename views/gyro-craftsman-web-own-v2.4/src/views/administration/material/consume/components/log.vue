@@ -35,7 +35,9 @@
                 {{ scope.row.storage.units ? scope.row.storage.units : '--' }}
               </template>
             </el-table-column>
-            <el-table-column prop="storage.cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" />
+            <el-table-column prop="storage.cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" >
+            <template slot-scope="scope">{{ $(scope.row.storage && scope.row.storage.cate && scope.row.storage.cate.cate_name) || '--' }}</template>
+          </el-table-column>
             <el-table-column prop="storage.specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
             <el-table-column prop="num" :label="$('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="80" />
             <el-table-column prop="updated_at" :label="$('ui.administrationMaterialConsumeLogIssueTime')" min-width="120">

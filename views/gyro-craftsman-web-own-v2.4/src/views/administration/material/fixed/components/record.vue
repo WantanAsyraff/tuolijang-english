@@ -25,7 +25,7 @@
             <span>{{ formData.data.name || '-' }}</span>
 
             <span class="title">{{ $("ui.administrationMaterialFixedRecordSpecificationModel") }}</span> <span>{{ formData.data.units || '--' }}</span>
-            <span class="title">{{ $("ui.administrationMaterialFixedMaterialDialogMaterialCategory") }}</span><span>{{ formData.data.cate.cate_name || '--' }}</span>
+            <span class="title">{{ $("ui.administrationMaterialFixedMaterialDialogMaterialCategory") }}</span><span>{{ $(formData.data.cate.cate_name) || '--' }}</span>
             <span class="title">{{ $("ui.administrationMaterialFixedRecordUnitOfMeasure") }}</span><span>{{ formData.data.specs || '--' }}</span>
           </div>
         </el-col>

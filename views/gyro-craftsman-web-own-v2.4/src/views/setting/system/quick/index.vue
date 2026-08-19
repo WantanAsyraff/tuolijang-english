@@ -10,7 +10,7 @@
           <div class="clearfix el-card__header">
             <oaFromBox
               :search="searchData"
-              :title="$route.meta.title"
+              :title="$($route.meta.title, $route.meta.title_en)"
               :total="total"
               :isViewSearch="false"
       :sortSearch="false"
@@ -23,7 +23,7 @@
             <el-table :data="tableData" style="width: 100%" row-key="id" :height="tableHeight" default-expand-all>
               <el-table-column prop="name" :label="$('ui.settingSystemQuickIndexTitle')" min-width="100">
                 <template slot-scope="scope">
-                  <div class="over-text2">{{ scope.row.name }}</div>
+                  <div class="over-text2">{{ $(scope.row.name) }}</div>
                 </template>
               </el-table-column>
               <el-table-column prop="pc_url" :label="$('ui.settingSystemQuickIndexDesktopUrl')" min-width="120">

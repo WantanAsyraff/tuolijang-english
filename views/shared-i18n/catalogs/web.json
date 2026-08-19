@@ -12633,6 +12633,10 @@
     "zh-cn": "已选择部门",
     "en": "Department selected"
   },
+  "web.public.disable": {
+    "zh-cn": "停用",
+    "en": "Disable"
+  },
   "web.public.disabled": {
     "zh-cn": "禁用",
     "en": "Disabled"
@@ -22820,6 +22824,10 @@
     "zh-cn": "已选中",
     "en": "Selected"
   },
+  "web.ui.userNewsSubscribeCancel": {
+    "zh-cn": "取消",
+    "en": "Cancel"
+  },
   "web.ui.userNewsSubscribeNotifications": {
     "zh-cn": "消息通知",
     "en": "Notifications"
@@ -22827,10 +22835,6 @@
   "web.ui.userNewsSubscribeSubscribe": {
     "zh-cn": "订阅",
     "en": "Subscribe"
-  },
-  "web.ui.userNewsSubscribeCancel": {
-    "zh-cn": "取消",
-    "en": "Cancel"
   },
   "web.ui.userNoticeIndexLatestAnnouncement": {
     "zh-cn": "最新公告",

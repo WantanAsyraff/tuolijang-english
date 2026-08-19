@@ -42,7 +42,7 @@
           </el-table-column>
           <el-table-column prop="cate_name" :label="$('ui.developApproveIndexLinkedApplication')" min-width="140">
             <template #default="{ row }">
-              <span>{{ row.cate_name ? row.cate_name : '--' }}</span>
+              <span>{{ row.cate_name ? $(row.cate_name, row.cate_name_en) : '--' }}</span>
             </template>
           </el-table-column>
           <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')" />

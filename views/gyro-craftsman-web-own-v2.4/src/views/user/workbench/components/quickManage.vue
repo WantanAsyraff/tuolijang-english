@@ -49,7 +49,7 @@
         </div>
         <template v-for="(other, index) in fastEntryData">
           <div class="quick-list-item">
-            <div class="quick-list-item-name">{{ other.cate_name }}</div>
+            <div class="quick-list-item-name">{{ $(other.cate_name, other.cate_name_en) }}</div>
             <!-- 业绩统计 -->
             <ul v-if="config.type == 'statistics'" class="statistics">
               <li v-for="(item1, indexs) in other.fast_entry" :key="'item1' + indexs" class="statistics-item">

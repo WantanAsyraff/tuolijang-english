@@ -1,0 +1,378 @@
+{
+  "version": 1,
+  "classifications": [
+    "USER_VISIBLE",
+    "INTERNAL_VALUE",
+    "IDENTIFIER",
+    "COMMENT",
+    "DATABASE_METADATA",
+    "TEST_DATA",
+    "UNKNOWN"
+  ],
+  "schemaMetadataFiles": [
+    "database/schema/mysql-schema.sql"
+  ],
+  "identifierColumns": [
+    "id",
+    "pid",
+    "ident",
+    "key",
+    "field_name_en",
+    "table_name_en",
+    "menu_path",
+    "path",
+    "paths",
+    "api",
+    "methods",
+    "unique_auth",
+    "uniqued",
+    "parent_uniqued",
+    "component",
+    "pc_url",
+    "uni_url",
+    "url",
+    "service_url",
+    "dict_ident",
+    "link_field",
+    "template_id",
+    "message_id"
+  ],
+  "knownInternalTables": [
+    "eb_agreement",
+    "eb_approve",
+    "eb_approve_form",
+    "eb_approve_rule",
+    "eb_approve_holiday_type",
+    "eb_attendance_shift",
+    "eb_attendance_shift_rule",
+    "eb_calendar_config",
+    "eb_category",
+    "eb_chat_app_auth",
+    "eb_chat_app_mcp_services",
+    "eb_chat_applications",
+    "eb_dict_data",
+    "eb_dict_type",
+    "eb_enterprise_paytype",
+    "eb_enterprise_role",
+    "eb_enterprise_role_user",
+    "eb_enterprise_user_role",
+    "eb_form_cate",
+    "eb_form_data",
+    "eb_message_category",
+    "eb_message_template",
+    "eb_openapi_rule",
+    "eb_schedule_type",
+    "eb_storage_category",
+    "eb_system_config",
+    "eb_system_crud",
+    "eb_system_crud_approve",
+    "eb_system_crud_approve_process",
+    "eb_system_crud_approve_rule",
+    "eb_system_crud_cate",
+    "eb_system_crud_event",
+    "eb_system_crud_field",
+    "eb_system_crud_form",
+    "eb_system_crud_role",
+    "eb_system_crud_table",
+    "eb_system_crud_table_user",
+    "eb_system_menus",
+    "eb_system_menus_copy",
+    "eb_system_quick",
+    "eb_system_role"
+  ],
+  "testDataTables": [
+    "eb_assess_plan",
+    "eb_assess_score",
+    "eb_bill_category",
+    "eb_client_label",
+    "eb_daily_report_member",
+    "eb_employee_train",
+    "eb_frame",
+    "eb_hay_group",
+    "eb_hay_group_data",
+    "eb_message",
+    "eb_promotion",
+    "eb_promotion_data",
+    "eb_rank",
+    "eb_rank_category",
+    "eb_rank_job",
+    "eb_rank_level",
+    "eb_rank_relation"
+  ],
+  "userVisibleColumns": {
+    "eb_agreement": [
+      "title"
+    ],
+    "eb_approve": [
+      "name",
+      "info"
+    ],
+    "eb_approve_form": [
+      "title",
+      "info",
+      "content"
+    ],
+    "eb_approve_holiday_type": [
+      "name"
+    ],
+    "eb_category": [
+      "cate_name"
+    ],
+    "eb_chat_app_mcp_services": [
+      "name",
+      "info"
+    ],
+    "eb_chat_applications": [
+      "name",
+      "info"
+    ],
+    "eb_dict_data": [
+      "name",
+      "type_name",
+      "mark"
+    ],
+    "eb_dict_type": [
+      "name",
+      "mark"
+    ],
+    "eb_enterprise_paytype": [
+      "name",
+      "info"
+    ],
+    "eb_enterprise_role": [
+      "role_name"
+    ],
+    "eb_form_cate": [
+      "title"
+    ],
+    "eb_form_data": [
+      "key_name",
+      "placeholder",
+      "desc"
+    ],
+    "eb_message_category": [
+      "cate_name"
+    ],
+    "eb_message_template": [
+      "message_title",
+      "content_template",
+      "button_template"
+    ],
+    "eb_openapi_rule": [
+      "name"
+    ],
+    "eb_schedule_type": [
+      "name",
+      "info"
+    ],
+    "eb_storage_category": [
+      "cate_name"
+    ],
+    "eb_system_config": [
+      "key_name",
+      "desc"
+    ],
+    "eb_system_crud": [
+      "table_name",
+      "info"
+    ],
+    "eb_system_crud_approve": [
+      "name",
+      "info"
+    ],
+    "eb_system_crud_approve_process": [
+      "name",
+      "info"
+    ],
+    "eb_system_crud_cate": [
+      "name"
+    ],
+    "eb_system_crud_event": [
+      "name"
+    ],
+    "eb_system_crud_field": [
+      "field_name",
+      "comment"
+    ],
+    "eb_system_crud_role": [
+      "crud_name"
+    ],
+    "eb_system_menus": [
+      "menu_name"
+    ],
+    "eb_system_menus_copy": [
+      "menu_name"
+    ],
+    "eb_system_quick": [
+      "name"
+    ],
+    "eb_system_role": [
+      "role_name"
+    ]
+  },
+  "jsonDisplayKeys": [
+    "name",
+    "title",
+    "label",
+    "mark",
+    "description",
+    "message",
+    "content",
+    "tips",
+    "placeholder",
+    "menu_name",
+    "display_name",
+    "key_name",
+    "field_name",
+    "info",
+    "text"
+  ],
+  "areaDictionary": {
+    "table": "eb_dict_data",
+    "typeColumn": "type_name",
+    "typeValue": "area_cascade",
+    "labelColumn": "name",
+    "valueColumn": "value",
+    "parentColumn": "pid"
+  },
+  "testDataValues": [
+    "侵",
+    "这个根据项目进行选择",
+    "阿瑟东现场",
+    "请问",
+    "店铺地址",
+    "测试",
+    "备注2"
+  ],
+  "frontendBoundaries": [
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/components/customer/oaForm.vue",
+      "mustContain": [
+        "{{ $(val.key_name) }}",
+        "fieldPlaceholder(val",
+        "localizedOptions(val.options"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/components/common/formList.vue",
+      "mustContain": [
+        ":placeholder=\"$(val.field_name)\"",
+        ":label=\"$(items.name || items.label)\""
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/customer/setup/customForm/components/clueToCustomers.vue",
+      "mustContain": [
+        "{{ $(scope.row.key_name) }}"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/customer/setup/dictionary/index.vue",
+      "mustContain": [
+        "{{ $(scope.row.name) }}",
+        "{{ $(scope.row.mark)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/customer/setup/dictionary/management.vue",
+      "mustContain": [
+        "{{ $(scope.row.name) }}",
+        "{{ $(scope.row.mark)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/setting/system/menus/index.vue",
+      "mustContain": [
+        "$(props.row.menu_name, props.row.menu_name_en)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/develop/crud/components/entityTable.vue",
+      "mustContain": [
+        "{{ $(scope.row.table_name) }}",
+        "{{ $(scope.row.info)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/develop/crud/components/basicSetting.vue",
+      "mustContain": [
+        "localizedMetadataOptions(options",
+        "localizedMetadataOptions(menuList"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/setting/enterprise/setup/index.vue",
+      "mustContain": [
+        ":label=\"$(item.label, item.label_en)\""
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/setting/enterprise/setup/components/config-form.vue",
+      "mustContain": [
+        ":label=\"$(item.title, item.title_en)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/fd/setup/type/index.vue",
+      "mustContain": [
+        "{{ $(scope.row.name) }}",
+        "{{ $(scope.row.info)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/fd/setup/category/index.vue",
+      "mustContain": [
+        "{{ $(scope.row.name) }}"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/business/holidayType/index.vue",
+      "mustContain": [
+        "{{ $(scope.row.name) }}"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/setting/system/quick/index.vue",
+      "mustContain": [
+        "{{ $(scope.row.name) }}"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/business/examine/index.vue",
+      "mustContain": [
+        "{{ $(scope.row.name)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/user/news/unread.vue",
+      "mustContain": [
+        "$(scope.row.cate_name, scope.row.cate_name_en)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/administration/material/fixed/components/record.vue",
+      "mustContain": [
+        "$(formData.data.cate.cate_name)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/administration/material/fixed/components/materialDialog.vue",
+      "mustContain": [
+        "$(fromData.data.cate.cate_name)",
+        "$(scope.row.cate && scope.row.cate.cate_name)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/administration/material/fixed/components/fixed.vue",
+      "mustContain": [
+        "$(scope.row.cate && scope.row.cate.cate_name)"
+      ]
+    },
+    {
+      "file": "views/gyro-craftsman-web-own-v2.4/src/views/administration/material/chart/index.vue",
+      "mustContain": [
+        "$(scope.row.storage && scope.row.storage.cate && scope.row.storage.cate.cate_name)"
+      ]
+    }
+  ]
+}

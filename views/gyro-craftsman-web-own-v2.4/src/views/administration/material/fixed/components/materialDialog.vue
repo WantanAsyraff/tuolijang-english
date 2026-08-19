@@ -22,7 +22,7 @@
             </el-row>
             <el-row>
               <el-col :span="12">
-                <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialCategory')">{{ fromData.data.cate.cate_name }}</el-form-item>
+                <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialCategory')">{{ $(fromData.data.cate.cate_name) }}</el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialModel')">{{ fromData.data.units || "--" }}</el-form-item>
@@ -65,7 +65,9 @@
               <el-table :data="[fromData.data]" style="width: 100%">
                 <el-table-column prop="name" :label="$('ui.administrationMaterialChartIndexMaterialName')"> </el-table-column>
                 <el-table-column prop="units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')"> </el-table-column>
-                <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')"> </el-table-column>
+                <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')">
+                  <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.cate_name) || '--' }}</template>
+                </el-table-column>
                 <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')"> </el-table-column>
                 <el-table-column prop="stock" :label="$('ui.administrationMaterialFixedConsumeInventoryQuantity')"> </el-table-column>
                 <el-table-column :label="$('ui.administrationMaterialFixedConsumeIssueQuantity')" width="150">

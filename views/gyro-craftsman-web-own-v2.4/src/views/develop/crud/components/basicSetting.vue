@@ -13,14 +13,14 @@
       <el-cascader
         disabled
         v-model="ruleForm.crud_id"
-        :options="options"
+        :options="localizedMetadataOptions(options, 'table_name')"
         style="width: 100%"
         size="small"
         :show-all-levels="false"
         :props="{ checkStrictly: true, label: 'table_name', value: 'id', emitPath: false }"
       >
         <template slot-scope="{ node, data }">
-          <span>{{ data.table_name }}</span>
+          <span>{{ $(data.table_name) }}</span>
           <span> （{{ data.table_name_en }}）</span>
         </template>
       </el-cascader>
@@ -31,8 +31,8 @@
         v-model="ruleForm.show_log"
         active-value="1"
         inactive-value="0"
-        inactive-text="关闭"
-        active-text="开启"
+        :inactive-text="$('public.close')"
+        :active-text="$('hr.open')"
         size="small"
       ></el-switch>
     </el-form-item>
@@ -43,8 +43,8 @@
           v-model="ruleForm.show_comment"
           active-value="1"
           inactive-value="0"
-          inactive-text="关闭"
-          active-text="开启"
+          :inactive-text="$('public.close')"
+          :active-text="$('hr.open')"
         ></el-switch>
         <el-input
           v-if="ruleForm.show_comment == 1"
@@ -66,13 +66,13 @@
         size="small"
         :placeholder="$('ui.developCrudBasicSettingSearchAndSelectApplicationsMultiple')"
       >
-        <el-option v-for="(v, index) in cateOptions" :key="v.id" :label="v.name" :value="v.id"> </el-option>
+        <el-option v-for="(v, index) in cateOptions" :key="v.id" :label="$(v.name)" :value="v.id"> </el-option>
       </el-select>
     </el-form-item>
     <el-form-item :label="$('ui.developCrudBasicSettingParentMenu')" prop="region">
       <el-cascader
         v-model="ruleForm.path"
-        :options="menuList"
+        :options="localizedMetadataOptions(menuList, 'menu_name')"
         :props="{ checkStrictly: true, label: 'menu_name', value: 'id', emitPath: false }"
         clearable
         style="width: 100%"
@@ -163,6 +163,13 @@ export default {
   },
 
   methods: {
+    localizedMetadataOptions(options, labelKey) {
+      return (options || []).map((item) => ({
+        ...item,
+        [labelKey]: this.$(item[labelKey]),
+        children: item.children ? this.localizedMetadataOptions(item.children, labelKey) : item.children
+      }))
+    },
     initForm(val) {
       this.ruleForm.table_name = val.table_name
       this.ruleForm.table_name_en = val.table_name_en

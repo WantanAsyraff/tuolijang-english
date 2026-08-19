@@ -6,7 +6,7 @@
         <el-page-header>
           <div slot="title" @click="backFn">
             <i class="el-icon-arrow-left"></i>
-            {{ query.name }}
+            {{ $(query.name) }}
           </div>
         </el-page-header>
       </el-col>
@@ -39,14 +39,16 @@
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
     >
       <el-table-column type="selection" width="55" v-if="is_Show !== 1"> </el-table-column>
-      <el-table-column prop="name" :label="$('ui.customerSetupDictionaryManagementDataNameId')"> </el-table-column>
+      <el-table-column prop="name" :label="$('ui.customerSetupDictionaryManagementDataNameId')">
+        <template slot-scope="scope"><span>{{ $(scope.row.name) }}</span></template>
+      </el-table-column>
       <el-table-column prop="value" :label="$('ui.customerSetupDictionaryManagementDataValue')"></el-table-column>
       <el-table-column prop="status" :label="$('ui.customerSetupDictionaryIndexStatus')">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"
-            active-text="启用"
-            inactive-text="停用"
+            :active-text="$('public.enable')"
+            :inactive-text="$('public.disable')"
             :active-value="1"
             :inactive-value="0"
             @change="handleStatus(scope.row)"
@@ -55,7 +57,7 @@
       </el-table-column>
       <el-table-column prop="mark" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')">
         <template slot-scope="scope">
-          <span>{{ scope.row.mark || '--' }}</span>
+          <span>{{ $(scope.row.mark) || '--' }}</span>
         </template>
       </el-table-column>
       <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')"> </el-table-column>

@@ -27,7 +27,7 @@
                 <div class="selIcon" :style="{ backgroundColor: scope.row.color }">
                   <i class="icon iconfont" :class="scope.row.icon"></i>
                 </div>
-                <div class="ml10">{{ scope.row.name || '--' }}</div>
+                <div class="ml10">{{ $(scope.row.name) || '--' }}</div>
               </div>
             </template>
           </el-table-column>

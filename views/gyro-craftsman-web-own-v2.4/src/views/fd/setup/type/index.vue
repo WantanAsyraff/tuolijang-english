@@ -1,10 +1,10 @@
-﻿<!-- 财务-财务设置-支付方式页面 -->
+<!-- 财务-财务设置-支付方式页面 -->
 <template>
 <div class="divBox bill-type">
   <el-card class="normal-page">
     <oaFromBox
       :total="total"
-      :title="$route.meta.title"
+      :title="$($route.meta.title, $route.meta.title_en)"
       :isViewSearch="false"
       :sortSearch="false"
       :btnText="$('ui.fdSetupTypeIndexAddPaymentMethod')"
@@ -13,10 +13,12 @@
 
     <div class="table-box mt10">
       <el-table :data="tableData" :height="tableHeight" style="width: 100%" row-key="id" default-expand-all>
-        <el-table-column prop="name" :label="$('ui.fdSetupTypeIndexPaymentName')" min-width="100" />
+        <el-table-column prop="name" :label="$('ui.fdSetupTypeIndexPaymentName')" min-width="100">
+          <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+        </el-table-column>
         <el-table-column prop="info" :label="$('ui.fdSetupTypeIndexPaymentDescription')" min-width="140">
           <template slot-scope="scope">
-            {{ scope.row.info || '--' }}
+            {{ $(scope.row.info) || '--' }}
           </template>
         </el-table-column>
         <el-table-column prop="status" :label="$('ui.customerProductCategoryEnabledStatus')" min-width="140">

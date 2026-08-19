@@ -4,7 +4,7 @@
   <el-table :data="gridData" :height="450">
     <el-table-column :label="$('ui.customerSetupCustomFormClueToCustomersLeadField')" property="name">
       <template slot-scope="scope">
-        {{ scope.row.key_name }}
+        {{ $(scope.row.key_name) }}
       </template>
     </el-table-column>
     <el-table-column label="" width="200">
@@ -25,7 +25,7 @@
           <el-option
             v-for="(item, index) in options"
             :key="index"
-            :label="item.key_name"
+            :label="$(item.key_name)"
             :value="item.key"
             :disabled="selectedList.includes(item.key)"
           ></el-option>

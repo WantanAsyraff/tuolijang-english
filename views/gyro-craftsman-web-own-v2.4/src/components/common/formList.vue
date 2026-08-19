@@ -50,7 +50,7 @@
         v-else-if="isSelectType(val.form_value)"
         v-model="ruleForm[val.field_name_en]"
         clearable
-        :placeholder="`${val.field_name}`"
+        :placeholder="$(val.field_name)"
         class="mr10"
         collapse-tags
         filterable
@@ -65,7 +65,7 @@
         <el-option
           v-for="(items, optionIndex) in getDisplayOptions(val)"
           :key="index + '_' + optionIndex + '_' + (items.value ?? items.id ?? 'empty')"
-          :label="items.name || items.label"
+          :label="$(items.name || items.label)"
           :value="items.value ?? items.id"
         ></el-option>
       </el-select>
@@ -74,7 +74,7 @@
       <el-select
         v-else-if="val.form_value === 'switch'"
         v-model="ruleForm[val.field_name_en]"
-        :placeholder="`${val.field_name}`"
+        :placeholder="$(val.field_name)"
         class="mr10"
         clearable
         filterable
@@ -92,7 +92,7 @@
         v-model="ruleForm[val.field_name_en]"
         :controls="false"
         :min="0"
-        :placeholder="`${val.field_name}`"
+        :placeholder="$(val.field_name)"
         class="mr10"
         :style="{ width: elementWidth + 'px' }"
         @change="handleEmit(val)"
@@ -119,7 +119,7 @@
         v-else-if="['cascader_address'].includes(val.form_value)"
         v-model="ruleForm[val.field_name_en]"
         :options="addressList"
-        :placeholder="`${val.field_name}`"
+        :placeholder="$(val.field_name)"
         :props="cascaderAddressProps"
         class="mr10 address-cascader"
         clearable
@@ -136,7 +136,7 @@
         v-else-if="isCascaderType(val.form_value)"
         v-model="ruleForm[val.field_name_en]"
         :options="getCascaderOptions(val, index)"
-        :placeholder="`${val.field_name}`"
+        :placeholder="$(val.field_name)"
         :cascader-props="getCascaderProps(val)"
         :cascader-style="{ width: elementWidth + 'px' }"
         class="mr10"
@@ -148,10 +148,10 @@
         v-else-if="isDateType(val.form_value)"
         v-model="val.data_dict"
         :clearable="val.data_dict && !val.data_dict.length > 0"
-        :end-placeholder="`${val.field_name_end ? val.field_name_end : val.field_name}`"
+        :end-placeholder="$(val.field_name_end || val.field_name)"
         :picker-options="val.pickerOptions || pickerOptions"
         :range-separator="$('toptable.to')"
-        :start-placeholder="`${val.field_name}`"
+        :start-placeholder="$(val.field_name)"
         class="time mr10"
         format="yyyy/MM/dd"
         size="small"
@@ -166,7 +166,7 @@
       <el-date-picker
         v-else-if="val.form_value === 'month'"
         v-model="val.data_dict"
-        :placeholder="val.field_name"
+        :placeholder="$(val.field_name)"
         class="time mr10"
         format="yyyy-MM"
         size="small"
@@ -180,8 +180,8 @@
       <el-date-picker
         v-else-if="val.form_value === 'monthrange'"
         v-model="val.data_dict"
-        :end-placeholder="`${val.field_name}`"
-        :start-placeholder="`${val.field_name}`"
+        :end-placeholder="$(val.field_name)"
+        :start-placeholder="$(val.field_name)"
         class="time mr10"
         format="yyyy/MM"
         :range-separator="$('ui.commonFormListTo')"
@@ -197,7 +197,7 @@
         <select-one
           :id="val.id"
           :showType="val.association_show_type"
-          :placeholder="val.field_name"
+          :placeholder="$(val.field_name)"
           :value="val.data_dict || {}"
           class="mr10"
           @getSelection="getSelection($event, val)"
@@ -209,7 +209,7 @@
         <select-member
           ref="selectMember"
           :only-one="val.onlyOne"
-          :placeholder="val.field_name"
+          :placeholder="$(val.field_name)"
           :isSearch="true"
           :selectIdData="val.value || val.option"
           class="mr10"
@@ -223,7 +223,7 @@
         <select-department
           :isSearch="true"
           :only-one="true"
-          :placeholder="val.field_name"
+          :placeholder="$(val.field_name)"
           :value="val.data_dict || []"
           @changeMastart="changeMastart($event, val)"
         ></select-department>
@@ -237,7 +237,7 @@
           :value="ruleForm[val.field_name_en] || []"
           :labelList="labelList"
           :list="getTagOptions(val, index)"
-          :placeholder="val.field_name"
+          :placeholder="$(val.field_name)"
           :props="{ children: 'children', label: 'name' }"
           class="mr10"
           @handleLabelConf="handleLabelConf($event, val)"
@@ -416,7 +416,7 @@ export default {
 
       return options.map((item) => {
         const value = item.value !== undefined ? item.value : item.id
-        const label = item.name || item.label
+        const label = this.$(item.name || item.label)
         const children = this.normalizeAddressOptions(item.children)
         const normalizedItem = {
           ...item,
@@ -497,7 +497,7 @@ export default {
       if (!Array.isArray(allOptions)) return
       const keyword = query.toLowerCase()
       const result = allOptions.filter((item) => {
-        const label = (item.name || item.label || '').toLowerCase()
+        const label = this.$(item.name || item.label || '').toLowerCase()
         return label.includes(keyword)
       })
       this.$set(this.selectFilterMap, fieldKey, result)
@@ -536,9 +536,12 @@ export default {
         // 确保每个选项都有唯一的value或id
         const uniqueValue = item.value !== undefined ? item.value : item.id
         const uniqueKey = uniqueValue !== undefined ? uniqueValue : `${parentIndex}_${index}_default`
+        const label = this.$(item.name || item.label || '')
         return {
           ...item,
-          // 添加唯一标识符以防万一value和id都不存在
+          // Values and IDs remain raw; only known metadata labels are localized.
+          name: label || item.name,
+          label: label || item.label,
           uniqueKey
         }
       })
