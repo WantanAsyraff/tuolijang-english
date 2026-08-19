@@ -362,7 +362,7 @@
 </div>
 </template>
 <script>
-import { $ } from '@/lang'
+import { $, getLanguage } from '@/lang'
 import { saveAttendanceShiftApi, detailShiftListApi, putShiftListApi } from '@/api/config'
 import { getInervalHour, getInervalTwoHour, getHour } from '@/libs/public'
 export default {
@@ -540,7 +540,7 @@ export default {
     formatRuleText(item, values) {
       const hours = values[item.hour]
       const minutes = values[item.minute]
-      if (this.$("ui.hrApprovaTimeHours") !== 'hours') {
+      if (getLanguage() !== 'en') {
         return `${item.premise} ${hours} 小时${minutes} 分钟${item.suffix}`
       }
       const duration = `${hours} hours ${minutes} minutes`
@@ -564,7 +564,7 @@ export default {
       return `${this.$(item.premise)} ${duration} ${this.$(item.suffix)}`
     },
     formatOvertimeText() {
-      if (this.$("ui.hrApprovaTimeHours") !== 'hours') {
+      if (getLanguage() !== 'en') {
         return `最后班次下班${this.form.overtimeH}小时${this.form.overtimeM}分钟后开始计算加班`
       }
       return `Overtime starts ${this.form.overtimeH} hours ${this.form.overtimeM} minutes after the final shift ends`

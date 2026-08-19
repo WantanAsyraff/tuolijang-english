@@ -267,7 +267,7 @@ export default {
           const propsParam = param.formConfig.props
           for (let i = 0; i < propsParam.length; i++) {
             if (propsParam[i].type === 'approvalBill' && !propsParam[i].children) {
-              this.$message.error(`${propsParam[i].title}中至少添加一项内容`)
+              this.$message.error(this.$('ui.runtimeLeak.sectionNeedsItem', { section: this.$(propsParam[i].title) }))
               return false
             }
           }

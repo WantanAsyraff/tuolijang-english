@@ -747,7 +747,7 @@ export default {
           (item) => item.types === 1 && item.settype === 4 && !item.users.length
         )
         if (missingUserNode) {
-          this.$message.error(`请选择${missingUserNode.title}`)
+          this.$message.error(this.$('ui.runtimeLeak.selectField', { field: this.$(missingUserNode.title) }))
           return
         }
       }

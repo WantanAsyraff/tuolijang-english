@@ -65,7 +65,7 @@
         <el-option
           v-for="(items, optionIndex) in getDisplayOptions(val)"
           :key="index + '_' + optionIndex + '_' + (items.value ?? items.id ?? 'empty')"
-          :label="$(items.name || items.label)"
+          :label="$(items.name || items.label, items.name_en || items.label_en)"
           :value="items.value ?? items.id"
         ></el-option>
       </el-select>
@@ -416,7 +416,7 @@ export default {
 
       return options.map((item) => {
         const value = item.value !== undefined ? item.value : item.id
-        const label = this.$(item.name || item.label)
+        const label = this.$(item.name || item.label, item.name_en || item.label_en)
         const children = this.normalizeAddressOptions(item.children)
         const normalizedItem = {
           ...item,
@@ -497,7 +497,7 @@ export default {
       if (!Array.isArray(allOptions)) return
       const keyword = query.toLowerCase()
       const result = allOptions.filter((item) => {
-        const label = this.$(item.name || item.label || '').toLowerCase()
+        const label = this.$(item.name || item.label || '', item.name_en || item.label_en).toLowerCase()
         return label.includes(keyword)
       })
       this.$set(this.selectFilterMap, fieldKey, result)
@@ -536,7 +536,7 @@ export default {
         // 确保每个选项都有唯一的value或id
         const uniqueValue = item.value !== undefined ? item.value : item.id
         const uniqueKey = uniqueValue !== undefined ? uniqueValue : `${parentIndex}_${index}_default`
-        const label = this.$(item.name || item.label || '')
+        const label = this.$(item.name || item.label || '', item.name_en || item.label_en)
         return {
           ...item,
           // Values and IDs remain raw; only known metadata labels are localized.

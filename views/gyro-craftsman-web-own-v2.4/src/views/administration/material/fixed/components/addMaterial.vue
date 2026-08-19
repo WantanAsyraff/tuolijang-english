@@ -196,14 +196,14 @@ export default {
   data() {
     const checkNumber = (rule, value, callback) => {
       if (!value && !this.formData.edit) {
-        return callback(new Error('请输入入库数量'))
+        return callback(new Error($('请输入入库数量')))
       } else {
         callback()
       }
     }
     const checkPrice = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error('请输入单价'))
+        return callback(new Error($('请输入单价')))
       } else {
         callback()
       }
@@ -333,9 +333,9 @@ export default {
               if (res.data) {
                 const len = res.data.length
                 if (len > 1) {
-                  message = '编号为 ' + res.data[0] + ' -- ' + res.data[len - 1] + ' 的物资添加成功'
+                  message = this.$('ui.runtimeLeak.materialRangeAdded', { first: res.data[0], last: res.data[len - 1] })
                 } else {
-                  message = '编号为 ' + res.data[0] + ' 的物资添加成功'
+                  message = this.$('ui.runtimeLeak.materialAdded', { number: res.data[0] })
                 }
               }
             } else {
@@ -385,7 +385,7 @@ export default {
             let max = 20
             if (unm > max) {
               countriesSelect.value = countriesSelect.value.substring(0, max)
-              this.$message.error('最多可以输入' + max + '字符')
+              this.$message.error(this.$('ui.runtimeLeak.maxCharacters', { count: max }))
             }
           }
           countriesSelect.addEventListener('input', this.handleCountriesInput)

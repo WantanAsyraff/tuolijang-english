@@ -68,7 +68,7 @@ import { $, getLanguage, setLanguage } from '@/lang'
         </VFormRender>
       </div>
       <!--      <div slot="footer" class="dialog-footer">-->
-      <!--        <el-button type="" @click="showPreviewDialogFlag = false">关闭</el-button>-->
+      <!--        <el-button type="" @click="showPreviewDialogFlag = false">{{ $('关闭') }}</el-button>-->
       <!--      </div>-->
     </el-dialog>
     <oa-dialog

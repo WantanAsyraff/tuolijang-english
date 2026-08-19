@@ -2,7 +2,7 @@
 <template>
 <div class="station">
   <el-drawer
-    :title="formData.title"
+    :title="$(formData.title)"
     :visible.sync="drawer"
     :direction="direction"
     :modal="true"
@@ -77,7 +77,7 @@
             <div slot="description">
               <div class="operationBox" :class="item.operation_name == '申请开票' ? 'removeBorderLine' : ''">
                 <div class="header">
-                  <div class="left">{{ item.operation_name }}</div>
+                  <div class="left">{{ $(item.operation_name, item.operation_name_en) }}</div>
                   <div class="right">
                     {{ item.card && item.card.name }}
                     <el-divider direction="vertical" />
@@ -87,8 +87,8 @@
 
                 <div class="footer" v-if="item.operation_name !== '申请开票'">
                   <el-form label-width="110px" :row-style="{ height: '32px' }" class="description">
-                    <el-form-item :label="details.name" v-for="(details, index) in item.operation" :key="index">
-                      <span v-if="details.name !== '开票凭证：'" class="content">{{ details.val || '--' }}</span>
+                    <el-form-item :label="$(details.name, details.name_en)" v-for="(details, index) in item.operation" :key="index">
+                      <span v-if="$(details.name, details.name_en) !== $('开票凭证：')" class="content">{{ details.val || '--' }}</span>
                       <img :src="details.val" alt="" v-else class="item-img" />
                     </el-form-item>
                   </el-form>

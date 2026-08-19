@@ -15,7 +15,7 @@
         <!-- <el-cascader
           v-model="types"
           :options="options"
-          placeholder="请选择消息类型"
+          :placeholder="$('请选择消息类型')"
           size="small"
           :props="{ checkStrictly: true }"
           clearable
@@ -42,7 +42,7 @@
       </el-form-item>
 
       <!-- <el-col :span="8">
-          <el-button type="primary" size="small" @click="handleConfirm">搜索</el-button>
+          <el-button type="primary" size="small" @click="handleConfirm">{{ $('搜索') }}</el-button>
           <el-button size="small" @click="reset">{{ $('public.reset') }}</el-button>
         </el-col> -->
     </el-row>

@@ -15,7 +15,7 @@
               :class="activeVal === item.value ? 'active' : ''"
               @click="handleTypes(item)"
             >
-              <img :src="getChatImg(item.pic)" alt="" class="logo" /> {{ item.label }}
+              <img :src="getChatImg(item.pic)" alt="" class="logo" /> {{ $(item.label) }}
             </div>
           </div>
         </el-col>
@@ -188,7 +188,7 @@ export default {
       this.getList(1)
     },
     handleTypes(item) {
-      this.title = item.label
+      this.title = this.$(item.label)
       this.activeVal = item.value
       this.where.provider = item.value
       this.getList(1)

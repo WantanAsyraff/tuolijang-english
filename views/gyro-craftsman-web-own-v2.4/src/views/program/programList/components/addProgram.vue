@@ -211,7 +211,7 @@ export default {
     checkEndDate(rule, value, callback) {
       if (value && this.formData.start_date) {
         if (value < this.formData.start_date) {
-          callback(new Error('结束日期不能早于开始日期'))
+          callback(new Error($('结束日期不能早于开始日期')))
         } else {
           callback()
         }

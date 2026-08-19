@@ -365,8 +365,8 @@
         :data="levelLists"
         class="mt14"
         highlight-current-row
-        no-filtered-userFrom-text="暂无筛选结果"
-        no-userFrom-text="暂无数据"
+        :no-filtered-userFrom-text="$('暂无筛选结果')"
+        :no-userFrom-text="$('暂无数据')"
       >
         <el-table-column :label="$('ui.settingEnterpriseSetupStorageStorageSpaceName')" min-width="120">
           <template slot-scope="scope">
@@ -390,9 +390,9 @@
               :active-value="1"
               :inactive-value="0"
               :value="scope.row.status"
-              active-text="开启"
+              :active-text="$('开启')"
               class="defineSwitch"
-              inactive-text="关闭"
+              :inactive-text="$('关闭')"
               size="large"
               @change="changeSwitch(scope.row, index)"
             >

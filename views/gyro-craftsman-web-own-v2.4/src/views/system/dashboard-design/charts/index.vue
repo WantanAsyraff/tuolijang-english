@@ -150,9 +150,9 @@ export default {
     },
     copyCanvas() {
       this.$message
-        .confirm('从' + (this.isMobile ? 'PC' : '移动端') + '复制图表将会清空当前配置，是否确认复制?', $('legacyScript.hint'), {
-          confirmButtonText: '确认',
-          cancelButtonText: '取消',
+        .confirm(this.$('ui.runtimeLeak.copyChartConfirm', { source: this.isMobile ? 'PC' : this.$('ui.runtimeLeak.mobile') }), $('legacyScript.hint'), {
+          confirmButtonText: this.$('public.ok'),
+          cancelButtonText: this.$('public.cancel'),
           type: 'warning'
         })
         .then(async () => {

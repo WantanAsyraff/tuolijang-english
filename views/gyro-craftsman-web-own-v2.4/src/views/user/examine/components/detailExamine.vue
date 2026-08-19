@@ -75,7 +75,7 @@
             v-if="isRevokeFn(examineData) && userId == examineData.card.id"
             size="small"
             @click="handleRefuse()"
-            >撤销</el-button
+            >{{ $("撤销") }}</el-button
           >
         </div> -->
       </div>
@@ -93,7 +93,7 @@
               <!-- 审批单组件：明细数据渲染 -->
               <div v-if="item.type == 'approvalBill'">
                 <template v-for="(group, gIdx) in item.value">
-                  <div class="bill-title">{{ item.label }}{{ gIdx + 1 }}</div>
+                  <div class="bill-title">{{ $(item.label) }}{{ gIdx + 1 }}</div>
                   <div v-for="(field, fIdx) in group" :key="`g${gIdx}-f${fIdx}`" class="label">
                     <span class="rule-label" v-if="field.type !== 'timeFrom'">{{ field.label }}：</span>
 
@@ -117,7 +117,7 @@
               </div>
 
               <div class="label" v-else>
-                <span class="rule-label" v-if="item.type !== 'timeFrom'">{{ item.label }}:</span>
+                <span class="rule-label" v-if="item.type !== 'timeFrom'">{{ $(item.label) }}:</span>
 
                 <div v-if="item.type === 'rich_text'" style="width: 90%">
                   <div class="rich-box" v-html="item.value"></div>

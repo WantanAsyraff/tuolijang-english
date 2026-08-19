@@ -110,7 +110,7 @@
         </el-col>
 
         <el-col :span="12">
-          <!-- <el-form-item label="备注：">
+          <!-- <el-form-item :label="$('备注：')">
             <span class="info-text">{{ dataInfo.mark||'--' }}</span>
           </el-form-item> -->
         </el-col>

@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 import { makeRequiredRule } from '../../utils'
 
-const label = '附件'
+const label = $('附件')
 const name = 'upload'
 
 export default {

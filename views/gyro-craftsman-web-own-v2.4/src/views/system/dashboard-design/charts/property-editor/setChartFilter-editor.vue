@@ -5,7 +5,7 @@
         <el-button @click="setCondition">{{ setConditionText }}</el-button>
         <!-- <div class="ml-a-span" @click="setCondition" v-else></div> -->
       </el-form-item>
-      <!-- <zbDialog title="过滤条件" append-to-body width="37%" v-model="dialogIsShow">
+      <!-- <zbDialog :title="$('过滤条件')" append-to-body width="37%" v-model="dialogIsShow">
         <zbSetConditions
           v-if="dialogIsShow"
           v-model="conditionConf"

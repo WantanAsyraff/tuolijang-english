@@ -1,6 +1,6 @@
 import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
-const label = '加班'
+const label = $('加班')
 const name = 'overtimeFrom'
 export default {
   icon: 'iconfont iconjiaban',

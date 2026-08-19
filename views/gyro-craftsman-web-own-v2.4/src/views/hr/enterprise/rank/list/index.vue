@@ -21,7 +21,7 @@
           <el-table-column prop="name" :label="$('hr.rankname')" min-width="180" />
           <!--          <el-table-column-->
           <!--            prop="type.name"-->
-          <!--            label="职级类型"-->
+          <!--            :label="$('职级类型')"-->
           <!--            min-width="180"-->
           <!--          />-->
           <el-table-column prop="number" :label="$('hr.numberranks')" min-width="180" />

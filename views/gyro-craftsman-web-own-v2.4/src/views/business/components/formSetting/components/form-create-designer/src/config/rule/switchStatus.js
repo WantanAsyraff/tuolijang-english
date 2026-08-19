@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule, makeRequiredRule } from '../../utils';
 
-const label = '状态开关';
+const label = $('状态开关')
 const name = 'switchStatus';
 
 export default {

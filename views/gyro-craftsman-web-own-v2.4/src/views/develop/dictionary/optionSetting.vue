@@ -11,7 +11,7 @@
       <div class="left">
         <div v-for="(item, index) in left" :key="index" class="item" :class="activeId == item.id ? 'active' : ''"
           @click="handleClick(item, index)">
-          {{ item.name }}
+          {{ $(item.name, item.name_en) }}
         </div>
       </div>
       <div class="right">

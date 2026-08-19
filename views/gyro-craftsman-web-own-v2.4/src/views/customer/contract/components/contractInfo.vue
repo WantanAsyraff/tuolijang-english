@@ -106,8 +106,8 @@
             <span slot="label">{{ $("legacy.9e22b7a1fa97e1d9") }}</span>
             <el-switch
               v-model="rules.is_abnormal"
-              active-text="异常"
-              inactive-text="正常"
+              :active-text="$('异常')"
+              :inactive-text="$('正常')"
               :active-value="1"
               :inactive-value="0"
               inactive-color="#1890FF"

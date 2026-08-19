@@ -20,7 +20,7 @@
             :command="item.id"
           >
             <i class="iconfont" :class="item.icon" :style="{ color: item.color }"></i>
-            {{ item.name }}
+            {{ $(item.name, item.name_en) }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -44,7 +44,7 @@
               </div>
             </el-col>
             <el-col class="table-title-right">
-              <p class="title">{{ scope.row.approve.name }}</p>
+              <p class="title">{{ $(scope.row.approve.name, scope.row.approve.name_en) }}</p>
               <p class="over-text">{{ getValue(scope.row.content) }}</p>
             </el-col>
           </el-row>
@@ -342,8 +342,8 @@ export default {
       this.rowData = row
       if (row.status === 0) {
         this.$confirm(this.$("legacy.11accb9f68551eb7"), $('public.tips'), {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+          confirmButtonText: this.$('public.ok'),
+          cancelButtonText: this.$('public.cancel'),
           type: 'warning'
         })
           .then(() => {
@@ -366,7 +366,7 @@ export default {
         this.$message.success($('legacyScript.withdrawApplicationSuccessful'))
       } catch (error) {
         console.error($('legacyScript.withdrawApplicationFailed'), error)
-        this.$message.error(error.message || '撤销申请失败')
+        this.$message.error(error.message || this.$('ui.runtimeLeak.withdrawFailed'))
       }
       this.getTableData()
     },

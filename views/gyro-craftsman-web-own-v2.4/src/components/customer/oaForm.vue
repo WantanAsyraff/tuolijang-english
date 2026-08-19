@@ -15,7 +15,7 @@
         class="from-item-title mb20 flex-between"
         style="width: 100%"
       >
-        <span>{{ $(item.title) }}</span>
+        <span>{{ systemLabel(item.title) }}</span>
         <!-- v-if="item.ident == 'product' && viewMode && editKey !== 'product'" -->
       </div>
 
@@ -23,7 +23,7 @@
         <!-- <div
           v-if="item.ident == 'product' && viewMode"
           class="iconfont iconbianji3"
-          title="编辑产品清单"
+          :title="$('编辑产品清单')"
           @click="editProduct"
         >
           编辑
@@ -41,7 +41,7 @@
             :span="viewMode && !['file', 'images', 'oaWangeditor'].includes(val.type) ? 12 : 24"
           >
             <el-form-item v-show="val.input_type !== 'hidden'" :prop="val.key" class="label-box inline-edit-item">
-              <span slot="label" class="label">{{ $(val.key_name) }}：</span>
+              <span slot="label" class="label">{{ systemLabel(val.key_name) }}：</span>
               <i v-if="viewMode && savingKeyMap[val.key]" class="el-icon-loading inline-edit-saving-icon" />
               <!-- 文本输入框 -->
               <template v-if="val.input_type === 'input' && val.type === 'text'">
@@ -245,7 +245,7 @@
                       class="el-tag el-tag--small el-tag--info el-tag--light"
                       @click.stop="cardTag(labelIndex)"
                     >
-                      {{ item.name }}
+                      {{ $(item.name, item.name_en) }}
                       <i class="el-tag__close el-icon-close" @click.stop="cardTag(labelIndex)" />
                     </span>
                   </div>
@@ -275,7 +275,7 @@
                   <template v-if="val.options && val.options.length > 0">
                     <span v-for="(item, index) in val.options" :key="index" class="lh-center mr10">
                       <img v-default-avatar="item" :src="$getAvatarSrc(item)" alt="" class="avatar" />
-                      {{ item.name }}
+                      {{ $(item.name, item.name_en) }}
                     </span>
                   </template>
                   <template v-else> -- </template>
@@ -626,10 +626,19 @@ export default {
   },
 
   methods: {
+    systemLabel(value, englishValue) {
+      const translated = this.$(value || '', englishValue)
+      if (!/\\?&(?:quot|#0*39|#x0*27|amp);/i.test(translated) || typeof document === 'undefined') {
+        return translated
+      }
+      const decoder = document.createElement('textarea')
+      decoder.innerHTML = translated.replace(/\\&quot;/g, '&quot;')
+      return decoder.value
+    },
     fieldPlaceholder(field, mode) {
-      if (field.placeholder) return this.$(field.placeholder)
+      if (field.placeholder) return this.systemLabel(field.placeholder)
       const prefixKey = mode === 'enter' ? 'ui.customerOaFormPleaseEnter' : 'ui.developConditionGroupPleaseSelect'
-      return this.$(prefixKey) + this.$(field.key_name)
+      return this.$(prefixKey) + this.systemLabel(field.key_name)
     },
     localizedOptions(options, fieldKey) {
       return (options || []).map((option) => ({
@@ -639,7 +648,7 @@ export default {
       }))
     },
     localizedOptionLabel(label, fieldKey) {
-      const translated = this.$(label)
+      const translated = this.systemLabel(label)
       if (translated !== label || fieldKey !== 'area_cascade' || !/[\u3400-\u9fff]/.test(label || '')) {
         return translated
       }
@@ -772,7 +781,7 @@ export default {
     joinName(obj) {
       return Object.values(obj)
         .filter((item) => item?.name) // 过滤无效项
-        .map((item) => item.name)
+        .map((item) => this.$(item.name, item.name_en))
         .join('、')
     },
     // 编辑产品清单
@@ -890,7 +899,7 @@ export default {
                 this.productType = 'edit'
               }
             } catch (error) {
-              this.$message.error(error.data?.message || '保存失败')
+              this.$message.error(error.data?.message || this.$('ui.runtimeLeak.saveFailed'))
             } finally {
               this.$set(this.savingKeyMap, fieldKey, false)
             }

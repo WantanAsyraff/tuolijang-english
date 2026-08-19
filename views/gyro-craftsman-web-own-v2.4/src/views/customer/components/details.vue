@@ -7,7 +7,7 @@
     :direction="direction"
     :show-close="true"
     :size="formData.width"
-    :title="formData.title"
+    :title="$(formData.title)"
     :visible.sync="drawer"
   >
     <div slot="title" class="invoice-title">
@@ -31,7 +31,7 @@
             <span
               class="info3"
               :style="{ color: dataInfo.data && dataInfo.data.status ? dataInfo.data.status.color : '#1890ff' }"
-              >{{ dataInfo.data && dataInfo.data.status ? dataInfo.data.status.name : '--' }}</span
+              >{{ dataInfo.data && dataInfo.data.status ? $(dataInfo.data.status.name, dataInfo.data.status.name_en) : '--' }}</span
             >
 
             <span class="title" v-if="types === 'odds'"

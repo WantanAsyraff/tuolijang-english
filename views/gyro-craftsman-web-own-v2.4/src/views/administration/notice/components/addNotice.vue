@@ -67,7 +67,7 @@
           </div>
         </el-form-item>
         <el-form-item :label="$('ui.administrationNoticeAddNoticePinToTop')">
-          <el-switch v-model="form.delivery" active-text="是" inactive-text="否"></el-switch>
+          <el-switch v-model="form.delivery" :active-text="$('是')" :inactive-text="$('否')"></el-switch>
         </el-form-item>
         <el-row class="resource-content">
           <el-col class="resource-left">

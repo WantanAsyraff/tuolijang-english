@@ -37,7 +37,7 @@ import { $, getLanguage } from '@/lang'
         :class="{ 'is-disabled': item.disabled }"
         @click="onTableMenuClick(item)"
       >
-        {{ item.label }}
+        {{ $(item.label) }}
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@ export default Vue.extend({
     },
     placeholder: {
       type: String,
-      default: '请输入内容...'
+      default: 'legacyScript.enterContent'
     },
     height: {
       type: String,

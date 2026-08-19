@@ -27,7 +27,7 @@
                   v-if="!isShowContainerList.includes(ctn.type)"
                   @dblclick="addContainerByDbClick(ctn)"
                 >
-                  <span class="line1">{{ ctn.name }} </span>
+                  <span class="line1">{{ $(ctn.name) }} </span>
                   <!-- <span>T</span> -->
                 </li>
               </draggable>
@@ -58,7 +58,7 @@
                   class="field-widget-item line1"
                   @dblclick="addFieldByDbClick(fld)"
                 >
-                  <span class="line1">{{ fld.name }} </span>
+                  <span class="line1">{{ $(fld.name) }} </span>
                 </li>
               </draggable>
             </el-collapse-item>
@@ -217,8 +217,8 @@ export default {
 
     loadFormTemplate(jsonUrl) {
       this.$confirm(this.$('designer.hint.loadFormTemplateHint'), $('public.tips'), {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消'
+        confirmButtonText: this.$('public.ok'),
+        cancelButtonText: this.$('public.cancel')
       })
         .then(() => {
           axios

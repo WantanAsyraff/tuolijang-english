@@ -66,8 +66,8 @@
                 :active-value="1"
                 :inactive-value="0"
                 :width="60"
-                active-text="开启"
-                inactive-text="关闭"
+                :active-text="$('开启')"
+                :inactive-text="$('关闭')"
                 @change="handleStatus(scope.row)"
               >
               </el-switch>

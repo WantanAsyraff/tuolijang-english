@@ -1,7 +1,7 @@
 import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
-const label = '文字';
+const label = $('文字')
 const name = 'span';
 
 export default {

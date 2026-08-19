@@ -7,6 +7,7 @@
 import cloneDeep from 'lodash/cloneDeep'
 import moment from 'moment'
 import CryptoJS from 'crypto-js'
+import { $ } from '@/lang'
 export function arrayToTree(data = [], props = { id: 'id', parentId: 'pid', children: 'children' }) {
   data = cloneDeep(data)
   const { id, parentId, children } = props
@@ -70,55 +71,55 @@ export function getAccount(phone, uuid) {
 export function loginRegex(type, length) {
   const regexObj = {
     0: {
-      text: '纯数字至少'+length+'位',
+      text: $('ui.runtimeLeak.password.digits', { count: length }),
       val: '^[0-9]{'+length+',}$'
     },
     // /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.])[a-zA-Z\d!#@*&.]{8,}$/
     '01': {
-      text: '数字+大写字母至少'+length+'位',
+      text: $('ui.runtimeLeak.password.digitUpper', { count: length }),
       val: '^(?=.*[0-9])(?=.*[A-Z]).{'+length+',}$'
     },
     '02': {
-      text: '数字+小写字母至少'+length+'位',
+      text: $('ui.runtimeLeak.password.digitLower', { count: length }),
       val: '^(?=.*[0-9])(?=.*[a-z]).{'+length+',}$'
     },
     '03': {
-      text: '数字+特殊字符至少'+length+'位',
+      text: $('ui.runtimeLeak.password.digitSpecial', { count: length }),
       val: '^(?=.*[0-9])(?=.*?[!#@*&$%.]).{'+length+',}$'
     },
     12: {
-      text: '大写字母+小写字母至少'+length+'位',
+      text: $('ui.runtimeLeak.password.upperLower', { count: length }),
       val: '^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{' + length + ',}$'
     },
     13: {
-      text: '大写字母+特殊字符至少'+length+'位',
+      text: $('ui.runtimeLeak.password.upperSpecial', { count: length }),
       val: '^(?=.*[A-Z])(?=.*?[!#@*&$%.])[A-Z!#@*&$%.].{' + length + ',}$'
     },
     23: {
-      text: '小写字母+特殊字符至少'+length+'位',
+      text: $('ui.runtimeLeak.password.lowerSpecial', { count: length }),
       val:  '^(?=.*[a-z])(?=.*?[!#@*&$%.])[a-z!#@*&$%.].{' + length + ',}$'
     },
     '012': {
-      text: '数字加小写字母加大写字母至少'+length+'位',
+      text: $('ui.runtimeLeak.password.digitLowerUpper', { count: length }),
       val: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{' + length + ',}$'
     },
     '0123': {
-      text: '数字+小写字母+大写字母+特殊字符至少'+length+'位',
+      text: $('ui.runtimeLeak.password.all', { count: length }),
       val:
       '^(?=.*?[a-z])(?=.*?[A-Z])(?=.*[0-9])(?=.*?[!#@*&%$.])[a-zA-Z0-9!#@*&$%.]{'+length +',}$'
     },
     
     '013': {
-      text: '数字+大写字母+特殊字符至少'+length+'位',
+      text: $('ui.runtimeLeak.password.digitUpperSpecial', { count: length }),
       val: '^(?=.*[A-Z])(?=.*[0-9])(?=.*?[!#@*&$%.])[A-Z0-9!#@*&$%.]{' + length + ',}$'
     },
     '023': {
-      text: '数字+小写字母+特殊字符至少'+length+'位',
+      text: $('ui.runtimeLeak.password.digitLowerSpecial', { count: length }),
       val: '^(?=.*[a-z])(?=.*[0-9])(?=.*?[!#@*&%$.])[a-z0-9!#@*&$%.]{' + length + ',}$'
     },
 
     123: {
-      text: '小写字母+大写字母+特殊字符至少'+length+'位',
+      text: $('ui.runtimeLeak.password.lowerUpperSpecial', { count: length }),
       val: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[!#@*&$%.])[A-Za-z!#@*&$%.]{' + length + ',}'
     }
   }

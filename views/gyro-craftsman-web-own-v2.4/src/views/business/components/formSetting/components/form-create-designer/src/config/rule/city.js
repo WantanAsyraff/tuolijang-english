@@ -2,7 +2,7 @@ import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeRequiredRule } from '../../utils';
 
-const label = '省市区';
+const label = $('省市区')
 const name = 'city';
 export default {
   icon: 'iconfont iconshengshiqu',

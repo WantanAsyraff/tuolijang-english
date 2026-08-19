@@ -75,7 +75,7 @@
                         :command="index"
                       >
                         <i class="iconfont" :class="item.icon" :style="{ color: item.color }"></i>
-                        {{ item.name }}
+                        {{ $(item.name, item.name_en) }}
                       </el-dropdown-item>
                     </el-dropdown-menu>
                   </el-dropdown>

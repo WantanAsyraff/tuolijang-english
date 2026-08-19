@@ -15,7 +15,7 @@
           :key="index"
           @click="handleClick(item, 'title')"
         >
-          {{ item.label }}
+          {{ $(item.label) }}
         </div>
       </div>
       <span class="el-icon-chat-dot-square icon" slot="reference"></span>
@@ -33,7 +33,7 @@
         <el-option
           v-for="item in options.update_type.slice(0, 2)"
           :key="item.value"
-          :label="item.label"
+          :label="$(item.label)"
           :value="item.value"
         >
         </el-option>
@@ -47,7 +47,7 @@
         style="width: 100%"
         filterable
       >
-        <el-option v-for="item in options.user_feilds" :key="item.value" :label="item.label" :value="item.value">
+        <el-option v-for="item in options.user_feilds" :key="item.value" :label="$(item.label)" :value="item.value">
         </el-option>
       </el-select>
       <select-member
@@ -70,7 +70,7 @@
         <el-option
           v-for="item in options.update_type.slice(0, 2)"
           :key="item.value"
-          :label="item.label"
+          :label="$(item.label)"
           :value="item.value"
         >
         </el-option>
@@ -84,7 +84,7 @@
         style="width: 100%"
         filterable
       >
-        <el-option v-for="item in options.time_feilds" :key="item.value" :label="item.label" :value="item.value">
+        <el-option v-for="item in options.time_feilds" :key="item.value" :label="$(item.label)" :value="item.value">
         </el-option>
       </el-select>
       <el-date-picker
@@ -107,7 +107,7 @@
         <el-option
           v-for="item in options.update_type.slice(0, 2)"
           :key="item.value"
-          :label="item.label"
+          :label="$(item.label)"
           :value="item.value"
         >
         </el-option>
@@ -121,7 +121,7 @@
         style="width: 100%"
         filterable
       >
-        <el-option v-for="item in options.time_feilds" :key="item.value" :label="item.label" :value="item.value">
+        <el-option v-for="item in options.time_feilds" :key="item.value" :label="$(item.label)" :value="item.value">
         </el-option>
       </el-select>
       <el-date-picker
@@ -140,7 +140,7 @@
   </el-form-item>
   <el-form-item :label="$('ui.developToDoScheduleReminderTime')" class="mt14">
     <el-select size="small" v-model="form.remind_time" :placeholder="$('ui.developConditionGroupPleaseSelect')" style="width: 100%">
-      <el-option v-for="item in remindOptions" :key="item.value" :label="item.label" :value="item.value"> </el-option>
+      <el-option v-for="item in remindOptions" :key="item.value" :label="$(item.label)" :value="item.value"> </el-option>
     </el-select>
   </el-form-item>
   <el-form-item :label="$('ui.developToDoScheduleScheduleType')" class="mt14"> {{ $("ui.developToDoSchedulePersonalReminder") }}</el-form-item>
@@ -159,7 +159,7 @@
           :key="index"
           @click="handleClick(item)"
         >
-          {{ item.label }}
+          {{ $(item.label) }}
         </div>
       </div>
       <span class="el-icon-chat-dot-square icon" slot="reference"></span>

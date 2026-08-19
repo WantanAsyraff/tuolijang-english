@@ -69,8 +69,8 @@
             v-model="scope.row.is_main"
             :active-value="1"
             :inactive-value="0"
-            active-text="开启"
-            inactive-text="关闭"
+            :active-text="$('开启')"
+            :inactive-text="$('关闭')"
           >
           </el-switch>
         </template>
@@ -265,7 +265,7 @@ export default {
         }
         this.formDataInit.value = res.data.form_value
         this.formDataInit = { ...this.formDataInit, ...obj }
-        this.fromData.title = `编辑字段`
+        this.fromData.title = this.$('编辑字段')
         this.fromData.type = 'edit'
         let dynamicList = Commnt.keyValue[res.data.form_value]
         if (dynamicList) {

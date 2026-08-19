@@ -1,4 +1,4 @@
-﻿<!-- @FileDescription: 人事-审批设置-明细预览组件 -->
+<!-- @FileDescription: 人事-审批设置-明细预览组件 -->
 <template>
   <div class="ab-container">
     <div v-for="(item, idx) in cacheRule" :key="idx">
@@ -7,7 +7,7 @@
         :key="'a' + idx"
         :title="getTitle()+ (Object.keys(cacheRule).indexOf(idx) + 1)"
         type="info"
-        close-text="删除"
+        :close-text="$('删除')"
         @close="del(idx)"
       />
       <div v-if="formCreateInject.preview" class="num">{{ getTitle() + (Object.keys(cacheRule).indexOf(idx) + 1) }}</div>
@@ -90,7 +90,7 @@ export default {
   },
   methods: {
     getTitle() {
-      return this.formCreateInject.rule.title?this.formCreateInject.rule.title:'明细'
+      return this.$(this.formCreateInject.rule.title || 'ui.runtimeLeak.details')
     },
     cache(k, val) {
       this.cacheValue[k] = JSON.stringify(val)

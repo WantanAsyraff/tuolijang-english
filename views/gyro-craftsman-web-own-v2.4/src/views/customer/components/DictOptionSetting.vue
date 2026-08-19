@@ -398,7 +398,7 @@ const handleSave = async () => {
       dict_type_id: currentTypeObj.value.id
     })
   } catch (err) {
-    proxy.$message.error(err.message || '保存失败')
+    proxy.$message.error(err.message || proxy.$('ui.runtimeLeak.saveFailed'))
   } finally {
     saving.value = false
   }

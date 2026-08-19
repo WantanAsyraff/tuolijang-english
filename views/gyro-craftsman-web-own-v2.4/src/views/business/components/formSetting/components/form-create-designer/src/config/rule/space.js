@@ -1,4 +1,5 @@
-const label = '间距';
+import { $ } from '@/lang'
+const label = $('间距')
 const name = 'div';
 
 export default {

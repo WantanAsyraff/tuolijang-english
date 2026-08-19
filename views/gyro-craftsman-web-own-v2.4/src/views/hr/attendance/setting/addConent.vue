@@ -329,13 +329,13 @@
           </div>
           <div v-if="from.is_external" class="mb20 pl24">
             <span
-              >{{ $("ui.hrAttendanceSettingAddConentOffSiteClockInRemarksAreRequired") }}<el-switch v-model="from.is_external_note" active-text="开启" inactive-text="关闭">
+              >{{ $("ui.hrAttendanceSettingAddConentOffSiteClockInRemarksAreRequired") }}<el-switch v-model="from.is_external_note" :active-text="$('开启')" :inactive-text="$('关闭')">
               </el-switch
             ></span>
           </div>
           <div v-if="from.is_external" class="pl24">
             <span
-              >{{ $("ui.hrAttendanceSettingAddConentPhotosAreRequiredForOffSiteClockIns") }}<el-switch v-model="from.is_external_photo" active-text="开启" inactive-text="关闭">
+              >{{ $("ui.hrAttendanceSettingAddConentPhotosAreRequiredForOffSiteClockIns") }}<el-switch v-model="from.is_external_photo" :active-text="$('开启')" :inactive-text="$('关闭')">
               </el-switch
             ></span>
           </div>

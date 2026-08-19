@@ -182,9 +182,9 @@ export default {
       if (!value && this.dailyId === 1) {
         return callback(new Error(this.$('user.work.title')))
       } else if (!value && this.dailyId === 2) {
-        return callback(new Error('请填写本周工作'))
+        return callback(new Error($('请填写本周工作')))
       } else if (!value && this.dailyId === 3) {
-        return callback(new Error('请填写本月工作'))
+        return callback(new Error($('请填写本月工作')))
       } else {
         callback()
       }
@@ -193,9 +193,9 @@ export default {
       if (!value && this.dailyId === 1) {
         return callback(new Error(this.$('user.work.tilte1')))
       } else if (!value && this.dailyId === 2) {
-        return callback(new Error('请填写下周计划'))
+        return callback(new Error($('请填写下周计划')))
       } else if (!value && this.dailyId === 3) {
-        return callback(new Error('请填写下月计划'))
+        return callback(new Error($('请填写下月计划')))
       } else {
         callback()
       }
@@ -269,7 +269,7 @@ export default {
   },
   computed: {
     subTitle() {
-      return SUB_TITLE_MAP[this.dailyId];
+      return this.$(SUB_TITLE_MAP[this.dailyId]);
     }
   },
   mounted() {
@@ -330,7 +330,7 @@ export default {
       }
 
       if (!editId) {
-        this.newTitle = '填写' + objTitle[type]
+        this.newTitle = this.$('填写' + objTitle[type])
         this.editId = 0
         types = type
         this.disabled = false
@@ -344,7 +344,7 @@ export default {
 
         this.getInfo(this.editId)
       } else if (type === 'edit') {
-        this.newTitle = '编辑' + objTitle[data.types]
+        this.newTitle = this.$('编辑' + objTitle[data.types])
         this.editId = editId
         types = data.types
         this.editType = type
@@ -362,22 +362,22 @@ export default {
     getLable(type) {
       switch (type) {
         case 0:
-          this.todayLable = '今日工作'
-          this.planLable = '下个工作日计划'
+          this.todayLable = this.$('今日工作')
+          this.planLable = this.$('下个工作日计划')
           this.report_show = false
           break
         case 1:
-          this.todayLable = '本周工作'
-          this.planLable = '下周计划'
+          this.todayLable = this.$('本周工作')
+          this.planLable = this.$('下周计划')
           this.report_show = false
           break
         case 2:
-          this.todayLable = '本月工作'
-          this.planLable = '下月计划'
+          this.todayLable = this.$('本月工作')
+          this.planLable = this.$('下月计划')
           this.report_show = false
           break
         case 3:
-          this.todayLable = '填写汇报'
+          this.todayLable = this.$('填写汇报')
           this.report_show = true
           break
       }

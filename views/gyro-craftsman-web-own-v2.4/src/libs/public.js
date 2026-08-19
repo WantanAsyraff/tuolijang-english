@@ -3,8 +3,9 @@ import settings from '@/settings'
 import helper from '@/libs/helper'
 export function modalSure(title, confirmButton = this.$('public.ok'), tips = this.$('public.tips')) {
   return new Promise((resolve, reject) => {
-    this.$confirm(`${title || this.$('publicjs.title1')}?`, tips, {
-      confirmButtonText: confirmButton,
+    const translatedTitle = this.$(title || 'publicjs.title1')
+    this.$confirm(`${translatedTitle}?`, this.$(tips), {
+      confirmButtonText: this.$(confirmButton),
       cancelButtonText: this.$('public.cancel'),
       type: 'warning'
     })

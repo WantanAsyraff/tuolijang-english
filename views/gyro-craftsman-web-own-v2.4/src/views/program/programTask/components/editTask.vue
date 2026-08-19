@@ -31,7 +31,7 @@
             </el-select>
           </div>
           <div class="flex">
-            <!-- <el-popover v-if="formData.level !== 4" placement="bottom" trigger="hover" content="新建子任务">
+            <!-- <el-popover v-if="formData.level !== 4" placement="bottom" trigger="hover" :content="$('新建子任务')">
               <i slot="reference" class="iconfont icontiaojian" @click="addSubtasks(formData)"></i>
             </el-popover> -->
             <el-dropdown trigger="hover">

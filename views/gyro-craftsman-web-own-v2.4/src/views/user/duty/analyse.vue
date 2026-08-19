@@ -198,7 +198,7 @@ export default {
         {
           label: $('customer.department'),
           render: (row) => {
-            return <span>{row.frame ? row.frame.name : '--'}</span>
+            return <span>{row.frame ? $(row.frame.name) : '--'}</span>
           }
         },
         {

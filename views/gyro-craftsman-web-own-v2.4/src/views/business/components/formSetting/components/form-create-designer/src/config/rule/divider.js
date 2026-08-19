@@ -1,5 +1,5 @@
 import { $ } from '@/lang'
-const label = '分割线';
+const label = $('分割线')
 const name = 'el-divider';
 
 export default {

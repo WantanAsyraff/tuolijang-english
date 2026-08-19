@@ -381,7 +381,7 @@ export default {
           const res = await clientInvoiceDetailApi(id || this.delData.id)
           this.delData = Object.assign({}, this.delData, res.data || {})
         } catch (error) {
-          this.$message.error(error.message || '获取发票详情失败')
+          this.$message.error(error.message || this.$('ui.runtimeLeak.invoiceDetailsFailed'))
         }
       }
       this.drawer = true

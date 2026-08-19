@@ -295,7 +295,7 @@ export default {
             type: 'none'
           },
           formatter: (option) => {
-            return `${option[0].name}<br/>${option[0].value}人`
+            return this.$('ui.runtimeLeak.peopleCount', { label: option[0].name, count: option[0].value })
           }
         },
         grid: {

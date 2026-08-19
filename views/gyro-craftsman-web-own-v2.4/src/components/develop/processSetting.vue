@@ -171,10 +171,10 @@ export default {
           this.reErr(childNode)
           for (var i = 0; i < conditionNodes.length; i++) {
             if (conditionNodes[i].error) {
-              this.tipList.push({ name: conditionNodes[i].nodeName, types: 1, type: ' 条件' })
+              this.tipList.push({ name: conditionNodes[i].nodeName, types: 1, type: '条件' })
             }
             if (!conditionNodes[i].childNode) {
-              this.tipList.push({ name: conditionNodes[i].nodeName, types: 2, type: ' 审批人或抄送人' })
+              this.tipList.push({ name: conditionNodes[i].nodeName, types: 2, type: '审批人或抄送人' })
             }
             this.reErr(conditionNodes[i])
           }
@@ -188,7 +188,7 @@ export default {
         this.isTried = true
         this.tipList = []
         if (!this.nodeConfig.childNode) {
-          this.tipList.push({ name: '', types: 2, type: ' 审批人或抄送人' })
+          this.tipList.push({ name: '', types: 2, type: '审批人或抄送人' })
         }
         this.reErr(this.nodeConfig)
         this.nodeConfig.nodeUserList = this.flowPermission

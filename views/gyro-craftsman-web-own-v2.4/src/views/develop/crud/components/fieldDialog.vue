@@ -20,10 +20,10 @@
                             :value="item.value" />
                     </el-select>
                 </el-form-item>
-                <!-- <el-form-item label="选项数据：" prop="data_type" v-if="rowData.value == 'select'">
+                <!-- <el-form-item :label="$('选项数据：')" prop="data_type" v-if="rowData.value == 'select'">
                     <el-radio-group v-model="form.data_type" class="vertical">
-                        <el-radio label="1">静态数据</el-radio>
-                        <el-radio label="0">数据字典</el-radio>
+                        <el-radio label="1">{{ $('静态数据') }}</el-radio>
+                        <el-radio label="0">{{ $('数据字典') }}</el-radio>
                     </el-radio-group>
                 </el-form-item> -->
 
@@ -47,7 +47,7 @@
                 </el-form-item>
                 <el-form-item :label='$("legacyScript.uniqueField")' prop="is_uniqid" v-if="form.value == 'input'">
                     <el-switch v-model="form.is_uniqid" size="small" active-value="1" inactive-value="0"
-                        active-text="开启" inactive-text="关闭">
+                        :active-text="$('开启')" :inactive-text="$('关闭')">
                     </el-switch>
                 </el-form-item>
                 <el-form-item :label='$("legacyScript.whenAdding")' prop="create_modify">
@@ -146,7 +146,7 @@ export default {
                     {
                         validator: function (rule, value, callback) {
                             if (/^[\u4e00-\u9fa5a-zA-Z][\u4e00-\u9fa5a-zA-Z_]{0,15}$/.test(value) == false) {
-                                callback(new Error('以中文，英文字母开头，中间可输入下划线，最多可输入16个字'))
+                                callback(new Error($('以中文，英文字母开头，中间可输入下划线，最多可输入16个字')))
                             } else {
                                 callback()
                             }
@@ -163,7 +163,7 @@ export default {
                     {
                         validator: function (rule, value, callback) {
                             if (/^[a-z][A-Za-z_]*$/.test(value) == false) {
-                                callback(new Error('英文小写字母开头，不可包含中文，空格，中间可输入下划线'))
+                                callback(new Error($('英文小写字母开头，不可包含中文，空格，中间可输入下划线')))
                             } else {
                                 callback()
                             }
@@ -213,7 +213,7 @@ export default {
                 this.fromData.title = $('ui.businessFormSettingFormCreateDesignerFcDesignerEditField')
             } else {
                 this.textTypes = this.typesObj[this.rowData.value]
-                this.fromData.title = '新建字段' + '-' + this.rowData.label
+                this.fromData.title = $('ui.developCrudFieldDialog.newField', { label: this.rowData.label })
             }
 
 

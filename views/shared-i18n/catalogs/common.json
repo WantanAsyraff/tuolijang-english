@@ -26289,6 +26289,21 @@
     "en": "Add invoice",
     "runtime": true
   },
+  "runtime.customerActivity.addedLead": {
+    "zh-cn": "新添加线索",
+    "en": "New lead",
+    "runtime": true
+  },
+  "runtime.customerActivity.addedOrder": {
+    "zh-cn": "新添加订单",
+    "en": "New order",
+    "runtime": true
+  },
+  "runtime.customerActivity.leadCreated": {
+    "zh-cn": "新增线索",
+    "en": "New lead",
+    "runtime": true
+  },
   "runtime.openapi.addOrder": {
     "zh-cn": "新增订单",
     "en": "Add order",
@@ -57612,5 +57627,36 @@
     "apps": [
       "web"
     ]
-  }
+  },
+  "runtime.web.finalDashboard.001": { "zh-cn": "APP扫码登录", "en": "App QR Code Login", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.002": { "zh-cn": "PC端签约链接：", "en": "PC signing link:", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.003": { "zh-cn": "上上级领导", "en": "Manager's manager", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.004": { "zh-cn": "下载排班模板", "en": "Download schedule template", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.005": { "zh-cn": "备注：", "en": "Remarks:", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.006": { "zh-cn": "导入排班表", "en": "Import schedule", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.007": { "zh-cn": "属性信息", "en": "Properties", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.008": { "zh-cn": "已置顶", "en": "Pinned", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.009": { "zh-cn": "帮助中心搜索", "en": "Help Center Search", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.010": { "zh-cn": "建议734*1034", "en": "Recommended: 734 × 1034", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.011": { "zh-cn": "拼命加载中", "en": "Loading...", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.012": { "zh-cn": "换行请使用：Enter+Shift", "en": "Press Enter+Shift to add a line break", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.013": { "zh-cn": "支持jpg、jpeg、png", "en": "Supports JPG, JPEG, and PNG", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.014": { "zh-cn": "文件图标", "en": "File icon", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.015": { "zh-cn": "文档图片", "en": "Document image", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.016": { "zh-cn": "新增消息类型", "en": "Add message type", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.017": { "zh-cn": "新建子任务", "en": "New subtask", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.018": { "zh-cn": "无匹配文本", "en": "No matching text", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.019": { "zh-cn": "暂无筛选结果", "en": "No filtered results", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.020": { "zh-cn": "未置顶", "en": "Not pinned", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.021": { "zh-cn": "编辑产品清单", "en": "Edit product list", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.022": { "zh-cn": "职级类型", "en": "Job level type", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.023": { "zh-cn": "请选择消息类型", "en": "Select a message type", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.024": { "zh-cn": "请选择状态", "en": "Select a status", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.025": { "zh-cn": "过滤条件", "en": "Filter conditions", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.026": { "zh-cn": "返回首页", "en": "Back to Home", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.027": { "zh-cn": "选择实体", "en": "Select entity", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.028": { "zh-cn": "选项数据：", "en": "Option data:", "runtime": true, "apps": ["web"] },
+  "runtime.web.finalDashboard.029": { "zh-cn": "静态数据", "en": "Static data", "runtime": true, "apps": ["web"] },
+  "runtime.web.runtimeLeak.invoiceProof": { "zh-cn": "开票凭证：", "en": "Invoice proof:", "runtime": true, "apps": ["web"] },
+  "runtime.web.runtimeLeak.rejectionReason": { "zh-cn": "拒绝原因", "en": "Rejection reason", "runtime": true, "apps": ["web"] }
 }

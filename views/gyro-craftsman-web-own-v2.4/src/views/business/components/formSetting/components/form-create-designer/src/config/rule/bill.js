@@ -1,6 +1,7 @@
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
-const label = '明细';
+const label = $('明细')
 const name = 'approvalBill';
 
 export default {

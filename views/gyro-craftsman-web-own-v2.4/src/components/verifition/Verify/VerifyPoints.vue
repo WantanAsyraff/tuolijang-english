@@ -248,7 +248,7 @@ export default {
           this.backToken = res.data.token
           this.secretKey = res.data.secretKey
           this.poinTextList = res.data.wordList
-          this.text = '请依次点击【' + this.poinTextList.join(',') + '】'
+          this.text = $('ui.verify.clickWordsInOrder', { points: this.poinTextList.join(',') })
         } else {
           this.text = res.repMsg
         }

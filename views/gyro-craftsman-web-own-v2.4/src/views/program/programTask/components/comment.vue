@@ -257,7 +257,8 @@ export default {
       this.replyPid = type == 1 ? item.id : item.pid
       this.replyUid = item.uid
       if (type === 2) {
-        let htmlContent = `<span style="font-size: 13px; color: #909399">回复</span><span style="font-size: 13px;"> ${item.member.name}：</span>${this.formData.describe}`
+        const replyPrefix = $('ui.programTask.replyPrefix', { name: item.member.name })
+        let htmlContent = `<span style="font-size: 13px; color: #909399">${replyPrefix}</span>${this.formData.describe}`
         this.formData.describe = htmlContent
       }
     },

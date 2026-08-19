@@ -306,7 +306,7 @@ test("dashboard script translation calls are lexically scoped", () => {
       if (source.slice(0, scriptOpen).includes("import { $ } from '@/lang'")) {
         issues.push(`${relative}: translator import is outside <script>`);
       }
-      if (/(?<![\w.])\$\s*\(/.test(script) && !script.includes("import { $ } from '@/lang'")) {
+      if (/(?<![\w.])\$\s*\(/.test(script) && !/import\s*\{[^}]*\$[^}]*\}\s*from\s*["']@\/lang["']/.test(script)) {
         issues.push(`${relative}: bare $() call has no translator import`);
       }
     }

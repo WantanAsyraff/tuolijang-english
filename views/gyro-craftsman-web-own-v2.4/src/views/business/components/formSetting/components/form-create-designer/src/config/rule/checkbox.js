@@ -3,7 +3,7 @@ import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule } from '../../utils/index';
 import { makeRequiredRule } from '../../utils';
 
-const label = '多选';
+const label = $('多选')
 const name = 'checkbox';
 
 export default {

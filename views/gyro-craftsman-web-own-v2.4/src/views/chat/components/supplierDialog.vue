@@ -16,7 +16,7 @@
           @click="handleClick(item)"
         >
           <img :src="getChatImg(item.pic)" alt="" class="img" />
-          {{ item.label }}
+          {{ $(item.label) }}
         </div>
       </div>
     </el-dialog>

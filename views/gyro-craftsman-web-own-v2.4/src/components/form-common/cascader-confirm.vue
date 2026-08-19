@@ -4,7 +4,7 @@
     v-model="tempValue"
     :options="options"
     :props="cascaderProps"
-    :placeholder="placeholder"
+    :placeholder="$(placeholder)"
     :clearable="clearable"
     :collapse-tags="collapseTags"
     :size="size"
@@ -34,7 +34,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '请选择'
+      default: 'finance.pleaseselect'
     },
     clearable: {
       type: Boolean,
@@ -143,7 +143,7 @@ export default {
       wrapper.style.cssText = 'padding: 6px 12px; text-align: right; border-top: 1px solid #EBEEF5;'
 
       const btn = document.createElement('button')
-      btn.textContent = '确定'
+      btn.textContent = this.$('public.ok')
       btn.className = 'el-button el-button--primary el-button--mini'
       btn.style.cssText = 'margin: 0;'
       btn.addEventListener('click', this.onConfirm)

@@ -20,7 +20,7 @@
           <div slot-scope="{ node, data }" class="custom-tree-node over-text">
             <span class="flex-box">
               <i class="icon iconfont tree-icon iconwenjianjia" />
-              {{ node.label }}
+              {{ $(node.label) }}
               <span v-if="data.user_count && isShowUserCount">({{ data.user_count }})</span>
             </span>
           </div>
@@ -80,7 +80,7 @@ export default {
     // tree搜索过滤
     filterNode(value, data) {
       if (!value) return true
-      return data.label.indexOf(value) !== -1
+      return this.$(data.label).indexOf(value) !== -1
     }
   }
 }

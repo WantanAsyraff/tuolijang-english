@@ -582,7 +582,7 @@ export default {
           }
         } else {
           this.isUploading = false
-          throw new Error('上传成功，但未返回文件信息')
+          throw new Error($('上传成功，但未返回文件信息'))
         }
       } catch (error) {
         // 统一错误处理

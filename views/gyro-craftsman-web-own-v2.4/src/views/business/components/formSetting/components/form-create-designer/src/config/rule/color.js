@@ -1,7 +1,7 @@
 import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
-const label = '颜色选择器';
+const label = $('颜色选择器')
 const name = 'colorPicker';
 
 export default {

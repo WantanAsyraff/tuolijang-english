@@ -41,7 +41,7 @@
           
           <!-- 加载更多行 -->
           <!-- <div v-else-if="scope.row.isLoadMore" class="load-more-row">
-            <span class="load-more-text" @click="handleLoadMore(scope.row)">加载更多<span class="el-icon-arrow-down" /></span>
+            <span class="load-more-text" @click="handleLoadMore(scope.row)">{{ $("加载更多") }}<span class="el-icon-arrow-down" /></span>
             <div class="divider"></div>
           </div> -->
           <!-- 客户子项行 -->

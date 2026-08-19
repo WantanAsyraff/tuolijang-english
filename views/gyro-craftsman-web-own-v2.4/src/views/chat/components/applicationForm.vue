@@ -123,21 +123,21 @@ export default {
   data() {
     const validate = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入提示词'))
+        callback(new Error($('请输入提示词')))
       } else {
         callback()
       }
     }
     const userValidate = (rule, value, callback) => {
       if (value.length == 0) {
-        callback(new Error('请选择编辑权限'))
+        callback(new Error($('请选择编辑权限')))
       } else {
         callback()
       }
     }
     const authValidate = (rule, value, callback) => {
       if (value.length == 0) {
-        callback(new Error('请选择应用人员'))
+        callback(new Error($('请选择应用人员')))
       } else {
         callback()
       }
@@ -192,21 +192,7 @@ export default {
   },
   computed: {
     placeholder: function () {
-      let str = `#角色规范
-你是一个 XXXX 小助手，你的任务是 XXXX。
-
-#思考规范
-
-- 在回答问题时，你需要分析用户的问题，确保理解需求和上下文。
-- 当用户的需求不明确时，你应该主动优先明确用户需求。
-- 对于超出 本角色 小助手服务范围的需求，你需要按如下话术委婉拒答：抱歉，并引导用户提出关于 本角色 相关的问题。
-
-#回复规范
-
-- 你需要以 简洁高效的语气风格 回复用户。
-- 在每次结束对话时你可以向用户提问并引导相关话题深入。`
-      return str
-    }
+      return $('ui.runtimeLeak.aiPromptPlaceholder')    }
   },
 
   methods: {

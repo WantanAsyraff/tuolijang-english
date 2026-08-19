@@ -26,7 +26,7 @@
     <div v-for="(item, index1) in dataList" :key="index1" class="wrapper-item">
       <div class="flex-center bgcColor">
         <div class="headerLeft">
-          <span>{{ item.title }}</span>
+          <span>{{ $(item.title, item.title_en) }}</span>
         </div>
         <div class="headerRight">
           <!-- <el-switch
@@ -34,8 +34,8 @@
             v-model="item.required"
             :active-value="1"
             :inactive-value="0"
-            active-text="必填"
-            inactive-text="选填"
+            :active-text="$('必填')"
+            :inactive-text="$('选填')"
           /> -->
 
           <el-tooltip :content="$('ui.customerSetupCustomFormIndexShowOrHideGroup')" effect="dark" placement="top" v-if="item.ident != 'product'">
@@ -99,8 +99,8 @@
               v-model="scope.row.required"
               :active-value="1"
               :inactive-value="0"
-              active-text="必填"
-              inactive-text="选填"
+              :active-text="$('必填')"
+              :inactive-text="$('选填')"
             />
           </template>
         </el-table-column>
@@ -112,8 +112,8 @@
               :active-value="1"
               :disabled="contractList.includes(row.key)"
               :inactive-value="0"
-              active-text="唯一"
-              inactive-text="重复"
+              :active-text="$('唯一')"
+              :inactive-text="$('重复')"
             />
           </template>
         </el-table-column>
@@ -220,7 +220,7 @@
                 :format="'yyyy-MM-dd'"
                 :value-format="'yyyy-MM-dd'"
                 clearable
-                placeholder="请选择"
+                :placeholder="$('请选择')"
                 size="small"
                 style="width: 130px"
                 :type="scope.row.type == 'datetime' ? 'datetime' : 'date'"
@@ -231,7 +231,7 @@
                 :format="'yyyy-MM-dd'"
                 :value-format="'yyyy-MM-dd'"
                 clearable
-                placeholder="请选择"
+                :placeholder="$('请选择')"
                 size="small"
                 style="width: 130px"
                 :type="scope.row.type == 'datetime' ? 'datetime' : 'date'"
@@ -247,8 +247,8 @@
               :active-value="1"
               :disabled="row.enable_delete !== 1"
               :inactive-value="0"
-              active-text="启用"
-              inactive-text="停用"
+              :active-text="$('启用')"
+              :inactive-text="$('停用')"
             />
           </template>
         </el-table-column>
@@ -280,7 +280,7 @@
           <span>产品清单</span>
         </div>
         <div class="headerRight">
-          <el-tooltip content="编辑" effect="dark" placement="top">
+          <el-tooltip :content="$('编辑')" effect="dark" placement="top">
             <span class="iconfont iconbianji1 pointer" @click="editCate(item)" />
           </el-tooltip>
         </div>

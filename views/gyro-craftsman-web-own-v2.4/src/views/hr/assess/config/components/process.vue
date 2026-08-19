@@ -30,7 +30,7 @@
               <div class="right">
                 <div class="right-con">
                   <!-- <el-checkbox :checked="true" :disabled="true" @change="changeSuperior($event)"
-                    >上上级领导</el-checkbox
+                    >{{ $('上上级领导') }}</el-checkbox
                   > -->
                   <el-button type="primary" circle>1</el-button>
                   <span>{{ $("legacy.0bb8af0effa45184") }}</span>

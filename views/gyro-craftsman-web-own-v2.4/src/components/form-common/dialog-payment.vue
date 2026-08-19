@@ -13,7 +13,7 @@
       <template slot="title">
         <el-row class="pay-title">
           <el-col :span="12" class="text-center" v-for="(item, index) in payType" :key="item.id">
-            <span @click="tabPay(index)" :class="activeIndex === index ? 'active' : ''">{{ item.name }}</span>
+            <span @click="tabPay(index)" :class="activeIndex === index ? 'active' : ''">{{ $(item.name) }}</span>
           </el-col>
         </el-row>
       </template>

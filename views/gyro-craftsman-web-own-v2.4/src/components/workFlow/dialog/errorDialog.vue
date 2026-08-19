@@ -10,7 +10,7 @@
           <div class="error-modal-item" v-for="(item, index) in list" :key="index">
             <div class="error-modal-item-label">{{ $("ui.workFlowDialogErrorDialogWorkflowDesign") }}</div>
             <div class="error-modal-item-content">
-              {{ item.name }} {{ item.type === 1 ? $('ui.workFlowDialogErrorDialogNotSelected') : $('ui.workFlowDialogErrorDialogNotAdded') }}{{ item.type }}
+              {{ item.name }} {{ item.types === 1 ? $('ui.workFlowDialogErrorDialogNotSelected') : $('ui.workFlowDialogErrorDialogNotAdded') }}{{ $(item.type) }}
             </div>
           </div>
         </div>

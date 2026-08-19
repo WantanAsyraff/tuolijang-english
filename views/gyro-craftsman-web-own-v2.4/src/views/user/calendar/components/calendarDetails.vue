@@ -117,7 +117,7 @@
         size="small"
         :class="info.finish == 3 ? 'primary' : 'btn'"
         style="width: 100%"
-        @click="putStatus('完成', 3)"
+        @click="putStatus(3)"
         v-if="isShow(info)"
         >{{ info.finish == 3 ? $('ui.customerWeChatMassMassDetailsCompleted') : $('ui.customerTargetStatisticsIndexCompleted') }}</el-button
       >
@@ -133,14 +133,14 @@
         size="small"
         :class="info.finish == 1 ? 'success' : 'btn'"
         style="width: 148px"
-        @click="putStatus('已接受', 1)"
+        @click="putStatus(1)"
         >{{ info.finish == 1 ? $('ui.userCalendarCalendarDetailsAccepted') : $('ui.userCalendarCalendarDetailsAccept') }}</el-button
       >
       <el-button
         size="small"
         :class="info.finish == 2 ? 'danger' : 'btn'"
         style="width: 148px"
-        @click="putStatus('拒绝', 2)"
+        @click="putStatus(2)"
         >{{ info.finish == 2 ? $('ui.userExamineExamineRejected') : $('ui.settingEnterpriseUpgradeIndexRefuse') }}</el-button
       >
 
@@ -148,14 +148,14 @@
         size="small"
         :class="info.finish == 0 ? 'warning' : 'btn'"
         style="width: 148px"
-        @click="putStatus('待定', 0)"
+        @click="putStatus(0)"
         >{{ info.finish == 0 ? $('ui.userCalendarCalendarDetailsTentative') : $('ui.userCalendarCalendarDetailsTentative2') }}</el-button
       >
       <el-button
         size="small"
         :class="info.finish == 3 ? 'primary' : 'btn'"
         style="width: 148px"
-        @click="putStatus('完成', 3)"
+        @click="putStatus(3)"
         >{{ info.finish == 3 ? $('ui.customerWeChatMassMassDetailsCompleted') : $('ui.customerTargetStatisticsIndexCompleted') }}</el-button
       >
       <img src="../../../../assets/images/comment.png" @click="openComment" alt="" class="commentImg" />
@@ -306,7 +306,7 @@ export default {
       info: {},
       detail: {},
       infoId: '',
-      commentTitle: '评论',
+      commentTitle: $('ui.calendar.commentTitle'),
       formInfo: {
         avatar: '',
         type: 'add',
@@ -427,7 +427,7 @@ export default {
 
     // 打开评论
     openComment() {
-      this.commentTitle = '评论'
+      this.commentTitle = $('ui.calendar.commentTitle')
       this.commentShow = true
     },
     commentCancel() {
@@ -445,7 +445,7 @@ export default {
     // 回复
     replyFn(data, row) {
       let name = row ? row.from_user.name : data.from_user.name
-      this.commentTitle = '回复' + '（' + name + '）'
+      this.commentTitle = $('ui.calendar.replyTitle', { name })
       this.reply_id = data.id
       if (row) {
         this.to_uid = row.from_user.id
@@ -519,7 +519,7 @@ export default {
     },
 
     // 修改状态
-    putStatus(text, status) {
+    putStatus(status) {
       this.completionStatus = status
       if (this.extendedProps.cid_value == 3 || this.extendedProps.cid_value == 4) {
         if (this.extendedProps.finish == 3) return false
@@ -578,7 +578,7 @@ export default {
     onDelete() {
       this.deleteText = 1
       if (this.info.period == 0) {
-        this.$modalSure('确认删除当前日程').then(() => {
+        this.$modalSure(this.$('ui.calendar.deleteConfirm')).then(() => {
           let data = {
             start: this.dateInfo.start,
             end: this.dateInfo.end,
@@ -659,7 +659,7 @@ export default {
       // 参数时间戳
 
       if (this.$moment(date).format('YYYY-MM-DD') == this.$moment().format('YYYY-MM-DD')) {
-        return '今天'
+        return this.$('今天')
       }
       return toGetWeek(date)
     }

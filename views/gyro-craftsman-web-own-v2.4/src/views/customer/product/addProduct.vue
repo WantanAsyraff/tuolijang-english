@@ -3,7 +3,7 @@
   <!-- <el-card :body-style="{ padding: '14px' }" class="station-header">
     <el-row>
       <el-col :span="24">
-        <el-page-header :content="id > 0 ? '编辑产品页面' : '新增产品页面'">
+        <el-page-header :content="id > 0 ? $('ui.customerProductAddProductEditProductPage') : $('ui.customerProductAddProductAddProductPage')">
           <div slot="title" @click="backFn">
             <i class="el-icon-arrow-left"></i>
             返回
@@ -487,8 +487,8 @@ export default {
       }
       if (isHas) {
         this.$confirm($('legacyScript.youCanAlsoUpdateTheImageForThisSpecificationBelow'), $('public.tips'), {
-          confirmButtonText: '替换',
-          cancelButtonText: '暂不',
+          confirmButtonText: this.$('ui.runtimeLeak.replace'),
+          cancelButtonText: this.$('ui.runtimeLeak.notNow'),
           type: 'warning'
         })
           .then(() => {
@@ -693,7 +693,7 @@ export default {
         })
 
         if (emptyItem) {
-          this.$message.error(`规格值不能为空，请填写`)
+          this.$message.error(this.$('ui.runtimeLeak.specValueRequired'))
           return false
         }
         this.form.attrValue = newData
@@ -864,11 +864,11 @@ export default {
       data.forEach((item) => {
         if (item.detail.length === 0) {
           return
-          // return this.$message.error(`请添加${item.value}的规格值`)
+          // return this.$message.error(this.$('ui.runtimeLeak.addSpecValue', { name: item.value }))
         } else {
           item.detail.forEach((item2) => {
             if (item2.value == '') {
-              this.$message.error(`请添加${item.value}的规格值`)
+              this.$message.error(this.$('ui.runtimeLeak.addSpecValue', { name: item.value }))
               return false
             }
           })

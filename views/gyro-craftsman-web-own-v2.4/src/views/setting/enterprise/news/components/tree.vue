@@ -3,7 +3,7 @@
     <div class="v-height-flag">
       <div class="title">
         {{ $("ui.settingEnterpriseNewsIndexMessageType") }}
-        <!-- <el-tooltip class="item" effect="dark" content="新增消息类型" placement="bottom">
+        <!-- <el-tooltip class="item" effect="dark" :content="$('新增消息类型')" placement="bottom">
           <span class="el-icon-plus" v-if="type !== 2" @click="addType"></span>
         </el-tooltip> -->
       </div>

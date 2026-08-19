@@ -3,7 +3,7 @@ import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule } from '../../utils/index';
 import { makeRequiredRule } from '../../utils';
 
-const label = '选择器';
+const label = $('选择器')
 const name = 'select';
 
 export default {

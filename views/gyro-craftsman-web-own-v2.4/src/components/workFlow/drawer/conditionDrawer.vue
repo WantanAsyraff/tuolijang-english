@@ -441,16 +441,16 @@ export default {
         for (let i = 0; i < condition.length; i++) {
           const value = condition[i]
           if (value.type === 'departmentTree' && value.category == 1 && value.options.userList.length <= 0) {
-            this.$message.error('请选择' + value.title)
+            this.$message.error(this.$('ui.runtimeLeak.selectField', { field: this.$(value.title) }))
             return
           } else if (value.type === 'departmentTree' && value.category == 2 && !value.value) {
-            this.$message.error('请选择' + value.title + '条件')
+            this.$message.error(this.$('ui.runtimeLeak.selectFieldCondition', { field: this.$(value.title) }))
             return
           } else if (value.type === 'departmentTree' && value.category == 2 && value.options.userList.length <= 0) {
-            this.$message.error('请选择' + value.title)
+            this.$message.error(this.$('ui.runtimeLeak.selectField', { field: this.$(value.title) }))
             return
           } else if (value.type === 'departmentTree' && value.category == 3 && !value.value) {
-            this.$message.error('请选择' + value.title + '条件')
+            this.$message.error(this.$('ui.runtimeLeak.selectFieldCondition', { field: this.$(value.title) }))
             return
           } else if (
             value.type === 'departmentTree' &&
@@ -458,23 +458,23 @@ export default {
             value.options.depList &&
             value.options.depList.length <= 0
           ) {
-            this.$message.error('请选择' + value.title)
+            this.$message.error(this.$('ui.runtimeLeak.selectField', { field: this.$(value.title) }))
             return
           } else if (value.type !== 'departmentTree' && !value.value) {
-            this.$message.error('请选择' + value.title + '条件')
+            this.$message.error(this.$('ui.runtimeLeak.selectFieldCondition', { field: this.$(value.title) }))
             return
           } else if (
             (value.type === 'moneyFrom' || value.type === 'inputNumber' || value.type === 'timeFrom') &&
             (!value.option || value.option <= 0) &&
             value.min >= value.max
           ) {
-            this.$message.error(value.title + '不能为负数或0')
+            this.$message.error(this.$('ui.runtimeLeak.fieldMustBePositive', { field: this.$(value.title) }))
             return
           } else if ((value.type === 'select' || value.type === 'checkbox') && value.option.length <= 0) {
-            this.$message.error('请选择' + value.title + '内容')
+            this.$message.error(this.$('ui.runtimeLeak.selectFieldContent', { field: this.$(value.title) }))
             return
           } else if (value.type === 'radio' && !value.option) {
-            this.$message.error('请选择' + value.title + '内容')
+            this.$message.error(this.$('ui.runtimeLeak.selectFieldContent', { field: this.$(value.title) }))
             return
           }
         }

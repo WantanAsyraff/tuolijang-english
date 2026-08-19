@@ -7,7 +7,7 @@
       :direction="direction"
       :modal="true"
       :size="formData.width"
-      :title="formData.title ? formData.title : title"
+      :title="$(formData.title ? formData.title : title)"
       :visible.sync="drawer"
       :wrapper-closable="true"
       :wrapperClosable="false"
@@ -44,7 +44,7 @@
                   clearable
                   size="small"
                 >
-                  <el-option v-for="item in categoryList" :key="item.id" :label="item.name" :value="item.id" />
+                  <el-option v-for="item in categoryList" :key="item.id" :label="$(item.name, item.name_en)" :value="item.id" />
                 </el-select>
               </el-form-item>
             </div>
@@ -135,7 +135,7 @@
               <el-form-item>
                 <span slot="label"><span class="color-tab">* </span>{{ $('customer.headerinformation') }}:</span>
                 <el-select v-model="rules.types" :placeholder="$('customer.placeholder45')" clearable size="small">
-                  <el-option v-for="item in invoiceOptions" :key="item.value" :label="item.label" :value="item.value" />
+                  <el-option v-for="item in invoiceOptions" :key="item.value" :label="$(item.label, item.label_en)" :value="item.value" />
                 </el-select>
               </el-form-item>
             </div>
@@ -287,7 +287,7 @@ export default {
       if (!value && this.rules.types > 1) {
         return callback(new Error(this.$('customer.placeholder47')))
       } else if (!helper.identReg.test(value)) {
-        callback(new Error('税号输入不合法'))
+        callback(new Error($('税号输入不合法')))
       } else {
         callback()
       }

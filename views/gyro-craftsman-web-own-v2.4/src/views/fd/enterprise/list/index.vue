@@ -245,14 +245,14 @@ export default {
         return null
       }
       if (!['收入', '支出'].includes(types)) {
-        throw new Error(`第${rowIndex + 1}行账目类型只能填写收入或支出`)
+        throw new Error($('ui.financeImport.invalidAccountType', { row: rowIndex + 1 }))
       }
       const dateAtColumn4 = this.parseImportDate(row[3])
       const dateAtColumn5 = this.parseImportDate(row[4])
       const useTemplateOrder = !dateAtColumn4 && !!dateAtColumn5
       const editTime = useTemplateOrder ? dateAtColumn5 : dateAtColumn4
       if (!editTime) {
-        throw new Error(`第${rowIndex + 1}行收支时间格式不正确`)
+        throw new Error($('ui.financeImport.invalidTransactionTime', { row: rowIndex + 1 }))
       }
       return {
         types,

@@ -16,8 +16,8 @@
           v-model="form.wechat_work_forced_build"
           :active-value="1"
           :inactive-value="0"
-          active-text="开启"
-          inactive-text="关闭"
+          :active-text="$('开启')"
+          :inactive-text="$('关闭')"
         >
         </el-switch>
         <div class="tips">{{ $("ui.settingWecomIndexWhenEnabledCustomersMustBindAWeComAccount") }}</div>
@@ -32,8 +32,8 @@
           v-model="form.wechat_work_user_switch"
           :active-value="1"
           :inactive-value="0"
-          active-text="开启"
-          inactive-text="关闭"
+          :active-text="$('开启')"
+          :inactive-text="$('关闭')"
         >
         </el-switch>
       </el-form-item>
@@ -80,8 +80,8 @@
           v-model="form.wechat_work_client_switch"
           :active-value="1"
           :inactive-value="0"
-          active-text="开启"
-          inactive-text="关闭"
+          :active-text="$('开启')"
+          :inactive-text="$('关闭')"
         >
         </el-switch>
       </el-form-item>
@@ -119,8 +119,8 @@
           v-model="form.wechat_work_session_switch"
           :active-value="1"
           :inactive-value="0"
-          active-text="开启"
-          inactive-text="关闭"
+          :active-text="$('开启')"
+          :inactive-text="$('关闭')"
         >
         </el-switch>
       </el-form-item>

@@ -73,6 +73,7 @@
 import { aesEncrypt } from './../utils/ase'
 import { resetSize } from './../utils/util'
 import { getModuleCaptchaApi, saveModuleCaptchaApi } from '@/api/develop'
+import { $ } from '@/lang'
 
 //  "captchaType":"blockPuzzle",
 export default {
@@ -96,7 +97,7 @@ export default {
     },
     explain: {
       type: String,
-      default: '向右滑动完成验证'
+      default: $('ui.verify.slideToComplete')
     },
     imgSize: {
       type: Object,
@@ -298,7 +299,7 @@ export default {
               }, 1500)
             }
             this.passFlag = true
-            this.tipWords = `${((this.endMovetime - this.startMoveTime) / 1000).toFixed(2)}s验证成功`
+            this.tipWords = $('ui.verify.slideSucceeded', { seconds: ((this.endMovetime - this.startMoveTime) / 1000).toFixed(2) })
             var captchaVerification = this.secretKey
               ? aesEncrypt(this.backToken + '---' + JSON.stringify({ x: moveLeftDistance, y: 5.0 }), this.secretKey)
               : this.backToken + '---' + JSON.stringify({ x: moveLeftDistance, y: 5.0 })
@@ -318,7 +319,7 @@ export default {
               _this.refresh()
             }, 1000)
             this.$parent.$emit('error', this)
-            this.tipWords = '验证失败'
+            this.tipWords = $('ui.verify.failed')
             setTimeout(() => {
               this.tipWords = ''
             }, 1000)

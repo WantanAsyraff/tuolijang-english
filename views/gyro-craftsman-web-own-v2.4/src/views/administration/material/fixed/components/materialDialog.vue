@@ -176,7 +176,7 @@ export default {
     }
     const checkPrices = (rule, value, callback) => {
       if (!value) {
-        return callback('请输入单价')
+        return callback($('请输入单价'))
       } else {
         callback()
       }

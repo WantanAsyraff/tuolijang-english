@@ -124,7 +124,7 @@
       <span class="el-icon-arrow-right"></span>
       <div class="subItems listBox" :class="{ showLeft: subItemsShowLeft }" style="top: -100px">
         <div class="item" v-for="item in copyTypeList" :key="item.value" @click="copyToClipboard(item.value)">
-          {{ item.name }}
+          {{ $(item.name) }}
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@
                   </div>
                 </el-col>
                 <el-col class="table-title-right">
-                  <div class="title" v-if="item.approve">{{ item.approve.name }}</div>
+                  <div class="title" v-if="item.approve">{{ $(item.approve.name, item.approve.name_en) }}</div>
                   <div class="tag">
                     <el-tag v-if="item.status === -1" type="info" size="mini"> {{ $("ui.customerListApplyForPaymentRevoked") }} </el-tag>
                     <el-tag v-if="item.status === 0" type="warning" size="mini"> {{ $("ui.userExamineExamineUnderReview") }} </el-tag>

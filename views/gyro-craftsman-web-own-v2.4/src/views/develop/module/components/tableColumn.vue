@@ -48,7 +48,7 @@
         </div>
         <div v-else-if="item.form_value === 'switch'">
             <el-switch disabled v-model="scope.row[item.field_name_en]" :active-value="1" :inactive-value="0"
-                active-text="开启" inactive-text="关闭">
+                :active-text="$('开启')" :inactive-text="$('关闭')">
             </el-switch>
         </div>
 
@@ -80,7 +80,7 @@
                         color: val.color ? val.color : '#1890ff',
                         background: val.color ? getColorFn(val.color, '0.1') : getColorFn('#1890ff', '0.1')
                     }">
-                    {{ val.name }}
+                    {{ $(val.name) }}
                 </div>
                 <div v-if="scope.row[item.field_name_en].length == 0">--</div>
             </div>

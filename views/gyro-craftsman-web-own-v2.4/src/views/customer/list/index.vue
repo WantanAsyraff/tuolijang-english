@@ -39,8 +39,8 @@
     >
       <template #options="{ data }">
         <el-button v-hasPermi="['customer:list:check']" type="text" @click="handleCheck(data)">{{ $("ui.layoutNoticeNoticeListView") }}</el-button>
-        <!-- <el-button v-if="types == 'customer'" type="text" @click="addOdds(data)">添加商机</el-button>
-          <el-button v-if="types == 'customer'" type="text" @click="addContract(data)">添加订单</el-button> -->
+        <!-- <el-button v-if="types == 'customer'" type="text" @click="addOdds(data)">{{ $('添加商机') }}</el-button>
+          <el-button v-if="types == 'customer'" type="text" @click="addContract(data)">{{ $('添加订单') }}</el-button> -->
         <el-button v-if="types == 'customer'" type="text" @click="handleLabel(data)">{{ $("ui.formCommonSelectLabelSetLabel") }}</el-button>
 
         <el-button v-else type="text" @click="receive(2, data)">{{ $("ui.customerClueIndexIssue") }}</el-button>
@@ -430,7 +430,7 @@ export default {
     // 添加客户
     async addFinance(str, row) {
       this.formBoxConfig = {
-        title: str === 'edit' ? '编辑客户' : '新增客户',
+        title: str === 'edit' ? this.$('ui.runtimeLeak.editCustomer') : this.$('ui.runtimeLeak.addCustomer'),
         width: '570px'
       }
       this.$refs.dialogForm.openBox(this.keyword, row, str)
@@ -471,7 +471,7 @@ export default {
           ids.push(row.id)
         }
         this.transferData = {
-          title: type === 1 ? '移交其他同事' : this.$('customer.transfersettings'),
+          title: type === 1 ? this.$('ui.runtimeLeak.transferColleague') : this.$('customer.transfersettings'),
           width: '520px',
           type: 1,
           ids

@@ -1,3 +1,5 @@
+import { $, getLanguage } from '@/lang'
+
 /**
  * Created by PanJiaChen on 16/11/18.
  */
@@ -70,18 +72,21 @@ export function formatTime(time, option) {
   const diff = (now - d) / 1000;
 
   if (diff < 30) {
-    return '刚刚';
+    return $('ui.runtimeLeak.justNow');
   } else if (diff < 3600) {
     // less 1 hour
-    return Math.ceil(diff / 60) + '分钟前';
+    return $('ui.runtimeLeak.minutesAgo', { count: Math.ceil(diff / 60) });
   } else if (diff < 3600 * 24) {
-    return Math.ceil(diff / 3600) + '小时前';
+    return $('ui.runtimeLeak.hoursAgo', { count: Math.ceil(diff / 3600) });
   } else if (diff < 3600 * 24 * 2) {
-    return '1天前';
+    return $('ui.runtimeLeak.oneDayAgo');
   }
   if (option) {
     return parseTime(time, option);
   } else {
+    if (getLanguage() === 'en') {
+      return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(d);
+    }
     return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分';
   }
 }
@@ -343,6 +348,10 @@ export function divTime(time1, time2, type) {
  * 数字金额转换成大写中文
  */
 export function intToChinese(n) {
+  if (getLanguage() === 'en') {
+    const value = Number(n);
+    return Number.isFinite(value) ? `CNY ${value.toLocaleString('en', { maximumFractionDigits: 2 })}` : $('ui.runtimeLeak.noValue');
+  }
   if (!/^(0|[1-9]\d*)(\.\d+)?$/.test(n)) {
     return '未输入'; // 判断数据是否大于0
   }

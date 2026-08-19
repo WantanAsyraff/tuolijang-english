@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="record">
-            {{ activity.reason }}
+            {{ formatActivityReason(activity.reason, activity.reason_en) }}
           </div>
           <div v-if="activity.time" class="reminderTime">
             <img alt="" class="zhong" src="../../../../assets/images/zhong.png" /> {{ $("ui.userCalendarAddTodoReminderTime") }}{{ activity.created_at }}
@@ -37,7 +37,7 @@
                 >
               </div>
             </div>
-            <div class="record"><span class="c-30">{{ $("ui.customerListDynamicRecordInformation") }}</span> {{ activity.reason || '' }}</div>
+            <div class="record"><span class="c-30">{{ $("ui.customerListDynamicRecordInformation") }}</span> {{ formatActivityReason(activity.reason, activity.reason_en) }}</div>
         <div class="p20" v-if="activity.attachs.length > 0">
               <oa-uploadList :fileList="activity.attachs" :isTwoColumnShow="true"></oa-uploadList>
         </div>
@@ -45,7 +45,7 @@
               <div class="fileItem">
                 <img
                   :src="require(`@/assets/images/${fileTypeIcon(toSrc(fileItem.name))}.png`)"
-                  alt="文件图标"
+                  :alt="$('文件图标')"
                   class="img"
                 />
                 {{ fileItem.real_name }}
@@ -173,7 +173,7 @@ export default {
           7: '线索转客户',
           10: '数据变更'
         }
-        return obj[type]
+        return this.$(obj[type] || '')
       } else if (link === 'clue') {
         let obj = {
           0:'跟进线索',
@@ -185,20 +185,20 @@ export default {
           6: '转移',
           10: '数据变更'
         }
-        return obj[type]
+        return this.$(obj[type] || '')
       } else if (link === 'contract') {
         let obj = {
           10: '数据变更',
           5: '移交订单',
           6: '新增订单'
         }
-        return obj[type]
+        return this.$(obj[type] || '')
       } else if (link === 'liaison') {
         let obj = {
           6: '新增联系人',
           10: '数据变更'
         }
-        return obj[type]
+        return this.$(obj[type] || '')
       } else if (link === 'odds') {
         let obj = {
           0:'跟进商机',
@@ -207,7 +207,7 @@ export default {
           6: '转移',
           10: '数据变更'
         }
-        return obj[type]
+        return this.$(obj[type] || '')
       }else if (link === 'contract_doc') {
         let obj = {
          '-1':'合同签约审批拒绝',
@@ -218,8 +218,15 @@ export default {
           '5':'签约已过期',
           '6':'签约已撤销'
         }
-        return obj[type]
+        return this.$(obj[type] || '')
       }
+    },
+    formatActivityReason(value, englishValue) {
+      const text = this.$(value || '', englishValue)
+      if (!value || text !== value) return text
+
+      const prefix = ['新添加线索', '新添加订单'].find((candidate) => value.startsWith(candidate))
+      return prefix ? this.$(prefix) + value.slice(prefix.length) : text
     },
     // 查看图片
     handlePictureCardPreview(row) {

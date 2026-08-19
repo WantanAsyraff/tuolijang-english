@@ -17,7 +17,7 @@
             :class="index == tabIndex ? 'active' : ''"
             @click="clickDepart(index, item.id)"
           >
-            <span class="line1">{{ item.cate_name }}</span>
+            <span class="line1">{{ $(item.cate_name, item.cate_name_en) }}</span>
             <el-popover
               :ref="`pop-${item.id}`"
               :offset="10"

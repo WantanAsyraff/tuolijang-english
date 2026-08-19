@@ -2,7 +2,7 @@ import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 import { makeRequiredRule } from '../../utils'
 
-const label = '出差'
+const label = $('出差')
 const name = 'tripFrom'
 export default {
   icon: 'iconfont iconchucha',

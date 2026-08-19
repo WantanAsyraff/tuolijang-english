@@ -8,7 +8,7 @@
 
         <div class="text-center mt14">
           <!-- <router-link :to="{ path: roterPre + '/user/work' }">
-            <span class="bullshit__return-home">返回首页</span>
+            <span class="bullshit__return-home">{{ $('返回首页') }}</span>
           </router-link> -->
         </div>
       </div>
@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     message() {
-      return '抱歉，您访问的页面出错了'
+      return this.$('ui.runtimeLeak.pageError')
     }
   }
 }

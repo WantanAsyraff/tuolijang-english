@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule, makeRequiredRule } from '../../utils';
 
-const label = '内容说明';
+const label = $('内容说明')
 const name = 'infoForm';
 
 export default {

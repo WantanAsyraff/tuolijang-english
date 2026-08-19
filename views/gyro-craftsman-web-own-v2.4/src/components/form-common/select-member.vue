@@ -31,7 +31,7 @@
             <div class="display-align" :class="{ isChecked: userIds.includes(data.value) }">
               <i v-if="data.type === 0" class="tree-icon iconfont iconwenjianjia" />
               <img v-if="data.type === 1" v-default-avatar="data" :src="$getAvatarSrc(data)" alt="" class="avatar" />
-              {{ node.label }}
+              {{ data.type === 0 ? $(node.label) : node.label }}
             </div>
             <div v-if="data.type === 1">
               <img v-if="data.is_work" src="../../assets/images/bindWeChat.png" alt="" class="bindWeChat" />
@@ -50,7 +50,7 @@
       <span class="el-icon-arrow-down" v-if="!userList.length"></span>
       <span class="el-icon-circle-close" v-else @click.stop="clearAllUsers"></span>
 
-      <span v-if="!userList.length" class="placeholder">{{ placeholder }}</span>
+      <span v-if="!userList.length" class="placeholder">{{ $(placeholder) }}</span>
       <!-- 正常展示样式 -->
       <div class="flex-box" v-else-if="!isSearch">
         <span
@@ -110,7 +110,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '请选择人员'
+      default: 'ui.hrAttendanceSettingAddConentPleaseSelectPersonnel'
     },
     // 只能单选一个人员
     onlyOne: {

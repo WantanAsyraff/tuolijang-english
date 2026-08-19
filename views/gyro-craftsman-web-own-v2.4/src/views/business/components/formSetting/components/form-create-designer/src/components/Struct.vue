@@ -1,7 +1,7 @@
 <template>
   <div class="_fc_struct">
-    <ElButton @click="visible = true" style="width: 100%">{{ title }}</ElButton>
-    <ElDialog :title="title" :visible.sync="visible" :close-on-click-modal="false" append-to-body>
+    <ElButton @click="visible = true" style="width: 100%">{{ $(title) }}</ElButton>
+    <ElDialog :title="$(title)" :visible.sync="visible" :close-on-click-modal="false" append-to-body>
       <div ref="editor" v-if="visible"></div>
       <span slot="footer" class="dialog-footer">
         <span style="color: red; float: left; text-align: left" v-if="err">
@@ -27,7 +27,7 @@ export default {
     value: [Object, Array],
     title: {
       type: String,
-      default: '编辑数据',
+      default: 'ui.runtimeLeak.editData',
     },
     defaultValue: {
       require: false,

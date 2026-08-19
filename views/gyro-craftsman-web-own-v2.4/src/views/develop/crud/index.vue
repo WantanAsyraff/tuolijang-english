@@ -15,7 +15,7 @@
                 <span v-if="item.menu&&item.menu.icon"  :class="getIconCss(item.menu.icon)"></span>
               </div>
               <div class="flex-column entry-name">
-                <div class="title over-text">{{ item.name }}</div>
+                <div class="title over-text">{{ $(item.name) }}</div>
               </div>
                <span class="count">{{ item.crud_count }}{{ $("ui.developCrudIndexEntities") }}</span>
               </div>

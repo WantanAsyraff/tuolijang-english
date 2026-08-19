@@ -1,7 +1,7 @@
 import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
-const label = '开关';
+const label = $('开关')
 const name = 'switch';
 
 export default {

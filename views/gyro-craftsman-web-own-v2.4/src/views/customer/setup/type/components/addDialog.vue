@@ -114,7 +114,7 @@ export default {
       if (type == 1) {
         return this.$('customer.placeholder03')
       } else if (type == 3) {
-        return '请输入类目名称'
+        return this.$('ui.runtimeLeak.enterCategoryName')
       } else {
         return this.$('customer.placeholder05')
       }

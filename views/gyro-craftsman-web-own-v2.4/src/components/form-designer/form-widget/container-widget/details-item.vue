@@ -226,7 +226,7 @@ export default {
         return true
       } else {
         const errorFields = results.filter((item) => !item.valid)
-        this.$message.error(`明细表中有必填项，请补充完整！`)
+        this.$message.error(this.$('ui.runtimeLeak.detailsRequired'))
         return false
       }
     },

@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 /**
  * AI 插件脚本加载器
  * 负责动态加载 ChatIframe 脚本并缓存加载任务
@@ -44,12 +45,12 @@ function createLoadTask() {
         resolve(window.ChatIframe)
       } else {
         script.remove()
-        reject(new Error('AI 插件加载成功但未暴露 ChatIframe'))
+        reject(new Error($('AI 插件加载成功但未暴露 ChatIframe')))
       }
     }
     script.onerror = () => {
       script.remove()
-      reject(new Error('AI 插件脚本加载失败'))
+      reject(new Error($('AI 插件脚本加载失败')))
     }
 
     document.head.appendChild(script)

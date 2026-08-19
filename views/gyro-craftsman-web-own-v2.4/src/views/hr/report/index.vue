@@ -17,7 +17,9 @@
     <div class="mt10 table-box">
       <el-table :data="tableData" :height="tableHeight">
         <el-table-column :label="$('toptable.name')" prop="name" width="100" />
-        <el-table-column :label="$('toptable.department')" prop="frame_name" width="120" />
+        <el-table-column :label="$('toptable.department')" prop="frame_name" width="120">
+          <template slot-scope="scope">{{ $(scope.row.frame_name) }}</template>
+        </el-table-column>
         <el-table-column :label="$('toptable.worktoday')" min-width="250" prop="finish">
           <template slot-scope="scope">
             <div v-for="(item, index) in scope.row.finish" :key="index" class="textover3">{{ item }}</div>

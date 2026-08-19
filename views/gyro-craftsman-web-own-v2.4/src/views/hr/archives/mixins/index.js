@@ -11,7 +11,7 @@ let positionFn = (rule, value, callback) => {
   if (value) {
     callback()
   } else {
-    callback(new Error('职位不能为空'))
+    callback(new Error($('职位不能为空')))
   }
 }
 

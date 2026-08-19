@@ -54,7 +54,7 @@
       <div class="mb10 flex">
         <span class="title-k">{{ $("ui.userStatisticSinglePersonalClockInStatistics") }}</span>
         <el-select v-model="where.status" clearable :placeholder="$('ui.userStatisticSingleSelectClockInResult')" @change="getDataList">
-          <el-option v-for="item in options" :key="item.id" :label="item.name" :value="item.id"> </el-option>
+          <el-option v-for="item in options" :key="item.id" :label="$(item.name)" :value="item.id"> </el-option>
         </el-select>
       </div>
       <!-- 表格 -->
@@ -486,8 +486,8 @@ export default {
 
     // 处理表格打卡结果数据
     getStatus(status, locationStatus) {
-      const statusText = this.statusMap[status] || '未知'
-      const locationText = this.locationStatusMap[locationStatus] || ''
+      const statusText = this.$(this.statusMap[status] || '未知')
+      const locationText = this.locationStatusMap[locationStatus] ? this.$(this.locationStatusMap[locationStatus]) : ''
       return statusText + locationText
     },
 

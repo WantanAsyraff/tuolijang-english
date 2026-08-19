@@ -15,7 +15,7 @@
           v-model="item.fieldName"
           @change="fieldChange(item)"
           filterable
-          no-match-text="无匹配文本"
+          :no-match-text="$('无匹配文本')"
           size="default"
         >
           <el-option v-for="op in fieldList" :key="op.fieldName" :label="op.label" :value="op.fieldName" />
@@ -24,7 +24,7 @@
       <!-- 条件类型 -->
       <el-col :span="4">
         <el-select v-model="item.op" size="default" @change="getOpCom(item)">
-          <el-option v-for="op in getSelectOp(item)" :key="op" :label="op_type[op]" :value="op" />
+          <el-option v-for="op in getSelectOp(item)" :key="op" :label="$(op_type[op])" :value="op" />
         </el-select>
       </el-col>
       <!-- 条件值 -->
@@ -134,7 +134,7 @@
             @focus="clearError(item)"
             placeholder=" "
             filterable
-            no-match-text="无匹配文本"
+            :no-match-text="$('无匹配文本')"
           >
             <el-option
               v-for="(userOp, userInx) of userList"
@@ -155,7 +155,7 @@
             @focus="clearError(item)"
             placeholder=" "
             filterable
-            no-match-text="无匹配文本"
+            :no-match-text="$('无匹配文本')"
           >
             <el-option
               v-for="(departmentOp, departmentInx) of departmentList"
@@ -413,7 +413,7 @@ export default {
         return
       }
       if (this.conditionConf.items.length > this.maxConditionsLength - 1) {
-        this.$message.warning(`最多可添加 ${this.maxConditionsLength} 个条件`)
+        this.$message.warning(this.$('ui.runtimeLeak.maxConditions', { count: this.maxConditionsLength }))
         return
       }
       let condition = this.$CloneDeep(this.fieldList[0])

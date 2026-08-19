@@ -104,7 +104,7 @@ export default {
       const fileTypeName = file.name.substr(file.name.lastIndexOf('.') + 1)
       let types = ['xlsx', 'xls']
       if (!types.includes(fileTypeName)) {
-        this.$message.error('仅支持 ' + types.join(',') + ' 格式')
+        this.$message.error(this.$('ui.runtimeLeak.onlyFormatsSupported', { formats: types.join(', ') }))
         return false
       }
 

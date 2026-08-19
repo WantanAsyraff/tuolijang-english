@@ -1,4 +1,5 @@
 import './jigsaw.css'
+import { $ } from '@/lang'
 
 let w = 310 // canvas宽度
 let h = 155 // canvas高度
@@ -126,7 +127,7 @@ class jigsaw {
         const text = createElement('span', 'sliderText')
 
         block.className = 'block'
-        text.innerHTML = '向右滑动填充拼图'
+        text.innerHTML = $('ui.runtimeLeak.slidePuzzle')
 
         const el = this.el
      setTimeout(()=>{
@@ -227,7 +228,7 @@ class jigsaw {
                     typeof this.onSuccess === 'function' && this.onSuccess()
                 } else {
                     addClass(this.sliderContainer, 'sliderContainer_fail')
-                    this.text.innerHTML = '请再试一次'
+                    this.text.innerHTML = $('ui.runtimeLeak.tryAgain')
                     this.reset()
                 }
             } else {

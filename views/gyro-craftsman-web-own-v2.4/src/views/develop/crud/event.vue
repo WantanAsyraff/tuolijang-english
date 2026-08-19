@@ -192,7 +192,7 @@
                     </el-form-item>
                     <!-- <el-form-item label="通知类型" class="mt14">
                       <el-checkbox-group v-model="notify_type">
-                        <el-checkbox :label="0">通知</el-checkbox>
+                        <el-checkbox :label="0">{{ $("通知") }}</el-checkbox>
                       </el-checkbox-group>
                     </el-form-item> -->
                     <el-form-item :label="$('ui.developCrudEventPushTitle')" class="mt14">
@@ -895,34 +895,16 @@ export default {
       }
     },
     getStr(type) {
-      switch (type) {
-        case '0':
-          return `每隔${this.form.timer_options.second || 'N'}秒执行一次`
-        case '1':
-          return `每隔${this.form.timer_options.minute || 'N'}分钟执行一次`
-        case '2':
-          return `每隔${this.form.timer_options.hour || 'N'}小时${this.form.timer_options.minute || 'N'}分钟执行一次`
-        case '3':
-          return `每隔${this.form.timer_options.day || 'N'}天${this.form.timer_options.hour || 'N'}小时${
-            this.form.timer_options.minute || 'N'
-          }分钟执行一次`
-        case '4':
-          return `每天${this.form.timer_options.hour || 'N'}小时${this.form.timer_options.minute || 'N'}分钟${
-            this.form.timer_options.second || 'N'
-          }秒执行一次`
-        case '5':
-          return `每个星期${this.form.timer_options.weekday || 'N'}的${this.form.timer_options.hour || 'N'}时${
-            this.form.timer_options.minute || 'N'
-          }分${this.form.timer_options.second || 'N'}秒执行一次`
-        case '6':
-          return `每月${this.form.timer_options.day || 'N'}日${this.form.timer_options.hour || 'N'}时${
-            this.form.timer_options.minute || 'N'
-          }分${this.form.timer_options.second || 'N'}秒执行一次`
-        case '7':
-          return `每年${this.form.timer_options.month || 'N'}月${this.form.timer_options.day || 'N'}日的${
-            this.form.timer_options.hour || 'N'
-          }时${this.form.timer_options.minute || 'N'}分${this.form.timer_options.second || 'N'}秒执行一次`
+      const timer = this.form.timer_options
+      const params = {
+        second: timer.second || 'N',
+        minute: timer.minute || 'N',
+        hour: timer.hour || 'N',
+        day: timer.day || 'N',
+        weekday: timer.weekday || 'N',
+        month: timer.month || 'N'
       }
+      return this.$(`ui.runtimeLeak.schedule.type${type}`, params)
     },
 
     numberChange(val, maxNum) {

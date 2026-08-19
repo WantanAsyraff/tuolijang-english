@@ -217,7 +217,7 @@ export default {
     },
     getWidgetRef(o, e = !1) {
       let n = this.widgetRefList[o]
-      return !n && !!e && this.$message.error(this.$('designer.hint.refNotFound') + o), n
+      return !n && !!e && this.$message.error(this.$('render.hint.refNotFound') + o), n
     },
     getSelectedWidgetRef() {
       let o = this.designer.selectedWidgetName

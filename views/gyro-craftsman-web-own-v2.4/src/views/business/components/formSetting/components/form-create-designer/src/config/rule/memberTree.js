@@ -2,7 +2,7 @@ import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeRequiredRule } from '../../utils';
 
-const label = '成员';
+const label = $('成员')
 const name = 'departmentTree';
 export default {
   icon: 'iconfont iconchengyuan',

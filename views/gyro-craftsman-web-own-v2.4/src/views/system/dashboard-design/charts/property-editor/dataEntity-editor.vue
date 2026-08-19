@@ -16,7 +16,7 @@
     <!-- <el-select
       v-model="myOption.dataEntity"
       filterable
-      placeholder="选择实体"
+      :placeholder="$('选择实体')"
       @change="changeEntity"
       :disabled="!designer.selectedId"
       filter

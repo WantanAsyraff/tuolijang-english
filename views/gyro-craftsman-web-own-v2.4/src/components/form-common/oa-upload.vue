@@ -138,7 +138,7 @@ export default {
         })
       }
       if (!fileTypeCheckResult) {
-        this.$message.error('不支持格式' + extFileName)
+        this.$message.error(this.$('ui.runtimeLeak.unsupportedFormat', { format: extFileName }))
         return false
       }
       if (this.maxSize) {

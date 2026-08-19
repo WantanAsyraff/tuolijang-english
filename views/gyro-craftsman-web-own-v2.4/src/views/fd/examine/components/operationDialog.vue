@@ -152,14 +152,14 @@ export default {
     }
     const checkDateTime = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error('请选择付款时间'))
+        return callback(new Error($('请选择付款时间')))
       } else {
         callback()
       }
     }
     const checkType = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error('请选择续费类型'))
+        return callback(new Error($('请选择续费类型')))
       } else {
         callback()
       }

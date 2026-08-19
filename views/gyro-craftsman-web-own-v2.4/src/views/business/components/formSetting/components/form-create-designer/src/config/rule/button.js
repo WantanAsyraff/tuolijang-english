@@ -1,5 +1,5 @@
 import { $ } from '@/lang'
-const label = '按钮';
+const label = $('按钮')
 const name = 'el-button';
 
 export default {

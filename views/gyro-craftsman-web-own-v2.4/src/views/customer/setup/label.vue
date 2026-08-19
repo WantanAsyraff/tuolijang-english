@@ -108,6 +108,7 @@
   </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import Sortable from 'sortablejs'
 import dialogForm from './type/components/addDialog'
 import addLabel from './addLabel'
@@ -138,7 +139,7 @@ export default {
   data() {
     const validCascader = (rule, value, callback) => {
       if (this.form.labelId.length == 0) {
-        callback(new Error('请选择替换标签'))
+        callback(new Error($('请选择替换标签')))
       } else {
         callback()
       }

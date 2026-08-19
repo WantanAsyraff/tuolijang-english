@@ -57,8 +57,8 @@
                 <template slot-scope="scope">
                   <el-switch
                     v-model="scope.row.status"
-                    active-text="开启"
-                    inactive-text="关闭"
+                    :active-text="$('开启')"
+                    :inactive-text="$('关闭')"
                     :active-value="1"
                     :inactive-value="0"
                     @change="handleStatus(scope.row)"

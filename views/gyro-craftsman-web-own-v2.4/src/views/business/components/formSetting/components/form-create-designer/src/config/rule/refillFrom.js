@@ -2,7 +2,7 @@ import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 import { makeRequiredRule } from '../../utils'
 
-const label = '补卡'
+const label = $('补卡')
 const name = 'refillFrom'
 export default {
   icon: 'iconfont iconbuka',
