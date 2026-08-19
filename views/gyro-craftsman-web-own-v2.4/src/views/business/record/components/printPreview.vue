@@ -5,7 +5,7 @@
       <div class="print-content" ref="printContent">
         <div class="print-inner">
           <div class="header">
-            <div class="title">{{ printData.approve ? printData.approve.name : $('ui.businessRecordPrintPreviewApproval') }}</div>
+            <div class="title">{{ printData.approve ? $(printData.approve.name, printData.approve.name_en) : $('ui.businessRecordPrintPreviewApproval') }}</div>
 
           </div>
           <div class="flex flex-between mb10">
@@ -35,12 +35,12 @@
               <table>
                 <tr v-for="i in Math.ceil(printData.content.length / 2)" :key="i">
                   <!-- 第一列 -->
-                  <td class="label" v-if="printData.content[(i - 1) * 2]">{{ printData.content[(i - 1) * 2].label }}</td>
+                  <td class="label" v-if="printData.content[(i - 1) * 2]">{{ $(printData.content[(i - 1) * 2].label) }}</td>
                   <td class="value" v-if="printData.content[(i - 1) * 2]">
                     <div v-if="printData.content[(i - 1) * 2].type === 'approvalBill'">
                       <div v-for="(subItem, subIndex) in printData.content[(i - 1) * 2].children" :key="subIndex"
                         class="approval-bill-item">
-                        <span class="sub-label">{{ subItem.label }}:</span>
+                        <span class="sub-label">{{ $(subItem.label) }}:</span>
                         <span class="sub-value">{{ subItem.value || '--' }}</span>
                       </div>
                     </div>
@@ -55,12 +55,12 @@
                     <span v-else>{{ printData.content[(i - 1) * 2].value || '--' }}</span>
                   </td>
                   <!-- 第二列 -->
-                  <td class="label" v-if="printData.content[(i - 1) * 2 + 1]">{{ printData.content[(i - 1) * 2 + 1].label }}</td>
+                  <td class="label" v-if="printData.content[(i - 1) * 2 + 1]">{{ $(printData.content[(i - 1) * 2 + 1].label) }}</td>
                   <td class="value" v-if="printData.content[(i - 1) * 2 + 1]">
                     <div v-if="printData.content[(i - 1) * 2 + 1].type === 'approvalBill'">
                       <div v-for="(subItem, subIndex) in printData.content[(i - 1) * 2 + 1].children" :key="subIndex"
                         class="approval-bill-item">
-                        <span class="sub-label">{{ subItem.label }}:</span>
+                        <span class="sub-label">{{ $(subItem.label) }}:</span>
                         <span class="sub-value">{{ subItem.value || '--' }}</span>
                       </div>
                     </div>
@@ -93,7 +93,7 @@
                 <tbody v-if="printData.users && printData.users.length > 0">
 
                   <tr v-for="(step, index) in printData.users" :key="index">
-                    <td class="value">{{ step.title }}</td>
+                    <td class="value">{{ $(step.title, step.title_en) }}</td>
                     <td class="value">
                       <span v-for="(user, userIndex) in step.users" :key="userIndex">{{ user.card.name || '--' }}</span>
                     </td>
@@ -213,13 +213,13 @@ export default {
     getStatusText(status) {
       switch (status) {
         case -1:
-          return '已撤销'
+          return this.$('customer.revoked')
         case 0:
-          return '审批中'
+          return this.$('ui.runtimeLeak.pendingApproval')
         case 1:
-          return '已通过'
+          return this.$('customer.approved')
         case 2:
-          return '已拒绝'
+          return this.$('ui.userExamineExamineRejected')
         default:
           return '--'
       }

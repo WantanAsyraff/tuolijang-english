@@ -1,6 +1,6 @@
 import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
-const label = '作废发票'
+const label = $('作废发票')
 const name = 'voidedInvoice'
 export default {
   icon: 'iconfont iconqingjia2',

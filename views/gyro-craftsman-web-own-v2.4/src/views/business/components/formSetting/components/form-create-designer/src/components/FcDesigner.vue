@@ -257,7 +257,7 @@
                 >
                   <div class="_fc-l-item mb20" v-for="(data, index) in item.list" :key="index">
                     <div class="acea-row row-middle row">
-                      <span class="_fc-l-name">{{ data.label }}</span>
+                      <span class="_fc-l-name">{{ $(data.label) }}</span>
                       <div class="_fc-l-icon mr5">
                         <i class="fc-icon" :class="data.icon || 'icon-input'"></i>
                       </div>
@@ -275,7 +275,7 @@
                 >
                   <div class="_fc-l-item mb20" v-for="(data, index) in item.group" :key="index">
                     <div class="acea-row row-middle row">
-                      <span class="_fc-l-name">{{ data.label }}</span>
+                      <span class="_fc-l-name">{{ $(data.label) }}</span>
                       <div class="_fc-l-icon mr5">
                         <i class="fc-icon" :class="data.icon || 'icon-input'"></i>
                       </div>
@@ -291,7 +291,7 @@
                 >
                   <div class="_fc-l-item mb20" v-for="(data, index) in item.contract" :key="index">
                     <div class="acea-row row-middle row">
-                      <span class="_fc-l-name">{{ data.label }}</span>
+                      <span class="_fc-l-name">{{ $(data.label) }}</span>
                       <div class="_fc-l-icon mr5">
                         <i class="fc-icon" :class="data.icon || 'icon-input'"></i>
                       </div>

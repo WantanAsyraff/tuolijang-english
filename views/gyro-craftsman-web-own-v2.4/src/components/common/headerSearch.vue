@@ -123,13 +123,13 @@ export default {
     viewType(typeVal) {
       switch (typeVal) {
         case 0:
-          return '系统'
+          return this.$('系统')
         case 1:
-          return '公共'
+          return this.$('公共')
         case 2:
-          return '个人'
+          return this.$('个人')
         default:
-          return '未知'
+          return this.$('未知')
       }
     },
     // 打开视图管理
@@ -193,7 +193,7 @@ export default {
           class="view-text"
           @click="viewClick(item, index)"
         >
-          <span class="over-text">{{ item.label }} </span>
+          <span class="over-text">{{ item.isPublic === 0 ? $(item.label) : item.label }} </span>
           <span class="tips">{{ viewType(item.isPublic) }}</span>
         </div>
       </div>
@@ -202,7 +202,7 @@ export default {
       </div>
 
       <div slot="reference" class="view-box mr10">
-        <span class="over-text1">{{ viewSearchData[viewIndex]?.label || $('ui.commonHeaderSearchChooseAView') }}</span>
+        <span class="over-text1">{{ viewSearchData[viewIndex] ? (viewSearchData[viewIndex].isPublic === 0 ? $(viewSearchData[viewIndex].label) : viewSearchData[viewIndex].label) : $('ui.commonHeaderSearchChooseAView') }}</span>
         <span class="el-icon-arrow-down"></span>
       </div>
     </el-popover>

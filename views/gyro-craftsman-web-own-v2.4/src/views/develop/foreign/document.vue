@@ -22,7 +22,7 @@
             <el-table :data="headerData" style="width: 100%" :row-class-name="tableRowNone">
               <el-table-column prop="name" :label="$('ui.developCrudFieldSettingFieldName')"> </el-table-column>
               <el-table-column prop="form_type" :label="$('ui.developForeignDocumentFieldType')"> </el-table-column>
-              <!-- <el-table-column prop="default" label="默认值"> </el-table-column> -->
+              <!-- <el-table-column prop="default" :label="$('默认值')"> </el-table-column> -->
               <el-table-column prop="is_must" :label="$('ui.developForeignDocumentRequired')">
                 <template slot-scope="scope">
                   {{ scope.row.is_must ? $('ui.developFieldComponentYes') : $('ui.developFieldComponentNo') }}

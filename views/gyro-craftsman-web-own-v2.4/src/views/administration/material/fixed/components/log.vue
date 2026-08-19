@@ -288,7 +288,7 @@ export default {
       } else if (value === 4) {
         str = '已报废'
       }
-      return str
+      return this.$(str)
     },
     async getOptionData() {
       const res = await storageRecordUsersApi({ types: '', storage_type: this.types })

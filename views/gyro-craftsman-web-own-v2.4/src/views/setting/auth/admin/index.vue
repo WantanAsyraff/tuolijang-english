@@ -100,7 +100,7 @@
                       disabled
                       class="readonly-checkbox"
                     >
-                      {{ item.label }}
+                      {{ $(item.label) }}
                     </el-checkbox>
                   </div>
                   <el-empty v-else :image-size="80" :description="$('ui.settingAuthAdminIndexSelectAMenuOnTheLeftToViewApi')"></el-empty>
@@ -377,7 +377,7 @@ export default {
       } else if (data == 4) {
         str = '全部数据'
       }
-      return str
+      return this.$(str)
     },
     // 添加管理员身份
     addAdminRole() {

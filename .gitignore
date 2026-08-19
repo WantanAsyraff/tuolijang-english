@@ -36,6 +36,8 @@ __pycache__/
 *.pyc
 uniapp
 upgrade
+!views/gyro-craftsman-web-own-v2.4/src/views/setting/enterprise/upgrade/
+!views/gyro-craftsman-web-own-v2.4/src/views/setting/enterprise/upgrade/index.vue
 docs
 
 .tmp-i18n-restore-*/

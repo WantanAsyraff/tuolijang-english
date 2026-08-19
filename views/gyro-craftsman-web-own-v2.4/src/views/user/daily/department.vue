@@ -27,7 +27,9 @@
       <div v-loading="loading" class="mt-10">
         <el-table ref="elTable" :data="tableData" :height="tableHeight">
           <el-table-column :label="$('toptable.name')" prop="name" width="90" />
-          <el-table-column :label="$('toptable.department')" min-width="100" prop="frame_name" />
+          <el-table-column :label="$('toptable.department')" min-width="100" prop="frame_name">
+            <template slot-scope="scope">{{ $(scope.row.frame_name) }}</template>
+          </el-table-column>
           <el-table-column :label="$('toptable.worktoday')" min-width="250" prop="finish">
             <template slot-scope="scope">
               <div v-for="(item, index) in scope.row.finish" :key="index" class="textover3">{{ item }}</div>
@@ -143,7 +145,9 @@
 
         <el-table ref="elTable" :data="table" :height="tableHeight">
           <el-table-column :label="$('ui.businessHolidayQueryIndexName')" prop="name" />
-          <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" prop="frame_name" />
+          <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" prop="frame_name">
+            <template slot-scope="scope">{{ $(scope.row.frame_name) }}</template>
+          </el-table-column>
           <el-table-column :label="$('ui.userDailyDepartmentReportType')" prop="types">
             <template slot-scope="scope">
               {{ getDailyTypes(scope.row.types) }}
@@ -212,7 +216,9 @@
       <div v-loading="loading" class="mt-10">
         <el-table ref="elTable" :data="tableData" :height="tableHeight">
           <el-table-column :label="$('toptable.name')" prop="name" width="90" />
-          <el-table-column :label="$('toptable.department')" min-width="100" prop="frame_name" />
+          <el-table-column :label="$('toptable.department')" min-width="100" prop="frame_name">
+            <template slot-scope="scope">{{ $(scope.row.frame_name) }}</template>
+          </el-table-column>
           <el-table-column :label="$('toptable.worktoday')" min-width="250" prop="finish">
             <template slot-scope="scope">
               <div v-for="(item, index) in scope.row.finish" :key="index" class="textover3">{{ item }}</div>

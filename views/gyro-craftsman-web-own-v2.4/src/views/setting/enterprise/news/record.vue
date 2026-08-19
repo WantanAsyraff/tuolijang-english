@@ -35,7 +35,7 @@
                   :key="index"
                   @click="handleDetails(scope.row, item)"
                 >
-                  <span v-if="scope.row.cate_name !== '考勤'"> {{ item.title }}</span>
+                  <span v-if="scope.row.cate_name !== '考勤'"> {{ $(item.title, item.title_en) }}</span>
                 </el-button>
                 <!-- :disabled="selectedType.includes(item.action)" -->
               </template>

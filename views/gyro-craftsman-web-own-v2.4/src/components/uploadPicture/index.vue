@@ -153,8 +153,8 @@
           :data="pictrueList"
           :row-key="getRowKey"
           highlight-row
-          no-data-text="暂无数据"
-          no-filtered-data-text="暂无筛选结果"
+          :no-data-text="$('暂无数据')"
+          :no-filtered-data-text="$('暂无筛选结果')"
           @selection-change="handleSelectRow"
         >
           <el-table-column :reserve-selection="true" type="selection" width="60"> </el-table-column>
@@ -489,7 +489,7 @@ export default {
     },
     // 删除分类
     async remove(data, tit) {
-      await Tips.confirm({ message: '此操作将永久删除 [ ' + data.cate_name + ' ] ' + '分类, 是否继续?' })
+      await Tips.confirm({ message: this.$('ui.runtimeLeak.deleteImageCategory', { name: data.cate_name }) })
       await attachmentDeleteApi(data.id)
       this.checkPicList = []
       await this.getList()
@@ -692,12 +692,12 @@ export default {
         form_create_helper.close(this.$route.query.field)
       }
       if (this.maxNum > 0) {
-        if (this.checkPicList.length > this.maxNum) return this.$message.warning('最多只能选' + this.maxNum + '张图片')
+        if (this.checkPicList.length > this.maxNum) return this.$message.warning(this.$('ui.runtimeLeak.maxImages', { count: this.maxNum }))
         this.$emit('getImage', this.checkPicList)
       } else if (this.multiple) {
         let maxLength = this.$route.query.maxLength
         if (maxLength !== undefined && this.checkPicList.length > Number(maxLength))
-          return this.$message.warning('最多只能选' + maxLength + '张图片')
+          return this.$message.warning(this.$('ui.runtimeLeak.maxImages', { count: maxLength }))
         this.$emit('getImage', this.checkPicList)
       } else {
         if (this.checkPicList.length > 1) return this.$message.warning($('legacyScript.youCanSelectOnlyOneImage'))

@@ -1,5 +1,5 @@
 import { $ } from '@/lang'
-const label = '标签页';
+const label = $('标签页')
 const name = 'tab';
 
 export default {

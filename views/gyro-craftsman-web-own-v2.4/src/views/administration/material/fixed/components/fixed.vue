@@ -473,7 +473,7 @@ export default {
       } else if (value === 4) {
         str = '已报废'
       }
-      return str
+      return this.$(str)
     },
     handleEdit(row) {
       if (row.cate.path.length <= 0) {

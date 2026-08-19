@@ -17,8 +17,8 @@
                       <div class="name">
                     {{ $("ui.customerSetupDictionaryIndexStatus") }}
                    <el-switch v-model="item.status" 
-                  class="ml10" :width="80" :active-value="1" :inactive-value="0" active-text="开启"
-                inactive-text="关闭"></el-switch>
+                  class="ml10" :width="80" :active-value="1" :inactive-value="0" :active-text="$('开启')"
+                :inactive-text="$('关闭')"></el-switch>
                   </div>
                   </div>
                 </div>

@@ -286,7 +286,7 @@ export default {
     // 修改分类
     addEdit(item) {
       this.fromData = {
-        title: `空间${this.$store.state.user.userInfo.uid === item.uid ? '编辑' : '查看'}`,
+        title: this.$('ui.runtimeLeak.spaceAction', { action: this.$(this.$store.state.user.userInfo.uid === item.uid ? 'ui.runtimeLeak.edit' : 'ui.runtimeLeak.view') }),
         name: this.$('setting.edit.selectmembers1'),
         edit: 2,
         data: item

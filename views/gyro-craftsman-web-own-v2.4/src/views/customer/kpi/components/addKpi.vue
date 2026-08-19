@@ -282,7 +282,7 @@ export default {
     },
     confirm() {
       if (this.userList.length == 0) {
-        this.$message.error(`请选择${this.tabCur == 1 ? '部门' : '业务员'}`)
+        this.$message.error(this.$('ui.runtimeLeak.selectRole', { role: this.$(this.tabCur == 1 ? 'ui.runtimeLeak.department' : 'ui.runtimeLeak.salesperson') }))
         return
       }
 

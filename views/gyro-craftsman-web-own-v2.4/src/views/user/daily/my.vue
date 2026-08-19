@@ -17,7 +17,7 @@
             <el-button size="small" type="primary">{{ $('ui.userDailyMyWriteReport') }}</el-button>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item v-for="(item, index) in dailyData" :key="item.id" :command="item.id">
-                {{ item.name }}
+                {{ $(item.name, item.name_en) }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -34,7 +34,9 @@
       <div v-loading="loading" class="mt-10">
         <el-table ref="elTable" :data="tableData" :height="tableHeight">
           <el-table-column :label="$('toptable.name')" prop="name" width="90" />
-          <el-table-column :label="$('toptable.department')" min-width="100" prop="frame_name" />
+          <el-table-column :label="$('toptable.department')" min-width="100" prop="frame_name">
+            <template slot-scope="scope">{{ $(scope.row.frame_name) }}</template>
+          </el-table-column>
           <el-table-column :label="$('toptable.worktoday')" min-width="250" prop="finish">
             <template slot-scope="scope">
               <div v-for="(item, index) in scope.row.finish" :key="index" class="textover3">{{ item }}</div>

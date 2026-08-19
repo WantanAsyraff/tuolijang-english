@@ -87,7 +87,7 @@
               v-show="!item.disabled"
               @click.stop="itemConditions(item, index)"
             >
-              {{ item.title }}
+              {{ $(item.title) }}
             </el-button>
           </div>
         </div>
@@ -511,33 +511,33 @@ export default {
         for (let i = 0; i < condition.length; i++) {
           const value = condition[i]
           if (!value.value) {
-            this.$message.error(value.title + '条件不能为空')
+            this.$message.error(this.$('ui.runtimeLeak.fieldConditionRequired', { field: this.$(value.title) }))
             return
           }
           if (value.value == 'is_empty' || value.value == 'not_empty') {
           } else if (value.value == 'between' && value.type !== 'date_time_picker') {
             if (value.max == '' || value.min == '') {
-              this.$message.error(value.title + '不能为空')
+              this.$message.error(this.$('ui.runtimeLeak.fieldRequired', { field: this.$(value.title) }))
               return
             }
           } else if (['n_day', 'last_day', 'next_day'].includes(value.value)) {
             if (value.option == '' || !value.option) {
-              this.$message.error(value.title + '不能为空')
+              this.$message.error(this.$('ui.runtimeLeak.fieldRequired', { field: this.$(value.title) }))
               return
             }
           } else if (this.dateList.includes(value.value)) {
           } else {
             if (value.category == 2 && value.options.userList.length == 0) {
-              this.$message.error(value.title + '不能为空')
+              this.$message.error(this.$('ui.runtimeLeak.fieldRequired', { field: this.$(value.title) }))
               return
             } else if (value.category == 1 && value.options.depList.length == 0) {
-              this.$message.error(value.title + '不能为空')
+              this.$message.error(this.$('ui.runtimeLeak.fieldRequired', { field: this.$(value.title) }))
               return
             } else if (
               (value.value !== 'is_empty' || value.value !== 'not_empty') &&
               (value.option === '' || value.option === null || value.option === undefined)
             ) {
-              this.$message.error(value.title + '不能为空')
+              this.$message.error(this.$('ui.runtimeLeak.fieldRequired', { field: this.$(value.title) }))
               return
             }
           }

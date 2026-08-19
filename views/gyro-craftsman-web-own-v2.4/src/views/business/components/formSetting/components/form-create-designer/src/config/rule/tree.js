@@ -2,7 +2,7 @@ import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule } from '../../utils/index';
 
-const label = '树形控件';
+const label = $('树形控件')
 const name = 'tree';
 
 export default {

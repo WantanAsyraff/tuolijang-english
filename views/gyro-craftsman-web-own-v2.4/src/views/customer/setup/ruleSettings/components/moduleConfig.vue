@@ -9,7 +9,7 @@
             </div>
             <div class="panel">
               <div class="content">
-                <div class="name">{{ item.name }}</div>
+                <div class="name">{{ $(item.name, item.name_en) }}</div>
                 <div class="desc">{{ item.desc }}</div>
               </div>
               <el-switch
@@ -19,8 +19,8 @@
                 :disabled="item.disabled"
                 active-color="#1890ff"
                 inactive-color="#dcdfe6"
-                active-text="开启"
-                inactive-text="关闭"
+                :active-text="$('开启')"
+                :inactive-text="$('关闭')"
               />
             </div>
           </li>

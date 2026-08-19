@@ -621,7 +621,7 @@ export default {
       let maxScore = JSON.parse(localStorage.getItem('enterprise')).maxScore
 
       if (this.assessInfo.max > Number(maxScore)) {
-        this.$message.error('总分不能超过' + maxScore + '分')
+        this.$message.error(this.$('ui.runtimeLeak.maxTotalScore', { score: maxScore }))
         return false
       }
 
@@ -875,7 +875,7 @@ export default {
         this.$message.error(this.$('access.placeholder12'))
       } else if (this.dimensionMax > 0) {
         if (this.assessInfo.types === 1) {
-          this.$message.error('分数之和必须为' + (this.assessInfo.max || this.max) + '分')
+          this.$message.error(this.$('ui.runtimeLeak.scoreTotalRequired', { score: this.assessInfo.max || this.max }))
         } else {
           this.$message.error(this.$('access.placeholder13'))
         }
@@ -1064,7 +1064,7 @@ export default {
           className: 'finance-from',
           props: {
             type: 'textarea',
-            placeholder: this.testAccess ? this.message4 : '驳回原因'
+            placeholder: this.testAccess ? this.message4 : this.$('ui.runtimeLeak.rejectionReason')
           },
           col: {
             lg: { span: 22 }
@@ -1072,7 +1072,7 @@ export default {
           validate: [
             {
               required: true,
-              message: this.testAccess ? this.message4 : '驳回原因',
+              message: this.testAccess ? this.message4 : this.$('ui.runtimeLeak.rejectionReason'),
               type: 'string',
               trigger: 'change'
             }

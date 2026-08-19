@@ -1,6 +1,6 @@
 import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
-const label = '请假'
+const label = $('请假')
 const name = 'leaveFrom'
 export default {
   icon: 'iconfont iconqingjia2',

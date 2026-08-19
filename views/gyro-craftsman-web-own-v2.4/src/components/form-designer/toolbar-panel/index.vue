@@ -425,7 +425,7 @@ if( res.data.fields && res.data.fields.length > 0){
       this.$prompt($('legacyScript.fileName'), $('legacyScript.saveAsFile'), {
         inputValue: defaultFileName,
         closeOnClickModal: false,
-        inputPlaceholder: '请输入文件名'
+        inputPlaceholder: this.$('ui.runtimeLeak.enterFileName')
       })
         .then(({ value }) => {
           if (!value) {

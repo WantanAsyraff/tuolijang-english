@@ -264,11 +264,11 @@ export default {
       const isImage = types.includes(fileTypeName.toLowerCase())
       const isLtSize = file.size / 1024 / 1024 < this.uploadSize
       if (!isImage) {
-        this.$message.error('仅支持 ' + types.join(',') + ' 格式')
+        this.$message.error(this.$('ui.runtimeLeak.onlyFormatsSupported', { formats: types.join(', ') }))
         return false
       }
       if (!isLtSize) {
-        this.$message.error('上传文件、图片大小不能超过 ' + this.uploadSize + ' MB!')
+        this.$message.error(this.$('ui.runtimeLeak.maxUploadSize', { size: this.uploadSize }))
         return false
       }
 

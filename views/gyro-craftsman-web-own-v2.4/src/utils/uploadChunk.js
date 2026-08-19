@@ -1,5 +1,6 @@
 import SparkMD5 from 'spark-md5'
 import request from '@/api/request'
+import { $ } from '@/lang'
 
 export const uploadByPieces = (file, option = {}, url) => {
   return new Promise((resolve, reject) => {
@@ -133,7 +134,7 @@ export const uploadByPieces = (file, option = {}, url) => {
                 retries++;
                 if (retries >= config.MAX_RETRIES) {
                   isRejected = true;
-                  reject(new Error(`分片 ${chunkIndex} 重试${config.MAX_RETRIES}次失败: ${err.message}`));
+                  reject(new Error($('ui.uploadChunk.retryFailed', { chunk: chunkIndex, retries: config.MAX_RETRIES, message: err.message })));
                   return;
                 }
                 const delay = config.RETRY_DELAY * Math.pow(2, retries);
@@ -154,7 +155,7 @@ export const uploadByPieces = (file, option = {}, url) => {
             log('所有分片上传完成');
             resolve();
           } else {
-            reject(new Error(`部分分片未上传：已完成${completedCount}/${chunkCount}`));
+            reject(new Error($('ui.uploadChunk.incomplete', { completed: completedCount, total: chunkCount })));
           }
         }).catch((err) => {
           if (!isRejected) {

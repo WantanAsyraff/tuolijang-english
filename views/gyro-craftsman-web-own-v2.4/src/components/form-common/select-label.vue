@@ -14,7 +14,7 @@
           <div class="flex-box">
             <span class="over-text" :class="{
               isChecked: labelIds.includes(data[valType])
-            }" :default-expanded-keys="treeExpandData">{{ node.label }}</span>
+            }" :default-expanded-keys="treeExpandData">{{ systemLabel(node.label, data.name_en || data.label_en) }}</span>
 
             <span class="all-text" v-if="data.pid == 0" @click.stop="selectAllFn(node, data)">{{
               allIds.includes(data[valType]) ? $('ui.formCommonSelectLabelDeselectAll') : $('ui.formCommonSelectLabelAll')
@@ -34,13 +34,13 @@
       <div class="select plan-footer-one mr10" ref="select" v-if="!isSlots && !slotType"
         @click.stop="handlePopoverShow">
         <div v-if="selectList && selectList.length == 0" class="placeholder flex-between">
-          <span>{{ placeholder }}</span>
+          <span>{{ $(placeholder) }}</span>
         </div>
 
         <div v-if="selectList.length > 0 && !isSearch">
           <span v-for="(item, index) in selectList" :key="index"
             class="el-tag el-tag--small el-tag--info el-tag--light mr10 mb4">
-            {{ item.name }}
+            {{ systemLabel(item.name, item.name_en) }}
             <i class="el-tag__close el-icon-close" @click.stop="cardTag(index, item[valType])" />
           </span>
         </div>
@@ -56,7 +56,7 @@
             class="el-tag el-tag--small el-tag--info el-tag--light search-tag-item"
             @click.stop=""
           >
-            <span class="line1">{{ item.name }}</span>
+            <span class="line1">{{ systemLabel(item.name, item.name_en) }}</span>
             <span class="el-tag__close el-icon-close" @click.stop="cardTag(index, item[valType])" />
           </div>
           <div
@@ -79,7 +79,7 @@
             ref="measureTags"
             class="el-tag el-tag--small el-tag--info el-tag--light search-tag-item"
           >
-            <span class="line1">{{ item.name }}</span>
+            <span class="line1">{{ systemLabel(item.name, item.name_en) }}</span>
             <span class="el-tag__close el-icon-close"></span>
           </div>
           <div ref="summaryMeasure" class="el-tag el-tag--small el-tag--info el-tag--light search-tag-summary">+0</div>
@@ -91,9 +91,6 @@
     </template>
   </el-popover>
 </div>
-</template>
-    </el-popover>
-  </div>
 </template>
 <script>
 import { $ } from '@/lang'
@@ -134,7 +131,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '请选择标签'
+      default: 'ui.runtimeLeak.selectLabels'
     },
 
     isSearch: {
@@ -256,6 +253,15 @@ export default {
     }
   },
   methods: {
+    systemLabel(value, englishValue) {
+      const translated = this.$(value || '', englishValue)
+      if (!/\\?&(?:quot|#0*39|#x0*27|amp);/i.test(translated) || typeof document === 'undefined') {
+        return translated
+      }
+      const decoder = document.createElement('textarea')
+      decoder.innerHTML = translated.replace(/\\&quot;/g, '&quot;')
+      return decoder.value
+    },
     // 浏览器窗口尺寸变化时，搜索框总宽度可能变化，需要重新计算
     handleWindowResize() {
       this.updateVisibleSearchTags()

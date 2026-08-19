@@ -148,8 +148,8 @@ export default {
     // 删除标签组
     handleDeleteGroup() {
       this.$confirm($('legacyScript.areYouSureYouWantToDeleteThisTagGroup'), $('legacyScript.warning'), {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+        confirmButtonText: this.$('public.ok'),
+        cancelButtonText: this.$('public.cancel'),
         type: 'warning'
       })
         .then(() => {

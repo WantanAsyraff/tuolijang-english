@@ -71,7 +71,7 @@
                   :disabled="listIds.includes(item.form_field_uniqid)"
                   :value="item.form_field_uniqid"
                 >
-                  <span>{{ item.field_name }} <span v-if="item.is_uniqid == 1"> {{ $("ui.developUpdateContentUnique") }}</span></span>
+                  <span>{{ $(item.field_name, item.field_name_en) }} <span v-if="item.is_uniqid == 1"> {{ $("ui.developUpdateContentUnique") }}</span></span>
                 </el-option>
               </el-select>
             </div>
@@ -287,7 +287,7 @@
     <el-popover placement="left" trigger="hover">
       <div class="field-box">
         <div class="field-text over-text" v-for="(val, index) in numfieldList" :key="index" @click="handleClick(val)">
-          {{ val.label }}
+          {{ $(val.label) }}
         </div>
       </div>
       <span class="el-icon-chat-dot-square icon" slot="reference"></span>
@@ -432,7 +432,7 @@ export default {
       } else {
         str = '固定值'
       }
-      return str
+      return this.$(str)
     },
     handleClick(val) {
       this.value = this.value + '{' + val.value + '}'

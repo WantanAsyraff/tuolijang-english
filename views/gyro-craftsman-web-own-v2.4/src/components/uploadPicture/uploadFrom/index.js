@@ -3,6 +3,7 @@ import '@/styles/element-variables.scss';
 import uploadFromComponent from './index.vue';
 import Vue from 'vue';
 import Cookies from 'js-cookie';
+import { $ } from '@/lang';
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium', // set element-ui default size
   zIndex: 800,
@@ -16,7 +17,7 @@ uploadFrom.install = function (Vue, options) {
   document.body.appendChild(instance.$el);
   Vue.prototype.$modalUpload = function (callback, isMore, options = {}) {
     const { title } = options;
-    instance.title = title || '图片管理'
+    instance.title = $(title || 'ui.runtimeLeak.imageManager')
     instance.visible = true;
     instance.callback = callback;
     instance.isMore = isMore;

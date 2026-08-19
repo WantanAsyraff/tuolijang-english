@@ -67,10 +67,10 @@ export default {
       this.isRendering = false
       this.renderedPages = []
 
-      this.$refs.pdfContent.innerHTML = '<div class="pdf-loading">PDF加载中...</div>'
+      this.$refs.pdfContent.innerHTML = '<div class="pdf-loading">' + $("ui.pdfPreview.loading") + '</div>'
 
       if (!this.url) {
-        this.$refs.pdfContent.innerHTML = '<div class="pdf-error">PDF地址不能为空</div>'
+        this.$refs.pdfContent.innerHTML = '<div class="pdf-error">' + $("ui.pdfPreview.missingUrl") + '</div>'
         return
       }
 
@@ -94,17 +94,17 @@ export default {
         console.error($('legacyScript.failedToLoadPDF'), error)
         this.$emit('pdf-error', error)
 
-        let errorMsg = 'PDF加载失败，请检查文件地址或网络'
+        let errorMsg = $("ui.pdfPreview.failed")
         if (error.name === 'MissingPDFException') {
-          errorMsg = 'PDF文件不存在或已损坏'
+          errorMsg = $("ui.pdfPreview.missing")
         } else if (error.name === 'InvalidPDFException') {
-          errorMsg = 'PDF文件格式无效'
+          errorMsg = $("ui.pdfPreview.invalid")
         } else if (error.name === 'PDFNetworkError') {
-          errorMsg = '网络错误，请检查网络连接或跨域设置'
+          errorMsg = $("ui.pdfPreview.network")
         } else if (error.name === 'TimeoutError') {
-          errorMsg = 'PDF加载超时，请稍后重试'
+          errorMsg = $("ui.pdfPreview.timeout")
         } else if (error.message) {
-          errorMsg = `PDF加载失败: ${error.message}`
+          errorMsg = $("ui.pdfPreview.failedWithMessage", { message: error.message })
         }
         
         this.$refs.pdfContent.innerHTML = `<div class="pdf-error">${errorMsg}</div>`

@@ -22,7 +22,7 @@
               <el-tab-pane :label="$('login.smslogin')" name="cmsLogin" />
             </el-tabs>
             <!-- <el-tabs v-if="codeShowLogin" v-model="codeName">
-              <el-tab-pane label="APP扫码登录" name="codeLogin" />
+              <el-tab-pane :label="$('APP扫码登录')" name="codeLogin" />
             </el-tabs> -->
           </div>
           <el-form

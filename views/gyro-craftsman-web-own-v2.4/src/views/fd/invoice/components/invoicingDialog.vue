@@ -49,7 +49,7 @@
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload> -->
 
-            <!-- <span class="clew"> 支持jpg、jpeg、png <br />建议734*1034 <br />大小不超过2M </span> -->
+            <!-- <span class="clew">{{ $('支持jpg、jpeg、png') }}<br />{{ $('建议734*1034') }}<br />{{ $('大小不超过2M') }}</span> -->
           </div>
         </el-form-item>
       </div>

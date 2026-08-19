@@ -16,9 +16,9 @@
     <!-- 搜索条件 -->
     <div class="head">
       <!-- <div>
-          <el-button size="small" type="primary">下载排班模板</el-button>
+          <el-button size="small" type="primary">{{ $('下载排班模板') }}</el-button>
           <span class="el-icon-d-arrow-right"></span>
-          <el-button size="small" type="primary">导入排班表</el-button>
+          <el-button size="small" type="primary">{{ $('导入排班表') }}</el-button>
         </div> -->
 
       <el-form :inline="true" class="from-s form-box">
@@ -49,7 +49,7 @@
         </el-form-item>
 
         <!-- <el-form-item>
-            <el-tooltip effect="dark" content="重置搜索条件" placement="top">
+            <el-tooltip effect="dark" :content="$('重置搜索条件')" placement="top">
               <div class="reset" @click="reset"><i class="iconfont iconqingchu"></i></div>
             </el-tooltip>
           </el-form-item> -->

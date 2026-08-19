@@ -1,5 +1,5 @@
 import { $ } from '@/lang'
-const label = '提示';
+const label = $('提示')
 const name = 'el-alert';
 
 export default {

@@ -88,8 +88,8 @@
                       v-model="scope.row[item.field_name_en]"
                       :active-value="1"
                       :inactive-value="0"
-                      active-text="开启"
-                      inactive-text="关闭"
+                      :active-text="$('开启')"
+                      :inactive-text="$('关闭')"
                     >
                     </el-switch>
                   </div>
@@ -142,7 +142,7 @@
       <template slot="reference">
         <slot name="custom"></slot>
         <div class="select plan-footer-one mr10" ref="select" v-if="!isSlots" @click="handlePopoverShow">
-          <span v-if="!oneData.name">{{ placeholder }}</span>
+          <span v-if="!oneData.name">{{ $(placeholder) }}</span>
           <div class="flex-box" v-else>
             <span> {{ oneData.name }}</span>
             <span class="el-icon-circle-close" @click.stop="deleteFn"></span>
@@ -190,7 +190,7 @@ export default {
     id: {},
     placeholder: {
       type: String,
-      default: '请选择一对一'
+      default: 'ui.runtimeLeak.selectOneToOne'
     },
     showType: {
       // 0 下拉选择 1 弹窗选择

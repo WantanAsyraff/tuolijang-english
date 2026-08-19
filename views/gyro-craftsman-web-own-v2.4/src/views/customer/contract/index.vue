@@ -253,7 +253,7 @@ export default {
     // 添加订单
     addContract(row) {
       this.contractFromData = {
-        title: row ? '编辑订单' : '添加订单',
+        title: row ? this.$('ui.runtimeLeak.editOrder') : this.$('ui.runtimeLeak.addOrder'),
         edit: false,
         eid: row ? row.eid : '',
         width: '1129px'
@@ -308,7 +308,7 @@ export default {
           ids.push(row.id)
         }
         this.transferData = {
-          title: type === 1 ? '移交其他同事' : this.$('customer.transfersettings'),
+          title: type === 1 ? this.$('ui.runtimeLeak.transferColleague') : this.$('customer.transfersettings'),
           width: '520px',
           type: 2,
           ids

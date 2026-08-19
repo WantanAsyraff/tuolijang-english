@@ -13,7 +13,7 @@
           <el-dropdown-menu style="text-align: left">
             <div v-for="(item, index) in dropdownList" :key="index" :class="index === 3 ? '' : 'border-bottom'">
               <el-dropdown-item v-for="(val, key) in item.children" :key="key" @click.native="dropdownSearch(val)">
-                {{ val.label }}
+                {{ $(val.label) }}
               </el-dropdown-item>
             </div>
           </el-dropdown-menu>
@@ -35,7 +35,7 @@
               class="view-text"
               @click="typeClick(item, index)"
             >
-              <span class="over-text">{{ item.label }}</span>
+              <span class="over-text">{{ $(item.label) }}</span>
               <span class="tips">{{ $("ui.commonOaFromBoxSystem") }}</span>
             </div>
             <div
@@ -142,7 +142,7 @@
             </div>
             <el-dropdown-menu style="text-align: left; max-height: 400px; overflow-y: auto;">
               <el-dropdown-item v-for="(val, key) in info.viewSearch" :key="key" @click.native="groupFn(val)">
-                {{ val.title }}
+                {{ $(val.title) }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown> -->
@@ -158,7 +158,7 @@
             @click="handleClick(item)"
           >
             <span v-if="activeIndex == item.value" class="el-icon-check"></span>
-            <span class="over-text">{{ item.label }}</span>
+            <span class="over-text">{{ $(item.label) }}</span>
           </div>
         </div>
         <div v-for="(item, indexJ) in sortList" :key="indexJ + 'c'" class="field-text" @click="sortFn(item)">

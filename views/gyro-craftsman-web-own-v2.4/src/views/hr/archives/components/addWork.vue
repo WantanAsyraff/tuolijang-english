@@ -69,7 +69,7 @@ export default {
   data() {
     const startTime = (rules, value, callback) => {
       if (!value) {
-        callback(new Error('请选择开始时间'))
+        callback(new Error($('请选择开始时间')))
       } else {
         if (this.workForm.end_time) {
           this.$refs.workForm.validateField('endTime')
@@ -79,12 +79,12 @@ export default {
     }
     const endTime = (rules, value, callback) => {
       if (!value) {
-        callback(new Error('请选择结束时间'))
+        callback(new Error($('请选择结束时间')))
       } else {
         if (!this.workForm.start_time) {
-          callback(new Error('请选择开始时间！'))
+          callback(new Error($('请选择开始时间！')))
         } else if (Date.parse(this.workForm.start_time) >= Date.parse(value)) {
-          callback(new Error('结束时间必须大于开始时间！'))
+          callback(new Error($('结束时间必须大于开始时间！')))
         } else {
           callback()
         }
@@ -92,7 +92,7 @@ export default {
     }
     const start_Time = (rules, value, callback) => {
       if (!value) {
-        callback(new Error('请选择开始时间'))
+        callback(new Error($('请选择开始时间')))
       } else {
         if (this.educationForm.end_time) {
           this.$refs.educationForm.validateField('endTime')
@@ -102,12 +102,12 @@ export default {
     }
     const end_Time = (rules, value, callback) => {
       if (!value) {
-        callback(new Error('请选择结束时间'))
+        callback(new Error($('请选择结束时间')))
       } else {
         if (!this.educationForm.start_time) {
-          callback(new Error('请选择开始时间！'))
+          callback(new Error($('请选择开始时间！')))
         } else if (Date.parse(this.educationForm.start_time) >= Date.parse(value)) {
-          callback(new Error('结束时间必须大于开始时间！'))
+          callback(new Error($('结束时间必须大于开始时间！')))
         } else {
           callback()
         }

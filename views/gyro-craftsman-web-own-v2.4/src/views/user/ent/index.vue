@@ -43,7 +43,7 @@
                   <template #frames="{ row }">
                     <div v-for="(item, index) in row.frames" :key="index">
                       <span class="icon-h"
-                        >{{ item.name }}
+                        >{{ $(item.name) }}
                         <span v-show="item.is_mastart === 1 && row.frames.length > 1" :title="$('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $("ui.formCommonSelectDepartmentMain") }}</span>
                       </span>
                     </div>

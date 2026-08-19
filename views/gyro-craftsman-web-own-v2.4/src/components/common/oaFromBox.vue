@@ -8,10 +8,10 @@
   <div v-if="showHeader" class="header-16 mb10">
     <div class="title-16" @click="backFn">
       <span v-if="isBack" class="el-icon-arrow-left pointer"></span>
-      {{ title }}
+      {{ $(title) }}
       <!-- 提示信息 -->
       <el-popover placement="right" popper-class="monitor-yt-popover" trigger="hover">
-        <div class="prompt-bag">{{ alert }}</div>
+        <div class="prompt-bag">{{ $(alert) }}</div>
         <i v-if="alert" slot="reference" class="el-icon-question"></i>
       </el-popover>
       <slot name="title"></slot>
@@ -31,12 +31,12 @@
         size="small"
         @click="addDataFn()"
       >
-        {{ btnText }}
+        {{ $(btnText) }}
       </el-button>
 
       <!-- 默认按钮 -->
       <el-button v-if="btnType === 'default'" class="h32" size="small" @click="addDataFn()">
-        {{ btnText }}
+        {{ $(btnText) }}
       </el-button>
 
       <!-- 下拉菜单 -->
@@ -48,7 +48,7 @@
           <!-- <span class="iconfont icongengduo2 pointer ml10"></span> -->
           <el-dropdown-menu style="text-align: left">
             <el-dropdown-item v-for="item in dropdownList" :key="item.value" @click.native="dropdownSearch(item)">
-              <span>{{ item.label }}</span>
+              <span>{{ $(item.label) }}</span>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -76,7 +76,7 @@
               class="view-text"
               @click="typeClick(item, index)"
             >
-              <span class="over-text">{{ item.label }} </span>
+              <span class="over-text">{{ $(item.label) }} </span>
               <span class="tips">{{ $("ui.commonOaFromBoxSystem") }}</span>
             </div>
 
@@ -113,8 +113,8 @@
         style="width: 120px"
         @change="treeChange"
       >
-        <el-option-group v-for="group in treeData" :key="group.label || group.id" :label="group.label">
-          <el-option v-for="item in group.options" :key="item.value" :label="item.label" :value="item.value" />
+        <el-option-group v-for="group in treeData" :key="group.label || group.id" :label="$(group.label, group.label_en)">
+          <el-option v-for="item in group.options" :key="item.value" :label="$(item.label, item.label_en)" :value="item.value" />
         </el-option-group>
       </el-select>
       <!-- 总数显示 -->
@@ -194,7 +194,7 @@
             @click="handleClick(item, index)"
           >
             <span v-if="activeIndex == item.field" class="el-icon-check"></span>
-            <span class="over-text">{{ item.name }}</span>
+            <span class="over-text">{{ $(item.name) }}</span>
           </div>
         </div>
         <div class="field-box">
@@ -206,7 +206,7 @@
             @click="sortFn(item, index)"
           >
             <span v-if="sortIndex == item.field" class="el-icon-check"></span>
-            {{ item.name }}
+            {{ $(item.name) }}
           </div>
         </div>
 

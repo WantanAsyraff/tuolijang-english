@@ -23,7 +23,7 @@
       v-model="optionModel.dataDictId"
       filterable
       size="small"
-      placeholder="请选择关联字典"
+      :placeholder="$('请选择关联字典')"
       @change="getDictData"
     >
       <el-option v-for="(v, index) in options" :key="v.id" :label="v.name" :value="v.id" />

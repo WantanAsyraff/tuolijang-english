@@ -535,10 +535,13 @@ export default {
     },
     format(percentage) {
       if (percentage == 100) {
-        return '完成'
+        return this.$('ui.runtimeLeak.complete')
       } else {
         return `${percentage}%`
       }
+    },
+    formatCurrency(value) {
+      return this.$('ui.runtimeLeak.cnyAmount', { amount: value })
     },
     confirmData(data) {
       if (data == 'reset') {
@@ -987,7 +990,7 @@ export default {
         title: [
           {
             text: totalText,
-            subtext: '销售总金额(元)',
+            subtext: this.$('ui.runtimeLeak.totalSalesAmount'),
             left: '24%',
             top: '42%',
             textAlign: 'center',
@@ -1010,7 +1013,7 @@ export default {
           enterable: true,
           formatter: (option) => {
             const count = (list[option.dataIndex] && list[option.dataIndex].count) || 0
-            return `${option.seriesName}<br/>${option.name}(${count}): ${numberFormat(option.value)}元 ${
+            return `${option.seriesName}<br/>${option.name}(${count}): ${this.formatCurrency(numberFormat(option.value))} ${
               option.percent
             }%`
           }
@@ -1052,7 +1055,7 @@ export default {
                   count = item.count || 0
                 }
               }
-              return `${name}{a|${target}元} {b|${ratio}%}`
+              return `${name}{a|${this.formatCurrency(target)}} {b|${ratio}%}`
             }
           }
         ],
@@ -1154,7 +1157,7 @@ export default {
           trigger: 'item',
           enterable: true,
           formatter: (option) => {
-            return `${option.seriesName} <br/> ${option.name}(${data[option.dataIndex].count}): ${option.value}元
+            return `${option.seriesName} <br/> ${option.name}(${data[option.dataIndex].count}): ${this.formatCurrency(option.value)}
             ${option.percent}%`
           }
         },
@@ -1210,7 +1213,7 @@ export default {
                   }
                 }
               }
-              let arr = [`${name}{a|${target}元} {b|${ratio}%}`]
+              let arr = [`${name}{a|${this.formatCurrency(target)}} {b|${ratio}%}`]
               return arr.join('\n')
             }
           }
@@ -1218,7 +1221,7 @@ export default {
         title: [
           {
             text: totalData,
-            subtext: '订单总金额(元)',
+            subtext: this.$('ui.runtimeLeak.totalOrderAmount'),
             left: '24%',
             top: '42%',
             textAlign: 'center',

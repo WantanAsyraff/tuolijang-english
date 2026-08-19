@@ -44,7 +44,7 @@
               <el-table-column :label="$('ui.businessHolidayQueryIndexAnnualLeaveGrantedDays')" prop="created_at" min-width="150" />
               <el-table-column :label="$('ui.businessHolidayQueryIndexAnnualLeaveTakenDays')" prop="created_at" min-width="150" />
               <el-table-column :label="$('ui.businessHolidayQueryIndexAnnualLeaveRemainingDays')" prop="created_at" min-width="150" />
-              <!-- <el-table-column label="创建时间" prop="created_at" width="100">
+              <!-- <el-table-column :label="$('创建时间')" prop="created_at" width="100">
               <template slot-scope="scope">
                 <div style="width: 76px;">
                 </div>

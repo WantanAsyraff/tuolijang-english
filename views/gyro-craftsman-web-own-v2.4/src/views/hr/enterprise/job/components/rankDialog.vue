@@ -99,11 +99,11 @@ export default {
   data() {
     const checkLevelMin = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error('请输入最低职等'))
+        return callback(new Error($('请输入最低职等')))
       }
       setTimeout(() => {
         if (this.formData.levelMax && value > this.formData.levelMax) {
-          callback(new Error('最低职等不能大于最高职等'))
+          callback(new Error($('最低职等不能大于最高职等')))
         } else {
           callback()
         }

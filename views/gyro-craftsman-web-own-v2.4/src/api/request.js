@@ -73,7 +73,7 @@ const redirectToLogin = () => {
 
 const refreshAccessToken = () => {
   if (!store.getters.refreshToken) {
-    return Promise.reject(new Error('缺少刷新TOKEN'))
+    return Promise.reject(new Error($('缺少刷新TOKEN')))
   }
 
   if (!refreshTokenPromise) {

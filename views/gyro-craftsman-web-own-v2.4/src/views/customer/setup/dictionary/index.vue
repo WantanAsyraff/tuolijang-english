@@ -16,8 +16,8 @@
         <div class="felx-row flex-col">
           <div>
             <el-form-item>
-              <el-button type="primary" size="small" @click="addFinance">新增</el-button>
-              <el-button size="small" @click="batchDelete">批量删除</el-button>
+              <el-button type="primary" size="small" @click="addFinance">{{ $('新增') }}</el-button>
+              <el-button size="small" @click="batchDelete">{{ $('批量删除') }}</el-button>
             </el-form-item>
           </div>
           <div class="flex">
@@ -29,17 +29,17 @@
                 clearable
                 style="width: 250px"
                 @change="getList(true)"
-                placeholder="名称，标识关键字搜索"
+                :placeholder="$('名称，标识关键字搜索')"
               />
             </el-form-item>
-            <el-form-item label="状态" class="select-bar">
-              <el-select v-model="where.status" placeholder="请选择状态" size="small" @change="getList(true)">
+            <el-form-item :label="$('状态')" class="select-bar">
+              <el-select v-model="where.status" :placeholder="$('请选择状态')" size="small" @change="getList(true)">
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
               </el-select>
             </el-form-item>
             <el-form-item>
-              <el-tooltip effect="dark" content="重置搜索条件" placement="top">
+              <el-tooltip effect="dark" :content="$('重置搜索条件')" placement="top">
                 <div class="reset" @click="restData"><i class="iconfont iconqingchu"></i></div>
               </el-tooltip>
             </el-form-item>

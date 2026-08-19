@@ -2,7 +2,7 @@
   <el-dialog class="nodeNoteDialog" :title='$("public.remarks")' :visible.sync="dialogVisible" :width="isMobile ? '90%' : '50%'"
     :top="isMobile ? '20px' : '15vh'">
     <div class="noteEditor" ref="noteEditor" @keyup.stop @keydown.stop></div>
-    <!-- <div class="tip">换行请使用：Enter+Shift</div> -->
+    <!-- <div class="tip">{{ $('换行请使用：Enter+Shift') }}</div> -->
     <span slot="footer" class="dialog-footer">
       <el-button @click="cancel">{{ $("ui.xmindEditorNodeHyperlinkCancel") }}</el-button>
       <el-button type="primary" @click="confirm">{{ $("ui.xmindEditorNodeHyperlinkOk") }}</el-button>

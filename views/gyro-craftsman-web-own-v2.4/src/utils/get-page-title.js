@@ -6,7 +6,7 @@ export default function getPageTitle(key) {
   const routeKey = `route.${key}`;
   const pageName = $(routeKey);
   if (pageName !== routeKey) {
-    return `${pageName} - ${defaultSettings.title}`;
+    return `${pageName} - ${$(defaultSettings.title || title)}`;
   }
-  return `${defaultSettings.title}`;
+  return `${$(defaultSettings.title || title)}`;
 }

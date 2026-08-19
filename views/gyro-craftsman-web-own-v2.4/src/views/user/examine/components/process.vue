@@ -10,7 +10,7 @@
   <el-steps direction="vertical">
     <el-step v-for="(item, index) in examineList" :key="index">
       <div slot="title" class="caption">
-        {{ item.title }}
+        {{ $(item.title) }}
         <el-tag
           v-if="item.types == 1 && item.settype != 5 && item.examine_mode > 0 && item.users.length > 1"
           effect="plain"
@@ -137,7 +137,7 @@ export default {
       } else if (id == 3) {
         str = '依次审批'
       }
-      return str
+      return this.$(str)
     },
 
     // 选择成员完成回调
@@ -176,7 +176,7 @@ export default {
       ) {
         str = this.examineRules.abnormal <= 0 ? '自动同意' : '转交给指定人员处理'
       }
-      return str
+      return this.$(str)
     }
   }
 }

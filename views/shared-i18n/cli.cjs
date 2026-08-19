@@ -181,8 +181,10 @@ function rootTemplate(source) {
   if (!opening || opening.index === undefined) return { source: "", offset: 0 };
   const offset = opening.index + opening[0].length;
   const followingBlock = source.slice(offset).search(/<(?:script|style)(?:\s[^>]*)?>/i);
-  const end = followingBlock >= 0 ? offset + followingBlock : source.length;
-  return { source: source.slice(offset, end).replace(/<\/template>\s*$/i, ""), offset };
+  const searchEnd = followingBlock >= 0 ? offset + followingBlock : source.length;
+  const closing = source.lastIndexOf("</template>", searchEnd);
+  const end = closing >= offset ? closing : searchEnd;
+  return { source: source.slice(offset, end), offset };
 }
 
 function maskTemplateTags(value) {
@@ -204,8 +206,8 @@ function maskTemplateTags(value) {
 
 const displayProperties = new Set([
   "alt", "ariaLabel", "buttonText", "cancelText", "confirmText", "content", "description",
-  "emptyText", "label", "loadingText", "message", "placeholder", "popupTitle", "rightText",
-  "text", "tip", "tips", "title", "unit",
+  "emptyText", "innerHTML", "innerText", "label", "loadingText", "message", "placeholder", "popupTitle", "rightText",
+  "text", "textContent", "tip", "tips", "title", "unit",
 ]);
 const displayCalls = new Set([
   "$alert", "$confirm", "$message", "$notify", "$prompt", "alert", "confirm", "error", "info",
@@ -261,9 +263,15 @@ function auditScriptBlock(block, relative, issues) {
     if (text && hasHan.test(text)) {
       const call = [...ancestors].reverse().find((entry) => entry.type === "CallExpression");
       const translated = call && translators.has(calleeName(call.callee));
-      const displayProperty = parent?.type === "ObjectProperty" && displayProperties.has(propertyName(parent.key));
-      const assignmentProperty = parent?.type === "AssignmentExpression" && parent.right === node && displayProperties.has(calleeName(parent.left));
-      const sinkCall = parent?.type === "CallExpression" && parent.arguments.includes(node) && displayCalls.has(calleeName(parent.callee)) && !isConsoleCall(parent);
+      const displayProperty = (parent?.type === "ObjectProperty" && displayProperties.has(propertyName(parent.key))) || [...ancestors].reverse().some((entry) =>
+        ["ObjectProperty", "ObjectMethod"].includes(entry.type) && displayProperties.has(propertyName(entry.key))
+      );
+      const assignmentProperty = (parent?.type === "AssignmentExpression" && parent.right === node && displayProperties.has(calleeName(parent.left))) || [...ancestors].reverse().some((entry) =>
+        entry.type === "AssignmentExpression" && displayProperties.has(calleeName(entry.left))
+      );
+      const sinkCall = (parent?.type === "CallExpression" && parent.arguments.includes(node) && displayCalls.has(calleeName(parent.callee)) && !isConsoleCall(parent)) || [...ancestors].reverse().some((entry) =>
+        entry.type === "CallExpression" && displayCalls.has(calleeName(entry.callee)) && !isConsoleCall(entry)
+      );
       const formatterReturn = parent?.type === "ReturnStatement" && ancestors.some((entry) =>
         ["ObjectMethod", "ObjectProperty"].includes(entry.type) && propertyName(entry.key) === "formatter"
       );
@@ -284,8 +292,12 @@ function auditScriptBlock(block, relative, issues) {
 function audit(selectedApp) {
   check(selectedApp);
   const selected = selectedApp && selectedApp !== "all" ? [selectedApp] : appNames;
+  let webRuntimeValues = new Map();
+  let webMessageKeys = new Set();
   if (selected.includes("web")) {
-    const { runtimeValues } = loadAndValidate();
+    const { catalogs, runtimeValues, runtimeValuesByApp } = loadAndValidate();
+    webRuntimeValues = runtimeValuesByApp.web;
+    webMessageKeys = new Set(Object.keys(catalogs.web).map((id) => id.replace(/^web\./, "")));
     const sqlResult = auditSql({ repoRoot: path.resolve(viewsRoot, ".."), runtimeValues });
     console.log(formatSqlAuditSummary(sqlResult));
   }
@@ -295,6 +307,8 @@ function audit(selectedApp) {
     mobile: path.join(viewsRoot, "view-uni-src"),
   };
   const literalIssues = [];
+  const missingRuntimeIssues = [];
+  const missingKeyIssues = [];
   const staticTemplateIssues = [];
   const staticScriptIssues = [];
   const legacyIssues = [];
@@ -337,6 +351,18 @@ function audit(selectedApp) {
           const line = source.slice(0, match.index).split(/\r?\n/).length;
           literalIssues.push(`${path.relative(viewsRoot, file)}:${line}`);
         }
+        if (selected.includes("web")) {
+          for (const match of source.matchAll(/\$\(\s*(["'])([^"']*[\u3400-\u9fff][^"']*)\1/g)) {
+            if (webRuntimeValues.has(match[2])) continue;
+            const line = source.slice(0, match.index).split(/\r?\n/).length;
+            missingRuntimeIssues.push(`${path.relative(viewsRoot, file)}:${line} (${match[2]})`);
+          }
+          for (const match of source.matchAll(/\$\(\s*(["'])([A-Za-z][\w.-]*\.[\w.-]*[\w-])\1/g)) {
+            if (webMessageKeys.has(match[2])) continue;
+            const line = source.slice(0, match.index).split(/\r?\n/).length;
+            missingKeyIssues.push(`${path.relative(viewsRoot, file)}:${line} (${match[2]})`);
+          }
+        }
         if (entry.name.endsWith(".vue")) {
           const templateBlock = rootTemplate(source);
           const visible = templateBlock.source
@@ -347,16 +373,16 @@ function audit(selectedApp) {
             const line = source.slice(0, templateBlock.offset + (match.index || 0)).split(/\r?\n/).length;
             staticTemplateIssues.push(`${path.relative(viewsRoot, file)}:${line} (${match[0]})`);
           }
-          const attributePattern = /\s(?::)?(?:alt|aria-label|btn-text|btnText|button-text|cancel-text|confirm-text|content|default-title|defaultTitle|empty-text|end-placeholder|label|loading-text|placeholder|range-separator|start-placeholder|text|title)\s*=\s*(["'])([\s\S]*?)\1/gi;
+          const attributePattern = /\s(?::)?(?:alt|aria-label|btn-text|btnText|button-text|cancel-text|confirm-text|content|default-title|defaultTitle|empty-text|end-placeholder|label|loading-text|no-data-text|no-filtered-data-text|no-match-text|placeholder|range-separator|start-placeholder|text|title|active-text|inactive-text|close-text|element-loading-text|no-filtered-userFrom-text|no-userFrom-text)\s*=\s*(["'])([\s\S]*?)\1/gi;
           for (const match of visible.matchAll(attributePattern)) {
             const displayExpression = match[2].replace(/(?:===?|!==?)\s*(["'`])[^"'`]*[\u3400-\u9fff][^"'`]*\1/g, "");
-            if (!/[\u3400-\u9fff]/.test(displayExpression) || /\$t\s*\(/.test(displayExpression)) continue;
+            if (!/[\u3400-\u9fff]/.test(displayExpression) || /\$(?:t|ts)?\s*\(/.test(displayExpression)) continue;
             const line = source.slice(0, templateBlock.offset + (match.index || 0)).split(/\r?\n/).length;
             staticTemplateIssues.push(`${path.relative(viewsRoot, file)}:${line} (${match[2].trim()})`);
           }
         }
         const vendorOwnedLocale = /system[\\/]dashboard-design[\\/]charts[\\/]configData\.js$/.test(relative);
-        if (!vendorOwnedLocale && !/(?:^|[\\/])(?:lang|locale)(?:[\\/])/.test(relative)) {
+        if (relative.startsWith("gyro-craftsman-web-own-v2.4") && !vendorOwnedLocale && !/(?:^|[\\/])(?:lang|locale)(?:[\\/])/.test(relative)) {
           scriptBlocks(file, source).forEach((block) => auditScriptBlock(block, relative, staticScriptIssues));
         }
       }
@@ -365,6 +391,8 @@ function audit(selectedApp) {
   selected.forEach((app) => walk(roots[app]));
   if (legacyIssues.length) throw new Error(`Legacy dashboard localization is not allowed:\n${[...new Set(legacyIssues)].slice(0, 100).join("\n")}`);
   if (literalIssues.length) throw new Error(`Literal dynamic translations must use canonical keys:\n${literalIssues.slice(0, 100).join("\n")}`);
+  if (missingRuntimeIssues.length) throw new Error(`Literal $() system text is missing from the canonical runtime index:\n${[...new Set(missingRuntimeIssues)].slice(0, 100).join("\n")}`);
+  if (missingKeyIssues.length) throw new Error(`Literal $() key does not exist in the generated dashboard catalog:\n${[...new Set(missingKeyIssues)].slice(0, 100).join("\n")}`);
   if (staticTemplateIssues.length) throw new Error(`Static Chinese template UI must use canonical $() keys:\n${[...new Set(staticTemplateIssues)].slice(0, 100).join("\n")}`);
   if (staticScriptIssues.length) throw new Error(`Static Chinese script UI must use canonical $() keys:\n${[...new Set(staticScriptIssues)].slice(0, 100).join("\n")}`);
   console.log(`localization audit passed (${selected.join(", ")})`);

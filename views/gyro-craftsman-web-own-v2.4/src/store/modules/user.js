@@ -1,3 +1,4 @@
+import { $ } from '@/lang'
 import { login, phoneLogin, logout, userScanStatusApi, refreshTokenApi } from '@/api/user'
 import { frameUserApi,frameTreeApi } from '@/api/public'
 import { getDictTreeListApi } from '@/api/form'
@@ -200,11 +201,11 @@ const actions = {
   },
   async refreshToken({ commit, state }) {
     if (!state.refreshToken) {
-      throw new Error('缺少刷新TOKEN')
+      throw new Error($('缺少刷新TOKEN'))
     }
     const response = await refreshTokenApi({ refresh_token: state.refreshToken })
     if (!response.data || !response.data.token || !response.data.refresh_token) {
-      throw new Error(response.message || '登录状态已失效')
+      throw new Error(response.message ? $(response.message) : $('登录状态已失效'))
     }
     commit('SET_TOKEN', response.data.token)
     commit('SET_REFRESH_TOKEN', response.data.refresh_token || '')

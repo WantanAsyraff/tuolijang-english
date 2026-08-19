@@ -27,7 +27,7 @@
   <div class="text-ellipsis" v-else-if="column.type == 'Money'">
     {{ numberToCurrencyNo(row[column.prop]) }}
   </div>
-  <div class="text-ellipsis" v-else-if="column.type == 'Picture'" :title="'图片：' + row[column.prop].length">
+  <div class="text-ellipsis" v-else-if="column.type == 'Picture'" :title="$('ui.runtimeLeak.imageCount', { count: row[column.prop].length })">
     <img
       class="row-img"
       :src="formatUrl(img.url)"
@@ -38,10 +38,10 @@
     />
   </div>
 
-  <div class="text-ellipsis" v-else-if="column.type == 'File'" :title="'文件：' + row[column.prop].length">
+  <div class="text-ellipsis" v-else-if="column.type == 'File'" :title="$('ui.runtimeLeak.fileCount', { count: row[column.prop].length })">
     <template v-if="row[column.prop] && row[column.prop].length > 0">
       <span @click.stop="openFilesDialog(row[column.prop])" class="ml-a-span"
-        >文件({{ row[column.prop].length }})</span
+        >{{ $("文件") }} ({{ row[column.prop].length }})</span
       >
     </template>
 

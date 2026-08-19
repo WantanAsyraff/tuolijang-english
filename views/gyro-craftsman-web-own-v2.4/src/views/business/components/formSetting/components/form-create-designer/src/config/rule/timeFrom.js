@@ -2,7 +2,7 @@ import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique'
 import { makeRequiredRule } from '../../utils'
 
-const label = '时长'
+const label = $('时长')
 const name = 'timeFrom'
 export default {
   icon: 'iconfont iconshichang1',

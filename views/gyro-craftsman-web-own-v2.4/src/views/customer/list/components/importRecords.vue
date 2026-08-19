@@ -97,22 +97,25 @@ components: {
       if (row.types == 0) {
         // 导出
         if (status == 0) {
-          statusText = '正在导出中'
+          statusText = this.$('ui.customerImportRecords.exporting')
 
         } else if (status == 1) {
-          statusText = '导出成功'
+          statusText = this.$('ui.customerImportRecords.exportSucceeded')
         } else if (status == 2) {
-          statusText = '导出失败'
+          statusText = this.$('ui.customerImportRecords.exportFailed')
         }
 
       } else if (row.types == 1) {
         // 导入
         if (status == 0) {
-          statusText = '正在导入中'
+          statusText = this.$('ui.customerImportRecords.importing')
         } else if(status == 2){
-          statusText = '导入失败'
+          statusText = this.$('ui.customerImportRecords.importFailed')
         }else {
-          statusText = `导入成功<span style="color:#19BE6B">${row.success_count}</span>条，失败<span style="color:#F56C6C">${row.fail_count}</span>条`
+          statusText = this.$('ui.customerImportRecords.completed', {
+            success: `<span style="color:#19BE6B">${row.success_count}</span>`,
+            failure: `<span style="color:#F56C6C">${row.fail_count}</span>`
+          })
         }
       }
       return statusText
@@ -123,7 +126,7 @@ components: {
       this.fileLinkDownLoad(row.file_path, row.name)
     },
    async deleteRecord(row) {
-      await this.$modalSure('确定删除当前数据')
+      await this.$modalSure(this.$('确定删除当前数据'))
       await clientExportRecordDeleteApi(row.id)
       this.getRecordList()
     },

@@ -298,8 +298,8 @@ export default {
 
     deleteSubFormRow(formRowIndex) {
       this.$confirm(this.$('render.hint.deleteSubFormRow') + '?', $('public.tips'), {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消'
+        confirmButtonText: this.$('public.ok'),
+        cancelButtonText: this.$('public.cancel')
       })
         .then(() => {
           let oldSubFormData = this.formModel[this.widget.options.name] || []

@@ -41,7 +41,7 @@
         @click="clickDepart(index, item.id)"
       >
         <a :navTo="`#${index}`" rel="external nofollow"
-          >{{ item.name }} <i :class="[user === '个人简历' ? item.icon : '']"></i
+          >{{ $(item.name) }} <i :class="[user === '个人简历' ? item.icon : '']"></i
         ></a>
       </li>
     </ul>

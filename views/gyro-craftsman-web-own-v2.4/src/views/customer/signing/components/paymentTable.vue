@@ -10,7 +10,7 @@
   </div>
   <el-table :data="table" ref="multipleTable" @selection-change="handleSelectionChange" style="width: 100%">
     <el-table-column v-if="selectionIsShow" type="selection" width="55"> </el-table-column>
-    <!-- <el-table-column label="付款单号" min-width="100">
+    <!-- <el-table-column :label="$('付款单号')" min-width="100">
       <template slot-scope="scope">
         <template v-if="scope.row.bill_no && scope.row.bill_no.length > 0">
           <span v-for="(item, index) in scope.row.bill_no" :key="index">

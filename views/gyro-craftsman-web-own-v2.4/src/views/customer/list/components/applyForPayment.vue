@@ -2,7 +2,7 @@
 <template>
 <div class="station">
   <el-drawer
-    :title="formData.title"
+    :title="$(formData.title)"
     :visible.sync="drawer"
     :direction="direction"
     :modal="true"
@@ -44,7 +44,7 @@
           </div>
           <div class="form-item">
             <el-form-item :label="$('ui.customerListApplyForPaymentPaymentMethod')">
-              <span>{{ list.pay_type }}</span>
+              <span>{{ $(list.pay_type, list.pay_type_en) }}</span>
             </el-form-item>
           </div>
           <div class="form-item">
@@ -176,7 +176,7 @@ export default {
         remarks: [{ required: true, message: $('legacyScript.pleaseEnterRefuseReason'), trigger: 'blur' }]
       },
 
-      reason: '拒绝原因',
+      reason: $('拒绝原因'),
       title: $('ui.settingAuthAuthIndexReviewRejected')
     }
   },

@@ -18,7 +18,7 @@
       >
         <!-- 弹窗标题 -->
         <div slot="title" class="header">
-          <span class="title">{{ title }}</span>
+          <span class="title">{{ $(title) }}</span>
           <span class="el-icon-close pointer" @click="handleClose"></span>
         </div>
 
@@ -34,8 +34,8 @@
             filterable
             @change="getlistData"
           >
-            <el-option v-for="item in options" :key="item.id" :label="item.table_name" :value="item.id">
-              <span>{{ item.table_name }}({{ item.table_name_en }})</span>
+            <el-option v-for="item in options" :key="item.id" :label="$(item.table_name, item.table_name_en)" :value="item.id">
+              <span>{{ $(item.table_name, item.table_name_en) }}<span v-if="$language === 'zh-cn'">({{ item.table_name_en }})</span></span>
             </el-option>
           </el-select>
         </div>
@@ -58,7 +58,7 @@
                     class="iconfont"
                     :class="ids.includes(item.id) ? 'icontongyong-gouxuanxuanzhongtubiao' : ' iconweigouxuan'"
                   ></span>
-                  {{ item.field_name }}
+                  {{ $(item.field_name, item.field_name_en) }}
                   <span v-if="showCrud">({{ item.field_name_en }})</span>
                 </div>
               </div>
@@ -84,7 +84,7 @@
                       ids.includes(item.field_name_en) ? 'icontongyong-gouxuanxuanzhongtubiao' : ' iconweigouxuan'
                     "
                   ></span>
-                  {{ item.field_name }}<span v-if="type !== 'module'">({{ item.field_name_en }})</span>
+                  {{ $(item.field_name, item.field_name_en) }}<span v-if="type !== 'module' && $language === 'zh-cn'">({{ item.field_name_en }})</span>
                 </div>
               </div>
 
@@ -102,7 +102,7 @@
                       ids.includes(item.field_name_en) ? 'icontongyong-gouxuanxuanzhongtubiao' : ' iconweigouxuan'
                     "
                   ></span>
-                  {{ item.field_name }} <span v-if="type !== 'module'">({{ item.field_name_en }})</span>
+                  {{ $(item.field_name, item.field_name_en) }} <span v-if="type !== 'module' && $language === 'zh-cn'">({{ item.field_name_en }})</span>
                 </div>
               </div>
             </div>
@@ -131,8 +131,8 @@
                   <div class="left over-text">
                     <i class="icon iconfont icontuodong item-drag"></i>
                     <span>
-                      {{ item.field_name }}
-                      <span v-if="item.field_name_en && type !== 'module'"> ({{ item.field_name_en }})</span>
+                      {{ $(item.field_name, item.field_name_en) }}
+                      <span v-if="item.field_name_en && type !== 'module' && $language === 'zh-cn'"> ({{ item.field_name_en }})</span>
                     </span>
                   </div>
                   <div class="right-box">
@@ -216,7 +216,7 @@ export default {
     // 弹窗标题
     title: {
       type: String,
-      default: '引用实体设置'
+      default: 'ui.runtimeLeak.referenceEntitySettings'
     }
   },
 
@@ -326,7 +326,7 @@ export default {
       else {
         // 检查最大限制
         if (this.max > 0 && this.selectList.length >= this.max) {
-          return this.$message.error(`最多只能选择${this.max}个字段`)
+          return this.$message.error(this.$('ui.runtimeLeak.maxFields', { count: this.max }))
         }
 
         this.ids.push(val[id])
@@ -425,11 +425,11 @@ export default {
 
       // 验证选择数量
       if ((this.type === 'module' || this.type === 'view') && this.max > 0 && this.selectList.length > this.max) {
-        return this.$message.error(`最多只能选择${this.max}个字段`)
+        return this.$message.error(this.$('ui.runtimeLeak.maxFields', { count: this.max }))
       }
 
       if (this.min > 0 && this.selectList.length < this.min) {
-        return this.$message.error(`至少选择${this.min}个字段`)
+        return this.$message.error(this.$('ui.runtimeLeak.minFields', { count: this.min }))
       }
 
       // 触发确认事件

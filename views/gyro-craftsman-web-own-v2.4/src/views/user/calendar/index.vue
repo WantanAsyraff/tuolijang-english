@@ -9,7 +9,7 @@
             我的日程
           </div> -->
         <!-- <div class="tab-item" :class="{ active: activeTab === 'todo' }" @click="activeTab = 'todo'">
-            我的待办<span v-if="todoCount" class="tab-count">·{{ todoCount }}</span>
+            {{ $("我的待办") }}<span v-if="todoCount" class="tab-count">·{{ todoCount }}</span>
           </div> -->
         <!-- </div> -->
         <el-button

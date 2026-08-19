@@ -7,9 +7,9 @@
                 <span @click="saveQrcode" class="save-btn">{{ $("legacy.850de13a01d9b482") }}</span>
             </div>
             <!-- <div class="pc-link-wrapper">
-                <span class="link-label">PC端签约链接：</span>
+                <span class="link-label">{{ $('PC端签约链接：') }}</span>
                 <a href="https://tuoluojiang.com" target="_blank" class="link-url">https://tuoluojiang.com</a>
-                <el-button type="text" @click="copyLink" class="copy-btn">复制链接</el-button>
+                <el-button type="text" @click="copyLink" class="copy-btn">{{ $('复制链接') }}</el-button>
             </div> -->
         </div>
     </oa-dialog>

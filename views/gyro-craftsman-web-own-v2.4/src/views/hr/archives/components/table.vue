@@ -138,11 +138,11 @@ export default {
   computed: {
     addTime() {
       if (this.notEmployees == '未入职') {
-        return '面试时间'
+        return this.$('面试时间')
       } else if (this.notEmployees == '离职') {
-        return '离职时间'
+        return this.$('离职时间')
       } else {
-        return '入职时间'
+        return this.$('入职时间')
       }
     },
     propTime() {
@@ -172,7 +172,7 @@ export default {
         2: '女',
         3: '其他'
       }
-      return sexData[val]
+      return this.$(sexData[val])
     },
     getEducation(val) {
       let educationData = {
@@ -181,7 +181,7 @@ export default {
         5: '本科',
         6: '研究生'
       }
-      return educationData[val] || '--'
+      return this.$(educationData[val]) || '--'
     },
     getIsPart(val) {
       let partData = {
@@ -193,7 +193,7 @@ export default {
         5: '劳务外包',
         6: '其他'
       }
-      return partData[val]
+      return this.$(partData[val])
     },
     handleSizeChange(val) {
       this.where.limit = val

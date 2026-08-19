@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import { processResourceUrl } from '@/utils/resourceUtil';
+import { $ } from '@/lang';
 // 请求接口地址 如果没有配置自动获取当前网址路径
 const VUE_APP_API_URL = processResourceUrl(process.env.VUE_APP_BASE_API || `${location.origin}`);
 
@@ -29,7 +30,7 @@ const SettingMer = {
   // socket连接
   wsSocketUrl: VUE_APP_WS_URL,
   // 路由标题
-  title: login_title || 'OA系统-总后台',
+  title: login_title || $('ui.runtimeLeak.adminOaTitle'),
 };
 
 export default SettingMer;

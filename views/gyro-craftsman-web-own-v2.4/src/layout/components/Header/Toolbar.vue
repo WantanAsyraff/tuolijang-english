@@ -3,13 +3,13 @@
     <breadcrumb></breadcrumb>
   
     <!-- <div class="flex top" :class="helpShow ? 'left' : 'mr0'">
-      <el-tooltip class="item" effect="dark" content="帮助中心搜索" placement="bottom">
+      <el-tooltip class="item" effect="dark" :content="$('帮助中心搜索')" placement="bottom">
         <span class="iconfont iconjishiben-sousuo" v-if="!searchShow" @click="searchShow = true"></span>
       </el-tooltip>
       <el-input
         v-if="searchShow"
         size="small"
-        placeholder="请输入内容"
+        :placeholder="$('请输入内容')"
         v-model="keyword"
         clearable
         @blur="handleConfirm"

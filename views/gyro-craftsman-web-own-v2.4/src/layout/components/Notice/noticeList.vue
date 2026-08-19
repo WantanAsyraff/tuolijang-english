@@ -14,13 +14,13 @@
     </slot>
     <div class="flex">
       <div class="left">
-        <!-- <div class="title mb15">消息类型</div> -->
+        <!-- <div class="title mb15">{{ $('消息类型') }}</div> -->
         <div class="type" @click="handleTypes({ id: '' })" :class="activeId == 0 ? 'active' : ''">
           {{ $("ui.layoutNoticeNoticeListAllTypes") }}
         </div>
         <div class="type" v-for="(item, index) in options" :key="index" @click="handleTypes(item)"
           :class="activeId == item.value ? 'active' : ''"  v-show="(tabsName==1&&item.count > 0)||tabsName==2">
-          {{ item.cate_name }} <span class="num" v-if="item.count != 0">{{ item.count>99?'99+':item.count }}</span>
+          {{ $(item.cate_name, item.cate_name_en) }} <span class="num" v-if="item.count != 0">{{ item.count>99?'99+':item.count }}</span>
         </div>
 
         <div class="dingyue" @click="toSubscribe">
@@ -50,7 +50,7 @@
               <template slot-scope="scope">
                 <el-button type="text" v-for="(item, index) in scope.row.buttons" :key="index"
                   :disabled="selectedType.includes(item.action)" @click="handleDetails(scope.row, item)">
-                  <span v-if="scope.row.cate_name !== '考勤'"> {{ item.title }}</span>
+                  <span v-if="scope.row.cate_name !== '考勤'"> {{ $(item.title, item.title_en) }}</span>
                 </el-button>
               </template>
             </el-table-column>

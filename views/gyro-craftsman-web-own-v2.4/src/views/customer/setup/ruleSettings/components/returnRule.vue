@@ -15,9 +15,9 @@
                 :active-value="1"
                 :inactive-value="0"
                 active-color="#1890ff"
-                active-text="开启"
+                :active-text="$('开启')"
                 inactive-color="#cccccc"
-                inactive-text="关闭"
+                :inactive-text="$('关闭')"
               >
               </el-switch>
             </el-form-item>
@@ -78,9 +78,9 @@
                 :active-value="1"
                 :inactive-value="0"
                 active-color="#1890ff"
-                active-text="开启"
+                :active-text="$('开启')"
                 inactive-color="#cccccc"
-                inactive-text="关闭"
+                :inactive-text="$('关闭')"
               >
               </el-switch>
             </el-form-item>
@@ -189,12 +189,12 @@ export default {
     },
     checkAdvanceCycle(rule, value, callback) {
       if (value === '') {
-        callback(new Error('请输入客户退回公海提醒提前天数'))
+        callback(new Error($('请输入客户退回公海提醒提前天数')))
       } else if (
         parseInt(value, 10) >= parseInt(this.formData.unsettled_cycle, 10) ||
         parseInt(value, 10) >= parseInt(this.formData.unfollowed_cycle, 10)
       ) {
-        callback(new Error('退回公海提醒天数要小于未成交退回天数和未跟进退回天数'))
+        callback(new Error($('退回公海提醒天数要小于未成交退回天数和未跟进退回天数')))
       } else {
         callback()
       }

@@ -44,7 +44,7 @@
         class="item-button"
         @click="selectSeason(index)"
       >
-        {{ item.name }}</el-button
+        {{ $(item.name) }}</el-button
       >
     </div>
     <div v-if="halfYearBtn" class="text item text-center">
@@ -56,7 +56,7 @@
         class="item-button"
         @click="selectSeason(index)"
       >
-        {{ item.name }}</el-button
+        {{ $(item.name) }}</el-button
       >
     </div>
   </el-card>
@@ -120,9 +120,9 @@ export default {
       this.year = arr[0].slice(0, 4)
       var str = arr[0].slice(4, 6) + '-' + arr[1].slice(4, 6)
       var arrAll = this.valueArr
-      this.showValue = this.halfYearBtn
-        ? `${this.year}年${this.halfYearText[this.hailYearIndex]}半年`
-        : `${this.year}年${arrAll.indexOf(str) + 1}季度`
+      const periodIndex = arrAll.indexOf(str) + 1
+      const halfIndex = Number(arr[0].slice(4, 6)) > 6 ? 1 : 0
+      this.showValue = this.formatPeriod(periodIndex, halfIndex)
     }
   },
   created() {
@@ -132,12 +132,19 @@ export default {
       this.year = arr[0].slice(0, 4)
       var str = arr[0].slice(4, 6) + '-' + arr[1].slice(4, 6)
       var arrAll = this.valueArr
-      this.showValue = this.halfYearBtn
-        ? `${this.year}年${this.halfYearText[this.hailYearIndex]}半年`
-        : `${this.year}年${arrAll.indexOf(str) + 1}季度`
+      const periodIndex = arrAll.indexOf(str) + 1
+      const halfIndex = Number(arr[0].slice(4, 6)) > 6 ? 1 : 0
+      this.showValue = this.formatPeriod(periodIndex, halfIndex)
     }
   },
   methods: {
+    formatPeriod(quarter, halfIndex = this.hailYearIndex) {
+      if (this.halfYearBtn) {
+        const key = halfIndex === 1 ? 'ui.runtimeLeak.period.secondHalf' : 'ui.runtimeLeak.period.firstHalf'
+        return this.$(key, { year: this.year })
+      }
+      return this.$('ui.runtimeLeak.period.quarter', { year: this.year, quarter })
+    },
     one() {
       this.showSeason = false
     },
@@ -179,9 +186,7 @@ export default {
       var arr = that.valueArr[i].split('-')
       that.getValue(that.year + '-' + arr[0])
       that.showSeason = false
-      this.showValue = this.halfYearBtn
-        ? `${this.year}年${this.halfYearText[i]}半年`
-        : `${this.year}年${this.season}季度`
+      this.showValue = this.formatPeriod(this.season, i)
     }
   }
 }

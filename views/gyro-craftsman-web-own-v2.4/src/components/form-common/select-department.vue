@@ -45,7 +45,7 @@
               @click.stop="append(node, data)"
             >
               <i class="tree-icon iconfont iconwenjianjia" />
-              <span class="label-text over-text">{{ data.label }}</span>
+              <span class="label-text over-text">{{ $(data.label) }}</span>
             </div>
             <div
               v-if="isSite && departmentIds.includes(data.id)"
@@ -68,7 +68,7 @@
     <slot name="custom"></slot>
     <div v-if="!isSlots" ref="select" class="select plan-footer-one mr10" @click="handlePopoverShow">
       <span class="el-icon-arrow-down"></span>
-      <span v-if="selectList && selectList.length == 0" class="placeholder">{{ placeholder }}</span>
+      <span v-if="selectList && selectList.length == 0" class="placeholder">{{ $(placeholder) }}</span>
       <div v-if="selectList.length > 0 && !isSearch" class="flex-box">
         <span
           v-for="(item, index) in selectList"
@@ -76,7 +76,7 @@
           class="el-tag el-tag--small el-tag--info el-tag--light"
           @click.stop=""
         >
-          {{ item.label || item.name }}
+          {{ $(item.label || item.name) }}
           <span v-if="isSite && item.id == is_mastartId">{{ $("ui.formCommonSelectDepartmentMain") }} </span>
           <i class="el-tag__close el-icon-close" @click.stop="cardTag(index)" />
         </span>
@@ -90,7 +90,7 @@
           class="el-tag el-tag--small el-tag--info el-tag--light mr10 flex-search"
           @click.stop=""
         >
-          <span class="left over-text"> {{ item.label || item.name }}</span>
+          <span class="left over-text"> {{ $(item.label || item.name) }}</span>
 
           <i class="right el-tag__close el-icon-close" @click.stop="cardTag(0)" />
         </div>
@@ -138,7 +138,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '请选择部门'
+      default: 'legacyScript.pleaseSelectDepartment'
     },
     // 只能单选一个人员
     onlyOne: {

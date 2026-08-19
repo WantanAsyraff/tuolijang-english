@@ -30,7 +30,7 @@
           <div class="fontOptionItem" v-for="item in fontFamilyList" :key="item.value"
             :style="{ fontFamily: item.value }" :class="{ active: formatInfo.font === item.value }"
             @click="changeFontFamily(item.value)">
-            {{ item.name }}
+            {{ $(item.name) }}
           </div>
         </div>
         <div class="btn" slot="reference">

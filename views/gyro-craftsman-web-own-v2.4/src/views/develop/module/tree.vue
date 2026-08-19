@@ -546,7 +546,7 @@ export default {
         // 重新生成扁平化数据
         this.generateFlattenedData()
         
-        this.$message.success(`已加载更多${group.groupName}的客户数据`)
+        this.$message.success(this.$('ui.runtimeLeak.loadedMoreCustomers', { group: group.groupName }))
       } catch (error) {
         this.$message.error($('legacyScript.failedToLoadMoreData'))
       } finally {
@@ -776,7 +776,7 @@ export default {
     // 搜索处理
     handleSearch() {
       if (this.searchKeyword.trim()) {
-        this.$message.info(`搜索关键词: ${this.searchKeyword}`)
+        this.$message.info(this.$('ui.runtimeLeak.searchKeyword', { keyword: this.searchKeyword }))
         // 这里可以调用API进行搜索
         this.pagination.currentPage = 1
         this.loadCustomerData()
@@ -791,14 +791,14 @@ export default {
     // 批量删除
     async handleBatchDelete() {
       try {
-        await this.$confirm(`确定要删除选中的 ${this.selectedRows.length} 个客户吗?`, $('legacyScript.confirmBatchDeletion'), {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        await this.$confirm(this.$('ui.runtimeLeak.deleteSelectedCustomers', { count: this.selectedRows.length }), $('legacyScript.confirmBatchDeletion'), {
+          confirmButtonText: this.$('public.ok'),
+          cancelButtonText: this.$('public.cancel'),
           type: 'warning'
         })
 
         // 执行批量删除逻辑
-        this.$message.success(`成功删除 ${this.selectedRows.length} 个客户`)
+        this.$message.success(this.$('ui.runtimeLeak.deletedCustomers', { count: this.selectedRows.length }))
         this.selectedRows = []
         this.$refs.table.clearSelection()
         this.loadCustomerData()
@@ -809,15 +809,15 @@ export default {
 
     // 复制客户
     handleCopy(row) {
-      this.$message.success(`已复制客户: ${row.customer_name}`)
+      this.$message.success(this.$('ui.runtimeLeak.copiedCustomer', { name: row.customer_name }))
     },
 
     // 删除客户
     async handleDelete(row) {
       try {
         await this.$confirm($('legacyScript.areYouSureYouWantToDeleteThisCustomer'), $('public.tips'), {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+          confirmButtonText: this.$('public.ok'),
+          cancelButtonText: this.$('public.cancel'),
           type: 'warning'
         })
         this.$message.success($('hr.deleteok'))
@@ -830,7 +830,7 @@ export default {
 
     // 再次生成
     handleRegenerate(row) {
-      this.$message.info(`正在重新生成客户: ${row.customer_name}`)
+      this.$message.info(this.$('ui.runtimeLeak.regeneratingCustomer', { name: row.customer_name }))
     },
 
     // 分页大小改变

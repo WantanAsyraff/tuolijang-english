@@ -8,7 +8,7 @@
   <el-steps :active="indexCheck" direction="vertical">
     <el-step v-for="(item, index) in examineList" :key="index">
       <div slot="title" class="caption" @click="itemIsShow(item)">
-        {{ item.title }}
+        {{ $(item.title) }}
         <el-tag
           v-if="item.types == 1 && item.settype != 5 && item.examine_mode > 0 && item.users.length > 1"
           effect="plain"
@@ -138,7 +138,7 @@ export default {
       if (!arr.length) {
         str = ''
       }
-      return str
+      return this.$(str)
     },
 
     // 判断头像是否能显示
@@ -169,7 +169,7 @@ export default {
       } else if (item.is_transfer === 1 || item.is_transfer === 3) {
         str = '已转审 '
       }
-      return str
+      return str ? this.$(str.trim()) + ' ' : ''
     },
     itemIsShow(row) {
       var keys = this.hiddenKey.indexOf(row.uniqued)

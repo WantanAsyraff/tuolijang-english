@@ -24,19 +24,19 @@ const statusOptions = [
 ]
 function getStatusText(id) {
   if (id == 0) {
-    return '目标制定'
+    return $('目标制定')
   } else if (id == 1) {
-    return '执行期'
+    return $('执行期')
   } else if (id == 2) {
-    return '上级评价'
+    return $('上级评价')
   } else if (id == 3) {
-    return '绩效审核'
+    return $('绩效审核')
   } else if (id == 4) {
-    return '结束'
+    return $('结束')
   } else if (id == 5) {
-    return '未开始'
+    return $('未开始')
   } else {
-    return '结束'
+    return $('结束')
   }
 }
 function getStatusTag(status) {
@@ -79,17 +79,17 @@ function getStatusTag(status) {
 }
 function getPeriodText(id) {
   if (id == 1) {
-    return '周考核'
+    return $('周考核')
   } else if (id == 2) {
-    return '月考核'
+    return $('月考核')
   } else if (id == 3) {
-    return '年考核'
+    return $('年考核')
   } else if (id == 5) {
-    return '季度考核'
+    return $('季度考核')
   } else if (id == 4) {
-    return '半年考核'
+    return $('半年考核')
   } else {
-    return '月考核'
+    return $('月考核')
   }
 }
 export default {

@@ -18,7 +18,7 @@ export const getAbnormalText = (row) => {
   } else {
     str = '进行中'
   }
-  return str
+  return $(str)
 }
 
 /**
@@ -55,7 +55,7 @@ export const getContractText = (row) => {
   } else {
     str = '异常订单'
   }
-  return str
+  return $(str)
 }
 
 /**
@@ -92,7 +92,7 @@ let invoiceText = {
   5: '已开票'
 }
 export const getInvoiceText = (status) => {
-  return invoiceText[status]
+  return $(invoiceText[status])
 }
 
 /**
@@ -130,7 +130,7 @@ const invoiceType = {
   3: '企业专用发票'
 }
 export const getInvoiceType = (status) => {
-  return invoiceType[status]
+  return $(invoiceType[status])
 }
 
 /**

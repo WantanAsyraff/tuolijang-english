@@ -96,7 +96,7 @@ export default {
             const fileTypeName = file.name.substr(file.name.lastIndexOf('.') + 1)
             let types = ['xlsx', 'xls']
             if (!types.includes(fileTypeName)) {
-                this.$message.error('仅支持 ' + types.join(',') + ' 格式')
+                this.$message.error(this.$('ui.runtimeLeak.onlyFormatsSupported', { formats: types.join(', ') }))
                 return false
             }
             this.file = file
@@ -131,13 +131,13 @@ export default {
                             this.$emit('getTableData')
                         } else {
                             this.loading = 4
-                            this.$message.error(res.msg || '导入失败')
+                            this.$message.error(res.msg || this.$('ui.runtimeLeak.importFailed'))
                         }
                     })
 
                 } else {
                     this.loading = 4
-                    this.$message.error(res.msg || '导入失败')
+                    this.$message.error(res.msg || this.$('ui.runtimeLeak.importFailed'))
                 }
             })
         },

@@ -2,28 +2,26 @@
 <template>
   <div>
     <el-form ref="form" :model="form" :rules="formRules" label-width="auto" @submit.native.prevent>
-      <el-form-item v-for="(item, key, index) in formConfig" :key="key" :label="item.label" :prop="item.key"
+      <el-form-item v-for="(item, key, index) in formConfig" :key="key" :label="$(item.label)" :prop="item.key"
         v-if="item.isShow === 'data_type' ? form[item.isShow] != 1 : form[item.isShow] != 0">
         <!-- 单选 -->
         <template v-if="item.type == 'radio'">
           <el-radio-group v-model="form[item.key]" class="vertical">
-            <el-radio v-for="(itemOption, index) in item.options" :key="index" :label="itemOption.label">{{
-              itemOption.value
-            }}</el-radio>
+            <el-radio v-for="(itemOption, index) in item.options" :key="index" :label="itemOption.label">{{ $(itemOption.value) }}</el-radio>
           </el-radio-group>
         </template>
 
         <!-- 选择日期 -->
-        <el-date-picker v-if="item.type == 'date'" size="small" v-model="form[item.key]" :placeholder="item.placeholder"
+        <el-date-picker v-if="item.type == 'date'" size="small" v-model="form[item.key]" :placeholder="$(item.placeholder)"
           type="date" :format="item.format" :value-format="item.format" style="width: 100%">
         </el-date-picker>
         <!-- 输入框 -->
-        <el-input v-if="item.type == 'input'" v-model="form[item.key]" :placeholder="item.placeholder"
+        <el-input v-if="item.type == 'input'" v-model="form[item.key]" :placeholder="$(item.placeholder)"
           :maxlength="item.maxlength" size="small" style="width: 100%" :disabled="item.disabled"
           :show-word-limit="item.showWordLimit"></el-input>
         <!-- 刷新生成英文输入框 -->
         <el-input v-if="item.type == 'inputEn'" :disabled="fromData.type == 'edit' ? true : false"
-          v-model="form[item.key]" :placeholder="item.placeholder" size="small" class="refresh-input"
+          v-model="form[item.key]" :placeholder="$(item.placeholder)" size="small" class="refresh-input"
           @focus="refreshFn(item.refresh, item.key)">
           <el-button type="primary" class="refresh" :disabled="fromData.type == 'edit' ? true : false" slot="suffix"
             size="small" @click.stop="refreshFn(item.refresh, item.key)">
@@ -41,7 +39,7 @@
         </ueditor-from>
         <!-- 密码输入框 -->
         <el-input type="password" v-if="item.type == 'password'" prefix-icon="el-icon-lock" v-model="form[item.key]"
-          :placeholder="item.placeholder" show-password style="width: 100%" size="small"></el-input>
+          :placeholder="$(item.placeholder)" show-password style="width: 100%" size="small"></el-input>
         <!-- 计数器输入框 -->
         <div v-if="item.type == 'number'">
           <el-input-number style="width: 100%" size="small" v-model="form[item.key]" :min="item.min"
@@ -49,7 +47,7 @@
         </div>
         <!-- 数字输入框 -->
         <el-input v-if="item.type == 'inputNumber'" type="number" size="small" v-model="form[item.key]"
-          :placeholder="item.placeholder"></el-input>
+          :placeholder="$(item.placeholder)"></el-input>
         <!-- 开关组件 -->
         <el-switch v-if="item.type == 'switch'" v-model="form[item.key]" size="small" :active-value="item.activeValue"
           :inactive-value="item.inactiveValue" :active-text="item.activeText" :inactive-text="item.inactiveText">
@@ -62,8 +60,8 @@
         <div v-if="item.type == 'select'">
           <div class="flex">
             <el-select style="width: 100%" v-model="form[item.key]" :disabled="item.disabled" filterable size="small"
-              @change="selectChange" :placeholder="item.placeholder">
-              <el-option v-for="(v, index) in item.options" :key="v.id" :label="v.label || v.name || v.table_name"
+              @change="selectChange" :placeholder="$(item.placeholder)">
+              <el-option v-for="(v, index) in item.options" :key="v.id" :label="$(v.label || v.name || v.table_name, v.label_en || v.name_en || v.table_name_en)"
                 :value="v.id || v.value">
               </el-option>
             </el-select>
@@ -95,7 +93,7 @@
         <el-select style="width: 100%" v-if="item.type == 'multipleSelect'" v-model="form[item.key]"
           :disabled="fromData.type == 'edit'" multiple size="small" filterable
           :placeholder="item.placeholder ? item.placeholder : $('ui.developConditionGroupPleaseSelect')">
-          <el-option v-for="(v, index) in item.options" :key="v.id" :label="v.name" :value="v.id"> </el-option>
+          <el-option v-for="(v, index) in item.options" :key="v.id" :label="$(v.name, v.name_en)" :value="v.id"> </el-option>
         </el-select>
 
         <!--低代码选择应用-实体 -->

@@ -97,7 +97,7 @@ export default {
                   // 生成包含尺寸信息的img标签
                   return `<img src="data:${image.contentType};base64,${imageBuffer}" 
                  style="width: ${width}px; height: ${height}px;"
-                 alt="文档图片">`
+                 alt="${$('文档图片')}">`
                 })
               }
             }

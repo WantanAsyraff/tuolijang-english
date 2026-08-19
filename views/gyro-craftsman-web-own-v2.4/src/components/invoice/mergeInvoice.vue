@@ -115,7 +115,7 @@ export default {
       if (!value && this.rules.invoiceType > 1) {
         return callback(new Error(this.$('customer.placeholder47')))
       } else if (!helper.identReg.test(value)) {
-        return callback(new Error('税号输入不合法'))
+        return callback(new Error($('税号输入不合法')))
       } else {
         return callback()
       }

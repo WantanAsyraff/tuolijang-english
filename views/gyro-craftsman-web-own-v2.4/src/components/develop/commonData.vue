@@ -25,7 +25,7 @@ const formRules = {
     {
       validator: function (rule, value, callback) {
         if (/^[\u4e00-\u9fa5a-zA-Z][\u4e00-\u9fa5a-zA-Z_]{0,15}$/.test(value) == false) {
-          callback(new Error('以中文，英文字母开头，中间可输入下划线，最多可输入16个字'))
+          callback(new Error($('以中文，英文字母开头，中间可输入下划线，最多可输入16个字')))
         } else {
           callback()
         }
@@ -42,7 +42,7 @@ const formRules = {
     {
       validator: function (rule, value, callback) {
         if (/^[a-z][A-Za-z_]*$/.test(value) == false) {
-          callback(new Error('英文小写字母开头，不可包含中文，数字，空格，中间可输下划线'))
+          callback(new Error($('英文小写字母开头，不可包含中文，数字，空格，中间可输下划线')))
         } else {
           callback()
         }
@@ -189,7 +189,7 @@ const fieldRules = {
     {
       validator: function (rule, value, callback) {
         if (/^[\u4e00-\u9fa5a-zA-Z][\u4e00-\u9fa5a-zA-Z_]{0,15}$/.test(value) == false) {
-          callback(new Error('以中文，英文字母开头，中间可输入下划线，最多可输入16个字'))
+          callback(new Error($('以中文，英文字母开头，中间可输入下划线，最多可输入16个字')))
         } else {
           callback()
         }
@@ -206,7 +206,7 @@ const fieldRules = {
     {
       validator: function (rule, value, callback) {
         if (/^[a-z][A-Za-z_]*$/.test(value) == false) {
-          callback(new Error('英文小写字母开头，不可包含中文，空格，中间可输入下划线'))
+          callback(new Error($('英文小写字母开头，不可包含中文，空格，中间可输入下划线')))
         } else {
           callback()
         }

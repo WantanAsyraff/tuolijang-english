@@ -53,8 +53,8 @@
                 v-model="scope.row.status"
                 :active-value="1"
                 :inactive-value="0"
-                active-text="开启"
-                inactive-text="关闭"
+                :active-text="$('开启')"
+                :inactive-text="$('关闭')"
                 @change="changeStatus(scope.row)"
               >
               </el-switch>

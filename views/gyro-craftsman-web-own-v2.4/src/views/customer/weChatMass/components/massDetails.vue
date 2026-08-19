@@ -156,9 +156,9 @@
             </el-table-column>
             <!-- <el-table-column label="接收情况">
               <template slot-scope="scope">
-                <el-tag v-if="scope.row.status == 0">未发送</el-tag>
-                <el-tag v-else-if="scope.row.status == 2 || scope.row.status == 3" type="info">未送达</el-tag>
-                <el-tag v-else-if="scope.row.status == 1" type="success">已送达</el-tag>
+                <el-tag v-if="scope.row.status == 0">{{ $("未发送") }}</el-tag>
+                <el-tag v-else-if="scope.row.status == 2 || scope.row.status == 3" type="info">{{ $("未送达") }}</el-tag>
+                <el-tag v-else-if="scope.row.status == 1" type="success">{{ $("已送达") }}</el-tag>
               </template>
             </el-table-column> -->
 
@@ -227,15 +227,12 @@ export default {
   },
   computed: {
     title() {
-      let str = '客户群发'
-      if (this.types == '1') {
-        str = '客户群群发'
-      } else if (this.types == '2') {
-        str = '朋友圈群发'
-      } else if (this.types == '0') {
-        str = '客户群发'
+      const titleKeys = {
+        '0': 'runtime.message.customerMass',
+        '1': 'runtime.message.customerGroupMass',
+        '2': 'runtime.message.momentsMass'
       }
-      return str
+      return this.$(titleKeys[this.types] || 'runtime.message.customerMass')
     }
   },
 

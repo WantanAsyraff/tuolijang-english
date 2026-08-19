@@ -199,7 +199,7 @@ export default {
     //添加商机
     addDataFn(str) {
       this.formBoxConfig = {
-        title: str === 'edit' ? '编辑商机' : '新增商机',
+        title: str === 'edit' ? this.$('ui.runtimeLeak.editOpportunity') : this.$('ui.runtimeLeak.addOpportunity'),
         width: '1129px',
         types: this.keyword
       }

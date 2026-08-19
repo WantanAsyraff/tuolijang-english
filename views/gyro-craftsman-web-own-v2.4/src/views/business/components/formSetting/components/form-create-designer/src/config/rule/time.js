@@ -1,7 +1,8 @@
+import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 import { makeRequiredRule } from '../../utils';
 
-const label = '时间选择器';
+const label = $('时间选择器')
 const name = 'timePicker';
 
 export default {

@@ -4,7 +4,7 @@
     <div class="tree-wrapper">
       <div class="tree-box" :class="{ 'is-admin': isAdmin }">
         <div class="tree-con">
-          <!-- <span class="text">菜单权限</span> -->
+          <!-- <span class="text">{{ $('菜单权限') }}</span> -->
           <el-tree
             ref="tree"
             class="blue-theme"

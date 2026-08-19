@@ -1,6 +1,6 @@
 <template>
 <div class="main">
-  <!-- <div class="title-16 mt20">属性信息</div> -->
+  <!-- <div class="title-16 mt20">{{ $('属性信息') }}</div> -->
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="90px" class="mt20">
     <el-form-item :label="$('ui.developCrudBasicSettingDisplayName')" prop="table_name">
       <el-input v-model="ruleForm.table_name" size="small"></el-input>

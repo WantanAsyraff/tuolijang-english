@@ -85,7 +85,7 @@
             </div>
             <div v-else-if="item.form_value === 'switch'">
               <el-switch disabled v-model="scope.row[item.field_name_en]" :active-value="1" :inactive-value="0"
-                active-text="开启" inactive-text="关闭">
+                :active-text="$('开启')" :inactive-text="$('关闭')">
               </el-switch>
             </div>
             <div v-else-if="item.form_value === 'textarea'">

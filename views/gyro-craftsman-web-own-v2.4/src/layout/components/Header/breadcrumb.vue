@@ -32,7 +32,8 @@ export default {
     },
     enterpriseName() {
       const name = this.enterprise?.enterprise_name || this.webConfig?.enterprise_name || '';
-      return name.length > 14 ? name.slice(0, 13) + '…' : name;
+      const localizedName = this.$(name);
+      return localizedName.length > 14 ? localizedName.slice(0, 13) + '…' : localizedName;
     },
     hasBrand() {
       return Boolean(this.brandLogo || this.enterpriseName);

@@ -194,14 +194,14 @@ export default {
   data() {
     const checkMember = (rule, value, callback) => {
       if (this.superiorUser.length == 0) {
-        return callback(new Error('请选择参与人'))
+        return callback(new Error($('请选择参与人')))
       } else {
         return callback()
       }
     }
     const checkDays = (rule, value, callback) => {
       if (this.ruleForm.days.length == 0) {
-        return callback(new Error('请选择重复日期'))
+        return callback(new Error($('请选择重复日期')))
       } else {
         return callback()
       }

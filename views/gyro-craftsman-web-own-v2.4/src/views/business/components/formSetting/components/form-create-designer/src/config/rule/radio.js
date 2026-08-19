@@ -3,7 +3,7 @@ import uniqueId from '@form-create/utils/lib/unique';
 import { makeOptionsRule } from '../../utils/index';
 import { makeRequiredRule } from '../../utils';
 
-const label = '单选框';
+const label = $('单选框')
 const name = 'radio';
 
 export default {

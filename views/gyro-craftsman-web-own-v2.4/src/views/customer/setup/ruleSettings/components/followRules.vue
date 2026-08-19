@@ -15,9 +15,9 @@
                 :active-value="1"
                 :inactive-value="0"
                 active-color="#1890ff"
-                active-text="开启"
+                :active-text="$('开启')"
                 inactive-color="#cccccc"
-                inactive-text="关闭"
+                :inactive-text="$('关闭')"
               >
               </el-switch>
             </el-form-item>

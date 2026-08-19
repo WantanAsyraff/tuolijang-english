@@ -1,5 +1,5 @@
 import { $ } from '@/lang'
-const label = '栅格布局';
+const label = $('栅格布局')
 const name = 'row';
 
 export default {

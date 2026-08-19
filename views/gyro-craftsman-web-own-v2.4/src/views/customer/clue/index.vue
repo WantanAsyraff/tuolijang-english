@@ -415,7 +415,7 @@ export default {
     // 添加线索
     addDataFn(str) {
       this.formBoxConfig = {
-        title: str === 'edit' ? '编辑线索' : '新增线索',
+        title: str === 'edit' ? this.$('ui.runtimeLeak.editLead') : this.$('ui.runtimeLeak.addLead'),
         width: '570px'
       }
       getCluesCeartepApi().then((res) => {

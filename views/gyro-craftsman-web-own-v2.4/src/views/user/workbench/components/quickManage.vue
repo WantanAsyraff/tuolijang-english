@@ -195,7 +195,7 @@ export default {
         this.selectMax = 5
       }
       if (this.config.data.length >= this.selectMax) {
-        this.$message.error('最多只能添加' + this.selectMax + '个应用')
+        this.$message.error(this.$('ui.runtimeLeak.maxApps', { count: this.selectMax }))
         return false
       }
 

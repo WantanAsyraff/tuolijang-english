@@ -248,7 +248,7 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/components/customer/oaForm.vue",
       "mustContain": [
-        "{{ $(val.key_name) }}",
+        "systemLabel(val.key_name)",
         "fieldPlaceholder(val",
         "localizedOptions(val.options"
       ]
@@ -257,7 +257,7 @@
       "file": "views/gyro-craftsman-web-own-v2.4/src/components/common/formList.vue",
       "mustContain": [
         ":placeholder=\"$(val.field_name)\"",
-        ":label=\"$(items.name || items.label)\""
+        ":label=\"$(items.name || items.label, items.name_en || items.label_en)\""
       ]
     },
     {

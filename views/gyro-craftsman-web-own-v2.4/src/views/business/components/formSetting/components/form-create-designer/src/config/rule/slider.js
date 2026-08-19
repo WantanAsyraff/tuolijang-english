@@ -1,7 +1,7 @@
 import { $ } from '@/lang'
 import uniqueId from '@form-create/utils/lib/unique';
 
-const label = '滑块';
+const label = $('滑块')
 const name = 'slider';
 
 export default {

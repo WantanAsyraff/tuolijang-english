@@ -332,7 +332,7 @@ export default {
       const isImage = types.includes(fileTypeName)
 
       if (!isImage) {
-        this.$message.error('不支持该' + fileTypeName + '格式')
+        this.$message.error(this.$('ui.runtimeLeak.unsupportedFormat', { format: fileTypeName }))
         return false
       }
       return true

@@ -22,7 +22,9 @@
         </template>
 
         <el-table-column :label="$('toptable.name')" min-width="100" prop="test.name" />
-        <el-table-column :label="$('toptable.department')" min-width="160" prop="frame.name" />
+        <el-table-column :label="$('toptable.department')" min-width="160" prop="frame.name">
+          <template slot-scope="scope">{{ $(scope.row.frame && scope.row.frame.name) }}</template>
+        </el-table-column>
         <el-table-column :label="$('user.work.assessmentname')" min-width="100" prop="name" />
         <el-table-column :label="$('toptable.assessmentcycle')" align="center" min-width="100" prop="period">
           <template slot-scope="scope">

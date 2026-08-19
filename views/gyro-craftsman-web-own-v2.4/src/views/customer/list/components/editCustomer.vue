@@ -7,7 +7,7 @@
     :direction="direction"
     :show-close="true"
     :size="DRAWER_SIZE.XL"
-    :title="formData.title"
+    :title="$(formData.title)"
     :visible.sync="drawer"
   >
     <div slot="title" class="invoice-title">
@@ -28,7 +28,7 @@
               v-if="dataInfo.data && dataInfo.data.customer_status"
               :style="{ color: dataInfo.data.customer_status.color || '#1890ff' }"
             >
-              {{ dataInfo.data ? dataInfo.data.customer_status.name : '--' }}
+              {{ dataInfo.data ? $(dataInfo.data.customer_status.name, dataInfo.data.customer_status.name_en) : '--' }}
             </span>
             <span class="title">{{ $('customer.salesman') }}：</span
             ><span class="weight">{{ dataInfo.data ? dataInfo.data.salesman : '--' }}</span>
