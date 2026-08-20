@@ -1,7 +1,7 @@
 <!-- 查看发票详情弹窗 -->
 <template>
 <div>
-  <el-dialog :title="config.title" :visible.sync="dialogVisible" width="540px" :close-on-click-modal="false"
+  <el-dialog :title="$(config.title)" :visible.sync="dialogVisible" width="540px" :close-on-click-modal="false"
     :append-to-body="true" :before-close="handleClose">
     <el-form ref="form" :model="rules" :rules="rule" :label-width="labelWidth + 'px'" class="mt15">
       <el-form-item prop="remark" v-if="rules.status == 2">

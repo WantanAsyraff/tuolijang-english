@@ -28,7 +28,7 @@
         <el-table :data="tableData" v-loading="loading" :height="tableHeight" row-key="id" style="width: 100%">
           <el-table-column :label="$('ui.developCrudEventSettingTriggerName')" prop="name">
             <template slot-scope="scope">
-              <span class="color-doc pointer" @click="editFn(scope.row)"> {{ scope.row.name }}</span>
+              <span class="color-doc pointer" @click="editFn(scope.row)"> {{ $(scope.row.name) }}</span>
             </template>
           </el-table-column>
           <el-table-column :min-width="150" :label="$('ui.developCrudEventSettingTriggerType')" prop="field_name">
@@ -47,7 +47,7 @@
           <el-table-column :label="$('ui.developConditionDialogPriority')" prop="sort"> </el-table-column>
           <el-table-column :label="$('ui.developApproveIndexLinkedEntity')" min-width="140" prop="crud">
             <template slot-scope="scope">
-              {{ scope.row.crud.table_name || '--' }}
+              {{ $(scope.row.crud.table_name) || '--' }}
             </template>
           </el-table-column>
           <el-table-column :label="$('ui.developApproveIndexLinkedApplication')" min-width="140" prop="cate_item">
@@ -229,10 +229,10 @@ export default {
     getEvent(val) {
       // 从类型列表中查找匹配的选项
       const targetOption = this.typesList[0]?.options?.find((item) => item.value === val)
-      return targetOption ? targetOption.label : '--'
+      return targetOption ? $(targetOption.label) : '--'
     },
     getString(arr) {
-      return arr.join('、')
+      return arr.map((item) => $(item)).join(' / ')
     },
 
     // 根据id获取触发动作
@@ -241,7 +241,7 @@ export default {
       this.actionList.map((item) => {
         val.map((key) => {
           if (item.value == key) {
-            textArr.push(item.label)
+            textArr.push($(item.label))
           }
         })
       })

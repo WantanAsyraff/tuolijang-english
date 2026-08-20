@@ -185,7 +185,7 @@
         <div class="mr10 icon-name">
           <el-dropdown class="el-dropdown sort-dropdown display-align" trigger="click" @command="handleType">
             <span class="el-dropdown-link pointer el-dropdown-selfdefine text-16">
-              {{ typeName }}
+              {{ $(typeName) }}
               <i class="icon iconfont iconshaixuan" />
             </span>
             <el-dropdown-menu slot="dropdown">
@@ -281,8 +281,8 @@ export default {
         { name: this.$('file.table'), id: 5 }
       ],
       newlyBuildData: [
-        { name: '使用模版', id: 7, icon: 'iconshiyongmoban color-doc' },
-        { name: '上传文件', id: 6, icon: ' iconwenjianshangchuan color-file', divided: true },
+        { name: this.$('使用模版'), id: 7, icon: 'iconshiyongmoban color-doc' },
+        { name: this.$('上传文件'), id: 6, icon: ' iconwenjianshangchuan color-file', divided: true },
         { name: this.$('file.newdocument'), id: 1, icon: 'iconwendang1 color-doc', divided: false },
         { name: this.$('file.newtable'), id: 2, icon: 'iconbiaoge color-excel', divided: false },
         { name: this.$('file.newmindmap'), id: 9, icon: 'iconxmind color-mindmap', divided: false },
@@ -295,7 +295,7 @@ export default {
       sortIndex: 2,
       sortValue: 1,
       sortName: '',
-      typeName: '类型'
+      typeName: this.$('file.type')
     }
   },
   watch: {

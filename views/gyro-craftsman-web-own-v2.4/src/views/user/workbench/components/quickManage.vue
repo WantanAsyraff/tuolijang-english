@@ -3,7 +3,7 @@
   :append-to-body="true"
   :before-close="handleClose"
   :close-on-click-modal="false"
-  :title="config.title"
+  :title="$(config.title)"
   :visible.sync="dialogVisible"
   :width="config.width"
 >
@@ -38,7 +38,7 @@
                 <li v-for="(item, index) in config.data" :key="item.id">
                   <template>
                     <el-image :src="item.image" class="image"></el-image>
-                    <div class="name">{{ item.name }}</div>
+                    <div class="name">{{ $(item.name) }}</div>
                     <i class="el-icon-remove quick-icon remove" @click="handleRemove(index)"></i>
                   </template>
                 </li>
@@ -67,7 +67,7 @@
             <ul v-else class="quick-list-item-ul">
               <li v-for="(item1, indexs) in other.fast_entry" :key="'item1' + indexs">
                 <el-image :src="item1.image" class="image"></el-image>
-                <div class="name">{{ item1.name }}</div>
+                <div class="name">{{ $(item1.name) }}</div>
 
                 <i
                   v-if="!selectIds.includes(item1.id)"

@@ -16,7 +16,7 @@
               <span v-if="userInfo.jobInfo">({{ userInfo.jobInfo.name || '--' }})</span>
             </div>
             <div class="frame">
-              {{ frameName }}
+              {{ $(frameName) }}
             </div>
           </div>
         </div>

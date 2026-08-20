@@ -83,7 +83,7 @@
           <div class="name" v-else>--</div>
         </el-form-item>
         <el-form-item :label="$('ui.userCalendarAddTodoScheduleType')">
-          <span class="name b-color">{{ info.type ? info.type.name : '--' }}</span>
+          <span class="name b-color">{{ info.type ? $(info.type.name) : '--' }}</span>
         </el-form-item>
         <el-form-item :label="$('ui.userCalendarAddTodoReminderTime')">
           <span v-if="[2, 3, 4, 5].includes(info.cid)"

@@ -29,7 +29,7 @@
                                             class="flex lh-center">
                                             <span>{{ value.name }}</span>
                                             <span class="sign-status" :style="getStatusStyle(value.sign_status)">
-                                                [{{ signStatusList[value.sign_status].name }}]
+                                                [{{ $(signStatusList[value.sign_status].name) }}]
                                             </span>
                                         </div>
                                     </template>
@@ -45,7 +45,7 @@
                                             class="flex lh-center" :class="{ mt10: index > 0 }">
                                             <span>{{ value.name || value.company_name }}</span>
                                             <span class="sign-status" :style="getStatusStyle(value.sign_status)">
-                                                [{{ signStatusList[value.sign_status].name }}]
+                                                [{{ $(signStatusList[value.sign_status].name) }}]
                                             </span>
                                         </div>
                                     </template>
@@ -82,7 +82,7 @@
                                         color: failStatus[scope.row.fail_status].color || '#1890ff',
 
 
-                                    }">{{ failStatus[scope.row.fail_status].name }}</div>
+                                    }">{{ $(failStatus[scope.row.fail_status].name) }}</div>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="fail_days" :label="$('ui.customerSigningIndexExpirationDuration')" width="180">
@@ -99,7 +99,7 @@
                                         background:
                                             getColorFn(statusList[scope.row.status].color, '0.1')
 
-                                    }">{{ statusList[scope.row.status].name }}</div>
+                                    }">{{ $(statusList[scope.row.status].name) }}</div>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="sign_date" :label="$('ui.customerListSignSigningTime')" width="180">

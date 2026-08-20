@@ -52,7 +52,7 @@
           <template #frames="{ row }">
             <div v-for="(item, index) in row.frames" :key="index" class="frame-name over-text">
               <span class="icon-h">
-                {{ item.name
+                {{ $(item.name)
                 }}<span v-show="item.is_mastart === 1 && row.frames.length > 1" :title="$('ui.formCommonSelectDepartmentPrimaryDepartment')">{{ $("ui.formCommonSelectDepartmentMain") }}</span>
                 <span v-show="item.is_admin == 1" class="guan" :title="$('ui.hrEnterpriseGroupIndexExecutiveDirector')">{{ $("ui.hrEnterpriseGroupIndexManager") }}</span>
               </span>
@@ -155,7 +155,7 @@ export default {
         {
           label: $('customer.position'),
           render: (row) => {
-            return <span>{row.job ? row.job.name : '--'}</span>
+            return <span>{row.job ? $(row.job.name) : '--'}</span>
           }
         },
         {

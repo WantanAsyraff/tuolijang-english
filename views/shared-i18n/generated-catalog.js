@@ -11,6 +11,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "..天前": ".. days before",
   "..月后": ".. months after",
   "..月前": ".. months before",
+  "\"Cash Cow\" Clients": "Cash Cow clients",
   "(报废之后该物资状态为已报废，不可进行领用)": "(After disposal, the material cannot be issued again.)",
   "（不可": "(Cannot",
   "（点击生成今日完成事项）": "(Click to generate today completed items)",
@@ -6025,6 +6026,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "使用额度": "Usage quota",
   "使用积分": "Points used",
   "使用模板": "Use template",
+  "使用模版": "Use template",
   "使用频次": "Usage frequency",
   "使用文档模板": "Using document templates",
   "使用选中图片": "Use selected image",
@@ -6146,6 +6148,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "树形控件": "Tree control",
   "竖条": "Vertical bar",
   "数据": "Data",
+  "数据变更": "Data changed",
   "数据表不存在": "Database table not found",
   "数据表列表": "Data table list",
   "数据表字段": "Data table fields",
@@ -9404,7 +9407,26 @@ function createLocalizationRuntime(systemTextEn) {
       if (rowMatch) return format(rowMatch);
     }
 
-    let dynamicMatch = text.match(/^员工导入结果，成功：(\d+)条,失败：(\d+)条\.$/);
+    // Backend notifications substitute documented placeholders before they reach
+    // the client. This explicitly allowlisted system template preserves the
+    // reporter value while translating the system-owned notification wording.
+    let dynamicMatch = text.match(/^(.+)的(.+)已(提交|更新)，请及时查看！$/);
+    if (dynamicMatch) {
+      const action = dynamicMatch[3] === "提交" ? "submitted" : "updated";
+      return `${dynamicMatch[1]}'s ${translateLabel(dynamicMatch[2])} has been ${action}. Please review it promptly.`;
+    }
+
+    // Activity logs are system-owned templates. Only this geographical field
+    // format is allowlisted, so arbitrary business-record changes stay raw.
+    dynamicMatch = text.match(/^省市区：由【(.*?)】修改为【(.*?)】$/);
+    if (dynamicMatch) {
+      const translateAreas = (areas) => String(areas).split(/([,，])/).map((part) => {
+        if (part === ',' || part === '，') return ', ';
+        return translateLabel(part);
+      }).join('');
+      return `Province/city/district: changed from [${translateAreas(dynamicMatch[1])}] to [${translateAreas(dynamicMatch[2])}]`;
+    }
+    dynamicMatch = text.match(/^员工导入结果，成功：(\d+)条,失败：(\d+)条\.$/);
     if (dynamicMatch) return `Employee import result — successful: ${dynamicMatch[1]}, failed: ${dynamicMatch[2]}.`;
     dynamicMatch = text.match(/^导入结果，成功:(\d+)条,失败:(\d+)条\.$/);
     if (dynamicMatch) return `Import result — successful: ${dynamicMatch[1]}, failed: ${dynamicMatch[2]}.`;

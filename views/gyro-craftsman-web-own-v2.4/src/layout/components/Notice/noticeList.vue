@@ -37,14 +37,14 @@
           <el-table ref="table" :data="tableData" :height="height" v-loading="loading"
             @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="35" />
-            <el-table-column :label="$('ui.layoutNoticeNoticeListView')" width="50">
+            <el-table-column :label="$('ui.layoutNoticeNoticeListView')" width="70">
               <template slot-scope="scope">
                 <el-image :src="scope.row.is_read === 0 ? unreadIcon : readIcon"></el-image>
               </template>
             </el-table-column>
-            <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="80"></el-table-column>
-            <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360" />
-            <el-table-column prop="cate_name" :label="$('ui.developViewManagementType')" min-width="80" />
+            <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="80"><template slot-scope="scope">{{ $(scope.row.title, scope.row.title_en) }}</template></el-table-column>
+            <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360"><template slot-scope="scope">{{ $(scope.row.message, scope.row.message_en) }}</template></el-table-column>
+            <el-table-column :label="$('ui.developViewManagementType')" min-width="80"><template slot-scope="scope">{{ $(scope.row.cate_name, scope.row.cate_name_en) }}</template></el-table-column>
             <el-table-column prop="created_at" :label="$('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
             <el-table-column :label="$('toptable.operation')" width="100" fixed="right">
               <template slot-scope="scope">
@@ -298,12 +298,13 @@ export default {
 }
 
 .right {
-  width: calc(100% - 167px);
+  width: calc(100% - 230px);
   padding-left: 20px;
 }
 
 .left {
-  width: 167px;
+  width: 230px;
+  flex-shrink: 0;
   height: calc(100vh - 60px);
   padding: 18px 10px;
   background-color: #f8f9fa;
@@ -314,13 +315,15 @@ export default {
     left: 10px;
     right: 10px;
     bottom: 36px;
-    padding-left: 20px;
-    height: 40px;
+    padding: 10px 36px 10px 20px;
+    min-height: 40px;
+    height: auto;
     font-family: PingFang SC, PingFang SC;
     font-weight: 400;
     font-size: 14px;
     color: #303133;
-    line-height: 40px;
+    line-height: 20px;
+    overflow-wrap: anywhere;
     border-radius: 4px;
     .icondingyuexiaoxi {
       margin-right: 6px;
@@ -343,19 +346,22 @@ export default {
   .type {
     position: relative;
     cursor: pointer;
-    padding-left: 20px;
-    height: 40px;
+    padding: 10px 36px 10px 20px;
+    min-height: 40px;
+    height: auto;
     font-family: PingFang SC, PingFang SC;
     font-weight: 400;
     font-size: 14px;
     color: #303133;
-    line-height: 40px;
+    line-height: 20px;
+    overflow-wrap: anywhere;
     border-radius: 4px;
 
     .num {
       position: absolute;
-      top: 12px;
+      top: 50%;
       right: 17px;
+      transform: translateY(-50%);
       display: inline-block;
       width: 16px;
       height: 16px;
