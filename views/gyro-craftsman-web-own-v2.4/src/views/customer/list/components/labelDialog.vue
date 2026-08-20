@@ -16,7 +16,7 @@
         <template v-for="child in tableData">
           <div class="box" v-if="child.children">
             <div class="label-title" v-if="child.children && child.children.length > 0">
-              <span class="line" /> {{ child.name }}
+              <span class="line" /> {{ localizedLabel(child.name) }}
               <el-button
                 type="text"
                 v-if="config.label && config.label.length > 0"
@@ -34,7 +34,7 @@
                 size="small"
                 :label="item.id"
                 @change="(val) => onChange(val, child, 'children')"
-                >{{ item.name }}</el-checkbox-button
+                >{{ localizedLabel(item.name) }}</el-checkbox-button
               >
             </template>
           </div>
@@ -124,8 +124,13 @@ export default {
     this.getTableData()
   },
   methods: {
-    searchFn() {
-      this.tableData = []
+    localizedLabel(value) {
+      const decoded = String(value == null ? '' : value)
+        .replace(/\\?&quot;/g, '"')
+        .replace(/\\?&#39;/g, "'")
+      return this.$(decoded)
+    },
+    searchFn() {      this.tableData = []
       if (this.searchName) {
         // 使用 Set 来存储已添加的父项 ID，避免重复
         const addedParentIds = new Set()

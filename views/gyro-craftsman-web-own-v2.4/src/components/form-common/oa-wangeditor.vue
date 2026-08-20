@@ -1,4 +1,3 @@
-import { $, getLanguage } from '@/lang'
 <!-- @FileDescription: 富文本组件wangeditorV5 -->
 <template>
   <div :class="{ 'train-mode': training }">
@@ -43,7 +42,7 @@ import { $, getLanguage } from '@/lang'
   </div>
 </template>
 <script>
-import { $ } from '@/lang'
+import { $, getLanguage } from '@/lang'
 import Vue from 'vue'
 import '@wangeditor-next/editor/dist/css/style.css'
 import { uploader } from '@/utils/uploadCloud'
@@ -166,8 +165,10 @@ export default Vue.extend({
     document.addEventListener('contextmenu', this.boundHandlers.docContextMenu, true)
     this.globalContextMenuBound = true
   },
-  created() {
+  beforeCreate() {
     i18nChangeLanguage(getLanguage() === 'en' ? 'en' : 'zh-CN')
+  },
+  created() {
     let that = this
     that.editorConfig.MENU_CONF['uploadImage'] = {
       customUpload(file, insertFn) {

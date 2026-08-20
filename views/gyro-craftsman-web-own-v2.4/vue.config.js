@@ -7,7 +7,10 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-const name = defaultSettings.title || "vue Element Admin"; // page title
+// `settings.title` is a Chinese runtime source string. The document shell is
+// emitted at build time, so it cannot resolve `$()` yet; keep it locale-neutral
+// until the application applies the reactive page title after bootstrap.
+const name = "Tuoluojiang OA";
 const port = process.env.port || process.env.npm_config_port || 9527; // dev port
 
 module.exports = {

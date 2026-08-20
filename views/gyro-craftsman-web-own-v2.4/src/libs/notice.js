@@ -27,7 +27,7 @@ function escapeHtml(value) {
 }
 
 function normalizeSocketNotification(input) {
-  const normalized = normalizeNotificationInput(input || {}, translateMessage)
+  const normalized = normalizeNotificationInput(input || {}, $)
   const payload = normalized && typeof normalized === 'object' && !Array.isArray(normalized)
     ? normalized
     : { message: normalized }

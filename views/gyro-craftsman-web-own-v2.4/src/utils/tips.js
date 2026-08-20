@@ -2,7 +2,7 @@ import { $ } from '@/lang'
 import { Message, MessageBox, Alert, Notification } from 'element-ui'
 import { normalizeNotificationInput } from '@/lang/notification-text'
 
-const normalizeTip = (input) => normalizeNotificationInput(input, translateMessage)
+const normalizeTip = (input) => normalizeNotificationInput(input, $)
 const withDefaultDuration = (input) => {
   const normalized = normalizeTip(input)
   if (normalized && typeof normalized === 'object' && !Array.isArray(normalized)) {

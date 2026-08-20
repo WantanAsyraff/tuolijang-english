@@ -140,7 +140,7 @@ const calendarDetailsRef = ref(null)
 const completedList = ref([])
 const completedCollapseActive = ref('')
 const completedCollapseTitle = computed(() =>
-  completedCollapseActive.value === 'completed' ? '隐藏已完成事项' : '显示已完成事项'
+  completedCollapseActive.value === 'completed' ? $('隐藏已完成事项') : $('显示已完成事项')
 )
 
 // 分类列表
@@ -218,7 +218,7 @@ async function fetchOverview() {
       delete categoryData.tips
       categories.value = Object.entries(categoryData).map(([key, value]) => ({
         key,
-        label: value.label,
+        label: $(value.label),
         count: value.count || 0
       }))
     }

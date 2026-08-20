@@ -93,6 +93,7 @@ test("dynamic backend responses preserve interpolated values in both locales", (
     ["字段sku的值不能重复", "The value of field sku must be unique"],
     ["导入失败：invalid workbook", "Import failed: invalid workbook"],
     ["清除角标失败: connection refused", "Failed to clear the badge: connection refused"],
+    ["Wan的日报已提交，请及时查看！", "Wan's Daily has been submitted. Please review it promptly."],
   ];
 
   for (const [source, expected] of cases) {
@@ -199,6 +200,23 @@ test("all tracked SQL display values are classified, mapped, and hierarchy-safe"
   assert.equal(runtimeIndex["六安市"], "Lu'an City");
   assert.equal(runtimeIndex["漯河市"], "Luohe City");
   assert.equal(/[\u3400-\u9fff]/.test(runtimeIndex["渝中区"]), false);
+});
+test("web localization coverage inventory and bootstrap title are current", { skip: !includesApp("web") }, () => {
+  const coverage = spawnSync(process.execPath, [path.join(root, "web-coverage.cjs"), "--check"], {
+    cwd: views,
+    encoding: "utf8",
+  });
+  assert.equal(coverage.status, 0, `${coverage.stdout}\n${coverage.stderr}`);
+  assert.match(coverage.stdout, /211 route modules, 336 shared components/);
+
+  const report = fs.readFileSync(path.join(root, "reports", "web-coverage.md"), "utf8");
+  assert.match(report, /211 routable Vue view modules/);
+  assert.match(report, /336 shared Vue components/);
+  assert.match(report, /## Shared component inventory/);
+
+  const config = fs.readFileSync(path.join(appRoots.web, "vue.config.js"), "utf8");
+  assert.match(config, /const name = "Tuoluojiang OA"/);
+  assert.doesNotMatch(config, /const name = defaultSettings\.title/);
 });
 test("generation is deterministic and the source audit passes", () => {
   runCli("check");

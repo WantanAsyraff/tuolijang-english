@@ -1,7 +1,7 @@
 <!-- 客户-账目记录-添加/编辑弹窗支出页面 -->
 <template>
 <el-dialog
-  :title="config.title"
+  :title="$(config.title)"
   :visible.sync="dialogVisible"
   width="540px"
   :append-to-body="true"
@@ -55,7 +55,7 @@
     <el-form-item prop="type_id">
       <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentMethod") }}</span>
       <el-select size="small" v-model="rules.type_id" :placeholder="$('ui.customerContractContractDialogSelectPaymentMethod')">
-        <el-option v-for="item in paymentOptions" :key="item.id" :label="item.name" :value="item.id" />
+        <el-option v-for="item in paymentOptions" :key="item.id" :label="$(item.name)" :value="item.id" />
       </el-select>
     </el-form-item>
 
@@ -358,7 +358,7 @@ export default {
         status: 1
       }
       const result = await enterprisePayTypeApi(data)
-      this.paymentOptions = result.data.list
+      this.paymentOptions = (result.data.list || []).map((item) => ({ ...item, name: this.$(item.name, item.name_en) }))
     }
   }
 }

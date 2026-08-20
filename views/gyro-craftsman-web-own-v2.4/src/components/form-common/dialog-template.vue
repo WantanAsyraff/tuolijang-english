@@ -172,7 +172,7 @@ export default {
       selectTitle: '',
       clickIndex: -1,
       hoverIndex: -1,
-      cateId: 'template',
+      cateId: '',
       itemData: {},
       configData: {
         edit: 1,
@@ -184,7 +184,7 @@ export default {
       tabIndex: 0,
       activeValue: '',
       optionValue: {
-        id: 'template',
+        id: '',
         option: []
       },
       isTemplate: true
@@ -225,9 +225,13 @@ export default {
         res.data === undefined ? (this.department = []) : (this.department = res.data)
         if (this.isTemplate == false) this.department.unshift({ name: '全部', id: '' })
         if (this.type == 1 && this.isTemplate) {
-          this.department.unshift({ name: '我的模板', id: 'template' }, { name: '我的收藏', id: 'collect' })
+          this.department.unshift(
+            { name: '全部', id: '' },
+            { name: '我的模板', id: 'template' },
+            { name: '我的收藏', id: 'collect' }
+          )
         }
-        this.optionDate()
+                this.optionDate()
       })
     },
     addCate() {

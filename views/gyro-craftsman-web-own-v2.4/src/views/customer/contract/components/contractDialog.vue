@@ -4,7 +4,7 @@
   :append-to-body="true"
   :before-close="handleClose"
   :close-on-click-modal="false"
-  :title="config.title"
+  :title="$(config.title)"
   :visible.sync="dialogVisible"
   width="540px"
 >
@@ -23,23 +23,23 @@
       </el-radio-group>
     </el-form-item>
     <el-form-item prop="amount">
-      <span slot="label">{{ title01 }}：</span>
+      <span slot="label">{{ $(title01) }}：</span>
       <el-input-number
         v-model="rules.amount"
         :controls="false"
         :min="0"
-        :placeholder="placeholder01"
+        :placeholder="$(placeholder01)"
         :precision="2"
         size="small"
       ></el-input-number>
     </el-form-item>
     <!-- 续费结束时间 -->
     <el-form-item v-if="rules.radio == 2 || config.type == 3" :prop="mandatory">
-      <span slot="label">{{ title02 }}：</span>
+      <span slot="label">{{ $(title02) }}：</span>
       <el-date-picker
         v-model="rules.endDate"
         :default-time="config.type == 3 ? '09:00:00' : ''"
-        :placeholder="placeholder02"
+        :placeholder="$(placeholder02)"
         :type="config.type == 3 ? 'datetime' : 'date'"
         size="small"
       >
@@ -49,7 +49,7 @@
     <el-form-item v-if="config.type !== 3" prop="type_id">
       <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentMethod") }}</span>
       <el-select v-model="rules.type_id" :placeholder="$('ui.customerContractContractDialogSelectPaymentMethod')" size="small">
-        <el-option v-for="item in paymentOptions" :key="item.id" :label="item.name" :value="item.id" />
+        <el-option v-for="item in paymentOptions" :key="item.id" :label="$(item.name)" :value="item.id" />
       </el-select>
     </el-form-item>
 
@@ -59,7 +59,7 @@
       <el-date-picker
         v-model="rules.dateTime"
         :picker-options="pickerOptions"
-        :placeholder="placeholder02"
+        :placeholder="$(placeholder02)"
         picker-options="expireTimeOption"
         size="small"
         type="datetime"
@@ -647,7 +647,7 @@ export default {
         status: 1
       }
       const result = await enterprisePayTypeApi(data)
-      this.paymentOptions = result.data.list
+      this.paymentOptions = (result.data.list || []).map((item) => ({ ...item, name: this.$(item.name, item.name_en) }))
     },
     // 保存付款提醒
     clientRemindSave(data) {

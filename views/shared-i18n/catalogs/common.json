@@ -26299,6 +26299,20 @@
     "en": "New order",
     "runtime": true
   },
+  "runtime.customerActivity.dataChanged": {
+    "zh-cn": "数据变更",
+    "en": "Data changed",
+    "runtime": true
+  },
+  "runtime.customerLabel.cashCowClients": {
+    "zh-cn": "\"Cash Cow\" Clients",
+    "en": "Cash Cow clients",
+    "runtime": true
+  },  "runtime.cloudFile.useTemplate": {
+    "zh-cn": "使用模版",
+    "en": "Use template",
+    "runtime": true
+  },
   "runtime.customerActivity.leadCreated": {
     "zh-cn": "新增线索",
     "en": "New lead",

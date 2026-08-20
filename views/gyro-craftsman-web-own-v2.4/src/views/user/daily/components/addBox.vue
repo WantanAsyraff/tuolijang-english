@@ -336,7 +336,7 @@ export default {
         this.disabled = false
         this.getCompletedFn(types)
       } else if (type === 'check') {
-        this.newTitle = data.name + '的汇报'
+        this.newTitle = this.formatReportTitle(data.name, data.types)
         types = data.types
         this.editType = type
         this.disabled = true
@@ -359,6 +359,11 @@ export default {
       this.drawer = true
     },
 
+    formatReportTitle(name, type) {
+      const reportType = { 0: '日报', 1: '周报', 2: '月报' }[type]
+      const reportLabel = reportType ? `${this.$(reportType)} ${this.$('汇报')}` : this.$('汇报')
+      return `${name}'s ${reportLabel}`
+    },
     getLable(type) {
       switch (type) {
         case 0:
@@ -392,7 +397,7 @@ export default {
     getInfo(editId) {
       getEnterpriseEdit(editId).then((res) => {
         const data = res.data
-        this.newTitle = data.card.name + '的汇报'
+        this.newTitle = this.formatReportTitle(data.card.name, data.types)
 
         this.ids = []
         this.reply.daily_id = editId

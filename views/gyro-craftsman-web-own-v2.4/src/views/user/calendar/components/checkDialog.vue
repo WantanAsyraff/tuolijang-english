@@ -87,7 +87,7 @@ export default {
       var str = ''
       this.scheduleTypes.map((value) => {
         if (value.key === type) {
-          str = value.name
+          str = this.$(value.name)
         }
       })
       return str

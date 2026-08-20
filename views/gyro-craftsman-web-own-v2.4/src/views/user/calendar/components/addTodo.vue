@@ -150,7 +150,7 @@
               <el-option
                 v-for="item in tableData"
                 :key="item.id"
-                :label="item.name"
+                :label="$(item.name)"
                 :value="item.id"
                 :style="{ color: item.color }"
               ></el-option>

@@ -42,7 +42,26 @@ export function createLocalizationRuntime(systemTextEn) {
       if (rowMatch) return format(rowMatch);
     }
 
-    let dynamicMatch = text.match(/^员工导入结果，成功：(\d+)条,失败：(\d+)条\.$/);
+    // Backend notifications substitute documented placeholders before they reach
+    // the client. This explicitly allowlisted system template preserves the
+    // reporter value while translating the system-owned notification wording.
+    let dynamicMatch = text.match(/^(.+)的(.+)已(提交|更新)，请及时查看！$/);
+    if (dynamicMatch) {
+      const action = dynamicMatch[3] === "提交" ? "submitted" : "updated";
+      return `${dynamicMatch[1]}'s ${translateLabel(dynamicMatch[2])} has been ${action}. Please review it promptly.`;
+    }
+
+    // Activity logs are system-owned templates. Only this geographical field
+    // format is allowlisted, so arbitrary business-record changes stay raw.
+    dynamicMatch = text.match(/^省市区：由【(.*?)】修改为【(.*?)】$/);
+    if (dynamicMatch) {
+      const translateAreas = (areas) => String(areas).split(/([,，])/).map((part) => {
+        if (part === ',' || part === '，') return ', ';
+        return translateLabel(part);
+      }).join('');
+      return `Province/city/district: changed from [${translateAreas(dynamicMatch[1])}] to [${translateAreas(dynamicMatch[2])}]`;
+    }
+    dynamicMatch = text.match(/^员工导入结果，成功：(\d+)条,失败：(\d+)条\.$/);
     if (dynamicMatch) return `Employee import result — successful: ${dynamicMatch[1]}, failed: ${dynamicMatch[2]}.`;
     dynamicMatch = text.match(/^导入结果，成功:(\d+)条,失败:(\d+)条\.$/);
     if (dynamicMatch) return `Import result — successful: ${dynamicMatch[1]}, failed: ${dynamicMatch[2]}.`;

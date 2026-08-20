@@ -41,7 +41,7 @@
                 <el-table-column :label="$('customer.paymentAmountYuan')" min-width="100" prop="num" />
                 <el-table-column :label="$('customer.paymentMethod')" min-width="100" prop="pay_type">
                   <template v-slot:default="scope">
-                    <span>{{ scope.row.pay_type !== '' ? scope.row.pay_type : '--' }}</span>
+                    <span>{{ scope.row.pay_type !== '' ? $(scope.row.pay_type) : '--' }}</span>
                   </template>
                 </el-table-column>
                 <el-table-column :label="$('customer.customerName')" min-width="120" prop="client.name">
