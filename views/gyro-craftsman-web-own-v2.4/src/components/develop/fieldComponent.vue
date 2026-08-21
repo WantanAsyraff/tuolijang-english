@@ -5,7 +5,7 @@
     <el-select v-if="item.form_value === 'select' && selectList.includes(item.type)" v-model="item.option"
         size="small" :multiple="item.field === 'repeat' ? false : true" style="width: 100%" filterable>
         <el-option v-for="items in item.options" :key="items.value" :value="items.value"
-            :label="items.label || items.name"></el-option>
+            :label="$(items.label || items.name, items.label_en || items.name_en)"></el-option>
     </el-select>
     <el-select style="width: 100%" v-model="item.option" v-if="item.form_value === 'switch'" size="small">
         <el-option value="1" :label="$('ui.developFieldComponentYes')"></el-option>
@@ -134,7 +134,13 @@ export default {
     },
     methods: {
         getOptions() {
-            return Array.isArray(this.item.options) ? this.item.options : [];
+            const localizeOptions = (options) => Array.isArray(options) ? options.map((option) => ({
+                ...option,
+                label: option.label == null ? option.label : this.$(option.label, option.label_en),
+                name: option.name == null ? option.name : this.$(option.name, option.name_en),
+                children: localizeOptions(option.children)
+            })) : [];
+            return localizeOptions(this.item.options);
         },
         // 选择成员回调
         getSelectList(data, item) {

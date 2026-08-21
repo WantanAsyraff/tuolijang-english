@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-dialog
-      :title="repeatData.title"
+      :title="$(repeatData.title)"
       :visible.sync="dialogVisible"
       :width="repeatData.width"
       :before-close="handleClose"

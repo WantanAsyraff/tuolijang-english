@@ -34,7 +34,7 @@
   <el-row :gutter="10" class="mt20">
     <el-col :span="6" v-for="(quarter, index) in quarters" :key="index">
       <div class="quarter-box">
-        <div class="title">{{ quarter }}{{ $("ui.customerKpiAddKpiQuarter") }}</div>
+        <div class="title">{{ $(quarter + "季度") }}</div>
         <div v-for="(month, monthIndex) in month[index]" :key="monthIndex">
           <div v-if="month.title" class="title">{{ month.title }}{{ $("ui.customerKpiAddKpiMonth2") }}</div>
           <el-input-number

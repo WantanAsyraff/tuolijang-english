@@ -8,7 +8,7 @@
           :dropdownList="dropdownList"
           :viewSearch="viewSearch"
           :total="total"
-          :title="$("legacy.8567df9eb80c1011")"
+          :title="$('legacy.8567df9eb80c1011')"
           @addDataFn="addFinance"
           @dropdownFn="batchDelete"
           @confirmData="confirmData"
@@ -25,12 +25,12 @@
           >
             <el-table-column type="selection" width="55"> </el-table-column>
             <el-table-column prop="id" label="ID" width="55" type=""></el-table-column>
-            <el-table-column prop="name" :label="$("ui.customerSetupDictionaryIndexDictionaryName")" min-width="100" show-overflow-tooltip>
+            <el-table-column prop="name" :label="$('ui.customerSetupDictionaryIndexDictionaryName')" min-width="100" show-overflow-tooltip>
               <template slot-scope="scope">
                 <span>{{ $(scope.row.name) }}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="crud_name" min-width="100" :label="$("ui.developApproveIndexLinkedEntity")">
+            <el-table-column prop="crud_name" min-width="100" :label="$('ui.developApproveIndexLinkedEntity')">
               <template slot-scope="scope">
                 <div v-if="scope.row.crud_name.length > 0">
                   <span v-for="(item, index) in scope.row.crud_name" :key="`${scope.row.id}-${index}`">
@@ -40,26 +40,26 @@
                 <span v-else>--</span>
               </template>
             </el-table-column>
-            <el-table-column prop="ident" :label="$("ui.customerSetupDictionaryIndexDictionaryIdentifier")" min-width="100" show-overflow-tooltip />
-            <el-table-column prop="level" :label="$("legacy.ab033612a2daa62e")" min-width="80" />
+            <el-table-column prop="ident" :label="$('ui.customerSetupDictionaryIndexDictionaryIdentifier')" min-width="100" show-overflow-tooltip />
+            <el-table-column prop="level" :label="$('legacy.ab033612a2daa62e')" min-width="80" />
 
-            <el-table-column prop="mark" :label="$("public.remarks")" min-width="150" show-overflow-tooltip>
+            <el-table-column prop="mark" :label="$('public.remarks')" min-width="150" show-overflow-tooltip>
               <template slot-scope="scope">
                 <span>{{ $(scope.row.mark) || '--' }}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="created_at" :label="$("hr.creationtime")" min-width="150" show-overflow-tooltip>
+            <el-table-column prop="created_at" :label="$('hr.creationtime')" min-width="150" show-overflow-tooltip>
               <template slot-scope="scope">
                 <span>{{ scope.row.created_at || '--' }}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="type" :label="$("hr.state")">
+            <el-table-column prop="type" :label="$('hr.state')">
               <template slot-scope="scope">
                 <el-switch
                   :disabled="scope.row.is_default === 1"
                   v-model="scope.row.status"
-                  :active-text="$("public.enable")"
-                  :inactive-text="$("hr.blockup")"
+                  :active-text="$('public.enable')"
+                  :inactive-text="$('hr.blockup')"
                   :active-value="1"
                   :inactive-value="0"
                   :width="60"
@@ -69,10 +69,10 @@
             </el-table-column>
             <el-table-column prop="address" :label="$('public.operation')" width="200">
               <template slot-scope="scope">
-                <el-button type="text" v-if="scope.row.is_default !== 1" @click="editFn(scope.row.id)">{{ $("public.edit") }}</el-button>
-                <el-button type="text" @click="dataFn(scope.row)">{{ $("ui.customerSetupDictionaryIndexDataManagement") }}</el-button>
+                <el-button type="text" v-if="scope.row.is_default !== 1" @click="editFn(scope.row.id)">{{ $('public.edit') }}</el-button>
+                <el-button type="text" @click="dataFn(scope.row)">{{ $('ui.customerSetupDictionaryIndexDataManagement') }}</el-button>
                 <el-button type="text" v-if="scope.row.is_default !== 1" @click="handleDelete(scope.row)"
-                  >{{ $("public.delete") }}</el-button
+                  >{{ $('public.delete') }}</el-button
                 >
               </template>
             </el-table-column>

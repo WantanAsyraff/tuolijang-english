@@ -2,7 +2,7 @@
 <template>
   <div class="delete-info-dialog">
     <el-dialog
-      :title="dialogTitle"
+      :title="$(dialogTitle)"
       :visible.sync="tableItemDialogVisible"
       :close-on-click-modal="false"
       :close-on-press-escape="false"
@@ -15,7 +15,7 @@
           ref="transfer"
           v-model="visibleValue"
           :data="transferData"
-          :titles="transferTitle"
+          :titles="localizedTransferTitle"
           target-order="push"
           :props="transferProps"
           @left-check-change="leftCheckChange"
@@ -28,7 +28,7 @@
                 :style="{ cursor: option.disabled ? 'not-allowed' : 'grab', marginRight: '8px' }"
               ></i>
             </template>
-            {{ option.name }}
+            {{ $(option.name, option.name_en) }}
           </span>
         </el-transfer>
       </div>
@@ -188,6 +188,11 @@ export default {
     }
   },
 
+  computed: {
+    localizedTransferTitle() {
+      return this.transferTitle.map((title) => this.$(title))
+    }
+  },
   methods: {
     // 判断当前项是否在右侧列表中
     isInRightList(option) {

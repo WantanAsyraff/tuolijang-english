@@ -57671,6 +57671,51 @@
   "runtime.web.finalDashboard.027": { "zh-cn": "选择实体", "en": "Select entity", "runtime": true, "apps": ["web"] },
   "runtime.web.finalDashboard.028": { "zh-cn": "选项数据：", "en": "Option data:", "runtime": true, "apps": ["web"] },
   "runtime.web.finalDashboard.029": { "zh-cn": "静态数据", "en": "Static data", "runtime": true, "apps": ["web"] },
-  "runtime.web.runtimeLeak.invoiceProof": { "zh-cn": "开票凭证：", "en": "Invoice proof:", "runtime": true, "apps": ["web"] },
-  "runtime.web.runtimeLeak.rejectionReason": { "zh-cn": "拒绝原因", "en": "Rejection reason", "runtime": true, "apps": ["web"] }
+  "runtime.web.dynamicCollaboratorLabel": { "zh-cn": "协作者Collaborator", "en": "Collaborator", "runtime": true, "apps": ["web"] },
+  "runtime.web.dynamicCollaboratorLabelColon": { "zh-cn": "协作者Collaborator：", "en": "Collaborator:", "runtime": true, "apps": ["web"] },
+  "runtime.web.dynamicContactPositionLabel": { "zh-cn": "联系人职位Contact Person&#039;s Position", "en": "Contact position", "runtime": true, "apps": ["web"] },
+  "runtime.web.dynamicContactPositionLabelEscaped": { "zh-cn": "联系人职位Contact Person\\&#039;s Position", "en": "Contact position", "runtime": true, "apps": ["web"] },  "runtime.web.runtimeLeak.invoiceProof": { "zh-cn": "开票凭证：", "en": "Invoice proof:", "runtime": true, "apps": ["web"] },
+  "runtime.web.runtimeLeak.rejectionReason": { "zh-cn": "拒绝原因", "en": "Rejection reason", "runtime": true, "apps": ["web"] }  ,"runtime.finance.approval.collectionAmountCny": {
+    "zh-cn": "回款金额（元）",
+    "en": "Payment amount (CNY)",
+    "runtime": true
+  }
+  ,"runtime.finance.approval.renewalAmountCny": {
+    "zh-cn": "续费金额（元）",
+    "en": "Renewal amount (CNY)",
+    "runtime": true
+  }
+  ,"runtime.finance.approval.invoiceAmountCny": {
+    "zh-cn": "开票金额（元）",
+    "en": "Invoice amount (CNY)",
+    "runtime": true
+  }
+  ,"runtime.finance.approval.incomeCategory": {
+    "zh-cn": "财务收入科目",
+    "en": "Income category",
+    "runtime": true
+  }
+  ,"runtime.finance.approval.expenseCategory": {
+    "zh-cn": "财务支出科目",
+    "en": "Expense category",
+    "runtime": true
+  }
+  ,"runtime.finance.approval.selectContract": {
+    "zh-cn": "请选择合同名称",
+    "en": "Select a contract",
+    "runtime": true
+  }
+  ,"runtime.finance.approval.relatedPaymentAmount": {
+    "zh-cn": "关联付款金额",
+    "en": "Related payment amount",
+    "runtime": true
+  }
+  ,"runtime.finance.accounting.addFinancialTransactionCategory": { "zh-cn": "添加财务流水类别", "en": "Add financial transaction category", "runtime": true }
+  ,"runtime.finance.accounting.amountOrRemark": { "zh-cn": "金额/备注", "en": "Amount or remarks", "runtime": true }
+  ,"runtime.finance.payment.description": { "zh-cn": "简介", "en": "Description", "runtime": true }
+  ,"runtime.finance.payment.descriptionPlaceholder": { "zh-cn": "简介内容", "en": "Enter a description", "runtime": true }
+  ,"runtime.finance.payment.enabled": { "zh-cn": "是否开启", "en": "Enabled", "runtime": true }
+  ,"runtime.web.columnSettings.editCategory": { "zh-cn": "修改分类", "en": "Edit category", "runtime": true }
+  ,"runtime.web.contract.dongchengDistrict": { "zh-cn": "北京市/东城区", "en": "Beijing / Dongcheng District", "runtime": true }
+  ,"runtime.web.customer.selectGroup": { "zh-cn": "请选择分组", "en": "Select a group", "runtime": true }
 }

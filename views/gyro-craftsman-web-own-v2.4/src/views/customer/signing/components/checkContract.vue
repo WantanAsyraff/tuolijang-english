@@ -20,7 +20,7 @@
                 background:
                   getColorFn(statusList[dataInfo.status].color, '0.1')
 
-              }" >{{ statusList[dataInfo.status].name }}</div>
+              }" >{{ $(statusList[dataInfo.status].name) }}</div>
 
 
               <span class="title ml20">{{ $("ui.customerContractEditContractSalesperson") }}</span><span class="weight mr20">{{ dataInfo.admin ? dataInfo.admin.name : '--'

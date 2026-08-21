@@ -1,8 +1,8 @@
-﻿<template>
+<template>
   <div class="divBox">
     <el-card class="normal-page">
       <div class="flex-between">
-        <div class="title-16">{{ $route.meta.title }}</div>
+        <div class="title-16">{{ $($route.meta.title) }}</div>
         <div>
           <el-button size="small" @click="synchronizeTags">{{ $("legacy.2ea21ab4f5b6eff3") }}</el-button>
           <el-button size="small" icon="el-icon-plus" type="primary" @click="addFinance">{{ $("customer.addlabel") }}</el-button>

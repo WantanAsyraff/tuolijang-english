@@ -13170,6 +13170,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "北海市": "Beihai City",
   "北湖区": "Beihu District",
   "北京市": "Beijing",
+  "北京市/东城区": "Beijing / Dongcheng District",
   "北林区": "Beilin District",
   "北流市": "Beiliu City",
   "北仑区": "Beilun District",
@@ -13420,8 +13421,10 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "财务审核": "Finance review",
   "财务审核未通过提醒": "Finance rejection reminder",
   "财务审核已通过提醒": "Finance approval reminder",
+  "财务收入科目": "Income category",
   "财务暂未开票": "The financial department has not issued an invoice yet",
   "财务账目分类": "Financial account category",
+  "财务支出科目": "Expense category",
   "财务主管": "Finance Supervisor",
   "采购": "Purchase",
   "采购入库": "Purchase receipt",
@@ -14984,6 +14987,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "关联车辆": "Related vehicle",
   "关联订单": "Link order",
   "关联订单，补签合同": "Link an order and add a contract",
+  "关联付款金额": "Related payment amount",
   "关联驾驶员": "Related driver",
   "关联类型错误": "Invalid relation type",
   "关联商机，转合同": "Link an opportunity and convert it to a contract",
@@ -15417,6 +15421,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "回款核对请求": "Payment collection review request",
   "回款记录": "Payment record",
   "回款金额": "Collection amount",
+  "回款金额（元）": "Payment amount (CNY)",
   "回款日期": "Collection date",
   "回款提醒": "Payment reminder",
   "回款提醒日期": "Collection reminder date",
@@ -15667,6 +15672,8 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "减少": "Decrease",
   "剪切节点": "Cut node",
   "简报": "Summary",
+  "简介": "Description",
+  "简介内容": "Enter a description",
   "简历目录": "Resume directory",
   "简历完善度过低，请先完善个人简历": "Complete your profile before continuing.",
   "简阳市": "Jianyang City",
@@ -15816,6 +15823,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "金东区": "Jindong District",
   "金额": "Amount",
   "金额(元)": "Amount (yuan)",
+  "金额/备注": "Amount or remarks",
   "金峰乡": "Jinfeng Township",
   "金凤区": "Jinfeng District",
   "金湖县": "Jinhu County",
@@ -16015,6 +16023,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "开票结果": "Invoice result",
   "开票金额": "Invoice amount:",
   "开票金额(元)": "Invoice amount",
+  "开票金额（元）": "Invoice amount (CNY)",
   "开票类型": "Invoice type",
   "开票凭证": "Invoice voucher:",
   "开票凭证：": "Invoice proof:",
@@ -16445,6 +16454,8 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "联系人邮箱": "Contact email",
   "联系人邮箱不合法": "Illegal contact email",
   "联系人职位": "Contact position",
+  "联系人职位Contact Person\\&#039;s Position": "Contact position",
+  "联系人职位Contact Person&#039;s Position": "Contact position",
   "联系人QQ": "Contact QQ",
   "联系邮箱": "Contact email",
   "廉江市": "Lianjiang City",
@@ -17979,6 +17990,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "请选择发票类型": "Please select invoice type",
   "请选择发送成员": "Select recipients",
   "请选择分类": "Select a category",
+  "请选择分组": "Select a group",
   "请选择封面图": "Select a cover image",
   "请选择父级任务": "Select a parent task",
   "请选择付款时间": "Select a payment time",
@@ -17994,6 +18006,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "请选择关联字典": "Select linked dictionary",
   "请选择关注文章标签": "Select article tags to follow",
   "请选择管理员": "Please select administrator",
+  "请选择合同名称": "Select a contract",
   "请选择合同状态": "Please select a contract status",
   "请选择回复内容类型": "Select a reply-content type",
   "请选择回款日期": "Please select the collection date",
@@ -18907,6 +18920,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "是否必填": "Required",
   "是否关注": "Follow status",
   "是否关注的提示信息": "Select whether to follow",
+  "是否开启": "Enabled",
   "是否开启水印": "Enable watermark",
   "是否开启用户注册": "Enable user registration",
   "是否替换": "Replace",
@@ -19348,6 +19362,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "添加板块": "Add section",
   "添加标签组": "Add label group",
   "添加部门": "Add Department",
+  "添加财务流水类别": "Add financial transaction category",
   "添加菜单": "AddMenu",
   "添加参数": "Add parameter",
   "添加产品": "Add product",
@@ -20383,6 +20398,8 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "协作人列表": "Collaborator list",
   "协作人员": "Collaborators",
   "协作者": "Collaborators",
+  "协作者Collaborator": "Collaborator",
+  "协作者Collaborator：": "Collaborator:",
   "谢岗镇": "Xiegang Town",
   "谢家集区": "Xiejiaji District",
   "谢通门县": "Xietongmen County",
@@ -20632,6 +20649,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "修改的字段信息不存在": "The field being edited does not exist",
   "修改的组合数据不存在": "The composite data being edited does not exist",
   "修改订单": "Edit order",
+  "修改分类": "Edit category",
   "修改该部门需要修改企业名称！": "Editing this department requires changing the enterprise name",
   "修改合同": "Edit contract",
   "修改和查看": "Modify and view",
@@ -20688,6 +20706,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "续费今日到期提醒": "Renewal due today reminder",
   "续费金额": "Renewal amount",
   "续费金额(元)": "Renewal amount",
+  "续费金额（元）": "Renewal amount (CNY)",
   "续费类型": "Renewal type",
   "续费商机": "Renewal opportunity",
   "续费收入": "Renewal income",
@@ -22226,6 +22245,14 @@ function createLocalizationRuntime(systemTextEn) {
     return "";
   }
 
+  function decodeDisplayText(value) {
+    return String(value || "")
+      .replace(/\\?&quot;/g, "\"")
+      .replace(/\\?&#0*39;/g, "'")
+      .replace(/\\?&#x0*27;/gi, "'")
+      .replace(/\\?&amp;/g, "&");
+  }
+
   function containsHan(value) {
     return hasHanPattern.test(String(value || ""));
   }
@@ -22412,21 +22439,21 @@ function createLocalizationRuntime(systemTextEn) {
 
     const backendEnglish = options.englishValue;
     if (typeof backendEnglish === "string" && backendEnglish.trim() && !containsHan(backendEnglish)) {
-      return backendEnglish;
+      return decodeDisplayText(backendEnglish);
     }
 
     const raw = value;
     const trimmed = raw.trim();
-    if (!trimmed || !containsHan(trimmed)) return value;
+    if (!trimmed || !containsHan(trimmed)) return decodeDisplayText(value);
 
     const exact = translateExact(trimmed);
     if (exact !== trimmed && !containsHan(exact)) {
       const needsColon = trailingColonPattern.test(trimmed) && !trailingColonPattern.test(exact);
-      return raw.replace(trimmed, `${exact}${needsColon ? ":" : ""}`);
+      return decodeDisplayText(raw.replace(trimmed, `${exact}${needsColon ? ":" : ""}`));
     }
 
     const parameterized = translateParameterized(trimmed);
-    return parameterized === trimmed ? value : raw.replace(trimmed, parameterized);
+    return parameterized === trimmed ? decodeDisplayText(value) : decodeDisplayText(raw.replace(trimmed, parameterized));
   }
 
   return { normalizeLocale, translateSystemTextValue, containsHan };

@@ -2,7 +2,7 @@
 <template>
   <div class="station">
     <el-drawer
-      :title="formData.title"
+      :title="$(formData.title)"
       :visible.sync="drawer"
       :direction="direction"
       :modal="true"
@@ -24,6 +24,7 @@
 <script>
 import formCreate from '@form-create/element-ui'
 import request from '@/api/request'
+import { localizeFormSchema } from '@/libs/modal-form'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 formCreate.component('ueditorFrom', ueditorFrom)
 export default {
@@ -79,8 +80,10 @@ export default {
   },
   watch: {
     rolesConfig: {
-      handler(nVal, oVal) {
-        this.rules = this.rolesConfig
+      handler() {
+        this.option.form.labelWidth = this.$language === 'en' ? '170px' : '90px'
+        this.option.form.labelSuffix = this.$language === 'en' ? ':' : '：'
+        this.rules = localizeFormSchema(this.rolesConfig, this)
       },
       deep: true
     }

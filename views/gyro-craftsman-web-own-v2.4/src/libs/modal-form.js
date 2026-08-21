@@ -11,7 +11,13 @@ const TRANSLATABLE_SCHEMA_KEYS = new Set([
   'text',
   'name',
   'activeText',
-  'inactiveText'
+  'inactiveText',
+  'field_name',
+  'fieldName',
+  'key_name',
+  'keyName',
+  'active_text',
+  'inactive_text'
 ])
 
 export function localizeFormSchema(value, ctx, parentKey = '', englishValue) {

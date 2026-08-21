@@ -590,7 +590,7 @@ export default {
     getDate() {
       this.currentTime = this.$moment().subtract('day').format('YYYY-MM-DD') // 当天日期
       this.thePreviousDay = this.$moment().subtract(1, 'day').format('YYYY-MM-DD') // 前一天日期
-      this.thePreviousDay = this.$moment(this.thePreviousDay).format('YYYY年MM月DD日') // 格式化日期
+      this.thePreviousDay = this.$moment(this.thePreviousDay).format(this.$language === 'en' ? 'YYYY-MM-DD' : 'YYYY年MM月DD日') // 格式化日期
     },
     usersOptionFn() {
       if (this.activeVal == 5) {
@@ -616,7 +616,7 @@ export default {
 
     // 点击日历日期的回调
     currentTimeFn(data) {
-      this.thePreviousDay = this.$moment(data).format('YYYY年MM月DD日')
+      this.thePreviousDay = this.$moment(data).format(this.$language === 'en' ? 'YYYY-MM-DD' : 'YYYY年MM月DD日')
       if (this.activeVal == '4' && (this.tableFrom.types == 0 || this.tableFrom.types == 3)) {
         this.leftTime = `${this.$moment(data).format('YYYY/MM/DD')}-${this.$moment(data).format('YYYY/MM/DD')}`
         this.getstatisticsApi()
@@ -642,9 +642,9 @@ export default {
         .add(7 - weekOfday, 'days')
         .format('YYYY/MM/DD') //周日日期
       this.thePreviousDay =
-        this.$moment(last_monday, 'YYYY/MM/DD').format('YYYY年MM月DD日') +
+        this.$moment(last_monday, 'YYYY/MM/DD').format(this.$language === 'en' ? 'YYYY-MM-DD' : 'YYYY年MM月DD日') +
         '~' +
-        this.$moment(last_sunday, 'YYYY/MM/DD').format('YYYY年MM月DD日')
+        this.$moment(last_sunday, 'YYYY/MM/DD').format(this.$language === 'en' ? 'YYYY-MM-DD' : 'YYYY年MM月DD日')
       this.leftTime = last_monday + '-' + last_sunday
 
       // 处理在相同周内只调用一次接口逻辑
@@ -675,7 +675,7 @@ export default {
     // 点击日历月报
     clickMonth(data, index) {
       this.active = index
-      this.thePreviousDay = this.year + '年' + data.time + '月'
+      this.thePreviousDay = this.$language === 'en' ? this.year + '-' + String(data.time).padStart(2, '0') : this.year + '年' + data.time + '月'
       const f = this.$moment(this.thePreviousDay, 'YYYY-MM').startOf('month').format('YYYY/MM/DD')
       const e = this.$moment(this.thePreviousDay, 'YYYY-MM').endOf('month').format('YYYY/MM/DD')
       this.leftTime = `${f}-${e}`
@@ -703,7 +703,7 @@ export default {
         // 选择月报
         let date = new Date()
         this.year = date.getFullYear()
-        this.thePreviousDay = this.$moment().startOf('month').format('YYYY年MM月')
+        this.thePreviousDay = this.$moment().startOf('month').format(this.$language === 'en' ? 'YYYY-MM' : 'YYYY年MM月')
         this.calendarTime = this.year
         this.active = date.getMonth()
         this.leftTime =
@@ -712,7 +712,7 @@ export default {
           this.$moment().endOf('month').format('YYYY/MM/DD')
       } else if (this.activeVal == '4' && (this.tableFrom.types == 0 || this.tableFrom.types == 3)) {
         // 选择日报
-        this.thePreviousDay = this.$moment().subtract(1, 'day').format('YYYY年MM月DD日')
+        this.thePreviousDay = this.$moment().subtract(1, 'day').format(this.$language === 'en' ? 'YYYY-MM-DD' : 'YYYY年MM月DD日')
         this.leftTime =
           this.$moment().subtract(1, 'day').format('YYYY/MM/DD') +
           '-' +
@@ -733,9 +733,9 @@ export default {
           .add(7 - weekOfday, 'days')
           .format('YYYY/MM/DD')
         this.thePreviousDay =
-          this.$moment(last_monday, 'YYYY/MM/DD').format('YYYY年MM月DD日') +
+          this.$moment(last_monday, 'YYYY/MM/DD').format(this.$language === 'en' ? 'YYYY-MM-DD' : 'YYYY年MM月DD日') +
           '~' +
-          this.$moment(last_sunday, 'YYYY/MM/DD').format('YYYY年MM月DD日')
+          this.$moment(last_sunday, 'YYYY/MM/DD').format(this.$language === 'en' ? 'YYYY-MM-DD' : 'YYYY年MM月DD日')
         this.leftTime = last_monday + '-' + last_sunday
         setTimeout(() => {
           this.$refs.week.addIndex()
@@ -898,7 +898,7 @@ export default {
     // 二级tabs页切换
     activeClick() {
       if (this.activeVal == '4') {
-        this.thePreviousDay = this.$moment().subtract(1, 'day').format('YYYY年MM月DD日')
+        this.thePreviousDay = this.$moment().subtract(1, 'day').format(this.$language === 'en' ? 'YYYY-MM-DD' : 'YYYY年MM月DD日')
         this.leftTime =
           this.$moment().subtract(1, 'day').format('YYYY/MM/DD') +
           '-' +
@@ -971,7 +971,7 @@ export default {
         this.$moment().subtract(1, 'day').format('YYYY/MM/DD') +
         '-' +
         this.$moment().subtract(1, 'day').format('YYYY/MM/DD')
-      this.thePreviousDay = this.$moment().subtract(1, 'day').format('YYYY年MM月DD日')
+      this.thePreviousDay = this.$moment().subtract(1, 'day').format(this.$language === 'en' ? 'YYYY-MM-DD' : 'YYYY年MM月DD日')
       // this.tableFrom.types = 0
       this.tableFrom.time =
         this.$moment().startOf('month').format('YYYY/MM/DD') + '-' + this.$moment().endOf('month').format('YYYY/MM/DD')
