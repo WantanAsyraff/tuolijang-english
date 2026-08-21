@@ -36,8 +36,12 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column :label="$('finance.mode')" min-width="120" prop="pay_type" />
-          <el-table-column :label="$('finance.accounttabtype')" min-width="120" prop="cate.name" />
+          <el-table-column :label="$('finance.mode')" min-width="120" prop="pay_type">
+            <template slot-scope="scope">{{ $(scope.row.pay_type) }}</template>
+          </el-table-column>
+          <el-table-column :label="$('finance.accounttabtype')" min-width="120" prop="cate.name">
+            <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.name) }}</template>
+          </el-table-column>
           <el-table-column :label="$('ui.administrationMaterialFixedLogOperationTime')" min-width="180" prop="updated_at" sortable />
           <el-table-column :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="180" prop="mark" show-overflow-tooltip>
             <template slot-scope="scope">{{

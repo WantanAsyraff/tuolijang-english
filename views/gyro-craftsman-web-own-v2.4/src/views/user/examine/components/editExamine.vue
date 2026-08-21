@@ -20,7 +20,7 @@
               <i class="iconfont" :class="configData.approve ? configData.approve.icon : configData.icon"></i>
             </div>
             <div class="nameBox">
-              <span class="st1">{{ configData.approve ? configData.approve.name : configData.name }}</span>
+              <span class="st1">{{ $(configData.approve ? configData.approve.name : configData.name) }}</span>
             </div>
           </div>
           <div v-else class="acea-row row-middle">
@@ -31,7 +31,7 @@
               <i class="iconfont" :class="configData.approve ? configData.approve.icon : configData.icon"></i>
             </div>
             <div class="nameBox">
-              <span class="st1">{{ configData.approve ? configData.approve.name : configData.name }}</span>
+              <span class="st1">{{ $(configData.approve ? configData.approve.name : configData.name) }}</span>
             </div>
           </div>
         </div>
@@ -72,6 +72,7 @@
 
 <script>
 import { $ } from '@/lang'
+import { localizeFormSchema } from '@/libs/modal-form'
 import request from '@/api/request'
 import {
   approveApplyEditApi,
@@ -130,6 +131,7 @@ export default {
         }
       }, // 表单配置
       rules: [],
+      sourceTitles: {},
       approveId: 0,
       configData: null,
       formData: {},
@@ -155,6 +157,20 @@ export default {
   },
   watch: {},
   methods: {
+    collectSchemaSourceTitles(value) {
+      if (Array.isArray(value)) {
+        value.forEach((item) => this.collectSchemaSourceTitles(item))
+        return
+      }
+      if (!value || typeof value !== 'object') return
+      if (value.field && typeof value.title === 'string') {
+        this.$set(this.sourceTitles, value.field, value.title)
+      }
+      Object.keys(value).forEach((key) => this.collectSchemaSourceTitles(value[key]))
+    },
+    schemaSourceTitle(item) {
+      return (item && item.field && this.sourceTitles[item.field]) || (item && item.title)
+    },
     handleClose() {
       this.id = 0
       this.drawer = false
@@ -202,7 +218,11 @@ export default {
             })
           }
         })
-        this.rules = res.data.forms
+        this.sourceTitles = {}
+        this.collectSchemaSourceTitles(res.data.forms)
+        this.option.form.labelSuffix = this.$language === 'en' ? ':' : '：'
+        this.configData = localizeFormSchema(res.data.info, this)
+        this.rules = localizeFormSchema(res.data.forms, this)
         // res.data.forms.map((item) => {
         //   if (item.children && item.type !== 'span') {
         //     item.children.forEach((per) => {
@@ -296,7 +316,7 @@ export default {
       let timeType
       const data = this.handleFromObj()
       this.rules.forEach((it) => {
-        if (it.field === e && it.title == '假期类型' && this.holidayTypeOptions) {
+        if (it.field === e && this.schemaSourceTitle(it) == '假期类型' && this.holidayTypeOptions) {
           this.holidayTypeOptions.map((item) => {
             if (item.value == data[e]) {
               timeType = item.duration_type
@@ -416,7 +436,7 @@ export default {
         this.calculateLevel(this.rules, option)
 
         this.rules.forEach((item) => {
-          if (item.title == '异常日期') {
+          if (this.schemaSourceTitle(item) == '异常日期') {
             this.attendanceAbnormalDate()
             if (item.value.abnormal_id) {
               this.abnormal_id = item.value.abnormal_id.value

@@ -9,6 +9,14 @@ export function createLocalizationRuntime(systemTextEn) {
     return "";
   }
 
+  function decodeDisplayText(value) {
+    return String(value || "")
+      .replace(/\\?&quot;/g, "\"")
+      .replace(/\\?&#0*39;/g, "'")
+      .replace(/\\?&#x0*27;/gi, "'")
+      .replace(/\\?&amp;/g, "&");
+  }
+
   function containsHan(value) {
     return hasHanPattern.test(String(value || ""));
   }
@@ -195,21 +203,21 @@ export function createLocalizationRuntime(systemTextEn) {
 
     const backendEnglish = options.englishValue;
     if (typeof backendEnglish === "string" && backendEnglish.trim() && !containsHan(backendEnglish)) {
-      return backendEnglish;
+      return decodeDisplayText(backendEnglish);
     }
 
     const raw = value;
     const trimmed = raw.trim();
-    if (!trimmed || !containsHan(trimmed)) return value;
+    if (!trimmed || !containsHan(trimmed)) return decodeDisplayText(value);
 
     const exact = translateExact(trimmed);
     if (exact !== trimmed && !containsHan(exact)) {
       const needsColon = trailingColonPattern.test(trimmed) && !trailingColonPattern.test(exact);
-      return raw.replace(trimmed, `${exact}${needsColon ? ":" : ""}`);
+      return decodeDisplayText(raw.replace(trimmed, `${exact}${needsColon ? ":" : ""}`));
     }
 
     const parameterized = translateParameterized(trimmed);
-    return parameterized === trimmed ? value : raw.replace(trimmed, parameterized);
+    return parameterized === trimmed ? decodeDisplayText(value) : decodeDisplayText(raw.replace(trimmed, parameterized));
   }
 
   return { normalizeLocale, translateSystemTextValue, containsHan };

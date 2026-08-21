@@ -2,7 +2,7 @@
 <template>
   <div class="station">
     <el-drawer
-      :title="formData.title"
+      :title="$(formData.title)"
       :visible.sync="drawer"
       :direction="direction"
       :modal="true"

@@ -22,7 +22,7 @@
         <el-col :span="12">
           <el-form-item :label="$('ui.customerSigningAddContractSignProvinceCityDistrict')">
             <span class="info-text">{{
-              dataInfo.customer && dataInfo.customer.area_cascade ? dataInfo.customer.area_cascade : '--'
+              dataInfo.customer && dataInfo.customer.area_cascade ? $(dataInfo.customer.area_cascade) : '--'
             }}</span>
           </el-form-item>
         </el-col>

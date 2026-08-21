@@ -4,7 +4,7 @@
   <el-dialog
     :append-to-body="true"
     :before-close="handleClose"
-    :title="config.title"
+    :title="$(config.title)"
     :visible.sync="dialogVisible"
     width="540px"
   >
@@ -36,18 +36,18 @@
       <el-form-item v-if="types !== 0" prop="cate_id">
         <span slot="label">{{ $("ui.fdExamineOperationDialogRenewalType") }} </span>
         <el-select v-model="rules.cate_id" :placeholder="$('customer.placeholder31')" size="small">
-          <el-option v-for="item in sourceOptions" :key="item.id" :label="item.value.title" :value="item.id" />
+          <el-option v-for="item in sourceOptions" :key="item.id" :label="$(item.value.title, item.value.title_en)" :value="item.id" />
         </el-select>
       </el-form-item>
 
       <!-- 回款金额 -->
       <el-form-item prop="amount">
-        <span slot="label">{{ title01 }}：</span>
+        <span slot="label">{{ $(title01) }}：</span>
         <el-input-number
           v-model="rules.amount"
           :controls="false"
           :max="999999.99"
-          :placeholder="placeholder01"
+          :placeholder="$(placeholder01)"
           size="small"
         ></el-input-number>
       </el-form-item>
@@ -68,7 +68,7 @@
       <el-form-item v-if="config.type !== 3" prop="type_id">
         <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentMethod") }}</span>
         <el-select v-model="rules.type_id" :placeholder="$('ui.customerContractContractDialogSelectPaymentMethod')" size="small">
-          <el-option v-for="item in paymentOptions" :key="item.id" :label="item.name" :value="item.id" />
+          <el-option v-for="item in paymentOptions" :key="item.id" :label="$(item.name, item.name_en)" :value="item.id" />
         </el-select>
       </el-form-item>
 
