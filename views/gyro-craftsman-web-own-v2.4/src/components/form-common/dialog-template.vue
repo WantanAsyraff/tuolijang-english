@@ -12,8 +12,8 @@
       <div slot="title" class="dialog-title">
         <div class="dialog-title-title">{{ title }}</div>
       </div>
-      <el-row class="assessment-layout">
-        <el-col>
+      <div class="assessment-layout">
+        <div class="assessment-layout-column">
           <!-- 考核模板库与指标库导航 -->
           <div class="assess-left">
             <ul class="assess-left-ul">
@@ -27,8 +27,8 @@
               </li>
             </ul>
           </div>
-        </el-col>
-        <el-col>
+        </div>
+        <div class="assessment-layout-column">
           <div class="ml15">
             <div class="content-temp">
               <el-input
@@ -101,8 +101,8 @@
               @current-change="pageChange"
             />
           </div>
-        </el-col>
-        <el-col>
+        </div>
+        <div class="assessment-layout-column">
           <div class="ml15">
             <div class="template-preview">
               <el-scrollbar style="height: 100%">
@@ -116,8 +116,8 @@
               </el-scrollbar>
             </div>
           </div>
-        </el-col>
-      </el-row>
+        </div>
+      </div>
       <div slot="footer" class="dialog-footer">
         <el-button size="small" @click="closeDialog">{{ $("public.cancel") }}</el-button>
         <el-button size="small" type="primary" @click="handleConfirm">{{ $("public.ok") }}</el-button>
@@ -441,9 +441,11 @@ export default {
 }
 .assessment-layout {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr) 300px;
+  grid-template-columns: minmax(160px, 190px) minmax(220px, 1fr) minmax(220px, 300px);
+  gap: 15px;
+  align-items: start;
 
-  > .el-col {
+  > .assessment-layout-column {
     width: auto;
     min-width: 0;
   }
@@ -451,7 +453,7 @@ export default {
 .assess-left {
   min-height: 460px;
   max-height: 550px;
-  margin-left: -10px;
+  margin-left: 0;
   overflow: auto;
   border-right: 1px solid #f3f3f3;
   .assess-left-ul {
@@ -512,8 +514,8 @@ export default {
     margin-top: 0;
   }
 }
-.ml15 {
-  margin-left: 15px;
+.assessment-layout .ml15 {
+  margin-left: 0;
 }
 .mr0 {
   margin-right: 0 !important;
