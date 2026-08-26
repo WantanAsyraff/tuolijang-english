@@ -71,7 +71,7 @@
                 <span class="status" v-if="item.sign_status == 2">{{ $("ui.userExamineExamineRejected") }}</span>
                 <span class="status" v-if="item.sign_status == 0">{{ $("ui.customerSigningInfoItemPendingSigning") }}</span>
                 <div class="signer-name">
-                  {{ item.company_name || '--' }}
+                  {{ $(item.company_name) || '--' }}
                   <span class="company-icon">{{ $("ui.customerSigningInfoItemOurCompany") }}</span>
                 </div>
                 <div class="signer-name mt6">

@@ -16,7 +16,7 @@
     <el-table-column prop="contract_status" :label="$('ui.customerListContractOrderStatus')">
       <template slot-scope="scope">
         <div :style="{ color: scope.row.contract_status.color || '#1890ff' }">
-          {{ scope.row.contract_status.name }}
+          {{ $(scope.row.contract_status.name, scope.row.contract_status.name_en) }}
         </div>
       </template>
     </el-table-column>
@@ -52,6 +52,7 @@
 </div>
 </template>
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 import { clientContractListApi } from '@/api/enterprise'
 import { getContractTagType, getContractText } from '@/libs/customer'

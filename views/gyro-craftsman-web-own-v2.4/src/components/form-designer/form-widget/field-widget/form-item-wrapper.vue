@@ -109,7 +109,7 @@ export default {
         return ''
       }
 
-      return this.field.options.label
+      return this.$(this.field.options.label)
     },
 
     labelWidth() {
@@ -283,8 +283,13 @@ export default {
   position: relative;
 
   ::v-deep .el-form-item__label {
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    overflow-wrap: anywhere;
+    line-height: 20px;
+    height: auto;
+    padding-right: 8px;
   }
 
   ::v-deep .el-form-item__content {

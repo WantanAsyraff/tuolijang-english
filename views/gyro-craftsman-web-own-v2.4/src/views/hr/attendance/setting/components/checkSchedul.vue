@@ -80,11 +80,7 @@
             :style="{ backgroundColor: scope.row.counts[index1].color }"
             class="btn1"
           >
-            {{
-              scope.row.counts[index1].name && scope.row.counts[index1].name.length > 4
-                ? scope.row.counts[index1].name.substring(0, 4)
-                : scope.row.counts[index1].name
-            }}
+            {{ displayShiftName(scope.row.counts[index1].name) }}
           </div>
         </template>
       </el-table-column>
@@ -255,6 +251,10 @@ export default {
       this.where.date = this.$moment(this.newData.date).format('yyyy-MM')
     },
 
+    displayShiftName(name) {
+      const localizedName = this.$(name || '')
+      return localizedName.length > 10 ? localizedName.substring(0, 10) : localizedName
+    },
     getWeek(date) {
       return toGetWeek(date)
     }

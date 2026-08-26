@@ -29,14 +29,14 @@
           :class="{ 'is-active': currentTypeId === item.id }"
           @click="handleTypeSelect(item)"
         >
-          {{ item.name }}
+          {{ translateSystemText(item.name) }}
         </div>
       </div>
 
       <!-- 右侧：选项编辑区域 -->
       <div class="dict-option-setting__content">
         <!-- 当前选中类型的标题 -->
-        <div class="dict-option-setting__content-title">{{ currentTypeName }}</div>
+        <div class="dict-option-setting__content-title">{{ translateSystemText(currentTypeName) }}</div>
 
         <div v-loading="loading" class="dict-option-setting__content-body">
           <!-- 单层级模式（level === 1）：可拖拽排序的平铺列表 -->
@@ -52,7 +52,7 @@
             >
               <div v-for="(option, idx) in optionItems" :key="idx" class="dict-option-setting__option-row">
                 <!-- 选项名称输入框，右侧带颜色选择器 -->
-                <el-input v-model="option.name" size="small" class="dict-option-setting__option-input">
+                <el-input :value="translateSystemText(option.name)" size="small" class="dict-option-setting__option-input" @input="updateOptionName(option, $event)">
                   <span slot="suffix">
                     <el-color-picker v-model="option.color" size="small" />
                   </span>
@@ -75,7 +75,8 @@
             <div slot-scope="{ node, data }" class="dict-option-setting__tree-node">
               <!-- 节点名称输入框 -->
               <el-input
-                v-model="data.name"
+                :value="translateSystemText(data.name)"
+                @input="updateOptionName(data, $event)"
                 :placeholder="$('ui.customerSetupDictionaryManagementDataValue')"
                 size="small"
                 class="dict-option-setting__tree-input"
@@ -174,6 +175,17 @@ const loading = ref(false)
  * @param {Array} nodes - 树节点数组
  * @returns {number} 最大 value 值，空树返回 0
  */
+const translateSystemText = (value) => {
+  if (typeof value !== 'string' || !value) return value
+  const optionMatch = value.match(/^选项(\d+)$/)
+  if (optionMatch) return `${$('选项')} ${optionMatch[1]}`
+  return $(value)
+}
+
+const updateOptionName = (option, value) => {
+  option.name = value
+}
+
 const findMaxValueInTree = (nodes) => {
   if (!nodes || nodes.length === 0) return 0
   let maxVal = 0
@@ -329,7 +341,7 @@ const handleAddFlatItem = () => {
  */
 const handleDeleteFlatItem = async (option, idx) => {
   try {
-    await proxy.$modalSure('确定要删除该选项吗？')
+    await proxy.$modalSure($('确定要删除该选项吗？'))
     if (option.id) {
       await getDictDataDeleteApi(option.id)
     }
@@ -376,7 +388,7 @@ const handleAddTreeChild = (node, data) => {
  */
 const handleDeleteTreeNode = async (node, data) => {
   try {
-    await proxy.$modalSure('确定要删除该节点吗？')
+    await proxy.$modalSure($('确定要删除该节点吗？'))
     node.remove()
   } catch {
     // 用户取消删除

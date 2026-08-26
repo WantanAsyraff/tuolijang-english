@@ -1,7 +1,7 @@
 <template>
 <div class="searchBox">
   <div class="flex-between mt20">
-    <div class="title-16">{{ info.crudInfo ? info.crudInfo.table_name : $('ui.developModuleFormBoxDesign') }}{{ $("ui.developModuleFormBoxList") }}</div>
+    <div class="title-16">{{ info.crudInfo ? $(`${info.crudInfo.table_name}List`) : $('ui.developModuleFormBoxDesign') }}</div>
     <div class="lh-center">
       <el-button class="h32" icon="el-icon-plus" size="small" type="primary" @click="addData">{{ $("ui.businessHolidayTypeIndexAdd") }}</el-button>
 
@@ -51,7 +51,7 @@
           </div>
           <div class="view-text" @click="openViewBox"><span class="iconfont iconshituguanli"></span>{{ $("ui.commonHeaderSearchViewManagement") }}</div>
           <div slot="reference" class="view-box">
-            <span class="over-text1">{{ viewText }}</span>
+            <span class="over-text1">{{ ['0', '1', '2'].includes(viewIndex) ? $(viewText) : viewText }}</span>
             <span class="el-icon-arrow-down"></span>
           </div>
         </el-popover>
@@ -127,7 +127,7 @@
               :key="key"
               @click="groupFn(val)"
             >
-              {{ val.field_name }}
+              {{ $(val.field_name) }}
             </div>
           </div>
           <div class="clear-item" @click="clearGroup">{{ $("ui.formDesignerToolbarPanelIndexClear") }}</div>
@@ -162,7 +162,7 @@
           </div>
         </div>
         <div v-for="(item, indexJ) in sortList" :key="indexJ + 'c'" class="field-text" @click="sortFn(item)">
-          <span v-if="sortIndex == item.value" class="el-icon-check"></span> {{ item.name }}
+          <span v-if="sortIndex == item.value" class="el-icon-check"></span> {{ $(item.name) }}
         </div>
         <div slot="reference" class="text-16 paixuBox pointer">
           <span class="iconfont iconpaixu4"></span>

@@ -27,9 +27,15 @@
             @selection-change="handleSelectionChange"
           >
             <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column :label="$('hr.jobtitle')" min-width="150" prop="name" />
-            <el-table-column :label="$('hr.immediatesuperior')" min-width="150" prop="cate.name" />
-            <el-table-column :label="$('hr.positionlevel')" min-width="100" prop="rank.alias" />
+            <el-table-column :label="$('hr.jobtitle')" min-width="150" prop="name">
+              <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+            </el-table-column>
+            <el-table-column :label="$('hr.immediatesuperior')" min-width="150" prop="cate.name">
+              <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.name) }}</template>
+            </el-table-column>
+            <el-table-column :label="$('hr.positionlevel')" min-width="100" prop="rank.alias">
+              <template slot-scope="scope">{{ $(scope.row.rank && scope.row.rank.alias) }}</template>
+            </el-table-column>
             <el-table-column :label="$('ui.hrEnterpriseJobJobAdministrationJobDescription')" min-width="240" prop="describe" show-overflow-tooltip>
               <template slot-scope="scope">
                 <div class="line1">{{ scope.row.describe || '--' }}</div>
@@ -87,7 +93,7 @@
           <div v-if="detailData" class="detail-box">
             <div class="item-box">
               <span>{{ $('hr.jobtitle') }}:</span>
-              <div>{{ detailData.name || '--' }}</div>
+              <div>{{ $(detailData.name) || '--' }}</div>
             </div>
             <div class="item-box">
               <span>{{ $('hr.numberPosts') }}:</span>

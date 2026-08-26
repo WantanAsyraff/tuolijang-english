@@ -15,7 +15,9 @@
 
     <div class="table-box mt10">
       <el-table :data="tableData" :height="tableHeight" style="width: 100%">
-        <el-table-column prop="name" :label="$('ui.hrAttendanceSettingShiftListShiftName')" width="200"> </el-table-column>
+        <el-table-column prop="name" :label="$('ui.hrAttendanceSettingShiftListShiftName')" width="200">
+          <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+        </el-table-column>
         <el-table-column prop="position" :label="$('ui.hrAttendanceSettingShiftListAttendanceTime')" width="340">
           <template slot-scope="scope">
             {{ scope.row.times[0].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }} {{ scope.row.times[0].work_hours }} -
@@ -85,7 +87,7 @@ export default {
       tableData: [],
       search: [
         {
-          field_name: '班次名称或创建人',
+          field_name: '班次名称',
           field_name_en: 'name',
           form_value: 'input'
         }

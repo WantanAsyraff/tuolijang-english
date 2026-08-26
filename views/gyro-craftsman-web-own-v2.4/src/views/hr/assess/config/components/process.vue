@@ -243,10 +243,12 @@ export default {
   }
 }
 .process-right {
-  padding-left: 30px;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 24px 0 30px;
   .process-right-list {
     width: 100%;
-    padding: 16px 10px;
+    padding: 16px 18px;
     border: 1px solid #f7f7f7;
     border-radius: 5px;
     margin-bottom: 15px;
@@ -269,7 +271,9 @@ export default {
       .right {
         width: 90%;
         .right-con {
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
           margin-right: 20px;
           button {
             width: 16px;

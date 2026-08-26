@@ -32,7 +32,7 @@
       <el-table-column type="selection" width="55" :selectable="selectable" />
 
       <!-- 3. 客户名称列（核心列） -->
-      <el-table-column :label="headerlist[0]&&headerlist[0].field_name"  width="200">
+      <el-table-column :label="headerlist[0] && $(headerlist[0].field_name)"  width="200">
         <template slot-scope="scope">
           <!-- 分组标题行 -->
           <div v-if="scope.row.isGroup" class="flex" >
@@ -55,7 +55,7 @@
        <el-table-column
             v-for="(item, index) in headerlist.slice(1)"
             :prop="item.field_name_en"
-            :label="item.field_name"
+            :label="$(item.field_name)"
             :key="index"
             :width="
               [
