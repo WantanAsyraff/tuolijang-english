@@ -16,7 +16,7 @@
 
             <el-color-picker v-model="formData.color" class="ml14"></el-color-picker>
           </div>
-          <span v-else>{{ formData.name }}</span>
+          <span v-else>{{ $(formData.name) }}</span>
         </el-form-item>
         <el-form-item :label="$('ui.hrAttendanceSettingAddShiftWorkPeriods')" prop="number" class="form-item">
           <el-radio-group v-model="formData.number" @input="radioFn" v-if="type !== 'check'">
@@ -26,10 +26,12 @@
           <span v-else>{{ formData.number == 1 ? $('ui.hrAttendanceSettingAddShiftOneWorkPeriod') : $('ui.hrAttendanceSettingAddShiftTwoWorkPeriods') }}</span>
         </el-form-item>
         <el-form-item :label="$('ui.hrAttendanceSettingAddShiftWorkingDuration')" prop="title" class="form-item">
-          <span>{{ formData.work_time }}</span>
+          <span>{{ formatWorkDuration(formData.work_time) }}</span>
         </el-form-item>
         <el-table :data="tableData" style="width: 100%" class="mb20">
-          <el-table-column prop="name" :label="$('ui.hrAttendanceSettingAddShiftShift')" width="140"> </el-table-column>
+          <el-table-column prop="name" :label="$('ui.hrAttendanceSettingAddShiftShift')" width="140">
+              <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+            </el-table-column>
           <el-table-column prop="rule" :label="$('ui.hrAttendanceSettingAddShiftRules')">
             <template slot-scope="scope">
               <!-- 第一次上班 -->
@@ -65,7 +67,7 @@
                   >
                 </div>
                 <div class="item" v-for="(item, index) in goToWork1" :key="index" v-if="type !== 'check'">
-                  {{ item.premise }}
+                  {{ $(item.premise) }}
 
                   <div class="mo-input--number">
                     <el-input-number v-model="form[item.hour]" controls-position="right" size="small" :min="0">
@@ -83,10 +85,10 @@
                     <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
                   </div>
                   &nbsp;
-                  {{ item.suffix }}
+                  {{ $(item.suffix) }}
                 </div>
                 <div v-if="type == 'check'" class="item" v-for="(item, index) in goToWork1" :key="index">
-                  {{ item.premise }} {{ form[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}{{ form[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}{{ item.suffix }}
+                  {{ $(item.premise) }} {{ form[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}{{ form[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}{{ $(item.suffix) }}
                 </div>
               </div>
 
@@ -124,7 +126,7 @@
                   >
                 </div>
                 <div class="item" v-for="(item, index) in goToWork2" :key="index" v-if="type !== 'check'">
-                  {{ item.premise }}
+                  {{ $(item.premise) }}
                   <div class="mo-input--number">
                     <el-input-number v-model="form[item.hour]" controls-position="right" size="small" :min="0">
                     </el-input-number>
@@ -140,13 +142,13 @@
                     ></el-input-number>
                     <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
                   </div>
-                  &nbsp; {{ item.suffix }}
+                  &nbsp; {{ $(item.suffix) }}
                 </div>
                 <el-checkbox v-model="form.free_clock" v-if="type !== 'check'">{{ $("ui.hrAttendanceSettingAddShiftClockOutIsOptional") }}</el-checkbox>
 
                 <div v-if="type == 'check'" class="item" v-for="(item, index) in goToWork2" :key="index">
-                  {{ item.premise }} <span v-if="form[item.hour] !== 0">{{ form[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}</span>
-                  <span v-if="form[item.minute] !== 0">{{ form[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span>{{ item.suffix }}
+                  {{ $(item.premise) }} <span v-if="form[item.hour] !== 0">{{ form[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}</span>
+                  <span v-if="form[item.minute] !== 0">{{ form[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</span>{{ $(item.suffix) }}
                 </div>
                 <span v-if="type == 'check'">{{ form.free_clock ? $('ui.hrAttendanceSettingAddShiftClockOutIsOptional') : $('ui.hrAttendanceSettingAddShiftClockOutIsRequired') }}</span>
               </div>
@@ -186,7 +188,7 @@
                   >
                 </div>
                 <div class="item" v-for="(item, index) in goToWork1" :key="index" v-if="type !== 'check'">
-                  {{ item.premise }}
+                  {{ $(item.premise) }}
                   <div class="mo-input--number">
                     <el-input-number v-model="form1[item.hour]" controls-position="right" size="small" :min="0">
                     </el-input-number>
@@ -202,10 +204,10 @@
                     ></el-input-number>
                     <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
                   </div>
-                  &nbsp;{{ item.suffix }}
+                  &nbsp;{{ $(item.suffix) }}
                 </div>
                 <div v-if="type == 'check'" class="item" v-for="(item, index) in goToWork1" :key="index">
-                  {{ item.premise }} {{ form1[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}{{ form1[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}{{ item.suffix }}
+                  {{ $(item.premise) }} {{ form1[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}{{ form1[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}{{ $(item.suffix) }}
                 </div>
               </div>
               <!-- 第二次下班 -->
@@ -243,7 +245,7 @@
                   >
                 </div>
                 <div class="item" v-for="(item, index) in goToWork2" :key="index" v-if="type !== 'check'">
-                  {{ item.premise }}
+                  {{ $(item.premise) }}
                   <div class="mo-input--number">
                     <el-input-number v-model="form1[item.hour]" controls-position="right" size="small" :min="0">
                     </el-input-number>
@@ -259,11 +261,11 @@
                     ></el-input-number>
                     <div class="define-append">{{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}</div>
                   </div>
-                  &nbsp;{{ item.suffix }}
+                  &nbsp;{{ $(item.suffix) }}
                 </div>
                 <el-checkbox v-model="form1.free_clock" v-if="type !== 'check'">{{ $("ui.hrAttendanceSettingAddShiftClockOutIsOptional") }}</el-checkbox>
                 <div v-if="type == 'check'" class="item" v-for="(item, index) in goToWork2" :key="index">
-                  {{ item.premise }} {{ form[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}{{ form[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}{{ item.suffix }}
+                  {{ $(item.premise) }} {{ form[item.hour] }} {{ $("ui.hrApprovaTimeHours") }}{{ form[item.minute] }} {{ $("ui.settingEnterpriseNewsMessageTimesMinutes") }}{{ $(item.suffix) }}
                 </div>
                 <span v-if="type == 'check'">{{ form1.free_clock ? $('ui.hrAttendanceSettingAddShiftClockOutIsOptional') : $('ui.hrAttendanceSettingAddShiftClockOutIsRequired') }}</span>
               </div>
@@ -537,7 +539,11 @@ export default {
   },
 
   methods: {
-    formatRuleText(item, values) {
+    formatWorkDuration(value) {
+      if (getLanguage() !== 'en' || typeof value !== 'string') return value
+      const match = value.match(/^(\d+)小时(\d+)分钟$/)
+      return match ? `${match[1]} hours ${match[2]} minutes` : this.$(value)
+    },    formatRuleText(item, values) {
       const hours = values[item.hour]
       const minutes = values[item.minute]
       if (getLanguage() !== 'en') {
@@ -1003,7 +1009,8 @@ export default {
 .item {
   margin-bottom: 15px;
   gap: 8px;
-  white-space: nowrap;
+  white-space: normal;
+  flex-wrap: wrap;
   min-height: 32px;
   display: flex;
   align-items: center;

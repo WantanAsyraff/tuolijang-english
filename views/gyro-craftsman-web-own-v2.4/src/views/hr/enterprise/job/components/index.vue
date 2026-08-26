@@ -1,7 +1,7 @@
 <template>
   <div class="station">
     <el-drawer
-      :title="formData.title"
+      :title="$(formData.title)"
       :visible.sync="drawer"
       :direction="direction"
       :modal="true"
@@ -10,7 +10,7 @@
       :size="formData.width"
       :wrapperClosable="false"
     >
-      <formCreate v-if="rules.length > 0 && drawer" ref="fc" :option="option" :rule="rules" />
+      <formCreate v-if="rules.length > 0 && drawer" ref="fc" :option="option" :rule="localizedRules" />
       <div class="button from-foot-btn fix btn-shadow">
         <el-button size="small" @click="drawer = false">{{ $('public.cancel') }}</el-button>
         <el-button size="small" type="primary" :loading="loading" @click="handleConfirm('ruleForm')">{{
@@ -23,6 +23,7 @@
 
 <script>
 import formCreate from '@form-create/element-ui'
+import { $ } from '@/lang'
 import request from '@/api/request'
 import ueditorFrom from '@/components/form-common/oa-wangeditor'
 formCreate.component('ueditorFrom', ueditorFrom)
@@ -77,7 +78,11 @@ export default {
       rules: []
     }
   },
-  watch: {
+  computed: {
+    localizedRules() {
+      return this.rules.map((rule) => this.localizeRule(rule))
+    }
+  },  watch: {
     rolesConfig: {
       handler(nVal, oVal) {
         this.rules = this.rolesConfig
@@ -86,6 +91,27 @@ export default {
     }
   },
   methods: {
+    localizeRule(rule) {
+      if (Array.isArray(rule)) return rule.map((item) => this.localizeRule(item))
+      if (!rule || typeof rule !== 'object') return rule
+
+      const localizedRule = { ...rule }
+      ;['title', 'label', 'placeholder'].forEach((field) => {
+        if (typeof localizedRule[field] === 'string') localizedRule[field] = $(localizedRule[field])
+      })
+      if (localizedRule.props && typeof localizedRule.props === 'object') {
+        localizedRule.props = { ...localizedRule.props }
+        if (typeof localizedRule.props.placeholder === 'string') localizedRule.props.placeholder = $(localizedRule.props.placeholder)
+        if (Array.isArray(localizedRule.props.options)) {
+          localizedRule.props.options = localizedRule.props.options.map((option) => ({
+            ...option,
+            label: typeof option.label === 'string' ? $(option.label) : option.label
+          }))
+        }
+      }
+      if (localizedRule.children) localizedRule.children = this.localizeRule(localizedRule.children)
+      return localizedRule
+    },
     handleClose() {
       this.drawer = false
     },

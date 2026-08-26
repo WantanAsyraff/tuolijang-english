@@ -10,7 +10,7 @@
     <el-table-column :label="$('ui.customerListSignAllSigners')" min-width="200">
       <template slot-scope="scope">
         <div v-for="item in scope.row.signatory" :key="item.id">
-          <span v-if="item.types == 0">{{ item.company_name }}
+          <span v-if="item.types == 0">{{ $(item.company_name) }}
             <template v-if="item.name">({{ item.name }})</template>
             <span class="company-icon">{{ $("ui.customerSigningInfoItemOurCompany") }}</span>
           </span>
@@ -28,7 +28,7 @@
           background:
             getColorFn(statusList[scope.row.status].color, '0.1')
 
-        }">{{ statusList[scope.row.status].name }}</div>
+        }">{{ $(statusList[scope.row.status].name) }}</div>
       </template>
     </el-table-column>
     <el-table-column :label="$('ui.customerListSignSigningTime')">

@@ -225,7 +225,7 @@ export default {
       const text = this.$(value || '', englishValue)
       if (!value || text !== value) return text
 
-      const prefix = ['新添加线索', '新添加订单'].find((candidate) => value.startsWith(candidate))
+      const prefix = ['新添加线索', '新添加订单', '新添加商机', '新增合同签约'].find((candidate) => value.startsWith(candidate))
       return prefix ? this.$(prefix) + value.slice(prefix.length) : text
     },
     // 查看图片

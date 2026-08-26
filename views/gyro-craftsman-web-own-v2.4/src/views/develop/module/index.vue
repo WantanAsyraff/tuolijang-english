@@ -32,7 +32,7 @@
           <el-table-column
             v-for="(item, index) in info.showField"
             :prop="item.field_name_en"
-            :label="item.field_name"
+            :label="$(item.field_name)"
             :key="index"
             min-width="200"
           >

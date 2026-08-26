@@ -16,17 +16,19 @@
     ></oaFromBox>
     <div class="table-box mt10">
       <el-table :data="tableData" :height="tableHeight" style="width: 100%">
-        <el-table-column :label="$('ui.hrAttendanceSettingTeamAttendanceGroupName')" min-width="180" prop="name" show-overflow-tooltip> </el-table-column>
+        <el-table-column :label="$('ui.hrAttendanceSettingTeamAttendanceGroupName')" min-width="180" prop="name" show-overflow-tooltip>
+          <template #default="{ row }">{{ $(row.name) }}</template>
+        </el-table-column>
         <el-table-column :label="$('ui.hrAttendanceSettingTeamAttendanceGroupMembers')" min-width="250" prop="members" show-overflow-tooltip>
           <template #default="{ row }">
-            <span>{{ row.members.map((obj) => obj.name).join('、') }}</span>
+            <span>{{ row.members.map((obj) => $(obj.name)).join('、') }}</span>
           </template>
         </el-table-column>
         <el-table-column :label="$('ui.hrAttendanceSettingAddConentAttendanceShift')" min-width="300" prop="shifts">
           <template slot-scope="scope">
             <template v-if="scope.row.shifts.length <= 3">
               <span v-for="(item, index) in scope.row.shifts" :key="index"
-                >{{ item.name }}&nbsp;{{ item.times[0].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
+                >{{ $(item.name) }}&nbsp;{{ item.times[0].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
                 }}{{ item.times[0].work_hours }}-{{ item.times[0].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay')
                 }}{{ item.times[0].off_hours }}
                 <span v-if="item.times.length > 1">
@@ -37,11 +39,11 @@
             </template>
             <el-popover v-if="scope.row.shifts.length > 3" placement="top-start" trigger="hover" width="400">
               <span v-for="(item, index) in scope.row.shifts" :key="index"
-                >{{ item.name }}&nbsp;{{ item.times[0].work_hours }}-{{ item.times[0].off_hours }}、</span
+                >{{ $(item.name) }}&nbsp;{{ item.times[0].work_hours }}-{{ item.times[0].off_hours }}、</span
               >
               <div slot="reference">
                 <span v-for="(item, index) in scope.row.shifts" v-show="index <= 2" :key="index">
-                  {{ item.name }}&nbsp;{{ item.times[0].work_hours }}-{{ item.times[0].off_hours }}&nbsp;<span>{{
+                  {{ $(item.name) }}&nbsp;{{ item.times[0].work_hours }}-{{ item.times[0].off_hours }}&nbsp;<span>{{
                     index < 2 ? '、' : '...'
                   }}</span>
                 </span>
@@ -138,7 +140,7 @@ export default {
       listData: [],
       search: [
         {
-          field_name: '考勤组名称,人员姓名',
+          field_name: '考勤组名称',
           field_name_en: 'name',
           form_value: 'input'
         }

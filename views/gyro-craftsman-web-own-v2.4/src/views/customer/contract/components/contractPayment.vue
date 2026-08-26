@@ -53,7 +53,7 @@
     <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="130"> </el-table-column>
     <el-table-column prop="pay_type" :label="$('ui.customerContractContractPaymentPaymentMethod')" min-width="120">
       <template slot-scope="scope">
-        <span>{{ scope.row.pay_type !== '' ? scope.row.pay_type : '--' }}</span>
+        <span>{{ scope.row.pay_type !== '' ? $(scope.row.pay_type, scope.row.pay_type_en) : '--' }}</span>
       </template>
     </el-table-column>
     <el-table-column prop="bill_no" :label="$('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="120"> </el-table-column>

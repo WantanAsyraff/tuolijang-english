@@ -9,7 +9,7 @@
 
           </div>
           <div class="flex flex-between mb10">
-            <span>{{ enterpriseInfo.enterprise_name || '--' }}</span>
+            <span>{{ formatEnterpriseName(enterpriseInfo.enterprise_name) || '--' }}</span>
             <span>{{ $('ui.businessRecordPrintPreviewApprovalNumber') }}{{ printData.node_id }}</span>
           </div>
           <div class="info-table">
@@ -18,7 +18,7 @@
                 <td class="label">{{ $('ui.businessRecordPrintPreviewApplicant') }}</td>
                 <td class="value">{{ printData.card ? printData.card.name : '--' }}</td>
                 <td class="label">{{ $('ui.businessRecordPrintPreviewApplicantDepartment') }}</td>
-                <td class="value">{{ printData.frame ? printData.frame.name : '--' }}</td>
+                <td class="value">{{ printData.frame ? formatEnterpriseName(printData.frame.name) : '--' }}</td>
               </tr>
               <tr>
                 <td class="label">{{ $('ui.businessRecordPrintPreviewSubmissionTime') }}</td>
@@ -52,7 +52,7 @@
                     </div>
                     <div v-else-if="printData.content[(i - 1) * 2].type === 'rich_text'" class="rich-text"
                       v-html="printData.content[(i - 1) * 2].value"></div>
-                    <span v-else>{{ printData.content[(i - 1) * 2].value || '--' }}</span>
+                    <span v-else>{{ formatSystemValue(printData.content[(i - 1) * 2]) || '--' }}</span>
                   </td>
                   <!-- 第二列 -->
                   <td class="label" v-if="printData.content[(i - 1) * 2 + 1]">{{ $(printData.content[(i - 1) * 2 + 1].label) }}</td>
@@ -72,7 +72,7 @@
                     </div>
                     <div v-else-if="printData.content[(i - 1) * 2 + 1].type === 'rich_text'" class="rich-text"
                       v-html="printData.content[(i - 1) * 2 + 1].value"></div>
-                    <span v-else>{{ printData.content[(i - 1) * 2 + 1].value || '--' }}</span>
+                    <span v-else>{{ formatSystemValue(printData.content[(i - 1) * 2 + 1]) || '--' }}</span>
                   </td>
                 </tr>
               </table>
@@ -134,6 +134,7 @@
 </template>
 
 <script>
+import { $ } from '@/lang'
 import { getStorageJson } from '@/utils/storage'
 
 export default {
@@ -153,6 +154,13 @@ export default {
   },
 
   methods: {
+    formatEnterpriseName(value) {
+      return value === '陀螺匠' ? $(value) : value
+    },
+    formatSystemValue(field) {
+      const systemLabels = ['支付方式', '付款方式', '收款方式', 'Payment method']
+      return field && systemLabels.includes($(field.label)) ? $(field.value) : field?.value
+    },
     formatDate(date) {
       if (!date) return ''
       const d = new Date(date)

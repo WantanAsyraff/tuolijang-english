@@ -17,7 +17,7 @@
           </div>
           <div class="nameBox">
             <span class="st1"
-              >{{ examineData.card.name }}{{ $("ui.userExamineDetailExamineS") }}{{ examineData.approve ? examineData.approve.name : $('ui.userExamineDetailExamineLeave') }}</span
+              >{{ examineData.card.name }}{{ $("ui.userExamineDetailExamineS") }}{{ examineData.approve ? $(examineData.approve.name, examineData.approve.name_en) : $('ui.userExamineDetailExamineLeave') }}</span
             >
             <span class="st2" :class="getColor(examineData.status)">
               {{ $func.getExamineStatus(examineData.status, examineData) }}
@@ -111,7 +111,7 @@
                       <upload-list :file-list="field.value" />
                     </div>
 
-                    <span v-else class="rule-value">{{ field.value || '--' }}</span>
+                    <span v-else class="rule-value">{{ formatSystemValue(field) || '--' }}</span>
                   </div>
                 </template>
               </div>
@@ -132,7 +132,7 @@
                 <div v-else-if="Array.isArray(item.value)" style="width: 90%">
                   <upload-list :file-list="item.value"></upload-list>
                 </div>
-                <span v-else class="rule-value">{{ item.value || '--' }}</span>
+                <span v-else class="rule-value">{{ formatSystemValue(item) || '--' }}</span>
               </div>
             </el-form-item>
             <el-form-item v-if="examineData.apply_id">
@@ -347,6 +347,10 @@ export default {
   },
 
   methods: {
+    formatSystemValue(field) {
+      const systemLabels = ['支付方式', '付款方式', '收款方式', 'Payment method']
+      return field && systemLabels.includes($(field.label)) ? $(field.value) : field?.value
+    },
     async submitReply() {
       if (this.textarea == '') {
         return this.$message.error($('legacyScript.pleaseEnterComment'))
