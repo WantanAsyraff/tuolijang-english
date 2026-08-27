@@ -101,7 +101,7 @@
           <el-table-column
             v-for="(item, index) in tabInfo.showField"
             :prop="item.field_name_en"
-            :label="item.field_name"
+            :label="$(item.field_name, item.field_name_en)"
             :key="index"
             width="auto"
           >

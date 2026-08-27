@@ -7,7 +7,7 @@
     >
       <el-tabs v-model="field.options.activeValue" class="tab-custom" :class="'tab-style-' + (field.options.tabStyle || 'linear')">
         <el-tab-pane  v-for="(item,y) in field.options.tabList" :key="item.value"
-        :label="item.name" :name="item.value" v-if="item.status === 1">
+        :label="$(item.name, item.name_en)" :name="item.value" v-if="item.status === 1">
           <div
             class="pt30"
             @dragenter.capture="onTabPaneDragEnter(item)"

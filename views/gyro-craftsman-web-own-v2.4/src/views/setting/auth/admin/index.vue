@@ -32,7 +32,7 @@
             @click="selectRole(item)"
           >
             <div class="role-item-main">
-              <div class="role-name">{{ item.role_name }}</div>
+              <div class="role-name">{{ $(item.role_name, item.role_name_en) }}</div>
               <div class="role-meta">
                 <span
                   class="role-status-dot"
@@ -64,7 +64,7 @@
         <div class="role-detail-content">
           <div class="readonly-form-row">
             <span class="readonly-form-label">{{ $("ui.settingAuthAdminIndexRoleName") }}</span>
-            <span class="readonly-form-value">{{ currentRole.role_name || '--' }}</span>
+            <span class="readonly-form-value">{{ $(currentRole.role_name, currentRole.role_name_en) || '--' }}</span>
           </div>
 
           <el-tabs v-model="activeDetailTab" type="border-card" class="role-detail-tabs">
@@ -111,7 +111,7 @@
                   <el-table :data="modulePermissionRows" size="small">
                     <el-table-column :label="$('ui.settingModulePermissionsModule')" min-width="140">
                       <template slot-scope="{ row }">
-                        {{ row.module_name || row.name || row.key || '--' }}
+                        {{ $(row.module_name || row.name || row.key || '--', row.module_name_en || row.name_en) }}
                       </template>
                     </el-table-column>
                     <el-table-column :label="$('ui.settingModulePermissionsDataPermissions')" min-width="140">

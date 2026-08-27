@@ -75,7 +75,7 @@
         <div v-if="formValueType.includes(scope.row.form_value)">
           <span class="name-text"> 【{{ getLogType(scope.row.log_type) }}】{{ scope.row.user.name }}</span>
           <span class="modify-text">{{ $("ui.formCommonOaLogUpdated") }}</span>
-          <span class="fwweight-bold">{{ scope.row.field_name }}</span>
+          <span class="fwweight-bold">{{ $(scope.row.field_name, scope.row.field_name_en) }}</span>
           <span class="modify-text ml20">{{ scope.row.created_at }}</span>
         </div>
       </template>

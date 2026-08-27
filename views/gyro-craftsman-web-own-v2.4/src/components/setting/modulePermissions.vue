@@ -3,7 +3,7 @@
   <el-table :data="treeData">
     <el-table-column :label="$('ui.settingModulePermissionsModule')" width="200">
       <template slot-scope="scope">
-        <span @click="getData()"> {{ scope.row.module_name }} </span></template
+        <span @click="getData()"> {{ $(scope.row.module_name, scope.row.module_name_en) }} </span></template
       >
     </el-table-column>
     <el-table-column :label="$('ui.settingModulePermissionsDataPermissions')" width="auto">

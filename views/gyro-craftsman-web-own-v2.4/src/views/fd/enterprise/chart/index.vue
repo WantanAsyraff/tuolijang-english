@@ -38,7 +38,7 @@
                       v-for="(item, index) in incomeList"
                       :key="index"
                       :class="{ breadcrumb: active == item.name }"
-                      ><span @click="changeActive(item, index)">{{ item.name }}</span></el-breadcrumb-item
+                      ><span @click="changeActive(item, index)">{{ $(item.name) }}</span></el-breadcrumb-item
                     >
                   </el-breadcrumb>
                 </div>
@@ -85,7 +85,7 @@
                       v-for="(item, index) in expenditureList"
                       :key="index"
                       :class="{ breadcrumb: expenditure == item.name }"
-                      ><span @click="changeExpenditure(item, index)">{{ item.name }}</span></el-breadcrumb-item
+                      ><span @click="changeExpenditure(item, index)">{{ $(item.name) }}</span></el-breadcrumb-item
                     >
                   </el-breadcrumb>
                 </div>

@@ -41,7 +41,7 @@
                 :class="item.disabled ? 'active' : ''"
                 @click.stop="addCom(item.field_name_en, 'dimension')"
               >
-                {{ item.field_name }}
+                {{ $(item.field_name, item.field_name_en) }}
               </div>
             </div>
             <template #reference>
@@ -69,7 +69,7 @@
                       :class="item.disabled ? 'active' : ''"
                       @click.stop="addCom(item.field_name_en, 'dimensionRow')"
                     >
-                      {{ item.field_name }}
+                      {{ $(item.field_name, item.field_name_en) }}
                     </div>
                   </div>
                   <template #reference>
@@ -100,7 +100,7 @@
                       :class="item.disabled ? 'active' : ''"
                       @click.stop="addCom(item.field_name_en, 'dimensionCol')"
                     >
-                      {{ item.field_name }}
+                      {{ $(item.field_name, item.field_name_en) }}
                     </div>
                   </div>
                   <template #reference>
@@ -136,7 +136,7 @@
                 :class="item.disabled ? 'active' : ''"
                 @click.stop="addCom(item.field_name_en, 'metrics')"
               >
-                {{ item.field_name }}
+                {{ $(item.field_name, item.field_name_en) }}
               </div>
             </div>
             <template #reference>
@@ -182,7 +182,7 @@
                 :class="item.disabled ? 'active' : ''"
                 @click.stop="addCom(item.field_name_en, 'showFields')"
               >
-                {{ item.field_name }}
+                {{ $(item.field_name, item.field_name_en) }}
               </div>
             </div>
             <template #reference>

@@ -26,6 +26,7 @@ export const ext_chart_containers = [
       tabList: [
         {
           name: '选项1',
+          name_en: 'Option 1',
           status: 1,
           value: 'tab1',
           widgetList: [],
@@ -35,6 +36,7 @@ export const ext_chart_containers = [
         },
         {
           name: '选项2',
+          name_en: 'Option 2',
           status: 1,
           value: 'tab2',
           widgetList: [],
@@ -44,6 +46,7 @@ export const ext_chart_containers = [
         },
         {
           name: '选项3',
+          name_en: 'Option 3',
           status: 0,
           value: 'tab3',
           widgetList: [],
@@ -82,7 +85,7 @@ export const ext_chart_containers = [
       searchList: [
         {
           field_name: '筛选字段1',
-          field_name_en: '',
+          field_name_en: 'Filter field 1',
           form_value: 'input',
           value: '',
           option: '',

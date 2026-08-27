@@ -12,7 +12,7 @@
         >
           <span class="iconfont iconshenpi mr10" v-show="nodeConfig.type == 1"> </span>
           <span class="iconfont iconchaosong mr10" v-show="nodeConfig.type == 2"></span>
-          <span v-if="nodeConfig.type == 0">{{ nodeConfig.nodeName }}</span>
+          <span v-if="nodeConfig.type == 0">{{ $(nodeConfig.nodeName) }}</span>
           <input
             type="text"
             class="ant-input editable-title-input"
@@ -21,10 +21,10 @@
             @focus="$event.currentTarget.select()"
             v-focus
             v-model="nodeConfig.nodeName"
-            :placeholder="placeholderList[nodeConfig.type]"
+            :placeholder="$(placeholderList[nodeConfig.type])"
           />
           <span class="editable-title" @click="clickEvent()" v-if="nodeConfig.type != 0 && !isInput">
-            {{ nodeConfig.nodeName }}
+            {{ $(nodeConfig.nodeName) }}
           </span>
           <i class="anticon anticon-close close" v-if="nodeConfig.type != 0" @click="delNode()"></i>
         </div>
@@ -34,13 +34,13 @@
           </div>
           <div class="text" v-if="nodeConfig.type == 1">
             <span class="placeholder" v-if="!$func.setApproverStr(nodeConfig)">
-              {{ $("ui.developConditionGroupPleaseSelect") }}{{ placeholderList[nodeConfig.type] }}
+              {{ $("ui.developConditionGroupPleaseSelect") }}{{ $(placeholderList[nodeConfig.type]) }}
             </span>
             {{ $func.setApproverStr(nodeConfig) }}
           </div>
           <div class="text" v-if="nodeConfig.type == 2">
             <span class="placeholder" v-if="!$func.copyerStr(nodeConfig)">
-              {{ $("ui.developConditionGroupPleaseSelect") }}{{ placeholderList[nodeConfig.type] }}
+              {{ $("ui.developConditionGroupPleaseSelect") }}{{ $(placeholderList[nodeConfig.type]) }}
             </span>
             {{ $func.copyerStr(nodeConfig) }}
           </div>
@@ -77,7 +77,7 @@
                     v-model="item.nodeName"
                   />
                   <span class="editable-title" @click="clickEvent(index)" v-if="!isInputList[index]">
-                    {{ item.nodeName }}
+                    {{ $(item.nodeName) }}
                   </span>
                   <span class="priority-title" @click="setPerson(item.priorityLevel)">
                     {{ $("ui.developConditionDialogPriority") }}{{ item.priorityLevel }}
