@@ -1639,6 +1639,11 @@
     "en": "Expense information",
     "runtime": true
   },
+  "runtime.132cfc6920f2acca": {
+    "zh-cn": "筛选字段1",
+    "en": "Filter field 1",
+    "runtime": true
+  },
   "runtime.13350ff68e863c0c": {
     "zh-cn": "批量共享协作",
     "en": "Batch share and collaborate",
@@ -4779,6 +4784,11 @@
     "en": "Request data",
     "runtime": true
   },
+  "runtime.375d53aa573f9b2c": {
+    "zh-cn": "请选择筛选字段1",
+    "en": "Select filter field 1",
+    "runtime": true
+  },
   "runtime.375dd1dbf7546c13": {
     "zh-cn": "居家办公申请",
     "en": "Remote work request",
@@ -7659,6 +7669,11 @@
     "en": "Evaluation end time",
     "runtime": true
   },
+  "runtime.5a632d88aad2b738": {
+    "zh-cn": "网站名称",
+    "en": "Website name",
+    "runtime": true
+  },
   "runtime.5a737c65f706c674": {
     "zh-cn": "数值量级",
     "en": "Number scale",
@@ -7894,6 +7909,11 @@
     "en": "Search display settings",
     "runtime": true
   },
+  "runtime.5d90ed02cb610e0e": {
+    "zh-cn": "是否可用",
+    "en": "Available",
+    "runtime": true
+  },
   "runtime.5d9acc8d580cab0f": {
     "zh-cn": "新建文档",
     "en": "new Document",
@@ -8012,6 +8032,11 @@
   "runtime.5efd21312cfd7c36": {
     "zh-cn": "前置职级要求",
     "en": "Pre-rank requirements",
+    "runtime": true
+  },
+  "runtime.5f04a01fe105bb4d": {
+    "zh-cn": "选项2",
+    "en": "Option 2",
     "runtime": true
   },
   "runtime.5f15391d127d9d7d": {
@@ -9779,6 +9804,11 @@
     "en": "Bank card number",
     "runtime": true
   },
+  "runtime.74b97119bee5c66d": {
+    "zh-cn": "选项3",
+    "en": "Option 3",
+    "runtime": true
+  },
   "runtime.74bec19f78743c7c": {
     "zh-cn": "内容资讯",
     "en": "Content and news",
@@ -9857,6 +9887,11 @@
   "runtime.75750420301c5e2e": {
     "zh-cn": "设为主部门",
     "en": "Set up main department",
+    "runtime": true
+  },
+  "runtime.759c3e8ea24a0167": {
+    "zh-cn": "移动端路径",
+    "en": "Mobile path",
     "runtime": true
   },
   "runtime.75a1280fcde98a56": {
@@ -11199,6 +11234,11 @@
     "en": "Please enter member ID",
     "runtime": true
   },
+  "runtime.85658b9833b0a5e7": {
+    "zh-cn": "路由类型",
+    "en": "Route type",
+    "runtime": true
+  },
   "runtime.8567df9eb80c1011": {
     "zh-cn": "字典列表",
     "en": "Dictionary list",
@@ -12359,6 +12399,11 @@
     "en": "Attendance exception summary",
     "runtime": true
   },
+  "runtime.9441b841e50a9a83": {
+    "zh-cn": "网站地址",
+    "en": "Website address",
+    "runtime": true
+  },
   "runtime.945c71e8c3b9b7ab": {
     "zh-cn": "员工搜索",
     "en": "User search",
@@ -12509,6 +12554,11 @@
     "en": "Person name",
     "runtime": true
   },
+  "runtime.96198518dab609f0": {
+    "zh-cn": "选项1",
+    "en": "Option 1",
+    "runtime": true
+  },
   "runtime.961bea0f39be287f": {
     "zh-cn": "运营经理",
     "en": "Operations Manager",
@@ -12532,6 +12582,11 @@
   "runtime.9660da4e2744f4d4": {
     "zh-cn": "适用于所有员工的用车申请。",
     "en": "Applies to vehicle requests from all employees.",
+    "runtime": true
+  },
+  "runtime.966943b3a5bc8b83": {
+    "zh-cn": "父级菜单",
+    "en": "Parent menu",
     "runtime": true
   },
   "runtime.967089fe52b520f7": {
@@ -12662,6 +12717,11 @@
   "runtime.987ecdc8717e2c1f": {
     "zh-cn": "早退(次)",
     "en": "Early leave (times)",
+    "runtime": true
+  },
+  "runtime.98911e992dca1b02": {
+    "zh-cn": "修改数据",
+    "en": "Edit data",
     "runtime": true
   },
   "runtime.989fd41d94436f72": {
@@ -13079,6 +13139,11 @@
     "en": "New orders today",
     "runtime": true
   },
+  "runtime.9e42eafbdf485a98": {
+    "zh-cn": "网站联系电话",
+    "en": "Website contact number",
+    "runtime": true
+  },
   "runtime.9e77992be03d5eb1": {
     "zh-cn": "职务",
     "en": "Position",
@@ -13269,6 +13334,11 @@
     "en": "Content group",
     "runtime": true
   },
+  "runtime.a0de894527c6d661": {
+    "zh-cn": "系统链接",
+    "en": "System link",
+    "runtime": true
+  },
   "runtime.a1233d81a5f9ae7b": {
     "zh-cn": "早退次数",
     "en": "Early leave count",
@@ -13307,6 +13377,11 @@
   "runtime.a17cef456ad3d9e9": {
     "zh-cn": "请选择重复星期",
     "en": "Please select a repeating week",
+    "runtime": true
+  },
+  "runtime.a18a0c697cfc0ad3": {
+    "zh-cn": "汇报计划同步至我的日程",
+    "en": "Sync report plans to my calendar",
     "runtime": true
   },
   "runtime.a1a42cd9b16e2162": {
@@ -13652,6 +13727,11 @@
   "runtime.a5eca44f80159b36": {
     "zh-cn": "请输入联系电话",
     "en": "Enter contact phone",
+    "runtime": true
+  },
+  "runtime.a5f19131bf211f10": {
+    "zh-cn": "同步日程",
+    "en": "Sync calendars",
     "runtime": true
   },
   "runtime.a60d95831d2e07a2": {
@@ -14749,6 +14829,11 @@
     "en": "Huawei Cloud storage",
     "runtime": true
   },
+  "runtime.b1d5bbea20eb6cde": {
+    "zh-cn": "权限类型",
+    "en": "Permission type",
+    "runtime": true
+  },
   "runtime.b1e28135a21da478": {
     "zh-cn": "续费金额(元)",
     "en": "Renewal amount",
@@ -14787,6 +14872,11 @@
   "runtime.b24c8b905cb47750": {
     "zh-cn": "工时",
     "en": "Working hours",
+    "runtime": true
+  },
+  "runtime.b25970a2adad6765": {
+    "zh-cn": "网站备案号",
+    "en": "Website registration number",
     "runtime": true
   },
   "runtime.b25c02443f005bd2": {
@@ -15132,6 +15222,11 @@
   "runtime.b7344d551adf82e8": {
     "zh-cn": "未成交",
     "en": "Not converted",
+    "runtime": true
+  },
+  "runtime.b74cd295fdcd265b": {
+    "zh-cn": "单点登录开关",
+    "en": "Single sign-on",
     "runtime": true
   },
   "runtime.b752ba3c1c1d7751": {
@@ -20114,6 +20209,16 @@
     "en": "Delete reason",
     "runtime": true
   },
+  "runtime.bc529d265fb86da4": {
+    "zh-cn": "前端路径",
+    "en": "Desktop path",
+    "runtime": true
+  },
+  "runtime.bc5dfd40dad0b972": {
+    "zh-cn": "隐藏菜单",
+    "en": "Hide menu",
+    "runtime": true
+  },
   "runtime.bc69cbbbb7ed4b34": {
     "zh-cn": "至少写3个，超出后随机取3个展示",
     "en": "Add at least three questions. If more are added, three will be shown at random.",
@@ -20389,6 +20494,11 @@
     "en": "Lead",
     "runtime": true
   },
+  "runtime.bfcb247d973e50eb": {
+    "zh-cn": "PC端显示",
+    "en": "Show on desktop",
+    "runtime": true
+  },
   "runtime.bfe67678cd1f70ec": {
     "zh-cn": "阿里云oss开通方法",
     "en": "How to enable Alibaba Cloud OSS",
@@ -20652,6 +20762,11 @@
   "runtime.c3405f8c7d9d392a": {
     "zh-cn": "标题",
     "en": "Title",
+    "runtime": true
+  },
+  "runtime.c34c510b91f722d8": {
+    "zh-cn": "选择上级菜单",
+    "en": "Select parent menu",
     "runtime": true
   },
   "runtime.c35822a6af9d27dd": {
@@ -21149,6 +21264,11 @@
     "en": "Used to set how many days before unconverted leads are returned to the lead pool",
     "runtime": true
   },
+  "runtime.c93f4359235fb277": {
+    "zh-cn": "绩效管理",
+    "en": "Performance management",
+    "runtime": true
+  },
   "runtime.c9471f2508c2e0ad": {
     "zh-cn": "待上级评价",
     "en": "Manager review pending",
@@ -21604,6 +21724,11 @@
     "en": "Employee leave type",
     "runtime": true
   },
+  "runtime.cloudFile.useTemplate": {
+    "zh-cn": "使用模版",
+    "en": "Use template",
+    "runtime": true
+  },
   "runtime.config.aiAssistantIcon": {
     "zh-cn": "Ai悬浮球图",
     "en": "AI assistant icon",
@@ -21712,6 +21837,31 @@
   "runtime.config.yihaotongConfiguration": {
     "zh-cn": "一号通配置",
     "en": "Yihaotong configuration",
+    "runtime": true
+  },
+  "runtime.customerActivity.addedLead": {
+    "zh-cn": "新添加线索",
+    "en": "New lead",
+    "runtime": true
+  },
+  "runtime.customerActivity.addedOrder": {
+    "zh-cn": "新添加订单",
+    "en": "New order",
+    "runtime": true
+  },
+  "runtime.customerActivity.dataChanged": {
+    "zh-cn": "数据变更",
+    "en": "Data changed",
+    "runtime": true
+  },
+  "runtime.customerActivity.leadCreated": {
+    "zh-cn": "新增线索",
+    "en": "New lead",
+    "runtime": true
+  },
+  "runtime.customerLabel.cashCowClients": {
+    "zh-cn": "\"Cash Cow\" Clients",
+    "en": "Cash Cow clients",
     "runtime": true
   },
   "runtime.d006830a9eb8b475": {
@@ -22504,6 +22654,11 @@
     "en": "Add schedule type",
     "runtime": true
   },
+  "runtime.d8b1aeba2deed768": {
+    "zh-cn": "数据看板",
+    "en": "Dashboard",
+    "runtime": true
+  },
   "runtime.d8bbfb86e5cd9494": {
     "zh-cn": "提成工资",
     "en": "Commission salary",
@@ -22997,6 +23152,11 @@
   "runtime.de58f3de67e262b7": {
     "zh-cn": "待发货订单",
     "en": "Orders awaiting shipment",
+    "runtime": true
+  },
+  "runtime.de72966b65e053fe": {
+    "zh-cn": "日程管理",
+    "en": "Schedule management",
     "runtime": true
   },
   "runtime.de89171538fd096f": {
@@ -24789,6 +24949,11 @@
     "en": "End time",
     "runtime": true
   },
+  "runtime.f509858024e01c15": {
+    "zh-cn": "筛选字段",
+    "en": "Filter field",
+    "runtime": true
+  },
   "runtime.f50b0579624a24c7": {
     "zh-cn": "按月重复",
     "en": "Repeat monthly",
@@ -25579,6 +25744,11 @@
     "en": "Good noon",
     "runtime": true
   },
+  "runtime.fcf6b73847c949ea": {
+    "zh-cn": "站点开启",
+    "en": "Enable website",
+    "runtime": true
+  },
   "runtime.fd06e3577a5024c6": {
     "zh-cn": "按周期排班",
     "en": "Schedule by cycle",
@@ -25797,6 +25967,66 @@
   "runtime.fff33732fc978a09": {
     "zh-cn": "休息",
     "en": "Break",
+    "runtime": true
+  },
+  "runtime.finance.accounting.addFinancialTransactionCategory": {
+    "zh-cn": "添加财务流水类别",
+    "en": "Add financial transaction category",
+    "runtime": true
+  },
+  "runtime.finance.accounting.amountOrRemark": {
+    "zh-cn": "金额/备注",
+    "en": "Amount or remarks",
+    "runtime": true
+  },
+  "runtime.finance.approval.collectionAmountCny": {
+    "zh-cn": "回款金额（元）",
+    "en": "Payment amount (CNY)",
+    "runtime": true
+  },
+  "runtime.finance.approval.expenseCategory": {
+    "zh-cn": "财务支出科目",
+    "en": "Expense category",
+    "runtime": true
+  },
+  "runtime.finance.approval.incomeCategory": {
+    "zh-cn": "财务收入科目",
+    "en": "Income category",
+    "runtime": true
+  },
+  "runtime.finance.approval.invoiceAmountCny": {
+    "zh-cn": "开票金额（元）",
+    "en": "Invoice amount (CNY)",
+    "runtime": true
+  },
+  "runtime.finance.approval.relatedPaymentAmount": {
+    "zh-cn": "关联付款金额",
+    "en": "Related payment amount",
+    "runtime": true
+  },
+  "runtime.finance.approval.renewalAmountCny": {
+    "zh-cn": "续费金额（元）",
+    "en": "Renewal amount (CNY)",
+    "runtime": true
+  },
+  "runtime.finance.approval.selectContract": {
+    "zh-cn": "请选择合同名称",
+    "en": "Select a contract",
+    "runtime": true
+  },
+  "runtime.finance.payment.description": {
+    "zh-cn": "简介",
+    "en": "Description",
+    "runtime": true
+  },
+  "runtime.finance.payment.descriptionPlaceholder": {
+    "zh-cn": "简介内容",
+    "en": "Enter a description",
+    "runtime": true
+  },
+  "runtime.finance.payment.enabled": {
+    "zh-cn": "是否开启",
+    "en": "Enabled",
     "runtime": true
   },
   "runtime.logs.createRoleForm": {
@@ -26289,35 +26519,6 @@
     "en": "Add invoice",
     "runtime": true
   },
-  "runtime.customerActivity.addedLead": {
-    "zh-cn": "新添加线索",
-    "en": "New lead",
-    "runtime": true
-  },
-  "runtime.customerActivity.addedOrder": {
-    "zh-cn": "新添加订单",
-    "en": "New order",
-    "runtime": true
-  },
-  "runtime.customerActivity.dataChanged": {
-    "zh-cn": "数据变更",
-    "en": "Data changed",
-    "runtime": true
-  },
-  "runtime.customerLabel.cashCowClients": {
-    "zh-cn": "\"Cash Cow\" Clients",
-    "en": "Cash Cow clients",
-    "runtime": true
-  },  "runtime.cloudFile.useTemplate": {
-    "zh-cn": "使用模版",
-    "en": "Use template",
-    "runtime": true
-  },
-  "runtime.customerActivity.leadCreated": {
-    "zh-cn": "新增线索",
-    "en": "New lead",
-    "runtime": true
-  },
   "runtime.openapi.addOrder": {
     "zh-cn": "新增订单",
     "en": "Add order",
@@ -26462,6 +26663,2415 @@
     "zh-cn": "发票作废",
     "en": "Void invoice",
     "runtime": true
+  },
+  "runtime.web.activityContractSigningCreated": {
+    "zh-cn": "新增合同签约",
+    "en": "New contract signing",
+    "runtime": true,
+    "apps": [
+      "web",
+      {
+        "key": "runtime.system.5043e7abafe59cb0e59d80",
+        "zh-cn": "PC端地址",
+        "en": "Desktop URL",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.5043e7abafe698bee7a4ba",
+        "zh-cn": "PC端显示",
+        "en": "Show on desktop",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4b880e5afb9e4b880e585b3e88194e5ae9ee4bd93e4bfa1e681afe4b88de5ad98e59ca8",
+        "zh-cn": "一对一关联实体信息不存在",
+        "en": "One-to-one related entity information was not found",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4b88ae78fad",
+        "zh-cn": "上班",
+        "en": "Clock-in",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4b88be78fad",
+        "zh-cn": "下班",
+        "en": "Clock-out",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4b88ee68891e585b1e4baab",
+        "zh-cn": "与我共享",
+        "en": "Shared by me",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4b8a5e9878de8bf9fe588b0",
+        "zh-cn": "严重迟到",
+        "en": "Severely late",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4b8bbe994ae4944",
+        "zh-cn": "主键ID",
+        "en": "Primary key ID",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4bc81e4b89ae4bfa1e681af",
+        "zh-cn": "企业信息",
+        "en": "Enterprise information",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4bcaae588a0e999a4",
+        "zh-cn": "伪删除",
+        "en": "Soft delete",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4bd8ee4bba3e7a081e5ba94e794a8",
+        "zh-cn": "低代码应用",
+        "en": "Low-code applications",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4bfaee694b9e695b0e68dae",
+        "zh-cn": "修改数据",
+        "en": "Edit data",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4bfaee694b9e697b6e997b4",
+        "zh-cn": "修改时间",
+        "en": "Updated time",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4bfaee694b9e794a8e688b7",
+        "zh-cn": "修改用户",
+        "en": "Updated by",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e4bfaee694b9e8818ce7baa7e7b1bbe588ab",
+        "zh-cn": "修改职级类别",
+        "en": "Edit job rank category",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e58187e69c9fe7b1bbe59e8b",
+        "zh-cn": "假期类型",
+        "en": "Leave types",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e58581e8aeb8e4b88ae4bca0e69687e4bbb6e7b1bbe59e8b",
+        "zh-cn": "允许上传文件类型",
+        "en": "Allowed file types",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e585a8e983a8",
+        "zh-cn": "全部",
+        "en": "All",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e585b3e88194e5ad97e585b8",
+        "zh-cn": "关联字典",
+        "en": "Linked dictionary",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e585b3e88194e5ae9ee4bd93",
+        "zh-cn": "关联实体",
+        "en": "Linked entity",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e585b3e88194e5ba94e794a8",
+        "zh-cn": "关联应用",
+        "en": "Linked application",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e585b3e88194e794a8e8bda6e794b3e8afb7",
+        "zh-cn": "关联用车申请",
+        "en": "Related vehicle request",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e585b3e88194e8bda6e8be86",
+        "zh-cn": "关联车辆",
+        "en": "Related vehicle",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e585b3e88194e9a9bee9a9b6e59198",
+        "zh-cn": "关联驾驶员",
+        "en": "Related driver",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e585b6e4bb96e69da1e4bbb6e8bf9be585a5e8afa5e6b581e7a88b",
+        "zh-cn": "其他条件进入该流程",
+        "en": "Other conditions enter this workflow",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e585b6e4bb96e8a1a5e8b4b4",
+        "zh-cn": "其他补贴",
+        "en": "Other allowance",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5889be5bbbae697b6e997b4",
+        "zh-cn": "创建时间",
+        "en": "Created time",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5889be5bbbae794a8e688b7",
+        "zh-cn": "创建用户",
+        "en": "Created by",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e588a0e999a4e697b6",
+        "zh-cn": "删除时",
+        "en": "When deleted",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5898de7abafe8b7afe5be84",
+        "zh-cn": "前端路径",
+        "en": "Frontend route",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e58d8ae5a4a9e7bcbae58da1",
+        "zh-cn": "半天缺卡",
+        "en": "Half-day missing clock-in",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e58d95e782b9e799bbe5bd95e5bc80e585b3",
+        "zh-cn": "单点登录开关",
+        "en": "Single sign-on",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e58f91e8b5b7e88c83e59bb4",
+        "zh-cn": "发起范围",
+        "en": "Sponsor scope",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5908ce6ada5e697a5e7a88b",
+        "zh-cn": "同步日程",
+        "en": "Synchronize calendars",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e59198e5b7a5",
+        "zh-cn": "员工",
+        "en": "Employee",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e59bbee6a087",
+        "zh-cn": "图标",
+        "en": "Icon",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e59bbee8a1a8e58897e8a1a8",
+        "zh-cn": "图表列表",
+        "en": "Chart list",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e59fbae69cace5b7a5e8b584",
+        "zh-cn": "基本工资",
+        "en": "Base salary",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e59fbae7a180e8aebee7bdae",
+        "zh-cn": "基础设置",
+        "en": "Basic settings",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e59fbae7a180e9858de7bdae",
+        "zh-cn": "基础配置",
+        "en": "Basic configuration",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5a487e6b3a8",
+        "zh-cn": "备注",
+        "en": "Remarks",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5a496e983a8415049",
+        "zh-cn": "外部API",
+        "en": "External APIs",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5a496e983a8e99b86e68890",
+        "zh-cn": "外部集成",
+        "en": "External integrations",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5ad97e6aeb5e58897e8a1a8",
+        "zh-cn": "字段列表",
+        "en": "Field list",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5ad97e6aeb5e5908de7a7b0",
+        "zh-cn": "字段名称",
+        "en": "Field name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5ad97e6aeb5e7b1bbe59e8b",
+        "zh-cn": "字段类型",
+        "en": "Field type",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5ae9ae69c9fe689a7e8a18c",
+        "zh-cn": "定期执行",
+        "en": "Scheduled execution",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e689b9e68f90e4baa4e697b6",
+        "zh-cn": "审批提交时",
+        "en": "When submitted for approval",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e689b9e692a4e99480",
+        "zh-cn": "审批撤销",
+        "en": "Approval revoked",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e689b9e7b1bbe59e8b",
+        "zh-cn": "审批类型",
+        "en": "Approval type",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e689b9e8aeb0e5bd95",
+        "zh-cn": "审批记录",
+        "en": "Approval records",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e689b9e8aebee7bdae",
+        "zh-cn": "审批设置",
+        "en": "Approval settings",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e689b9e8afb4e6988e",
+        "zh-cn": "审批说明",
+        "en": "Approval description",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e689b9e9809ae8bf87e697b6",
+        "zh-cn": "审批通过时",
+        "en": "When approved",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e689b9e9a9b3e59b9e2fe692a4e59b9e",
+        "zh-cn": "审批驳回/撤回",
+        "en": "Approval rejected or withdrawn",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e6a0b8e4baba",
+        "zh-cn": "审核人",
+        "en": "Approver",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e6a0b8e9809ae8bf87",
+        "zh-cn": "审核通过",
+        "en": "Approved",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea1e6a0b8e9a9b3e59b9e",
+        "zh-cn": "审核驳回",
+        "en": "Rejected",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5aea2e688b7e7aea1e79086",
+        "zh-cn": "客户管理",
+        "en": "Customer management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5b297e4bd8de5b7a5e8b584",
+        "zh-cn": "岗位工资",
+        "en": "Position salary",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5b7a5e4bd9ce697b6e995bf",
+        "zh-cn": "工作时长",
+        "en": "Working duration",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5b7a5e4bd9ce6b187e68aa5",
+        "zh-cn": "工作汇报",
+        "en": "Work reports",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5b7a5e4bd9ce6b581e7aea1e79086",
+        "zh-cn": "工作流管理",
+        "en": "Workflow management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5b7a5e8b584e69da1e7bb93e69e844c697374",
+        "zh-cn": "工资条结构List",
+        "en": "Salary structure list",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5b7b2e58f96e6b688",
+        "zh-cn": "已取消",
+        "en": "Cancelled",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5b7b2e5ae8ce68890",
+        "zh-cn": "已完成",
+        "en": "Completed",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5b7b2e6b4bee8bda6",
+        "zh-cn": "已派车",
+        "en": "Dispatched",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5ba94e794a8e7aea1e79086",
+        "zh-cn": "应用管理",
+        "en": "Application management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5bc95e794a8e5ae9ee4bd93",
+        "zh-cn": "引用实体",
+        "en": "Referenced entity",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5bd93e4b880e4b8aae58aa8e4bd9ce58f91e7949fe697b6",
+        "zh-cn": "当一个动作发生时",
+        "en": "When an action occurs",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5bd93e5898de8a7a6e58f91e599a8",
+        "zh-cn": "当前触发器",
+        "en": "Current trigger",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5be85e5aea1e6a0b8",
+        "zh-cn": "待审核",
+        "en": "Pending review",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e5be85e6b4bee8bda6",
+        "zh-cn": "待派车",
+        "en": "Pending dispatch",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68891e585b1e4baabe79a84",
+        "zh-cn": "我共享的",
+        "en": "Shared with me",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68891e5889be5bbbae79a84",
+        "zh-cn": "我创建的",
+        "en": "Created by me",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68891e69fa5e79c8be79a84",
+        "zh-cn": "我查看的",
+        "en": "Viewed by me",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68980e5b19ee794a8e688b7",
+        "zh-cn": "所属用户",
+        "en": "Owner",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68980e5b19ee983a8e997a8",
+        "zh-cn": "所属部门",
+        "en": "Department",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68993e58da1e4b8bae4b8a5e9878de8bf9fe588b0",
+        "zh-cn": "打卡为严重迟到",
+        "en": "Clock-in is severely late",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68993e58da1e4b8bae697a9e98080",
+        "zh-cn": "打卡为早退",
+        "en": "Clock-in is early leave",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68993e58da1e8aeb0e5bd95",
+        "zh-cn": "打卡记录",
+        "en": "Clock-in records",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e689a7e8a18ce58aa8e4bd9c",
+        "zh-cn": "执行动作",
+        "en": "Execution action",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68a80e883bde8a1a5e8b4b4",
+        "zh-cn": "技能补贴",
+        "en": "Skill allowance",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68a84e98081e4baba",
+        "zh-cn": "抄送人",
+        "en": "CC recipient",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68aa5e8a1a8e7aea1e79086",
+        "zh-cn": "报表管理",
+        "en": "Report management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68c87e5ae9ae4b8bbe7aea1e5aea1e689b9",
+        "zh-cn": "指定主管审批",
+        "en": "Direct-supervisor approval",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68c89e992aee4b88e415049e69d83e99990",
+        "zh-cn": "按钮与API权限",
+        "en": "Button and API permissions",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68e92e5ba8f",
+        "zh-cn": "排序",
+        "en": "Sort",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e68e92e78fade7aea1e79086",
+        "zh-cn": "排班管理",
+        "en": "Schedule management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e694b6e8bda6e4baba",
+        "zh-cn": "收车人",
+        "en": "Vehicle receiver",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e694b6e8bda6e697b6e997b4",
+        "zh-cn": "收车时间",
+        "en": "Vehicle return time",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e695b0e68daee5ad97e585b8",
+        "zh-cn": "数据字典",
+        "en": "Data dictionary",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e695b0e68daee69d83e99990",
+        "zh-cn": "数据权限",
+        "en": "Data permissions",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e695b0e68daee79c8be69dbf",
+        "zh-cn": "数据看板",
+        "en": "Dashboard",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69687e4bbb6e4b88ae4bca0e9858de7bdae",
+        "zh-cn": "文件上传配置",
+        "en": "File upload configuration",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e696b0e5a29ee8818ce7baa7",
+        "zh-cn": "新增职级",
+        "en": "Add job rank",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e696b0e5bbbae697b6",
+        "zh-cn": "新建时",
+        "en": "When created",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e696b0e5bbbae78fade6aca1",
+        "zh-cn": "新建班次",
+        "en": "New shift",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e696b0e5bbbae8a7a6e58f91e599a8",
+        "zh-cn": "新建触发器",
+        "en": "New trigger",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e697a5e58e86e8aebee7bdae",
+        "zh-cn": "日历设置",
+        "en": "Calendar settings",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e697a5e7a88be7aea1e79086",
+        "zh-cn": "日程管理",
+        "en": "Schedule management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e697a9e98080",
+        "zh-cn": "早退",
+        "en": "Early leave",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e698afe590a6e58fafe794a8",
+        "zh-cn": "是否可用",
+        "en": "Available",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e698afe590a6e5bf85e5a1ab",
+        "zh-cn": "是否必填",
+        "en": "Required",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e698bee7a4bae5908de7a7b0",
+        "zh-cn": "显示名称",
+        "en": "Display name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e698bee7a4bae788b6e5ad97e6aeb5",
+        "zh-cn": "显示父字段",
+        "en": "Display parent field",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69bb4e696b0e4ba8e",
+        "zh-cn": "更新于",
+        "en": "Updated time",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69bb4e696b0e697b6",
+        "zh-cn": "更新时",
+        "en": "When updated",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69d83e99990e695b0e68dae",
+        "zh-cn": "权限数据",
+        "en": "Permission data",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69d83e99990e7b1bbe59e8b",
+        "zh-cn": "权限类型",
+        "en": "Permission type",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69d83e99990e8aebee7bdae",
+        "zh-cn": "权限设置",
+        "en": "Permission settings",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69da1e4bbb631",
+        "zh-cn": "条件1",
+        "en": "Condition 1",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69da1e4bbb632",
+        "zh-cn": "条件2",
+        "en": "Condition 2",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69da1e4bbb633",
+        "zh-cn": "条件3",
+        "en": "Condition 3",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e69fa5e79c8be78fade6aca1",
+        "zh-cn": "查看班次",
+        "en": "View shift",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6a087e9a298e5908de7a7b0",
+        "zh-cn": "标题名称",
+        "en": "Title",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6a8a1e59d97",
+        "zh-cn": "模块",
+        "en": "Module",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6af8fe697a5e7bb9fe8aea1",
+        "zh-cn": "每日统计",
+        "en": "Daily statistics",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6af8fe69c88e7bb9fe8aea1",
+        "zh-cn": "每月统计",
+        "en": "Monthly statistics",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b187e68aa5e8aea1e58892e5908ce6ada5e887b3e68891e79a84e697a5e7a88b",
+        "zh-cn": "汇报计划同步至我的日程",
+        "en": "Synchronize report plans to my schedule",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b4bee8bda6e4baba",
+        "zh-cn": "派车人",
+        "en": "Dispatcher",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b4bee8bda6e697b6e997b4",
+        "zh-cn": "派车时间",
+        "en": "Dispatch time",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b4bee8bda6e78ab6e68081",
+        "zh-cn": "派车状态",
+        "en": "Dispatch status",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b4bee8bda6e8aeb0e5bd95",
+        "zh-cn": "派车记录",
+        "en": "Dispatch records",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b4bee8bda6e8aeb0e5bd954c697374",
+        "zh-cn": "派车记录List",
+        "en": "Dispatch record list",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b4bee8bda6e8afb4e6988e",
+        "zh-cn": "派车说明",
+        "en": "Dispatch instructions",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b581e7a88be5aea1e689b9",
+        "zh-cn": "流程审批",
+        "en": "Workflow approval",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b581e7a88be8aebee8aea1",
+        "zh-cn": "流程设计",
+        "en": "Workflow design",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b581e7a88be9858de7bdae",
+        "zh-cn": "流程配置",
+        "en": "Process configuration",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e6b688e681afe4b8ade5bf83",
+        "zh-cn": "消息中心",
+        "en": "Message center",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e78ab6e68081",
+        "zh-cn": "状态",
+        "en": "Status",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e78fade6aca1e5908de7a7b0",
+        "zh-cn": "班次名称",
+        "en": "Shift name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e78fade6aca1e8aebee7bdae",
+        "zh-cn": "班次设置",
+        "en": "Shift settings",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e794a8e8bda6e794b3e8afb7",
+        "zh-cn": "用车申请",
+        "en": "Vehicle request",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e794b1e794b3e8afb7e4babae98089e68ba9",
+        "zh-cn": "由申请人选择",
+        "en": "Selected by applicant",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e794b3e8afb7e4baba",
+        "zh-cn": "申请人",
+        "en": "Applicant",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e794b3e8afb7e5aea1e689b9",
+        "zh-cn": "申请审批",
+        "en": "Approval requests",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e799bde5908de58d95e8aebee7bdae",
+        "zh-cn": "白名单设置",
+        "en": "Whitelist settings",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7a7bbe58aa8e7abafe59cb0e59d80",
+        "zh-cn": "移动端地址",
+        "en": "Mobile URL",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7a7bbe58aa8e7abafe698bee7a4ba",
+        "zh-cn": "移动端显示",
+        "en": "Show on mobile",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7a7bbe58aa8e7abafe8b7afe5be84",
+        "zh-cn": "移动端路径",
+        "en": "Mobile route",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7ab99e782b9e5bc80e590af",
+        "zh-cn": "站点开启",
+        "en": "Enable site",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7aea1e79086e6b4a5e8b4b4",
+        "zh-cn": "管理津贴",
+        "en": "Management allowance",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7b3bbe7bb9fe8aebee7bdae",
+        "zh-cn": "系统设置",
+        "en": "System settings",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7b3bbe7bb9fe993bee68ea5",
+        "zh-cn": "系统链接",
+        "en": "System link",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7bba9e69588e5b7a5e8b584",
+        "zh-cn": "绩效工资",
+        "en": "Performance pay",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7bba9e69588e7aea1e79086",
+        "zh-cn": "绩效管理",
+        "en": "Performance management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7bc96e8be91e8818ce7baa7",
+        "zh-cn": "编辑职级",
+        "en": "Edit job rank",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7bcbae58da1",
+        "zh-cn": "缺卡",
+        "en": "Missing clock-in",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7bd91e7ab99e5908de7a7b0",
+        "zh-cn": "网站名称",
+        "en": "Website name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7bd91e7ab99e59cb0e59d80",
+        "zh-cn": "网站地址",
+        "en": "Website URL",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7bd91e7ab99e5a487e6a188e58fb7",
+        "zh-cn": "网站备案号",
+        "en": "Website registration number",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e7bd91e7ab99e88194e7b3bbe794b5e8af9d",
+        "zh-cn": "网站联系电话",
+        "en": "Website contact number",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88083e58ba4e697b6e997b4",
+        "zh-cn": "考勤时间",
+        "en": "Attendance time",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88083e58ba4e78fade6aca1",
+        "zh-cn": "考勤班次",
+        "en": "Attendance shift",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88083e58ba4e7aea1e79086",
+        "zh-cn": "考勤管理",
+        "en": "Attendance management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88083e58ba4e7bb84",
+        "zh-cn": "考勤组",
+        "en": "Attendance group",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88083e58ba4e7bb84e58897e8a1a8",
+        "zh-cn": "考勤组列表",
+        "en": "Attendance group list",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88083e58ba4e7bb84e68890e59198",
+        "zh-cn": "考勤组成员",
+        "en": "Attendance group members",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88083e58ba4e8aebee7bdae",
+        "zh-cn": "考勤设置",
+        "en": "Attendance settings",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8818ce7baa7e588abe5908d",
+        "zh-cn": "职级别名",
+        "en": "Job rank alias",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8818ce7baa7e5908de7a7b0",
+        "zh-cn": "职级名称",
+        "en": "Job rank name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8818ce7baa7e68f8fe8bfb0",
+        "zh-cn": "职级描述",
+        "en": "Job rank description",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8818ce7baa7e7b1bbe588ab",
+        "zh-cn": "职级类别",
+        "en": "Job rank category",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e887aae58aa8e696b0e5a29e",
+        "zh-cn": "自动新增",
+        "en": "Auto-create",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e887aae5ae9ae4b989e983a8e997a8",
+        "zh-cn": "自定义部门",
+        "en": "Custom departments",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88f9ce58d95e5908de7a7b0",
+        "zh-cn": "菜单名称",
+        "en": "Menu name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88f9ce58d95e59bbee6a087",
+        "zh-cn": "菜单图标",
+        "en": "Menu icon",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88f9ce58d95e69d83e99990",
+        "zh-cn": "菜单权限",
+        "en": "Menu permissions",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e88f9ce58d95e7aea1e79086",
+        "zh-cn": "菜单管理",
+        "en": "Menu management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e896aae8b584e7bb93e69e84",
+        "zh-cn": "薪资结构",
+        "en": "Salary structure",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8a784e58899e9858de7bdae",
+        "zh-cn": "规则配置",
+        "en": "Rule configuration",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8a792e889b2e5908de7a7b0",
+        "zh-cn": "角色名称",
+        "en": "Role name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8a792e889b2e69d83e99990",
+        "zh-cn": "角色权限",
+        "en": "Role permissions",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8a7a6e58f91e58aa8e4bd9c",
+        "zh-cn": "触发动作",
+        "en": "Trigger action",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8a7a6e58f91e599a8e58897e8a1a8",
+        "zh-cn": "触发器列表",
+        "en": "Trigger list",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8a7a6e58f91e599a8e5908de7a7b0",
+        "zh-cn": "触发器名称",
+        "en": "Trigger name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8a7a6e58f91e599a8e697a5e5bf97",
+        "zh-cn": "触发器日志",
+        "en": "Trigger logs",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8a7a6e58f91e599a8e7aea1e79086",
+        "zh-cn": "触发器管理",
+        "en": "Trigger management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8a7a6e58f91e599a8e7b1bbe59e8b",
+        "zh-cn": "触发器类型",
+        "en": "Trigger type",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8aeb0e5bd95",
+        "zh-cn": "记录",
+        "en": "Records",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8aebee7bdaee69da1e4bbb6",
+        "zh-cn": "设置条件",
+        "en": "Set conditions",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e8be93e585a5e585b3e994aee5ad97",
+        "zh-cn": "请输入关键字",
+        "en": "Enter keywords",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e8be93e585a5e694b6e8bda6e4babae5a793e5908d",
+        "zh-cn": "请输入收车人姓名",
+        "en": "Enter the vehicle receiver name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e8be93e585a5e6b4bee8bda6e4babae5a793e5908d",
+        "zh-cn": "请输入派车人姓名",
+        "en": "Enter the dispatcher name",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e8be93e585a5e6b4bee8bda6e8afb4e6988e",
+        "zh-cn": "请输入派车说明",
+        "en": "Enter dispatch instructions",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e8be93e585a5e8818ce7baa7e68f8fe8bfb0",
+        "zh-cn": "请输入职级描述",
+        "en": "Enter a job rank description",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e98089e68ba9e585b3e88194e8bda6e8be86",
+        "zh-cn": "请选择关联车辆",
+        "en": "Select a related vehicle",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e98089e68ba9e585b3e88194e9a9bee9a9b6e59198",
+        "zh-cn": "请选择关联驾驶员",
+        "en": "Select a related driver",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e98089e68ba9e5ae9ee4bd93",
+        "zh-cn": "请选择实体",
+        "en": "Select an entity",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e98089e68ba9e694b6e8bda6e697b6e997b4",
+        "zh-cn": "请选择收车时间",
+        "en": "Select vehicle return time",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e98089e68ba9e6b4bee8bda6e697b6e997b4",
+        "zh-cn": "请选择派车时间",
+        "en": "Select dispatch time",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8afb7e98089e68ba9e8818ce7baa7e7b1bbe588ab",
+        "zh-cn": "请选择职级类别",
+        "en": "Select a job rank category",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8b083e896aae5a487e6b3a8",
+        "zh-cn": "调薪备注",
+        "en": "Salary adjustment notes",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8b7afe794b1e7b1bbe59e8b",
+        "zh-cn": "路由类型",
+        "en": "Route type",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8b7afe794b1e8b7afe5be84",
+        "zh-cn": "路由路径",
+        "en": "Route path",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8bda6e8be86e59fbae7a180e4bfa1e681af",
+        "zh-cn": "车辆基础信息",
+        "en": "Vehicle information",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e8bf9fe588b0",
+        "zh-cn": "迟到",
+        "en": "Late",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e98082e794a8e4ba8ee68980e69c89e59198e5b7a5e79a84e794a8e8bda6e794b3e8afb7e38082",
+        "zh-cn": "适用于所有员工的用车申请。",
+        "en": "Vehicle request available to all employees.",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e98089e68ba9e4b88ae7baa7e88f9ce58d95",
+        "zh-cn": "选择上级菜单",
+        "en": "Select parent menu",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e98089e68ba9e78fade6aca1",
+        "zh-cn": "选择班次",
+        "en": "Select shift",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e99984e58aa0e7ad9be98089e69da1e4bbb6",
+        "zh-cn": "附加筛选条件",
+        "en": "Additional filters",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e99a90e8978fe88f9ce58d95",
+        "zh-cn": "隐藏菜单",
+        "en": "Hide menu",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e9a1b9e79baee7aea1e79086",
+        "zh-cn": "项目管理",
+        "en": "Project management",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e9a9bee9a9b6e59198e4bfa1e681af",
+        "zh-cn": "驾驶员信息",
+        "en": "Driver information",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e9bb98e8aea4e69da1e4bbb6",
+        "zh-cn": "默认条件",
+        "en": "Default condition",
+        "runtime": true
+      },
+      {
+        "key": "runtime.system.e9bb98e8aea4e78fade6aca1",
+        "zh-cn": "默认班次",
+        "en": "Default shift",
+        "runtime": true
+      }
+    ]
+  },
+  "runtime.web.activityOpportunityCreated": {
+    "zh-cn": "新添加商机",
+    "en": "New opportunity added",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.businessPerformance": {
+    "zh-cn": "业务考核",
+    "en": "Business performance",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.clerkMonthly": {
+    "zh-cn": "行政文员考核评分表（月度）",
+    "en": "Administrative Clerk Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.cooperation": {
+    "zh-cn": "协作性",
+    "en": "Collaboration",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.directorMonthly": {
+    "zh-cn": "行政总监考核评分表（月度）",
+    "en": "Administration Director Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.directorPerformance": {
+    "zh-cn": "行政总监绩效考核表",
+    "en": "Administration Director Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.documentProductionTransfer": {
+    "zh-cn": "文件制作、传递",
+    "en": "Document creation and transfer",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.logisticsMonthly": {
+    "zh-cn": "后勤考核评分表（月度）",
+    "en": "Logistics Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.managerMonthly": {
+    "zh-cn": "行政部经理考核评分表（月度）",
+    "en": "Administration Manager Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.meetingOrganization": {
+    "zh-cn": "会务组织",
+    "en": "Meeting organization",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.monthly": {
+    "zh-cn": "行政考核评分表（月度）",
+    "en": "Administration Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.printingCopying": {
+    "zh-cn": "文字打印、复印",
+    "en": "Printing and copying",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.receptionArrangements": {
+    "zh-cn": "接待安排",
+    "en": "Reception arrangements",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.receptionMonthly": {
+    "zh-cn": "前台考核评分表（月度）",
+    "en": "Receptionist Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.recordsManagement": {
+    "zh-cn": "文件档案管理",
+    "en": "Document and records management",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.admin.teamSpirit": {
+    "zh-cn": "团队精神",
+    "en": "Team spirit",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.executive.technicalConsumptionReduction": {
+    "zh-cn": "技术减耗率",
+    "en": "Technical consumption reduction rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.executive.technicalInnovationCount": {
+    "zh-cn": "技术革新数量",
+    "en": "Number of technical innovations",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.executive.technicalProcessImprovement": {
+    "zh-cn": "技术流程体系的建立与完善",
+    "en": "Technical process system establishment and improvement",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.finance.accountantMonthly1": {
+    "zh-cn": "会计考核评分表1（月度）",
+    "en": "Accountant Monthly Assessment Form 1",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.finance.accountingSupervisor": {
+    "zh-cn": "会计主管绩效考核表",
+    "en": "Accounting Supervisor Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.finance.cashier": {
+    "zh-cn": "出纳绩效考核表",
+    "en": "Cashier Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.finance.cashierMonthly1": {
+    "zh-cn": "出纳考核评分表1（月度）",
+    "en": "Cashier Monthly Assessment Form 1",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.finance.costAccountant": {
+    "zh-cn": "核算会计绩效考核表",
+    "en": "Cost Accountant Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.finance.costControlSupervisor": {
+    "zh-cn": "财务成本控制（含预算管理）主管绩效考核表",
+    "en": "Financial Cost Control and Budgeting Supervisor Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.finance.director": {
+    "zh-cn": "财务总监绩效考核表",
+    "en": "Finance Director Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.finance.manager": {
+    "zh-cn": "财务经理绩效考核表",
+    "en": "Finance Manager Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.finance.taxAccountant": {
+    "zh-cn": "税务会计绩效考核表",
+    "en": "Tax Accountant Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.food.headChefMonthly": {
+    "zh-cn": "厨师长考核评分表（月度）",
+    "en": "Head Chef Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.food.waiterMonthly": {
+    "zh-cn": "传菜员考核评分表（月度）",
+    "en": "Food Server Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.hr.compensationSupervisorMonthly": {
+    "zh-cn": "薪酬绩效主管考核评分表（月度）",
+    "en": "Compensation and Performance Supervisor Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.hr.directorPerformance": {
+    "zh-cn": "人力资源总监绩效考核表",
+    "en": "Human Resources Director Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.hr.managerMonthly": {
+    "zh-cn": "人力资源部经理考核评分表（月度）",
+    "en": "Human Resources Manager Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.hr.specialistMonthly": {
+    "zh-cn": "人事专员考核评分表（月度）",
+    "en": "HR Specialist Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.cargoHandling": {
+    "zh-cn": "货物装卸",
+    "en": "Cargo handling",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.costControl": {
+    "zh-cn": "成本控制",
+    "en": "Cost control",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.deliveryClerk": {
+    "zh-cn": "配送员绩效考核表",
+    "en": "Delivery Clerk Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.finishedGoodsWarehouseKeeper": {
+    "zh-cn": "成品库仓管员绩效考核表",
+    "en": "Finished Goods Warehouse Keeper Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.inventoryAccuracy": {
+    "zh-cn": "物资盘点准确率",
+    "en": "Inventory count accuracy",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.loadingAccuracy": {
+    "zh-cn": "装卸的准确性",
+    "en": "Loading and unloading accuracy",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.loadingDamageRate": {
+    "zh-cn": "装卸作业破损率",
+    "en": "Loading and unloading damage rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.loadingOperator": {
+    "zh-cn": "装卸作业人员绩效考核表",
+    "en": "Loading and Unloading Operator Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.loadingPlanCompletion": {
+    "zh-cn": "装卸计划完成率",
+    "en": "Loading plan completion rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.loadingTimeliness": {
+    "zh-cn": "装卸的及时性",
+    "en": "Loading and unloading timeliness",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.logisticsCustody": {
+    "zh-cn": "物流保管",
+    "en": "Logistics custody",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.managerSupervisor": {
+    "zh-cn": "物流经理/主管绩效考核表",
+    "en": "Logistics Manager/Supervisor Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.materialController": {
+    "zh-cn": "物控人员绩效考核表",
+    "en": "Materials Controller Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.materialLossRate": {
+    "zh-cn": "物资损耗率",
+    "en": "Material loss rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.operationalDataManagement": {
+    "zh-cn": "作业资料及信息管理",
+    "en": "Operational documents and information management",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.packingOperator": {
+    "zh-cn": "运输打包人员绩效考核表",
+    "en": "Transport Packing Operator Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.policyExecution": {
+    "zh-cn": "物流部门管理制度的执行情况",
+    "en": "Execution of logistics management policies",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.rawWarehouseKeeper": {
+    "zh-cn": "原材料库仓管员绩效考核表",
+    "en": "Raw Materials Warehouse Keeper Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.routineWorkManagement": {
+    "zh-cn": "日常工作管理",
+    "en": "Routine work management",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.safety": {
+    "zh-cn": "物流安全",
+    "en": "Logistics safety",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.sixSManagement": {
+    "zh-cn": "6S管理",
+    "en": "6S management",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.tallyClerk": {
+    "zh-cn": "理货员绩效考核表",
+    "en": "Tally Clerk Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.transportOperator": {
+    "zh-cn": "运输作业人员绩效考核表",
+    "en": "Transport Operator Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.logistics.unitHandlingCostControl": {
+    "zh-cn": "单位货物装卸费用控制率",
+    "en": "Unit cargo handling cost control rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.marketing.afterSalesMonthly": {
+    "zh-cn": "售后考核评分表（月度）",
+    "en": "After-sales Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.marketing.afterSalesServiceMonthly": {
+    "zh-cn": "售后服务考核评分表（月度）",
+    "en": "After-sales Service Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.marketing.customerServiceDirectorMonthly": {
+    "zh-cn": "客服总监考核评分表（月度）",
+    "en": "Customer Service Director Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.marketing.customerServiceManagerMonthly": {
+    "zh-cn": "客服部经理考核评分表（月度）",
+    "en": "Customer Service Manager Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.marketing.marketingDirectorMonthly": {
+    "zh-cn": "营销总监考核评分表（月度）",
+    "en": "Marketing Director Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.marketing.operationsManagerMonthly": {
+    "zh-cn": "营运部经理考核评分表（月度）",
+    "en": "Operations Manager Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.marketing.salesManagerMonthly": {
+    "zh-cn": "销售部经理考核评分表（月度）",
+    "en": "Sales Manager Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.marketing.salespersonMonthly": {
+    "zh-cn": "业务员考核评分表（月度）",
+    "en": "Salesperson Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.marketing.salespersonMonthly1": {
+    "zh-cn": "业务员考核评分表1（月度）",
+    "en": "Salesperson Monthly Assessment Form 1",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.procurement.clerk": {
+    "zh-cn": "采购员绩效考核表",
+    "en": "Purchasing Clerk Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.procurement.manager": {
+    "zh-cn": "采购经理绩效考核表",
+    "en": "Procurement Manager Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.procurement.managerMonthly": {
+    "zh-cn": "采购经理考核评分表（月度）",
+    "en": "Procurement Manager Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.procurement.marketBrandDirector": {
+    "zh-cn": "市场（含品牌）总监绩效考核表",
+    "en": "Marketing and Brand Director Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.procurement.marketingManagerMonthly": {
+    "zh-cn": "市场部经理考核评分表（月度）",
+    "en": "Marketing Manager Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.procurement.outsourcingBuyer": {
+    "zh-cn": "外协采购员绩效考核表",
+    "en": "Outsourcing Buyer Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.procurement.supervisor": {
+    "zh-cn": "采购主管绩效考核评分表",
+    "en": "Procurement Supervisor Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.costReduction": {
+    "zh-cn": "生产成本费用降低率",
+    "en": "Production cost reduction rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.dataInformationManagement": {
+    "zh-cn": "资料与信息管理",
+    "en": "Document and information management",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.directorMonthly": {
+    "zh-cn": "生产总监考核评分表（月度）",
+    "en": "Production Director Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.directorPerformance": {
+    "zh-cn": "生产制造总监绩效考核表",
+    "en": "Manufacturing Director Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.efficiencyIncrease": {
+    "zh-cn": "生产效率提高率",
+    "en": "Production efficiency improvement rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.equipmentAvailability": {
+    "zh-cn": "设备完好率",
+    "en": "Equipment availability rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.fiveSResults": {
+    "zh-cn": "5S管理成果",
+    "en": "5S management results",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.managerMonthly": {
+    "zh-cn": "生产部经理考核评分表（月度）",
+    "en": "Production Manager Monthly Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.materialSupplyTimeliness": {
+    "zh-cn": "物料供应及时",
+    "en": "Timely material supply",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.otherRoutineWork": {
+    "zh-cn": "其它日常工作",
+    "en": "Other routine work",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.planningExecution": {
+    "zh-cn": "生产规划与执行",
+    "en": "Production planning and execution",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.productPassRate": {
+    "zh-cn": "产品合格率",
+    "en": "Product pass rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.qualityComplaintSatisfaction": {
+    "zh-cn": "质量问题投诉次数/消费者满意度",
+    "en": "Quality complaint count / customer satisfaction",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.safetyIncidentRate": {
+    "zh-cn": "安全事故率",
+    "en": "Safety incident rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.standardEnergyAchievement": {
+    "zh-cn": "标准能耗达成率",
+    "en": "Standard energy-consumption achievement rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessment.production.targetCompletion": {
+    "zh-cn": "生产目标完成率",
+    "en": "Production target completion rate",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.behavioralAssessment": {
+    "zh-cn": "行为考核",
+    "en": "Behavioral assessment",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.businessConfidentiality": {
+    "zh-cn": "商业保密",
+    "en": "Business confidentiality",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.ceoAnnual": {
+    "zh-cn": "CEO考核评分表（年度）",
+    "en": "CEO Annual Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.chairmanAnnual": {
+    "zh-cn": "董事长考核评分表（年度）",
+    "en": "Chairman Annual Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.ctoAnnual": {
+    "zh-cn": "CTO考核评分表（年度）",
+    "en": "CTO Annual Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.deputyGeneralManagerOperations": {
+    "zh-cn": "副总经理(经营绩效考核表",
+    "en": "Deputy General Manager Operations Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.deputyGeneralManagerOperationsFull": {
+    "zh-cn": "副总经理（经营绩效考核表）",
+    "en": "Deputy General Manager Operations Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.generalManagerPerformance": {
+    "zh-cn": "总经理绩效考核表",
+    "en": "General Manager Performance Assessment Form",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.industryResearchReport": {
+    "zh-cn": "行业调研报告",
+    "en": "Industry research report",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.initiative": {
+    "zh-cn": "主动性",
+    "en": "Initiative",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.innovation": {
+    "zh-cn": "创新",
+    "en": "Innovation",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.learningAbility": {
+    "zh-cn": "学习力",
+    "en": "Learning ability",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.projectCloseout": {
+    "zh-cn": "项目结束的建立与完善",
+    "en": "Project closeout and improvement",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.taskPerformance": {
+    "zh-cn": "任务绩效",
+    "en": "Task performance",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.technicalDeclaration": {
+    "zh-cn": "技术申报",
+    "en": "Technical proposal",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.technicalDepartmentResearch": {
+    "zh-cn": "技术部研发",
+    "en": "Technical Department R&D",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.technicalResearch": {
+    "zh-cn": "技术研发",
+    "en": "Technical R&D",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.assessmentTemplate.technicalStaffDevelopment": {
+    "zh-cn": "技术人员培养",
+    "en": "Technical staff development",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.columnSettings.editCategory": {
+    "zh-cn": "修改分类",
+    "en": "Edit category",
+    "runtime": true
+  },
+  "runtime.web.contract.dongchengDistrict": {
+    "zh-cn": "北京市/东城区",
+    "en": "Beijing / Dongcheng District",
+    "runtime": true
+  },
+  "runtime.web.customer.selectGroup": {
+    "zh-cn": "请选择分组",
+    "en": "Select a group",
+    "runtime": true
+  },
+  "runtime.web.dictNodeDeleteConfirmation": {
+    "zh-cn": "确定要删除该节点吗？",
+    "en": "Are you sure you want to delete this item?",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.dictOptionDeleteConfirmation": {
+    "zh-cn": "确定要删除该选项吗？",
+    "en": "Are you sure you want to delete this option?",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.dynamicCollaboratorLabel": {
+    "zh-cn": "协作者Collaborator",
+    "en": "Collaborator",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.dynamicCollaboratorLabelColon": {
+    "zh-cn": "协作者Collaborator：",
+    "en": "Collaborator:",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.dynamicContactPositionLabel": {
+    "zh-cn": "联系人职位Contact Person&#039;s Position",
+    "en": "Contact position",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.dynamicContactPositionLabelEscaped": {
+    "zh-cn": "联系人职位Contact Person\\&#039;s Position",
+    "en": "Contact position",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.001": {
+    "zh-cn": "APP扫码登录",
+    "en": "App QR Code Login",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.002": {
+    "zh-cn": "PC端签约链接：",
+    "en": "PC signing link:",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.003": {
+    "zh-cn": "上上级领导",
+    "en": "Manager's manager",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.004": {
+    "zh-cn": "下载排班模板",
+    "en": "Download schedule template",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.005": {
+    "zh-cn": "备注：",
+    "en": "Remarks:",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.006": {
+    "zh-cn": "导入排班表",
+    "en": "Import schedule",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.007": {
+    "zh-cn": "属性信息",
+    "en": "Properties",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.008": {
+    "zh-cn": "已置顶",
+    "en": "Pinned",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.009": {
+    "zh-cn": "帮助中心搜索",
+    "en": "Help Center Search",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.010": {
+    "zh-cn": "建议734*1034",
+    "en": "Recommended: 734 × 1034",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.011": {
+    "zh-cn": "拼命加载中",
+    "en": "Loading...",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.012": {
+    "zh-cn": "换行请使用：Enter+Shift",
+    "en": "Press Enter+Shift to add a line break",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.013": {
+    "zh-cn": "支持jpg、jpeg、png",
+    "en": "Supports JPG, JPEG, and PNG",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.014": {
+    "zh-cn": "文件图标",
+    "en": "File icon",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.015": {
+    "zh-cn": "文档图片",
+    "en": "Document image",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.016": {
+    "zh-cn": "新增消息类型",
+    "en": "Add message type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.017": {
+    "zh-cn": "新建子任务",
+    "en": "New subtask",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.018": {
+    "zh-cn": "无匹配文本",
+    "en": "No matching text",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.019": {
+    "zh-cn": "暂无筛选结果",
+    "en": "No filtered results",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.020": {
+    "zh-cn": "未置顶",
+    "en": "Not pinned",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.021": {
+    "zh-cn": "编辑产品清单",
+    "en": "Edit product list",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.022": {
+    "zh-cn": "职级类型",
+    "en": "Job level type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.023": {
+    "zh-cn": "请选择消息类型",
+    "en": "Select a message type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.024": {
+    "zh-cn": "请选择状态",
+    "en": "Select a status",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.025": {
+    "zh-cn": "过滤条件",
+    "en": "Filter conditions",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.026": {
+    "zh-cn": "返回首页",
+    "en": "Back to Home",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.027": {
+    "zh-cn": "选择实体",
+    "en": "Select entity",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.028": {
+    "zh-cn": "选项数据：",
+    "en": "Option data:",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.finalDashboard.029": {
+    "zh-cn": "静态数据",
+    "en": "Static data",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
   },
   "runtime.web.notification.000": {
     "zh-cn": "制定考核目标提醒",
@@ -26657,6 +29267,142 @@
     "zh-cn": "个人月统计提醒",
     "en": "Personal monthly statistics reminder",
     "runtime": true
+  },
+  "runtime.web.runtimeLeak.invoiceProof": {
+    "zh-cn": "开票凭证：",
+    "en": "Invoice proof:",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.runtimeLeak.rejectionReason": {
+    "zh-cn": "拒绝原因",
+    "en": "Rejection reason",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.trigger.approvalPassed": {
+    "zh-cn": "审批通过时",
+    "en": "When approved",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.trigger.approvalRecalled": {
+    "zh-cn": "审批驳回/撤回",
+    "en": "Approval rejected or withdrawn",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.trigger.approvalRevoked": {
+    "zh-cn": "审批撤销",
+    "en": "Approval revoked",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.trigger.approvalSubmitted": {
+    "zh-cn": "审批提交时",
+    "en": "When submitted for approval",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.trigger.autoCreate": {
+    "zh-cn": "自动新增",
+    "en": "Auto create",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.trigger.createdAt": {
+    "zh-cn": "新建时",
+    "en": "When created",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.trigger.deletedAt": {
+    "zh-cn": "删除时",
+    "en": "When deleted",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.trigger.updatedAt": {
+    "zh-cn": "更新时",
+    "en": "When updated",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.trigger.workflowApproval": {
+    "zh-cn": "流程审批",
+    "en": "Workflow approval",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.workflow.condition1": {
+    "zh-cn": "条件1",
+    "en": "Condition 1",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.workflow.condition2": {
+    "zh-cn": "条件2",
+    "en": "Condition 2",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.workflow.condition3": {
+    "zh-cn": "条件3",
+    "en": "Condition 3",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.workflow.condition4": {
+    "zh-cn": "条件4",
+    "en": "Condition 4",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.workflow.condition5": {
+    "zh-cn": "条件5",
+    "en": "Condition 5",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.workflow.defaultCondition": {
+    "zh-cn": "默认条件",
+    "en": "Default condition",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
   },
   "sql.agreement.title.5a5159736c": {
     "zh-cn": "服务协议",
@@ -57641,192 +60387,5 @@
     "apps": [
       "web"
     ]
-  },
-  "runtime.web.finalDashboard.001": { "zh-cn": "APP扫码登录", "en": "App QR Code Login", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.002": { "zh-cn": "PC端签约链接：", "en": "PC signing link:", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.003": { "zh-cn": "上上级领导", "en": "Manager's manager", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.004": { "zh-cn": "下载排班模板", "en": "Download schedule template", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.005": { "zh-cn": "备注：", "en": "Remarks:", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.006": { "zh-cn": "导入排班表", "en": "Import schedule", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.007": { "zh-cn": "属性信息", "en": "Properties", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.008": { "zh-cn": "已置顶", "en": "Pinned", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.009": { "zh-cn": "帮助中心搜索", "en": "Help Center Search", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.010": { "zh-cn": "建议734*1034", "en": "Recommended: 734 × 1034", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.011": { "zh-cn": "拼命加载中", "en": "Loading...", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.012": { "zh-cn": "换行请使用：Enter+Shift", "en": "Press Enter+Shift to add a line break", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.013": { "zh-cn": "支持jpg、jpeg、png", "en": "Supports JPG, JPEG, and PNG", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.014": { "zh-cn": "文件图标", "en": "File icon", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.015": { "zh-cn": "文档图片", "en": "Document image", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.016": { "zh-cn": "新增消息类型", "en": "Add message type", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.017": { "zh-cn": "新建子任务", "en": "New subtask", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.018": { "zh-cn": "无匹配文本", "en": "No matching text", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.019": { "zh-cn": "暂无筛选结果", "en": "No filtered results", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.020": { "zh-cn": "未置顶", "en": "Not pinned", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.021": { "zh-cn": "编辑产品清单", "en": "Edit product list", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.022": { "zh-cn": "职级类型", "en": "Job level type", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.023": { "zh-cn": "请选择消息类型", "en": "Select a message type", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.024": { "zh-cn": "请选择状态", "en": "Select a status", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.025": { "zh-cn": "过滤条件", "en": "Filter conditions", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.026": { "zh-cn": "返回首页", "en": "Back to Home", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.027": { "zh-cn": "选择实体", "en": "Select entity", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.028": { "zh-cn": "选项数据：", "en": "Option data:", "runtime": true, "apps": ["web"] },
-  "runtime.web.finalDashboard.029": { "zh-cn": "静态数据", "en": "Static data", "runtime": true, "apps": ["web"] },
-  "runtime.web.dynamicCollaboratorLabel": { "zh-cn": "协作者Collaborator", "en": "Collaborator", "runtime": true, "apps": ["web"] },
-  "runtime.web.dynamicCollaboratorLabelColon": { "zh-cn": "协作者Collaborator：", "en": "Collaborator:", "runtime": true, "apps": ["web"] },
-  "runtime.web.dynamicContactPositionLabel": { "zh-cn": "联系人职位Contact Person&#039;s Position", "en": "Contact position", "runtime": true, "apps": ["web"] },
-  "runtime.web.dynamicContactPositionLabelEscaped": { "zh-cn": "联系人职位Contact Person\\&#039;s Position", "en": "Contact position", "runtime": true, "apps": ["web"] },  "runtime.web.runtimeLeak.invoiceProof": { "zh-cn": "开票凭证：", "en": "Invoice proof:", "runtime": true, "apps": ["web"] },
-  "runtime.web.runtimeLeak.rejectionReason": { "zh-cn": "拒绝原因", "en": "Rejection reason", "runtime": true, "apps": ["web"] }  ,"runtime.finance.approval.collectionAmountCny": {
-    "zh-cn": "回款金额（元）",
-    "en": "Payment amount (CNY)",
-    "runtime": true
   }
-  ,"runtime.finance.approval.renewalAmountCny": {
-    "zh-cn": "续费金额（元）",
-    "en": "Renewal amount (CNY)",
-    "runtime": true
-  }
-  ,"runtime.finance.approval.invoiceAmountCny": {
-    "zh-cn": "开票金额（元）",
-    "en": "Invoice amount (CNY)",
-    "runtime": true
-  }
-  ,"runtime.finance.approval.incomeCategory": {
-    "zh-cn": "财务收入科目",
-    "en": "Income category",
-    "runtime": true
-  }
-  ,"runtime.finance.approval.expenseCategory": {
-    "zh-cn": "财务支出科目",
-    "en": "Expense category",
-    "runtime": true
-  }
-  ,"runtime.finance.approval.selectContract": {
-    "zh-cn": "请选择合同名称",
-    "en": "Select a contract",
-    "runtime": true
-  }
-  ,"runtime.finance.approval.relatedPaymentAmount": {
-    "zh-cn": "关联付款金额",
-    "en": "Related payment amount",
-    "runtime": true
-  }
-  ,"runtime.finance.accounting.addFinancialTransactionCategory": { "zh-cn": "添加财务流水类别", "en": "Add financial transaction category", "runtime": true }
-  ,"runtime.finance.accounting.amountOrRemark": { "zh-cn": "金额/备注", "en": "Amount or remarks", "runtime": true }
-  ,"runtime.finance.payment.description": { "zh-cn": "简介", "en": "Description", "runtime": true }
-  ,"runtime.finance.payment.descriptionPlaceholder": { "zh-cn": "简介内容", "en": "Enter a description", "runtime": true }
-  ,"runtime.finance.payment.enabled": { "zh-cn": "是否开启", "en": "Enabled", "runtime": true }
-  ,"runtime.web.columnSettings.editCategory": { "zh-cn": "修改分类", "en": "Edit category", "runtime": true }
-  ,"runtime.web.contract.dongchengDistrict": { "zh-cn": "北京市/东城区", "en": "Beijing / Dongcheng District", "runtime": true }
-  ,"runtime.web.customer.selectGroup": { "zh-cn": "请选择分组", "en": "Select a group", "runtime": true },
-  "runtime.web.assessmentTemplate.ctoAnnual": { "zh-cn": "CTO考核评分表（年度）", "en": "CTO Annual Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.ceoAnnual": { "zh-cn": "CEO考核评分表（年度）", "en": "CEO Annual Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.generalManagerPerformance": { "zh-cn": "总经理绩效考核表", "en": "General Manager Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.deputyGeneralManagerOperations": { "zh-cn": "副总经理(经营绩效考核表", "en": "Deputy General Manager Operations Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.deputyGeneralManagerOperationsFull": { "zh-cn": "副总经理（经营绩效考核表）", "en": "Deputy General Manager Operations Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.chairmanAnnual": { "zh-cn": "董事长考核评分表（年度）", "en": "Chairman Annual Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.taskPerformance": { "zh-cn": "任务绩效", "en": "Task performance", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.technicalDepartmentResearch": { "zh-cn": "技术部研发", "en": "Technical Department R&D", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.technicalResearch": { "zh-cn": "技术研发", "en": "Technical R&D", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.industryResearchReport": { "zh-cn": "行业调研报告", "en": "Industry research report", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.technicalDeclaration": { "zh-cn": "技术申报", "en": "Technical proposal", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.projectCloseout": { "zh-cn": "项目结束的建立与完善", "en": "Project closeout and improvement", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.technicalStaffDevelopment": { "zh-cn": "技术人员培养", "en": "Technical staff development", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.behavioralAssessment": { "zh-cn": "行为考核", "en": "Behavioral assessment", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.initiative": { "zh-cn": "主动性", "en": "Initiative", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.businessConfidentiality": { "zh-cn": "商业保密", "en": "Business confidentiality", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.innovation": { "zh-cn": "创新", "en": "Innovation", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessmentTemplate.learningAbility": { "zh-cn": "学习力", "en": "Learning ability", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.executive.technicalInnovationCount": { "zh-cn": "技术革新数量", "en": "Number of technical innovations", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.executive.technicalConsumptionReduction": { "zh-cn": "技术减耗率", "en": "Technical consumption reduction rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.executive.technicalProcessImprovement": { "zh-cn": "技术流程体系的建立与完善", "en": "Technical process system establishment and improvement", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.marketing.salespersonMonthly1": { "zh-cn": "业务员考核评分表1（月度）", "en": "Salesperson Monthly Assessment Form 1", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.marketing.afterSalesMonthly": { "zh-cn": "售后考核评分表（月度）", "en": "After-sales Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.marketing.afterSalesServiceMonthly": { "zh-cn": "售后服务考核评分表（月度）", "en": "After-sales Service Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.marketing.salespersonMonthly": { "zh-cn": "业务员考核评分表（月度）", "en": "Salesperson Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.marketing.customerServiceManagerMonthly": { "zh-cn": "客服部经理考核评分表（月度）", "en": "Customer Service Manager Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.marketing.salesManagerMonthly": { "zh-cn": "销售部经理考核评分表（月度）", "en": "Sales Manager Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.marketing.operationsManagerMonthly": { "zh-cn": "营运部经理考核评分表（月度）", "en": "Operations Manager Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.marketing.customerServiceDirectorMonthly": { "zh-cn": "客服总监考核评分表（月度）", "en": "Customer Service Director Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.marketing.marketingDirectorMonthly": { "zh-cn": "营销总监考核评分表（月度）", "en": "Marketing Director Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.hr.directorPerformance": { "zh-cn": "人力资源总监绩效考核表", "en": "Human Resources Director Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.hr.specialistMonthly": { "zh-cn": "人事专员考核评分表（月度）", "en": "HR Specialist Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.hr.compensationSupervisorMonthly": { "zh-cn": "薪酬绩效主管考核评分表（月度）", "en": "Compensation and Performance Supervisor Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.hr.managerMonthly": { "zh-cn": "人力资源部经理考核评分表（月度）", "en": "Human Resources Manager Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.directorPerformance": { "zh-cn": "生产制造总监绩效考核表", "en": "Manufacturing Director Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.managerMonthly": { "zh-cn": "生产部经理考核评分表（月度）", "en": "Production Manager Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.directorMonthly": { "zh-cn": "生产总监考核评分表（月度）", "en": "Production Director Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.targetCompletion": { "zh-cn": "生产目标完成率", "en": "Production target completion rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.productPassRate": { "zh-cn": "产品合格率", "en": "Product pass rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.qualityComplaintSatisfaction": { "zh-cn": "质量问题投诉次数/消费者满意度", "en": "Quality complaint count / customer satisfaction", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.materialSupplyTimeliness": { "zh-cn": "物料供应及时", "en": "Timely material supply", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.equipmentAvailability": { "zh-cn": "设备完好率", "en": "Equipment availability rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.safetyIncidentRate": { "zh-cn": "安全事故率", "en": "Safety incident rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.fiveSResults": { "zh-cn": "5S管理成果", "en": "5S management results", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.standardEnergyAchievement": { "zh-cn": "标准能耗达成率", "en": "Standard energy-consumption achievement rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.costReduction": { "zh-cn": "生产成本费用降低率", "en": "Production cost reduction rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.efficiencyIncrease": { "zh-cn": "生产效率提高率", "en": "Production efficiency improvement rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.planningExecution": { "zh-cn": "生产规划与执行", "en": "Production planning and execution", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.dataInformationManagement": { "zh-cn": "资料与信息管理", "en": "Document and information management", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.production.otherRoutineWork": { "zh-cn": "其它日常工作", "en": "Other routine work", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.monthly": { "zh-cn": "行政考核评分表（月度）", "en": "Administration Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.directorPerformance": { "zh-cn": "行政总监绩效考核表", "en": "Administration Director Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.logisticsMonthly": { "zh-cn": "后勤考核评分表（月度）", "en": "Logistics Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.receptionMonthly": { "zh-cn": "前台考核评分表（月度）", "en": "Receptionist Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.clerkMonthly": { "zh-cn": "行政文员考核评分表（月度）", "en": "Administrative Clerk Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.managerMonthly": { "zh-cn": "行政部经理考核评分表（月度）", "en": "Administration Manager Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.directorMonthly": { "zh-cn": "行政总监考核评分表（月度）", "en": "Administration Director Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.businessPerformance": { "zh-cn": "业务考核", "en": "Business performance", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.documentProductionTransfer": { "zh-cn": "文件制作、传递", "en": "Document creation and transfer", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.recordsManagement": { "zh-cn": "文件档案管理", "en": "Document and records management", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.meetingOrganization": { "zh-cn": "会务组织", "en": "Meeting organization", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.receptionArrangements": { "zh-cn": "接待安排", "en": "Reception arrangements", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.printingCopying": { "zh-cn": "文字打印、复印", "en": "Printing and copying", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.teamSpirit": { "zh-cn": "团队精神", "en": "Team spirit", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.admin.cooperation": { "zh-cn": "协作性", "en": "Collaboration", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.finance.taxAccountant": { "zh-cn": "税务会计绩效考核表", "en": "Tax Accountant Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.finance.accountingSupervisor": { "zh-cn": "会计主管绩效考核表", "en": "Accounting Supervisor Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.finance.costAccountant": { "zh-cn": "核算会计绩效考核表", "en": "Cost Accountant Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.finance.cashier": { "zh-cn": "出纳绩效考核表", "en": "Cashier Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.finance.manager": { "zh-cn": "财务经理绩效考核表", "en": "Finance Manager Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.finance.costControlSupervisor": { "zh-cn": "财务成本控制（含预算管理）主管绩效考核表", "en": "Financial Cost Control and Budgeting Supervisor Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.finance.accountantMonthly1": { "zh-cn": "会计考核评分表1（月度）", "en": "Accountant Monthly Assessment Form 1", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.finance.cashierMonthly1": { "zh-cn": "出纳考核评分表1（月度）", "en": "Cashier Monthly Assessment Form 1", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.finance.director": { "zh-cn": "财务总监绩效考核表", "en": "Finance Director Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.procurement.outsourcingBuyer": { "zh-cn": "外协采购员绩效考核表", "en": "Outsourcing Buyer Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.procurement.supervisor": { "zh-cn": "采购主管绩效考核评分表", "en": "Procurement Supervisor Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.procurement.clerk": { "zh-cn": "采购员绩效考核表", "en": "Purchasing Clerk Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.procurement.manager": { "zh-cn": "采购经理绩效考核表", "en": "Procurement Manager Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.procurement.marketBrandDirector": { "zh-cn": "市场（含品牌）总监绩效考核表", "en": "Marketing and Brand Director Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.procurement.managerMonthly": { "zh-cn": "采购经理考核评分表（月度）", "en": "Procurement Manager Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.procurement.marketingManagerMonthly": { "zh-cn": "市场部经理考核评分表（月度）", "en": "Marketing Manager Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.loadingOperator": { "zh-cn": "装卸作业人员绩效考核表", "en": "Loading and Unloading Operator Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.transportOperator": { "zh-cn": "运输作业人员绩效考核表", "en": "Transport Operator Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.packingOperator": { "zh-cn": "运输打包人员绩效考核表", "en": "Transport Packing Operator Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.rawWarehouseKeeper": { "zh-cn": "原材料库仓管员绩效考核表", "en": "Raw Materials Warehouse Keeper Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.managerSupervisor": { "zh-cn": "物流经理/主管绩效考核表", "en": "Logistics Manager/Supervisor Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.materialController": { "zh-cn": "物控人员绩效考核表", "en": "Materials Controller Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.deliveryClerk": { "zh-cn": "配送员绩效考核表", "en": "Delivery Clerk Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.tallyClerk": { "zh-cn": "理货员绩效考核表", "en": "Tally Clerk Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.finishedGoodsWarehouseKeeper": { "zh-cn": "成品库仓管员绩效考核表", "en": "Finished Goods Warehouse Keeper Performance Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.logisticsCustody": { "zh-cn": "物流保管", "en": "Logistics custody", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.inventoryAccuracy": { "zh-cn": "物资盘点准确率", "en": "Inventory count accuracy", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.materialLossRate": { "zh-cn": "物资损耗率", "en": "Material loss rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.cargoHandling": { "zh-cn": "货物装卸", "en": "Cargo handling", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.loadingPlanCompletion": { "zh-cn": "装卸计划完成率", "en": "Loading plan completion rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.loadingTimeliness": { "zh-cn": "装卸的及时性", "en": "Loading and unloading timeliness", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.loadingAccuracy": { "zh-cn": "装卸的准确性", "en": "Loading and unloading accuracy", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.loadingDamageRate": { "zh-cn": "装卸作业破损率", "en": "Loading and unloading damage rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.costControl": { "zh-cn": "成本控制", "en": "Cost control", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.unitHandlingCostControl": { "zh-cn": "单位货物装卸费用控制率", "en": "Unit cargo handling cost control rate", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.routineWorkManagement": { "zh-cn": "日常工作管理", "en": "Routine work management", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.policyExecution": { "zh-cn": "物流部门管理制度的执行情况", "en": "Execution of logistics management policies", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.operationalDataManagement": { "zh-cn": "作业资料及信息管理", "en": "Operational documents and information management", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.sixSManagement": { "zh-cn": "6S管理", "en": "6S management", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.logistics.safety": { "zh-cn": "物流安全", "en": "Logistics safety", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.food.headChefMonthly": { "zh-cn": "厨师长考核评分表（月度）", "en": "Head Chef Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.assessment.food.waiterMonthly": { "zh-cn": "传菜员考核评分表（月度）", "en": "Food Server Monthly Assessment Form", "runtime": true, "apps": ["web"] },
-  "runtime.web.dictOptionDeleteConfirmation": {"zh-cn":"确定要删除该选项吗？","en":"Are you sure you want to delete this option?","runtime":true,"apps":["web"]},
-  "runtime.web.dictNodeDeleteConfirmation": {"zh-cn":"确定要删除该节点吗？","en":"Are you sure you want to delete this item?","runtime":true,"apps":["web"]},
-  "runtime.web.activityOpportunityCreated": {"zh-cn":"新添加商机","en":"New opportunity added","runtime":true,"apps":["web"]},
-  "runtime.web.activityContractSigningCreated": {"zh-cn":"新增合同签约","en":"New contract signing","runtime":true,"apps":["web"]}
 }

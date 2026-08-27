@@ -17,7 +17,7 @@
               <el-option
                 v-for="item in groupField"
                 :key="item.id"
-                :label="item.field_name"
+                :label="$(item.field_name, item.field_name_en)"
                 :value="item.form_field_uniqid"
                 :disabled="groupIds.includes(item.form_field_uniqid)"
               >
@@ -67,7 +67,7 @@
                 <el-option
                   v-for="item in targetField"
                   :key="item.id"
-                  :label="item.field_name"
+                  :label="$(item.field_name, item.field_name_en)"
                   :disabled="listIds.includes(item.form_field_uniqid)"
                   :value="item.form_field_uniqid"
                 >

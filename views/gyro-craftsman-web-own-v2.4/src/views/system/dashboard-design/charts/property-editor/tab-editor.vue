@@ -51,6 +51,7 @@ export default {
 
       this.optionModel.tabList.push({
         name: `选项${this.optionModel.tabList.length + 1}`,
+        name_en: `Option ${this.optionModel.tabList.length + 1}`,
         status: 1,
         value: `tab${this.optionModel.tabList.length + 1}`,
         widgetList: []

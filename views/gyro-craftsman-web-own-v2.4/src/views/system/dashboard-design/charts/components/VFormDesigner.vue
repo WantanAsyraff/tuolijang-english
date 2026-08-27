@@ -40,7 +40,7 @@ import { $, getLanguage, setLanguage } from '@/lang'
       </el-container>
     </el-container>
     <el-dialog
-      :title="$("ui.formDesignerToolbarPanelIndexPreview")"
+      :title="$('ui.formDesignerToolbarPanelIndexPreview')"
       :visible.sync="showPreviewDialogFlag"
       v-if="showPreviewDialogFlag"
       :show-close="true"

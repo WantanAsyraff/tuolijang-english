@@ -24,14 +24,14 @@
   <!-- 内容 -->
   <div class="content">
     <el-timeline>
-      <el-timeline-item v-for="(item, index) in activities" :key="index" :icon="item.icon" :color="item.color">
+      <el-timeline-item v-for="(item, index) in localizedActivities" :key="index" :icon="item.icon" :color="item.color">
         <div class="tips">{{ item.title }}</div>
         <div v-if="item.id === 1" class="phase_1">
           <el-form ref="form" :model="form" label-width="100px">
             <el-form-item :label="$('ui.developCrudEventApplicationEntity')" class="mb14">
               <el-cascader
                 v-model="crud_id"
-                :options="crudOptions"
+                :options="localizedCrudOptions"
                 :show-all-levels="false"
                 filterable
                 size="small"
@@ -46,13 +46,13 @@
             </el-form-item>
             <el-form-item :label="$('ui.developCrudEventTriggerAction')">
               <el-checkbox-group v-model="action" @change="actionChange()">
-                <div style="width: 430px">
+                <div class="trigger-action-list">
                   <el-checkbox
-                    v-for="(item, index) in actionList"
+                    v-for="(item, index) in localizedActionList"
                     :key="index"
                     :label="item.value"
                     :disabled="info.event === 'data_check' && !['create', 'update'].includes(item.value)"
-                    >{{ item.label }}
+                    >{{ $(item.label) }}
                     <span
                       v-if="item.value === 'update'"
                       class="el-icon-setting"
@@ -64,7 +64,7 @@
               <template v-if="action && action.length > 0 && action.includes('timer')">
                 {{ $("ui.developCrudEventExecutionCycle") }}
                 <el-select v-model="form.timer_type" size="small" :placeholder="$('ui.developConditionGroupPleaseSelect')">
-                  <el-option v-for="item in timeOptions" :key="item.value" :label="item.label" :value="item.value">
+                  <el-option v-for="item in localizedTimeOptions" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
                 <el-select
@@ -73,7 +73,7 @@
                   size="small"
 :placeholder="$('ui.developConditionGroupPleaseSelect')"
                 >
-                  <el-option v-for="item in weekOptions" :key="item.value" :label="item.label" :value="item.value">
+                  <el-option v-for="item in localizedWeekOptions" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
                 <el-input
@@ -482,6 +482,7 @@
 </template>
 <script>
 import localizationI18n from "@/lang";
+import { $ } from "@/lang";
 
 import JsonViewer from 'vue-json-viewer'
 import Commnt from './components/commonData'
@@ -583,6 +584,21 @@ export default {
   },
 
   computed: {
+    localizedCrudOptions() {
+      return this.localizeOptions(this.crudOptions)
+    },
+    localizedActionList() {
+      return this.localizeOptions(this.actionList)
+    },
+    localizedTimeOptions() {
+      return this.localizeOptions(this.timeOptions)
+    },
+    localizedWeekOptions() {
+      return this.localizeOptions(this.weekOptions)
+    },
+    localizedActivities() {
+      return this.activities.map((item) => ({ ...item, title: $(item.title) }))
+    },
     // 目标字段
     targetField() {
       if (this.form.target_crud_id && this.targetEntity.length > 0) {
@@ -702,6 +718,13 @@ export default {
   },
 
   methods: {
+    localizeOptions(options = []) {
+      return options.map((item) => ({
+        ...item,
+        label: $(item.label),
+        children: item.children ? this.localizeOptions(item.children) : item.children
+      }))
+    },
     getcrudInfo() {
       crudModuleInfoApi(this.keyName, this.crud_id).then((res) => {
         this.crudInfo = res.data
@@ -1254,10 +1277,22 @@ export default {
 ::v-deep .jv-container .jv-code {
   max-height: 600px;
 }
-::v-deep .el-checkbox {
-  width: 100px;
+::v-deep .trigger-action-list .el-checkbox {
+  width: auto;
+  margin-right: 0;
+  white-space: normal;
+  line-height: 20px;
 }
 ::v-deep .jv-container .jv-code {
   overflow-y: scroll;
+}
+</style>
+
+<style scoped>
+.trigger-action-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: 12px 16px;
+  width: 570px;
 }
 </style>

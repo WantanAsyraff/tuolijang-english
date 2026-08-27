@@ -11,7 +11,7 @@
       <el-table v-if="!where.group" :data="tableData" ref="table" style="width: 100%" :height="height"
         @selection-change="handleSelectionChange" row-key="id" border>
         <el-table-column type="selection" min-width="55" show-overflow-tooltip> </el-table-column>
-        <el-table-column v-for="(item, index) in info.showField" :prop="item.field_name_en" :label="item.field_name"
+        <el-table-column v-for="(item, index) in info.showField" :prop="item.field_name_en" :label="$(item.field_name, item.field_name_en)"
           :key="index" :width="[
               'input_percentage',
               'tag',

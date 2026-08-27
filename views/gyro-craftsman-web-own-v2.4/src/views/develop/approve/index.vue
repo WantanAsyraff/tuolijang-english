@@ -21,7 +21,7 @@
                 <div class="selIcon" :style="{ backgroundColor: row.color }">
                   <i class="icon iconfont" :class="row.icon"></i>
                 </div>
-                <div class="ml10 color-doc pointer">{{ row.name || '--' }}</div>
+                <div class="ml10 color-doc pointer">{{ row.name ? $(row.name) : '--' }}</div>
               </div>
             </template>
           </el-table-column>
@@ -32,12 +32,12 @@
           </el-table-column>
           <el-table-column prop="info" :label="$('ui.developApproveIndexApprovalDescription')" min-width="200" show-overflow-tooltip>
             <template #default="{ row }">
-              {{ row.info || '--' }}
+              {{ row.info ? $(row.info) : '--' }}
             </template>
           </el-table-column>
           <el-table-column prop="crud" :label="$('ui.developApproveIndexLinkedEntity')" min-width="140">
             <template #default="{ row }">
-              {{ row.crud.table_name || '--' }}
+              {{ row.crud && row.crud.table_name ? $(row.crud.table_name) : '--' }}
             </template>
           </el-table-column>
           <el-table-column prop="cate_name" :label="$('ui.developApproveIndexLinkedApplication')" min-width="140">
