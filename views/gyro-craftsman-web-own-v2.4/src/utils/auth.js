@@ -74,6 +74,15 @@ const filterMenusByModule = (menus) => {
   return filterMenu(JSON.parse(JSON.stringify(menus)));
 };
 
+export const normalizeSystemMenuLabels = (menus) => {
+  if (!Array.isArray(menus)) return [];
+  return menus.map((menu) => ({
+    ...menu,
+    menu_name: menu.menu_name_source || menu.menu_name,
+    children: normalizeSystemMenuLabels(menu.children)
+  }));
+};
+
 function fetchAppConfig() {
   return store.dispatch('appConfig/fetchConfig')
     .catch(() => {
@@ -100,8 +109,9 @@ export const getMenus = ({ force = false, checkCurrentRoute = false } = {}) => {
       })
       .then((response) => {
         const { menu: rawMenu, roles } = response.data;
+        const localizedMenuSource = normalizeSystemMenuLabels(rawMenu);
         // 根据模块配置过滤菜单
-        const menu = filterMenusByModule(rawMenu);
+        const menu = filterMenusByModule(localizedMenuSource);
         applyMenuState(menu, roles); // roles 为按钮权限
         saveMenuCache(menu, roles);
         if (checkCurrentRoute) {

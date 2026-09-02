@@ -21,7 +21,7 @@
           style="width: 100%"
         >
           <el-table-column :label="$('ui.settingSystemMenusIndexMenuName')" prop="menu_name">
-            <template slot-scope="props"><span>{{ $(props.row.menu_name, props.row.menu_name_en) }}</span></template>
+            <template slot-scope="props"><span>{{ $(props.row.menu_name_source || props.row.menu_name) }}</span></template>
           </el-table-column>
           <el-table-column :label="$('ui.settingSystemMenusIndexMenuIcon')" prop="menu_name">
             <template slot-scope="props">

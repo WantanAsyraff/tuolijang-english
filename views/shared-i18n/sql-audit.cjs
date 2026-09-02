@@ -348,6 +348,41 @@ function summarizeRows(rows, keyFor, runtimeValues) {
   return Object.fromEntries([...summaries].sort(([left], [right]) => left.localeCompare(right)));
 }
 
+function auditLegacyMenuEnglish({ repoRoot, runtimeValues = new Map() } = {}) {
+  const filename = path.join(repoRoot, "public", "install", "config.sql");
+  const mismatches = [];
+  if (!fs.existsSync(filename)) return mismatches;
+
+  for (const statement of splitStatements(fs.readFileSync(filename, "utf8"))) {
+    const match = statement.match(/INSERT\s+INTO\s+\x60?eb_system_menus\x60?\s*\(([\s\S]*?)\)\s*VALUES\s*([\s\S]*);?\s*$/i);
+    if (!match) continue;
+    const columns = [...match[1].matchAll(/\x60([^\x60]+)\x60|\b([a-zA-Z_][a-zA-Z0-9_]*)\b/g)].map((item) => item[1] || item[2]);
+    for (const tuple of tupleBodies(match[2])) {
+      const expressions = splitTopLevel(tuple);
+      const row = {};
+      columns.forEach((column, index) => {
+        row[column] = scalarString(expressions[index] || "");
+      });
+      if (!row.menu_name || !row.other) continue;
+      let legacyEnglish;
+      try {
+        legacyEnglish = JSON.parse(row.other.replace(/\\"/g, '"')).menu_name_en;
+      } catch {
+        continue;
+      }
+      const canonicalEnglish = runtimeValues.get(row.menu_name);
+      if (typeof legacyEnglish !== "string" || typeof canonicalEnglish !== "string" || legacyEnglish === canonicalEnglish) continue;
+      mismatches.push({
+        source: row.menu_name,
+        legacyEnglish,
+        canonicalEnglish,
+        kind: row.type === "M" ? "menu" : "permission/action",
+      });
+    }
+  }
+  return mismatches;
+}
+
 function auditSql({ repoRoot, runtimeValues = new Map(), throwOnError = true } = {}) {
   const sharedRoot = path.join(repoRoot, "views", "shared-i18n");
   const policy = JSON.parse(fs.readFileSync(path.join(sharedRoot, "sql-audit-policy.json"), "utf8"));
@@ -392,6 +427,7 @@ function auditSql({ repoRoot, runtimeValues = new Map(), throwOnError = true } =
     byColumn: summarizeRows(rows, (row) => row.table && row.column ? `${row.table}.${row.column}` : "", runtimeValues),
     frontendCoverage,
     uncoveredFrontend,
+    legacyEnglishMismatches: auditLegacyMenuEnglish({ repoRoot, runtimeValues }),
     rows,
   };
   if (throwOnError && (unknown.length || missing.length || uncoveredFrontend.length)) {
@@ -419,7 +455,11 @@ function formatSqlAuditSummary(result) {
     `SQL tables (total/user-visible/mapped/unmapped): ${formatGroups(result.byTable)}`,
     `SQL columns (total/user-visible/mapped/unmapped): ${formatGroups(result.byColumn)}`,
     `SQL frontend coverage: ${result.frontendCoverage.filter((item) => item.covered).length}/${result.frontendCoverage.length}`,
+    "SQL legacy menu English mismatches: " + result.legacyEnglishMismatches.length
+      + " (" + result.legacyEnglishMismatches.filter((item) => item.kind === "menu").length
+      + " menu, " + result.legacyEnglishMismatches.filter((item) => item.kind === "permission/action").length
+      + " permission/action); canonical runtime is authoritative",
   ].join("\n");
 }
 
-module.exports = { auditSql, auditSqlSource, decodeSqlString, formatSqlAuditSummary };
+module.exports = { auditLegacyMenuEnglish, auditSql, auditSqlSource, decodeSqlString, formatSqlAuditSummary };

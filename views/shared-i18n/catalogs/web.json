@@ -389,7 +389,7 @@
   },
   "web.access.reviewer": {
     "zh-cn": "审核人",
-    "en": "Reviewer"
+    "en": "Approver"
   },
   "web.access.saveandsubmit": {
     "zh-cn": "保存",
@@ -6217,7 +6217,7 @@
   },
   "web.hr.rankname": {
     "zh-cn": "职级名称",
-    "en": "Rank name"
+    "en": "Job rank name"
   },
   "web.hr.ranknumber": {
     "zh-cn": "职级数",
@@ -6225,11 +6225,11 @@
   },
   "web.hr.ranktype": {
     "zh-cn": "职级别名",
-    "en": "Rank alias"
+    "en": "Job rank alias"
   },
   "web.hr.ranktypes": {
     "zh-cn": "职级类别",
-    "en": "Rank category"
+    "en": "Job rank category"
   },
   "web.hr.reasonsleaving": {
     "zh-cn": "离职原因",
@@ -7011,7 +7011,7 @@
   },
   "web.legacy.6641938384028e27": {
     "zh-cn": "抄送人",
-    "en": "CC recipients"
+    "en": "CC recipient"
   },
   "web.legacy.67ea41f271c7201d": {
     "zh-cn": "关闭：不验证请求数据；拦截：若非发请求则返回错误；过滤：过滤掉非法参数，程序继续执行",
@@ -10745,7 +10745,7 @@
   },
   "web.legacyScript.pleaseSelectRankCategory": {
     "zh-cn": "请选择职级类别",
-    "en": "Select a rank category",
+    "en": "Select a job rank category",
     "runtime": true,
     "apps": ["web"]
   },
@@ -13025,7 +13025,7 @@
   },
   "web.route.rolePermission": {
     "zh-cn": "角色权限",
-    "en": "Role Permission"
+    "en": "Role permissions"
   },
   "web.setting.accountfreezing": {
     "zh-cn": "您的账号已被冻结",
@@ -13217,7 +13217,7 @@
   },
   "web.setting.edit.permissionsetting": {
     "zh-cn": "权限设置",
-    "en": "Permission setting"
+    "en": "Permission settings"
   },
   "web.setting.edit.phone": {
     "zh-cn": "手机号码",
@@ -15057,7 +15057,7 @@
   },
   "web.ui.commonFormListPleaseEnterKeyword": {
     "zh-cn": "请输入关键字",
-    "en": "Please enter keyword"
+    "en": "Enter a keyword"
   },
   "web.ui.commonFormListTo": {
     "zh-cn": "至",
@@ -17667,7 +17667,7 @@
   },
   "web.ui.developCrudEventPleaseSelectEntity": {
     "zh-cn": "请选择实体",
-    "en": "Please select entity"
+    "en": "Select an entity"
   },
   "web.ui.developCrudEventPushContent": {
     "zh-cn": "推送内容",
@@ -20183,7 +20183,7 @@
   },
   "web.ui.hrEnterpriseJobRankManagementJobLevelDescription": {
     "zh-cn": "职级描述",
-    "en": "Job level description"
+    "en": "Job rank description"
   },
   "web.ui.hrEnterpriseJobRankManagementRankList": {
     "zh-cn": "职级列表",
@@ -21035,7 +21035,7 @@
   },
   "web.ui.settingAuthAdminIndexRolePermission": {
     "zh-cn": "角色权限",
-    "en": "Role Permission"
+    "en": "Role permissions"
   },
   "web.ui.settingAuthAdminIndexSearchRoles": {
     "zh-cn": "搜索角色",

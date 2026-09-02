@@ -43,7 +43,7 @@ const runtimeIndex = Object.fromEntries(
 );
 const runtime = createLocalizationRuntime(runtimeIndex);
 const repoRoot = path.resolve(views, '..');
-const { auditSql, auditSqlSource, decodeSqlString } = require(path.join(root, 'sql-audit.cjs'));
+const { auditLegacyMenuEnglish, auditSql, auditSqlSource, decodeSqlString } = require(path.join(root, 'sql-audit.cjs'));
 const sqlPolicy = JSON.parse(fs.readFileSync(path.join(root, 'sql-audit-policy.json'), 'utf8'));
 const { formatNotificationTemplatePreview } = require(
   path.join(views, "gyro-craftsman-web-own-v2.4/src/lang/notification-template-preview.js")
@@ -78,6 +78,58 @@ test("runtime translation honors backend English and exact canonical text", () =
   assert.equal(runtime.translateSystemTextValue("账号或密码不正确", { locale: "en" }), "Incorrect account or password.");
   assert.equal(runtime.translateSystemTextValue("缺少审批流程", { locale: "en" }), "The approval process is missing.");
   assert.equal(runtime.translateSystemTextValue("保存", { locale: "zh-cn", englishValue: "Persist" }), "保存");
+});
+
+test("legacy menu English is reported while canonical menu text remains authoritative", { skip: !includesApp("web") }, () => {
+  const mismatches = auditLegacyMenuEnglish({
+    repoRoot,
+    runtimeValues: new Map(Object.entries(runtimeIndex)),
+  });
+  const menuMismatches = mismatches.filter((item) => item.kind === "menu");
+  const permissionMismatches = mismatches.filter((item) => item.kind === "permission/action");
+
+  assert.equal(mismatches.length, 95);
+  assert.equal(menuMismatches.length, 84);
+  assert.equal(permissionMismatches.length, 11);
+  assert.deepEqual(
+    mismatches.find((item) => item.source === "客户管理"),
+    {
+      source: "客户管理",
+      legacyEnglish: "Customer list",
+      canonicalEnglish: "Customer management",
+      kind: "menu",
+    },
+  );
+  assert.deepEqual(
+    mismatches.find((item) => item.source === "角色权限"),
+    {
+      source: "角色权限",
+      legacyEnglish: "administrators",
+      canonicalEnglish: "Role permissions",
+      kind: "menu",
+    },
+  );
+  assert.equal(runtime.translateSystemTextValue("客户管理", { locale: "zh-cn" }), "客户管理");
+  assert.equal(runtime.translateSystemTextValue("客户管理", { locale: "en" }), "Customer management");
+  assert.equal(runtime.translateSystemTextValue("角色权限", { locale: "en" }), "Role permissions");
+
+  const menuModel = fs.readFileSync(path.join(repoRoot, "app/Http/Model/System/Menus.php"), "utf8");
+  const userController = fs.readFileSync(path.join(repoRoot, "app/Http/Controller/AdminApi/User/UserController.php"), "utf8");
+  const auth = read("gyro-craftsman-web-own-v2.4/src/utils/auth.js");
+  const menuCache = read("gyro-craftsman-web-own-v2.4/src/utils/menu-cache.js");
+  const languageSelector = read("gyro-craftsman-web-own-v2.4/src/components/common/langSelect.vue");
+  const rolePage = read("gyro-craftsman-web-own-v2.4/src/views/setting/auth/admin/index.vue");
+
+  assert.match(menuModel, /protected \$appends = \['menu_name_source'\]/);
+  assert.match(menuModel, /getRawOriginal\('menu_name'\)/);
+  assert.match(userController, /\$adminId \. ':' \. app\(\)->getLocale\(\)/);
+  assert.match(auth, /menu_name: menu\.menu_name_source \|\| menu\.menu_name/);
+  assert.match(menuCache, /getMenuCacheKey\(language = getLanguage\(\)\)/);
+  assert.match(menuCache, /locale: getLanguage\(\)/);
+  assert.match(menuCache, /cache\.locale === owner\.locale/);
+  assert.match(languageSelector, /await getMenus\(\)/);
+  assert.match(rolePage, /Number\(role\.id\) === 1 \? this\.\$\(role\.role_name, role\.role_name_en\) : role\.role_name/);
+  assert.match(rolePage, /label: this\.\$\(item\.label, item\.label_en\)/);
 });
 
 test("dynamic backend responses preserve interpolated values in both locales", () => {

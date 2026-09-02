@@ -283,7 +283,7 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/setting/system/menus/index.vue",
       "mustContain": [
-        "$(props.row.menu_name, props.row.menu_name_en)"
+        "$(props.row.menu_name_source || props.row.menu_name)"
       ]
     },
     {

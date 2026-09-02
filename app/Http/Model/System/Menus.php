@@ -49,6 +49,8 @@ class Menus extends BaseModel
         'crud_dashboard_id' => 'integer',
     ];
 
+    protected $appends = ['menu_name_source'];
+
     public function getParentKeyName()
     {
         return 'parent_uniqued';
@@ -117,6 +119,15 @@ class Menus extends BaseModel
             return $this->other['menu_name_en'] ?? $value;
         }
         return $value;
+    }
+
+    /**
+     * Return the untranslated menu label used by the canonical frontend catalog.
+     */
+    public function getMenuNameSourceAttribute(): ?string
+    {
+        $value = $this->getRawOriginal('menu_name');
+        return is_string($value) ? $value : null;
     }
 
     /**

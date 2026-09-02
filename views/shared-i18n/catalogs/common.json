@@ -1716,7 +1716,7 @@
   },
   "runtime.13f1d7c5253dbc05": {
     "zh-cn": "审核人",
-    "en": "Reviewer",
+    "en": "Approver",
     "runtime": true
   },
   "runtime.13f8d140af95b357": {
@@ -2796,7 +2796,7 @@
   },
   "runtime.20448906c7d7876d": {
     "zh-cn": "请选择实体",
-    "en": "Please select entity",
+    "en": "Select an entity",
     "runtime": true
   },
   "runtime.205dfc7ce8cd7288": {
@@ -3056,7 +3056,7 @@
   },
   "runtime.23a4a441eb7f19be": {
     "zh-cn": "职级名称",
-    "en": "Rank name",
+    "en": "Job rank name",
     "runtime": true
   },
   "runtime.23ae0a11ac5bab27": {
@@ -4216,7 +4216,7 @@
   },
   "runtime.307d7bb9e648b3a9": {
     "zh-cn": "职级别名",
-    "en": "Rank alias",
+    "en": "Job rank alias",
     "runtime": true
   },
   "runtime.30a73974d51f1cfb": {
@@ -4496,7 +4496,7 @@
   },
   "runtime.33b55348eac336e8": {
     "zh-cn": "职级类别",
-    "en": "Rank category",
+    "en": "Job rank category",
     "runtime": true
   },
   "runtime.33c72947278fb2e7": {
@@ -8446,7 +8446,7 @@
   },
   "runtime.63f31192ff463e72": {
     "zh-cn": "权限设置",
-    "en": "Permission setting",
+    "en": "Permission settings",
     "runtime": true
   },
   "runtime.63f525bfa9efe4b9": {
@@ -8636,7 +8636,7 @@
   },
   "runtime.6641938384028e27": {
     "zh-cn": "抄送人",
-    "en": "CC recipients",
+    "en": "CC recipient",
     "runtime": true
   },
   "runtime.6646220d0ce61a2f": {
@@ -9511,7 +9511,7 @@
   },
   "runtime.70606c9670000867": {
     "zh-cn": "请输入关键字",
-    "en": "Please enter keyword",
+    "en": "Enter a keyword",
     "runtime": true
   },
   "runtime.7075f11f2be62aa2": {
@@ -9891,7 +9891,7 @@
   },
   "runtime.759c3e8ea24a0167": {
     "zh-cn": "移动端路径",
-    "en": "Mobile path",
+    "en": "Mobile route",
     "runtime": true
   },
   "runtime.75a1280fcde98a56": {
@@ -10756,7 +10756,7 @@
   },
   "runtime.7fad3c37cd5ed8e6": {
     "zh-cn": "车辆基础信息",
-    "en": "Basic vehicle information",
+    "en": "Vehicle information",
     "runtime": true
   },
   "runtime.7fd19f1eb44a09cb": {
@@ -12401,7 +12401,7 @@
   },
   "runtime.9441b841e50a9a83": {
     "zh-cn": "网站地址",
-    "en": "Website address",
+    "en": "Website URL",
     "runtime": true
   },
   "runtime.945c71e8c3b9b7ab": {
@@ -12581,7 +12581,7 @@
   },
   "runtime.9660da4e2744f4d4": {
     "zh-cn": "适用于所有员工的用车申请。",
-    "en": "Applies to vehicle requests from all employees.",
+    "en": "Vehicle requests are available to all employees.",
     "runtime": true
   },
   "runtime.966943b3a5bc8b83": {
@@ -13731,7 +13731,7 @@
   },
   "runtime.a5f19131bf211f10": {
     "zh-cn": "同步日程",
-    "en": "Sync calendars",
+    "en": "Sync to calendar",
     "runtime": true
   },
   "runtime.a60d95831d2e07a2": {
@@ -13846,7 +13846,7 @@
   },
   "runtime.a7319ccf54c35cf1": {
     "zh-cn": "角色权限",
-    "en": "Role Permission",
+    "en": "Role permissions",
     "runtime": true
   },
   "runtime.a73c6ae009d43d2c": {
@@ -18151,7 +18151,7 @@
   },
   "runtime.backend.8d3e4b32c60e": {
     "zh-cn": "请选择职级类别",
-    "en": "Select a rank category",
+    "en": "Select a job rank category",
     "runtime": true
   },
   "runtime.backend.8d703f2d9d89": {
@@ -20211,7 +20211,7 @@
   },
   "runtime.bc529d265fb86da4": {
     "zh-cn": "前端路径",
-    "en": "Desktop path",
+    "en": "Frontend route",
     "runtime": true
   },
   "runtime.bc5dfd40dad0b972": {
@@ -23576,7 +23576,7 @@
   },
   "runtime.e3d3afd884be213e": {
     "zh-cn": "下班",
-    "en": "Finish work",
+    "en": "Clock out",
     "runtime": true
   },
   "runtime.e3d9b02b24e978a6": {
@@ -25046,7 +25046,7 @@
   },
   "runtime.f5a5b7ee62251cf3": {
     "zh-cn": "职级描述",
-    "en": "Job level description",
+    "en": "Job rank description",
     "runtime": true
   },
   "runtime.f5ab833ddd87ccba": {
@@ -25611,7 +25611,7 @@
   },
   "runtime.fbb0f7cc70d4bb48": {
     "zh-cn": "上班",
-    "en": "Start work",
+    "en": "Clock in",
     "runtime": true
   },
   "runtime.fbbd2d822f6d942b": {
@@ -25746,7 +25746,7 @@
   },
   "runtime.fcf6b73847c949ea": {
     "zh-cn": "站点开启",
-    "en": "Enable website",
+    "en": "Enable site",
     "runtime": true
   },
   "runtime.fd06e3577a5024c6": {
@@ -26668,1251 +26668,1042 @@
     "zh-cn": "新增合同签约",
     "en": "New contract signing",
     "runtime": true,
-    "apps": [
-      "web",
-      {
-        "key": "runtime.system.5043e7abafe59cb0e59d80",
-        "zh-cn": "PC端地址",
-        "en": "Desktop URL",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.5043e7abafe698bee7a4ba",
-        "zh-cn": "PC端显示",
-        "en": "Show on desktop",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4b880e5afb9e4b880e585b3e88194e5ae9ee4bd93e4bfa1e681afe4b88de5ad98e59ca8",
-        "zh-cn": "一对一关联实体信息不存在",
-        "en": "One-to-one related entity information was not found",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4b88ae78fad",
-        "zh-cn": "上班",
-        "en": "Clock-in",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4b88be78fad",
-        "zh-cn": "下班",
-        "en": "Clock-out",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4b88ee68891e585b1e4baab",
-        "zh-cn": "与我共享",
-        "en": "Shared by me",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4b8a5e9878de8bf9fe588b0",
-        "zh-cn": "严重迟到",
-        "en": "Severely late",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4b8bbe994ae4944",
-        "zh-cn": "主键ID",
-        "en": "Primary key ID",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4bc81e4b89ae4bfa1e681af",
-        "zh-cn": "企业信息",
-        "en": "Enterprise information",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4bcaae588a0e999a4",
-        "zh-cn": "伪删除",
-        "en": "Soft delete",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4bd8ee4bba3e7a081e5ba94e794a8",
-        "zh-cn": "低代码应用",
-        "en": "Low-code applications",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4bfaee694b9e695b0e68dae",
-        "zh-cn": "修改数据",
-        "en": "Edit data",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4bfaee694b9e697b6e997b4",
-        "zh-cn": "修改时间",
-        "en": "Updated time",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4bfaee694b9e794a8e688b7",
-        "zh-cn": "修改用户",
-        "en": "Updated by",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e4bfaee694b9e8818ce7baa7e7b1bbe588ab",
-        "zh-cn": "修改职级类别",
-        "en": "Edit job rank category",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e58187e69c9fe7b1bbe59e8b",
-        "zh-cn": "假期类型",
-        "en": "Leave types",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e58581e8aeb8e4b88ae4bca0e69687e4bbb6e7b1bbe59e8b",
-        "zh-cn": "允许上传文件类型",
-        "en": "Allowed file types",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e585a8e983a8",
-        "zh-cn": "全部",
-        "en": "All",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e585b3e88194e5ad97e585b8",
-        "zh-cn": "关联字典",
-        "en": "Linked dictionary",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e585b3e88194e5ae9ee4bd93",
-        "zh-cn": "关联实体",
-        "en": "Linked entity",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e585b3e88194e5ba94e794a8",
-        "zh-cn": "关联应用",
-        "en": "Linked application",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e585b3e88194e794a8e8bda6e794b3e8afb7",
-        "zh-cn": "关联用车申请",
-        "en": "Related vehicle request",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e585b3e88194e8bda6e8be86",
-        "zh-cn": "关联车辆",
-        "en": "Related vehicle",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e585b3e88194e9a9bee9a9b6e59198",
-        "zh-cn": "关联驾驶员",
-        "en": "Related driver",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e585b6e4bb96e69da1e4bbb6e8bf9be585a5e8afa5e6b581e7a88b",
-        "zh-cn": "其他条件进入该流程",
-        "en": "Other conditions enter this workflow",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e585b6e4bb96e8a1a5e8b4b4",
-        "zh-cn": "其他补贴",
-        "en": "Other allowance",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5889be5bbbae697b6e997b4",
-        "zh-cn": "创建时间",
-        "en": "Created time",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5889be5bbbae794a8e688b7",
-        "zh-cn": "创建用户",
-        "en": "Created by",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e588a0e999a4e697b6",
-        "zh-cn": "删除时",
-        "en": "When deleted",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5898de7abafe8b7afe5be84",
-        "zh-cn": "前端路径",
-        "en": "Frontend route",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e58d8ae5a4a9e7bcbae58da1",
-        "zh-cn": "半天缺卡",
-        "en": "Half-day missing clock-in",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e58d95e782b9e799bbe5bd95e5bc80e585b3",
-        "zh-cn": "单点登录开关",
-        "en": "Single sign-on",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e58f91e8b5b7e88c83e59bb4",
-        "zh-cn": "发起范围",
-        "en": "Sponsor scope",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5908ce6ada5e697a5e7a88b",
-        "zh-cn": "同步日程",
-        "en": "Synchronize calendars",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e59198e5b7a5",
-        "zh-cn": "员工",
-        "en": "Employee",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e59bbee6a087",
-        "zh-cn": "图标",
-        "en": "Icon",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e59bbee8a1a8e58897e8a1a8",
-        "zh-cn": "图表列表",
-        "en": "Chart list",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e59fbae69cace5b7a5e8b584",
-        "zh-cn": "基本工资",
-        "en": "Base salary",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e59fbae7a180e8aebee7bdae",
-        "zh-cn": "基础设置",
-        "en": "Basic settings",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e59fbae7a180e9858de7bdae",
-        "zh-cn": "基础配置",
-        "en": "Basic configuration",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5a487e6b3a8",
-        "zh-cn": "备注",
-        "en": "Remarks",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5a496e983a8415049",
-        "zh-cn": "外部API",
-        "en": "External APIs",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5a496e983a8e99b86e68890",
-        "zh-cn": "外部集成",
-        "en": "External integrations",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5ad97e6aeb5e58897e8a1a8",
-        "zh-cn": "字段列表",
-        "en": "Field list",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5ad97e6aeb5e5908de7a7b0",
-        "zh-cn": "字段名称",
-        "en": "Field name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5ad97e6aeb5e7b1bbe59e8b",
-        "zh-cn": "字段类型",
-        "en": "Field type",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5ae9ae69c9fe689a7e8a18c",
-        "zh-cn": "定期执行",
-        "en": "Scheduled execution",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e689b9e68f90e4baa4e697b6",
-        "zh-cn": "审批提交时",
-        "en": "When submitted for approval",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e689b9e692a4e99480",
-        "zh-cn": "审批撤销",
-        "en": "Approval revoked",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e689b9e7b1bbe59e8b",
-        "zh-cn": "审批类型",
-        "en": "Approval type",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e689b9e8aeb0e5bd95",
-        "zh-cn": "审批记录",
-        "en": "Approval records",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e689b9e8aebee7bdae",
-        "zh-cn": "审批设置",
-        "en": "Approval settings",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e689b9e8afb4e6988e",
-        "zh-cn": "审批说明",
-        "en": "Approval description",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e689b9e9809ae8bf87e697b6",
-        "zh-cn": "审批通过时",
-        "en": "When approved",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e689b9e9a9b3e59b9e2fe692a4e59b9e",
-        "zh-cn": "审批驳回/撤回",
-        "en": "Approval rejected or withdrawn",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e6a0b8e4baba",
-        "zh-cn": "审核人",
-        "en": "Approver",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e6a0b8e9809ae8bf87",
-        "zh-cn": "审核通过",
-        "en": "Approved",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea1e6a0b8e9a9b3e59b9e",
-        "zh-cn": "审核驳回",
-        "en": "Rejected",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5aea2e688b7e7aea1e79086",
-        "zh-cn": "客户管理",
-        "en": "Customer management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5b297e4bd8de5b7a5e8b584",
-        "zh-cn": "岗位工资",
-        "en": "Position salary",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5b7a5e4bd9ce697b6e995bf",
-        "zh-cn": "工作时长",
-        "en": "Working duration",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5b7a5e4bd9ce6b187e68aa5",
-        "zh-cn": "工作汇报",
-        "en": "Work reports",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5b7a5e4bd9ce6b581e7aea1e79086",
-        "zh-cn": "工作流管理",
-        "en": "Workflow management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5b7a5e8b584e69da1e7bb93e69e844c697374",
-        "zh-cn": "工资条结构List",
-        "en": "Salary structure list",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5b7b2e58f96e6b688",
-        "zh-cn": "已取消",
-        "en": "Cancelled",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5b7b2e5ae8ce68890",
-        "zh-cn": "已完成",
-        "en": "Completed",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5b7b2e6b4bee8bda6",
-        "zh-cn": "已派车",
-        "en": "Dispatched",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5ba94e794a8e7aea1e79086",
-        "zh-cn": "应用管理",
-        "en": "Application management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5bc95e794a8e5ae9ee4bd93",
-        "zh-cn": "引用实体",
-        "en": "Referenced entity",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5bd93e4b880e4b8aae58aa8e4bd9ce58f91e7949fe697b6",
-        "zh-cn": "当一个动作发生时",
-        "en": "When an action occurs",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5bd93e5898de8a7a6e58f91e599a8",
-        "zh-cn": "当前触发器",
-        "en": "Current trigger",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5be85e5aea1e6a0b8",
-        "zh-cn": "待审核",
-        "en": "Pending review",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e5be85e6b4bee8bda6",
-        "zh-cn": "待派车",
-        "en": "Pending dispatch",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68891e585b1e4baabe79a84",
-        "zh-cn": "我共享的",
-        "en": "Shared with me",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68891e5889be5bbbae79a84",
-        "zh-cn": "我创建的",
-        "en": "Created by me",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68891e69fa5e79c8be79a84",
-        "zh-cn": "我查看的",
-        "en": "Viewed by me",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68980e5b19ee794a8e688b7",
-        "zh-cn": "所属用户",
-        "en": "Owner",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68980e5b19ee983a8e997a8",
-        "zh-cn": "所属部门",
-        "en": "Department",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68993e58da1e4b8bae4b8a5e9878de8bf9fe588b0",
-        "zh-cn": "打卡为严重迟到",
-        "en": "Clock-in is severely late",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68993e58da1e4b8bae697a9e98080",
-        "zh-cn": "打卡为早退",
-        "en": "Clock-in is early leave",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68993e58da1e8aeb0e5bd95",
-        "zh-cn": "打卡记录",
-        "en": "Clock-in records",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e689a7e8a18ce58aa8e4bd9c",
-        "zh-cn": "执行动作",
-        "en": "Execution action",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68a80e883bde8a1a5e8b4b4",
-        "zh-cn": "技能补贴",
-        "en": "Skill allowance",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68a84e98081e4baba",
-        "zh-cn": "抄送人",
-        "en": "CC recipient",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68aa5e8a1a8e7aea1e79086",
-        "zh-cn": "报表管理",
-        "en": "Report management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68c87e5ae9ae4b8bbe7aea1e5aea1e689b9",
-        "zh-cn": "指定主管审批",
-        "en": "Direct-supervisor approval",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68c89e992aee4b88e415049e69d83e99990",
-        "zh-cn": "按钮与API权限",
-        "en": "Button and API permissions",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68e92e5ba8f",
-        "zh-cn": "排序",
-        "en": "Sort",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e68e92e78fade7aea1e79086",
-        "zh-cn": "排班管理",
-        "en": "Schedule management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e694b6e8bda6e4baba",
-        "zh-cn": "收车人",
-        "en": "Vehicle receiver",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e694b6e8bda6e697b6e997b4",
-        "zh-cn": "收车时间",
-        "en": "Vehicle return time",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e695b0e68daee5ad97e585b8",
-        "zh-cn": "数据字典",
-        "en": "Data dictionary",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e695b0e68daee69d83e99990",
-        "zh-cn": "数据权限",
-        "en": "Data permissions",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e695b0e68daee79c8be69dbf",
-        "zh-cn": "数据看板",
-        "en": "Dashboard",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69687e4bbb6e4b88ae4bca0e9858de7bdae",
-        "zh-cn": "文件上传配置",
-        "en": "File upload configuration",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e696b0e5a29ee8818ce7baa7",
-        "zh-cn": "新增职级",
-        "en": "Add job rank",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e696b0e5bbbae697b6",
-        "zh-cn": "新建时",
-        "en": "When created",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e696b0e5bbbae78fade6aca1",
-        "zh-cn": "新建班次",
-        "en": "New shift",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e696b0e5bbbae8a7a6e58f91e599a8",
-        "zh-cn": "新建触发器",
-        "en": "New trigger",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e697a5e58e86e8aebee7bdae",
-        "zh-cn": "日历设置",
-        "en": "Calendar settings",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e697a5e7a88be7aea1e79086",
-        "zh-cn": "日程管理",
-        "en": "Schedule management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e697a9e98080",
-        "zh-cn": "早退",
-        "en": "Early leave",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e698afe590a6e58fafe794a8",
-        "zh-cn": "是否可用",
-        "en": "Available",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e698afe590a6e5bf85e5a1ab",
-        "zh-cn": "是否必填",
-        "en": "Required",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e698bee7a4bae5908de7a7b0",
-        "zh-cn": "显示名称",
-        "en": "Display name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e698bee7a4bae788b6e5ad97e6aeb5",
-        "zh-cn": "显示父字段",
-        "en": "Display parent field",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69bb4e696b0e4ba8e",
-        "zh-cn": "更新于",
-        "en": "Updated time",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69bb4e696b0e697b6",
-        "zh-cn": "更新时",
-        "en": "When updated",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69d83e99990e695b0e68dae",
-        "zh-cn": "权限数据",
-        "en": "Permission data",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69d83e99990e7b1bbe59e8b",
-        "zh-cn": "权限类型",
-        "en": "Permission type",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69d83e99990e8aebee7bdae",
-        "zh-cn": "权限设置",
-        "en": "Permission settings",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69da1e4bbb631",
-        "zh-cn": "条件1",
-        "en": "Condition 1",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69da1e4bbb632",
-        "zh-cn": "条件2",
-        "en": "Condition 2",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69da1e4bbb633",
-        "zh-cn": "条件3",
-        "en": "Condition 3",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e69fa5e79c8be78fade6aca1",
-        "zh-cn": "查看班次",
-        "en": "View shift",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6a087e9a298e5908de7a7b0",
-        "zh-cn": "标题名称",
-        "en": "Title",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6a8a1e59d97",
-        "zh-cn": "模块",
-        "en": "Module",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6af8fe697a5e7bb9fe8aea1",
-        "zh-cn": "每日统计",
-        "en": "Daily statistics",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6af8fe69c88e7bb9fe8aea1",
-        "zh-cn": "每月统计",
-        "en": "Monthly statistics",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b187e68aa5e8aea1e58892e5908ce6ada5e887b3e68891e79a84e697a5e7a88b",
-        "zh-cn": "汇报计划同步至我的日程",
-        "en": "Synchronize report plans to my schedule",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b4bee8bda6e4baba",
-        "zh-cn": "派车人",
-        "en": "Dispatcher",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b4bee8bda6e697b6e997b4",
-        "zh-cn": "派车时间",
-        "en": "Dispatch time",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b4bee8bda6e78ab6e68081",
-        "zh-cn": "派车状态",
-        "en": "Dispatch status",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b4bee8bda6e8aeb0e5bd95",
-        "zh-cn": "派车记录",
-        "en": "Dispatch records",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b4bee8bda6e8aeb0e5bd954c697374",
-        "zh-cn": "派车记录List",
-        "en": "Dispatch record list",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b4bee8bda6e8afb4e6988e",
-        "zh-cn": "派车说明",
-        "en": "Dispatch instructions",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b581e7a88be5aea1e689b9",
-        "zh-cn": "流程审批",
-        "en": "Workflow approval",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b581e7a88be8aebee8aea1",
-        "zh-cn": "流程设计",
-        "en": "Workflow design",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b581e7a88be9858de7bdae",
-        "zh-cn": "流程配置",
-        "en": "Process configuration",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e6b688e681afe4b8ade5bf83",
-        "zh-cn": "消息中心",
-        "en": "Message center",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e78ab6e68081",
-        "zh-cn": "状态",
-        "en": "Status",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e78fade6aca1e5908de7a7b0",
-        "zh-cn": "班次名称",
-        "en": "Shift name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e78fade6aca1e8aebee7bdae",
-        "zh-cn": "班次设置",
-        "en": "Shift settings",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e794a8e8bda6e794b3e8afb7",
-        "zh-cn": "用车申请",
-        "en": "Vehicle request",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e794b1e794b3e8afb7e4babae98089e68ba9",
-        "zh-cn": "由申请人选择",
-        "en": "Selected by applicant",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e794b3e8afb7e4baba",
-        "zh-cn": "申请人",
-        "en": "Applicant",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e794b3e8afb7e5aea1e689b9",
-        "zh-cn": "申请审批",
-        "en": "Approval requests",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e799bde5908de58d95e8aebee7bdae",
-        "zh-cn": "白名单设置",
-        "en": "Whitelist settings",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7a7bbe58aa8e7abafe59cb0e59d80",
-        "zh-cn": "移动端地址",
-        "en": "Mobile URL",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7a7bbe58aa8e7abafe698bee7a4ba",
-        "zh-cn": "移动端显示",
-        "en": "Show on mobile",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7a7bbe58aa8e7abafe8b7afe5be84",
-        "zh-cn": "移动端路径",
-        "en": "Mobile route",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7ab99e782b9e5bc80e590af",
-        "zh-cn": "站点开启",
-        "en": "Enable site",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7aea1e79086e6b4a5e8b4b4",
-        "zh-cn": "管理津贴",
-        "en": "Management allowance",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7b3bbe7bb9fe8aebee7bdae",
-        "zh-cn": "系统设置",
-        "en": "System settings",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7b3bbe7bb9fe993bee68ea5",
-        "zh-cn": "系统链接",
-        "en": "System link",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7bba9e69588e5b7a5e8b584",
-        "zh-cn": "绩效工资",
-        "en": "Performance pay",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7bba9e69588e7aea1e79086",
-        "zh-cn": "绩效管理",
-        "en": "Performance management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7bc96e8be91e8818ce7baa7",
-        "zh-cn": "编辑职级",
-        "en": "Edit job rank",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7bcbae58da1",
-        "zh-cn": "缺卡",
-        "en": "Missing clock-in",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7bd91e7ab99e5908de7a7b0",
-        "zh-cn": "网站名称",
-        "en": "Website name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7bd91e7ab99e59cb0e59d80",
-        "zh-cn": "网站地址",
-        "en": "Website URL",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7bd91e7ab99e5a487e6a188e58fb7",
-        "zh-cn": "网站备案号",
-        "en": "Website registration number",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e7bd91e7ab99e88194e7b3bbe794b5e8af9d",
-        "zh-cn": "网站联系电话",
-        "en": "Website contact number",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88083e58ba4e697b6e997b4",
-        "zh-cn": "考勤时间",
-        "en": "Attendance time",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88083e58ba4e78fade6aca1",
-        "zh-cn": "考勤班次",
-        "en": "Attendance shift",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88083e58ba4e7aea1e79086",
-        "zh-cn": "考勤管理",
-        "en": "Attendance management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88083e58ba4e7bb84",
-        "zh-cn": "考勤组",
-        "en": "Attendance group",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88083e58ba4e7bb84e58897e8a1a8",
-        "zh-cn": "考勤组列表",
-        "en": "Attendance group list",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88083e58ba4e7bb84e68890e59198",
-        "zh-cn": "考勤组成员",
-        "en": "Attendance group members",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88083e58ba4e8aebee7bdae",
-        "zh-cn": "考勤设置",
-        "en": "Attendance settings",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8818ce7baa7e588abe5908d",
-        "zh-cn": "职级别名",
-        "en": "Job rank alias",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8818ce7baa7e5908de7a7b0",
-        "zh-cn": "职级名称",
-        "en": "Job rank name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8818ce7baa7e68f8fe8bfb0",
-        "zh-cn": "职级描述",
-        "en": "Job rank description",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8818ce7baa7e7b1bbe588ab",
-        "zh-cn": "职级类别",
-        "en": "Job rank category",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e887aae58aa8e696b0e5a29e",
-        "zh-cn": "自动新增",
-        "en": "Auto-create",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e887aae5ae9ae4b989e983a8e997a8",
-        "zh-cn": "自定义部门",
-        "en": "Custom departments",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88f9ce58d95e5908de7a7b0",
-        "zh-cn": "菜单名称",
-        "en": "Menu name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88f9ce58d95e59bbee6a087",
-        "zh-cn": "菜单图标",
-        "en": "Menu icon",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88f9ce58d95e69d83e99990",
-        "zh-cn": "菜单权限",
-        "en": "Menu permissions",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e88f9ce58d95e7aea1e79086",
-        "zh-cn": "菜单管理",
-        "en": "Menu management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e896aae8b584e7bb93e69e84",
-        "zh-cn": "薪资结构",
-        "en": "Salary structure",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8a784e58899e9858de7bdae",
-        "zh-cn": "规则配置",
-        "en": "Rule configuration",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8a792e889b2e5908de7a7b0",
-        "zh-cn": "角色名称",
-        "en": "Role name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8a792e889b2e69d83e99990",
-        "zh-cn": "角色权限",
-        "en": "Role permissions",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8a7a6e58f91e58aa8e4bd9c",
-        "zh-cn": "触发动作",
-        "en": "Trigger action",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8a7a6e58f91e599a8e58897e8a1a8",
-        "zh-cn": "触发器列表",
-        "en": "Trigger list",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8a7a6e58f91e599a8e5908de7a7b0",
-        "zh-cn": "触发器名称",
-        "en": "Trigger name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8a7a6e58f91e599a8e697a5e5bf97",
-        "zh-cn": "触发器日志",
-        "en": "Trigger logs",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8a7a6e58f91e599a8e7aea1e79086",
-        "zh-cn": "触发器管理",
-        "en": "Trigger management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8a7a6e58f91e599a8e7b1bbe59e8b",
-        "zh-cn": "触发器类型",
-        "en": "Trigger type",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8aeb0e5bd95",
-        "zh-cn": "记录",
-        "en": "Records",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8aebee7bdaee69da1e4bbb6",
-        "zh-cn": "设置条件",
-        "en": "Set conditions",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e8be93e585a5e585b3e994aee5ad97",
-        "zh-cn": "请输入关键字",
-        "en": "Enter keywords",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e8be93e585a5e694b6e8bda6e4babae5a793e5908d",
-        "zh-cn": "请输入收车人姓名",
-        "en": "Enter the vehicle receiver name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e8be93e585a5e6b4bee8bda6e4babae5a793e5908d",
-        "zh-cn": "请输入派车人姓名",
-        "en": "Enter the dispatcher name",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e8be93e585a5e6b4bee8bda6e8afb4e6988e",
-        "zh-cn": "请输入派车说明",
-        "en": "Enter dispatch instructions",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e8be93e585a5e8818ce7baa7e68f8fe8bfb0",
-        "zh-cn": "请输入职级描述",
-        "en": "Enter a job rank description",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e98089e68ba9e585b3e88194e8bda6e8be86",
-        "zh-cn": "请选择关联车辆",
-        "en": "Select a related vehicle",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e98089e68ba9e585b3e88194e9a9bee9a9b6e59198",
-        "zh-cn": "请选择关联驾驶员",
-        "en": "Select a related driver",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e98089e68ba9e5ae9ee4bd93",
-        "zh-cn": "请选择实体",
-        "en": "Select an entity",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e98089e68ba9e694b6e8bda6e697b6e997b4",
-        "zh-cn": "请选择收车时间",
-        "en": "Select vehicle return time",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e98089e68ba9e6b4bee8bda6e697b6e997b4",
-        "zh-cn": "请选择派车时间",
-        "en": "Select dispatch time",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8afb7e98089e68ba9e8818ce7baa7e7b1bbe588ab",
-        "zh-cn": "请选择职级类别",
-        "en": "Select a job rank category",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8b083e896aae5a487e6b3a8",
-        "zh-cn": "调薪备注",
-        "en": "Salary adjustment notes",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8b7afe794b1e7b1bbe59e8b",
-        "zh-cn": "路由类型",
-        "en": "Route type",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8b7afe794b1e8b7afe5be84",
-        "zh-cn": "路由路径",
-        "en": "Route path",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8bda6e8be86e59fbae7a180e4bfa1e681af",
-        "zh-cn": "车辆基础信息",
-        "en": "Vehicle information",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e8bf9fe588b0",
-        "zh-cn": "迟到",
-        "en": "Late",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e98082e794a8e4ba8ee68980e69c89e59198e5b7a5e79a84e794a8e8bda6e794b3e8afb7e38082",
-        "zh-cn": "适用于所有员工的用车申请。",
-        "en": "Vehicle request available to all employees.",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e98089e68ba9e4b88ae7baa7e88f9ce58d95",
-        "zh-cn": "选择上级菜单",
-        "en": "Select parent menu",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e98089e68ba9e78fade6aca1",
-        "zh-cn": "选择班次",
-        "en": "Select shift",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e99984e58aa0e7ad9be98089e69da1e4bbb6",
-        "zh-cn": "附加筛选条件",
-        "en": "Additional filters",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e99a90e8978fe88f9ce58d95",
-        "zh-cn": "隐藏菜单",
-        "en": "Hide menu",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e9a1b9e79baee7aea1e79086",
-        "zh-cn": "项目管理",
-        "en": "Project management",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e9a9bee9a9b6e59198e4bfa1e681af",
-        "zh-cn": "驾驶员信息",
-        "en": "Driver information",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e9bb98e8aea4e69da1e4bbb6",
-        "zh-cn": "默认条件",
-        "en": "Default condition",
-        "runtime": true
-      },
-      {
-        "key": "runtime.system.e9bb98e8aea4e78fade6aca1",
-        "zh-cn": "默认班次",
-        "en": "Default shift",
-        "runtime": true
-      }
-    ]
+    "apps": ["web"]
+  },
+  "runtime.system.5043e7abafe59cb0e59d80": {
+    "zh-cn": "PC端地址",
+    "en": "Desktop URL",
+    "runtime": true
+  },
+  "runtime.system.5043e7abafe698bee7a4ba": {
+    "zh-cn": "PC端显示",
+    "en": "Show on desktop",
+    "runtime": true
+  },
+  "runtime.system.e4b880e5afb9e4b880e585b3e88194e5ae9ee4bd93e4bfa1e681afe4b88de5ad98e59ca8": {
+    "zh-cn": "一对一关联实体信息不存在",
+    "en": "One-to-one related entity information was not found",
+    "runtime": true
+  },
+  "runtime.system.e4b88ae78fad": {
+    "zh-cn": "上班",
+    "en": "Clock in",
+    "runtime": true
+  },
+  "runtime.system.e4b88be78fad": {
+    "zh-cn": "下班",
+    "en": "Clock out",
+    "runtime": true
+  },
+  "runtime.system.e4b88ee68891e585b1e4baab": {
+    "zh-cn": "与我共享",
+    "en": "Shared by me",
+    "runtime": true
+  },
+  "runtime.system.e4b8a5e9878de8bf9fe588b0": {
+    "zh-cn": "严重迟到",
+    "en": "Severely late",
+    "runtime": true
+  },
+  "runtime.system.e4b8bbe994ae4944": {
+    "zh-cn": "主键ID",
+    "en": "Primary key ID",
+    "runtime": true
+  },
+  "runtime.system.e4bc81e4b89ae4bfa1e681af": {
+    "zh-cn": "企业信息",
+    "en": "Enterprise information",
+    "runtime": true
+  },
+  "runtime.system.e4bcaae588a0e999a4": {
+    "zh-cn": "伪删除",
+    "en": "Soft delete",
+    "runtime": true
+  },
+  "runtime.system.e4bd8ee4bba3e7a081e5ba94e794a8": {
+    "zh-cn": "低代码应用",
+    "en": "Low-code applications",
+    "runtime": true
+  },
+  "runtime.system.e4bfaee694b9e695b0e68dae": {
+    "zh-cn": "修改数据",
+    "en": "Edit data",
+    "runtime": true
+  },
+  "runtime.system.e4bfaee694b9e697b6e997b4": {
+    "zh-cn": "修改时间",
+    "en": "Updated time",
+    "runtime": true
+  },
+  "runtime.system.e4bfaee694b9e794a8e688b7": {
+    "zh-cn": "修改用户",
+    "en": "Updated by",
+    "runtime": true
+  },
+  "runtime.system.e4bfaee694b9e8818ce7baa7e7b1bbe588ab": {
+    "zh-cn": "修改职级类别",
+    "en": "Edit job rank category",
+    "runtime": true
+  },
+  "runtime.system.e58187e69c9fe7b1bbe59e8b": {
+    "zh-cn": "假期类型",
+    "en": "Leave types",
+    "runtime": true
+  },
+  "runtime.system.e58581e8aeb8e4b88ae4bca0e69687e4bbb6e7b1bbe59e8b": {
+    "zh-cn": "允许上传文件类型",
+    "en": "Allowed file types",
+    "runtime": true
+  },
+  "runtime.system.e585a8e983a8": {
+    "zh-cn": "全部",
+    "en": "All",
+    "runtime": true
+  },
+  "runtime.system.e585b3e88194e5ad97e585b8": {
+    "zh-cn": "关联字典",
+    "en": "Linked dictionary",
+    "runtime": true
+  },
+  "runtime.system.e585b3e88194e5ae9ee4bd93": {
+    "zh-cn": "关联实体",
+    "en": "Linked entity",
+    "runtime": true
+  },
+  "runtime.system.e585b3e88194e5ba94e794a8": {
+    "zh-cn": "关联应用",
+    "en": "Linked application",
+    "runtime": true
+  },
+  "runtime.system.e585b3e88194e794a8e8bda6e794b3e8afb7": {
+    "zh-cn": "关联用车申请",
+    "en": "Related vehicle request",
+    "runtime": true
+  },
+  "runtime.system.e585b3e88194e8bda6e8be86": {
+    "zh-cn": "关联车辆",
+    "en": "Related vehicle",
+    "runtime": true
+  },
+  "runtime.system.e585b3e88194e9a9bee9a9b6e59198": {
+    "zh-cn": "关联驾驶员",
+    "en": "Related driver",
+    "runtime": true
+  },
+  "runtime.system.e585b6e4bb96e69da1e4bbb6e8bf9be585a5e8afa5e6b581e7a88b": {
+    "zh-cn": "其他条件进入该流程",
+    "en": "Other conditions enter this workflow",
+    "runtime": true
+  },
+  "runtime.system.e585b6e4bb96e8a1a5e8b4b4": {
+    "zh-cn": "其他补贴",
+    "en": "Other allowance",
+    "runtime": true
+  },
+  "runtime.system.e5889be5bbbae697b6e997b4": {
+    "zh-cn": "创建时间",
+    "en": "Created time",
+    "runtime": true
+  },
+  "runtime.system.e5889be5bbbae794a8e688b7": {
+    "zh-cn": "创建用户",
+    "en": "Created by",
+    "runtime": true
+  },
+  "runtime.system.e588a0e999a4e697b6": {
+    "zh-cn": "删除时",
+    "en": "When deleted",
+    "runtime": true
+  },
+  "runtime.system.e5898de7abafe8b7afe5be84": {
+    "zh-cn": "前端路径",
+    "en": "Frontend route",
+    "runtime": true
+  },
+  "runtime.system.e58d8ae5a4a9e7bcbae58da1": {
+    "zh-cn": "半天缺卡",
+    "en": "Half-day missing clock-in",
+    "runtime": true
+  },
+  "runtime.system.e58d95e782b9e799bbe5bd95e5bc80e585b3": {
+    "zh-cn": "单点登录开关",
+    "en": "Single sign-on",
+    "runtime": true
+  },
+  "runtime.system.e58f91e8b5b7e88c83e59bb4": {
+    "zh-cn": "发起范围",
+    "en": "Sponsor scope",
+    "runtime": true
+  },
+  "runtime.system.e5908ce6ada5e697a5e7a88b": {
+    "zh-cn": "同步日程",
+    "en": "Sync to calendar",
+    "runtime": true
+  },
+  "runtime.system.e59198e5b7a5": {
+    "zh-cn": "员工",
+    "en": "Employee",
+    "runtime": true
+  },
+  "runtime.system.e59bbee6a087": {
+    "zh-cn": "图标",
+    "en": "Icon",
+    "runtime": true
+  },
+  "runtime.system.e59bbee8a1a8e58897e8a1a8": {
+    "zh-cn": "图表列表",
+    "en": "Chart list",
+    "runtime": true
+  },
+  "runtime.system.e59fbae69cace5b7a5e8b584": {
+    "zh-cn": "基本工资",
+    "en": "Base salary",
+    "runtime": true
+  },
+  "runtime.system.e59fbae7a180e8aebee7bdae": {
+    "zh-cn": "基础设置",
+    "en": "Basic settings",
+    "runtime": true
+  },
+  "runtime.system.e59fbae7a180e9858de7bdae": {
+    "zh-cn": "基础配置",
+    "en": "Basic configuration",
+    "runtime": true
+  },
+  "runtime.system.e5a487e6b3a8": {
+    "zh-cn": "备注",
+    "en": "Remarks",
+    "runtime": true
+  },
+  "runtime.system.e5a496e983a8415049": {
+    "zh-cn": "外部API",
+    "en": "External APIs",
+    "runtime": true
+  },
+  "runtime.system.e5a496e983a8e99b86e68890": {
+    "zh-cn": "外部集成",
+    "en": "External integrations",
+    "runtime": true
+  },
+  "runtime.system.e5ad97e6aeb5e58897e8a1a8": {
+    "zh-cn": "字段列表",
+    "en": "Field list",
+    "runtime": true
+  },
+  "runtime.system.e5ad97e6aeb5e5908de7a7b0": {
+    "zh-cn": "字段名称",
+    "en": "Field name",
+    "runtime": true
+  },
+  "runtime.system.e5ad97e6aeb5e7b1bbe59e8b": {
+    "zh-cn": "字段类型",
+    "en": "Field type",
+    "runtime": true
+  },
+  "runtime.system.e5ae9ae69c9fe689a7e8a18c": {
+    "zh-cn": "定期执行",
+    "en": "Scheduled execution",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e689b9e68f90e4baa4e697b6": {
+    "zh-cn": "审批提交时",
+    "en": "When submitted for approval",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e689b9e692a4e99480": {
+    "zh-cn": "审批撤销",
+    "en": "Approval revoked",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e689b9e7b1bbe59e8b": {
+    "zh-cn": "审批类型",
+    "en": "Approval type",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e689b9e8aeb0e5bd95": {
+    "zh-cn": "审批记录",
+    "en": "Approval records",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e689b9e8aebee7bdae": {
+    "zh-cn": "审批设置",
+    "en": "Approval settings",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e689b9e8afb4e6988e": {
+    "zh-cn": "审批说明",
+    "en": "Approval description",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e689b9e9809ae8bf87e697b6": {
+    "zh-cn": "审批通过时",
+    "en": "When approved",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e689b9e9a9b3e59b9e2fe692a4e59b9e": {
+    "zh-cn": "审批驳回/撤回",
+    "en": "Approval rejected or withdrawn",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e6a0b8e4baba": {
+    "zh-cn": "审核人",
+    "en": "Approver",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e6a0b8e9809ae8bf87": {
+    "zh-cn": "审核通过",
+    "en": "Approved",
+    "runtime": true
+  },
+  "runtime.system.e5aea1e6a0b8e9a9b3e59b9e": {
+    "zh-cn": "审核驳回",
+    "en": "Rejected",
+    "runtime": true
+  },
+  "runtime.system.e5aea2e688b7e7aea1e79086": {
+    "zh-cn": "客户管理",
+    "en": "Customer management",
+    "runtime": true
+  },
+  "runtime.system.e5b297e4bd8de5b7a5e8b584": {
+    "zh-cn": "岗位工资",
+    "en": "Position salary",
+    "runtime": true
+  },
+  "runtime.system.e5b7a5e4bd9ce697b6e995bf": {
+    "zh-cn": "工作时长",
+    "en": "Working duration",
+    "runtime": true
+  },
+  "runtime.system.e5b7a5e4bd9ce6b187e68aa5": {
+    "zh-cn": "工作汇报",
+    "en": "Work reports",
+    "runtime": true
+  },
+  "runtime.system.e5b7a5e4bd9ce6b581e7aea1e79086": {
+    "zh-cn": "工作流管理",
+    "en": "Workflow management",
+    "runtime": true
+  },
+  "runtime.system.e5b7a5e8b584e69da1e7bb93e69e844c697374": {
+    "zh-cn": "工资条结构List",
+    "en": "Salary structure list",
+    "runtime": true
+  },
+  "runtime.system.e5b7b2e58f96e6b688": {
+    "zh-cn": "已取消",
+    "en": "Cancelled",
+    "runtime": true
+  },
+  "runtime.system.e5b7b2e5ae8ce68890": {
+    "zh-cn": "已完成",
+    "en": "Completed",
+    "runtime": true
+  },
+  "runtime.system.e5b7b2e6b4bee8bda6": {
+    "zh-cn": "已派车",
+    "en": "Dispatched",
+    "runtime": true
+  },
+  "runtime.system.e5ba94e794a8e7aea1e79086": {
+    "zh-cn": "应用管理",
+    "en": "Application management",
+    "runtime": true
+  },
+  "runtime.system.e5bc95e794a8e5ae9ee4bd93": {
+    "zh-cn": "引用实体",
+    "en": "Referenced entity",
+    "runtime": true
+  },
+  "runtime.system.e5bd93e4b880e4b8aae58aa8e4bd9ce58f91e7949fe697b6": {
+    "zh-cn": "当一个动作发生时",
+    "en": "When an action occurs",
+    "runtime": true
+  },
+  "runtime.system.e5bd93e5898de8a7a6e58f91e599a8": {
+    "zh-cn": "当前触发器",
+    "en": "Current trigger",
+    "runtime": true
+  },
+  "runtime.system.e5be85e5aea1e6a0b8": {
+    "zh-cn": "待审核",
+    "en": "Pending review",
+    "runtime": true
+  },
+  "runtime.system.e5be85e6b4bee8bda6": {
+    "zh-cn": "待派车",
+    "en": "Pending dispatch",
+    "runtime": true
+  },
+  "runtime.system.e68891e585b1e4baabe79a84": {
+    "zh-cn": "我共享的",
+    "en": "Shared with me",
+    "runtime": true
+  },
+  "runtime.system.e68891e5889be5bbbae79a84": {
+    "zh-cn": "我创建的",
+    "en": "Created by me",
+    "runtime": true
+  },
+  "runtime.system.e68891e69fa5e79c8be79a84": {
+    "zh-cn": "我查看的",
+    "en": "Records I can view",
+    "runtime": true
+  },
+  "runtime.system.e68980e5b19ee794a8e688b7": {
+    "zh-cn": "所属用户",
+    "en": "Owner",
+    "runtime": true
+  },
+  "runtime.system.e68980e5b19ee983a8e997a8": {
+    "zh-cn": "所属部门",
+    "en": "Department",
+    "runtime": true
+  },
+  "runtime.system.e68993e58da1e4b8bae4b8a5e9878de8bf9fe588b0": {
+    "zh-cn": "打卡为严重迟到",
+    "en": "Clock-in is severely late",
+    "runtime": true
+  },
+  "runtime.system.e68993e58da1e4b8bae697a9e98080": {
+    "zh-cn": "打卡为早退",
+    "en": "Clock-in is early leave",
+    "runtime": true
+  },
+  "runtime.system.e68993e58da1e8aeb0e5bd95": {
+    "zh-cn": "打卡记录",
+    "en": "Clock-in records",
+    "runtime": true
+  },
+  "runtime.system.e689a7e8a18ce58aa8e4bd9c": {
+    "zh-cn": "执行动作",
+    "en": "Execution action",
+    "runtime": true
+  },
+  "runtime.system.e68a80e883bde8a1a5e8b4b4": {
+    "zh-cn": "技能补贴",
+    "en": "Skill allowance",
+    "runtime": true
+  },
+  "runtime.system.e68a84e98081e4baba": {
+    "zh-cn": "抄送人",
+    "en": "CC recipient",
+    "runtime": true
+  },
+  "runtime.system.e68aa5e8a1a8e7aea1e79086": {
+    "zh-cn": "报表管理",
+    "en": "Report management",
+    "runtime": true
+  },
+  "runtime.system.e68c87e5ae9ae4b8bbe7aea1e5aea1e689b9": {
+    "zh-cn": "指定主管审批",
+    "en": "Direct-supervisor approval",
+    "runtime": true
+  },
+  "runtime.system.e68c89e992aee4b88e415049e69d83e99990": {
+    "zh-cn": "按钮与API权限",
+    "en": "Button and API permissions",
+    "runtime": true
+  },
+  "runtime.system.e68e92e5ba8f": {
+    "zh-cn": "排序",
+    "en": "Sort",
+    "runtime": true
+  },
+  "runtime.system.e68e92e78fade7aea1e79086": {
+    "zh-cn": "排班管理",
+    "en": "Schedule management",
+    "runtime": true
+  },
+  "runtime.system.e694b6e8bda6e4baba": {
+    "zh-cn": "收车人",
+    "en": "Vehicle receiver",
+    "runtime": true
+  },
+  "runtime.system.e694b6e8bda6e697b6e997b4": {
+    "zh-cn": "收车时间",
+    "en": "Vehicle return time",
+    "runtime": true
+  },
+  "runtime.system.e695b0e68daee5ad97e585b8": {
+    "zh-cn": "数据字典",
+    "en": "Data dictionary",
+    "runtime": true
+  },
+  "runtime.system.e695b0e68daee69d83e99990": {
+    "zh-cn": "数据权限",
+    "en": "Data permissions",
+    "runtime": true
+  },
+  "runtime.system.e695b0e68daee79c8be69dbf": {
+    "zh-cn": "数据看板",
+    "en": "Dashboard",
+    "runtime": true
+  },
+  "runtime.system.e69687e4bbb6e4b88ae4bca0e9858de7bdae": {
+    "zh-cn": "文件上传配置",
+    "en": "File upload configuration",
+    "runtime": true
+  },
+  "runtime.system.e696b0e5a29ee8818ce7baa7": {
+    "zh-cn": "新增职级",
+    "en": "Add job rank",
+    "runtime": true
+  },
+  "runtime.system.e696b0e5bbbae697b6": {
+    "zh-cn": "新建时",
+    "en": "When created",
+    "runtime": true
+  },
+  "runtime.system.e696b0e5bbbae78fade6aca1": {
+    "zh-cn": "新建班次",
+    "en": "New shift",
+    "runtime": true
+  },
+  "runtime.system.e696b0e5bbbae8a7a6e58f91e599a8": {
+    "zh-cn": "新建触发器",
+    "en": "New trigger",
+    "runtime": true
+  },
+  "runtime.system.e697a5e58e86e8aebee7bdae": {
+    "zh-cn": "日历设置",
+    "en": "Calendar settings",
+    "runtime": true
+  },
+  "runtime.system.e697a5e7a88be7aea1e79086": {
+    "zh-cn": "日程管理",
+    "en": "Schedule management",
+    "runtime": true
+  },
+  "runtime.system.e697a9e98080": {
+    "zh-cn": "早退",
+    "en": "Early leave",
+    "runtime": true
+  },
+  "runtime.system.e698afe590a6e58fafe794a8": {
+    "zh-cn": "是否可用",
+    "en": "Available",
+    "runtime": true
+  },
+  "runtime.system.e698afe590a6e5bf85e5a1ab": {
+    "zh-cn": "是否必填",
+    "en": "Required",
+    "runtime": true
+  },
+  "runtime.system.e698bee7a4bae5908de7a7b0": {
+    "zh-cn": "显示名称",
+    "en": "Display name",
+    "runtime": true
+  },
+  "runtime.system.e698bee7a4bae788b6e5ad97e6aeb5": {
+    "zh-cn": "显示父字段",
+    "en": "Display parent field",
+    "runtime": true
+  },
+  "runtime.system.e69bb4e696b0e4ba8e": {
+    "zh-cn": "更新于",
+    "en": "Updated time",
+    "runtime": true
+  },
+  "runtime.system.e69bb4e696b0e697b6": {
+    "zh-cn": "更新时",
+    "en": "When updated",
+    "runtime": true
+  },
+  "runtime.system.e69d83e99990e695b0e68dae": {
+    "zh-cn": "权限数据",
+    "en": "Permission data",
+    "runtime": true
+  },
+  "runtime.system.e69d83e99990e7b1bbe59e8b": {
+    "zh-cn": "权限类型",
+    "en": "Permission type",
+    "runtime": true
+  },
+  "runtime.system.e69d83e99990e8aebee7bdae": {
+    "zh-cn": "权限设置",
+    "en": "Permission settings",
+    "runtime": true
+  },
+  "runtime.system.e69da1e4bbb631": {
+    "zh-cn": "条件1",
+    "en": "Condition 1",
+    "runtime": true
+  },
+  "runtime.system.e69da1e4bbb632": {
+    "zh-cn": "条件2",
+    "en": "Condition 2",
+    "runtime": true
+  },
+  "runtime.system.e69da1e4bbb633": {
+    "zh-cn": "条件3",
+    "en": "Condition 3",
+    "runtime": true
+  },
+  "runtime.system.e69fa5e79c8be78fade6aca1": {
+    "zh-cn": "查看班次",
+    "en": "View shift",
+    "runtime": true
+  },
+  "runtime.system.e6a087e9a298e5908de7a7b0": {
+    "zh-cn": "标题名称",
+    "en": "Title",
+    "runtime": true
+  },
+  "runtime.system.e6a8a1e59d97": {
+    "zh-cn": "模块",
+    "en": "Module",
+    "runtime": true
+  },
+  "runtime.system.e6af8fe697a5e7bb9fe8aea1": {
+    "zh-cn": "每日统计",
+    "en": "Daily statistics",
+    "runtime": true
+  },
+  "runtime.system.e6af8fe69c88e7bb9fe8aea1": {
+    "zh-cn": "每月统计",
+    "en": "Monthly statistics",
+    "runtime": true
+  },
+  "runtime.system.e6b187e68aa5e8aea1e58892e5908ce6ada5e887b3e68891e79a84e697a5e7a88b": {
+    "zh-cn": "汇报计划同步至我的日程",
+    "en": "Sync report plans to my calendar",
+    "runtime": true
+  },
+  "runtime.system.e6b4bee8bda6e4baba": {
+    "zh-cn": "派车人",
+    "en": "Dispatcher",
+    "runtime": true
+  },
+  "runtime.system.e6b4bee8bda6e697b6e997b4": {
+    "zh-cn": "派车时间",
+    "en": "Dispatch time",
+    "runtime": true
+  },
+  "runtime.system.e6b4bee8bda6e78ab6e68081": {
+    "zh-cn": "派车状态",
+    "en": "Dispatch status",
+    "runtime": true
+  },
+  "runtime.system.e6b4bee8bda6e8aeb0e5bd95": {
+    "zh-cn": "派车记录",
+    "en": "Dispatch records",
+    "runtime": true
+  },
+  "runtime.system.e6b4bee8bda6e8aeb0e5bd954c697374": {
+    "zh-cn": "派车记录List",
+    "en": "Dispatch record list",
+    "runtime": true
+  },
+  "runtime.system.e6b4bee8bda6e8afb4e6988e": {
+    "zh-cn": "派车说明",
+    "en": "Dispatch instructions",
+    "runtime": true
+  },
+  "runtime.system.e6b581e7a88be5aea1e689b9": {
+    "zh-cn": "流程审批",
+    "en": "Workflow approval",
+    "runtime": true
+  },
+  "runtime.system.e6b581e7a88be8aebee8aea1": {
+    "zh-cn": "流程设计",
+    "en": "Workflow design",
+    "runtime": true
+  },
+  "runtime.system.e6b581e7a88be9858de7bdae": {
+    "zh-cn": "流程配置",
+    "en": "Process configuration",
+    "runtime": true
+  },
+  "runtime.system.e6b688e681afe4b8ade5bf83": {
+    "zh-cn": "消息中心",
+    "en": "Message center",
+    "runtime": true
+  },
+  "runtime.system.e78ab6e68081": {
+    "zh-cn": "状态",
+    "en": "Status",
+    "runtime": true
+  },
+  "runtime.system.e78fade6aca1e5908de7a7b0": {
+    "zh-cn": "班次名称",
+    "en": "Shift name",
+    "runtime": true
+  },
+  "runtime.system.e78fade6aca1e8aebee7bdae": {
+    "zh-cn": "班次设置",
+    "en": "Shift settings",
+    "runtime": true
+  },
+  "runtime.system.e794a8e8bda6e794b3e8afb7": {
+    "zh-cn": "用车申请",
+    "en": "Vehicle request",
+    "runtime": true
+  },
+  "runtime.system.e794b1e794b3e8afb7e4babae98089e68ba9": {
+    "zh-cn": "由申请人选择",
+    "en": "Selected by applicant",
+    "runtime": true
+  },
+  "runtime.system.e794b3e8afb7e4baba": {
+    "zh-cn": "申请人",
+    "en": "Applicant",
+    "runtime": true
+  },
+  "runtime.system.e794b3e8afb7e5aea1e689b9": {
+    "zh-cn": "申请审批",
+    "en": "Approval requests",
+    "runtime": true
+  },
+  "runtime.system.e799bde5908de58d95e8aebee7bdae": {
+    "zh-cn": "白名单设置",
+    "en": "Whitelist settings",
+    "runtime": true
+  },
+  "runtime.system.e7a7bbe58aa8e7abafe59cb0e59d80": {
+    "zh-cn": "移动端地址",
+    "en": "Mobile URL",
+    "runtime": true
+  },
+  "runtime.system.e7a7bbe58aa8e7abafe698bee7a4ba": {
+    "zh-cn": "移动端显示",
+    "en": "Show on mobile",
+    "runtime": true
+  },
+  "runtime.system.e7a7bbe58aa8e7abafe8b7afe5be84": {
+    "zh-cn": "移动端路径",
+    "en": "Mobile route",
+    "runtime": true
+  },
+  "runtime.system.e7ab99e782b9e5bc80e590af": {
+    "zh-cn": "站点开启",
+    "en": "Enable site",
+    "runtime": true
+  },
+  "runtime.system.e7aea1e79086e6b4a5e8b4b4": {
+    "zh-cn": "管理津贴",
+    "en": "Management allowance",
+    "runtime": true
+  },
+  "runtime.system.e7b3bbe7bb9fe8aebee7bdae": {
+    "zh-cn": "系统设置",
+    "en": "System settings",
+    "runtime": true
+  },
+  "runtime.system.e7b3bbe7bb9fe993bee68ea5": {
+    "zh-cn": "系统链接",
+    "en": "System link",
+    "runtime": true
+  },
+  "runtime.system.e7bba9e69588e5b7a5e8b584": {
+    "zh-cn": "绩效工资",
+    "en": "Performance pay",
+    "runtime": true
+  },
+  "runtime.system.e7bba9e69588e7aea1e79086": {
+    "zh-cn": "绩效管理",
+    "en": "Performance management",
+    "runtime": true
+  },
+  "runtime.system.e7bc96e8be91e8818ce7baa7": {
+    "zh-cn": "编辑职级",
+    "en": "Edit job rank",
+    "runtime": true
+  },
+  "runtime.system.e7bcbae58da1": {
+    "zh-cn": "缺卡",
+    "en": "Missing clock-in",
+    "runtime": true
+  },
+  "runtime.system.e7bd91e7ab99e5908de7a7b0": {
+    "zh-cn": "网站名称",
+    "en": "Website name",
+    "runtime": true
+  },
+  "runtime.system.e7bd91e7ab99e59cb0e59d80": {
+    "zh-cn": "网站地址",
+    "en": "Website URL",
+    "runtime": true
+  },
+  "runtime.system.e7bd91e7ab99e5a487e6a188e58fb7": {
+    "zh-cn": "网站备案号",
+    "en": "Website registration number",
+    "runtime": true
+  },
+  "runtime.system.e7bd91e7ab99e88194e7b3bbe794b5e8af9d": {
+    "zh-cn": "网站联系电话",
+    "en": "Website contact number",
+    "runtime": true
+  },
+  "runtime.system.e88083e58ba4e697b6e997b4": {
+    "zh-cn": "考勤时间",
+    "en": "Attendance time",
+    "runtime": true
+  },
+  "runtime.system.e88083e58ba4e78fade6aca1": {
+    "zh-cn": "考勤班次",
+    "en": "Attendance shift",
+    "runtime": true
+  },
+  "runtime.system.e88083e58ba4e7aea1e79086": {
+    "zh-cn": "考勤管理",
+    "en": "Attendance management",
+    "runtime": true
+  },
+  "runtime.system.e88083e58ba4e7bb84": {
+    "zh-cn": "考勤组",
+    "en": "Attendance group",
+    "runtime": true
+  },
+  "runtime.system.e88083e58ba4e7bb84e58897e8a1a8": {
+    "zh-cn": "考勤组列表",
+    "en": "Attendance group list",
+    "runtime": true
+  },
+  "runtime.system.e88083e58ba4e7bb84e68890e59198": {
+    "zh-cn": "考勤组成员",
+    "en": "Attendance group members",
+    "runtime": true
+  },
+  "runtime.system.e88083e58ba4e8aebee7bdae": {
+    "zh-cn": "考勤设置",
+    "en": "Attendance settings",
+    "runtime": true
+  },
+  "runtime.system.e8818ce7baa7e588abe5908d": {
+    "zh-cn": "职级别名",
+    "en": "Job rank alias",
+    "runtime": true
+  },
+  "runtime.system.e8818ce7baa7e5908de7a7b0": {
+    "zh-cn": "职级名称",
+    "en": "Job rank name",
+    "runtime": true
+  },
+  "runtime.system.e8818ce7baa7e68f8fe8bfb0": {
+    "zh-cn": "职级描述",
+    "en": "Job rank description",
+    "runtime": true
+  },
+  "runtime.system.e8818ce7baa7e7b1bbe588ab": {
+    "zh-cn": "职级类别",
+    "en": "Job rank category",
+    "runtime": true
+  },
+  "runtime.system.e887aae58aa8e696b0e5a29e": {
+    "zh-cn": "自动新增",
+    "en": "Auto-create",
+    "runtime": true
+  },
+  "runtime.system.e887aae5ae9ae4b989e983a8e997a8": {
+    "zh-cn": "自定义部门",
+    "en": "Custom departments",
+    "runtime": true
+  },
+  "runtime.system.e88f9ce58d95e5908de7a7b0": {
+    "zh-cn": "菜单名称",
+    "en": "Menu name",
+    "runtime": true
+  },
+  "runtime.system.e88f9ce58d95e59bbee6a087": {
+    "zh-cn": "菜单图标",
+    "en": "Menu icon",
+    "runtime": true
+  },
+  "runtime.system.e88f9ce58d95e69d83e99990": {
+    "zh-cn": "菜单权限",
+    "en": "Menu permissions",
+    "runtime": true
+  },
+  "runtime.system.e88f9ce58d95e7aea1e79086": {
+    "zh-cn": "菜单管理",
+    "en": "Menu management",
+    "runtime": true
+  },
+  "runtime.system.e896aae8b584e7bb93e69e84": {
+    "zh-cn": "薪资结构",
+    "en": "Salary structure",
+    "runtime": true
+  },
+  "runtime.system.e8a784e58899e9858de7bdae": {
+    "zh-cn": "规则配置",
+    "en": "Rule configuration",
+    "runtime": true
+  },
+  "runtime.system.e8a792e889b2e5908de7a7b0": {
+    "zh-cn": "角色名称",
+    "en": "Role name",
+    "runtime": true
+  },
+  "runtime.system.e8a792e889b2e69d83e99990": {
+    "zh-cn": "角色权限",
+    "en": "Role permissions",
+    "runtime": true
+  },
+  "runtime.system.e8a7a6e58f91e58aa8e4bd9c": {
+    "zh-cn": "触发动作",
+    "en": "Trigger action",
+    "runtime": true
+  },
+  "runtime.system.e8a7a6e58f91e599a8e58897e8a1a8": {
+    "zh-cn": "触发器列表",
+    "en": "Trigger list",
+    "runtime": true
+  },
+  "runtime.system.e8a7a6e58f91e599a8e5908de7a7b0": {
+    "zh-cn": "触发器名称",
+    "en": "Trigger name",
+    "runtime": true
+  },
+  "runtime.system.e8a7a6e58f91e599a8e697a5e5bf97": {
+    "zh-cn": "触发器日志",
+    "en": "Trigger logs",
+    "runtime": true
+  },
+  "runtime.system.e8a7a6e58f91e599a8e7aea1e79086": {
+    "zh-cn": "触发器管理",
+    "en": "Trigger management",
+    "runtime": true
+  },
+  "runtime.system.e8a7a6e58f91e599a8e7b1bbe59e8b": {
+    "zh-cn": "触发器类型",
+    "en": "Trigger type",
+    "runtime": true
+  },
+  "runtime.system.e8aeb0e5bd95": {
+    "zh-cn": "记录",
+    "en": "Records",
+    "runtime": true
+  },
+  "runtime.system.e8aebee7bdaee69da1e4bbb6": {
+    "zh-cn": "设置条件",
+    "en": "Set conditions",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e8be93e585a5e585b3e994aee5ad97": {
+    "zh-cn": "请输入关键字",
+    "en": "Enter a keyword",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e8be93e585a5e694b6e8bda6e4babae5a793e5908d": {
+    "zh-cn": "请输入收车人姓名",
+    "en": "Enter the vehicle receiver name",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e8be93e585a5e6b4bee8bda6e4babae5a793e5908d": {
+    "zh-cn": "请输入派车人姓名",
+    "en": "Enter the dispatcher name",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e8be93e585a5e6b4bee8bda6e8afb4e6988e": {
+    "zh-cn": "请输入派车说明",
+    "en": "Enter dispatch instructions",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e8be93e585a5e8818ce7baa7e68f8fe8bfb0": {
+    "zh-cn": "请输入职级描述",
+    "en": "Enter a job rank description",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e98089e68ba9e585b3e88194e8bda6e8be86": {
+    "zh-cn": "请选择关联车辆",
+    "en": "Select a related vehicle",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e98089e68ba9e585b3e88194e9a9bee9a9b6e59198": {
+    "zh-cn": "请选择关联驾驶员",
+    "en": "Select a related driver",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e98089e68ba9e5ae9ee4bd93": {
+    "zh-cn": "请选择实体",
+    "en": "Select an entity",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e98089e68ba9e694b6e8bda6e697b6e997b4": {
+    "zh-cn": "请选择收车时间",
+    "en": "Select vehicle return time",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e98089e68ba9e6b4bee8bda6e697b6e997b4": {
+    "zh-cn": "请选择派车时间",
+    "en": "Select dispatch time",
+    "runtime": true
+  },
+  "runtime.system.e8afb7e98089e68ba9e8818ce7baa7e7b1bbe588ab": {
+    "zh-cn": "请选择职级类别",
+    "en": "Select a job rank category",
+    "runtime": true
+  },
+  "runtime.system.e8b083e896aae5a487e6b3a8": {
+    "zh-cn": "调薪备注",
+    "en": "Salary adjustment notes",
+    "runtime": true
+  },
+  "runtime.system.e8b7afe794b1e7b1bbe59e8b": {
+    "zh-cn": "路由类型",
+    "en": "Route type",
+    "runtime": true
+  },
+  "runtime.system.e8b7afe794b1e8b7afe5be84": {
+    "zh-cn": "路由路径",
+    "en": "Route path",
+    "runtime": true
+  },
+  "runtime.system.e8bda6e8be86e59fbae7a180e4bfa1e681af": {
+    "zh-cn": "车辆基础信息",
+    "en": "Vehicle information",
+    "runtime": true
+  },
+  "runtime.system.e8bf9fe588b0": {
+    "zh-cn": "迟到",
+    "en": "Late",
+    "runtime": true
+  },
+  "runtime.system.e98082e794a8e4ba8ee68980e69c89e59198e5b7a5e79a84e794a8e8bda6e794b3e8afb7e38082": {
+    "zh-cn": "适用于所有员工的用车申请。",
+    "en": "Vehicle requests are available to all employees.",
+    "runtime": true
+  },
+  "runtime.system.e98089e68ba9e4b88ae7baa7e88f9ce58d95": {
+    "zh-cn": "选择上级菜单",
+    "en": "Select parent menu",
+    "runtime": true
+  },
+  "runtime.system.e98089e68ba9e78fade6aca1": {
+    "zh-cn": "选择班次",
+    "en": "Select shift",
+    "runtime": true
+  },
+  "runtime.system.e99984e58aa0e7ad9be98089e69da1e4bbb6": {
+    "zh-cn": "附加筛选条件",
+    "en": "Additional filters",
+    "runtime": true
+  },
+  "runtime.system.e99a90e8978fe88f9ce58d95": {
+    "zh-cn": "隐藏菜单",
+    "en": "Hide menu",
+    "runtime": true
+  },
+  "runtime.system.e9a1b9e79baee7aea1e79086": {
+    "zh-cn": "项目管理",
+    "en": "Project management",
+    "runtime": true
+  },
+  "runtime.system.e9a9bee9a9b6e59198e4bfa1e681af": {
+    "zh-cn": "驾驶员信息",
+    "en": "Driver information",
+    "runtime": true
+  },
+  "runtime.system.e9bb98e8aea4e69da1e4bbb6": {
+    "zh-cn": "默认条件",
+    "en": "Default condition",
+    "runtime": true
+  },
+  "runtime.system.e9bb98e8aea4e78fade6aca1": {
+    "zh-cn": "默认班次",
+    "en": "Default shift",
+    "runtime": true
   },
   "runtime.web.activityOpportunityCreated": {
     "zh-cn": "新添加商机",
@@ -29318,7 +29109,7 @@
   },
   "runtime.web.trigger.autoCreate": {
     "zh-cn": "自动新增",
-    "en": "Auto create",
+    "en": "Auto-create",
     "runtime": true,
     "apps": [
       "web"
@@ -58526,7 +58317,7 @@
   },
   "sql.dict_data.name.f2e2d8993f": {
     "zh-cn": "待派车",
-    "en": "Awaiting dispatch",
+    "en": "Pending dispatch",
     "runtime": true,
     "apps": [
       "web"
@@ -59598,7 +59389,7 @@
   },
   "sql.system_crud_field.comment.3d86b5c442": {
     "zh-cn": "关联用车申请",
-    "en": "Related vehicle-use request",
+    "en": "Related vehicle request",
     "runtime": true,
     "apps": [
       "web"

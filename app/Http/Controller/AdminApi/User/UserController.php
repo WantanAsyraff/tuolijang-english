@@ -73,7 +73,7 @@ class UserController extends AuthController
         $authUser = auth('admin')->user();
         $adminId  = (int) auth('admin')->id();
         $userId   = $authUser->is_admin ? 'all' : $adminId;
-        $cacheKey = 'user:menus:' . $this->entId . ':' . $userId . ':' . $adminId;
+        $cacheKey = 'user:menus:' . $this->entId . ':' . $userId . ':' . $adminId . ':' . app()->getLocale();
         $data     = Cache::tags([CacheEnum::TAG_ROLE])->remember($cacheKey, (int) sys_config('system_cache_ttl', 3600), function () use ($menusService, $modulePermissionService, $userId, $adminId) {
             $menu = $menusService->getUserMenus($userId);
             if (! $menu) {
