@@ -89,9 +89,16 @@ function runtimeSource(typescript = false) {
     source = source
       .replace("function createLocalizationRuntime(systemTextEn)", "function createLocalizationRuntime(systemTextEn: Readonly<Record<string, string>>)")
       .replace("function normalizeLocale(language)", "function normalizeLocale(language: unknown)")
+      .replace("function decodeDisplayText(value)", "function decodeDisplayText(value: unknown)")
       .replace("function containsHan(value)", "function containsHan(value: unknown)")
       .replace("function translateExact(value)", "function translateExact(value: unknown)")
       .replace("function translateParameterized(value)", "function translateParameterized(value: unknown)")
+      .replace("const translateLabel = (label) =>", "const translateLabel = (label: unknown) =>")
+      .replace(
+        "const rowMessages = [",
+        "const rowMessages: Array<[RegExp, (match: RegExpMatchArray) => string]> = [",
+      )
+      .replace("const translateAreas = (areas) =>", "const translateAreas = (areas: unknown) =>")
       .replace(
         "function translateSystemTextValue(value, options = {})",
         "function translateSystemTextValue(value: unknown, options: { locale?: unknown; englishValue?: unknown } = {})",

@@ -1,9 +1,11 @@
 import store from '@/store'
 import router, { getRouterMenus } from '@/router'
 import { roterPre } from '@/settings'
+import { getLanguage } from '@/lang'
 import { getStorageJson, removeStorageJson, setStorageJson } from '@/utils/storage'
 
 const MENU_CACHE_KEY = 'permissionMenuCache'
+const MENU_CACHE_LOCALES = ['zh-cn', 'en']
 const MENU_SYNC_KEY = 'permissionMenuCacheSyncAt'
 const MENU_CACHE_MAX_AGE = 12 * 60 * 60 * 1000
 let refreshTask = null
@@ -23,12 +25,17 @@ function getCurrentEnterprise() {
   return store.getters.enterprise || getStorageJson('enterprise', {})
 }
 
+export function getMenuCacheKey(language = getLanguage()) {
+  return MENU_CACHE_KEY + ':' + language
+}
+
 function getCacheOwner() {
   const userInfo = getCurrentUserInfo() || {}
   const enterprise = getCurrentEnterprise() || {}
   return {
     userId: userInfo.id || userInfo.uid || '',
-    entId: enterprise.entid || enterprise.id || 1
+    entId: enterprise.entid || enterprise.id || 1,
+    locale: getLanguage()
   }
 }
 
@@ -37,7 +44,9 @@ function isSameOwner(cache) {
   if (!cache || !cache.userId) {
     return false
   }
-  return String(cache.userId) === String(owner.userId) && String(cache.entId || 1) === String(owner.entId || 1)
+  return String(cache.userId) === String(owner.userId)
+    && String(cache.entId || 1) === String(owner.entId || 1)
+    && cache.locale === owner.locale
 }
 
 export function saveMenuCache(menu, permissions) {
@@ -46,16 +55,22 @@ export function saveMenuCache(menu, permissions) {
     return
   }
 
-  setStorageJson(MENU_CACHE_KEY, {
+  setStorageJson(getMenuCacheKey(owner.locale), {
     ...owner,
     menu,
     permissions,
     cachedAt: Date.now()
   })
+  removeStorageJson(MENU_CACHE_KEY)
 }
 
-export function clearMenuCache() {
+export function clearMenuCache(language) {
+  if (language) {
+    removeStorageJson(getMenuCacheKey(language))
+    return
+  }
   removeStorageJson(MENU_CACHE_KEY)
+  MENU_CACHE_LOCALES.forEach((locale) => removeStorageJson(getMenuCacheKey(locale)))
 }
 
 export function applyMenuState(menu, permissions = []) {
@@ -68,12 +83,13 @@ export function applyMenuState(menu, permissions = []) {
 }
 
 export function restoreMenuFromCache() {
-  const cache = getStorageJson(MENU_CACHE_KEY)
+  const language = getLanguage()
+  const cache = getStorageJson(getMenuCacheKey(language))
   if (!isSameOwner(cache)) {
     return false
   }
   if (!cache.cachedAt || Date.now() - cache.cachedAt > MENU_CACHE_MAX_AGE) {
-    clearMenuCache()
+    clearMenuCache(language)
     return false
   }
   if (!Array.isArray(cache.menu) || cache.menu.length <= 0) {

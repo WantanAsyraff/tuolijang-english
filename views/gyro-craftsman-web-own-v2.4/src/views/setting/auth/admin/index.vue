@@ -32,7 +32,7 @@
             @click="selectRole(item)"
           >
             <div class="role-item-main">
-              <div class="role-name">{{ $(item.role_name, item.role_name_en) }}</div>
+              <div class="role-name">{{ roleDisplayName(item) }}</div>
               <div class="role-meta">
                 <span
                   class="role-status-dot"
@@ -64,7 +64,7 @@
         <div class="role-detail-content">
           <div class="readonly-form-row">
             <span class="readonly-form-label">{{ $("ui.settingAuthAdminIndexRoleName") }}</span>
-            <span class="readonly-form-value">{{ $(currentRole.role_name, currentRole.role_name_en) || '--' }}</span>
+            <span class="readonly-form-value">{{ roleDisplayName(currentRole) || '--' }}</span>
           </div>
 
           <el-tabs v-model="activeDetailTab" type="border-card" class="role-detail-tabs">
@@ -507,6 +507,10 @@ export default {
     },
     getMemberCount(item) {
       return Number(item && item.user_count) || 0
+    },
+    roleDisplayName(role) {
+      if (!role) return ''
+      return Number(role.id) === 1 ? this.$(role.role_name, role.role_name_en) : role.role_name
     },
     getStatusText(status) {
       if (status === undefined || status === null) return '--'

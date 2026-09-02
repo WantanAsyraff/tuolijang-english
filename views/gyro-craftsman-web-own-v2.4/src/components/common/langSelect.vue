@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { getMenus } from '@/utils/auth'
+
 export default {
   computed: {
     language() {
@@ -37,10 +39,11 @@ export default {
     toggleLanguage() {
       this.handleSetLanguage(this.targetLanguage, true)
     },
-    handleSetLanguage(lang, force = false) {
+    async handleSetLanguage(lang, force = false) {
       if (!force && lang === this.language) return
-      this.$store.dispatch('app/setLanguage', lang)
+      await this.$store.dispatch('app/setLanguage', lang)
       this.clearLanguageSensitiveCache()
+      await getMenus()
     },
     clearLanguageSensitiveCache() {
       localStorage.removeItem('menuTabData')

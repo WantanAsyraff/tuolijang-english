@@ -633,7 +633,7 @@
   },
   "mobile.ui.attendanceCardListFinishWork": {
     "zh-cn": "下班",
-    "en": "Finish work"
+    "en": "Clock out"
   },
   "mobile.ui.attendanceCardListNoOffSiteClockStatistics": {
     "zh-cn": "暂无外勤卡统计数据～",
@@ -645,7 +645,7 @@
   },
   "mobile.ui.attendanceCardListStartWork": {
     "zh-cn": "上班",
-    "en": "Start work"
+    "en": "Clock in"
   },
   "mobile.ui.attendanceCardListViewDetails": {
     "zh-cn": "查看明细",
