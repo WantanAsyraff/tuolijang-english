@@ -147,7 +147,7 @@ export default {
     },
     // 删除
     handleDelete(id) {
-      this.$modalSure('您确定要删除此条数据吗').then(() => {
+      this.$modalSure('confirm.deleteRecordItem').then(() => {
         deletePromotionApi(id).then((res) => {
           this.getList(1)
         })

@@ -118,7 +118,7 @@ export default {
       })
     },
     handleDelete(row) {
-      this.$modalSure('你确定要删除这条分类吗').then(() => {
+      this.$modalSure('confirm.deleteCategoryItem').then(() => {
         enterprisePayTypeDeleteApi(row.id).then((res) => {
           if (this.tableData.length == 1) {
             this.getTableData(1)

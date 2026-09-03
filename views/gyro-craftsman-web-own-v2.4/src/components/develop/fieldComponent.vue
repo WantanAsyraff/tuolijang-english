@@ -5,7 +5,7 @@
     <el-select v-if="item.form_value === 'select' && selectList.includes(item.type)" v-model="item.option"
         size="small" :multiple="item.field === 'repeat' ? false : true" style="width: 100%" filterable>
         <el-option v-for="items in item.options" :key="items.value" :value="items.value"
-            :label="$(items.label || items.name, items.label_en || items.name_en)"></el-option>
+            :label="optionLabel(items)"></el-option>
     </el-select>
     <el-select style="width: 100%" v-model="item.option" v-if="item.form_value === 'switch'" size="small">
         <el-option value="1" :label="$('ui.developFieldComponentYes')"></el-option>
@@ -48,7 +48,7 @@
         :options="frameTreeData" :props="{ checkStrictly: true, emitPath: false, value: 'id', label: 'label' }"
         :placeholder="$('ui.fdExamineFormBoxManagementScope')" filterable clearable :show-all-levels="false"></el-cascader>
     <!-- 级联选择省市区 -->
-    <el-cascader v-model="item.option" :options="item.options || []" :props="{
+    <el-cascader v-model="item.option" :options="getOptions()" :props="{
         checkStrictly: true,
         label: 'name',
         value: 'value',
@@ -89,7 +89,7 @@
         @getSelection="getSelection($event, item)"></select-one>
 
     <!-- 选择标签 -->
-    <select-label v-if="item.type == 'tag'" :list="item.options || []" :value="item.optionsList || []"
+    <select-label v-if="item.type == 'tag'" :list="getOptions()" :value="item.optionsList || []"
         style="width: 100%" :props="{ children: 'children', label: 'name' }"
         @handleLabelConf="handleLabelConf($event)"></select-label>
 
@@ -105,6 +105,7 @@
 </div>
 </template>
 <script>
+import { dictionaryDisplayLabel, hasDictionaryOwnership, rawDictionaryLabel } from '@/lang/dictionary-label'
 export default {
     name: "FieldComponent",
     components: {
@@ -133,11 +134,18 @@ export default {
         }
     },
     methods: {
+        optionLabel(entry) {
+            const key = entry && entry.label !== undefined ? 'label' : 'name'
+            const raw = rawDictionaryLabel(entry, key)
+            if (hasDictionaryOwnership(entry)) return dictionaryDisplayLabel(entry, this.$, key)
+            if (Number(this.item.data_type) === 1) return raw
+            return this.$(raw, entry && (entry.label_en || entry.name_en))
+        },
         getOptions() {
             const localizeOptions = (options) => Array.isArray(options) ? options.map((option) => ({
                 ...option,
-                label: option.label == null ? option.label : this.$(option.label, option.label_en),
-                name: option.name == null ? option.name : this.$(option.name, option.name_en),
+                label: option.label == null ? option.label : this.optionLabel(option),
+                name: option.name == null ? option.name : this.optionLabel(option),
                 children: localizeOptions(option.children)
             })) : [];
             return localizeOptions(this.item.options);

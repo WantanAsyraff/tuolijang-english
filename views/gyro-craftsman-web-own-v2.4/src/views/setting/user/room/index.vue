@@ -220,7 +220,7 @@ export default {
     },
 
     unbindWork() {
-      this.$modalSure('您确定要解绑企业微信吗？').then(() => {
+      this.$modalSure('confirm.unbindWeCom').then(() => {
         workUnbinding().then(() => {
           this.getInfo()
         })
@@ -253,7 +253,7 @@ export default {
       })
     },
     refreshMcpKey() {
-      this.$modalSure('更新后旧McpKey将失效，确定更新吗？').then(() => {
+      this.$modalSure('confirm.rotateMcpKey').then(() => {
         updateMcpKeyApi().then((res) => {
           this.$set(this.ruleForm, 'mcpKey', res.data.mcpKey)
         })

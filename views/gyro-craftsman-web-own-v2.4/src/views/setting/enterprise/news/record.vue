@@ -19,9 +19,13 @@
         </oaFromBox>
         <div class="table-box">
           <el-table ref="table" :data="tableData" :height="tableHeight">
-            <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip />
+            <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip>
+              <template slot-scope="scope">{{ localizedNoticeText(scope.row.title) }}</template>
+            </el-table-column>
             <el-table-column prop="user.name" :label="$('ui.settingEnterpriseNewsRecordRecipients')" min-width="100" />
-            <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip />
+            <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip>
+              <template slot-scope="scope">{{ localizedNoticeText(scope.row.message) }}</template>
+            </el-table-column>
             <el-table-column prop="cate_name" :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" show-overflow-tooltip >
           <template slot-scope="scope">{{ $(scope.row.cate_name, scope.row.cate_name_en) }}</template>
         </el-table-column>
@@ -115,6 +119,9 @@ export default {
     this.getTableData()
   },
   methods: {
+    localizedNoticeText(value) {
+      return $(value)
+    },
     // 获取列表
     getTableData() {
       getCompanyMessageApi(this.where).then((res) => {

@@ -229,7 +229,7 @@ export default {
 
     // 删除图表
     deleteFn(row) {
-      this.$modalSure('您确定要删除此看板吗').then(() => {
+      this.$modalSure('confirm.deleteDashboard').then(() => {
         dashboardDelApi(row.id).then((res) => {
           let totalPage = Math.ceil((this.total - 1) / this.where.limit)
           let currentPage = this.where.page > totalPage ? totalPage : this.where.page

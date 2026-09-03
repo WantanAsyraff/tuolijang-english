@@ -29,7 +29,7 @@
 
                 <el-form-item :label='$("legacyScript.linkedDictionary")' prop="data_dict_id" v-if="form.data_type == '0'">
                     <el-select v-model="form.data_dict_id" :placeholder='$("legacyScript.searchForAndSelectADataDictionary")' size="small" style="width: 100%;">
-                        <el-option v-for="item in dictListData" :key="item.id" :label="item.name" :value="item.id" />
+                        <el-option v-for="item in dictListData" :key="item.id" :label="dictionaryLabel(item)" :value="item.id" />
                     </el-select>
                 </el-form-item>
 
@@ -72,6 +72,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { pinyin } from 'pinyin-pro'
 import oaDialog from '@/components/form-common/dialog-form.vue'
 import checkboxDialog from '@/components/develop/checkboxDialog'
@@ -203,6 +204,9 @@ export default {
         }
     },
     methods: {
+        dictionaryLabel(entry) {
+            return dictionaryDisplayLabel(entry, this.$)
+        },
         openBox(data) {
             if (data) {
                 for (let key in data) {

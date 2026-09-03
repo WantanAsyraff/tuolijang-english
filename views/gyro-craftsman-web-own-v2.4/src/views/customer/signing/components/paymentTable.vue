@@ -205,7 +205,7 @@ export default {
 
     // 删除
     deleteFn(row, index) {
-      this.$modalSure('确认移除此关联订单吗').then(() => {
+      this.$modalSure('confirm.removeLinkedOrder').then(() => {
         let ids = []
         this.table.splice(index, 1)
 

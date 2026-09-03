@@ -115,7 +115,7 @@ export default {
     },
     // 删除部门
     async hanleDelete(data) {
-      await this.$modalSure('确定删除该部门吗')
+      await this.$modalSure('confirm.deleteDepartment')
       await configFrameDeleteApi(data.value)
       this.$bus.$emit('getList')
     }

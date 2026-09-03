@@ -297,7 +297,7 @@ export default {
     },
 
     async handleDelete(id) {
-      await this.$modalSure('你确定要删除这条内容吗')
+      await this.$modalSure('confirm.deleteContent')
       await storageDeleteApi(id)
       this.getTableData()
     },

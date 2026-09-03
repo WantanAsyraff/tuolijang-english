@@ -199,7 +199,7 @@ export default {
 
     // 删除附件
     handleFileDelete(row, index) {
-      this.$modalSure('确定要删除此数据').then(() => {
+      this.$modalSure('confirm.deleteThisDataShort').then(() => {
         programFileDelApi(row.id).then((res) => {
           this.fileData.splice(index, 1)
           if (this.where.page > 1 && this.fileData.length <= 0) {

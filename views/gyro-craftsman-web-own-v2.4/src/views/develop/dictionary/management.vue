@@ -31,7 +31,9 @@
           :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
         >
           <el-table-column type="selection" width="55" v-if="is_Show !== 1"> </el-table-column>
-          <el-table-column prop="name" :label="$('ui.developDictionaryManagementDataName')" show-overflow-tooltip> </el-table-column>
+          <el-table-column prop="name" :label="$('ui.developDictionaryManagementDataName')" show-overflow-tooltip>
+            <template slot-scope="scope">{{ dictionaryLabel(scope.row) }}</template>
+          </el-table-column>
           <el-table-column prop="value" :label="$('ui.customerSetupDictionaryManagementDataValue')" show-overflow-tooltip></el-table-column>
           <el-table-column prop="value" :label="$('ui.developDictionaryManagementDataColor')">
             <template slot-scope="scope">
@@ -53,7 +55,7 @@
           </el-table-column>
           <el-table-column prop="mark" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" show-overflow-tooltip>
             <template slot-scope="scope">
-              <span>{{ scope.row.mark || '--' }}</span>
+              <span>{{ dictionaryLabel(scope.row, 'mark') || '--' }}</span>
             </template>
           </el-table-column>
           <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')"> </el-table-column>
@@ -83,6 +85,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { roterPre } from '@/settings'
 import {
   getDictDataListApi,
@@ -137,6 +140,9 @@ export default {
   },
 
   methods: {
+    dictionaryLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     getInfo(id) {
       getDictDatainfoApi(id).then((res) => {
         this.query.name = res.data.name
@@ -165,7 +171,7 @@ export default {
         return this.$message.error($('legacyScript.selectDataToDeleteFirst'))
       }
       let id = this.ids.join(',')
-      await this.$modalSure('你确定要批量删除这条内容吗')
+      await this.$modalSure('confirm.batchDeleteContent')
       await getDictDataDeleteApi(id)
       await this.getList(true)
     },
@@ -196,7 +202,7 @@ export default {
 
     // 删除
     async handleDelete(row) {
-      await this.$modalSure('你确定要删除这条内容吗')
+      await this.$modalSure('confirm.deleteContent')
       await getDictDataDeleteApi(row.id)
       await this.getList(true)
     },

@@ -318,7 +318,7 @@ export default {
     },
     // 删除项目
     handleDelete(row) {
-      this.$modalSure('删除项目，同时会删除项目中的工作项！你确定要删除该项目吗').then(() => {
+      this.$modalSure('confirm.deleteProjectAndWorkItems').then(() => {
         deleteProgramApi(row.id).then((res) => {
           this.getTableData()
           this.$refs.addProgram.handleClose()

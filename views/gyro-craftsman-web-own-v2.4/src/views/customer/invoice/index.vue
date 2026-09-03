@@ -462,7 +462,7 @@ export default {
     // 发票撤回
     invoiceWithdrawal(val, type) {
       let id = type === 1 ? val.revoke_id : val.link_id
-      this.$modalSure(this.$("legacy.11accb9f68551eb7")).then(() => {
+      this.$modalSure('confirm.withdrawRequest').then(() => {
         this.getApplyRevoke(id)
       })
     },

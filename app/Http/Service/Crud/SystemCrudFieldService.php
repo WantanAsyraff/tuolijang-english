@@ -148,6 +148,7 @@ class SystemCrudFieldService extends BaseService
 
         $dataDictId = array_column($fieldList, 'data_dict_id');
         $dataColumn = app()->get(DataDictService::class)->column(['id' => $dataDictId], 'name', 'id');
+        $dataDefaultColumn = app()->get(DataDictService::class)->column(['id' => $dataDictId], 'is_default', 'id');
         foreach ($fieldList as &$item) {
             $item['association_crud_table_name_en'] = $column[$item['association_crud_id']]['table_name_en'] ?? '';
             $item['association_crud_table_name'] = $column[$item['association_crud_id']]['table_name'] ?? '';
@@ -157,6 +158,7 @@ class SystemCrudFieldService extends BaseService
                 $item['is_re_table'] = 0;
             }
             $item['data_dict_name'] = $item['data_dict_id'] ? $dataColumn[$item['data_dict_id']] ?? '' : '';
+            $item['data_dict_is_default'] = $item['data_dict_id'] ? (int) ($dataDefaultColumn[$item['data_dict_id']] ?? 0) : 0;
         }
 
         return $fieldList;

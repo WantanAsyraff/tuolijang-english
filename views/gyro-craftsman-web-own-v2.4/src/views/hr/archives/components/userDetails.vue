@@ -291,7 +291,7 @@ export default {
 
     // 编辑: 删除调薪记录
     deleteSalaryList(id) {
-      this.$modalSure('确定永久删除该记录吗').then(() => {
+      this.$modalSure('confirm.permanentlyDeleteRecord').then(() => {
         deleteSalaryList(id).then((res) => {
           this.getSalaryList()
         })

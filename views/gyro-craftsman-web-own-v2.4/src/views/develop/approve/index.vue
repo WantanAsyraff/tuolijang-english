@@ -227,7 +227,7 @@ export default {
 
     // 删除
     async deleteFn(row) {
-      this.$modalSure('您确定要删除此流程吗').then(() => {
+      this.$modalSure('confirm.deleteProcess').then(() => {
         dataApproveDeleteApi(row.id).then((res) => {
           let totalPage = Math.ceil((this.total - 1) / this.where.limit)
           let currentPage = this.where.page > totalPage ? totalPage : this.where.page

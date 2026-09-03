@@ -268,7 +268,7 @@ export default {
     withdraw(row) {
       this.rowData = row
       if (row.status === 0) {
-        this.$modalSure(this.$("legacy.11accb9f68551eb7")).then(() => {
+        this.$modalSure('confirm.withdrawRequest').then(() => {
           this.getApplyRevoke()
         })
       } else {
@@ -285,7 +285,7 @@ export default {
 
     // 删除
     handleDelete(item, type) {
-      this.$modalSure('确定要删除此账目记录').then(() => {
+      this.$modalSure('confirm.deleteAccountRecord').then(() => {
         clientBillDeleteApi(item.id).then((res) => {
           if (type === 1) {
             if (this.where.page > 1 && this.debtData.length <= 1) {

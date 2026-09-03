@@ -126,7 +126,7 @@ components: {
       this.fileLinkDownLoad(row.file_path, row.name)
     },
    async deleteRecord(row) {
-      await this.$modalSure(this.$('确定删除当前数据'))
+      await this.$modalSure('confirm.deleteCurrentData')
       await clientExportRecordDeleteApi(row.id)
       this.getRecordList()
     },

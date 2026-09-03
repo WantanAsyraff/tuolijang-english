@@ -272,7 +272,7 @@ export default {
 
     // 删除
     delFn(index, item) {
-      this.$modalSure('您确定要删除此数据吗').then(() => {
+      this.$modalSure('confirm.deleteRecordData').then(() => {
         let obj = {
           year: item.year,
           link_id: item.link_id,

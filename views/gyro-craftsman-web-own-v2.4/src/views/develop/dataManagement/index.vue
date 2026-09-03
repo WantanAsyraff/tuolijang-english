@@ -104,7 +104,7 @@ export default {
 
     // 删除触发器
     deleteFn(id) {
-      this.$modalSure('您确定要删除此数据吗').then(() => {
+      this.$modalSure('confirm.deleteRecordData').then(() => {
         crudDeleteCurlApi(id).then((res) => {
           this.getList()
         })

@@ -46,6 +46,7 @@
 
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import FormItemWrapper from './form-item-wrapper'
 import emitter from '@/utils/emitter'
 import fieldMixin from '@/components/form-designer/form-widget/field-widget/fieldMixin'
@@ -157,6 +158,15 @@ export default {
   },
 
   methods: {
+    localizedAddressOptions(options) {
+      return Array.isArray(options)
+        ? options.map((option) => ({
+            ...option,
+            name: dictionaryDisplayLabel(option, this.$),
+            children: this.localizedAddressOptions(option.children)
+          }))
+        : []
+    },
     /* 开启任意级节点可选后，点击radio隐藏下拉框 */
     hideDropDownOnClick() {
       setTimeout(() => {
@@ -176,7 +186,7 @@ export default {
       return getDictTreeListApi(data)
         .then((res) => {
           const { data, status } = res
-          this.cityList = data
+          this.cityList = this.localizedAddressOptions(data)
         })
         .catch((error) => {
           return Promise.reject(error)

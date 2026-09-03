@@ -202,7 +202,7 @@ let myMixins = {
           this.$message.error($('legacyScript.selectAtLeastOneItem2'))
         } else {
           let ids = []
-          this.$modalSure('删除后不可恢复,您确认要删除吗').then(() => {
+          this.$modalSure('confirm.deleteIrreversible').then(() => {
             this.selection.map((item) => {
               ids.push(item.id)
             })

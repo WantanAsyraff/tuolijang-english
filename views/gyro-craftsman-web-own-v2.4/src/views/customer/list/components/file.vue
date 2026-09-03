@@ -225,7 +225,7 @@ export default {
     },
     // 删除附件
     handleFileDelete(row, index) {
-      this.$modalSure('附件删除后，不可恢复，确认要删除吗').then(() => {
+      this.$modalSure('confirm.deleteAttachmentIrreversible').then(() => {
         clientFileDeleteApi(row.id).then((res) => {
           this.fileData.splice(index, 1)
           if (this.where.page > 1 && this.fileData.length <= 0) {

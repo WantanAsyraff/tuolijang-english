@@ -559,7 +559,7 @@ class FormService extends BaseService
             };
         }
         $formList = $this->getList(['types' => $customType, 'status' => 1], with: ['data' => fn ($q) => $q->where(['status' => 1])]);
-        $field    = ['name as label', 'name as text', 'value', 'pid'];
+        $field    = ['name as label', 'name as text', 'value', 'pid', 'is_default'];
         // 预加载服务（避免循环内重复获取）
         $dictTypeService = app(DictTypeService::class);
         $dictService     = app(DictDataService::class);

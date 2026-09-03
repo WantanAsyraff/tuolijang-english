@@ -149,7 +149,7 @@ export default {
       this.isImage = true
     },
     deleteFn(row) {
-      this.$modalSure('确认移除此付款订单吗').then(() => {
+      this.$modalSure('confirm.removePaymentOrder').then(() => {
         this.table = this.table.filter((item) => {
           return item.id != row.id
         })

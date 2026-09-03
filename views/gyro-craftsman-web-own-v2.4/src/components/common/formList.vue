@@ -65,7 +65,7 @@
         <el-option
           v-for="(items, optionIndex) in getDisplayOptions(val)"
           :key="index + '_' + optionIndex + '_' + (items.value ?? items.id ?? 'empty')"
-          :label="$(items.name || items.label, items.name_en || items.label_en)"
+          :label="optionLabel(items, val)"
           :value="items.value ?? items.id"
         ></el-option>
       </el-select>
@@ -256,6 +256,7 @@
 
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel, hasDictionaryOwnership, rawDictionaryLabel } from '@/lang/dictionary-label'
 import { getDictTreeListApi } from '@/api/form'
 // 表单类型分组配置
 const FORM_TYPE_GROUPS = {
@@ -374,6 +375,13 @@ export default {
   },
 
   methods: {
+    optionLabel(entry, field) {
+      const key = entry && entry.name !== undefined ? 'name' : 'label'
+      const raw = rawDictionaryLabel(entry, key)
+      if (hasDictionaryOwnership(entry)) return dictionaryDisplayLabel(entry, this.$, key)
+      if (Number(field && field.data_type) === 1) return raw
+      return this.$(raw, entry && (entry.name_en || entry.label_en))
+    },
     // 判断是否为输入框类型
     isInputType(formValue) {
       return FORM_TYPE_GROUPS.input.includes(formValue)
@@ -497,7 +505,7 @@ export default {
       if (!Array.isArray(allOptions)) return
       const keyword = query.toLowerCase()
       const result = allOptions.filter((item) => {
-        const label = this.$(item.name || item.label || '', item.name_en || item.label_en).toLowerCase()
+        const label = this.optionLabel(item, val).toLowerCase()
         return label.includes(keyword)
       })
       this.$set(this.selectFilterMap, fieldKey, result)
@@ -506,8 +514,8 @@ export default {
     // 获取级联选择器选项
     getCascaderOptions(val, index) {
       return val.data_type == 1 || !val.data_type
-        ? this.getUniqueOptions(val.data_dict, index)
-        : this.getUniqueOptions(val.customize_items, index)
+        ? this.getUniqueOptions(val.data_dict, index, val)
+        : this.getUniqueOptions(val.customize_items, index, val)
     },
 
     // 获取级联选择器属性
@@ -524,11 +532,11 @@ export default {
     // 获取标签选项
     getTagOptions(val, index) {
       return val.data_type == 1 || !val.data_type
-        ? this.getUniqueOptions(val.data_dict, index)
-        : this.getUniqueOptions(val.customize_items, index)
+        ? this.getUniqueOptions(val.data_dict, index, val)
+        : this.getUniqueOptions(val.customize_items, index, val)
     },
 
-    getUniqueOptions(options, parentIndex) {
+    getUniqueOptions(options, parentIndex, field) {
       if (!options || !Array.isArray(options)) {
         return []
       }
@@ -536,12 +544,13 @@ export default {
         // 确保每个选项都有唯一的value或id
         const uniqueValue = item.value !== undefined ? item.value : item.id
         const uniqueKey = uniqueValue !== undefined ? uniqueValue : `${parentIndex}_${index}_default`
-        const label = this.$(item.name || item.label || '', item.name_en || item.label_en)
+        const label = this.optionLabel(item, field)
         return {
           ...item,
           // Values and IDs remain raw; only known metadata labels are localized.
           name: label || item.name,
           label: label || item.label,
+          children: item.children ? this.getUniqueOptions(item.children, uniqueKey, field) : item.children,
           uniqueKey
         }
       })

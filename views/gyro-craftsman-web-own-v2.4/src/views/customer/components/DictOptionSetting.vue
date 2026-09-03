@@ -29,14 +29,14 @@
           :class="{ 'is-active': currentTypeId === item.id }"
           @click="handleTypeSelect(item)"
         >
-          {{ translateSystemText(item.name) }}
+          {{ translateSystemText(item) }}
         </div>
       </div>
 
       <!-- 右侧：选项编辑区域 -->
       <div class="dict-option-setting__content">
         <!-- 当前选中类型的标题 -->
-        <div class="dict-option-setting__content-title">{{ translateSystemText(currentTypeName) }}</div>
+        <div class="dict-option-setting__content-title">{{ translateSystemText(currentTypeObj) }}</div>
 
         <div v-loading="loading" class="dict-option-setting__content-body">
           <!-- 单层级模式（level === 1）：可拖拽排序的平铺列表 -->
@@ -52,7 +52,7 @@
             >
               <div v-for="(option, idx) in optionItems" :key="idx" class="dict-option-setting__option-row">
                 <!-- 选项名称输入框，右侧带颜色选择器 -->
-                <el-input :value="translateSystemText(option.name)" size="small" class="dict-option-setting__option-input" @input="updateOptionName(option, $event)">
+                <el-input :value="translateSystemText(option)" size="small" class="dict-option-setting__option-input" @input="updateOptionName(option, $event)">
                   <span slot="suffix">
                     <el-color-picker v-model="option.color" size="small" />
                   </span>
@@ -75,7 +75,7 @@
             <div slot-scope="{ node, data }" class="dict-option-setting__tree-node">
               <!-- 节点名称输入框 -->
               <el-input
-                :value="translateSystemText(data.name)"
+                :value="translateSystemText(data)"
                 @input="updateOptionName(data, $event)"
                 :placeholder="$('ui.customerSetupDictionaryManagementDataValue')"
                 size="small"
@@ -120,6 +120,7 @@
 </template>
 <script setup>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 /**
  * @description 字典选项设置基础组件
  * 使用 Vue 2.7 Composition API (setup) 编写
@@ -154,8 +155,6 @@ const proxy = instance.proxy
 const dictTypes = ref([])
 /** 当前选中的字典类型 ID */
 const currentTypeId = ref(null)
-/** 当前选中的字典类型名称 */
-const currentTypeName = ref('')
 /** 当前选中的字典类型层级（1=平铺列表，其他=树形结构） */
 const currentLevel = ref(1)
 /** 当前选中的完整字典类型对象 */
@@ -175,12 +174,7 @@ const loading = ref(false)
  * @param {Array} nodes - 树节点数组
  * @returns {number} 最大 value 值，空树返回 0
  */
-const translateSystemText = (value) => {
-  if (typeof value !== 'string' || !value) return value
-  const optionMatch = value.match(/^选项(\d+)$/)
-  if (optionMatch) return `${$('选项')} ${optionMatch[1]}`
-  return $(value)
-}
+const translateSystemText = (entry) => dictionaryDisplayLabel(entry, $)
 
 const updateOptionName = (option, value) => {
   option.name = value
@@ -291,7 +285,6 @@ const loadOptionData = async (typeItem) => {
  */
 const handleTypeSelect = (item) => {
   currentTypeId.value = item.id
-  currentTypeName.value = item.name
   currentLevel.value = item.level
   currentTypeObj.value = item
   loadOptionData(item)
@@ -341,7 +334,7 @@ const handleAddFlatItem = () => {
  */
 const handleDeleteFlatItem = async (option, idx) => {
   try {
-    await proxy.$modalSure($('确定要删除该选项吗？'))
+    await proxy.$modalSure('confirm.deleteDictionaryOption')
     if (option.id) {
       await getDictDataDeleteApi(option.id)
     }
@@ -388,7 +381,7 @@ const handleAddTreeChild = (node, data) => {
  */
 const handleDeleteTreeNode = async (node, data) => {
   try {
-    await proxy.$modalSure($('确定要删除该节点吗？'))
+    await proxy.$modalSure('confirm.deleteDictionaryNode')
     node.remove()
   } catch {
     // 用户取消删除

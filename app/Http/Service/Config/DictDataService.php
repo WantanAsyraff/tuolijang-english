@@ -97,7 +97,7 @@ class DictDataService extends BaseService implements ResourceServicesInterface
      * @throws BindingResolutionException
      * @throws \ReflectionException
      */
-    public function getTreeData(array $where, array $field = ['id', 'pid', 'name', 'status', 'type_id', 'type_name', 'color', 'value'], array $with = []): array
+    public function getTreeData(array $where, array $field = ['id', 'pid', 'name', 'status', 'type_id', 'type_name', 'color', 'value', 'is_default'], array $with = []): array
     {
         $where['status'] = 1;
         $data            = Cache::tags([CacheEnum::TAG_DICT])->remember(md5('tree' . json_encode($where) . json_encode($field)), (int) sys_config('system_cache_ttl', 3600), function () use ($where, $field, $with) {

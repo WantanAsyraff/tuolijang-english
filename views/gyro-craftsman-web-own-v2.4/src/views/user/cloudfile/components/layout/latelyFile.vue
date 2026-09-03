@@ -501,7 +501,7 @@ export default {
     },
     // 删除
     getFolderDelete(item) {
-      this.$modalSure('您确定要加入回收站').then(() => {
+      this.$modalSure('confirm.moveToRecycleBin').then(() => {
         let spaceId = this.spaceType == 'recently' ? item.pid : this.spaceId
         folderSpaceEntDeleteApi(spaceId, item.id).then((res) => {
           if (this.where.page > 1 && this.fileData.length <= 1) {

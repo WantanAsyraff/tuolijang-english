@@ -125,7 +125,7 @@ export default {
 
     // 删除
     delModuleShare(id) {
-      this.$modalSure('您确认要删除此数据吗').then(() => {
+      this.$modalSure('confirm.deleteThisData').then(() => {
         delModuleQuestionnaireApi(this.keyName, id).then((res) => {
           this.getList()
         })

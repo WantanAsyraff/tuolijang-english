@@ -154,7 +154,7 @@ export default {
     // 删除
 
     async handleDelete(row, index) {
-      await this.$modalSure('您确定要删除此订单记录?')
+      await this.$modalSure('confirm.deleteOrderRecord')
       await contracFileDeleteApi(row.id)
       this.getTableData()
       this.$emit('refresh-detail')

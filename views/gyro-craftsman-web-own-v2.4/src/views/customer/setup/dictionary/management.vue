@@ -6,7 +6,7 @@
         <el-page-header>
           <div slot="title" @click="backFn">
             <i class="el-icon-arrow-left"></i>
-            {{ $(query.name) }}
+            {{ dictionaryLabel({ name: query.name, is_system_owned: isSystemOwned }) }}
           </div>
         </el-page-header>
       </el-col>
@@ -40,7 +40,7 @@
     >
       <el-table-column type="selection" width="55" v-if="is_Show !== 1"> </el-table-column>
       <el-table-column prop="name" :label="$('ui.customerSetupDictionaryManagementDataNameId')">
-        <template slot-scope="scope"><span>{{ $(scope.row.name) }}</span></template>
+        <template slot-scope="scope"><span>{{ dictionaryLabel(scope.row) }}</span></template>
       </el-table-column>
       <el-table-column prop="value" :label="$('ui.customerSetupDictionaryManagementDataValue')"></el-table-column>
       <el-table-column prop="status" :label="$('ui.customerSetupDictionaryIndexStatus')">
@@ -57,7 +57,7 @@
       </el-table-column>
       <el-table-column prop="mark" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')">
         <template slot-scope="scope">
-          <span>{{ $(scope.row.mark) || '--' }}</span>
+          <span>{{ dictionaryLabel(scope.row, 'mark') || '--' }}</span>
         </template>
       </el-table-column>
       <el-table-column prop="sort" :label="$('ui.businessExamineIndexSort')"> </el-table-column>
@@ -83,6 +83,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { roterPre } from '@/settings'
 import {
   getDictDataListApi,
@@ -110,6 +111,7 @@ export default {
       ids: [],
       level: 0,
       is_default: 0,
+      isSystemOwned: 0,
       tableData: [],
       is_Show: false
     }
@@ -121,11 +123,15 @@ export default {
   },
 
   methods: {
+    dictionaryLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     getInfo(id) {
       getDictDatainfoApi(id).then((res) => {
         this.query.name = res.data.name
         this.level = res.data.level
         this.is_Show = res.data.is_default
+        this.isSystemOwned = res.data.is_system_owned
         this.where.types = res.data.ident
         this.getList(true)
       })
@@ -145,7 +151,7 @@ export default {
         return this.$message.error($('legacyScript.selectDataToDeleteFirst'))
       }
       let id = this.ids.join(',')
-      await this.$modalSure('你确定要删除这条内容吗')
+      await this.$modalSure('confirm.deleteContent')
       await getDictDataDeleteApi(id)
       await this.getList(true)
     },
@@ -176,7 +182,7 @@ export default {
 
     // 删除
     async handleDelete(row) {
-      await this.$modalSure('你确定要删除这条内容吗')
+      await this.$modalSure('confirm.deleteContent')
       await getDictDataDeleteApi(row.id)
       await this.getList(true)
     },

@@ -291,7 +291,7 @@ export default {
     },
     // 删除
     handleDelete(item) {
-      this.$modalSure('你确定要删除该假期类型吗').then(() => {
+      this.$modalSure('confirm.deleteHolidayType').then(() => {
         holidayTypeDeleteApi(item.id)
           .then((res) => {
             if (this.where.page > 1 && this.tableData.length <= 1) {

@@ -152,7 +152,7 @@ export default {
       const saveResumeAndConfirm = async () => {
         try {
           await this.$refs.formItemData.saveResume(this.imageUrl)
-          await this.$modalSure('您确定将左侧填写的档案信息同步给企业吗')
+          await this.$modalSure('confirm.syncProfileToEnterprise')
           await putPerfectAgree(data.id)
           this.getPerfectIndex()
           this.page = 1
@@ -170,7 +170,7 @@ export default {
 
     // 拒绝
     putPerfectRefuse(data) {
-      this.$modalSure('您确定取消档案信息同步吗').then(() => {
+      this.$modalSure('confirm.cancelProfileSync').then(() => {
         putPerfectRefuse(data.id).then((res) => {
           this.getPerfectIndex()
           this.page = 1

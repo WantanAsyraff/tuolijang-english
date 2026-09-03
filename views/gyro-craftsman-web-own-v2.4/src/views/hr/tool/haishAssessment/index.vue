@@ -441,7 +441,7 @@ export default {
     // 删除
     deleteFn(data) {
       if (data.row.col15) {
-        this.$modalSure('你确定要删除这条数据吗').then(() => {
+        this.$modalSure('confirm.deleteData').then(() => {
           this.list.splice(data.$index, 1)
         })
       } else {

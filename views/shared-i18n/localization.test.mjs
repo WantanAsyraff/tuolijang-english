@@ -45,9 +45,16 @@ const runtime = createLocalizationRuntime(runtimeIndex);
 const repoRoot = path.resolve(views, '..');
 const { auditLegacyMenuEnglish, auditSql, auditSqlSource, decodeSqlString } = require(path.join(root, 'sql-audit.cjs'));
 const sqlPolicy = JSON.parse(fs.readFileSync(path.join(root, 'sql-audit-policy.json'), 'utf8'));
+const { auditRequestValidation } = require(path.join(root, "request-validation-audit.cjs"));
 const { formatNotificationTemplatePreview } = require(
   path.join(views, "gyro-craftsman-web-own-v2.4/src/lang/notification-template-preview.js")
 );
+const {
+  dictionaryDisplayLabel,
+  hasDictionaryOwnership,
+  isSystemOwnedDictionaryEntry,
+  rawDictionaryLabel,
+} = require(path.join(views, "gyro-craftsman-web-own-v2.4/src/lang/dictionary-label.js"));
 
 test("canonical catalogs contain complete adjacent locale pairs", () => {
   const identifiers = new Set();
@@ -130,6 +137,185 @@ test("legacy menu English is reported while canonical menu text remains authorit
   assert.match(languageSelector, /await getMenus\(\)/);
   assert.match(rolePage, /Number\(role\.id\) === 1 \? this\.\$\(role\.role_name, role\.role_name_en\) : role\.role_name/);
   assert.match(rolePage, /label: this\.\$\(item\.label, item\.label_en\)/);
+});
+
+test("system dictionary labels localize while stored values and custom entries remain unchanged", { skip: !includesApp("web") }, () => {
+  const translate = (value) => runtime.translateSystemTextValue(value, { locale: "en" });
+  const systemStatus = { name: "正常", value: "正常", is_default: 1, name_en: "normal state" };
+  const customStatus = { name: "客户管理", value: "custom-1", is_default: 0 };
+  const customWithoutMarker = { name: "客户管理", value: "custom-2" };
+
+  assert.equal(hasDictionaryOwnership(systemStatus), true);
+  assert.equal(isSystemOwnedDictionaryEntry(systemStatus), true);
+  assert.equal(dictionaryDisplayLabel(systemStatus, translate), "Normal");
+  assert.equal(systemStatus.value, "正常");
+  assert.equal(dictionaryDisplayLabel(customStatus, translate), "客户管理");
+  assert.equal(dictionaryDisplayLabel(customWithoutMarker, translate), "客户管理");
+  assert.equal(rawDictionaryLabel({ label: "已完成" }, "label"), "已完成");
+});
+
+test("all installer-owned dictionary types and values have canonical runtime translations", { skip: !includesApp("web") }, () => {
+  const source = fs.readFileSync(path.join(repoRoot, "public/install/dict.sql"), "utf8");
+  const systemTypes = [];
+  const systemValues = [];
+
+  for (const line of source.split(/\r?\n/)) {
+    let match = line.match(/^\(\d+, '([^']*)', '[^']*', '[^']*', \d+, 1, \d+, '[^']*'\)[,;]$/);
+    if (match) systemTypes.push(match[1]);
+    match = line.match(/^\(NULL, '([^']*)', '[^']*', '[^']*', \d+, '[^']*', \d+, \d+, '[^']*', \d+, 1, '[^']*'\)[,;]$/);
+    if (match) systemValues.push(match[1]);
+  }
+
+  assert.equal(systemTypes.length, 17);
+  assert.equal(systemValues.length, 27);
+  for (const label of [...systemTypes, ...systemValues]) {
+    assert.equal(typeof runtimeIndex[label], "string", `missing canonical dictionary label: ${label}`);
+    assert.equal(/\p{Script=Han}/u.test(runtimeIndex[label]), false, `Chinese remains in dictionary label: ${label}`);
+  }
+  assert.equal(runtimeIndex["启用"], "Enabled");
+  assert.equal(runtimeIndex["停用"], "Disabled");
+  assert.equal(runtimeIndex["是"], "Yes");
+  assert.equal(runtimeIndex["否"], "No");
+});
+
+test("dictionary API paths expose ownership without translating identifiers or submitted values", { skip: !includesApp("web") }, () => {
+  const dictDataService = fs.readFileSync(path.join(repoRoot, "app/Http/Service/Config/DictDataService.php"), "utf8");
+  const dictTypeService = fs.readFileSync(path.join(repoRoot, "app/Http/Service/Config/DictTypeService.php"), "utf8");
+  const formService = fs.readFileSync(path.join(repoRoot, "app/Http/Service/Config/FormService.php"), "utf8");
+  const salesmanService = fs.readFileSync(path.join(repoRoot, "app/Http/Service/Config/SalesmanCustomService.php"), "utf8");
+  const controller = fs.readFileSync(path.join(repoRoot, "app/Http/Controller/AdminApi/Config/DictDataController.php"), "utf8");
+  const customerForm = read("gyro-craftsman-web-own-v2.4/src/components/customer/oaForm.vue");
+
+  assert.match(dictDataService, /'value', 'is_default'/);
+  assert.match(dictTypeService, /\$info\['is_system_owned'\] = \(int\) \(\$info\['is_default'\]/);
+  assert.match(formService, /'name as text', 'value', 'pid', 'is_default'/);
+  assert.match(salesmanService, /'type_name', 'pid', 'is_default'/);
+  assert.match(controller, /\['value', ''\]/);
+  assert.match(controller, /\['status', 1\]/);
+  assert.match(customerForm, /:value="el\.value"/);
+  assert.match(customerForm, /dictionaryDisplayLabel\(option/);
+  assert.match(customerForm, /\{\{ item\.name \}\}/);
+});
+
+
+test("all dashboard confirmation dialogs use valid canonical keys", { skip: !includesApp("web") }, () => {
+  const sourceRoot = path.join(appRoots.web, "src");
+  const pending = [sourceRoot];
+  const webCatalog = catalog("web");
+  const issues = [];
+  let canonicalCalls = 0;
+
+  while (pending.length) {
+    const directory = pending.pop();
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const filename = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        pending.push(filename);
+        continue;
+      }
+      if (!/\.(?:vue|js)$/.test(entry.name)) continue;
+      const source = fs.readFileSync(filename, "utf8");
+      const relative = path.relative(sourceRoot, filename);
+      if (relative.startsWith(path.join("views", "chat") + path.sep)) continue;
+      if (/\$modalSure\(\s*(?:this\.\$\(|\$\()?["'][^"']*[\u3400-\u9fff]/u.test(source)) {
+        issues.push(relative + ": Chinese confirmation literal");
+      }
+      if (/\$modalSure\(\s*\x60/u.test(source)) {
+        issues.push(relative + ": unresolved confirmation template");
+      }
+      if (/modalSure.*legacy\./u.test(source)) {
+        issues.push(relative + ": obsolete confirmation key");
+      }
+      for (const match of source.matchAll(/\$modalSure\(\s*(["'])(confirm\.[\w.-]+)\1/g)) {
+        canonicalCalls += 1;
+        assert.ok(webCatalog["web." + match[2]], relative + ": missing " + match[2]);
+        assert.equal(match[2].startsWith("legacy."), false, relative + ": obsolete confirmation key");
+      }
+    }
+  }
+
+  assert.deepEqual(issues, []);
+  assert.equal(canonicalCalls, 145);
+
+  const category = read("gyro-craftsman-web-own-v2.4/src/views/customer/product/category.vue");
+  const approval = read("gyro-craftsman-web-own-v2.4/src/views/user/examine/components/detailExamine.vue");
+  assert.match(category, /confirm\.closeCategoryWithChildren.*name: row\.name, count: affected/);
+  assert.match(approval, /n === 0 \? 'confirm\.rejectApplicantRequest' : 'confirm\.approveApplicantRequest'/);
+});
+
+test("all management request validation sources are covered, including approved compositions", { skip: !includesApp("web") }, () => {
+  const result = auditRequestValidation();
+  assert.equal(result.total, 489);
+  assert.equal(result.covered, 489);
+  assert.equal(result.unresolved.length, 0);
+  assert.equal(result.rows.filter((row) => row.composed).length, 8);
+
+  assert.equal(
+    runtime.translateSystemTextValue("密码长度不正确,最少8个字符", { locale: "en" }),
+    "Password must contain at least 8 characters",
+  );
+  const customField = runtime.translateSystemTextValue("客户管理不能为空", { locale: "en" });
+  assert.equal(customField, "客户管理 is required");
+  assert.equal(customField.replace("客户管理", ""), " is required");
+});
+
+test("installed notification fixtures localize at Workbench and Push-record boundaries", { skip: !includesApp("web") }, () => {
+  const fixtures = [
+    ["待办任务提醒", "To-do task reminder"],
+    ["日报查看提醒", "Daily report reminder"],
+    ["合同待办提醒", "Contract task reminder"],
+    ["您有一条个人待办任务，请记得处理哦！待办内容【next week stuff】", "You have a personal to-do task to process: [next week stuff]"],
+    ["Wan的周报已提交，请及时查看！", "Wan's Weekly has been submitted. Please review it promptly."],
+    ["您有一条回款任务，请记得处理哦！提醒内容【sadasd】", "You have a payment collection task to process. Reminder: [sadasd]"],
+    ["Wan的汇报已提交，请及时查看！", "Wan's Report has been submitted. Please review it promptly."],
+    ["Wan的日报已提交，请及时查看！", "Wan's Daily has been submitted. Please review it promptly."],
+  ];
+
+  for (const [source, expected] of fixtures) {
+    const translated = runtime.translateSystemTextValue(source, { locale: "en" });
+    assert.equal(translated, expected);
+    assert.equal(/[\u3400-\u9fff]/.test(translated), false);
+    assert.equal(runtime.translateSystemTextValue(source, { locale: "zh-cn" }), source);
+  }
+
+  const workbench = read("gyro-craftsman-web-own-v2.4/src/views/user/workbench/index.vue");
+  const pushRecords = read("gyro-craftsman-web-own-v2.4/src/views/setting/enterprise/news/record.vue");
+  assert.match(workbench, /localizedNoticeText\(item\.title\)/);
+  assert.match(workbench, /localizedNoticeText\(item\.message\)/);
+  assert.match(pushRecords, /localizedNoticeText\(scope\.row\.title\)/);
+  assert.match(pushRecords, /localizedNoticeText\(scope\.row\.message\)/);
+});
+
+test("SQL-owned menu, dictionary, settings, and CRUD labels are fully mapped", { skip: !includesApp("web") }, () => {
+  const sql = auditSql({ repoRoot, runtimeValues: new Map(Object.entries(runtimeIndex)) });
+  const table = (name) => {
+    assert.ok(sql.byTable[name], "missing SQL table audit: " + name);
+    assert.equal(sql.byTable[name].unmapped, 0, name + " has unmapped display labels");
+    return sql.byTable[name];
+  };
+
+  const menuRoleCount =
+    table("eb_system_menus").userVisible +
+    table("eb_system_menus_copy").userVisible +
+    table("eb_system_role").userVisible +
+    table("eb_enterprise_role").userVisible;
+  assert.equal(menuRoleCount, 544);
+
+  const dictionaryCount = table("eb_dict_data").userVisible + table("eb_dict_type").userVisible;
+  assert.equal(dictionaryCount, 3832);
+
+  assert.equal(table("eb_system_config").userVisible, 101);
+  assert.equal(table("eb_system_crud_field").userVisible, 520);
+  for (const name of [
+    "eb_system_crud",
+    "eb_system_crud_approve",
+    "eb_system_crud_approve_process",
+    "eb_system_crud_cate",
+    "eb_system_crud_event",
+    "eb_form_cate",
+    "eb_form_data",
+  ]) table(name);
+  assert.equal(sql.uncoveredFrontend.length, 0);
 });
 
 test("dynamic backend responses preserve interpolated values in both locales", () => {

@@ -228,7 +228,7 @@ export default {
     },
     // 撤销申请
     cancelApply(row) {
-      this.$modalSure('您确定要撤销此合同申请吗').then(() => {
+      this.$modalSure('confirm.revokeContractApplication').then(() => {
         contractDocCancelApi(row.id).then((res) => {
           if (this.where.page > 1 && this.contractData.length <= 1) {
             this.where.page--
@@ -239,7 +239,7 @@ export default {
     },
     // 删除
     deleteContract(row) {
-      this.$modalSure('您确定要删除此合同吗').then(() => {
+      this.$modalSure('confirm.deleteContract').then(() => {
         contractDocDelApi(row.id).then((res) => {
           if (this.where.page > 1 && this.contractData.length <= 1) {
             this.where.page--

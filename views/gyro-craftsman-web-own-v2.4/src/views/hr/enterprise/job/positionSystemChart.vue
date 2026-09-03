@@ -182,7 +182,7 @@ export default {
     },
     // 删除职级类别
     deleteLevel(item) {
-      this.$modalSure(this.$("legacy.fc56d14b761723f2")).then(() => {
+      this.$modalSure('confirm.deleteGrade').then(() => {
         rankLevelDeleteApi(item.id)
           .then((res) => {
             this.getTableData()

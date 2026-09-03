@@ -58,7 +58,7 @@
                   size="small"
                   @change="selectChange(scope.row)"
                 >
-                  <el-option v-for="item in dictList" :key="item.id" :label="item.name" :value="item.id" />
+                  <el-option v-for="item in dictList" :key="item.id" :label="dictionaryLabel(item)" :value="item.id" />
                 </el-select>
                 <!-- 一对一 -->
                 <div
@@ -105,6 +105,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { pinyin } from 'pinyin-pro'
 import Mobile from './mobile.vue'
 import { getDictListApi } from '@/api/form'
@@ -144,6 +145,9 @@ export default {
     }
   },
   methods: {
+    dictionaryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$)
+    },
     handleClose() {
       this.$refs.mobile.list = []
       this.typeOptions = []

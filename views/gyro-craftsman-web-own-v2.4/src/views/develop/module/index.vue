@@ -286,7 +286,7 @@ export default {
       this.$refs.share.openBox(this.keyName, row)
     },
     cancelShare(val) {
-      this.$modalSure('您确定要取消此数据的协作权限吗').then(() => {
+      this.$modalSure('confirm.cancelDataCollaboration').then(() => {
         delCancelShareApi(this.keyName, val.id).then((res) => {
           this.getList()
         })
@@ -395,7 +395,7 @@ export default {
       if (this.multipleSelection.length <= 0) {
         this.$message.error($('legacyScript.selectAtLeastOneItem2'))
       } else {
-        this.$modalSure('您确认要删除吗').then(() => {
+        this.$modalSure('confirm.deleteGenericFormal').then(() => {
           const ids = []
           this.multipleSelection.map((value) => {
             ids.push(value.id)
@@ -448,7 +448,7 @@ export default {
     },
 
     async deleteRow(item) {
-      await this.$modalSure('您确定要删除吗')
+      await this.$modalSure('confirm.deleteGeneric')
       await crudModuleDelApi(this.keyName, item.id)
       let totalPage = Math.ceil((this.total - 1) / this.where.limit)
       let currentPage = this.where.page > totalPage ? totalPage : this.where.page

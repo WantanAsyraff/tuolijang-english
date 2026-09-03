@@ -218,7 +218,7 @@ export default {
       this.$refs.contractDialog.handleOpen()
     },
     async giveUpFn(row) {
-      await this.$modalSure('确定之后变为已放弃状态，您确定此订单不再续费了吗')
+      await this.$modalSure('confirm.abandonRenewal')
       await remindAbjureApi(row.id)
       this.getTableData()
     },

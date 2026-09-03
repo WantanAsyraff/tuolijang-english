@@ -188,7 +188,7 @@ export default {
       this.checkBtn = false
     },
     async skipSelfAssessment(data) {
-    await this.$modalSure('确定跳过自评吗')
+    await this.$modalSure('confirm.skipSelfEvaluation')
       await skipSelfAssessment(data.id)
     
       this.getTableData()

@@ -324,7 +324,7 @@ export default {
     // 发票撤回
     async invoiceWithdrawal(val, type) {
       let id = type == 1 ? val.revoke_id : val.link_id
-      await this.$modalSure('确认撤回该发票吗')
+      await this.$modalSure('confirm.withdrawInvoice')
       await approveApplyRevokeApi(id)
       this.getTableData()
     },

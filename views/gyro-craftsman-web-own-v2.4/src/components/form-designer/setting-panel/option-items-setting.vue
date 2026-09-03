@@ -130,7 +130,7 @@ export default {
       }
     },
     async deleteOption(option, index) {
-      await this.$modalSure('你确定要删除这条数据吗')
+      await this.$modalSure('confirm.deleteData')
       await getDictDataDeleteApi(option.id)
       this.optionModel.customizeItems.splice(index, 1)
     },

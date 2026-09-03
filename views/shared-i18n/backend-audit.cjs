@@ -2,6 +2,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const { auditRequestValidation } = require("./request-validation-audit.cjs");
 
 const root = path.resolve(__dirname, "../..");
 const han = /[\u3400-\u9fff]/;
@@ -74,8 +75,12 @@ const mapped = new Set(catalogs.flatMap((catalog) =>
 ));
 const directRecords = [...direct.values()].sort((a, b) => a.text.localeCompare(b.text, "zh-CN"));
 const broadResidual = [...broad.values()].filter((item) => !mapped.has(item.text));
+const requestValidation = auditRequestValidation();
 const result = {
   totals: {
+    requestValidationCandidates: requestValidation.total,
+    requestValidationCovered: requestValidation.covered,
+    requestValidationUnresolved: requestValidation.unresolved.length,
     directCandidates: directRecords.length,
     directRuntimeMapped: directRecords.filter((item) => mapped.has(item.text)).length,
     directUnmapped: directRecords.filter((item) => !mapped.has(item.text)).length,
@@ -87,10 +92,14 @@ const result = {
   directUnmapped: directRecords.filter((item) => !mapped.has(item.text)),
   intentionallyExcluded: broadResidual.filter((item) => internalExclusions.has(item.text)).map((item) => ({ ...item, reason: internalExclusions.get(item.text) })),
   unclassified: broadResidual.filter((item) => !composedFragments.has(item.text) && !internalExclusions.has(item.text)),
+  requestValidationUnresolved: requestValidation.unresolved,
 };
 
 if (process.argv.includes("--json")) process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
 else {
+  console.log(`Management validation messages: ${result.totals.requestValidationCandidates}`);
+  console.log(`Management validation English results: ${result.totals.requestValidationCovered}`);
+  console.log(`Management validation unresolved: ${result.totals.requestValidationUnresolved}`);
   console.log(`Direct backend candidates: ${result.totals.directCandidates}`);
   console.log(`Direct runtime mapped: ${result.totals.directRuntimeMapped}`);
   console.log(`Direct unmapped: ${result.totals.directUnmapped}`);
@@ -98,4 +107,4 @@ else {
   console.log(`Intentionally excluded internal literals: ${result.totals.intentionallyExcluded}`);
   console.log(`Unclassified residuals: ${result.totals.unclassified}`);
 }
-if (result.totals.directUnmapped || result.totals.unclassified) process.exitCode = 1;
+if (result.totals.requestValidationUnresolved || result.totals.directUnmapped || result.totals.unclassified) process.exitCode = 1;

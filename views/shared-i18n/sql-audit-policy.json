@@ -257,7 +257,8 @@
       "file": "views/gyro-craftsman-web-own-v2.4/src/components/common/formList.vue",
       "mustContain": [
         ":placeholder=\"$(val.field_name)\"",
-        ":label=\"$(items.name || items.label, items.name_en || items.label_en)\""
+        ":label=\"optionLabel(items, val)\"",
+        "dictionaryDisplayLabel(entry, this.$, key)"
       ]
     },
     {
@@ -269,15 +270,15 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/customer/setup/dictionary/index.vue",
       "mustContain": [
-        "{{ $(scope.row.name) }}",
-        "{{ $(scope.row.mark)"
+        "{{ dictionaryLabel(scope.row) }}",
+        "dictionaryLabel(scope.row, 'mark')"
       ]
     },
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/customer/setup/dictionary/management.vue",
       "mustContain": [
-        "{{ $(scope.row.name) }}",
-        "{{ $(scope.row.mark)"
+        "{{ dictionaryLabel(scope.row) }}",
+        "dictionaryLabel(scope.row, 'mark')"
       ]
     },
     {

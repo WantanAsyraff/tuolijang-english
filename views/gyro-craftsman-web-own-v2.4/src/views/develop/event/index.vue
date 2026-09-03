@@ -279,7 +279,7 @@ export default {
 
     // 删除触发器
     deleteFn(row) {
-      this.$modalSure('您确定要删除此触发器数据吗').then(() => {
+      this.$modalSure('confirm.deleteTriggerData').then(() => {
         dataEventDelApi(row.id).then((res) => {
           let totalPage = Math.ceil((this.total - 1) / this.where.limit)
           let currentPage = this.where.page > totalPage ? totalPage : this.where.page

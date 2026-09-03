@@ -98,7 +98,7 @@ export default {
       })
     },
     async handleDelete(id) {
-      await this.$modalSure('你确定要删除这条分类吗')
+      await this.$modalSure('confirm.deleteCategoryItem')
       await configQuickCateDeleteApi(id)
       await this.getTargetCate()
     }

@@ -294,7 +294,7 @@ export default {
       let data = {
         status: -1
       }
-      await this.$modalSure('确认撤回审核状态吗')
+      await this.$modalSure('confirm.withdrawReview')
       await clientBillStatusApi(row.id, data)
       this.getTableData()
     },

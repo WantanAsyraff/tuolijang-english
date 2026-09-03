@@ -181,7 +181,7 @@
                     v-for="el in val.options"
                     :key="el.value"
                     :disabled="el.disabled"
-                    :label="localizedOptionLabel(el.label, val.key)"
+                    :label="localizedOptionLabel(el, val.key)"
                     :value="el.value"
                   />
                 </el-select>
@@ -245,7 +245,7 @@
                       class="el-tag el-tag--small el-tag--info el-tag--light"
                       @click.stop="cardTag(labelIndex)"
                     >
-                      {{ $(item.name, item.name_en) }}
+                      {{ item.name }}
                       <i class="el-tag__close el-icon-close" @click.stop="cardTag(labelIndex)" />
                     </span>
                   </div>
@@ -275,7 +275,7 @@
                   <template v-if="val.options && val.options.length > 0">
                     <span v-for="(item, index) in val.options" :key="index" class="lh-center mr10">
                       <img v-default-avatar="item" :src="$getAvatarSrc(item)" alt="" class="avatar" />
-                      {{ $(item.name, item.name_en) }}
+                      {{ item.name }}
                     </span>
                   </template>
                   <template v-else> -- </template>
@@ -298,7 +298,7 @@
                   @keyup.enter.native="handlePopoverHide(ruleForm[val.key])"
                 >
                   <el-radio v-for="(el, index) in val.options" :key="index" :label="el.value">
-                    {{ localizedOptionLabel(el.label, val.key) }}
+                    {{ localizedOptionLabel(el, val.key) }}
                   </el-radio>
                 </el-radio-group>
                 <div v-else :class="fieldViewClass(val)">
@@ -320,7 +320,7 @@
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
                 >
                   <el-checkbox v-for="(check, checkIndex) in val.options" :key="checkIndex" :label="check.value">
-                    {{ localizedOptionLabel(check.label, val.key) }}
+                    {{ localizedOptionLabel(check, val.key) }}
                   </el-checkbox>
                 </el-checkbox-group>
                 <div v-else :class="fieldViewClass(val)">
@@ -460,6 +460,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel, hasDictionaryOwnership, rawDictionaryLabel } from '@/lang/dictionary-label'
 import { getStorageJson } from '@/utils/storage'
 import { extractArrayIds } from '@/libs/public'
 import { pinyin } from 'pinyin-pro'
@@ -643,12 +644,15 @@ export default {
     localizedOptions(options, fieldKey) {
       return (options || []).map((option) => ({
         ...option,
-        label: this.localizedOptionLabel(option.label, fieldKey),
+        label: this.localizedOptionLabel(option, fieldKey),
         children: option.children ? this.localizedOptions(option.children, fieldKey) : option.children
       }))
     },
-    localizedOptionLabel(label, fieldKey) {
-      const translated = this.systemLabel(label)
+    localizedOptionLabel(option, fieldKey) {
+      const label = rawDictionaryLabel(option, 'label')
+      const translated = hasDictionaryOwnership(option)
+        ? dictionaryDisplayLabel(option, (value) => this.systemLabel(value), 'label')
+        : label
       if (translated !== label || fieldKey !== 'area_cascade' || !/[\u3400-\u9fff]/.test(label || '')) {
         return translated
       }
@@ -781,7 +785,7 @@ export default {
     joinName(obj) {
       return Object.values(obj)
         .filter((item) => item?.name) // 过滤无效项
-        .map((item) => this.$(item.name, item.name_en))
+        .map((item) => item.name)
         .join('、')
     },
     // 编辑产品清单
@@ -1057,33 +1061,33 @@ export default {
       if (Array.isArray(val)) {
         let resultNames = []
         val.forEach((id) => {
-          const name = this.findNameInTree(options, this.resolveOptionValue(id))
+          const option = this.findOptionInTree(options, this.resolveOptionValue(id))
 
-          if (name) {
-            resultNames.push(this.localizedOptionLabel(name, fieldKey))
+          if (option) {
+            resultNames.push(this.localizedOptionLabel(option, fieldKey))
           }
         })
 
         return resultNames.join('/')
       } else {
-        const name = this.findNameInTree(options, this.resolveOptionValue(val))
-        return name ? this.localizedOptionLabel(name, fieldKey) : name
+        const option = this.findOptionInTree(options, this.resolveOptionValue(val))
+        return option ? this.localizedOptionLabel(option, fieldKey) : option
       }
     },
 
-    findNameInTree(nodes, targetId) {
+    findOptionInTree(nodes, targetId) {
       if (targetId === null || targetId === undefined || targetId === '') {
         return null
       }
       const target = String(targetId)
       for (const node of nodes) {
         if (String(node.value) === target) {
-          return node.label
+          return node
         }
         if (node.children && node.children.length > 0) {
-          const foundName = this.findNameInTree(node.children, targetId)
-          if (foundName) {
-            return foundName
+          const foundOption = this.findOptionInTree(node.children, targetId)
+          if (foundOption) {
+            return foundOption
           }
         }
       }

@@ -177,7 +177,7 @@ export default {
       let data = {
         data_id: this.rowData.id
       }
-      this.$modalSure('您确认要删除此数据吗').then(() => {
+      this.$modalSure('confirm.deleteThisData').then(() => {
         delModuleShareApi(this.keyName, id, data).then((res) => {
           this.getList()
         })

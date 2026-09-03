@@ -634,14 +634,14 @@ export default {
       let checkedId = Array.from(this.checkedId)
       let id = checkedId.length && val !== 1 ? checkedId : [row.id]
       if (row && row.customer_status.value == 2) {
-        this.$modalSure(this.$("legacy.ed2e25071c83feab")).then(() => {
+        this.$modalSure('confirm.cancelCustomerLost').then(() => {
           customerCancelLostApi(row.id)
           setTimeout(() => {
             this.getTableData()
           }, 300)
         })
       } else {
-        this.$modalSure(this.$("legacy.e2b85c7f1fdecb5e")).then(() => {
+        this.$modalSure('confirm.markCustomerLost').then(() => {
           customerLostApi({ data: id })
           setTimeout(() => {
             this.getTableData()
@@ -656,7 +656,7 @@ export default {
       } else {
         let checkedId = Array.from(this.checkedId)
         let id = checkedId.length ? checkedId : [row.id]
-        this.$modalSure(this.$("legacy.e9da6c9700e70947")).then(async () => {
+        this.$modalSure('confirm.claimCustomer').then(async () => {
           await customerClaimApi({ data: id })
           await this.getTableData()
         })

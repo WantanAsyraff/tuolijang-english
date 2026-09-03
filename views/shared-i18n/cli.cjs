@@ -217,7 +217,7 @@ const displayProperties = new Set([
   "text", "textContent", "tip", "tips", "title", "unit",
 ]);
 const displayCalls = new Set([
-  "$alert", "$confirm", "$message", "$notify", "$prompt", "alert", "confirm", "error", "info",
+  "$alert", "$confirm", "$message", "$modalSure", "$notify", "$prompt", "alert", "confirm", "error", "info",
   "open", "prompt", "setNavigationBarTitle", "showLoading", "showModal", "showToast", "success", "warning",
 ]);
 const translators = new Set(["$", "$localize", "$t", "$ts", "t", "translate", "translateSystemText"]);
@@ -319,6 +319,7 @@ function audit(selectedApp) {
   const staticTemplateIssues = [];
   const staticScriptIssues = [];
   const legacyIssues = [];
+  const confirmationIssues = [];
   if (selected.includes("web")) {
     const packageJson = JSON.parse(fs.readFileSync(path.join(viewsRoot, "gyro-craftsman-web-own-v2.4/package.json"), "utf8"));
     if (packageJson.dependencies?.["vue-i18n"] || packageJson.dependencies?.["smart-vue-i18n"]) {
@@ -370,6 +371,31 @@ function audit(selectedApp) {
             missingKeyIssues.push(`${path.relative(viewsRoot, file)}:${line} (${match[2]})`);
           }
         }
+        const excludedWebChat = /gyro-craftsman-web-own-v2\.4[\\/]src[\\/]views[\\/]chat(?:[\\/]|$)/.test(relative);
+        if (selected.includes("web") && !excludedWebChat) {
+          for (const match of source.matchAll(/\$modalSure\(\s*(?:this\.)?\$\(\s*(["\x27])([A-Za-z][\w.-]*\.[\w.-]*[\w-])\1/g)) {
+            const line = source.slice(0, match.index).split(/\r?\n/).length;
+            const value = match[2];
+            if (value.startsWith("legacy.")) {
+              confirmationIssues.push(path.relative(viewsRoot, file) + ":" + line + " (obsolete confirmation key: " + value + ")");
+            } else if (!webMessageKeys.has(value)) {
+              confirmationIssues.push(path.relative(viewsRoot, file) + ":" + line + " (missing confirmation key: " + value + ")");
+            }
+          }
+          for (const match of source.matchAll(/\$modalSure\(\s*(["\x27\x60])([\s\S]*?)\1/g)) {
+            const line = source.slice(0, match.index).split(/\r?\n/).length;
+            const value = match[2];
+            if (match[1].charCodeAt(0) === 96 || value.includes("$" + "{")) {
+              confirmationIssues.push(path.relative(viewsRoot, file) + ":" + line + " (unresolved confirmation template)");
+            } else if (/[\u3400-\u9fff]/.test(value)) {
+              confirmationIssues.push(path.relative(viewsRoot, file) + ":" + line + " (literal Chinese confirmation)");
+            } else if (value.startsWith("legacy.")) {
+              confirmationIssues.push(path.relative(viewsRoot, file) + ":" + line + " (obsolete confirmation key: " + value + ")");
+            } else if (!/^[A-Za-z][\w.-]*\.[\w.-]*[\w-]$/.test(value) || !webMessageKeys.has(value)) {
+              confirmationIssues.push(path.relative(viewsRoot, file) + ":" + line + " (missing confirmation key: " + value + ")");
+            }
+          }
+        }
         if (entry.name.endsWith(".vue")) {
           const templateBlock = rootTemplate(source);
           const visible = templateBlock.source
@@ -389,7 +415,7 @@ function audit(selectedApp) {
           }
         }
         const vendorOwnedLocale = /system[\\/]dashboard-design[\\/]charts[\\/]configData\.js$/.test(relative);
-        if (relative.startsWith("gyro-craftsman-web-own-v2.4") && !vendorOwnedLocale && !/(?:^|[\\/])(?:lang|locale)(?:[\\/])/.test(relative)) {
+        if (relative.startsWith("gyro-craftsman-web-own-v2.4") && !excludedWebChat && !vendorOwnedLocale && !/(?:^|[\\/])(?:lang|locale)(?:[\\/])/.test(relative)) {
           scriptBlocks(file, source).forEach((block) => auditScriptBlock(block, relative, staticScriptIssues));
         }
       }
@@ -401,6 +427,7 @@ function audit(selectedApp) {
   if (missingRuntimeIssues.length) throw new Error(`Literal $() system text is missing from the canonical runtime index:\n${[...new Set(missingRuntimeIssues)].slice(0, 100).join("\n")}`);
   if (missingKeyIssues.length) throw new Error(`Literal $() key does not exist in the generated dashboard catalog:\n${[...new Set(missingKeyIssues)].slice(0, 100).join("\n")}`);
   if (staticTemplateIssues.length) throw new Error(`Static Chinese template UI must use canonical $() keys:\n${[...new Set(staticTemplateIssues)].slice(0, 100).join("\n")}`);
+  if (confirmationIssues.length) throw new Error("Confirmation dialogs must use valid canonical keys:\n" + [...new Set(confirmationIssues)].slice(0, 100).join("\n"));
   if (staticScriptIssues.length) throw new Error(`Static Chinese script UI must use canonical $() keys:\n${[...new Set(staticScriptIssues)].slice(0, 100).join("\n")}`);
   console.log(`localization audit passed (${selected.join(", ")})`);
 }

@@ -297,6 +297,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { getDictTreeListApi } from '@/api/form'
 export default {
   props: {
@@ -399,6 +400,15 @@ export default {
     }
   },
   methods: {
+    localizedDictionaryOptions(options) {
+      return Array.isArray(options)
+        ? options.map((option) => ({
+            ...option,
+            name: dictionaryDisplayLabel(option, this.$),
+            children: this.localizedDictionaryOptions(option.children)
+          }))
+        : []
+    },
     changeTargetField(val, item) {
       let index = this.targetField.findIndex((el) => el.form_field_uniqid === val)
       item.field_name = this.targetField[index].field_name
@@ -471,7 +481,7 @@ export default {
         type_id: 2
       }
       getDictTreeListApi(obj).then((res) => {
-        this.addressList = res.data
+        this.addressList = this.localizedDictionaryOptions(res.data)
       })
     },
     // 选择成员回调
@@ -551,7 +561,7 @@ export default {
 
     getOptions(id) {
       let index = this.targetField.findIndex((item) => item.form_field_uniqid === id)
-      return this.targetField[index].data_dict
+      return this.localizedDictionaryOptions(this.targetField[index].data_dict)
     },
     getValue(id) {
       let index = this.targetField.findIndex((item) => item.form_field_uniqid === id)

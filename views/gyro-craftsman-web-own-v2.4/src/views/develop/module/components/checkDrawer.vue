@@ -459,7 +459,7 @@ export default {
     },
     // 删除评论
     deleteReply(item) {
-      this.$modalSure('你确定要删除此评论吗').then(() => {
+      this.$modalSure('confirm.deleteComment').then(() => {
         deleteModuleCommentApi(this.keyName, item.id).then((res) => {
           this.commentList = []
           this.getCommentList()
@@ -709,7 +709,7 @@ export default {
     },
 
     async deleteRow() {
-      await this.$modalSure('您确认要删除吗')
+      await this.$modalSure('confirm.deleteGenericFormal')
       await crudModuleDelApi(this.keyName, this.id)
       await this.$emit('getList')
       await this.handleClose()
@@ -726,7 +726,7 @@ export default {
       await this.$refs.addDrawer.openBox(item.id, data.data)
     },
     async deleteTabsRow(item) {
-      await this.$modalSure('您确认要删除吗')
+      await this.$modalSure('confirm.deleteGenericFormal')
       await crudModuleDelApi(this.tabKey, item.id)
       await this.getList()
     },

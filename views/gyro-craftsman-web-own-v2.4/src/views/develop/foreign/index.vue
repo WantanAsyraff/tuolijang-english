@@ -174,7 +174,7 @@ export default {
 
     // 删除触发器
     deleteFn(id) {
-      this.$modalSure('您确定要删除此数据吗').then(() => {
+      this.$modalSure('confirm.deleteRecordData').then(() => {
         deleteOpenKeyApi(id).then((res) => {
           let totalPage = Math.ceil((this.total - 1) / this.where.limit)
           let currentPage = this.where.page > totalPage ? totalPage : this.where.page

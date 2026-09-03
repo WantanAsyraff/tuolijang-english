@@ -201,7 +201,7 @@ export default {
     },
     // 删除
     async handleDel(item) {
-      await this.$modalSure('确定删除当前联系人')
+      await this.$modalSure('confirm.deleteContact')
       await clientLiaisonDeleteApi(item.id)
       if (this.where.page > 1 && this.tableData.length <= 1) {
         this.where.page--

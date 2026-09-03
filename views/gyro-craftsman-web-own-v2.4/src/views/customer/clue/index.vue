@@ -358,7 +358,7 @@ export default {
     },
     // 删除
     async handleDelete(item) {
-      await this.$modalSure('确定删除当前线索吗')
+      await this.$modalSure('confirm.deleteClue')
       await cluesdelApi(item.id)
       if (this.where.page > 1 && this.tableData.length <= 1) {
         this.where.page--
@@ -366,7 +366,7 @@ export default {
       await this.getTableData()
     },
     async clientworkSync(item) {
-      await this.$modalSure('确定同步企业微信客户吗')
+      await this.$modalSure('confirm.syncWeComCustomers')
       await clientWorkSyncApi()
 
       await this.getTableData()
@@ -488,7 +488,7 @@ export default {
         this.$message.error(this.$('customer.placeholder22'))
       } else {
         const ids = type === 1 ? this.ids : [row.id]
-        this.$modalSure(this.$("legacy.3978cb9ac8b2eb7f")).then(async () => {
+        this.$modalSure('confirm.claimLead').then(async () => {
           await cluesClaimApi({ data: ids })
           await this.getTableData()
         })
