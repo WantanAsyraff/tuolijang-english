@@ -435,7 +435,7 @@ export default {
     // 撤销
     handleRefuse() {
       if (this.examineData.status === 0) {
-        this.$modalSure(this.$("legacy.11accb9f68551eb7")).then(() => {
+        this.$modalSure('confirm.withdrawRequest').then(() => {
           this.getApplyRevoke()
           this.close()
         })
@@ -546,7 +546,7 @@ export default {
 
     // 拒绝/同意
     async onAgree(n) {
-      await this.$modalSure(`你确定要 ${n === 0 ? '拒绝' : '同意'} 申请人的申请吗`)
+      await this.$modalSure(n === 0 ? 'confirm.rejectApplicantRequest' : 'confirm.approveApplicantRequest')
       await approveVerifyStatusApi(this.examineData.id, n)
       this.drawer = false
       this.$emit('getList')

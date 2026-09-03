@@ -657,7 +657,7 @@ export default {
     },
     // 删除
     deleteTask() {
-      this.$modalSure('删除任务，关联的子级任务均会被删除').then(() => {
+      this.$modalSure('confirm.deleteTaskAndSubtasks').then(() => {
         deleteProgramTaskApi(this.id).then(() => {
           this.drawer = false
           this.reset()

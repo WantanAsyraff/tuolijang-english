@@ -16,7 +16,7 @@
     "postinstall": "patch-package",
     "i18n:generate": "node ../shared-i18n/cli.cjs generate --app web",
     "i18n:check": "node ../shared-i18n/cli.cjs check --app web",
-    "i18n:audit": "node ../shared-i18n/cli.cjs audit --app web",
+    "i18n:audit": "node ../shared-i18n/cli.cjs audit --app web && node ../shared-i18n/backend-audit.cjs",
     "i18n:test": "node ../shared-i18n/cli.cjs test --app web",
     "i18n:coverage": "node ../shared-i18n/web-coverage.cjs --write"
   },

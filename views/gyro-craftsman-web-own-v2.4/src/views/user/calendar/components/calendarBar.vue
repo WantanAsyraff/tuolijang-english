@@ -136,7 +136,7 @@ export default {
 
     // 删除
     handleDelete(val) {
-      this.$modalSure('您确定要删除这条日程类型吗').then(() => {
+      this.$modalSure('confirm.deleteScheduleType').then(() => {
         scheduleTypesDeleteApi(val.id).then((res) => {
           this.getTypes()
         })

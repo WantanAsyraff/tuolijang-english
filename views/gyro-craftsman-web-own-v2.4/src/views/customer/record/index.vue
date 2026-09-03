@@ -255,7 +255,7 @@ export default {
     },
     // 删除
     async handleDelete(item) {
-      await this.$modalSure('确定删除当前数据')
+      await this.$modalSure('confirm.deleteCurrentData')
       await delClientFollowApi(item.id)
       if (this.where.page > 1 && this.tableData.length <= 1) {
         this.where.page--

@@ -87,6 +87,7 @@ class DictTypeService extends BaseService implements ResourceServicesInterface
     public function info($id)
     {
         $info = toArray($this->dao->get($id));
+        $info['is_system_owned'] = (int) ($info['is_default'] ?? 0);
         if (in_array($info['ident'], $this->canDeleteData)) {
             $info['is_default'] = 0;
         } elseif (in_array($info['ident'], $this->canEditData) && $this->isBinding($info['ident'])) {

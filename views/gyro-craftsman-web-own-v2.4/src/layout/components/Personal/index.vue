@@ -115,7 +115,7 @@ export default {
     },
     // 退出登录
     loginOut() {
-      this.$modalSure('确定退出登录吗').then(async () => {
+      this.$modalSure('confirm.logout').then(async () => {
         await this.$store.dispatch('user/logout')
         this.$router.push(`${roterPre}/login?redirect=${this.$route.fullPath}`)
       })

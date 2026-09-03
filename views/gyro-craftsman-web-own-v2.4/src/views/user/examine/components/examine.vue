@@ -253,13 +253,13 @@ export default {
     },
     // 同意
     handleAgree(row) {
-      this.$modalSure('你确定要 同意 申请人的申请吗').then(() => {
+      this.$modalSure('confirm.approveApplicantRequest').then(() => {
         this.getApproveVerify(row.id, 1)
       })
     },
     // 拒绝
     handleRefuse(row) {
-      this.$modalSure('你确定要 拒绝 申请人的申请吗').then(() => {
+      this.$modalSure('confirm.rejectApplicantRequest').then(() => {
         this.getApproveVerify(row.id, 0)
       })
     },

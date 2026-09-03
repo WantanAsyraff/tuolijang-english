@@ -326,7 +326,7 @@ export default {
 
     // 删除
     async handleDelete(item) {
-      await this.$modalSure('确定删除当前商机')
+      await this.$modalSure('confirm.deleteOpportunity')
       await oddsDelApi(item.id)
       if (this.where.page > 1 && this.tableData.length <= 1) {
         this.where.page--

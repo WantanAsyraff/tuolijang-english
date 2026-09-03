@@ -79,7 +79,7 @@ export default {
       })
     },
     hanleDelete() {
-      this.$modalSure('你确定要删除这条指标模板分类吗').then(() => {
+      this.$modalSure('confirm.deleteIndicatorTemplateCategory').then(() => {
         targetCateDeleteApi(this.activeValue).then((res) => {
           this.getTargetCate()
         })

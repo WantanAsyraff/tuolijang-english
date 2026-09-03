@@ -352,7 +352,7 @@ setTimeout(() => {
         },
         // 删除实体
         async deleteEntity(row) {
-            await this.$modalSure('你确定要删除这条实体吗')
+            await this.$modalSure('confirm.deleteEntity')
             await databaseDelApi(row.id)
             const totalPage = Math.ceil((this.total - 1) / this.where.limit)
             this.where.page = this.where.page > totalPage ? totalPage : this.where.page

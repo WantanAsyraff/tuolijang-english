@@ -167,7 +167,7 @@ export default {
       let data = {
         id: this.ids
       }
-      this.$modalSure('确定要恢复此文件吗').then(() => {
+      this.$modalSure('confirm.restoreFile').then(() => {
         folderSpaceEntAllRecoverApi(data).then((res) => {
           if (res.status == 200) {
             this.getTreeData()
@@ -186,7 +186,7 @@ export default {
 
     // 删除文件
     deleteFn(id) {
-      this.$modalSure('删除后将无法恢复，确定删除吗').then(() => {
+      this.$modalSure('confirm.deleteFilePermanently').then(() => {
         folderForceDeleteApi(id).then((res) => {
           if (res.status == 200) {
             let totalPage = Math.ceil((this.total - 1) / this.where.limit)
@@ -210,7 +210,7 @@ export default {
       let data = {
         id: this.ids
       }
-      this.$modalSure('删除后将无法恢复，确定删除吗').then(() => {
+      this.$modalSure('confirm.deleteFilePermanently').then(() => {
         folderForceDeletesApi(data).then((res) => {
           if (res.status == 200) {
             let totalPage = Math.ceil((this.total - this.ids.length) / this.where.limit)
@@ -222,7 +222,7 @@ export default {
       })
     },
     recoveryFn(id) {
-      this.$modalSure('确定恢复此数据').then(() => {
+      this.$modalSure('confirm.restoreData').then(() => {
         folderSpaceEntRecoverApi(id).then((res) => {
           if (res.status == 200) {
             this.getTreeData()

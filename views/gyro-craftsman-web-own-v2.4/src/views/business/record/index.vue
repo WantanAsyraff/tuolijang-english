@@ -135,7 +135,7 @@ export default {
       this.$refs.detailExamine.openBox(row)
     },
     handleDelete(row) {
-      this.$modalSure('你确定要删除这条申请记录吗').then(() => {
+      this.$modalSure('confirm.deleteApplicationRecord').then(() => {
         approveApplyDeleteApi(row.id).then((res) => {
           if (this.where.page > 1 && this.tableData.length <= 1) {
             this.where.page--

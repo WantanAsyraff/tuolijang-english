@@ -60,7 +60,7 @@
           <el-table-column type="selection" width="55"> </el-table-column>
           <el-table-column prop="id" label="ID" type=""></el-table-column>
           <el-table-column prop="name" :label="$('ui.customerSetupDictionaryIndexDictionaryName')" show-overflow-tooltip>
-            <template slot-scope="scope"><span>{{ $(scope.row.name) }}</span></template>
+            <template slot-scope="scope"><span>{{ dictionaryLabel(scope.row) }}</span></template>
           </el-table-column>
           <el-table-column prop="ident" :label="$('ui.customerSetupDictionaryIndexDictionaryIdentifier')" show-overflow-tooltip> </el-table-column>
           <el-table-column prop="type" :label="$('ui.customerSetupDictionaryIndexStatus')" show-overflow-tooltip>
@@ -78,7 +78,7 @@
           </el-table-column>
           <el-table-column prop="mark" :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="150" show-overflow-tooltip>
             <template slot-scope="scope">
-              <span>{{ $(scope.row.mark) || '--' }}</span>
+              <span>{{ dictionaryLabel(scope.row, 'mark') || '--' }}</span>
             </template>
           </el-table-column>
           <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" show-overflow-tooltip>
@@ -115,6 +115,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { roterPre } from '@/settings'
 import { getDictListApi, getDictCreateApi, getDictEditApi, getDictPutShowApi, getDictDeleteShowApi } from '@/api/form'
 export default {
@@ -183,6 +184,9 @@ export default {
     this.getList()
   },
   methods: {
+    dictionaryLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     // 批量操作表格
     handleSelectionChange(val) {
       this.ids = []
@@ -197,7 +201,7 @@ export default {
         return this.$message.error($('legacyScript.selectDataToDeleteFirst'))
       }
       let id = this.ids.join(',')
-      await this.$modalSure('你确定要批量删除这条内容吗')
+      await this.$modalSure('confirm.batchDeleteContent')
       await getDictDeleteShowApi(id)
       let totalPage = Math.ceil((this.total - this.ids.length) / this.where.limit)
       let currentPage = this.where.page > totalPage ? totalPage : this.where.page
@@ -238,7 +242,7 @@ export default {
 
     // 删除
     async handleDelete(row) {
-      await this.$modalSure('你确定要删除这条内容吗')
+      await this.$modalSure('confirm.deleteContent')
       await getDictDeleteShowApi(row.id)
       let totalPage = Math.ceil((this.total - 1) / this.where.limit)
       let currentPage = this.where.page > totalPage ? totalPage : this.where.page

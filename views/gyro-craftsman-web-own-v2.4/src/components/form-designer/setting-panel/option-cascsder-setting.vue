@@ -122,7 +122,7 @@ export default {
     },
 
     async deleteFn(node, data) {
-      await this.$modalSure('你确定要删除这条数据吗')
+      await this.$modalSure('confirm.deleteData')
       await getDictDataDeleteApi(data.id)
       node.remove()
     },

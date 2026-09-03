@@ -255,7 +255,7 @@ export default {
     // 删除职级类别
     deleteRankType(item) {
       this.closePopover()
-      this.$modalSure('你确定要删除该职级类别吗').then(() => {
+      this.$modalSure('confirm.deleteRankCategory').then(() => {
         rankCateDeleteApi(item.id).then((res) => {
           this.rankIndex = 0
           this.getRankList()
@@ -294,7 +294,7 @@ export default {
       await this.$refs.dialogForm.openBox()
     },
     deleteRank(row) {
-      this.$modalSure('你确定要删除该职级吗').then(() => {
+      this.$modalSure('confirm.deleteRank').then(() => {
         this.handleDelete(row.id)
       })
     },
@@ -306,7 +306,7 @@ export default {
         this.multipleSelection.forEach((value) => {
           ids.push(value.id)
         })
-        this.$modalSure('确定要全部删除已选择的内容吗').then(() => {
+        this.$modalSure('confirm.deleteSelectedItems').then(() => {
           this.handleDelete(ids.join(','))
         })
       }

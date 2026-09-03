@@ -132,7 +132,7 @@ export default {
     },
     // 删除应用
     async deleteFn(id) {
-      await this.$modalSure('你确定要删除当前应用吗')
+      await this.$modalSure('confirm.deleteCurrentApplication')
       await delcrudCateApi(id)
       this.getCrudAllType(1)
     },

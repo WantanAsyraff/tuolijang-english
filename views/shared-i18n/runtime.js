@@ -58,6 +58,59 @@ export function createLocalizationRuntime(systemTextEn) {
       const action = dynamicMatch[3] === "提交" ? "submitted" : "updated";
       return `${dynamicMatch[1]}'s ${translateLabel(dynamicMatch[2])} has been ${action}. Please review it promptly.`;
     }
+    dynamicMatch = text.match(/^您有一条个人待办任务，请记得处理哦！待办内容【(.*)】$/);
+    if (dynamicMatch) return `You have a personal to-do task to process: [${dynamicMatch[1]}]`;
+    dynamicMatch = text.match(/^您有一条回款任务，请记得处理哦！提醒内容【(.*)】$/);
+    if (dynamicMatch) return `You have a payment collection task to process. Reminder: [${dynamicMatch[1]}]`;
+
+    dynamicMatch = text.match(/^密码长度不正确,最少(\d+)个字符$/);
+    if (dynamicMatch) return `Password must contain at least ${dynamicMatch[1]} characters`;
+    dynamicMatch = text.match(/^(输入的密码不符合规则|确认密码不符合规则|密码格式不正确|确认密码格式不正确),请输入(.+?)(?:的密码组合|的组合)$/);
+    if (dynamicMatch) {
+      const subject = dynamicMatch[1].startsWith("确认密码") ? "Confirmation password" : "Password";
+      return `${subject} does not meet the requirements. Use ${translateLabel(dynamicMatch[2])}.`;
+    }
+
+    const validationMessages = [
+      [/^请填写正确的(.+)$/, (m) => `Enter a valid ${translateLabel(m[1])}`],
+      [/^请填写(.+)$/, (m) => `Enter ${translateLabel(m[1])}`],
+      [/^请输入正确的(.+)$/, (m) => `Enter a valid ${translateLabel(m[1])}`],
+      [/^请输入(.+)$/, (m) => `Enter ${translateLabel(m[1])}`],
+      [/^请选择正确的(.+)$/, (m) => `Select a valid ${translateLabel(m[1])}`],
+      [/^请选择(.+)$/, (m) => `Select ${translateLabel(m[1])}`],
+      [/^请设置正确的(.+)$/, (m) => `Configure a valid ${translateLabel(m[1])}`],
+      [/^请设置(.+)$/, (m) => `Configure ${translateLabel(m[1])}`],
+      [/^缺少(.+)$/, (m) => `${translateLabel(m[1])} is missing`],
+      [/^无效的(.+)$/, (m) => `${translateLabel(m[1])} is invalid`],
+      [/^(.+)必须填写$/, (m) => `${translateLabel(m[1])} is required`],
+      [/^(.+)必须选择一项$/, (m) => `Select one ${translateLabel(m[1])} option`],
+      [/^(.+)必须存在$/, (m) => `${translateLabel(m[1])} must exist`],
+      [/^(.+)必须为(数字|整数)$/, (m) => `${translateLabel(m[1])} must be ${m[2] === "整数" ? "an integer" : "numeric"}`],
+      [/^(.+)只能为(数字|整数)$/, (m) => `${translateLabel(m[1])} must be ${m[2] === "整数" ? "an integer" : "numeric"}`],
+      [/^(.+)值只能为(数字|整数)$/, (m) => `${translateLabel(m[1])} must be ${m[2] === "整数" ? "an integer" : "numeric"}`],
+      [/^(.+)必须为(数组|数组对象)$/, (m) => `${translateLabel(m[1])} must be ${m[2] === "数组" ? "an array" : "an array of objects"}`],
+      [/^(.+)必须为对象$/, (m) => `${translateLabel(m[1])} must be an object`],
+      [/^(.+)必须包含([A-Za-z_][\w-]*)字段$/, (m) => `${translateLabel(m[1])} must contain the ${m[2]} field`],
+      [/^(.+)必须大于0$/, (m) => `${translateLabel(m[1])} must be greater than 0`],
+      [/^(.+)必须大于等于0$/, (m) => `${translateLabel(m[1])} must be greater than or equal to 0`],
+      [/^(.+)长度超出限制$/, (m) => `${translateLabel(m[1])} exceeds the length limit`],
+      [/^(.+)长度超出(\d+)限制$/, (m) => `${translateLabel(m[1])} cannot exceed ${m[2]} characters`],
+      [/^(.+)长度不能大于(\d+)(?:个字符|位)$/, (m) => `${translateLabel(m[1])} cannot exceed ${m[2]} characters`],
+      [/^(.+)长度超出限制最大(?:长度)?(\d+)(?:个字符|位)$/, (m) => `${translateLabel(m[1])} cannot exceed ${m[2]} characters`],
+      [/^(.+)超出限制最大(?:长度)?(\d+)(?:个字符|位)$/, (m) => `${translateLabel(m[1])} cannot exceed ${m[2]} characters`],
+      [/^(.+)过长$/, (m) => `${translateLabel(m[1])} is too long`],
+      [/^(.+)(?:参数)?类型(?:错误|不正确|异常)$/, (m) => `${translateLabel(m[1])} has an invalid type`],
+      [/^(.+?)(?:格式|型)(?:错误|不正确|异常)$/, (m) => `${translateLabel(m[1])} has an invalid format`],
+      [/^(.+)不正确$/, (m) => `${translateLabel(m[1])} is invalid`],
+      [/^(.+)有误$/, (m) => `${translateLabel(m[1])} is invalid`],
+      [/^(.+)错误$/, (m) => `${translateLabel(m[1])} is invalid`],
+      [/^(.+)只能由字母下划线组合$/, (m) => `${translateLabel(m[1])} may contain only letters and underscores`],
+      [/^(.+)仅可包含字母、数字、下划线$/, (m) => `${translateLabel(m[1])} may contain only letters, numbers, and underscores`],
+    ];
+    for (const [pattern, format] of validationMessages) {
+      const validationMatch = text.match(pattern);
+      if (validationMatch) return format(validationMatch);
+    }
 
     // Activity logs are system-owned templates. Only this geographical field
     // format is allowlisted, so arbitrary business-record changes stay raw.
@@ -115,27 +168,27 @@ export function createLocalizationRuntime(systemTextEn) {
     dynamicMatch = text.match(/^【(.+)】(.+)(的记录已存在，请勿重复添加！|的考核记录已存在，无法重复添加！)$/);
     if (dynamicMatch) return `${dynamicMatch[1]} — ${translateLabel(dynamicMatch[2])}: this assessment record already exists and cannot be added again`;
     dynamicMatch = text.match(/^(.+)最多输入(\d+)个(数字|字)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} must contain no more than ${dynamicMatch[2]} ${dynamicMatch[3] === "数字" ? "digits" : "characters"}`;
+    if (dynamicMatch) return `${dynamicMatch[1]} must contain no more than ${dynamicMatch[2]} ${dynamicMatch[3] === "数字" ? "digits" : "characters"}`;
     dynamicMatch = text.match(/^(.+)最少输入(\d+)个(数字|字)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} must contain at least ${dynamicMatch[2]} ${dynamicMatch[3] === "数字" ? "digits" : "characters"}`;
+    if (dynamicMatch) return `${dynamicMatch[1]} must contain at least ${dynamicMatch[2]} ${dynamicMatch[3] === "数字" ? "digits" : "characters"}`;
     dynamicMatch = text.match(/^(.+)最少输入字数(\d+)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} must contain at least ${dynamicMatch[2]} characters`;
+    if (dynamicMatch) return `${dynamicMatch[1]} must contain at least ${dynamicMatch[2]} characters`;
     dynamicMatch = text.match(/^最少输入字数(\d+)$/);
     if (dynamicMatch) return `Enter at least ${dynamicMatch[1]} characters`;
     dynamicMatch = text.match(/^(.+)最多选择数量(\d+)$/);
-    if (dynamicMatch) return `Select no more than ${dynamicMatch[2]} options for ${translateLabel(dynamicMatch[1])}`;
+    if (dynamicMatch) return `Select no more than ${dynamicMatch[2]} options for ${dynamicMatch[1]}`;
     dynamicMatch = text.match(/^(.+)最少选择数量(\d+)$/);
-    if (dynamicMatch) return `Select at least ${dynamicMatch[2]} options for ${translateLabel(dynamicMatch[1])}`;
+    if (dynamicMatch) return `Select at least ${dynamicMatch[2]} options for ${dynamicMatch[1]}`;
     dynamicMatch = text.match(/^(.+)不能晚于(.+)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} cannot be later than ${dynamicMatch[2]}`;
+    if (dynamicMatch) return `${dynamicMatch[1]} cannot be later than ${dynamicMatch[2]}`;
     dynamicMatch = text.match(/^(.+)不能早于(.+)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} cannot be earlier than ${dynamicMatch[2]}`;
+    if (dynamicMatch) return `${dynamicMatch[1]} cannot be earlier than ${dynamicMatch[2]}`;
     dynamicMatch = text.match(/^请(选择|输入)(.+)$/);
     if (dynamicMatch) return `${dynamicMatch[1] === "选择" ? "Select" : "Enter"} ${translateLabel(dynamicMatch[2])}`;
     dynamicMatch = text.match(/^(.+)不能为空$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} is required`;
+    if (dynamicMatch) return `${dynamicMatch[1]} is required`;
     dynamicMatch = text.match(/^(.+)已存在$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} already exists`;
+    if (dynamicMatch) return `${dynamicMatch[1]} already exists`;
     dynamicMatch = text.match(/^(直属|一级)分类数量到达上限$/);
     if (dynamicMatch) return `The ${dynamicMatch[1] === "直属" ? "direct" : "top-level"} category limit has been reached`;
 

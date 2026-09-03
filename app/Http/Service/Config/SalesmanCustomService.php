@@ -170,7 +170,7 @@ class SalesmanCustomService extends BaseService
                     if (! empty($item['dict_ident']) && $item['dict_ident'] !== 'area_cascade') {
                         $item['dict'] = $dictDataService->getTreeData(
                             ['type_name' => $item['dict_ident'], 'status' => 1],
-                            ['name as label', 'name', 'value', 'type_name', 'pid']
+                            ['name as label', 'name', 'value', 'type_name', 'pid', 'is_default']
                         );
                     }
                     return $item;

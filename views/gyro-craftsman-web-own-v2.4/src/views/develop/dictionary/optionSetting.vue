@@ -11,11 +11,11 @@
       <div class="left">
         <div v-for="(item, index) in left" :key="index" class="item" :class="activeId == item.id ? 'active' : ''"
           @click="handleClick(item, index)">
-          {{ $(item.name, item.name_en) }}
+          {{ dictionaryLabel(item) }}
         </div>
       </div>
       <div class="right">
-        <div class="title">{{ activeName }}</div>
+        <div class="title">{{ dictionaryLabel(activeVal) }}</div>
         <div class="mt20">
           <template v-if="activeVal.level == 1">
             <draggable tag="div" :list="customizeItems"
@@ -23,7 +23,7 @@
               @change="emitDefaultValueChange">
               <div v-for="(option, idx) in customizeItems" :key="idx" class="mb14">
                 <div class="checkBox">
-                  <el-input v-model="option.name" size="small" style="width: 300px">
+                  <el-input :value="dictionaryLabel(option)" size="small" style="width: 300px" @input="updateOptionName(option, $event)">
                     <span slot="suffix">
                       <el-color-picker size="small" v-model="option.color"></el-color-picker>
                     </span>
@@ -41,7 +41,7 @@
           <!-- 树形 -->
           <el-tree :data="customizeItems" node-key="value" default-expand-all v-else>
             <div class="custom-tree-node" slot-scope="{ node, data }">
-              <el-input v-model="data.name" :placeholder="$('ui.customerSetupDictionaryManagementDataValue')" size="small" style="width: 300px;" />
+              <el-input :value="dictionaryLabel(data)" :placeholder="$('ui.customerSetupDictionaryManagementDataValue')" size="small" style="width: 300px;" @input="updateOptionName(data, $event)" />
               <template>
                 <span class="iconfont icontianjia1 iconadd" @click="addFn(node, data)" />
                 <span class="iconfont icona-ziji1x iconadd" :title="$('ui.customerSetupDictionaryManagementAddChildItem')" @click="addChildFn(node, data)" />
@@ -66,6 +66,7 @@
 </div>
 </template>
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { crudDictListApi, crudDictBatchApi } from '@/api/develop'
 import { getDictDataListApi, getDictDataDeleteApi, getDictTreeListApi } from '@/api/form'
 import Draggable from 'vuedraggable'
@@ -78,7 +79,6 @@ export default {
   data() {
     return {
       activeId: 1,
-      activeName: '客户回访设置',
       activeVal: {},
       left: [],
       optionModel: {
@@ -99,6 +99,12 @@ export default {
     }
   },
   methods: {
+    dictionaryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$)
+    },
+    updateOptionName(option, value) {
+      option.name = value
+    },
     findParentNode(treeNodeId) {
       let parentNode = null;
       const find = (node) => {
@@ -143,7 +149,7 @@ export default {
       this.appendNode(data.children, data.id);
     },
     async deleteFn(node, data) {
-      await this.$modalSure('你确定要删除这条数据吗')
+      await this.$modalSure('confirm.deleteData')
       node.remove()
     },
     // 获取最大值
@@ -184,7 +190,6 @@ export default {
     handleClick(item, index) {
       this.activeVal = item
       this.activeId = item.id
-      this.activeName = item.name
       let obj = {
         types: item.ident,
         // level: 1
@@ -202,7 +207,7 @@ export default {
     },
 
     async deleteOption(item, index) {
-      await this.$modalSure('你确定要删除这条内容吗')
+      await this.$modalSure('confirm.deleteContent')
       if (item.id) {
         await getDictDataDeleteApi(item.id)
       }

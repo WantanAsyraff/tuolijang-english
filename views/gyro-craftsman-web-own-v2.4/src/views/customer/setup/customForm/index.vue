@@ -87,7 +87,7 @@
               size="small"
               @change="getDictData(scope.row.dict_ident, index1, scope.$index)"
             >
-              <el-option v-for="(item, index) in dictList" :key="index" :label="item.name" :value="item.ident">
+              <el-option v-for="(item, index) in dictList" :key="index" :label="dictionaryLabel(item)" :value="item.ident">
               </el-option>
             </el-select>
           </template>
@@ -309,6 +309,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import Sortable from 'sortablejs'
 import { configConvertApi } from '@/api/client'
 import common from './components/customCommon'
@@ -377,6 +378,9 @@ export default {
   },
 
   methods: {
+    dictionaryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$)
+    },
     gridData(val) {
       configConvertApi('customer', { data: val }).then((res) => {})
     },
@@ -548,7 +552,7 @@ export default {
 
     // 删除
     deleteFn(row, index) {
-      this.$modalSure('你确定要删除这条数据吗').then(() => {
+      this.$modalSure('confirm.deleteData').then(() => {
         this.dataList[index].data.splice(row.$index, 1)
       })
     },
@@ -635,7 +639,7 @@ export default {
 
     // 删除分组
     async deleteCate(id) {
-      await this.$modalSure('确认删除此数据吗')
+      await this.$modalSure('confirm.deleteThisDataConfirm')
       await formCateDeleteApi(id)
       await this.getList()
     },

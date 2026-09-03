@@ -174,13 +174,13 @@ export default {
 
     // 停止发送
     async handleStopped(row) {
-      await this.$modalSure('确定要停止发送此消息吗')
+      await this.$modalSure('confirm.stopMessageSend')
       await getWorkMassStatus(row.id, { status: 0 })
       await this.getTableData()
     },
 
     async handleRemind(row) {
-      await this.$modalSure('再次提醒员工进行群发')
+      await this.$modalSure('confirm.remindStaffMassSend')
       await getWorkMassRemind(row.id)
       await this.getTableData()
     },
@@ -237,7 +237,7 @@ export default {
 
     // 删除
     async handleDel(item) {
-      await this.$modalSure('确定删除当前数据')
+      await this.$modalSure('confirm.deleteCurrentData')
       await delWorkMass(item.id)
       if (this.where.page > 1 && this.tableData.length <= 1) {
         this.where.page--

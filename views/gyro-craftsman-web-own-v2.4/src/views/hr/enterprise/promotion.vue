@@ -297,7 +297,7 @@ export default {
       if (!row.row.id) {
         this.list.splice(row.$index, 1)
       } else {
-        this.$modalSure('您确定要删除该行数据吗').then(() => {
+        this.$modalSure('confirm.deleteRow').then(() => {
           deletePromotionDataApi(row.row.id).then((res) => {
             this.getList(this.promotion_id)
           })

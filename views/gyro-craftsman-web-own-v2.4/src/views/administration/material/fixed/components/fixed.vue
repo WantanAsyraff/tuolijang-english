@@ -493,7 +493,7 @@ export default {
       this.$refs.addMaterial.openBox()
     },
     async handleDelete(id) {
-      await this.$modalSure('你确定要删除这条内容吗')
+      await this.$modalSure('confirm.deleteContent')
       await storageDeleteApi(id)
       let totalPage = Math.ceil((this.total - 1) / this.where.limit)
       let currentPage = this.where.page > totalPage ? totalPage : this.where.page

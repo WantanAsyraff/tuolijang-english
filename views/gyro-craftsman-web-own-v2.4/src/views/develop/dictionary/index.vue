@@ -27,7 +27,7 @@
             <el-table-column prop="id" label="ID" width="55" type=""></el-table-column>
             <el-table-column prop="name" :label="$('ui.customerSetupDictionaryIndexDictionaryName')" min-width="100" show-overflow-tooltip>
               <template slot-scope="scope">
-                <span>{{ $(scope.row.name) }}</span>
+                <span>{{ dictionaryLabel(scope.row) }}</span>
               </template>
             </el-table-column>
             <el-table-column prop="crud_name" min-width="100" :label="$('ui.developApproveIndexLinkedEntity')">
@@ -45,7 +45,7 @@
 
             <el-table-column prop="mark" :label="$('public.remarks')" min-width="150" show-overflow-tooltip>
               <template slot-scope="scope">
-                <span>{{ $(scope.row.mark) || '--' }}</span>
+                <span>{{ dictionaryLabel(scope.row, 'mark') || '--' }}</span>
               </template>
             </el-table-column>
             <el-table-column prop="created_at" :label="$('hr.creationtime')" min-width="150" show-overflow-tooltip>
@@ -95,6 +95,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { roterPre } from '@/settings'
 import oaFromBox from '@/components/common/oaFromBox'
 import { getcrudCateListApi, getDatabaseApi } from '@/api/develop'
@@ -169,6 +170,9 @@ export default {
   },
 
   methods: {
+    dictionaryLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     // 批量操作表格
     handleSelectionChange(val) {
       this.ids = []
@@ -208,7 +212,7 @@ export default {
         return this.$message.error($('legacyScript.selectDataToDeleteFirst'))
       }
       let id = this.ids.join(',')
-      await this.$modalSure('你确定要批量删除这条内容吗')
+      await this.$modalSure('confirm.batchDeleteContent')
       await getDictDeleteShowApi(id)
       let totalPage = Math.ceil((this.total - this.ids.length) / this.where.limit)
       let currentPage = this.where.page > totalPage ? totalPage : this.where.page
@@ -249,7 +253,7 @@ export default {
 
     // 删除
     async handleDelete(row) {
-      await this.$modalSure('你确定要删除这条内容吗')
+      await this.$modalSure('confirm.deleteContent')
       await getDictDeleteShowApi(row.id)
       let totalPage = Math.ceil((this.total - 1) / this.where.limit)
       let currentPage = this.where.page > totalPage ? totalPage : this.where.page

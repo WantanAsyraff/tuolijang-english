@@ -309,7 +309,7 @@ export default {
     },
     // 删除评论
     deleteReply(item) {
-      this.$modalSure('你确定要删除此评论吗').then(() => {
+      this.$modalSure('confirm.deleteComment').then(() => {
         deleteTaskCommentApi(item.id).then((res) => {
           this.getTaskComment()
         })

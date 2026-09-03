@@ -149,7 +149,7 @@ export default {
       if (this.multipleSelection.length <= 0) {
         this.$message.error($('legacyScript.selectAtLeastOneItem2'))
       } else {
-        this.$modalSure('删除后不可恢复,您确认要删除吗').then(() => {
+        this.$modalSure('confirm.deleteIrreversible').then(() => {
           const ids = []
           this.multipleSelection.map((value) => {
             ids.push(value.id)

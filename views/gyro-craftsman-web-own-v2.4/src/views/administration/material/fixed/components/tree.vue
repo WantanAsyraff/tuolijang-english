@@ -151,7 +151,7 @@ export default {
     },
     // 删除部门
     async handleDelete(data) {
-      await this.$modalSure('你确定要删除该分类吗')
+      await this.$modalSure('confirm.deleteCategory')
       await storageCateDeleteApi(data.value)
 
       await this.$emit('getList')

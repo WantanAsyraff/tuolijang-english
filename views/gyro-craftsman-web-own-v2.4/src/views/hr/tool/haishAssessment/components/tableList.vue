@@ -86,7 +86,7 @@ export default {
     },
 
     deleteFn(val) {
-      this.$modalSure('你确定要删除这条数据吗').then(() => {
+      this.$modalSure('confirm.deleteData').then(() => {
         deleteHayGroupApi(val.id).then((res) => {
           let totalPage = Math.ceil((this.total - 1) / this.where.limit)
           let currentPage = this.where.page > totalPage ? totalPage : this.where.page

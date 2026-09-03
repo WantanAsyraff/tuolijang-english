@@ -123,7 +123,7 @@ export default {
         const affected = this.countChildren(row.children)
         if (affected > 0) {
           try {
-            await this.$modalSure(`关闭「${row.name}」后，其下 ${affected} 个子分类将一并关闭，确定关闭吗`)
+            await this.$modalSure(this.$('confirm.closeCategoryWithChildren', { name: row.name, count: affected }))
           } catch (e) {
             row.status = 1 // 取消则回滚开关状态
             return
@@ -145,7 +145,7 @@ export default {
       })
     },
     async handleDelete(row) {
-      await this.$modalSure('确定删除当前分类吗')
+      await this.$modalSure('confirm.deleteProductCategory')
       await productCateDelApi(row.id)
       this.getList()
     },

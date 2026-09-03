@@ -1465,7 +1465,7 @@ export default {
       this.ids.forEach((item) => {
         this.formData.data.push(item.id)
       })
-      this.$modalSure('删除任务，关联的子级任务均会被删除').then(() => {
+      this.$modalSure('confirm.deleteTaskAndSubtasks').then(() => {
         deleteProgramTaskBatchApi({ data: this.formData.data }).then(() => {
           this.headerShow = false
           this.tableFrom.pid = ''

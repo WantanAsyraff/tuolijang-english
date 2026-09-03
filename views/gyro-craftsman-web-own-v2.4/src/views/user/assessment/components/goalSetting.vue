@@ -635,7 +635,7 @@ export default {
     editPreserve(type, status) {
       if (type === 1) {
         this.is_draft = 0
-        this.$modalSure('你确定要提交考核吗').then(() => {
+        this.$modalSure('confirm.submitAssessment').then(() => {
           this.preserveTemp(status)
         })
       } else {

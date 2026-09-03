@@ -1,7 +1,7 @@
 <!-- 客户-添加跟进提醒弹窗组件 -->
 <template>
   <el-dialog
-    :title="`${isEdit ? $("public.edit") : $("public.add")} ${$("legacy.f0d805dd402c70de")}`"
+    :title="`${isEdit ? $('public.edit') : $('public.add')} ${$('legacy.f0d805dd402c70de')}`"
     top="25vh"
     class="addBox"
     :append-to-body="true"

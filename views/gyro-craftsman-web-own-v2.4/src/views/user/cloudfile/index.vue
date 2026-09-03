@@ -719,16 +719,16 @@ export default {
         } else if (type === 2) {
           if (this.entButton) {
             // 企业空间
-            this.$modalSure('彻底删除后,内容无法恢复,你确定要删除该内容吗').then(() => {
+            this.$modalSure('confirm.hardDeleteContent').then(() => {
               this.getFolderEntAllDestroy(this.spaceId, { id: uids })
             })
           } else {
-            this.$modalSure('彻底删除后,内容无法恢复,你确定要删除该内容吗').then(() => {
+            this.$modalSure('confirm.hardDeleteContent').then(() => {
               this.getFolderAllDestroy({ id: uids })
             })
           }
         } else if (type === 3) {
-          this.$modalSure('您确定要加入回收站').then(() => {
+          this.$modalSure('confirm.moveToRecycleBin').then(() => {
             this.getFolderEntAllDelete(this.spaceId, { id: uids })
           })
         }

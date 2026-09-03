@@ -26664,12 +26664,6 @@
     "en": "Void invoice",
     "runtime": true
   },
-  "runtime.web.activityContractSigningCreated": {
-    "zh-cn": "新增合同签约",
-    "en": "New contract signing",
-    "runtime": true,
-    "apps": ["web"]
-  },
   "runtime.system.5043e7abafe59cb0e59d80": {
     "zh-cn": "PC端地址",
     "en": "Desktop URL",
@@ -27704,6 +27698,2158 @@
     "zh-cn": "默认班次",
     "en": "Default shift",
     "runtime": true
+  },
+  "runtime.validation.01426bfdf8ae07f2": {
+    "zh-cn": "计划结束时间格式异常",
+    "en": "Planned end time has an invalid format",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.019f39bcf3325a59": {
+    "zh-cn": "缺少规则配置信息",
+    "en": "Rule configuration is missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.01f022dff262be1b": {
+    "zh-cn": "缩略图大图尺寸（高）必须为数字",
+    "en": "Large-thumbnail height must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.02457f2a213fcbe8": {
+    "zh-cn": "无效的字典关联",
+    "en": "Dictionary association is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.025786e04a91ca31": {
+    "zh-cn": "请选择正确的订单ID",
+    "en": "Select a valid order ID",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.02a0a78ab8f0e8a7": {
+    "zh-cn": "前置请求类型错误",
+    "en": "Pre-request type is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.02ef7fd0046019de": {
+    "zh-cn": "接口请求地址格式不正确",
+    "en": "API request URL has an invalid format",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.032d171a834c166d": {
+    "zh-cn": "配置上传文件类型必须为数字",
+    "en": "Configuration upload-file type must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.03964a77ea8842be": {
+    "zh-cn": "请选择正确的是否允许补卡",
+    "en": "Select a valid missed-punch correction setting",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.05ae737fd2126ba1": {
+    "zh-cn": "更新权限有误",
+    "en": "Update permission is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.06275fee13416f28": {
+    "zh-cn": "请输入正确的email地址",
+    "en": "Enter a valid email address",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.08300183433dc61a": {
+    "zh-cn": "请输入所在公司职位",
+    "en": "Enter the position held at the company",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.09c02dc7e55b071b": {
+    "zh-cn": "请选择目标制定时间类型",
+    "en": "Select objective-setting time type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.09f2f145e8a64959": {
+    "zh-cn": "婚姻情况只能位数字",
+    "en": "Marital status must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0a6b55d0baf9175e": {
+    "zh-cn": "请填写配置英文名称",
+    "en": "Enter configuration English name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0ad773089ddfb94d": {
+    "zh-cn": "请求headers必须包含type字段",
+    "en": "Request headers must contain the type field",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0b82baa32e52172b": {
+    "zh-cn": "请选择正确的新员工请假限制",
+    "en": "Select a valid new-employee leave restriction",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0ba507a982bdc571": {
+    "zh-cn": "缺少流程配置信息",
+    "en": "Process configuration is missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0baa182a333c880f": {
+    "zh-cn": "目标字段不能为空",
+    "en": "Target field is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0c5778dcba90ad06": {
+    "zh-cn": "订单ID必须为数字",
+    "en": "Order ID must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0e23c60afb5870f3": {
+    "zh-cn": "请填写通知标题",
+    "en": "Enter notification title",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0e960494e8e95227": {
+    "zh-cn": "请选择正确的考勤组排除成员",
+    "en": "Select valid members to exclude from the attendance group",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0e96352e8befc63e": {
+    "zh-cn": "请填写所学专业",
+    "en": "Enter field of study",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.0fe99cbed9db3bc2": {
+    "zh-cn": "请填写日程标题",
+    "en": "Enter schedule title",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.101045b412a46a46": {
+    "zh-cn": "考核文档计算规则类型错误",
+    "en": "Assessment-document calculation rule has an invalid type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.10b20092e9e8862d": {
+    "zh-cn": "补卡时间超出限制",
+    "en": "The missed-punch correction time exceeds the limit",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.1185fa28a4785867": {
+    "zh-cn": "聚合搜索方式必不能为空",
+    "en": "Aggregation search method is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.121b5319ff083f38": {
+    "zh-cn": "请填写管理员姓名",
+    "en": "Enter administrator name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.123c9ca4e2de61ec": {
+    "zh-cn": "银行开户行超出限制最大50个字符",
+    "en": "Bank branch cannot exceed 50 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.128fa1285b333739": {
+    "zh-cn": "重复频率最小单位为1",
+    "en": "Recurrence frequency must be at least 1",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.1332cb1c2d815db8": {
+    "zh-cn": "用户性别必须填写",
+    "en": "User gender is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.1588543c6925dfb7": {
+    "zh-cn": "请选择上级评价时间类型",
+    "en": "Select manager-evaluation time type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.1844e856a9fadb23": {
+    "zh-cn": "密码长度超出对最大限制50位",
+    "en": "Password length cannot exceed 50 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.191cba2a4d6cfbff": {
+    "zh-cn": "请选择正确的汇报人",
+    "en": "Select a valid report author",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.1a4704191a58d39a": {
+    "zh-cn": "请选择正确的目标制定时间类型",
+    "en": "Select a valid objective-setting time type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.1c7fbb9cce832db8": {
+    "zh-cn": "请选择配置类型",
+    "en": "Select configuration type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.1ccd55cbb6674cdd": {
+    "zh-cn": "账号不正确",
+    "en": "Account is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.1e593c69361cbe31": {
+    "zh-cn": "组织架构名称必须填写",
+    "en": "Organization name is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.1fb872c5a425ca8f": {
+    "zh-cn": "请填写考核生成时间",
+    "en": "Enter assessment generation time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.209059fc23cf1f62": {
+    "zh-cn": "姓名长度超出限制最大个7个中文字符",
+    "en": "Name cannot exceed 7 Chinese characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.20a949e2985835e6": {
+    "zh-cn": "请选择正确的日程结束时间",
+    "en": "Select a valid schedule end time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.21808794a2cdfdec": {
+    "zh-cn": "请填写正确的客户ID",
+    "en": "Enter a valid customer ID",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.221b39754b1cd84b": {
+    "zh-cn": "请输入所在公司名称",
+    "en": "Enter the company name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.231e1e27b68ff4a5": {
+    "zh-cn": "请选择资金类型",
+    "en": "Select fund type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.23b39a47b2c93e29": {
+    "zh-cn": "请选择正确的重复方式",
+    "en": "Select a valid recurrence method",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.23d546d4bc497049": {
+    "zh-cn": "缩略图小图尺寸（宽）必须大于等于0",
+    "en": "Small-thumbnail width must be greater than or equal to 0",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.26a76b51048ba480": {
+    "zh-cn": "请填写职级类型名称",
+    "en": "Enter rank-type name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.26a9c16eb3a5648b": {
+    "zh-cn": "市长度超出限制最大20个字符",
+    "en": "City cannot exceed 20 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.2716fb4f4e1d7123": {
+    "zh-cn": "头像尺寸不符合规则,请上传宽大于100高大于200的头像",
+    "en": "Avatar dimensions are invalid. Upload an image wider than 100 px and taller than 200 px",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.28528f2e1bdcdeb9": {
+    "zh-cn": "请填写模板内容",
+    "en": "Enter template content",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.286dac25dcf0038b": {
+    "zh-cn": "区长度超出限制最大20个字符",
+    "en": "District cannot exceed 20 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.2914eb10fbe18e25": {
+    "zh-cn": "请填写数据组名称",
+    "en": "Enter data-group name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.299ef9a818a4bbdc": {
+    "zh-cn": "请选择考核人名称",
+    "en": "Select assessor",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.2a91d2e7c1501926": {
+    "zh-cn": "设置密码错误次数不能小于5次",
+    "en": "Allowed password-error count cannot be less than 5",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.2cdaba9843c296ee": {
+    "zh-cn": "请选择正确的地点状态",
+    "en": "Select a valid location status",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.2f6984b3b999a629": {
+    "zh-cn": "请填写晋升表名称",
+    "en": "Enter promotion-form name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.2faf3cd9b95c581c": {
+    "zh-cn": "请选择正确的上级评价时间类型",
+    "en": "Select a valid manager-evaluation time type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.311cabebd568918b": {
+    "zh-cn": "聚合规则方式必不能为空",
+    "en": "Aggregation rule method is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3258492fbfe4b949": {
+    "zh-cn": "请选择规模",
+    "en": "Select company size",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.32d704f641c6554a": {
+    "zh-cn": "其他配置项筛选条件必须为数组",
+    "en": "Other-configuration filter conditions must be an array",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.33fa2718c1568466": {
+    "zh-cn": "无效的视图类别",
+    "en": "View category is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.34fc6adfbc9b3bcc": {
+    "zh-cn": "账号长度不正确",
+    "en": "Account length is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3573aa646f749ce8": {
+    "zh-cn": "配置规则不能超出255个字符",
+    "en": "Configuration rule cannot exceed 255 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.373848f5c4ac729d": {
+    "zh-cn": "备用联系人手机号码不符合规范",
+    "en": "The alternate contact phone number does not meet the required format",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.38a64bdf055ecf9a": {
+    "zh-cn": "请选择签约类型",
+    "en": "Select signing type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.38dcede36fb1fbd3": {
+    "zh-cn": "备用人手机号码超出限制最大20个字符",
+    "en": "The alternate contact phone number cannot exceed 20 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.39444c2d8a18fb43": {
+    "zh-cn": "规模类型必须为数字",
+    "en": "Company-size type must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.397694b65c2e2f61": {
+    "zh-cn": "其他配置项筛选条件搜索字段不能为空",
+    "en": "Other-configuration filter search field is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3ac1290e1d3921cf": {
+    "zh-cn": "缩略图中图尺寸（高）必须大于等于0",
+    "en": "Medium-thumbnail height must be greater than or equal to 0",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3b61b4c167e87bb0": {
+    "zh-cn": "账号长度超出限制",
+    "en": "Account exceeds the length limit",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3bb66905672ac1bc": {
+    "zh-cn": "请选择合同开始日期",
+    "en": "Select contract start date",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3c054416535dc3a8": {
+    "zh-cn": "账号最小长度为5位",
+    "en": "Account must contain at least 5 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3e64fe2cd0805eba": {
+    "zh-cn": "密码错误次数必须填写",
+    "en": "Allowed password-error count is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3e924b49ae4a5d57": {
+    "zh-cn": "聚合数据搜索必须为数组",
+    "en": "Aggregated-data search must be an array",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3eea66dd5cb1e30b": {
+    "zh-cn": "请选择正确的请假时长类型",
+    "en": "Select a valid leave-duration type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.3fe1f57296b5f701": {
+    "zh-cn": "请选择日程操作类型",
+    "en": "Select schedule operation type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.401ef8af0ee60c69": {
+    "zh-cn": "评估表数据过长",
+    "en": "Evaluation-form data is too long",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.40e6808022084114": {
+    "zh-cn": "请求headers必须包含name字段",
+    "en": "Request headers must contain the name field",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.416c2aa93ab8d88a": {
+    "zh-cn": "请选择正确的中途休息时间格式",
+    "en": "Select a valid break-time format",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.44ceb483468fb271": {
+    "zh-cn": "配置排序只能为数字",
+    "en": "Configuration sort order must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.46570e712388a498": {
+    "zh-cn": "请选择正确的时长计算类型",
+    "en": "Select a valid duration-calculation type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.472d050852104b7e": {
+    "zh-cn": "请选择是否限制补卡时间",
+    "en": "Select whether missed-punch correction time is limited",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.478f74c0ef7dd288": {
+    "zh-cn": "配置分类必须为数字",
+    "en": "Configuration category must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.47f4af6784049da8": {
+    "zh-cn": "请选择合同期限类型",
+    "en": "Select contract-term type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.485efde1c8697120": {
+    "zh-cn": "请选择正确的打卡状态",
+    "en": "Select a valid attendance status",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.48ae6f400be88e52": {
+    "zh-cn": "上级评价结束时间类型错误",
+    "en": "Manager-evaluation end-time type is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.48bfe8b9cd8260b5": {
+    "zh-cn": "结束日期必须在开始日期之后",
+    "en": "The end date must be after the start date",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.48efb1a29907d8b8": {
+    "zh-cn": "上级ID必须为数字",
+    "en": "Parent ID must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.490dd0d19d7ae45f": {
+    "zh-cn": "聚合搜索字段不能为空",
+    "en": "Aggregation search field is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.4cdd31364660422f": {
+    "zh-cn": "请选择工作开始时间",
+    "en": "Select work start time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.4d86ed601894d98c": {
+    "zh-cn": "菜单是否有效值只能为整数",
+    "en": "The menu enabled value must be an integer",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.4dd05adad037e792": {
+    "zh-cn": "缺少基础配置信息",
+    "en": "Basic configuration is missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.4f5fe4eb5fac05a3": {
+    "zh-cn": "请输入工作结束时间",
+    "en": "Enter work end time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.50c55d00d74c0834": {
+    "zh-cn": "请选择物资分类",
+    "en": "Select material category",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.543c4c0708d9c4ee": {
+    "zh-cn": "登录错误锁定时间不能大于5个小时",
+    "en": "Login lockout duration cannot exceed 5 hours",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.55d2ebf9aa8893ed": {
+    "zh-cn": "请选择任职开始时间",
+    "en": "Select employment start date",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.573e303331281c19": {
+    "zh-cn": "请输入正确的路径地址",
+    "en": "Enter a valid path",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.5ab481c48011312e": {
+    "zh-cn": "请选择日程结束时间",
+    "en": "Select schedule end time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.5ad1626baa6b75cb": {
+    "zh-cn": "请填写客户ID",
+    "en": "Enter customer ID",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.5b592f18d74543c4": {
+    "zh-cn": "请选择重复方式",
+    "en": "Select recurrence method",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.5bdc5c40aeb5be11": {
+    "zh-cn": "请选择合同结束日期",
+    "en": "Select contract end date",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.5da10525744b3a43": {
+    "zh-cn": "请选择入学开始时间",
+    "en": "Select enrollment start date",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.5ddbbec39bb2ac55": {
+    "zh-cn": "请求headers头必须为数组对象",
+    "en": "Request headers must be an array of objects",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.5e2ca28ebd79af4f": {
+    "zh-cn": "请填写考核文档计算坐标",
+    "en": "Enter assessment-document calculation coordinates",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.5e8fbbf75a4c0c4e": {
+    "zh-cn": "登录错误锁定时间必须填写",
+    "en": "Login lockout duration is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.5f7c7096f5d0c4bd": {
+    "zh-cn": "请填写物资名称",
+    "en": "Enter material name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.60c4f5d08e3a5429": {
+    "zh-cn": "请选择日程开始时间",
+    "en": "Select schedule start time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.625b083cea6657b7": {
+    "zh-cn": "密码错误次数必须为数字",
+    "en": "Allowed password-error count must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.628d3e345ad0d424": {
+    "zh-cn": "附加过滤条件搜索方式不能为空",
+    "en": "Additional-filter search method is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.642e5bd13b852e14": {
+    "zh-cn": "请选择正确的日程操作类型",
+    "en": "Select a valid schedule operation type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.65fc9ee5fbf31055": {
+    "zh-cn": "缺少字段名",
+    "en": "Field name is missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.6663caaadb663fda": {
+    "zh-cn": "水印文字长度为1-10位",
+    "en": "Watermark text must contain 1–10 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.6681404ebee3597f": {
+    "zh-cn": "请填写正确的订单ID",
+    "en": "Enter a valid order ID",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.675897284536ed36": {
+    "zh-cn": "计划开始时间格式异常",
+    "en": "Planned start time has an invalid format",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.68aec18ecc28ab34": {
+    "zh-cn": "请填写项目名称",
+    "en": "Enter project name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.6d717dcc6b67a8f5": {
+    "zh-cn": "排序最大不能超过99999",
+    "en": "Sort order cannot exceed 99999",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.6deab40e72b559d8": {
+    "zh-cn": "移动端显示字段只能为数字",
+    "en": "Mobile visibility field must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.6e1ff7e4c8a58ba9": {
+    "zh-cn": "请选择正确的是否限制补卡次数",
+    "en": "Select a valid missed-punch correction count setting",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.6e3b5a74178d6dc1": {
+    "zh-cn": "状态值必须为数字",
+    "en": "Status value must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.6eebd59401aeb71e": {
+    "zh-cn": "项目名称长度超出限制",
+    "en": "Project name exceeds the length limit",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.6f649f0c38587891": {
+    "zh-cn": "请选择中途休息时间规则",
+    "en": "Select break-time rules",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.709e82f883c2d7cc": {
+    "zh-cn": "聚合数据搜索字段不能为空",
+    "en": "Aggregated-data search field is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.7126b41410038ac4": {
+    "zh-cn": "请选择角色",
+    "en": "Select role",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.72f2dd00a67f47aa": {
+    "zh-cn": "登录退出时间不能大于24小时",
+    "en": "Login session timeout cannot exceed 24 hours",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.74d67326a7b0d726": {
+    "zh-cn": "请选择订单ID",
+    "en": "Select order ID",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.75b009a4f90a2f3c": {
+    "zh-cn": "请选择跟进类型",
+    "en": "Select follow-up type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.770c85336b1177a7": {
+    "zh-cn": "请输入正确的接口地址",
+    "en": "Enter a valid API URL",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.779ddf4af8ee5c25": {
+    "zh-cn": "支付方式标识长度超出限制",
+    "en": "Payment-method identifier exceeds the length limit",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.78a3e7316d6cd0c8": {
+    "zh-cn": "请填写评论内容",
+    "en": "Enter comment",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.79e51da6de6bc037": {
+    "zh-cn": "数据组简介过长",
+    "en": "Data-group description is too long",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.7aade248f3650c52": {
+    "zh-cn": "年龄不能大于100岁",
+    "en": "Age cannot exceed 100",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.7ce3198c4b043d08": {
+    "zh-cn": "请求data必须包含type字段",
+    "en": "Request data must contain the type field",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.7daf0051ccb57a24": {
+    "zh-cn": "请求data必须为数组对象",
+    "en": "Request data must be an array of objects",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.7e565531f48f935d": {
+    "zh-cn": "账号只能位数组和字母的组合",
+    "en": "Account may contain only numbers and letters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.7e852928bbbdc5fa": {
+    "zh-cn": "请选择正确的上下班次",
+    "en": "Select a valid work shift",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.7edfa0b36eae63cb": {
+    "zh-cn": "数据组内容过长",
+    "en": "Data-group content is too long",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.7f6505ddae77868b": {
+    "zh-cn": "请填写资料描述",
+    "en": "Enter material description",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.7f72fd70e8c30a20": {
+    "zh-cn": "请选择正确的是否拍照打卡",
+    "en": "Select a valid photo-attendance setting",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.8187ffbcaf47deae": {
+    "zh-cn": "附加过滤条件字段不能为空",
+    "en": "Additional-filter field is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.864e570b028c5a5f": {
+    "zh-cn": "其他配置项必须为对象",
+    "en": "Other configuration items must be an object",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.865adc14f4b22abb": {
+    "zh-cn": "缩略图大图尺寸（高）必须大于等于0",
+    "en": "Large-thumbnail height must be greater than or equal to 0",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.8802ea4e9829a74d": {
+    "zh-cn": "关联项目型异常",
+    "en": "The associated project has an invalid format",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.88fdc05fec3a9dc4": {
+    "zh-cn": "缩略图大图尺寸（宽）必须为数字",
+    "en": "Large-thumbnail width must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.89e62abf9d92c091": {
+    "zh-cn": "请选择正确的日程开始时间",
+    "en": "Select a valid schedule start time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.8a5913b9a8fd4c13": {
+    "zh-cn": "毕业时间不能小于入学时间",
+    "en": "The graduation date cannot be earlier than the enrollment date",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.8b3d39b74be76da9": {
+    "zh-cn": "请输入正确的移动端路径地址",
+    "en": "Enter a valid mobile path",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.8c70d32ea47354b3": {
+    "zh-cn": "任务成员格式异常",
+    "en": "Task-member format is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.8d1d5b01ba65b549": {
+    "zh-cn": "请设置评估数据",
+    "en": "Configure evaluation data",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.8e79291a7c7c4049": {
+    "zh-cn": "请选择外勤打卡备注",
+    "en": "Select field-attendance remarks",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.8f158b4070a82e7a": {
+    "zh-cn": "请填写文件夹名称",
+    "en": "Enter folder name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.904b6a0c32828390": {
+    "zh-cn": "缩略图小图尺寸（宽）必须为数字",
+    "en": "Small-thumbnail width must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.926b72732afdae2f": {
+    "zh-cn": "请选择正确的角色",
+    "en": "Select a valid role",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.93fa12d4d6dc1a07": {
+    "zh-cn": "请选择是否拍照打卡",
+    "en": "Select whether photo attendance is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.9413b81e5dd2bb87": {
+    "zh-cn": "验证码长度必须为6位",
+    "en": "Verification code must contain 6 digits",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.970ea66d2c71d9d8": {
+    "zh-cn": "合同名称不符合规范",
+    "en": "The contract name does not meet the required format",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.976c748de2bffa56": {
+    "zh-cn": "其他配置项筛选条件搜索方式不能为空",
+    "en": "Other-configuration filter search method is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.987ee1845188e51f": {
+    "zh-cn": "请填写数据组内容",
+    "en": "Enter data-group content",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.99c5bac5a57e2a32": {
+    "zh-cn": "请选择正确的补卡类",
+    "en": "Select a valid missed-punch correction type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.9a6210fc05fff618": {
+    "zh-cn": "配置简介超出255个字符",
+    "en": "Configuration description cannot exceed 255 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.9b8c00df03f13d8b": {
+    "zh-cn": "是否为隐藏菜单值只能为整数",
+    "en": "Hidden-menu value must be an integer",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.9ddc2ca3184ce515": {
+    "zh-cn": "是否为顶级菜单值只能为整数",
+    "en": "Top-level menu value must be an integer",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.9e31e097c2fe9dbf": {
+    "zh-cn": "晋升表数据过长",
+    "en": "Promotion-form data is too long",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.9e40ad9061991d2f": {
+    "zh-cn": "配置英文名称只能包含英文,字母,下划线",
+    "en": "Configuration English name may contain only English letters and underscores",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.9fcafceb7d682259": {
+    "zh-cn": "聚合数据搜索方式必不能为空",
+    "en": "Aggregated-data search method is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a0436a2ea2c742d6": {
+    "zh-cn": "请选择正确的是否允许外勤打卡",
+    "en": "Select a valid field-attendance setting",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a0455b7e426f6694": {
+    "zh-cn": "数据组名称过长",
+    "en": "Data-group name is too long",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a04aaf9005186a26": {
+    "zh-cn": "请填写协议内容",
+    "en": "Enter agreement content",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a245c3e33f17287d": {
+    "zh-cn": "该客户信息已存在，是否继续",
+    "en": "This customer information already exists. Continue?",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a2e2a2415b7c28c5": {
+    "zh-cn": "请填写账号",
+    "en": "Enter account",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a436755f1f56b7f9": {
+    "zh-cn": "多行文本框的高度必须为数字",
+    "en": "Multiline text-box height must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a46d39c175293c0a": {
+    "zh-cn": "PC端显示字段只能为数字",
+    "en": "PC visibility field must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a48dbc443cf25248": {
+    "zh-cn": "缺少物资参数",
+    "en": "Material parameters are missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a54766a4d052cdb1": {
+    "zh-cn": "请选择是否允许外勤打卡",
+    "en": "Select whether field attendance is allowed",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a69bcdaac832c648": {
+    "zh-cn": "项目成员格式异常",
+    "en": "Project-member format is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a7e57341b4dc68f5": {
+    "zh-cn": "请填写配置中文名",
+    "en": "Enter configuration Chinese name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a923a63bca4eaf78": {
+    "zh-cn": "请选择汇报人",
+    "en": "Select report author",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.a9da27450a03e502": {
+    "zh-cn": "手机号长度不正确",
+    "en": "Phone-number length is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.aa3bc019c97cd9bc": {
+    "zh-cn": "输入的请求方式不正确",
+    "en": "Request method is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.aae449bc90e70978": {
+    "zh-cn": "您的账号超出限制最大长度位50位",
+    "en": "Account cannot exceed 50 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.ab0e624972330e2f": {
+    "zh-cn": "请求headers必须包含value字段",
+    "en": "Request headers must contain the value field",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.abec14cc018cf084": {
+    "zh-cn": "配置的值超出5000个字符",
+    "en": "Configuration value cannot exceed 5,000 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.ad62abfb8d5bc628": {
+    "zh-cn": "请选择自评结束时间类型",
+    "en": "Select self-evaluation end-time type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.af5a175bbb76728f": {
+    "zh-cn": "修改字段不能为空",
+    "en": "Field to modify is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b1d6c7941b8dbfc6": {
+    "zh-cn": "请选择是否限制补卡次数",
+    "en": "Select whether missed-punch corrections are limited",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b1eeeb1521f4c363": {
+    "zh-cn": "身份证号码必须为18位",
+    "en": "ID-card number must contain 18 digits",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b24dbcee3df762e0": {
+    "zh-cn": "登录错误锁定时间必须为数字",
+    "en": "Login lockout duration must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b2b90d60be3f6408": {
+    "zh-cn": "请求data必须包含value字段",
+    "en": "Request data must contain the value field",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b2ed3022e5114adc": {
+    "zh-cn": "请输入正确的身份证号码",
+    "en": "Enter a valid ID-card number",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b353f892180bd401": {
+    "zh-cn": "缺少审核申请ID",
+    "en": "Approval-request ID is missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b4d99b0e547f10f4": {
+    "zh-cn": "缺少表单配置信息",
+    "en": "Form configuration is missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b61cddd5ebf87fd6": {
+    "zh-cn": "登录退出时间必须填写",
+    "en": "Login session timeout is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b7d42885457b5ac5": {
+    "zh-cn": "缺少搜索条件",
+    "en": "Search conditions are missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b8cd7525e1a49d30": {
+    "zh-cn": "请输入所在公司工作描述",
+    "en": "Enter the work description for the company",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b9827d8b8e2d8644": {
+    "zh-cn": "配置规则长度不能超出255个字符",
+    "en": "Configuration rule cannot exceed 255 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b996d9eb177cc72b": {
+    "zh-cn": "请填写支付方式标识",
+    "en": "Enter payment-method identifier",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.b9c02b50283fe6de": {
+    "zh-cn": "省份长度超出限制最大20个字符",
+    "en": "Province cannot exceed 20 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.baad4c63e770854d": {
+    "zh-cn": "请填写经度坐标",
+    "en": "Enter longitude",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.bac3491cc41a4fc3": {
+    "zh-cn": "缺少视图类别",
+    "en": "View category is missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.bbcd19a40d04d08c": {
+    "zh-cn": "缩略图中图尺寸（宽）必须为数字",
+    "en": "Medium-thumbnail width must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.bc1eee9f6ed95bda": {
+    "zh-cn": "缩略图大图尺寸（宽）必须大于等于0",
+    "en": "Large-thumbnail width must be greater than or equal to 0",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.bc20d20fdbc7f483": {
+    "zh-cn": "视图数据类型应为数组",
+    "en": "View data must be an array",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.bd2c3238906de945": {
+    "zh-cn": "下载权限有误",
+    "en": "Download permission is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.bdc4543c5a14e9a2": {
+    "zh-cn": "数据组字段名称仅可包含字母、数字、下划线",
+    "en": "Data-group field name may contain only letters, numbers, and underscores",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.be9e8b7c1a16a6e2": {
+    "zh-cn": "请选择分享用户",
+    "en": "Select users to share with",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.beea8e302d15e07b": {
+    "zh-cn": "请选择任职结束时间",
+    "en": "Select employment end date",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.bfb393228edfc46a": {
+    "zh-cn": "备用联系人手机号码不正确",
+    "en": "The alternate contact phone number is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.c2507434c163ea30": {
+    "zh-cn": "班次规则参数类型错误",
+    "en": "Shift rule parameters have an invalid type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.c2dea3d12468c57f": {
+    "zh-cn": "企业简称长度必须为6位",
+    "en": "Enterprise abbreviation must contain 6 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.c57a6f2a968eec84": {
+    "zh-cn": "任职结束时间不能小于任职开始时间",
+    "en": "Employment end time cannot be earlier than employment start time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.c606e6e8033eee81": {
+    "zh-cn": "类型错误",
+    "en": "Invalid type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.c619a09fd2b3a3d5": {
+    "zh-cn": "请选择正确的客户ID",
+    "en": "Select a valid customer ID",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.c6b4231ca78bfc9e": {
+    "zh-cn": "补卡次数超出限制",
+    "en": "The missed-punch correction limit has been exceeded",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.c77974b17d820fee": {
+    "zh-cn": "聚合搜索必须为数组",
+    "en": "Aggregation search must be an array",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.c8e4efc7a88915dd": {
+    "zh-cn": "请求data必须包含name字段",
+    "en": "Request data must contain the name field",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.c9b50c45fa749c82": {
+    "zh-cn": "请选择是否可调整发送范围",
+    "en": "Select whether the sending scope can be adjusted",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.ca96582f8436dd68": {
+    "zh-cn": "前置请求类型必须存在",
+    "en": "Pre-request type must exist",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.caf1d5a1877740ec": {
+    "zh-cn": "请填写班次规则",
+    "en": "Enter shift rules",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.cb21cc0981d3d2e9": {
+    "zh-cn": "请选择正确的中途休息时间规则",
+    "en": "Select valid break-time rules",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.cb5e6fd98a163d8b": {
+    "zh-cn": "缺少评价内容",
+    "en": "Evaluation content is missing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.cb7b602e5c9fb50d": {
+    "zh-cn": "请选择是否允许补卡",
+    "en": "Select whether missed-punch correction is allowed",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.cbfa279691e4a1c5": {
+    "zh-cn": "请填写关联ID",
+    "en": "Enter the associated ID",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.cc6e72e9711f1a14": {
+    "zh-cn": "考核人参数类型错误",
+    "en": "Assessor parameters have an invalid type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.cdbeb43ad750c634": {
+    "zh-cn": "请填写考勤地点名称",
+    "en": "Enter attendance-location name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.ce45e821c5559e05": {
+    "zh-cn": "聚合规则字段不能为空",
+    "en": "Aggregation rule field is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.cf4d0f3b823c55bc": {
+    "zh-cn": "请填写岗位名称",
+    "en": "Enter job name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d16b31138d003c60": {
+    "zh-cn": "请选择上级分类",
+    "en": "Select parent category",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d293400404d1929c": {
+    "zh-cn": "性别只能位数字",
+    "en": "Gender must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d2e289fa7b00e843": {
+    "zh-cn": "设置密码错误次数不能超过5次",
+    "en": "Allowed password-error count cannot exceed 5",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d3aeb004a32758e9": {
+    "zh-cn": "请选择正确的外勤打卡备注",
+    "en": "Select a valid field-attendance remarks setting",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d598652eed054c07": {
+    "zh-cn": "请填写订单ID",
+    "en": "Enter order ID",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d5c3ac89bff182a3": {
+    "zh-cn": "请填写操作类型",
+    "en": "Enter operation type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d6ac653b8db72811": {
+    "zh-cn": "请填写数据组字段名称",
+    "en": "Enter data-group field name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d75492593defe8ac": {
+    "zh-cn": "排序值只能为数字",
+    "en": "Sort value must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d85805e525563406": {
+    "zh-cn": "登录退出时间必须为数字",
+    "en": "Login session timeout must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d86f8b9ec82c7692": {
+    "zh-cn": "多行文本框的宽度必须为数字",
+    "en": "Multiline text-box width must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.d9feead34966d1e2": {
+    "zh-cn": "项目描述长度超出限制",
+    "en": "Project description exceeds the length limit",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.dc0e1ba202aad78e": {
+    "zh-cn": "任务名称长度超出限制",
+    "en": "Task name exceeds the length limit",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.dd9d9d3542bac094": {
+    "zh-cn": "请填写任务名称",
+    "en": "Enter task name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.ddb7931d7a655128": {
+    "zh-cn": "请选择上级评价结束时间类型",
+    "en": "Select manager-evaluation end-time type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.e05a58ff1032f9a3": {
+    "zh-cn": "账号必须填写",
+    "en": "Account is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.e0edbb7baf13e309": {
+    "zh-cn": "家庭住址长度超出限制最大长度255个字符",
+    "en": "Home address cannot exceed 255 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.e1f3954e5d0567e5": {
+    "zh-cn": "请选择正确的新员工请假月时限制",
+    "en": "Select a valid monthly new-employee leave restriction",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.e34c6d3c7899c8c5": {
+    "zh-cn": "数据组字段名称过长",
+    "en": "Data-group field name is too long",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.e354d7a783374a0b": {
+    "zh-cn": "请填写评估表名称",
+    "en": "Enter evaluation-form name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.e4301fc4e6a3c610": {
+    "zh-cn": "密码规则必须选择一项",
+    "en": "Select one password rule",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.e47f1080fec9a9b9": {
+    "zh-cn": "请选择客户ID",
+    "en": "Select customer ID",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.e668ca20de859e70": {
+    "zh-cn": "被考核人参数类型错误",
+    "en": "Assessment subject parameters have an invalid type",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.e89b128fb222314b": {
+    "zh-cn": "请填写分析内容",
+    "en": "Enter analysis content",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.ee45c3cd12eb4355": {
+    "zh-cn": "其他配置项筛选条件方式必须选择",
+    "en": "Select a filter-condition method for other configuration items",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f257fff9fe86eb61": {
+    "zh-cn": "聚合规则回显字段不能为空",
+    "en": "Aggregation rule display field is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f2677962b08c508a": {
+    "zh-cn": "请填写通知内容",
+    "en": "Enter notification content",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f3b330e6f268391a": {
+    "zh-cn": "缩略图中图尺寸（高）必须为数字",
+    "en": "Medium-thumbnail height must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f3b52954e89bcb6e": {
+    "zh-cn": "日程标题过长",
+    "en": "Schedule title is too long",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f465a1b888725314": {
+    "zh-cn": "操作内容的字段方式不能为空",
+    "en": "The operation-content field method is required",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f4ec3660e9a5fd6d": {
+    "zh-cn": "配置是否展示字段只能为数字",
+    "en": "Configuration visibility value must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f56f9f45ccc37870": {
+    "zh-cn": "请填写公司法人代表姓名",
+    "en": "Enter the legal representative's name",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f65e1bc24d308c2d": {
+    "zh-cn": "请填写接口请求地址",
+    "en": "Enter the API request URL",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f65fcefda1bdcd4d": {
+    "zh-cn": "请填写纬度坐标",
+    "en": "Enter latitude",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f7a9c19633e078de": {
+    "zh-cn": "缩略图中图尺寸（宽）必须大于等于0",
+    "en": "Medium-thumbnail width must be greater than or equal to 0",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f839d27325f2c3b4": {
+    "zh-cn": "工作开始时间不能小于结束时间",
+    "en": "Work start time cannot be later than work end time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.f9412ec5afccc625": {
+    "zh-cn": "跟进类型错误",
+    "en": "Follow-up type is invalid",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.fa92e3034951f4f8": {
+    "zh-cn": "缩略图小图尺寸（高）必须大于等于0",
+    "en": "Small-thumbnail height must be greater than or equal to 0",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.fc173d030c9fcdc4": {
+    "zh-cn": "请选择上级评价结束时间",
+    "en": "Select manager-evaluation end time",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.fc1e2c995067a823": {
+    "zh-cn": "水印文字只能是汉字、字母、数字",
+    "en": "Watermark text may contain only Chinese characters, letters, and numbers",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.fdef9dca498c963f": {
+    "zh-cn": "请选择内容分类",
+    "en": "Select content category",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.fe4796f8477bbb3b": {
+    "zh-cn": "缩略图小图尺寸（高）必须为数字",
+    "en": "Small-thumbnail height must be numeric",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.fed64a0f04d88143": {
+    "zh-cn": "学籍长度超出限制最大100个字符",
+    "en": "Student-status value cannot exceed 100 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.validation.fef8b73ec2b06d80": {
+    "zh-cn": "请选择通知分类",
+    "en": "Select notification category",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
+  "runtime.web.activityContractSigningCreated": {
+    "zh-cn": "新增合同签约",
+    "en": "New contract signing",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
   },
   "runtime.web.activityOpportunityCreated": {
     "zh-cn": "新添加商机",

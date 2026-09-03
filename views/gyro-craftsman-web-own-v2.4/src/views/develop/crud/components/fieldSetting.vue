@@ -50,7 +50,7 @@
       </el-table-column>
       <el-table-column prop="data_dict_name" :label="$('ui.customerSetupCustomFormIndexLinkedDictionary')">
         <template slot-scope="scope">
-          {{ scope.row.data_dict_name || '--' }}
+          {{ linkedDictionaryLabel(scope.row) || '--' }}
         </template>
       </el-table-column>
       <el-table-column prop="association_crud_table_name" :label="$('ui.developCrudFieldSettingReferencedEntity')">
@@ -97,6 +97,7 @@
 </div>
 </template>
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { $ } from '@/lang'
 import Commnt from '@/components/develop/commonData'
 import oaDialog from '@/components/form-common/dialog-form'
@@ -175,6 +176,12 @@ export default {
   },
 
   methods: {
+    linkedDictionaryLabel(row) {
+      return dictionaryDisplayLabel(
+        { name: row.data_dict_name, is_default: row.data_dict_is_default },
+        this.$
+      )
+    },
     // 获取字典列表
     async getDictList() {
       let data = {
@@ -289,7 +296,7 @@ export default {
     },
     // 删除字段
     deleteFn(row) {
-      this.$modalSure('您确定要删除此字段数据吗').then(() => {
+      this.$modalSure('confirm.deleteFieldData').then(() => {
         dataFieldDeleteApi(row.id).then((res) => {
           this.getList()
         })

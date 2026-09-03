@@ -61,7 +61,7 @@
           <div class="flex">
             <el-select style="width: 100%" v-model="form[item.key]" :disabled="item.disabled" filterable size="small"
               @change="selectChange" :placeholder="$(item.placeholder)">
-              <el-option v-for="(v, index) in item.options" :key="v.id" :label="$(v.label || v.name || v.table_name, v.label_en || v.name_en || v.table_name_en)"
+              <el-option v-for="(v, index) in item.options" :key="v.id" :label="optionLabel(v)"
                 :value="v.id || v.value">
               </el-option>
             </el-select>
@@ -93,7 +93,7 @@
         <el-select style="width: 100%" v-if="item.type == 'multipleSelect'" v-model="form[item.key]"
           :disabled="fromData.type == 'edit'" multiple size="small" filterable
           :placeholder="item.placeholder ? item.placeholder : $('ui.developConditionGroupPleaseSelect')">
-          <el-option v-for="(v, index) in item.options" :key="v.id" :label="$(v.name, v.name_en)" :value="v.id"> </el-option>
+          <el-option v-for="(v, index) in item.options" :key="v.id" :label="optionLabel(v)" :value="v.id"> </el-option>
         </el-select>
 
         <!--低代码选择应用-实体 -->
@@ -147,6 +147,7 @@
   </div>
 </template>
 <script>
+import { dictionaryDisplayLabel, hasDictionaryOwnership, rawDictionaryLabel } from '@/lang/dictionary-label'
 import { getDictCreateApi, getDictListApi } from '@/api/form'
 import { pinyin } from 'pinyin-pro'
 import checkboxDialog from '@/components/develop/checkboxDialog'
@@ -213,6 +214,13 @@ export default {
   },
 
   methods: {
+    optionLabel(entry) {
+      if (hasDictionaryOwnership(entry)) return dictionaryDisplayLabel(entry, this.$, entry.label ? 'label' : 'name')
+      return this.$(
+        rawDictionaryLabel(entry, entry.label ? 'label' : entry.name ? 'name' : 'table_name'),
+        entry.label_en || entry.name_en || entry.table_name_en
+      )
+    },
     getDataFn(data) {
       this.formDataInit.association_crud_id = data.id
       this.form.association_field_names = []

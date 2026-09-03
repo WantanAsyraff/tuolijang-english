@@ -105,7 +105,7 @@ export default {
       })
     },
     async handleDelete(id) {
-      await this.$modalSure('你确定要删除该分类吗')
+      await this.$modalSure('confirm.deleteCategory')
       const res = await getWorkReplyGroupDelApi(id)
       if (res.status === 200) {
         this.$emit('getTargetCate')

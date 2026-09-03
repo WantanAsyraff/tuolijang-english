@@ -243,7 +243,7 @@ export default {
 
     // 删除项目
     handleDelete() {
-      this.$modalSure('确定删除此项目').then(() => {
+      this.$modalSure('confirm.deleteProject').then(() => {
         deleteProgramApi(this.id).then((res) => {
           if (res.status == 200) {
             this.$emit('goBack')

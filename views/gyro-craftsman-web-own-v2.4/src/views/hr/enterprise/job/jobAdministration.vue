@@ -382,7 +382,7 @@ export default {
         this.multipleSelection.forEach((value) => {
           ids.push(value.id)
         })
-        this.$modalSure('确定要全部删除已选择的内容吗').then(() => {
+        this.$modalSure('confirm.deleteSelectedItems').then(() => {
           this.endJobDelete(ids.join(','))
         })
       }

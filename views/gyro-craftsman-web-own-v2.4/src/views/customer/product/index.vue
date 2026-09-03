@@ -175,7 +175,7 @@ export default {
     },
     // 删除
     async handleDelete(item) {
-      await this.$modalSure('确定删除当前产品')
+      await this.$modalSure('confirm.deleteProduct')
       await productDelApi(item.id)
       if (this.where.page > 1 && this.tableData.length <= 1) {
         this.where.page--

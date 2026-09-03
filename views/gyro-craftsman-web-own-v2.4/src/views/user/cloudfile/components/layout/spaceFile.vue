@@ -648,7 +648,7 @@ export default {
     },
     // 删除
     getFolderDelete(id) {
-      this.$modalSure('您确定要加入回收站').then(() => {
+      this.$modalSure('confirm.moveToRecycleBin').then(() => {
         folderSpaceEntDeleteApi(this.spaceId, id).then((res) => {
           if (this.where.page > 1 && this.fileData.length <= 1) {
             this.where.page--

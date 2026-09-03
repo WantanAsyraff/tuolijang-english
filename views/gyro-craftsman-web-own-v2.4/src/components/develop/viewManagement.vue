@@ -219,7 +219,7 @@ export default {
       this.$refs.oaDialog.openBox()
     },
     delFn(item) {
-      this.$modalSure('确定删除此视图').then(() => {
+      this.$modalSure('confirm.deleteView').then(() => {
         if (this.viewType === 'customer') {
           const viewData = getStorageJson('viewData')
           delViewSeachApi(item.id).then((res) => {

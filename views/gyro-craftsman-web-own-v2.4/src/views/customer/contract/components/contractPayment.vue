@@ -213,7 +213,7 @@ export default {
     withdraw(row) {
       this.rowData = row
       if (row.status === 0) {
-        this.$modalSure(this.$("legacy.11accb9f68551eb7")).then(() => {
+        this.$modalSure('confirm.withdrawRequest').then(() => {
           this.getApplyRevoke()
         })
       } else {
@@ -284,7 +284,7 @@ export default {
 
     // 删除
     handleDelete(item) {
-      this.$modalSure('您确定要删除这条付款记录吗').then(() => {
+      this.$modalSure('confirm.deletePaymentRecord').then(() => {
         clientBillDeleteApi(item.id).then((res) => {
           if (this.where.page > 1 && this.debtData.length <= 1) {
             this.where.page--

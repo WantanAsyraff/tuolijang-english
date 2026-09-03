@@ -123,7 +123,7 @@ export default {
 
     // 删除流程
     deleteFn(row) {
-      this.$modalSure('您确定要删除此流程吗').then(() => {
+      this.$modalSure('confirm.deleteProcess').then(() => {
         dataApproveDeleteApi(row.id).then((res) => {
           this.getList()
         })

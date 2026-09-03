@@ -845,7 +845,7 @@ export default {
 
     // 删除当日当周当月日报
     onDelete(id) {
-      this.$modalSure('确认删除当前汇报').then(() => {
+      this.$modalSure('confirm.deleteCurrentReport').then(() => {
         deleteDailyApi(id).then((res) => {
           this.getList()
         })

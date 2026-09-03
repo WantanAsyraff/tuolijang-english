@@ -245,7 +245,7 @@ export default {
       })
     },
     hanleDelete() {
-      this.$modalSure('你确定要删除这条指标模板分类吗').then(() => {
+      this.$modalSure('confirm.deleteIndicatorTemplateCategory').then(() => {
         targetCateDeleteApi(this.activeValue).then((res) => {
           this.getTargetCate()
         })
@@ -285,7 +285,7 @@ export default {
       } else {
         if (this.remindButton) {
           var selectDada = this.selectDada
-          this.$modalSure('确定后将替换原来的内容').then(() => {
+          this.$modalSure('confirm.replaceExistingContent').then(() => {
             this.configData.edit = 1
             this.configData.data = selectDada
             // this.templateChange(this.configData)
@@ -373,7 +373,7 @@ export default {
       this.getTableData()
     },
     handleDelete(item) {
-      this.$modalSure('考核模板删除后，将不可修改，你确定要删除吗').then(() => {
+      this.$modalSure('confirm.deleteLockedAssessmentTemplate').then(() => {
         templateDeleteApi(item.id).then((res) => {
           this.getTableData()
         })
