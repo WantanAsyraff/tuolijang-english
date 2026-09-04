@@ -16,6 +16,16 @@ class ApproveHolidayType extends BaseModel
 {
     use SoftDeletes;
 
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        $systemNames = ['事假', '年假', '陪产假', '调休', '产假', '丧假'];
+        return (int) $this->getAttribute('id') >= 1
+            && (int) $this->getAttribute('id') <= 6
+            && in_array((string) $this->getAttribute('name'), $systemNames, true) ? 1 : 0;
+    }
+
     /**
      * 表名.
      * @var string

@@ -20,14 +20,14 @@
         <div class="table-box">
           <el-table ref="table" :data="tableData" :height="tableHeight">
             <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip>
-              <template slot-scope="scope">{{ localizedNoticeText(scope.row.title) }}</template>
+              <template slot-scope="scope">{{ notificationText(scope.row, 'title') }}</template>
             </el-table-column>
             <el-table-column prop="user.name" :label="$('ui.settingEnterpriseNewsRecordRecipients')" min-width="100" />
             <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip>
-              <template slot-scope="scope">{{ localizedNoticeText(scope.row.message) }}</template>
+              <template slot-scope="scope">{{ notificationText(scope.row, 'message') }}</template>
             </el-table-column>
             <el-table-column prop="cate_name" :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" show-overflow-tooltip >
-          <template slot-scope="scope">{{ $(scope.row.cate_name, scope.row.cate_name_en) }}</template>
+          <template slot-scope="scope">{{ notificationText(scope.row, 'cate_name') }}</template>
         </el-table-column>
             <el-table-column prop="created_at" :label="$('ui.customerWeChatMassClientGroupChatSendTime')" min-width="100" />
 
@@ -39,7 +39,7 @@
                   :key="index"
                   @click="handleDetails(scope.row, item)"
                 >
-                  <span v-if="scope.row.cate_name !== '考勤'"> {{ $(item.title, item.title_en) }}</span>
+                  <span v-if="scope.row.cate_name !== '考勤'"> {{ notificationButtonText(scope.row, item) }}</span>
                 </el-button>
                 <!-- :disabled="selectedType.includes(item.action)" -->
               </template>
@@ -65,6 +65,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { notificationRecordText } from '@/lang/notification-record'
 import { getCompanyMessageApi, messageCateApi } from '@/api/setting'
 export default {
   name: 'Apply',
@@ -119,8 +120,11 @@ export default {
     this.getTableData()
   },
   methods: {
-    localizedNoticeText(value) {
-      return $(value)
+    notificationText(record, key) {
+      return notificationRecordText(record, this.$, key)
+    },
+    notificationButtonText(record, button) {
+      return Number(record && record.is_system_owned) === 1 ? this.$(button && button.title) : button && button.title
     },
     // 获取列表
     getTableData() {

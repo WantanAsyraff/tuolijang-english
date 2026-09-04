@@ -66,7 +66,7 @@ class UserQuickService extends BaseService
             })->unique()->values()->toArray();
         $menus           = app()->get(MenusService::class)->select(['uniqued' => $uniques, 'status' => 1], ['menu_path', 'uni_path'])?->toArray();
         $field           = ['id', 'name', 'cid', 'pc_url', 'uni_url', 'image'];
-        $with            = ['cate' => fn ($q) => $q->select(['id', 'cate_name', 'pic'])];
+        $with            = ['cate' => fn ($q) => $q->select(['id', 'cate_name', 'pic', 'type'])];
         $quickWhere      = ['uuid' => $admin->uid, 'entid' => 1];
         $where['cid']    = app()->get(QuickCateService::class)->column(['is_show' => 1], 'id');
         $where['status'] = 1;

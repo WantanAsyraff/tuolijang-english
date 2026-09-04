@@ -248,7 +248,7 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/components/customer/oaForm.vue",
       "mustContain": [
-        "systemLabel(val.key_name)",
+        "metadataLabel(val, 'key_name')",
         "fieldPlaceholder(val",
         "localizedOptions(val.options"
       ]
@@ -256,7 +256,7 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/components/common/formList.vue",
       "mustContain": [
-        ":placeholder=\"$(val.field_name)\"",
+        ":placeholder=\"fieldLabel(val)\"",
         ":label=\"optionLabel(items, val)\"",
         "dictionaryDisplayLabel(entry, this.$, key)"
       ]
@@ -264,7 +264,7 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/customer/setup/customForm/components/clueToCustomers.vue",
       "mustContain": [
-        "{{ $(scope.row.key_name) }}"
+        "metadataLabel(scope.row, 'key_name')"
       ]
     },
     {
@@ -316,14 +316,14 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/fd/setup/type/index.vue",
       "mustContain": [
-        "{{ $(scope.row.name) }}",
-        "{{ $(scope.row.info)"
+        "displaySystemLabel(scope.row)",
+        "displaySystemLabel(scope.row, 'info')"
       ]
     },
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/fd/setup/category/index.vue",
       "mustContain": [
-        "{{ $(scope.row.name) }}"
+        "displaySystemLabel(scope.row)"
       ]
     },
     {
@@ -341,7 +341,7 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/business/examine/index.vue",
       "mustContain": [
-        "{{ $(scope.row.name)"
+        "approvalName(scope.row)"
       ]
     },
     {
@@ -353,26 +353,26 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/administration/material/fixed/components/record.vue",
       "mustContain": [
-        "$(formData.data.cate.cate_name)"
+        "storageCategoryLabel(formData.data.cate)"
       ]
     },
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/administration/material/fixed/components/materialDialog.vue",
       "mustContain": [
-        "$(fromData.data.cate.cate_name)",
-        "$(scope.row.cate && scope.row.cate.cate_name)"
+        "storageCategoryLabel(fromData.data.cate)",
+        "storageCategoryLabel(scope.row.cate)"
       ]
     },
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/administration/material/fixed/components/fixed.vue",
       "mustContain": [
-        "$(scope.row.cate && scope.row.cate.cate_name)"
+        "storageCategoryLabel(scope.row.cate)"
       ]
     },
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/administration/material/chart/index.vue",
       "mustContain": [
-        "$(scope.row.storage && scope.row.storage.cate && scope.row.storage.cate.cate_name)"
+        "storageCategoryLabel(scope.row.storage && scope.row.storage.cate)"
       ]
     }
   ]

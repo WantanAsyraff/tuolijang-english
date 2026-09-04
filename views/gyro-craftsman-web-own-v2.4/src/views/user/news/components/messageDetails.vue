@@ -18,19 +18,19 @@
             </el-col>
             <el-col class="right">
               <div class="top">
-                <el-tag effect="dark" size="small">{{ localizedText(messageData.data.cate_name) }}</el-tag>
+                <el-tag effect="dark" size="small">{{ notificationText(messageData.data, 'cate_name') }}</el-tag>
               </div>
               <div
                 v-if="messageData.data.buttons.length > 0"
                 class="pointer"
                 @click="handleConfirm(messageData.data.buttons[0])"
               >
-                <div class="mt10 content over-text">{{ localizedText(messageData.data.title) }}</div>
-                <div class="mt10 bottom">{{ localizedText(messageData.data.message) }}</div>
+                <div class="mt10 content over-text">{{ notificationText(messageData.data, 'title') }}</div>
+                <div class="mt10 bottom">{{ notificationText(messageData.data, 'message') }}</div>
               </div>
               <div v-else class="pointer">
-                <div class="mt10 content over-text">{{ localizedText(messageData.data.title) }}</div>
-                <div class="mt10 bottom">{{ localizedText(messageData.data.message) }}</div>
+                <div class="mt10 content over-text">{{ notificationText(messageData.data, 'title') }}</div>
+                <div class="mt10 bottom">{{ notificationText(messageData.data, 'message') }}</div>
               </div>
             </el-col>
           </el-row>
@@ -44,7 +44,7 @@
               size="small"
               type="primary"
               @click="handleConfirm(item)"
-              >{{ localizedText(item.title) }}</el-button
+              >{{ notificationButtonText(messageData.data, item) }}</el-button
             >
           </template>
         </div>
@@ -56,6 +56,7 @@
 
 <script>
 import { $ } from '@/lang'
+import { notificationRecordText } from '@/lang/notification-record'
 import noticeHandle from '@/libs/noticeHandle'
 import { noticeMessageReadApi } from '@/api/user'
 import { messageListApi } from '@/api/public'
@@ -93,8 +94,11 @@ export default {
     }
   },
   methods: {
-    localizedText(value) {
-      return $(value)
+    notificationText(record, key) {
+      return notificationRecordText(record, this.$, key)
+    },
+    notificationButtonText(record, button) {
+      return Number(record && record.is_system_owned) === 1 ? this.$(button && button.title) : button && button.title
     },
     handleClose() {
       noticeHandle(this.messageData.data, 0)

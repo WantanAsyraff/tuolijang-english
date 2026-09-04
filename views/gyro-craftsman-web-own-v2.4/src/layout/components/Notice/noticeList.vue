@@ -20,7 +20,7 @@
         </div>
         <div class="type" v-for="(item, index) in options" :key="index" @click="handleTypes(item)"
           :class="activeId == item.value ? 'active' : ''"  v-show="(tabsName==1&&item.count > 0)||tabsName==2">
-          {{ $(item.cate_name, item.cate_name_en) }} <span class="num" v-if="item.count != 0">{{ item.count>99?'99+':item.count }}</span>
+          {{ categoryText(item) }} <span class="num" v-if="item.count != 0">{{ item.count>99?'99+':item.count }}</span>
         </div>
 
         <div class="dingyue" @click="toSubscribe">
@@ -42,15 +42,15 @@
                 <el-image :src="scope.row.is_read === 0 ? unreadIcon : readIcon"></el-image>
               </template>
             </el-table-column>
-            <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="80"><template slot-scope="scope">{{ $(scope.row.title, scope.row.title_en) }}</template></el-table-column>
-            <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360"><template slot-scope="scope">{{ $(scope.row.message, scope.row.message_en) }}</template></el-table-column>
-            <el-table-column :label="$('ui.developViewManagementType')" min-width="80"><template slot-scope="scope">{{ $(scope.row.cate_name, scope.row.cate_name_en) }}</template></el-table-column>
+            <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="80"><template slot-scope="scope">{{ notificationText(scope.row, 'title') }}</template></el-table-column>
+            <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360"><template slot-scope="scope">{{ notificationText(scope.row, 'message') }}</template></el-table-column>
+            <el-table-column :label="$('ui.developViewManagementType')" min-width="80"><template slot-scope="scope">{{ notificationText(scope.row, 'cate_name') }}</template></el-table-column>
             <el-table-column prop="created_at" :label="$('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
             <el-table-column :label="$('toptable.operation')" width="100" fixed="right">
               <template slot-scope="scope">
                 <el-button type="text" v-for="(item, index) in scope.row.buttons" :key="index"
                   :disabled="selectedType.includes(item.action)" @click="handleDetails(scope.row, item)">
-                  <span v-if="scope.row.cate_name !== '考勤'"> {{ $(item.title, item.title_en) }}</span>
+                  <span v-if="scope.row.cate_name !== '考勤'"> {{ notificationButtonText(scope.row, item) }}</span>
                 </el-button>
               </template>
             </el-table-column>
@@ -82,6 +82,8 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
+import { notificationRecordText } from '@/lang/notification-record'
 import { noticeMessageListApi, noticeMessageDeleteApi, noticeMessageReadApi } from '@/api/user'
 import { messageCateApi } from '@/api/setting'
 import { messageListApi } from '@/api/public'
@@ -121,6 +123,15 @@ export default {
   },
 
   methods: {
+    categoryText(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'cate_name')
+    },
+    notificationText(record, key) {
+      return notificationRecordText(record, this.$, key)
+    },
+    notificationButtonText(record, button) {
+      return Number(record && record.is_system_owned) === 1 ? this.$(button && button.title) : button && button.title
+    },
     openBox() {
       this.getMessageCate()
       this.getList()

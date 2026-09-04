@@ -25,13 +25,13 @@
               </template>
             </el-table-column>
             <el-table-column prop="name" :label="$('customer.labelename')" min-width="100">
-              <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+              <template slot-scope="scope">{{ labelDisplay(scope.row) }}</template>
             </el-table-column>
             <el-table-column prop="cate.name" :label="$('customer.label')" min-width="520">
               <template slot-scope="scope">
                 <div class="label-list">
                   <div v-for="item in scope.row.children" :key="item.id" class="item">
-                    {{ $(item.name) }}
+                    {{ labelDisplay(item) }}
                   </div>
                 </div>
               </template>
@@ -81,7 +81,7 @@
               <el-cascader
                 v-model="form.labelId"
                 size="small"
-                :options="tableData"
+                :options="localizedLabelTree"
                 :placeholder="$('ui.customerSetupLabelSelectReplacementLabel')"
                 :props="{ label: 'name', value: 'id' }"
                 style="width: 100%"
@@ -109,6 +109,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import Sortable from 'sortablejs'
 import dialogForm from './type/components/addDialog'
 import addLabel from './addLabel'
@@ -178,7 +179,22 @@ export default {
       this.rowDrop()
     }, 500)
   },
+  computed: {
+    localizedLabelTree() {
+      return this.localizeLabels(this.tableData)
+    }
+  },
   methods: {
+    labelDisplay(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
+    localizeLabels(entries) {
+      return (entries || []).map((entry) => ({
+        ...entry,
+        name: this.labelDisplay(entry),
+        children: Array.isArray(entry.children) ? this.localizeLabels(entry.children) : entry.children
+      }))
+    },
     synchronizeTags() {
       clientWorkLabelApi().then((res) => {})
     },

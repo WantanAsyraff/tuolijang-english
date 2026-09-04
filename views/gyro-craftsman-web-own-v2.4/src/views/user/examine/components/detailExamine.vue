@@ -17,7 +17,7 @@
           </div>
           <div class="nameBox">
             <span class="st1"
-              >{{ examineData.card.name }}{{ $("ui.userExamineDetailExamineS") }}{{ examineData.approve ? $(examineData.approve.name, examineData.approve.name_en) : $('ui.userExamineDetailExamineLeave') }}</span
+              >{{ examineData.card.name }}{{ $("ui.userExamineDetailExamineS") }}{{ examineData.approve ? approvalName(examineData.approve) : $('ui.userExamineDetailExamineLeave') }}</span
             >
             <span class="st2" :class="getColor(examineData.status)">
               {{ $func.getExamineStatus(examineData.status, examineData) }}
@@ -93,9 +93,9 @@
               <!-- 审批单组件：明细数据渲染 -->
               <div v-if="item.type == 'approvalBill'">
                 <template v-for="(group, gIdx) in item.value">
-                  <div class="bill-title">{{ $(item.label) }}{{ gIdx + 1 }}</div>
+                  <div class="bill-title">{{ approvalFieldLabel(item.label) }}{{ gIdx + 1 }}</div>
                   <div v-for="(field, fIdx) in group" :key="`g${gIdx}-f${fIdx}`" class="label">
-                    <span class="rule-label" v-if="field.type !== 'timeFrom'">{{ field.label }}：</span>
+                    <span class="rule-label" v-if="field.type !== 'timeFrom'">{{ approvalFieldLabel(field.label) }}：</span>
 
                     <div v-if="field.type === 'rich_text'" style="width: 90%">
                       <div class="rich-box" v-html="field.value" />
@@ -103,7 +103,7 @@
                     <!-- 时长 -->
                     <div v-else-if="field.type == 'timeFrom'" style="width: 90%">
                       <div v-for="el in field.value">
-                        <span class="rule-label">{{ el.label }}：</span>
+                        <span class="rule-label">{{ approvalFieldLabel(el.label) }}：</span>
                         <span class="rule-value">{{ el.value || '--' }}</span>
                       </div>
                     </div>
@@ -117,7 +117,7 @@
               </div>
 
               <div class="label" v-else>
-                <span class="rule-label" v-if="item.type !== 'timeFrom'">{{ $(item.label) }}:</span>
+                <span class="rule-label" v-if="item.type !== 'timeFrom'">{{ approvalFieldLabel(item.label) }}:</span>
 
                 <div v-if="item.type === 'rich_text'" style="width: 90%">
                   <div class="rich-box" v-html="item.value"></div>
@@ -125,7 +125,7 @@
                 <!-- 时长 -->
                 <div v-else-if="item.type == 'timeFrom'" style="width: 100%">
                   <div v-for="el in item.value">
-                    <span class="rule-label">{{ el.label }}：</span>
+                    <span class="rule-label">{{ approvalFieldLabel(el.label) }}：</span>
                     <span class="rule-value" style="width: 90%">{{ el.value || '--' }}</span>
                   </div>
                 </div>
@@ -312,7 +312,7 @@ export default {
       fromData: {
         width: '600px',
         title: $('ui.formDesignerToolbarPanelIndexRevoke'),
-        btnText: '确定',
+        btnText: $('public.ok'),
         labelWidth: 'auto',
         type: ''
       },
@@ -347,9 +347,18 @@ export default {
   },
 
   methods: {
+    approvalName(approve) {
+      if (!approve) return ''
+      return Number(approve.is_system_owned) === 1 ? this.$(approve.name, approve.name_en) : approve.name
+    },
+    approvalFieldLabel(value) {
+      return Number(this.examineData?.approve?.is_system_owned) === 1 ? this.$(value) : value
+    },
     formatSystemValue(field) {
       const systemLabels = ['支付方式', '付款方式', '收款方式', 'Payment method']
-      return field && systemLabels.includes($(field.label)) ? $(field.value) : field?.value
+      return field && Number(this.examineData?.approve?.is_system_owned) === 1 && systemLabels.includes(this.$(field.label))
+        ? this.$(field.value)
+        : field?.value
     },
     async submitReply() {
       if (this.textarea == '') {

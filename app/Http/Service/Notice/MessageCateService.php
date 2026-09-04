@@ -33,7 +33,7 @@ class MessageCateService extends BaseService
      */
     public function getListByCache(array $where): mixed
     {
-        return Cache::tags([self::CACHE_KEY])->remember(json_encode($where), (int) sys_config('system_cache_ttl', 3600), function () use ($where) {
+        return Cache::tags([self::CACHE_KEY])->remember('ownership_v2:' . json_encode($where), (int) sys_config('system_cache_ttl', 3600), function () use ($where) {
             return get_tree_children($this->dao->getTierList($where, ['*', 'id as value', 'cate_name as label']), 'children', 'value');
         });
     }

@@ -13,6 +13,17 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Quick extends BaseModel
 {
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        $systemNames = [
+            '填写汇报', '发起申请', '记事本', '通讯录', '客户列表', '合同管理', '发票管理',
+            '收支记账', '收支统计', '业绩统计', '速记', '工作汇报', '考勤打卡', '公司介绍',
+            '云盘', '订单收支', '合同收支', '项目管理', '我的任务', '新建日程',
+        ];
+        return in_array((string) $this->getAttribute('name'), $systemNames, true) ? 1 : 0;
+    }
     /**
      * 表名.
      * @var string

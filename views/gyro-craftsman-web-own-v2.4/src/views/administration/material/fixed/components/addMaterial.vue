@@ -46,7 +46,7 @@
               <span slot="label">{{ $("ui.administrationMaterialFixedAddMaterialMaterialCategory") }}</span>
               <el-cascader
                 v-model="rules.cid"
-                :options="formData.treeData"
+                :options="localizedCategoryTree"
                 size="small"
                 :placeholder="$('ui.administrationMaterialFixedAddMaterialPleaseSelectMaterialCategory')"
                 :props="{ checkStrictly: true }"
@@ -182,6 +182,7 @@
 <script>
 import { $ } from '@/lang'
 import { storageListSaveApi } from '@/api/administration'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 
 export default {
   name: 'AddMaterial',
@@ -234,6 +235,9 @@ export default {
     }
   },
   computed: {
+    localizedCategoryTree() {
+      return this.localizeCategoryTree(this.formData.treeData || [])
+    },
     lang: function () {
       return this.$store.getters.lang
     }
@@ -260,6 +264,13 @@ export default {
     }
   },
   methods: {
+    localizeCategoryTree(entries) {
+      return entries.map((entry) => ({
+        ...entry,
+        label: dictionaryDisplayLabel(entry, this.$, entry.cate_name !== undefined ? 'cate_name' : 'label'),
+        children: Array.isArray(entry.children) ? this.localizeCategoryTree(entry.children) : entry.children
+      }))
+    },
     handleClose() {
       this.drawer = false
       this.reset()

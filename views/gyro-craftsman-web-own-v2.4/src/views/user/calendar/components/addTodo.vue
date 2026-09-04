@@ -150,7 +150,7 @@
               <el-option
                 v-for="item in tableData"
                 :key="item.id"
-                :label="$(item.name)"
+                :label="scheduleTypeLabel(item)"
                 :value="item.id"
                 :style="{ color: item.color }"
               ></el-option>
@@ -184,6 +184,7 @@
 import { $ } from '@/lang'
 import { scheduleStoreApi, scheduleTypesApi, scheduleEditApi, scheduleInfoApi } from '@/api/user'
 import { getStorageJson } from '@/utils/storage'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 export default {
   name: '',
   components: {
@@ -385,6 +386,9 @@ export default {
   },
 
   methods: {
+    scheduleTypeLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
     formatTime() {
       const currentDate = this.$moment().format('yyyy-MM-DD ')
       const baseTime = this.leftTime ? this.$moment(this.leftTime) : this.$moment()

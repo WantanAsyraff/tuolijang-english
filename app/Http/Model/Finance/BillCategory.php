@@ -18,6 +18,13 @@ class BillCategory extends BaseModel
 {
     use PathAttrTrait;
 
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        return (int) $this->id >= 1 && (int) $this->id <= 36 ? 1 : 0;
+    }
+
     /**
      * 自动写入时间关闭.
      * @var bool

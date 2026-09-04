@@ -19,14 +19,14 @@
             <el-table-column
               v-for="header in tableHeaders"
               :key="header.field"
-              :label="$(header.name)"
+              :label="metadataLabel(header, 'name')"
               :min-width="getWidth(header)"
               :prop="header.field"
               show-overflow-tooltip
             >
               <template #header="scope">
                 <div class="header-content">
-                  <span>{{ $(header.name) }}</span>
+                  <span>{{ metadataLabel(header, 'name') }}</span>
 
                   <!-- 拖拽图标（使用 el-icon-drag） -->
                   <i class="iconfont icontuozhuaitubiao"></i>
@@ -61,9 +61,9 @@
                     <template>
                       <div class="flex_box">
                         <div v-for="(item, index) in scope.row[header.field]" :key="index" class="tips">
-                          <el-tag v-if="item.name.length <= 6" size="small" class="mb10"> {{ $(item.name) }} </el-tag>
+                          <el-tag v-if="item.name.length <= 6" size="small" class="mb10"> {{ labelDisplay(item) }} </el-tag>
                           <el-tag v-else size="small" class="mb10">
-                            {{ $(item.name) }}
+                            {{ labelDisplay(item) }}
                           </el-tag>
                         </div>
                       </div>
@@ -72,7 +72,7 @@
                       <div class="flex_box">
                         <template v-for="(item, index) in scope.row[header.field]">
                           <el-tag v-if="index < 2" size="small" :key="index" class="tips">
-                            {{ $(item.name) }}
+                            {{ labelDisplay(item) }}
                           </el-tag>
                         </template>
                         <el-tag v-if="scope.row[header.field].length > 2" size="small">...</el-tag>
@@ -84,7 +84,7 @@
                     <div class="flex_box">
                       <div v-for="(item, index) in scope.row[header.field]" :key="index" class="tips">
                         <el-tag v-if="index < 2" size="small">
-                          {{ $(item.name) }}
+                          {{ labelDisplay(item) }}
                         </el-tag>
                       </div>
                       <el-tag v-if="scope.row[header.field].length > 2" size="small">...</el-tag>
@@ -132,7 +132,7 @@
                       alt=""
                       style="width: 24px; height: 24px; border-radius: 50%; margin-right: 7px; vertical-align: bottom"
                     />
-                    {{ $(scope.row[header.field].name) }}
+                    {{ scope.row[header.field].name }}
 
                     <span>
                       <span v-if="scope.row[header.field].type == 1" class="color-excel ml4">{{ $("ui.customerCustomizeTableWeChat") }}</span>
@@ -209,7 +209,7 @@
                       : getColorFn('#1890ff', '0.1')
                   }"
                 >
-                  {{ $(scope.row[header.field].name) }}
+                  {{ scope.row[header.field].name }}
                 </div>
                 <span
                   v-else-if="header.field === 'payment_status'"
@@ -264,6 +264,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { getStorageJson } from '@/utils/storage'
 import { getColor } from '@/utils/format'
 import { customerSubscribeApi, contractSubscribeApi } from '@/api/enterprise'
@@ -395,6 +396,12 @@ export default {
   },
 
   methods: {
+    metadataLabel(entry, key) {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
+    labelDisplay(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
     scheduleTableLayout() {
       if (this.tableLayoutTimer) {
         clearTimeout(this.tableLayoutTimer)

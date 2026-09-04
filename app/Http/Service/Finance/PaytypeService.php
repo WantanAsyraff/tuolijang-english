@@ -117,7 +117,7 @@ class PaytypeService extends BaseService
      */
     public function getBillPayType($entid)
     {
-        return $this->dao->getList(['entid' => $entid, 'status' => 1], ['id as value', 'name as label'], 0, 0, ['sort', 'created_at']);
+        return $this->dao->getList(['entid' => $entid, 'status' => 1], ['id', 'id as value', 'name as label'], 0, 0, ['sort', 'created_at']);
     }
 
     /**

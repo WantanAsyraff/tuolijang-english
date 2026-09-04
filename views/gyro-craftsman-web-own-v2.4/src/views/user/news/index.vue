@@ -23,10 +23,14 @@
             <el-image :src="scope.row.is_read === 0 ? unreadIcon : readIcon"></el-image>
           </template>
         </el-table-column>
-        <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100"></el-table-column>
-        <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360" />
+        <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100">
+          <template slot-scope="scope">{{ notificationText(scope.row, 'title') }}</template>
+        </el-table-column>
+        <el-table-column prop="message" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="360">
+          <template slot-scope="scope">{{ notificationText(scope.row, 'message') }}</template>
+        </el-table-column>
         <el-table-column prop="cate_name" :label="$('ui.developViewManagementType')" min-width="90" >
-          <template slot-scope="scope">{{ $(scope.row.cate_name, scope.row.cate_name_en) }}</template>
+          <template slot-scope="scope">{{ notificationText(scope.row, 'cate_name') }}</template>
         </el-table-column>
         <el-table-column prop="created_at" :label="$('ui.customerWeChatMassClientGroupChatSendTime')" min-width="120"></el-table-column>
         <el-table-column :label="$('ui.formDesignerFormWidgetContainerWidgetDetailsItemOperation')" width="100" fixed="right">
@@ -56,6 +60,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { notificationRecordText } from '@/lang/notification-record'
 import { noticeMessageListApi, noticeMessageReadApi, noticeMessageDeleteApi } from '@/api/user'
 import { messageListApi } from '@/api/public'
 
@@ -94,6 +99,12 @@ export default {
     this.getTableData()
   },
   methods: {
+    notificationText(record, key) {
+      return notificationRecordText(record, this.$, key)
+    },
+    notificationButtonText(record, button) {
+      return Number(record && record.is_system_owned) === 1 ? this.$(button && button.title) : button && button.title
+    },
     pageChange(page) {
       this.where.page = page
       this.getTableData()

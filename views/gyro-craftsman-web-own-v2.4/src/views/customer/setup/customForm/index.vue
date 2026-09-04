@@ -26,7 +26,7 @@
     <div v-for="(item, index1) in dataList" :key="index1" class="wrapper-item">
       <div class="flex-center bgcColor">
         <div class="headerLeft">
-          <span>{{ $(item.title, item.title_en) }}</span>
+          <span>{{ metadataLabel(item, 'title') }}</span>
         </div>
         <div class="headerRight">
           <!-- <el-switch
@@ -380,6 +380,9 @@ export default {
   methods: {
     dictionaryLabel(entry) {
       return dictionaryDisplayLabel(entry, this.$)
+    },
+    metadataLabel(entry, key) {
+      return dictionaryDisplayLabel(entry, this.$, key)
     },
     gridData(val) {
       configConvertApi('customer', { data: val }).then((res) => {})

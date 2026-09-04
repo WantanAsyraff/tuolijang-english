@@ -14,6 +14,7 @@ const outputs = {
 };
 const sharedOutput = path.join(root, "generated-catalog.js");
 const hasHan = /[\u3400-\u9fff]/;
+const localizationKeyFallback = /^(?:(?:web|chat|mobile|common)\.)?(?:ui|designer|extension|public|legacyScript|navbar|systemText|workbench|finance|customer|setting|access|calendar|attendance|toptable)\.[A-Za-z0-9_.-]+$/;
 
 function argument(name, fallback = "") {
   const index = process.argv.indexOf(name);
@@ -45,6 +46,9 @@ function loadAndValidate() {
         continue;
       }
       if (hasHan.test(entry.en) && entry.en !== "中文") errors.push(`Chinese text in English value: ${id}`);
+      if (localizationKeyFallback.test(entry.en) || entry.en === id || entry.en === id.replace(/^(?:web|chat|mobile|common)\./, "")) {
+        errors.push("Localization key used as English value: " + id);
+      }
       if (placeholders(entry["zh-cn"]).join("|") !== placeholders(entry.en).join("|")) {
         errors.push(`placeholder mismatch: ${id}`);
       }

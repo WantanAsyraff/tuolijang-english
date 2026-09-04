@@ -14,6 +14,27 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class MessageCategory extends BaseModel
 {
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        $systemCategories = [
+            76 => '日常汇报',
+            77 => '绩效考核',
+            78 => '申请审批',
+            79 => '客户合同',
+            80 => '财务审核',
+            81 => '待办日程',
+            82 => '人员异动',
+            83 => '企业注册',
+            84 => '企业文件',
+            85 => '个人办公',
+            95 => '企业动态',
+        ];
+        $id = (int) $this->getAttribute('id');
+        return isset($systemCategories[$id])
+            && $systemCategories[$id] === (string) $this->getAttribute('cate_name') ? 1 : 0;
+    }
     /**
      * 表名.
      * @var string

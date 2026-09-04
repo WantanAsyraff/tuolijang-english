@@ -17,7 +17,7 @@
             :class="index == tabIndex ? 'active' : ''"
             @click="clickDepart(index, item.id)"
           >
-            <span class="line1">{{ $(item.cate_name, item.cate_name_en) }}</span>
+            <span class="line1">{{ noticeCategoryName(item) }}</span>
             <el-popover
               :ref="`pop-${item.id}`"
               :offset="10"
@@ -66,6 +66,9 @@ export default {
     this.getTargetCate()
   },
   methods: {
+    noticeCategoryName(entry) {
+      return entry && entry.label_key ? this.$(entry.label_key) : entry && entry.cate_name
+    },
     clickDepart(index, id) {
       this.tabIndex = index
       this.optionValue.id = id
@@ -87,6 +90,7 @@ export default {
         this.department = res.data ? res.data : []
         let obj = {
           cate_name: '全部',
+          label_key: 'finance.all',
           id: ''
         }
         this.department.unshift(obj)
@@ -100,6 +104,7 @@ export default {
         this.department = res.data ? res.data : []
         let obj = {
           cate_name: '全部',
+          label_key: 'finance.all',
           id: ''
         }
         this.department.unshift(obj)

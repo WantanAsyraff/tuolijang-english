@@ -68,7 +68,7 @@
       <el-form-item v-if="config.type !== 3" prop="type_id">
         <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentMethod") }}</span>
         <el-select v-model="rules.type_id" :placeholder="$('ui.customerContractContractDialogSelectPaymentMethod')" size="small">
-          <el-option v-for="item in paymentOptions" :key="item.id" :label="$(item.name, item.name_en)" :value="item.id" />
+          <el-option v-for="item in paymentOptions" :key="item.id" :label="paymentMethod(item)" :value="item.id" />
         </el-select>
       </el-form-item>
 
@@ -126,6 +126,7 @@ import { clientBillStatusApi } from '@/api/client'
 import { getToken } from '@/utils/auth'
 import { uploader } from '@/utils/uploadCloud'
 import SettingMer from '@/libs/settingMer'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 export default {
   name: '',
   components: {},
@@ -249,6 +250,9 @@ export default {
   created() {},
   mounted() {},
   methods: {
+    paymentMethod(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
     handleOpen() {
       this.dialogVisible = true
       this.getPaymentMethod()

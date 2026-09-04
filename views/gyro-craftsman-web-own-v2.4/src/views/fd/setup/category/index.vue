@@ -18,7 +18,7 @@
       style="width: 100%"
     >
       <el-table-column :label="$('ui.fdSetupCategoryIndexCategoryName')" min-width="220" prop="name">
-        <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+        <template slot-scope="scope">{{ displaySystemLabel(scope.row) }}</template>
       </el-table-column>
       <el-table-column :label="$('toptable.sort')" min-width="100" prop="sort" />
       <el-table-column :label="$('public.operation')" prop="address" width="200">
@@ -51,6 +51,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { invoiceCategoryList, deleteInvoiceCategory } from '@/api/enterprise'
 import dialogForm from '@/views/customer/setup/type/components/addDialog'
 import oaFromBox from '@/components/common/oaFromBox'
@@ -80,6 +81,9 @@ export default {
     this.invoiceCategoryList()
   },
   methods: {
+    displaySystemLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     // 发票类目列表
     invoiceCategoryList(val) {
       this.where.page = val ? val : this.where.page

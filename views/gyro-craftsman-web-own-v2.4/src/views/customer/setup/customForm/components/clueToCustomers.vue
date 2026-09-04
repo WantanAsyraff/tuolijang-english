@@ -4,7 +4,7 @@
   <el-table :data="gridData" :height="450">
     <el-table-column :label="$('ui.customerSetupCustomFormClueToCustomersLeadField')" property="name">
       <template slot-scope="scope">
-        {{ $(scope.row.key_name) }}
+        {{ metadataLabel(scope.row, 'key_name') }}
       </template>
     </el-table-column>
     <el-table-column label="" width="200">
@@ -25,7 +25,7 @@
           <el-option
             v-for="(item, index) in options"
             :key="index"
-            :label="$(item.key_name)"
+            :label="metadataLabel(item, 'key_name')"
             :value="item.key"
             :disabled="selectedList.includes(item.key)"
           ></el-option>
@@ -41,6 +41,7 @@
 </template>
 <script>
 import { getFormListApi } from '@/api/form'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 export default {
   props: {
     clueList: {
@@ -65,6 +66,8 @@ export default {
         item.data.map((el) => {
           let obj = {
             key_name: el.key_name,
+            is_system_owned: el.is_system_owned,
+            is_default: el.is_default,
             field: el.key,
             related: []
           }
@@ -74,6 +77,9 @@ export default {
     }
   },
   methods: {
+    metadataLabel(entry, key) {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     submit() {
       this.$emit('gridData', this.gridData)
       this.dialogTableVisible = false

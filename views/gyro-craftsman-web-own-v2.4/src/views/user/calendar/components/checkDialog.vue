@@ -42,6 +42,7 @@
 <script>
 import { roterPre } from '@/settings'
 import { dealtScheduleDeleteApi, dealtScheduleTypesApi } from '@/api/user'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 export default {
   name: 'CheckDialog',
   props: {
@@ -67,6 +68,9 @@ export default {
   },
 
   methods: {
+    scheduleTypeLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
     handleClose() {
       this.dialogVisible = false
     },
@@ -87,7 +91,7 @@ export default {
       var str = ''
       this.scheduleTypes.map((value) => {
         if (value.key === type) {
-          str = this.$(value.name)
+          str = this.scheduleTypeLabel(value)
         }
       })
       return str

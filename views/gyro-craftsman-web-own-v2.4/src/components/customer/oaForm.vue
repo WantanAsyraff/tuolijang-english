@@ -15,7 +15,7 @@
         class="from-item-title mb20 flex-between"
         style="width: 100%"
       >
-        <span>{{ systemLabel(item.title) }}</span>
+        <span>{{ metadataLabel(item, 'title') }}</span>
         <!-- v-if="item.ident == 'product' && viewMode && editKey !== 'product'" -->
       </div>
 
@@ -41,7 +41,7 @@
             :span="viewMode && !['file', 'images', 'oaWangeditor'].includes(val.type) ? 12 : 24"
           >
             <el-form-item v-show="val.input_type !== 'hidden'" :prop="val.key" class="label-box inline-edit-item">
-              <span slot="label" class="label">{{ systemLabel(val.key_name) }}：</span>
+              <span slot="label" class="label">{{ metadataLabel(val, 'key_name') }}：</span>
               <i v-if="viewMode && savingKeyMap[val.key]" class="el-icon-loading inline-edit-saving-icon" />
               <!-- 文本输入框 -->
               <template v-if="val.input_type === 'input' && val.type === 'text'">
@@ -636,10 +636,13 @@ export default {
       decoder.innerHTML = translated.replace(/\\&quot;/g, '&quot;')
       return decoder.value
     },
+    metadataLabel(entry, key) {
+      return dictionaryDisplayLabel(entry, (value) => this.systemLabel(value), key)
+    },
     fieldPlaceholder(field, mode) {
-      if (field.placeholder) return this.systemLabel(field.placeholder)
+      if (field.placeholder) return this.metadataLabel(field, 'placeholder')
       const prefixKey = mode === 'enter' ? 'ui.customerOaFormPleaseEnter' : 'ui.developConditionGroupPleaseSelect'
-      return this.$(prefixKey) + this.systemLabel(field.key_name)
+      return this.$(prefixKey) + this.metadataLabel(field, 'key_name')
     },
     localizedOptions(options, fieldKey) {
       return (options || []).map((option) => ({

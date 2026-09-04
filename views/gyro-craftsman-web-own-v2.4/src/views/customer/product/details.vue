@@ -29,7 +29,7 @@
         <el-form class="invoice-body" label-width="auto">
           <div v-for="(item, index) in dataInfo.list" :key="index">
             <div class="from-item-title mb15">
-              <span>{{ item.title }}</span>
+              <span>{{ metadataLabel(item, 'title') }}</span>
             </div>
             <div class="form-box">
               <div
@@ -41,11 +41,11 @@
                 class="form-item"
               >
                 <el-form-item v-if="value.key == 'customer_status'">
-                  <span slot="label">{{ value.key_name }} ：</span>
+                  <span slot="label">{{ metadataLabel(value, 'key_name') }} ：</span>
                   <span>{{ value.value[0] || '-' }}</span>
                 </el-form-item>
                 <el-form-item v-else-if="value.type == 'file' || value.type == 'images'">
-                  <span slot="label">{{ value.key_name }}：</span>
+                  <span slot="label">{{ metadataLabel(value, 'key_name') }}：</span>
                   <upload-file
                     v-if="value.files && value.files.length > 0"
                     v-model="value.files"
@@ -57,12 +57,12 @@
                   <span v-else>--</span>
                 </el-form-item>
                 <el-form-item v-else-if="value.type == 'oaWangeditor'">
-                  <span slot="label">{{ value.key_name }}：</span>
+                  <span slot="label">{{ metadataLabel(value, 'key_name') }}：</span>
 
                   <div class="content" v-html="value.value" />
                 </el-form-item>
                 <el-form-item v-else>
-                  <span slot="label">{{ value.key_name }}：</span>
+                  <span slot="label">{{ metadataLabel(value, 'key_name') }}：</span>
                   <p v-html="getValue(value.value)"></p>
                 </el-form-item>
               </div>
@@ -151,6 +151,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { getProductInfoApi } from '@/api/client'
 export default {
   name: 'details',
@@ -199,6 +200,9 @@ export default {
   mounted() {},
 
   methods: {
+    metadataLabel(entry, key) {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     async getDetails(id) {
       const result = await getProductInfoApi(id)
       this.dataInfo = result.data
@@ -230,7 +234,7 @@ export default {
       } else if (Array.isArray(val)) {
         str = val.toString()
       }else if(typeof val === 'object'){
-        str =val.name
+        str = dictionaryDisplayLabel(val, this.$)
       }
        else {
         str = val

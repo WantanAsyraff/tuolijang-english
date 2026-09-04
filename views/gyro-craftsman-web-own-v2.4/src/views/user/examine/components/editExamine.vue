@@ -20,7 +20,7 @@
               <i class="iconfont" :class="configData.approve ? configData.approve.icon : configData.icon"></i>
             </div>
             <div class="nameBox">
-              <span class="st1">{{ $(configData.approve ? configData.approve.name : configData.name) }}</span>
+              <span class="st1">{{ approvalName(configData.approve || configData) }}</span>
             </div>
           </div>
           <div v-else class="acea-row row-middle">
@@ -31,7 +31,7 @@
               <i class="iconfont" :class="configData.approve ? configData.approve.icon : configData.icon"></i>
             </div>
             <div class="nameBox">
-              <span class="st1">{{ $(configData.approve ? configData.approve.name : configData.name) }}</span>
+              <span class="st1">{{ approvalName(configData.approve || configData) }}</span>
             </div>
           </div>
         </div>
@@ -157,6 +157,10 @@ export default {
   },
   watch: {},
   methods: {
+    approvalName(approve) {
+      if (!approve) return ''
+      return Number(approve.is_system_owned) === 1 ? this.$(approve.name, approve.name_en) : approve.name
+    },
     collectSchemaSourceTitles(value) {
       if (Array.isArray(value)) {
         value.forEach((item) => this.collectSchemaSourceTitles(item))

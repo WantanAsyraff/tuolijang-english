@@ -25,6 +25,13 @@ class Bill extends BaseModel
 {
     use TimeDataTrait;
 
+    protected $appends = ['pay_type_is_system_owned'];
+
+    public function getPayTypeIsSystemOwnedAttribute(): int
+    {
+        return (int) $this->type_id >= 1 && (int) $this->type_id <= 5 ? 1 : 0;
+    }
+
     /**
      * 表名.
      * @var string

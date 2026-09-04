@@ -55,7 +55,7 @@
     <el-form-item prop="type_id">
       <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentMethod") }}</span>
       <el-select size="small" v-model="rules.type_id" :placeholder="$('ui.customerContractContractDialogSelectPaymentMethod')">
-        <el-option v-for="item in paymentOptions" :key="item.id" :label="$(item.name)" :value="item.id" />
+        <el-option v-for="item in paymentOptions" :key="item.id" :label="paymentMethod(item)" :value="item.id" />
       </el-select>
     </el-form-item>
 
@@ -105,6 +105,7 @@
 
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import {
   selectContractListApi,
   enterprisePayTypeApi,
@@ -186,6 +187,9 @@ export default {
   },
 
   methods: {
+    paymentMethod(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
     // 上传文件方法
     uploadServerLog(params) {
       const file = params.file
@@ -358,7 +362,7 @@ export default {
         status: 1
       }
       const result = await enterprisePayTypeApi(data)
-      this.paymentOptions = (result.data.list || []).map((item) => ({ ...item, name: this.$(item.name, item.name_en) }))
+      this.paymentOptions = result.data.list || []
     }
   }
 }

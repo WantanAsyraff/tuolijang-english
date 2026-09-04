@@ -27,7 +27,7 @@
                 <div class="selIcon" :style="{ backgroundColor: scope.row.color }">
                   <i class="icon iconfont" :class="scope.row.icon"></i>
                 </div>
-                <div class="ml10">{{ $(scope.row.name) || '--' }}</div>
+                <div class="ml10">{{ approvalName(scope.row) || '--' }}</div>
               </div>
             </template>
           </el-table-column>
@@ -209,6 +209,10 @@ export default {
     this.getTableData()
   },
   methods: {
+    approvalName(approve) {
+      if (!approve) return ''
+      return Number(approve.is_system_owned) === 1 ? this.$(approve.name, approve.name_en) : approve.name
+    },
     backFn() {
       this.checkBtn = true
       this.id = 0

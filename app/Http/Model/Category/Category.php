@@ -14,6 +14,16 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Category extends BaseModel
 {
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        $systemCategories = [6 => '个人办公', 7 => '客户管理', 8 => '办公工具', 13 => '财务管理'];
+        $id = (int) $this->getAttribute('id');
+        return $this->getAttribute('type') === 'quickConfig'
+            && isset($systemCategories[$id])
+            && $systemCategories[$id] === (string) $this->getAttribute('cate_name') ? 1 : 0;
+    }
     /**
      * 表名.
      * @var string

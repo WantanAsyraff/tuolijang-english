@@ -31,13 +31,13 @@
           <el-table ref="table" :data="tableData" :height="tableHeight" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55" />
             <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="100" show-overflow-tooltip>
-              <template slot-scope="scope">{{ $(scope.row.title) }}</template>
+              <template slot-scope="scope">{{ messageText(scope.row, 'title') }}</template>
             </el-table-column>
             <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="240" show-overflow-tooltip>
-              <template slot-scope="scope">{{ $(scope.row.content) }}</template>
+              <template slot-scope="scope">{{ messageText(scope.row, 'content') }}</template>
             </el-table-column>
             <el-table-column :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="100" show-overflow-tooltip>
-              <template slot-scope="scope">{{ $(scope.row.cate_name) }}</template>
+              <template slot-scope="scope">{{ messageText(scope.row, 'cate_name') }}</template>
             </el-table-column>
             <el-table-column prop="verify" :label="$('ui.settingEnterpriseNewsIndexSystemNotifications')" min-width="100">
               <template slot-scope="scope">
@@ -168,6 +168,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { messageListApi, putStatusMessageApi, messageSubscribeApi, messageSyncApi, messageCateApi } from '@/api/setting'
 import { status } from 'nprogress'
 
@@ -225,6 +226,9 @@ export default {
     this.getTableData()
   },
   methods: {
+    messageText(record, key) {
+      return dictionaryDisplayLabel(record, this.$, key)
+    },
     // 获取列表
     getTableData() {
       let statusObj = {

@@ -22,7 +22,7 @@
             </el-row>
             <el-row>
               <el-col :span="12">
-                <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialCategory')">{{ $(fromData.data.cate.cate_name) }}</el-form-item>
+                <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialCategory')">{{ storageCategoryLabel(fromData.data.cate) }}</el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item :label="$('ui.administrationMaterialFixedMaterialDialogMaterialModel')">{{ fromData.data.units || "--" }}</el-form-item>
@@ -66,7 +66,7 @@
                 <el-table-column prop="name" :label="$('ui.administrationMaterialChartIndexMaterialName')"> </el-table-column>
                 <el-table-column prop="units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')"> </el-table-column>
                 <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')">
-                  <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.cate_name) || '--' }}</template>
+                  <template slot-scope="scope">{{ storageCategoryLabel(scope.row.cate) || '--' }}</template>
                 </el-table-column>
                 <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')"> </el-table-column>
                 <el-table-column prop="stock" :label="$('ui.administrationMaterialFixedConsumeInventoryQuantity')"> </el-table-column>
@@ -150,6 +150,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { storageRecordRepairApi, storageRecordSaveApi } from '@/api/administration'
 
 export default {
@@ -222,6 +223,9 @@ export default {
     }
   },
   methods: {
+    storageCategoryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'cate_name')
+    },
     handleClose() {
       this.dialogVisible = false
       this.reset()

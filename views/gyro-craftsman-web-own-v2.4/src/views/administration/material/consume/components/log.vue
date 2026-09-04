@@ -36,7 +36,7 @@
               </template>
             </el-table-column>
             <el-table-column prop="storage.cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" >
-            <template slot-scope="scope">{{ $(scope.row.storage && scope.row.storage.cate && scope.row.storage.cate.cate_name) || '--' }}</template>
+            <template slot-scope="scope">{{ storageCategoryLabel(scope.row.storage && scope.row.storage.cate) || '--' }}</template>
           </el-table-column>
             <el-table-column prop="storage.specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
             <el-table-column prop="num" :label="$('ui.administrationMaterialFixedConsumeIssueQuantity')" min-width="80" />
@@ -65,6 +65,7 @@
 </div>
 </template>
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { storageCateApi, storageRecordApi, storageRecordUsersApi } from '@/api/administration'
 export default {
   name: 'Consume',
@@ -153,6 +154,9 @@ export default {
     this.getOptionData()
   },
   methods: {
+    storageCategoryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'cate_name')
+    },
     // 获取权限列表
     getList() {
       storageCateApi({ type: this.types }).then(async (res) => {
@@ -216,7 +220,7 @@ export default {
               name,
               value.storage.name,
               value.storage.units,
-              value.storage.cate.cate_name,
+              this.storageCategoryLabel(value.storage.cate),
               value.storage.specs,
               value.num,
               this.$moment(value.updated_at).format('yyyy-MM-DD')

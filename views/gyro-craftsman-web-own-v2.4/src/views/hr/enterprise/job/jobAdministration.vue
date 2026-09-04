@@ -28,7 +28,7 @@
           >
             <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column :label="$('hr.jobtitle')" min-width="150" prop="name">
-              <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+              <template slot-scope="scope">{{ scope.row.name }}</template>
             </el-table-column>
             <el-table-column :label="$('hr.immediatesuperior')" min-width="150" prop="cate.name">
               <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.name) }}</template>

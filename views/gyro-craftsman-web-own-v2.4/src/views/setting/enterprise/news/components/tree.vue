@@ -21,7 +21,7 @@
             >
               <div slot-scope="{ node, data }" class="custom-tree-node">
                 <div class="flex-box">
-                  <span class="over-text">{{ $(node.label, data.label_en || data.name_en) }}</span>
+                  <span class="over-text">{{ categoryName(data) }}</span>
 
                   <div>
                     <!-- <el-popover
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { configFrameDeleteApi } from '@/api/setting'
 export default {
   name: 'TreeVue',
@@ -93,6 +94,9 @@ export default {
     }
   },
   methods: {
+    categoryName(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'label')
+    },
     // 编辑窗口显示
     handleShow(value) {
       this.activeValue = value

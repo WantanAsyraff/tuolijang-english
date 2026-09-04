@@ -170,7 +170,7 @@ class ApproveAssistService
         if (isset($args['value'])) {
             return app()->get(PaytypeService::class)->value($args['value'], 'name') ?: '';
         }
-        $field                    = ['id as value', 'name as label'];
+        $field                    = ['id', 'id as value', 'name as label'];
         $args['child']['options'] = toArray(app()->get(PaytypeService::class)->select(['status' => 1], $field));
         if ($args['child']['options']) {
             $args['child']['value'] = $args['child']['options'][0]['value'];

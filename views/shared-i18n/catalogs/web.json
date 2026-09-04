@@ -2385,11 +2385,11 @@
   },
   "web.designer.chartLib": {
     "zh-cn": "图表",
-    "en": "designer.chartLib"
+    "en": "Charts"
   },
   "web.designer.chartTitle": {
     "zh-cn": "图表组件",
-    "en": "designer.chartTitle"
+    "en": "Chart components"
   },
   "web.designer.componentLib": {
     "zh-cn": "组件库",
@@ -2549,263 +2549,263 @@
   },
   "web.designer.hint.formulaABS": {
     "zh-cn": "求一个数的绝对值，举例：ABS(-5)=5",
-    "en": "designer.hint.formulaABS"
+    "en": "Returns the absolute value of a number. Example: ABS(-5)=5"
   },
   "web.designer.hint.formulaAND": {
     "zh-cn": "当所有条件都符合时，返回true，否则返回false，举例：AND(1>0,2>1,...)=TRUE",
-    "en": "designer.hint.formulaAND"
+    "en": "Returns true when all conditions are true; otherwise returns false. Example: AND(1>0,2>1,...)=TRUE"
   },
   "web.designer.hint.formulaAVERAGE": {
     "zh-cn": "返回一组数据的平均数，举例：AVERAGE(1,2,3,...)=2",
-    "en": "designer.hint.formulaAVERAGE"
+    "en": "Returns the average of a set of numbers. Example: AVERAGE(1,2,3,...)=2"
   },
   "web.designer.hint.formulaCEILING": {
     "zh-cn": "将一个数向上取整，举例：CEILING(8.9)=9",
-    "en": "designer.hint.formulaCEILING"
+    "en": "Rounds a number up to the nearest integer. Example: CEILING(8.9)=9"
   },
   "web.designer.hint.formulaChar": {
     "zh-cn": "文字",
-    "en": "designer.hint.formulaChar"
+    "en": "Text"
   },
   "web.designer.hint.formulaClear": {
     "zh-cn": "清除",
-    "en": "designer.hint.formulaClear"
+    "en": "Clear"
   },
   "web.designer.hint.formulaDate": {
     "zh-cn": "日期",
-    "en": "designer.hint.formulaDate"
+    "en": "Date"
   },
   "web.designer.hint.formulaDateError": {
     "zh-cn": "日期格式不正确",
-    "en": "designer.hint.formulaDateError"
+    "en": "Invalid date format"
   },
   "web.designer.hint.formulaDateErrorMsg": {
     "zh-cn": "日期转换错误明细",
-    "en": "designer.hint.formulaDateErrorMsg"
+    "en": "Date conversion error details"
   },
   "web.designer.hint.formulaDAY": {
     "zh-cn": "举例：DAY(\"2022-10-11\")=11",
-    "en": "designer.hint.formulaDAY"
+    "en": "Returns the day of the month. Example: DAY(\"2022-10-11\")=11"
   },
   "web.designer.hint.formulaEDAY": {
     "zh-cn": "举例: EMONTH ('2022-12-13  ', -1)='2022-12-12 '",
-    "en": "designer.hint.formulaEDAY"
+    "en": "Returns the date a specified number of months before or after a date. Example: EDATE(\"2022-12-13\",-1)=\"2022-11-13\""
   },
   "web.designer.hint.formulaEMONTH": {
     "zh-cn": "举例: EMONTH ('2022-12-13  ', -1)='2022-11-13 '",
-    "en": "designer.hint.formulaEMONTH"
+    "en": "Returns the last day of the month a specified number of months before or after a date. Example: EOMONTH(\"2022-12-13\",-1)=\"2022-11-30\""
   },
   "web.designer.hint.formulaFIND": {
     "zh-cn": "查找字符串(参数：\n1、查找句柄 2、查找目标字符串 3、开始查找下标)，\n举例：FIND('M', 'Miriam McGovern', 3)=8",
-    "en": "designer.hint.formulaFIND"
+    "en": "Finds text within a string (text to find, target string, start position). Example: FIND(\"M\",\"Miriam McGovern\",3)=8"
   },
   "web.designer.hint.formulaFunctionExplain": {
     "zh-cn": "函数说明",
-    "en": "designer.hint.formulaFunctionExplain"
+    "en": "Function description"
   },
   "web.designer.hint.formulaFunctionList": {
     "zh-cn": "函数列表",
-    "en": "designer.hint.formulaFunctionList"
+    "en": "Function list"
   },
   "web.designer.hint.formulaFunctionLogic": {
     "zh-cn": "逻辑函数",
-    "en": "designer.hint.formulaFunctionLogic"
+    "en": "Logical functions"
   },
   "web.designer.hint.formulaFunctionMaths": {
     "zh-cn": "数学函数",
-    "en": "designer.hint.formulaFunctionMaths"
+    "en": "Math functions"
   },
   "web.designer.hint.formulaFunctionString": {
     "zh-cn": "字符串函数",
-    "en": "designer.hint.formulaFunctionString"
+    "en": "Text functions"
   },
   "web.designer.hint.formulaFunctionTime": {
     "zh-cn": "时间函数",
-    "en": "designer.hint.formulaFunctionTime"
+    "en": "Date and time functions"
   },
   "web.designer.hint.formulaIF": {
     "zh-cn": "判断一个条件能否满足，如果满足则返回一个值，如果不满足则返回另一个值，举例：IF(1>2,1,0)=0",
-    "en": "designer.hint.formulaIF"
+    "en": "Returns one value when a condition is true and another when it is false. Example: IF(1>2,1,0)=0"
   },
   "web.designer.hint.formulaIFERROR": {
     "zh-cn": "举例：IFERROR('#DIV/0!', 'Error')",
-    "en": "designer.hint.formulaIFERROR"
+    "en": "Returns a fallback value when an expression produces an error. Example: IFERROR(\"#DIV/0!\",\"Error\")"
   },
   "web.designer.hint.formulaIFNA": {
     "zh-cn": "举例：IFNA('#N/A', 'Error')",
-    "en": "designer.hint.formulaIFNA"
+    "en": "Returns a fallback value when an expression produces #N/A. Example: IFNA(\"#N/A\",\"Error\")"
   },
   "web.designer.hint.formulaIFS": {
     "zh-cn": "举例：IFS(false, 'Hello!', true, 'Goodbye!')=Goodbye!",
-    "en": "designer.hint.formulaIFS"
+    "en": "Returns the value for the first true condition. Example: IFS(false,\"Hello!\",true,\"Goodbye!\")=\"Goodbye!\""
   },
   "web.designer.hint.formulaINT": {
     "zh-cn": "将数值去掉小数，举例：INT(-8.9)=-9",
-    "en": "designer.hint.formulaINT"
+    "en": "Rounds a number down to the nearest integer. Example: INT(-8.9)=-9"
   },
   "web.designer.hint.formulaLEFT": {
     "zh-cn": "获取字符串左侧N个字符，LEFT(字符串,截取长度)，举例：LEFT('Sale Price', 4)=Sale",
-    "en": "designer.hint.formulaLEFT"
+    "en": "Returns characters from the left of a string. Example: LEFT(\"Sale Price\",4)=\"Sale\""
   },
   "web.designer.hint.formulaLEN": {
     "zh-cn": "统计字符串长度，举例：LEN('abcdefgh')=8",
-    "en": "designer.hint.formulaLEN"
+    "en": "Returns the length of a string. Example: LEN(\"abcdefgh\")=8"
   },
   "web.designer.hint.formulaLOG": {
     "zh-cn": "返回以参数2为底参数1的对数，举例：LOG(8,2)=3，以2为底8的对数为3",
-    "en": "designer.hint.formulaLOG"
+    "en": "Returns the logarithm of a number using the specified base. Example: LOG(8,2)=3"
   },
   "web.designer.hint.formulaLOWER": {
     "zh-cn": "字符串转小写，举例：LOWER('E. E. Cummings')=e. e. cummings",
-    "en": "designer.hint.formulaLOWER"
+    "en": "Converts text to lowercase. Example: LOWER(\"E. E. Cummings\")=\"e. e. cummings\""
   },
   "web.designer.hint.formulaMAX": {
     "zh-cn": "返回一组数中的最大值，举例：MAX(1,2,3,...)=3",
-    "en": "designer.hint.formulaMAX"
+    "en": "Returns the largest value in a set. Example: MAX(1,2,3,...)=3"
   },
   "web.designer.hint.formulaMID": {
     "zh-cn": "截取字符串 MID(字符串,开始下标,截取长度)，举例：MID('Fluid Flow', 7, 20)=Flow",
-    "en": "designer.hint.formulaMID"
+    "en": "Returns characters from the middle of a string. Example: MID(\"Fluid Flow\",7,20)=\"Flow\""
   },
   "web.designer.hint.formulaMIN": {
     "zh-cn": "返回一组数中的最小值，举例：MIN(1,2,3,...)=1",
-    "en": "designer.hint.formulaMIN"
+    "en": "Returns the smallest value in a set. Example: MIN(1,2,3,...)=1"
   },
   "web.designer.hint.formulaMOD": {
     "zh-cn": "求两数相除的余数，举例：MOD(2,6)=2",
-    "en": "designer.hint.formulaMOD"
+    "en": "Returns the remainder after division. Example: MOD(2,6)=2"
   },
   "web.designer.hint.formulaModel": {
     "zh-cn": "模式",
-    "en": "designer.hint.formulaModel"
+    "en": "Mode"
   },
   "web.designer.hint.formulaModelEdit": {
     "zh-cn": "编辑",
-    "en": "designer.hint.formulaModelEdit"
+    "en": "Edit"
   },
   "web.designer.hint.formulaModelView": {
     "zh-cn": "查看",
-    "en": "designer.hint.formulaModelView"
+    "en": "View"
   },
   "web.designer.hint.formulaMONTH": {
     "zh-cn": "举例：MONTH(\"2022-10-1\")=10",
-    "en": "designer.hint.formulaMONTH"
+    "en": "Returns the month of a date. Example: MONTH(\"2022-10-01\")=10"
   },
   "web.designer.hint.formulaNOT": {
     "zh-cn": "举例：NOT(true)=false",
-    "en": "designer.hint.formulaNOT"
+    "en": "Reverses a logical value. Example: NOT(true)=false"
   },
   "web.designer.hint.formulaNOW": {
     "zh-cn": "举例: NOW=\"2022-10-11 17:04:33\"",
-    "en": "designer.hint.formulaNOW"
+    "en": "Returns the current date and time. Example: NOW()=\"2022-10-11 17:04:33\""
   },
   "web.designer.hint.formulaNum": {
     "zh-cn": "数字",
-    "en": "designer.hint.formulaNum"
+    "en": "Number"
   },
   "web.designer.hint.formulaNumber": {
     "zh-cn": "数字",
-    "en": "designer.hint.formulaNumber"
+    "en": "Number"
   },
   "web.designer.hint.formulaObject": {
     "zh-cn": "对象",
-    "en": "designer.hint.formulaObject"
+    "en": "Object"
   },
   "web.designer.hint.formulaOK": {
     "zh-cn": "确定",
-    "en": "designer.hint.formulaOK"
+    "en": "OK"
   },
   "web.designer.hint.formulaOR": {
     "zh-cn": "举例: OR (true, false, true)=true",
-    "en": "designer.hint.formulaOR"
+    "en": "Returns true when any condition is true. Example: OR(true,false,true)=true"
   },
   "web.designer.hint.formulaPara": {
     "zh-cn": "参数",
-    "en": "designer.hint.formulaPara"
+    "en": "Parameters"
   },
   "web.designer.hint.formulaPleaseSelect": {
     "zh-cn": "请选择组件名和函数",
-    "en": "designer.hint.formulaPleaseSelect"
+    "en": "Select a component and function"
   },
   "web.designer.hint.formulaPOWER": {
     "zh-cn": "求数字的N次方，举例：POWER(5, 3)=125",
-    "en": "designer.hint.formulaPOWER"
+    "en": "Raises a number to a power. Example: POWER(5,3)=125"
   },
   "web.designer.hint.formulaRIGHT": {
     "zh-cn": "获取字符串右侧N个字符 RIGHT(字符串,截取长度)，举例：RIGHT('Sale Price', 5)=Price",
-    "en": "designer.hint.formulaRIGHT"
+    "en": "Returns characters from the right of a string. Example: RIGHT(\"Sale Price\",5)=\"Price\""
   },
   "web.designer.hint.formulaROUND": {
     "zh-cn": "将数值保留指定小数位，举例：ROUND(8.999,2)=9.00",
-    "en": "designer.hint.formulaROUND"
+    "en": "Rounds a number to the specified decimal places. Example: ROUND(8.999,2)=9.00"
   },
   "web.designer.hint.formulaSample": {
     "zh-cn": "公式编辑举例",
-    "en": "designer.hint.formulaSample"
+    "en": "Formula example"
   },
   "web.designer.hint.formulaSearch": {
     "zh-cn": "搜索...",
-    "en": "designer.hint.formulaSearch"
+    "en": "Search..."
   },
   "web.designer.hint.formulaSetting": {
     "zh-cn": "公式设置",
-    "en": "designer.hint.formulaSetting"
+    "en": "Formula settings"
   },
   "web.designer.hint.formulaSize": {
     "zh-cn": "大小",
-    "en": "designer.hint.formulaSize"
+    "en": "Size"
   },
   "web.designer.hint.formulaSizeLarge": {
     "zh-cn": "大",
-    "en": "designer.hint.formulaSizeLarge"
+    "en": "Large"
   },
   "web.designer.hint.formulaSizeMedium": {
     "zh-cn": "中",
-    "en": "designer.hint.formulaSizeMedium"
+    "en": "Medium"
   },
   "web.designer.hint.formulaSizeMini": {
     "zh-cn": "迷你",
-    "en": "designer.hint.formulaSizeMini"
+    "en": "Mini"
   },
   "web.designer.hint.formulaSizeSmall": {
     "zh-cn": "小",
-    "en": "designer.hint.formulaSizeSmall"
+    "en": "Small"
   },
   "web.designer.hint.formulaStr": {
     "zh-cn": "字符",
-    "en": "designer.hint.formulaStr"
+    "en": "Text"
   },
   "web.designer.hint.formulaSUM": {
     "zh-cn": "返回一组数据的和，举例：SUM(1,2,3,...)=6",
-    "en": "designer.hint.formulaSUM"
+    "en": "Returns the sum of a set of numbers. Example: SUM(1,2,3,...)=6"
   },
   "web.designer.hint.formulaSWITCH": {
     "zh-cn": "SWITCH(参数值,条件1,'条件值1',条件2,'条件值2'[,条件N,'条件值N',])，举例：SWITCH(7, 9, 'Nine', 7, 'Seven')=Seven",
-    "en": "designer.hint.formulaSWITCH"
+    "en": "Matches a value against conditions and returns the corresponding result. Example: SWITCH(7,9,\"Nine\",7,\"Seven\")=\"Seven\""
   },
   "web.designer.hint.formulaTODAY": {
     "zh-cn": "举例: TODAY()=\"2022-10-11\"",
-    "en": "designer.hint.formulaTODAY"
+    "en": "Returns the current date. Example: TODAY()=\"2022-10-11\""
   },
   "web.designer.hint.formulaTRIM": {
     "zh-cn": "字符串去除多余空格 TRIM(字符串)，举例：TRIM('     First     Quarter  ')=First Quarter",
-    "en": "designer.hint.formulaTRIM"
+    "en": "Removes extra spaces from text. Example: TRIM(\"     First     Quarter  \")=\"First Quarter\""
   },
   "web.designer.hint.formulaUPPER": {
     "zh-cn": "字符串转大写，举例：UPPER('total')=TOTAL",
-    "en": "designer.hint.formulaUPPER"
+    "en": "Converts text to uppercase. Example: UPPER(\"total\")=\"TOTAL\""
   },
   "web.designer.hint.formulaWidgetList": {
     "zh-cn": "组件列表",
-    "en": "designer.hint.formulaWidgetList"
+    "en": "Component list"
   },
   "web.designer.hint.formulaXOR": {
     "zh-cn": "举例：XOR(true, false, true)=false",
-    "en": "designer.hint.formulaXOR"
+    "en": "Returns true when an odd number of conditions are true. Example: XOR(true,false,true)=false"
   },
   "web.designer.hint.formulaYEAR": {
     "zh-cn": "举例：YEAR(\"2022-10-1\")=2022",
-    "en": "designer.hint.formulaYEAR"
+    "en": "Returns the year of a date. Example: YEAR(\"2022-10-01\")=2022"
   },
   "web.designer.hint.getFormData": {
     "zh-cn": "获取数据",
@@ -2817,7 +2817,7 @@
   },
   "web.designer.hint.importDSHint": {
     "zh-cn": "导入的数据源格式须符合规范，以保证顺利导入.",
-    "en": "designer.hint.importDSHint"
+    "en": "Imported data sources must follow the required format."
   },
   "web.designer.hint.importJsonHint": {
     "zh-cn": "导入的JSON内容须符合下述格式，以保证顺利导入.",
@@ -2837,7 +2837,7 @@
   },
   "web.designer.hint.invalidJsonFormat": {
     "zh-cn": "无效的表单JSON格式",
-    "en": "designer.hint.invalidJsonFormat"
+    "en": "Invalid form JSON format"
   },
   "web.designer.hint.invalidOptionsData": {
     "zh-cn": "无效的选项数据:",
@@ -2845,7 +2845,7 @@
   },
   "web.designer.hint.jsonVersionMismatch": {
     "zh-cn": "表单JSON版本号不匹配",
-    "en": "designer.hint.jsonVersionMismatch"
+    "en": "The form JSON version does not match"
   },
   "web.designer.hint.lastColCannotBeDeleted": {
     "zh-cn": "最后一列不可删除.",
@@ -2913,7 +2913,7 @@
   },
   "web.designer.hint.noSelectedWidgetHint": {
     "zh-cn": "当前没有选中设置的组件",
-    "en": "designer.hint.noSelectedWidgetHint"
+    "en": "No component is currently selected"
   },
   "web.designer.hint.numberValidator": {
     "zh-cn": "数字",
@@ -2921,7 +2921,7 @@
   },
   "web.designer.hint.objectNameRequired": {
     "zh-cn": "对象名称不可为空",
-    "en": "designer.hint.objectNameRequired"
+    "en": "Object name is required"
   },
   "web.designer.hint.onlyFieldWidgetAcceptable": {
     "zh-cn": "子表单只能接收字段组件",
@@ -2989,7 +2989,7 @@
   },
   "web.designer.hint.switchReadMode": {
     "zh-cn": "只读查看",
-    "en": "designer.hint.switchReadMode"
+    "en": "Read-only view"
   },
   "web.designer.hint.urlValidator": {
     "zh-cn": "网址",
@@ -3001,7 +3001,7 @@
   },
   "web.designer.metadataLib": {
     "zh-cn": "元数据",
-    "en": "designer.metadataLib"
+    "en": "Metadata"
   },
   "web.designer.noWidgetHint": {
     "zh-cn": "请从左侧列表中选择一个组件, 然后用鼠标拖动组件放置于此处.",
@@ -3013,7 +3013,7 @@
   },
   "web.designer.setting.actionColumnPosition": {
     "zh-cn": "操作列位置",
-    "en": "designer.setting.actionColumnPosition"
+    "en": "Action column position"
   },
   "web.designer.setting.activeColor": {
     "zh-cn": "开启时背景色",
@@ -3025,7 +3025,7 @@
   },
   "web.designer.setting.add": {
     "zh-cn": "添加",
-    "en": "designer.setting.add"
+    "en": "Add"
   },
   "web.designer.setting.addColumn": {
     "zh-cn": "增加栅格",
@@ -3037,11 +3037,11 @@
   },
   "web.designer.setting.addDataSet": {
     "zh-cn": "新增数据集",
-    "en": "designer.setting.addDataSet"
+    "en": "Add data set"
   },
   "web.designer.setting.addDataSource": {
     "zh-cn": "新增数据源",
-    "en": "designer.setting.addDataSource"
+    "en": "Add data source"
   },
   "web.designer.setting.addEventHandler": {
     "zh-cn": "编写代码",
@@ -3049,7 +3049,7 @@
   },
   "web.designer.setting.addOperationButton": {
     "zh-cn": "增加按钮",
-    "en": "designer.setting.addOperationButton"
+    "en": "Add action button"
   },
   "web.designer.setting.addOption": {
     "zh-cn": "增加选项",
@@ -3057,15 +3057,15 @@
   },
   "web.designer.setting.addRequestData": {
     "zh-cn": "新增发送数据",
-    "en": "designer.setting.addRequestData"
+    "en": "Add request data"
   },
   "web.designer.setting.addRequestHeader": {
     "zh-cn": "新增请求头",
-    "en": "designer.setting.addRequestHeader"
+    "en": "Add request header"
   },
   "web.designer.setting.addRequestParam": {
     "zh-cn": "新增请求参数",
-    "en": "designer.setting.addRequestParam"
+    "en": "Add request parameter"
   },
   "web.designer.setting.addTableColumn": {
     "zh-cn": "增加列",
@@ -3105,11 +3105,11 @@
   },
   "web.designer.setting.appendText": {
     "zh-cn": "添加后置文字",
-    "en": "designer.setting.appendText"
+    "en": "Add suffix text"
   },
   "web.designer.setting.areaDataEnabled": {
     "zh-cn": "使用地区数据",
-    "en": "designer.setting.areaDataEnabled"
+    "en": "Use regional data"
   },
   "web.designer.setting.attributeSetting": {
     "zh-cn": "属性设置",
@@ -3117,11 +3117,11 @@
   },
   "web.designer.setting.autoColumnWidthDisabled": {
     "zh-cn": "禁用列宽自动充满",
-    "en": "designer.setting.autoColumnWidthDisabled"
+    "en": "Disable automatic column stretching"
   },
   "web.designer.setting.autoFullWidth": {
     "zh-cn": "自动拉伸宽度",
-    "en": "designer.setting.autoFullWidth"
+    "en": "Stretch to full width"
   },
   "web.designer.setting.automaticDropdown": {
     "zh-cn": "自动弹出选项",
@@ -3129,7 +3129,7 @@
   },
   "web.designer.setting.autosize": {
     "zh-cn": "自动适应高度",
-    "en": "designer.setting.autosize"
+    "en": "Automatically adjust height"
   },
   "web.designer.setting.basicSetting": {
     "zh-cn": "基本属性",
@@ -3145,7 +3145,7 @@
   },
   "web.designer.setting.bottomMargin": {
     "zh-cn": "下间距(px)",
-    "en": "designer.setting.bottomMargin"
+    "en": "Bottom margin (px)"
   },
   "web.designer.setting.buttonIcon": {
     "zh-cn": "按钮Icon",
@@ -3153,15 +3153,15 @@
   },
   "web.designer.setting.buttonsColumnEdit": {
     "zh-cn": "操作按钮编辑",
-    "en": "designer.setting.buttonsColumnEdit"
+    "en": "Edit action buttons"
   },
   "web.designer.setting.buttonsColumnTitle": {
     "zh-cn": "列标题",
-    "en": "designer.setting.buttonsColumnTitle"
+    "en": "Column title"
   },
   "web.designer.setting.buttonsColumnWidth": {
     "zh-cn": "列宽度（px）",
-    "en": "designer.setting.buttonsColumnWidth"
+    "en": "Column width (px)"
   },
   "web.designer.setting.buttonStyle": {
     "zh-cn": "显示为按钮",
@@ -3169,19 +3169,19 @@
   },
   "web.designer.setting.buttonText": {
     "zh-cn": "按钮文字",
-    "en": "designer.setting.buttonText"
+    "en": "Button text"
   },
   "web.designer.setting.cancelButtonHidden": {
     "zh-cn": "隐藏取消按钮",
-    "en": "designer.setting.cancelButtonHidden"
+    "en": "Hide Cancel button"
   },
   "web.designer.setting.cancelButtonLabel": {
     "zh-cn": "取消按钮文字",
-    "en": "designer.setting.cancelButtonLabel"
+    "en": "Cancel button text"
   },
   "web.designer.setting.cardHeader": {
     "zh-cn": "显示卡片头部",
-    "en": "designer.setting.cardHeader"
+    "en": "Show card header"
   },
   "web.designer.setting.cellHeight": {
     "zh-cn": "高度",
@@ -3193,7 +3193,7 @@
   },
   "web.designer.setting.center": {
     "zh-cn": "头部底部居中",
-    "en": "designer.setting.center"
+    "en": "Center header and footer"
   },
   "web.designer.setting.centerAlign": {
     "zh-cn": "居中",
@@ -3205,11 +3205,11 @@
   },
   "web.designer.setting.childrenKeyName": {
     "zh-cn": "子节点属性名称",
-    "en": "designer.setting.childrenKeyName"
+    "en": "Child-node property name"
   },
   "web.designer.setting.childrenKeyOfTreeData": {
     "zh-cn": "树形数据子节点键",
-    "en": "designer.setting.childrenKeyOfTreeData"
+    "en": "Tree child-node key"
   },
   "web.designer.setting.circle": {
     "zh-cn": "圆形按钮",
@@ -3221,27 +3221,27 @@
   },
   "web.designer.setting.clearAllNode": {
     "zh-cn": "清除所有",
-    "en": "designer.setting.clearAllNode"
+    "en": "Clear all"
   },
   "web.designer.setting.clearExistingDataSource": {
     "zh-cn": "导入后清空原有数据源",
-    "en": "designer.setting.clearExistingDataSource"
+    "en": "Clear existing data sources after import"
   },
   "web.designer.setting.clearRequestResult": {
     "zh-cn": "清空结果",
-    "en": "designer.setting.clearRequestResult"
+    "en": "Clear result"
   },
   "web.designer.setting.closeOnClickModal": {
     "zh-cn": "点击遮罩层关闭",
-    "en": "designer.setting.closeOnClickModal"
+    "en": "Close when backdrop is clicked"
   },
   "web.designer.setting.closeOnPressEscape": {
     "zh-cn": "按Esc键关闭",
-    "en": "designer.setting.closeOnPressEscape"
+    "en": "Close when Esc is pressed"
   },
   "web.designer.setting.collapseTags": {
     "zh-cn": "折叠已选项",
-    "en": "designer.setting.collapseTags"
+    "en": "Collapse selected items"
   },
   "web.designer.setting.colOffsetTitle": {
     "zh-cn": "左侧间隔格数",
@@ -3261,7 +3261,7 @@
   },
   "web.designer.setting.colSpanTitle": {
     "zh-cn": "栅格宽度",
-    "en": "designer.setting.colSpanTitle"
+    "en": "Grid width"
   },
   "web.designer.setting.columnLabel": {
     "zh-cn": "显示名称",
@@ -3285,7 +3285,7 @@
   },
   "web.designer.setting.contentHeight": {
     "zh-cn": "内容区高度",
-    "en": "designer.setting.contentHeight"
+    "en": "Content area height"
   },
   "web.designer.setting.contentPosition": {
     "zh-cn": "文字位置",
@@ -3305,47 +3305,47 @@
   },
   "web.designer.setting.customRenderGroup": {
     "zh-cn": "动态渲染",
-    "en": "designer.setting.customRenderGroup"
+    "en": "Dynamic rendering"
   },
   "web.designer.setting.customSortColumn": {
     "zh-cn": "后端排序",
-    "en": "designer.setting.customSortColumn"
+    "en": "Server-side sorting"
   },
   "web.designer.setting.dataSetEnabled": {
     "zh-cn": "开启多数据集返回",
-    "en": "designer.setting.dataSetEnabled"
+    "en": "Enable multiple returned data sets"
   },
   "web.designer.setting.dataSetName": {
     "zh-cn": "指定数据集",
-    "en": "designer.setting.dataSetName"
+    "en": "Data set"
   },
   "web.designer.setting.dataSetRemarkInputPlaceholder": {
     "zh-cn": "备注说明",
-    "en": "designer.setting.dataSetRemarkInputPlaceholder"
+    "en": "Description"
   },
   "web.designer.setting.dataSetSetting": {
     "zh-cn": "返回数据集管理",
-    "en": "designer.setting.dataSetSetting"
+    "en": "Returned data set management"
   },
   "web.designer.setting.dataSetSettingTitle": {
     "zh-cn": "4. 多数据集配置",
-    "en": "designer.setting.dataSetSettingTitle"
+    "en": "4. Multiple data set configuration"
   },
   "web.designer.setting.dataSource": {
     "zh-cn": "数据源",
-    "en": "designer.setting.dataSource"
+    "en": "Data Source"
   },
   "web.designer.setting.dataSourceChecked": {
     "zh-cn": "选中导出",
-    "en": "designer.setting.dataSourceChecked"
+    "en": "Export selected"
   },
   "web.designer.setting.dataSourceSetting": {
     "zh-cn": "数据源设置",
-    "en": "designer.setting.dataSourceSetting"
+    "en": "Data source settings"
   },
   "web.designer.setting.defaultExpandAllNode": {
     "zh-cn": "默认展开所有节点",
-    "en": "designer.setting.defaultExpandAllNode"
+    "en": "Expand all nodes by default"
   },
   "web.designer.setting.defaultValue": {
     "zh-cn": "默认值",
@@ -3353,11 +3353,11 @@
   },
   "web.designer.setting.delete": {
     "zh-cn": "删除",
-    "en": "designer.setting.delete"
+    "en": "Delete"
   },
   "web.designer.setting.deleteDataSourceHint": {
     "zh-cn": "确认删除该数据源？",
-    "en": "designer.setting.deleteDataSourceHint"
+    "en": "Delete this data source?"
   },
   "web.designer.setting.deleteEntireCol": {
     "zh-cn": "删除整列",
@@ -3369,11 +3369,11 @@
   },
   "web.designer.setting.deleteNode": {
     "zh-cn": "确定删除节点?",
-    "en": "designer.setting.deleteNode"
+    "en": "Delete this node?"
   },
   "web.designer.setting.deleteOperationButtonHint": {
     "zh-cn": "确定删除该按钮？",
-    "en": "designer.setting.deleteOperationButtonHint"
+    "en": "Delete this button?"
   },
   "web.designer.setting.deleteTableColumn": {
     "zh-cn": "删除列",
@@ -3381,7 +3381,7 @@
   },
   "web.designer.setting.dialogWidth": {
     "zh-cn": "弹窗宽度（px/%）",
-    "en": "designer.setting.dialogWidth"
+    "en": "Dialog width (px/%)"
   },
   "web.designer.setting.disabled": {
     "zh-cn": "禁用",
@@ -3389,7 +3389,7 @@
   },
   "web.designer.setting.disabledMode": {
     "zh-cn": "弹窗表单禁用",
-    "en": "designer.setting.disabledMode"
+    "en": "Disable dialog form"
   },
   "web.designer.setting.displayStyle": {
     "zh-cn": "显示样式",
@@ -3401,131 +3401,131 @@
   },
   "web.designer.setting.dividerDirection": {
     "zh-cn": "分割线方向",
-    "en": "designer.setting.dividerDirection"
+    "en": "Divider direction"
   },
   "web.designer.setting.draggable": {
     "zh-cn": "允许拖拽节点",
-    "en": "designer.setting.draggable"
+    "en": "Allow node dragging"
   },
   "web.designer.setting.drawDirection": {
     "zh-cn": "抽屉滑出方向",
-    "en": "designer.setting.drawDirection"
+    "en": "Drawer direction"
   },
   "web.designer.setting.drawSize": {
     "zh-cn": "抽屉大小（px/%）",
-    "en": "designer.setting.drawSize"
+    "en": "Drawer size (px/%)"
   },
   "web.designer.setting.dsConfigHandlerTitle": {
     "zh-cn": "1. 请求配置",
-    "en": "designer.setting.dsConfigHandlerTitle"
+    "en": "1. Request configuration"
   },
   "web.designer.setting.dsDataHandlerTitle": {
     "zh-cn": "2. 数据处理",
-    "en": "designer.setting.dsDataHandlerTitle"
+    "en": "2. Data processing"
   },
   "web.designer.setting.dsDescription": {
     "zh-cn": "描述信息",
-    "en": "designer.setting.dsDescription"
+    "en": "Description"
   },
   "web.designer.setting.dsDuplicatedNameError": {
     "zh-cn": "数据源名称重复，请修改！",
-    "en": "designer.setting.dsDuplicatedNameError"
+    "en": "Data source name already exists"
   },
   "web.designer.setting.dsEnabled": {
     "zh-cn": "使用数据源",
-    "en": "designer.setting.dsEnabled"
+    "en": "Use data source"
   },
   "web.designer.setting.dsErrorHandlerTitle": {
     "zh-cn": "3. 错误处理",
-    "en": "designer.setting.dsErrorHandlerTitle"
+    "en": "3. Error handling"
   },
   "web.designer.setting.dsName": {
     "zh-cn": "指定数据源",
-    "en": "designer.setting.dsName"
+    "en": "Data source"
   },
   "web.designer.setting.dsRequestBooleanTypeError": {
     "zh-cn": "布尔类型值错误",
-    "en": "designer.setting.dsRequestBooleanTypeError"
+    "en": "Invalid Boolean value"
   },
   "web.designer.setting.dsRequestData": {
     "zh-cn": "发送数据（data）",
-    "en": "designer.setting.dsRequestData"
+    "en": "Request data (data)"
   },
   "web.designer.setting.dsRequestHeaders": {
     "zh-cn": "请求头（headers）",
-    "en": "designer.setting.dsRequestHeaders"
+    "en": "Request headers"
   },
   "web.designer.setting.dsRequestMethod": {
     "zh-cn": "请求方法",
-    "en": "designer.setting.dsRequestMethod"
+    "en": "Request method"
   },
   "web.designer.setting.dsRequestNameInputPlaceholder": {
     "zh-cn": "名称",
-    "en": "designer.setting.dsRequestNameInputPlaceholder"
+    "en": "Name"
   },
   "web.designer.setting.dsRequestNumberTypeError": {
     "zh-cn": "数据类型值错误",
-    "en": "designer.setting.dsRequestNumberTypeError"
+    "en": "Invalid numeric value"
   },
   "web.designer.setting.dsRequestParams": {
     "zh-cn": "参数（params）",
-    "en": "designer.setting.dsRequestParams"
+    "en": "Request parameters"
   },
   "web.designer.setting.dsRequestResult": {
     "zh-cn": "返回数据",
-    "en": "designer.setting.dsRequestResult"
+    "en": "Response data"
   },
   "web.designer.setting.dsRequestTypeInputPlaceholder": {
     "zh-cn": "类型",
-    "en": "designer.setting.dsRequestTypeInputPlaceholder"
+    "en": "Type"
   },
   "web.designer.setting.dsRequestURL": {
     "zh-cn": "请求地址",
-    "en": "designer.setting.dsRequestURL"
+    "en": "Request URL"
   },
   "web.designer.setting.dsRequestURLType": {
     "zh-cn": "请求URL类型",
-    "en": "designer.setting.dsRequestURLType"
+    "en": "Request URL type"
   },
   "web.designer.setting.dsRequestValueBooleanType": {
     "zh-cn": "布尔类型",
-    "en": "designer.setting.dsRequestValueBooleanType"
+    "en": "Boolean"
   },
   "web.designer.setting.dsRequestValueInputPlaceholder": {
     "zh-cn": "值",
-    "en": "designer.setting.dsRequestValueInputPlaceholder"
+    "en": "Value"
   },
   "web.designer.setting.dsRequestValueNumberType": {
     "zh-cn": "数值类型",
-    "en": "designer.setting.dsRequestValueNumberType"
+    "en": "Number"
   },
   "web.designer.setting.dsRequestValueStringType": {
     "zh-cn": "字符串类型",
-    "en": "designer.setting.dsRequestValueStringType"
+    "en": "String"
   },
   "web.designer.setting.dsRequestValueVariableType": {
     "zh-cn": "变量或表达式",
-    "en": "designer.setting.dsRequestValueVariableType"
+    "en": "Variable or expression"
   },
   "web.designer.setting.dsUniqueName": {
     "zh-cn": "唯一名称",
-    "en": "designer.setting.dsUniqueName"
+    "en": "Unique name"
   },
   "web.designer.setting.dsURLStringType": {
     "zh-cn": "固定字符串",
-    "en": "designer.setting.dsURLStringType"
+    "en": "Fixed string"
   },
   "web.designer.setting.dsURLVariableType": {
     "zh-cn": "变量或表达式",
-    "en": "designer.setting.dsURLVariableType"
+    "en": "Variable or expression"
   },
   "web.designer.setting.dsValidationError": {
     "zh-cn": "数据源设置存在错误，请修改",
-    "en": "designer.setting.dsValidationError"
+    "en": "Correct the errors in the data source settings"
   },
   "web.designer.setting.dsvTitle": {
     "zh-cn": "DSV数据源变量",
-    "en": "designer.setting.dsvTitle"
+    "en": "DSV data source variable"
   },
   "web.designer.setting.editable": {
     "zh-cn": "可输入",
@@ -3557,7 +3557,7 @@
   },
   "web.designer.setting.enterForQuery": {
     "zh-cn": "输入关键字进行过滤",
-    "en": "designer.setting.enterForQuery"
+    "en": "Enter a keyword to filter"
   },
   "web.designer.setting.eventSetting": {
     "zh-cn": "事件属性",
@@ -3565,27 +3565,27 @@
   },
   "web.designer.setting.executeDataSource": {
     "zh-cn": "立即执行",
-    "en": "designer.setting.executeDataSource"
+    "en": "Run now"
   },
   "web.designer.setting.expandAllNode": {
     "zh-cn": "展开所有",
-    "en": "designer.setting.expandAllNode"
+    "en": "Expand all"
   },
   "web.designer.setting.expandOnClickNode": {
     "zh-cn": "点击节点可收缩",
-    "en": "designer.setting.expandOnClickNode"
+    "en": "Expand or collapse when a node is clicked"
   },
   "web.designer.setting.expandRetractAllNode": {
     "zh-cn": "展开/收缩",
-    "en": "designer.setting.expandRetractAllNode"
+    "en": "Expand/collapse"
   },
   "web.designer.setting.exportDataSource": {
     "zh-cn": "导出数据源",
-    "en": "designer.setting.exportDataSource"
+    "en": "Export data sources"
   },
   "web.designer.setting.fieldValueRequired": {
     "zh-cn": "输入内容不可为空",
-    "en": "designer.setting.fieldValueRequired"
+    "en": "Value is required"
   },
   "web.designer.setting.fileMaxSize": {
     "zh-cn": "文件大小限制(MB)",
@@ -3601,7 +3601,7 @@
   },
   "web.designer.setting.filter": {
     "zh-cn": "显示过滤框",
-    "en": "designer.setting.filter"
+    "en": "Show filter"
   },
   "web.designer.setting.filterable": {
     "zh-cn": "可搜索选项",
@@ -3649,15 +3649,15 @@
   },
   "web.designer.setting.formula": {
     "zh-cn": "计算公式",
-    "en": "designer.setting.formula"
+    "en": "Calculation formula"
   },
   "web.designer.setting.formulaEnabled": {
     "zh-cn": "启用计算公式",
-    "en": "designer.setting.formulaEnabled"
+    "en": "Enable calculation formula"
   },
   "web.designer.setting.fullscreen": {
     "zh-cn": "全屏显示弹窗",
-    "en": "designer.setting.fullscreen"
+    "en": "Show dialog in full screen"
   },
   "web.designer.setting.globalFunctions": {
     "zh-cn": "表单全局函数",
@@ -3669,7 +3669,7 @@
   },
   "web.designer.setting.groupButtonsEdit": {
     "zh-cn": "按钮编辑",
-    "en": "designer.setting.groupButtonsEdit"
+    "en": "Edit buttons"
   },
   "web.designer.setting.gutter": {
     "zh-cn": "栅格间隔(px)",
@@ -3697,7 +3697,7 @@
   },
   "web.designer.setting.importDataSource": {
     "zh-cn": "导入数据源",
-    "en": "designer.setting.importDataSource"
+    "en": "Import data sources"
   },
   "web.designer.setting.importOptions": {
     "zh-cn": "导入选项",
@@ -3721,7 +3721,7 @@
   },
   "web.designer.setting.inputNodeName": {
     "zh-cn": "请输入节点名",
-    "en": "designer.setting.inputNodeName"
+    "en": "Enter a node name"
   },
   "web.designer.setting.insertColumnToLeft": {
     "zh-cn": "插入左侧列",
@@ -3741,31 +3741,31 @@
   },
   "web.designer.setting.insertTableDataColumn": {
     "zh-cn": "插入数据列",
-    "en": "designer.setting.insertTableDataColumn"
+    "en": "Insert data column"
   },
   "web.designer.setting.insertTableHeader": {
     "zh-cn": "插入表头",
-    "en": "designer.setting.insertTableHeader"
+    "en": "Insert header"
   },
   "web.designer.setting.insertTableSubDataColumn": {
     "zh-cn": "插入下级数据列",
-    "en": "designer.setting.insertTableSubDataColumn"
+    "en": "Insert child data column"
   },
   "web.designer.setting.insertTableSubHeader": {
     "zh-cn": "插入下级表头",
-    "en": "designer.setting.insertTableSubHeader"
+    "en": "Insert child header"
   },
   "web.designer.setting.keyName": {
     "zh-cn": "数据属性名称",
-    "en": "designer.setting.keyName"
+    "en": "Data property name"
   },
   "web.designer.setting.keyNameEnabled": {
     "zh-cn": "修改数据属性名称",
-    "en": "designer.setting.keyNameEnabled"
+    "en": "Change data property name"
   },
   "web.designer.setting.keyNameHelp": {
     "zh-cn": "数据属性名称是指form-data对象中字段组件所对应的属性名称",
-    "en": "designer.setting.keyNameHelp"
+    "en": "The data property name is the field component property in the form-data object."
   },
   "web.designer.setting.label": {
     "zh-cn": "标签",
@@ -3789,7 +3789,7 @@
   },
   "web.designer.setting.labelKeyName": {
     "zh-cn": "选项标签名",
-    "en": "designer.setting.labelKeyName"
+    "en": "Option label key"
   },
   "web.designer.setting.labelPosition": {
     "zh-cn": "字段标签位置",
@@ -3805,11 +3805,11 @@
   },
   "web.designer.setting.labelWrap": {
     "zh-cn": "标签超长换行",
-    "en": "designer.setting.labelWrap"
+    "en": "Wrap long labels"
   },
   "web.designer.setting.lazy": {
     "zh-cn": "懒加载",
-    "en": "designer.setting.lazy"
+    "en": "Lazy loading"
   },
   "web.designer.setting.leftAlign": {
     "zh-cn": "居左",
@@ -3825,7 +3825,7 @@
   },
   "web.designer.setting.lineNumber": {
     "zh-cn": "序号",
-    "en": "designer.setting.lineNumber"
+    "en": "Row number"
   },
   "web.designer.setting.lowThreshold": {
     "zh-cn": "低分界限值",
@@ -3889,39 +3889,39 @@
   },
   "web.designer.setting.noDataSource": {
     "zh-cn": "暂无数据源",
-    "en": "designer.setting.noDataSource"
+    "en": "No data sources"
   },
   "web.designer.setting.nodeDeleted": {
     "zh-cn": "节点已删除",
-    "en": "designer.setting.nodeDeleted"
+    "en": "Node deleted"
   },
   "web.designer.setting.nodeEdit": {
     "zh-cn": "允许添加删除节点",
-    "en": "designer.setting.nodeEdit"
+    "en": "Allow adding and deleting nodes"
   },
   "web.designer.setting.objectName": {
     "zh-cn": "对象名称",
-    "en": "designer.setting.objectName"
+    "en": "Object name"
   },
   "web.designer.setting.objectNameHelp": {
     "zh-cn": "对象名称格式：aa、aa.bb或aa.bb.cc",
-    "en": "designer.setting.objectNameHelp"
+    "en": "Object name format: aa, aa.bb, or aa.bb.cc"
   },
   "web.designer.setting.okButtonHidden": {
     "zh-cn": "隐藏确认按钮",
-    "en": "designer.setting.okButtonHidden"
+    "en": "Hide OK button"
   },
   "web.designer.setting.okButtonLabel": {
     "zh-cn": "确认按钮文字",
-    "en": "designer.setting.okButtonLabel"
+    "en": "OK button text"
   },
   "web.designer.setting.onlyDragBetweenSiblingNodes": {
     "zh-cn": "只能在同级节点之间进行拖拽排序！",
-    "en": "designer.setting.onlyDragBetweenSiblingNodes"
+    "en": "Nodes can only be reordered among siblings"
   },
   "web.designer.setting.onlyOneColumnCannotBeDeleted": {
     "zh-cn": "表格只有一列时不可删除.",
-    "en": "designer.setting.onlyOneColumnCannotBeDeleted"
+    "en": "The only table column cannot be deleted"
   },
   "web.designer.setting.OnlyOneColumnCannotBeDeleted": {
     "zh-cn": "表格只有一列时不可删除.",
@@ -3929,51 +3929,51 @@
   },
   "web.designer.setting.onNodeCheckRemark": {
     "zh-cn": "树节点选择事件",
-    "en": "designer.setting.onNodeCheckRemark"
+    "en": "Tree node selection event"
   },
   "web.designer.setting.onNodeClickRemark": {
     "zh-cn": "树节点点击事件",
-    "en": "designer.setting.onNodeClickRemark"
+    "en": "Tree node click event"
   },
   "web.designer.setting.onNodeContextmenuRemark": {
     "zh-cn": "树节点右击事件",
-    "en": "designer.setting.onNodeContextmenuRemark"
+    "en": "Tree node context-menu event"
   },
   "web.designer.setting.operationButtonDisabled": {
     "zh-cn": "禁用",
-    "en": "designer.setting.operationButtonDisabled"
+    "en": "Disabled"
   },
   "web.designer.setting.operationButtonDuplicatedNameError": {
     "zh-cn": "按钮名称不可重复",
-    "en": "designer.setting.operationButtonDuplicatedNameError"
+    "en": "Button names must be unique"
   },
   "web.designer.setting.operationButtonHidden": {
     "zh-cn": "隐藏",
-    "en": "designer.setting.operationButtonHidden"
+    "en": "Hidden"
   },
   "web.designer.setting.operationButtonLabel": {
     "zh-cn": "文字",
-    "en": "designer.setting.operationButtonLabel"
+    "en": "Text"
   },
   "web.designer.setting.operationButtonName": {
     "zh-cn": "名称",
-    "en": "designer.setting.operationButtonName"
+    "en": "Name"
   },
   "web.designer.setting.operationButtonRound": {
     "zh-cn": "圆角",
-    "en": "designer.setting.operationButtonRound"
+    "en": "Rounded"
   },
   "web.designer.setting.operationButtonSize": {
     "zh-cn": "大小",
-    "en": "designer.setting.operationButtonSize"
+    "en": "Size"
   },
   "web.designer.setting.operationButtonsSetting": {
     "zh-cn": "操作按钮设置",
-    "en": "designer.setting.operationButtonsSetting"
+    "en": "Action button settings"
   },
   "web.designer.setting.operationButtonType": {
     "zh-cn": "类型",
-    "en": "designer.setting.operationButtonType"
+    "en": "Type"
   },
   "web.designer.setting.optionsSetting": {
     "zh-cn": "选项设置",
@@ -3981,11 +3981,11 @@
   },
   "web.designer.setting.optionValueType": {
     "zh-cn": "选项值类型",
-    "en": "designer.setting.optionValueType"
+    "en": "Option value type"
   },
   "web.designer.setting.paginationAlign": {
     "zh-cn": "分页水平对齐",
-    "en": "designer.setting.paginationAlign"
+    "en": "Pagination alignment"
   },
   "web.designer.setting.paneActive": {
     "zh-cn": "激活",
@@ -4009,7 +4009,7 @@
   },
   "web.designer.setting.previewDataSourceExportResult": {
     "zh-cn": "导出结果预览",
-    "en": "designer.setting.previewDataSourceExportResult"
+    "en": "Preview exported data sources"
   },
   "web.designer.setting.preWrap": {
     "zh-cn": "自动换行",
@@ -4021,7 +4021,7 @@
   },
   "web.designer.setting.readMode": {
     "zh-cn": "弹窗表单只读",
-    "en": "designer.setting.readMode"
+    "en": "Read-only dialog form"
   },
   "web.designer.setting.readonly": {
     "zh-cn": "只读",
@@ -4029,7 +4029,7 @@
   },
   "web.designer.setting.remainExistingDataSource": {
     "zh-cn": "追加到已有数据源之后",
-    "en": "designer.setting.remainExistingDataSource"
+    "en": "Append to existing data sources"
   },
   "web.designer.setting.remote": {
     "zh-cn": "可远程搜索",
@@ -4037,7 +4037,7 @@
   },
   "web.designer.setting.renderFunction": {
     "zh-cn": "渲染函数",
-    "en": "designer.setting.renderFunction"
+    "en": "Render function"
   },
   "web.designer.setting.required": {
     "zh-cn": "必填字段",
@@ -4057,7 +4057,7 @@
   },
   "web.designer.setting.retractAllNode": {
     "zh-cn": "收缩所有",
-    "en": "designer.setting.retractAllNode"
+    "en": "Collapse all"
   },
   "web.designer.setting.rightAlign": {
     "zh-cn": "居右",
@@ -4069,7 +4069,7 @@
   },
   "web.designer.setting.rowKeyOfTreeData": {
     "zh-cn": "行数据Key",
-    "en": "designer.setting.rowKeyOfTreeData"
+    "en": "Tree row key"
   },
   "web.designer.setting.rows": {
     "zh-cn": "行数",
@@ -4085,15 +4085,15 @@
   },
   "web.designer.setting.selectAllNode": {
     "zh-cn": "选择所有",
-    "en": "designer.setting.selectAllNode"
+    "en": "Select all"
   },
   "web.designer.setting.selectClearAllNode": {
     "zh-cn": "选中/取消选中",
-    "en": "designer.setting.selectClearAllNode"
+    "en": "Select/clear all"
   },
   "web.designer.setting.selectDataSourceForExport": {
     "zh-cn": "选择导出数据源",
-    "en": "designer.setting.selectDataSourceForExport"
+    "en": "Select data sources to export"
   },
   "web.designer.setting.showAllLevels": {
     "zh-cn": "显示完整路径",
@@ -4105,7 +4105,7 @@
   },
   "web.designer.setting.showButtonsColumn": {
     "zh-cn": "显示操作按钮列",
-    "en": "designer.setting.showButtonsColumn"
+    "en": "Show action-button column"
   },
   "web.designer.setting.showCheckBox": {
     "zh-cn": "是否显示复选框列",
@@ -4113,11 +4113,11 @@
   },
   "web.designer.setting.showClose": {
     "zh-cn": "显示关闭按钮",
-    "en": "designer.setting.showClose"
+    "en": "Show Close button"
   },
   "web.designer.setting.showControls": {
     "zh-cn": "显示控制按钮",
-    "en": "designer.setting.showControls"
+    "en": "Show controls"
   },
   "web.designer.setting.showFileList": {
     "zh-cn": "显示文件列表",
@@ -4125,7 +4125,7 @@
   },
   "web.designer.setting.showFold": {
     "zh-cn": "显示折叠按钮",
-    "en": "designer.setting.showFold"
+    "en": "Show collapse button"
   },
   "web.designer.setting.showIndex": {
     "zh-cn": "是否显示行号",
@@ -4133,7 +4133,7 @@
   },
   "web.designer.setting.showModal": {
     "zh-cn": "显示遮罩层",
-    "en": "designer.setting.showModal"
+    "en": "Show backdrop"
   },
   "web.designer.setting.showPagination": {
     "zh-cn": "是否显示分页",
@@ -4165,11 +4165,11 @@
   },
   "web.designer.setting.showTreeCheckBox": {
     "zh-cn": "显示复选框",
-    "en": "designer.setting.showTreeCheckBox"
+    "en": "Show checkboxes"
   },
   "web.designer.setting.showType": {
     "zh-cn": "展示样式",
-    "en": "designer.setting.showType"
+    "en": "Display style"
   },
   "web.designer.setting.showWordLimit": {
     "zh-cn": "显示字数统计",
@@ -4213,7 +4213,7 @@
   },
   "web.designer.setting.tableDataColumn": {
     "zh-cn": "数据列",
-    "en": "designer.setting.tableDataColumn"
+    "en": "Data column"
   },
   "web.designer.setting.tableDataEdit": {
     "zh-cn": "表格数据编辑",
@@ -4221,7 +4221,7 @@
   },
   "web.designer.setting.tableHeader": {
     "zh-cn": "表头",
-    "en": "designer.setting.tableHeader"
+    "en": "Table header"
   },
   "web.designer.setting.tableHeight": {
     "zh-cn": "高度(px/%)",
@@ -4237,15 +4237,15 @@
   },
   "web.designer.setting.tabPosition": {
     "zh-cn": "标签位置 ",
-    "en": "designer.setting.tabPosition"
+    "en": "Tab position"
   },
   "web.designer.setting.tabType": {
     "zh-cn": "标签样式",
-    "en": "designer.setting.tabType"
+    "en": "Tab style"
   },
   "web.designer.setting.testDataSource": {
     "zh-cn": "测试数据源",
-    "en": "designer.setting.testDataSource"
+    "en": "Test data source"
   },
   "web.designer.setting.textAlign": {
     "zh-cn": "文字对齐",
@@ -4257,19 +4257,19 @@
   },
   "web.designer.setting.textForAppend": {
     "zh-cn": "后置文字内容",
-    "en": "designer.setting.textForAppend"
+    "en": "Suffix text"
   },
   "web.designer.setting.tips": {
     "zh-cn": "提示",
-    "en": "designer.setting.tips"
+    "en": "Tips"
   },
   "web.designer.setting.title": {
     "zh-cn": "标题",
-    "en": "designer.setting.title"
+    "en": "Title"
   },
   "web.designer.setting.topMargin": {
     "zh-cn": "上间距(px)",
-    "en": "designer.setting.topMargin"
+    "en": "Top margin (px)"
   },
   "web.designer.setting.topPosition": {
     "zh-cn": "顶部",
@@ -4277,15 +4277,15 @@
   },
   "web.designer.setting.treeDataEdit": {
     "zh-cn": "树数据编辑",
-    "en": "designer.setting.treeDataEdit"
+    "en": "Edit tree data"
   },
   "web.designer.setting.treeDataEnabled": {
     "zh-cn": "允许加载树形数据",
-    "en": "designer.setting.treeDataEnabled"
+    "en": "Enable tree data"
   },
   "web.designer.setting.treeNodeCheckStrictly": {
     "zh-cn": "禁止父子节点联动",
-    "en": "designer.setting.treeNodeCheckStrictly"
+    "en": "Do not link parent and child selection"
   },
   "web.designer.setting.undoMergeCol": {
     "zh-cn": "撤销列合并",
@@ -4329,7 +4329,7 @@
   },
   "web.designer.setting.valueKeyName": {
     "zh-cn": "选项值名",
-    "en": "designer.setting.valueKeyName"
+    "en": "Option value key"
   },
   "web.designer.setting.vertical": {
     "zh-cn": "是否竖向显示",
@@ -4421,7 +4421,7 @@
   },
   "web.designer.widgetLabel.button-group": {
     "zh-cn": "按钮组",
-    "en": "designer.widgetLabel.button-group"
+    "en": "Button group"
   },
   "web.designer.widgetLabel.cascader": {
     "zh-cn": "级联选择",
@@ -4429,11 +4429,11 @@
   },
   "web.designer.widgetLabel.cascader-address": {
     "zh-cn": "地址选择",
-    "en": "designer.widgetLabel.cascader-address"
+    "en": "Address selector"
   },
   "web.designer.widgetLabel.cascader-radio": {
     "zh-cn": "级联单选",
-    "en": "designer.widgetLabel.cascader-radio"
+    "en": "Cascading single select"
   },
   "web.designer.widgetLabel.checkbox": {
     "zh-cn": "多选项",
@@ -4445,19 +4445,19 @@
   },
   "web.designer.widgetLabel.column-1-grid": {
     "zh-cn": "单列栅格",
-    "en": "designer.widgetLabel.column-1-grid"
+    "en": "One-column grid"
   },
   "web.designer.widgetLabel.column-2-grid": {
     "zh-cn": "双列栅格",
-    "en": "designer.widgetLabel.column-2-grid"
+    "en": "Two-column grid"
   },
   "web.designer.widgetLabel.column-3-grid": {
     "zh-cn": "三列栅格",
-    "en": "designer.widgetLabel.column-3-grid"
+    "en": "Three-column grid"
   },
   "web.designer.widgetLabel.column-4-grid": {
     "zh-cn": "四列栅格",
-    "en": "designer.widgetLabel.column-4-grid"
+    "en": "Four-column grid"
   },
   "web.designer.widgetLabel.custom": {
     "zh-cn": "Custom Component",
@@ -4473,7 +4473,7 @@
   },
   "web.designer.widgetLabel.date-picker": {
     "zh-cn": "日期",
-    "en": "designer.widgetLabel.date-picker"
+    "en": "Date"
   },
   "web.designer.widgetLabel.date-range": {
     "zh-cn": "日期范围",
@@ -4481,7 +4481,7 @@
   },
   "web.designer.widgetLabel.date-time-picker": {
     "zh-cn": "日期时间",
-    "en": "designer.widgetLabel.date-time-picker"
+    "en": "Date and time"
   },
   "web.designer.widgetLabel.details": {
     "zh-cn": "明细表",
@@ -4497,11 +4497,11 @@
   },
   "web.designer.widgetLabel.file-upload": {
     "zh-cn": "文件",
-    "en": "designer.widgetLabel.file-upload"
+    "en": "File"
   },
   "web.designer.widgetLabel.form-label": {
     "zh-cn": "标签选择",
-    "en": "designer.widgetLabel.form-label"
+    "en": "Label selector"
   },
   "web.designer.widgetLabel.grid": {
     "zh-cn": "栅格",
@@ -4513,7 +4513,7 @@
   },
   "web.designer.widgetLabel.grid-sub-form": {
     "zh-cn": "多行子表单",
-    "en": "designer.widgetLabel.grid-sub-form"
+    "en": "Multi-row subform"
   },
   "web.designer.widgetLabel.html-text": {
     "zh-cn": "HTML",
@@ -4529,23 +4529,23 @@
   },
   "web.designer.widgetLabel.input-float": {
     "zh-cn": "精确小数",
-    "en": "designer.widgetLabel.input-float"
+    "en": "Precise decimal"
   },
   "web.designer.widgetLabel.input-number": {
     "zh-cn": "整数类型",
-    "en": "designer.widgetLabel.input-number"
+    "en": "Integer"
   },
   "web.designer.widgetLabel.input-percentage": {
     "zh-cn": "百分比",
-    "en": "designer.widgetLabel.input-percentage"
+    "en": "Percentage"
   },
   "web.designer.widgetLabel.input-price": {
     "zh-cn": "金额",
-    "en": "designer.widgetLabel.input-price"
+    "en": "Amount"
   },
   "web.designer.widgetLabel.input-select": {
     "zh-cn": "一对一引用",
-    "en": "designer.widgetLabel.input-select"
+    "en": "One-to-one reference"
   },
   "web.designer.widgetLabel.number": {
     "zh-cn": "计数器",
@@ -4553,11 +4553,11 @@
   },
   "web.designer.widgetLabel.object-group": {
     "zh-cn": "对象容器",
-    "en": "designer.widgetLabel.object-group"
+    "en": "Object container"
   },
   "web.designer.widgetLabel.picture-upload": {
     "zh-cn": "图片",
-    "en": "designer.widgetLabel.picture-upload"
+    "en": "Image"
   },
   "web.designer.widgetLabel.radio": {
     "zh-cn": "单选项",
@@ -4617,7 +4617,7 @@
   },
   "web.designer.widgetLabel.tag": {
     "zh-cn": "标签组",
-    "en": "designer.widgetLabel.tag"
+    "en": "Label group"
   },
   "web.designer.widgetLabel.textarea": {
     "zh-cn": "多行输入",
@@ -4633,15 +4633,15 @@
   },
   "web.designer.widgetLabel.tree": {
     "zh-cn": "树形",
-    "en": "designer.widgetLabel.tree"
+    "en": "Tree"
   },
   "web.designer.widgetLabel.vf-dialog": {
     "zh-cn": "弹出窗口",
-    "en": "designer.widgetLabel.vf-dialog"
+    "en": "Dialog"
   },
   "web.designer.widgetLabel.vf-drawer": {
     "zh-cn": "侧滑抽屉",
-    "en": "designer.widgetLabel.vf-drawer"
+    "en": "Drawer"
   },
   "web.documentation.documentation": {
     "zh-cn": "文档",
@@ -4717,7 +4717,7 @@
   },
   "web.extension.widgetLabel.button-group": {
     "zh-cn": "按钮组",
-    "en": "designer.widgetLabel.button-group"
+    "en": "Button group"
   },
   "web.extension.widgetLabel.card": {
     "zh-cn": "卡片",
@@ -4729,11 +4729,11 @@
   },
   "web.extension.widgetLabel.cascader-address": {
     "zh-cn": "地址选择",
-    "en": "designer.widgetLabel.cascader-address"
+    "en": "Address selector"
   },
   "web.extension.widgetLabel.cascader-radio": {
     "zh-cn": "级联单选",
-    "en": "designer.widgetLabel.cascader-radio"
+    "en": "Cascading single select"
   },
   "web.extension.widgetLabel.checkbox": {
     "zh-cn": "多选项",
@@ -4745,19 +4745,19 @@
   },
   "web.extension.widgetLabel.column-1-grid": {
     "zh-cn": "单列栅格",
-    "en": "designer.widgetLabel.column-1-grid"
+    "en": "One-column grid"
   },
   "web.extension.widgetLabel.column-2-grid": {
     "zh-cn": "双列栅格",
-    "en": "designer.widgetLabel.column-2-grid"
+    "en": "Two-column grid"
   },
   "web.extension.widgetLabel.column-3-grid": {
     "zh-cn": "三列栅格",
-    "en": "designer.widgetLabel.column-3-grid"
+    "en": "Three-column grid"
   },
   "web.extension.widgetLabel.column-4-grid": {
     "zh-cn": "四列栅格",
-    "en": "designer.widgetLabel.column-4-grid"
+    "en": "Four-column grid"
   },
   "web.extension.widgetLabel.custom": {
     "zh-cn": "Custom Component",
@@ -4773,7 +4773,7 @@
   },
   "web.extension.widgetLabel.date-picker": {
     "zh-cn": "日期",
-    "en": "designer.widgetLabel.date-picker"
+    "en": "Date"
   },
   "web.extension.widgetLabel.date-range": {
     "zh-cn": "日期范围",
@@ -4781,7 +4781,7 @@
   },
   "web.extension.widgetLabel.date-time-picker": {
     "zh-cn": "日期时间",
-    "en": "designer.widgetLabel.date-time-picker"
+    "en": "Date and time"
   },
   "web.extension.widgetLabel.details": {
     "zh-cn": "明细表",
@@ -4797,11 +4797,11 @@
   },
   "web.extension.widgetLabel.file-upload": {
     "zh-cn": "文件",
-    "en": "designer.widgetLabel.file-upload"
+    "en": "File"
   },
   "web.extension.widgetLabel.form-label": {
     "zh-cn": "标签选择",
-    "en": "designer.widgetLabel.form-label"
+    "en": "Label selector"
   },
   "web.extension.widgetLabel.funnelChart": {
     "zh-cn": "漏斗图",
@@ -4817,7 +4817,7 @@
   },
   "web.extension.widgetLabel.grid-sub-form": {
     "zh-cn": "多行子表单",
-    "en": "designer.widgetLabel.grid-sub-form"
+    "en": "Multi-row subform"
   },
   "web.extension.widgetLabel.html-text": {
     "zh-cn": "HTML",
@@ -4833,23 +4833,23 @@
   },
   "web.extension.widgetLabel.input-float": {
     "zh-cn": "精确小数",
-    "en": "designer.widgetLabel.input-float"
+    "en": "Precise decimal"
   },
   "web.extension.widgetLabel.input-number": {
     "zh-cn": "整数类型",
-    "en": "designer.widgetLabel.input-number"
+    "en": "Integer"
   },
   "web.extension.widgetLabel.input-percentage": {
     "zh-cn": "百分比",
-    "en": "designer.widgetLabel.input-percentage"
+    "en": "Percentage"
   },
   "web.extension.widgetLabel.input-price": {
     "zh-cn": "金额",
-    "en": "designer.widgetLabel.input-price"
+    "en": "Amount"
   },
   "web.extension.widgetLabel.input-select": {
     "zh-cn": "一对一引用",
-    "en": "designer.widgetLabel.input-select"
+    "en": "One-to-one reference"
   },
   "web.extension.widgetLabel.lineChart": {
     "zh-cn": "折线图",
@@ -4865,11 +4865,11 @@
   },
   "web.extension.widgetLabel.object-group": {
     "zh-cn": "对象容器",
-    "en": "designer.widgetLabel.object-group"
+    "en": "Object container"
   },
   "web.extension.widgetLabel.picture-upload": {
     "zh-cn": "图片",
-    "en": "designer.widgetLabel.picture-upload"
+    "en": "Image"
   },
   "web.extension.widgetLabel.pieChart": {
     "zh-cn": "饼图",
@@ -4901,7 +4901,7 @@
   },
   "web.extension.widgetLabel.search": {
     "zh-cn": "筛选组件",
-    "en": "extension.widgetLabel.search"
+    "en": "Filter component"
   },
   "web.extension.widgetLabel.section": {
     "zh-cn": "区块",
@@ -4937,7 +4937,7 @@
   },
   "web.extension.widgetLabel.tab": {
     "zh-cn": "Tab标签",
-    "en": "extension.widgetLabel.tab"
+    "en": "Tabs"
   },
   "web.extension.widgetLabel.tab-pane": {
     "zh-cn": "选项卡页",
@@ -4953,7 +4953,7 @@
   },
   "web.extension.widgetLabel.tag": {
     "zh-cn": "标签组",
-    "en": "designer.widgetLabel.tag"
+    "en": "Label group"
   },
   "web.extension.widgetLabel.textarea": {
     "zh-cn": "多行输入",
@@ -4969,15 +4969,15 @@
   },
   "web.extension.widgetLabel.tree": {
     "zh-cn": "树形",
-    "en": "designer.widgetLabel.tree"
+    "en": "Tree"
   },
   "web.extension.widgetLabel.vf-dialog": {
     "zh-cn": "弹出窗口",
-    "en": "designer.widgetLabel.vf-dialog"
+    "en": "Dialog"
   },
   "web.extension.widgetLabel.vf-drawer": {
     "zh-cn": "侧滑抽屉",
-    "en": "designer.widgetLabel.vf-drawer"
+    "en": "Drawer"
   },
   "web.file.addmember": {
     "zh-cn": "添加成员",

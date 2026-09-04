@@ -5,7 +5,7 @@
         <el-form-item :label='$("legacy.c810657ab3a552a9")' class="select-bar">
           <el-cascader
             v-model="types"
-            :options="options"
+            :options="localizedOptions"
             :placeholder='$("legacy.f50ab9b0255f434c")'
             size="small"
             :props="{ checkStrictly: true }"
@@ -37,6 +37,7 @@
 
 <script>
 import { messageCateApi } from '@/api/setting'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 
 export default {
   name: 'FormBox',
@@ -48,6 +49,17 @@ export default {
       },
       types: [],
       options: []
+    }
+  },
+  computed: {
+    localizedOptions() {
+      const localize = (items) =>
+        (items || []).map((item) => ({
+          ...item,
+          label: dictionaryDisplayLabel(item, this.$, 'label'),
+          children: item.children ? localize(item.children) : item.children
+        }))
+      return localize(this.options)
     }
   },
   mounted() {

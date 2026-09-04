@@ -21,6 +21,14 @@ class MessageNotice extends BaseModel
 {
     use TimeDataTrait;
 
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        return (int) $this->getAttribute('message_id') > 0
+            || trim((string) $this->getAttribute('template_type')) !== '' ? 1 : 0;
+    }
+
     /**
      * 自动写入时间戳.
      * @var bool

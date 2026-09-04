@@ -20,7 +20,9 @@
           </template>
         </el-table-column>
         <el-table-column :label="$('ui.businessHolidayQueryIndexDepartment')" min-width="150" prop="frame.name" show-overflow-tooltip />
-        <el-table-column :label="$('ui.businessRecordIndexApprovalType')" min-width="150" prop="approve.name" show-overflow-tooltip />
+        <el-table-column :label="$('ui.businessRecordIndexApprovalType')" min-width="150" show-overflow-tooltip>
+          <template #default="{ row }">{{ approvalName(row.approve) }}</template>
+        </el-table-column>
         <el-table-column :label="$('ui.businessRecordIndexApprovalStatus')" min-width="120" prop="name" show-overflow-tooltip>
           <template slot-scope="scope">
             <el-tag effect="plain" v-if="scope.row.status === -1" size="mini" type="info"> {{ $("ui.customerListApplyForPaymentRevoked") }} </el-tag>
@@ -107,6 +109,10 @@ export default {
     this.getTableData()
   },
   methods: {
+    approvalName(approve) {
+      if (!approve) return '--'
+      return Number(approve.is_system_owned) === 1 ? this.$(approve.name, approve.name_en) : approve.name
+    },
     async pageChange(page) {
       this.where.page = page
       this.tableLoading = true
