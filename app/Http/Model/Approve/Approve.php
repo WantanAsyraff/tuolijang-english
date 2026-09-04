@@ -20,6 +20,8 @@ class Approve extends BaseModel
 {
     use SoftDeletes;
 
+    protected $appends = ['is_system_owned'];
+
     /**
      * 表名.
      * @var string
@@ -49,6 +51,11 @@ class Approve extends BaseModel
     protected $hidden = [
         'deleted_at',
     ];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        return (int) $this->types !== 0 ? 1 : 0;
+    }
 
     /**
      * 一对一关联用户名片.

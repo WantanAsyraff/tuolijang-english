@@ -16,7 +16,7 @@
     <div class="table-box mt10">
       <el-table :data="tableData" :height="tableHeight" style="width: 100%">
         <el-table-column prop="name" :label="$('ui.hrAttendanceSettingShiftListShiftName')" width="200">
-          <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+          <template slot-scope="scope">{{ scope.row.name }}</template>
         </el-table-column>
         <el-table-column prop="position" :label="$('ui.hrAttendanceSettingShiftListAttendanceTime')" width="340">
           <template slot-scope="scope">

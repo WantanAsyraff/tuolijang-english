@@ -31,7 +31,7 @@
             <span
               class="info3"
               :style="{ color: dataInfo.data && dataInfo.data.status ? dataInfo.data.status.color : '#1890ff' }"
-              >{{ dataInfo.data && dataInfo.data.status ? $(dataInfo.data.status.name, dataInfo.data.status.name_en) : '--' }}</span
+              >{{ dataInfo.data && dataInfo.data.status ? dictionaryLabel(dataInfo.data.status) : '--' }}</span
             >
 
             <span class="title" v-if="types === 'odds'"
@@ -140,6 +140,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { contractDocDetailApi } from '@/api/contractSign'
 import { getCluesEditApi, oddsCreateEditApi } from '@/api/client'
 import { liaisonEditCreateApi } from '@/api/enterprise'
@@ -233,6 +234,9 @@ export default {
     }
   },
   methods: {
+    dictionaryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$)
+    },
     getTabBadge(tabItem) {
       if (!tabItem.badgeKey || !this.dataInfo || !this.dataInfo.count) return null
       const count = this.dataInfo.count[tabItem.badgeKey]

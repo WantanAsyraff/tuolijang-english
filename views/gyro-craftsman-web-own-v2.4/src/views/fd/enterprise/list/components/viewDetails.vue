@@ -27,11 +27,11 @@
                 </el-form-item>
                 <el-form-item>
                   <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsIncomeExpenseMethod") }}</span>
-                  <p>{{ delData.pay_type }}</p>
+                  <p>{{ paymentMethod(delData) }}</p>
                 </el-form-item>
                 <el-form-item>
                   <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsAccountCategory") }}</span>
-                  <p>{{ delData.cate ? delData.cate.name : '--' }}</p>
+                  <p>{{ delData.cate ? displaySystemLabel(delData.cate) : '--' }}</p>
                 </el-form-item>
                 <el-form-item>
                   <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsRemarks") }}</span>
@@ -152,6 +152,7 @@
 </div>
 </template>
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { billRecordApi } from '@/api/enterprise'
 import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
 import uploadFile from '@/components/form-common/oa-upload'
@@ -195,6 +196,13 @@ export default {
   },
 
   methods: {
+    displaySystemLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
+    paymentMethod(row) {
+      if (!row) return '--'
+      return Number(row.pay_type_is_system_owned) === 1 ? this.$(row.pay_type, row.pay_type_en) : row.pay_type
+    },
     handelOpen() {
       this.drawer = true
     },

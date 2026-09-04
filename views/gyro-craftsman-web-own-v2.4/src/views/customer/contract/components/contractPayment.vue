@@ -53,7 +53,7 @@
     <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="130"> </el-table-column>
     <el-table-column prop="pay_type" :label="$('ui.customerContractContractPaymentPaymentMethod')" min-width="120">
       <template slot-scope="scope">
-        <span>{{ scope.row.pay_type !== '' ? $(scope.row.pay_type, scope.row.pay_type_en) : '--' }}</span>
+        <span>{{ scope.row.pay_type !== '' ? paymentMethod(scope.row) : '--' }}</span>
       </template>
     </el-table-column>
     <el-table-column prop="bill_no" :label="$('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="120"> </el-table-column>
@@ -205,6 +205,10 @@ export default {
     }
   },
   methods: {
+    paymentMethod(row) {
+      if (!row) return '--'
+      return Number(row.pay_type_is_system_owned) === 1 ? this.$(row.pay_type, row.pay_type_en) : row.pay_type
+    },
     handleBuild(command, val, type) {
       this.parameterData.contract_id = this.formInfo.data.cid ? this.formInfo.data.cid : this.where.cid
       this.$refs.editExamine.openBox(val, this.parameterData.contract_id, type)

@@ -25,7 +25,7 @@
             <span>{{ formData.data.name || '-' }}</span>
 
             <span class="title">{{ $("ui.administrationMaterialFixedRecordSpecificationModel") }}</span> <span>{{ formData.data.units || '--' }}</span>
-            <span class="title">{{ $("ui.administrationMaterialFixedMaterialDialogMaterialCategory") }}</span><span>{{ $(formData.data.cate.cate_name) || '--' }}</span>
+            <span class="title">{{ $("ui.administrationMaterialFixedMaterialDialogMaterialCategory") }}</span><span>{{ storageCategoryLabel(formData.data.cate) || '--' }}</span>
             <span class="title">{{ $("ui.administrationMaterialFixedRecordUnitOfMeasure") }}</span><span>{{ formData.data.specs || '--' }}</span>
           </div>
         </el-col>
@@ -109,6 +109,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { storageRecordApi, storageRecordUsersApi } from '@/api/administration'
 
 export default {
@@ -175,6 +176,9 @@ export default {
     }
   },
   methods: {
+    storageCategoryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'cate_name')
+    },
     handleClose() {
       this.drawer = false
       this.where.types = ''

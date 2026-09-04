@@ -40,7 +40,7 @@
               : getColorFn('#1890ff', '0.1')
           }"
         >
-          {{ scope.row.contract_status.name }}
+          {{ dictionaryLabel(scope.row.contract_status) }}
         </div>
       </template>
     </el-table-column>
@@ -68,6 +68,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { getColor } from '@/utils/format'
 import { customerViewApi, clientContractListApi } from '@/api/enterprise'
 export default {
@@ -125,6 +126,9 @@ export default {
   },
 
   methods: {
+    dictionaryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$)
+    },
     getList() {
       let obj = {
         limit: 0,

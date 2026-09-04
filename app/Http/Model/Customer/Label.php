@@ -16,6 +16,13 @@ use Illuminate\Database\Query\Builder;
  */
 class Label extends BaseModel
 {
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        $id = (int) $this->getAttribute('id');
+        return $id >= 1 && $id <= 14 ? 1 : 0;
+    }
     /**
      * @var string
      */

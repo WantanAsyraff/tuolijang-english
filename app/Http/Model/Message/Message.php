@@ -15,6 +15,12 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Message extends BaseModel
 {
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        return (int) $this->getAttribute('crud_id') === 0 ? 1 : 0;
+    }
     /**
      * @var string
      */

@@ -65,6 +65,13 @@ test("canonical catalogs contain complete adjacent locale pairs", () => {
       assert.equal(typeof entry["zh-cn"], "string", `${identifier} missing zh-cn`);
       assert.equal(typeof entry.en, "string", `${identifier} missing en`);
       assert.equal(/[\u3400-\u9fff]/.test(entry.en) && entry.en !== "中文", false, `${identifier} has Chinese English text`);
+      assert.equal(
+        /^(?:(?:web|chat|mobile|common)\.)?(?:ui|designer|extension|public|legacyScript|navbar|systemText|workbench|finance|customer|setting|access|calendar|attendance|toptable)\.[A-Za-z0-9_.-]+$/.test(entry.en) ||
+          entry.en === identifier ||
+          entry.en === identifier.replace(/^(?:web|chat|mobile|common)\./, ""),
+        false,
+        identifier + " uses a localization key as its English value"
+      );
     }
   }
   assert.ok(Object.keys(common).length >= 4226);
@@ -508,6 +515,84 @@ test("mobile route and tab metadata are generated from the canonical catalog", {
   const mobile = catalog("mobile");
   assert.ok(Object.keys(mobile).filter((key) => key.startsWith("mobile.navigation.")).length > 100);
   assert.ok(Object.keys(mobile).filter((key) => key.startsWith("mobile.tab.")).length > 0);
+});
+
+test("management categories 6-12 preserve custom data and localize only system-owned metadata", { skip: !includesApp("web") }, () => {
+  const formService = read("../app/Http/Service/Config/FormService.php");
+  assert.match(formService, /is_system_owned/);
+  assert.match(formService, /enable_delete === 0/);
+
+  const dictService = read("../app/Http/Service/Config/DictDataService.php");
+  assert.match(dictService, /names_v2_/);
+  assert.match(dictService, /radio_name_v2_/);
+  assert.match(dictService, /is_default/);
+
+  const approvalModel = read("../app/Http/Model/Approve/Approve.php");
+  assert.match(approvalModel, /protected \$appends = \['is_system_owned'\]/);
+  assert.match(approvalModel, /\$this->types !== 0/);
+  assert.match(read("gyro-craftsman-web-own-v2.4/src/views/business/examine/index.vue"), /approvalName\(scope\.row\)/);
+
+  const hrTeam = read("gyro-craftsman-web-own-v2.4/src/views/hr/attendance/setting/team.vue");
+  assert.doesNotMatch(hrTeam, /\$\((?:row|obj|item)\.name\)/);
+  assert.match(hrTeam, /row\.members\.map\(\(obj\) => obj\.name\)/);
+
+  const customerLabels = read("gyro-craftsman-web-own-v2.4/src/views/customer/setup/label.vue");
+  assert.match(customerLabels, /labelDisplay\(scope\.row\)/);
+  assert.match(customerLabels, /dictionaryDisplayLabel\(entry, this\.\$, 'name'\)/);
+  assert.match(read("../app/Http/Model/Customer/Label.php"), /getAttribute\('id'\)[\s\S]*\$id <= 14/);
+
+  const projectDetails = read("gyro-craftsman-web-own-v2.4/src/views/program/programList/taskDetails.vue");
+  assert.match(projectDetails, /\{\{ info\.name \|\| '--' \}\}/);
+  assert.doesNotMatch(projectDetails, /\$\(info\.name\)/);
+
+  const paymentType = read("../app/Http/Model/Finance/Paytype.php");
+  assert.match(paymentType, /\$this->id <= 5/);
+  assert.match(read("gyro-craftsman-web-own-v2.4/src/views/fd/setup/type/index.vue"), /displaySystemLabel\(scope\.row\)/);
+
+  const scheduleType = read("../app/Http/Model/Schedule/ScheduleType.php");
+  assert.match(scheduleType, /\$this->id <= 5/);
+  assert.match(read("gyro-craftsman-web-own-v2.4/src/views/user/calendar/components/calendarBar.vue"), /scheduleTypeLabel\(item\)/);
+
+  const storageCategory = read("../app/Http/Model/Storage/StorageCategory.php");
+  assert.match(storageCategory, /\$this->id <= 6/);
+  assert.match(read("gyro-craftsman-web-own-v2.4/src/views/administration/material/fixed/components/tree.vue"), /storageCategoryLabel\(data, node\.label\)/);
+});
+test("final dashboard translations reject key fallbacks and protect authored notification data", { skip: !includesApp("web") }, () => {
+  const webCatalog = catalog("web");
+  const keyFallback = /^(?:(?:web|chat|mobile|common)\.)?(?:ui|designer|extension|public|legacyScript|navbar|systemText|workbench|finance|customer|setting|access|calendar|attendance|toptable)\.[A-Za-z0-9_.-]+$/;
+  const fallbackEntries = Object.entries(webCatalog).filter(([identifier, entry]) =>
+    keyFallback.test(entry.en) ||
+    entry.en === identifier ||
+    entry.en === identifier.replace(/^(?:web|chat|mobile|common)\./, "")
+  );
+  assert.deepEqual(fallbackEntries, []);
+  assert.equal(webCatalog["web.designer.setting.dsConfigHandlerTitle"].en, "1. Request configuration");
+  assert.equal(webCatalog["web.designer.hint.formulaABS"].en, "Returns the absolute value of a number. Example: ABS(-5)=5");
+  assert.equal(webCatalog["web.extension.widgetLabel.cascader-address"].en, "Address selector");
+
+  const { notificationRecordText } = require(
+    path.join(views, "gyro-craftsman-web-own-v2.4/src/lang/notification-record.js")
+  );
+  const translate = (value) => runtime.translateSystemTextValue(value, { locale: "en" });
+  assert.equal(
+    notificationRecordText(
+      { is_system_owned: 1, message_id: 27, message: "您有一条个人待办任务，请记得处理哦！待办内容【next week stuff】" },
+      translate,
+      "message"
+    ),
+    "You have a personal to-do task to process: [next week stuff]"
+  );
+  assert.equal(
+    notificationRecordText({ is_system_owned: 0, message: "客户管理" }, translate, "message"),
+    "客户管理"
+  );
+
+  assert.match(read("../app/Http/Model/Message/MessageNotice.php"), /protected \$appends = \['is_system_owned'\]/);
+  assert.match(read("../app/Http/Model/Category/MessageCategory.php"), /76 => '日常汇报'[\s\S]*95 => '企业动态'/);
+  assert.match(read("../app/Http/Model/Approve/ApproveHolidayType.php"), /getIsSystemOwnedAttribute/);
+  assert.match(read("gyro-craftsman-web-own-v2.4/src/views/user/news/unread.vue"), /notificationText\(scope\.row, 'message'\)/);
+  assert.match(read("gyro-craftsman-web-own-v2.4/src/layout/components/Notice/noticeList.vue"), /notificationRecordText/);
+  assert.match(read("gyro-craftsman-web-own-v2.4/src/views/user/notice/index.vue"), /label_key: 'ui\.layoutNoticeNoticeListUnread'/);
 });
 
 test("dashboard exposes $() as its only application translation interface", () => {

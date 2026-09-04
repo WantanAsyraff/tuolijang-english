@@ -38,7 +38,7 @@
                       v-for="(item, index) in incomeList"
                       :key="index"
                       :class="{ breadcrumb: active == item.name }"
-                      ><span @click="changeActive(item, index)">{{ $(item.name) }}</span></el-breadcrumb-item
+                      ><span @click="changeActive(item, index)">{{ displaySystemLabel(item) }}</span></el-breadcrumb-item
                     >
                   </el-breadcrumb>
                 </div>
@@ -85,7 +85,7 @@
                       v-for="(item, index) in expenditureList"
                       :key="index"
                       :class="{ breadcrumb: expenditure == item.name }"
-                      ><span @click="changeExpenditure(item, index)">{{ $(item.name) }}</span></el-breadcrumb-item
+                      ><span @click="changeExpenditure(item, index)">{{ displaySystemLabel(item) }}</span></el-breadcrumb-item
                     >
                   </el-breadcrumb>
                 </div>
@@ -113,6 +113,7 @@
 
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { billChartApi, billChangeBie } from '@/api/enterprise'
 import { numberFormat } from '@/utils/numberFormat'
 export default {
@@ -163,6 +164,9 @@ export default {
   },
   mounted() {},
   methods: {
+    displaySystemLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     moneySuffix() {
       return this.$language === 'en' ? ' CNY' : '元'
     },

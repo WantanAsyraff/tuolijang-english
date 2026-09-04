@@ -266,6 +266,14 @@ class BillService extends BaseService implements ResourceServicesInterface
         if ($expendLevel !== '' && ($type === '' || $type === '0')) {
             $expendRank = $this->dao->getBillRank($time, 0, $entId, $expendLevel, $this->dao->getSum($time, 0, $expendLevel, $entId, $cateId, $userIds), array_unique($pid), cateSearch: $cateId, userIds: $userIds);
         }
+        foreach ($incomeRank as &$item) {
+            $item['is_system_owned'] = (int) ($item['cate_id'] ?? 0) >= 1 && (int) ($item['cate_id'] ?? 0) <= 36 ? 1 : 0;
+        }
+        unset($item);
+        foreach ($expendRank as &$item) {
+            $item['is_system_owned'] = (int) ($item['cate_id'] ?? 0) >= 1 && (int) ($item['cate_id'] ?? 0) <= 36 ? 1 : 0;
+        }
+        unset($item);
         if ($all) {
             if ($num == 0) {
                 $xAxis    = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];

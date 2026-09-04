@@ -33,7 +33,7 @@
           <el-table-column prop="name" :label="$('ui.administrationMaterialChartIndexMaterialName')" min-width="100" />
           <el-table-column prop="units" :label="$('ui.administrationMaterialChartIndexSpecificationModel')" min-width="100" />
           <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" >
-            <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.cate_name) || '--' }}</template>
+            <template slot-scope="scope">{{ storageCategoryLabel(scope.row.cate) || '--' }}</template>
           </el-table-column>
           <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" />
           <el-table-column prop="stock" :label="$('ui.administrationMaterialFixedConsumeInventoryQuantity')" min-width="80" />
@@ -92,6 +92,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import tree from './tree'
 import addMaterial from './addMaterial'
 import receive from './receive'
@@ -194,6 +195,9 @@ export default {
     this.getSelectTableData(1)
   },
   methods: {
+    storageCategoryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'cate_name')
+    },
     handleSelectionChange(val) {
       this.multipleSelection = []
       val.map((item) => {

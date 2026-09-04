@@ -36,7 +36,7 @@
       >
         <el-table-column type="selection" width="55" :reserve-selection="true"> </el-table-column>
         <el-table-column prop="name" :label="$('ui.hrAttendanceSettingShiftListShiftName')" width="120">
-              <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+              <template slot-scope="scope">{{ scope.row.name }}</template>
             </el-table-column>
         <el-table-column prop="position" :label="$('ui.hrAttendanceSettingShiftListAttendanceTime')" width="170">
           <template slot-scope="scope">

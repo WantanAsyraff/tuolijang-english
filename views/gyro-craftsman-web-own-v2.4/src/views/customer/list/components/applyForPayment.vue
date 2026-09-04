@@ -44,7 +44,7 @@
           </div>
           <div class="form-item">
             <el-form-item :label="$('ui.customerListApplyForPaymentPaymentMethod')">
-              <span>{{ $(list.pay_type, list.pay_type_en) }}</span>
+              <span>{{ paymentMethod(list) }}</span>
             </el-form-item>
           </div>
           <div class="form-item">
@@ -197,6 +197,10 @@ export default {
   },
 
   methods: {
+    paymentMethod(row) {
+      if (!row) return '--'
+      return Number(row.pay_type_is_system_owned) === 1 ? this.$(row.pay_type, row.pay_type_en) : row.pay_type
+    },
     handleClose() {
       this.drawer = false
     },

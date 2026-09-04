@@ -34,7 +34,7 @@
         <div v-for="(item, index) in holiday_type" :key="index">
           <el-table-column
             prop="holiday_data"
-            :label="item.name + (item.duration_type === 0 ? $('ui.hrAttendanceStatisticsMonthlyDay') : $('ui.hrAttendanceStatisticsMonthlyHours'))"
+            :label="holidayTypeName(item) + (item.duration_type === 0 ? $('ui.hrAttendanceStatisticsMonthlyDay') : $('ui.hrAttendanceStatisticsMonthlyHours'))"
             width="120"
           >
             <template slot-scope="scope">
@@ -62,6 +62,7 @@
 </template>
 <script>
 import { monthlyStatisticsApi } from '@/api/config'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 
 export default {
   name: 'CrmebOaEntDaily',
@@ -99,6 +100,9 @@ export default {
   },
 
   methods: {
+    holidayTypeName(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
     async getList() {
       this.loading = true
       const result = await monthlyStatisticsApi(this.where)
@@ -152,7 +156,7 @@ export default {
       ]
       let nameArr = []
       this.holiday_type.map((item) => {
-        nameArr.push(item.name)
+        nameArr.push(this.holidayTypeName(item))
       })
       aoaData[1] = aoaData[1].concat(nameArr)
 

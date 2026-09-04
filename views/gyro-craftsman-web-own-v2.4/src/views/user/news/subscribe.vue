@@ -7,13 +7,13 @@
       <div class="table-scroll">
         <el-table ref="table" class="subscription-table" :data="tableData" :height="tableHeight">
           <el-table-column prop="title" :label="$('ui.settingEnterpriseNewsIndexMessageTitle')" min-width="220">
-            <template slot-scope="scope">{{ $(scope.row.title) }}</template>
+            <template slot-scope="scope">{{ messageText(scope.row, 'title') }}</template>
           </el-table-column>
           <el-table-column prop="content" :label="$('ui.settingEnterpriseNewsIndexMessageContent')" min-width="480">
-            <template slot-scope="scope">{{ formatTemplateContent(scope.row.content) }}</template>
+            <template slot-scope="scope">{{ formatTemplateContent(scope.row) }}</template>
           </el-table-column>
           <el-table-column prop="cate_name" :label="$('ui.settingEnterpriseNewsIndexMessageType')" min-width="180">
-            <template slot-scope="scope">{{ $(scope.row.cate_name) }}</template>
+            <template slot-scope="scope">{{ messageText(scope.row, 'cate_name') }}</template>
           </el-table-column>
           <el-table-column prop="verify" :label="$('ui.userNewsSubscribeNotifications')" min-width="160">
             <template slot-scope="scope">
@@ -55,6 +55,7 @@
 <script>
 import { userNoticeSubscribeApi, userNoticeSubscribeShowApi } from '@/api/user'
 import { formatNotificationTemplatePreview } from '@/lang/notification-template-preview'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 export default {
   name: 'subscribe',
   components: {
@@ -81,8 +82,11 @@ export default {
     this.getTableData()
   },
   methods: {
-    formatTemplateContent(content) {
-      return formatNotificationTemplatePreview(this.$(content), this.$language)
+    messageText(record, key) {
+      return dictionaryDisplayLabel(record, this.$, key)
+    },
+    formatTemplateContent(record) {
+      return formatNotificationTemplatePreview(this.messageText(record, 'content'), this.$language)
     },
     // 获取列表
     getTableData() {

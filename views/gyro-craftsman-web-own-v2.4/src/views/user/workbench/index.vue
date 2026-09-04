@@ -100,7 +100,7 @@
                 >
                   <div class="pointer">
                     <el-image :src="item.image" class="image"></el-image>
-                    <div class="name">{{ $(item.name) }}</div>
+                    <div class="name">{{ quickEntryName(item) }}</div>
                   </div>
                 </div>
               </div>
@@ -213,8 +213,8 @@
               >
                 <div class="item-list system-note">
                   <div class="line1">
-                    <span class="label">【{{ localizedNoticeText(item.title) }}】</span>
-                    <span>{{ localizedNoticeText(item.message) }}</span>
+                    <span class="label">【{{ notificationText(item, 'title') }}】</span>
+                    <span>{{ notificationText(item, 'message') }}</span>
                   </div>
                   <div class="time">{{ $moment(item.created_at).format('MM-DD HH:mm') }}</div>
                 </div>
@@ -274,6 +274,8 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { notificationRecordText } from '@/lang/notification-record'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import {
   dealtScheduleListApi,
   noticeMessageListApi,
@@ -481,8 +483,11 @@ export default {
     this.getPassword()
   },
   methods: {
-    localizedNoticeText(value) {
-      return $(value)
+    quickEntryName(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
+    notificationText(record, key) {
+      return notificationRecordText(record, this.$, key)
     },
     // 根据当前时间获取问候语
     getGreeting() {

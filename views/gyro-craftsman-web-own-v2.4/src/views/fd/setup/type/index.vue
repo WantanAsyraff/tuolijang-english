@@ -14,11 +14,11 @@
     <div class="table-box mt10">
       <el-table :data="tableData" :height="tableHeight" style="width: 100%" row-key="id" default-expand-all>
         <el-table-column prop="name" :label="$('ui.fdSetupTypeIndexPaymentName')" min-width="100">
-          <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+          <template slot-scope="scope">{{ displaySystemLabel(scope.row) }}</template>
         </el-table-column>
         <el-table-column prop="info" :label="$('ui.fdSetupTypeIndexPaymentDescription')" min-width="140">
           <template slot-scope="scope">
-            {{ $(scope.row.info) || '--' }}
+            {{ displaySystemLabel(scope.row, 'info') || '--' }}
           </template>
         </el-table-column>
         <el-table-column prop="status" :label="$('ui.customerProductCategoryEnabledStatus')" min-width="140">
@@ -59,6 +59,7 @@
 </div>
 </template>
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import {
   enterprisePayTypeApi,
   enterprisePayTypeCreateApi,
@@ -87,6 +88,9 @@ export default {
     this.getTableData()
   },
   methods: {
+    displaySystemLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     // 获取表格数据
     getTableData(val) {
       this.where.page = val ? val : this.where.page

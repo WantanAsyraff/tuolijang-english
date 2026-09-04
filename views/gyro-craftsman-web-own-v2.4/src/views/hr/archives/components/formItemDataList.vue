@@ -142,11 +142,11 @@
                 >{{ ruleForm[item.value] || '--' }}</span
               >
               <div v-if="item.slot === 'frames'">
-                <span v-for="(item, index) in rangeUserText" :key="index">{{ $(item) }} </span>
+                <span v-for="(item, index) in rangeUserText" :key="index">{{ item }} </span>
               </div>
 
-              <span v-if="item.slot === 'cascader'">{{ $(positionText) || '--' }}</span>
-              <span v-if="item.slot === 'manage_frame'">{{ $(manage_frameText) || '--' }}</span>
+              <span v-if="item.slot === 'cascader'">{{ positionText || '--' }}</span>
+              <span v-if="item.slot === 'manage_frame'">{{ manage_frameText || '--' }}</span>
               <span v-if="item.value === 'is_part'">{{ is_partText || '--' }}</span>
               <span v-if="item.value === 'type'">{{ $(typeText) || '--' }}</span>
               <span v-if="item.value === 'sex'">{{ sexText || '--' }}</span>
@@ -162,7 +162,7 @@
 
               <div v-if="item.slot === 'frame_id'">
                 <span v-for="(item, index) in frameText" :key="index" class="mr5"
-                  >{{ $(item.name) }} <span v-if="item.is_mastart" style="color: #1890ff; font-size: 13px"> {{ $("ui.formCommonSelectDepartmentMain") }} </span>
+                  >{{ item.name }} <span v-if="item.is_mastart" style="color: #1890ff; font-size: 13px"> {{ $("ui.formCommonSelectDepartmentMain") }} </span>
                 </span>
               </div>
             </div>

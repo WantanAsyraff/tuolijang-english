@@ -39,7 +39,7 @@
             </template>
           </el-table-column>
           <el-table-column prop="cate.cate_name" :label="$('ui.administrationMaterialChartIndexMaterialCategory')" min-width="100" show-overflow-tooltip >
-            <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.cate_name) || '--' }}</template>
+            <template slot-scope="scope">{{ storageCategoryLabel(scope.row.cate) || '--' }}</template>
           </el-table-column>
           <el-table-column prop="record[0].price" :label="$('ui.administrationMaterialFixedFixedMaterialUnitPriceYuan')" min-width="100" show-overflow-tooltip />
           <el-table-column prop="specs" :label="$('ui.administrationMaterialFixedConsumeUnitOfMeasure')" min-width="80" show-overflow-tooltip>
@@ -144,6 +144,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { storageCateApi, storageDeleteApi, storageListApi, storageListCateApi } from '@/api/administration'
 export default {
   name: 'Consume',
@@ -272,6 +273,9 @@ export default {
     this.getList()
   },
   methods: {
+    storageCategoryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'cate_name')
+    },
     confirmData(data) {
       if (data == 'reset') {
         this.where = {
@@ -373,7 +377,7 @@ export default {
                 value.number,
                 value.name,
                 value.units,
-                value.cate ? value.cate.cate_name : '',
+                value.cate ? this.storageCategoryLabel(value.cate) : '',
                 value.record[0].price,
                 value.specs,
                 this.getMaterialStatus(value.status),

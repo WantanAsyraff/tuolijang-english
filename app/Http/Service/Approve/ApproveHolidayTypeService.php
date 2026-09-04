@@ -112,13 +112,18 @@ class ApproveHolidayTypeService extends BaseService
         $work_time   = app()->get(AdminInfoService::class)->value($uid, 'work_time') ?: now()->toDateString();
         $tz          = config('app.timezone');
         $monthNumber = Carbon::parse($work_time, $tz)->diffInMonths(Carbon::now($tz), false);
-        $field       = ['id as value', 'name as label', 'duration_type', 'new_employee_limit', 'new_employee_limit_month'];
+        $field       = ['id', 'id as value', 'name as label', 'duration_type', 'new_employee_limit', 'new_employee_limit_month'];
         $typeList    = $this->dao->getList([], $field, sort: 'sort');
         foreach ($typeList as $item) {
             if ($item['new_employee_limit'] && (! $work_time || $item['new_employee_limit_month'] > $monthNumber)) {
                 continue;
             }
-            $list[] = ['value' => $item['value'], 'label' => $item['label'], 'duration_type' => $item['duration_type']];
+            $list[] = [
+                'value'           => $item['value'],
+                'label'           => $item['label'],
+                'duration_type'   => $item['duration_type'],
+                'is_system_owned' => $item['is_system_owned'] ?? 0,
+            ];
         }
         return $list;
     }

@@ -657,7 +657,7 @@ class NoticeRecordService extends BaseService
         $services       = app()->get(MessageService::class);
         [$page, $limit] = $this->getPageValue();
         $where['ids']   = app()->get(MessageTemplateService::class)->column(['type' => 0, 'status' => 1], 'message_id');
-        $list           = $services->dao->getList($where, ['id', 'cate_id', 'cate_name', 'template_type', 'title', 'content', 'user_sub'], page: $page, limit: $limit);
+        $list           = $services->dao->getList($where, ['id', 'cate_id', 'cate_name', 'template_type', 'title', 'content', 'user_sub', 'crud_id'], page: $page, limit: $limit);
         if ($list) {
             $subInfo   = app()->get(NoticeSubscribeService::class)->get(['user_id' => $userId]);
             $messageId = $subInfo->message_id ?? [];

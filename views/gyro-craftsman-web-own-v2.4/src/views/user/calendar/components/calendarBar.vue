@@ -23,7 +23,7 @@
       <el-checkbox-group v-model="checkedTypes" @change="handleCheckedKey">
         <div class="flex checkbox-item" v-for="(item, index) in tableData">
           <el-checkbox :key="index" :label="item.id" :style="{ '--fill-color': item.color }">
-            {{ $(item.name) }}
+            {{ scheduleTypeLabel(item) }}
           </el-checkbox>
           <el-dropdown class="more" v-if="item.id >= 6">
             <i class="iconfont icongengduo" />
@@ -45,6 +45,7 @@ import {
   scheduleTypesDeleteApi,
   scheduleTypesApi
 } from '@/api/user'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 
 export default {
   name: 'CalendarBar',
@@ -72,6 +73,9 @@ export default {
     this.getTypes()
   },
   methods: {
+    scheduleTypeLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
     dateBnt(data) {
       this.dateShow = true
       this.data.time = data

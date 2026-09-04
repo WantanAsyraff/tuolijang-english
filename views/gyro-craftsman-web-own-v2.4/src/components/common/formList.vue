@@ -35,7 +35,7 @@
       <el-input
         v-if="isInputType(val.form_value)"
         v-model="ruleForm[val.field_name_en]"
-        :placeholder="$('ui.shared.enterField', { field: $(val.field_name) })"
+        :placeholder="$('ui.shared.enterField', { field: fieldLabel(val) })"
         class="mr10"
         clearable
         prefix-icon="el-icon-search"
@@ -50,7 +50,7 @@
         v-else-if="isSelectType(val.form_value)"
         v-model="ruleForm[val.field_name_en]"
         clearable
-        :placeholder="$(val.field_name)"
+        :placeholder="fieldLabel(val)"
         class="mr10"
         collapse-tags
         filterable
@@ -74,7 +74,7 @@
       <el-select
         v-else-if="val.form_value === 'switch'"
         v-model="ruleForm[val.field_name_en]"
-        :placeholder="$(val.field_name)"
+        :placeholder="fieldLabel(val)"
         class="mr10"
         clearable
         filterable
@@ -92,7 +92,7 @@
         v-model="ruleForm[val.field_name_en]"
         :controls="false"
         :min="0"
-        :placeholder="$(val.field_name)"
+        :placeholder="fieldLabel(val)"
         class="mr10"
         :style="{ width: elementWidth + 'px' }"
         @change="handleEmit(val)"
@@ -119,7 +119,7 @@
         v-else-if="['cascader_address'].includes(val.form_value)"
         v-model="ruleForm[val.field_name_en]"
         :options="addressList"
-        :placeholder="$(val.field_name)"
+        :placeholder="fieldLabel(val)"
         :props="cascaderAddressProps"
         class="mr10 address-cascader"
         clearable
@@ -136,7 +136,7 @@
         v-else-if="isCascaderType(val.form_value)"
         v-model="ruleForm[val.field_name_en]"
         :options="getCascaderOptions(val, index)"
-        :placeholder="$(val.field_name)"
+        :placeholder="fieldLabel(val)"
         :cascader-props="getCascaderProps(val)"
         :cascader-style="{ width: elementWidth + 'px' }"
         class="mr10"
@@ -148,10 +148,10 @@
         v-else-if="isDateType(val.form_value)"
         v-model="val.data_dict"
         :clearable="val.data_dict && !val.data_dict.length > 0"
-        :end-placeholder="$(val.field_name_end || val.field_name)"
+        :end-placeholder="fieldLabel(val, 'field_name_end')"
         :picker-options="val.pickerOptions || pickerOptions"
         :range-separator="$('toptable.to')"
-        :start-placeholder="$(val.field_name)"
+        :start-placeholder="fieldLabel(val)"
         class="time mr10"
         format="yyyy/MM/dd"
         size="small"
@@ -166,7 +166,7 @@
       <el-date-picker
         v-else-if="val.form_value === 'month'"
         v-model="val.data_dict"
-        :placeholder="$(val.field_name)"
+        :placeholder="fieldLabel(val)"
         class="time mr10"
         format="yyyy-MM"
         size="small"
@@ -180,8 +180,8 @@
       <el-date-picker
         v-else-if="val.form_value === 'monthrange'"
         v-model="val.data_dict"
-        :end-placeholder="$(val.field_name)"
-        :start-placeholder="$(val.field_name)"
+        :end-placeholder="fieldLabel(val)"
+        :start-placeholder="fieldLabel(val)"
         class="time mr10"
         format="yyyy/MM"
         :range-separator="$('ui.commonFormListTo')"
@@ -197,7 +197,7 @@
         <select-one
           :id="val.id"
           :showType="val.association_show_type"
-          :placeholder="$(val.field_name)"
+          :placeholder="fieldLabel(val)"
           :value="val.data_dict || {}"
           class="mr10"
           @getSelection="getSelection($event, val)"
@@ -209,7 +209,7 @@
         <select-member
           ref="selectMember"
           :only-one="val.onlyOne"
-          :placeholder="$(val.field_name)"
+          :placeholder="fieldLabel(val)"
           :isSearch="true"
           :selectIdData="val.value || val.option"
           class="mr10"
@@ -223,7 +223,7 @@
         <select-department
           :isSearch="true"
           :only-one="true"
-          :placeholder="$(val.field_name)"
+          :placeholder="fieldLabel(val)"
           :value="val.data_dict || []"
           @changeMastart="changeMastart($event, val)"
         ></select-department>
@@ -237,7 +237,7 @@
           :value="ruleForm[val.field_name_en] || []"
           :labelList="labelList"
           :list="getTagOptions(val, index)"
-          :placeholder="$(val.field_name)"
+          :placeholder="fieldLabel(val)"
           :props="{ children: 'children', label: 'name' }"
           class="mr10"
           @handleLabelConf="handleLabelConf($event, val)"
@@ -375,6 +375,12 @@ export default {
   },
 
   methods: {
+    fieldLabel(entry, key = 'field_name') {
+      const raw = entry && (entry[key] || entry.field_name || '')
+      if (Number(entry && entry.is_default) !== 1) return raw
+      const englishKey = key + '_en'
+      return this.$(raw, entry && (entry[englishKey] || entry.field_name_en))
+    },
     optionLabel(entry, field) {
       const key = entry && entry.name !== undefined ? 'name' : 'label'
       const raw = rawDictionaryLabel(entry, key)

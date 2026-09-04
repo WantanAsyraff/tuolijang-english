@@ -5,7 +5,7 @@
       <div class="print-content" ref="printContent">
         <div class="print-inner">
           <div class="header">
-            <div class="title">{{ printData.approve ? $(printData.approve.name, printData.approve.name_en) : $('ui.businessRecordPrintPreviewApproval') }}</div>
+            <div class="title">{{ printData.approve ? approvalName(printData.approve) : $('ui.businessRecordPrintPreviewApproval') }}</div>
 
           </div>
           <div class="flex flex-between mb10">
@@ -35,12 +35,12 @@
               <table>
                 <tr v-for="i in Math.ceil(printData.content.length / 2)" :key="i">
                   <!-- 第一列 -->
-                  <td class="label" v-if="printData.content[(i - 1) * 2]">{{ $(printData.content[(i - 1) * 2].label) }}</td>
+                  <td class="label" v-if="printData.content[(i - 1) * 2]">{{ approvalFieldLabel(printData.content[(i - 1) * 2].label) }}</td>
                   <td class="value" v-if="printData.content[(i - 1) * 2]">
                     <div v-if="printData.content[(i - 1) * 2].type === 'approvalBill'">
                       <div v-for="(subItem, subIndex) in printData.content[(i - 1) * 2].children" :key="subIndex"
                         class="approval-bill-item">
-                        <span class="sub-label">{{ $(subItem.label) }}:</span>
+                        <span class="sub-label">{{ approvalFieldLabel(subItem.label) }}:</span>
                         <span class="sub-value">{{ subItem.value || '--' }}</span>
                       </div>
                     </div>
@@ -55,12 +55,12 @@
                     <span v-else>{{ formatSystemValue(printData.content[(i - 1) * 2]) || '--' }}</span>
                   </td>
                   <!-- 第二列 -->
-                  <td class="label" v-if="printData.content[(i - 1) * 2 + 1]">{{ $(printData.content[(i - 1) * 2 + 1].label) }}</td>
+                  <td class="label" v-if="printData.content[(i - 1) * 2 + 1]">{{ approvalFieldLabel(printData.content[(i - 1) * 2 + 1].label) }}</td>
                   <td class="value" v-if="printData.content[(i - 1) * 2 + 1]">
                     <div v-if="printData.content[(i - 1) * 2 + 1].type === 'approvalBill'">
                       <div v-for="(subItem, subIndex) in printData.content[(i - 1) * 2 + 1].children" :key="subIndex"
                         class="approval-bill-item">
-                        <span class="sub-label">{{ $(subItem.label) }}:</span>
+                        <span class="sub-label">{{ approvalFieldLabel(subItem.label) }}:</span>
                         <span class="sub-value">{{ subItem.value || '--' }}</span>
                       </div>
                     </div>
@@ -154,12 +154,21 @@ export default {
   },
 
   methods: {
+    approvalName(approve) {
+      if (!approve) return '--'
+      return Number(approve.is_system_owned) === 1 ? $(approve.name, approve.name_en) : approve.name
+    },
+    approvalFieldLabel(value) {
+      return Number(this.printData?.approve?.is_system_owned) === 1 ? $(value) : value
+    },
     formatEnterpriseName(value) {
       return value === '陀螺匠' ? $(value) : value
     },
     formatSystemValue(field) {
       const systemLabels = ['支付方式', '付款方式', '收款方式', 'Payment method']
-      return field && systemLabels.includes($(field.label)) ? $(field.value) : field?.value
+      return field && Number(this.printData?.approve?.is_system_owned) === 1 && systemLabels.includes($(field.label))
+        ? $(field.value)
+        : field?.value
     },
     formatDate(date) {
       if (!date) return ''

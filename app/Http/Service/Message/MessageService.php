@@ -333,7 +333,7 @@ class MessageService extends BaseService
             return true;
         });
         if ($res) {
-            Cache::delete(md5('notice_cate_' . $entId));
+            Cache::delete(md5('notice_cate_v2_' . $entId));
         }
     }
 
@@ -345,7 +345,7 @@ class MessageService extends BaseService
      */
     public function getMessageCateList(int $entId): mixed
     {
-        return Cache::remember(md5('notice_cate_' . $entId), (int) sys_config('system_cache_ttl', 3600), function () {
+        return Cache::remember(md5('notice_cate_v2_' . $entId), (int) sys_config('system_cache_ttl', 3600), function () {
             return app()->get(MessageCateService::class)->select([], ['*', 'cate_name as label', 'id as value'])?->toArray();
         });
     }

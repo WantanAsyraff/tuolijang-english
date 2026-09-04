@@ -28,7 +28,7 @@
                         class="clearfix"
                         :class="rankIndex === index ? 'active' : ''"
                       >
-                        <div class="pull-left">{{ $(item.name) }}</div>
+                        <div class="pull-left">{{ item.name }}</div>
                         <div class="pull-right">
                           <el-popover
                             :ref="`pop-${item.id}`"
@@ -83,7 +83,7 @@
                 >
                   <el-table-column type="selection" width="55"></el-table-column>
                   <el-table-column prop="name" :label="$('hr.rankname')" min-width="150">
-                    <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+                    <template slot-scope="scope">{{ scope.row.name }}</template>
                   </el-table-column>
                   <el-table-column prop="alias" :label="$('hr.ranktype')" min-width="100">
                     <template slot-scope="scope">{{ $(scope.row.alias) }}</template>

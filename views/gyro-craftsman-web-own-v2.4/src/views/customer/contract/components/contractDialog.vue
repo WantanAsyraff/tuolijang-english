@@ -49,7 +49,7 @@
     <el-form-item v-if="config.type !== 3" prop="type_id">
       <span slot="label">{{ $("ui.customerListApplyForPaymentPaymentMethod") }}</span>
       <el-select v-model="rules.type_id" :placeholder="$('ui.customerContractContractDialogSelectPaymentMethod')" size="small">
-        <el-option v-for="item in paymentOptions" :key="item.id" :label="$(item.name)" :value="item.id" />
+        <el-option v-for="item in paymentOptions" :key="item.id" :label="paymentMethod(item)" :value="item.id" />
       </el-select>
     </el-form-item>
 
@@ -99,6 +99,7 @@
 
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import {
   clientBillEditApi,
   clientBillSaveApi,
@@ -370,6 +371,9 @@ export default {
   },
 
   methods: {
+    paymentMethod(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
     setOptions() {
       this.typeOptions = [
         { value: 0, label: this.$('access.day') },
@@ -647,7 +651,7 @@ export default {
         status: 1
       }
       const result = await enterprisePayTypeApi(data)
-      this.paymentOptions = (result.data.list || []).map((item) => ({ ...item, name: this.$(item.name, item.name_en) }))
+      this.paymentOptions = result.data.list || []
     },
     // 保存付款提醒
     clientRemindSave(data) {

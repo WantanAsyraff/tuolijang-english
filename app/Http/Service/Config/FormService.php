@@ -71,12 +71,16 @@ class FormService extends BaseService
                 default              => []
             };
             foreach ($list as $item) {
+                $isSystemOwned = $item->ident !== '';
                 foreach ($item->data as $data) {
                     $data->enable_delete = 1;
                     if (in_array($data->key, $field)) {
                         $data->enable_delete = 0;
                     }
+                    $data->is_system_owned = $data->enable_delete === 0 ? 1 : 0;
+                    $isSystemOwned          = $isSystemOwned || $data->is_system_owned === 1;
                 }
+                $item->is_system_owned = $isSystemOwned ? 1 : 0;
             }
         });
     }

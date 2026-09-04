@@ -37,10 +37,10 @@
             </template>
           </el-table-column>
           <el-table-column :label="$('finance.mode')" min-width="120" prop="pay_type">
-            <template slot-scope="scope">{{ $(scope.row.pay_type) }}</template>
+            <template slot-scope="scope">{{ paymentMethod(scope.row) }}</template>
           </el-table-column>
           <el-table-column :label="$('finance.accounttabtype')" min-width="120" prop="cate.name">
-            <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.name) }}</template>
+            <template slot-scope="scope">{{ displaySystemLabel(scope.row.cate) }}</template>
           </el-table-column>
           <el-table-column :label="$('ui.administrationMaterialFixedLogOperationTime')" min-width="180" prop="updated_at" sortable />
           <el-table-column :label="$('ui.xmindEditorToolbarNodeBtnListRemarks')" min-width="180" prop="mark" show-overflow-tooltip>
@@ -114,6 +114,7 @@
 </template>
 <script>
 import { $ } from '@/lang'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import {
   billListApi,
   billListEditApi,
@@ -175,6 +176,13 @@ export default {
     this.getPayType()
   },
   methods: {
+    displaySystemLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
+    paymentMethod(row) {
+      if (!row) return '--'
+      return Number(row.pay_type_is_system_owned) === 1 ? this.$(row.pay_type, row.pay_type_en) : row.pay_type
+    },
     pageChange(page) {
       this.where.page = page
       this.getTableData()
@@ -376,10 +384,10 @@ export default {
           data.forEach((value) => {
             aoaData.push([
               value.types == 0 ? this.$('finance.pay') : this.$('finance.income'),
-              value.cate ? value.cate.name : '',
+              value.cate ? this.displaySystemLabel(value.cate) : '',
               value.num,
               value.edit_time,
-              value.pay_type,
+              this.paymentMethod(value),
               value.mark
             ])
           })

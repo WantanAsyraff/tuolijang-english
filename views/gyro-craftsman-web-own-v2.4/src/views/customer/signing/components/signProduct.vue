@@ -22,7 +22,7 @@
               : getColorFn('#1890ff', '0.1')
           }"
         >
-          {{ scope.row.types.name }}
+          {{ dictionaryLabel(scope.row.types) }}
         </div>
       </template>
     </el-table-column>
@@ -39,7 +39,7 @@
               : getColorFn('#1890ff', '0.1')
           }"
         >
-          {{ scope.row.status.name }}
+          {{ dictionaryLabel(scope.row.status) }}
         </div>
       </template>
     </el-table-column>
@@ -91,6 +91,7 @@
 </template>
 <script>
 import { getColor } from '@/utils/format'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 export default {
   name: 'SignProduct',
   props: {
@@ -109,6 +110,9 @@ export default {
     }
   },
   methods: {
+    dictionaryLabel(entry) {
+      return dictionaryDisplayLabel(entry, this.$)
+    },
     setChecked(val) {
       val = val.map((item) => Number(item))
 

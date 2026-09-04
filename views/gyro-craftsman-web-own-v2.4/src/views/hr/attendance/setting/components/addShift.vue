@@ -16,7 +16,7 @@
 
             <el-color-picker v-model="formData.color" class="ml14"></el-color-picker>
           </div>
-          <span v-else>{{ $(formData.name) }}</span>
+          <span v-else>{{ formData.name }}</span>
         </el-form-item>
         <el-form-item :label="$('ui.hrAttendanceSettingAddShiftWorkPeriods')" prop="number" class="form-item">
           <el-radio-group v-model="formData.number" @input="radioFn" v-if="type !== 'check'">
@@ -30,7 +30,7 @@
         </el-form-item>
         <el-table :data="tableData" style="width: 100%" class="mb20">
           <el-table-column prop="name" :label="$('ui.hrAttendanceSettingAddShiftShift')" width="140">
-              <template slot-scope="scope">{{ $(scope.row.name) }}</template>
+              <template slot-scope="scope">{{ scope.row.name }}</template>
             </el-table-column>
           <el-table-column prop="rule" :label="$('ui.hrAttendanceSettingAddShiftRules')">
             <template slot-scope="scope">

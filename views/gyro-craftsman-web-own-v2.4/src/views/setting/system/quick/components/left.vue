@@ -15,7 +15,7 @@
             :class="index == tabIndex ? 'active' : ''"
             @click="clickDepart(index, item.id)"
           >
-            <div class="over-text1">{{ $(item.cate_name, item.cate_name_en) }}</div>
+            <div class="over-text1">{{ quickCategoryName(item) }}</div>
             <el-popover
               :ref="`pop-${item.id}`"
               placement="bottom-end"
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import {
   configQuickCateApi,
   configQuickCateDeleteApi,
@@ -61,6 +62,9 @@ export default {
     this.getTargetCate()
   },
   methods: {
+    quickCategoryName(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'cate_name')
+    },
     clickDepart(index, id) {
       this.tabIndex = index
       this.optionValue.id = id

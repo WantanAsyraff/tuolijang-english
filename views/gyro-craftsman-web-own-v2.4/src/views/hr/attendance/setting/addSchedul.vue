@@ -67,7 +67,7 @@
                 <div v-if="item.id !== 0 && item.times.length > 0">
                   <span class="fang" :style="{ backgroundColor: item.color }"></span>
                   <span class="mr10">
-                    {{ $(item.name) }}
+                    {{ item.name }}
                     {{ item.times[0].first_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }} {{ item.times[0].work_hours }} -
                     {{ item.times[0].second_day_after == 0 ? $('ui.hrAttendanceSettingAddConentToday') : $('ui.hrAttendanceSettingAddConentNextDay') }}{{ item.times[0].off_hours }}
                     <span v-if="item.times.length > 1"
@@ -89,7 +89,7 @@
           <div class="flex-box">
             <template v-for="(item, index4) in cycleList">
               <div class="cycle" :key="index4" v-if="item.id !== 0">
-                {{ $(item.name) }}{{ cycleList.length > 2 ? '、' : '' }}
+                {{ item.name }}{{ cycleList.length > 2 ? '、' : '' }}
               </div>
             </template>
 
@@ -127,7 +127,7 @@
                           :style="{ backgroundColor: item.color }"
                           :class="item.id == 0 ? 'empty' : ''"
                         >
-                          {{ $(item.name) }}
+                          {{ item.name }}
                         </div>
                       </div>
                     </el-tab-pane>
@@ -141,7 +141,7 @@
                           @click="clickCycle(1, scope, item)"
                           :class="item.id == 0 ? 'empty' : ''"
                         >
-                          {{ $(item.name) }}
+                          {{ item.name }}
                         </div>
                       </div>
                     </el-tab-pane>
@@ -174,7 +174,7 @@
                         :style="{ backgroundColor: item.color }"
                         :class="item.id == 0 ? 'empty' : ''"
                       >
-                        {{ $(item.name) }}
+                        {{ item.name }}
                       </div>
                     </div>
                   </el-tab-pane>
@@ -188,7 +188,7 @@
                         @click="clickCycle(2, index1, item)"
                         :class="item.id == 0 ? 'empty' : ''"
                       >
-                        {{ $(item.name) }}
+                        {{ item.name }}
                       </div>
                     </div>
                   </el-tab-pane>
@@ -220,7 +220,7 @@
                         :style="{ backgroundColor: item.color }"
                         :class="item.id == 0 ? 'empty' : ''"
                       >
-                        {{ $(item.name) }}
+                        {{ item.name }}
                       </div>
                     </div>
                   </el-tab-pane>
@@ -234,7 +234,7 @@
                         @click="clickCycle(3, scope, item, index1)"
                         :class="item.id == 0 ? 'empty' : ''"
                       >
-                        {{ $(item.name) }}
+                        {{ item.name }}
                       </div>
                     </div>
                   </el-tab-pane>
@@ -644,7 +644,7 @@ export default {
     },
 
     displayShiftName(name) {
-      const localizedName = this.$(name || '')
+      const localizedName = name || ''
       return localizedName.length > 10 ? localizedName.substring(0, 10) : localizedName
     },
     getWeek(date) {

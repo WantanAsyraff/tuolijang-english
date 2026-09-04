@@ -33,7 +33,7 @@
         <el-table-column prop="num" min-width="90" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" />
         <el-table-column prop="pay_type" min-width="100" :label="$('ui.customerContractContractPaymentPaymentMethod')">
           <template slot-scope="scope">
-            <span>{{ scope.row.pay_type !== '' ? scope.row.pay_type : '--' }}</span>
+            <span>{{ scope.row.pay_type !== '' ? paymentMethod(scope.row) : '--' }}</span>
           </template>
         </el-table-column>
         <el-table-column prop="treaty.contract_name" :label="$('ui.invoiceInvoiceDetailsOrderName')" min-width="120"> </el-table-column>
@@ -243,6 +243,10 @@ export default {
     this.getOption()
   },
   methods: {
+    paymentMethod(row) {
+      if (!row) return '--'
+      return Number(row.pay_type_is_system_owned) === 1 ? this.$(row.pay_type, row.pay_type_en) : row.pay_type
+    },
     pageChange(page) {
       this.where.page = page
       this.getTableData()
@@ -339,7 +343,7 @@ export default {
             aoaData.push([
               value.date,
               value.num,
-              value.pay_type,
+              this.paymentMethod(value),
               value.mark,
               value.types,
               value.client ? value.client.name : '',

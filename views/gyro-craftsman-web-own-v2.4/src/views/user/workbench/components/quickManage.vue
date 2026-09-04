@@ -38,7 +38,7 @@
                 <li v-for="(item, index) in config.data" :key="item.id">
                   <template>
                     <el-image :src="item.image" class="image"></el-image>
-                    <div class="name">{{ $(item.name) }}</div>
+                    <div class="name">{{ quickEntryName(item) }}</div>
                     <i class="el-icon-remove quick-icon remove" @click="handleRemove(index)"></i>
                   </template>
                 </li>
@@ -49,7 +49,7 @@
         </div>
         <template v-for="(other, index) in fastEntryData">
           <div class="quick-list-item">
-            <div class="quick-list-item-name">{{ $(other.cate_name, other.cate_name_en) }}</div>
+            <div class="quick-list-item-name">{{ quickCategoryName(other) }}</div>
             <!-- 业绩统计 -->
             <ul v-if="config.type == 'statistics'" class="statistics">
               <li v-for="(item1, indexs) in other.fast_entry" :key="'item1' + indexs" class="statistics-item">
@@ -67,7 +67,7 @@
             <ul v-else class="quick-list-item-ul">
               <li v-for="(item1, indexs) in other.fast_entry" :key="'item1' + indexs">
                 <el-image :src="item1.image" class="image"></el-image>
-                <div class="name">{{ $(item1.name) }}</div>
+                <div class="name">{{ quickEntryName(item1) }}</div>
 
                 <i
                   v-if="!selectIds.includes(item1.id)"
@@ -88,6 +88,7 @@
 </el-dialog>
 </template>
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import draggable from 'vuedraggable'
 import { userWorkFastMenusApi, putStatisticsApiAll } from '@/api/user'
 export default {
@@ -134,6 +135,12 @@ export default {
   },
 
   methods: {
+    quickEntryName(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
+    quickCategoryName(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'cate_name')
+    },
     handleOpen(data) {
       this.fastEntryData = []
       this.fastEntryData = data.otherArr

@@ -11,7 +11,7 @@
                 <el-tab-pane
                   v-for="(item, index) in noticeNav"
                   :key="index"
-                  :label="$(item.cate_name, item.cate_name_en)"
+                  :label="noticeCategoryName(item)"
                   :name="index.toString()"
                 ></el-tab-pane
               ></el-tabs>
@@ -159,6 +159,9 @@ export default {
     }
   },
   methods: {
+    noticeCategoryName(entry) {
+      return entry && entry.label_key ? this.$(entry.label_key) : entry && entry.cate_name
+    },
     handleSizeChange(val) {
       this.where.limit = val
       this.getTableData()
@@ -214,12 +217,14 @@ export default {
         this.noticeNav.unshift(
           {
             cate_name: '未读',
+            label_key: 'ui.layoutNoticeNoticeListUnread',
             id: 1,
             is_read: 0
           },
 
           {
             cate_name: '全部',
+            label_key: 'finance.all',
             id: 0
           }
         )

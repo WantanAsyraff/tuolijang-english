@@ -16,6 +16,12 @@ use Illuminate\Database\Query\Builder;
  */
 class Paytype extends BaseModel
 {
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        return (int) $this->id >= 1 && (int) $this->id <= 5 ? 1 : 0;
+    }
     /**
      * 表名.
      * @var string

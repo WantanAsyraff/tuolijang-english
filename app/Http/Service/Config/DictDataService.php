@@ -240,8 +240,8 @@ class DictDataService extends BaseService implements ResourceServicesInterface
         if ($value === '' || is_null($value)) {
             return [];
         }
-        return Cache::tags([CacheEnum::TAG_DICT])->remember(md5('names_' . $ident . json_encode($value)), (int) sys_config('system_cache_ttl', 3600), function () use ($value, $ident) {
-            return is_array($value) ? $this->dao->setDefaultSort(['level' => 'asc'])->column(['dict_value' => $value, 'type_name' => $ident], 'name') : $this->dao->setDefaultSort(['level' => 'asc'])->get(['dict_value' => $value, 'type_name' => $ident], ['name', 'value', 'color']);
+        return Cache::tags([CacheEnum::TAG_DICT])->remember(md5('names_v2_' . $ident . json_encode($value)), (int) sys_config('system_cache_ttl', 3600), function () use ($value, $ident) {
+            return is_array($value) ? $this->dao->setDefaultSort(['level' => 'asc'])->column(['dict_value' => $value, 'type_name' => $ident], 'name') : $this->dao->setDefaultSort(['level' => 'asc'])->get(['dict_value' => $value, 'type_name' => $ident], ['name', 'value', 'color', 'is_default']);
         });
     }
 
@@ -255,8 +255,8 @@ class DictDataService extends BaseService implements ResourceServicesInterface
         if ($value === '' || is_null($value)) {
             return [];
         }
-        return Cache::tags([CacheEnum::TAG_DICT])->remember(md5('radio_name_' . $ident . json_encode($value)), (int) sys_config('system_cache_ttl', 3600), function () use ($value, $ident) {
-            return $this->dao->setDefaultSort(['level' => 'asc'])->get(['dict_value' => $value, 'type_name' => $ident], ['name', 'value', 'color'])?->toArray();
+        return Cache::tags([CacheEnum::TAG_DICT])->remember(md5('radio_name_v2_' . $ident . json_encode($value)), (int) sys_config('system_cache_ttl', 3600), function () use ($value, $ident) {
+            return $this->dao->setDefaultSort(['level' => 'asc'])->get(['dict_value' => $value, 'type_name' => $ident], ['name', 'value', 'color', 'is_default'])?->toArray();
         });
     }
 

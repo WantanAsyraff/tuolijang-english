@@ -27,7 +27,7 @@
           >
             <div slot-scope="{ node, data }" class="custom-tree-node">
               <div class="flex-box">
-                <span class="over-text">{{ node.label }}</span>
+                <span class="over-text">{{ storageCategoryLabel(data, node.label) }}</span>
                 <el-popover
                   :ref="`pop-${data.value}`"
                   placement="bottom-end"
@@ -60,6 +60,7 @@
 
 <script>
 import { storageCateCreateApi, storageCateDeleteApi, storageCateEditApi } from '@/api/administration'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 
 export default {
   name: 'TreeVue',
@@ -117,6 +118,9 @@ export default {
     }
   },
   methods: {
+    storageCategoryLabel(entry, fallback) {
+      return dictionaryDisplayLabel(entry, this.$, entry.cate_name !== undefined ? 'cate_name' : 'label') || fallback
+    },
     // 编辑窗口显示
     handleShow(value) {
       this.activeValue = value

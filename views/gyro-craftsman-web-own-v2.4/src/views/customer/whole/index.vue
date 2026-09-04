@@ -41,7 +41,7 @@
                 <el-table-column :label="$('customer.paymentAmountYuan')" min-width="100" prop="num" />
                 <el-table-column :label="$('customer.paymentMethod')" min-width="100" prop="pay_type">
                   <template v-slot:default="scope">
-                    <span>{{ scope.row.pay_type !== '' ? $(scope.row.pay_type) : '--' }}</span>
+                    <span>{{ scope.row.pay_type !== '' ? paymentMethod(scope.row) : '--' }}</span>
                   </template>
                 </el-table-column>
                 <el-table-column :label="$('customer.customerName')" min-width="120" prop="client.name">
@@ -276,6 +276,10 @@ export default {
     this.getTableData()
   },
   methods: {
+    paymentMethod(row) {
+      if (!row) return '--'
+      return Number(row.pay_type_is_system_owned) === 1 ? this.$(row.pay_type, row.pay_type_en) : row.pay_type
+    },
     pageChange(page) {
       this.where.page = page
       this.getTableData()
@@ -376,7 +380,7 @@ export default {
             aoaData.push([
               value.date,
               value.num,
-              value.pay_type,
+              this.paymentMethod(value),
               value.mark,
               value.types,
               value.client ? value.client.customer_name : '',

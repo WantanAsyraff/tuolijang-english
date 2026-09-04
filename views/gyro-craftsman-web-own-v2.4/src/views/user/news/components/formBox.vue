@@ -10,7 +10,7 @@
           style="width: 220px"
           clearable
         >
-          <el-option v-for="item in options" :key="item.value" :label="$(item.label)" :value="item.value"></el-option>
+          <el-option v-for="item in options" :key="item.value" :label="categoryName(item)" :value="item.value"></el-option>
         </el-select>
         <!-- <el-cascader
           v-model="types"
@@ -51,6 +51,7 @@
 
 <script>
 import { messageCateApi } from '@/api/setting'
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 
 export default {
   name: 'FormBox',
@@ -68,6 +69,9 @@ export default {
     this.getMessageCate()
   },
   methods: {
+    categoryName(entry) {
+      return dictionaryDisplayLabel(entry, this.$, 'label')
+    },
     selectPeriod() {
       this.confirmData()
     },

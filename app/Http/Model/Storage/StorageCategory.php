@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Cache;
  */
 class StorageCategory extends BaseModel
 {
+    protected $appends = ['is_system_owned'];
+
+    public function getIsSystemOwnedAttribute(): int
+    {
+        return (int) $this->id >= 1 && (int) $this->id <= 6 ? 1 : 0;
+    }
     protected $primaryKey = 'id';
 
     protected $casts = [

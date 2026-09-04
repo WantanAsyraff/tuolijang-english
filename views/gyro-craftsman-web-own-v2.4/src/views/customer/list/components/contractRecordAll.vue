@@ -44,7 +44,7 @@
     <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100"> </el-table-column>
     <el-table-column prop="pay_type" :label="$('ui.customerContractContractPaymentPaymentMethod')" min-width="90">
       <template slot-scope="scope">
-        <span>{{ scope.row.pay_type !== '' ? $(scope.row.pay_type, scope.row.pay_type_en) : '--' }}</span>
+        <span>{{ scope.row.pay_type !== '' ? paymentMethod(scope.row) : '--' }}</span>
       </template>
     </el-table-column>
     <el-table-column prop="bill_no" :label="$('ui.invoiceInvoiceDetailsPaymentBillNo')" min-width="110"> </el-table-column>
@@ -215,6 +215,10 @@ export default {
     this.getConfigApprove()
   },
   methods: {
+    paymentMethod(row) {
+      if (!row) return '--'
+      return Number(row.pay_type_is_system_owned) === 1 ? this.$(row.pay_type, row.pay_type_en) : row.pay_type
+    },
     async handleBillChange() {
       await this.getTableData()
       this.$emit('refresh-detail')

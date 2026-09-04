@@ -13,7 +13,7 @@
         <span>
           <el-button type="info" size="mini" circle>{{ index + 1 }}</el-button>
         </span>
-        <span v-if="item.cate_id > 0">{{ item.name }}</span>
+        <span v-if="item.cate_id > 0">{{ displaySystemLabel(item) }}</span>
         <span v-else>{{ $('finance.other') }}</span>
         <span>{{ item.sum }}</span>
         <span>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 export default {
   name: 'TabListChart',
   props: {
@@ -47,6 +48,9 @@ export default {
     }
   },
   methods: {
+    displaySystemLabel(entry, key = 'name') {
+      return dictionaryDisplayLabel(entry, this.$, key)
+    },
     scrollAnimate() {
       // 超出范围在后再进行滚动
       // if (this.tableData.length >= 5) {

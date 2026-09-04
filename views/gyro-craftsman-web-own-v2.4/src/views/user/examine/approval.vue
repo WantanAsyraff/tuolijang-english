@@ -11,7 +11,7 @@
                   <el-tab-pane
                     v-for="(item, index) in examineTabData"
                     :key="item.id"
-                    :label="$(item.name)"
+                    :label="approvalName(item)"
                     :name="item.id"
                     lazy
                   ></el-tab-pane>
@@ -61,6 +61,10 @@ export default {
     this.getTableInfo('verify_status', 1)
   },
   methods: {
+    approvalName(approve) {
+      if (!approve) return ''
+      return Number(approve.is_system_owned) === 1 ? this.$(approve.name, approve.name_en) : approve.name
+    },
     async getConfigSearch(id) {
       const result = await approveConfigSearchApi(id)
       this.typeData = result.data ? result.data : []

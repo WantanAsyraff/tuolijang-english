@@ -16,9 +16,9 @@
             node-key="value"
             @node-click="handleClick"
           >
-            <div slot-scope="{ node }" class="custom-tree-node">
+            <div slot-scope="{ node, data }" class="custom-tree-node">
               <div class="flex-box">
-                <span class="over-text">{{ node.label }}</span>
+                <span class="over-text">{{ storageCategoryLabel(data, node.label) }}</span>
               </div>
             </div>
           </el-tree>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 export default {
   name: 'TreeVue',
   props: {
@@ -88,6 +89,9 @@ export default {
     }
   },
   methods: {
+    storageCategoryLabel(entry, fallback) {
+      return dictionaryDisplayLabel(entry, this.$, entry.cate_name !== undefined ? 'cate_name' : 'label') || fallback
+    },
     // 编辑窗口显示
     handleShow(value) {
       this.activeValue = value

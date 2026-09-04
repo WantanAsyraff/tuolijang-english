@@ -44,7 +44,7 @@
                   clearable
                   size="small"
                 >
-                  <el-option v-for="item in categoryList" :key="item.id" :label="$(item.name, item.name_en)" :value="item.id" />
+                  <el-option v-for="item in categoryList" :key="item.id" :label="item.name" :value="item.id" />
                 </el-select>
               </el-form-item>
             </div>
