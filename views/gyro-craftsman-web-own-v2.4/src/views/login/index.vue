@@ -88,7 +88,7 @@
                 <el-input
                   ref="phone"
                   v-model="loginForm.phone"
-                  :placeholder="$('login.phone')"
+                  :placeholder="$('login.phoneExample')"
                   autocomplete="on"
                   name="phone"
                   prefix-icon="el-icon-mobile-phone"

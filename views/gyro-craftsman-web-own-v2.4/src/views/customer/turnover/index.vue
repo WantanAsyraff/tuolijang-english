@@ -38,7 +38,7 @@
                     </el-popover>
                   </div>
                   <div class="num">
-                    {{ income.price || 0 }}
+                    {{ $formatCurrency(income.price || 0) }}
                   </div>
                 </div>
               </el-card>
@@ -132,7 +132,7 @@
                     </el-popover>
                   </div>
                   <div class="num">
-                    {{ new_contract_price.price || 0 }}
+                    {{ $formatCurrency(new_contract_price.price || 0) }}
                   </div>
                 </div>
               </el-card>
@@ -162,7 +162,7 @@
                     </el-popover>
                   </div>
                   <div class="num">
-                    {{ renew.price || 0 }}
+                    {{ $formatCurrency(renew.price || 0) }}
                   </div>
                 </div>
               </el-card>
@@ -176,7 +176,7 @@
                     <div class="tit over-text">{{ $('customer.uncollectedamount') }}</div>
                   </div>
                   <div class="num">
-                    {{ uncollected_price.price || 0 }}
+                    {{ $formatCurrency(uncollected_price.price || 0) }}
                   </div>
                 </div>
               </el-card>
@@ -296,7 +296,9 @@
                       <el-progress color="#1890ff" :percentage="scope.row.ratio" :show-text="true"></el-progress>
                     </template>
                   </el-table-column>
-                  <el-table-column :label="$('customer.completeamount')" min-width="120" prop="price" />
+                  <el-table-column :label="$('customer.completeamount')" min-width="120" prop="price">
+                    <template slot-scope="scope">{{ $formatCurrency(scope.row.price) }}</template>
+                  </el-table-column>
                   <el-table-column :label="$('customer.expenseAmountYuan')" min-width="140" prop="expend" />
                   <el-table-column :label="$('customer.netAmountYuan')" min-width="120" prop="net_amount" v-if="activeName == 1" />
                 </el-table>
@@ -766,7 +768,7 @@ export default {
           formatter: (option) => {
             const english = this.$("legacy.9777d0053cdf6234") === 'Inflow'
             const date = this.$moment(option[0].axisValue).format(english ? 'MMMM D, YYYY' : 'YYYY年MM月DD日')
-            const formatValue = (value) => (english ? `CNY ${value}` : `${value}元`)
+            const formatValue = (value) => (english ? this.$formatCurrency(value) : `${value}元`)
             return `${date}<br/>${option[0].seriesName}: ${formatValue(option[0].value)}<br/>${
               option[1].seriesName
             }: ${formatValue(option[1].value)}`

@@ -1361,7 +1361,7 @@
   },
   "runtime.0fb20b9ebf7ef6a4": {
     "zh-cn": "审核中开票金额(元)",
-    "en": "Amount under invoice review (yuan)",
+    "en": "Amount under invoice review (MYR)",
     "runtime": true
   },
   "runtime.0fc8ff6d373752bf": {
@@ -2906,7 +2906,7 @@
   },
   "runtime.21aa53664c02bc64": {
     "zh-cn": "收支金额(元)",
-    "en": "Income/expense amount (yuan)",
+    "en": "Income/expense amount (MYR)",
     "runtime": true
   },
   "runtime.21da663d14bcc9ee": {
@@ -3286,7 +3286,7 @@
   },
   "runtime.26231c101a2abc99": {
     "zh-cn": "订单金额（元）",
-    "en": "Order amount (yuan)",
+    "en": "Order amount (MYR)",
     "runtime": true
   },
   "runtime.263200d7d529b522": {
@@ -3511,7 +3511,7 @@
   },
   "runtime.28628836d629f8cf": {
     "zh-cn": "净额（元）",
-    "en": "Net amount (yuan)",
+    "en": "Net amount (MYR)",
     "runtime": true
   },
   "runtime.286928ed3ad3b484": {
@@ -3866,7 +3866,7 @@
   },
   "runtime.2c8268b30eeab581": {
     "zh-cn": "花费(元)",
-    "en": "Cost (yuan)",
+    "en": "Cost (MYR)",
     "runtime": true
   },
   "runtime.2c86a2404feda949": {
@@ -4516,7 +4516,7 @@
   },
   "runtime.33d85c9c2e65a1e7": {
     "zh-cn": "累计开票金额(元)",
-    "en": "Total invoiced amount (yuan)",
+    "en": "Total invoiced amount (MYR)",
     "runtime": true
   },
   "runtime.33e4b16591ac7cba": {
@@ -5786,7 +5786,7 @@
   },
   "runtime.42f796c81bccb601": {
     "zh-cn": "总收入(元)",
-    "en": "Total income (yuan)",
+    "en": "Total income (MYR)",
     "runtime": true
   },
   "runtime.430dd6f583a895b8": {
@@ -5956,7 +5956,7 @@
   },
   "runtime.4562218edd3d47b4": {
     "zh-cn": "销售额（元）",
-    "en": "Sales amount (yuan)",
+    "en": "Sales amount (MYR)",
     "runtime": true
   },
   "runtime.45756fa2fe3b0471": {
@@ -6371,12 +6371,12 @@
   },
   "runtime.4ad17ad306994278": {
     "zh-cn": "单价(元)",
-    "en": "Unit price (yuan)",
+    "en": "Unit price (MYR)",
     "runtime": true
   },
   "runtime.4ad9d439e91a1af3": {
     "zh-cn": "业绩金额(元)",
-    "en": "Performance amount (CNY)",
+    "en": "Performance amount (MYR)",
     "runtime": true
   },
   "runtime.4adc34616f3c900b": {
@@ -7446,7 +7446,7 @@
   },
   "runtime.570ae5a5a32d52ad": {
     "zh-cn": "累计支出金额(元)",
-    "en": "Total expense amount (yuan)",
+    "en": "Total expense amount (MYR)",
     "runtime": true
   },
   "runtime.572388f3b096b817": {
@@ -8711,7 +8711,7 @@
   },
   "runtime.670191ec78d4ce88": {
     "zh-cn": "支出金额(元)",
-    "en": "Expense amount (yuan):",
+    "en": "Expense amount (MYR):",
     "runtime": true
   },
   "runtime.67037c8b8e571d97": {
@@ -8976,7 +8976,7 @@
   },
   "runtime.6a31b6fc9f3e37d9": {
     "zh-cn": "金额(元)",
-    "en": "Amount (yuan)",
+    "en": "Amount (MYR)",
     "runtime": true
   },
   "runtime.6a41cd39e75b2df0": {
@@ -10516,7 +10516,7 @@
   },
   "runtime.7cdb8e0929d24934": {
     "zh-cn": "未付金额(元)",
-    "en": "Amount due (yuan)",
+    "en": "Amount due (MYR)",
     "runtime": true
   },
   "runtime.7cde0b57ca9ed54a": {
@@ -10801,7 +10801,7 @@
   },
   "runtime.803e3df549e0d55e": {
     "zh-cn": "产品成本(元)",
-    "en": "Product cost (yuan)",
+    "en": "Product cost (MYR)",
     "runtime": true
   },
   "runtime.804742956aa7a483": {
@@ -14036,7 +14036,7 @@
   },
   "runtime.a8fca0c4762e0d05": {
     "zh-cn": "累计收款金额(元)",
-    "en": "Total received amount (yuan)",
+    "en": "Total received amount (MYR)",
     "runtime": true
   },
   "runtime.a90170165f760e0e": {
@@ -15111,7 +15111,7 @@
   },
   "runtime.b529815eb8601074": {
     "zh-cn": "物资单价(元)",
-    "en": "Material unit price (yuan)",
+    "en": "Material unit price (MYR)",
     "runtime": true
   },
   "runtime.b578219f9bb30028": {
@@ -15271,7 +15271,7 @@
   },
   "runtime.b7b4087cf272f27c": {
     "zh-cn": "已付金额(元)",
-    "en": "Amount paid (yuan)",
+    "en": "Amount paid (MYR)",
     "runtime": true
   },
   "runtime.b7c81c8164137751": {
@@ -22506,7 +22506,7 @@
   },
   "runtime.d76a2c51b4f6297c": {
     "zh-cn": "产品成本价（元）",
-    "en": "Product cost (yuan)",
+    "en": "Product cost (MYR)",
     "runtime": true
   },
   "runtime.d778d098bbc36608": {
@@ -23671,7 +23671,7 @@
   },
   "runtime.e51e69707b826602": {
     "zh-cn": "产品售价(元)",
-    "en": "Product price (yuan)",
+    "en": "Product price (MYR)",
     "runtime": true
   },
   "runtime.e55dc11b15b50b60": {
@@ -24201,7 +24201,7 @@
   },
   "runtime.ec88f2f25c2ac879": {
     "zh-cn": "订单总金额(元)",
-    "en": "Total order amount (yuan)",
+    "en": "Total order amount (MYR)",
     "runtime": true
   },
   "runtime.ec923898c3d0e32a": {
@@ -24341,7 +24341,7 @@
   },
   "runtime.edd232326464b14d": {
     "zh-cn": "总计订单金额(元)",
-    "en": "Total contract amount (yuan)",
+    "en": "Total contract amount (MYR)",
     "runtime": true
   },
   "runtime.edd79ecdb2e43b64": {
@@ -24936,7 +24936,7 @@
   },
   "runtime.f4ef830960172503": {
     "zh-cn": "支出金额（元）",
-    "en": "Expense amount (yuan)",
+    "en": "Expense amount (MYR)",
     "runtime": true
   },
   "runtime.f4f0ead1116b5b62": {
@@ -25031,7 +25031,7 @@
   },
   "runtime.f5906efa1b04d01b": {
     "zh-cn": "付款金额(元)",
-    "en": "Payment amount (yuan):",
+    "en": "Payment amount (MYR):",
     "runtime": true
   },
   "runtime.f59615ed61dad6b8": {
@@ -25226,7 +25226,7 @@
   },
   "runtime.f7483b0cf7686203": {
     "zh-cn": "审核中金额(元)",
-    "en": "Amount under review (yuan)",
+    "en": "Amount under review (MYR)",
     "runtime": true
   },
   "runtime.f75562426e772437": {
@@ -25251,7 +25251,7 @@
   },
   "runtime.f7b0bcc66529cfe2": {
     "zh-cn": "总收入（元）",
-    "en": "Total income (yuan)",
+    "en": "Total income (MYR)",
     "runtime": true
   },
   "runtime.f7b592d50acbbcc7": {
@@ -25981,7 +25981,7 @@
   },
   "runtime.finance.approval.collectionAmountCny": {
     "zh-cn": "回款金额（元）",
-    "en": "Payment amount (CNY)",
+    "en": "Payment amount (MYR)",
     "runtime": true
   },
   "runtime.finance.approval.expenseCategory": {
@@ -25996,7 +25996,7 @@
   },
   "runtime.finance.approval.invoiceAmountCny": {
     "zh-cn": "开票金额（元）",
-    "en": "Invoice amount (CNY)",
+    "en": "Invoice amount (MYR)",
     "runtime": true
   },
   "runtime.finance.approval.relatedPaymentAmount": {
@@ -26006,7 +26006,7 @@
   },
   "runtime.finance.approval.renewalAmountCny": {
     "zh-cn": "续费金额（元）",
-    "en": "Renewal amount (CNY)",
+    "en": "Renewal amount (MYR)",
     "runtime": true
   },
   "runtime.finance.approval.selectContract": {
@@ -28203,7 +28203,14 @@
       "web"
     ]
   },
-  "runtime.validation.373848f5c4ac729d": {
+  "runtime.validation.phoneMax32": {
+    "zh-cn": "手机号码超出限制最大32位",
+    "en": "Mobile phone number cannot exceed 32 characters",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },  "runtime.validation.373848f5c4ac729d": {
     "zh-cn": "备用联系人手机号码不符合规范",
     "en": "The alternate contact phone number does not meet the required format",
     "runtime": true,
@@ -60527,7 +60534,7 @@
   },
   "sql.form_data.key_name.8da2428ac2": {
     "zh-cn": "合同金额(元)",
-    "en": "Contract amount (CNY)",
+    "en": "Contract amount (MYR)",
     "runtime": true,
     "apps": [
       "web"

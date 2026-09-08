@@ -27,7 +27,56 @@ class Regex
     public const CARD_ID = '/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/';
 
     // 手机号码
-    public const PHONE_NUMBER = '/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/';
+    public const PHONE_NUMBER = '/^(?:\+?[1-9]\d{6,14}|01\d{7,9})$/';
+
+    /**
+     * Remove presentation separators while preserving the entered number form.
+     */
+    public static function normalizePhone(string $phone): string
+    {
+        return (string) (preg_replace('/[\s()\-]/', '', $phone) ?? '');
+    }
+
+    /**
+     * Accept E.164-style international mobiles and Malaysian local mobile input.
+     */
+    public static function isPhoneNumber(string $phone): bool
+    {
+        return preg_match(self::PHONE_NUMBER, self::normalizePhone($phone)) === 1;
+    }
+
+    /**
+     * Equivalent representations used only for account lookup and uniqueness.
+     * Stored phone values remain untouched.
+     *
+     * @return string[]
+     */
+    public static function phoneCandidates(string $phone): array
+    {
+        $phone = self::normalizePhone($phone);
+        if ($phone === '') {
+            return [];
+        }
+
+        $candidates = [$phone];
+        if (preg_match('/^01\d{7,9}$/', $phone) === 1) {
+            $suffix       = substr($phone, 1);
+            $candidates[] = '+60' . $suffix;
+            $candidates[] = '60' . $suffix;
+        } elseif (preg_match('/^\+60(1\d{7,9})$/', $phone, $matches) === 1) {
+            $candidates[] = '60' . $matches[1];
+            $candidates[] = '0' . $matches[1];
+        } elseif (preg_match('/^60(1\d{7,9})$/', $phone, $matches) === 1) {
+            $candidates[] = '+60' . $matches[1];
+            $candidates[] = '0' . $matches[1];
+        } elseif (str_starts_with($phone, '+')) {
+            $candidates[] = substr($phone, 1);
+        } else {
+            $candidates[] = '+' . $phone;
+        }
+
+        return array_values(array_unique(array_filter($candidates)));
+    }
 
     // 时间验证
     public const TIME_RULE = '/^[0-9]{1,2}-[0-9]{1,2}\s{1}[0-9]{2}:[0-9]{2}:[0-9]{2}/';

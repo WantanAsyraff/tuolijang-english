@@ -24,7 +24,7 @@ class CheckInClient extends BaseClient
     public function checkInRules(string $date, array|string $userId): Response|ResponseInterface
     {
         $data = [
-            'datetime'   => Carbon::parse($date, 'Asia/Shanghai')->startOfDay()->timestamp,
+            'datetime'   => Carbon::parse($date, config('app.timezone'))->startOfDay()->timestamp,
             'useridlist' => is_string($userId) ? [$userId] : $userId,
         ];
         return $this->api->postJson('cgi-bin/checkin/getcheckinoption', $data);
@@ -44,8 +44,8 @@ class CheckInClient extends BaseClient
     {
         $data = [
             'opencheckindatatype' => $type,
-            'starttime'           => Carbon::parse($start, 'Asia/Shanghai')->timestamp,
-            'endtime'             => Carbon::parse($end, 'Asia/Shanghai')->timestamp,
+            'starttime'           => Carbon::parse($start, config('app.timezone'))->timestamp,
+            'endtime'             => Carbon::parse($end, config('app.timezone'))->timestamp,
             'useridlist'          => is_string($userId) ? [$userId] : $userId,
         ];
         return $this->api->postJson('cgi-bin/checkin/getcheckindata', $data);
@@ -63,8 +63,8 @@ class CheckInClient extends BaseClient
     public function checkInDayData(string $start, string $end, array|string $userId): Response|ResponseInterface
     {
         $data = [
-            'starttime'  => Carbon::parse($start, 'Asia/Shanghai')->timestamp,
-            'endtime'    => Carbon::parse($end, 'Asia/Shanghai')->timestamp,
+            'starttime'  => Carbon::parse($start, config('app.timezone'))->timestamp,
+            'endtime'    => Carbon::parse($end, config('app.timezone'))->timestamp,
             'useridlist' => is_string($userId) ? [$userId] : $userId,
         ];
         return $this->api->postJson('cgi-bin/checkin/getcheckin_daydata', $data);
@@ -82,8 +82,8 @@ class CheckInClient extends BaseClient
     public function checkInMonthData(string $start, string $end, array|string $userId): Response|ResponseInterface
     {
         $data = [
-            'starttime'  => Carbon::parse($start, 'Asia/Shanghai')->timestamp,
-            'endtime'    => Carbon::parse($end, 'Asia/Shanghai')->timestamp,
+            'starttime'  => Carbon::parse($start, config('app.timezone'))->timestamp,
+            'endtime'    => Carbon::parse($end, config('app.timezone'))->timestamp,
             'useridlist' => is_string($userId) ? [$userId] : $userId,
         ];
         return $this->api->postJson('cgi-bin/checkin/getcheckin_monthdata', $data);
@@ -101,8 +101,8 @@ class CheckInClient extends BaseClient
     public function getCheckInSchedule(string $start, string $end, array|string $userId): Response|ResponseInterface
     {
         $data = [
-            'starttime'  => Carbon::parse($start, 'Asia/Shanghai')->timestamp,
-            'endtime'    => Carbon::parse($end, 'Asia/Shanghai')->timestamp,
+            'starttime'  => Carbon::parse($start, config('app.timezone'))->timestamp,
+            'endtime'    => Carbon::parse($end, config('app.timezone'))->timestamp,
             'useridlist' => is_string($userId) ? [$userId] : $userId,
         ];
         return $this->api->postJson('cgi-bin/checkin/getcheckinschedulist', $data);
@@ -141,8 +141,8 @@ class CheckInClient extends BaseClient
     {
         $data = [
             'filter_type' => $filterType,
-            'starttime'   => Carbon::parse($start, 'Asia/Shanghai')->timestamp,
-            'endtime'     => Carbon::parse($end, 'Asia/Shanghai')->timestamp,
+            'starttime'   => Carbon::parse($start, config('app.timezone'))->timestamp,
+            'endtime'     => Carbon::parse($end, config('app.timezone'))->timestamp,
             'useridlist'  => is_string($userId) ? [$userId] : $userId,
         ];
         return $this->api->postJson('cgi-bin/hardware/get_hardware_checkin_data', $data);

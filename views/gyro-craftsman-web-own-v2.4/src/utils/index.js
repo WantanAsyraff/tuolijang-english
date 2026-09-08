@@ -1,4 +1,6 @@
 import { $, getLanguage } from '@/lang'
+import { formatMalaysiaDateTime, toMalaysiaDate } from './malaysia-date-time'
+import { formatMalaysiaCurrency } from './malaysia-currency'
 
 /**
  * Created by PanJiaChen on 16/11/18.
@@ -33,7 +35,7 @@ export function parseTime(time, cFormat) {
     if (typeof time === 'number' && time.toString().length === 10) {
       time = time * 1000;
     }
-    date = new Date(time);
+    date = toMalaysiaDate(time);
   }
   const formatObj = {
     y: date.getFullYear(),
@@ -66,7 +68,8 @@ export function formatTime(time, option) {
   } else {
     time = +time;
   }
-  const d = new Date(time);
+  const d = toMalaysiaDate(time);
+  if (!d) return '';
   const now = Date.now();
 
   const diff = (now - d) / 1000;
@@ -85,7 +88,7 @@ export function formatTime(time, option) {
     return parseTime(time, option);
   } else {
     if (getLanguage() === 'en') {
-      return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(d);
+      return formatMalaysiaDateTime(d, 'en');
     }
     return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分';
   }
@@ -350,7 +353,7 @@ export function divTime(time1, time2, type) {
 export function intToChinese(n) {
   if (getLanguage() === 'en') {
     const value = Number(n);
-    return Number.isFinite(value) ? `CNY ${value.toLocaleString('en', { maximumFractionDigits: 2 })}` : $('ui.runtimeLeak.noValue');
+    return Number.isFinite(value) ? formatMalaysiaCurrency(value) : $('ui.runtimeLeak.noValue');
   }
   if (!/^(0|[1-9]\d*)(\.\d+)?$/.test(n)) {
     return '未输入'; // 判断数据是否大于0

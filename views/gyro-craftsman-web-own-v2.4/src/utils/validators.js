@@ -1,11 +1,12 @@
 import {isEmptyStr, isNull} from "./util";
 import { $ } from '@/lang'
+import { isValidMobilePhone } from './phone'
 export const getRegExp = function (validatorName) {
   const commonRegExp = {
     number: '/^[-]?\\d+(\\.\\d+)?$/',
     letter: '/^[A-Za-z]+$/',
     letterAndNumber: '/^[A-Za-z0-9]+$/',
-    mobilePhone: '/^[1][3-9][0-9]{9}$/',
+    mobilePhone: '/^(?:\\+?[1-9]\\d{6,14}|01\\d{7,9})$/',
     letterStartNumberIncluded: '/^[A-Za-z]+[A-Za-z\\d]*$/',
     noChinese: '/^[^\u4e00-\u9fa5]+$/',
     chinese: '/^[\u4e00-\u9fa5]+$/',
@@ -50,9 +51,17 @@ const FormValidators = {
     validateFn('letterAndNumber', rule, value, callback, $('ui.validators.lettersAndNumbersOnly', { label: rule.label }))
   },
 
-  /* 手机号码 */
+  /* Mobile phone: Malaysian local/+60 and existing international input. */
   mobilePhone(rule, value, callback) {
-    validateFn('mobilePhone', rule, value, callback, $('ui.validators.invalidMobilePhone', { label: rule.label }))
+    if (isNull(value) || String(value).length === 0) {
+      callback()
+      return
+    }
+    if (!isValidMobilePhone(value)) {
+      callback(new Error(rule.errorMsg || $('ui.validators.invalidMobilePhone', { label: rule.label })))
+      return
+    }
+    callback()
   },
 
   /* 禁止空白字符开头 */

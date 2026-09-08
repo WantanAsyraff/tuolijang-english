@@ -321,8 +321,8 @@ class PaymentDao extends BaseDao
 
     private function getMonth($startDate, $endDate)
     {
-        $startDate   = Carbon::parse($startDate, 'Asia/Shanghai'); // 开始时间
-        $endDate     = Carbon::parse($endDate, 'Asia/Shanghai');   // 结束时间
+        $startDate   = Carbon::parse($startDate, config('app.timezone')); // 开始时间
+        $endDate     = Carbon::parse($endDate, config('app.timezone'));   // 结束时间
         $months      = [];
         $currentDate = $startDate->copy(); // 复制开始日期，避免修改原实例
         // 循环遍历时间段，逐月添加

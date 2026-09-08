@@ -50,8 +50,8 @@
                 <div class="read"><span class="iconfont iconzuozhezhongxin-chuangzuozhongxin" /> {{ item.visit }}</div>
               </div>
               <div class="flex-end mt15">
-                <span class="icon">￥</span>
-                <span class="num">{{ item.price }}</span>
+
+                <span class="num">{{ $formatCurrency(item.price) }}</span>
                 <span class="use">{{ item.download }}{{ $("legacy.522109205f37cb80") }}</span>
                 <div class="down" @click.stop="fileDown(item)"><span class="iconfont iconxiazai" />{{ $("hr.download") }}</div>
               </div>

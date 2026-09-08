@@ -29,15 +29,15 @@
       </div>
       <div>
         <span class="amount-label ml36">{{ $("ui.customerContractContractPaymentAmountPaidYuan") }}</span
-        ><span class="amount-val">{{ paymentPrice.payment_price }}</span>
+        ><span class="amount-val">{{ $formatCurrency(paymentPrice.payment_price) }}</span>
       </div>
       <div>
         <span class="amount-label ml36">{{ $("ui.customerContractContractPaymentAmountDueYuan") }}</span
-        ><span class="amount-val">{{ paymentPrice.unpaid_price }} </span>
+        ><span class="amount-val">{{ $formatCurrency(paymentPrice.unpaid_price) }} </span>
       </div>
       <div>
         <span class="amount-label ml36">{{ $("ui.customerContractContractPaymentTotalExpenseAmountYuan") }}</span
-        ><span class="amount-val">{{ paymentPrice.expense_price }} </span>
+        ><span class="amount-val">{{ $formatCurrency(paymentPrice.expense_price) }} </span>
       </div>
     </el-col>
   </el-row>
@@ -50,7 +50,9 @@
         }}</el-tag>
       </template>
     </el-table-column>
-    <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="130"> </el-table-column>
+    <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="130">
+      <template slot-scope="scope">{{ $formatCurrency(scope.row.num) }}</template>
+    </el-table-column>
     <el-table-column prop="pay_type" :label="$('ui.customerContractContractPaymentPaymentMethod')" min-width="120">
       <template slot-scope="scope">
         <span>{{ scope.row.pay_type !== '' ? paymentMethod(scope.row) : '--' }}</span>

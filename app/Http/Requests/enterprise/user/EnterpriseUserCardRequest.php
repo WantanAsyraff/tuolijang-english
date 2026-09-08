@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\enterprise\user;
 
 use App\Http\Requests\ApiValidate;
+use App\Http\Requests\Traits\NormalizesPhoneInput;
 use crmeb\utils\Regex;
 
 /**
@@ -14,6 +15,15 @@ use crmeb\utils\Regex;
  */
 class EnterpriseUserCardRequest extends ApiValidate
 {
+    use NormalizesPhoneInput;
+
+    public function check(array $data = [], array $rules = [])
+    {
+        $this->normalizePhoneInputs(['phone']);
+
+        return parent::check($data, $rules);
+    }
+
     /**
      * 场景.
      * @var \string[][]
@@ -42,7 +52,7 @@ class EnterpriseUserCardRequest extends ApiValidate
     {
         return [
             'name'               => 'required',
-            'phone'              => ['required', 'size:11', 'regex:' . Regex::PHONE_NUMBER],
+            'phone'              => ['required', 'max:32', 'regex:' . Regex::PHONE_NUMBER],
             'email'              => 'email:rfc,dns',
             'sex'                => 'required',
             'interview_date'     => 'required', // 面试时间
@@ -64,7 +74,7 @@ class EnterpriseUserCardRequest extends ApiValidate
         return [
             'name.required'               => '请填写用户姓名',
             'phone.required'              => '请填写手机号',
-            'phone.size'                  => '请填写正确的手机号',
+            'phone.max'                  => '请填写正确的手机号',
             'phone.regex'                 => '请填写正确的手机号',
             'email.email'                 => '请填写正确的邮箱',
             'sex.required'                => '用户性别必须填写',

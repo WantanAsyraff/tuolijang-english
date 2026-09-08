@@ -21,8 +21,8 @@
           <full-calendar ref="calendar" id="calendar" style="height: calc(100vh - 150px)" :options="calendarOptions">
             <template v-slot:slotLabelContent="arg">
               <div class="calendar-timeline">
-                <span v-if="$moment(arg.date).format('HH:mm') !== '00:00'">{{
-                  $moment(arg.date).format('HH:mm')
+                <span v-if="$formatMalaysiaPattern(arg.date, 'HH:mm') !== '00:00'">{{
+                  $formatMalaysiaPattern(arg.date, 'HH:mm')
                 }}</span>
               </div>
             </template>
@@ -106,6 +106,7 @@ import { configRuleApproveApi } from '@/api/config'
 // 导入工具函数
 import { toGetWeek, getColor } from '@/utils/format'
 import { getStorageJson } from '@/utils/storage'
+import { MALAYSIA_TIME_ZONE, formatMalaysiaStorageDateTime } from '@/utils/malaysia-date-time'
 
 export default {
   name: 'MyCalendar',
@@ -148,7 +149,8 @@ export default {
       calendarOptions: {
         height: 'calc(100vh - 232px)',
         eventColor: '',
-        initialDate: this.$moment().format('yyyy-MM-DD HH:mm:ss'),
+        initialDate: formatMalaysiaStorageDateTime(new Date()),
+        timeZone: MALAYSIA_TIME_ZONE,
         plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin, listPlugin],
         handleWindowResize: true,
         displayEventTime: false,

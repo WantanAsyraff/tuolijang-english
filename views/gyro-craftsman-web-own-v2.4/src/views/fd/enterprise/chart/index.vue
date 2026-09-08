@@ -168,7 +168,7 @@ export default {
       return dictionaryDisplayLabel(entry, this.$, key)
     },
     moneySuffix() {
-      return this.$language === 'en' ? ' CNY' : '元'
+      return this.$language === 'en' ? ' RM' : '元'
     },
     // 点击切换饼状图
     pieChange(data) {

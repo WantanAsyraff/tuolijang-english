@@ -1137,7 +1137,7 @@
   },
   "web.customer.amountUnderReviewYuan": {
     "zh-cn": "审核中金额(元)",
-    "en": "Amount under review (yuan)"
+    "en": "Amount under review (MYR)"
   },
   "web.customer.annexrelated": {
     "zh-cn": "附件相关",
@@ -1477,7 +1477,7 @@
   },
   "web.customer.expenseAmountYuan": {
     "zh-cn": "支出金额（元）",
-    "en": "Expense amount (yuan)"
+    "en": "Expense amount (MYR)"
   },
   "web.customer.expenseEntry": {
     "zh-cn": "支出记录",
@@ -1697,7 +1697,7 @@
   },
   "web.customer.netAmountYuan": {
     "zh-cn": "净额（元）",
-    "en": "Net amount (yuan)"
+    "en": "Net amount (MYR)"
   },
   "web.customer.newamount": {
     "zh-cn": "新增订单金额(元)",
@@ -1769,7 +1769,7 @@
   },
   "web.customer.paymentAmountYuan": {
     "zh-cn": "付款金额(元)",
-    "en": "Payment amount (yuan)"
+    "en": "Payment amount (MYR)"
   },
   "web.customer.paymentDate": {
     "zh-cn": "付款日期",
@@ -1949,7 +1949,7 @@
   },
   "web.customer.placeholder33": {
     "zh-cn": "请输入回款金额",
-    "en": "Please enter the renewal period"
+    "en": "Please enter the collection amount"
   },
   "web.customer.placeholder34": {
     "zh-cn": "请选择回款日期",
@@ -2233,7 +2233,7 @@
   },
   "web.customer.salesAmountYuan": {
     "zh-cn": "销售额（元）",
-    "en": "Sales amount (yuan)"
+    "en": "Sales amount (MYR)"
   },
   "web.customer.salesman": {
     "zh-cn": "业务员",
@@ -2309,19 +2309,19 @@
   },
   "web.customer.totalcontractamount": {
     "zh-cn": "总计订单金额(元)",
-    "en": "Total contract amount (yuan)"
+    "en": "Total contract amount (MYR)"
   },
   "web.customer.totalExpenseAmountYuan": {
     "zh-cn": "累计支出金额(元)",
-    "en": "Total expense amount (yuan)"
+    "en": "Total expense amount (MYR)"
   },
   "web.customer.totalincome": {
     "zh-cn": "总收入(元)",
-    "en": "Total income (yuan)"
+    "en": "Total income (MYR)"
   },
   "web.customer.totalReceivedAmountYuan": {
     "zh-cn": "累计收款金额(元)",
-    "en": "Total received amount (yuan)"
+    "en": "Total received amount (MYR)"
   },
   "web.customer.transactionstatus": {
     "zh-cn": "成交状态",
@@ -7283,7 +7283,7 @@
   },
   "web.legacy.a6a39a5d14328f8a": {
     "zh-cn": "薪资合计(元)：",
-    "en": "Total salary (yuan):"
+    "en": "Total salary (MYR):"
   },
   "web.legacy.a74e51fd319334b1": {
     "zh-cn": "栅格宽度",
@@ -7767,7 +7767,7 @@
   },
   "web.legacyScript.allowanceCNY": {
     "zh-cn": "管理津贴(元):",
-    "en": "Allowance (CNY):"
+    "en": "Allowance (MYR):"
   },
   "web.legacyScript.allowMultipleSelection": {
     "zh-cn": "是否多选",
@@ -7943,7 +7943,7 @@
   },
   "web.legacyScript.baseSalaryCNY": {
     "zh-cn": "基本工资(元):",
-    "en": "Base Salary (CNY):"
+    "en": "Base Salary (MYR):"
   },
   "web.legacyScript.basic": {
     "zh-cn": "基本的",
@@ -9469,7 +9469,7 @@
   },
   "web.legacyScript.invoiceAmountCNY": {
     "zh-cn": "开票金额（元）",
-    "en": "Invoice amount (CNY)"
+    "en": "Invoice amount (MYR)"
   },
   "web.legacyScript.invoiceRequirements": {
     "zh-cn": "开票要求",
@@ -10103,7 +10103,7 @@
   },
   "web.legacyScript.performancePayCNY": {
     "zh-cn": "绩效工资(元):",
-    "en": "Performance Pay (CNY):"
+    "en": "Performance Pay (MYR):"
   },
   "web.legacyScript.personalDocuments": {
     "zh-cn": "个人材料",
@@ -10913,7 +10913,7 @@
   },
   "web.legacyScript.positionSalaryCNY": {
     "zh-cn": "岗位工资(元):",
-    "en": "Position Salary (CNY):"
+    "en": "Position Salary (MYR):"
   },
   "web.legacyScript.positiveTime": {
     "zh-cn": "转正时间：",
@@ -10937,11 +10937,11 @@
   },
   "web.legacyScript.productCostYuan": {
     "zh-cn": "产品成本价（元）",
-    "en": "Product cost (yuan)"
+    "en": "Product cost (MYR)"
   },
   "web.legacyScript.productCostYuan2": {
     "zh-cn": "产品成本(元)",
-    "en": "Product cost (yuan)"
+    "en": "Product cost (MYR)"
   },
   "web.legacyScript.productDictionarySettings": {
     "zh-cn": "产品字典设置",
@@ -10953,7 +10953,7 @@
   },
   "web.legacyScript.productPriceYuan": {
     "zh-cn": "产品售价(元)",
-    "en": "Product price (yuan)"
+    "en": "Product price (MYR)"
   },
   "web.legacyScript.productSpecCode": {
     "zh-cn": "产品规格编码",
@@ -11535,7 +11535,7 @@
   },
   "web.legacyScript.skillSubsidyCNY": {
     "zh-cn": "技能补贴(元):",
-    "en": "Skill Subsidy (CNY)"
+    "en": "Skill Subsidy (MYR)"
   },
   "web.legacyScript.slider": {
     "zh-cn": "Slider 滑块",
@@ -12366,6 +12366,10 @@
   "web.login.phone": {
     "zh-cn": "手机号码",
     "en": "Phone number"
+  },
+  "web.login.phoneExample": {
+    "zh-cn": "手机号码，例如 012-345 6789 或 +60 12-345 6789",
+    "en": "Mobile number, e.g. 012-345 6789 or +60 12-345 6789"
   },
   "web.login.qrExpired": {
     "zh-cn": "二维码失效",
@@ -14265,7 +14269,7 @@
   },
   "web.ui.administrationMaterialFixedAddMaterialUnitPriceYuan": {
     "zh-cn": "单价(元):",
-    "en": "Unit price (yuan):"
+    "en": "Unit price (MYR):"
   },
   "web.ui.administrationMaterialFixedConsumeInventoryQuantity": {
     "zh-cn": "库存数量",
@@ -14321,7 +14325,7 @@
   },
   "web.ui.administrationMaterialFixedFixedMaterialUnitPriceYuan": {
     "zh-cn": "物资单价(元)",
-    "en": "Material unit price (yuan)"
+    "en": "Material unit price (MYR)"
   },
   "web.ui.administrationMaterialFixedFixedRepair": {
     "zh-cn": "维修",
@@ -14361,7 +14365,7 @@
   },
   "web.ui.administrationMaterialFixedMaterialDialogCostYuan": {
     "zh-cn": "花费(元)：",
-    "en": "Cost (yuan):"
+    "en": "Cost (MYR):"
   },
   "web.ui.administrationMaterialFixedMaterialDialogMaterialCategory": {
     "zh-cn": "物资分类：",
@@ -14401,7 +14405,7 @@
   },
   "web.ui.administrationMaterialFixedMaterialDialogUnitPriceYuan": {
     "zh-cn": "单价(元)：",
-    "en": "Unit price (yuan):"
+    "en": "Unit price (MYR):"
   },
   "web.ui.administrationMaterialFixedReceiveAddRow": {
     "zh-cn": "添加行",
@@ -15169,7 +15173,7 @@
   },
   "web.ui.customerContractContractInvoiceAmountUnderInvoiceReviewYuan": {
     "zh-cn": "审核中开票金额(元)：",
-    "en": "Amount under invoice review (yuan):"
+    "en": "Amount under invoice review (MYR):"
   },
   "web.ui.customerContractContractInvoiceApplicationTime": {
     "zh-cn": "申请时间",
@@ -15197,11 +15201,11 @@
   },
   "web.ui.customerContractContractInvoiceTotalInvoicedAmountYuan": {
     "zh-cn": "累计开票金额(元)：",
-    "en": "Total invoiced amount (yuan):"
+    "en": "Total invoiced amount (MYR):"
   },
   "web.ui.customerContractContractInvoiceTotalReceivedAmountYuan": {
     "zh-cn": "累计收款金额(元)：",
-    "en": "Total received amount (yuan):"
+    "en": "Total received amount (MYR):"
   },
   "web.ui.customerContractContractPaymentAccountRecordsList": {
     "zh-cn": "账目记录列表",
@@ -15221,11 +15225,11 @@
   },
   "web.ui.customerContractContractPaymentAmountDueYuan": {
     "zh-cn": "未付金额(元)：",
-    "en": "Amount due (yuan):"
+    "en": "Amount due (MYR):"
   },
   "web.ui.customerContractContractPaymentAmountPaidYuan": {
     "zh-cn": "已付金额(元)：",
-    "en": "Amount paid (yuan):"
+    "en": "Amount paid (MYR):"
   },
   "web.ui.customerContractContractPaymentExpense": {
     "zh-cn": "支出",
@@ -15257,7 +15261,7 @@
   },
   "web.ui.customerContractContractPaymentTotalExpenseAmountYuan": {
     "zh-cn": "累计支出金额(元)：",
-    "en": "Total expense amount (yuan):"
+    "en": "Total expense amount (MYR):"
   },
   "web.ui.customerContractContractPaymentUnsettled": {
     "zh-cn": "未结清",
@@ -15273,7 +15277,7 @@
   },
   "web.ui.customerContractContractRemindAmountYuan": {
     "zh-cn": "金额(元)",
-    "en": "Amount (yuan)"
+    "en": "Amount (MYR)"
   },
   "web.ui.customerContractContractRemindDiscard": {
     "zh-cn": "放弃",
@@ -15553,7 +15557,7 @@
   },
   "web.ui.customerInvoiceInvoiceViewPaymentAmountYuan": {
     "zh-cn": "付款金额(元)：",
-    "en": "Payment amount (yuan):"
+    "en": "Payment amount (MYR):"
   },
   "web.ui.customerInvoiceInvoiceViewReviewRemarks": {
     "zh-cn": "审核备注：",
@@ -15621,7 +15625,7 @@
   },
   "web.ui.customerListApplyForPaymentExpenseAmountYuan": {
     "zh-cn": "支出金额(元)：",
-    "en": "Expense amount (yuan):"
+    "en": "Expense amount (MYR):"
   },
   "web.ui.customerListApplyForPaymentExpenseInformation": {
     "zh-cn": "支出信息",
@@ -15717,7 +15721,7 @@
   },
   "web.ui.customerListContractRecordAllAmountUnderReviewYuan": {
     "zh-cn": "审核中金额(元)：",
-    "en": "Amount under review (yuan):"
+    "en": "Amount under review (MYR):"
   },
   "web.ui.customerListContractRecordAllExpense": {
     "zh-cn": "(支出)",
@@ -16757,7 +16761,7 @@
   },
   "web.ui.customerSigningSignProductOrderAmountYuan": {
     "zh-cn": "订单金额（元）",
-    "en": "Order amount (yuan)"
+    "en": "Order amount (MYR)"
   },
   "web.ui.customerSigningSignProductSalesperson": {
     "zh-cn": "业务员",
@@ -18527,7 +18531,7 @@
   },
   "web.ui.fdEnterpriseListIndexIncomeExpenseAmountYuan": {
     "zh-cn": "收支金额(元)",
-    "en": "Income/expense amount (yuan)"
+    "en": "Income/expense amount (MYR)"
   },
   "web.ui.fdEnterpriseListIndexInflow": {
     "zh-cn": "流入:",
@@ -18571,7 +18575,7 @@
   },
   "web.ui.fdEnterpriseListViewDetailsIncomeExpenseAmountYuan": {
     "zh-cn": "收支金额(元)：",
-    "en": "Income/expense amount (yuan):"
+    "en": "Income/expense amount (MYR):"
   },
   "web.ui.fdEnterpriseListViewDetailsIncomeExpenseMethod": {
     "zh-cn": "收支方式：",
@@ -20459,7 +20463,7 @@
   },
   "web.ui.invoiceInvoiceDetailsPaymentAmountYuan": {
     "zh-cn": "付款金额(元)",
-    "en": "Payment amount (yuan):"
+    "en": "Payment amount (MYR):"
   },
   "web.ui.invoiceInvoiceDetailsPaymentBillNo": {
     "zh-cn": "付款单号",
@@ -24100,15 +24104,15 @@
   },
   "web.ui.runtimeLeak.cnyAmount": {
     "zh-cn": "{{ amount }}元",
-    "en": "CNY {{ amount }}"
+    "en": "RM {{ amount }}"
   },
   "web.ui.runtimeLeak.totalSalesAmount": {
     "zh-cn": "销售总金额(元)",
-    "en": "Total sales amount (CNY)"
+    "en": "Total sales amount (MYR)"
   },
   "web.ui.runtimeLeak.totalOrderAmount": {
     "zh-cn": "订单总金额(元)",
-    "en": "Total order amount (CNY)"
+    "en": "Total order amount (MYR)"
   },
   "web.ui.runtimeLeak.peopleCount": {
     "zh-cn": "{{ label }}<br/>{{ count }}人",

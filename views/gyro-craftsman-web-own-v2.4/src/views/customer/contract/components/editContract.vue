@@ -30,7 +30,7 @@
               >{{ dataInfo.data && dataInfo.data.contract_status ? dataInfo.data.contract_status.name : '--' }}</span
             >
             <span class="title">{{ $("ui.customerContractEditContractOrderAmountYuan") }}</span
-            ><span class="info1">{{ dataInfo.data ? dataInfo.data.price : '--' }}</span>
+            ><span class="info1">{{ dataInfo.data ? $formatCurrency(dataInfo.data.price) : '--' }}</span>
             <span class="title">{{ $('customer.customer') }}：</span
             ><span class="weight">{{ dataInfo.data ? dataInfo.data.customer_name : '--' }}</span>
             <span class="title"> {{ $("ui.customerContractEditContractSalesperson") }}</span

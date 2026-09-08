@@ -63,7 +63,7 @@ class LaravelS extends SLaravelS
             $watcher->watch(function ($paths) use ($swoole) {
                 $swoole->reload();
                 foreach ($paths as $path) {
-                    self::getOutputStyle()->success('[' . now()->tz('Asia/Shanghai')->toTimeString() . '] Updated File:' . $path);
+                    self::getOutputStyle()->success('[' . now()->tz(config('app.timezone'))->toTimeString() . '] Updated File:' . $path);
                 }
             });
         };
@@ -134,7 +134,7 @@ class LaravelS extends SLaravelS
     protected function queueLogOutputStyle($job, string $type)
     {
         if (isset($this->options['queue-log']) || isset($this->options['log'])) {
-            self::getOutputStyle()->text('[' . now()->tz('Asia/Shanghai')->toDateTimeString() . '][' . $job->getJobId() . '] ' . $type . ': ' . $job->resolveName());
+            self::getOutputStyle()->text('[' . now()->tz(config('app.timezone'))->toDateTimeString() . '][' . $job->getJobId() . '] ' . $type . ': ' . $job->resolveName());
         }
     }
 

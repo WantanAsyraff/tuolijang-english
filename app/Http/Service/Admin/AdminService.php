@@ -312,32 +312,17 @@ class AdminService extends BaseService implements UserInterface
 
     public function normalizePhone(string $phone): string
     {
-        return (string) preg_replace('/[\s()\-]/', '', $phone);
+        return Regex::normalizePhone($phone);
     }
 
     private function isLoginPhone(string $phone): bool
     {
-        return preg_match('/^\+?[1-9]\d{6,14}$/', $this->normalizePhone($phone)) === 1;
+        return Regex::isPhoneNumber($phone);
     }
 
     private function phoneCandidates(string $phone): array
     {
-        $phone = $this->normalizePhone($phone);
-        if ($phone === '') {
-            return [];
-        }
-
-        $candidates = [$phone];
-        if (str_starts_with($phone, '+')) {
-            $withoutPrefix = substr($phone, 1);
-            if ($withoutPrefix !== '') {
-                $candidates[] = $withoutPrefix;
-            }
-        } else {
-            $candidates[] = '+' . $phone;
-        }
-
-        return array_values(array_unique($candidates));
+        return Regex::phoneCandidates($phone);
     }
 
     public function findByPhone(string $phone)
@@ -351,10 +336,10 @@ class AdminService extends BaseService implements UserInterface
         return null;
     }
 
-    private function phoneExists(string $phone): bool
+    private function phoneExists(string $phone, array $except = []): bool
     {
         foreach ($this->phoneCandidates($phone) as $candidate) {
-            if ($this->dao->exists(['phone' => $candidate])) {
+            if ($this->dao->exists(array_merge(['phone' => $candidate], $except))) {
                 return true;
             }
         }
@@ -536,8 +521,9 @@ class AdminService extends BaseService implements UserInterface
             $data['email'] = $email;
         }
         if ($phone) {
+            $phone = $this->normalizePhone((string) $phone);
             $data['phone'] = $phone;
-            if ($this->dao->exists(['phone' => $phone, 'not_uid' => $uid])) {
+            if ($this->phoneExists($phone, ['not_uid' => $uid])) {
                 throw $this->exception('手机号重复');
             }
         }
@@ -671,11 +657,11 @@ class AdminService extends BaseService implements UserInterface
      */
     public function createAdmin(array $data = [], int $type = 0, array $frameInfo = [], bool $import = false): bool
     {
-        $preg = '/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/';
-        if ($data['phone'] && ! preg_match($preg, $data['phone'])) {
+        $data['phone'] = $this->normalizePhone((string) ($data['phone'] ?? ''));
+        if ($data['phone'] && ! Regex::isPhoneNumber($data['phone'])) {
             throw $this->exception('请检查手机号是否正确');
         }
-        if ($this->dao->exists(['phone' => $data['phone']])) {
+        if ($this->phoneExists($data['phone'])) {
             throw $this->exception('企业存在相同记录，请勿重复操作');
         }
         $frameAssist = app()->get(FrameAssistService::class);
@@ -755,7 +741,10 @@ class AdminService extends BaseService implements UserInterface
             throw $this->exception('未找到相关员工信息');
         }
         $save = $this->getUpdateData($type, $data);
-        if (isset($save['phone']) && $this->dao->exists(['phone' => $save['phone'], 'not_id' => $id])) {
+        if (isset($save['phone'])) {
+            $save['phone'] = $this->normalizePhone((string) $save['phone']);
+        }
+        if (isset($save['phone']) && $this->phoneExists($save['phone'], ['not_id' => $id])) {
             throw $this->exception('手机号码已存在');
         }
         if (isset($save['phone']) && $info->status && $info->phone != $save['phone']) {
@@ -827,7 +816,8 @@ class AdminService extends BaseService implements UserInterface
         if ($data['is_admin'] && ! $data['manage_frames']) {
             throw $this->exception('必须选择一个负责部门');
         }
-        if ($this->dao->exists(['not_id' => $id, 'phone' => $data['phone']])) {
+        $data['phone'] = $this->normalizePhone((string) $data['phone']);
+        if ($this->phoneExists($data['phone'], ['not_id' => $id])) {
             throw $this->exception('该手机号已存在');
         }
         $admin = $this->dao->get($id);

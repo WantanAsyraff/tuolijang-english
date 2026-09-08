@@ -25,7 +25,7 @@
               {{ getInvoiceStatus(delData.status) }}
             </span>
             <span class="title">{{ $('customer.invoicingpay') }}：</span
-            ><span class="info2">{{ delData.amount }}</span>
+            ><span class="info2">{{ $formatCurrency(delData.amount) }}</span>
             <span class="title">{{ $('customer.actualdate') }}：</span
             ><span class="info3">{{ delData.real_date }}</span>
           </div>
@@ -56,7 +56,9 @@
               <span v-if="scope.row.types === 1">{{ $("ui.invoiceInvoiceDetailsRenewalRecord") }} {{ scope.row.renew.title }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="150"> </el-table-column>
+          <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="150">
+            <template slot-scope="scope">{{ $formatCurrency(scope.row.num) }}</template>
+          </el-table-column>
 
           <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
           <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="180"> </el-table-column>

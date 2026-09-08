@@ -58,7 +58,9 @@
   >
     <el-table-column type="selection" width="55" />
     <el-table-column prop="contract_no" :label="$('ui.customerListContractOrderNo')" width="180" />
-    <el-table-column prop="contract_price" :label="$('ui.customerSigningSignProductOrderAmountYuan')" />
+    <el-table-column prop="contract_price" :label="$('ui.customerSigningSignProductOrderAmountYuan')">
+      <template slot-scope="scope">{{ $formatCurrency(scope.row.contract_price) }}</template>
+    </el-table-column>
     <el-table-column prop="price" :label="$('ui.customerListContractPaymentStatus')" width="120">
       <template slot-scope="scope">
         <span class="pointer color-success" v-if="parseFloat(scope.row.surplus) === 0">{{ $("ui.customerContractContractPaymentSettled") }}</span>

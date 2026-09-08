@@ -1,10 +1,10 @@
-import moment from "moment";
 import * as filters from "@/filters";
+import { formatMalaysiaPattern } from "@/utils/malaysia-date-time";
 
 export function registerFilters(Vue) {
   Vue.filter("dateformat", function (dataStr, pattern = "YYYY-MM-DD") {
     if (dataStr) {
-      return moment(dataStr).format(pattern);
+      return formatMalaysiaPattern(dataStr, pattern);
     } else {
       return dataStr;
     }

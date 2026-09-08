@@ -271,7 +271,21 @@ class FormService extends BaseService
     public function getCustomDataByTypes(int $types, array $field = ['*'], array $with = []): array
     {
         $cateIds = $this->dao->column(['types' => $types], 'id');
-        return $this->dataDao->getTreeStructure(['cate_id' => $cateIds, 'status' => 1], $field, $with);
+        $systemFields = match ($types) {
+            CustomEnum::CUSTOMER => CustomerEnum::CUSTOMER_NOT_ALLOW_DELETE_FIELD,
+            CustomEnum::CONTRACT => ContractEnum::CONTRACT_NOT_ALLOW_DELETE_FIELD,
+            CustomEnum::LIAISON  => LiaisonEnum::LIAISON_NOT_ALLOW_DELETE_FIELD,
+            CustomEnum::CLUE     => ClueEnum::CLUE_NOT_ALLOW_DELETE_FIELD,
+            CustomEnum::ODDS     => OddsEnum::ODDS_NOT_ALLOW_DELETE_FIELD,
+            CustomEnum::PRODUCT  => ProductEnum::PRODUCT_NOT_ALLOW_DELETE_FIELD,
+            default               => [],
+        };
+        $data = $this->dataDao->getTreeStructure(['cate_id' => $cateIds, 'status' => 1], $field, $with);
+        return array_map(function ($item) use ($systemFields) {
+            $key = $item['field'] ?? $item['key'] ?? '';
+            $item['is_system_owned'] = in_array($key, $systemFields, true) ? 1 : 0;
+            return $item;
+        }, $data);
     }
 
     /**

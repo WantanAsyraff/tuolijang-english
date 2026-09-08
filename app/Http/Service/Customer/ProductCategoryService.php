@@ -107,7 +107,11 @@ class ProductCategoryService extends BaseService implements ResourceServicesInte
      */
     public function getSelect(array $where, array $field = ['*'], $sort = ['sort', 'id'], array $with = []): array
     {
+        if ($field !== ['*'] && ! in_array('uid', $field, true)) {
+            $field[] = 'uid';
+        }
         $list = $this->dao->getList($where, $field, 0, 0, $sort, $with);
+        $list->each(fn ($item) => $item->is_system_owned = (int) $item->uid === 0 ? 1 : 0);
         return get_tree_children($list);
     }
 

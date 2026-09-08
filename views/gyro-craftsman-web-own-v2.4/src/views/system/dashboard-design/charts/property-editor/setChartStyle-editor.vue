@@ -44,8 +44,8 @@ export default {
     return {
       options: [
         {
-          value: '￥',
-          label: '￥'
+          value: 'RM',
+          label: 'RM'
         },
         {
           value: '$',

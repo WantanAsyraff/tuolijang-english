@@ -32,7 +32,9 @@
         <span v-else>--</span>
       </template>
     </el-table-column>
-    <el-table-column prop="num" :label="$('customer.renewalamount')" min-width="80"> </el-table-column>
+    <el-table-column prop="num" :label="$('customer.renewalamount')" min-width="80">
+      <template slot-scope="scope">{{ $formatCurrency(scope.row.num) }}</template>
+    </el-table-column>
     <el-table-column prop="renew.title" :label="$('customer.renewaltype')" min-width="110"> </el-table-column>
     <el-table-column prop="status" :label="$('customer.accessstatus')" min-width="80">
       <template slot-scope="scope">

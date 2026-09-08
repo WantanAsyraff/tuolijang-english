@@ -13,7 +13,9 @@
         <span v-if="scope.row.types == 1">{{ $("ui.customerContractContractRemindOrderRenewal") }}</span>
       </template>
     </el-table-column>
-    <el-table-column :label="$('ui.customerContractContractRemindAmountYuan')" min-width="100" prop="num"> </el-table-column>
+    <el-table-column :label="$('ui.customerContractContractRemindAmountYuan')" min-width="100" prop="num">
+      <template slot-scope="scope">{{ $formatCurrency(scope.row.num) }}</template>
+    </el-table-column>
     <el-table-column :label="$('ui.customerSetupDictionaryIndexStatus')" min-width="110" prop="num">
       <template #default="{ row }">
         <el-tag v-if="row.status === 1" type="danger">{{ $("ui.customerContractContractRemindAbandoned") }}</el-tag>

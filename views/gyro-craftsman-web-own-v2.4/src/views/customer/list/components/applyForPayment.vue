@@ -39,7 +39,7 @@
           </div>
           <div class="form-item">
             <el-form-item :label="list.types == 2 ? $('ui.customerListApplyForPaymentExpenseAmountYuan') : $('ui.customerInvoiceInvoiceViewPaymentAmountYuan')">
-              <span>{{ list.num }}</span>
+              <span>{{ $formatCurrency(list.num) }}</span>
             </el-form-item>
           </div>
           <div class="form-item">

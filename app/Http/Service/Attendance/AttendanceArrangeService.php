@@ -561,7 +561,7 @@ class AttendanceArrangeService extends BaseService implements AttendanceArrangeI
                     'group_id'   => $item['group_id'],
                     'shift_id'   => $item['shift_id'],
                 ]);
-                if ($item['date'] == now()->tz('Asia/Shanghai')->toDateString()) {
+                if ($item['date'] == now()->tz(config('app.timezone'))->toDateString()) {
                     if ($item['shift_id']) {
                         $info      = $statisticsService->renewStatisticsByDate((int) $k, $item['date']);
                         $shiftData = $shiftService->getArrangeShiftById($item['shift_id'], $item['date']);

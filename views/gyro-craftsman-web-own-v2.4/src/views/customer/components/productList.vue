@@ -61,7 +61,7 @@
       <!-- 成交单价列 -->
       <el-table-column prop="price" :label="$('ui.customerProductListDealUnitPrice')" width="120">
         <template slot-scope="scope">
-          <span v-if="type === 'edit'">{{ scope.row.price }}</span>
+          <span v-if="type === 'edit'">{{ $formatCurrency(scope.row.price) }}</span>
           <el-input-number v-else v-model="scope.row.price" :min="0" :precision="2" size="small" :controls="false"
             class="priceBox" controls-position="right" @change="handlePrice(scope.row)"></el-input-number>
         </template>
@@ -69,7 +69,7 @@
       <!-- 成交总价列 -->
       <el-table-column prop="total_price" :label="$('ui.customerProductListDealTotal')" width="120">
         <template slot-scope="scope">
-          <span v-if="type === 'edit'">{{ scope.row.total_price }}</span>
+          <span v-if="type === 'edit'">{{ $formatCurrency(scope.row.total_price) }}</span>
           <el-input-number v-else :controls="false" v-model="scope.row.total_price" :min="0" :precision="2"
             controls-position="right" size="small" class="priceBox"
             @change="handleTotalPrice(scope.row)"></el-input-number>

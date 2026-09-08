@@ -41,7 +41,9 @@
         }}</el-tag>
       </template>
     </el-table-column>
-    <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100"> </el-table-column>
+    <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100">
+      <template slot-scope="scope">{{ $formatCurrency(scope.row.num) }}</template>
+    </el-table-column>
     <el-table-column prop="pay_type" :label="$('ui.customerContractContractPaymentPaymentMethod')" min-width="90">
       <template slot-scope="scope">
         <span>{{ scope.row.pay_type !== '' ? paymentMethod(scope.row) : '--' }}</span>
@@ -94,18 +96,18 @@
     <div class="amount mt10">
       <div v-if="paymentPrice.payment_price != '0.00'" class="mr36">
         <span class="amount-label">{{ $("ui.customerContractContractInvoiceTotalReceivedAmountYuan") }}</span
-        ><span class="amount-val incomeColor">{{ paymentPrice.payment_price }}</span>
+        ><span class="amount-val incomeColor">{{ $formatCurrency(paymentPrice.payment_price) }}</span>
       </div>
       <div v-if="paymentPrice.expense_price != '0.00'" class="mr36">
         <span class="amount-label">{{ $("ui.customerContractContractPaymentTotalExpenseAmountYuan") }}</span
-        ><span class="expendColor">{{ paymentPrice.expense_price }}</span>
+        ><span class="expendColor">{{ $formatCurrency(paymentPrice.expense_price) }}</span>
       </div>
       <div v-if="paymentPrice.audit_income_price != '0.00' || paymentPrice.audit_expense_price != '0.00'">
         <span class="amount-label">{{ $("ui.customerListContractRecordAllAmountUnderReviewYuan") }}</span>
         <span class="amount-val">
-          <span class="incomeColor"> {{ paymentPrice.audit_income_price }}{{ $("ui.customerListContractRecordAllIncome") }} </span>
+          <span class="incomeColor"> {{ $formatCurrency(paymentPrice.audit_income_price) }}{{ $("ui.customerListContractRecordAllIncome") }} </span>
 
-          <span class="expendColor ml10"> {{ paymentPrice.audit_expense_price }}{{ $("ui.customerListContractRecordAllExpense") }}</span>
+          <span class="expendColor ml10"> {{ $formatCurrency(paymentPrice.audit_expense_price) }}{{ $("ui.customerListContractRecordAllExpense") }}</span>
         </span>
       </div>
     </div>

@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\user;
 
 use App\Http\Requests\ApiValidate;
+use App\Http\Requests\Traits\NormalizesPhoneInput;
 use crmeb\utils\Regex;
 
 /**
@@ -13,6 +14,7 @@ use crmeb\utils\Regex;
  */
 class UserLoginRequest extends ApiValidate
 {
+    use NormalizesPhoneInput;
     /**
      * 场景.
      * @var string[][]
@@ -26,26 +28,15 @@ class UserLoginRequest extends ApiValidate
         'registerUser'         => ['phone', 'verification_code', 'password', 'password_confirm'],
     ];
 
-    private const PHONE_NUMBER = '/^\+?[1-9]\d{6,14}$/';
-
     /**
      * Normalize phone input before validation and before verification_code uses request('phone').
      */
     public function check(array $data = [], array $rules = [])
     {
-        $this->normalizeRequestPhone();
+        $this->normalizePhoneInputs(['phone']);
 
         return parent::check($data, $rules);
     }
-
-    private function normalizeRequestPhone(): void
-    {
-        $phone = request()->input('phone');
-        if (is_string($phone) || is_numeric($phone)) {
-            request()->merge(['phone' => preg_replace('/[\s()\-]/', '', (string) $phone)]);
-        }
-    }
-
     /**
      * 验证规则.
      * @return array
@@ -65,7 +56,7 @@ class UserLoginRequest extends ApiValidate
                 'password_confirm_api:' . request('password'),
             ],
             'captcha'           => 'required|captcha_api:' . request('key') . ',user',
-            'phone'             => ['regex:' . self::PHONE_NUMBER],
+            'phone'             => ['regex:' . Regex::PHONE_NUMBER],
             'verification_code' => 'required|numeric|verification_api:' . request('phone'),
         ];
     }
