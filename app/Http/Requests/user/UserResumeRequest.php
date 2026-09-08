@@ -6,10 +6,20 @@ declare(strict_types=1);
 namespace App\Http\Requests\user;
 
 use App\Http\Requests\ApiValidate;
+use App\Http\Requests\Traits\NormalizesPhoneInput;
 use crmeb\utils\Regex;
 
 class UserResumeRequest extends ApiValidate
 {
+    use NormalizesPhoneInput;
+
+    public function check(array $data = [], array $rules = [])
+    {
+        $this->normalizePhoneInputs(['phone', 'standby_contacts_phone']);
+
+        return parent::check($data, $rules);
+    }
+
     /**
      * 场景.
      * @var \string[][]
@@ -52,13 +62,13 @@ class UserResumeRequest extends ApiValidate
             'home_address'    => 'max:255',
             'telephone'       => 'max:20',
             'phone'           => [
-                'size:11',
+                'max:32',
                 'regex:' . Regex::PHONE_NUMBER,
             ],
             'verification_code'      => 'required|integer|verification_api:' . request('phone'),
             'email'                  => 'email:rfc,dns',
             'standby_contacts'       => 'max:20',
-            'standby_contacts_phone' => ['size:11', 'regex:' . Regex::PHONE_NUMBER],
+            'standby_contacts_phone' => ['max:32', 'regex:' . Regex::PHONE_NUMBER],
             'bank'                   => 'max:50',
             'bank_number'            => ['max:21', 'regex:' . Regex::BANK_NUMBER],
             'age'                    => 'max:100',
@@ -97,11 +107,11 @@ class UserResumeRequest extends ApiValidate
             'current_address.max'                => '现居住地长度超出限制最大长度255个字符',
             'home_address.max'                   => '家庭住址长度超出限制最大长度255个字符',
             'telephone.max'                      => '电话长度超出限制最大20位',
-            'phone.size'                         => '手机号码超出限制最大11位',
+            'phone.max'                         => '手机号码超出限制最大32位',
             'phone.regex'                        => '请输入正确的手机号码',
             'email.email'                        => '请输入正确的email地址',
             'standby_contacts.max'               => '备用人手机号码超出限制最大20个字符',
-            'standby_contacts_phone.size'        => '备用联系人手机号码不正确',
+            'standby_contacts_phone.max'        => '备用联系人手机号码不正确',
             'standby_contacts_phone.regex'       => '备用联系人手机号码不符合规范',
             'bank.max'                           => '银行开户行超出限制最大50个字符',
             'bank_number.max'                    => '银行卡号超出限制最大21个字符',

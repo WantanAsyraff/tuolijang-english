@@ -725,19 +725,19 @@ export default {
       return [
         {
           order_no: 'ORD20230601001',
-          amount: '¥15,000.00',
+          amount: 'RM 15,000.00',
           status: 'completed',
           date: '2023-06-01'
         },
         {
           order_no: 'ORD20230515002',
-          amount: '¥8,500.00',
+          amount: 'RM 8,500.00',
           status: 'completed',
           date: '2023-05-15'
         },
         {
           order_no: 'ORD20230420003',
-          amount: '¥12,000.00',
+          amount: 'RM 12,000.00',
           status: 'processing',
           date: '2023-04-20'
         }

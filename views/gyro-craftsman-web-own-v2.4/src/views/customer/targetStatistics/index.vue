@@ -268,9 +268,9 @@ export default {
           formatter: (params) => {
             let res = `<div style="font-weight: bold;">${params[0].name}</div>`
             params.forEach((item) => {
-              let value = item.value
-              let unit = item.seriesName === this.tChartText('完成率') ? '%' : this.tChartText('元')
-              res += `<div>${item.marker} ${item.seriesName}: ${value}${unit}</div>`
+              const isRate = item.seriesName === this.tChartText('完成率')
+              const value = isRate ? this.$formatNumber(item.value) : this.$formatCurrency(item.value)
+              res += `<div>${item.marker} ${item.seriesName}: ${value}${isRate ? '%' : ''}</div>`
             })
             return res
           }

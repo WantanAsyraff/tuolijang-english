@@ -1,7 +1,7 @@
 FROM m.daocloud.io/docker.io/library/php:8.0-cli
 
 # 设置时区
-ENV TZ=Asia/Shanghai
+ENV TZ=Asia/Kuala_Lumpur
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 替换为阿里云源

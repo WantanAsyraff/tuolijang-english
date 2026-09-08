@@ -69,7 +69,7 @@
                       class="pointer copy"
                       :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
-                      >{{ item.amount }}</span
+                      >{{ $formatCurrency(item.amount) }}</span
                     >
                   </el-form-item>
                 </el-form>
@@ -105,7 +105,7 @@
                     <span> {{ item.created_at }}</span>
                   </el-form-item>
                   <el-form-item :label="$('ui.customerInvoiceIndexPaymentAmount')" prop="name">
-                    <span :class="item.price == item.amount ? '' : 'active'">{{ item.price }}</span>
+                    <span :class="item.price == item.amount ? '' : 'active'">{{ $formatCurrency(item.price) }}</span>
                   </el-form-item>
                 </el-form>
               </div>
@@ -132,7 +132,7 @@
                       class="pointer copy"
                       :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
-                      >{{ item.amount }}</span
+                      >{{ $formatCurrency(item.amount) }}</span
                     >
                   </el-form-item>
                 </el-form>
@@ -168,7 +168,7 @@
                     <span> {{ item.created_at }}</span>
                   </el-form-item>
                   <el-form-item :label="$('ui.customerInvoiceIndexPaymentAmount')" prop="name">
-                    <span :class="item.price == item.amount ? '' : 'active'">{{ item.price }}</span>
+                    <span :class="item.price == item.amount ? '' : 'active'">{{ $formatCurrency(item.price) }}</span>
                   </el-form-item>
                 </el-form>
               </div>
@@ -190,7 +190,7 @@
                       class="pointer copy"
                       :title="$('ui.customerInvoiceIndexClickToCopy')"
                       @click="copy"
-                      >{{ item.amount }}</span
+                      >{{ $formatCurrency(item.amount) }}</span
                     >
                   </el-form-item>
                 </el-form>
@@ -227,7 +227,7 @@
                     <span> {{ item.created_at }}</span>
                   </el-form-item>
                   <el-form-item :label="$('ui.customerInvoiceIndexPaymentAmount')" prop="name">
-                    <span :class="item.price == item.amount ? '' : 'active'">{{ item.price }}</span>
+                    <span :class="item.price == item.amount ? '' : 'active'">{{ $formatCurrency(item.price) }}</span>
                   </el-form-item>
                 </el-form>
               </div>

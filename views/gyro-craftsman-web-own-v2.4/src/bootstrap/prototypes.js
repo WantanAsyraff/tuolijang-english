@@ -8,6 +8,15 @@ import { EventBus } from "@/libs/bus";
 import pickerOptions from "@/libs/pickerOptions";
 import { getDefaultAvatar, getAvatarSrc, setImageDefaultAvatar } from "@/utils/avatar";
 import { processResourceUrl } from "@/utils/resourceUtil";
+import { formatMalaysiaCurrency, formatMalaysiaNumber } from "@/utils/malaysia-currency";
+import {
+  MALAYSIA_TIME_ZONE,
+  formatMalaysiaDate,
+  formatMalaysiaDateTime,
+  formatMalaysiaPattern,
+  formatMalaysiaStorageDateTime,
+  formatMalaysiaTime,
+} from "@/utils/malaysia-date-time";
 moment.locale(getLanguage() === "en" ? "en" : "zh-cn");
 
 export function registerPrototypes(Vue) {
@@ -16,6 +25,14 @@ export function registerPrototypes(Vue) {
   Vue.prototype.$bus = EventBus;
   Vue.prototype.$vue = Vue;
   Vue.prototype.$moment = moment;
+  Vue.prototype.$formatCurrency = formatMalaysiaCurrency;
+  Vue.prototype.$formatNumber = formatMalaysiaNumber;
+  Vue.prototype.$malaysiaTimeZone = MALAYSIA_TIME_ZONE;
+  Vue.prototype.$formatMalaysiaDate = (value) => formatMalaysiaDate(value, getLanguage());
+  Vue.prototype.$formatMalaysiaDateTime = (value) => formatMalaysiaDateTime(value, getLanguage());
+  Vue.prototype.$formatMalaysiaTime = (value, includeSeconds = false) => formatMalaysiaTime(value, getLanguage(), includeSeconds);
+  Vue.prototype.$formatMalaysiaPattern = formatMalaysiaPattern;
+  Vue.prototype.$formatMalaysiaStorageDateTime = formatMalaysiaStorageDateTime;
   Vue.prototype.$erd = ElementResizeDetectorMaker();
   Vue.prototype.$pickerOptionsTimeEle = pickerOptions;
   Vue.prototype.tableHeight = "calc(100vh - 269px)";

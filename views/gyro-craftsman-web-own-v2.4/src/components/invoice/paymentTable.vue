@@ -21,7 +21,9 @@
         >
       </template>
     </el-table-column>
-    <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100"> </el-table-column>
+    <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100">
+      <template slot-scope="scope">{{ $formatCurrency(scope.row.num) }}</template>
+    </el-table-column>
     <el-table-column prop="status" :label="$('ui.invoicePaymentTableInvoiceStatus')" min-width="100">
       <template slot-scope="scope">
       

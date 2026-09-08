@@ -329,13 +329,13 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/business/holidayType/index.vue",
       "mustContain": [
-        "{{ $(scope.row.name) }}"
+        "holidayTypeName(scope.row)"
       ]
     },
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/setting/system/quick/index.vue",
       "mustContain": [
-        "{{ $(scope.row.name) }}"
+        "quickEntryName(scope.row)"
       ]
     },
     {
@@ -347,7 +347,7 @@
     {
       "file": "views/gyro-craftsman-web-own-v2.4/src/views/user/news/unread.vue",
       "mustContain": [
-        "$(scope.row.cate_name, scope.row.cate_name_en)"
+        "notificationText(scope.row, 'cate_name')"
       ]
     },
     {

@@ -169,9 +169,9 @@ export default {
       dialogVisible: false,
       labelWidth: 120,
       uploadSize: 2,
-      title01: '回款金额(元)',
-      title02: '续费结束日期',
-      placeholder01: '请输入回款金额',
+      title01: 'runtime.finance.approval.collectionAmountCny',
+      title02: 'customer.renewaldate',
+      placeholder01: 'customer.placeholder33',
       paymentOptions: [],
       sourceOptions: [],
       uploadData: {},
@@ -239,10 +239,10 @@ export default {
         }
 
         if (this.types == 0) {
-          this.title01 = '回款金额(元)'
+          this.title01 = 'runtime.finance.approval.collectionAmountCny'
         } else {
-          this.title01 = '续费金额(元)'
-          this.placeholder01 = '请输入续费金额'
+          this.title01 = 'runtime.finance.approval.renewalAmountCny'
+          this.placeholder01 = 'customer.placeholder35'
         }
       }
     }

@@ -216,9 +216,9 @@ export default {
         radio: [{ required: true, message: $('legacyScript.pleaseSelectBusinessType'), trigger: 'change' }],
         endDate: [{ required: true, message: $('legacyScript.selectReminderTime'), trigger: 'change' }]
       },
-      title01: '回款金额(元)',
+      title01: 'runtime.finance.approval.collectionAmountCny',
       title02: '',
-      placeholder01: '请输入回款金额',
+      placeholder01: 'customer.placeholder33',
       placeholder02: this.$('customer.placeholder33'),
       labelWidth: 120,
       payText: '',
@@ -272,12 +272,12 @@ export default {
             this.rules.radio = 1
           } else if (nVal.data.types == 1) {
             this.rules.radio = 2
-            this.title01 = '续费金额(元)'
-            this.title02 = '续费结束日期'
+            this.title01 = 'runtime.finance.approval.renewalAmountCny'
+            this.title02 = 'customer.renewaldate'
             this.placeholder02 = this.$('customer.placeholder36')
           } else {
             this.rules.radio = 1
-            this.title01 = '回款金额(元)'
+            this.title01 = 'runtime.finance.approval.collectionAmountCny'
           }
           if (nVal.data.renew) {
             this.rules.type = nVal.data.renew.id
@@ -311,8 +311,8 @@ export default {
           } else {
             this.rules.endDate = nVal.data.end_date
           }
-          this.title01 = '续费金额(元)'
-          this.title02 = '续费结束日期'
+          this.title01 = 'runtime.finance.approval.renewalAmountCny'
+          this.title02 = 'customer.renewaldate'
           this.placeholder01 = this.$('customer.placeholder35')
           this.placeholder02 = this.$('customer.placeholder36')
         }
@@ -326,8 +326,8 @@ export default {
             this.title02 = '续费提醒时间' // 回款提醒日期
             this.placeholder02 = '请选择续费提醒时间'
             this.rules.endDate = nVal.data.time
-            this.title01 = '续费金额(元)'
-            this.placeholder01 = '请输入续费金额'
+            this.title01 = 'runtime.finance.approval.renewalAmountCny'
+            this.placeholder01 = 'customer.placeholder35'
           } else {
             this.rules.radio = 1
             this.title02 = '回款提醒日期' // 回款提醒日期
@@ -401,7 +401,7 @@ export default {
           this.title01 = '预计回款金额'
           this.title02 = '回款提醒日期'
         } else {
-          this.title01 = '回款金额(元)'
+          this.title01 = 'runtime.finance.approval.collectionAmountCny'
           this.title02 = '回款提醒日期'
         }
         this.placeholder02 = this.$('customer.placeholder34')
@@ -413,8 +413,8 @@ export default {
           this.title02 = this.$('customer.renewaldate01')
           this.placeholder02 = this.$('customer.placeholder39')
         } else {
-          this.title01 = '续费金额(元)'
-          this.title02 = '续费结束日期'
+          this.title01 = 'runtime.finance.approval.renewalAmountCny'
+          this.title02 = 'customer.renewaldate'
           this.placeholder01 = this.$('customer.placeholder35')
           this.placeholder02 = this.$('customer.placeholder36')
         }

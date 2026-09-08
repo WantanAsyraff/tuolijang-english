@@ -23,7 +23,7 @@
 
                 <el-form-item>
                   <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsIncomeExpenseAmountYuan") }}</span>
-                  <p>{{ delData.num }}</p>
+                  <p>{{ $formatCurrency(delData.num) }}</p>
                 </el-form-item>
                 <el-form-item>
                   <span slot="label">{{ $("ui.fdEnterpriseListViewDetailsIncomeExpenseMethod") }}</span>

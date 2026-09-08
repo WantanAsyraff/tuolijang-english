@@ -89,10 +89,10 @@
       <el-table-column property="name" :label="$('ui.customerSpecificationsProductPrice')" width="120">
         <template slot-scope="scope">
           <div v-if="scope.row.attr_value && scope.row.attr_value.length == 1" class="ml10">
-            {{ scope.row.attr_value[0].price || '0.00' }}
+            {{ $formatCurrency(scope.row.attr_value[0].price || 0) }}
           </div>
           <div v-if="!scope.row.attr_value" class="ml10">
-            {{ scope.row.price || '0.00' }}
+            {{ $formatCurrency(scope.row.price || 0) }}
           </div>
         </template>
       </el-table-column>

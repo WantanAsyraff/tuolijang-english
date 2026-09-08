@@ -8,7 +8,7 @@
       <el-table-column prop="card.name" :label="$('ui.businessHolidayQueryIndexName')" fixed="left" min-width="120px"> </el-table-column>
        <el-table-column prop="created_at" :label="$('ui.hrAttendanceStatisticsDailyDate')" width="120" fixed="left">
           <template #default="{ row }">
-            {{ $moment(row.created_at).format('YYYY-MM-DD') }}
+            {{ $formatMalaysiaDate(row.created_at) }}
           </template>
         </el-table-column>
       <el-table-column prop="frame.name" :label="$('ui.businessHolidayQueryIndexDepartment')" min-width="140px"> </el-table-column>

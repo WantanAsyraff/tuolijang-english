@@ -209,7 +209,7 @@
                       : getColorFn('#1890ff', '0.1')
                   }"
                 >
-                  {{ scope.row[header.field].name }}
+                  {{ dictionaryValueLabel(scope.row[header.field], header) }}
                 </div>
                 <span
                   v-else-if="header.field === 'payment_status'"
@@ -401,6 +401,10 @@ export default {
     },
     labelDisplay(entry) {
       return dictionaryDisplayLabel(entry, this.$, 'name')
+    },
+    dictionaryValueLabel(entry, field) {
+      const raw = entry && entry.name ? entry.name : ''
+      return Number(field && field.is_system_owned) === 1 ? this.$(raw) : dictionaryDisplayLabel(entry, this.$, 'name')
     },
     scheduleTableLayout() {
       if (this.tableLayoutTimer) {

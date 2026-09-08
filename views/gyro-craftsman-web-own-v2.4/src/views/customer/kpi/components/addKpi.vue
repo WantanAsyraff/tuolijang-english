@@ -27,7 +27,7 @@
       :placeholder="$('ui.customerKpiIndexSelectYear')"
     >
     </el-date-picker>
-    <el-input v-model="monthData.annual" size="small" style="width: 250px" :placeholder="$('ui.customerKpiAddKpiEnterAnnualTarget')" suffix="元" />
+    <el-input v-model="monthData.annual" size="small" style="width: 250px" :placeholder="$('ui.customerKpiAddKpiEnterAnnualTarget')" :suffix="$language === 'en' ? 'RM' : '元'" />
     <el-button type="primary" size="small" @click="averageAllocateToMonthly"> {{ $("ui.customerKpiAddKpiDistributeTargetEvenlyByMonth") }} </el-button>
   </div>
   <!-- 季度、月度目标输入区域 -->

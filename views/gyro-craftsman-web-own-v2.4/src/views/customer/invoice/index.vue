@@ -106,7 +106,7 @@
                         :data-clipboard-text="item.amount"
                         @click="copy"
                         :class="item.price == item.amount ? '' : 'active'"
-                        >{{ item.amount || '--' }}</span
+                        >{{ $formatCurrency(item.amount) || '--' }}</span
                       >
                     </el-form-item>
                   </el-form>
@@ -139,7 +139,7 @@
                       <span> {{ item.card ? item.card.name : '' }} {{ item.created_at || '--' }}</span>
                     </el-form-item>
                     <el-form-item :label="$('ui.customerInvoiceIndexPaymentAmount')" prop="name">
-                      <span :class="item.price == item.amount ? '' : 'active'">{{ item.price || '--' }}</span>
+                      <span :class="item.price == item.amount ? '' : 'active'">{{ $formatCurrency(item.price) || '--' }}</span>
                     </el-form-item>
                   </el-form>
                 </div>
@@ -168,7 +168,7 @@
                         @click="copy"
                         :class="item.price == item.amount ? '' : 'active'"
                       >
-                        {{ item.amount || '--' }}
+                        {{ $formatCurrency(item.amount) || '--' }}
                       </span>
                     </el-form-item>
                   </el-form>
@@ -201,7 +201,7 @@
                       <span> {{ item.card ? item.card.name : '' }} {{ item.created_at || '--' }}</span>
                     </el-form-item>
                     <el-form-item :label="$('ui.customerInvoiceIndexPaymentAmount')" prop="name">
-                      <span :class="item.price == item.amount ? '' : 'active'">{{ item.price || '--' }}</span>
+                      <span :class="item.price == item.amount ? '' : 'active'">{{ $formatCurrency(item.price) || '--' }}</span>
                     </el-form-item>
                   </el-form>
                 </div>
@@ -223,7 +223,7 @@
                         :data-clipboard-text="item.amount"
                         @click="copy"
                         :class="item.price == item.amount ? '' : 'active'"
-                        >{{ item.amount || '--' }}</span
+                        >{{ $formatCurrency(item.amount) || '--' }}</span
                       >
                     </el-form-item>
                   </el-form>
@@ -257,7 +257,7 @@
                       <span> {{ item.card ? item.card.name : '' }} {{ item.created_at || '--' }}</span>
                     </el-form-item>
                     <el-form-item :label="$('ui.customerInvoiceIndexPaymentAmount')" prop="name">
-                      <span :class="item.price == item.amount ? '' : 'active'">{{ item.price || '--' }}</span>
+                      <span :class="item.price == item.amount ? '' : 'active'">{{ $formatCurrency(item.price) || '--' }}</span>
                     </el-form-item>
                   </el-form>
                 </div>

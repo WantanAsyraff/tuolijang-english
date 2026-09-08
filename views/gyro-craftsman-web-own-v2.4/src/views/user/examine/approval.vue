@@ -46,11 +46,11 @@ export default {
       },
       typeData: [],
       examineTabData: [
-        { name: '待审批', id: '1' },
-        { name: '全部', id: '5' },
-        { name: '已处理', id: '2' },
-        { name: '抄送我的', id: '3' },
-        { name: '已撤销', id: '4' }
+        { name: '待审批', id: '1', is_system_owned: 1 },
+        { name: '全部', id: '5', is_system_owned: 1 },
+        { name: '已处理', id: '2', is_system_owned: 1 },
+        { name: '抄送我的', id: '3', is_system_owned: 1 },
+        { name: '已撤销', id: '4', is_system_owned: 1 }
       ]
     }
   },

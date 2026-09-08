@@ -38,7 +38,9 @@
                   </template>
                 </el-table-column>
 
-                <el-table-column :label="$('customer.paymentAmountYuan')" min-width="100" prop="num" />
+                <el-table-column :label="$('customer.paymentAmountYuan')" min-width="100" prop="num">
+                  <template slot-scope="scope">{{ $formatCurrency(scope.row.num) }}</template>
+                </el-table-column>
                 <el-table-column :label="$('customer.paymentMethod')" min-width="100" prop="pay_type">
                   <template v-slot:default="scope">
                     <span>{{ scope.row.pay_type !== '' ? paymentMethod(scope.row) : '--' }}</span>
@@ -106,15 +108,15 @@
       <div class="footer-expend">
         <div class="expend">
           <span class="mr14"
-            >{{ $('customer.totalReceivedAmountYuan') }}: <span class="income">{{ census.income || '0' }} </span>
+            >{{ $('customer.totalReceivedAmountYuan') }}: <span class="income">{{ $formatCurrency(census.income || 0) }} </span>
           </span>
 
           <span class="mr14">
-            {{ $('customer.totalExpenseAmountYuan') }}: <span class="expend-color">{{ census.expend || '0' }} </span>
+            {{ $('customer.totalExpenseAmountYuan') }}: <span class="expend-color">{{ $formatCurrency(census.expend || 0) }} </span>
           </span>
 
           <span>
-            {{ $('customer.amountUnderReviewYuan') }}: <span class="income">{{ census.review_income || '0' }} ({{ $('customer.income') }})</span>
+            {{ $('customer.amountUnderReviewYuan') }}: <span class="income">{{ $formatCurrency(census.review_income || 0) }} ({{ $('customer.income') }})</span>
             <span class="expend-color">{{ census.review_expend || '0' }} ({{ $('customer.expense') }})</span></span
           >
         </div>

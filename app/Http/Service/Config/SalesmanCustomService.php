@@ -122,7 +122,7 @@ class SalesmanCustomService extends BaseService
      */
     public function salesmanCustomField(int $uid, string $customType): array
     {
-        $cacheVersion = 'system_no_v3';
+        $cacheVersion = 'system_no_v4';
         $result = Cache::tags([CacheEnum::TAG_CUSTOMER])->remember(
             md5($uid . '_' . $customType . '_' . $cacheVersion),
             (int) sys_config('system_cache_ttl', 3600),
@@ -135,9 +135,10 @@ class SalesmanCustomService extends BaseService
                 // 获取列表和搜索字段基础数据
                 [$list, $search] = $this->salesmanCustomFullField($customType);
                 // 合并并过滤列表字段
-                $list = collect($list)->concat(in_array($customType, [ViewSearchEnum::VIEW_CUSTOMER, ViewSearchEnum::VIEW_CUSTOMER_SEAS]) ? $this->filterFields($fields, ['file', 'oawangeditor', 'images'], ['clue_id']) : $this->filterFields($fields, ['images', 'file', 'oawangeditor']))->all();
+                // Enum-defined fields are application metadata; custom FormData fields retain their explicit ownership.
+                $list = collect($list)->map(fn ($item) => [...$item, 'is_system_owned' => 1])->concat(in_array($customType, [ViewSearchEnum::VIEW_CUSTOMER, ViewSearchEnum::VIEW_CUSTOMER_SEAS]) ? $this->filterFields($fields, ['file', 'oawangeditor', 'images'], ['clue_id']) : $this->filterFields($fields, ['images', 'file', 'oawangeditor']))->all();
                 // 合并并过滤搜索字段，确保唯一性
-                $search = collect($search)->concat($this->filterFields($fields, ['images', 'file', 'oawangeditor'], ['contract_followed', 'customer_followed']))->unique('name')->values()->all();
+                $search = collect($search)->map(fn ($item) => [...$item, 'is_system_owned' => 1])->concat($this->filterFields($fields, ['images', 'file', 'oawangeditor'], ['contract_followed', 'customer_followed']))->unique('name')->values()->all();
                 // 提取字段键名
                 $listFieldKeys   = collect($list)->pluck('field')->all();
                 $searchFieldKeys = collect($search)->pluck('field')->all();
@@ -158,7 +159,7 @@ class SalesmanCustomService extends BaseService
                             if ($item['field'] == 'path') {
                                 $item['dict'] = app()->get(ProductCategoryService::class)->getSelect(
                                     ['status' => 1],
-                                    ['id as value', 'name as label', 'pid', 'id']
+                                    ['id as value', 'name as label', 'pid', 'id', 'uid']
                                 );
                             }
                             break;

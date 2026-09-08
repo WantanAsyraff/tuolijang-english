@@ -287,10 +287,10 @@ test("installed notification fixtures localize at Workbench and Push-record boun
 
   const workbench = read("gyro-craftsman-web-own-v2.4/src/views/user/workbench/index.vue");
   const pushRecords = read("gyro-craftsman-web-own-v2.4/src/views/setting/enterprise/news/record.vue");
-  assert.match(workbench, /localizedNoticeText\(item\.title\)/);
-  assert.match(workbench, /localizedNoticeText\(item\.message\)/);
-  assert.match(pushRecords, /localizedNoticeText\(scope\.row\.title\)/);
-  assert.match(pushRecords, /localizedNoticeText\(scope\.row\.message\)/);
+  assert.match(workbench, /notificationText\(item, 'title'\)/);
+  assert.match(workbench, /notificationText\(item, 'message'\)/);
+  assert.match(pushRecords, /notificationText\(scope\.row, 'title'\)/);
+  assert.match(pushRecords, /notificationText\(scope\.row, 'message'\)/);
 });
 
 test("SQL-owned menu, dictionary, settings, and CRUD labels are fully mapped", { skip: !includesApp("web") }, () => {
@@ -593,6 +593,72 @@ test("final dashboard translations reject key fallbacks and protect authored not
   assert.match(read("gyro-craftsman-web-own-v2.4/src/views/user/news/unread.vue"), /notificationText\(scope\.row, 'message'\)/);
   assert.match(read("gyro-craftsman-web-own-v2.4/src/layout/components/Notice/noticeList.vue"), /notificationRecordText/);
   assert.match(read("gyro-craftsman-web-own-v2.4/src/views/user/notice/index.vue"), /label_key: 'ui\.layoutNoticeNoticeListUnread'/);
+});
+
+test("legacy system notification payloads localize without ownership metadata", { skip: !includesApp("web") }, () => {
+  const { notificationRecordText } = require(
+    path.join(views, "gyro-craftsman-web-own-v2.4/src/lang/notification-record.js")
+  );
+  const translate = (value) => runtime.translateSystemTextValue(value, { locale: "en" });
+
+  assert.equal(
+    notificationRecordText(
+      { title: "To-do task reminder", message: "您有一条个人待办任务，请记得处理哦！待办内容【next week stuff】" },
+      translate,
+      "message"
+    ),
+    "You have a personal to-do task to process: [next week stuff]"
+  );
+  assert.equal(
+    notificationRecordText(
+      { title: "Contract task reminder", message: "您有一条回款任务，请记得处理哦！提醒内容【sadasd】" },
+      translate,
+      "message"
+    ),
+    "You have a payment collection task to process. Reminder: [sadasd]"
+  );
+  assert.equal(
+    notificationRecordText(
+      { is_system_owned: 0, title: "To-do task reminder", message: "您有一条个人待办任务，请记得处理哦！待办内容【customer note】" },
+      translate,
+      "message"
+    ),
+    "You have a personal to-do task to process: [customer note]"
+  );
+  assert.equal(
+    notificationRecordText(
+      { is_system_owned: 0, title: "Custom reminder", message: "您有一条个人待办任务，请记得处理哦！待办内容【customer note】" },
+      translate,
+      "message"
+    ),
+    "您有一条个人待办任务，请记得处理哦！待办内容【customer note】"
+  );
+});
+
+test("legacy static dashboard filter placeholders use the shared localization boundary", { skip: !includesApp("web") }, () => {
+  const filterRenderer = read("gyro-craftsman-web-own-v2.4/src/components/common/formList.vue");
+  assert.match(filterRenderer, /hasSystemOwnership/);
+  assert.match(filterRenderer, /hasDefaultOwnership/);
+  assert.match(filterRenderer, /Static filter definitions predate ownership metadata/);
+  assert.match(filterRenderer, /if \(!isSystemOwned\) return raw/);
+  assert.match(filterRenderer, /if \(!isSystemOwned\) return raw\s+return this\.\$\(raw\)/);
+  assert.doesNotMatch(filterRenderer, /const englishKey = key \+ '_en'/);
+
+  const customerMetadataService = read("../app/Http/Service/Config/SalesmanCustomService.php");
+  assert.match(customerMetadataService, /system_no_v4/);
+  assert.match(customerMetadataService, /'is_system_owned' => 1/);
+
+  const formService = read("../app/Http/Service/Config/FormService.php");
+  assert.match(formService, /\$item\['is_system_owned'\] = in_array\(\$key, \$systemFields, true\) \? 1 : 0/);
+
+  for (const [source, expected] of [
+    ["审批状态", "Approval status"],
+    ["审批类型", "Approval type"],
+    ["开始时间", "Start time"],
+    ["结束时间", "End time"],
+  ]) {
+    assert.equal(runtime.translateSystemTextValue(source, { locale: "en" }), expected);
+  }
 });
 
 test("dashboard exposes $() as its only application translation interface", () => {

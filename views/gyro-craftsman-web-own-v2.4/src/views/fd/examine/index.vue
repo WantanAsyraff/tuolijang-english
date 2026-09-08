@@ -30,7 +30,9 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="num" min-width="90" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" />
+        <el-table-column prop="num" min-width="90" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')">
+          <template slot-scope="scope">{{ $formatCurrency(scope.row.num) }}</template>
+        </el-table-column>
         <el-table-column prop="pay_type" min-width="100" :label="$('ui.customerContractContractPaymentPaymentMethod')">
           <template slot-scope="scope">
             <span>{{ scope.row.pay_type !== '' ? paymentMethod(scope.row) : '--' }}</span>

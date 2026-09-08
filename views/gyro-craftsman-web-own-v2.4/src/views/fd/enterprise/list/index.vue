@@ -32,7 +32,7 @@
           <el-table-column :label="$('ui.fdEnterpriseListIndexIncomeExpenseAmountYuan')" min-width="120" prop="num" show-overflow-tooltip>
             <template slot-scope="scope">
               <div v-if="scope.row.types !== 10">
-                {{ scope.row.num }}
+                {{ $formatCurrency(scope.row.num) }}
               </div>
             </template>
           </el-table-column>

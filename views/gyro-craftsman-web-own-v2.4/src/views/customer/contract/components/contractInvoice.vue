@@ -10,15 +10,15 @@
   <div class="amount mt10">
     <div>
       <span class="amount-label">{{ $("ui.customerContractContractInvoiceTotalInvoicedAmountYuan") }}</span>
-      <span class="amount-val">{{ cumulative_invoiced_price }}</span>
+      <span class="amount-val">{{ $formatCurrency(cumulative_invoiced_price) }}</span>
     </div>
     <div>
       <span class="amount-label ml36">{{ $("ui.customerContractContractInvoiceAmountUnderInvoiceReviewYuan") }}</span>
-      <span class="amount-val">{{ audit_invoiced_price }}</span>
+      <span class="amount-val">{{ $formatCurrency(audit_invoiced_price) }}</span>
     </div>
     <div>
       <span class="amount-label ml36">{{ $("ui.customerContractContractInvoiceTotalReceivedAmountYuan") }}</span>
-      <span class="amount-val"> {{ cumulative_payment_price }}</span>
+      <span class="amount-val"> {{ $formatCurrency(cumulative_payment_price) }}</span>
     </div>
   </div>
   <el-table :data="tableData" style="width: 100%; height: 100%">
@@ -26,12 +26,12 @@
     <el-table-column prop="title" :label="$('ui.customerContractContractInvoiceInvoiceHeader')" min-width="150"> </el-table-column>
     <el-table-column prop="amount" :label="$('customer.invoicingpay')" min-width="100">
       <template slot-scope="scope">
-        <span :class="scope.row.price == scope.row.amount ? '' : 'active'">{{ scope.row.amount }}</span>
+        <span :class="scope.row.price == scope.row.amount ? '' : 'active'">{{ $formatCurrency(scope.row.amount) }}</span>
       </template>
     </el-table-column>
     <el-table-column prop="price" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="100">
       <template slot-scope="scope">
-        <span :class="scope.row.price == scope.row.amount ? '' : 'active'">{{ scope.row.price }}</span>
+        <span :class="scope.row.price == scope.row.amount ? '' : 'active'">{{ $formatCurrency(scope.row.price) }}</span>
       </template>
     </el-table-column>
 

@@ -26,7 +26,7 @@ services:
     container_name: tuoluojiang_php_ha_1
     restart: unless-stopped
     environment: &php_env
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Kuala_Lumpur
       - DB_HOST=mysql
       - DB_PORT=3306
       - DB_DATABASE=tuoluojiang
@@ -94,7 +94,7 @@ services:
     ports:
       - "3376:3306"
     environment:
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Kuala_Lumpur
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=tuoluojiang
       - MYSQL_ROOT_HOST=%
@@ -125,7 +125,7 @@ services:
     ports:
       - "6389:6379"
     environment:
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Kuala_Lumpur
     volumes:
       - ./redis/config/redis.conf:/usr/local/etc/redis/redis.conf:ro
       - redis_data:/data

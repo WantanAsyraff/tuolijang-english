@@ -1,9 +1,10 @@
+import { isValidMobilePhone, mobilePhonePattern, normalizePhoneInput } from '@/utils/phone'
+
 const helper = {
   // 手机号码正则验证
-  phoneReg: /^\+?[1-9]\d{6,14}$/,
-  normalizePhone(phone) {
-    return String(phone || '').replace(/[\s()-]/g, '')
-  },
+  phoneReg: mobilePhonePattern,
+  isValidPhone: isValidMobilePhone,
+  normalizePhone: normalizePhoneInput,
   // 座机号码正则验证
   landlineReg: /^([0-9]{3,4}-)?[0-9]{7,8}$/,
   // 邮箱正则验证

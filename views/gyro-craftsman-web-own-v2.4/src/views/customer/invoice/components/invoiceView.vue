@@ -26,7 +26,7 @@
             </span>
 
             <span class="title">{{ $('customer.invoicingpay') }}：</span
-            ><span class="info2">{{ delData.amount }}</span>
+            ><span class="info2">{{ $formatCurrency(delData.amount) }}</span>
           </div>
         </el-col>
       </el-row>
@@ -58,7 +58,7 @@
           <div class="form-item">
             <el-form-item>
               <span slot="label">{{ $("ui.customerInvoiceInvoiceViewPaymentAmountYuan") }}</span>
-              <p>{{ delData.price }}</p>
+              <p>{{ $formatCurrency(delData.price) }}</p>
             </el-form-item>
           </div>
           <div class="form-item">
@@ -90,7 +90,7 @@
           <div class="form-item">
             <el-form-item>
               <span slot="label">{{ $('customer.invoicingpay') }}：</span>
-              <p>{{ delData.amount }}</p>
+              <p>{{ $formatCurrency(delData.amount) }}</p>
             </el-form-item>
           </div>
           <div class="form-item">
@@ -260,7 +260,9 @@
               <span v-if="scope.row.types === 1">{{ $("ui.invoiceInvoiceDetailsRenewalRecord") }} {{ scope.row.renew ? scope.row.renew.title : '--' }}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="150"> </el-table-column>
+          <el-table-column prop="num" :label="$('ui.invoiceInvoiceDetailsPaymentAmountYuan')" min-width="150">
+            <template slot-scope="scope">{{ $formatCurrency(scope.row.num) }}</template>
+          </el-table-column>
 
           <el-table-column prop="card.name" :label="$('ui.hrAssessCheckIndexCreator')" min-width="90"> </el-table-column>
           <el-table-column prop="created_at" :label="$('ui.invoiceInvoiceDetailsCreatedTime')" min-width="180"> </el-table-column>

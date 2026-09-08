@@ -599,8 +599,8 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "产品编号": "Product No.",
   "产品表单": "Product form",
   "产品查看": "View product",
-  "产品成本(元)": "Product cost (yuan)",
-  "产品成本价（元）": "Product cost (yuan)",
+  "产品成本(元)": "Product cost (MYR)",
+  "产品成本价（元）": "Product cost (MYR)",
   "产品发布": "Product release",
   "产品分类": "Product categories",
   "产品分类列表": "Product category list",
@@ -616,7 +616,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "产品清单的字段在添加产品信息中维护": "Product list fields are maintained when adding product information",
   "产品上下架状态": "Product availability status",
   "产品售价": "Product price",
-  "产品售价(元)": "Product price (yuan)",
+  "产品售价(元)": "Product price (MYR)",
   "产品销售类型": "Product sales type",
   "产品信息": "Product information",
   "产品业绩排行": "Product performance ranking",
@@ -839,7 +839,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "单规格商品属性错误": "Invalid single-variant product attributes",
   "单级": "Single level",
   "单价": "Unit price",
-  "单价(元)": "Unit price (yuan)",
+  "单价(元)": "Unit price (MYR)",
   "单位": "Unit",
   "单位：MB": "Unit: MB",
   "单位名": "Unit name",
@@ -1024,7 +1024,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "订单结束时间": "Contract end time",
   "订单金额": "Order amount",
   "订单金额(元)": "Order amount (Yuan)",
-  "订单金额（元）": "Order amount (yuan)",
+  "订单金额（元）": "Order amount (MYR)",
   "订单开始时间": "Contract start time",
   "订单列表": "Order list",
   "订单名称": "Order name",
@@ -1043,7 +1043,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "订单执行状态": "Order execution status",
   "订单转移": "Contract transfer",
   "订单状态": "Order status",
-  "订单总金额(元)": "Total order amount (yuan)",
+  "订单总金额(元)": "Total order amount (MYR)",
   "订阅信息": "Subscriptions",
   "定金折扣": "Deposit discount",
   "定期执行": "Scheduled execution",
@@ -1217,7 +1217,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "付款记录": "Payment record",
   "付款记录不存在": "Payment record not found",
   "付款金额": "Payment amount:",
-  "付款金额(元)": "Payment amount (yuan):",
+  "付款金额(元)": "Payment amount (MYR):",
   "付款凭证": "Payment proof",
   "付款日期": "Payment date",
   "付款审核通过": "Payment review approved",
@@ -1538,7 +1538,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "湖北省": "Hubei Province",
   "湖南省": "Hunan Province",
   "花费": "Cost",
-  "花费(元)": "Cost (yuan)",
+  "花费(元)": "Cost (MYR)",
   "华为云储存": "Huawei Cloud storage",
   "华为云存储": "Huawei Cloud storage",
   "华为云cos开通方法": "How to enable Huawei Cloud OBS",
@@ -1559,7 +1559,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "回款核对请求": "Payment collection review request",
   "回款记录": "Payment record",
   "回款金额": "Collection amount",
-  "回款金额（元）": "Payment amount (CNY)",
+  "回款金额（元）": "Payment amount (MYR)",
   "回款日期": "Collection date",
   "回款提醒": "Payment reminder",
   "回款提醒日期": "Collection reminder date",
@@ -1772,7 +1772,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "今天您还未填写日报，再忙也要记得总结沉淀哦！": "You have not submitted today's daily report. Remember to reflect and summarize, even on a busy day!",
   "今天总结": "Today's summary",
   "金额": "Amount",
-  "金额(元)": "Amount (yuan)",
+  "金额(元)": "Amount (MYR)",
   "金额/备注": "Amount or remarks",
   "金牛客户": "High-value customers",
   "仅保存": "Save only",
@@ -1817,7 +1817,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "精确": "Accurate",
   "警戒库存": "Low-stock threshold",
   "净额": "Net",
-  "净额（元）": "Net amount (yuan)",
+  "净额（元）": "Net amount (MYR)",
   "静音": "Mute",
   "九月": "September",
   "居家办公申请": "Remote work request",
@@ -1848,7 +1848,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "开票结果": "Invoice result",
   "开票金额": "Invoice amount:",
   "开票金额(元)": "Invoice amount",
-  "开票金额（元）": "Invoice amount (CNY)",
+  "开票金额（元）": "Invoice amount (MYR)",
   "开票类型": "Invoice type",
   "开票凭证": "Invoice voucher:",
   "开票日期": "Invoice date",
@@ -2070,10 +2070,10 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "累计充值金额": "Cumulative top-up amount",
   "累计过气人数": "Cumulative expired users",
   "累计积分": "Cumulative points",
-  "累计开票金额(元)": "Total invoiced amount (yuan)",
-  "累计收款金额(元)": "Total received amount (yuan)",
+  "累计开票金额(元)": "Total invoiced amount (MYR)",
+  "累计收款金额(元)": "Total received amount (MYR)",
   "累计余额": "Cumulative balance",
-  "累计支出金额(元)": "Total expense amount (yuan)",
+  "累计支出金额(元)": "Total expense amount (MYR)",
   "离职": "Resigned",
   "离职申请": "Resignation request",
   "离职时间": "Resignation time",
@@ -3520,8 +3520,8 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "审核已通过，无法删除相关信息": "The review has passed, so the information cannot be deleted",
   "审核已通过，无法修改相关信息": "The review has passed, so the information cannot be changed",
   "审核中": "Under review",
-  "审核中金额(元)": "Amount under review (yuan)",
-  "审核中开票金额(元)": "Amount under invoice review (yuan)",
+  "审核中金额(元)": "Amount under review (MYR)",
+  "审核中开票金额(元)": "Amount under invoice review (MYR)",
   "审核状态": "Review status",
   "审核状态异常": "Invalid review status",
   "审批": "Approval",
@@ -3653,7 +3653,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "收支方式": "Income/expense method",
   "收支记账": "Income/expense accounting",
   "收支记账保存失败": "Failed to save the income/expense record",
-  "收支金额(元)": "Income/expense amount (yuan)",
+  "收支金额(元)": "Income/expense amount (MYR)",
   "收支时间": "Time of payment",
   "收支统计": "Income/expense statistics",
   "手办1": "Figurine 1",
@@ -4120,7 +4120,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "未发送客户群": "Unsent customer groups",
   "未发送群主": "Unsent group owners",
   "未发送员工": "Unsent employees",
-  "未付金额(元)": "Amount due (yuan)",
+  "未付金额(元)": "Amount due (MYR)",
   "未付款": "Unpaid",
   "未跟进天数": "Days without follow-up",
   "未跟进退回": "Return if not followed up:",
@@ -4328,7 +4328,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "物资": "Material",
   "物资变动明细": "Material movement details",
   "物资变动情况": "Material movement",
-  "物资单价(元)": "Material unit price (yuan)",
+  "物资单价(元)": "Material unit price (MYR)",
   "物资概览": "Materials overview",
   "物资型号": "Material model",
   "西餐": "Western food",
@@ -4467,7 +4467,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "销量": "Sales volume",
   "销售": "Sales",
   "销售部": "Sales Department",
-  "销售额（元）": "Sales amount (yuan)",
+  "销售额（元）": "Sales amount (MYR)",
   "销售岗": "Sales",
   "销售金额": "Sales amount",
   "销售经理": "Sales Manager",
@@ -4672,7 +4672,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "续费今日到期提醒": "Renewal due today reminder",
   "续费金额": "Renewal amount",
   "续费金额(元)": "Renewal amount",
-  "续费金额（元）": "Renewal amount (CNY)",
+  "续费金额（元）": "Renewal amount (MYR)",
   "续费类型": "Renewal type",
   "续费商机": "Renewal opportunity",
   "续费提醒": "Renewal reminder",
@@ -4774,7 +4774,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "邀请完善信息已发出，等待用户完善": "The invitation was sent. Waiting for the user to complete their information.",
   "邀请信息不存在": "Invitation information not found",
   "业绩简报": "Performance brief",
-  "业绩金额(元)": "Performance amount (CNY)",
+  "业绩金额(元)": "Performance amount (MYR)",
   "业绩净额": "Net performance",
   "业绩类型错误": "Invalid performance type",
   "业绩目标": "Performance goals",
@@ -4865,7 +4865,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "已发送群主": "Sent group owners",
   "已发送员工": "Sent employees",
   "已放弃": "Abandoned",
-  "已付金额(元)": "Amount paid (yuan)",
+  "已付金额(元)": "Amount paid (MYR)",
   "已关闭": "Closed",
   "已关注": "Followed",
   "已过期": "Expired",
@@ -5231,8 +5231,8 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "支出分类": "Expense categories",
   "支出记录": "Expense record",
   "支出金额": "Expense amount",
-  "支出金额(元)": "Expense amount (yuan):",
-  "支出金额（元）": "Expense amount (yuan)",
+  "支出金额(元)": "Expense amount (MYR):",
+  "支出金额（元）": "Expense amount (MYR)",
   "支出凭证": "Expense voucher:",
   "支出去向": "Expenditure destination",
   "支出时间": "Expense time:",
@@ -5503,7 +5503,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "综合管理绩效": "General management performance",
   "总订单金额": "Total order amount",
   "总分": "Total score:",
-  "总计订单金额(元)": "Total contract amount (yuan)",
+  "总计订单金额(元)": "Total contract amount (MYR)",
   "总价": "Total price",
   "总监级": "Director level",
   "总经理": "General Manager",
@@ -5511,8 +5511,8 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "总权重": "Total weight:",
   "总入库数": "Total items received",
   "总收入": "Total revenue",
-  "总收入(元)": "Total income (yuan)",
-  "总收入（元）": "Total income (yuan)",
+  "总收入(元)": "Total income (MYR)",
+  "总收入（元）": "Total income (MYR)",
   "总支出": "Total expenditure",
   "纵坐标": "Ordinate",
   "足球": "Football",
@@ -5670,6 +5670,59 @@ function createLocalizationRuntime(systemTextEn: Readonly<Record<string, string>
       const action = dynamicMatch[3] === "提交" ? "submitted" : "updated";
       return `${dynamicMatch[1]}'s ${translateLabel(dynamicMatch[2])} has been ${action}. Please review it promptly.`;
     }
+    dynamicMatch = text.match(/^您有一条个人待办任务，请记得处理哦！待办内容【(.*)】$/);
+    if (dynamicMatch) return `You have a personal to-do task to process: [${dynamicMatch[1]}]`;
+    dynamicMatch = text.match(/^您有一条回款任务，请记得处理哦！提醒内容【(.*)】$/);
+    if (dynamicMatch) return `You have a payment collection task to process. Reminder: [${dynamicMatch[1]}]`;
+
+    dynamicMatch = text.match(/^密码长度不正确,最少(\d+)个字符$/);
+    if (dynamicMatch) return `Password must contain at least ${dynamicMatch[1]} characters`;
+    dynamicMatch = text.match(/^(输入的密码不符合规则|确认密码不符合规则|密码格式不正确|确认密码格式不正确),请输入(.+?)(?:的密码组合|的组合)$/);
+    if (dynamicMatch) {
+      const subject = dynamicMatch[1].startsWith("确认密码") ? "Confirmation password" : "Password";
+      return `${subject} does not meet the requirements. Use ${translateLabel(dynamicMatch[2])}.`;
+    }
+
+    const validationMessages = [
+      [/^请填写正确的(.+)$/, (m) => `Enter a valid ${translateLabel(m[1])}`],
+      [/^请填写(.+)$/, (m) => `Enter ${translateLabel(m[1])}`],
+      [/^请输入正确的(.+)$/, (m) => `Enter a valid ${translateLabel(m[1])}`],
+      [/^请输入(.+)$/, (m) => `Enter ${translateLabel(m[1])}`],
+      [/^请选择正确的(.+)$/, (m) => `Select a valid ${translateLabel(m[1])}`],
+      [/^请选择(.+)$/, (m) => `Select ${translateLabel(m[1])}`],
+      [/^请设置正确的(.+)$/, (m) => `Configure a valid ${translateLabel(m[1])}`],
+      [/^请设置(.+)$/, (m) => `Configure ${translateLabel(m[1])}`],
+      [/^缺少(.+)$/, (m) => `${translateLabel(m[1])} is missing`],
+      [/^无效的(.+)$/, (m) => `${translateLabel(m[1])} is invalid`],
+      [/^(.+)必须填写$/, (m) => `${translateLabel(m[1])} is required`],
+      [/^(.+)必须选择一项$/, (m) => `Select one ${translateLabel(m[1])} option`],
+      [/^(.+)必须存在$/, (m) => `${translateLabel(m[1])} must exist`],
+      [/^(.+)必须为(数字|整数)$/, (m) => `${translateLabel(m[1])} must be ${m[2] === "整数" ? "an integer" : "numeric"}`],
+      [/^(.+)只能为(数字|整数)$/, (m) => `${translateLabel(m[1])} must be ${m[2] === "整数" ? "an integer" : "numeric"}`],
+      [/^(.+)值只能为(数字|整数)$/, (m) => `${translateLabel(m[1])} must be ${m[2] === "整数" ? "an integer" : "numeric"}`],
+      [/^(.+)必须为(数组|数组对象)$/, (m) => `${translateLabel(m[1])} must be ${m[2] === "数组" ? "an array" : "an array of objects"}`],
+      [/^(.+)必须为对象$/, (m) => `${translateLabel(m[1])} must be an object`],
+      [/^(.+)必须包含([A-Za-z_][\w-]*)字段$/, (m) => `${translateLabel(m[1])} must contain the ${m[2]} field`],
+      [/^(.+)必须大于0$/, (m) => `${translateLabel(m[1])} must be greater than 0`],
+      [/^(.+)必须大于等于0$/, (m) => `${translateLabel(m[1])} must be greater than or equal to 0`],
+      [/^(.+)长度超出限制$/, (m) => `${translateLabel(m[1])} exceeds the length limit`],
+      [/^(.+)长度超出(\d+)限制$/, (m) => `${translateLabel(m[1])} cannot exceed ${m[2]} characters`],
+      [/^(.+)长度不能大于(\d+)(?:个字符|位)$/, (m) => `${translateLabel(m[1])} cannot exceed ${m[2]} characters`],
+      [/^(.+)长度超出限制最大(?:长度)?(\d+)(?:个字符|位)$/, (m) => `${translateLabel(m[1])} cannot exceed ${m[2]} characters`],
+      [/^(.+)超出限制最大(?:长度)?(\d+)(?:个字符|位)$/, (m) => `${translateLabel(m[1])} cannot exceed ${m[2]} characters`],
+      [/^(.+)过长$/, (m) => `${translateLabel(m[1])} is too long`],
+      [/^(.+)(?:参数)?类型(?:错误|不正确|异常)$/, (m) => `${translateLabel(m[1])} has an invalid type`],
+      [/^(.+?)(?:格式|型)(?:错误|不正确|异常)$/, (m) => `${translateLabel(m[1])} has an invalid format`],
+      [/^(.+)不正确$/, (m) => `${translateLabel(m[1])} is invalid`],
+      [/^(.+)有误$/, (m) => `${translateLabel(m[1])} is invalid`],
+      [/^(.+)错误$/, (m) => `${translateLabel(m[1])} is invalid`],
+      [/^(.+)只能由字母下划线组合$/, (m) => `${translateLabel(m[1])} may contain only letters and underscores`],
+      [/^(.+)仅可包含字母、数字、下划线$/, (m) => `${translateLabel(m[1])} may contain only letters, numbers, and underscores`],
+    ];
+    for (const [pattern, format] of validationMessages) {
+      const validationMatch = text.match(pattern);
+      if (validationMatch) return format(validationMatch);
+    }
 
     // Activity logs are system-owned templates. Only this geographical field
     // format is allowlisted, so arbitrary business-record changes stay raw.
@@ -5727,27 +5780,27 @@ function createLocalizationRuntime(systemTextEn: Readonly<Record<string, string>
     dynamicMatch = text.match(/^【(.+)】(.+)(的记录已存在，请勿重复添加！|的考核记录已存在，无法重复添加！)$/);
     if (dynamicMatch) return `${dynamicMatch[1]} — ${translateLabel(dynamicMatch[2])}: this assessment record already exists and cannot be added again`;
     dynamicMatch = text.match(/^(.+)最多输入(\d+)个(数字|字)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} must contain no more than ${dynamicMatch[2]} ${dynamicMatch[3] === "数字" ? "digits" : "characters"}`;
+    if (dynamicMatch) return `${dynamicMatch[1]} must contain no more than ${dynamicMatch[2]} ${dynamicMatch[3] === "数字" ? "digits" : "characters"}`;
     dynamicMatch = text.match(/^(.+)最少输入(\d+)个(数字|字)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} must contain at least ${dynamicMatch[2]} ${dynamicMatch[3] === "数字" ? "digits" : "characters"}`;
+    if (dynamicMatch) return `${dynamicMatch[1]} must contain at least ${dynamicMatch[2]} ${dynamicMatch[3] === "数字" ? "digits" : "characters"}`;
     dynamicMatch = text.match(/^(.+)最少输入字数(\d+)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} must contain at least ${dynamicMatch[2]} characters`;
+    if (dynamicMatch) return `${dynamicMatch[1]} must contain at least ${dynamicMatch[2]} characters`;
     dynamicMatch = text.match(/^最少输入字数(\d+)$/);
     if (dynamicMatch) return `Enter at least ${dynamicMatch[1]} characters`;
     dynamicMatch = text.match(/^(.+)最多选择数量(\d+)$/);
-    if (dynamicMatch) return `Select no more than ${dynamicMatch[2]} options for ${translateLabel(dynamicMatch[1])}`;
+    if (dynamicMatch) return `Select no more than ${dynamicMatch[2]} options for ${dynamicMatch[1]}`;
     dynamicMatch = text.match(/^(.+)最少选择数量(\d+)$/);
-    if (dynamicMatch) return `Select at least ${dynamicMatch[2]} options for ${translateLabel(dynamicMatch[1])}`;
+    if (dynamicMatch) return `Select at least ${dynamicMatch[2]} options for ${dynamicMatch[1]}`;
     dynamicMatch = text.match(/^(.+)不能晚于(.+)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} cannot be later than ${dynamicMatch[2]}`;
+    if (dynamicMatch) return `${dynamicMatch[1]} cannot be later than ${dynamicMatch[2]}`;
     dynamicMatch = text.match(/^(.+)不能早于(.+)$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} cannot be earlier than ${dynamicMatch[2]}`;
+    if (dynamicMatch) return `${dynamicMatch[1]} cannot be earlier than ${dynamicMatch[2]}`;
     dynamicMatch = text.match(/^请(选择|输入)(.+)$/);
     if (dynamicMatch) return `${dynamicMatch[1] === "选择" ? "Select" : "Enter"} ${translateLabel(dynamicMatch[2])}`;
     dynamicMatch = text.match(/^(.+)不能为空$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} is required`;
+    if (dynamicMatch) return `${dynamicMatch[1]} is required`;
     dynamicMatch = text.match(/^(.+)已存在$/);
-    if (dynamicMatch) return `${translateLabel(dynamicMatch[1])} already exists`;
+    if (dynamicMatch) return `${dynamicMatch[1]} already exists`;
     dynamicMatch = text.match(/^(直属|一级)分类数量到达上限$/);
     if (dynamicMatch) return `The ${dynamicMatch[1] === "直属" ? "direct" : "top-level"} category limit has been reached`;
 

@@ -13,7 +13,7 @@ services:
     ports:
       - "20300:20200"
     environment:
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Kuala_Lumpur
     volumes:
       - ..:/var/www:delegated
       - ./php/config/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
@@ -41,7 +41,7 @@ services:
     ports:
       - "3376:3306"
     environment:
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Kuala_Lumpur
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=tuoluojiang
       - MYSQL_ROOT_HOST=%
@@ -73,7 +73,7 @@ services:
     ports:
       - "6389:6379"
     environment:
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Kuala_Lumpur
     volumes:
       - ./redis/config/redis.conf:/usr/local/etc/redis/redis.conf:ro
       - ./redis/data:/data

@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\enterprise;
 
 use App\Http\Requests\ApiValidate;
+use App\Http\Requests\Traits\NormalizesPhoneInput;
 use crmeb\utils\Regex;
 
 /**
@@ -14,6 +15,15 @@ use crmeb\utils\Regex;
  */
 class EnterpriseRequest extends ApiValidate
 {
+    use NormalizesPhoneInput;
+
+    public function check(array $data = [], array $rules = [])
+    {
+        $this->normalizePhoneInputs(['phone']);
+
+        return parent::check($data, $rules);
+    }
+
     /**
      * 提醒.
      * @var string[]
@@ -23,7 +33,7 @@ class EnterpriseRequest extends ApiValidate
         'lead.required'                      => '请填写公司法人代表姓名',
         'address.required'                   => '请填写公司地址',
         'phone.required'                     => '请填写手机号',
-        'phone.size'                         => '手机号长度不正确',
+        'phone.max'                         => '手机号长度不正确',
         'phone.regex'                        => '请填写正确的手机号',
         'verification_code.regex'            => '请填写验证码',
         'verification_code.integer'          => '验证码必须为数字',
@@ -57,7 +67,7 @@ class EnterpriseRequest extends ApiValidate
             'lead'              => 'required',
             'address'           => 'required',
             'business_license'  => 'required',
-            'phone'             => ['required', 'size:11', 'regex:' . Regex::PHONE_NUMBER],
+            'phone'             => ['required', 'max:32', 'regex:' . Regex::PHONE_NUMBER],
             'verification_code' => 'required|integer|verification_api:' . request('phone'),
             'scale'             => 'required|integer',
             'short_name'        => 'required|max:6',

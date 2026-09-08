@@ -42,7 +42,7 @@ return [
         ],
         'single' => [
             'driver'     => 'single',
-            'path'       => storage_path(sprintf('logs/%s/%s/service-%s.log', now()->tz('Asia/Shanghai')->format('Y'),now()->tz('Asia/Shanghai')->format('m'),now()->tz('Asia/Shanghai')->format('d'))),
+            'path'       => storage_path(sprintf('logs/%s/%s/service-%s.log', now()->tz(config('app.timezone'))->format('Y'),now()->tz(config('app.timezone'))->format('m'),now()->tz(config('app.timezone'))->format('d'))),
             'level'      => env('LOG_LEVEL', 'debug'),
             'permission' => 0755,
         ],

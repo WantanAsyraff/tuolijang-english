@@ -377,9 +377,17 @@ export default {
   methods: {
     fieldLabel(entry, key = 'field_name') {
       const raw = entry && (entry[key] || entry.field_name || '')
-      if (Number(entry && entry.is_default) !== 1) return raw
-      const englishKey = key + '_en'
-      return this.$(raw, entry && (entry[englishKey] || entry.field_name_en))
+      const hasSystemOwnership = Object.prototype.hasOwnProperty.call(entry || {}, 'is_system_owned')
+      const hasDefaultOwnership = Object.prototype.hasOwnProperty.call(entry || {}, 'is_default')
+      const isSystemOwned = hasSystemOwnership
+        ? Number(entry.is_system_owned) === 1
+        : hasDefaultOwnership
+          ? Number(entry.is_default) === 1
+          // Static filter definitions predate ownership metadata. They are
+          // application-owned and must pass through the normal $() boundary.
+          : true
+      if (!isSystemOwned) return raw
+      return this.$(raw)
     },
     optionLabel(entry, field) {
       const key = entry && entry.name !== undefined ? 'name' : 'label'

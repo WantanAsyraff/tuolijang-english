@@ -50,7 +50,7 @@
         </el-button>
       </div>
       <div v-show="isEditPhone === false" class="flex-item">
-        <el-input v-model="newPhone" :placeholder="$('setting.phonetitle')" size="small" />
+        <el-input v-model="newPhone" :placeholder="$('login.phoneExample')" size="small" />
         <el-button :disabled="disabled" class="button ml10" size="small" type="primary" @click="getCode">{{
           text
         }}</el-button>
@@ -328,9 +328,9 @@ export default {
     getCmsKey() {
       getCmsKeyApi().then((res) => {
         const cmsKey = res.data.key
-        const exp = helper.phoneReg
+        const isValidPhone = helper.isValidPhone
         if (!this.newPhone) return this.$message.error(this.$('login.title1'))
-        if (!exp.test(this.newPhone)) {
+        if (!isValidPhone(this.newPhone)) {
           return this.$message.error(this.$('login.title9'))
         }
         getCmsApi({
@@ -347,12 +347,12 @@ export default {
       })
     },
     confirmBnt() {
-      const exp = helper.phoneReg
+      const isValidPhone = helper.isValidPhone
       if (!this.verification_code || !this.newPhone) {
         this.$message.error(this.$('login.rules'))
         return false
       }
-      if (!exp.test(this.newPhone)) {
+      if (!isValidPhone(this.newPhone)) {
         this.$message.error(this.$('login.title9'))
         return false
       }
