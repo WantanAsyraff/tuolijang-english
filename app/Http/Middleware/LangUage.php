@@ -27,7 +27,7 @@ class LangUage extends BaseMiddleware implements ApiMiddlewareInterface
         $lang = strtolower((string) ($request->cookies->get('language') ?: $request->header('laravel_lang')));
         $lang = match ($lang) {
             'zh', 'zh_cn', 'zh-cn', 'zh-hans' => 'zh-cn',
-            'en', 'en_us', 'en-us', 'en-gb' => 'en',
+            'en', 'en_us', 'en-us', 'en-gb', 'en_my', 'en-my' => 'en',
             default => $lang,
         };
 

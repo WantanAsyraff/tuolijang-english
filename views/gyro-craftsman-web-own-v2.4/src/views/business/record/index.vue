@@ -162,7 +162,7 @@ export default {
     },
     getExportData() {
       if (this.where.approve_id == '') return this.$message.error($('legacyScript.pleaseSelectApprovalType'))
-      this.saveName = '审批导出_' + this.$moment(new Date()).format('HH_mm_ss') + '.xlsx'
+      this.saveName = $('审批') + $('导出') + '_' + this.$moment(new Date()).format('HH_mm_ss') + '.xlsx'
       const where = JSON.parse(JSON.stringify(this.where))
       where.limit = 0
       this.exportLoading = true

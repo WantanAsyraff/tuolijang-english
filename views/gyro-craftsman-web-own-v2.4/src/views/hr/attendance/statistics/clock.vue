@@ -66,7 +66,7 @@ export default {
     return {
       total: 0,
       loading: false,
-      saveName: '人员打卡_记录_统计日期范围.xlsx',
+      saveName: this.$('考勤') + '_' + this.$('打卡记录') + '_' + this.$('统计时间') + '.xlsx',
       where: {
         page: 1,
         limit: 15,
@@ -118,7 +118,7 @@ export default {
       this.getList()
     },
     async exportFn() {
-      let aoaData = [['姓名', '部门', '考勤组', '日期', '星期', '打卡时间']]
+      let aoaData = [[this.$('姓名'), this.$('部门'), this.$('考勤组'), this.$('日期'), this.$('星期'), this.$('打卡时间')]]
       let obj = { ...this.where }
       obj.page = 0
       obj.limit = 0

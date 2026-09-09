@@ -149,7 +149,9 @@ return [
     |
     */
 
-    'locale' => 'zh-cn',
+    // Malaysian deployments default to English while retaining the existing
+    // Chinese locale when a user or environment explicitly selects it.
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------

@@ -381,7 +381,7 @@ export default {
         data: [],
         cols: [{ wpx: 70 }, { wpx: 70 }, { wpx: 120 }]
       },
-      saveName: '下载表格.xlsx',
+      saveName: $('下载表格') + '.xlsx',
       selectedList: [], // 选中的职位id
       list: []
     }
@@ -637,7 +637,7 @@ export default {
 
     // 下载表格
     exportExcelData() {
-      let aoaData = [['职位名称', '岗位分数', '岗位系数']]
+      let aoaData = [[$('职位名称'), $('岗位分数'), $('岗位系数')]]
       if (this.list.length > 0) {
         this.list.forEach((value) => {
           this.position.map((item) => {

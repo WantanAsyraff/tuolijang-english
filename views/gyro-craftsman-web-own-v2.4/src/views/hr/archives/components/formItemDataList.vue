@@ -607,17 +607,15 @@ export default {
       })
     },
 
-    // 身份证获取出生日期
+    // Only mainland Chinese resident IDs encode birth date and gender. Other
+    // identification documents, including Malaysian MyKad and passports, are
+    // kept as entered and must not overwrite manually supplied HR details.
     getBirthday(val) {
       // 若当前字段不是身份证号，直接返回
       if (val !== 'card_id') return
 
       const cardId = this.ruleForm.card_id
-      // 验证身份证号是否有效
-      if (!this.isValidCardId(cardId)) {
-        this.resetBirthInfo()
-        return
-      }
+      if (!this.isChineseResidentId(cardId)) return
 
       const { birthday, sex } = this.extractInfoFromCardId(cardId)
       this.ruleForm.birthday = this.formatBirthday(birthday)
@@ -625,9 +623,8 @@ export default {
       this.ruleForm.age = this.calculateAge(this.ruleForm.birthday)
     },
 
-    // 验证身份证号是否有效
-    isValidCardId(cardId) {
-      return cardId && (cardId.length === 15 || cardId.length === 18)
+    isChineseResidentId(cardId) {
+      return /^(?:\d{15}|\d{17}[\dXx])$/.test(String(cardId || ''))
     },
 
     // 从身份证号中提取出生日期和性别信息
@@ -669,13 +666,6 @@ export default {
           : 0)
 
       return isNaN(age) ? '' : age
-    },
-
-    // 重置出生日期、性别和年龄信息
-    resetBirthInfo() {
-      this.ruleForm.birthday = ''
-      this.ruleForm.sex = 0
-      this.ruleForm.age = ''
     },
 
     restFn(data) {

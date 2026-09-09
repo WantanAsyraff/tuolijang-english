@@ -233,11 +233,14 @@ class UserCardController extends AuthController
      * @throws \ReflectionException
      */
     #[Put('{id}', '修改保存员工档案')]
-    public function update(AdminService $service, $id): mixed
+    public function update(EnterpriseUserCardRequest $request, AdminService $service, $id): mixed
     {
         [$type] = $this->request->postMore([
             ['edit_type', 'all'],
         ], true);
+        if ($type === 'user') {
+            $request->scene('update_user')->check();
+        }
         $data = $this->request->postMore([
             // 基本信息
             ['name', ''],

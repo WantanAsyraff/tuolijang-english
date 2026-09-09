@@ -48,7 +48,7 @@ return new class extends Migration
             $table->tinyInteger('sex')->default(0)->comment('性别 0=未知,1=男,2=女,3=其他');
             $table->tinyInteger('status')->default(1)->comment('状态：0、锁定；1、正常；');
             $table->unsignedTinyInteger('is_init')->default(1)->comment('是否为初始密码');
-            $table->string('language', 32)->default('zh-cn')->comment('语言');
+            $table->string('language', 32)->default('en')->comment('语言');
             $table->string('remark')->default('');
             $table->timestamp('delete')->nullable()->comment('是否删除');
             $table->timestamps();

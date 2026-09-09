@@ -31,12 +31,12 @@ class EnterpriseUserCardRequest extends ApiValidate
     protected $scene = [
         'edit'             => ['name', 'phone'],
         'update'           => ['phone', 'email'],
-        'create_interview' => ['interview_date', 'is_part', 'type', 'name', 'phone'], // 新增面试
-        'create_induction' => ['name', 'phone', 'frame', 'position', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time'], // 新增入职
-        'create_departure' => ['name', 'phone', 'frame', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time', 'quit_time'], // 新增离职
+        'create_interview' => ['interview_date', 'is_part', 'type', 'name', 'phone', 'card_id'], // 新增面试
+        'create_induction' => ['name', 'phone', 'frame', 'position', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time', 'card_id'], // 新增入职
+        'create_departure' => ['name', 'phone', 'frame', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time', 'quit_time', 'card_id'], // 新增离职
         'update_basic'     => ['interview_date', 'is_part', 'position', 'type', 'name', 'phone'], // 基本信息
         'update_staff'     => ['name', 'phone', 'frame', 'position', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time'], // 职工信息
-        'update_user'      => ['name', 'phone', 'frame', 'position', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time', 'treaty_time'], // 个人信息
+        'update_user'      => ['name', 'phone', 'frame', 'position', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time', 'treaty_time', 'card_id'], // 个人信息
         'update_education' => ['name', 'phone', 'frame', 'position', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time', 'treaty_time'], // 学历信息
         'update_bank'      => ['name', 'phone', 'frame', 'position', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time', 'treaty_time'], // 银行卡信息
         'update_social'    => ['name', 'phone', 'frame', 'position', 'is_admin', 'superior_uid', 'is_part', 'type', 'work_time', 'treaty_time'], // 社保信息
@@ -53,6 +53,7 @@ class EnterpriseUserCardRequest extends ApiValidate
         return [
             'name'               => 'required',
             'phone'              => ['required', 'max:32', 'regex:' . Regex::PHONE_NUMBER],
+            'card_id'            => ['nullable', 'max:32', 'regex:/^[A-Za-z0-9][A-Za-z0-9 -]{5,31}$/'],
             'email'              => 'email:rfc,dns',
             'sex'                => 'required',
             'interview_date'     => 'required', // 面试时间
@@ -76,6 +77,8 @@ class EnterpriseUserCardRequest extends ApiValidate
             'phone.required'              => '请填写手机号',
             'phone.max'                  => '请填写正确的手机号',
             'phone.regex'                 => '请填写正确的手机号',
+            'card_id.max'                  => '证件号码不能超过32个字符',
+            'card_id.regex'                => '请输入正确的身份证号码',
             'email.email'                 => '请填写正确的邮箱',
             'sex.required'                => '用户性别必须填写',
             'interview_date.required'     => '请选择面试时间',

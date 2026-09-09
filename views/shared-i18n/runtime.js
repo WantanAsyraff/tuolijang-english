@@ -5,7 +5,7 @@ export function createLocalizationRuntime(systemTextEn) {
   function normalizeLocale(language) {
     const locale = String(language || "").toLowerCase();
     if (["zh", "zh_cn", "zh-cn", "zh-hans"].includes(locale)) return "zh-cn";
-    if (["en", "en_us", "en-us", "en-gb"].includes(locale)) return "en";
+    if (["en", "en_us", "en-us", "en-gb", "en_my", "en-my"].includes(locale)) return "en";
     return "";
   }
 

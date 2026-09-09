@@ -1012,7 +1012,7 @@ let formOptions = {
         type: [{ required: true, message: $('legacyScript.employeeStatusIsRequired'), trigger: 'change' }],
         card_id: [
           {
-            pattern: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,
+            pattern: /^[A-Za-z0-9][A-Za-z0-9 -]{5,31}$/,
             message: $('legacyScript.pleaseEnterAValidIDNumber'),
             trigger: 'blur'
           }

@@ -19,7 +19,7 @@
               </el-upload>
               <div>
                 <div class="name">{{ enterprise_name }}</div>
-                <div>{{ cityVals[0] }}{{ cityVals[1] }}{{ cityVals[2] }}{{ address }}</div>
+                <div>{{ structuredAddress }}</div>
               </div>
             </div>
             <div class="panel-box">
@@ -70,7 +70,7 @@
                           clearable
                           style="width: 100%"
                         ></el-cascader>
-                        <div v-show="!isEdit" class="value">{{ cityVal[0] }} - {{ cityVal[1] }} - {{ cityVal[2] }}</div>
+                        <div v-show="!isEdit" class="value">{{ cityVal.filter(Boolean).join(' - ') }}</div>
                       </el-form-item>
                     </el-col>
                     <el-col :span="12">
@@ -212,7 +212,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['userInfo'])
+    ...mapGetters(['userInfo']),
+    structuredAddress() {
+      return [...this.cityVals.filter(Boolean), this.address].filter(Boolean).join(', ')
+    }
   },
   created() {
     this.getCitylist()

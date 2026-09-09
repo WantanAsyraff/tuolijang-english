@@ -57,8 +57,8 @@ class Install extends BaseController
 
     public function index($step = 1)
     {
-        $language = strtolower((string) request()->cookie('language', 'zh-cn'));
-        App::setLocale(in_array($language, ['zh-cn', 'en'], true) ? $language : 'zh-cn');
+        $language = strtolower((string) request()->cookie('language', 'en'));
+        App::setLocale(in_array($language, ['zh-cn', 'en'], true) ? $language : 'en');
         $this->Title = __('frontend.install.title');
 
         if (file_exists(public_path('install/install.lock'))) {

@@ -31,7 +31,7 @@ return new class extends Migration
             $table->integer('login_count')->default(0)->comment('登陆次数');
             $table->tinyInteger('status')->default(1)->comment('状态：0、锁定；1、正常；');
             $table->unsignedTinyInteger('is_init')->default(1)->comment('是否为初始密码');
-            $table->string('language', 32)->default('zh-cn')->comment('语言');
+            $table->string('language', 32)->default('en')->comment('语言');
             $table->string('mark')->default('');
             $table->timestamps();
             $table->softDeletes();

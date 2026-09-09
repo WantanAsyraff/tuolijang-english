@@ -243,33 +243,27 @@ export default {
       // 先将对象变为字符串，然后再变为json对象，防止对象的指针指向问题，为深拷贝
       let where = JSON.parse(JSON.stringify(this.where))
       where.limit = 0
-      this.saveName = '导出固定物资记录_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
+      this.saveName = $('导出') + $('固定物资记录') + '_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
       const res = await storageRecordApi(where)
       let data = res.data.list
       if (data.length <= 0) {
         this.$message.error(this.$('access.placeholder24'))
       } else {
         const aoaData = [
-          ['领取部门/人员', '物资编号', '物资名称', '规格型号', '物资分类', '计量单位', '物资状态', '操作时间']
+          [$('领取部门/人员'), $('物资编号'), $('物资名称'), $('规格型号'), $('物资分类'), $('计量单位'), $('物资状态'), $('操作时间')]
         ]
 
         data.forEach((value) => {
-          if (value.frame) {
-            value.frame = value.frame.name
-          } else if (value.card) {
-            value.frame = value.card.name
-          } else {
-            value.frame = ''
-          }
+          const recipient = value.frame ? value.frame.name : value.card ? value.card.name : ''
           aoaData.push([
-            value.frame,
+            recipient,
             value.storage.number ? value.storage.number : '',
             value.storage.name,
-            value.storage.units,
-            this.storageCategoryLabel(value.storage.cate),
             value.storage.specs,
+            this.storageCategoryLabel(value.storage.cate),
+            value.storage.units,
             this.getMaterialStatus(value.status),
-            this.$moment(value.updated_at).format('yyyy-MM-DD')
+            this.$moment(value.updated_at).format('YYYY-MM-DD')
           ])
         })
         this.exportData.data = aoaData
@@ -284,9 +278,9 @@ export default {
     getMaterialStatus(value) {
       let str = ''
       if (value === 1) {
-        str = '已领用'
+        str = $('已领用')
       } else if (value === 2) {
-        str = '已归还'
+        str = $('已归还')
       } else if (value === 3) {
         str = '维修中'
       } else if (value === 4) {

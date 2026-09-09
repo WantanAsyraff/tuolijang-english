@@ -77,13 +77,13 @@ export default {
     getShift(data) {
       let str = ''
       if (data == 0) {
-        str = '上班1'
+        str = this.$('上班1')
       } else if (data == 1) {
-        str = '下班1'
+        str = this.$('下班1')
       } else if (data == 2) {
-        str = '上班2'
+        str = this.$('上班2')
       } else if (data == 3) {
-        str = '下班2'
+        str = this.$('下班2')
       }
       return str
     }

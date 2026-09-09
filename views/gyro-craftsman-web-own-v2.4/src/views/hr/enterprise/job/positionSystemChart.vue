@@ -58,7 +58,7 @@
                             class="pointer"
                           >
                             {{
-                              item.info && item.info.rank ? $(item.info.rank.alias) + ' (' + $(item.info.rank.name) + ')' : ''
+                              item.info && item.info.rank ? item.info.rank.alias + ' (' + item.info.rank.name + ')' : ''
                             }}
                           </div>
                         </div>

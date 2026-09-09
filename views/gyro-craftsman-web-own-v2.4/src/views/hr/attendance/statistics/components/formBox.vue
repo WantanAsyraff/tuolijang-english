@@ -404,10 +404,10 @@ export default {
     },
     // 导出模版
     async exportTemplate() {
-      this.saveName = '打卡记录模板(' + this.$moment(new Date()).format('MMDDHHmmss') + ').xlsx'
+      this.saveName = this.$('打卡记录') + this.$('模板') + '(' + this.$moment(new Date()).format('MMDDHHmmss') + ').xlsx'
       this.exportData.data = [
-        ['时间', '姓名', '第一次上班', '第一次下班', '第二次上班', '第二次下班'],
-        ['2024/06/20 星期三', '张三', '2024/06/12 06:30', '2024/06/12 18:30', '2024/06/12 06:30', '2024/06/12 18:30']
+        [this.$('时间'), this.$('姓名'), this.$('第一次上班'), this.$('第一次下班'), this.$('第二次上班'), this.$('第二次下班')],
+        ['2024/06/20 Wednesday', 'Sample employee', '2024/06/12 06:30', '2024/06/12 18:30', '2024/06/12 06:30', '2024/06/12 18:30']
       ]
       this.$nextTick(() => {
         this.$refs.exportExcel.exportExcel()

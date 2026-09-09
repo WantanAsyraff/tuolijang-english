@@ -525,12 +525,12 @@ export default {
       },
       tableData: [
         {
-          name: '上班1',
+          name: $('上班1'),
           rule: 1
         },
 
         {
-          name: '下班1',
+          name: $('下班1'),
           rule: 2
         }
       ],
@@ -677,12 +677,12 @@ export default {
     radioFn() {
       let obj = [
         {
-          name: '上班2',
+          name: $('上班2'),
           rule: 3
         },
 
         {
-          name: '下班2',
+          name: $('下班2'),
           rule: 4
         }
       ]
@@ -695,8 +695,8 @@ export default {
       if (this.formData.number == 1) {
         this.formData.number1.off_hours = new Date(0, 0, 0, 18, 0, 0)
         this.tableData = [
-          { name: '上班1', rule: 1 },
-          { name: '下班1', rule: 2 }
+          { name: $('上班1'), rule: 1 },
+          { name: $('下班1'), rule: 2 }
         ]
       }
 
@@ -928,12 +928,12 @@ export default {
     handleClose(val) {
       this.tableData = [
         {
-          name: '上班1',
+          name: $('上班1'),
           rule: 1
         },
 
         {
-          name: '下班1',
+          name: $('下班1'),
           rule: 2
         }
       ]

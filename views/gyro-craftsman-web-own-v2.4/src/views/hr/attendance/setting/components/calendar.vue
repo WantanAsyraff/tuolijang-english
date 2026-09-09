@@ -67,6 +67,7 @@ export default {
 
   methods: {
     getLunar(day, length) {
+      if (this.$language === 'en') return ''
       // 显示节气、节日、农历
       let lunar =
         day.solarTerms ||

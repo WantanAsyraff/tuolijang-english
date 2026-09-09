@@ -26,13 +26,12 @@
           :props="{ value: 'label', label: 'label' }"
         />
       </template>
-      <span v-if="check">{{ timeData.city[0] }}-{{ timeData.city[1] }}-{{ timeData.city[2] }}</span>
+      <span v-if="check">{{ (timeData.city || []).join(' - ') }}</span>
     </div>
   </div>
 </div>
 </template>
 <script>
-import { getStorageJson } from '@/utils/storage'
 import { getCityListApi } from '@/api/public'
 export default {
   name: 'Index',
@@ -61,13 +60,11 @@ export default {
     }
   },
   mounted() {
-    if (!localStorage.getItem('city')) {
-      this.getCityList()
-    }
+    this.getCityList()
   },
   data() {
     return {
-      cityData: getStorageJson('city'),
+      cityData: [],
       title: this.titleIpt,
       timeData: {
         city: this.value.city
@@ -83,7 +80,7 @@ export default {
   methods: {
     getCityList() {
       getCityListApi().then((res) => {
-        localStorage.setItem('city', JSON.stringify(res.data))
+        this.cityData = res.data
       })
     },
     changeDuration() {

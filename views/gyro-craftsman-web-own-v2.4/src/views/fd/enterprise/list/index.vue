@@ -148,7 +148,7 @@ export default {
         data: [],
         cols: [{ wpx: 70 }, { wpx: 70 }, { wpx: 120 }, { wpx: 140 }, { wpx: 120 }]
       },
-      saveName: '导出收支记账模板.xlsx',
+      saveName: $('导出') + $('收支记账') + $('模板') + '.xlsx',
       where: {
         page: 1,
         limit: 15,
@@ -224,7 +224,13 @@ export default {
       this.$refs.importExcel.btnClick()
     },
     normalizeImportType(value) {
-      return String(value || '').replace(/^示例[:：]/, '').trim()
+      const type = String(value || '').replace(/^(示例|example)[:：]/i, '').trim()
+      return {
+        '收入': '收入',
+        Income: '收入',
+        '支出': '支出',
+        Expense: '支出'
+      }[type] || type
     },
     parseImportDate(value) {
       if (value instanceof Date) {
@@ -249,11 +255,11 @@ export default {
     },
     buildImportRow(row, rowIndex) {
       const rawType = String(row[0] || '').trim()
-      if (/^示例[:：]/.test(rawType)) {
+      if (/^(示例|example)[:：]/i.test(rawType)) {
         return null
       }
       const types = this.normalizeImportType(rawType)
-      if (!types || types.includes('账目类型')) {
+      if (!types || ['账目类型', 'Account type'].includes(types)) {
         return null
       }
       if (!['收入', '支出'].includes(types)) {
@@ -336,7 +342,7 @@ export default {
 
     // 导出模板
     exportTemplate() {
-      this.saveName = '导出账目模板.xlsx'
+      this.saveName = $('导出') + $('账目') + $('模板') + '.xlsx'
       let aoaData = [
         [
           this.$('finance.accounttabtitle'),
@@ -359,7 +365,7 @@ export default {
     },
     // 导出
     getExportData() {
-      this.saveName = '导出账目_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
+      this.saveName = $('导出') + $('账目') + '_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
       let aoaData = [
         [
           this.$('finance.accounttabtitle'),
