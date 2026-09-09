@@ -74,7 +74,7 @@ export default {
   data() {
     return {
       total: 0,
-      saveName: '上下班打卡_月报_统计日期范围.xlsx',
+      saveName: this.$('考勤') + '_' + this.$('月报') + '_' + this.$('统计时间') + '.xlsx',
       exportData: {
         data: [],
         cols: []
@@ -138,20 +138,20 @@ export default {
     },
     async exportFn() {
       let aoaData = [
-        [`统计时间：${this.where.time} 制表时间：${this.$moment(new Date()).format('YYYY/MM/DD')}`],
+        [`${this.$('统计时间')}：${this.where.time} ${this.$('制表时间')}：${this.$moment(new Date()).format('YYYY/MM/DD')}`],
         [
-          '姓名',
-          '部门',
-          '考勤组名称',
-          '应出勤天数',
-          '实际出勤天数',
-          '迟到次数',
-          '早退次数',
-          '上班缺卡',
-          '下班缺卡',
-          '旷工天数',
-          '出差（小时)',
-          '外出（小时)'
+          this.$('姓名'),
+          this.$('部门'),
+          this.$('考勤组名称'),
+          this.$('应出勤天数'),
+          this.$('实际出勤天数'),
+          this.$('迟到次数'),
+          this.$('早退次数'),
+          this.$('上班缺卡'),
+          this.$('下班缺卡'),
+          this.$('旷工天数'),
+          this.$('出差') + '（' + this.$('小时') + ')',
+          this.$('外出') + '（' + this.$('小时') + ')'
         ]
       ]
       let nameArr = []

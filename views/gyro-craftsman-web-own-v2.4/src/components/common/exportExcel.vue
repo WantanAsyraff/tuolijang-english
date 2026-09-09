@@ -58,8 +58,15 @@ export default {
         return
       }
       
+      // Preserve identifier columns (phone, IDs, postcodes, and account numbers) as text.
+      const textColumns = new Set(this.exportData.textColumns || [])
+      const rows = this.exportData.data.map((row) =>
+        row.map((value, columnIndex) =>
+          textColumns.has(columnIndex) && value !== null && value !== undefined ? String(value) : value
+        )
+      )
       // 创建工作表
-      const sheet = XLSX.utils.aoa_to_sheet(this.exportData.data)
+      const sheet = XLSX.utils.aoa_to_sheet(rows)
       
       // 模板模式处理
       if (this.template) {

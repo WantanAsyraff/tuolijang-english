@@ -1,4 +1,4 @@
-import { $ } from '@/lang'
+import { $, getLanguage } from '@/lang'
 import axios from 'axios'
 import store from '@/store'
 import router from '../router'
@@ -115,7 +115,10 @@ function baseRequest(options) {
   const token = store.getters.token
   const unique = localStorage.getItem('unique')
   const headers = options.headers || {}
-  const lang = store.getters.lang || 'zh-cn'
+  // The store is initialized from the locale adapter, but use the adapter as
+  // the fallback as well.  A request made before Vuex hydration must not send
+  // a Chinese header while the dashboard has selected English.
+  const lang = store.getters.lang || getLanguage()
 
   if (token) {
     headers['Authorization'] = 'Bearer ' + token

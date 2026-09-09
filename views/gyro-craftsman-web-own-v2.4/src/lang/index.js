@@ -6,7 +6,7 @@ import elementZhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import { messages, translateSystemTextValue } from './generated-locale'
 
 const supportedLocales = ['en', 'zh-cn']
-const localeState = Vue.observable({ locale: 'zh-cn' })
+const localeState = Vue.observable({ locale: 'en' })
 
 function getNested(source, dottedKey) {
   return String(dottedKey || '').split('.').reduce((value, key) => {
@@ -25,7 +25,7 @@ function interpolate(value, params) {
 export function normalizeLanguage(language) {
   const lang = String(language || '').toLowerCase()
   if (['zh', 'zh_cn', 'zh-cn', 'zh-hans'].includes(lang)) return 'zh-cn'
-  if (['en', 'en_us', 'en-us', 'en-gb'].includes(lang)) return 'en'
+  if (['en', 'en_us', 'en-us', 'en-gb', 'en_my', 'en-my'].includes(lang)) return 'en'
   return ''
 }
 
@@ -36,7 +36,7 @@ export function getLanguage() {
   const storedLanguage = normalizeLanguage(localStorage.getItem('language'))
   if (supportedLocales.includes(storedLanguage)) return storedLanguage
 
-  return 'zh-cn'
+  return 'en'
 }
 
 function syncElementLocale(language) {
@@ -44,7 +44,7 @@ function syncElementLocale(language) {
 }
 
 export function setLanguage(language) {
-  const normalized = normalizeLanguage(language) || 'zh-cn'
+  const normalized = normalizeLanguage(language) || 'en'
   Cookies.set('language', normalized)
   localStorage.setItem('language', normalized)
   localeState.locale = normalized

@@ -199,13 +199,13 @@ export default {
       // 先将对象变为字符串，然后再变为json对象，防止对象的指针指向问题，为深拷贝
       let where = JSON.parse(JSON.stringify(this.where))
       where.limit = 0
-      this.saveName = '导出消耗物资记录_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
+      this.saveName = this.$('导出') + this.$('消耗物资记录') + '_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
       storageRecordApi(where).then((res) => {
         let data = res.data.list
         if (data.length <= 0) {
           this.$message.error(this.$('access.placeholder24'))
         } else {
-          const aoaData = [['领取部门/人员', '物资名称', '规格型号', '物资分类', '计量单位', '领用数量', '领用时间']]
+          const aoaData = [[this.$('领取部门/人员'), this.$('物资名称'), this.$('规格型号'), this.$('物资分类'), this.$('计量单位'), this.$('领用数量'), this.$('领用时间')]]
 
           data.forEach((value) => {
             let name = ''
@@ -219,11 +219,11 @@ export default {
             aoaData.push([
               name,
               value.storage.name,
-              value.storage.units,
-              this.storageCategoryLabel(value.storage.cate),
               value.storage.specs,
+              this.storageCategoryLabel(value.storage.cate),
+              value.storage.units,
               value.num,
-              this.$moment(value.updated_at).format('yyyy-MM-DD')
+              this.$moment(value.updated_at).format('YYYY-MM-DD')
             ])
           })
           this.exportData.data = aoaData

@@ -18,7 +18,7 @@
       <el-table :data="tableData" :height="tableHeight">
         <el-table-column :label="$('toptable.name')" prop="name" width="100" />
         <el-table-column :label="$('toptable.department')" prop="frame_name" width="120">
-          <template slot-scope="scope">{{ $(scope.row.frame_name) }}</template>
+          <template slot-scope="scope">{{ scope.row.frame_name }}</template>
         </el-table-column>
         <el-table-column :label="$('toptable.worktoday')" min-width="250" prop="finish">
           <template slot-scope="scope">
@@ -285,14 +285,14 @@ export default {
       this.addDaily()
     },
     getExportData() {
-      this.saveName = '汇报导出_' + this.$moment(new Date()).format('HH_mm_ss') + '.xlsx'
+      this.saveName = this.$('汇报') + this.$('导出') + '_' + this.$moment(new Date()).format('HH_mm_ss') + '.xlsx'
       const where = JSON.parse(JSON.stringify(this.tableFrom))
       where.limit = 0
       this.exportLoading = true
       enterpriseDailyExportApi(where)
         .then((res) => {
           const data = res.data
-          const aoaData = [['姓名', '部门', '已提交数', '未提交数', '汇报类型']]
+          const aoaData = [[this.$('姓名'), this.$('部门'), this.$('已提交数'), this.$('未提交数'), this.$('汇报类型')]]
           if (data.length > 0) {
             data.forEach((value) => {
               value.plan = value.types == 3 ? '' : value.plan

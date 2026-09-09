@@ -69,16 +69,14 @@ export default {
             type: 'binary',
             cellDates: true
           })
-          outdata = XLSX.utils.sheet_to_csv(wb.Sheets[wb.SheetNames[0]])
-          const arrData = outdata.split('\n')
-          const arrRes = []
-          for (let i = that.columnNumber; i < arrData.length; i++) {
-            if (arrData[i] === '') {
-              continue
-            } else {
-              arrRes.push(arrData[i].split(','))
-            }
-          }
+          outdata = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], {
+            header: 1,
+            raw: false,
+            defval: ''
+          })
+          const arrRes = outdata
+            .slice(that.columnNumber)
+            .filter((row) => row.some((value) => value !== ''))
           document.getElementById('referenceUpload').value = null
           // 自定义方法向父组件传递数据
           that.$emit('importExcelData', arrRes,f.name)

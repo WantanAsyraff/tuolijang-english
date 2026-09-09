@@ -95,7 +95,7 @@ export default {
       this.info = info
       this.keyName = keyName
       this.show = true
-      this.saveName = '导出' + this.info.crudInfo.table_name + '.xlsx'
+      this.saveName = this.$('导出') + this.info.crudInfo.table_name + '.xlsx'
     },
     toSizeFile(size) {
       return formatBytes(size)

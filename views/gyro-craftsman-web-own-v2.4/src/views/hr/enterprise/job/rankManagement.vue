@@ -86,7 +86,7 @@
                     <template slot-scope="scope">{{ scope.row.name }}</template>
                   </el-table-column>
                   <el-table-column prop="alias" :label="$('hr.ranktype')" min-width="100">
-                    <template slot-scope="scope">{{ $(scope.row.alias) }}</template>
+                    <template slot-scope="scope">{{ scope.row.alias }}</template>
                   </el-table-column>
                   <el-table-column prop="info" :label="$('ui.hrEnterpriseJobRankManagementJobLevelDescription')" min-width="200" show-overflow-tooltip>
                     <template slot-scope="scope">

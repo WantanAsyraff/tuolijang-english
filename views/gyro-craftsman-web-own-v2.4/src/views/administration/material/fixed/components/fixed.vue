@@ -352,7 +352,7 @@ export default {
       // 先将对象变为字符串，然后再变为json对象，防止对象的指针指向问题，为深拷贝
       let where = JSON.parse(JSON.stringify(this.where))
       where.limit = 0
-      this.saveName = '导出固定物资_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
+      this.saveName = $('导出') + $('固定物资') + '_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
       storageListApi(where)
         .then((res) => {
           let data = res.data.list
@@ -361,25 +361,25 @@ export default {
           } else {
             const aoaData = [
               [
-                '物资编号',
-                '物资名称',
-                '规格型号',
-                '物资分类',
-                '物资单价',
-                '计量单位',
-                '物资状态',
-                '重要信息',
-                '创建时间'
+                $('物资编号'),
+                $('物资名称'),
+                $('规格型号'),
+                $('物资分类'),
+                $('物资单价'),
+                $('计量单位'),
+                $('物资状态'),
+                $('重要信息'),
+                $('创建时间')
               ]
             ]
             data.forEach((value) => {
               aoaData.push([
                 value.number,
                 value.name,
-                value.units,
+                value.specs,
                 value.cate ? this.storageCategoryLabel(value.cate) : '',
                 value.record[0].price,
-                value.specs,
+                value.units,
                 this.getMaterialStatus(value.status),
                 value.remark,
                 value.created_at

@@ -31,10 +31,10 @@
               <template slot-scope="scope">{{ scope.row.name }}</template>
             </el-table-column>
             <el-table-column :label="$('hr.immediatesuperior')" min-width="150" prop="cate.name">
-              <template slot-scope="scope">{{ $(scope.row.cate && scope.row.cate.name) }}</template>
+              <template slot-scope="scope">{{ scope.row.cate && scope.row.cate.name }}</template>
             </el-table-column>
             <el-table-column :label="$('hr.positionlevel')" min-width="100" prop="rank.alias">
-              <template slot-scope="scope">{{ $(scope.row.rank && scope.row.rank.alias) }}</template>
+              <template slot-scope="scope">{{ scope.row.rank && scope.row.rank.alias }}</template>
             </el-table-column>
             <el-table-column :label="$('ui.hrEnterpriseJobJobAdministrationJobDescription')" min-width="240" prop="describe" show-overflow-tooltip>
               <template slot-scope="scope">

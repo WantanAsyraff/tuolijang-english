@@ -20079,7 +20079,7 @@
   },
   "web.ui.hrCityProvinceCityDistrict": {
     "zh-cn": "省市区",
-    "en": "Province/city/district"
+    "en": "State/territory and city/town"
   },
   "web.ui.hrEnterpriseGroupEditUserDepartmentHead": {
     "zh-cn": "部门负责人：",
@@ -24300,6 +24300,11 @@
   "web.runtime.chat.selectEditPermission": { "zh-cn": "请选择编辑权限", "en": "Select edit permissions", "runtime": true, "apps": ["web"] },
   "web.runtime.chat.selectApplicationUsers": { "zh-cn": "请选择应用人员", "en": "Select application users", "runtime": true, "apps": ["web"] },
   "web.runtime.upload.missingFileInfo": { "zh-cn": "上传成功，但未返回文件信息", "en": "Upload succeeded, but no file information was returned", "runtime": true, "apps": ["web"] },
+  "web.runtime.upload.fileSizeLimit": { "zh-cn": "文件大小不能大于{{size}}MB", "en": "File size cannot exceed {{size}} MB", "runtime": true, "apps": ["web"] },
+  "web.runtime.upload.failedWithStatus": { "zh-cn": "文件 {{name}} 上传失败，状态码：{{status}}", "en": "File {{name}} failed to upload (status {{status}})", "runtime": true, "apps": ["web"] },
+  "web.runtime.upload.corsNotConfigured": { "zh-cn": "文件 {{name}} 上传失败，请检查存储服务的 CORS 跨域配置", "en": "File {{name}} could not be uploaded. Check the storage service CORS configuration", "runtime": true, "apps": ["web"] },
+  "web.runtime.upload.localFailure": { "zh-cn": "本地上传失败：{{reason}}", "en": "Local upload failed: {{reason}}", "runtime": true, "apps": ["web"] },
+  "web.runtime.upload.unknownError": { "zh-cn": "未知错误", "en": "Unknown error", "runtime": true, "apps": ["web"] },
   "web.runtime.customer.enterReturnReminderDays": { "zh-cn": "请输入客户退回公海提醒提前天数", "en": "Enter how many days before a customer returns to the public pool to send a reminder", "runtime": true, "apps": ["web"] },
   "web.runtime.customer.invalidReturnReminderDays": { "zh-cn": "退回公海提醒天数要小于未成交退回天数和未跟进退回天数", "en": "Reminder days must be fewer than both the no-sale and no-follow-up return periods", "runtime": true, "apps": ["web"] },
   "web.runtime.delivery.undelivered": { "zh-cn": "未送达", "en": "Undelivered", "runtime": true, "apps": ["web"] },
@@ -24522,5 +24527,89 @@
   "web.confirm.cancelCustomerLost": {"zh-cn":"您确定要将此客户取消流失吗","en":"Remove the lost status from this customer"},
   "web.confirm.markCustomerLost": {"zh-cn":"您确定要将此客户标为流失吗","en":"Mark this customer as lost"},
   "web.confirm.claimCustomer": {"zh-cn":"您确定要领取此客户吗","en":"Claim this customer"},
-  "web.confirm.claimLead": {"zh-cn":"您确定要领取此线索吗","en":"Claim this lead"}
-}
+  "web.confirm.claimLead": {"zh-cn":"您确定要领取此线索吗","en":"Claim this lead"},
+  "web.malaysiaValidation.identificationNumberMax": {
+    "zh-cn": "证件号码不能超过18个字符",
+    "en": "Identification number cannot exceed 18 characters",
+    "runtime": true
+  },
+  "web.malaysiaValidation.hrIdentificationNumberMax": {
+    "zh-cn": "证件号码不能超过32个字符",
+    "en": "Identification number cannot exceed 32 characters",
+    "runtime": true
+  },
+  "web.malaysiaValidation.identificationNumberFormat": {
+    "zh-cn": "请输入正确的证件号码",
+    "en": "Please enter a valid identification number",
+    "runtime": true
+  },
+  "web.phase7.consumableMaterialRecords": {
+    "zh-cn": "消耗物资记录",
+    "en": "Consumable-material records",
+    "runtime": true
+  },
+  "web.phase7.receivingDepartmentOrPerson": {
+    "zh-cn": "领取部门/人员",
+    "en": "Receiving department/person",
+    "runtime": true
+  },
+  "web.phase7.materialName": {
+    "zh-cn": "物资名称",
+    "en": "Material name",
+    "runtime": true
+  },
+  "web.phase7.materialCategory": {
+    "zh-cn": "物资分类",
+    "en": "Material category",
+    "runtime": true
+  },
+  "web.phase7.quantityIssued": {
+    "zh-cn": "领用数量",
+    "en": "Quantity issued",
+    "runtime": true
+  },
+  "web.phase7.issueTime": {
+    "zh-cn": "领用时间",
+    "en": "Issue time",
+    "runtime": true
+  },
+  "web.phase7.materialNumber": {
+    "zh-cn": "物资编号",
+    "en": "Material number",
+    "runtime": true
+  },
+  "web.phase7.materialUnitPrice": {
+    "zh-cn": "物资单价",
+    "en": "Unit price",
+    "runtime": true
+  },
+  "web.phase7.materialStatus": {
+    "zh-cn": "物资状态",
+    "en": "Material status",
+    "runtime": true
+  },
+  "web.phase7.fixedAssetRecords": {
+    "zh-cn": "固定物资记录",
+    "en": "Fixed asset records",
+    "runtime": true
+  },
+  "web.phase7.submittedCount": {
+    "zh-cn": "已提交数",
+    "en": "Submitted",
+    "runtime": true
+  },
+  "web.phase7.notSubmittedCount": {
+    "zh-cn": "未提交数",
+    "en": "Not submitted",
+    "runtime": true
+  },
+  "web.phase7.downloadSpreadsheet": {
+    "zh-cn": "下载表格",
+    "en": "Download spreadsheet",
+    "runtime": true
+  },
+  "web.phase7.roleCoefficient": {
+    "zh-cn": "岗位系数",
+    "en": "Role coefficient",
+    "runtime": true
+  }}

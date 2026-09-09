@@ -443,7 +443,7 @@ export default {
     info: {
       handler(val) {
         if (val && val.orderByField) {
-          this.saveName = '导出' + val.crudInfo.table_name + '.xlsx'
+          this.saveName = $('导出') + val.crudInfo.table_name + '.xlsx'
           this.filterData = val.orderByField.map((data) => {
             return {
               label: data.field_name,

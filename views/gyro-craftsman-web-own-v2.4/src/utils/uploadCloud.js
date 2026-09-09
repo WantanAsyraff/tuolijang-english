@@ -10,8 +10,14 @@ import Tips from '@/utils/tips'
 import { getFileExtension } from '@/libs/public'
 import { getStorageJson } from '@/utils/storage'
 import { processResourceUrl } from '@/utils/resourceUtil'
+import { $ } from '@/lang'
 
 import CryptoJS from 'crypto-js';
+
+const uploadErrorDetail = (error) => {
+  const detail = error && (error.msg || error.message)
+  return typeof detail === 'string' && detail ? $(detail) : $('runtime.upload.unknownError')
+}
 
 const sign = (method, publicKey, privateKey, md5, contentType, date, bucketName, fileName) => {
   const CanonicalizedResource = `/${bucketName}/${fileName}`
@@ -33,7 +39,7 @@ export const uploader = async (file, uploadType, option) => {
   return new Promise(async (resolve, reject) => {
     const size = file.size
     if (size > fileSize * 1024 * 1024) {
-      Tips.msgError(`文件大小不能大于${fileSize}MB`)
+      Tips.msgError($('runtime.upload.fileSizeLimit', { size: fileSize }))
       return reject(false)
     }
     const type = getFileExtension(file.name).toLowerCase()
@@ -235,11 +241,11 @@ export const baseUpload = {
           videoIng(false, 0)
           resolve({ url: processResourceUrl(url), ETag: ETag })
         } else {
-          reject({ msg: '文件 ' + filename + ' 上传失败，状态码：' + xhr.status })
+          reject({ msg: $('runtime.upload.failedWithStatus', { name: filename, status: xhr.status }) })
         }
       }
       xhr.onerror = function () {
-        reject({ msg: '文件 ' + filename + '上传失败，请检查是否没配置 CORS 跨域规' })
+        reject({ msg: $('runtime.upload.corsNotConfigured', { name: filename }) })
       }
       xhr.send(fileObject)
       xhr.onreadystatechange = function () {}
@@ -408,7 +414,7 @@ export const baseUpload = {
     return uploadByPieces(evfile, option, option.url || 'system/attach/upload')
       .catch(err => {
         // 分片上传失败时给出提示
-        Tips.msgError('本地上传失败：' + (err.msg || err.message || '未知错误'))
+        Tips.msgError($('runtime.upload.localFailure', { reason: uploadErrorDetail(err) }))
         throw err
       })
   }

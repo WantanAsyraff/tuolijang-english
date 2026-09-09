@@ -146,7 +146,7 @@ export default {
       },
       showTips: 0,
       config: {},
-      saveName: '导出.xlsx',
+      saveName: this.$('导出') + '.xlsx',
       exportData: {
         data: [],
         cols: [

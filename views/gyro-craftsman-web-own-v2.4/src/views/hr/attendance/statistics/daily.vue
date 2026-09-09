@@ -180,7 +180,7 @@ export default {
 
   data() {
     return {
-      saveName: '上下班打卡_日报_统计日期范围.xlsx',
+      saveName: this.$('考勤') + '_' + this.$('日报') + '_' + this.$('统计时间') + '.xlsx',
       loading: false,
       exportData: {
         data: [],
@@ -199,7 +199,7 @@ export default {
       },
       rowId: '',
       form: {
-        name: '上班1',
+        name: $('上班1'),
         dis_status: '',
         dis_locationStatus: '',
         status: '',
@@ -220,15 +220,15 @@ export default {
       salesmanList: [
         {
           id: 1,
-          name: '正常'
+          name: $('正常')
         },
         {
           id: 2,
-          name: '迟到'
+          name: $('迟到')
         },
         {
           id: 3,
-          name: '严重迟到'
+          name: $('严重迟到')
         },
         {
           id: 4,
@@ -288,16 +288,16 @@ export default {
       this.rowId = id
       this.form.remark = ''
       if (type == 1) {
-        this.form.name = '上班1：'
+        this.form.name = `${this.$('上班1')}:`
         this.form.number = 0
       } else if (type == 2) {
-        this.form.name = '下班1：'
+        this.form.name = `${this.$('下班1')}:`
         this.form.number = 1
       } else if (type == 3) {
-        this.form.name = '上班2：'
+        this.form.name = `${this.$('上班2')}:`
         this.form.number = 2
       } else {
-        this.form.name = '下班2：'
+        this.form.name = `${this.$('下班2')}:`
         this.form.number = 3
       }
       this.form.dis_status = status
@@ -342,7 +342,7 @@ export default {
     handle(status, day, time) {
       let str = ''
       if (status > 0) {
-        str = day == 0 ? '当日' : '次日'
+        str = day == 0 ? this.$('当日') : this.$('次日')
         if (time) {
           str = str + time
         }
@@ -358,13 +358,13 @@ export default {
       let text2 = ''
       let text1 = ''
       if (data.rules && data.rules.length !== 0) {
-        text1 = `${data.rules[0].first_day_after == 0 ? '当日' : '次日'}${data.rules[0].work_hours} - ${
-          data.rules[0].second_day_after == 0 ? '当日' : '次日'
+        text1 = `${data.rules[0].first_day_after == 0 ? this.$('当日') : this.$('次日')}${data.rules[0].work_hours} - ${
+          data.rules[0].second_day_after == 0 ? this.$('当日') : this.$('次日')
         }${data.rules[0].off_hours}`
 
         if (data.rules[1]) {
-          text2 = `${data.rules[1].first_day_after == 0 ? '当日' : '次日'}${data.rules[1].work_hours} - ${
-            data.rules[1].second_day_after == 0 ? '当日' : '次日'
+          text2 = `${data.rules[1].first_day_after == 0 ? this.$('当日') : this.$('次日')}${data.rules[1].work_hours} - ${
+            data.rules[1].second_day_after == 0 ? this.$('当日') : this.$('次日')
           }${data.rules[1].off_hours}`
         }
       }
@@ -373,23 +373,23 @@ export default {
     },
     async exportFn() {
       let aoaData = [
-        ['概况统计与打卡明细'],
-        [`统计时间：${this.where.time} 制表时间：${this.$moment(new Date()).format('YYYY/MM/DD')}`],
+        [this.$('概况统计与打卡明细')],
+        [`${this.$('统计时间')}：${this.where.time} ${this.$('制表时间')}：${this.$moment(new Date()).format('YYYY/MM/DD')}`],
         [
-          '姓名',
-          '部门',
-          '班次信息',
+          this.$('姓名'),
+          this.$('部门'),
+          this.$('班次信息'),
           '',
           '',
-          '上班1',
+          this.$('上班1'),
           '',
-          '下班1',
+          this.$('下班1'),
           '',
-          '上班2',
+          this.$('上班2'),
           '',
-          '下班2',
+          this.$('下班2'),
           '',
-          '时长统计',
+          this.$('时长统计'),
           '',
           '',
           ''
@@ -397,21 +397,21 @@ export default {
         [
           '',
           '',
-          '考勤组名称',
-          '日期',
-          '考勤班次',
-          '最早打卡',
-          '打卡结果',
-          '最晚打卡',
-          '打卡结果',
-          '最早打卡',
-          '打卡结果',
-          '最晚打卡',
-          '打卡结果',
-          '应出勤',
-          '实际出勤',
-          '加班时长',
-          '请假时长'
+          this.$('考勤组名称'),
+          this.$('日期'),
+          this.$('考勤班次'),
+          this.$('最早打卡'),
+          this.$('打卡结果'),
+          this.$('最晚打卡'),
+          this.$('打卡结果'),
+          this.$('最早打卡'),
+          this.$('打卡结果'),
+          this.$('最晚打卡'),
+          this.$('打卡结果'),
+          this.$('应出勤'),
+          this.$('实际出勤'),
+          this.$('加班时长'),
+          this.$('请假时长')
         ]
       ]
       let obj = { ...this.where }
@@ -438,10 +438,10 @@ export default {
           this.handle(item.four_shift_status, item.four_shift_is_after, item.four_shift_time),
           this.getStatus(item.four_shift_status, item.four_shift_location_status, item.four_shift_normal),
 
-          item.required_work_hours + '小时',
-          item.actual_work_hours + '小时',
-          item.overtime_work_hours + '小时',
-          item.leave_time + '小时'
+          item.required_work_hours + ' ' + this.$('小时'),
+          item.actual_work_hours + ' ' + this.$('小时'),
+          item.overtime_work_hours + ' ' + this.$('小时'),
+          item.leave_time + ' ' + this.$('小时')
         ])
       })
 
@@ -454,13 +454,13 @@ export default {
       let str = ''
       let tips = ''
       if (status == 1) {
-        str = '正常'
+        str = this.$('正常')
       } else if (status == 0) {
         str = '--'
       } else if (status == 2) {
-        str = '迟到'
+        str = this.$('迟到')
       } else if (status == 3) {
-        str = '严重迟到'
+        str = this.$('严重迟到')
       } else if (status == 4) {
         str = '早退'
       } else {

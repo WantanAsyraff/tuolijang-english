@@ -4,12 +4,12 @@ FROM m.daocloud.io/docker.io/library/php:8.0-cli
 ENV TZ=Asia/Kuala_Lumpur
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# 替换为阿里云源
-RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
-    && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
+# PHP 8.0 uses Debian Bullseye, whose active security feed has been retired.
+# Use the matching immutable Debian archive so package indexes and files agree.
+RUN printf 'deb http://archive.debian.org/debian bullseye main\n' > /etc/apt/sources.list
 
-# 安装系统依赖
-RUN apt-get update && apt-get install -y \
+# Install system dependencies from the archived Bullseye release.
+RUN apt-get -o Acquire::Check-Valid-Until=false update && apt-get install -y \
     git \
     curl \
     libpng-dev \

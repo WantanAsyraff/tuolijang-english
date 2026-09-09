@@ -83,6 +83,7 @@ test("locale aliases normalize while unknown aliases remain unset", () => {
   assert.equal(runtime.normalizeLocale("zh_CN"), "zh-cn");
   assert.equal(runtime.normalizeLocale("zh-Hans"), "zh-cn");
   assert.equal(runtime.normalizeLocale("en-US"), "en");
+  assert.equal(runtime.normalizeLocale("en-MY"), "en");
   assert.equal(runtime.normalizeLocale("fr"), "");
 });
 
@@ -252,8 +253,8 @@ test("all dashboard confirmation dialogs use valid canonical keys", { skip: !inc
 
 test("all management request validation sources are covered, including approved compositions", { skip: !includesApp("web") }, () => {
   const result = auditRequestValidation();
-  assert.equal(result.total, 489);
-  assert.equal(result.covered, 489);
+  assert.equal(result.total, 491);
+  assert.equal(result.covered, 491);
   assert.equal(result.unresolved.length, 0);
   assert.equal(result.rows.filter((row) => row.composed).length, 8);
 
@@ -489,8 +490,14 @@ test("each client imports one committed generated locale module", () => {
 
 test("client adapters preserve language persistence and request contracts", () => {
   if (includesApp("web")) {
-    assert.match(read("gyro-craftsman-web-own-v2.4/src/lang/index.js"), /language/);
-    assert.match(read("gyro-craftsman-web-own-v2.4/src/api/request.js"), /laravel_lang/);
+    const languageAdapter = read("gyro-craftsman-web-own-v2.4/src/lang/index.js");
+    const request = read("gyro-craftsman-web-own-v2.4/src/api/request.js");
+    const middleware = read("../app/Http/Middleware/LangUage.php");
+    assert.match(languageAdapter, /language/);
+    assert.match(languageAdapter, /en_my/);
+    assert.match(request, /laravel_lang/);
+    assert.match(request, /store\.getters\.lang \|\| getLanguage\(\)/);
+    assert.match(middleware, /'en_my', 'en-my' => 'en'/);
   }
   if (includesApp("chat")) {
     const chat = read("gyro-craftsman-chat-v1.0/src/locale/index.ts");
@@ -506,6 +513,19 @@ test("client adapters preserve language persistence and request contracts", () =
     assert.match(read("view-uni-src/locale/navigation.ts"), /language:changed/);
     assert.match(read("view-uni-src/locale/navigation.ts"), /setNavigationBarTitle/);
   }
+});
+
+test("shared upload errors use semantic messages and preserve only the diagnostic value", { skip: !includesApp("web") }, () => {
+  const webCatalog = catalog("web");
+  const source = read("gyro-craftsman-web-own-v2.4/src/utils/uploadCloud.js");
+  assert.equal(webCatalog["web.runtime.upload.fileSizeLimit"].en, "File size cannot exceed {{size}} MB");
+  assert.equal(webCatalog["web.runtime.upload.failedWithStatus"].en, "File {{name}} failed to upload (status {{status}})");
+  assert.equal(webCatalog["web.runtime.upload.corsNotConfigured"].en, "File {{name}} could not be uploaded. Check the storage service CORS configuration");
+  assert.equal(webCatalog["web.runtime.upload.localFailure"].en, "Local upload failed: {{reason}}");
+  assert.match(source, /\$\('runtime\.upload\.fileSizeLimit', \{ size: fileSize \}\)/);
+  assert.match(source, /\$\('runtime\.upload\.failedWithStatus', \{ name: filename, status: xhr\.status \}\)/);
+  assert.match(source, /\$\('runtime\.upload\.corsNotConfigured', \{ name: filename \}\)/);
+  assert.match(source, /\$\('runtime\.upload\.localFailure', \{ reason: uploadErrorDetail\(err\) \}\)/);
 });
 
 test("mobile route and tab metadata are generated from the canonical catalog", { skip: !includesApp("mobile") }, () => {

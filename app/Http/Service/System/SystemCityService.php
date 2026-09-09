@@ -8,6 +8,7 @@ namespace App\Http\Service\System;
 use App\Constants\CacheEnum;
 use App\Http\Dao\Config\CityDao;
 use App\Http\Service\Config\DictDataService;
+use App\Support\MalaysiaAddressCatalog;
 use crmeb\basic\BaseService;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
@@ -69,15 +70,17 @@ class SystemCityService extends BaseService
             DB::table($this->dao->getTable())->truncate();
             $cityData = $this->transaction(function () use ($data) {
                 $this->saveDistricts(collect($data), 0);
+                MalaysiaAddressCatalog::sync();
                 return true;
             });
             $cityData && Cache::tags([CacheEnum::TAG_CONFIG])->flush();
             $dictData = app()->get(DictDataService::class);
-            $dataSave = $dictData->transaction(function () use ($dictData) {
-                $dictData->delete(['type_id' => 2]);
-                $save = collect($this->dao->select(['is_show' => 1], ['id as value', 'name', 'level', 'parent_id as pid'])?->toArray() ?? [])->map(function ($item) {
+            $typeId   = (int) DB::table('dict_type')->where('ident', 'area_cascade')->value('id');
+            $dataSave = $dictData->transaction(function () use ($dictData, $typeId) {
+                $dictData->delete(['type_id' => $typeId]);
+                $save = collect($this->dao->select(['is_show' => 1], ['id as value', 'name', 'level', 'parent_id as pid'])?->toArray() ?? [])->map(function ($item) use ($typeId) {
                     $item['status']     = 1;
-                    $item['type_id']    = 2;
+                    $item['type_id']    = $typeId;
                     $item['type_name']  = 'area_cascade';
                     $item['is_default'] = 1;
                     $item['level']      = $item['level'] + 1;

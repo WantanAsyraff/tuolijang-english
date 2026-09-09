@@ -312,7 +312,7 @@ export default {
     },
     // 导出
     getExportData() {
-      this.saveName = '导出付款审核_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
+      this.saveName = this.$('导出') + this.$('付款审核') + '_' + this.$moment(new Date()).format('MM_DD_HH_mm_ss') + '.xlsx'
       this.where.limit = 0
 
       let where = {
@@ -328,17 +328,17 @@ export default {
       clientBillListApi(where).then((res) => {
         let data = res.data.list
         let aoaData = [
-          ['付款时间', '付款金额', '支付方式', '备注', '业务类型', '客户名称', '订单名称', '订单编号', '业务员']
+          [this.$('付款时间'), this.$('付款金额'), this.$('支付方式'), this.$('备注'), this.$('业务类型'), this.$('客户名称'), this.$('订单名称'), this.$('订单编号'), this.$('业务员')]
         ]
         if (data.length > 0) {
           data.forEach((value) => {
             if (value.types == 0) {
-              value.types = '回款记录'
+              value.types = this.$('回款记录')
             } else {
               if (value.renew) {
-                value.types = '续费记录' + '-' + value.renew
+                value.types = this.$('续费记录') + '-' + value.renew
               } else {
-                value.types = '续费记录'
+                value.types = this.$('续费记录')
               }
             }
 

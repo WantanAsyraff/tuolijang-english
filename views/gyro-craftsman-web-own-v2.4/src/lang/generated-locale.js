@@ -3258,6 +3258,11 @@ export const messages = Object.freeze({
       "wechatLogin": "WeCom login",
       "zhuce": "Account registration"
     },
+    "malaysiaValidation": {
+      "hrIdentificationNumberMax": "Identification number cannot exceed 32 characters",
+      "identificationNumberFormat": "Please enter a valid identification number",
+      "identificationNumberMax": "Identification number cannot exceed 18 characters"
+    },
     "navbar": {
       "console": "Console",
       "dashboard": "Dashboard",
@@ -3292,6 +3297,22 @@ export const messages = Object.freeze({
       "roles": "Your roles",
       "switchRoles": "Switch roles",
       "tips": "In some cases, using v-permission will have no effect. For example: Element-UI  el-tab or el-table-column and other scenes that dynamically render dom. You can only do this with v-if."
+    },
+    "phase7": {
+      "consumableMaterialRecords": "Consumable-material records",
+      "downloadSpreadsheet": "Download spreadsheet",
+      "fixedAssetRecords": "Fixed asset records",
+      "issueTime": "Issue time",
+      "materialCategory": "Material category",
+      "materialName": "Material name",
+      "materialNumber": "Material number",
+      "materialStatus": "Material status",
+      "materialUnitPrice": "Unit price",
+      "notSubmittedCount": "Not submitted",
+      "quantityIssued": "Quantity issued",
+      "receivingDepartmentOrPerson": "Receiving department/person",
+      "roleCoefficient": "Role coefficient",
+      "submittedCount": "Submitted"
     },
     "public": {
       "add": "Add",
@@ -3516,7 +3537,12 @@ export const messages = Object.freeze({
         "export": "Report export"
       },
       "upload": {
-        "missingFileInfo": "Upload succeeded, but no file information was returned"
+        "corsNotConfigured": "File {{name}} could not be uploaded. Check the storage service CORS configuration",
+        "failedWithStatus": "File {{name}} failed to upload (status {{status}})",
+        "fileSizeLimit": "File size cannot exceed {{size}} MB",
+        "localFailure": "Local upload failed: {{reason}}",
+        "missingFileInfo": "Upload succeeded, but no file information was returned",
+        "unknownError": "Unknown error"
       },
       "validation": {
         "endAfterStartExclamation": "The end time must be after the start time",
@@ -5381,7 +5407,7 @@ export const messages = Object.freeze({
       "hrAttendanceStatisticsRecordDrawerDataSource": "Data source",
       "hrAttendanceStatisticsRecordDrawerManualEdit": "Manual edit",
       "hrAttendanceStatisticsRecordDrawerShiftInformation": "Shift information",
-      "hrCityProvinceCityDistrict": "Province/city/district",
+      "hrCityProvinceCityDistrict": "State/territory and city/town",
       "hrEnterpriseGroupEditUserDepartmentHead": "Department head:",
       "hrEnterpriseGroupEditUserOrganization": "Organization",
       "hrEnterpriseGroupEditUserResponsibleDepartments": "Responsible departments:",
@@ -9772,6 +9798,11 @@ export const messages = Object.freeze({
       "wechatLogin": "企业微信登录",
       "zhuce": "账号注册"
     },
+    "malaysiaValidation": {
+      "hrIdentificationNumberMax": "证件号码不能超过32个字符",
+      "identificationNumberFormat": "请输入正确的证件号码",
+      "identificationNumberMax": "证件号码不能超过18个字符"
+    },
     "navbar": {
       "console": "控制台",
       "dashboard": "首页",
@@ -9806,6 +9837,22 @@ export const messages = Object.freeze({
       "roles": "你的权限",
       "switchRoles": "切换权限",
       "tips": "在某些情况下，不适合使用 v-permission。例如：Element-UI 的 el-tab 或 el-table-column 以及其它动态渲染 dom 的场景。你只能通过手动设置 v-if 来实现。"
+    },
+    "phase7": {
+      "consumableMaterialRecords": "消耗物资记录",
+      "downloadSpreadsheet": "下载表格",
+      "fixedAssetRecords": "固定物资记录",
+      "issueTime": "领用时间",
+      "materialCategory": "物资分类",
+      "materialName": "物资名称",
+      "materialNumber": "物资编号",
+      "materialStatus": "物资状态",
+      "materialUnitPrice": "物资单价",
+      "notSubmittedCount": "未提交数",
+      "quantityIssued": "领用数量",
+      "receivingDepartmentOrPerson": "领取部门/人员",
+      "roleCoefficient": "岗位系数",
+      "submittedCount": "已提交数"
     },
     "public": {
       "add": "添加",
@@ -10030,7 +10077,12 @@ export const messages = Object.freeze({
         "export": "汇报导出"
       },
       "upload": {
-        "missingFileInfo": "上传成功，但未返回文件信息"
+        "corsNotConfigured": "文件 {{name}} 上传失败，请检查存储服务的 CORS 跨域配置",
+        "failedWithStatus": "文件 {{name}} 上传失败，状态码：{{status}}",
+        "fileSizeLimit": "文件大小不能大于{{size}}MB",
+        "localFailure": "本地上传失败：{{reason}}",
+        "missingFileInfo": "上传成功，但未返回文件信息",
+        "unknownError": "未知错误"
       },
       "validation": {
         "endAfterStartExclamation": "结束时间必须大于开始时间！",
@@ -13388,6 +13440,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "本部门及子部门": "My department and subdepartments",
   "本次回答内容根据最近轮次的参考对话": "This response uses the most recent conversation turns as context.",
   "本地存储": "Local storage",
+  "本地上传失败：{{reason}}": "Local upload failed: {{reason}}",
   "本季度": "This quarter",
   "本科": "Bachelor degree",
   "本年": "Year",
@@ -14996,6 +15049,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "岗巴县": "Gangba County",
   "岗位分数": "Position score",
   "岗位工资": "Position salary",
+  "岗位系数": "Role coefficient",
   "岗位职责": "Job duties",
   "岗位职责表": "Job duties form",
   "岗位职责不存在": "Job responsibilities do not exist",
@@ -15210,6 +15264,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "固定工资": "Base salary",
   "固定期限": "Fixed term",
   "固定物资": "Fixed asset",
+  "固定物资记录": "Fixed asset records",
   "固定物资领取数量": "Fixed assets issued",
   "固定值": "Fixed value",
   "固始县": "Gushi County",
@@ -16853,8 +16908,11 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "岭东区": "Lingdong District",
   "领取": "Issue",
   "领取部门 / 人员": "Receiving department / employee",
+  "领取部门/人员": "Receiving department/person",
   "领用": "Issue",
   "领用对象": "Recipient",
+  "领用时间": "Issue time",
+  "领用数量": "Quantity issued",
   "浏览": "Views",
   "浏阳市": "Liuyang City",
   "流程": "Workflow",
@@ -18187,6 +18245,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "请输入正确的时间": "Enter a valid time",
   "请输入正确的移动端路径地址": "Enter a valid mobile path",
   "请输入正确的邮箱格式": "Please enter the correct email format",
+  "请输入正确的证件号码": "Please enter a valid identification number",
   "请输入正确的职等范围！": "Enter a valid job-grade range",
   "请输入正确的email地址": "Enter a valid email address",
   "请输入正确手机号码": "Please enter the correct mobile number",
@@ -20341,6 +20400,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "未送达客户": "Undelivered customers",
   "未送达客户群": "Undelivered customer groups",
   "未提交": "Not submitted",
+  "未提交数": "Not submitted",
   "未通过": "Rejected",
   "未通过，": "Rejected,",
   "未通过原因不能为空": "A rejection reason is required",
@@ -20425,11 +20485,14 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "文登区": "Wendeng District",
   "文峰区": "Wenfeng District",
   "文件": "File",
+  "文件 {{name}} 上传失败，请检查存储服务的 CORS 跨域配置": "File {{name}} could not be uploaded. Check the storage service CORS configuration",
+  "文件 {{name}} 上传失败，状态码：{{status}}": "File {{name}} failed to upload (status {{status}})",
   "文件保存失败": "Failed to save the file",
   "文件不存在": "File not found",
   "文件不存在!": "File not found",
   "文件创建提醒": "File creation reminder",
   "文件大小": "File size",
+  "文件大小不能大于{{size}}MB": "File size cannot exceed {{size}} MB",
   "文件档案管理": "Document and records management",
   "文件封面": "Document cover",
   "文件附件": "File attachments",
@@ -20662,15 +20725,20 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "物品报修": "Item repair request",
   "物品领用": "Item requisition",
   "物资": "Material",
+  "物资编号": "Material number",
   "物资变动明细": "Material movement details",
   "物资变动情况": "Material movement",
+  "物资单价": "Unit price",
   "物资单价(元)": "Material unit price (MYR)",
+  "物资分类": "Material category",
   "物资概览": "Materials overview",
   "物资管理": "Material management",
   "物资记录": "Material records",
+  "物资名称": "Material name",
   "物资盘点准确率": "Inventory count accuracy",
   "物资损耗率": "Material loss rate",
   "物资型号": "Material model",
+  "物资状态": "Material status",
   "婺城区": "Wucheng District",
   "婺源县": "Wuyuan County",
   "雾臺乡": "Wutai Township",
@@ -20804,6 +20872,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "下营区": "Xiaying District",
   "下月计划": "Plan for next month",
   "下载": "Download",
+  "下载表格": "Download spreadsheet",
   "下载空的模板表格": "Download blank template",
   "下载模板": "Download template",
   "下载排班模板": "Download schedule template",
@@ -20920,6 +20989,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "象山县": "Xiangshan County",
   "象州县": "Xiangzhou County",
   "消耗物资": "Consumable",
+  "消耗物资记录": "Consumable-material records",
   "消耗物资领取数量": "Consumables issued",
   "消息": "News",
   "消息标题": "Message title",
@@ -21684,6 +21754,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "已收款金额": "Amount received",
   "已送达": "Delivered",
   "已提交": "Submitted",
+  "已提交数": "Submitted",
   "已添加": "Added",
   "已添加成功，您可继续": "Added successfully. You can continue to",
   "已通过": "Approved",
@@ -22342,6 +22413,8 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "正在更新，请耐心等待": "Updating. Please wait.",
   "正在更新，请耐心等待 ~": "Updating. Please wait.",
   "正在上传中": "Uploading",
+  "证件号码不能超过18个字符": "Identification number cannot exceed 18 characters",
+  "证件号码不能超过32个字符": "Identification number cannot exceed 32 characters",
   "证件照": "ID photo",
   "郑州市": "Zhengzhou City",
   "政府补贴": "Government subsidies",
@@ -22889,7 +22962,7 @@ function createLocalizationRuntime(systemTextEn) {
   function normalizeLocale(language) {
     const locale = String(language || "").toLowerCase();
     if (["zh", "zh_cn", "zh-cn", "zh-hans"].includes(locale)) return "zh-cn";
-    if (["en", "en_us", "en-us", "en-gb"].includes(locale)) return "en";
+    if (["en", "en_us", "en-us", "en-gb", "en_my", "en-my"].includes(locale)) return "en";
     return "";
   }
 
