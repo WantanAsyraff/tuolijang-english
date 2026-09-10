@@ -61,7 +61,7 @@ class FormService extends BaseService
     {
         $types = $where['types'] ?? 0;
         return $this->dao->getList($where, $field, 0, 0, $sort, $with, function ($list) use ($types) {
-            $field = match ((int) $types) {
+            $protectedFields = match ((int) $types) {
                 CustomEnum::CUSTOMER => CustomerEnum::CUSTOMER_NOT_ALLOW_DELETE_FIELD,
                 CustomEnum::CONTRACT => ContractEnum::CONTRACT_NOT_ALLOW_DELETE_FIELD,
                 CustomEnum::LIAISON  => LiaisonEnum::LIAISON_NOT_ALLOW_DELETE_FIELD,
@@ -70,14 +70,17 @@ class FormService extends BaseService
                 CustomEnum::PRODUCT  => ProductEnum::PRODUCT_NOT_ALLOW_DELETE_FIELD,
                 default              => []
             };
+            $systemFields = $this->systemOwnedFormFields((int) $types);
             foreach ($list as $item) {
                 $isSystemOwned = $item->ident !== '';
                 foreach ($item->data as $data) {
                     $data->enable_delete = 1;
-                    if (in_array($data->key, $field)) {
+                    if (in_array($data->key, $protectedFields, true)) {
                         $data->enable_delete = 0;
                     }
-                    $data->is_system_owned = $data->enable_delete === 0 ? 1 : 0;
+                    // Built-in base forms include editable fields. Their display
+                    // metadata is system-owned even though administrators may edit it.
+                    $data->is_system_owned = in_array($data->key, $systemFields, true) ? 1 : 0;
                     $isSystemOwned          = $isSystemOwned || $data->is_system_owned === 1;
                 }
                 $item->is_system_owned = $isSystemOwned ? 1 : 0;
@@ -262,6 +265,36 @@ class FormService extends BaseService
     }
 
     /**
+     * Canonical fields supplied by the application seed data.
+     *
+     * This is deliberately separate from non-deletable-field rules: some
+     * built-in fields are editable, but their labels and placeholders must
+     * still be translated. User-created fields remain outside this list.
+     */
+    private function systemOwnedFormFields(int $types): array
+    {
+        return match ($types) {
+            CustomEnum::CUSTOMER => CustomerEnum::CUSTOMER_NOT_ALLOW_DELETE_FIELD,
+            CustomEnum::CONTRACT => array_merge(ContractEnum::CONTRACT_NOT_ALLOW_DELETE_FIELD, [
+                'contract_name', 'start_date', 'end_date',
+            ]),
+            CustomEnum::LIAISON => array_merge(LiaisonEnum::LIAISON_NOT_ALLOW_DELETE_FIELD, [
+                // The following opaque keys belong to the stock contact form.
+                // They are intentionally explicit so user-created fields with
+                // Chinese labels continue to be returned exactly as entered.
+                'liaison_job', 'b3733f36', 'e06d7153', 'e06d7152',
+                'e06d7159', 'l753bf282', 'cdc4d06a', 'ce99fdb8', 'c3e2adbb',
+            ]),
+            CustomEnum::CLUE => ClueEnum::CLUE_NOT_ALLOW_DELETE_FIELD,
+            CustomEnum::ODDS => array_merge(OddsEnum::ODDS_NOT_ALLOW_DELETE_FIELD, [
+                'name', 'eid', 'types', 'description',
+            ]),
+            CustomEnum::PRODUCT => ProductEnum::PRODUCT_NOT_ALLOW_DELETE_FIELD,
+            default => [],
+        };
+    }
+
+    /**
      * 获取自定义表单数据.
      * @throws BindingResolutionException
      * @throws ContainerExceptionInterface
@@ -271,15 +304,7 @@ class FormService extends BaseService
     public function getCustomDataByTypes(int $types, array $field = ['*'], array $with = []): array
     {
         $cateIds = $this->dao->column(['types' => $types], 'id');
-        $systemFields = match ($types) {
-            CustomEnum::CUSTOMER => CustomerEnum::CUSTOMER_NOT_ALLOW_DELETE_FIELD,
-            CustomEnum::CONTRACT => ContractEnum::CONTRACT_NOT_ALLOW_DELETE_FIELD,
-            CustomEnum::LIAISON  => LiaisonEnum::LIAISON_NOT_ALLOW_DELETE_FIELD,
-            CustomEnum::CLUE     => ClueEnum::CLUE_NOT_ALLOW_DELETE_FIELD,
-            CustomEnum::ODDS     => OddsEnum::ODDS_NOT_ALLOW_DELETE_FIELD,
-            CustomEnum::PRODUCT  => ProductEnum::PRODUCT_NOT_ALLOW_DELETE_FIELD,
-            default               => [],
-        };
+        $systemFields = $this->systemOwnedFormFields($types);
         $data = $this->dataDao->getTreeStructure(['cate_id' => $cateIds, 'status' => 1], $field, $with);
         return array_map(function ($item) use ($systemFields) {
             $key = $item['field'] ?? $item['key'] ?? '';

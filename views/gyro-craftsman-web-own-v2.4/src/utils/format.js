@@ -189,5 +189,5 @@ export function toGetWeek(date) {
     6: '周六',
     0: '周日'
   }
-  return isWeek[week]
+  return $(isWeek[week])
 }

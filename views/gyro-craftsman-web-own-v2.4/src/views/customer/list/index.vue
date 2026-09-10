@@ -8,7 +8,7 @@
       :ids="ids"
       :title="$route.meta.title"
       :total="total"
-      :treeData="types == 'customer' ? treeDataGroup : [{ label: '全部', id: '' }]"
+      :treeData="types == 'customer' ? treeDataGroup : [{ label: $('全部'), id: '' }]"
       :treeDefault="defaultFrame"
       :viewSearch="viewSearch"
       :timeSearchObj="timeSearchObj"

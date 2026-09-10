@@ -3314,6 +3314,9 @@ export const messages = Object.freeze({
       "roleCoefficient": "Role coefficient",
       "submittedCount": "Submitted"
     },
+    "phase9": {
+      "menuDisplay": "Display"
+    },
     "public": {
       "add": "Add",
       "Adddepartment": "Add sub department",
@@ -9853,6 +9856,9 @@ export const messages = Object.freeze({
       "receivingDepartmentOrPerson": "领取部门/人员",
       "roleCoefficient": "岗位系数",
       "submittedCount": "已提交数"
+    },
+    "phase9": {
+      "menuDisplay": "展示"
     },
     "public": {
       "add": "添加",
@@ -22270,6 +22276,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "展开到": "Expand to",
   "展开所有": "Expand all",
   "展开所有下级节点": "Expand all child nodes",
+  "展示": "Display",
   "展现形式": "Display style",
   "占比": "Share",
   "占比率": "Proportion",

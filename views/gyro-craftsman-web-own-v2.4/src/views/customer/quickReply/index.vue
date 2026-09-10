@@ -329,7 +329,7 @@ export default {
         this.groupedData = JSON.parse(JSON.stringify(res.data.list))
         res.data.list.unshift({
           id: '',
-          name: '全部'
+          name: this.$('全部')
         })
 
         this.leftList = res.data.list
