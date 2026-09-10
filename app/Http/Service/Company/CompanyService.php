@@ -430,7 +430,29 @@ class CompanyService extends BaseService implements CompanyInterface
             throw $this->exception('企业不存在');
         }
 
-        return $entInfo?->province . $entInfo?->city . $entInfo?->area . $entInfo?->address;
+        // Address components are stored independently so that the enterprise
+        // settings form can edit them.  Join the non-empty components for
+        // display rather than concatenating them, which previously produced
+        // strings such as "Kuala LumpurBukit Bintang".
+        $address = collect([$entInfo->province, $entInfo->city, $entInfo->area, $entInfo->address])
+            ->map(static fn ($part) => trim((string) $part))
+            ->filter()
+            ->values();
+
+        // Federal territories can legitimately be selected as both state and
+        // city.  Do not repeat adjacent matching display components.
+        $displayParts = [];
+        foreach ($address as $part) {
+            if ($part !== end($displayParts)) {
+                $displayParts[] = $part;
+            }
+        }
+
+        // Keep the established compact formatting for Chinese addresses while
+        // separating Latin-script Malaysian address components.
+        $separator = collect($displayParts)->contains(static fn ($part) => preg_match('/\\p{Han}/u', $part)) ? '' : ' ';
+
+        return implode($separator, $displayParts);
     }
 
     /**

@@ -9188,6 +9188,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "展开到": "Expand to",
   "展开所有": "Expand all",
   "展开所有下级节点": "Expand all child nodes",
+  "展示": "Display",
   "展现形式": "Display style",
   "占比": "Share",
   "占比率": "Proportion",

@@ -24612,4 +24612,10 @@
     "zh-cn": "岗位系数",
     "en": "Role coefficient",
     "runtime": true
-  }}
+  },
+  "web.phase9.menuDisplay": {
+    "zh-cn": "展示",
+    "en": "Display",
+    "runtime": true
+  }
+}

@@ -11,13 +11,14 @@ function hasDictionaryOwnership(entry) {
     entry &&
       typeof entry === 'object' &&
       (Object.prototype.hasOwnProperty.call(entry, 'is_system_owned') ||
-        Object.prototype.hasOwnProperty.call(entry, 'is_default'))
+        Object.prototype.hasOwnProperty.call(entry, 'is_default') ||
+        Object.prototype.hasOwnProperty.call(entry, 'system_field'))
   )
 }
 
 function isSystemOwnedDictionaryEntry(entry) {
   if (!hasDictionaryOwnership(entry)) return false
-  return Number(entry.is_system_owned ?? entry.is_default) === 1
+  return Number(entry.is_system_owned ?? entry.is_default ?? entry.system_field) === 1
 }
 
 function dictionaryDisplayLabel(entry, translate, key = 'name') {

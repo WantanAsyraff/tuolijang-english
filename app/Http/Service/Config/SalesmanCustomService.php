@@ -136,9 +136,9 @@ class SalesmanCustomService extends BaseService
                 [$list, $search] = $this->salesmanCustomFullField($customType);
                 // 合并并过滤列表字段
                 // Enum-defined fields are application metadata; custom FormData fields retain their explicit ownership.
-                $list = collect($list)->map(fn ($item) => [...$item, 'is_system_owned' => 1])->concat(in_array($customType, [ViewSearchEnum::VIEW_CUSTOMER, ViewSearchEnum::VIEW_CUSTOMER_SEAS]) ? $this->filterFields($fields, ['file', 'oawangeditor', 'images'], ['clue_id']) : $this->filterFields($fields, ['images', 'file', 'oawangeditor']))->all();
+                $list = collect($list)->map(fn ($item) => array_merge($item, ['is_system_owned' => 1]))->concat(in_array($customType, [ViewSearchEnum::VIEW_CUSTOMER, ViewSearchEnum::VIEW_CUSTOMER_SEAS]) ? $this->filterFields($fields, ['file', 'oawangeditor', 'images'], ['clue_id']) : $this->filterFields($fields, ['images', 'file', 'oawangeditor']))->all();
                 // 合并并过滤搜索字段，确保唯一性
-                $search = collect($search)->map(fn ($item) => [...$item, 'is_system_owned' => 1])->concat($this->filterFields($fields, ['images', 'file', 'oawangeditor'], ['contract_followed', 'customer_followed']))->unique('name')->values()->all();
+                $search = collect($search)->map(fn ($item) => array_merge($item, ['is_system_owned' => 1]))->concat($this->filterFields($fields, ['images', 'file', 'oawangeditor'], ['contract_followed', 'customer_followed']))->unique('name')->values()->all();
                 // 提取字段键名
                 $listFieldKeys   = collect($list)->pluck('field')->all();
                 $searchFieldKeys = collect($search)->pluck('field')->all();
