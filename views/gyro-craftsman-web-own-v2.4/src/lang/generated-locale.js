@@ -4008,6 +4008,9 @@ export const messages = Object.freeze({
       "administrationNoticeIndexCover": "Cover",
       "administrationNoticeIndexCreateAnnouncement": "Create announcement",
       "administrationNoticeIndexReadCount": "Read count",
+      "attendanceStatistics": {
+        "importTemplateSampleEmployee": "Example employee"
+      },
       "businessExamineIndexAddApprovalProcessPage": "Add Approval process page",
       "businessExamineIndexApprovalList": "Approval list",
       "businessExamineIndexSort": "Sort",
@@ -4871,6 +4874,10 @@ export const messages = Object.freeze({
       "developDataManagementIndexLinkUrl": "Link URL",
       "developDataManagementIndexRequestMethod": "Request method",
       "developDataManagementIndexRequestType": "Request type",
+      "developDictionary": {
+        "createTitle": "Add dictionary",
+        "editTitle": "Edit dictionary"
+      },
       "developDictionaryManagementDataColor": "Data color",
       "developDictionaryManagementDataManagementList": "Data management list",
       "developDictionaryManagementDataName": "Data name",
@@ -5147,6 +5154,11 @@ export const messages = Object.freeze({
       "hrApprovaTimeDay": "Day",
       "hrApprovaTimeHours": "hours",
       "hrApprovaTimePleaseEnterDuration": "Please enter Duration:",
+      "hrArchives": {
+        "confirmEmployment": {
+          "notePlaceholder": "Enter employment confirmation notes"
+        }
+      },
       "hrArchivesFormBoxEmployeeList": "Employee list",
       "hrArchivesFormItemDataListAddDirectly": "Add directly",
       "hrArchivesFormItemDataListAddExperience": "Add experience",
@@ -10551,6 +10563,9 @@ export const messages = Object.freeze({
       "administrationNoticeIndexCover": "封面",
       "administrationNoticeIndexCreateAnnouncement": "新建公告",
       "administrationNoticeIndexReadCount": "已读人数",
+      "attendanceStatistics": {
+        "importTemplateSampleEmployee": "示例员工"
+      },
       "businessExamineIndexAddApprovalProcessPage": "添加审批流程页面",
       "businessExamineIndexApprovalList": "审批列表",
       "businessExamineIndexSort": "排序",
@@ -11414,6 +11429,10 @@ export const messages = Object.freeze({
       "developDataManagementIndexLinkUrl": "链接地址",
       "developDataManagementIndexRequestMethod": "请求方式",
       "developDataManagementIndexRequestType": "请求类型",
+      "developDictionary": {
+        "createTitle": "新增字典",
+        "editTitle": "修改字典"
+      },
       "developDictionaryManagementDataColor": "数据颜色",
       "developDictionaryManagementDataManagementList": "数据管理列表",
       "developDictionaryManagementDataName": "数据名称",
@@ -11690,6 +11709,11 @@ export const messages = Object.freeze({
       "hrApprovaTimeDay": "天",
       "hrApprovaTimeHours": "小时",
       "hrApprovaTimePleaseEnterDuration": "请输入时长",
+      "hrArchives": {
+        "confirmEmployment": {
+          "notePlaceholder": "请输入转正备注信息"
+        }
+      },
       "hrArchivesFormBoxEmployeeList": "员工列表",
       "hrArchivesFormItemDataListAddDirectly": "直接加入",
       "hrArchivesFormItemDataListAddExperience": "添加经历",
@@ -13332,6 +13356,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "办公审批": "Office approval",
   "办公物资": "Office supplies",
   "办公用品": "Office supplies",
+  "办理转正": "Confirm employment",
   "半年考核": "Semiannual assessment",
   "半天缺卡": "Half-day missing clock-in",
   "半天缺卡的值要大于早退": "The half-day missing-clock threshold must be greater than the early-leave threshold",
@@ -18259,6 +18284,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "请输入职级描述": "Enter a job rank description",
   "请输入职位简介": "Please enter job description",
   "请输入职位名称": "Please input the content",
+  "请输入转正备注信息": "Enter employment confirmation notes",
   "请输入字段名": "Enter a field name",
   "请输入纵坐标,只能填数字": "Please input ordinate, only numbers",
   "请输入最低职等": "Enter the minimum job level",
@@ -21341,6 +21367,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "修改显示名": "Edit display name",
   "修改用户": "Updated by",
   "修改职级类别": "Edit job rank category",
+  "修改字典": "Edit dictionary",
   "修改字段不能为空": "Field to modify is required",
   "修改字段成功": "Field updated successfully",
   "修改自评": "Edit self-assessment",
@@ -22710,6 +22737,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "转移": "Transfer",
   "转移人ID不能为空": "Transfer recipient ID is required",
   "转移设置": "Transfer settings",
+  "转正备注": "Employment confirmation notes",
   "转正申请": "Regularization request",
   "转正时间": "Positive time",
   "庄河市": "Zhuanghe City",

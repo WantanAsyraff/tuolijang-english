@@ -31,6 +31,17 @@ class BillService extends BaseService implements ResourceServicesInterface
     use ResourceServiceTrait;
 
     /**
+     * Stable import values are normalized here at the API boundary. The
+     * persisted bill type intentionally remains the existing numeric value.
+     */
+    private const IMPORT_TYPE_CODES = [
+        'income' => 1,
+        'expense' => 0,
+        '收入' => 1,
+        '支出' => 0,
+    ];
+
+    /**
      * BillService constructor.
      */
     public function __construct(BillDao $dao)
@@ -355,13 +366,13 @@ class BillService extends BaseService implements ResourceServicesInterface
             foreach ($data as $index => $val) {
                 $rowNo = $index + 1;
                 $typeName = trim((string) ($val['types'] ?? ''));
-                if ($typeName === '' || str_contains($typeName, '账目类型') || preg_match('/^示例[:：]/u', $typeName)) {
+                if ($typeName === '' || $typeName === '账目类型' || strtolower($typeName) === 'account type' || preg_match('/^(示例|example)[:：]/iu', $typeName)) {
                     continue;
                 }
-                if (! in_array($typeName, ['收入', '支出'], true)) {
+                $types = $this->normalizeImportedType($typeName);
+                if ($types === null) {
                     throw $this->exception("第{$rowNo}行账目类型只能填写收入或支出");
                 }
-                $types = $typeName == '收入' ? 1 : 0;
                 $num = $val['num'] ?? 0;
                 if (! is_numeric($num) || $num <= 0) {
                     throw $this->exception("第{$rowNo}行账目金额必须大于0");
@@ -432,6 +443,17 @@ class BillService extends BaseService implements ResourceServicesInterface
             }
             return true;
         });
+    }
+
+    /**
+     * Accept semantic import values and their legacy display-label aliases.
+     */
+    private function normalizeImportedType(string $value): ?int
+    {
+        $value = trim($value);
+        $key   = strtolower($value);
+
+        return self::IMPORT_TYPE_CODES[$key] ?? self::IMPORT_TYPE_CODES[$value] ?? null;
     }
 
     /**

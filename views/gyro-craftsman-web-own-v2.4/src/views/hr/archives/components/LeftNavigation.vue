@@ -26,7 +26,7 @@
       >
       <!-- 使用计算属性或对象映射来减少 v-if 的使用，提高代码可读性 -->
       <span v-if="userInfo">
-        <span :class="['unread', getStatusClass(userInfo.type)]">{{ userInfo.type }}</span>
+        <span :class="['unread', getStatusClass(userInfo.type)]">{{ $(userInfo.type) }}</span>
       </span>
     </div>
   </div>

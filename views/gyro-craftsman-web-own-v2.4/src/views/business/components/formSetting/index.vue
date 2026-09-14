@@ -59,6 +59,8 @@ export default {
 <style lang="scss" scoped>
 .formData {
   height: calc(100vh - 130px);
+  overflow-x: auto;
+  overflow-y: hidden;
   ::v-deep .el-aside,
   ::v-deep ._fc-l-group {
     padding: 0;
@@ -74,6 +76,7 @@ export default {
   }
   ::v-deep ._fc-designer {
     min-height: calc(100vh - 142px);
+    min-width: 920px;
   }
   ::v-deep ._fc-m-drag::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px #ccc;

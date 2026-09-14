@@ -24,6 +24,35 @@ class DictTypeService extends BaseService implements ResourceServicesInterface
     use ResourceServiceTrait;
 
     /**
+     * Dictionary types installed by the application.  Some legacy databases
+     * retain these rows but have lost their original is_default flag; their
+     * stable identifiers remain the authoritative ownership boundary.
+     *
+     * Custom dictionary identifiers are intentionally not included.
+     *
+     * @var string[]
+     */
+    private const SYSTEM_OWNED_IDENTIFIERS = [
+        'customer_status',
+        'area_cascade',
+        'customer_way',
+        'customer_type',
+        'follow_status',
+        'contract_status',
+        'gender',
+        'client_renew',
+        'contract_type',
+        'signing_status',
+        'odds_type',
+        'odds_status',
+        'bill_type',
+        'clue_status',
+        'product_type',
+        'product_status',
+        'clue_way',
+    ];
+
+    /**
      * 可编辑的字典.
      * @var array|string[]
      */
@@ -65,6 +94,7 @@ class DictTypeService extends BaseService implements ResourceServicesInterface
                 ->groupBy('data_dict_id')
                 ->select(['crud_id', 'data_dict_id', 'id'])->get()->toArray();
             foreach ($list as &$item) {
+                $item['is_system_owned'] = $this->isSystemOwned($item) ? 1 : 0;
                 $item['crud_name'] = [];
                 foreach ($crudList as $value) {
                     if ($item['id'] === $value['data_dict_id'] && ! empty($value['crud']['table_name'])) {
@@ -87,7 +117,7 @@ class DictTypeService extends BaseService implements ResourceServicesInterface
     public function info($id)
     {
         $info = toArray($this->dao->get($id));
-        $info['is_system_owned'] = (int) ($info['is_default'] ?? 0);
+        $info['is_system_owned'] = $this->isSystemOwned($info) ? 1 : 0;
         if (in_array($info['ident'], $this->canDeleteData)) {
             $info['is_default'] = 0;
         } elseif (in_array($info['ident'], $this->canEditData) && $this->isBinding($info['ident'])) {
@@ -130,7 +160,21 @@ class DictTypeService extends BaseService implements ResourceServicesInterface
         if (! $info) {
             throw $this->exception('修改的字典不存在');
         }
-        return $this->createElementForm('修改字典', $this->getFormRule(collect($info), true), '/ent/config/dict_type/' . $id, 'PUT');
+        $form = $this->createElementForm('修改字典', $this->getFormRule(collect($info), true), '/ent/config/dict_type/' . $id, 'PUT');
+
+        // Form schemas are rendered by the dashboard after their labels have
+        // been localized.  Mark installed metadata explicitly so its stored
+        // Chinese label can be displayed through the same boundary without
+        // treating custom dictionary text as system-owned.
+        if ($this->isSystemOwned($info)) {
+            $form['system_dictionary_fields'] = [
+                'name'  => $info['name'],
+                'ident' => $info['ident'],
+                'mark'  => $info['mark'],
+            ];
+        }
+
+        return $form;
     }
 
     /**
@@ -141,6 +185,22 @@ class DictTypeService extends BaseService implements ResourceServicesInterface
      */
     public function resourceUpdate($id, array $data)
     {
+        $existing = toArray($this->dao->get($id));
+        if (! $existing) {
+            throw $this->exception('修改的字典不存在');
+        }
+
+        // Installed dictionary metadata is a localization source, not
+        // user-authored content. Preserve its canonical stored values when an
+        // edit form is submitted; status remains independently editable.
+        if ($this->isSystemOwned($existing)) {
+            $data = array_merge($data, [
+                'name'  => $existing['name'],
+                'ident' => $existing['ident'],
+                'mark'  => $existing['mark'],
+            ]);
+        }
+
         if ($this->dao->exists(['not_id' => $id, 'name' => $data['name']])) {
             throw $this->exception('字典名称已存在, 请勿重复添加');
         }
@@ -188,6 +248,17 @@ class DictTypeService extends BaseService implements ResourceServicesInterface
     private function isBinding($ident)
     {
         return ! app()->get(\App\Http\Service\Config\FormService::class)->dataDao->exists(['dict_ident' => $ident]);
+    }
+
+    /**
+     * Ownership is independent from editability.  is_default remains the
+     * database protection flag, while legacy installed identifiers retain
+     * their system-owned localization behavior when that flag is absent.
+     */
+    private function isSystemOwned(array $dictionary): bool
+    {
+        return (int) ($dictionary['is_default'] ?? 0) === 1
+            || in_array((string) ($dictionary['ident'] ?? ''), self::SYSTEM_OWNED_IDENTIFIERS, true);
     }
 
     /**

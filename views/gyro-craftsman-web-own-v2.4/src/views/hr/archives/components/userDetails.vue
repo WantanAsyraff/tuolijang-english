@@ -210,11 +210,11 @@ export default {
 
     // 编辑：切换Tabs
     handleClick(tab) {
-      if (tab.label == '个人经历') {
+      if (tab.name === 'personalExperience') {
         this.getlist()
-      } else if (tab.label == '调薪记录') {
+      } else if (tab.name === 'salaryAdjustmentRecord') {
         this.getSalaryList()
-      } else if (tab.label == '人事异动') {
+      } else if (tab.name === 'personnelChange') {
         this.changeCard()
       } else {
         setTimeout(() => {
@@ -251,7 +251,7 @@ export default {
             4: '退休返聘',
             5: '劳务外包'
           }
-          item.is_part = isPart[item.types] || '其他'
+          item.is_part = $(isPart[item.is_part] || '其他')
         }
       })
       this.changeList = list

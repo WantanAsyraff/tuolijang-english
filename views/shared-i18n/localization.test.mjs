@@ -150,12 +150,14 @@ test("legacy menu English is reported while canonical menu text remains authorit
 test("system dictionary labels localize while stored values and custom entries remain unchanged", { skip: !includesApp("web") }, () => {
   const translate = (value) => runtime.translateSystemTextValue(value, { locale: "en" });
   const systemStatus = { name: "正常", value: "正常", is_default: 1, name_en: "normal state" };
+  const installedEditableType = { name: "产品状态", ident: "product_status", is_default: 0, is_system_owned: 1 };
   const customStatus = { name: "客户管理", value: "custom-1", is_default: 0 };
   const customWithoutMarker = { name: "客户管理", value: "custom-2" };
 
   assert.equal(hasDictionaryOwnership(systemStatus), true);
   assert.equal(isSystemOwnedDictionaryEntry(systemStatus), true);
   assert.equal(dictionaryDisplayLabel(systemStatus, translate), "Normal");
+  assert.equal(dictionaryDisplayLabel(installedEditableType, translate), "Product status");
   assert.equal(systemStatus.value, "正常");
   assert.equal(dictionaryDisplayLabel(customStatus, translate), "客户管理");
   assert.equal(dictionaryDisplayLabel(customWithoutMarker, translate), "客户管理");
@@ -195,7 +197,11 @@ test("dictionary API paths expose ownership without translating identifiers or s
   const customerForm = read("gyro-craftsman-web-own-v2.4/src/components/customer/oaForm.vue");
 
   assert.match(dictDataService, /'value', 'is_default'/);
-  assert.match(dictTypeService, /\$info\['is_system_owned'\] = \(int\) \(\$info\['is_default'\]/);
+  assert.match(dictTypeService, /SYSTEM_OWNED_IDENTIFIERS/);
+  assert.match(dictTypeService, /\$item\['is_system_owned'\] = \$this->isSystemOwned\(\$item\) \? 1 : 0/);
+  assert.match(dictTypeService, /\$info\['is_system_owned'\] = \$this->isSystemOwned\(\$info\) \? 1 : 0/);
+  assert.match(dictTypeService, /\$form\['system_dictionary_fields'\]/);
+  assert.match(dictTypeService, /\$data = array_merge\(\$data, \[/);
   assert.match(formService, /'name as text', 'value', 'pid', 'is_default'/);
   assert.match(salesmanService, /'type_name', 'pid', 'is_default'/);
   assert.match(controller, /\['value', ''\]/);
@@ -203,6 +209,16 @@ test("dictionary API paths expose ownership without translating identifiers or s
   assert.match(customerForm, /:value="el\.value"/);
   assert.match(customerForm, /dictionaryDisplayLabel\(option/);
   assert.match(customerForm, /\{\{ item\.name \}\}/);
+  const modalForm = read("gyro-craftsman-web-own-v2.4/src/libs/modal-form.js");
+  assert.match(modalForm, /function localizeSystemDictionaryFields/);
+  assert.match(modalForm, /data\.system_dictionary_fields/);
+  assert.match(modalForm, /readonly: true/);
+
+  const adminService = fs.readFileSync(path.join(repoRoot, "app/Http/Service/Admin/AdminService.php"), "utf8");
+  assert.match(adminService, /'办理转正'/);
+  assert.equal(runtime.translateSystemTextValue("办理转正", { locale: "en" }), "Confirm employment");
+  assert.equal(runtime.translateSystemTextValue("转正备注", { locale: "en" }), "Employment confirmation notes");
+  assert.equal(runtime.translateSystemTextValue("请选择转正时间", { locale: "en" }), "Select a confirmation date");
 });
 
 
@@ -540,7 +556,10 @@ test("mobile route and tab metadata are generated from the canonical catalog", {
 test("management categories 6-12 preserve custom data and localize only system-owned metadata", { skip: !includesApp("web") }, () => {
   const formService = read("../app/Http/Service/Config/FormService.php");
   assert.match(formService, /is_system_owned/);
-  assert.match(formService, /enable_delete === 0/);
+  assert.match(formService, /\$data->enable_delete = 0/);
+  assert.match(formService, /in_array\(\$data->key, \$protectedFields, true\)/);
+  assert.match(formService, /\$data->is_system_owned = in_array\(\$data->key, \$systemFields, true\) \? 1 : 0/);
+  assert.doesNotMatch(formService, /\$data->is_system_owned = \$data->enable_delete/);
 
   const dictService = read("../app/Http/Service/Config/DictDataService.php");
   assert.match(dictService, /names_v2_/);

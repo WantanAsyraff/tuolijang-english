@@ -1,4 +1,8 @@
 {
+  "web.ui.attendanceStatistics.importTemplateSampleEmployee": {
+    "zh-cn": "示例员工",
+    "en": "Example employee"
+  },
   "web.access.addarating": {
     "zh-cn": "添加等级",
     "en": "Add a rating"
@@ -24429,6 +24433,9 @@
   "web.ui.runtimeLeak.withdrawFailed": { "zh-cn": "撤销申请失败", "en": "Failed to withdraw the request" },
   "web.ui.runtimeLeak.maxApps": { "zh-cn": "最多只能添加{{ count }}个应用", "en": "Add no more than {{ count }} apps" },
   "web.ui.customerSetupDictionaryManagementAddChildItem": { "zh-cn": "添加子项", "en": "Add child item" },
+  "web.ui.developDictionary.createTitle": { "zh-cn": "新增字典", "en": "Add dictionary", "runtime": true, "apps": ["web"] },
+  "web.ui.developDictionary.editTitle": { "zh-cn": "修改字典", "en": "Edit dictionary", "runtime": true, "apps": ["web"] },
+  "web.ui.hrArchives.confirmEmployment.notePlaceholder": { "zh-cn": "请输入转正备注信息", "en": "Enter employment confirmation notes", "runtime": true, "apps": ["web"] },
   "web.ui.customerImportRecords.exporting": { "zh-cn": "导出中", "en": "Exporting" },
   "web.ui.customerImportRecords.exportSucceeded": { "zh-cn": "导出成功", "en": "Export succeeded" },
   "web.ui.customerImportRecords.exportFailed": { "zh-cn": "导出失败", "en": "Export failed" },

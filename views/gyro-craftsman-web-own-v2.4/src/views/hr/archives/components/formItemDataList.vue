@@ -36,7 +36,7 @@
   </template>
 
   <!-------------- 新增:新增页面 ------------>
-  <el-form v-else ref="form" :model="ruleForm" :rules="fromRules" label-width="90px">
+  <el-form v-else ref="form" :model="ruleForm" :rules="fromRules" :label-width="$language === 'en' ? '140px' : '90px'">
     <div v-for="(formItem, itemIndex) in newFrom" :key="itemIndex" class="p20">
       <div
         v-if="componentStatus.type === 'add' || !['工作经历', '教育经历'].includes(formItem.title)"
@@ -147,11 +147,11 @@
 
               <span v-if="item.slot === 'cascader'">{{ positionText || '--' }}</span>
               <span v-if="item.slot === 'manage_frame'">{{ manage_frameText || '--' }}</span>
-              <span v-if="item.value === 'is_part'">{{ is_partText || '--' }}</span>
+              <span v-if="item.value === 'is_part'">{{ $(is_partText) || '--' }}</span>
               <span v-if="item.value === 'type'">{{ $(typeText) || '--' }}</span>
-              <span v-if="item.value === 'sex'">{{ sexText || '--' }}</span>
-              <span v-if="item.value === 'marriage'">{{ marriageText || '--' }}</span>
-              <span v-if="item.value === 'education'">{{ educationText || '--' }}</span>
+              <span v-if="item.value === 'sex'">{{ $(sexText) || '--' }}</span>
+              <span v-if="item.value === 'marriage'">{{ $(marriageText) || '--' }}</span>
+              <span v-if="item.value === 'education'">{{ $(educationText) || '--' }}</span>
               <div v-if="item.type === 'radio'">
                 {{ $(is_adminText) || '--' }}
               </div>
