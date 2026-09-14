@@ -175,7 +175,7 @@ export default {
       fromData: {
         width: '600px',
         title: $('legacyScript.editName'),
-        btnText: '确定',
+        btnText: $('public.ok'),
         labelWidth: '100px',
         type: ''
       },

@@ -42,7 +42,7 @@
         <span>{{ getIsPart(scope.row.is_part) }}</span>
       </template>
     </el-table-column>
-    <el-table-column :label="$('ui.hrArchivesTableEmployeeStatus')" prop="name" width="100">
+    <el-table-column :label="$('ui.hrArchivesTableEmployeeStatus')" prop="name" min-width="130">
       <template slot-scope="scope">
         <!-- 提取当前行的类型信息 -->
         <template v-if="scope.row.type !== undefined">
@@ -293,8 +293,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+  min-width: 76px;
+  width: fit-content;
   height: 22px;
+  padding: 0 8px;
+  white-space: nowrap;
   border-radius: 3px;
   font-size: 13px;
   border: 1px solid transparent;

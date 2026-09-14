@@ -115,7 +115,6 @@
 import { $ } from '@/lang'
 import { dictionaryDisplayLabel } from '@/lang/dictionary-label'
 import { billChartApi, billChangeBie } from '@/api/enterprise'
-import { numberFormat } from '@/utils/numberFormat'
 export default {
   name: 'FinanceChart',
   components: {
@@ -166,9 +165,6 @@ export default {
   methods: {
     displaySystemLabel(entry, key = 'name') {
       return dictionaryDisplayLabel(entry, this.$, key)
-    },
-    moneySuffix() {
-      return this.$language === 'en' ? ' RM' : '元'
     },
     // 点击切换饼状图
     pieChange(data) {
@@ -372,7 +368,6 @@ export default {
     // 收入饼状图
     shouruChart(data) {
       const chartRows = Array.isArray(data) ? data.map((val) => ({ ...val, name: this.$(val.name) })) : []
-      const moneySuffix = this.moneySuffix()
       const incomeLegendData = []
       const incomeSeriesData = []
       this.pieChartData1 = {
@@ -426,16 +421,16 @@ export default {
                 }
               }
             },
-            formatter: function (name) {
+            formatter: (name) => {
               let target
               let ratio
               for (let i = 0; i < chartRows.length; i++) {
                 if (chartRows[i].name === name) {
-                  target = numberFormat(chartRows[i].sum)
+                  target = this.$formatCurrency(chartRows[i].sum)
                   ratio = chartRows[i].ratio
                 }
               }
-              let arr = [name + '{a|' + target + moneySuffix + '}' + '{b|' + ratio + '%' + '}']
+              let arr = [name + '{a|' + target + '}' + '{b|' + ratio + '%' + '}']
               return arr.join('\n')
             }
           }
@@ -478,7 +473,6 @@ export default {
     zhichuChart(data) {
       const chartRows = Array.isArray(data) ? data.map((val) => ({ ...val, name: this.$(val.name) })) : []
       this.tableDataExpend = chartRows
-      const moneySuffix = this.moneySuffix()
       const expendLegendData = []
       const expendSeriesData = []
       // 支出
@@ -519,16 +513,16 @@ export default {
                 }
               }
             },
-            formatter: function (name) {
+            formatter: (name) => {
               let target
               let ratio
               for (let i = 0; i < chartRows.length; i++) {
                 if (chartRows[i].name === name) {
-                  target = numberFormat(chartRows[i].sum)
+                  target = this.$formatCurrency(chartRows[i].sum)
                   ratio = chartRows[i].ratio
                 }
               }
-              let arr = [name + '{a|' + target + moneySuffix + '}' + '{b|' + ratio + '%' + '}']
+              let arr = [name + '{a|' + target + '}' + '{b|' + ratio + '%' + '}']
               return arr.join('\n')
             }
           }

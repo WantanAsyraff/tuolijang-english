@@ -224,12 +224,12 @@ export default {
       this.$refs.importExcel.btnClick()
     },
     normalizeImportType(value) {
-      const type = String(value || '').replace(/^(示例|example)[:：]/i, '').trim()
+      const type = String(value || '').replace(/^(示例|example)[:：]/i, '').trim().toLowerCase()
       return {
-        '收入': '收入',
-        Income: '收入',
-        '支出': '支出',
-        Expense: '支出'
+        '收入': 'income',
+        income: 'income',
+        '支出': 'expense',
+        expense: 'expense'
       }[type] || type
     },
     parseImportDate(value) {
@@ -259,10 +259,10 @@ export default {
         return null
       }
       const types = this.normalizeImportType(rawType)
-      if (!types || ['账目类型', 'Account type'].includes(types)) {
+      if (!types || ['账目类型', 'account type'].includes(types)) {
         return null
       }
-      if (!['收入', '支出'].includes(types)) {
+      if (!['income', 'expense'].includes(types)) {
         throw new Error($('ui.financeImport.invalidAccountType', { row: rowIndex + 1 }))
       }
       const dateAtColumn4 = this.parseImportDate(row[3])

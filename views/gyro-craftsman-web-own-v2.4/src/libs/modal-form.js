@@ -38,6 +38,28 @@ export function localizeFormSchema(value, ctx, parentKey = '', englishValue) {
   }, {})
 }
 
+function localizeSystemDictionaryFields(data, ctx) {
+  const fields = data.system_dictionary_fields
+  if (!fields || !Array.isArray(data.rule)) return data
+
+  data.rule = data.rule.map((rule) => {
+    if (!Object.prototype.hasOwnProperty.call(fields, rule.field)) return rule
+    const source = fields[rule.field]
+    const displayValue = typeof source === 'string' ? ctx.$(source) : source
+
+    return {
+      ...rule,
+      value: displayValue,
+      props: {
+        ...(rule.props || {}),
+        readonly: true
+      }
+    }
+  })
+
+  return data
+}
+
 let unique = 1
 const uniqueId = () => ++unique
 export default function modalForm(formRequestPromise, config = {}) {
@@ -47,6 +69,7 @@ export default function modalForm(formRequestPromise, config = {}) {
     formRequestPromise
       .then(({ data }) => {
         data = localizeFormSchema(data, this)
+        data = localizeSystemDictionaryFields(data, this)
         if (!data.config) data.config = {}
         data.config.submitBtn = false
         data.config.resetBtn = false
@@ -106,6 +129,9 @@ export default function modalForm(formRequestPromise, config = {}) {
               instance.confirmButtonLoading = true
               formApi.submit(
                 (formData) => {
+                  if (data.system_dictionary_fields) {
+                    Object.assign(formData, data.system_dictionary_fields)
+                  }
                   request[data.method.toLowerCase()](data.action.slice(4), formData)
                     .then((res) => {
                       if (res.status === 200) {

@@ -60,6 +60,8 @@
   color: #000;
   min-width: 70px;
   width: 50%;
+  padding-right: 10px;
+  box-sizing: border-box;
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -75,6 +77,8 @@
   font-family: PingFang SC-Regular, PingFang SC;
   font-weight: 400;
   color: #303133;
+  min-width: 0;
+  line-height: 18px;
 }
 
 /*._fc-l-item:hover {*/
@@ -187,12 +191,13 @@
   margin-top: 20px;
 } */
 .row {
-  width: 125px;
-  height: 36px;
+  width: 100%;
+  min-height: 36px;
   background: #f9f9f9;
   border-radius: 4px 4px 4px 4px;
-  line-height: 36px;
-  padding: 0 10px;
+  line-height: 18px;
+  padding: 8px 10px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
 }

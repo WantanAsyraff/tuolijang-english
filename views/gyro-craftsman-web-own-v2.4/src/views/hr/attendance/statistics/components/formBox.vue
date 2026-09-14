@@ -405,9 +405,13 @@ export default {
     // 导出模版
     async exportTemplate() {
       this.saveName = this.$('打卡记录') + this.$('模板') + '(' + this.$moment(new Date()).format('MMDDHHmmss') + ').xlsx'
+      const sampleDay = this.$moment().startOf('day')
+      const sampleDate = sampleDay.format(this.$language === 'en' ? 'YYYY-MM-DD dddd' : 'YYYY/MM/DD dddd')
+      const sampleStart = sampleDay.clone().hour(9).format('YYYY-MM-DD HH:mm')
+      const sampleEnd = sampleDay.clone().hour(18).format('YYYY-MM-DD HH:mm')
       this.exportData.data = [
         [this.$('时间'), this.$('姓名'), this.$('第一次上班'), this.$('第一次下班'), this.$('第二次上班'), this.$('第二次下班')],
-        ['2024/06/20 Wednesday', 'Sample employee', '2024/06/12 06:30', '2024/06/12 18:30', '2024/06/12 06:30', '2024/06/12 18:30']
+        [sampleDate, this.$('ui.attendanceStatistics.importTemplateSampleEmployee'), sampleStart, sampleEnd, sampleStart, sampleEnd]
       ]
       this.$nextTick(() => {
         this.$refs.exportExcel.exportExcel()

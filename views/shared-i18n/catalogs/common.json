@@ -1,4 +1,14 @@
 {
+  "common.runtime.confirmEmployment.title": {
+    "zh-cn": "办理转正",
+    "en": "Confirm employment",
+    "runtime": true
+  },
+  "common.runtime.confirmEmployment.note": {
+    "zh-cn": "转正备注",
+    "en": "Employment confirmation notes",
+    "runtime": true
+  },
   "runtime.0006d696d8e1ec28": {
     "zh-cn": "新增",
     "en": "Add",
