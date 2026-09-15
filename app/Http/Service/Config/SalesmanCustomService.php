@@ -122,7 +122,10 @@ class SalesmanCustomService extends BaseService
      */
     public function salesmanCustomField(int $uid, string $customType): array
     {
-        $cacheVersion = 'system_no_v4';
+        // Ownership metadata is part of the cached table schema. Bump this
+        // version when stock-field ownership changes so existing sessions do
+        // not retain untranslated headers.
+        $cacheVersion = 'system_no_v5';
         $result = Cache::tags([CacheEnum::TAG_CUSTOMER])->remember(
             md5($uid . '_' . $customType . '_' . $cacheVersion),
             (int) sys_config('system_cache_ttl', 3600),

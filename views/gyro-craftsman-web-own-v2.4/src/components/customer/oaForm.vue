@@ -47,7 +47,7 @@
               <template v-if="val.input_type === 'input' && val.type === 'text'">
                 <el-input
                   v-if="!viewMode || editKey == val.key"
-                  v-model="ruleForm[val.key]"
+                  :value="displayTextFieldValue(val)"
                   :maxlength="val.max"
                   :min="val.min"
                   :placeholder="fieldPlaceholder(val, 'enter')"
@@ -56,10 +56,11 @@
                   class="clickZone"
                   :ref="`input_${val.key}`"
                   :disabled="isReadonlyField(val) || !!savingKeyMap[val.key]"
+                  @input="setTextFieldValue(val, $event)"
                   @keyup.enter.native="handlePopoverHide(ruleForm[val.key])"
                 />
                 <div v-else :class="fieldViewClass(val)">
-                  {{ ruleForm[val.key] || '--' }}
+                  {{ displayTextFieldValue(val) || '--' }}
                   <i
                     v-if="!isReadonlyField(val)"
                     class="edit-icon iconfont iconbianji1"
@@ -637,12 +638,20 @@ export default {
       return decoder.value
     },
     metadataLabel(entry, key) {
-      return dictionaryDisplayLabel(entry, (value) => this.systemLabel(value), key)
+      const label = dictionaryDisplayLabel(entry, (value) => this.systemLabel(value), key)
+      return key === 'key_name' ? label.replace(/[:：]\s*$/, '') : label
+    },
+    displayTextFieldValue(field) {
+      const value = this.ruleForm[field.key]
+      return Number(field.is_system_owned) === 1 && value ? this.systemLabel(value) : value
+    },
+    setTextFieldValue(field, value) {
+      this.$set(this.ruleForm, field.key, value)
     },
     fieldPlaceholder(field, mode) {
       if (field.placeholder) return this.metadataLabel(field, 'placeholder')
       const prefixKey = mode === 'enter' ? 'ui.customerOaFormPleaseEnter' : 'ui.developConditionGroupPleaseSelect'
-      return this.$(prefixKey) + this.metadataLabel(field, 'key_name')
+      return `${this.$(prefixKey)} ${this.metadataLabel(field, 'key_name')}`.trim()
     },
     localizedOptions(options, fieldKey) {
       return (options || []).map((option) => ({

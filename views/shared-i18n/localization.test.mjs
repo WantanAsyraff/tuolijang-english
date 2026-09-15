@@ -684,7 +684,7 @@ test("legacy static dashboard filter placeholders use the shared localization bo
   assert.doesNotMatch(filterRenderer, /const englishKey = key \+ '_en'/);
 
   const customerMetadataService = read("../app/Http/Service/Config/SalesmanCustomService.php");
-  assert.match(customerMetadataService, /system_no_v4/);
+  assert.match(customerMetadataService, /system_no_v5/);
   assert.match(customerMetadataService, /'is_system_owned' => 1/);
 
   const formService = read("../app/Http/Service/Config/FormService.php");

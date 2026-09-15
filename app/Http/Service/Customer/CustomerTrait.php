@@ -289,7 +289,9 @@ trait CustomerTrait
                     $dataMap['fail_days'] = collect($list)->map(function ($item) {
                         $item['fail_days'] = '';
                         if ($item['end_date'] && Carbon::parse($item['end_date'])->isAfter(now())) {
-                            $item['fail_days'] = Carbon::parse($item['end_date'])->diffInDays(now()->startOfDay()) . '天';
+                            // Keep this system value locale-neutral. The dashboard
+                            // adds the localized unit at presentation time.
+                            $item['fail_days'] = (string) Carbon::parse($item['end_date'])->diffInDays(now()->startOfDay());
                         }
                         return $item;
                     })->pluck('fail_days', 'id')->all();
@@ -1342,9 +1344,10 @@ trait CustomerTrait
             return $item;
         })->all();
         $product       = $info['product'] ?? [];
-        $data['price'] = collect($info['product'] ?? [])->sum(function ($item) {
-            return $item['price'] * $item['count'];
-        });
+        // The contract amount is authoritative. A contract can legitimately
+        // have no line items, so deriving the header amount from products
+        // incorrectly renders a valid amount as zero.
+        $data['price'] = $info['contract_price'] ?? '0.00';
         $data  = $data->all();
         $count = $this->assistCount($info['id'], $customType);
         return compact('form', 'data', 'product', 'count');
@@ -1610,14 +1613,16 @@ trait CustomerTrait
 
         if (! $form) {
             return [[
-                'title'  => '基本信息',
-                'ident'  => 'base',
-                'status' => 1,
-                'data'   => $readonlyFields,
+                'title'           => '基本信息',
+                'ident'           => 'base',
+                'status'          => 1,
+                'is_system_owned' => 1,
+                'data'            => $readonlyFields,
             ]];
         }
 
         $form[0]['data'] = array_values(array_merge($readonlyFields, $form[0]['data'] ?? []));
+        $form[0]['is_system_owned'] = 1;
         return $form;
     }
 
