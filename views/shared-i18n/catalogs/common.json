@@ -9,6 +9,14 @@
     "en": "Employment confirmation notes",
     "runtime": true
   },
+  "common.runtime.companyEmployee": {
+    "zh-cn": "公司职员",
+    "en": "Company employee",
+    "runtime": true,
+    "apps": [
+      "web"
+    ]
+  },
   "runtime.0006d696d8e1ec28": {
     "zh-cn": "新增",
     "en": "Add",

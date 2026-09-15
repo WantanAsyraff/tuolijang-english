@@ -27,7 +27,7 @@
                 color:
                   dataInfo.data && dataInfo.data.contract_status ? dataInfo.data.contract_status.color : '#1890ff'
               }"
-              >{{ dataInfo.data && dataInfo.data.contract_status ? dataInfo.data.contract_status.name : '--' }}</span
+              >{{ dataInfo.data && dataInfo.data.contract_status ? dictionaryLabel(dataInfo.data.contract_status) : '--' }}</span
             >
             <span class="title">{{ $("ui.customerContractEditContractOrderAmountYuan") }}</span
             ><span class="info1">{{ dataInfo.data ? $formatCurrency(dataInfo.data.price) : '--' }}</span>
@@ -233,6 +233,11 @@ export default {
     }
   },
   methods: {
+    dictionaryLabel(entry) {
+      // Contract status is a stock system field. Older API payloads can lack
+      // the ownership marker, so retain the translated system label here.
+      return this.$(entry && entry.name, entry && entry.name_en)
+    },
     getTabBadge(tabItem) {
       if (!tabItem.badgeKey || !this.dataInfo || !this.dataInfo.count) return null
       const count = this.dataInfo.count[tabItem.badgeKey]

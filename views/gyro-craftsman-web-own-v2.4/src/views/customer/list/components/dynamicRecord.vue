@@ -225,8 +225,24 @@ export default {
       const text = this.$(value || '', englishValue)
       if (!value || text !== value) return text
 
+      // Field-change records predate structured, localized activity payloads.
+      // Translate only known stock-field labels and preserve every recorded
+      // business value (including custom-field values) exactly as stored.
+      const change = value.match(/^(.+?)：由【(.*)】修改为【(.*)】$/)
+      const systemFields = new Set([
+        '线索名称', '线索来源', '联系电话', '客户标签', '省市区', '详细地址', '线索状态', '线索日期', '备注',
+        '客户名称', '客户来源', '企业电话', '客户状态'
+      ])
+      if (change && systemFields.has(change[1])) {
+        const [, field, previousValue, nextValue] = change
+        return `${this.$(field)}: changed from [${this.formatActivityValue(previousValue)}] to [${this.formatActivityValue(nextValue)}]`
+      }
+
       const prefix = ['新添加线索', '新添加订单', '新添加商机', '新增合同签约'].find((candidate) => value.startsWith(candidate))
       return prefix ? this.$(prefix) + value.slice(prefix.length) : text
+    },
+    formatActivityValue(value) {
+      return value === '' || value === '空' ? this.$('ui.customerListDynamicRecordEmptyValue') : value
     },
     // 查看图片
     handlePictureCardPreview(row) {

@@ -2128,6 +2128,7 @@ export const SYSTEM_TEXT_EN = Object.freeze({
   "公司介绍": "Company profile",
   "公司客户": "Company customers",
   "公司名称": "company name",
+  "公司职员": "Company employee",
   "公钥": "Public key",
   "公众号": "Official account",
   "公主岭市": "Gongzhuling City",

@@ -478,6 +478,8 @@ export default {
       let str = ''
       if (val == '') {
         str = '--'
+      } else if (header.field === 'fail_days') {
+        str = `${val} ${this.$('ui.hrApprovaTimeDay')}`
       } else if (header.field === 'creator') {
         str = val.name
       } else if (Array.isArray(val)) {

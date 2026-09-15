@@ -43,6 +43,45 @@ use Psr\Container\NotFoundExceptionInterface;
 
 class FormService extends BaseService
 {
+    /**
+     * Legacy installer rows do not consistently retain is_default on their
+     * dictionary values. These stable value pairs identify the stock options
+     * without treating administrator-created entries as system-owned.
+     *
+     * @var array<string, array<string, string>>
+     */
+    private const SYSTEM_DICTIONARY_OPTION_VALUES = [
+        'clue_status' => [
+            '1' => '开启',
+            '2' => '关闭',
+        ],
+        'clue_way' => [
+            'wework' => '企微',
+        ],
+        'contract_status' => [
+            '0' => '未开始',
+            '1' => '进行中',
+            '2' => '已结束',
+            '3' => '异常订单',
+        ],
+        'contract_type' => [
+            '100' => '软件产品',
+            '101' => '标准软件订单',
+            '102' => '定制开发订单',
+            '110' => '技术服务',
+            '111' => '实施服务',
+            '112' => '技术维护费',
+            '120' => '运维续费',
+            '121' => '服务器续费',
+            '190' => '其他订单',
+        ],
+        'signing_status' => [
+            '0' => '未签约',
+            '1' => '已签约',
+            '2' => '已作废',
+        ],
+    ];
+
     public FormDataDao $dataDao;
 
     public function __construct(FormCateDao $dao, FormDataDao $dataDao)
@@ -62,10 +101,16 @@ class FormService extends BaseService
         $types = $where['types'] ?? 0;
         return $this->dao->getList($where, $field, 0, 0, $sort, $with, function ($list) use ($types) {
             $protectedFields = match ((int) $types) {
-                CustomEnum::CUSTOMER => CustomerEnum::CUSTOMER_NOT_ALLOW_DELETE_FIELD,
+                CustomEnum::CUSTOMER => array_merge(CustomerEnum::CUSTOMER_NOT_ALLOW_DELETE_FIELD, [
+                    // Editable fields supplied by the stock Customer form.
+                    '9bfe77e4', 'l753bf282',
+                ]),
                 CustomEnum::CONTRACT => ContractEnum::CONTRACT_NOT_ALLOW_DELETE_FIELD,
                 CustomEnum::LIAISON  => LiaisonEnum::LIAISON_NOT_ALLOW_DELETE_FIELD,
-                CustomEnum::CLUE     => ClueEnum::CLUE_NOT_ALLOW_DELETE_FIELD,
+                CustomEnum::CLUE     => array_merge(ClueEnum::CLUE_NOT_ALLOW_DELETE_FIELD, [
+                    // Editable fields that belong to the stock Lead form.
+                    'address', 'createtime', 'mark',
+                ]),
                 CustomEnum::ODDS     => OddsEnum::ODDS_NOT_ALLOW_DELETE_FIELD,
                 CustomEnum::PRODUCT  => ProductEnum::PRODUCT_NOT_ALLOW_DELETE_FIELD,
                 default              => []
@@ -274,9 +319,13 @@ class FormService extends BaseService
     private function systemOwnedFormFields(int $types): array
     {
         return match ($types) {
-            CustomEnum::CUSTOMER => CustomerEnum::CUSTOMER_NOT_ALLOW_DELETE_FIELD,
+            CustomEnum::CUSTOMER => array_merge(CustomerEnum::CUSTOMER_NOT_ALLOW_DELETE_FIELD, [
+                // These opaque keys are present in the installer-owned Customer
+                // form.  They must localize, while user-created fields remain raw.
+                '9bfe77e4', 'l753bf282',
+            ]),
             CustomEnum::CONTRACT => array_merge(ContractEnum::CONTRACT_NOT_ALLOW_DELETE_FIELD, [
-                'contract_name', 'start_date', 'end_date',
+                'contract_name', 'contract_category', 'start_date', 'end_date',
             ]),
             CustomEnum::LIAISON => array_merge(LiaisonEnum::LIAISON_NOT_ALLOW_DELETE_FIELD, [
                 // The following opaque keys belong to the stock contact form.
@@ -285,13 +334,38 @@ class FormService extends BaseService
                 'liaison_job', 'b3733f36', 'e06d7153', 'e06d7152',
                 'e06d7159', 'l753bf282', 'cdc4d06a', 'ce99fdb8', 'c3e2adbb',
             ]),
-            CustomEnum::CLUE => ClueEnum::CLUE_NOT_ALLOW_DELETE_FIELD,
+            CustomEnum::CLUE => array_merge(ClueEnum::CLUE_NOT_ALLOW_DELETE_FIELD, [
+                'address', 'createtime', 'mark',
+            ]),
             CustomEnum::ODDS => array_merge(OddsEnum::ODDS_NOT_ALLOW_DELETE_FIELD, [
                 'name', 'eid', 'types', 'description',
             ]),
             CustomEnum::PRODUCT => ProductEnum::PRODUCT_NOT_ALLOW_DELETE_FIELD,
             default => [],
         };
+    }
+
+    /**
+     * Adds display-only ownership metadata to known installer dictionary
+     * values. Submitted values remain their original database/API values.
+     */
+    private function markSystemDictionaryOptions(string $identifier, array $options): array
+    {
+        $systemValues = self::SYSTEM_DICTIONARY_OPTION_VALUES[$identifier] ?? [];
+        if (! $systemValues) {
+            return $options;
+        }
+
+        return array_map(function (array $option) use ($identifier, $systemValues): array {
+            $value = (string) ($option['value'] ?? '');
+            if (isset($systemValues[$value]) && ($option['label'] ?? $option['name'] ?? '') === $systemValues[$value]) {
+                $option['is_system_owned'] = 1;
+            }
+            if (! empty($option['children']) && is_array($option['children'])) {
+                $option['children'] = $this->markSystemDictionaryOptions($identifier, $option['children']);
+            }
+            return $option;
+        }, $options);
     }
 
     /**
@@ -814,6 +888,7 @@ class FormService extends BaseService
                     $level   = $matchedRule['level'];
                     $options = $matchedRule['handle']();
                 }
+                $options = $this->markSystemDictionaryOptions((string) $datum['dict_ident'], $options);
                 // 补全表单数据的附加字段
                 $formList[$index]['data'][$key]['options']       = $options;
                 $formList[$index]['data'][$key]['options_level'] = $level;

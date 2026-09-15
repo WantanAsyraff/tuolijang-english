@@ -15328,8 +15328,8 @@
     "en": "View All"
   },
   "web.ui.customerContractEditContractOrderAmountYuan": {
-    "zh-cn": "订单金额(元)：",
-    "en": "Order amount (Yuan):"
+    "zh-cn": "订单金额：",
+    "en": "Order amount:"
   },
   "web.ui.customerContractEditContractOrderStatus": {
     "zh-cn": "订单状态：",
@@ -15742,6 +15742,10 @@
   "web.ui.customerListDynamicRecordInformation": {
     "zh-cn": "说明：",
     "en": "Information:"
+  },
+  "web.ui.customerListDynamicRecordEmptyValue": {
+    "zh-cn": "空",
+    "en": "Empty"
   },
   "web.ui.customerListEditCustomerAddReminder": {
     "zh-cn": "添加提醒",
@@ -22832,6 +22836,10 @@
   "web.ui.userExamineMySubmissionMyApplications": {
     "zh-cn": "我的申请",
     "en": "My applications"
+  },
+  "web.ui.userExamineMySubmissionNoRequestType": {
+    "zh-cn": "暂无可发起的申请",
+    "en": "No request types are available"
   },
   "web.ui.userExamineMySubmissionResubmit": {
     "zh-cn": "再次提交",

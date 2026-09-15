@@ -107,11 +107,11 @@ class ApproveAssistService
         if (isset($args['value'])) {
             return app()->get(OrderService::class)->value($args['value'], 'contract_no') ?: '';
         }
-        if ($args['data']['customer_id']) {
+        if (! empty($args['data']['customer_id'])) {
             $where = [
                 'eid' => $args['data']['customer_id'],
             ];
-        } elseif ($args['data']['contract_id']) {
+        } elseif (! empty($args['data']['contract_id'])) {
             $where = [
                 'id' => $args['data']['contract_id'],
             ];

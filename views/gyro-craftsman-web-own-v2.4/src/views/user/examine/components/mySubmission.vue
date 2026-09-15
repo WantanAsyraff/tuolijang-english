@@ -9,21 +9,28 @@
     @confirmData="confirmData"
   >
     <template slot="rightBtn">
-      <el-dropdown trigger="click" size="small" placement="bottom-start" @command="handleBuild">
-        <el-button type="primary" size="small">{{ $("ui.userExamineMySubmissionCreateRequest") }}</el-button>
-        <el-dropdown-menu slot="dropdown" class="build-dropdown">
-          <el-dropdown-item
-            v-for="(item, index) in dropdownList"
-            :key="item.id"
-            class="over-text"
-            placement="top-end"
-            :command="item.id"
-          >
-            <i class="iconfont" :class="item.icon" :style="{ color: item.color }"></i>
-            {{ $(item.name, item.name_en) }}
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+      <el-tooltip :disabled="dropdownList.length > 0" :content="$('ui.userExamineMySubmissionNoRequestType')" placement="bottom">
+        <span class="request-trigger">
+          <el-dropdown v-if="dropdownList.length > 0" trigger="click" size="small" placement="bottom-start" @command="handleBuild">
+            <el-button type="primary" size="small">
+              {{ $("ui.userExamineMySubmissionCreateRequest") }}<i class="el-icon-arrow-down el-icon--right" />
+            </el-button>
+            <el-dropdown-menu slot="dropdown" class="build-dropdown">
+              <el-dropdown-item
+                v-for="item in dropdownList"
+                :key="item.id"
+                class="over-text"
+                placement="top-end"
+                :command="item.id"
+              >
+                <i class="iconfont" :class="item.icon" :style="{ color: item.color }"></i>
+                {{ $(item.name, item.name_en) }}
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <el-button v-else type="primary" size="small" disabled>{{ $("ui.userExamineMySubmissionCreateRequest") }}</el-button>
+        </span>
+      </el-tooltip>
     </template>
   </oaFromBox>
   <div class="table-box mt10">
@@ -420,6 +427,10 @@ export default {
   .iconfont {
     font-size: 14px !important;
   }
+}
+
+.request-trigger {
+  display: inline-flex;
 }
 
 .status {

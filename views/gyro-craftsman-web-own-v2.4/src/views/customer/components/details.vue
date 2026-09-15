@@ -235,7 +235,14 @@ export default {
   },
   methods: {
     dictionaryLabel(entry) {
-      return dictionaryDisplayLabel(entry, this.$)
+      const label = dictionaryDisplayLabel(entry, this.$)
+      if (label !== entry?.name) return label
+
+      // Older Lead detail payloads omit ownership metadata for the two
+      // installer-provided statuses. Recognise only their fixed value/name
+      // pairs so custom dictionary entries continue to be shown verbatim.
+      const stockLeadStatuses = { 1: '开启', 2: '关闭' }
+      return stockLeadStatuses[String(entry?.value)] === entry?.name ? this.$(entry.name) : label
     },
     getTabBadge(tabItem) {
       if (!tabItem.badgeKey || !this.dataInfo || !this.dataInfo.count) return null
