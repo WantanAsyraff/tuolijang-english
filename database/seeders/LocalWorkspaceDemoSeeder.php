@@ -28,6 +28,9 @@ class LocalWorkspaceDemoSeeder extends Seeder
         $this->seedApprovals();
         $this->seedAttendance();
         $this->seedPerformance();
+        $this->seedLeadPool();
+        $this->seedContractSigning();
+        $this->seedOrderIncomeAndExpenses();
     }
 
     /** Make the local demo team eligible for staff-only dashboard views. */
@@ -405,6 +408,244 @@ class LocalWorkspaceDemoSeeder extends Seeder
                     ],
                 );
             }
+        }
+    }
+
+    /** Populate the unassigned lead pool used by Customer > Lead management > Lead pool. */
+    private function seedLeadPool(): void
+    {
+        // The label selector renders labels as children of a label group.
+        // Keep this parent as a group and make the usable demo labels children
+        // so the selector does not appear empty.
+        DB::table('client_label')->updateOrInsert(
+            ['entid' => self::ENT_ID, 'name' => 'Demo lead categories'],
+            [
+                'sort' => 1,
+                'pid' => 0,
+                'is_work' => 0,
+                'work_group_id' => '',
+                'work_tag_id' => '',
+                'updated_at' => now(),
+                'created_at' => now(),
+            ],
+        );
+        $groupId = (int) DB::table('client_label')
+            ->where(['entid' => self::ENT_ID, 'name' => 'Demo lead categories'])
+            ->value('id');
+
+        $labels = [
+            'Demo: High priority',
+            'Demo: Hospitality',
+            'Demo: Technology',
+        ];
+
+        foreach ($labels as $sort => $name) {
+            DB::table('client_label')->updateOrInsert(
+                ['entid' => self::ENT_ID, 'name' => $name],
+                [
+                    'sort' => $sort + 1,
+                    'pid' => $groupId,
+                    'is_work' => 0,
+                    'work_group_id' => '',
+                    'work_tag_id' => '',
+                    'updated_at' => now(),
+                    'created_at' => now(),
+                ],
+            );
+        }
+
+        $labelIds = DB::table('client_label')
+            ->where('entid', self::ENT_ID)
+            ->whereIn('name', $labels)
+            ->pluck('id', 'name');
+
+        $leads = [
+            ['Demo lead — Cedar & Co Catering', 'Website enquiry', '+60 12-410 8214', ['Demo: High priority', 'Demo: Hospitality'], '2026-09-16', 'Kuala Lumpur', 'Looking for catering for a 180-person corporate event.'],
+            ['Demo lead — Brightline Analytics', 'Partner referral', '+60 11-2847 9120', ['Demo: High priority', 'Demo: Technology'], '2026-09-15', 'Petaling Jaya', 'Requested a discovery call for an operations analytics rollout.'],
+            ['Demo lead — Lumen Retail Group', 'Industry event', '+60 17-650 4821', ['Demo: Hospitality'], '2026-09-14', 'Shah Alam', 'Interested in a customer-support workflow demonstration.'],
+            ['Demo lead — Northbridge Learning', 'Campaign response', '+60 16-729 3045', ['Demo: Technology'], '2026-09-13', 'Subang Jaya', 'Asked for pricing and implementation timing for 80 staff.'],
+            ['Demo lead — Atlas Wellness Studio', 'Website enquiry', '+60 12-976 1540', ['Demo: Hospitality'], '2026-09-12', 'Kuala Lumpur', 'Needs a follow-up after reviewing the introductory package.'],
+            ['Demo lead — Riverstone Logistics', 'Referral', '+60 18-338 7602', ['Demo: High priority', 'Demo: Technology'], '2026-09-11', 'Klang', 'Looking to replace spreadsheet-based customer tracking.'],
+        ];
+
+        foreach ($leads as [$name, $source, $phone, $leadLabels, $date, $city, $remarks]) {
+            $resolvedLabels = collect($leadLabels)
+                ->map(fn (string $label) => (int) ($labelIds[$label] ?? 0))
+                ->filter()
+                ->values()
+                ->all();
+
+            DB::table('customer_clue')->updateOrInsert(
+                ['name' => $name],
+                [
+                    'uid' => 0,
+                    'before_uid' => 0,
+                    'creator_uid' => self::WAN_ID,
+                    'source' => $source,
+                    'phone' => $phone,
+                    'pool' => 'Local demo lead pool',
+                    'customer_label' => json_encode($resolvedLabels),
+                    'createtime' => $date,
+                    'area_cascade' => json_encode([]),
+                    'address' => $city . ', Selangor, Malaysia',
+                    'status' => '1',
+                    'followed' => '1',
+                    'return_num' => 0,
+                    'claim_time' => null,
+                    'mark' => $remarks,
+                    'external_userid' => '',
+                    'userid' => '',
+                    'deleted_at' => null,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            );
+        }
+    }
+
+    /** Populate Customer > Contract signing with complete local demo documents. */
+    private function seedContractSigning(): void
+    {
+        $documents = [
+            [
+                'DEMO-SIGN-2026-001', 'Demo: Aster annual service agreement', 1, [1], 1, 3,
+                '2026-09-01 00:00:00', '2027-08-31 23:59:59', '2026-09-01 10:30:00',
+                'Signed local demo agreement for the annual service renewal.', 'Aster Retail Group', '+60 12-455 7210', 1,
+            ],
+            [
+                'DEMO-SIGN-2026-002', 'Demo: Kinetic implementation agreement', 3, [3], 2, 2,
+                '2026-09-18 00:00:00', '2027-09-17 23:59:59', null,
+                'Electronic-signature demo awaiting the customer signatory.', 'Kinetic Health Systems', '+60 11-6902 8431', 0,
+            ],
+            [
+                'DEMO-SIGN-2026-003', 'Demo: Sunway customer-support agreement', 5, [5], 1, 1,
+                '2026-10-01 00:00:00', '2027-09-30 23:59:59', null,
+                'Local demo agreement submitted for internal approval.', 'Sunway Horizon Foods', '+60 17-284 9506', 0,
+            ],
+        ];
+
+        foreach ($documents as [
+            $docNo, $docName, $customerId, $orderIds, $signType, $status,
+            $startDate, $endDate, $signDate, $remarks, $customerName, $customerPhone, $externalStatus,
+        ]) {
+            DB::table('contract_doc')->updateOrInsert(
+                ['doc_no' => $docNo],
+                [
+                    'uid' => self::WAN_ID,
+                    'eid' => $customerId,
+                    'cid' => json_encode($orderIds),
+                    'oid' => null,
+                    'link_type' => 2,
+                    'doc_name' => $docName,
+                    'status' => $status,
+                    'sign_type' => $signType,
+                    'term_type' => 1,
+                    'date_count' => 364,
+                    'start_date' => $startDate,
+                    'end_date' => $endDate,
+                    'sign_status' => $status === 3 ? 1 : 0,
+                    'sign_date' => $signDate,
+                    'signature_sn' => $signType === 2 ? 'DEMO-ESIGN-2026-002' : null,
+                    'sign_file' => null,
+                    'file_id' => null,
+                    'app_url' => null,
+                    'pc_url' => null,
+                    'sign_url' => null,
+                    'sign_result' => null,
+                    'approve_id' => 0,
+                    'is_verify' => $status === 1 ? 1 : 0,
+                    'fail_time' => $endDate,
+                    'mark' => $remarks,
+                    'deleted_at' => null,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            );
+
+            $documentId = (int) DB::table('contract_doc')->where('doc_no', $docNo)->value('id');
+            $isSigned = $status === 3 ? 1 : 0;
+
+            DB::table('contract_signatory')->updateOrInsert(
+                ['cid' => $documentId, 'types' => 0, 'phone' => '+60 12-000 0001'],
+                [
+                    'user_id' => self::WAN_ID,
+                    'name' => 'Wan',
+                    'company_name' => 'Meridian Peak Solutions',
+                    'result' => '',
+                    'sign_time' => $signDate,
+                    'sign_status' => $isSigned,
+                    'e_userid' => '',
+                    'e_openid' => null,
+                    'remark' => 'Local demo internal handler',
+                    'deleted_at' => null,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            );
+
+            DB::table('contract_signatory')->updateOrInsert(
+                ['cid' => $documentId, 'types' => 1, 'phone' => $customerPhone],
+                [
+                    'user_id' => 0,
+                    'name' => $customerName . ' representative',
+                    'company_name' => $customerName,
+                    'result' => '',
+                    'sign_time' => $signDate,
+                    'sign_status' => $externalStatus,
+                    'e_userid' => '',
+                    'e_openid' => null,
+                    'remark' => 'Local demo customer signatory',
+                    'deleted_at' => null,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            );
+        }
+    }
+
+    /**
+     * Populate Customer > Performance goals > Order income and expenses.
+     *
+     * These records deliberately use the September 2026 range selected by
+     * default in the screen and span approved and pending income/expense
+     * states, so the table and its summary figures are both demonstrable.
+     */
+    private function seedOrderIncomeAndExpenses(): void
+    {
+        $entries = [
+            ['DEMO-BILL-2026-001', 1, 1, 0, 1, 18500.00, 'Bank transfer', '2026-09-03 10:15:00', 1, 'Initial payment received for the Aster Retail service package.'],
+            ['DEMO-BILL-2026-002', 2, 2, 1, 1, 7200.00, 'Online payment', '2026-09-08 14:30:00', 1, 'Renewal payment received for the BluePalm hospitality programme.'],
+            ['DEMO-BILL-2026-003', 3, 3, 2, 0, 1260.00, 'Company card', '2026-09-12 09:45:00', 1, 'Implementation workshop travel and materials expense.'],
+            ['DEMO-BILL-2026-004', 4, 4, 0, 1, 9600.00, 'Bank transfer', '2026-09-16 11:20:00', 0, 'Pending approval for the Northbridge rollout deposit.'],
+            ['DEMO-BILL-2026-005', 5, 5, 2, 0, 680.00, 'Company card', '2026-09-18 16:10:00', 0, 'Pending approval for Sunway project delivery expenses.'],
+        ];
+
+        foreach ($entries as [$billNo, $customerId, $contractId, $types, $billTypes, $amount, $payType, $date, $status, $mark]) {
+            DB::table('client_bill')->updateOrInsert(
+                ['bill_no' => $billNo],
+                [
+                    'entid' => self::ENT_ID,
+                    'eid' => $customerId,
+                    'cid' => $contractId,
+                    'cate_id' => 0,
+                    'bill_cate_id' => 0,
+                    'bill_types' => $billTypes,
+                    'uid' => (string) self::WAN_ID,
+                    'invoice_id' => 0,
+                    'num' => $amount,
+                    'mark' => $mark,
+                    'types' => $types,
+                    'type_id' => 0,
+                    'pay_type' => $payType,
+                    'date' => $date,
+                    'end_date' => null,
+                    'apply_id' => 0,
+                    'status' => $status,
+                    'fail_msg' => '',
+                    'created_at' => $date,
+                    'updated_at' => now(),
+                ],
+            );
         }
     }
 }

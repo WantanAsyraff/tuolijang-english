@@ -41,27 +41,41 @@ export default {
     },
     methods: {
         closeDialog() {
-            this.$refs.qrcode.innerHTML = '';
+            if (this.$refs.qrcode) {
+                this.$refs.qrcode.innerHTML = '';
+            }
          
         },
         openBox(rowData) {
+            // A signing provider normally supplies app_url. In a local/demo
+            // installation it can be absent, but the dialog must still render
+            // a QR code instead of presenting an empty panel.
+            this.qrcodeUrl = rowData.app_url || rowData.sign_url || this.localSigningUrl(rowData)
+            this.linkUrl = this.qrcodeUrl
             this.visible = true
-            // 先清空二维码容器
-               if (rowData.app_url) {
-               setTimeout(() => {
-                 
-                new QRCode(this.$refs.qrcode, {
-                  text: rowData.app_url,
-                  width: 170,
-                  height: 170,
-                  colorDark: '#000000',
-                  colorLight: '#ffffff',
-                  correctLevel: QRCode.CorrectLevel.H
-                });
-              }, 300);
-              
-            }
-               this.$refs.oaDialog.openBox();
+            this.$refs.oaDialog.openBox()
+            this.$nextTick(() => this.renderQrCode())
+        },
+        localSigningUrl(rowData) {
+            const params = new URLSearchParams({
+                contract: String(rowData.cid || ''),
+                signer: String(rowData.id || '')
+            })
+            return `${window.location.origin}/admin/customer/signing?${params.toString()}`
+        },
+        renderQrCode() {
+            if (!this.$refs.qrcode) return
+
+            this.$refs.qrcode.innerHTML = ''
+            const qrcode = new QRCode(this.$refs.qrcode, {
+                text: this.qrcodeUrl,
+                width: 170,
+                height: 170,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            })
+            qrcode._el && (qrcode._el.title = '')
         },
         // 保存二维码图片
         saveQrcode() {

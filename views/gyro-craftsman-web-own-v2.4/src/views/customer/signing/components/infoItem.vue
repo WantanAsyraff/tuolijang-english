@@ -186,11 +186,12 @@ export default {
   }
 }
 .signer-info {
-  width: 370px;
-  height: 67px;
+  width: 100%;
+  min-height: 76px;
+  box-sizing: border-box;
   background: #f7f7f7;
   border-radius: 8px;
-  padding: 12px;
+  padding: 12px 104px 12px 12px;
   font-family: PingFang SC, PingFang SC;
   font-weight: 400;
   margin-bottom: 8px;
@@ -215,9 +216,10 @@ export default {
 
   .signer-name {
     font-size: 13px;
-    height: 18px;
+    min-height: 18px;
     line-height: 18px;
     color: #303133;
+    overflow-wrap: anywhere;
   }
   .company-icon {
     display: inline-block;
