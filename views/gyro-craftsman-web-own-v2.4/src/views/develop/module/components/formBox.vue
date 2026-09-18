@@ -291,7 +291,7 @@ export default {
       fromData: {
         width: '500px',
         title: $('ui.developViewManagementCreateView'),
-        btnText: '确定',
+        btnText: $('ui.xmindEditorNodeHyperlinkOk'),
         labelWidth: '100px',
         type: ''
       },

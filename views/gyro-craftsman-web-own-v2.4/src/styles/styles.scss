@@ -204,22 +204,25 @@ img {
 // 内部按 .table-box > .table-wrapper > .table-content 嵌套，分页器外层加 .page-fixed。
 .flex-layout-table {
   flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 
   .table-box {
     flex: 1;
+    min-height: 0;
     display: flex;
     flex-direction: column;
   }
 
   .table-wrapper {
     flex: 1;
-    position: relative;
+    min-height: 0;
+    display: flex;
 
     .table-content {
-      position: absolute;
-      inset: 0;
+      flex: 1;
+      min-height: 0;
     }
   }
 

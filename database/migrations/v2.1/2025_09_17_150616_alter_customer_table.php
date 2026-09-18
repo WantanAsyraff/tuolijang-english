@@ -12,6 +12,15 @@ return new class extends Migration {
      */
     public function up()
     {
+        // The stock Customer form includes this field.  Keep the table schema
+        // in step with the form so saving a detailed address cannot attempt
+        // to insert into a missing column on upgraded installations.
+        if (! Schema::hasColumn('customer', '9bfe77e4')) {
+            Schema::table('customer', function (Blueprint $table) {
+                $table->string('9bfe77e4', 255)->nullable()->comment('详细地址');
+            });
+        }
+
         Schema::table('customer', function (Blueprint $table) {
             $table->string('userid', 256)->default('')->comment('企微用户ID');
             $table->string('external_userid', 256)->default('')->comment('企微客户ID');

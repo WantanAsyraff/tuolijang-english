@@ -33,16 +33,19 @@ module.exports = {
     disableHostCheck: true,
     proxy: {
       "^/api": {
-        target: "http://dev.oa.crmeb.net",
+        // The local development container must use the local Laravel service,
+        // not the shared development environment.  `host.docker.internal`
+        // resolves from Docker back to this host's port 20300.
+        target: "http://host.docker.internal:20300",
         changeOrigin: true,
       },
       "^/uploads": {
-        target: "http://dev.oa.crmeb.net",
+        target: "http://host.docker.internal:20300",
         changeOrigin: true,
         pathRewrite: {},
       },
       "^/ws": {
-        target: "http://dev.oa.crmeb.net",
+        target: "ws://host.docker.internal:20300",
         changeOrigin: true,
         ws: true,
       },

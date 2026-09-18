@@ -26,11 +26,14 @@ class LocalWorkspaceDemoSeeder extends Seeder
         $this->seedSchedule();
         $this->seedReports();
         $this->seedApprovals();
+        $this->seedAttendanceConfiguration();
+        $this->seedSalaryStructures();
         $this->seedAttendance();
         $this->seedPerformance();
         $this->seedLeadPool();
         $this->seedContractSigning();
         $this->seedOrderIncomeAndExpenses();
+        $this->seedTriggerLogs();
     }
 
     /** Make the local demo team eligible for staff-only dashboard views. */
@@ -218,7 +221,7 @@ class LocalWorkspaceDemoSeeder extends Seeder
     {
         $adminIds = [1 => 2, 2 => 3, 3 => 4, 4 => 5, 5 => 6];
         foreach ($adminIds as $adminId => $frameId) {
-            foreach (['2026-09-11', '2026-09-12', '2026-09-14', '2026-09-15'] as $date) {
+            foreach (['2026-09-11', '2026-09-12', '2026-09-14', '2026-09-15', '2026-09-18'] as $date) {
                 $clockIn = $date . ' 08:' . str_pad((string) (45 + $adminId), 2, '0', STR_PAD_LEFT) . ':00';
                 $clockOut = $date . ' 17:' . str_pad((string) (10 + $adminId), 2, '0', STR_PAD_LEFT) . ':00';
                 DB::table('attendance_clock_record')->updateOrInsert(
@@ -240,6 +243,11 @@ class LocalWorkspaceDemoSeeder extends Seeder
                         'deleted_at' => null,
                     ],
                 );
+                $clockInRecordId = (int) DB::table('attendance_clock_record')->where([
+                    'uid' => $adminId,
+                    'clock_type' => 0,
+                    'created_at' => $clockIn,
+                ])->value('id');
                 DB::table('attendance_clock_record')->updateOrInsert(
                     ['uid' => $adminId, 'clock_type' => 1, 'created_at' => $clockOut],
                     [
@@ -259,6 +267,11 @@ class LocalWorkspaceDemoSeeder extends Seeder
                         'deleted_at' => null,
                     ],
                 );
+                $clockOutRecordId = (int) DB::table('attendance_clock_record')->where([
+                    'uid' => $adminId,
+                    'clock_type' => 1,
+                    'created_at' => $clockOut,
+                ])->value('id');
                 DB::table('attendance_statistics')->updateOrInsert(
                     ['uid' => $adminId, 'one_shift_time' => $clockIn],
                     [
@@ -270,12 +283,12 @@ class LocalWorkspaceDemoSeeder extends Seeder
                         'one_shift_is_after' => 0,
                         'one_shift_status' => 1,
                         'one_shift_location_status' => 1,
-                        'one_shift_record_id' => 0,
+                        'one_shift_record_id' => $clockInRecordId,
                         'two_shift_time' => $clockOut,
                         'two_shift_is_after' => 0,
                         'two_shift_status' => 1,
                         'two_shift_location_status' => 1,
-                        'two_shift_record_id' => 0,
+                        'two_shift_record_id' => $clockOutRecordId,
                         'three_shift_time' => null,
                         'three_shift_is_after' => 0,
                         'three_shift_status' => 0,
@@ -294,6 +307,289 @@ class LocalWorkspaceDemoSeeder extends Seeder
                     ],
                 );
             }
+        }
+    }
+
+    /** Populate the HR salary-structure module with rows for the local demo team. */
+    private function seedSalaryStructures(): void
+    {
+        $rows = [
+            [2, 4200.00, 650.00, 1100.00, 300.00, 200.00, 150.00, 'Demo salary structure for Aria Lim.'],
+            [3, 3900.00, 600.00, 950.00, 250.00, 180.00, 120.00, 'Demo salary structure for Daniel Ong.'],
+            [4, 4400.00, 700.00, 1200.00, 350.00, 220.00, 150.00, 'Demo salary structure for Priya Nair.'],
+            [5, 4100.00, 625.00, 1050.00, 275.00, 175.00, 125.00, 'Demo salary structure for Haziq Rahman.'],
+            [6, 3600.00, 500.00, 800.00, 150.00, 200.00, 100.00, 'Demo salary structure for Mei Tan.'],
+        ];
+
+        foreach ($rows as [$employeeId, $baseSalary, $performancePay, $positionSalary, $managementAllowance, $skillAllowance, $otherAllowance, $remark]) {
+            $frameId = (int) DB::table('frame_assist')->where('user_id', $employeeId)->value('frame_id');
+
+            DB::table('gongzitiaojiegou')->updateOrInsert(
+                ['yuangong' => $employeeId, 'user_id' => self::WAN_ID],
+                [
+                    'update_user_id' => self::WAN_ID,
+                    'owner_user_id' => self::WAN_ID,
+                    'jibengongzi' => $baseSalary,
+                    'jixiaogongzi' => $performancePay,
+                    'gangweigongzi' => $positionSalary,
+                    'guanlijintie' => $managementAllowance,
+                    'jinengbutie' => $skillAllowance,
+                    'qitabutie' => $otherAllowance,
+                    'tiaoxinbeizhu' => $remark,
+                    'frame_id' => $frameId,
+                    'created_at' => '2026-09-18 09:00:00',
+                    'updated_at' => now(),
+                    'deleted_at' => null,
+                ],
+            );
+        }
+    }
+
+    /** Supply the leave, shift, and group settings required by the HR attendance views. */
+    private function seedAttendanceConfiguration(): void
+    {
+        // Earlier local demo data used a legacy string here. The attendance
+        // group model expects the setting to be a JSON array when rendering
+        // the list, so normalise only that known demo record.
+        DB::table('attendance_group')->where([
+            'name' => 'Demo Kuala Lumpur HQ attendance',
+            'uid' => self::WAN_ID,
+        ])->update([
+            'repair_type' => json_encode([1, 2, 3, 4, 5]),
+            'updated_at' => now(),
+        ]);
+
+        $leaveTypes = [
+            ['Demo Annual Leave', 0, 1, 10],
+            ['Demo Medical Leave', 0, 1, 20],
+            ['Demo Emergency Leave', 1, 1, 30],
+            ['Demo Compassionate Leave', 0, 1, 40],
+        ];
+
+        foreach ($leaveTypes as [$name, $durationType, $durationCalculationType, $sort]) {
+            DB::table('approve_holiday_type')->updateOrInsert(
+                ['name' => $name],
+                [
+                    'new_employee_limit' => 0,
+                    'new_employee_limit_month' => 1,
+                    'duration_type' => $durationType,
+                    'duration_calc_type' => $durationCalculationType,
+                    'sort' => $sort,
+                    'created_at' => '2026-09-18 09:00:00',
+                    'updated_at' => now(),
+                    'deleted_at' => null,
+                ],
+            );
+        }
+
+        $shifts = [
+            ['Demo Office Hours', '09:00-18:00', '12:30', '13:30', '#2d8cf0', 10],
+            ['Demo Flexible Support', '10:00-19:00', '13:00', '14:00', '#19be6b', 20],
+        ];
+
+        foreach ($shifts as [$name, $workTime, $restStart, $restEnd, $color, $sort]) {
+            DB::table('attendance_shift')->updateOrInsert(
+                ['name' => $name, 'uid' => self::WAN_ID],
+                [
+                    'number' => 1,
+                    'rest_time' => 1,
+                    'rest_start' => $restStart,
+                    'rest_end' => $restEnd,
+                    'rest_start_after' => 0,
+                    'rest_end_after' => 0,
+                    'overtime' => 0,
+                    'work_time' => $workTime,
+                    'color' => $color,
+                    'sort' => $sort,
+                    'types' => 0,
+                    'created_at' => '2026-09-18 09:00:00',
+                    'updated_at' => now(),
+                    'deleted_at' => null,
+                ],
+            );
+
+            $shiftId = (int) DB::table('attendance_shift')->where([
+                'name' => $name,
+                'uid' => self::WAN_ID,
+            ])->value('id');
+            $startHour = $name === 'Demo Office Hours' ? '09:00' : '10:00';
+            $endHour = $name === 'Demo Office Hours' ? '18:00' : '19:00';
+
+            DB::table('attendance_shift_rule')->updateOrInsert(
+                ['shift_id' => $shiftId, 'number' => 1],
+                [
+                    'first_day_after' => 0,
+                    'second_day_after' => 0,
+                    'work_hours' => $startHour,
+                    'late' => 600,
+                    'extreme_late' => 1800,
+                    'late_lack_card' => 7200,
+                    'early_card' => 1800,
+                    'off_hours' => $endHour,
+                    'early_leave' => 900,
+                    'early_lack_card' => 3600,
+                    'delay_card' => 1800,
+                    'free_clock' => 0,
+                    'created_at' => '2026-09-18 09:00:00',
+                    'updated_at' => now(),
+                    'deleted_at' => null,
+                ],
+            );
+        }
+
+        $officeShiftId = (int) DB::table('attendance_shift')->where([
+            'name' => 'Demo Office Hours',
+            'uid' => self::WAN_ID,
+        ])->value('id');
+        $groupName = 'Demo KL Office Attendance';
+        DB::table('attendance_group')->updateOrInsert(
+            ['name' => $groupName, 'uid' => self::WAN_ID],
+            [
+                'type' => 0,
+                'address' => 'Bukit Bintang, Kuala Lumpur, Malaysia',
+                'lat' => '3.146642',
+                'lng' => '101.710983',
+                'effective_range' => 300,
+                'location_name' => 'Meridian Peak Demo Office',
+                'repair_allowed' => 1,
+                'repair_type' => json_encode([1, 2, 3, 4, 5]),
+                'is_limit_time' => 0,
+                'limit_time' => 0,
+                'is_limit_number' => 0,
+                'limit_number' => 0,
+                'is_photo' => 0,
+                'is_map' => 1,
+                'is_wifi' => 0,
+                'is_external' => 0,
+                'is_external_note' => 0,
+                'is_external_photo' => 0,
+                'created_at' => '2026-09-18 09:00:00',
+                'updated_at' => now(),
+                'deleted_at' => null,
+            ],
+        );
+
+        $groupId = (int) DB::table('attendance_group')->where([
+            'name' => $groupName,
+            'uid' => self::WAN_ID,
+        ])->value('id');
+        foreach ([1, 2, 3, 4, 5, 6] as $memberId) {
+            DB::table('attendance_group_member')->updateOrInsert(
+                ['group_id' => $groupId, 'member' => $memberId, 'type' => 0],
+                [
+                    'entid' => self::ENT_ID,
+                    'created_at' => '2026-09-18 09:00:00',
+                    'updated_at' => now(),
+                    'deleted_at' => null,
+                ],
+            );
+        }
+        DB::table('attendance_group_member')->updateOrInsert(
+            ['group_id' => $groupId, 'member' => self::WAN_ID, 'type' => 2],
+            [
+                'entid' => self::ENT_ID,
+                'created_at' => '2026-09-18 09:00:00',
+                'updated_at' => now(),
+                'deleted_at' => null,
+            ],
+        );
+        DB::table('attendance_group_shift')->updateOrInsert(
+            ['group_id' => $groupId, 'shift_id' => $officeShiftId],
+            [
+                'created_at' => '2026-09-18 09:00:00',
+                'updated_at' => now(),
+                'deleted_at' => null,
+            ],
+        );
+    }
+
+    /** Add inactive local-only triggers and their execution history for the trigger-log view. */
+    private function seedTriggerLogs(): void
+    {
+        $events = [
+            ['Demo salary review notification', 3, 'send_notice', ['create', 'update']],
+            ['Demo customer data check', 5, 'data_check', ['create']],
+            ['Demo contract renewal reminder', 6, 'send_notice', ['update']],
+            ['Demo follow-up activity reminder', 9, 'to_do_schedule', ['create']],
+        ];
+
+        $eventIds = [];
+        foreach ($events as [$name, $crudId, $event, $actions]) {
+            DB::table('system_crud_event')->updateOrInsert(
+                ['name' => $name, 'crud_id' => $crudId],
+                [
+                    'event' => $event,
+                    'action' => json_encode($actions),
+                    'sort' => 0,
+                    'timer' => 0,
+                    'timer_type' => 0,
+                    'target_crud_id' => 0,
+                    'crud_approve_id' => 0,
+                    'curl_id' => 0,
+                    'send_type' => 0,
+                    'send_user' => json_encode([]),
+                    'notify_type' => json_encode([]),
+                    'additional_search' => json_encode([]),
+                    'additional_search_boolean' => 0,
+                    'template' => json_encode(['title' => 'Local demo trigger']),
+                    'field_options' => json_encode([]),
+                    'aggregate_target_search' => json_encode([]),
+                    'aggregate_target_search_boolean' => 0,
+                    'aggregate_data_search' => json_encode([]),
+                    'aggregate_data_search_boolean' => 0,
+                    'aggregate_data_field' => json_encode([]),
+                    'aggregate_field_rule' => json_encode([]),
+                    'sms_template_id' => '',
+                    'work_webhook_url' => '',
+                    'ding_webhook_url' => '',
+                    'other_webhook_url' => '',
+                    'update_field_options' => json_encode([]),
+                    'other_webhook_status' => 0,
+                    'ding_webhook_status' => 0,
+                    'work_webhook_status' => 0,
+                    'sms_status' => 0,
+                    'system_status' => 0,
+                    'options' => json_encode([]),
+                    'timer_options' => json_encode([]),
+                    // These records intentionally remain inactive: their logs
+                    // are present for the local preview, but they cannot run.
+                    'status' => 0,
+                    'created_at' => '2026-09-18 09:00:00',
+                    'updated_at' => now(),
+                    'deleted_at' => null,
+                ],
+            );
+            $eventIds[$name] = (int) DB::table('system_crud_event')->where([
+                'name' => $name,
+                'crud_id' => $crudId,
+            ])->value('id');
+        }
+
+        $logs = [
+            ['Demo salary review notification', 3, 'create', 'success', '2026-09-18 09:15:00', 'Salary review notification prepared for Aria Lim.'],
+            ['Demo customer data check', 5, 'create', 'success', '2026-09-18 09:30:00', 'Customer details passed the required-field validation.'],
+            ['Demo contract renewal reminder', 6, 'update', 'success', '2026-09-18 10:00:00', 'Renewal reminder scheduled for the contract owner.'],
+            ['Demo follow-up activity reminder', 9, 'create', 'success', '2026-09-18 10:20:00', 'Follow-up activity reminder added to the work schedule.'],
+            ['Demo customer data check', 5, 'create', 'error', '2026-09-18 10:45:00', 'Demo validation exception captured for review.'],
+        ];
+
+        foreach ($logs as [$eventName, $crudId, $action, $result, $createdAt, $message]) {
+            $eventId = $eventIds[$eventName];
+            DB::table('system_crud_event_log')->updateOrInsert(
+                ['event_id' => $eventId, 'created_at' => $createdAt],
+                [
+                    'crud_id' => $crudId,
+                    'action' => $action,
+                    'result' => $result,
+                    'parameter' => json_encode([
+                        'demo' => true,
+                        'action' => $action,
+                        'source' => 'local workspace preview',
+                    ]),
+                    'log' => json_encode(['message' => $message]),
+                    'updated_at' => now(),
+                ],
+            );
         }
     }
 
