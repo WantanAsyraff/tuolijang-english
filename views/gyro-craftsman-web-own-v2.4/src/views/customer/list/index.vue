@@ -24,7 +24,6 @@
     </oaFromBox>
 
     <customizeTable
-      flexLayout
       ref="tableData"
       :keyword="keyword"
       :tableData="tableData"

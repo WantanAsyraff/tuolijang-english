@@ -35,7 +35,7 @@
       </el-table-column>
       <el-table-column :label="$('ui.developApproveIndexLinkedEntity')" prop="name">
         <template slot-scope="scope">
-          {{ scope.row.crud.table_name || '--' }}
+          {{ getEntityName(scope.row.crud) }}
         </template>
       </el-table-column>
       <el-table-column :label="$('ui.developEventLogExecutionResult')" prop="log" min-width="100">
@@ -154,6 +154,20 @@ export default {
       this.getTableData()
     },
     getEvent(val) {
+      const eventLabels = {
+        send_notice: 'Send notification',
+        data_check: 'Data validation',
+        auto_create: 'Auto-create record',
+        group_aggregate: 'Group aggregation',
+        field_aggregate: 'Field aggregation',
+        field_update: 'Update fields',
+        auto_approve: 'Start approval workflow',
+        auto_revoke_approve: 'Revoke approval workflow',
+        get_data: 'Retrieve data',
+        push_data: 'Push data',
+        to_do_schedule: 'Schedule task'
+      }
+      if (eventLabels[val]) return eventLabels[val]
       const targetOption = this.typesList[0]?.options?.find((item) => item.value === val)
       return targetOption ? targetOption.label : '--'
     },
@@ -170,15 +184,31 @@ export default {
     },
     // 根据id获取触发动作
     getAction(val) {
-      let textArr = []
-      this.actionList.map((item) => {
-        val.map((key) => {
-          if (item.value == key) {
-            textArr.push(item.label)
-          }
-        })
-      })
-      return textArr.join('/')
+      const actionLabels = {
+        create: 'On creation',
+        update: 'On update',
+        delete: 'On deletion',
+        approve_success: 'On approval',
+        approve_revoke: 'On approval withdrawal',
+        approve_create: 'On approval submission',
+        approve_reject: 'On rejection',
+        timer: 'On schedule'
+      }
+      return (Array.isArray(val) ? val : []).map((key) => {
+        if (actionLabels[key]) return actionLabels[key]
+        return this.actionList.find((item) => item.value === key)?.label || key
+      }).join('/')
+    },
+    getEntityName(crud) {
+      const entityLabels = {
+        '工资结构': 'Salary structure',
+        '工资条结构': 'Salary structure',
+        '客户管理': 'Customer management',
+        '合同管理': 'Contract management',
+        '跟进记录': 'Follow-up records'
+      }
+      const name = crud?.table_name
+      return entityLabels[name] || name || '--'
     },
 
     // 分页

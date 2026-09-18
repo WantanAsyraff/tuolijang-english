@@ -4,12 +4,12 @@
       <div class="table-wrapper">
         <div class="table-content">
           <el-table
-            key="tab"
+            :key="tableRenderKey"
             ref="table"
             :data="tableData"
             v-loading="loading"
             default-expand-all
-            :height="heightData"
+            :height="tableHeight"
             row-key="id"
             style="width: 100%"
             @selection-change="handleSelectionChange"
@@ -48,19 +48,19 @@
                 <div
                   v-else-if="fieldHandle(header.field, 'labelList')"
                   class="customer-label"
-                  :class="{ pointer: scope.row[header.field] && scope.row[header.field].length }"
+                  :class="{ pointer: fieldList(scope.row, header.field).length }"
                 >
-                  <div v-if="!scope.row[header.field].length">--</div>
+                  <div v-if="!fieldList(scope.row, header.field).length">--</div>
                   <!-- 大于两条浮窗 -->
                   <el-popover
-                    v-if="scope.row[header.field].length > 2"
+                    v-if="fieldList(scope.row, header.field).length > 2"
                     placement="top-start"
                     width="400"
                     trigger="hover"
                   >
                     <template>
                       <div class="flex_box">
-                        <div v-for="(item, index) in scope.row[header.field]" :key="index" class="tips">
+                        <div v-for="(item, index) in fieldList(scope.row, header.field)" :key="index" class="tips">
                           <el-tag v-if="item.name.length <= 6" size="small" class="mb10"> {{ labelDisplay(item) }} </el-tag>
                           <el-tag v-else size="small" class="mb10">
                             {{ labelDisplay(item) }}
@@ -70,24 +70,24 @@
                     </template>
                     <div slot="reference">
                       <div class="flex_box">
-                        <template v-for="(item, index) in scope.row[header.field]">
+                        <template v-for="(item, index) in fieldList(scope.row, header.field)">
                           <el-tag v-if="index < 2" size="small" :key="index" class="tips">
                             {{ labelDisplay(item) }}
                           </el-tag>
                         </template>
-                        <el-tag v-if="scope.row[header.field].length > 2" size="small">...</el-tag>
+                        <el-tag v-if="fieldList(scope.row, header.field).length > 2" size="small">...</el-tag>
                       </div>
                     </div>
                   </el-popover>
                   <!-- 不需要浮窗 -->
                   <template v-else>
                     <div class="flex_box">
-                      <div v-for="(item, index) in scope.row[header.field]" :key="index" class="tips">
+                      <div v-for="(item, index) in fieldList(scope.row, header.field)" :key="index" class="tips">
                         <el-tag v-if="index < 2" size="small">
                           {{ labelDisplay(item) }}
                         </el-tag>
                       </div>
-                      <el-tag v-if="scope.row[header.field].length > 2" size="small">...</el-tag>
+                      <el-tag v-if="fieldList(scope.row, header.field).length > 2" size="small">...</el-tag>
                     </div>
                   </template>
                 </div>
@@ -96,8 +96,8 @@
                     (keyword == 'customer' || keyword == 'customer_seas') && fieldHandle(header.field, 'liaisonList')
                   "
                 >
-                  {{ scope.row[header.field].liaison_name || '--' }}:
-                  {{ scope.row[header.field].liaison_tel || '--' }}
+                  {{ fieldObject(scope.row, header.field).liaison_name || '--' }}:
+                  {{ fieldObject(scope.row, header.field).liaison_tel || '--' }}
                 </span>
                 <!-- 查看详情 -->
                 <span
@@ -357,6 +357,19 @@ export default {
     }
   },
   computed: {
+    // Customer screens receive their rows and configurable columns independently.
+    // Recreate Element's table once either side changes so its cached body is not
+    // left empty when the column configuration arrives after the API response.
+    tableRenderKey() {
+      const columns = this.tableHeaders.map((header) => header.field).join('|')
+      const rows = this.tableData.map((row) => row.id).join('|')
+      return `${this.keyword}:${columns}:${rows}`
+    },
+    // The flex wrapper has a resolved height, so Element UI can calculate the
+    // scrollable body from it instead of collapsing the rows during loading.
+    tableHeight() {
+      return this.heightData
+    },
     heightData() {
       if (this.flexLayout) {
         return '100%'
@@ -421,6 +434,14 @@ export default {
     },
     fieldHandle(field, type) {
       return this.fieldMap[type].includes(field)
+    },
+    fieldList(row, field) {
+      const value = row && row[field]
+      return Array.isArray(value) ? value : []
+    },
+    fieldObject(row, field) {
+      const value = row && row[field]
+      return value && typeof value === 'object' && !Array.isArray(value) ? value : {}
     },
     setInputRef(el, rowId, field) {
       if (el) {
